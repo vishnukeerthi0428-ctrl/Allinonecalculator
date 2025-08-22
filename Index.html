@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CalcHub — All-in-One Calculators</title>
+  <meta name="description" content="Single-file, deploy-ready multi-calculator app: EMI, Mortgage, SIP, BMI, Discount, Unit Price, Calories/TDEE, Age. Search, categories, share links, history. No libraries.">
+  <style>
+    :root{ --bg:#0b1220; --card:#10192d; --muted:#8aa0c6; --fg:#eaf0ff; --accent:#6ee7ff; --accent2:#a78bfa; --br:16px; --shadow:0 10px 30px rgba(0,0,0,.35); }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font:16px/1.35 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;background:linear-gradient(180deg,#0b1220,#0b1220 60%,#0a1020), radial-gradient(1200px 600px at 70% -10%, rgba(108,97,255,0.2), transparent), radial-gradient(800px 400px at 10% 10%, rgba(80,218,255,0.18), transparent);color:var(--fg)}
+    a{color:var(--accent)} a:hover{opacity:.9}
+    header{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.7);backdrop-filter:saturate(120%) blur(10px);border-bottom:1px solid #1b2746}
+    .wrap{max-width:1100px;margin:auto;padding:18px}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:linear-gradient(140deg,var(--accent),var(--accent2));color:#001225;font-weight:800;box-shadow:var(--shadow)}
+    .title{font-weight:800;letter-spacing:.3px}
+    .sub{color:var(--muted);font-size:13px}
+    .grid{display:grid;gap:14px}
+    @media(min-width:860px){ .grid{grid-template-columns:280px 1fr} }
+    .panel{background:var(--card);border:1px solid #1b2746;border-radius:var(--br);box-shadow:var(--shadow)}
+    .panel h2{margin:0 0 10px;font-size:18px}
+    .search{display:flex;gap:10px}
+    input[type="search"],input[type="text"],input[type="number"],input[type="date"],select{background:#0e1730;border:1px solid #23335F;color:var(--fg);padding:12px 12px;border-radius:12px;outline:none;width:100%}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{appearance:none;margin:0}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .chip{padding:8px 12px;border-radius:999px;border:1px solid #23335F;background:#0d1731;color:var(--fg);cursor:pointer}
+    .chip.active{background:linear-gradient(140deg,rgba(110,231,255,.15),rgba(167,139,250,.15));border-color:#3050a0}
+    .list{display:grid;gap:12px}
+    .calc-card{padding:16px;border-radius:14px;border:1px solid #23335F;background:linear-gradient(180deg,#0e1730,#0c152b);display:grid;gap:8px;cursor:pointer}
+    .calc-card .name{font-weight:700}
+    .calc-card .cat{color:var(--muted);font-size:12px}
+    .btn{border:1px solid #2a3c76;background:#12214a;color:var(--fg);padding:10px 14px;border-radius:12px;cursor:pointer}
+    .btn:hover{filter:brightness(1.05)}
+    .btn.primary{background:linear-gradient(140deg,rgba(110,231,255,.2),rgba(167,139,250,.2));border-color:#3a57a4}
+    .btn.ghost{background:transparent}
+    .layout{display:grid;gap:14px}
+    @media(min-width:860px){ .layout{grid-template-columns:1.3fr 1fr} }
+    .field{display:grid;gap:6px;margin:8px 0}
+    label{color:var(--muted);font-size:13px}
+    .row{display:flex;gap:10px}
+    .row>*{flex:1}
+    .out{background:#0e1730;border:1px dashed #2a3c76;padding:12px;border-radius:12px}
+    .out .v{font-size:20px;font-weight:800}
+    .muted{color:var(--muted)}
+    .actions{display:flex;flex-wrap:wrap;gap:10px}
+    .small{font-size:12px}
+    .kpi{display:grid;gap:6px;padding:10px;border:1px solid #23335F;border-radius:12px;background:#0d1731}
+    .toast{position:fixed;bottom:18px;right:18px;background:#16244d;border:1px solid #2a3c76;color:var(--fg);padding:10px 12px;border-radius:12px;box-shadow:var(--shadow);opacity:0;transform:translateY(10px);transition:.25s}
+    .toast.show{opacity:1;transform:translateY(0)}
+    .note{font-size:12px;color:var(--muted)}
+    .footer{color:var(--muted);font-size:12px;margin-top:30px}
+    .badge{font-size:11px;padding:4px 8px;border-radius:999px;border:1px solid #2a3c76;color:#a1b8ff;background:#0e1730}
+    .test-pass{color:#7ef29a}
+    .test-fail{color:#ff7a7a}
+    .settings{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .settings label{font-size:12px;color:var(--muted)}
+    .settings select{min-width:120px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:14px">
+      <div class="brand">
+        <div class="logo">C</div>
+        <div>
+          <div class="title">CalcHub</div>
+          <div class="sub">All-in-One Calculators • Single file • No ads</div>
+        </div>
+      </div>
+      <div id="settingsBar" class="settings">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap grid" id="app">
+    <aside class="panel" style="padding:16px">
+      <h2>Find a calculator</h2>
+      <div class="search">
+        <input id="q" type="search" placeholder="Search (e.g., EMI, SIP, BMI, price per unit)" aria-label="Search calculators">
+        <button class="btn" id="clearSearch" title="Clear">✕</button>
+      </div>
+      <div class="chips" id="cats"></div>
+    </aside>
+
+    <section class="panel" style="padding:16px">
+      <div id="route-list" style="display:none">
+        <div class="list" id="calcList"></div>
+      </div>
+
+      <div id="route-detail" style="display:none"></div>
+    </section>
+  </main>
+
+  <div class="wrap footer">This is an <strong>original</strong> open template inspired by popular calculator sites, not affiliated with them. Add unlimited calculators via the config below.</div>
+
+  <details class="wrap panel" style="padding:12px;margin-top:16px"><summary>Self-tests</summary>
+    <div id="tests" class="small"></div>
+  </details>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script>
+// ==========================
+//  Router with sandbox-safe hash fallback (fixes pushState SecurityError)
+// ==========================
+const ROUTE = (()=>{
+  const isSandboxed = (
+    location.href.startsWith('about:') ||
+    location.protocol === 'about:' ||
+    location.protocol === 'data:' ||
+    location.protocol === 'blob:' ||
+    String(location.origin) === 'null'
+  );
+  let mode = isSandboxed ? 'hash' : 'history';
+
+  function getAll(){
+    return mode==='history' ? fromQS(location.search) : fromQS(location.hash.replace(/^#/,''));
+  }
+  function get(k){ const p = getAll(); return p[k]; }
+  function set(k, v){
+    if (mode==='history') {
+      try{
+        const url = new URL(location.href);
+        if (v==null) url.searchParams.delete(k); else url.searchParams.set(k, v);
+        history.pushState({}, '', url);
+        window.dispatchEvent(new PopStateEvent('popstate'));
+      }catch(e){
+        mode = 'hash';
+        set(k, v);
+      }
+    } else {
+      const sp = new URLSearchParams(location.hash.replace(/^#/,''));
+      if (v==null) sp.delete(k); else sp.set(k, v);
+      const newHash = sp.toString();
+      if (location.hash.replace(/^#/, '') !== newHash) {
+        location.hash = newHash;
+      } else {
+        window.dispatchEvent(new HashChangeEvent('hashchange'));
+      }
+    }
+  }
+  function onChange(fn){ window.addEventListener('popstate', fn); window.addEventListener('hashchange', fn); }
+  function baseURL(){ return mode==='history' ? location.href.split('?')[0] : location.href.split('#')[0]; }
+  return { get mode(){ return mode }, get, set, onChange, getAll, baseURL };
+})();
+
+// ==========================
+//  Global Settings (Currency & Units)
+// ==========================
+const SETTINGS_KEY = 'calchub_settings_v1';
+const CURRENCIES = [
+  {code:'INR', label:'₹ Indian Rupee'}, {code:'USD', label:'$ US Dollar'},
+  {code:'EUR', label:'€ Euro'}, {code:'GBP', label:'£ British Pound'},
+  {code:'AED', label:'د.إ UAE Dirham'}, {code:'AUD', label:'A$ Australian Dollar'},
+  {code:'CAD', label:'C$ Canadian Dollar'}, {code:'JPY', label:'¥ Japanese Yen'}
+];
+function defaultCurrency(){
+  const l = navigator.language || '';
+  if (l.includes('IN')) return 'INR';
+  if (l.includes('GB')) return 'GBP';
+  if (l.includes('FR')||l.includes('DE')||l.includes('ES')||l.includes('IT')) return 'EUR';
+  if (l.includes('AE')) return 'AED';
+  return 'USD';
+}
+function defaultUnits(){
+  const l = navigator.language || '';
+  return l.includes('US') ? 'imperial' : 'metric';
+}
+function getSettings(){
+  try{
+    const s = JSON.parse(localStorage.getItem(SETTINGS_KEY)||'{}');
+    return { currency: s.currency || defaultCurrency(), units: s.units || defaultUnits() };
+  }catch{ return { currency: defaultCurrency(), units: defaultUnits() }; }
+}
+function setSettings(s){
+  localStorage.setItem(SETTINGS_KEY, JSON.stringify(s));
+}
+let SETTINGS = getSettings();
+
+function initSettingsBar(){
+  const host = document.getElementById('settingsBar');
+  host.innerHTML = '';
+  const curSel = el('select', {id:'selCurrency', 'aria-label':'Currency'});
+  CURRENCIES.forEach(c=> curSel.append(el('option', {value:c.code}, `${c.label} (${c.code})`)));
+  curSel.value = SETTINGS.currency;
+
+  const unitSel = el('select', {id:'selUnits', 'aria-label':'Units'});
+  unitSel.append(el('option',{value:'metric'}, 'Units: Metric (cm, kg)'));
+  unitSel.append(el('option',{value:'imperial'}, 'Units: Imperial (in, lb)'));
+  unitSel.value = SETTINGS.units;
+
+  host.append(
+    el('label', {for:'selCurrency'}, 'Currency'),
+    curSel,
+    el('label', {for:'selUnits'}, 'Units'),
+    unitSel
+  );
+
+  curSel.addEventListener('change', ()=>{
+    SETTINGS = {...SETTINGS, currency: curSel.value};
+    setSettings(SETTINGS);
+    rerenderIfDetail();
+    toast('Currency updated');
+  });
+  unitSel.addEventListener('change', ()=>{
+    SETTINGS = {...SETTINGS, units: unitSel.value};
+    setSettings(SETTINGS);
+    rerenderIfDetail(); // re-render to update labels & recompute with conversions
+    toast('Units updated');
+  });
+}
+function rerenderIfDetail(){
+  const calcId = ROUTE.get('calc');
+  if (calcId) renderDetail(calcId); else renderList();
+}
+
+// ==========================
+//  Categories & Calculators
+// ==========================
+const CATEGORIES = [
+  { id: 'everyday', label: 'Everyday' },
+  { id: 'finance',  label: 'Finance'  },
+  { id: 'health',   label: 'Health'   },
+  { id: 'time',     label: 'Time & Date' }
+];
+
+const CALCS = [
+  // Everyday
+  {
+    id: 'unit-price',
+    name: 'Unit Price',
+    category: 'everyday',
+    summary: 'Find price per unit to compare product value',
+    inputs: [
+      { key:'total', label:'Total price', type:'number', min:0, step:'any', placeholder:'199.99', required:true },
+      { key:'qty', label:'Quantity / Units', type:'number', min:0, step:'any', placeholder:'12', required:true },
+      { key:'unitLabel', label:'Unit label', type:'text', placeholder:'piece, kg, L' }
+    ],
+    outputs: [
+      { key:'ppu', label:'Price per unit', formula:({total,qty})=> qty>0? total/qty : NaN, format: v=> isFinite(v)? formatCurrency(v) : '—' }
+    ],
+    notes: 'Compare items fairly by using price per unit.'
+  },
+  {
+    id: 'discount',
+    name: 'Discount',
+    category: 'everyday',
+    summary: 'Final price and savings',
+    inputs: [
+      { key:'price', label:'Original price', type:'number', min:0, step:'any', placeholder:'1499', required:true },
+      { key:'off', label:'Discount (%)', type:'number', min:0, step:'any', placeholder:'20', required:true }
+    ],
+    outputs: [
+      { key:'save', label:'You save', formula:({price,off})=> price*(off/100), format:v=> formatCurrency(v) },
+      { key:'final', label:'Final price', formula:({price,save})=> price-save, format:v=> formatCurrency(v) }
+    ],
+    notes: 'Does not include taxes or fees unless added to the price.'
+  },
+
+  // Finance
+  {
+    id: 'emi',
+    name: 'Loan EMI',
+    category: 'finance',
+    summary: 'Monthly payment, total interest & payoff',
+    inputs: [
+      { key:'p', label:'Principal (loan amount)', type:'number', min:0, step:'any', placeholder:'500000', required:true },
+      { key:'r', label:'Annual interest (%)', type:'number', min:0, step:'any', placeholder:'8.5', required:true },
+      { key:'n', label:'Tenure (months)', type:'number', min:1, step:1, placeholder:'60', required:true }
+    ],
+    outputs: [
+      { key:'emi', label:'Monthly EMI', formula:({p,r,n})=> emi(p,r,n), format:v=> formatCurrency(v) },
+      { key:'total', label:'Total payment', formula:({emi,n})=> emi*n, format:v=> formatCurrency(v) },
+      { key:'interest', label:'Total interest', formula:({total,p})=> total-p, format:v=> formatCurrency(v) }
+    ],
+    notes: 'Fixed rate, monthly compounding.'
+  },
+  {
+    id: 'mortgage',
+    name: 'Mortgage',
+    category: 'finance',
+    summary: 'Home loan monthly payment and total interest',
+    inputs: [
+      { key:'p', label:'Principal (home loan amount)', type:'number', min:0, step:'any', placeholder:'5000000', required:true },
+      { key:'r', label:'Annual interest (%)', type:'number', min:0, step:'any', placeholder:'8', required:true },
+      { key:'y', label:'Tenure (years)', type:'number', min:1, step:1, placeholder:'20', required:true }
+    ],
+    outputs: [
+      { key:'n', label:'Total months', formula:({y})=> (y||0)*12 },
+      { key:'emi', label:'Monthly payment', formula:({p,r,y})=> emi(p,r,(y||0)*12), format:v=> formatCurrency(v) },
+      { key:'total', label:'Total payment', formula:({emi,n})=> emi*n, format:v=> formatCurrency(v) },
+      { key:'interest', label:'Total interest', formula:({total,p})=> total-p, format:v=> formatCurrency(v) }
+    ],
+    notes: 'Fixed rate, monthly compounding. Taxes/insurance not included.'
+  },
+  {
+    id: 'sip',
+    name: 'SIP',
+    category: 'finance',
+    summary: 'Maturity value of monthly investments (SIP)',
+    inputs: [
+      { key:'m', label:'Monthly investment', type:'number', min:0, step:'any', placeholder:'10000', required:true },
+      { key:'r', label:'Expected annual return (%)', type:'number', min:0, step:'any', placeholder:'12', required:true },
+      { key:'y', label:'Duration (years)', type:'number', min:1, step:1, placeholder:'10', required:true }
+    ],
+    outputs: [
+      { key:'n', label:'Total months', formula:({y})=> (y||0)*12 },
+      { key:'mr', label:'Monthly rate', formula:({r})=> (r||0)/1200, format:v=> isFinite(v)? (v*100).toFixed(4)+'%': '—' },
+      { key:'maturity', label:'Maturity value', formula:({m,r,y})=> { const n=(y||0)*12; const i=(r||0)/1200; if(!i) return m*n; return m*((Math.pow(1+i,n)-1)/i)*(1+i) }, format:v=> formatCurrency(v) },
+      { key:'invested', label:'Total invested', formula:({m,y})=> (m||0)*((y||0)*12), format:v=> formatCurrency(v) },
+      { key:'gain', label:'Wealth gain', formula:({maturity,invested})=> (maturity||0)-(invested||0), format:v=> formatCurrency(v) }
+    ],
+    notes: 'FV = P * [((1+i)^n − 1)/i] * (1+i), where i is monthly rate, n is months.'
+  },
+
+  // Health
+  {
+    id: 'bmi',
+    name: 'BMI',
+    category: 'health',
+    summary: 'Body Mass Index from height & weight',
+    inputs: [
+      { key:'height', label:'Height (cm/in)', type:'number', min:0, step:'any', placeholder:'175', required:true },
+      { key:'weight', label:'Weight (kg/lb)', type:'number', min:0, step:'any', placeholder:'72', required:true }
+    ],
+    outputs: [
+      { key:'bmi', label:'BMI', formula:({height,weight})=> {
+          const hcm = toCm(height, SETTINGS.units);
+          const kg = toKg(weight, SETTINGS.units);
+          return kg/Math.pow(hcm/100,2);
+        }, format:v=> isFinite(v)? v.toFixed(2) : '—' },
+      { key:'range', label:'Category', formula:({bmi})=> bmi<18.5?'Underweight':bmi<25?'Normal':bmi<30?'Overweight':'Obese' }
+    ],
+    notes: 'WHO categories are general guidance only.'
+  },
+  {
+    id: 'calorie',
+    name: 'Calories / TDEE',
+    category: 'health',
+    summary: 'BMR and daily calories by activity level',
+    inputs: [
+      { key:'sex', label:'Sex', type:'select', options:[{value:'male',label:'Male'},{value:'female',label:'Female'}], required:true },
+      { key:'age', label:'Age (years)', type:'number', min:0, step:1, placeholder:'42', required:true },
+      { key:'height', label:'Height (cm/in)', type:'number', min:0, step:'any', placeholder:'175', required:true },
+      { key:'weight', label:'Weight (kg/lb)', type:'number', min:0, step:'any', placeholder:'72', required:true },
+      { key:'activity', label:'Activity level', type:'select', options:[
+        {value:'1.2',label:'Sedentary (little/no exercise)'},
+        {value:'1.375',label:'Light (1–3 days/week)'},
+        {value:'1.55',label:'Moderate (3–5 days/week)'},
+        {value:'1.725',label:'Active (6–7 days/week)'},
+        {value:'1.9',label:'Very active (physical job + training)'}
+      ], required:true }
+    ],
+    outputs: [
+      { key:'bmr', label:'BMR (Mifflin–St Jeor)', formula:({sex,age,height,weight})=>{
+          if(!sex||!age||!height||!weight) return NaN;
+          const s = sex==='male'?5:-161;
+          const cm = toCm(height, SETTINGS.units);
+          const kg = toKg(weight, SETTINGS.units);
+          return 10*(+kg)+6.25*(+cm)-5*(+age)+s;
+        }, format:v=> isFinite(v)? Math.round(v).toLocaleString(): '—' },
+      { key:'tdee', label:'TDEE (maintenance kcal/day)', formula:({bmr,activity})=> (+bmr)*(+activity||0), format:v=> isFinite(v)? Math.round(v).toLocaleString(): '—' },
+      { key:'cut', label:'Cut (-500 kcal/day)', formula:({tdee})=> (+tdee)-500, format:v=> isFinite(v)? Math.round(v).toLocaleString(): '—' },
+      { key:'bulk', label:'Bulk (+500 kcal/day)', formula:({tdee})=> (+tdee)+500, format:v=> isFinite(v)? Math.round(v).toLocaleString(): '—' }
+    ],
+    notes: 'BMR via Mifflin–St Jeor; TDEE multiplies by activity factor. Not medical advice.'
+  },
+
+  // Time
+  {
+    id: 'age',
+    name: 'Age',
+    category: 'time',
+    summary: 'Exact age from date of birth',
+    inputs: [ { key:'dob', label:'Date of birth', type:'date', required:true } ],
+    outputs: [ { key:'age', label:'Age', formula:({dob})=> ageFromDOB(dob) } ],
+    notes: 'Approximate; leap years and time zones may slightly affect day counts.'
+  }
+];
+
+// ==========================
+// Utilities
+// ==========================
+function $(sel, el=document){return el.querySelector(sel)}
+function el(tag, attrs={}, ...children){ const e=document.createElement(tag); Object.entries(attrs||{}).forEach(([k,v])=>{ if(k==='class') e.className=v; else if(k==='html') e.innerHTML=v; else if(k.startsWith('on')&&typeof v==='function') e.addEventListener(k.slice(2),v); else e.setAttribute(k,v); }); children.flat().forEach(c=> e.append(c?.nodeType? c : document.createTextNode(c??''))); return e }
+function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'), 1800) }
+function formatCurrency(v){ try{ return new Intl.NumberFormat(undefined,{style:'currency',currency:SETTINGS.currency,maximumFractionDigits:2}).format(v) }catch{ return Number(v).toFixed(2) } }
+function fromQS(qs){ const o={}; if(!qs) return o; const s = qs[0]==='?'? qs.slice(1): qs; for(const [k,v] of new URLSearchParams(s)) o[k]=v; return o }
+
+// Unit conversions based on SETTINGS.units
+function toCm(val, units){ if(val==null||val==='') return NaN; return units==='imperial' ? (+val)*2.54 : (+val); }
+function toKg(val, units){ if(val==null||val==='') return NaN; return units==='imperial' ? (+val)*0.45359237 : (+val); }
+function labelForHeight(){ return SETTINGS.units==='imperial' ? 'Height (in)' : 'Height (cm)'; }
+function labelForWeight(){ return SETTINGS.units==='imperial' ? 'Weight (lb)' : 'Weight (kg)'; }
+
+// Finance formula: EMI
+function emi(P, annualRate, months){ const r= (annualRate/100)/12; if(!P||!months) return NaN; if(r===0) return P/months; const f = Math.pow(1+r, months); return P*r*f/(f-1) }
+
+// Age formula
+function ageFromDOB(dstr){ if(!dstr) return '—'; const dob=new Date(dstr); if(Number.isNaN(+dob)) return '—'; const now=new Date(); let y=now.getFullYear()-dob.getFullYear(); let m=now.getMonth()-dob.getMonth(); let d=now.getDate()-dob.getDate(); if(d<0){ m--; d+= new Date(now.getFullYear(), now.getMonth(), 0).getDate(); } if(m<0){ y--; m+=12 } return `${y}y ${m}m ${d}d` }
+
+// Persistent history
+const HISTORY_KEY = 'calchub_history_v2';
+function getHistory(){ try{ return JSON.parse(localStorage.getItem(HISTORY_KEY)||'{}') }catch{ return {} } }
+function setHistory(h){ localStorage.setItem(HISTORY_KEY, JSON.stringify(h)) }
+function addHistory(id, entry){ const h=getHistory(); h[id]=[entry,...(h[id]||[])].slice(0,10); setHistory(h) }
+
+// Routing
+function route(){ const calcId = ROUTE.get('calc'); if(calcId) renderDetail(calcId); else renderList() }
+ROUTE.onChange(route);
+
+// Render: List
+function renderList(){ $('#route-detail').style.display='none'; $('#route-list').style.display='block'; document.title='CalcHub — All-in-One Calculators'; const list=$('#calcList'); list.innerHTML=''; const q=$('#q').value.trim().toLowerCase(); const activeCat=$('.chip.active')?.dataset.id || 'all'; const filtered = CALCS.filter(c=> (activeCat==='all'||c.category===activeCat) && (!q || (c.name.toLowerCase().includes(q)||c.summary.toLowerCase().includes(q)||c.id.includes(q))) ); if(!filtered.length){ list.append(el('div',{class:'muted'},'No calculators match your search.')); }else{ filtered.forEach(c=>{ list.append(calcCard(c)) }) } }
+
+function calcCard(c){ const card = el('div',{class:'calc-card'}); card.addEventListener('click',()=> openCalc(c.id)); card.append( el('div',{class:'row'},[ el('div',{}, [ el('div',{class:'name'}, c.name), el('div',{class:'cat'}, labelForCat(c.category)) ]), el('div',{}, el('span',{class:'badge'}, c.id) ) ]), el('div',{class:'muted'}, c.summary), el('div',{}, el('button',{class:'btn primary', onClick:(e)=>{ e.stopPropagation(); openCalc(c.id) }, 'aria-label':`Open ${c.name}`},'Open')) ); return card }
+
+function openCalc(id, params){ if(params){ Object.entries(params).forEach(([k,v])=> ROUTE.set(k,v)); } ROUTE.set('calc', id); }
+function labelForCat(id){ return CATEGORIES.find(x=>x.id===id)?.label || id }
+
+// Render: Detail
+function renderDetail(calcId){ $('#route-list').style.display='none'; const view=$('#route-detail'); view.style.display='block'; view.innerHTML=''; const calc = CALCS.find(c=> c.id===calcId); if(!calc){ view.append(el('div',{class:'muted'},'Calculator not found.')); return } document.title = `${calc.name} — CalcHub`;
+
+  const header= el('div',{class:'layout'},[
+    el('div',{},[
+      el('h2',{}, calc.name),
+      el('div',{class:'muted'}, `${labelForCat(calc.category)} • ${calc.summary}`)
+    ]),
+    el('div',{style:'justify-self:end;display:flex;gap:8px;align-items:center;flex-wrap:wrap'},[
+      el('span',{class:'badge'}, `Currency: ${SETTINGS.currency}`),
+      el('span',{class:'badge'}, `Units: ${SETTINGS.units==='imperial'?'Imperial':'Metric'}`),
+      el('button',{class:'btn', onClick:()=> { ROUTE.set('calc', null) }}, '← All calculators'),
+      el('button',{class:'btn ghost', onClick:()=> copyLink(calc.id)}, 'Share link')
+    ])
+  ]);
+
+  const form = el('div',{})
+  const state = {};
+  const qs = ROUTE.getAll();
+  calc.inputs.forEach(inp=>{
+    const f=field(inp, v=>{ state[inp.key]=castByType(inp.type, v); compute() });
+    form.append(f)
+  });
+
+  // Relabel unit-sensitive fields on initial render
+  relabelUnitSensitiveFields(form, calc);
+
+  // prefill from URL
+  calc.inputs.forEach(inp=>{ const v=qs[inp.key]; if(v!==undefined){ const inputEl = form.querySelector(`[name="${inp.key}"]`); if(inputEl){ inputEl.value = v; state[inp.key]= castByType(inp.type, v) } } });
+
+  const outBox = el('div', {class:'grid', style:'grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:8px'})
+  const note = el('div',{class:'note', style:'margin-top:8px'}, calc.notes||'')
+  const actions = el('div',{class:'actions', style:'margin-top:10px'},[
+    el('button',{class:'btn primary', onClick:()=>{ const entry={ts:new Date().toISOString(), inputs:{...state}, outputs:lastOutputs}; addHistory(calc.id, entry); toast('Saved to history') }}, 'Save to history'),
+    el('button',{class:'btn', onClick:()=>{ form.querySelectorAll('input,select').forEach(i=> i.value=''); Object.keys(state).forEach(k=> delete state[k]); compute() }}, 'Clear')
+  ])
+
+  const histWrap = el('div',{class:'panel', style:'padding:12px;margin-top:10px'},[
+    el('div',{class:'row', style:'align-items:center'},[
+      el('div',{style:'font-weight:700'},'History'),
+      el('div',{class:'small muted', style:'margin-left:auto'},'Last 10 saved (browser-only)')
+    ]),
+    el('div',{id:'hist'})
+  ])
+
+  view.append(header, el('div',{class:'layout'},[ el('div',{}, [ form, actions, note ]), el('div',{}, [ el('div',{class:'grid', style:'gap:12px'}, outBox), histWrap ]) ]));
+
+  let lastOutputs={}
+  function compute(){
+    outBox.innerHTML='';
+    const ctx = {...state};
+    calc.outputs.forEach(o=>{
+      let value;
+      try{ value = o.formula(ctx) }catch{ value = NaN }
+      ctx[o.key] = value;
+      lastOutputs[o.key]= value;
+      const display = typeof o.format==='function' ? o.format(value) : (isFinite(value) ? (+value.toFixed?.(4) || value) : (''+value));
+      const card = el('div',{class:'kpi'},[ el('div',{class:'muted small'}, o.label), el('div',{class:'v'}, display) ]);
+      outBox.append(card)
+    });
+    renderHistory()
+  }
+
+  function renderHistory(){ const h=getHistory()[calc.id]||[]; const host=$('#hist', histWrap); host.innerHTML=''; if(!h.length){ host.append(el('div',{class:'muted small'},'No saved entries yet.')); return } h.forEach(item=>{ const d=new Date(item.ts); host.append( el('div',{class:'out'},[ el('div',{class:'small muted'}, d.toLocaleString()), el('div',{class:'small'}, Object.entries(item.inputs).map(([k,v])=> `${k}: ${v}`).join(' • ')), el('div',{class:'small'}, Object.entries(item.outputs).map(([k,v])=> `${k}: ${renderSimple(v)}`).join(' • ')) ]) ) }) }
+
+  compute();
+}
+
+function relabelUnitSensitiveFields(form, calc){
+  if (calc.id==='bmi' || calc.id==='calorie'){
+    const hLabel = form.querySelector('label[for="f_height"]');
+    const wLabel = form.querySelector('label[for="f_weight"]');
+    if (hLabel) hLabel.textContent = labelForHeight();
+    if (wLabel) wLabel.textContent = labelForWeight();
+    const hInput = form.querySelector('#f_height');
+    const wInput = form.querySelector('#f_weight');
+    if (hInput && wInput){
+      hInput.placeholder = SETTINGS.units==='imperial' ? '70' : '175';
+      wInput.placeholder = SETTINGS.units==='imperial' ? '180' : '72';
+    }
+  }
+}
+
+function renderSimple(v){ if(typeof v==='number' && isFinite(v)) return v.toLocaleString(); return ''+v }
+function castByType(type, v){ if(type==='number') return v===''? undefined : (+v); if(type==='select') return v; return v }
+function field(inp, oninput){
+  const id='f_'+inp.key;
+  let control;
+  if(inp.type==='select'){
+    control = el('select', { name:inp.key, id, oninput: e=> oninput(e.target.value) });
+    (inp.options||[]).forEach(opt=> control.append( el('option',{value:opt.value}, opt.label||opt.value) ));
+  } else {
+    control = el('input', { name:inp.key, id, type:inp.type||'text', placeholder:inp.placeholder||'', min:inp.min, max:inp.max, step:inp.step, required:inp.required?true:undefined, oninput: e=> oninput(e.target.value) });
+  }
+  return el('div',{class:'field'},[ el('label',{for:id}, inp.label), control ])
+}
+function copyLink(id){
+  const base = ROUTE.baseURL();
+  const sp = new URLSearchParams();
+  sp.set('calc', id);
+  // Persist settings in share link for portability
+  sp.set('currency', SETTINGS.currency);
+  sp.set('units', SETTINGS.units);
+  const view=$('#route-detail');
+  view.querySelectorAll('input,select').forEach(inp=>{
+    if(inp.name && inp.value!=='') sp.set(inp.name, inp.value)
+  });
+  const url = ROUTE.mode==='history' ? `${base}?${sp.toString()}` : `${base}#${sp.toString()}`;
+  navigator.clipboard.writeText(url.toString()).then(()=> toast('Link copied'))
+}
+
+// Apply settings from URL if present (so share links carry currency/units)
+(function syncSettingsFromURLOnce(){
+  const qs = ROUTE.getAll();
+  let changed = false;
+  if (qs.currency && CURRENCIES.some(c=>c.code===qs.currency) && qs.currency!==SETTINGS.currency){ SETTINGS.currency = qs.currency; changed = true; }
+  if (qs.units && (qs.units==='metric'||qs.units==='imperial') && qs.units!==SETTINGS.units){ SETTINGS.units = qs.units; changed = true; }
+  if (changed) setSettings(SETTINGS);
+})();
+
+// Sidebar
+function buildSidebar(){
+  const cats=$('#cats'); cats.innerHTML='';
+  const all = el('div',{class:'chip active', 'data-id':'all', onClick: chipClick},'All');
+  cats.append(all);
+  CATEGORIES.forEach(c=> cats.append( el('div',{class:'chip','data-id':c.id, onClick: chipClick}, c.label) ));
+  function chipClick(e){ cats.querySelectorAll('.chip').forEach(x=> x.classList.remove('active')); e.currentTarget.classList.add('active'); renderList() }
+  $('#q').addEventListener('input', renderList);
+  $('#clearSearch').addEventListener('click', ()=>{ $('#q').value=''; renderList() })
+}
+
+// ==========================
+// Self-tests (ensure core formulas & routing work)
+// ==========================
+function runTests(){
+  const tests=[]; function approx(a,b,eps=0.1){ return Math.abs(a-b)<=eps }
+  function assert(name, cond, extra){ tests.push({name, pass:!!cond, extra}); }
+
+  // EMI tests
+  assert('EMI: 100000 @12% for 12m ≈ 8884.88', approx(emi(100000,12,12), 8884.8789));
+  assert('EMI: 500000 @8.5% for 60m ≈ 10258.27', approx(emi(500000,8.5,60), 10258.2657));
+
+  // SIP test
+  (function(){ const m=10000,r=12,y=10; const n=y*12; const i=r/1200; const fv = m*((Math.pow(1+i,n)-1)/i)*(1+i); assert('SIP FV: 10k/mo @12% for 10y ≈ 2,323,390.76', approx(fv, 2323390.7636, 1.0)); })();
+
+  // BMI test
+  (function(){ const bmi = 72/Math.pow(1.75,2); assert('BMI: 72kg, 175cm ≈ 23.51', approx(bmi, 23.5102, 0.01)); })();
+
+  // BMR test (male 72kg,175cm,30y)
+  (function(){ const bmr = 10*72 + 6.25*175 - 5*30 + 5; assert('BMR (MSJ male): 72/175/30 ≈ 1668.75', approx(bmr, 1668.75, 0.01)); })();
+
+  // Router mode sanity
+  assert('Router mode is history or hash', ROUTE.mode==='history' || ROUTE.mode==='hash', ROUTE.mode);
+
+  const host=$('#tests'); host.innerHTML='';
+  tests.forEach(t=>{
+    host.append( el('div', {class: t.pass? 'test-pass':'test-fail'}, `${t.pass?'✔':'✘'} ${t.name}${t.extra? ' — '+t.extra:''}`) );
+  });
+}
+
+// Init
+initSettingsBar();
+buildSidebar();
+$('#route-list').style.display='block';
+renderList();
+route();
+runTests();
+</script>
+
+</html>
