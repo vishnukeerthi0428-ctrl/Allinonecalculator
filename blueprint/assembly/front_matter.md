@@ -48,8 +48,8 @@ AI never signs, pays, submits bids or sets prices.
 | Area | Count |
 |---|---|
 | Business requirements | 71 primary + 140 supplementary, traced to source |
-| Functional requirements | 183 |
-| Business rules | 162 |
+| Functional requirements | 181 (150 interface/operation + 31 cross-cutting) |
+| Business rules | 161 |
 | Roles | 20 |
 | State machines | 38 |
 | Screens, each described | 147 |
