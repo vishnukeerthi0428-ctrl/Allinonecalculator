@@ -18,7 +18,7 @@ This section writes the missing content. Each item states its source aspect(s), 
 | FR-ENH-B-007 | Canonical inbound event contract (consent_scope, sender_ref, text_ref) | B-TC-06, B-10-DC02 | Part 3.2 §3.2.6; Part 3.3 ProviderEvent | Must | W2 | EP-08 | US-08-EB01 | TC-ENH-B-024 |
 | FR-ENH-B-008 | Outbound intent contract with expiry and approver binding | B-10-DC03 | Part 2.3 §2.27.9 | Must | W2 | EP-08 | US-08-EB02 | TC-ENH-B-025 |
 | FR-ENH-B-009 | Agent envelope v1.1 (purpose, schema_revision, missing_fields, policy_flags, proposed_action, requires_approval, cost_estimate) | B-10-002, B-10-DC06 | Part 7.2 §7.2.7 | Must | W0-B | EP-04 | US-04-EB01 | TC-ENH-B-026 |
-| FR-ENH-B-010 | Product-event ingress allowlist for startups' own delivered products (no clinical data) | B-TC-10, B-10-DC12 | BR-M43; DEC-009 | Should | W4 | EP-03 | US-03-EB01 | TC-ENH-B-027 |
+| FR-ENH-B-010 | Product-event ingress allowlist for startups' own delivered products (no clinical data) | B-TC-10, B-10-DC12 | BR-M37, BR-M48; DEC-009 | Should | W4 | EP-03 | US-03-EB01 | TC-ENH-B-027 |
 | FR-ENH-B-011 | Commercial journey stage projection (read model) | B-TC-09 | Part 2.3 §2.27.1–2.27.8 | Should | W3 | EP-17 | US-17-EB02 | TC-ENH-B-028 |
 | FR-ENH-B-012 | Workflow execution-policy block and lease fencing | B-05-020, OPT-05-04 | ADR-027; BRL-AUT-06 | Must | W0-B | EP-18 | US-18-EB01 | TC-ENH-B-029 |
 | FR-ENH-B-013 | Workflow activation quality gates WQG-01…12 | B-05-016 | BRL-AUT-01…09; A033, A113 | Must | W2 | EP-18 | US-18-EB02 | TC-ENH-B-030 |
@@ -60,7 +60,7 @@ This section writes the missing content. Each item states its source aspect(s), 
 | CAP-09 | Regenerable research RPO / RTO | ≤ 24 h / ≤ 8 h | ≤ 24 h / ≤ 8 h | Single class (§3.1.13) | NFR-ENH-B-06 | TC-ENH-B-016 |
 | CAP-10 | Cost per 1,000 tasks and queue age (OPT-03-04) | Measured | Measured, no SLO breach while right-sizing | Unit-economics dashboard (§4.46.5) has no per-task metric | NFR-ENH-B-07 | DB-09 panel |
 
-**Capacity formulas at the growth column** (same symbols and assumptions as Part 3.1 §3.1.12; ASSUMPTION-102 request rate r = 20 requests per active user per minute; mean service time 0.15 s; target utilization ρ = 0.6; ×2 p95 headroom).
+**Capacity formulas at the growth column** (same symbols and assumptions as Part 3.1 §3.1.12; ASSUMPTION-102 request rate r = 20 requests per active user per minute, applied to every concurrent session [ASSUMPTION-320]; mean service time 0.15 s; target utilization ρ = 0.6; ×2 p95 headroom).
 
 | Quantity | Formula | Initial | Growth | Consequence |
 |---|---|---|---|---|
@@ -154,7 +154,7 @@ Documents 04 and 09 name **ECS Fargate, an ALB, ElastiCache Redis and a Redis br
 
 **Source.** Doc 04/09 "Security boundary: marketing database separated from clinical app; event allowlist only nonclinical commercial data … AppNAI product webhook → allowlisted fields → marketing DB" and doc 10 "Clinical system emits only commercial event ID, product SKU, timestamp, payment status, permitted account ref; no report, symptoms, score or health label" [GAP-324].
 
-**Context.** The owned startups deliver their own products (for example MedMaarg's AI Hospital Scanner/Planner/Advisor). Commercial teams need non-clinical lifecycle facts from those products (an institution's subscription activated, payment status changed, usage threshold reached) to drive onboarding, renewal and revenue. The common core says "no live cross-product join or automatic handoff"; that rule concerns the separate investor product (DEC-009, ADR-033). A delivered product of an owned startup is treated as an **external system behind an adapter**, allowlisted and founder-authorized per source, and **off by default** [CONFLICT-330].
+**Context.** The owned startups deliver their own products (for example MedMaarg's AI Hospital Scanner/Planner/Advisor). Commercial teams need non-clinical lifecycle facts from those products (an institution's subscription activated, payment status changed, usage threshold reached) to drive onboarding, renewal and revenue. The common core says "no live cross-product join or automatic handoff"; that rule concerns the separate investor product (DEC-009, ADR-033). A delivered product of an owned startup is treated as an **external system behind an adapter**, allowlisted and founder-authorized per source, and **off by default** [CONFLICT-330] [RECOMMENDATION-323].
 
 **Contract.**
 
@@ -190,7 +190,7 @@ flowchart TD
 
 **Source.** Doc 04/09 state machine "Account discovered → verified → need reviewed → qualified → eligible → contacted → replied → meeting → proposal → negotiation → won/lost → onboarding → renewal; closure only on contract/payment evidence".
 
-**Position.** The blueprint deliberately splits this lifecycle into authoritative machines (Opportunity §2.27.2, Deal §2.27.3, Outbound message §2.27.9, Meeting §2.27.11, Contract §2.27.6, Payment §2.27.7, Tenant/startup §2.27.16) and has no single end-to-end view. The enhancement adds a **read-only projection** that derives one journey stage per (tenant, startup, organization, offering) from those machines' domain events. It is used for funnel analytics, the Overview view and stage-conversion KPIs. It is **never** consulted by the PDP or by any transition guard.
+**Position.** The blueprint deliberately splits this lifecycle into authoritative machines (Opportunity §2.27.2, Deal §2.27.3, Outbound message §2.27.9, Meeting §2.27.11, Contract §2.27.6, Payment §2.27.7, Tenant/startup §2.27.16) and has no single end-to-end view. The enhancement adds a **read-only projection** that derives one journey stage per (tenant, startup, organization, offering) from those machines' domain events. It is used for funnel analytics, the Overview view and stage-conversion KPIs. It is **never** consulted by the PDP or by any transition guard [RECOMMENDATION-324].
 
 ```mermaid
 stateDiagram-v2

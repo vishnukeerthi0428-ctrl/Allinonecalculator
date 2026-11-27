@@ -51,3 +51,9 @@ Mappings: 288 FRs (141 → FR-W/A/OP, of which 11 omit source BRs; 147 = SM-UX-F
 Additions: QC register with 31 layer sign-offs (QCL-01…31); fail-closed evidence validator V-01…14; SPDEC decision queue; 1,545-record acceptance preflight; 302 SIT aliases; change-impact gate; 100% trace approval; 6 stories; FR-ENH-H-001…010; 36 TCs; 3 runbooks; 7 entities.
 Conflicts 440–447: critical-rule branch coverage 90 vs 85; capacity/workload vs DEC-031; 100% trace approval vs AP-08 10% sample; projection 60 s vs 15 min; growth RTO 2 h; decision ID clash (SPDEC); expansion PD counted as additional; missing BR traces on 11 FRs.
 Earlier-part issues: FR-UX alias wording; evidence record lacks an entity; RTM lacks a SIT alias column; NFR-008 vs NFR-047; ServiceRequest entity (added by Group E).
+
+## Group B (docs 04, 05, 09, 10): done
+Coverage: 319 Covered / 45 Partial / 15 Not covered / 15 Conflict (394 aspects). Part-03-4 (112 pp).
+Additions: LT-ENH-B-01…04, NFR-ENH-B-01…08; recovery classes RC-1…3 (growth RTO ≤ 2 h feasible, ADR-102); adapter port v2; DRF permission base classes; route map and cache-key formula; agent envelope v1.1; product-event allowlist; workflow execution-policy schema and WQG-01…12 gates; reply taxonomy additions; 3 runbooks; backend capacity short by ~38 pd; approval-gate register. 27 FR-ENH-B, 23 stories, 40 TCs, ADR-100…109.
+Conflicts 320–330: Fargate/Redis/ALB vs ECS-EC2/Valkey (ADR-013); capacity vs DEC-031; growth RTO 2 h; 99.9% availability; budget alerts 70/90 vs 80/100; no cross-region replication vs ADR-019; investor wording; "six AI responsibilities"; 385 PD/113.5 path vs Part 8; app/repo names; product webhook vs no-handoff rule.
+Earlier-part issues: BRL-SEQ-02 out-of-office stop vs pause; NFR-082 line vs branch coverage; no 250-concurrent-session profile.

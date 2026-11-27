@@ -92,7 +92,7 @@ comp = [
     ("AI runtime: LLM gateway, JSON schema, token ceilings, model/version logging; policy outside model", C, "ADR-008; Part 7.3", "Mapped", ""),
     ("Deployment: ALB/ECS Fargate, RDS, ElastiCache Redis, S3/CloudFront, Secrets Manager, CloudWatch/WAF", X, "ADR-013 (ECS on EC2, no ALB at pilot), C13 Valkey, DEC-081 WAF", "ADR-100 reconciles", "CONFLICT-320; ADR-100"),
     ("State machine: account discovered → verified → … → won/lost → onboarding → renewal; closure only on evidence", P, "Part 2.3 §2.27.1–2.27.8 (separate machines)", "Composite commercial journey projection added", "FR-ENH-B-011; ADR-106"),
-    ("Security boundary: marketing DB separate from clinical app; event allowlist; no medical results or pixels", P, "BR-M43, DEC-009; Part 3.3 (no clinical tables)", "Product-event ingress allowlist added", "FR-ENH-B-010; ADR-105"),
+    ("Security boundary: marketing DB separate from clinical app; event allowlist; no medical results or pixels", P, "BR-M37, BR-M48, DEC-009; Part 3.3 (no clinical tables)", "Product-event ingress allowlist added", "FR-ENH-B-010; ADR-105"),
     ("Delivery engineering: monorepo apps/growth-ui, apps/admin-ui, server/*, infra, tests; drf-spectacular; pytest; Playwright", X, "ADR-006, ADR-060 (apps/website, apps/admin, packages/*)", "Path mapping; ADR-060 governs", "CONFLICT-329"),
     ("Admin auto-driven: every mutation emits domain event; projections; versioned audited admin changes", C, "Part 3.2 §3.2.3; ADR-034; Part 3.3 projections", "Mapped", ""),
 ]
@@ -312,7 +312,7 @@ dc = [("REST contract: /api/v1, JSON, cursor, 400/401/403/409/429, request_id, O
       ("Channel reply routing: opt-out → suppress; complaint/clinical/urgent → human; FAQ; positive → meeting; price exception → approval", C, "AG-013/AG-014; AU-008", "", ""),
       ("Closure rule: won only after verified payment/executed contract; lost with reason; stop sequences; onboarding event", C, "BRL-FIN; KPI-31", "", ""),
       ("Admin authorization: MFA, scopes, audit reason, dual approval for budget/claims/policy; no direct DB edits", C, "Part 2.3 BRL-APR; DEC-062", "", ""),
-      ("Data isolation: clinical system emits only commercial event ID, SKU, timestamp, payment status, account ref", P, "BR-M43; DEC-009", "Allowlist contract", "FR-ENH-B-010"),
+      ("Data isolation: clinical system emits only commercial event ID, SKU, timestamp, payment status, account ref", P, "BR-M37, BR-M48; DEC-009", "Allowlist contract", "FR-ENH-B-010"),
       ("Budget model: reserve before call, reconcile, hard stop, alert at 80%", C, "BRL-AI-08; AU-002; NT-025", "", ""),
       ("Scoring model 25/25/20/15/15 with thresholds; calibration", C, "DEC-011; AU-017", "", ""),
       ("Security testing: CSRF, CORS, HTTPS, rate limits, object permissions, rotation, SAST, restore", C, "Part 4.1; §3.2.1.12", "", ""),

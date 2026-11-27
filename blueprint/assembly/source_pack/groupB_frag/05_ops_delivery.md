@@ -93,7 +93,7 @@ BRL-AI-08 semantics are unchanged (80% alert, 100% stop); the ladder adds two th
 | Owner, target sprint | Named owner |
 | Regression evidence and rollback | Tests and rollback path required before closing |
 
-Cadence: reviewed in the monthly engineering review; budget rule: up to 10% of sprint capacity reserved for S1/S2 debt (inside the existing velocity, not additional PD). **Documentation sync check:** CI fails a PR that changes an OpenAPI operation, an event schema, an adapter port or a runbook-referenced alarm without touching the corresponding documentation file (path mapping maintained in `docs/sync-map.yaml`); a quarterly "new maintainer drill" (a team member who did not build the component reproduces one synthetic failure using only the runbook) produces an EVR. TC-ENH-B-036.
+Cadence [RECOMMENDATION-326]: reviewed in the monthly engineering review; budget rule: up to 10% of sprint capacity reserved for S1/S2 debt (inside the existing velocity, not additional PD). **Documentation sync check:** CI fails a PR that changes an OpenAPI operation, an event schema, an adapter port or a runbook-referenced alarm without touching the corresponding documentation file (path mapping maintained in `docs/sync-map.yaml`); a quarterly "new maintainer drill" (a team member who did not build the component reproduces one synthetic failure using only the runbook) produces an EVR. TC-ENH-B-036.
 
 ### 3.4.5.7 Part 8 delivery enhancements (document 04)
 

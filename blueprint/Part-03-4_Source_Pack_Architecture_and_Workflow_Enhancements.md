@@ -155,7 +155,7 @@ Every aspect is listed. Covered aspects cite the blueprint location that already
 | B-TC-07 | Technical design contracts (component rows) | AI runtime: LLM gateway, JSON schema, token ceilings, model/version logging; policy outside model | Covered | ADR-008; Part 7.3 | Mapped | — |
 | B-TC-08 | Technical design contracts (component rows) | Deployment: ALB/ECS Fargate, RDS, ElastiCache Redis, S3/CloudFront, Secrets Manager, CloudWatch/WAF | Conflict | ADR-013 (ECS on EC2, no ALB at pilot), C13 Valkey, DEC-081 WAF | ADR-100 reconciles | CONFLICT-320; ADR-100 |
 | B-TC-09 | Technical design contracts (component rows) | State machine: account discovered → verified → … → won/lost → onboarding → renewal; closure only on evidence | Partially covered | Part 2.3 §2.27.1–2.27.8 (separate machines) | Composite commercial journey projection added | FR-ENH-B-011; ADR-106 |
-| B-TC-10 | Technical design contracts (component rows) | Security boundary: marketing DB separate from clinical app; event allowlist; no medical results or pixels | Partially covered | BR-M43, DEC-009; Part 3.3 (no clinical tables) | Product-event ingress allowlist added | FR-ENH-B-010; ADR-105 |
+| B-TC-10 | Technical design contracts (component rows) | Security boundary: marketing DB separate from clinical app; event allowlist; no medical results or pixels | Partially covered | BR-M37, BR-M48, DEC-009; Part 3.3 (no clinical tables) | Product-event ingress allowlist added | FR-ENH-B-010; ADR-105 |
 | B-TC-11 | Technical design contracts (component rows) | Delivery engineering: monorepo apps/growth-ui, apps/admin-ui, server/*, infra, tests; drf-spectacular; pytest; Playwright | Conflict | ADR-006, ADR-060 (apps/website, apps/admin, packages/*) | Path mapping; ADR-060 governs | CONFLICT-329 |
 | B-TC-12 | Technical design contracts (component rows) | Admin auto-driven: every mutation emits domain event; projections; versioned audited admin changes | Covered | Part 3.2 §3.2.3; ADR-034; Part 3.3 projections | Mapped | — |
 | OPT-06-02 | Optimization engineering and acceptance | Concurrent users and jobs 50/250 | Not covered | §3.1.12 | Profile added | LT-ENH-B-01; LT-ENH-B-03 |
@@ -428,7 +428,7 @@ Every aspect is listed. Covered aspects cite the blueprint location that already
 | B-10-DC09 | Detailed design contracts | Channel reply routing: opt-out → suppress; complaint/clinical/urgent → human; FAQ; positive → meeting; price exception → approval | Covered | AG-013/AG-014; AU-008 | Mapped | — |
 | B-10-DC10 | Detailed design contracts | Closure rule: won only after verified payment/executed contract; lost with reason; stop sequences; onboarding event | Covered | BRL-FIN; KPI-31 | Mapped | — |
 | B-10-DC11 | Detailed design contracts | Admin authorization: MFA, scopes, audit reason, dual approval for budget/claims/policy; no direct DB edits | Covered | Part 2.3 BRL-APR; DEC-062 | Mapped | — |
-| B-10-DC12 | Detailed design contracts | Data isolation: clinical system emits only commercial event ID, SKU, timestamp, payment status, account ref | Partially covered | BR-M43; DEC-009 | Allowlist contract | FR-ENH-B-010 |
+| B-10-DC12 | Detailed design contracts | Data isolation: clinical system emits only commercial event ID, SKU, timestamp, payment status, account ref | Partially covered | BR-M37, BR-M48; DEC-009 | Allowlist contract | FR-ENH-B-010 |
 | B-10-DC13 | Detailed design contracts | Budget model: reserve before call, reconcile, hard stop, alert at 80% | Covered | BRL-AI-08; AU-002; NT-025 | Mapped | — |
 | B-10-DC14 | Detailed design contracts | Scoring model 25/25/20/15/15 with thresholds; calibration | Covered | DEC-011; AU-017 | Mapped | — |
 | B-10-DC15 | Detailed design contracts | Security testing: CSRF, CORS, HTTPS, rate limits, object permissions, rotation, SAST, restore | Covered | Part 4.1; §3.2.1.12 | Mapped | — |
@@ -652,7 +652,7 @@ This section writes the missing content. Each item states its source aspect(s), 
 | FR-ENH-B-007 | Canonical inbound event contract (consent_scope, sender_ref, text_ref) | B-TC-06, B-10-DC02 | Part 3.2 §3.2.6; Part 3.3 ProviderEvent | Must | W2 | EP-08 | US-08-EB01 | TC-ENH-B-024 |
 | FR-ENH-B-008 | Outbound intent contract with expiry and approver binding | B-10-DC03 | Part 2.3 §2.27.9 | Must | W2 | EP-08 | US-08-EB02 | TC-ENH-B-025 |
 | FR-ENH-B-009 | Agent envelope v1.1 (purpose, schema_revision, missing_fields, policy_flags, proposed_action, requires_approval, cost_estimate) | B-10-002, B-10-DC06 | Part 7.2 §7.2.7 | Must | W0-B | EP-04 | US-04-EB01 | TC-ENH-B-026 |
-| FR-ENH-B-010 | Product-event ingress allowlist for startups' own delivered products (no clinical data) | B-TC-10, B-10-DC12 | BR-M43; DEC-009 | Should | W4 | EP-03 | US-03-EB01 | TC-ENH-B-027 |
+| FR-ENH-B-010 | Product-event ingress allowlist for startups' own delivered products (no clinical data) | B-TC-10, B-10-DC12 | BR-M37, BR-M48; DEC-009 | Should | W4 | EP-03 | US-03-EB01 | TC-ENH-B-027 |
 | FR-ENH-B-011 | Commercial journey stage projection (read model) | B-TC-09 | Part 2.3 §2.27.1–2.27.8 | Should | W3 | EP-17 | US-17-EB02 | TC-ENH-B-028 |
 | FR-ENH-B-012 | Workflow execution-policy block and lease fencing | B-05-020, OPT-05-04 | ADR-027; BRL-AUT-06 | Must | W0-B | EP-18 | US-18-EB01 | TC-ENH-B-029 |
 | FR-ENH-B-013 | Workflow activation quality gates WQG-01…12 | B-05-016 | BRL-AUT-01…09; A033, A113 | Must | W2 | EP-18 | US-18-EB02 | TC-ENH-B-030 |
@@ -694,7 +694,7 @@ This section writes the missing content. Each item states its source aspect(s), 
 | CAP-09 | Regenerable research RPO / RTO | ≤ 24 h / ≤ 8 h | ≤ 24 h / ≤ 8 h | Single class (§3.1.13) | NFR-ENH-B-06 | TC-ENH-B-016 |
 | CAP-10 | Cost per 1,000 tasks and queue age (OPT-03-04) | Measured | Measured, no SLO breach while right-sizing | Unit-economics dashboard (§4.46.5) has no per-task metric | NFR-ENH-B-07 | DB-09 panel |
 
-**Capacity formulas at the growth column** (same symbols and assumptions as Part 3.1 §3.1.12; ASSUMPTION-102 request rate r = 20 requests per active user per minute; mean service time 0.15 s; target utilization ρ = 0.6; ×2 p95 headroom).
+**Capacity formulas at the growth column** (same symbols and assumptions as Part 3.1 §3.1.12; ASSUMPTION-102 request rate r = 20 requests per active user per minute, applied to every concurrent session [ASSUMPTION-320]; mean service time 0.15 s; target utilization ρ = 0.6; ×2 p95 headroom).
 
 | Quantity | Formula | Initial | Growth | Consequence |
 |---|---|---|---|---|
@@ -716,7 +716,7 @@ This section writes the missing content. Each item states its source aspect(s), 
 | NFR-ENH-B-02 | Concurrent staff sessions | Sessions issuing the LT-01 request mix concurrently, all SLO-03/04 met | 50 / 250 | LT-ENH-B-01 | OPT-06-02 |
 | NFR-ENH-B-03 | Data volume | Scoped opportunity rows with RLS enabled; NFR-039 met on list and filter endpoints | 100 k / 1 M | LT-ENH-B-02 | OPT-06-03 |
 | NFR-ENH-B-04 | Job and schedule volume | Concurrent executing jobs and scheduled external actions per day with SLO-05/06 met | 50 & 10 k / 250 & 100 k | LT-ENH-B-03 | OPT-06-03 |
-| NFR-ENH-B-05 | Composite dashboard load | Time from navigation to the last widget's data on an Admin dashboard (A042, A087–A089, A106) at p95; server reads only projections; statement timeout 5 s | ≤ 2.0 s / ≤ 2.5 s | RUM span "dashboard.ready"; LT-ENH-B-02 | Doc 04/09/10 CAP-05 |
+| NFR-ENH-B-05 | Composite dashboard load | Time from navigation to the last widget's data on an Admin dashboard (A042, A043, A087–A089) at p95; server reads only projections; statement timeout 5 s | ≤ 2.0 s / ≤ 2.5 s | RUM span "dashboard.ready"; LT-ENH-B-02 | Doc 04/09/10 CAP-05 |
 | NFR-ENH-B-06 | Recovery by class | RC-1 RPO ≤ 15 min, RTO ≤ 4 h (pilot) / ≤ 2 h (scale gate, non-regional failures); RC-2 RPO ≤ 24 h, RTO ≤ 8 h; RC-3 rebuilt from RC-1 within 2 h of RC-1 recovery | As stated | TC-ENH-B-015, -016; §4.47 drills | Doc 04/09 CAP-08/09; ADR-102 |
 | NFR-ENH-B-07 | Unit cost of execution | Cost per 1,000 completed tasks (compute + metered provider + AI) and p95 queue age per queue, per tenant | Reported weekly; no SLO breach during right-sizing | DB-09 panel; FinOps cadence §4.46.6 | OPT-03-04 |
 | NFR-ENH-B-08 | Branch coverage of critical decision code | See FR-ENH-B-018 | 100% enumerated critical branches; ≥ 80% domain-service branches | CI PL-04 | Doc 10 test harness |
@@ -788,7 +788,7 @@ Documents 04 and 09 name **ECS Fargate, an ALB, ElastiCache Redis and a Redis br
 
 **Source.** Doc 04/09 "Security boundary: marketing database separated from clinical app; event allowlist only nonclinical commercial data … AppNAI product webhook → allowlisted fields → marketing DB" and doc 10 "Clinical system emits only commercial event ID, product SKU, timestamp, payment status, permitted account ref; no report, symptoms, score or health label" [GAP-324].
 
-**Context.** The owned startups deliver their own products (for example MedMaarg's AI Hospital Scanner/Planner/Advisor). Commercial teams need non-clinical lifecycle facts from those products (an institution's subscription activated, payment status changed, usage threshold reached) to drive onboarding, renewal and revenue. The common core says "no live cross-product join or automatic handoff"; that rule concerns the separate investor product (DEC-009, ADR-033). A delivered product of an owned startup is treated as an **external system behind an adapter**, allowlisted and founder-authorized per source, and **off by default** [CONFLICT-330].
+**Context.** The owned startups deliver their own products (for example MedMaarg's AI Hospital Scanner/Planner/Advisor). Commercial teams need non-clinical lifecycle facts from those products (an institution's subscription activated, payment status changed, usage threshold reached) to drive onboarding, renewal and revenue. The common core says "no live cross-product join or automatic handoff"; that rule concerns the separate investor product (DEC-009, ADR-033). A delivered product of an owned startup is treated as an **external system behind an adapter**, allowlisted and founder-authorized per source, and **off by default** [CONFLICT-330] [RECOMMENDATION-323].
 
 **Contract.**
 
@@ -824,7 +824,7 @@ flowchart TD
 
 **Source.** Doc 04/09 state machine "Account discovered → verified → need reviewed → qualified → eligible → contacted → replied → meeting → proposal → negotiation → won/lost → onboarding → renewal; closure only on contract/payment evidence".
 
-**Position.** The blueprint deliberately splits this lifecycle into authoritative machines (Opportunity §2.27.2, Deal §2.27.3, Outbound message §2.27.9, Meeting §2.27.11, Contract §2.27.6, Payment §2.27.7, Tenant/startup §2.27.16) and has no single end-to-end view. The enhancement adds a **read-only projection** that derives one journey stage per (tenant, startup, organization, offering) from those machines' domain events. It is used for funnel analytics, the Overview view and stage-conversion KPIs. It is **never** consulted by the PDP or by any transition guard.
+**Position.** The blueprint deliberately splits this lifecycle into authoritative machines (Opportunity §2.27.2, Deal §2.27.3, Outbound message §2.27.9, Meeting §2.27.11, Contract §2.27.6, Payment §2.27.7, Tenant/startup §2.27.16) and has no single end-to-end view. The enhancement adds a **read-only projection** that derives one journey stage per (tenant, startup, organization, offering) from those machines' domain events. It is used for funnel analytics, the Overview view and stage-conversion KPIs. It is **never** consulted by the PDP or by any transition guard [RECOMMENDATION-324].
 
 ```mermaid
 stateDiagram-v2
@@ -833,7 +833,7 @@ stateDiagram-v2
   Verified --> NeedReviewed : need accepted in A020
   NeedReviewed --> Qualified : opportunity Qualified
   Qualified --> Eligible : at least one contact eligible at plan time
-  Eligible --> Contacted : first outbound message Delivered or inbound first contact
+  Eligible --> Contacted : first outbound message delivered or inbound first contact
   Contacted --> Replied : substantive inbound reply
   Replied --> Meeting : meeting Held
   Meeting --> Proposal : proposal or quote Sent
@@ -851,7 +851,7 @@ stateDiagram-v2
 
 | Rule | Specification |
 |---|---|
-| Stage source | Each stage maps to one authoritative event: `intelligence.organization.verified`, `intelligence.need.accepted`, `intelligence.opportunity.qualified`, `governance.eligibility.contact_eligible`, `engagement.message.delivered` (not `queued` or `accepted`), `engagement.inbound.classified` (substantive classes only), `engagement.meeting.held`, `commerce.proposal.sent` / `commerce.quote.sent`, `commerce.negotiation.opened`, `commerce.deal.won` (only after closure evidence, KPI-31), `commerce.deal.lost`, `lifecycle.onboarding.opened`, `lifecycle.renewal.window_opened` |
+| Stage source | Each stage maps to one authoritative event from the Part 3.2 §3.2.3.3 catalogue: `intelligence.organization.upserted` (canonical, source permitted), `intelligence.need.verified`, `intelligence.opportunity.qualified`, `engagement.message.delivered` (not `queued` or `sent`), `commerce.objection.recorded`, `crm.deal.won` (only after closure evidence, KPI-31), `crm.deal.lost`, `lifecycle.onboarding.started`, `lifecycle.renewal.due`. Four events are **new** and must be added to the catalogue: `governance.eligibility.contact_eligible`, `engagement.inbound.classified` (substantive classes only), `engagement.meeting.held` (today only `engagement.meeting.booked` exists), `commerce.proposal.sent` (today `commerce.proposal.approved`; sent = delivered to the customer portal or channel) |
 | Stored fields | `journey_id`, `tenant_id`, `startup_id`, `organization_id`, `offering_id` (nullable), `stage`, `furthest_stage`, `entered_at`, `previous_stage`, `cycle_no`, `source_event_id`, `as_of` |
 | Skips | Inbound-first journeys may enter at Contacted or Replied; skipped stages are recorded as `skipped`, not back-filled |
 | Simulation | Events with `simulated = true` are ignored (BRL-AUT-04) |
@@ -1047,9 +1047,9 @@ Rules: (1) every DRF view declares exactly one of the four base classes; a CI ch
 | Candidate | Capability | Blueprint decision today | Register status | Benchmark questions (all verify as of 27 Nov 2026) | Activation condition |
 |---|---|---|---|---|---|
 | PandaDoc | Proposal documents, e-signature | ADR-032 WeasyPrint rendering; ADR-038 manual signed-PDF evidence first | Candidate (not adopted) | API entitlement on the plan; e-sign legal validity in India and target jurisdictions; data residency; per-document price; webhook signing | Only if manual e-sign volume > 30 contracts/month or a client contract requires it; budget B10 or a new line approved |
-| Crossbeam Skills | Partner account mapping | None (partners managed in M51/M63) | Candidate (not adopted) | API availability and quota; partner-data sharing consent; licence | Only with a signed partner-data agreement; no automatic sharing of private contacts (doc 05 referral rule) |
+| Crossbeam Skills | Partner account mapping | None (partners managed in M49/M63) | Candidate (not adopted) | API availability and quota; partner-data sharing consent; licence | Only with a signed partner-data agreement; no automatic sharing of private contacts (doc 05 referral rule) |
 | Socialinsider | Social analytics | ADR-040 platform APIs behind ports | Candidate (not adopted) | Account API access vs UI plan; data rights | Only if first-party platform APIs cannot supply required metrics |
-| PostHog | Product analytics, attribution | ADR-011 first-party analytics only | Rejected for public pages (third-party pixels on health pages are prohibited, BR-M43); candidate for Admin usage analytics self-hosted only | Self-hosted licence terms; storage cost | Self-hosted, Admin-only, no personal data in events |
+| PostHog | Product analytics, attribution | ADR-011 first-party analytics only | Rejected for public pages (third-party pixels on health pages are prohibited, BR-M37); candidate for Admin usage analytics self-hosted only | Self-hosted licence terms; storage cost | Self-hosted, Admin-only, no personal data in events |
 
 **Gate rule.** No paid provider is activated (flag ON, budget > 0) without a **benchmark record**: candidate vs native/open-source alternative on capability fit, monthly TCO (licence + usage + maintenance PD × rate), data-protection terms, exit cost, and a signed decision by R01 and the FinOps lead. The record is an EVR attached to the integration in A008. TC-ENH-B-038.
 
@@ -1229,7 +1229,7 @@ flowchart TD
 | `bounce` | AU-024 provider event (not a reply) | Yes for that address | Suppress address; contact verification refresh | bounce |
 | `complaint` | AG-013 + provider complaint feedback | Yes; campaign complaint counter (AU-031) | Human review | escalation |
 | `urgent_clinical` | Tier 0 keyword pre-filter + AG-013 | Yes | Clinician/emergency guidance template, human handover (errata 55) | escalation |
-| `not_interested` (**new**) | AG-013 | Yes; no promotional recontact without a re-engagement policy (BR-M56) | Optional lost-reason capture; deal stays open only if owner decides | decline |
+| `not_interested` (**new**) | AG-013 | Yes; no promotional recontact without a re-engagement policy (BR-M51) | Optional lost-reason capture; deal stays open only if owner decides | decline |
 | `objection` | AG-013 → AG-021 | Yes (generic); objection workflow starts | AG-021 approved answer or exception (A070) | objection |
 | `meeting_request` (**new**, subset of positive with a time or booking intent) | AG-013 extraction of proposed times | Yes | AU-023 slot offer; meeting state machine | meeting |
 | `positive` | AG-013 | Yes | Owner task; meeting offer if eligible | interest |
@@ -1289,7 +1289,7 @@ Each scenario's observable result and recovery procedure (the "document the reco
 
 #### A. Agent envelope v1.1 (FR-ENH-B-009, ADR-104)
 
-**Source.** Doc 10 required envelope for every logical AI responsibility: `tenant_id, startup_id, purpose, schema_revision, evidence_ids, confidence, missing_fields, policy_flags, proposed_action, requires_approval, cost_estimate`. Part 7.2 §7.2.7 has tenant/startup, evidence, confidence and budget remaining, but not seven of the eleven fields [GAP-323]. The additions are **additive** (minor version), so existing agents stay valid when the fields are optional-with-default during migration and mandatory from the first eval cycle after W0-B.
+**Source.** Doc 10 required envelope for every logical AI responsibility: `tenant_id, startup_id, purpose, schema_revision, evidence_ids, confidence, missing_fields, policy_flags, proposed_action, requires_approval, cost_estimate`. Part 7.2 §7.2.7 has tenant/startup, evidence, confidence and budget remaining, but not seven of the eleven fields [GAP-323] [RECOMMENDATION-322]. The additions are **additive** (minor version), so existing agents stay valid when the fields are optional-with-default during migration and mandatory from the first eval cycle after W0-B.
 
 | New field | Type | Rule | Consumer |
 |---|---|---|---|
@@ -1346,17 +1346,17 @@ Each scenario's observable result and recovery procedure (the "document the reco
 
 **Source.** Doc 04 production runbook (8 routines). Predeployment, release, provider outage, budget cap and recovery map to §4.48, §4.37, RB-001, RB-005 and RB-007. Daily operations has no runbook [GAP-327]; client offboard exists as a process (WF-14) without an operator runbook; data incident is split across RB-008 and RB-013 without a containment-to-restart sequence.
 
-**RB-ENH-B-01 Daily operations checklist** (owner: on-duty engineer R11; 15–30 minutes per working day, Mon–Sat per DEC-044; results logged in A014 as a daily operations record)
+**RB-ENH-B-01 Daily operations checklist** (owner: on-duty engineer acting for R11 Automation Lead; 15–30 minutes per working day, Mon–Sat per DEC-044; results logged in A014 as a daily operations record)
 
 | # | Check | Where | Threshold / action |
 |---|---|---|---|
 | 1 | Failed jobs and DLQ | A009 | Any new DLQ item → triage; > 10/hour alarm already pages (§3.2.7.4) |
 | 2 | Uncertain outcomes older than 24 h | A110 / AU-026 queue | SLO-10; each item gets an owner |
-| 3 | Pending approvals near SLA | Approvals inbox (A043) | Escalate per AU-027 |
+| 3 | Pending approvals near SLA | Action and notification centre (A106) and the approval queues (A035, A051, A059, A066, A068, A072) | Escalate per AU-027 |
 | 4 | Budget status | A012 | Lines ≥ 70% reviewed (§C ladder); forecast to month end |
 | 5 | Receipts and reconciliation exceptions | A073/A074 | Unmatched receipts, payment discrepancies; > ₹1 lakh discrepancy is S1 (errata 17) |
 | 6 | Source freshness and expiring permissions | A010 | Sources expiring in ≤ 7 days renewed or disabled |
-| 7 | Suppression health | A047 | Suppression sync lag, complaint rate per campaign vs AU-031 threshold |
+| 7 | Suppression health | A007 consent and policies; A047 compliance incidents | Suppression sync lag, complaint rate per campaign vs AU-031 threshold |
 | 8 | Backup and drill status | §4.47 evidence | Last automated restore check passed; drill not overdue |
 | 9 | Provider health and breakers | AU-010 panel | Any breaker open > 15 min has an incident |
 | 10 | Security signals | GuardDuty/Sentry summary | New High finding → RB-013 assessment |
@@ -1434,7 +1434,7 @@ BRL-AI-08 semantics are unchanged (80% alert, 100% stop); the ladder adds two th
 | Owner, target sprint | Named owner |
 | Regression evidence and rollback | Tests and rollback path required before closing |
 
-Cadence: reviewed in the monthly engineering review; budget rule: up to 10% of sprint capacity reserved for S1/S2 debt (inside the existing velocity, not additional PD). **Documentation sync check:** CI fails a PR that changes an OpenAPI operation, an event schema, an adapter port or a runbook-referenced alarm without touching the corresponding documentation file (path mapping maintained in `docs/sync-map.yaml`); a quarterly "new maintainer drill" (a team member who did not build the component reproduces one synthetic failure using only the runbook) produces an EVR. TC-ENH-B-036.
+Cadence [RECOMMENDATION-326]: reviewed in the monthly engineering review; budget rule: up to 10% of sprint capacity reserved for S1/S2 debt (inside the existing velocity, not additional PD). **Documentation sync check:** CI fails a PR that changes an OpenAPI operation, an event schema, an adapter port or a runbook-referenced alarm without touching the corresponding documentation file (path mapping maintained in `docs/sync-map.yaml`); a quarterly "new maintainer drill" (a team member who did not build the component reproduces one synthetic failure using only the runbook) produces an EVR. TC-ENH-B-036.
 
 ### 3.4.5.7 Part 8 delivery enhancements (document 04)
 
@@ -1570,7 +1570,7 @@ Feature: US-18-EB01 Workflow execution policy
     And the validation report lists the correction
   Scenario: AC-18EB01-02 Loosening requires the Founder
     Given a startup policy with max_attempts 2
-    When a startup head (R05) sets max_attempts to 3
+    When a startup head (R02) sets max_attempts to 3
     Then the change is rejected with rule BRL-APR-11
   Scenario: AC-18EB01-03 Expired lease cannot commit
     Given worker A holds the lease for step S with fencing token 7

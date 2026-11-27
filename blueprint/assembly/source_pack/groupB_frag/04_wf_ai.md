@@ -107,7 +107,7 @@ flowchart TD
 | `bounce` | AU-024 provider event (not a reply) | Yes for that address | Suppress address; contact verification refresh | bounce |
 | `complaint` | AG-013 + provider complaint feedback | Yes; campaign complaint counter (AU-031) | Human review | escalation |
 | `urgent_clinical` | Tier 0 keyword pre-filter + AG-013 | Yes | Clinician/emergency guidance template, human handover (errata 55) | escalation |
-| `not_interested` (**new**) | AG-013 | Yes; no promotional recontact without a re-engagement policy (BR-M56) | Optional lost-reason capture; deal stays open only if owner decides | decline |
+| `not_interested` (**new**) | AG-013 | Yes; no promotional recontact without a re-engagement policy (BR-M51) | Optional lost-reason capture; deal stays open only if owner decides | decline |
 | `objection` | AG-013 → AG-021 | Yes (generic); objection workflow starts | AG-021 approved answer or exception (A070) | objection |
 | `meeting_request` (**new**, subset of positive with a time or booking intent) | AG-013 extraction of proposed times | Yes | AU-023 slot offer; meeting state machine | meeting |
 | `positive` | AG-013 | Yes | Owner task; meeting offer if eligible | interest |
@@ -167,7 +167,7 @@ Each scenario's observable result and recovery procedure (the "document the reco
 
 #### A. Agent envelope v1.1 (FR-ENH-B-009, ADR-104)
 
-**Source.** Doc 10 required envelope for every logical AI responsibility: `tenant_id, startup_id, purpose, schema_revision, evidence_ids, confidence, missing_fields, policy_flags, proposed_action, requires_approval, cost_estimate`. Part 7.2 §7.2.7 has tenant/startup, evidence, confidence and budget remaining, but not seven of the eleven fields [GAP-323]. The additions are **additive** (minor version), so existing agents stay valid when the fields are optional-with-default during migration and mandatory from the first eval cycle after W0-B.
+**Source.** Doc 10 required envelope for every logical AI responsibility: `tenant_id, startup_id, purpose, schema_revision, evidence_ids, confidence, missing_fields, policy_flags, proposed_action, requires_approval, cost_estimate`. Part 7.2 §7.2.7 has tenant/startup, evidence, confidence and budget remaining, but not seven of the eleven fields [GAP-323] [RECOMMENDATION-322]. The additions are **additive** (minor version), so existing agents stay valid when the fields are optional-with-default during migration and mandatory from the first eval cycle after W0-B.
 
 | New field | Type | Rule | Consumer |
 |---|---|---|---|
