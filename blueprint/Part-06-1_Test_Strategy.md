@@ -325,6 +325,7 @@ The BRD names three evidence levels: unit, SIT and UAT (BRD §10). This strategy
 | **3** | RA-29 | RA-25, 30 | — | — |
 
 ---
+
 ## 6.1.5 Entry and exit criteria
 
 ### 6.1.5.1 Per level (consolidated checklist)
@@ -603,6 +604,7 @@ Default: **no production-derived data in any non-production environment.** Excep
 | Access | Non-production data access follows the same RBAC; support grants (BRL-TEN-09) are exercised in tests, not bypassed |
 
 ---
+
 ## 6.1.8 Defect management
 
 ### 6.1.8.1 Lifecycle
@@ -912,6 +914,7 @@ A090 computes the report; the QA Lead prepares the narrative; the independent re
 A090 shows **Approve release** disabled until every blocking gate is Pass (Part 2.5 §2.43.11 A090 row; FR-A090 "fail closed on incomplete evidence").
 
 ---
+
 ## 6.1.11 Test design techniques catalogue (with worked examples from this product)
 
 | Code | Technique | Use it when | Primary sources of conditions |
@@ -1164,6 +1167,7 @@ Hypothesis profiles: `ci` (100 examples per test, deadline 200 ms), `nightly` (2
 - **Exploratory sessions**: 90-minute chartered sessions, two per P0 area per wave, with a charter ("Explore *quote revisions* with *concurrent approvers* to discover *approval binding errors*"), notes, bugs and test ideas recorded; new test ideas enter the backlog as TCs.
 
 ---
+
 ## 6.1.12 Conventions for Batches 6.2 and 6.3
 
 ### 6.1.12.1 Identifier formats
@@ -1338,6 +1342,7 @@ Batch 6.3 publishes the full alias → FR set → TC list table (generated from 
 **Coverage % formulas (reported per epic, wave and overall):** FR coverage = FRs with ≥ 1 linked passing TC ÷ FRs in scope; AC coverage = AC with ≥ 1 passing TC ÷ AC in scope; BRL coverage = rules with ≥ 1 passing DT/BVA TC ÷ 162; depth compliance = risk areas whose required depth (§6.1.4.2) is met ÷ 30.
 
 ---
+
 ## 6.1.13 User acceptance testing (UAT) plan
 
 ### 6.1.13.1 Objectives
@@ -1612,10 +1617,89 @@ R = responsible, A = accountable, C = consulted, I = informed.
 | Item | Low | High | Basis |
 |---|---|---|---|
 | QA-owned effort (strategy, scenario/case design, framework, SYS/E2E automation, NFR testing, UAT facilitation) | 43 pd | 97 pd | 15–20% of the build estimate 287–483 pd (DEC-012); 287 × 0.15 = 43; 483 × 0.20 = 97 |
-| Developer-owned tests (unit, integration, contract) | Inside story estimates | Inside story estimates | Definition of Done (Part 5.1); typically 25–35% of each story's effort (industry norm; not a source figure) |
+| Developer-owned tests (unit, integration, contract) | Inside story estimates | Inside story estimates | Definition of Done (Part 5.1): a story is not Done without its tests, so this effort is already inside the 287–483 pd story estimates |
 | QA capacity available | ≈ 50 pd | ≈ 50 pd | 0.5 FTE × 125 working days × 0.8 focus (DEC-005 capacity formula) |
 | SRE capacity for performance and DR drills | 10 pd | 20 pd | Share of 0.5 DevOps/SRE FTE over W0–W5 (estimate) |
 | Business UAT participation | 60 participant-days | 120 participant-days | W0 1 d × 4 people; W1 2 × 3; W2 3 × 6; W3 3 × 6; W4 4 × 8; W5 5 × 8 = 118 (high); about half with smaller packs (low) |
 | **Shortfall at the high end** | 0 | ≈ 47 pd QA | 97 − 50; mitigations in GAP-165 |
 
 ---
+
+## 6.1.16 Register of tags issued in this batch
+
+### 6.1.16.1 Recommendations
+
+| ID | Recommendation | Aligns with | Where |
+|---|---|---|---|
+| RECOMMENDATION-070 | Test pyramid target proportions (unit 60–70%, integration 15–25%, contract 4–6%, system 5–8%, E2E 2–4%) and coverage targets per layer, including **mutation score ≥ 85%** for money, tax, ledger and PDP modules, ≥ 80% for scoring and ≥ 75% for state-machine guards | BRD §10 (positive and negative evidence), NFR-005, NFR-017, DEC-027 | §6.1.9.1, §6.1.9.6 |
+| RECOMMENDATION-071 | A test-only **provider simulator** with scriptable fault modes (timeout-after-submit, duplicate and out-of-order webhooks, signature failures, throttling) contract-tested against recorded sandbox fixtures, plus a **clock control** facility (single `Clock` service, non-production endpoint, Playwright clock) compiled out of production | FRD §9, §11.1; NFR-026; RECOMMENDATION-011, -015 | §6.1.6.3, §6.1.6.5 |
+| RECOMMENDATION-072 | **Evidence record (EVR) schema** implementing the BRD §12.2 fields, and the **certification ladder** L-S → L-T → L-C → L-P so that A090 can fail closed and no synthetic result is shown as production certification | BRD §12.2, §13.2, §16; FR-A090 | §6.1.5.4, §6.1.5.5 |
+| RECOMMENDATION-073 | **Independent external penetration test** before the first real controlled pilot (W4) and before the first external tenant (W5), then annually; OWASP ASVS Level 2 and WSTG as checklists (verify current versions and cost) | BRD §10 (no launch on failed confidentiality checks); Part 4.1 threat model | §6.1.14.2 |
+| RECOMMENDATION-074 | **Defect fix SLAs** by severity aligned with DEC-044 support hours, the hotfix evidence path, and the **flaky-test policy** (no auto-retry in gating jobs, 2% quarantine cap, P0 tests never quarantined, 10-day fix limit) | BRD §11 (blocking defects); NFR-013 | §6.1.5.3, §6.1.8.4, §6.1.9.7 |
+
+### 6.1.16.2 Assumptions
+
+| ID | Assumption | Basis | Validate by | Risk if wrong |
+|---|---|---|---|---|
+| ASSUMPTION-180 | The FRD's SM-UT-001…066 IDs (63 used) represent **control families** whose meaning can be inferred from which SM-FR rows cite them; the inferred labels in §6.1.12.5 are informative only, while alias coverage is computed mechanically from each alias's FR set | FRD §11 co-occurrence analysis (this batch); DEC-017 | If the original 624-test catalogue surfaces (BRD §9), reconcile labels with a mapping table (DEC-015 pattern) | Low: coverage remains correct because it is FR-based |
+| ASSUMPTION-181 | Performance workload derivation factors (peak-day factor 2, peak-hour share 15–20%, 6 page views per session, 3 origin requests per uncached view, Admin concurrency 40% at one request per 10 s, safety factors 5–10×, 2 webhook events per message) and supplementary non-functional thresholds not in the baseline (error rate < 0.5% under load, DB CPU < 70%, memory growth < 10% in soak, recovery ≤ 10 min after stress, p95 regression tolerance 20%, SUS ≥ 68, task success ≥ 80%, dataset profile sizes) | DEC-031 design points; DEC-018 targets; common engineering practice | Replace with measured production telemetry after the W2–W3 pilot; Part 4 NFR catalogue may supersede | Medium: over- or under-sized tests; mitigated by the 10× pilot capacity test (LT-11) |
+| ASSUMPTION-182 | RECOMMENDATION-017's "two tenants, 26 startups" is realized as **T1 with 25 owned workspaces (4 seed + 21 synthetic) + T2 with 1 workspace**; a third tenant T3 is an extension pack for BR-TENANT's "2 independent external tenants"; the 26th owned startup is created at runtime by AP-01 and never pre-seeded | RECOMMENDATION-017; BR-TENANT; AP-01; Part 5.2 Background (T1, T2) | Product Owner review of GSE-SYN v1 manifest in Sprint 0 | Low |
+| ASSUMPTION-183 | Provider sandboxes and test facilities exist with the capabilities listed in §6.1.6.3 (SES sandbox and mailbox simulator, WhatsApp test number, payment gateway test modes with signed webhooks, e-sign sandbox, calendar test accounts) | Provider documentation as generally known; **verify at time of implementation (as of 27 Nov 2026)** | Sprint 0 procurement verification (Part 0A §E note) | Medium: where a sandbox is missing, the provider simulator plus recorded fixtures carry the test; contract drift risk rises |
+| ASSUMPTION-184 | Test-oracle interpretations where the baseline is silent: quiet-hours window is half-open [09:00, 19:00); discount stored to 2 decimal places of a percent and "margin below floor" means strictly less than the floor; opportunity score rounding is half-up (not banker's rounding); PDP precedence is deny-before-defer and compliance-before-commercial, returning a primary reason code plus all failed checks | BRL-ELG-08, BRL-APR-04, BRL-SCR-01, DEC-011, DEC-038; TP-01 fail-closed | Part 3 PDP and money specifications; Product Owner confirmation | Medium: a different interpretation changes expected results of boundary TCs (tests change, not code silently) |
+
+### 6.1.16.3 Gaps
+
+| ID | Gap | Impact | Proposed resolution | Owner |
+|---|---|---|---|---|
+| GAP-165 | **Test capacity.** QA-owned test effort is estimated at 43–97 pd against ≈ 50 pd of QA capacity (0.5 FTE, DEC-005), a shortfall of up to ≈ 47 pd at the high end; business UAT participation (60–120 participant-days over W0–W5) is not in any budget or plan | Risk of thin system/E2E automation or rushed UAT in W4–W5 | (1) Developers own SYS tests for their modules (RACI §6.1.15.1); (2) automate P0/P1 first, defer P2/P3 automation to W6; (3) Part 8 to schedule UAT time with startup heads and confirm availability; (4) if not approved, raise QA to 1.0 FTE for W3–W5 (cost estimate for Part 8) | Product Owner; Part 8 |
+| GAP-166 | **Dependent catalogues not yet available:** Part 7 agent catalogue (AG IDs, per-agent thresholds, eval harness choice) and the Part 5.1 dimension matrix were not published when this batch was written | TC-AI IDs and per-agent pass thresholds cannot be finalized; pairwise factor files may need realignment | Batch 6.3 takes AG IDs and thresholds from Part 7; harness choice defaults to the in-house pytest harness with optional promptfoo/DeepEval; pairwise factor files re-checked against Part 5.1 | Part 7 author; QA Lead |
+| GAP-167 | **Retained test catalogue and missing alias IDs.** The BRD's "624 retained product tests + 175 candidate tests" (BRD §9, §17) were not supplied; SM-UT-037, SM-UT-049 and SM-UT-050 are absent from the FRD although the range runs to 066 | Cannot reconcile Part 6 TCs with the retained catalogue; three alias IDs have no FR set | Treat the three missing IDs as **unused** (no coverage obligation); if the catalogue surfaces, map it to TCs with a reconciliation table (DEC-015/DEC-017 pattern) | Product Owner |
+
+### 6.1.16.4 Local identifiers introduced (not tags)
+
+| Prefix | Meaning | Range used | Note |
+|---|---|---|---|
+| TP-## | Test principles | TP-01…TP-12 | §6.1.1.3 |
+| QO-# | Quality objectives | QO-1…QO-10 | §6.1.1.4 |
+| T## | Test type codes | T01…T21 | §6.1.3.1 |
+| RA-## | Risk areas | RA-01…RA-30 | §6.1.4.3 |
+| D1–D4 (depth) | Test depth levels | D1…D4 | Distinct from the Part 5 dimension IDs D1–D8; always written "depth D#" when ambiguous |
+| G0–G5 | CI gates | G0…G5 | §6.1.9.5 |
+| RBR-# | Release-blocking rules | RBR-1…RBR-8 | Named RBR to avoid clashing with Part 4.3 runbooks (RB-###) |
+| FP1–FP4 | Defect fix priority | FP1…FP4 | §6.1.8.3 |
+| LT-## | Load tests | LT-01…LT-12 | Shared namespace with Part 4 (Part 4.1 cites LT-03, LT-05, LT-07 as "Batch 4.2") |
+| DR-# | DR drills | DR-1…DR-9 | §6.1.14.4 |
+| M-## | Migration tests | M-01…M-17 | §6.1.14.5 |
+| PW-## | Pairwise worked-example rows | PW-01…PW-26 | Examples only; Batch 6.2 converts to TCs |
+| BVA-D## | BVA worked-example rows | BVA-D01…D14 | Examples only |
+| EG-## | Error-guessing catalogue | EG-01…EG-20 | §6.1.11.6 |
+| UAT-PK-* | UAT packs | AN, MM, EV, OS, SC, GOV, FIN, AUTO, WEB, PORT | §6.1.13.3 |
+| L-S/L-T/L-C/L-P | Certification ladder levels | 4 | §6.1.5.5 |
+
+### 6.1.16.5 Inconsistencies observed in other parts (reported, not fixed)
+
+| # | Where | Observation | Suggested owner action |
+|---|---|---|---|
+| 1 | Part 4.1 THR-003 cites "Load test LT-07 (Batch 4.2)" and THR-028/041 cite LT-03/LT-05 without defining them | Load tests are defined here (§6.1.14.1) with the same IDs and meanings; Part 4.2 should reference §6.1.14.1 rather than redefine | Part 4.2 author |
+| 2 | Part 4.1 tag-range note reserves "RB-### (Batch 4.3)" | This batch avoids RB- and uses RBR- for release-blocking rules | None (informational) |
+| 3 | Part 0 §0.3.1 counts "63 SM-UT IDs (SM-UT-001…066)" | Confirmed: 63 distinct; 037, 049 and 050 are missing (GAP-167) | None |
+| 4 | Part 1 §1.14 registry lists `TS-### / TC-###` (3-digit) | DEC-017 and this batch use TS-<epic>-<2-digit> and TC-<epic>-<3-digit>; Part 9 ID registry should adopt these formats | Part 9 author |
+| 5 | Part 2.5 §2.46 says the manual accessibility audit covers "top 20 journeys" per wave without listing them | The journey register is a Batch 6.2 deliverable; Part 2.5 needs no change | Batch 6.2 |
+
+---
+
+## 6.1.17 Quality gate: Batch 6.1
+
+| # | Check | Result | Notes and fixes applied |
+|---|---|---|---|
+| 1 | Every requirement traced to a source | **Pass** | Every level, type, gate, target and rule cites BRD §, FRD §, DEC-, NFR-, BRL-, FR- or a tagged recommendation/assumption. Thresholds not in the baseline are tagged (ASSUMPTION-181, -184; RECOMMENDATION-070, -074) |
+| 2 | Assumptions, gaps and conflicts tagged and logged | **Pass** | 5 recommendations (070–074), 5 assumptions (180–184), 3 gaps (165–167) issued, all inside the allocated ranges and registered in §6.1.16. No conflicts raised; inconsistencies in other parts reported in §6.1.16.5 |
+| 3 | IDs unique and consistent with earlier parts | **Pass** | TS/TC/TC-AI formats per DEC-017 and the task; epics EP-01…EP-21; roles R01–R20; personas P01–P16; AP-01…AP-10; LT- aligned with Part 4.1 usage. *Fix applied:* release-blocking rules renamed from RB- to RBR- to avoid the Part 4.3 runbook prefix |
+| 4 | No story lacks AC and no requirement lacks a test | **Pass (by rule)** | This batch defines the rules that enforce it: 100% FR ≥ 1 test, 100% AC ≥ 1 TC, 100% BRL with decision-table test, 100% state transitions, enforced by A090 (§6.1.9.6, RBR-6). Concrete TCs follow in Batches 6.2/6.3 |
+| 5 | Negative, edge, security and accessibility cases covered | **Pass** | TP-08; edge-data packs (§6.1.7.2); tenancy matrix, idempotency, simulation, uncertain-outcome and compliance batteries (§6.1.3.3); security plan (§6.1.14.2); accessibility plan (§6.1.14.3); error-guessing catalogue (§6.1.11.6) |
+| 6 | No agent lacks guardrail, fallback, KPI and cost estimate | **N/A** | Agents are specified in Part 7. This batch defines how their guardrails, fallbacks, cost and quality are tested (§6.1.3.4, T14, T20) and the TC-AI convention |
+| 7 | Time-sensitive facts flagged "verify" with an as-of date | **Pass** | Tool versions, provider sandboxes, pen-test standards, CVSS version, region availability and costs marked "verify at time of implementation (as of 27 Nov 2026)"; no price stated as fact |
+| 8 | No restricted data routed to free-tier models | **Pass** | Tier 2 tested only with Public/Internal-non-personal synthetic data in an opt-in test tenant; AI datasets with Restricted items never sent to Tier 2 (§6.1.6.3, §6.1.7.6); a Restricted-to-Tier-2 event is an S1 defect |
+| 9 | Consistent with earlier parts | **Pass** | Uses DEC-018/032/031 targets, Part 2.5 budgets, Part 2.3 machines and rules, Part 2.4 isolation layers and rate limits, Part 5.2 fixtures (T1/T2) and dimensions. *Fix applied while writing:* the worked TC example's margin arithmetic was corrected (32.28% at 20.01% discount) and the margin-below-floor branch moved to a companion case built with a fixture helper |
+
+**Status: Part 6 Batch 6.1 complete. Test strategy, levels, 21 test types, risk matrix (30 areas), entry/exit criteria per level, wave and release, environments, GSE-SYN test data, defect management, automation and CI gates, coverage targets, metrics, technique catalogue with worked examples, Batch 6.2/6.3 conventions, UAT plan with AP-01…AP-10 and six non-functional test plans are defined. Continue with Batch 6.2 (test scenarios and test cases).**

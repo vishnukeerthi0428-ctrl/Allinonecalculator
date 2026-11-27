@@ -38,3 +38,9 @@
 27. CONFLICT-122: no budget line for delivery-lifecycle AI (CI review/eval agents). Resolution: add **B23 Delivery AI reserve ≈ ₹1,000/month** (estimate; RECOMMENDATION-061), separate from runtime B02.
 28. BRL-AUT-06 cites Part 7: agent-level caps are defined in Part 7 §7.2.9 and complement the workflow caps.
 29. The embedding model choice in Part 7 resolves GAP-111 of Part 3.3 (vector dimension to match).
+
+## From Part 6.1
+30. Part 4.1 cites LT-03/05/07 as "Batch 4.2"; they are defined in Part 6.1. Resolution: Part 6.1 owns LT-01…LT-12.
+31. Part 1 §1.14 lists TS-###/TC-###. Resolution: the epic-based format (TS-<EP>-##, TC-<EP>-###, TC-AI-…) per Part 6.1 governs.
+32. SM-UT-037/049/050 are unused in the FRD (GAP-167); retained as unassigned aliases.
+33. GAP-165: QA capacity of 0.5 FTE vs 43–97 pd QA effort, and business UAT time (60–120 participant-days) unplanned. To be resolved in Part 8 (staffing and UAT plan).
