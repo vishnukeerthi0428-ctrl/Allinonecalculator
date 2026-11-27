@@ -17,3 +17,18 @@ Additions: coding standards (186 rules, 40-item review checklist, lint rules, AI
 Conflicts CONFLICT-460…473. Key: availability 99.9% vs 99.5% (DEC-018); capacity vs DEC-031; growth RTO 2 h; 60 s projections vs 15 min.
 Earlier-part issues: LT ID duplication (resolved by DEC-116/143); regional RTO 8 h (3.1) vs 24 h (4.2/8.2); Part 4.3 duplicate ADRs (DEC-150); environment naming 3.1 vs 4.3; restore-drill location/frequency; pilot load balancer assumption; §4.4 numbering clash with Part 4.1.
 Open: GAP-468, mapping of the pack's outstanding approval counts and 1,188-record preflight (needs groups C/D/E/J).
+
+## Group A (docs 03, 11–14, 37): done
+Coverage: 179 Covered / 83 Partial / 13 Not covered / 4 Conflict / 4 N/A (283 aspects; the common core counted once). Doc 14 ≈ a copy of docs 11 and 12. Part-02-6 (125 pp).
+Additions: persona variants and P17–P20, role R21 and sub-roles R11T/R12I; managed-service delegation; research coverage ledger; playbooks SPB-01…24; provider benchmark; AOP-01…05; experiment registry; reply taxonomy; relationship ID; doc-37 fixtures and UAT packs. 20 FRs, 14 rules, 29 stories, 50 TCs. +43–72 pd.
+Conflicts 300–304 (two scoring models in doc 11; investor wording; source coverage definition; reply taxonomy; relationship stage vs state machines).
+Earlier-part issues: the 2.6.x numbering clashes with Part 2.2 §2.6 (assembly heading prefix "Part 2.6" disambiguates); C03 undefined in DEC-020; RamVan/Smart Biochar missing; BRL-SEQ-02 lacks "decline". Open: GAP-300 (missing source inventory/deck).
+
+## Group F (docs 15, 16, 21, 38 §09): done
+Coverage: 625 Covered / 50 Partial / 45 Not covered / 17 Conflict / 67 N/A (804 rows; 538 candidates: 485 covered, 52 N/A, 1 conflict). Part-07-4a (59 pp), 4b (54 pp).
+Additions: AI result envelope v2; prompt contracts PC-01…18; RAG checks before search and after ranking, plus AU-046 revocation purge; permission-tied cache keys; procurement gate AU-044; benchmark AU-045; licence check AU-047; invoice reconciliation AU-048; tenant margin AU-049; AG-037/038; AU-050–052; 100-use-case library, 20 templates and 13 node types (proposed, ASSUMPTION-400); budget views. +68–110 pd. Pilot AI high case reaches 101% of ₹3,000, held by the hard cap with AG-037/038 deferred.
+Conflicts 400–412 (search primary, extraction primary, local-model wording, alert thresholds, schema-valid/precision thresholds, investor wording, Apollo mapping, Hunter budget line, Sentry, numbering, cost routing by rules, ₹16,675 base).
+Earlier-part issues: B23 not in DEC-020 (DEC-090 adds it); Part 7.3 file contains §7.4–7.9, clashing with this part's numbering; Hunter budget line; GAP-143 scope too broad.
+
+## CROSS-CUTTING: effort growth from the enhancements
+Running total so far: A +43–72, I +29.5–54, F +68–110 pd (others pending). A re-plan decision is needed: MoSCoW triage of the enhancements into R1/R2/W6.

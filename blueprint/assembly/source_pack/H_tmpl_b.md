@@ -41,7 +41,7 @@ The 31 layers are the 25 engineering layers and 5 business invariants of documen
 
 {{frag:qc_signoff}}
 
-Checks and priorities per layer are in Part 6.9a §6.9.4.6. Of 245 checks, **60 are Critical** (all of layers 06 External portal except none, 17 Security, 18 Isolation, 19 Financial, 23 Infrastructure, the five business-invariant checks QC-231…235, QC-071…079 and QC-105, QC-140, QC-141, QC-221) and 185 are High; the ten expansion checks are treated as Critical because document 23 forbids an N/A bypass for them.
+Checks and priorities per layer are in Part 6.9a §6.9.4.6. Of the 235 baseline checks, **50 are Critical** (QC-071…QC-079, QC-105, QC-140, QC-141, QC-159…QC-182, QC-207…QC-214, QC-221 and QC-231…QC-235) and 185 are High. The ten expansion checks UX-QC-01…10 carry no source priority; they are treated as **Critical** here (60 Critical in total) because document 23 forbids an N/A bypass for them.
 
 #### 6.9.5.1.3 QC execution lifecycle
 
@@ -853,7 +853,7 @@ New non-tag IDs: QCL-01…31; SPDEC-001…180, SPDEC-X-W01…A113, SPDEC-X-API-0
 | 2 | Assumptions, gaps, conflicts tagged and logged | **Pass** | 7 ASSUMPTION, 14 GAP, 8 CONFLICT, 10 RECOMMENDATION within 440–459; all in §6.9.8 |
 | 3 | IDs unique and consistent with earlier parts | **Pass** | Source DEC and KPI collisions handled (SPDEC, OKPI); new families checked against all parts (no prior use of QCL, SPDEC, XBR, RB-ENH, ENT-ENH) |
 | 4 | No story lacks AC; no requirement lacks a test | **Pass** | 6 new stories with Gherkin AC; FR-ENH-H-001…010 each covered by TC-ENH-H-001…036 |
-| 5 | Negative, edge, security and accessibility cases covered | **Pass** | 27 of 36 TCs are negative; isolation (TC-ENH-H-025, -035), security (-031), accessibility (-021) included |
+| 5 | Negative, edge, security and accessibility cases covered | **Pass** | 25 of 36 TCs are negative; isolation (TC-ENH-H-025, -035), security (-031), accessibility (-021) included |
 | 6 | No agent lacks guardrail, fallback, KPI and cost estimate | **N/A** | No AI agent added |
 | 7 | Time-sensitive facts flagged with as-of date | **Pass** | Provider prices and benchmark costs: "verify at time of implementation (as of 27 Nov 2026)" |
 | 8 | No restricted data routed to free-tier models | **Pass** | Evidence and handover records contain no personal data or secret values; no model routing added |
