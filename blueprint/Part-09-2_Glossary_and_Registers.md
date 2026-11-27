@@ -1254,7 +1254,7 @@ Every part file, its contents (top-level sections, excluding tag registers and q
 | [ASSUMPTION-214] | ID ranges count every mention, including citations; synthetic fixture identifiers inside Gherkin and test data are not ID families | §9.2.0, §9.2.2 | QA Lead |
 | [GAP-180] | No central tag-allocation log exists; the per-part allocation in §9.2.3 is reconstructed from issued numbers, so unused allocated numbers cannot be told apart from lost ones | §9.2.3 | Programme owner: keep an allocation table in the Part 10 front matter |
 | [GAP-181] | ID-family collisions (AD-, PP-, D-, B-/B##, TC-AI suffix width) have no errata decision yet | §9.2.5.2 | Part 9.1 owner: issue DEC-109 onwards |
-| [GAP-182] | GAP_182_PLACEHOLDER | §9.2.6 | GAP_182_OWNER |
+| [GAP-182] | Most RECOMMENDATION tags issued after Part 0 have no recorded accept/reject decision (shown as "Proposed" in §9.2.4(d)); the baseline has no mechanism to record owner acceptance outside a DEC row | §9.2.4(d) | Product Owner: record accept/reject per tag at Part 10 assembly (a DEC row or an acceptance column in the workbook) |
 
 ---
 
@@ -1272,4 +1272,4 @@ Every part file, its contents (top-level sections, excluding tag registers and q
 | 8 | No restricted data routed to free-tier models | Pass | Glossary restates DEC-007 and BRL-AI-06; no routing defined here |
 | 9 | Consistent with earlier parts | Pass | Statements copied from the issuing parts; Part 9.1 overrides recorded in the DEC index and ADR note. Mermaid diagram renders; `pdftotext … \| grep -ci "diagram error"` = 0 |
 
-**Status: Part 9 Batch 9.2 complete. STATUS_PLACEHOLDER**
+**Status: Part 9 Batch 9.2 complete. Glossary (322 terms), ID registry (104 families), tag-allocation table, consolidated ASSUMPTION/GAP/CONFLICT/RECOMMENDATION registers, ADR and DEC indexes, duplicate-ID check and document map generated from all 33 part files (Parts 0–9.1, including 6.2–6.6 and 8.1–8.2). Next: Part 10 assembly.**

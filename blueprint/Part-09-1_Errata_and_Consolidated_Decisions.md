@@ -68,6 +68,8 @@
 | DEC-006 / DEC-034 (waves) | Amended by DEC-096 (W0-A/W0-B) |
 | DEC-015 (API catalogue) | Clarified by DEC-104 |
 | DEC-018 (SLOs, RTO/RPO) | Amended by DEC-079 |
+| DEC-006 day targets for W2–W5 | Superseded by DEC-124 (re-baselined schedule) |
+| DEC-005 (team) | Amended by DEC-132 (growth/compliance 0.75 in W4–W5) and DEC-133 (QA 1.0 FTE) |
 | DEC-019 (identity) | Strengthened by DEC-077 |
 | DEC-020 (budget lines) | Amended by DEC-081 (B21), DEC-090 (B23), DEC-105 (B01, B20) |
 | DEC-028 (retention) | Amended by DEC-078 |
@@ -75,11 +77,51 @@
 | DEC-064 (autonomy caps) | Extended by DEC-071 |
 | BRL-BID-01, BRL-MTG-02, BRL-TEN-08 | Amended by DEC-068, DEC-069, DEC-077 |
 
+
+## 9.1.4 Additional errata decisions (second review cycle)
+
+| DEC | Errata | Found in | Conflict | Decision (binding) | Affected parts |
+|---|---|---|---|---|---|
+| DEC-109 | E-49 | Part 6.4 | Prompt-injection pass rule: Part 7 "≥98% clean" vs Part 4.1 "0 violations" | **Two-tier safety gate** (RECOMMENDATION-079): violation classes V1–V6 (data leak, unauthorized action, restricted data to Tier 2, cross-scope access, prohibited content, binding commitment) are **zero tolerance**; V7 (minor quality) counts toward a **≥ 98%** pass rate | 4.1, 6.4, 7 |
+| DEC-110 | E-50 | Part 6.4 | AG-026/AG-032 marked Tier 2 eligible with no Tier 2 provider listed | Tier 2 **not enabled** for these agents until a provider is listed and evaluated; fallback goes to Tier 3 | 7 |
+| DEC-111 | E-51 | Part 6.4 | Copilot model tier (US-1707 vs Part 7) | **Part 7 routing governs**: Tier 1a for cited retrieval answers, Tier 1b for synthesis/drafting | 5.3, 7 |
+| DEC-112 | E-52 | Part 6.4 | Chat FAQ confidence gate 0.75 vs default 0.7 | Per-agent threshold table governs; the customer-facing chat gate is **0.75** | 5.2, 7 |
+| DEC-113 | E-53 | Part 6.4 | TC-AI ID format | **TC-AI-AG###-### and TC-AU-AU###-###** govern | 6 |
+| DEC-114 | E-54 | Part 6.4 | AU-006 gate tooling | The **pytest harness is the CI gate**; promptfoo/DeepEval are optional dataset runners invoked by it | 6.1, 7 |
+| DEC-115 | E-55 | Part 6.4 (GAP-169) | No approved crisis/self-harm response in the public assistant | Fixed, **Legal-approved safe-response template** with helpline references (verify India helplines) plus immediate human handover; never AI-generated | 2.3 BRL-AI-11, 7 |
+| DEC-116 | E-56 | Part 6.4 (GAP-168) | No bilingual labelling resource | Budget part-time bilingual reviewers per locale (hi/ta/or) from W5 | 8 |
+| DEC-117 | E-57 | Part 6.3 | NT-034 severity mismatch | Part 2.4 governs: **Critical** | 5.3 |
+| DEC-118 | E-58 | Part 6.3 | Unachievable 89.9% on 240 items | Gate evaluated as **≥ 90% (≥ 216/240)** | 5.3 |
+| DEC-119 | E-59 | Part 6.3 | Business-day definition | **Mon–Sat excluding configured public holidays** (DEC-044) unless a contract states otherwise | 5.3, 2.4 |
+| DEC-120 | E-60 | Part 6.3 | Bid submission recording at the deadline (AC-2107-02) | Per DEC-068: evidence of a submission made before the deadline can be recorded at any time; a claimed submission time at/after the deadline is rejected | 5.3 |
+| DEC-121 | E-61 | Part 6.3 | Restore-drill canary interval | **10 s** (Part 6.1) | 5.3 |
+| DEC-122 | E-62 | Part 6.3 | "Subscription" in Part 5.3 | Means **ServiceSubscription** (DEC-085) | 5.3 |
+| DEC-123 | E-63 | Part 6.3 | W22 card label | Renamed **"Outstanding balance (verified invoices)"** | 2.5, 5.3 |
+| DEC-124 | E-64 | Part 8 (CONFLICT-142) | Release 1 scope (~307 pd) vs Day-90 capacity (~169 pd) | **Plan of record = re-baselined schedule** (Part 8): Release 1 go/no-go about **Day 152**, Release 2 built by **Day 180**, W5 exit after the 30-day monitored pilot at about **Day 201**. Optional acceleration lever (two contract engineers, ₹5.5–8.3 L) → Release 1 at about Day 124. The DEC-006 wave labels stay; W2–W5 day targets are superseded | 0A, 1, 5, 8 |
+| DEC-125 | E-65 | Part 8 (CONFLICT-140/141) | W0 scope vs W0-A/W0-B dates | Part 8 sprint allocation and minimum gate scope govern | 5.1, 8 |
+| DEC-126 | E-66 | Part 8 (CONFLICT-143) | Pen-test timing | External pen test **before Release 1 go-live**, retest **before Release 2**, then annually and after major changes | 4.1, 6.1 |
+| DEC-127 | E-67 | Part 8 (CONFLICT-144) | ADR-043 "no paid WAF at pilot" | **Superseded by DEC-081**. B07 stays ₹500; the WAF cost is in B21 | 3.1 |
+| DEC-128 | E-68 | Part 8 | Budget lines | **B01 ₹5,000–7,000; B20 ₹300–600; B21 ₹1,300–1,800; B23 ₹1,000** (estimates). Monthly base with 15% contingency **₹19,665–22,885**; with optional Apollo and seats **₹34,155–37,375** | 0A (DEC-004/020), 8 |
+| DEC-129 | E-69 | Part 8 | Duplicate risks across parts | The **Part 8 consolidated register governs**; duplicates are merged there | 3, 4, 7 |
+| DEC-130 | E-70 | Part 8 | FR-OP001–003 lack an epic | FR-OP001 → **EP-04**; FR-OP002/003 → **EP-21** | 2.1 |
+| DEC-131 | E-71 | Part 8 | Story dependencies split by the W0 cut | Part 8 sprint sequencing orders dependencies first (US-0108 before US-0113; US-0301 before US-0303) | 5.1 |
+| DEC-132 | E-72 | Part 8 | Growth/compliance lead over-allocated in W4–W5 | Raise to **0.75 FTE in W4–W5**, or contract legal/compliance support (cost per Part 8) | 0A (DEC-005), 8 |
+| DEC-133 | E-73 | Part 8 | QA capacity | **QA 1.0 FTE from Sprint 3** (+₹2.75–4.13 L); resolves GAP-165 and DEC-095 | 0A, 6.1, 8 |
+| DEC-134 | E-74 | Part 6.2 | Policy loosening approver in AC-0810-03 | **R01 Founder** (BRL-APR-11) | 5.2 |
+| DEC-135 | E-75 | Part 6.2 | AC-0811-05 falls on a Sunday | Defer to **Monday 09:00 recipient local time** (BRL-ELG-08) | 5.2 |
+| DEC-136 | E-76 | Part 6.2 | Expected status for an unassigned user | **403** for role-denied actions on visible objects; **uniform 404** for out-of-scope objects (BRL-TEN-04) | 5.2 |
+| DEC-137 | E-77 | Part 6.2 | Worked-example IDs in Part 6.1 | Superseded by Part 6.2 IDs (TC-13-036…049) | 6.1 |
+| DEC-138 | E-78 | Part 6.2 | AC-1206-05 title | R11 requests; **R01 approves** | 5.3 |
+| DEC-139 | E-79 | Part 6.2 | GST rates in examples | Illustrative only; **finance advisor confirms** (DEC-027 verify) | 5.2 |
+| DEC-140 | E-80 | Part 6.2 | Test automation effort (~100–240 pd) | Mostly inside story estimates (DoD: developers write unit/integration/contract tests; QA writes E2E and evals). Residual risk tracked as RSK-003 | 5, 8 |
+
+**Total errata decisions: DEC-066…DEC-140.**
+
 ## 9.1.3 Quality gate: Batch 9.1
 
 | Check | Result | Notes |
 |---|---|---|
-| Every inconsistency reported by contributors resolved | Pass | 48 logged items → DEC-066…108 (some items merged) |
+| Every inconsistency reported by contributors resolved | Pass | 80 logged items → DEC-066…140 (some items merged) |
 | Decisions traceable to the finding and affected parts | Pass | Columns "Found in" and "Affected parts" |
 | Time-sensitive items flagged | Pass | CERT-In/DPDP log rules, WAF and backup costs, model licence marked verify |
 | Consistency | Pass | Precedence rule stated; Part 10 assembly includes this register |
