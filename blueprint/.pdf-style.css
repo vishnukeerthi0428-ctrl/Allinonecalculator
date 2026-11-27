@@ -9,3 +9,6 @@ td{padding:3px 5px;border:1px solid #c9d6e3;vertical-align:top}
 tr:nth-child(even) td{background:#f4f7fa}
 code{font-family:"DejaVu Sans Mono",monospace;font-size:8pt;background:#eef2f6;padding:0 2px}
 hr{border:0;border-top:1px solid #c9d6e3}
+.mermaid-wrap{page-break-inside:avoid;page-break-before:auto;text-align:center;margin:2px 0 6px}
+.mermaid-wrap svg{display:block;margin:0 auto}
+header#title-block-header{display:none}
