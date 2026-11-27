@@ -430,9 +430,9 @@ Every ID family used across the parts. **Actual range found** and **Distinct IDs
 | EP-## | Epic | 01–21 | 21 | 0 (§0.10.2); stories in 5 | 0, 8.1, 5.2, 5.3 | 22 |
 | US-#### | User story (first two digits = epic) | 01 0001–0017; 02 0001–0008; 03 0001–0011; 04 0001–0008; 05 0001–0012; 06 0001–0008; 07 0001–0010; 08 0001–0015; 09 0001–0006; 10 0001–0007; 11 0001–0010; 12 0001–0010; 13 0001–0013; 14 0001–0012; 15 0001–0011; 16 0001–0012; 17 0001–0010; 18 0001–0015; … (21 families) | 230 | 5 | 5.3, 6.5, 5.2, 5.1b | 15 |
 | AC-####-## | Acceptance criterion of a user story | AC-0101-01 … AC-2110-05 (story-scoped; numbering restarts per story) | 1356 | 5 | 6.4 | 13 |
-| TS-##-## | Test scenario (epic-based, DEC-093) | 01 01–20; 02 01–08; 03 01–11; 04 01–08; 05 01–12; 06 01–08; 07 01–10; 08 01–18; 09 01–07; 10 01–08; 11 01–11; 12 01–11; 13 02; 15 01–14; 16 01–11; 17 01–11; 18 01–17; 19 01–13; 20 01–13; 21 01–12 | 224 | 6 | 6.5, 6.3a, 6.2a, 6.3b | 6 |
-| TC-##-### | Test case (epic-based, DEC-093) | 01 001–133; 02 001–057; 03 001–099; 04 001–056; 05 001–086; 06 001–056; 07 001–075; 08 001–191; 09 001–047; 10 001–060; 11 001–075; 12 001–083 (1 unused); 13 004–124 (99 unused); 14 022–100 (75 unused); 15 001–103; 16 001–075; 17 001–081; 18 001–131; … (21 families) | 1738 | 6 | 6.5, 6.3a, 6.2a, 6.3b | 6 |
-| TC-AI-AG###-## | AI agent test case (per agent) | 001 001–017; 002 001–024; 003 001–015; 004 001–021; 005 001–019; 006 001–018; 007 001–014; 008 001–016; 009 001–017; 010 001–014; 011 001–021; 012 001–018; 013 001–021; 014 001–019; 015 001–030; 016 001–016; 017 001–031; 018 001–019; 019 001–018; … (36 families) | 586 | 6 | 6.4, 6.3a, 6.3b | 3 |
+| TS-##-## | Test scenario (epic-based, DEC-093) | 01 01–20; 02 01–08; 03 01–11; 04 01–08; 05 01–12; 06 01–08; 07 01–10; 08 01–18; 09 01–07; 10 01–08; 11 01–11; 12 01–11; 13 01–14; 15 01–14; 16 01–11; 17 01–11; 18 01–17; 19 01–13; 20 01–13; 21 01–12 | 237 | 6 | 6.5, 6.3a, 6.2a, 6.3b | 6 |
+| TC-##-### | Test case (epic-based, DEC-093) | 01 001–133; 02 001–057; 03 001–099; 04 001–056; 05 001–086; 06 001–056; 07 001–075; 08 001–191; 09 001–047; 10 001–060; 11 001–075; 12 001–083 (1 unused); 13 001–124 (25 unused); 14 022–100 (75 unused); 15 001–109; 16 001–084; 17 001–091; 18 001–138; … (21 families) | 1854 | 6 | 6.5, 6.3a, 6.2a, 6.3b | 6 |
+| TC-AI-AG###-## | AI agent test case (per agent) | 001 001–017; 002 001–024; 003 001–015; 004 001–021; 005 001–019; 006 001–018; 007 001–014; 008 001–016; 009 001–017; 010 001–014; 011 001–021; 012 001–018; 013 001–021; 014 001–019; 015 001–030; 016 001–016; 017 001–031; 018 001–019; 019 001–018; … (36 families) | 586 | 6 | 6.4 | 1 |
 | TC-AU-AU###-## | Automation test case (per automation) | 001 001–005; 002 001–015 (1 unused); 003 001–004; 004 001–005; 005 001–005; 006 001–015; 007 001–004; 008 001–004; 009 001–003; 010 001–009; 011 001–004; 012 001–008; 013 001–003; 014 001–004; 015 001–004; 016 001–004; 017 001–004; 018 001–003; … (43 families) | 187 | 6 | 6.4 | 1 |
 | AG-### | AI agent | 001–036 | 36 | 7.1/7.2 | 7.2, 6.4, 7.1, 7.3 | 9 |
 | AU-### | Deterministic or AI-assisted automation | 001–043 | 43 | 7.1/7.2 | 7.1, 6.4, 7.2 | 4 |
@@ -455,7 +455,7 @@ Every ID family used across the parts. **Actual range found** and **Distinct IDs
 | AP-## | Acceptance procedure (DEC-014) | 01–10 | 10 | 0A; tests in 6 | 6.1 | 24 |
 | CAP-## | Business capability (capability map) | 01–20 | 20 | 2.1 | 2.1 | 1 |
 | CA-{code} | Acceptance profile applied to FRs (e.g. CA-PUB, CA-FIN) | ADMIN; AI; ALL; APPROVE; CONFIG; DISPATCH; FIN; INTAKE; PORTAL; PUB | 10 | 2.1 | 2.1 | 25 |
-| J-## | User journey | 01–77 (30 unused) | 47 | 1 (§1.11) | 1 | 3 |
+| J-## | User journey | 01–77 (30 unused) | 47 | 1 (§1.11) | 1 | 4 |
 | SH-## | Stakeholder | 01–14 | 14 | 1 | 1 | 3 |
 | CN-## | Constraint | 01–15 | 15 | 1 | 1 | 8 |
 | DP-## | External dependency | 01–15 | 15 | 1 | 1, 8.1 | 11 |
@@ -492,12 +492,12 @@ Every ID family used across the parts. **Actual range found** and **Distinct IDs
 | DB-## | Operational dashboard | 01–10 | 10 | 4.3 | 4.3 | 1 |
 | DM-### | Story-dimension matrix row (Part 5.1a) | 001–057 | 57 | 5.1a | 5.1a | 2 |
 | MAS-# / RR-# | Mandatory AC scenario / required-risk scenario (story template) | MAS 1–9; RR 1–8 | 17 | 5.1a | referenced only | 4 |
-| TP-## | Test principle | 01–12 | 12 | 6.1 | 6.1 | 6 |
+| TP-## | Test principle | 01–12 | 12 | 6.1 | 6.1 | 7 |
 | QO-# | Quality objective | 1–10 | 10 | 6.1 | 6.1 | 3 |
 | RA-## | Risk area (risk-based testing) | 01–30 | 30 | 6.1 | 6.1 | 6 |
 | RBR-# | Release-blocking rule | 1–8 | 8 | 6.1 | 6.1 | 4 |
 | PW-## | Pairwise test combination | 01–26 | 26 | 6.1 | 6.1 | 2 |
-| EG-## | Error-guessing test idea | 01–20 | 20 | 6.1 | 6.1 | 6 |
+| EG-## | Error-guessing test idea | 01–20 | 20 | 6.1 | 6.1 | 7 |
 | BVA-D## | Boundary-value analysis datum | 01–14 | 14 | 6.1 | 6.1 | 3 |
 | DR-# | Disaster-recovery drill | 1–9 | 9 | 6.1 | 6.1 | 4 |
 | CI-### | Candidate AI idea (discovery register) | 001–135 | 135 | 7.1 | 7.1 | 4 |
@@ -509,7 +509,7 @@ Every ID family used across the parts. **Actual range found** and **Distinct IDs
 | OPT-##-## | FRD optimisation item (source ID, cited) | 01 01; 03 01; 04 01–08; 07 01; 10 01; 11 01; 12 01–04; 15 01; 20 01–04 | 22 | Source (FRD) | 2.1 | 19 |
 | SM-UT-### | Source test alias (FRD; aliases only, DEC-094) | 001–057 (51 unused) | 6 | Source (FRD); 6 | referenced only | 4 |
 | M## | Source module M01–M66 (BRD §7) | 01–66 | 66 | Source (BRD) | referenced only | 27 |
-| W## / A### | Screen ID: Website/Portal W01–W34, Admin A001–A113 | A 001–113; W 001–034 | 147 | Source (FRD §16.2); 2.5 | 2.5, 6.4 | 30 |
+| W## / A### | Screen ID: Website/Portal W01–W34, Admin A001–A113 | A 01–113; W 01–34 | 147 | Source (FRD §16.2); 2.5 | 2.5, 6.4 | 31 |
 
 <!-- GEN:IDREG:END -->
 
@@ -564,7 +564,7 @@ The programme allocates a tag number range to each batch. The table below is **g
 
 | Register | Tags found | Resolved / accepted / closed / cited by DEC | Other status |
 |---|---|---|---|
-| Assumption | 114 | 22 | 92 |
+| Assumption | 114 | 4 | 110 |
 | Gap | 88 | 40 | 48 |
 | Conflict | 42 | 41 | 1 |
 | Recommendation | 87 | 20 | 67 |
@@ -581,27 +581,27 @@ Status "Cited by DEC-…" means a DEC row in Part 0A or 9.1 cites the assumption
 
 | ID | First seen | Statement (from the issuing register, else text near the tag) | Status |
 |---|---|---|---|
-| ASSUMPTION-000 | 0 §0.1.2 | Section numbering convention per 0.1.2 | Adopted/affected by Part 0A §G summary |
-| ASSUMPTION-001 | 0 §0.7 | Industry/domain: multi-vertical B2B/B2C commercial growth SaaS covering AI services, wellness-tech partnerships, ed-tech and agri-commerce; the product itself is vertical-agnostic via templates | Adopted/affected by Part 0A §G summary |
-| ASSUMPTION-002 | 0 §0.4 | Scale (planning): Year 1 has 25–40 startup workspaces, 2–10 external tenants, 15–60 internal users, ≤ 500 portal users/month, ≤ 5,000 public sessions/month. Pilot volumes from BRD §8 (500 fetches, 100 reviewed signals, 2,000 emails, 1,000 WhatsApp … | Adopted/affected by DEC-031, Part 0A §G summary |
-| ASSUMPTION-003 | 0 §0.7 | Geography and regulation: India primary (Odisha, Tamil Nadu), with worldwide outreach for AppNAI. Applicable: India DPDP Act 2023 + DPDP Rules (verify notified commencement dates as of implementation); IT Act 2000; TRAI TCCCPR 2018 for commercial SMS/voice … | Adopted/affected by Part 0A §G summary |
-| ASSUMPTION-004 | 0 §0.7 | Cloud: AWS, region ap-south-1 (Mumbai) primary; backups copied to a second Indian region (ap-south-2 Hyderabad, verify service availability) | Adopted/affected by Part 0A §G summary |
-| ASSUMPTION-005 | 0 §0.7 | Stack: React + TypeScript, Django + DRF, PostgreSQL with RLS and pgvector, Celery + Celery Beat, Valkey, S3-compatible object storage, AWS Secrets Manager. Exact versions are "verify at implementation" | Adopted/affected by Part 0A §G summary |
-| ASSUMPTION-006 | 0 §0.7 | Team: 1 backend, 1 frontend, 0.5 QA, 0.5 growth/compliance lead, plus founder/CTO as Product Owner and architect. Scrum, 2-week sprints | Adopted/affected by Part 0A §G summary |
-| ASSUMPTION-007 | 0 §0.7 | Budget: engineering ₹13.05–32.93 L; monthly run ₹16,675 (base) to ₹31,165 (with Apollo + dev seats); ads, staff and taxes excluded | Adopted/affected by Part 0A §G summary |
-| ASSUMPTION-008 | 0 §0.7 | Monthly AI budget ceiling: ₹3,000 production inference at pilot base (≈ USD 33 at ₹90/USD; FX to verify). Part 7 also shows the ceiling needed at growth volume | Adopted/affected by Part 0A §G summary |
-| ASSUMPTION-009 | 0 §0.5 | Opportunity score = 100 × Σ(weight × normalized component); unknown ≠ 0 | Adopted/affected by Part 0A §G summary |
-| ASSUMPTION-010 | 0 §0.7 | Autonomy mapping: Manual = L0 (suggest only), Assisted = L1 (draft for approval), Supervised = L2 (act with post-review, limited to routine eligible actions), Controlled Autonomous = L3 (act within guardrails). Consequential actions (formal offers, … | Adopted/affected by Part 0A §G summary |
-| ASSUMPTION-011 | 0 §0.7 | English (en-IN) at launch; UI strings externalized; content locale per publication; Hindi, Tamil and Odia candidates for Wave 5+ | Adopted/affected by Part 0A §G summary |
-| ASSUMPTION-012 | 0 §0.7 | Base currency INR; multi-currency amounts stored as Decimal + ISO 4217; FX snapshot recorded per document; no automatic FX conversion of actuals | Adopted/affected by Part 0A §G summary |
-| ASSUMPTION-013 | 0 §0.4 | Existing auth is Django-based and can issue product-audience tokens/sessions (OIDC-compatible) with MFA | Adopted/affected by Part 0A §G summary |
-| ASSUMPTION-014 | 0 §0.4 | Channels: responsive web (desktop-first Admin, mobile-first Website/Portal) plus REST API for integrations; no native mobile apps | Adopted/affected by Part 0A §G summary |
-| ASSUMPTION-015 | 0 §0.4 | Payments via a hosted-checkout Indian gateway behind a provider-agnostic adapter; the platform never stores card or bank secrets | Adopted/affected by Part 0A §G summary |
-| ASSUMPTION-016 | 0 §0.7 | Anyone under 18 is a child for DPDP purposes. EduVerse acquisition targets guardians, institutions and adult learners; no profiling or targeted advertising to children | Adopted/affected by Part 0A §G summary |
-| ASSUMPTION-017 | 0 §0.7 | Data hosted in India by default (not asserted as a legal mandate; verify) | Adopted/affected by Part 0A §G summary |
-| ASSUMPTION-018 | 0 §0.4 | Provisional retention defaults (legal to confirm): financial/invoice records 8 years (verify Companies Act/GST requirements); contracts life + 8 years; audit log 7 years; marketing contact data 24 months after last eligible interaction; suppression list … | Adopted/affected by DEC-028, Part 0A §G summary |
-| ASSUMPTION-019 | 0 §0.7 | "Existing login/security reuse" excludes the cost of new MFA/IdP features; any new auth work is a change request | Adopted/affected by DEC-019, Part 0A §G summary |
-| ASSUMPTION-020 | 0 §0.7 | Delivery-lifecycle AI tooling (Claude Code seats) is a developer tool, not a runtime entitlement, and is budgeted separately (₹3,600) | Adopted/affected by Part 0A §G summary |
+| ASSUMPTION-000 | 0 §0.1.2 | Section numbering convention per 0.1.2 | Retained (Part 0A §G) |
+| ASSUMPTION-001 | 0 §0.7 | Industry/domain: multi-vertical B2B/B2C commercial growth SaaS covering AI services, wellness-tech partnerships, ed-tech and agri-commerce; the product itself is vertical-agnostic via templates | Retained (Part 0A §G) |
+| ASSUMPTION-002 | 0 §0.4 | Scale (planning): Year 1 has 25–40 startup workspaces, 2–10 external tenants, 15–60 internal users, ≤ 500 portal users/month, ≤ 5,000 public sessions/month. Pilot volumes from BRD §8 (500 fetches, 100 reviewed signals, 2,000 emails, 1,000 WhatsApp … | Cited by DEC-031 |
+| ASSUMPTION-003 | 0 §0.7 | Geography and regulation: India primary (Odisha, Tamil Nadu), with worldwide outreach for AppNAI. Applicable: India DPDP Act 2023 + DPDP Rules (verify notified commencement dates as of implementation); IT Act 2000; TRAI TCCCPR 2018 for commercial SMS/voice … | Retained (Part 0A §G) |
+| ASSUMPTION-004 | 0 §0.7 | Cloud: AWS, region ap-south-1 (Mumbai) primary; backups copied to a second Indian region (ap-south-2 Hyderabad, verify service availability) | Retained (Part 0A §G) |
+| ASSUMPTION-005 | 0 §0.7 | Stack: React + TypeScript, Django + DRF, PostgreSQL with RLS and pgvector, Celery + Celery Beat, Valkey, S3-compatible object storage, AWS Secrets Manager. Exact versions are "verify at implementation" | Retained (Part 0A §G) |
+| ASSUMPTION-006 | 0 §0.7 | Team: 1 backend, 1 frontend, 0.5 QA, 0.5 growth/compliance lead, plus founder/CTO as Product Owner and architect. Scrum, 2-week sprints | Retained (Part 0A §G) |
+| ASSUMPTION-007 | 0 §0.7 | Budget: engineering ₹13.05–32.93 L; monthly run ₹16,675 (base) to ₹31,165 (with Apollo + dev seats); ads, staff and taxes excluded | Retained (Part 0A §G) |
+| ASSUMPTION-008 | 0 §0.7 | Monthly AI budget ceiling: ₹3,000 production inference at pilot base (≈ USD 33 at ₹90/USD; FX to verify). Part 7 also shows the ceiling needed at growth volume | Retained (Part 0A §G) |
+| ASSUMPTION-009 | 0 §0.5 | Opportunity score = 100 × Σ(weight × normalized component); unknown ≠ 0 | Retained (Part 0A §G) |
+| ASSUMPTION-010 | 0 §0.7 | Autonomy mapping: Manual = L0 (suggest only), Assisted = L1 (draft for approval), Supervised = L2 (act with post-review, limited to routine eligible actions), Controlled Autonomous = L3 (act within guardrails). Consequential actions (formal offers, … | Retained (Part 0A §G) |
+| ASSUMPTION-011 | 0 §0.7 | English (en-IN) at launch; UI strings externalized; content locale per publication; Hindi, Tamil and Odia candidates for Wave 5+ | Retained (Part 0A §G) |
+| ASSUMPTION-012 | 0 §0.7 | Base currency INR; multi-currency amounts stored as Decimal + ISO 4217; FX snapshot recorded per document; no automatic FX conversion of actuals | Retained (Part 0A §G) |
+| ASSUMPTION-013 | 0 §0.4 | Existing auth is Django-based and can issue product-audience tokens/sessions (OIDC-compatible) with MFA | Retained (Part 0A §G) |
+| ASSUMPTION-014 | 0 §0.4 | Channels: responsive web (desktop-first Admin, mobile-first Website/Portal) plus REST API for integrations; no native mobile apps | Retained (Part 0A §G) |
+| ASSUMPTION-015 | 0 §0.4 | Payments via a hosted-checkout Indian gateway behind a provider-agnostic adapter; the platform never stores card or bank secrets | Retained (Part 0A §G) |
+| ASSUMPTION-016 | 0 §0.7 | Anyone under 18 is a child for DPDP purposes. EduVerse acquisition targets guardians, institutions and adult learners; no profiling or targeted advertising to children | Retained (Part 0A §G) |
+| ASSUMPTION-017 | 0 §0.7 | Data hosted in India by default (not asserted as a legal mandate; verify) | Retained (Part 0A §G) |
+| ASSUMPTION-018 | 0 §0.4 | Provisional retention defaults (legal to confirm): financial/invoice records 8 years (verify Companies Act/GST requirements); contracts life + 8 years; audit log 7 years; marketing contact data 24 months after last eligible interaction; suppression list … | Cited by DEC-028 |
+| ASSUMPTION-019 | 0 §0.7 | "Existing login/security reuse" excludes the cost of new MFA/IdP features; any new auth work is a change request | Cited by DEC-019 |
+| ASSUMPTION-020 | 0 §0.7 | Delivery-lifecycle AI tooling (Claude Code seats) is a developer tool, not a runtime entitlement, and is budgeted separately (₹3,600) | Retained (Part 0A §G) |
 | ASSUMPTION-101 | 3.1 front matter | Currency conversion at ₹90 per USD for all cost estimates (as BRD §6 does for seats) | Open; FinOps updates monthly |
 | ASSUMPTION-102 | 3.1 §3.1.12.1 | Workload profile for the capacity model (peak active share 0.5, 20 Admin requests/min, portal 4 sessions × 10 min, 3 origin calls per public session, peak factor 5) | Replace with W2 measurements |
 | ASSUMPTION-103 | 3.1 ADR-007 pgvector instead of an external | The capacity model adopts the Part 3.3 §3.3.10 volume drivers (messages, domain events, model runs, fetches, vector chunks) without independent re-derivation | Re-check when Part 3.3 estimates change |
@@ -653,7 +653,7 @@ Status "Cited by DEC-…" means a DEC row in Part 0A or 9.1 cites the assumption
 | ASSUMPTION-163 | 5.2 US-0807 Unified inbound processing: norm | Inbound intent taxonomy (10 intents), STOP keyword list as Tier 0 rules, confidence threshold 0.70 for auto-routing | Legal (keywords) and AI lead (threshold) |
 | ASSUMPTION-164 | 5.2 US-0903 Public and portal meeting bookin | Public abuse thresholds: chat 20 msgs/session/10 min, 60/IP/hour, 1,000 chars; booking 30 holds/IP/10 min | Part 4 NFR-022 thresholds |
 | ASSUMPTION-165 | 5.2 US-0902 Slot offer and booking with hold | Offered meeting slots expire after 72 h without selection | Product Owner |
-| ASSUMPTION-166 | 5.2 US-1408 Purchase and sales order desk wi | Sell-order reservation released if the order is not acknowledged within 14 days of approval/issue (DEC-045 "expiry" undefined) | Adopted/affected by DEC-070 |
+| ASSUMPTION-166 | 5.2 US-1408 Purchase and sales order desk wi | Sell-order reservation released if the order is not acknowledged within 14 days of approval/issue (DEC-045 "expiry" undefined) | Cited by DEC-070 |
 | ASSUMPTION-167 | 5.2 US-1104 Spike: social platform API acces | Social publishing candidates: official organisation-page APIs (LinkedIn, Meta, X) and self-hosted Postiz; decision via spike | Spike output ADR |
 | ASSUMPTION-168 | 5.2 US-1206 Ads provider adapter (sandbox an | Meta and Google Ads provide sandbox/test accounts usable for contract tests | Verify at implementation (as of 27 Nov 2026) |
 | ASSUMPTION-169 | 5.2 US-1303 Decimal pricing library with exh | GST test fixtures use an illustrative 18% (9% + 9%) rate for SAC 998314 | Finance advisor to verify rates |
@@ -1214,9 +1214,9 @@ Every part file, its contents (top-level sections, excluding tag registers and q
 | 5.3 | Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md | PART 5 (Batch 5.3), Epics and User Stories: Closure, Lifecycle, Command Centre, Automation, Website, SaaS and Release Readiness | Introduction to Batch 5.3; EP-15 Payment, closure, revenue and attribution; EP-16 Onboarding, retention, partners and expansion pilots; EP-17 Dashboards, forecast and Command Centre; EP-18 Workflow, autonomy and automation engine; EP-19 Public website and external portal; EP-20 SaaS client lifecycle and portability; … (+3) | 111 | 0 | 40,008 | Complete |
 | 6.1 | Part-06-1_Test_Strategy.md | PART 6 (Batch 6.1), Test Strategy | Purpose, scope and principles; Test levels; Test types; Risk-based prioritization; Entry and exit criteria; Test environments; Test data strategy; … (+8) | 88 | 6 | 32,945 | Complete |
 | 6.2a | Part-06-2a_Test_Cases_EP08-EP11.md | PART 6 (Batch 6.2, file a), Test Scenarios and Test Cases: EP-08 to EP-11 | Purpose, inputs and how to read the test cases; EP-08 Messaging: drafting, email, inbound, sequences, omnichannel; EP-09 Meetings, webinars and demos; EP-10 WhatsApp and website assistant; EP-11 Content, SEO and social publishing; Coverage and totals for file a (EP-08 to EP-11) | 102 | 1 | 33,205 | Complete |
-| 6.2b | Part-06-2b_Test_Cases_EP12-EP14.md | PART 6 (Batch 6.2, file b), Test Scenarios and Test Cases: EP-12 to EP-14 | Inputs for file b; EP-12 Campaigns, landing pages, ads and referrals | not rendered | 0 | 6,745 | In progress (no Status line) |
-| 6.3a | Part-06-3a_Test_Cases_EP15-EP18.md | PART 6 (Batch 6.3a), Test Scenarios and Test Cases: EP-15 to EP-18 | How to read this batch; EP-15 Payment, closure, revenue and attribution; EP-16 Onboarding, retention, partners and expansion pilots; EP-17 Dashboards, forecast and Command Centre; EP-18 Workflow, autonomy and automation engine; Coverage and totals for EP-15 to EP-18 | 61 | 0 | 35,577 | Complete |
-| 6.3b | Part-06-3b_Test_Cases_EP19-EP21.md | PART 6 (Batch 6.3b), Test Scenarios and Test Cases: EP-19 to EP-21, Acceptance Procedures and Release Drills | EP-19 Public website and external portal; EP-20 SaaS client lifecycle and portability; EP-21 Release readiness, QA and observability; Acceptance procedure scripts AP-01, AP-04, AP-06, AP-09 and AP-10; Coverage and totals for EP-19 to EP-21; Batch roll-up: EP-15 to EP-21 (files a and b); Tags register (Batch 6.3, files a and b); … (+1) | 64 | 0 | 26,829 | Complete |
+| 6.2b | Part-06-2b_Test_Cases_EP12-EP14.md | PART 6 (Batch 6.2, file b), Test Scenarios and Test Cases: EP-12 to EP-14 | Inputs for file b; EP-12 Campaigns, landing pages, ads and referrals; EP-13 Proposal, quote, negotiation and contract | not rendered | 0 | 12,327 | In progress (no Status line) |
+| 6.3a | Part-06-3a_Test_Cases_EP15-EP18.md | PART 6 (Batch 6.3a), Test Scenarios and Test Cases: EP-15 to EP-18 | How to read this batch; EP-15 Payment, closure, revenue and attribution; EP-16 Onboarding, retention, partners and expansion pilots; EP-17 Dashboards, forecast and Command Centre; EP-18 Workflow, autonomy and automation engine; Coverage and totals for EP-15 to EP-18 | 62 | 0 | 35,854 | Complete |
+| 6.3b | Part-06-3b_Test_Cases_EP19-EP21.md | PART 6 (Batch 6.3b), Test Scenarios and Test Cases: EP-19 to EP-21, Acceptance Procedures and Release Drills | EP-19 Public website and external portal; EP-20 SaaS client lifecycle and portability; EP-21 Release readiness, QA and observability; Acceptance procedure scripts AP-01, AP-04, AP-06, AP-09 and AP-10; Coverage and totals for EP-19 to EP-21; Batch roll-up: EP-15 to EP-21 (files a and b); Tags register (Batch 6.3, files a and b); … (+1) | 65 | 0 | 26,911 | Complete |
 | 6.4 | Part-06-4_AI_Evaluation_Test_Cases.md | PART 6 (Batch 6.4), AI Evaluation Test Cases | Purpose, scope and conventions; Evaluation datasets; Acceptance thresholds per agent; Shared oracles, harness and fault model; Agent evaluation cases; Cross-model regression across the fallback chain; Regression-gate rules (BRL-AI-09, NFR-033, DEC-061); … (+8) | 169 | 5 | 72,424 | Complete |
 | 6.5 | Part-06-5_Test_Cases_EP01-EP07.md | PART 6 (Batch 6.5), Test Scenarios and Test Cases: EP-01 to EP-07 | How to read this batch; EP-01 Platform foundation, identity reuse and tenancy; EP-02 Product truth and knowledge; EP-03 Consent, privacy, eligibility and compliance; EP-04 AI gateway, cost control and AI quality; EP-05 Market intelligence and discovery; EP-06 Opportunity scoring, contacts and research review; … (+2) | 160 | 2 | 60,859 | Complete |
 | 7.1 | Part-07-1_AI_Discovery_and_Catalogue.md | PART 7 (Batch 7.1), AI Agents and Automations: Discovery Method and Catalogue | Discovery method (client spec 7.1, with the work shown) | 33 | 1 | 11,152 | Complete |
@@ -1224,9 +1224,9 @@ Every part file, its contents (top-level sections, excluding tag registers and q
 | 7.3 | Part-07-3_AI_Model_Strategy_Cost_Governance.md | PART 7 (Batch 7.3), AI Model Strategy, Routing and Fallback, Cost Optimization, Subscriptions and TCO, AI Governance, Cross-Role Review | Model strategy, routing and fallback; Cost optimization for the paid model (quantified); Subscriptions, tooling and total cost of ownership; AI governance and safeguards; Cross-role review (client spec Section 9) and red-team of the catalogue; Registers for Part 7 | 34 | 2 | 12,612 | Complete |
 | 8.1 | Part-08-1_Roadmap_Releases_Sprints.md | PART 8 (Batch 8.1), Delivery Plan: Roadmap, Releases, Sprint Plans, Team and RACI, Estimation, Critical Path | Purpose, inputs and planning baseline; Phased roadmap; Release plan; Sprint plans; Team composition, QA gap, UAT and RACI; Estimation method and effort ranges; Critical path and external dependencies; … (+1) | 54 | 3 | 17,875 | Complete |
 | 9.1 | Part-09-1_Errata_and_Consolidated_Decisions.md | PART 9 (Batch 9.1), Errata Register and Consolidated Decisions | Errata decisions; Effect on earlier decisions | 8 | 0 | 2,047 | Complete |
-| 9.2 | Part-09-2_Glossary_and_Registers.md | PART 9 (Batch 9.2), Appendices: Glossary, ID Registry and Consolidated Registers | Generation method and controls; Glossary; ID registry; Tag numbers issued, by issuing part; Consolidated registers; Duplicate-ID check; Document map | 94 | 1 | 31,235 | Complete |
+| 9.2 | Part-09-2_Glossary_and_Registers.md | PART 9 (Batch 9.2), Appendices: Glossary, ID Registry and Consolidated Registers | Generation method and controls; Glossary; ID registry; Tag numbers issued, by issuing part; Consolidated registers; Duplicate-ID check; Document map | 94 | 1 | 31,290 | Complete |
 
-**Totals:** 2,034 pages across 31 rendered PDFs; 118 Mermaid diagrams; 716,585 words.
+**Totals:** 2,036 pages across 31 rendered PDFs; 118 Mermaid diagrams; 722,581 words.
 
 <!-- GEN:DOCMAP:END -->
 
