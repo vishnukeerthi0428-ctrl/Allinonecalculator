@@ -134,8 +134,8 @@ def main():
                                    "Priority", "Wave", "Points", "Dependencies", "Gherkin scenarios", "Source file"],
               stories, {3: 40, 6: 70, 7: 50, 11: 40})
 
-    tcs = parse_by_prefix("Part-06-*.md", r"^TC-")
-    add_sheet(wb, "Test Cases", ["Test case ID", "Details (column: value)", "Source file"], tcs, {2: 160})
+    tcs = parse_by_prefix("Part-06-*.md", r"^(TC-|VER-)")
+    add_sheet(wb, "Test Cases", ["Test case / verification ID", "Details (column: value)", "Source file"], tcs, {2: 160})
 
     ags = parse_by_prefix("Part-07-*.md", r"^(AG|AU)-\d{3}$")
     add_sheet(wb, "AI Agents & Automations", ["ID", "Details (column: value)", "Source file"], ags, {2: 160})
@@ -146,7 +146,7 @@ def main():
     frs = parse_by_prefix("Part-02-1_*.md", r"^FR-")
     add_sheet(wb, "Functional Requirements", ["FR ID", "Details (column: value)", "Source file"], frs, {2: 160})
 
-    decs = parse_by_prefix("Part-00A_*.md", r"^DEC-\d{3}$")
+    decs = parse_by_prefix("Part-00A_*.md", r"^DEC-\d{3}$") + parse_by_prefix("Part-09-1_*.md", r"^DEC-\d{3}$")
     add_sheet(wb, "Decisions", ["DEC ID", "Details (column: value)", "Source file"], decs, {2: 160})
 
     tags = []
