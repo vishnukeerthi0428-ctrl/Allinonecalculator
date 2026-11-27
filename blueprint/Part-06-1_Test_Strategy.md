@@ -1164,3 +1164,177 @@ Hypothesis profiles: `ci` (100 examples per test, deadline 200 ms), `nightly` (2
 - **Exploratory sessions**: 90-minute chartered sessions, two per P0 area per wave, with a charter ("Explore *quote revisions* with *concurrent approvers* to discover *approval binding errors*"), notes, bugs and test ideas recorded; new test ideas enter the backlog as TCs.
 
 ---
+## 6.1.12 Conventions for Batches 6.2 and 6.3
+
+### 6.1.12.1 Identifier formats
+
+| Artefact | Format | Example | Rules |
+|---|---|---|---|
+| Test scenario | **TS-<epic 2 digits>-<2-digit seq>** | TS-13-02 | Epic = EP-01…EP-21 (Part 0 §0.10.2, as finalized in Part 5). Sequence restarts per epic. A scenario is a business-level situation ("Quote above 20% discount needs Founder and Finance") grouping several test cases |
+| Test case | **TC-<epic 2 digits>-<3-digit seq>** | TC-13-004 | Sequence restarts per epic; never reused after deletion (retired IDs are kept with status *Retired*) |
+| AI evaluation case | **TC-AI-<agent>-<3-digit seq>** | TC-AI-AG07-012 | `<agent>` = the Part 7 agent ID with the hyphen removed (AG-07 → `AG07`); automations without a model call are tested by ordinary TCs, not TC-AI. Until Part 7 is published, Batch 6.3 must wait for the AG IDs rather than invent them (GAP-166) |
+| Load test | LT-<2 digits> | LT-03 | Shared with Part 4 (Part 4.1 cites LT-03, LT-05, LT-07); defined in §6.1.14.1 |
+| UAT scenario pack | UAT-PK-<code> | UAT-PK-AN | Codes in §6.1.13.3 |
+| Evidence record | EVR UUID | n/a | §6.1.5.4 |
+
+**Cross-cutting tests and epic ownership.** A TS/TC always carries one epic number: the epic that owns the control. Platform-wide controls use these owners:
+
+| Control family | Owning epic for TS/TC numbering |
+|---|---|
+| Tenancy isolation, RLS, identity, BFF, roles | EP-01 |
+| Product truth, claims, readiness gate | EP-02 |
+| Consent, eligibility (PDP), privacy, retention, jurisdiction, children, health-data exclusion | EP-03 |
+| Model gateway, budgets, AI quality harness | EP-04 |
+| Workflow engine, outbox, idempotency, simulation, emergency stop, uncertain outcomes | EP-18 |
+| Release gates, rollback, restore, observability, performance, DR | EP-21 |
+| Website publication, hosts, CDN, portal grants | EP-19 |
+| SaaS lifecycle, metering, portability, migration imports (A103) | EP-20 |
+
+### 6.1.12.2 Test case template (mandatory fields)
+
+| Field | Content rule | Allowed values / format |
+|---|---|---|
+| **ID** | TC-<epic>-<seq> or TC-AI-<agent>-<seq> | §6.1.12.1 |
+| **Title** | Verb + object + condition + expected outcome, ≤ 120 characters | "Reject quote approval by author at 10.00% discount" |
+| **Linked requirement / story** | All applicable: FR-…, BR-…, US-…, AC-…, BRL-…, NFR-…, DEC-…, AP-…, plus aliases SM-UT-…, SM-UAT-S…, SM-UX-UAT-… | At least one FR or NFR or BRL; P0 TCs must also link a BRL or NFR |
+| **Scenario** | Parent TS ID | TS-<epic>-<seq> |
+| **Preconditions** | System state, role/session, scope, feature flags, clock offset, provider simulator mode | Explicit; no "as usual" |
+| **Test data** | GSE-SYN stable keys and edge-pack items; dataset version | e.g. `T1/MedMaarg/OPP-311`, `EDGE-MONEY#7`, `gse_syn 1.4.0` |
+| **Steps** | Numbered, one action each; API calls with method and path; UI steps by accessible role/name | 1…n |
+| **Expected result** | Observable outcome for each verification point: response code, state, records, audit event, outbox row, simulator call log, UI state (Part 2.5 §2.47), KPI effect | Must include the "no side effect" assertion for every denial |
+| **Priority** | P0–P3 (§6.1.12.3) | P0, P1, P2, P3 |
+| **Type** | Test type code | T01–T21 (§6.1.3.1); Part 4.1 abbreviations DAST, RLS, AIE, CHAOS, CFG, MAN map to T07, T15, T14, T12, T07, manual respectively |
+| **Technique** | Design technique code(s) | EP, BVA, DT, ST, PW, EG, PBT, UC, EXP |
+| **Automation candidate** | Y/N with reason when N | Y by default; N only for assistive-technology passes, usability, UAT sign-off steps, physical-device checks, exploratory |
+| **Level** | Execution level | UT, IT, CT, SYS, E2E, UAT |
+| *Risk area* (recommended) | RA-## from §6.1.4.3 | RA-01…RA-30 |
+| *Dimensions* (recommended) | D1–D8 values exercised (Part 5.1 matrix) | e.g. D1 R03; D3 Committed; D7 timeout |
+| *Wave* (recommended) | W0–W6 of the linked FR | From Part 2.1 |
+| *Status* (execution, not design) | Draft, Ready, Automated, Retired | Managed in the repository |
+
+### 6.1.12.3 Test case priority
+
+| Priority | Definition | Execution rule |
+|---|---|---|
+| **P0** | Verifies an activation-blocker condition (confidentiality, unauthorized external action, payment/financial accuracy, regulatory eligibility, rollback) or a P0 risk area's core rule | Runs in G1 (when its module changes), G3 and G4; 100% must pass; cannot be quarantined; must be automated unless inherently manual |
+| **P1** | Core functional behaviour of a Must requirement, or a key NFR threshold | G3 and G4; 100% pass for release |
+| **P2** | Alternate paths, Should requirements, secondary validation | G3; failures triaged, may ship with waiver per RBR-3/RBR-4 |
+| **P3** | Cosmetic, low-risk, Could requirements | Weekly or per release |
+
+### 6.1.12.4 Worked examples of the templates
+
+**Scenario.**
+
+| Field | Value |
+|---|---|
+| ID | TS-13-02 |
+| Title | Quote discount approval routing at threshold boundaries |
+| Links | FR-A067, FR-A068; BR-M44; BRL-APR-01, BRL-APR-04, BRL-QTE-02; DEC-038; US-13xx (Part 5.2 EP-13 quote stories) |
+| Risk area · Priority | RA-06 · P0 |
+| Test cases | TC-13-004 … TC-13-017 (BVA-D01…BVA-D14 in §6.1.11.2) |
+
+**Test case.**
+
+| Field | Value |
+|---|---|
+| ID | TC-13-008 |
+| Title | Route a 20.01% discount to Founder and Finance only, even when margin is above the floor |
+| Linked requirement / story | FR-A068; BR-M44; BRL-APR-04; DEC-038; US-13xx AC-13xx-yy (as numbered in Part 5.2); SM-UT-056, SM-UT-057; SM-UAT-S098 (FR-A068); SM-UX-UAT-A068 |
+| Scenario | TS-13-02 |
+| Preconditions | R03 "Asha" logged in to T1 scope OrganicSpec only; approval policy v3 default (DEC-038); clock at 2026-12-10 11:00 IST; simulator mode normal |
+| Test data | `gse_syn 1.4.0`: `T1/OrganicSpec/QTE-220` draft, 1 line SKU `OS-RICE-25KG`, qty 40, unit price INR 2,400.00 from price version PV-9; direct cost per unit INR 1,300.00 |
+| Steps | 1. PATCH `/api/v1/commercial/admin/quotes/QTE-220` with line discount 20.01 and `If-Match` revision 3. 2. POST `/…/quotes/QTE-220/submit-for-approval`. 3. GET approval request. 4. As R02 (Startup Head) POST approve. 5. As R01 POST approve; as R09 Finance POST approve |
+| Expected result | 1: 200, revision 4, line total = ROUND_HALF_UP(40 × 2,400.00 × (1 − 0.2001), 2) = **76,790.40**; direct cost 52,000.00; margin = 24,790.40 ÷ 76,790.40 = **32.28%** (above the 25% floor, so the discount alone drives the route). 2: approval chain = [Founder, Finance]; no R03L/R02 step. 3: chain shows both approvers pending, hash = SHA-256 of revision 4. 4: 403 "not an approver for this threshold" and no state change; audit event written. 5: quote state Approved only after both approvals; approval bound to revision-4 hash; outbox contains 0 external messages (approval is internal) |
+| Priority | P0 |
+| Type | T01 Functional |
+| Technique | BVA, DT |
+| Automation candidate | Y |
+| Level | SYS (domain rule also covered at UT by TC-13-005…TC-13-017 parameterized) |
+
+Companion case TC-13-009 uses the same quote at a 5.00% discount with the fixture cost set by the helper `margin_fixture(target=Decimal("24.99"))`, so that the margin-below-floor branch (BVA-D11) is reached; fixture costs are always computed by the helper, never by hand.
+
+**AI evaluation case.**
+
+| Field | Value |
+|---|---|
+| ID | TC-AI-AGxx-001 (xx = Part 7 ID of the outreach drafting agent) |
+| Title | Abstain and cite nothing when the only evidence is stale |
+| Linked requirement | FR-A034; BR-M25; BRL-AI-03, BRL-AI-04; US-0801 AC-0801-02 |
+| Preconditions | Gateway route Tier 1b; prompt version pinned; dataset `outreach_eval v2` |
+| Test data | 40 items with only stale evidence (BRL-SRC freshness), 3 verticals |
+| Steps | Run the agent on each item through the eval harness |
+| Expected result | Abstention rate = 100%; 0 uncited factual claims; schema-valid output 100%; cost per item within the agent budget |
+| Priority · Type · Technique · Automation · Level | P0 · T14 · EP (stale-evidence class) · Y · SYS (eval harness) |
+
+### 6.1.12.5 Mapping of the FRD's undefined test IDs (DEC-017)
+
+The FRD references three families of test IDs that it never defines (Part 0 §0.3.1; GAP-003). They are kept as **aliases** in the traceability matrix so source references still resolve.
+
+| Alias family | Count in FRD | Mapping rule | Covered when |
+|---|---|---|---|
+| **SM-UAT-S###** | 138 (S001–S138) | One per SM-FR row in order: **S001–S030 = FR-W01…FR-W30; S031–S138 = FR-A001…FR-A108** (S = 030 + n ↔ A(n)). Verified against FRD §11 row order. FR-W31–W34, FR-A109–A113 and FR-OP001–003 have no SM-UAT alias | The FR's UAT scenario (TS in the vertical or cross-cutting pack) has a Pass EVR with business acceptance |
+| **SM-UX-UAT-<screen>** | 147 (W01–W34, A001–A113) | One per screen; maps to FR-UX-<screen> (FRD §16.2 field and automation spec) | Each field and automation decision in the screen spec is exercised by ≥ 1 TC and the screen appears in a UAT pack step |
+| **SM-UT-###** | 63 distinct (001–066; 037, 049 and 050 never appear) | Each SM-UT ID is attached in the FRD to a set of SM-FR rows. The alias maps to **all TCs of the families below that cover those FRs**. The family label is inferred from the co-occurrence pattern and is informative only [ASSUMPTION-180]; coverage is computed mechanically from the FR set | Every FR in the alias's FR set has ≥ 1 passing TC of the alias family's type |
+
+**SM-UT alias clusters (derived from FRD §11 co-occurrence).**
+
+| SM-UT IDs | FRs referencing (count) | Representative FRs | Inferred control family [ASSUMPTION-180] | Primary TC families |
+|---|---|---|---|---|
+| 001, 002 | 138 (all) | every SM-FR | Universal CA-ALL controls: scope resolution, validation and denial paths, request/correlation ID | EP-01 tenancy, T01 negative pack |
+| 003 | 26 | W02, W21, A001–A003, A029–A032, A090, A107 | Scope filter hierarchy, saved views, scope switch | FR-FLT-01, FR-STD-01 tests |
+| 004 | 22 | W12, W13, W29, A007, A013, A103 | Personal-data intake and consent capture | EP-03 consent TCs |
+| 005, 006 | 10 | W21, A001, A002, A099, A100, A107 | Identity, membership, MFA, provisioning | EP-01 identity TCs (DEC-019 checks) |
+| 007 | 17 | W22, W24, W28, A071–A074 | Grant- or approval-bound access to sensitive records | CA-PORTAL, CA-FIN access TCs |
+| 008, 009 | 19 | A042, A043, A087, A088, A090 | KPI correctness: distinct counts, as-of, Unknown ≠ 0, portfolio read-only | RP- report TCs |
+| 010, 011, 012 | 26 | W01–W10, A051, A056, A057, A108 | Publication: verified host, approved snapshot, cache invalidation | EP-19 publication TCs |
+| 013 | 44 | union of 008/009 and 010–012 sets | Read-only rendering, cache keying and freshness | Cache and freshness TCs |
+| 014 | 19 | W18, W23, A040, A065, A079, A080 | Versioned documents, scheduling and time-zone handling | Clock-controlled TCs |
+| 015 | 69 | most mutating Admin screens | Revisioned mutation: stale revision → 409, audit on every state change | FR-STD-03 TCs |
+| 016–019, 047 | 15 | A033, A051, A059, A066, A089, A102, A106 | Approval queues, escalation, exceptions, stop controls | CA-APPROVE, E-7 TCs |
+| 020–022 | 14 | A024–A026, A034–A039, A044–A046 | Contact data and messaging eligibility | PDP decision-table TCs |
+| 023 | 23 | 020–022 set + intake forms | Consent and suppression at intake and in messaging | BRL-ELG-02/03 TCs |
+| 024 | 41 | discovery, messaging, meetings | Evidence provenance and freshness | BRL-SRC TCs |
+| 025–027 | 18 | A010, A015–A023, A027, A028 | Source permissions, research runs, discovery budgets | OPT-04-01 TCs |
+| 028 | 27 | AI-assisted screens | AI gateway: schema, grounding, cost reservation | CA-AI, FR-OP001 TCs |
+| 029, 031 | 10 / 9 | W08, W11, A005, A006, A011, A050, A069, A084 | Knowledge retrieval and AI guardrails | TC-AI groundedness/red-team |
+| 030 | 34 | public pages, content, claims | Content and claims approval, locale | BRL-PUB, claims TCs |
+| 032 | 23 | approval screens and AI screens | Human-in-the-loop decision records | CA-APPROVE + AI TCs |
+| 033 | 37 | finance, cost, automation | Budget, cost and entitlement enforcement | T20 TCs |
+| 034, 035, 043, 044 | 10 | W24, A008, A012, A017, A021, A058, A061, A090, A094, A101 | Paid provider adapters: disabled by default, budgets, fallbacks | NFR-037 TCs |
+| 036 | 25 | automation and operations screens | Exception queue and recovery (FR-STD-04) | T18, T21 TCs |
+| 038, 039 | 2 | W27, A006 | File upload scanning | NFR-021 TCs |
+| 040, 041 | 13 | W26, A037, A052, A071, A073, A074 | Provider callbacks: signature, dedupe, uncertain outcome | T16, T18 TCs |
+| 042 | 10 | intake forms, A007, A013, A103 | Abuse controls, rate limits, privacy at intake | NFR-022 TCs, LT-07 |
+| 045 | 35 | discovery and dashboard lists | Filter allowlists, cursor pagination, Unknown ≠ 0 | FR-FLT-RULES TCs |
+| 046 | 21 | contacts, messages, finance records | Field-level security and DTO minimization | ABAC-05 TCs |
+| 048 | 6 | W15, W17, W29, A038, A039, A104 | Deadlines, quiet hours, time-zone rules | BVA clock TCs |
+| 051, 052 | 2 | W15, A104 | Bid intake and checklist | BRL-BID TCs |
+| 053, 054 | 9 | A024–A026, A077, A078, A091–A096 | Record matching/merge and partner/pilot records | Dedupe TCs |
+| 055 | 4 | W17, W29, A038, A039 | Minors, guardian consent and preferences | DEC-030 TCs |
+| 056, 057, 059 | 9 | W06, W14, W16, W23, A067, A068, A105 | Quote and order money: price version, tax, currency | BRL-QTE PBT/BVA TCs |
+| 058 | 11 | + W15, A104 | Quote/bid/order line validation (units, quantities) | BRL-QTE-07, BRL-ORD TCs |
+| 060–064 | 22 | W10, W19, W20, A048–A062, A082, A083, A108 | Campaigns, landing pages, attribution, ads spend | RA-20 TCs |
+| 065 | 7 | W28, W30, A013, A046, A079–A081 | Lifecycle requests: support, privacy, renewal | BRL-PRV, BRL-LCY TCs |
+| 066 | 27 | commercial and privacy lifecycles | Commercial lifecycle states and invalid transitions | ST TCs (§6.1.11.4) |
+
+Batch 6.3 publishes the full alias → FR set → TC list table (generated from the FRD extraction), so the clustering above is reproducible.
+
+### 6.1.12.6 Traceability matrix specification (Batch 6.3)
+
+| Column | Content |
+|---|---|
+| Requirement ID | BR, FR, NFR, BRL, DEC (with rule), AP |
+| Source citation | BRD §/FRD § per Part 0 convention |
+| Story / AC | US-…, AC-… (Part 5) |
+| Screen / API / entity | Screen ID; operation path; entity (Part 3) |
+| Aliases | SM-UT, SM-UAT-S, SM-UX-UAT |
+| TS IDs | Scenarios |
+| TC IDs | Test cases (incl. TC-AI) |
+| Levels covered | UT/IT/CT/SYS/E2E/UAT |
+| Priority / risk area | P0–P3; RA-## |
+| Latest result | Pass / Fail / Pending with EVR ID and build digest |
+| Coverage flag | Covered, Partially covered (missing a level required by depth), Not covered, Waived (with waiver ID) |
+
+**Coverage % formulas (reported per epic, wave and overall):** FR coverage = FRs with ≥ 1 linked passing TC ÷ FRs in scope; AC coverage = AC with ≥ 1 passing TC ÷ AC in scope; BRL coverage = rules with ≥ 1 passing DT/BVA TC ÷ 162; depth compliance = risk areas whose required depth (§6.1.4.2) is met ÷ 30.
+
+---

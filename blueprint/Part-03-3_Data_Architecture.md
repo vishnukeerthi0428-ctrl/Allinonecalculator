@@ -3805,3 +3805,270 @@ All use PostgreSQL declarative **range** partitioning on a time column, managed 
 **Not partitioned (Year 1), revisit at Year 2:** `aut_run`/`aut_step_run` (≈ 1–3 M rows/year), `mkt_attribution_event`, `crm_activity`. Trigger to partition: table > 50 M rows or > 20 GB, or vacuum time > 30 min.
 
 ---
+
+## 3.3.11 Data lifecycle, retention and archival (DEC-028)
+
+### 3.3.11.1 Retention schedule per data class
+
+DEC-028 periods are baseline "subject to legal confirmation". Rows marked [GAP-113] are classes DEC-028 does not name; the interim value applies until Legal (R10) confirms. Tenants may only make periods **stricter** (CFG-28).
+
+| Class | Tables (main) | Retention | Clock starts | Action at expiry | Purge job | Archive target | Legal hold |
+|---|---|---|---|---|---|---|---|
+| **FIN** financial | `com_invoice*`, `com_payment*`, `com_receivable_entry`, `com_payable_entry`, `com_order*`, `com_fulfillment_event`, `cat_price_version`, `cat_tax_profile`, `ai_cost_ledger`, `ai_usage`, `mkt_spend_event`, `saas_*invoice*`, `saas_credit`, `saas_usage_meter_reading`, `ana_fx_snapshot` | **8 years** (DEC-028; verify Companies Act/GST) | End of the financial year of the record (31 March) [ASSUMPTION-115] | Delete row set per closed FY (ledgers kept whole per FY) | `retention.purge_financial` (annual, April) | Annual FY archive pack (Parquet + PDF documents + manifest) in `ge-archive` S3, Object Lock compliance mode for the period | Blocks purge of the FY/entity under hold |
+| **CTR** contract | `com_contract`, `com_signature_event`, `com_contract_party`, accepted `com_quote`/`com_proposal_version`, `lcy_customer_subscription`, `lcy_renewal`, `lcy_pilot`, `lcy_deployment`, `lcy_integration_deal`, awarded `com_bid` | **Term + 8 years** | `term_end` (or termination date) | Delete | `retention.purge_contracts` (monthly) | Signed PDFs + metadata archived; deletion of archive at same horizon | Blocks |
+| **AUD** audit | `ops_audit_event` (+ anchors), `gov_approval` (non-financial objects), `gov_consent`, `gov_privacy_request`, `gov_legal_hold`, `gov_compliance_incident`, `saas_support_access_grant`, `ten_membership` history | **7 years** | Event time | Drop archived partitions; consent rows after contact erasure are pseudonymized (subject_hmac only) | `retention.purge_audit` (monthly, partition-based) | Monthly partition export after 13 months (Parquet + hash-chain verification + anchor hash) | Blocks |
+| **AUD-FIN** audit of financial/contract objects | Audit events and approvals whose object is FIN/CTR | **Same as the governed object** (8 y / term + 8 y) [CONFLICT-108] | Object clock | As governed object | Same as FIN/CTR | Same | Blocks |
+| **MKT** marketing contact | `intel_contact` (non-customer roles), `intel_role_hypothesis`, `intel_contact_source`, `intel_contact_verification`, `eng_identity_link`, `crm_lead` (open), `crm_submission`, `eng_message` bodies, `eng_thread`, `eng_inbound_event`, `eng_intent`, `eng_enrollment`, `mkt_registration`, `mkt_attendance`, `mkt_referral`, `mkt_audience_member` | **24 months after last eligible interaction** | `last_eligible_interaction_at` | **Erase personal fields** (NULL / destroy `_enc`), delete message bodies in S3, keep pseudonymous aggregates; write suppression hash only if an opt-out/complaint existed | `retention.purge_marketing_contacts` (nightly) | None (deletion, not archive) | Blocks; hold → restricted processing flag |
+| **SUP** suppression | `gov_suppression` | **Indefinite** (minimal hashed identifier) | — | Never deleted (BRL-PRV-03) | — | — | n/a |
+| **EVD** research evidence | `intel_evidence`, `intel_source_record`, `intel_social_post`, `intel_market_event`, `intel_need_evidence`, `intel_signal` (inferred, unconfirmed) | **12 months** (metadata kept, content purged) | `retrieved_at` | NULL `content_text`, delete S3 snapshot, set `freshness_state = 'purged'`; keep URL, hashes, dates, confidence | `retention.purge_evidence` (nightly) | None | Blocks |
+| **AIL** AI run log | `ai_model_run` payloads (S3), `ai_feedback` text | **90 days** redacted payload; metadata 13 months; aggregates kept | `created_at` | S3 lifecycle expiry; partition drop for metadata | S3 lifecycle + `retention.drop_partitions` | None | Hold → copy affected payloads to hold bucket before expiry |
+| **CHT** chat | `eng_chat_session` transcripts | **90 days** | Session end | Delete transcript object; keep session metadata without content | `retention.purge_chat` (nightly) | None | Blocks |
+| **REJ** rejected/withdrawn leads | `crm_lead` (rejected, disqualified, withdrawn), `intel_opportunity` (rejected) | **6 months** | `rejected_at` | Delete; insert exclusion hash in `gov_suppression` (reason `rejected_review`) so BRL-ELG-15 still holds [CONFLICT-107] | `retention.purge_rejected` (nightly) | None | Blocks |
+| **APP** application draft | `saas_application_draft` (not provisioned) | **30 days** | `created_at` | Hard delete + authority evidence object | `retention.purge_app_drafts` (nightly) | None | Blocks |
+| **OPS** operational | `ops_job_run`, `ops_domain_event`, `int_provider_event`, `intel_fetch_log`, `aut_run`, `aut_step_run`, `aut_conflict_case`, `ops_notification` (12 m), `ops_outbox` (30 d after dispatch), `ops_idempotency_key` (35 d), `mkt_preview_grant` (expiry) | **13 months** unless stated | Creation | Drop partition / delete | `retention.drop_partitions`, `retention.purge_ops` | None | Blocks for objects under hold |
+| **OPS+** decision logs [GAP-113] | `gov_eligibility_decision`, `gov_policy_decision`, `eng_delivery_event` | **24 months** (interim) | Creation | Drop partition (decision digests retained in audit 7 y) | `retention.drop_partitions` | None | Blocks |
+| **BUS** business record [GAP-113] | Organizations, deals (lost/open), activities, meetings, content, campaigns, onboarding, tasks, outcomes, feedback, forecasts | **Life of relationship + 24 months** (interim); records that become FIN/CTR follow those classes | Last activity on the organization | Delete or pseudonymize personal references | `retention.purge_business` (monthly) | Optional archive on request | Blocks |
+| **CFG** configuration | Versions of policies, templates, workflows, prompts, scoring models, forms | **Superseded + 24 months**, but never while referenced by a retained record (e.g. price version used by an invoice) | `effective_to` | Delete unreferenced superseded versions | `retention.purge_config` (monthly) | None | Blocks |
+| **Backups** | RDS automated backups, snapshots | **35 days rolling** | Snapshot time | Automatic expiry | AWS | Cross-region copies expire in step | Hold does not extend backups; held data is protected in the live DB [ASSUMPTION-115] |
+| **Exports** | `saas_export_job` files | Link 72 h; file **7 days** | Creation | Delete object | `retention.purge_exports` (hourly) | None | n/a |
+| **Imports** | `saas_import_job` source files | **30 days** after completion | Completion | Delete object (validation report kept with job, AUD) | `retention.purge_imports` | None | n/a |
+
+[CONFLICT-109] A contact who is also a **party or signer** to a contract would be erased after 24 months under MKT while the contract must be kept for term + 8 years. Resolution: the marketing profile (`intel_contact`) is erased on the MKT clock; the **contractual copy** of the signer's name and authority lives in `com_signature_event` / `com_contract_party` under CTR. The two are linked only by a pseudonymous reference after erasure.
+
+### 3.3.11.2 Purge job design
+
+| Step | Behaviour |
+|---|---|
+| 1 Select | For each tenant (iterating with scope variables, no BYPASSRLS), select candidates using the class predicate and index (e.g. `ixp_intel_contact__retention`) in batches of 1,000 |
+| 2 Exclude holds | Remove candidates matched by any active `gov_legal_hold` (tenant, startup, object, subject hash or matter) |
+| 3 Dry run | New or changed retention policies run in **dry-run mode** first; R10 approves the dry-run report before the first live run (BRL-PRV-05) |
+| 4 Execute | Under role `ge_retention` with `app.retention_run_id` set; one transaction per batch; S3 deletions via a deletion outbox so DB and object store stay consistent |
+| 5 Evidence | One `ops_audit_event` per batch: `retention.purge` with class, counts, min/max dates, digest of deleted IDs; never the deleted content |
+| 6 Monitor | Metrics: candidates, purged, held, failures; alarm if a class has overdue candidates > 7 days (DQ-030) |
+| 7 Erasure replay log | Every privacy erasure appends the subject hash and timestamp to `gov_privacy_request`; restores re-apply it (§3.3.15.4) |
+
+### 3.3.11.3 Archive format and access
+
+| Aspect | Decision |
+|---|---|
+| Format | Apache Parquet per table per partition/FY, plus `manifest.json` (row counts, column list, schema version, SHA-256 per file, audit chain anchors) |
+| Location | `s3://ge-archive-<env>/<tenant_id>/<class>/<table>/<period>/`; SSE-KMS with the tenant KEK; Object Lock (compliance mode) for AUD and FIN archives for the retention period; storage class transitions to an infrequent/archive tier after 90 days (*verify prices and retrieval times at implementation, as of 27 Nov 2026*) |
+| Access | Restore-on-request by R10 for legal/finance/audit queries; retrieved into an isolated, RLS-enabled `ge_archive_restore` schema for ≤ 14 days; audited |
+| Retrieval SLA | Not defined in the baseline [GAP-114]; interim target 5 business days |
+| Deletion | Archive objects expire at the class horizon via S3 lifecycle; Object Lock periods equal the class horizon so early deletion is impossible |
+
+---
+
+## 3.3.12 Migration and conversion plan (DEC-039)
+
+### 3.3.12.1 Scope and principles
+
+* **No legacy system migration** (DEC-039). Seed data for the four startups (AppNAI, MedMaarg, EduVerse, OrganicSpec) comes from spreadsheets and founder snapshots [ASSUMPTION-116]; later startups and SaaS tenants use the same path.
+* All loads go through **A103 import jobs** (`saas_import_job`) with versioned templates, dry-run validation, approval and reconciliation; no direct SQL loads into production.
+* **Imported contacts are not eligible for outreach** until consent or lawful basis is verified (DEC-039; BRL-ELG-03): `eligibility_basis = 'import_unverified'` makes the PDP return Ineligible.
+* Imports never create approvals, published content, sent messages or ledger entries.
+
+### 3.3.12.2 Import templates (versioned)
+
+| Template | Code / version | Target tables | Mandatory columns | Optional columns | Wave |
+|---|---|---|---|---|---|
+| Offerings and capabilities | `IMP-OFFERING v1` | `cat_offering`, `cat_offering_version` (draft), `cat_capability`, `cat_offering_capability` | offering_code, name, offering_kind, business_line_code, summary | hsn_sac_code, allowed_units, delivery_geographies, capability_codes | W0 |
+| Claims (draft) and founder snapshot facts | `IMP-CLAIM v1` (DEC-057) | `cat_claim` (draft), `cat_claim_evidence` | offering_code, claim_text, claim_type, evidence_ref | is_management_claim, expires_at | W0 |
+| Price lists | `IMP-PRICE v1` | `cat_price_version` (draft) | offering_code, price_list_code, currency, unit_code, unit_price, valid_from | unit_cost, tax_rate_pct, tax_inclusive, valid_to | W0 |
+| Organizations | `IMP-ORG v1` | `intel_organization`, `intel_location`, `intel_alias` | name, country_code, org_type, relationship | primary_domain, legal_id, industry_code, city, aliases | W1 |
+| Contacts with consent evidence and source | `IMP-CONTACT v1` | `intel_contact`, `intel_contact_source`, `gov_consent` (when evidence present), `eng_identity_link` | org_ref, full_name, person_type, source (url or description), source_date | email, phone, job_title, role_code, country_code, consent_channel, consent_purpose, lawful_basis, consent_evidence_ref, consent_date, age_band, guardian_ref | W1 |
+| Open deals | `IMP-DEAL v1` | `crm_deal`, `crm_stage_transition` (creation row), `crm_deal_contact` | org_ref, offering_code, opportunity_type, stage_code, owner_email | expected_value, currency, expected_close_date, notes | W2 |
+| Open bids (AppNAI) | `IMP-BID v1` | `com_bid`, `com_bid_checklist_item` | tender_ref, portal_code, org_ref, deadline_utc, portal_timezone | budget, technology_codes | W4 |
+| SKUs and open orders (OrganicSpec) | `IMP-SKU v1`, `IMP-ORDER v1` | `com_sku_availability`, `com_order`, `com_order_line` (draft) | sku_code, unit_code, availability_status / order direction, counterparty, lines | available_qty, certification_ref | W4 |
+
+Formats: CSV (UTF-8, RFC 4180, header row, ISO 8601 dates, `.` decimal separator, no thousands separators) or JSON Lines; a JSON Schema per template version is published in the A103 help panel.
+
+### 3.3.12.3 Validation rules (dry run)
+
+| Rule | Check | Severity |
+|---|---|---|
+| V-01 | File SHA-256 not previously imported for this template (UQ-IDEM-18) | Block |
+| V-02 | Header matches template version exactly; unknown columns rejected (allowlist) | Block |
+| V-03 | Encoding UTF-8; row count ≤ 50,000 per file | Block |
+| V-04 | Required fields present; types parse (dates, decimals, enums) | Row reject |
+| V-05 | Currency ∈ `ref_currency`; country ∈ `ref_country`; unit ∈ allowed units | Row reject |
+| V-06 | Money: `unit_price ≥ 0`, max 4 dp; quantities > 0 | Row reject |
+| V-07 | Duplicate within file (org: normalized name + domain; contact: email HMAC) | Row merge candidate |
+| V-08 | Duplicate against existing data (same keys; organization merge rule BRL-SRC-08) | Merge proposal for reviewer |
+| V-09 | Referential: `org_ref`, `offering_code`, `stage_code`, `owner_email` resolve within the same startup | Row reject |
+| V-10 | Emails syntactically valid; **no pattern-generated emails** (source must be a published or first-party source, BRL-SRC-05) | Row reject |
+| V-11 | **Health/patient attributes** in any free-text column (MedMaarg): sensitive-data scanner (BRL-PRV-06) | Row reject (field redacted only if the template marks it free text) |
+| V-12 | **Minors**: `age_band = under_18` or learner without guardian reference and guardian consent evidence → reject (DEC-030); learner rows limited to name, grade band, programme | Row reject |
+| V-13 | Jurisdiction resolved; contacts in denied jurisdictions imported as **non-contactable** only (DEC-029) | Warning |
+| V-14 | EU/UK contacts with `legitimate_interest` require LIA reference and role-based or professionally published address (BRL-ELG-06) | Row downgraded to `import_unverified` |
+| V-15 | Consent evidence present and dated → `gov_consent` row with `capture_method = import`; otherwise `eligibility_basis = import_unverified` | Info |
+| V-16 | Contacts matching `gov_suppression` hashes → imported as suppressed (never re-enabled) | Info |
+| V-17 | Stage code valid for the pipeline; deals in Won/Paid states rejected (closure needs evidence, DEC-054) | Row reject |
+| V-18 | Price validity ranges do not overlap existing approved ranges (CK-21) | Row reject |
+| V-19 | Claims imported as **draft** only; management claims flagged (DEC-021) | Info |
+| V-20 | Rejected-row ratio > 10% → whole job requires re-submission (quality gate) | Block |
+
+### 3.3.12.4 Dry-run, approval and execution flow
+
+```mermaid
+flowchart TD
+  A["Upload file in A103<br/>scan, hash, template version"] --> B["Dry run<br/>V-01 to V-20, no writes"]
+  B --> C{"Rejected rows above 10 percent?"}
+  C -- "Yes" --> D["Return validation report<br/>fix and re-upload"]
+  C -- "No" --> E["Reviewer resolves merge proposals<br/>and downgrades"]
+  E --> F["Approval<br/>R02 for business data, R10 if consent or Restricted"]
+  F --> G["Execute in batches of 1,000<br/>rows tagged with import_job_id"]
+  G --> H["Reconciliation report<br/>counts, control totals, samples"]
+  H --> I{"Reconciled?"}
+  I -- "No" --> J["Rollback job<br/>delete rows of this import_job_id"]
+  I -- "Yes" --> K["Consent verification tasks<br/>for import_unverified contacts"]
+  K --> L["Startup Head sign-off<br/>job Completed"]
+```
+
+### 3.3.12.5 Reconciliation reports
+
+| Report | Content | Pass criterion |
+|---|---|---|
+| R-REC-01 Row counts | Source rows = accepted + rejected + merged, per template | Exact equality |
+| R-REC-02 Control totals | Σ unit_price × 1 by currency (price lists); Σ expected_value by currency (deals); Σ quantity by unit (orders) | Source = loaded |
+| R-REC-03 Key coverage | Every source key resolved to one target ID (mapping table `saas_import_row_map`: job, row_no, target_type, target_id, outcome) | 100% |
+| R-REC-04 Consent status | Contacts by `eligibility_basis` (consent, LI, import_unverified, suppressed, non-contactable) | Reviewed by R10 |
+| R-REC-05 Sample verification | Random 5% (min 20, max 200) rows compared field by field by the startup's data owner | 0 critical mismatches |
+| R-REC-06 Exclusions | Rows rejected for health data, minors, guessed emails, jurisdictions | Reviewed; no override except by re-submission |
+
+### 3.3.12.6 Cutover runbook for the four seed startups
+
+| Step | When | AppNAI | MedMaarg | EduVerse | OrganicSpec |
+|---|---|---|---|---|---|
+| C-1 Provision workspace from template + capability profile | W0 | Bid desk on | Pilots on; health exclusions | Guardian intake; no minors outreach | Order desk on |
+| C-2 Offerings, claims (draft), price lists | W0 | Technology services | Scanner/Planner/Advisor, Doctor/Lab Connect; MedMaarg traction claims as **management claims** (DEC-021) | Programmes (GenAI/ML/DL/NLP/CV …), cohorts | SKU catalogue, units (kg, quintal, tonne), certifications |
+| C-3 Organizations and contacts | W1 | Prospects, tender buyers | Institutions (no patient data, V-11) | Schools/colleges; guardians only with OTP-verifiable consent; adult learners | Buyers and suppliers |
+| C-4 Consent verification campaign | W1–W2 | Tasks for `import_unverified` contacts; no outreach until resolved | Same | Same; guardian verification per DEC-030 | Same |
+| C-5 Open deals | W2 | Open opportunities | Open partnership discussions | Institution MoU discussions | Open buy/sell enquiries |
+| C-6 Open bids / open orders | W4 | Bids with deadlines (deadline guard on) | — | — | Draft orders (no ledger postings) |
+| C-7 Parallel run | 2 weeks after each load | Spreadsheets read-only reference; differences logged | Same | Same | Same |
+| C-8 Freeze and sign-off | End of parallel run | Startup Head signs R-REC reports; old sheets archived read-only | Same | Same | Same |
+
+**Rollback.** Each import job is reversible while no downstream record references its rows (checked by FK scan); rows are deleted by `import_job_id`, and an audit event records the rollback. After downstream use (e.g. a message was sent to an imported contact), rollback is blocked and corrections are made record by record.
+
+---
+
+## 3.3.13 Master and reference data: ownership, stewardship and change process
+
+Part 2.4 §2.33.4 lists the reference datasets and their owners; this section adds stewardship and the change process, and defines the **master data** entities.
+
+### 3.3.13.1 Master data entities
+
+| Master entity | System of record | Golden-record rule | Steward (role) | Change process |
+|---|---|---|---|---|
+| Tenant, Startup | `ten_tenant`, `ten_startup` | One row per legal workspace; slug immutable after activation | R12 (tenant), platform (tenant creation) | FR-A099 with approval; lifecycle per §2.27.16 |
+| Organization (account) | `intel_organization` | Canonical by domain + (location or legal ID); merges reviewer-approved, reversible 30 days (BRL-SRC-08) | R04 Research Analyst; R02 for customers | Merge queue in A018; audit `organization.merge` |
+| Contact (person) | `intel_contact` | One per startup × email HMAC; identity links unify channels (M41) | R04 (prospects), R03 (customers) | Dedupe proposals; erasure via M56 only |
+| Offering and price | `cat_offering*`, `cat_price_version` | Versioned; only Approved/Available used downstream | R02 (offering), R08 (price), R10 (claims) | Maker → approval (CFG-06); new version, never edit approved |
+| User and membership | `ten_user` (mirror), `ten_membership` | IdP subject is the key; product membership owned here | R12 | Invite/revoke (A002); quarterly access review |
+| Partner | `lcy_partner` | One per organization × partner type | R02 | Due diligence approval (BRL-LCY-04) |
+
+### 3.3.13.2 Reference data stewardship
+
+| Dataset (Part 2.4 §2.33.4) | Table | Owner | Steward | Change cadence | Change process | Tenant extension |
+|---|---|---|---|---|---|---|
+| Countries/states/cities (ISO 3166) | `ref_country`, `ref_value` (COUNTRY_SUBDIVISION) | Platform | Platform data steward (engineering) | Annual review + ad hoc | Migration with source diff; CI test | No |
+| Currencies (ISO 4217) | `ref_currency` | Platform | Platform data steward | Annual | Migration | No |
+| FX rates | `ana_fx_snapshot` | Finance | R08 | Per use (reporting) | Recorded source and date (DEC-027) | Per tenant |
+| Units of measure | `ref_unit` | Platform + OrganicSpec | Platform steward; R07 for SKU units | On request | Config revision (CFG-32), approval by platform | Yes (tenant units, conversions within dimension) |
+| HSN/SAC codes, GST rates | `ref_value` (HSN_SAC) | Finance | R08 per startup | Quarterly verification (verify GST notifications) | Config revision; R08 maker, R09 checker | Yes |
+| Industry taxonomy | `ref_value` (INDUSTRY) | Platform; tenant extensions | Platform steward; R12 | Semi-annual | Config revision | Add children only |
+| Role taxonomy | `ref_value` (ROLE_TAXONOMY) | Platform | Platform steward | Semi-annual | Config revision | No |
+| Signal types, need categories | `intel_signal_type`, `ref_value` (NEED_CATEGORY) | Platform; tenant extensions | R04 | As needed | Config revision + eval-set update (examples feed AI) | Yes |
+| Loss reasons, objection categories | `ref_value` (LOSS_REASON, OBJECTION_CATEGORY) | Tenant | R02 | As needed | Config revision | Tenant-owned |
+| Jurisdiction rule packs | `gov_jurisdiction_rule` | Legal | R10 | On legal change; annual review | Versioned; simulation; R10 approves, loosening R01 (BRL-ELG-05) | Tighten only |
+| Public holidays | `ref_value` (PUBLIC_HOLIDAY) | Platform | Platform steward | Annual load (December) | Migration | Startup-specific additions |
+| Vertical taxonomies (technology, programme, SKU, organization types) | `ref_value` (TECHNOLOGY, PROGRAMME, SKU_CATALOGUE, ORG_TYPE) | Startup | Startup Head delegate | As needed | Config revision | Startup-owned |
+
+**Change process (all reference data):** Draft (`aut_config_revision`) → validation (no orphaned references; codes immutable once used, only labels may change; deprecations use `valid_to`) → impact report (rows using the value) → approval per owner → scheduled activation → cache invalidation. Values are **never deleted** once referenced; they are deprecated.
+
+---
+
+## 3.3.14 Data quality rules
+
+| DQ | Dimension | Entity | Rule | Check (how) | Threshold | Action on breach |
+|---|---|---|---|---|---|---|
+| DQ-001 | Completeness | Evidence | Provenance fields (url, retrieved_at, content_hash, source_policy_version, confidence) present | NOT NULL + nightly count | 100% | Quarantine row (NFR-028) |
+| DQ-002 | Validity | Contact | Email syntax valid; not pattern-generated | Insert validator; nightly scan | 100% | Reject / flag |
+| DQ-003 | Uniqueness | Contact | No duplicate email HMAC per startup | UQ-DUP-03 | 0 duplicates | Merge proposal |
+| DQ-004 | Uniqueness | Organization | Trigram similarity ≥ 0.85 with same country and no merge decision | Weekly job | ≤ 2% of orgs | Merge queue (A018) |
+| DQ-005 | Timeliness | Evidence | Freshness: older than SLA (90 d; tenders 7 d) marked stale | Nightly job | 100% marked | Recompute scores (BRL-SCR-08) |
+| DQ-006 | Timeliness | Contact verification | `verified_until` in the past → `stale` | Nightly | 100% | Re-verify task |
+| DQ-007 | Consistency | Opportunity | Score NULL ⇔ known weight < 0.60 | CK-08 | 0 violations | Block insert |
+| DQ-008 | Accuracy | Signals | Reviewed precision | KPI-02 | ≥ 80% (≥ 100 reviewed) | Keep at L1; retrain prompts |
+| DQ-009 | Accuracy | Qualification | Benchmark precision | KPI-01 | ≥ 90% (≥ 200 labelled per vertical) | Qualification stays L1 (DEC-001) |
+| DQ-010 | Integrity | All scoped tables | Child scope equals parent scope | Composite FKs | 0 violations | Impossible by construction; CI test |
+| DQ-011 | Integrity | Ledgers | Σ receivable entries per invoice = invoice total − allocations | Daily reconciliation | 0 differences | Discrepancy case; alert R08 |
+| DQ-012 | Integrity | Payments | Σ allocations ≤ payment amount; invoice paid only when allocations = total | Constraint trigger + daily check | 0 | Block / discrepancy (BRL-FIN-04) |
+| DQ-013 | Integrity | Ledger sequence | `entry_seq` gap-free per startup | Daily | 0 gaps | Incident (possible tampering) |
+| DQ-014 | Integrity | Audit chain | Recomputed hash chain matches stored hashes and daily anchors | Daily verification job | 100% | Security incident (P1) |
+| DQ-015 | Validity | Money | Currency on every amount; ISO code valid | CK-03 | 100% | Block |
+| DQ-016 | Accuracy | Quotes/invoices | Server recomputation equals stored totals | Nightly recompute | 0 differences | Incident; freeze document |
+| DQ-017 | Consistency | Deals | Closure status matches evidence (won requires executed contract or verified payment per closure policy) | KPI-31 query | 0 | Alert R08; revert to previous stage via transition |
+| DQ-018 | Integrity | Fulfilment | Σ fulfilment events per line = `fulfilled_qty`; ≤ ordered (+tolerance) | Trigger + nightly | 0 | Block / incident |
+| DQ-019 | Compliance | Messages | No message sent to a suppressed or ineligible recipient | KPI-17 query joining sends to suppression at send time | 0 | P1 compliance incident; pause channel (M57) |
+| DQ-020 | Compliance | Minors | No outbound message, audience membership or ad event for `under_18` contacts | Nightly query | 0 | P1 incident (DEC-030) |
+| DQ-021 | Compliance | AI routing | No Tier 2 model run with Confidential/Restricted or personal data | CK-16 + daily query | 0 | P1 incident; disable Tier 2 for tenant |
+| DQ-022 | Completeness | Consent | Every eligible outbound recipient has a current lawful basis row | Dispatch-time PDP + daily audit | 100% | Block send |
+| DQ-023 | Reconciliation | SaaS usage | Σ meter readings = Σ invoice line quantities per cycle | Per billing cycle | 100% (KPI-24) | Hold invoice |
+| DQ-024 | Reconciliation | AI cost | Σ settled cost ledger = provider invoice ± 2% (verify provider statements) | Monthly | ≤ 2% variance | FinOps review |
+| DQ-025 | Timeliness | Projections | Customer 360 lag (event → projection) | `last_event_seq` vs head | ≤ 60 s p95 (NFR-008) | Alert; rebuild projection |
+| DQ-026 | Timeliness | Outbox | Dispatch lag | `dispatched_at − created_at` | p95 ≤ 60 s (DEC-018) | Alert SRE |
+| DQ-027 | Completeness | Metric snapshots | Each KPI snapshot carries numerator, denominator, as_of, metric version, currency | NOT NULL | 100% (RPT-R1) | Block publish |
+| DQ-028 | Validity | Simulation | No simulated row counted in KPI views | View predicate + test | 0 | Fix view; recompute |
+| DQ-029 | Validity | Imports | Rejected-row ratio | Per job | ≤ 10% (V-20) | Block job |
+| DQ-030 | Timeliness | Retention | Overdue purge candidates per class | Purge job metrics | 0 older than 7 days | Alert R10 |
+| DQ-031 | Consistency | Claims in content | Published content uses only approved, unexpired claims | Publish-time check + nightly | 0 | Unpublish (rollback) and alert R10 |
+| DQ-032 | Validity | Reference data | No deprecated reference value used in new records | Insert validator | 0 | Reject |
+
+DQ results are stored as `ana_metric_snapshot` rows (metric codes `DQ-###`) and shown on RP-25 (health) and RP-23 (compliance).
+
+---
+
+## 3.3.15 Backup, restore and disaster recovery
+
+### 3.3.15.1 Targets and components
+
+| Item | Target / setting | Source |
+|---|---|---|
+| RPO | ≤ 15 minutes | DEC-018 |
+| RTO | ≤ 4 hours | DEC-018 |
+| Database | RDS automated backups with **PITR**, retention **35 days** (DEC-028); transaction logs shipped continuously (RDS uploads logs about every 5 minutes; *verify at implementation*) | DEC-040 |
+| Snapshots | Daily automated snapshot; **manual pre-migration snapshot** before every release that contains schema migrations (retained 35 days) | NFR-012 |
+| Cross-region | Automated backup replication / snapshot copy to a second Indian region (ap-south-2 Hyderabad; *verify service availability*) daily; KMS multi-region key or re-encryption with a destination-region key | DEC-040; ASSUMPTION-004 |
+| Multi-AZ | Pilot: single-AZ DB + PITR; scale gate: Multi-AZ (DEC-040) | DEC-040 |
+| Object storage | S3 versioning on document, evidence, message-body and archive buckets; cross-region replication for documents and archives; Object Lock for audit anchors and archives | Part 2.4 §2.34.3 |
+| Valkey | Not backed up (cache and broker only); durable work is in the outbox, so a Valkey loss loses no events (NFR-007) | NFR-006, NFR-007 |
+| Secrets | AWS Secrets Manager replication to the DR region for database and provider secrets references | M05 |
+| Budget | Backup/DR storage under B20 (₹0 until approved; DEC-020) and B01; estimate in Part 3.1/Part 9 (verify prices) | DEC-020 |
+
+### 3.3.15.2 Restore drill procedure
+
+| Drill | Cadence | Steps | Pass criteria |
+|---|---|---|---|
+| D-1 Automated snapshot restore | Weekly + every release (NFR-012) | (1) Restore the latest snapshot to an isolated VPC instance; (2) run `restore_checks.sql`: table row counts vs production metrics (± 1%), RLS enabled and forced on all scoped tables, triggers present, extension versions, hash-chain verification for the last 7 days of audit; (3) run the API smoke suite against the restored instance with synthetic credentials; (4) destroy instance | All checks green; duration recorded |
+| D-2 PITR to a timestamp | Monthly | Restore to `now − 2 h`; verify a known canary row written at `now − 2 h − 1 min` exists and one written at `now − 2 h + 1 min` does not | RPO evidence ≤ 15 min |
+| D-3 Full DR (region) | Quarterly (from the scale gate; semi-annual in pilot) | Restore cross-region copy in the DR region; deploy application stack from IaC (RECOMMENDATION-010); repoint DNS in a test domain; run E2E synthetic journeys | Service usable ≤ 4 h (RTO) |
+| D-4 Tenant-level logical restore | Semi-annual, on a synthetic tenant | Procedure §3.3.15.3 on the two-tenant fixture | Only the target tenant changes; zero cross-tenant effects |
+
+Each drill writes an `ops_test_run` (suite `restore_drill`) linked to the release; failure blocks the release (NFR-012, NFR-013).
+
+### 3.3.15.3 Tenant-level logical restore
+
+Use when one tenant (or one startup) lost or corrupted data and a full-cluster restore would harm other tenants.
+
+1. **Declare** an incident; R12 of the tenant and platform lead approve; place a legal hold on the tenant scope to stop purges during recovery.
+2. **Restore** a PITR copy of the cluster to an isolated instance at the chosen timestamp.
+3. **Extract** the tenant's rows with the **portability exporter** (same code path as A103 tenant export, so scoping is proven) into a staging schema `ge_restore_<incident>`.
+4. **Diff** staging against live for the tenant: missing rows, changed rows, rows created after the restore point.
+5. **Merge rules:** (a) immutable tables (ledgers, audit, approvals, consent, suppression): insert missing rows only; never overwrite; audit gaps are documented, not re-chained; (b) mutable tables: restore only rows the tenant confirms, with `revision + 1` and an audit event `data.restore`; (c) rows created after the restore point are kept.
+6. **Re-apply erasures**: replay every erasure and consent withdrawal recorded after the restore point (erasure replay log, §3.3.11.2) so restored data never resurrects erased personal data or re-enables outreach (BRL-PRV-03). [RSK-327]
+7. **Rebuild** projections and search/vector indexes for the tenant; verify DQ-011…DQ-018.
+8. **Close**: release the hold, publish a restore report to the tenant (visible in A009), destroy the isolated instance.
+
+---

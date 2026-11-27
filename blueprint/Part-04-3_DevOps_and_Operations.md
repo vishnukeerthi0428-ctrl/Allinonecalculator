@@ -527,3 +527,378 @@ stateDiagram-v2
 
 Blameless format: summary, impact (users, tenants, messages, money, data classes), timeline (UTC and IST), detection (how and how fast), root causes (5 whys / contributing factors), what went well, what went badly, action items (owner, due date, ticket), and links to evidence. Published to the team within 5 business days for Sev1/Sev2, reviewed in the monthly operations review, and action items tracked to closure. Postmortems that reveal a control gap update the threat model (Batch 4.1 §4.2) and add a regression test.
 
+---
+
+## 4.44 Runbooks (RB-###)
+
+Each runbook lives in `ops/runbooks/RB-###.md`, is linked from its alerts, and is exercised at least once a year (most in the game-day schedule, §4.47). Common first steps for every runbook: (1) acknowledge the alert and open an A014 incident; (2) record start time, Sev and IC; (3) check DB-01 and DB-03 for wider impact; (4) never retry an *uncertain* external action before reconciliation (DEC-050); (5) never disable the PDP, RLS or audit to "get things moving".
+
+### RB-001 Provider outage (email, WhatsApp, payment, e-sign, calendar, search, Anthropic)
+
+| Step | Action |
+|---|---|
+| Trigger | AL-12; provider status page incident; CH-01 drill |
+| Sev | Sev2 (Sev1 if transactional notices or payments are blocked for > 4 h) |
+| Diagnose | DB-04: error class (timeouts vs 4xx vs 5xx), affected provider account(s) and startups; check whether errors are before or after submission (uncertain count rising → also RB-003); confirm with the provider status page |
+| Contain | Circuit breaker opens automatically; set the ops flag `adapter.<provider>.dispatch` OFF if errors are 4xx due to our credentials/config; for Anthropic: gateway routes to Tier 3 (queue / cached / human task) and, **only for Public or Internal-non-personal tasks of tenants that opted in**, Tier 2 (DEC-007) |
+| Preserve | Outbox keeps events (NFR-007); confirm `outbox_pending_count` growth matches expectations and DB storage is sufficient |
+| Communicate | N to R11 and affected startup heads; for payment gateway: R08 told to use the bank transfer/UPI evidence path (DEC-022) |
+| Recover | When the provider recovers, close the circuit gradually (half-open), watch outbox drain rate (target: backlog cleared ≤ 2× outage duration), quiet hours still apply (deferred items move to the next window, BRL-ELG-08) |
+| Verify | PDP rechecks happen at dispatch for drained items (expired approvals or new suppressions are honoured); no duplicates (provider idempotency keys) |
+| Follow-up | Postmortem if Sev1/Sev2; review provider SLA and fallback (vendor table, Batch 4.1 §4.14) |
+
+### RB-002 Outbox backlog
+
+| Step | Action |
+|---|---|
+| Trigger | AL-07, AL-08, AL-11, AL-27, AL-28, AL-45 |
+| Diagnose | Is the relay running (heartbeat)? Are workers consuming (queue depth vs consumer count)? Is one queue starved (priority inversion: batch flooding transactional)? Is one tenant hogging (per-tenant concurrency 20)? Is the DB slow (DB-07)? Is a provider slow (RB-001)? Is Valkey near memory limit? |
+| Act | Restart a stuck relay (single active instance with lock); scale the transactional worker service (+1–2 tasks, IaC parameter or ECS desired count with a follow-up PR); pause batch queues (research, reports) via ops flag to free capacity; if one tenant dominates, lower its concurrency temporarily (A111) |
+| Protect | Do not purge the outbox; do not bypass the PDP; check that quiet hours/timeliness accounting is correct (quiet-hour deferrals are not late, DEC-032) |
+| Verify | Lag p95 < 60 s for 30 min; SLO-06 back above 99% for the hour |
+| Follow-up | Capacity trigger review (Batch 4.2 §4.27) |
+
+### RB-003 Uncertain outcome surge
+
+| Step | Action |
+|---|---|
+| Trigger | AL-10 |
+| Diagnose | Which provider/channel; timeouts after submission? Correlate with provider latency; confirm idempotency keys were sent |
+| Contain | If the uncertain rate > 5% for one provider: pause new dispatch to that provider (ops flag) to stop adding uncertainty; keep inbound processing on |
+| Reconcile | Run the provider reconciliation job (query provider by idempotency key/reference) for all uncertain items: confirmed → `reconciled_confirmed`; not found after provider retention window → `reconciled_failed` → eligible for a **new** dispatch decision with PDP recheck (DEC-050); ambiguous → A110 human queue for R11 with evidence |
+| Communicate | N to R11 and the owners of affected runs; finance (R08) if payment/e-sign items are uncertain |
+| Verify | Uncertain open count back to baseline; SLO-10 within target; zero duplicate sends in the period (sample check by recipient + template) |
+| Follow-up | Adjust adapter timeouts; ask provider for idempotency guarantees |
+
+### RB-004 Emergency stop (activation and resumption)
+
+| Step | Action |
+|---|---|
+| Trigger | Human decision (R01/R02/R10/R11 via the status-bar STOP, two-step confirm) or automated containment (complaint threshold, suppression breach); AL-13 notifies |
+| Activate | Choose the narrowest scope that contains the risk: channel → workflow → startup → tenant (BRL-AUT-05). Record reason |
+| Verify stop | Within 60 s, `provider_calls_total` for the scope drops to 0 (NFR-049); queued items show "held by emergency stop"; red banner visible in scope (Part 2.5 §2.47) |
+| Investigate | Identify what triggered the stop (SI class, Batch 4.1 §4.17.2); fix or contain the cause |
+| Resume | Only by a role holding resume rights (R01, or R02 within their startup) with MFA step-up ≤ 5 min; the system re-runs PDP checks on all held items (approvals may have expired; suppressions added); optionally resume in **simulation** first to preview what would be sent |
+| Communicate | Banner and A106 notification at stop and at resume |
+| Follow-up | Incident record; if a breach of rules occurred, compliance incident (M57) |
+
+### RB-005 Budget exhaustion (AI, provider or AWS)
+
+| Step | Action |
+|---|---|
+| Trigger | AL-14 (80%/100%), AL-15 cost anomaly, AL-16 AWS budget |
+| Diagnose | DB-05/DB-09: which agent, startup, tenant, provider; is it legitimate growth, a loop (runaway run, BRL-AUT-06), abuse (public chat, LT-07 pattern), or a pricing change? |
+| Contain | Hard stop already blocks new paid calls at 100% (BRL-AI-08); for anomalies before 100%: disable the offending agent or workflow via ops flag, tighten chat caps, enable WAF challenge mode |
+| Decide | Legitimate demand → request a budget increase: Founder approval (BRL-APR-11 loosening), recorded in CFG-23; emergency top-up is audited (BRL-AI-08 exception). SaaS tenant budgets are their own (DEC-008): notify the tenant admin; never subsidize from the owned-portfolio budget |
+| Degrade gracefully | Tier 3: queue non-urgent tasks to the next budget period; human tasks for urgent ones |
+| Follow-up | FinOps review: unit cost trend, Tier 0 opportunities, prompt length, caching (NFR-092) |
+
+### RB-006 Complaint spike / sender reputation / suppression breach
+
+| Step | Action |
+|---|---|
+| Trigger | AL-17, AL-18, AL-19 (Sev1), AL-20, AL-21 |
+| Contain | The campaign auto-pauses at threshold (BRL-ELG-11). For AL-19/AL-20: **emergency stop** the affected channel for the startup (RB-004) |
+| Diagnose | Which campaign, template, audience source, jurisdiction; were PDP decisions allow with valid rules (then a rule gap) or did a send bypass the PDP (then a defect, Sev1)? Check suppression list sync, SNS bounce/complaint webhook health (RB-009), WhatsApp quality and template category |
+| Remediate | Suppress complainants (automatic); remove the audience source if consent evidence is weak; fix the rule pack or defect; for SES review: respond to AWS with remediation evidence (verify process); for WhatsApp: pause templates rated low |
+| Communicate | R10 (compliance) owns; affected recipients contacted only if required and with counsel advice |
+| Verify | Complaint rate back below 0.1%; KPI-17 = 0 since fix; reputation status normal |
+| Follow-up | Postmortem; DPIA update if audience sourcing changed |
+
+### RB-007 Database restore (PITR or snapshot)
+
+| Step | Action |
+|---|---|
+| Trigger | Data corruption, accidental deletion, failed migration damage, AL-23, drill |
+| Decide scope | Prefer **side restore** (restore to a new instance at the chosen time, extract and repair affected rows) over full replacement. Full replacement only when corruption is widespread, with PO approval (data written after the restore point is lost unless replayed from the outbox/audit) |
+| Stop writes (full replacement only) | Emergency stop for all tenants (RB-004); scale API to maintenance mode (read-only banner); stop workers and Beat |
+| Restore | `restore-db-instance-to-point-in-time` to a time ≤ 15 min before the incident (RPO), same subnet group, parameter group, KMS key; wait for available; run `migrate --check`; run integrity checks: row counts vs pre-incident metrics, audit hash-chain verification per tenant, ledger balance checks, RLS policy presence |
+| Cut over (full replacement) | Switch the Secrets Manager endpoint/credentials to the new instance (or rename instances); restart API and workers; workers resume from outbox state (idempotent) |
+| Reconcile | Events after the restore point: replay from provider records (webhooks re-fetched by reconciliation jobs), audit anchors and S3 documents; mark any external action between restore point and incident as *uncertain* for reconciliation |
+| Verify | Smoke tests (PL-19 set); SLOs normal; finance (R08) confirms ledgers |
+| Time target | ≤ 4 h end to end (RTO, NFR-057); drill-measured |
+| Follow-up | Postmortem; keep the old instance (stopped, snapshotted) for 30 days for forensics |
+
+### RB-008 Cross-tenant / cross-scope access alert
+
+| Step | Action |
+|---|---|
+| Trigger | AL-33 (SE-06), AL-44 audit chain failure, AL-35 export anomaly, customer report |
+| Sev | **Sev1** until disproven |
+| Contain (≤ 30 min) | Identify the endpoint/task/feature from the event; disable it via kill-switch flag; if unclear, put the affected surface in maintenance mode; revoke sessions of the actor if malicious; stop exports |
+| Preserve | Snapshot DB (tag `incident-<id>`), export relevant logs and audit ranges with digests (chain of custody) |
+| Assess | Determine whether data was actually returned (response logs: object IDs and tenant IDs, never bodies), which tenants/startups/data classes, which principals; check RLS logs and whether RLS blocked it (an RLS-blocked attempt is a detected defect, not a disclosure) |
+| Notify | Compliance lead runs the reportability decision (Batch 4.1 §4.11.5): CERT-In 6 h clock, DPDP/GDPR 72 h, tenant notice ≤ 24 h (DPA target) |
+| Fix | Root-cause fix + regression test in the RLS/authz suites; threat model update |
+| Verify | Full two-tenant fixture suite and BOLA suites pass in staging and prod-smoke |
+| Follow-up | Postmortem; KPI-30 report |
+
+### RB-009 Webhook signature failures
+
+| Step | Action |
+|---|---|
+| Trigger | AL-24 |
+| Diagnose | One provider or many? Did we rotate a secret recently (dual-secret window, Batch 4.1 §4.6.2)? Did the provider rotate keys or change the signature scheme? Clock skew (timestamp tolerance)? Is traffic from unexpected IPs (possible forgery)? |
+| Act | Secret mismatch → restore the previous secret into the acceptance window and complete rotation correctly; provider change → update the verifier (hotfix) with contract tests; forgery → WAF block of source IPs, keep rejecting (401), raise Sev1 if any forged event was accepted |
+| Recover | Request redelivery or run reconciliation via provider API for the gap period (events are never accepted unsigned) |
+| Verify | Signature failures back to ~0; no gap in delivery statuses (reconciliation report) |
+
+### RB-010 Certificate and domain expiry
+
+| Step | Action |
+|---|---|
+| Trigger | AL-25 (21/7-day thresholds), daily domain verification failure |
+| Diagnose | ACM DNS-validation record missing or changed (common for startup custom domains managed by the startup); domain registration expiring; DNS moved away |
+| Act | Re-create validation CNAME (platform domains via IaC; custom domains: notify the startup's domain owner with exact records); renew the domain registration (owner action); if a custom domain no longer points to us: mark unverified → serve 404 for it (BRL-TEN-10) and remove the CloudFront alternate name to prevent takeover (THR-001) |
+| Verify | Certificate status issued; HTTPS check passes; domain verified |
+| Prevent | Domain inventory with owners and expiry dates reviewed monthly (FinOps/ops review) |
+
+### RB-011 Queue poison message
+
+| Step | Action |
+|---|---|
+| Trigger | AL-09, AL-27 (repeated task failures) |
+| Diagnose | DLQ item details: task name, error class, correlation ID, scope; reproduce in staging with the payload (payload contains IDs only, no personal data) |
+| Act | Fix code or data; requeue the DLQ item with **policy recheck** (FR-STD-04) using the admin retry action; if the item represents an external action, check it was not partially executed (uncertain → RB-003); discard only with reason and audit when the business action is no longer valid |
+| Verify | DLQ empty or explained; queue throughput normal (NFR-064) |
+| Prevent | Add a regression test; add schema validation at enqueue time |
+
+### RB-012 Failed release rollback
+
+| Step | Action |
+|---|---|
+| Trigger | AL-26, AL-01/03/06 shortly after a deploy, PL-19 failure |
+| Decide (≤ 10 min) | If the release is the likely cause → **roll back first, investigate later** |
+| Roll back | Pipeline PL-20: previous task definitions for API/BFF/workers; previous frontend prefix; revert flags changed in the release; do **not** reverse migrations (expand-only changes are compatible) |
+| If rollback fails | Old image incompatible with a migration that violated expand/contract → hotfix forward with a corrective migration; if prolonged, maintenance mode and RB-007 side-restore for affected data |
+| Verify | Post-deploy smoke passes on the old version; SLO burn stops |
+| Follow-up | Release marked failed in A090; postmortem for Sev1/Sev2; add a test for the escaped defect; change-failure-rate metric updated (NFR-083) |
+
+### RB-013 Credential or account compromise
+
+| Step | Action |
+|---|---|
+| Trigger | AL-30/31/34/41/42/43, secret-scan hit in a pushed commit, GitHub push-protection bypass, staff report |
+| Contain | Revoke/rotate the credential immediately (provider console or Secrets Manager rotation); revoke user sessions and refresh tokens (≤ 60 s); disable the IAM principal; for GitHub: revoke tokens, review Actions runs |
+| Investigate | CloudTrail and application audit for the principal from the earliest possible exposure time; list actions taken; check data accessed |
+| Notify | Per reportability (Batch 4.1 §4.11.5) |
+| Recover | Re-issue credentials with least privilege; re-enable integrations; restore any changed configuration from revisions (A112) |
+| Follow-up | Postmortem; scope review of similar credentials |
+
+### RB-014 Identity provider outage
+
+| Step | Action |
+|---|---|
+| Trigger | AL-48 |
+| Act | Existing sessions continue until idle expiry; banner "sign-in temporarily unavailable"; coordinate with the AppNAI IdP owner (DP-15); automation continues (service identities do not depend on the IdP); for incident handling only: break-glass dual-control access (Batch 4.1 THR-080) |
+| Verify | Login success ratio normal; no spike of failed logins after recovery (credential stuffing hiding in the noise) |
+
+### RB-015 AI quality degradation or AI security event
+
+| Step | Action |
+|---|---|
+| Trigger | AL-39 (canary leak = Sev1), AL-40, AL-49, reviewer reports of bad drafts |
+| Contain | Route the affected agent to Tier 3 (human tasks) via flag; re-pin the previous prompt/model version (eval-approved); for canary leak: disable the surface (assistant/Copilot) and treat as RB-008 if cross-tenant content is involved |
+| Diagnose | Compare outputs with eval baseline; check for provider model updates; inspect injection detections and source pages |
+| Fix | Prompt or guard fix → eval suite (PL-12) → deploy; add failing cases to the eval set |
+| Follow-up | A084 feedback loop; precision gates (DEC-001) re-measured before restoring L2/L3 |
+
+---
+
+## 4.45 Support model (DEC-044)
+
+| Element | Specification |
+|---|---|
+| Hours | **10:00–18:00 IST, Monday–Saturday** (excluding listed national holidays) |
+| Channels | Portal tickets (W28 for customers, W34 for SaaS clients), email; in-app help for internal users (A106) |
+| Internal response targets (not contractual) | **S1 2 h**, **S2 8 business hours**, **S3 3 business days** (DEC-044); no public SLA until measured (OPT-20-03) |
+| Tiers | **L0** self-service: help centre articles per screen family, status banner. **L1** platform support operator (R13 role; at pilot the growth/compliance lead and a rotating engineer): triage, account/access issues, how-to, known errors. **L2** on-call engineer: defects, data fixes (scripted), integrations. **L3** vendors (AWS, Anthropic, SES, Meta, payment/e-sign providers) via their support plans (verify plan levels; AWS Basic support has no technical case SLA) |
+| Severity definitions (support) | S1: production unusable for a tenant or a legal/compliance exposure; S2: major function impaired, workaround hard; S3: minor issue or question |
+| Access to tenant data | Only through **SupportAccessGrant** (DEC-056, BRL-TEN-09): requested by support, approved by the tenant admin, scoped, read-only by default, ≤ 72 h, visible and audited |
+| Ticket data hygiene | No passwords, OTPs or full payment data in tickets; attachments malware-scanned; tickets retained per DEC-028 (support data treated as customer communication, 24 months) |
+| Knowledge management | Every S1/S2 resolution produces or updates a help article or runbook |
+| Metrics | First response time, resolution time by severity, reopen rate, tickets per tenant per month, top categories (input to the monthly operations review and KPI-25 onboarding friction) |
+| Escalation | S1 → on-call primary immediately (pages if outside hours only when it is also a Sev1 incident) → Founder within 1 h |
+
+---
+
+## 4.46 FinOps governance
+
+### 4.46.1 Principles
+
+1. **Budgets are hard caps for variable AI and provider spend** (M53, DEC-008) and **alerting budgets for infrastructure** (AWS Budgets).
+2. **Every rupee is attributable**: direct costs to the tenant/startup/agent that caused them; shared costs allocated by declared drivers (NFR-093 ≥ 95%).
+3. **Owned-portfolio budgets never subsidize SaaS tenants** (DEC-008); tenant usage is metered and reconciled to invoices (KPI-24 = 100%).
+4. **Open-source and free tiers first; paid by exception** with an approved budget line (BRD §10, NFR-037).
+5. **Unit economics over totals**: decisions use KPI-21/22/23.
+
+### 4.46.2 Tagging policy (AWS resources)
+
+| Tag key | Values | Required on |
+|---|---|---|
+| `product` | `growth-engine` | All |
+| `env` | `prod`, `staging`, `test`, `shared`, `backup` | All |
+| `service` | `api`, `bff-web`, `bff-admin`, `worker`, `fetcher`, `gateway`, `db`, `cache`, `storage`, `edge`, `observability`, `security`, `ci` | All |
+| `budget_line` | `B01`…`B22`, `C03` (DEC-020) | All |
+| `owner` | Team role (e.g. `devops`, `backend`) | All |
+| `data_class` | `public`, `internal`, `confidential`, `restricted` | Data stores |
+| `tenant` | Tenant slug | **Only** on resources dedicated to one tenant (e.g. a Scale-plan dedicated key or bucket); shared resources are allocated by the ledger, not by tags |
+| `cost_center` | `platform`, `owned-portfolio`, `saas` | All |
+
+Tags are enforced by OpenTofu `default_tags` and a Checkov policy; untagged resources fail PL-09 and AWS Config reports them. Cost allocation tags are activated in the management account (verify activation delay).
+
+### 4.46.3 Cost allocation model [ASSUMPTION-126]
+
+| Cost type | Examples | Allocation method | Granularity |
+|---|---|---|---|
+| **Direct, metered in-app** | AI calls (cost ledger per call with agent, startup, tenant), research fetches, emails, WhatsApp messages, e-sign envelopes, payment gateway fees (pass-through), ad spend | Recorded at the time of the call by M53 (reservation → actual) | Per agent, startup, tenant, workflow, campaign |
+| **Direct, dedicated resources** | Tenant-dedicated keys/buckets (Scale plan only) | `tenant` tag | Per tenant |
+| **Shared infrastructure** | ECS compute, RDS, Valkey, ALB, CloudFront, NAT, logs, monitoring | Monthly allocation by drivers: compute by **share of API requests + worker task-seconds** per tenant/startup (from metrics); DB by **share of rows/storage + query time** (sampled via Performance Insights tags or request counts); storage by **S3 prefix size** (S3 Inventory/Storage Lens); CDN by **requests per host** | Per tenant and startup |
+| **Platform overhead** | CI, security tooling, developer seats (B09), contingency | Not allocated to tenants for unit economics of the owned portfolio; included as a platform pool in the SaaS contribution margin at a declared percentage of revenue | Platform |
+
+### 4.46.4 Budgets and alerts
+
+| Budget line (DEC-020) | Pilot ceiling (₹/month, estimate) | Mechanism | Alerts |
+|---|---|---|---|
+| B01 AWS hosting | 5,000 | AWS Budgets (actual + forecast), Cost Anomaly Detection | 50%, 80%, 100% actual; 100% forecast (AL-16) |
+| B02 AI inference | 3,000 (12,000 growth gate; 40,000 scale) | M53 hard cap per agent/startup/tenant/global (BRL-AI-08) | 80% N, 100% hard stop (AL-14) |
+| B03 Public search API | 1,500 | Adapter quota + M53 | 80% / 100% |
+| B04 Extraction compute/overage | 1,000 | Worker pool limits; M53 | 80% / 100% |
+| B05 Email delivery | 500 | SES sending quota per configuration set; M53 per message | 80% / 100% |
+| B06 WhatsApp Business | 2,000 | M53 per template category (verify pricing model) | 80% / 100% |
+| B07 Monitoring/security/CI | 500 | Sentry/GitHub plan limits; log ingestion budget | 80% / 100% |
+| B08 Apollo reserve | 9,000 (OFF) | Flag OFF; budget 0 until approved | Any spend while OFF = Sev3 |
+| B09 Claude Code seats | 3,600 | Seat count (developer tool, ASSUMPTION-020) | Monthly review |
+| B10 Optional integration reserve | 1,000 | Approval per use | Any spend |
+| B11 Contingency 15% | (computed) | Founder approval to draw | Each draw recorded |
+| B12–B22 | 0 until approved | Flags OFF; budget 0 | Any spend = Sev3 |
+
+**Run-cost reconciliation:** B01…B10 base ₹14,500 + 15% contingency = ₹16,675 (DEC-004). The monthly review compares actuals per line with these ceilings (NFR-091). [CONFLICT-110] records the tension between B07/B21 and the WAF and tooling needs identified in Batch 4.1.
+
+### 4.46.5 Unit-economics dashboard (DB-09)
+
+| KPI | Formula (Part 1 §1.4.2) | Data | Granularity | Target |
+|---|---|---|---|---|
+| KPI-21 AI cost per task | AI spend ÷ completed AI tasks, per agent | M53 cost ledger; ModelRun | Agent × startup × day | Within each agent budget (Part 7) |
+| KPI-22 Cost per qualified opportunity | (AI + data + channel + allocated infra) ÷ qualified opportunities | Ledger + allocation (§4.46.3) + A027 qualified count | Startup × month | Falling vs baseline (BRD §8 scale gate) |
+| KPI-23 SaaS contribution margin per tenant | Service revenue − attributable and allocated delivery cost | ServiceInvoice (A101) − tenant direct costs − allocated shared costs − platform pool share | Tenant × month | Positive by W6 (OPT-20-01) |
+| Supporting: cost per outbound message | Channel spend ÷ delivered messages | M53 + delivery events | Channel × startup | Track |
+| Supporting: infra cost per active workspace | B01 actual ÷ active workspaces | AWS CUR + workspace count | Month | Falling with scale |
+| Supporting: Tier 0 share | Tier 0 resolutions ÷ AI-eligible tasks | Gateway | Agent | ≥ 20% (NFR-092) |
+
+Every figure shows numerator, denominator, as-of and currency (RPT-R1); forecasts are labelled estimates (RPT-R4).
+
+### 4.46.6 Governance cadence
+
+| Cadence | Forum | Inputs | Outputs |
+|---|---|---|---|
+| Daily (automated) | Alerts | Budgets, anomalies | AL-14/15/16 |
+| Weekly | Engineering stand-up (15 min FinOps slot) | Spend vs budget to date, top 5 cost movers | Actions (e.g. throttle an agent) |
+| **Monthly** | FinOps review (Founder, R08, DevOps, AI lead; 60 min) | AWS CUR/Cost Explorer by tag, M53 ledgers, allocation report, unit-economics dashboard, idle/rightsizing report, free-tier limit status (verify), commitments analysis | Budget adjustments (approved per BRL-APR-11), rightsizing tickets, tenant pricing inputs for the Service Owner (DEC-047) |
+| Quarterly | Scale-gate and commitment review | 3 months of stable usage | Savings Plans/reserved capacity decisions (only after 3 stable months), architecture cost ADRs |
+| Per new adapter/agent | Enablement review | Cost estimate with formula and budget line | Flag ON only with an approved line |
+
+---
+
+## 4.47 Backup, restore and DR drill schedule
+
+| Cadence | Drill / check | Scope | Success criteria | Evidence | Owner |
+|---|---|---|---|---|---|
+| Daily (automated) | Backup health | RDS automated backups, PITR latest restorable time, AWS Backup jobs, S3 versioning and replication status | All jobs succeeded; PITR lag ≤ 5 min (supports RPO 15 min) | Job report; AL-23 silent | DevOps |
+| Daily (automated) | Audit chain verification | All tenants | 100% pass (AL-44) | Job log | DevOps |
+| Weekly (automated) | Restore smoke | Latest **staging** snapshot restored to a temporary instance; migrations check; row-count checks; destroyed after | Completes ≤ 60 min | Pipeline PL-N log | DevOps |
+| **Monthly** | Production restore verification | Restore the latest **production** snapshot (or PITR to a random time in the last 7 days) **inside the backup account's isolated restore sandbox** with production-equivalent controls; run integrity suite (row counts vs metrics, hash chain, ledger balances, RLS policies present); destroy after | Restore + checks ≤ 2 h; integrity 100% | Drill report in A090 (NFR-012) | DevOps + backend |
+| Monthly | Object restore | Restore 10 random S3 objects from previous versions and from the backup copy; verify SHA-256 | 100% match | Report | DevOps |
+| Monthly | Rollback rehearsal | PL-20 in staging | ≤ 15 min | Pipeline log | DevOps |
+| **Quarterly** | Full RTO drill (game day) | Simulated data-corruption incident: RB-007 side restore + repair, or full replacement in staging with production-sized data | End-to-end ≤ 4 h (RTO); data loss ≤ 15 min (RPO) | Timed report; postmortem-style review | DevOps + IC |
+| Quarterly | Secrets and key recovery | Restore a deleted (scheduled) secret; confirm KMS key policies allow backup-account decryption | Pass | Checklist | DevOps |
+| Quarterly | IaC rebuild | Rebuild staging from scratch (NFR-087) | ≤ 1 working day | Report | DevOps |
+| **Semi-annual** | Cross-region restore | Restore production backup copy in the backup region (verify ap-south-2 service availability, DEC-040) to a temporary environment; bring up API read-only against it | ≤ 24 h (regional RTO, CONFLICT-112) | Report | DevOps |
+| Semi-annual | Breach notification tabletop | SI-1 scenario with the compliance lead and counsel | Affected list ≤ 4 h; drafts ≤ 6 h (NFR-094) | Tabletop notes | Compliance lead |
+| **Annual** | Regional DR tabletop + chaos day | Region loss, IdP loss, provider loss scenarios (CH-01…04) | Runbooks updated; action items closed | Report | Founder |
+| Annual | Runbook exercise | Every RB-### exercised at least once (drill or real incident) | 100% coverage | Runbook log | DevOps |
+
+**Backup configuration summary:** RDS automated backups with PITR, retention **35 days** (DEC-028); AWS Backup daily snapshots copied to the backup account and backup region with **vault lock** (THR-061); S3 versioning with lifecycle (noncurrent versions 35 days for documents, Object Lock compliance mode for audit anchors); Valkey treated as non-durable (rebuilt from PostgreSQL; broker messages recoverable from the outbox). Backups inherit the source data classification; restored copies are destroyed after verification.
+
+---
+
+## 4.48 Operational readiness checklist (per wave gate and go-live)
+
+| # | Item | Evidence |
+|---|---|---|
+| 1 | All NFR gates for the wave verified (Batch 4.2 §4.28) | Release record (A090) |
+| 2 | SLO dashboards (DB-01…10) live; alert rules for new services deployed and tested with synthetic metrics | Alert test log |
+| 3 | Runbooks for new failure modes written and linked from alerts | `ops/runbooks` diff |
+| 4 | On-call rotation published; phone routing tested | Test page |
+| 5 | Backups and restore drill current (≤ 31 days) | Drill report |
+| 6 | Threat model updated for new boundaries/adapters; pen test done when required (NFR-072) | Batch 4.1 artefacts |
+| 7 | Feature flags for new channels/adapters default OFF in prod; enablement approvals recorded | Flag registry |
+| 8 | Budgets and caps configured for new agents/providers | CFG-23 revisions |
+| 9 | Support articles and ticket categories updated | Help centre diff |
+| 10 | DPIA and vendor review completed where triggered | Compliance register |
+| 11 | Rollback plan and data-repair approach documented for the release | Release record |
+| 12 | Hypercare plan (Part 8) staffed for the first 2 weeks after a wave go-live | Part 8 plan |
+
+---
+
+## 4.49 Registers for this batch
+
+### 4.49.1 Architecture decisions issued
+
+| ADR | Decision | Status |
+|---|---|---|
+| ADR-050 | GitHub Actions CI/CD with OIDC federation to environment-scoped AWS roles; no static cloud keys | Proposed; reconcile with Part 3 |
+| ADR-051 | OpenTofu for IaC with S3 state, module/live layout, policy-as-code checks; Terraform-compatible subset | Proposed; reconcile with Part 3 |
+| ADR-052 | Feature flags via django-waffle behind an internal `flags` service at pilot; Unleash OSS as a scale-gate option | Proposed |
+| ADR-053 | Rolling deploys with ECS circuit breaker at pilot; blue/green at the scale gate; expand/contract migrations mandatory; no production down-migrations | Proposed |
+| ADR-058 | Observability: OTel SDKs + ADOT collector → X-Ray, CloudWatch metrics/logs; Sentry for errors; RUM via first-party web-vitals beacon; Grafana OSS optional at scale (DEC-041) | Proposed |
+| ADR-059 | AWS multi-account layout: management, log-archive, nonprod, prod, backup | Proposed |
+| ADR-060 | Monorepo (pnpm/Turborepo + uv) for both frontends, shared UI, backend, AI assets, IaC and ops | Proposed |
+
+### 4.49.2 Recommendations, assumptions, gaps, conflicts
+
+| ID | Type | Statement | Resolution / owner |
+|---|---|---|---|
+| RECOMMENDATION-045 | Recommendation | Release strategy: weekly trains, deploy windows inside support hours, rolling → blue/green, expand/contract migrations, monthly rollback rehearsal | Accept (CTO) |
+| RECOMMENDATION-047 | Recommendation | Feature-flag tooling and lifecycle (classes, defaults OFF, ≤ 90-day release flags, audited changes) | Accept (CTO) |
+| ASSUMPTION-121 | Assumption | GitHub (named in FRD §6 M09) is the SCM and CI platform; free-plan Actions minutes suffice with caching (verify) | Sprint 0 |
+| ASSUMPTION-122 | Assumption | OpenTofu is acceptable as the IaC tool (RECOMMENDATION-010 names Terraform/OpenTofu) pending the Part 3 ADR | Reconcile with Part 3 |
+| ASSUMPTION-123 | Assumption | On-call is staffed by three engineers in weekly rotation with the Founder as secondary; outside support hours only Sev1 pages, best effort | PO confirmation |
+| ASSUMPTION-126 | Assumption | Shared infrastructure costs are allocated by usage drivers (requests, task-seconds, storage) rather than per-tenant resources | FinOps review at W5 |
+| GAP-122 | Gap | No on-call compensation or out-of-hours coverage commitment in the baseline | Founder decision before W3 |
+| GAP-123 | Gap | Part 3 ADRs (compute platform, IaC, CI) not available while this batch was written; ADR-050…053, 058…060 may duplicate or conflict | Reconcile at Part 3/Part 4 review |
+| GAP-126 | Gap | No customer-facing status page or incident communication channel for SaaS tenants | Decide before onboarding external tenants (W5) |
+| GAP-127 | Gap | B22 (LLM observability/eval tooling) is ₹0; the eval harness must run on OSS (DeepEval candidate, M54) and CI minutes | Accept OSS-only at pilot; revisit at the growth gate |
+| CONFLICT-110 | Conflict | B07 (₹500/month monitoring/security/CI) and B21 (CDN/WAF, ₹0 until approved) vs the need for AWS WAF on public intake (NFR-022, THR-003) and possible CI minute overage | Proposed: fund a minimal WAF web ACL (managed core rules + rate rules) from B01 headroom or B11 contingency from W2 with Founder approval; keep all other tooling OSS |
+
+### 4.49.3 Risks raised
+
+| RSK | Risk | Likelihood | Impact | Mitigation | Owner |
+|---|---|---|---|---|---|
+| RSK-345 | Out-of-hours incidents go unhandled for hours (small team, CONFLICT-113, GAP-122) | Medium | High | Automated mitigation; Sev1-only paging; customer comms templates | Founder |
+| RSK-346 | Pipeline duration grows beyond 15 min PR feedback and slows delivery | Medium | Medium | Turborepo/uv caching; affected-module test selection; nightly full suites | DevOps |
+| RSK-347 | Expand/contract discipline slips and a release cannot be rolled back | Low | High | PL-07 migration linter; review checklist; monthly rollback rehearsal | Backend lead |
+| RSK-348 | Observability cost (CloudWatch logs/metrics) exceeds B07/B01 as volume grows | Medium | Medium | Log levels, sampling, dimension limits, retention tiers; monthly review | DevOps |
+| RSK-349 | Alert fatigue causes missed Sev1 | Medium | High | Alert hygiene rule; SLO-based alerting; monthly tuning | DevOps |
+| RSK-350 | Restore drills skipped under delivery pressure | Medium | High | AL-46; release gate blocks when the drill is overdue (PL-17) | DevOps |
+| RSK-351 | Cost allocation disputes with SaaS tenants (shared-cost drivers) | Low | Medium | Published allocation method; metered direct costs; reconciliation (KPI-24) | Service owner |
+
+---
+
+## 4.50 Quality gate: Batch 4.3
+
+| # | Check | Result | Notes / fixes applied |
+|---|---|---|---|
+| 1 | Every requirement traced to a source | **Pass** | Pipeline gates cite NFR/BRL/DEC/RECOMMENDATION; runbooks cite rules and decisions |
+| 2 | Assumptions, gaps, conflicts tagged and logged | **Pass** | §4.49.2 |
+| 3 | IDs unique and consistent with earlier parts | **Pass** | RB-001…015, AL-01…49, SLO-01…12, DB-01…10, PL-01…20 local; ADR-050…053, 058…060 in the allocated range; Batch 4.1 issued ADR-054…057 |
+| 4 | No requirement lacks a test | **Pass** | Every gate, alert (alert unit tests) and runbook (drill schedule) has verification |
+| 5 | Negative, edge, security and accessibility cases covered | **Pass** | Rollback failure path, poison messages, forged webhooks, axe gate in pipeline |
+| 6 | No agent lacks guardrail, fallback, KPI and cost estimate | **N/A (Part 7)** | AI eval gate (PL-12) and RB-015 apply to all agents |
+| 7 | Time-sensitive facts flagged "verify" | **Pass** | GitHub minutes, Sentry quotas, SES thresholds, WhatsApp pricing, AWS service availability in the backup region, paging tool limits |
+| 8 | No restricted data routed to free-tier models | **Pass** | RB-001 restates the Tier 2 restriction during an Anthropic outage |
+| 9 | Consistent with earlier parts | **Pass** | DEC-018/032 SLOs, DEC-041 tooling, DEC-044 support, DEC-020 budget lines, DEC-061/063 W0 gates, §2.35 isolation |
+
+**Self-review corrections made during drafting:** (1) I first designed 24×7 paging for all Sev2 alerts; with DEC-044 support hours and 4.0 FTE, I limited out-of-hours paging to Sev1 and logged CONFLICT-113 and GAP-122. (2) I first placed restore drills in production; I moved them to an isolated restore sandbox in the backup account so production data never lands in lower environments (THR-065). (3) I first allowed down-migrations for rollback; I replaced them with roll-forward only (ADR-053).
+
+**Status: Part 4 Batch 4.3 complete. Part 4 (Security, Compliance, NFRs, DevOps and Observability) is complete across Batches 4.1–4.3. Next: Part 5 (Epics and user stories).**

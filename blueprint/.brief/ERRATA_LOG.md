@@ -16,3 +16,12 @@
 11. FR-W22 is a W2 screen whose order and invoice data arrives in W4. Resolution: in W2 it shows only enquiries, meetings and documents; its cards are enabled progressively.
 12. Part 2.4 has no notification for losing custom-domain verification. Resolution: add NT-046 "Domain verification lost / certificate expiring" (High; R12, R05L).
 13. Parts 5.2 and 5.3 cite "Part 5.1 §5.x" placeholders; resolve them after 5.1 lands.
+
+## From Part 4
+14. CONFLICT-114: BRL-TEN-08 says WebAuthn is "recommended"; DEC-019 checks it for privileged roles. Resolution: WebAuthn/passkey is required for R01, R08–R12 and approvers once the IdP supports it (Sprint 0 check); TOTP is the interim minimum.
+15. CONFLICT-111: log retention. Resolution: security/application logs kept 1 year (DPDP Rules, CERT-In 180-day minimum; verify). AI run logs: redacted metadata 1 year, payload bodies 90 days. Amend DEC-028.
+16. CONFLICT-112: the RTO of 4 h covers AZ/instance/DB failures only. A regional outage has RTO ≤ 24 h / RPO ≤ 15 min (cross-region backups) in the pilot; multi-region active-passive is a scale-gate option. Amend DEC-018.
+17. CONFLICT-113: support hours vs 24×7 SLOs. Resolution: automated monitoring is 24×7. Human on-call is best-effort outside 10:00–18:00 IST for S1 platform incidents; Critical business escalations (§2.30.2) page out of hours only for S1 categories (cross-tenant exposure, emergency stop, suppression breach, payment discrepancy > ₹1 lakh).
+18. CONFLICT-110: WAF is needed. Resolution: AWS WAF managed rules on CloudFront from W2 (public intake live); cost moves from B21 (estimate; verify) and B07 is revised.
+19. Object Lock mode: compliance mode (per Part 4).
+20. Part 4 assumptions on compute/IaC/CI must be reconciled with Part 3 ADRs (GAP-123).
