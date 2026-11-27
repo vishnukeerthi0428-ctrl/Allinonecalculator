@@ -1,0 +1,2674 @@
+{
+ "04": [
+  {
+   "level": 0,
+   "title": "(front matter)",
+   "start": 1,
+   "end": 6,
+   "prose_lines": 6,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Product purpose and operating boundary",
+   "start": 7,
+   "end": 10,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Initial startup configurations",
+   "start": 11,
+   "end": 34,
+   "prose_lines": 1,
+   "tables": 1,
+   "rows": 4
+  },
+  {
+   "level": 2,
+   "title": "Technology and execution principles",
+   "start": 35,
+   "end": 36,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Independent deployment topology",
+   "start": 37,
+   "end": 69,
+   "prose_lines": 0,
+   "tables": 1,
+   "rows": 9
+  },
+  {
+   "level": 1,
+   "title": "Engineering contracts",
+   "start": 70,
+   "end": 72,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Capacity, reliability and recovery acceptance",
+   "start": 73,
+   "end": 116,
+   "prose_lines": 1,
+   "tables": 1,
+   "rows": 9
+  },
+  {
+   "level": 1,
+   "title": "Configuration and activation",
+   "start": 117,
+   "end": 118,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Dependency-ordered implementation and operations",
+   "start": 119,
+   "end": 154,
+   "prose_lines": 1,
+   "tables": 1,
+   "rows": 7
+  },
+  {
+   "level": 1,
+   "title": "Commercial module delivery backlog",
+   "start": 155,
+   "end": 425,
+   "prose_lines": 0,
+   "tables": 1,
+   "rows": 66
+  },
+  {
+   "level": 1,
+   "title": "Production runbook",
+   "start": 426,
+   "end": 455,
+   "prose_lines": 0,
+   "tables": 1,
+   "rows": 8
+  },
+  {
+   "level": 1,
+   "title": "Consolidated effort and operating cost assumptions",
+   "start": 456,
+   "end": 530,
+   "prose_lines": 4,
+   "tables": 2,
+   "rows": 16
+  },
+  {
+   "level": 1,
+   "title": "Capacity, reliability and recovery acceptance",
+   "start": 531,
+   "end": 574,
+   "prose_lines": 1,
+   "tables": 1,
+   "rows": 9
+  },
+  {
+   "level": 2,
+   "title": "React commercial website and customer portal",
+   "start": 575,
+   "end": 577,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Separate React admin portal",
+   "start": 578,
+   "end": 580,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Django modular monolith",
+   "start": 581,
+   "end": 583,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Worker & scheduler",
+   "start": 584,
+   "end": 586,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Data and RAG",
+   "start": 587,
+   "end": 589,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Channel adapters",
+   "start": 590,
+   "end": 592,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "AI runtime",
+   "start": 593,
+   "end": 595,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Deployment",
+   "start": 596,
+   "end": 598,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "State machine",
+   "start": 599,
+   "end": 601,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Security boundary",
+   "start": 602,
+   "end": 604,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Delivery engineering",
+   "start": 605,
+   "end": 607,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Admin auto-driven",
+   "start": 608,
+   "end": 610,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Website and confidential Admin operating contract",
+   "start": 611,
+   "end": 638,
+   "prose_lines": 5,
+   "tables": 1,
+   "rows": 4
+  },
+  {
+   "level": 2,
+   "title": "Four independent frontend deployment boundaries",
+   "start": 639,
+   "end": 641,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Replacement-first engineering delivery and validation gates",
+   "start": 642,
+   "end": 644,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Engineering delivery gates",
+   "start": 645,
+   "end": 648,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Implementation, verification and delivery controls",
+   "start": 649,
+   "end": 650,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Dependency-based work breakdown and cost discipline",
+   "start": 651,
+   "end": 712,
+   "prose_lines": 1,
+   "tables": 2,
+   "rows": 12
+  },
+  {
+   "level": 2,
+   "title": "Acceptance and evidence record",
+   "start": 713,
+   "end": 734,
+   "prose_lines": 1,
+   "tables": 1,
+   "rows": 5
+  },
+  {
+   "level": 1,
+   "title": "Task-level estimates and executable predecessor plan",
+   "start": 735,
+   "end": 776,
+   "prose_lines": 4,
+   "tables": 1,
+   "rows": 6
+  },
+  {
+   "level": 1,
+   "title": "Optimization engineering and acceptance",
+   "start": 777,
+   "end": 779,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Cost",
+   "start": 780,
+   "end": 796,
+   "prose_lines": 16,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Scalability",
+   "start": 797,
+   "end": 807,
+   "prose_lines": 10,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Architecture",
+   "start": 808,
+   "end": 818,
+   "prose_lines": 10,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Maintainability",
+   "start": 819,
+   "end": 821,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Reusability",
+   "start": 822,
+   "end": 828,
+   "prose_lines": 6,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Development Productivity",
+   "start": 829,
+   "end": 835,
+   "prose_lines": 6,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "SaaS Profitability",
+   "start": 836,
+   "end": 845,
+   "prose_lines": 9,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Implementation acceptance and verification",
+   "start": 846,
+   "end": 847,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Task and operating cost estimates",
+   "start": 848,
+   "end": 851,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Capacity and region decisions",
+   "start": 852,
+   "end": 855,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Independent products and frontends",
+   "start": 856,
+   "end": 859,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Architecture decision rationale",
+   "start": 860,
+   "end": 863,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Repository and modular boundaries",
+   "start": 864,
+   "end": 867,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Existing identity reuse",
+   "start": 868,
+   "end": 871,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Development dependencies",
+   "start": 872,
+   "end": 875,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Implementation acceptance and final decision controls",
+   "start": 876,
+   "end": 877,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Task and operating cost estimates",
+   "start": 878,
+   "end": 880,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Capacity and region decisions",
+   "start": 881,
+   "end": 883,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Independent products and frontends",
+   "start": 884,
+   "end": 886,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Architecture decision rationale",
+   "start": 887,
+   "end": 889,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Repository and modular boundaries",
+   "start": 890,
+   "end": 892,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Existing identity reuse",
+   "start": 893,
+   "end": 895,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Development dependencies",
+   "start": 896,
+   "end": 898,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Resource and deployment approval",
+   "start": 899,
+   "end": 900,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Approval review effort and scope reconciliation",
+   "start": 901,
+   "end": 902,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Current multi-startup, omnichannel and automation scope",
+   "start": 903,
+   "end": 904,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Architecture and delivery",
+   "start": 905,
+   "end": 1023,
+   "prose_lines": 3,
+   "tables": 2,
+   "rows": 22
+  }
+ ],
+ "05": [
+  {
+   "level": 0,
+   "title": "(front matter)",
+   "start": 1,
+   "end": 6,
+   "prose_lines": 6,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Product purpose and operating boundary",
+   "start": 7,
+   "end": 10,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Initial startup configurations",
+   "start": 11,
+   "end": 34,
+   "prose_lines": 1,
+   "tables": 1,
+   "rows": 4
+  },
+  {
+   "level": 2,
+   "title": "Technology and execution principles",
+   "start": 35,
+   "end": 36,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Workflow register — end-to-end execution",
+   "start": 37,
+   "end": 100,
+   "prose_lines": 1,
+   "tables": 1,
+   "rows": 14
+  },
+  {
+   "level": 1,
+   "title": "Channel and communication policies",
+   "start": 101,
+   "end": 125,
+   "prose_lines": 1,
+   "tables": 1,
+   "rows": 6
+  },
+  {
+   "level": 1,
+   "title": "Inbound marketing acquisition",
+   "start": 126,
+   "end": 155,
+   "prose_lines": 0,
+   "tables": 1,
+   "rows": 8
+  },
+  {
+   "level": 2,
+   "title": "WhatsApp Business",
+   "start": 156,
+   "end": 162,
+   "prose_lines": 6,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Website conversational assistant",
+   "start": 163,
+   "end": 169,
+   "prose_lines": 6,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Unified omnichannel routing",
+   "start": 170,
+   "end": 176,
+   "prose_lines": 6,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Social listening",
+   "start": 177,
+   "end": 183,
+   "prose_lines": 6,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Content studio",
+   "start": 184,
+   "end": 190,
+   "prose_lines": 6,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Social publishing",
+   "start": 191,
+   "end": 197,
+   "prose_lines": 6,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "SEO and search visibility",
+   "start": 198,
+   "end": 204,
+   "prose_lines": 6,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Landing pages and attribution",
+   "start": 205,
+   "end": 211,
+   "prose_lines": 6,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Campaign management",
+   "start": 212,
+   "end": 218,
+   "prose_lines": 6,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Paid ads integration",
+   "start": 219,
+   "end": 225,
+   "prose_lines": 6,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Webinars and demonstrations",
+   "start": 226,
+   "end": 232,
+   "prose_lines": 6,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Referral and partner lead capture",
+   "start": 233,
+   "end": 239,
+   "prose_lines": 6,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Workflow register — end-to-end execution",
+   "start": 240,
+   "end": 303,
+   "prose_lines": 1,
+   "tables": 1,
+   "rows": 14
+  },
+  {
+   "level": 1,
+   "title": "Conversion state machines and evidence requirements",
+   "start": 304,
+   "end": 304,
+   "prose_lines": 0,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Business-specific acquisition and commercial conversion",
+   "start": 305,
+   "end": 344,
+   "prose_lines": 2,
+   "tables": 2,
+   "rows": 9
+  },
+  {
+   "level": 2,
+   "title": "Proposal builder",
+   "start": 345,
+   "end": 363,
+   "prose_lines": 18,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Quote and pricing engine",
+   "start": 364,
+   "end": 382,
+   "prose_lines": 18,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Negotiation and objection handling",
+   "start": 383,
+   "end": 401,
+   "prose_lines": 18,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Contract and MoU workflow",
+   "start": 402,
+   "end": 420,
+   "prose_lines": 18,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Payment and closure",
+   "start": 421,
+   "end": 439,
+   "prose_lines": 18,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Onboarding and handoff",
+   "start": 440,
+   "end": 458,
+   "prose_lines": 18,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Partner deployment pipeline",
+   "start": 459,
+   "end": 477,
+   "prose_lines": 18,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Retention and renewal",
+   "start": 478,
+   "end": 496,
+   "prose_lines": 18,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Lost deal and feedback",
+   "start": 497,
+   "end": 515,
+   "prose_lines": 18,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Revenue and attribution",
+   "start": 516,
+   "end": 534,
+   "prose_lines": 18,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Website and confidential Admin operating contract",
+   "start": 535,
+   "end": 561,
+   "prose_lines": 4,
+   "tables": 1,
+   "rows": 4
+  },
+  {
+   "level": 2,
+   "title": "Website-to-Admin workflow",
+   "start": 562,
+   "end": 563,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Provider-neutral automation and recovery",
+   "start": 564,
+   "end": 567,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Workflow quality gates",
+   "start": 568,
+   "end": 575,
+   "prose_lines": 7,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Implementation, verification and delivery controls",
+   "start": 576,
+   "end": 616,
+   "prose_lines": 2,
+   "tables": 1,
+   "rows": 5
+  },
+  {
+   "level": 2,
+   "title": "Proposed workflow fixture (configuration example)",
+   "start": 617,
+   "end": 623,
+   "prose_lines": 6,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Acceptance and evidence record",
+   "start": 624,
+   "end": 645,
+   "prose_lines": 1,
+   "tables": 1,
+   "rows": 5
+  },
+  {
+   "level": 1,
+   "title": "Workflow execution and recovery decision table",
+   "start": 646,
+   "end": 646,
+   "prose_lines": 0,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Deterministic execution",
+   "start": 647,
+   "end": 670,
+   "prose_lines": 0,
+   "tables": 1,
+   "rows": 6
+  },
+  {
+   "level": 2,
+   "title": "Business regression fixtures",
+   "start": 671,
+   "end": 694,
+   "prose_lines": 1,
+   "tables": 1,
+   "rows": 4
+  },
+  {
+   "level": 1,
+   "title": "Optimization engineering and acceptance",
+   "start": 695,
+   "end": 697,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Automation",
+   "start": 698,
+   "end": 714,
+   "prose_lines": 16,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Stability",
+   "start": 715,
+   "end": 729,
+   "prose_lines": 14,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Scalability",
+   "start": 730,
+   "end": 732,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Architecture",
+   "start": 733,
+   "end": 735,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "API & Integration",
+   "start": 736,
+   "end": 738,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "AI Intelligence",
+   "start": 739,
+   "end": 741,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Data Quality",
+   "start": 742,
+   "end": 745,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Implementation acceptance and verification",
+   "start": 746,
+   "end": 747,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Async acknowledgement",
+   "start": 748,
+   "end": 751,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Workflow trigger and state",
+   "start": 752,
+   "end": 755,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Follow-up stop conditions",
+   "start": 756,
+   "end": 759,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Autonomy and approval",
+   "start": 760,
+   "end": 763,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Simulation side effects",
+   "start": 764,
+   "end": 767,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Workflow failure orchestration",
+   "start": 768,
+   "end": 771,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Inbound and outbound journeys",
+   "start": 772,
+   "end": 775,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Objection resolution",
+   "start": 776,
+   "end": 779,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Shared workflow and adapter code",
+   "start": 780,
+   "end": 783,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Implementation acceptance and final decision controls",
+   "start": 784,
+   "end": 785,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Async acknowledgement",
+   "start": 786,
+   "end": 788,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Workflow trigger and state",
+   "start": 789,
+   "end": 791,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Follow-up stop conditions",
+   "start": 792,
+   "end": 794,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Autonomy and approval",
+   "start": 795,
+   "end": 797,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Simulation side effects",
+   "start": 798,
+   "end": 800,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Workflow failure orchestration",
+   "start": 801,
+   "end": 803,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Inbound and outbound journeys",
+   "start": 804,
+   "end": 806,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Objection resolution",
+   "start": 807,
+   "end": 809,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Shared workflow and adapter code",
+   "start": 810,
+   "end": 812,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Boundary and acceptance conditions",
+   "start": 813,
+   "end": 814,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Current multi-startup, omnichannel and automation scope",
+   "start": 815,
+   "end": 816,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Workflow design",
+   "start": 817,
+   "end": 862,
+   "prose_lines": 2,
+   "tables": 1,
+   "rows": 9
+  }
+ ],
+ "09": [
+  {
+   "level": 0,
+   "title": "(front matter)",
+   "start": 1,
+   "end": 6,
+   "prose_lines": 6,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Product purpose and operating boundary",
+   "start": 7,
+   "end": 10,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Initial startup configurations",
+   "start": 11,
+   "end": 34,
+   "prose_lines": 1,
+   "tables": 1,
+   "rows": 4
+  },
+  {
+   "level": 2,
+   "title": "Technology and execution principles",
+   "start": 35,
+   "end": 36,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Independent deployment topology",
+   "start": 37,
+   "end": 69,
+   "prose_lines": 0,
+   "tables": 1,
+   "rows": 9
+  },
+  {
+   "level": 1,
+   "title": "Engineering contracts",
+   "start": 70,
+   "end": 72,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Capacity, reliability and recovery acceptance",
+   "start": 73,
+   "end": 116,
+   "prose_lines": 1,
+   "tables": 1,
+   "rows": 9
+  },
+  {
+   "level": 1,
+   "title": "Configuration and activation",
+   "start": 117,
+   "end": 118,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Unified Command Centre — seven primary views",
+   "start": 119,
+   "end": 146,
+   "prose_lines": 1,
+   "tables": 1,
+   "rows": 7
+  },
+  {
+   "level": 2,
+   "title": "React commercial website and customer portal",
+   "start": 147,
+   "end": 149,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Separate React admin portal",
+   "start": 150,
+   "end": 152,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Django modular monolith",
+   "start": 153,
+   "end": 155,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Worker & scheduler",
+   "start": 156,
+   "end": 158,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Data and RAG",
+   "start": 159,
+   "end": 161,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Channel adapters",
+   "start": 162,
+   "end": 164,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "AI runtime",
+   "start": 165,
+   "end": 167,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Deployment",
+   "start": 168,
+   "end": 170,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "State machine",
+   "start": 171,
+   "end": 173,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Security boundary",
+   "start": 174,
+   "end": 176,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Delivery engineering",
+   "start": 177,
+   "end": 179,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Admin auto-driven",
+   "start": 180,
+   "end": 182,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Website and confidential Admin operating contract",
+   "start": 183,
+   "end": 209,
+   "prose_lines": 4,
+   "tables": 1,
+   "rows": 4
+  },
+  {
+   "level": 2,
+   "title": "High-level interface topology",
+   "start": 210,
+   "end": 212,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Provider-independent architecture and resilience",
+   "start": 213,
+   "end": 215,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Deployment and architecture acceptance",
+   "start": 216,
+   "end": 219,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Implementation, verification and delivery controls",
+   "start": 220,
+   "end": 221,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Production boundary and deployment decisions",
+   "start": 222,
+   "end": 253,
+   "prose_lines": 1,
+   "tables": 1,
+   "rows": 6
+  },
+  {
+   "level": 2,
+   "title": "Acceptance and evidence record",
+   "start": 254,
+   "end": 275,
+   "prose_lines": 1,
+   "tables": 1,
+   "rows": 5
+  },
+  {
+   "level": 1,
+   "title": "Independent AWS deployment boundaries and availability",
+   "start": 276,
+   "end": 276,
+   "prose_lines": 0,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Architecture decisions",
+   "start": 277,
+   "end": 301,
+   "prose_lines": 1,
+   "tables": 1,
+   "rows": 6
+  },
+  {
+   "level": 1,
+   "title": "Optimization engineering and acceptance",
+   "start": 302,
+   "end": 304,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Security",
+   "start": 305,
+   "end": 307,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Stability",
+   "start": 308,
+   "end": 310,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Scalability",
+   "start": 311,
+   "end": 321,
+   "prose_lines": 10,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Architecture",
+   "start": 322,
+   "end": 332,
+   "prose_lines": 10,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Database",
+   "start": 333,
+   "end": 335,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Deployment & Recovery",
+   "start": 336,
+   "end": 339,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Implementation acceptance and verification",
+   "start": 340,
+   "end": 341,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Product and audience isolation",
+   "start": 342,
+   "end": 345,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Growth workload",
+   "start": 346,
+   "end": 349,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Capacity and region decisions",
+   "start": 350,
+   "end": 353,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Independent products and frontends",
+   "start": 354,
+   "end": 357,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Shared library boundaries",
+   "start": 358,
+   "end": 361,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Architecture decision rationale",
+   "start": 362,
+   "end": 365,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Infrastructure as code completeness",
+   "start": 366,
+   "end": 369,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Implementation acceptance and final decision controls",
+   "start": 370,
+   "end": 371,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Product and audience isolation",
+   "start": 372,
+   "end": 374,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Growth workload",
+   "start": 375,
+   "end": 377,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Capacity and region decisions",
+   "start": 378,
+   "end": 380,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Independent products and frontends",
+   "start": 381,
+   "end": 383,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Shared library boundaries",
+   "start": 384,
+   "end": 386,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Architecture decision rationale",
+   "start": 387,
+   "end": 389,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Infrastructure as code completeness",
+   "start": 390,
+   "end": 392,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Boundary and acceptance conditions",
+   "start": 393,
+   "end": 394,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Current multi-startup, omnichannel and automation scope",
+   "start": 395,
+   "end": 396,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "High-level design",
+   "start": 397,
+   "end": 442,
+   "prose_lines": 2,
+   "tables": 1,
+   "rows": 9
+  }
+ ],
+ "10": [
+  {
+   "level": 0,
+   "title": "(front matter)",
+   "start": 1,
+   "end": 6,
+   "prose_lines": 6,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Product purpose and operating boundary",
+   "start": 7,
+   "end": 10,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Initial startup configurations",
+   "start": 11,
+   "end": 34,
+   "prose_lines": 1,
+   "tables": 1,
+   "rows": 4
+  },
+  {
+   "level": 2,
+   "title": "Technology and execution principles",
+   "start": 35,
+   "end": 36,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Independent deployment topology",
+   "start": 37,
+   "end": 69,
+   "prose_lines": 0,
+   "tables": 1,
+   "rows": 9
+  },
+  {
+   "level": 1,
+   "title": "Engineering contracts",
+   "start": 70,
+   "end": 72,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Capacity, reliability and recovery acceptance",
+   "start": 73,
+   "end": 116,
+   "prose_lines": 1,
+   "tables": 1,
+   "rows": 9
+  },
+  {
+   "level": 1,
+   "title": "Configuration and activation",
+   "start": 117,
+   "end": 118,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Global filter hierarchy and contextual filters",
+   "start": 119,
+   "end": 158,
+   "prose_lines": 1,
+   "tables": 1,
+   "rows": 11
+  },
+  {
+   "level": 1,
+   "title": "Workflow register — end-to-end execution",
+   "start": 159,
+   "end": 222,
+   "prose_lines": 1,
+   "tables": 1,
+   "rows": 14
+  },
+  {
+   "level": 1,
+   "title": "Logical AI responsibilities and typed prompt contracts",
+   "start": 223,
+   "end": 223,
+   "prose_lines": 0,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Knowledge",
+   "start": 224,
+   "end": 229,
+   "prose_lines": 5,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Research",
+   "start": 230,
+   "end": 235,
+   "prose_lines": 5,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Signal",
+   "start": 236,
+   "end": 241,
+   "prose_lines": 5,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Matching",
+   "start": 242,
+   "end": 247,
+   "prose_lines": 5,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Contact",
+   "start": 248,
+   "end": 253,
+   "prose_lines": 5,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Engagement",
+   "start": 254,
+   "end": 259,
+   "prose_lines": 5,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Response",
+   "start": 260,
+   "end": 265,
+   "prose_lines": 5,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Objection",
+   "start": 266,
+   "end": 271,
+   "prose_lines": 5,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Planner",
+   "start": 272,
+   "end": 277,
+   "prose_lines": 5,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Meeting",
+   "start": 278,
+   "end": 283,
+   "prose_lines": 5,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Forecast",
+   "start": 284,
+   "end": 289,
+   "prose_lines": 5,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Quality",
+   "start": 290,
+   "end": 295,
+   "prose_lines": 5,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Cost routing",
+   "start": 296,
+   "end": 301,
+   "prose_lines": 5,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Copilot",
+   "start": 302,
+   "end": 307,
+   "prose_lines": 5,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Business need",
+   "start": 308,
+   "end": 313,
+   "prose_lines": 5,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Content and SEO",
+   "start": 314,
+   "end": 319,
+   "prose_lines": 5,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Proposal",
+   "start": 320,
+   "end": 325,
+   "prose_lines": 5,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Retention",
+   "start": 326,
+   "end": 332,
+   "prose_lines": 6,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "REST contract",
+   "start": 333,
+   "end": 335,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Canonical inbound event",
+   "start": 336,
+   "end": 338,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Outbound intent",
+   "start": 339,
+   "end": 341,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Database conventions",
+   "start": 342,
+   "end": 344,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "State transition locking",
+   "start": 345,
+   "end": 347,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "AI schema",
+   "start": 348,
+   "end": 350,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Queue retry",
+   "start": 351,
+   "end": 353,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Webhook security",
+   "start": 354,
+   "end": 356,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Channel reply routing",
+   "start": 357,
+   "end": 359,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Closure rule",
+   "start": 360,
+   "end": 362,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Admin authorization",
+   "start": 363,
+   "end": 365,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Data isolation",
+   "start": 366,
+   "end": 368,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Budget model",
+   "start": 369,
+   "end": 371,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Scoring model",
+   "start": 372,
+   "end": 374,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Security testing",
+   "start": 375,
+   "end": 377,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Performance targets",
+   "start": 378,
+   "end": 380,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Agent decomposition",
+   "start": 381,
+   "end": 383,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Commercial metrics",
+   "start": 384,
+   "end": 386,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Clinical escalation",
+   "start": 387,
+   "end": 389,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Development vs runtime",
+   "start": 390,
+   "end": 392,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Website and confidential Admin operating contract",
+   "start": 393,
+   "end": 419,
+   "prose_lines": 4,
+   "tables": 1,
+   "rows": 4
+  },
+  {
+   "level": 2,
+   "title": "Detailed frontend, API and publication design",
+   "start": 420,
+   "end": 422,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Detailed adapter execution and test harness",
+   "start": 423,
+   "end": 425,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Detailed design implementation contracts",
+   "start": 426,
+   "end": 429,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Implementation, verification and delivery controls",
+   "start": 430,
+   "end": 431,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Canonical event envelope (proposed typed model)",
+   "start": 432,
+   "end": 440,
+   "prose_lines": 8,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Service-level execution decisions",
+   "start": 441,
+   "end": 475,
+   "prose_lines": 0,
+   "tables": 1,
+   "rows": 7
+  },
+  {
+   "level": 2,
+   "title": "Atomic transaction pattern (adapt to approved Django models)",
+   "start": 476,
+   "end": 484,
+   "prose_lines": 8,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Acceptance and evidence record",
+   "start": 485,
+   "end": 506,
+   "prose_lines": 1,
+   "tables": 1,
+   "rows": 5
+  },
+  {
+   "level": 1,
+   "title": "Service execution contracts and concurrency",
+   "start": 507,
+   "end": 507,
+   "prose_lines": 0,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Transaction patterns",
+   "start": 508,
+   "end": 532,
+   "prose_lines": 1,
+   "tables": 1,
+   "rows": 6
+  },
+  {
+   "level": 1,
+   "title": "Optimization engineering and acceptance",
+   "start": 533,
+   "end": 535,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Performance",
+   "start": 536,
+   "end": 538,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Automation",
+   "start": 539,
+   "end": 555,
+   "prose_lines": 16,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Stability",
+   "start": 556,
+   "end": 570,
+   "prose_lines": 14,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Architecture",
+   "start": 571,
+   "end": 581,
+   "prose_lines": 10,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Database",
+   "start": 582,
+   "end": 594,
+   "prose_lines": 12,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "API & Integration",
+   "start": 595,
+   "end": 605,
+   "prose_lines": 10,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "AI Intelligence",
+   "start": 606,
+   "end": 608,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Maintainability",
+   "start": 609,
+   "end": 617,
+   "prose_lines": 8,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Reusability",
+   "start": 618,
+   "end": 624,
+   "prose_lines": 6,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Testing & QC",
+   "start": 625,
+   "end": 628,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Implementation acceptance and verification",
+   "start": 629,
+   "end": 630,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Hierarchical budget controls",
+   "start": 631,
+   "end": 634,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Workflow trigger and state",
+   "start": 635,
+   "end": 638,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Simulation side effects",
+   "start": 639,
+   "end": 642,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Workflow failure orchestration",
+   "start": 643,
+   "end": 646,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Idempotency and duplicate delivery",
+   "start": 647,
+   "end": 650,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Stable transactions and outbox",
+   "start": 651,
+   "end": 654,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Noisy neighbor protection",
+   "start": 655,
+   "end": 658,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Architecture decision rationale",
+   "start": 659,
+   "end": 662,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Tenant ownership constraints",
+   "start": 663,
+   "end": 666,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Financial exactness",
+   "start": 667,
+   "end": 670,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Typed request and response completeness",
+   "start": 671,
+   "end": 674,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Webhook and provider reliability",
+   "start": 675,
+   "end": 678,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Deduplication and entity resolution",
+   "start": 679,
+   "end": 682,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Closure and receipt distinction",
+   "start": 683,
+   "end": 686,
+   "prose_lines": 3,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Outstanding approval gates",
+   "start": 687,
+   "end": 688,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Implementation acceptance and final decision controls",
+   "start": 689,
+   "end": 690,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Hierarchical budget controls",
+   "start": 691,
+   "end": 693,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Workflow trigger and state",
+   "start": 694,
+   "end": 696,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Simulation side effects",
+   "start": 697,
+   "end": 699,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Workflow failure orchestration",
+   "start": 700,
+   "end": 702,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Idempotency and duplicate delivery",
+   "start": 703,
+   "end": 705,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Stable transactions and outbox",
+   "start": 706,
+   "end": 708,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Noisy neighbor protection",
+   "start": 709,
+   "end": 711,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Architecture decision rationale",
+   "start": 712,
+   "end": 714,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Tenant ownership constraints",
+   "start": 715,
+   "end": 717,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Financial exactness",
+   "start": 718,
+   "end": 720,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Typed request and response completeness",
+   "start": 721,
+   "end": 723,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Webhook and provider reliability",
+   "start": 724,
+   "end": 726,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Deduplication and entity resolution",
+   "start": 727,
+   "end": 729,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Closure and receipt distinction",
+   "start": 730,
+   "end": 732,
+   "prose_lines": 2,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Boundary and acceptance conditions",
+   "start": 733,
+   "end": 734,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 1,
+   "title": "Current multi-startup, omnichannel and automation scope",
+   "start": 735,
+   "end": 736,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  },
+  {
+   "level": 2,
+   "title": "Detailed-level design",
+   "start": 737,
+   "end": 781,
+   "prose_lines": 2,
+   "tables": 1,
+   "rows": 9
+  },
+  {
+   "level": 2,
+   "title": "Applicant draft boundary and reuse-first decision",
+   "start": 782,
+   "end": 784,
+   "prose_lines": 1,
+   "tables": 0,
+   "rows": 0
+  }
+ ]
+}

@@ -1,0 +1,298 @@
+{
+ "18": {
+  "file": "18_Security_Privacy_Compliance_and_Automation_Governance.txt",
+  "bytes": 38031,
+  "lines": 417,
+  "headings": 56,
+  "tables": 8,
+  "table_rows": 50,
+  "opt_controls": [
+   "OPT-01-01",
+   "OPT-01-02",
+   "OPT-01-03",
+   "OPT-01-04",
+   "OPT-01-05",
+   "OPT-01-06",
+   "OPT-01-07",
+   "OPT-01-08",
+   "OPT-05-01",
+   "OPT-19-01",
+   "OPT-19-02",
+   "OPT-19-03",
+   "OPT-19-04"
+  ]
+ },
+ "25": {
+  "file": "25_Coding_Standards_Development_Guidelines_Code_Review.txt",
+  "bytes": 32400,
+  "lines": 363,
+  "headings": 81,
+  "tables": 4,
+  "table_rows": 19,
+  "opt_controls": [
+   "OPT-01-01",
+   "OPT-01-02",
+   "OPT-01-03",
+   "OPT-01-04",
+   "OPT-01-05",
+   "OPT-01-06",
+   "OPT-01-07",
+   "OPT-01-08",
+   "OPT-02-01",
+   "OPT-05-01",
+   "OPT-07-01",
+   "OPT-07-02",
+   "OPT-07-03",
+   "OPT-07-04",
+   "OPT-07-05",
+   "OPT-08-01",
+   "OPT-09-01",
+   "OPT-10-01",
+   "OPT-13-01",
+   "OPT-13-02",
+   "OPT-13-03",
+   "OPT-13-04",
+   "OPT-14-01",
+   "OPT-14-02",
+   "OPT-14-03",
+   "OPT-16-01",
+   "OPT-16-02",
+   "OPT-16-03",
+   "OPT-17-01"
+  ]
+ },
+ "26": {
+  "file": "26_DevOps_CI_CD_Infrastructure_Engineering.txt",
+  "bytes": 26106,
+  "lines": 296,
+  "headings": 61,
+  "tables": 4,
+  "table_rows": 19,
+  "opt_controls": [
+   "OPT-02-01",
+   "OPT-03-01",
+   "OPT-05-01",
+   "OPT-05-02",
+   "OPT-05-03",
+   "OPT-05-04",
+   "OPT-05-05",
+   "OPT-05-06",
+   "OPT-05-07",
+   "OPT-06-01",
+   "OPT-06-02",
+   "OPT-06-03",
+   "OPT-06-04",
+   "OPT-06-05",
+   "OPT-07-01",
+   "OPT-16-01",
+   "OPT-16-02",
+   "OPT-16-03",
+   "OPT-18-01",
+   "OPT-18-02",
+   "OPT-18-03",
+   "OPT-18-04"
+  ]
+ },
+ "27": {
+  "file": "27_Environment_Configuration_Secrets_Dependency_Management.txt",
+  "bytes": 20808,
+  "lines": 289,
+  "headings": 57,
+  "tables": 4,
+  "table_rows": 28,
+  "opt_controls": [
+   "OPT-01-01",
+   "OPT-03-01",
+   "OPT-05-01",
+   "OPT-13-01",
+   "OPT-18-01",
+   "OPT-18-02",
+   "OPT-18-03",
+   "OPT-18-04",
+   "OPT-19-01"
+  ]
+ },
+ "29": {
+  "file": "29_Performance_Load_Scalability_Reliability_Engineering.txt",
+  "bytes": 29324,
+  "lines": 418,
+  "headings": 69,
+  "tables": 5,
+  "table_rows": 45,
+  "opt_controls": [
+   "OPT-02-01",
+   "OPT-02-02",
+   "OPT-02-03",
+   "OPT-02-04",
+   "OPT-02-05",
+   "OPT-02-06",
+   "OPT-02-07",
+   "OPT-05-01",
+   "OPT-06-01",
+   "OPT-06-02",
+   "OPT-06-03",
+   "OPT-06-04",
+   "OPT-06-05",
+   "OPT-08-01",
+   "OPT-09-01",
+   "OPT-10-01"
+  ]
+ },
+ "30": {
+  "file": "30_Cybersecurity_Vulnerability_Assessment_Penetration_Testing.txt",
+  "bytes": 25776,
+  "lines": 317,
+  "headings": 56,
+  "tables": 5,
+  "table_rows": 31,
+  "opt_controls": [
+   "OPT-01-01",
+   "OPT-01-02",
+   "OPT-01-03",
+   "OPT-01-04",
+   "OPT-01-05",
+   "OPT-01-06",
+   "OPT-01-07",
+   "OPT-01-08",
+   "OPT-10-01",
+   "OPT-19-01",
+   "OPT-19-02",
+   "OPT-19-03",
+   "OPT-19-04"
+  ]
+ },
+ "31": {
+  "file": "31_Product_Monitoring_Observability_Incident_Support_Management.txt",
+  "bytes": 25719,
+  "lines": 296,
+  "headings": 65,
+  "tables": 4,
+  "table_rows": 21,
+  "opt_controls": [
+   "OPT-02-01",
+   "OPT-03-01",
+   "OPT-04-01",
+   "OPT-05-01",
+   "OPT-05-02",
+   "OPT-05-03",
+   "OPT-05-04",
+   "OPT-05-05",
+   "OPT-05-06",
+   "OPT-05-07",
+   "OPT-06-01",
+   "OPT-10-01",
+   "OPT-12-01",
+   "OPT-18-01"
+  ]
+ },
+ "32": {
+  "file": "32_Product_Release_Go_Live_Rollback_Delivery_Checklist.txt",
+  "bytes": 29211,
+  "lines": 463,
+  "headings": 66,
+  "tables": 7,
+  "table_rows": 62,
+  "opt_controls": [
+   "OPT-01-01",
+   "OPT-05-01",
+   "OPT-17-01",
+   "OPT-18-01",
+   "OPT-18-02",
+   "OPT-18-03",
+   "OPT-18-04",
+   "OPT-19-01"
+  ]
+ },
+ "doc31_api": [
+  {
+   "op": "GET /api/v1/admin/approvals",
+   "blueprint": "API-540"
+  },
+  {
+   "op": "GET /api/v1/admin/dashboard",
+   "blueprint": "API-538"
+  },
+  {
+   "op": "POST /api/v1/admin/approvals/{id}/decide",
+   "blueprint": "API-539"
+  },
+  {
+   "op": "GET /api/v1/events",
+   "blueprint": "API-115"
+  },
+  {
+   "op": "GET /api/v1/admin/jobs",
+   "blueprint": "API-124"
+  },
+  {
+   "op": "POST /api/v1/admin/jobs/{id}/retry",
+   "blueprint": "API-116"
+  },
+  {
+   "op": "GET /api/v1/admin/costs",
+   "blueprint": "API-136"
+  },
+  {
+   "op": "POST /api/v1/admin/budgets",
+   "blueprint": "API-137"
+  },
+  {
+   "op": "POST /api/v1/admin/budgets/{id}/pause",
+   "blueprint": "NOT FOUND"
+  },
+  {
+   "op": "GET /api/v1/admin/health",
+   "blueprint": "API-119"
+  },
+  {
+   "op": "POST /api/v1/admin/incidents/{id}/resolve",
+   "blueprint": "API-130"
+  },
+  {
+   "op": "POST /api/v1/feedback",
+   "blueprint": "API-418"
+  },
+  {
+   "op": "GET /api/v1/feedback",
+   "blueprint": "NOT FOUND"
+  },
+  {
+   "op": "POST /api/v1/admin/evals/run",
+   "blueprint": "API-138"
+  },
+  {
+   "op": "GET /api/v1/admin/evals/results",
+   "blueprint": "NOT FOUND"
+  },
+  {
+   "op": "GET /api/v1/metrics/funnel",
+   "blueprint": "API-537"
+  },
+  {
+   "op": "GET /api/v1/tasks",
+   "blueprint": "NOT FOUND"
+  },
+  {
+   "op": "PATCH /api/v1/tasks/{id}",
+   "blueprint": "NOT FOUND"
+  },
+  {
+   "op": "GET /api/v1/metrics/revenue",
+   "blueprint": "API-388"
+  }
+ ],
+ "doc31_api_found": 14,
+ "blueprint_api_rows": 555,
+ "uxqc": [
+  "UX-QC-01",
+  "UX-QC-02",
+  "UX-QC-03",
+  "UX-QC-04",
+  "UX-QC-05",
+  "UX-QC-06",
+  "UX-QC-07",
+  "UX-QC-08",
+  "UX-QC-09",
+  "UX-QC-10"
+ ]
+}

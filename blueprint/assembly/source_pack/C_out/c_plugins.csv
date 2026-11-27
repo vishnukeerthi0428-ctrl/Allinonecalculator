@@ -1,0 +1,258 @@
+screen,integration,licence_note,status,bp_location,build_reuse,admin_location
+CAP008,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),New,
+CAP032,react forms,react forms: Open source — MITreact: Open source — MITCommon Room: Commercial service / hybrid; exact wrapper and upstream licence unverified,Not covered,,New,
+CAP032,react,react forms: Open source — MITreact: Open source — MITCommon Room: Commercial service / hybrid; exact wrapper and upstream licence unverified,Covered,Part 3.1/3.2,New,
+CAP032,Common Room,react forms: Open source — MITreact: Open source — MITCommon Room: Commercial service / hybrid; exact wrapper and upstream licence unverified,Not covered,,New,
+CAP043,calendar api,calendar api: Hybrid / commercial service; exact edition licence verify,Covered,Part 3.1/3.2,New,
+CAP049,rag,rag: Proprietary model API (RAG architecture may use OSS),Covered,Part 3.1/3.2,New,
+CAP061,react,react: Open source — MITLeadfeeder: Commercial service / hybrid; exact wrapper and upstream licence unverifiedPostHog: Hybrid / commercial service; exact editio,Covered,Part 3.1/3.2,New,
+CAP061,Leadfeeder,react: Open source — MITLeadfeeder: Commercial service / hybrid; exact wrapper and upstream licence unverifiedPostHog: Hybrid / commercial service; exact editio,Not covered,,New,
+CAP061,PostHog,react: Open source — MITLeadfeeder: Commercial service / hybrid; exact wrapper and upstream licence unverifiedPostHog: Hybrid / commercial service; exact editio,Not covered,,New,
+CAP068,zoom,zoom: Hybrid / commercial service; exact edition licence verifyZoom: Hybrid / commercial service; exact edition licence verify,Covered,Part 3.1/3.2,New,
+CAP068,Zoom,zoom: Hybrid / commercial service; exact edition licence verifyZoom: Hybrid / commercial service; exact edition licence verify,Covered,Part 3.1/3.2,New,
+CAP070,Crossbeam Skills,Crossbeam Skills: Commercial service / hybrid; exact wrapper and upstream licence unverified,Not covered,,New,
+CAP079,PandaDoc,PandaDoc: Hybrid / commercial service; exact edition licence verify,Not covered,,New,
+CAP082,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),New,
+CAP085,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),New,
+A001,django auth,django auth: Open source — BSD-3-Clausedjango: Open source — BSD-3-Clausedrf: Open source — BSD-3-Clause,Not covered,,Reuse,Existing
+A001,django,django auth: Open source — BSD-3-Clausedjango: Open source — BSD-3-Clausedrf: Open source — BSD-3-Clause,Covered,Part 3.1/3.2,Reuse,Existing
+A001,drf,django auth: Open source — BSD-3-Clausedjango: Open source — BSD-3-Clausedrf: Open source — BSD-3-Clause,Covered,Part 3.1/3.2,Reuse,Existing
+A002,django auth,django auth: Open source — BSD-3-Clausedjango: Open source — BSD-3-Clausedrf: Open source — BSD-3-Clause,Not covered,,Reuse,Existing
+A002,django,django auth: Open source — BSD-3-Clausedjango: Open source — BSD-3-Clausedrf: Open source — BSD-3-Clause,Covered,Part 3.1/3.2,Reuse,Existing
+A002,drf,django auth: Open source — BSD-3-Clausedjango: Open source — BSD-3-Clausedrf: Open source — BSD-3-Clause,Covered,Part 3.1/3.2,Reuse,Existing
+A003,django auth,django auth: Open source — BSD-3-Clausedjango: Open source — BSD-3-Clausedrf: Open source — BSD-3-Clausepostgresql: Open source — PostgreSQL License,Not covered,,New shell,Workspace
+A003,django,django auth: Open source — BSD-3-Clausedjango: Open source — BSD-3-Clausedrf: Open source — BSD-3-Clausepostgresql: Open source — PostgreSQL License,Covered,Part 3.1/3.2,New shell,Workspace
+A003,drf,django auth: Open source — BSD-3-Clausedjango: Open source — BSD-3-Clausedrf: Open source — BSD-3-Clausepostgresql: Open source — PostgreSQL License,Covered,Part 3.1/3.2,New shell,Workspace
+A003,postgresql,django auth: Open source — BSD-3-Clausedjango: Open source — BSD-3-Clausedrf: Open source — BSD-3-Clausepostgresql: Open source — PostgreSQL License,Covered,Part 3.1/3.2,New shell,Workspace
+A004,claude api,claude api: Proprietary model API (RAG architecture may use OSS)pgvector: Open source — PostgreSQL LicensePubMed: Hybrid / commercial service; exact edition lic,Not covered,,New,Admin
+A004,pgvector,claude api: Proprietary model API (RAG architecture may use OSS)pgvector: Open source — PostgreSQL LicensePubMed: Hybrid / commercial service; exact edition lic,Covered,Part 3.1/3.2,New,Admin
+A004,PubMed,claude api: Proprietary model API (RAG architecture may use OSS)pgvector: Open source — PostgreSQL LicensePubMed: Hybrid / commercial service; exact edition lic,Not covered,,New,Admin
+A005,claude api,claude api: Proprietary model API (RAG architecture may use OSS)pgvector: Open source — PostgreSQL LicensePubMed: Hybrid / commercial service; exact edition lic,Not covered,,New,Workspace
+A005,pgvector,claude api: Proprietary model API (RAG architecture may use OSS)pgvector: Open source — PostgreSQL LicensePubMed: Hybrid / commercial service; exact edition lic,Covered,Part 3.1/3.2,New,Workspace
+A005,PubMed,claude api: Proprietary model API (RAG architecture may use OSS)pgvector: Open source — PostgreSQL LicensePubMed: Hybrid / commercial service; exact edition lic,Not covered,,New,Workspace
+A006,document skills dev,document skills dev: Claude skill/plugin; licence unverified; development-firstdocument skills: Claude skill/plugin; licence unverified; development-firsts3: Pr,Not covered,,New,Admin
+A006,document skills,document skills dev: Claude skill/plugin; licence unverified; development-firstdocument skills: Claude skill/plugin; licence unverified; development-firsts3: Pr,Not covered,,New,Admin
+A006,s3,document skills dev: Claude skill/plugin; licence unverified; development-firstdocument skills: Claude skill/plugin; licence unverified; development-firsts3: Pr,Covered,Part 3.1/3.2,New,Admin
+A007,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),New,Admin
+A008,aws secrets manager,aws secrets manager: Proprietary managed cloudaws: Proprietary managed cloudMCP Server Dev: Claude skill/plugin; licence unverified; development-first,Covered,Part 3.1/3.2,New,Admin
+A008,aws,aws secrets manager: Proprietary managed cloudaws: Proprietary managed cloudMCP Server Dev: Claude skill/plugin; licence unverified; development-first,Covered,Part 3.1/3.2,New,Admin
+A008,MCP Server Dev,aws secrets manager: Proprietary managed cloudaws: Proprietary managed cloudMCP Server Dev: Claude skill/plugin; licence unverified; development-first,Not covered,,New,Admin
+A009,celery,celery: Open source — BSD-3-Clauseredis: Edition/version dependent; prefer Valkey,Covered,Part 3.1/3.2,New,Admin
+A009,redis,celery: Open source — BSD-3-Clauseredis: Edition/version dependent; prefer Valkey,Covered,Part 3.1/3.2,New,Admin
+A010,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),New,Admin
+A011,claude/openai api,claude/openai api: Proprietary model API (RAG architecture may use OSS)deepeval: Open source — Apache-2.0Agent SDK Dev: Claude skill/plugin; licence unverified;,Not covered,,New,Admin
+A011,deepeval,claude/openai api: Proprietary model API (RAG architecture may use OSS)deepeval: Open source — Apache-2.0Agent SDK Dev: Claude skill/plugin; licence unverified;,Not covered,,New,Admin
+A011,Agent SDK Dev,claude/openai api: Proprietary model API (RAG architecture may use OSS)deepeval: Open source — Apache-2.0Agent SDK Dev: Claude skill/plugin; licence unverified;,Not covered,,New,Admin
+A011,Pydantic AI,claude/openai api: Proprietary model API (RAG architecture may use OSS)deepeval: Open source — Apache-2.0Agent SDK Dev: Claude skill/plugin; licence unverified;,Not covered,,New,Admin
+A012,cloudwatch,cloudwatch: Proprietary managed cloud,Covered,Part 3.1/3.2,New,Admin
+A013,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),New,Admin
+A014,github,github: Hybrid / commercial service; exact edition licence verifysentry: Hybrid / commercial service; exact edition licence verifyaws: Proprietary managed cloud,Covered,Part 3.1/3.2,New growth-specific view,Admin
+A014,sentry,github: Hybrid / commercial service; exact edition licence verifysentry: Hybrid / commercial service; exact edition licence verifyaws: Proprietary managed cloud,Covered,Part 3.1/3.2,New growth-specific view,Admin
+A014,aws,github: Hybrid / commercial service; exact edition licence verifysentry: Hybrid / commercial service; exact edition licence verifyaws: Proprietary managed cloud,Covered,Part 3.1/3.2,New growth-specific view,Admin
+A014,Playwright,github: Hybrid / commercial service; exact edition licence verifysentry: Hybrid / commercial service; exact edition licence verifyaws: Proprietary managed cloud,Covered,Part 3.1/3.2,New growth-specific view,Admin
+A014,AWS Core,github: Hybrid / commercial service; exact edition licence verifysentry: Hybrid / commercial service; exact edition licence verifyaws: Proprietary managed cloud,Not covered,,New growth-specific view,Admin
+A014,Claude Code Setup,github: Hybrid / commercial service; exact edition licence verifysentry: Hybrid / commercial service; exact edition licence verifyaws: Proprietary managed cloud,Not covered,,New growth-specific view,Admin
+A014,CLAUDE.md Management,github: Hybrid / commercial service; exact edition licence verifysentry: Hybrid / commercial service; exact edition licence verifyaws: Proprietary managed cloud,Not covered,,New growth-specific view,Admin
+A014,Postman,github: Hybrid / commercial service; exact edition licence verifysentry: Hybrid / commercial service; exact edition licence verifyaws: Proprietary managed cloud,Not covered,,New growth-specific view,Admin
+A014,GitHub,github: Hybrid / commercial service; exact edition licence verifysentry: Hybrid / commercial service; exact edition licence verifyaws: Proprietary managed cloud,Covered,Part 3.1/3.2,New growth-specific view,Admin
+A014,Security Guidance,github: Hybrid / commercial service; exact edition licence verifysentry: Hybrid / commercial service; exact edition licence verifyaws: Proprietary managed cloud,Not covered,,New growth-specific view,Admin
+A014,Figma,github: Hybrid / commercial service; exact edition licence verifysentry: Hybrid / commercial service; exact edition licence verifyaws: Proprietary managed cloud,Not covered,,New growth-specific view,Admin
+A014,Plugin Developer Toolkit,github: Hybrid / commercial service; exact edition licence verifysentry: Hybrid / commercial service; exact edition licence verifyaws: Proprietary managed cloud,Not covered,,New growth-specific view,Admin
+A014,AWS Serverless,github: Hybrid / commercial service; exact edition licence verifysentry: Hybrid / commercial service; exact edition licence verifyaws: Proprietary managed cloud,Not covered,,New growth-specific view,Admin
+A014,cloudwatch,github: Hybrid / commercial service; exact edition licence verifysentry: Hybrid / commercial service; exact edition licence verifyaws: Proprietary managed cloud,Covered,Part 3.1/3.2,New growth-specific view,Admin
+A014,Sentry,github: Hybrid / commercial service; exact edition licence verifysentry: Hybrid / commercial service; exact edition licence verifyaws: Proprietary managed cloud,Covered,Part 3.1/3.2,New growth-specific view,Admin
+A015,tavily,tavily: Proprietary hosted APIexa: Proprietary hosted APITavily: Proprietary hosted API,Covered,Part 3.1/3.2,New,Workspace
+A015,exa,tavily: Proprietary hosted APIexa: Proprietary hosted APITavily: Proprietary hosted API,Covered,Part 3.1/3.2,New,Workspace
+A015,Tavily,tavily: Proprietary hosted APIexa: Proprietary hosted APITavily: Proprietary hosted API,Covered,Part 3.1/3.2,New,Workspace
+A016,firecrawl,firecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudFirecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudTavily: Proprietary hosted API,Covered,Part 3.1/3.2,New,Workspace
+A016,Firecrawl,firecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudFirecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudTavily: Proprietary hosted API,Covered,Part 3.1/3.2,New,Workspace
+A016,Tavily,firecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudFirecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudTavily: Proprietary hosted API,Covered,Part 3.1/3.2,New,Workspace
+A017,firecrawl,firecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudFirecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudclaude/openai api: Proprietary model API (RA,Covered,Part 3.1/3.2,New,Workspace
+A017,Firecrawl,firecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudFirecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudclaude/openai api: Proprietary model API (RA,Covered,Part 3.1/3.2,New,Workspace
+A017,claude/openai api,firecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudFirecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudclaude/openai api: Proprietary model API (RA,Not covered,,New,Workspace
+A017,deepeval,firecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudFirecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudclaude/openai api: Proprietary model API (RA,Not covered,,New,Workspace
+A017,Agent SDK Dev,firecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudFirecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudclaude/openai api: Proprietary model API (RA,Not covered,,New,Workspace
+A017,Pydantic AI,firecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudFirecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudclaude/openai api: Proprietary model API (RA,Not covered,,New,Workspace
+A018,Clay,Clay: Commercial service / hybrid; exact wrapper and upstream licence unverifiedLeadfeeder: Commercial service / hybrid; exact wrapper and upstream licence unve,Not covered,,New,Workspace
+A018,Leadfeeder,Clay: Commercial service / hybrid; exact wrapper and upstream licence unverifiedLeadfeeder: Commercial service / hybrid; exact wrapper and upstream licence unve,Not covered,,New,Workspace
+A019,llm gateway,llm gateway: Proprietary model API (RAG architecture may use OSS)llm: Proprietary model API (RAG architecture may use OSS)Common Room: Commercial service / hybr,Not covered,,New,Workspace
+A019,llm,llm gateway: Proprietary model API (RAG architecture may use OSS)llm: Proprietary model API (RAG architecture may use OSS)Common Room: Commercial service / hybr,Covered,Part 3.1/3.2,New,Workspace
+A019,Common Room,llm gateway: Proprietary model API (RAG architecture may use OSS)llm: Proprietary model API (RAG architecture may use OSS)Common Room: Commercial service / hybr,Not covered,,New,Workspace
+A020,llm gateway,llm gateway: Proprietary model API (RAG architecture may use OSS)llm: Proprietary model API (RAG architecture may use OSS),Not covered,,New,Workspace
+A020,llm,llm gateway: Proprietary model API (RAG architecture may use OSS)llm: Proprietary model API (RAG architecture may use OSS),Covered,Part 3.1/3.2,New,Workspace
+A021,pgvector,pgvector: Open source — PostgreSQL License,Covered,Part 3.1/3.2,New,Workspace
+A022,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),New,Workspace
+A023,tavily,tavily: Proprietary hosted APIexa: Proprietary hosted APITavily: Proprietary hosted APIfirecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudFirecrawl: Hybr,Covered,Part 3.1/3.2,New,Admin
+A023,exa,tavily: Proprietary hosted APIexa: Proprietary hosted APITavily: Proprietary hosted APIfirecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudFirecrawl: Hybr,Covered,Part 3.1/3.2,New,Admin
+A023,Tavily,tavily: Proprietary hosted APIexa: Proprietary hosted APITavily: Proprietary hosted APIfirecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudFirecrawl: Hybr,Covered,Part 3.1/3.2,New,Admin
+A023,firecrawl,tavily: Proprietary hosted APIexa: Proprietary hosted APITavily: Proprietary hosted APIfirecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudFirecrawl: Hybr,Covered,Part 3.1/3.2,New,Admin
+A023,Firecrawl,tavily: Proprietary hosted APIexa: Proprietary hosted APITavily: Proprietary hosted APIfirecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudFirecrawl: Hybr,Covered,Part 3.1/3.2,New,Admin
+A023,Clay,tavily: Proprietary hosted APIexa: Proprietary hosted APITavily: Proprietary hosted APIfirecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudFirecrawl: Hybr,Not covered,,New,Admin
+A023,Leadfeeder,tavily: Proprietary hosted APIexa: Proprietary hosted APITavily: Proprietary hosted APIfirecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudFirecrawl: Hybr,Not covered,,New,Admin
+A023,llm gateway,tavily: Proprietary hosted APIexa: Proprietary hosted APITavily: Proprietary hosted APIfirecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudFirecrawl: Hybr,Not covered,,New,Admin
+A023,llm,tavily: Proprietary hosted APIexa: Proprietary hosted APITavily: Proprietary hosted APIfirecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudFirecrawl: Hybr,Covered,Part 3.1/3.2,New,Admin
+A023,Common Room,tavily: Proprietary hosted APIexa: Proprietary hosted APITavily: Proprietary hosted APIfirecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudFirecrawl: Hybr,Not covered,,New,Admin
+A023,pgvector,tavily: Proprietary hosted APIexa: Proprietary hosted APITavily: Proprietary hosted APIfirecrawl: Hybrid — AGPL-3.0 self-host / proprietary cloudFirecrawl: Hybr,Covered,Part 3.1/3.2,New,Admin
+A024,hunter,hunter: Proprietary data serviceApollo.io: Proprietary data serviceEndgame: Commercial service / hybrid; exact wrapper and upstream licence unverified,Covered,Part 3.1/3.2,New,Workspace
+A024,Apollo.io,hunter: Proprietary data serviceApollo.io: Proprietary data serviceEndgame: Commercial service / hybrid; exact wrapper and upstream licence unverified,Covered,Part 3.1/3.2,New,Workspace
+A024,Endgame,hunter: Proprietary data serviceApollo.io: Proprietary data serviceEndgame: Commercial service / hybrid; exact wrapper and upstream licence unverified,Not covered,,New,Workspace
+A025,hunter,hunter: Proprietary data serviceApollo.io: Proprietary data serviceHunter: Proprietary data serviceClay: Commercial service / hybrid; exact wrapper and upstream,Covered,Part 3.1/3.2,New,Workspace
+A025,Apollo.io,hunter: Proprietary data serviceApollo.io: Proprietary data serviceHunter: Proprietary data serviceClay: Commercial service / hybrid; exact wrapper and upstream,Covered,Part 3.1/3.2,New,Workspace
+A025,Hunter,hunter: Proprietary data serviceApollo.io: Proprietary data serviceHunter: Proprietary data serviceClay: Commercial service / hybrid; exact wrapper and upstream,Covered,Part 3.1/3.2,New,Workspace
+A025,Clay,hunter: Proprietary data serviceApollo.io: Proprietary data serviceHunter: Proprietary data serviceClay: Commercial service / hybrid; exact wrapper and upstream,Not covered,,New,Workspace
+A026,hunter,hunter: Proprietary data serviceApollo.io: Proprietary data serviceEndgame: Commercial service / hybrid; exact wrapper and upstream licence unverifiedHunter: Pr,Covered,Part 3.1/3.2,New,Admin
+A026,Apollo.io,hunter: Proprietary data serviceApollo.io: Proprietary data serviceEndgame: Commercial service / hybrid; exact wrapper and upstream licence unverifiedHunter: Pr,Covered,Part 3.1/3.2,New,Admin
+A026,Endgame,hunter: Proprietary data serviceApollo.io: Proprietary data serviceEndgame: Commercial service / hybrid; exact wrapper and upstream licence unverifiedHunter: Pr,Not covered,,New,Admin
+A026,Hunter,hunter: Proprietary data serviceApollo.io: Proprietary data serviceEndgame: Commercial service / hybrid; exact wrapper and upstream licence unverifiedHunter: Pr,Covered,Part 3.1/3.2,New,Admin
+A026,Clay,hunter: Proprietary data serviceApollo.io: Proprietary data serviceEndgame: Commercial service / hybrid; exact wrapper and upstream licence unverifiedHunter: Pr,Not covered,,New,Admin
+A026,postgresql,hunter: Proprietary data serviceApollo.io: Proprietary data serviceEndgame: Commercial service / hybrid; exact wrapper and upstream licence unverifiedHunter: Pr,Covered,Part 3.1/3.2,New,Admin
+A027,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),New,Workspace
+A028,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),New,Admin
+A029,customer-sales-automation,customer-sales-automation: Claude skill/plugin; licence unverified; development-first,Not covered,,New,Workspace
+A030,customer-sales-automation,customer-sales-automation: Claude skill/plugin; licence unverified; development-first,Not covered,,New,Admin
+A031,react forms,react forms: Open source — MITreact: Open source — MITCommon Room: Commercial service / hybrid; exact wrapper and upstream licence unverified,Not covered,,New,Admin
+A031,react,react forms: Open source — MITreact: Open source — MITCommon Room: Commercial service / hybrid; exact wrapper and upstream licence unverified,Covered,Part 3.1/3.2,New,Admin
+A031,Common Room,react forms: Open source — MITreact: Open source — MITCommon Room: Commercial service / hybrid; exact wrapper and upstream licence unverified,Not covered,,New,Admin
+A032,postgresql,postgresql: Open source — PostgreSQL License,Covered,Part 3.1/3.2,New,Workspace
+A033,celery,celery: Open source — BSD-3-Clause,Covered,Part 3.1/3.2,New,Admin
+A034,claude api,claude api: Proprietary model API (RAG architecture may use OSS)Sales: Claude skill/plugin; licence unverified; development-firstEndgame: Commercial service / h,Not covered,,New,Workspace
+A034,Sales,claude api: Proprietary model API (RAG architecture may use OSS)Sales: Claude skill/plugin; licence unverified; development-firstEndgame: Commercial service / h,Covered,Part 3.1/3.2,New,Workspace
+A034,Endgame,claude api: Proprietary model API (RAG architecture may use OSS)Sales: Claude skill/plugin; licence unverified; development-firstEndgame: Commercial service / h,Not covered,,New,Workspace
+A035,claude api,claude api: Proprietary model API (RAG architecture may use OSS)Sales: Claude skill/plugin; licence unverified; development-firstEndgame: Commercial service / h,Not covered,,New,Admin
+A035,Sales,claude api: Proprietary model API (RAG architecture may use OSS)Sales: Claude skill/plugin; licence unverified; development-firstEndgame: Commercial service / h,Covered,Part 3.1/3.2,New,Admin
+A035,Endgame,claude api: Proprietary model API (RAG architecture may use OSS)Sales: Claude skill/plugin; licence unverified; development-firstEndgame: Commercial service / h,Not covered,,New,Admin
+A035,llm,claude api: Proprietary model API (RAG architecture may use OSS)Sales: Claude skill/plugin; licence unverified; development-firstEndgame: Commercial service / h,Covered,Part 3.1/3.2,New,Admin
+A036,resend,resend: Proprietary hosted email serviceses: Proprietary cloud serviceResend: Proprietary hosted email service,Covered,Part 3.1/3.2,New,Admin
+A036,ses,resend: Proprietary hosted email serviceses: Proprietary cloud serviceResend: Proprietary hosted email service,Covered,Part 3.1/3.2,New,Admin
+A036,Resend,resend: Proprietary hosted email serviceses: Proprietary cloud serviceResend: Proprietary hosted email service,Covered,Part 3.1/3.2,New,Admin
+A037,resend,resend: Proprietary hosted email serviceses: Proprietary cloud serviceResend: Proprietary hosted email servicellm: Proprietary model API (RAG architecture may u,Covered,Part 3.1/3.2,New,Workspace
+A037,ses,resend: Proprietary hosted email serviceses: Proprietary cloud serviceResend: Proprietary hosted email servicellm: Proprietary model API (RAG architecture may u,Covered,Part 3.1/3.2,New,Workspace
+A037,Resend,resend: Proprietary hosted email serviceses: Proprietary cloud serviceResend: Proprietary hosted email servicellm: Proprietary model API (RAG architecture may u,Covered,Part 3.1/3.2,New,Workspace
+A037,llm,resend: Proprietary hosted email serviceses: Proprietary cloud serviceResend: Proprietary hosted email servicellm: Proprietary model API (RAG architecture may u,Covered,Part 3.1/3.2,New,Workspace
+A038,celery beat,celery beat: Open source — BSD-3-Clausecelery: Open source — BSD-3-Clausecustomer-sales-automation: Claude skill/plugin; licence unverified; development-firstSa,Covered,Part 3.1/3.2,New,Workspace
+A038,celery,celery beat: Open source — BSD-3-Clausecelery: Open source — BSD-3-Clausecustomer-sales-automation: Claude skill/plugin; licence unverified; development-firstSa,Covered,Part 3.1/3.2,New,Workspace
+A038,customer-sales-automation,celery beat: Open source — BSD-3-Clausecelery: Open source — BSD-3-Clausecustomer-sales-automation: Claude skill/plugin; licence unverified; development-firstSa,Not covered,,New,Workspace
+A038,Sales,celery beat: Open source — BSD-3-Clausecelery: Open source — BSD-3-Clausecustomer-sales-automation: Claude skill/plugin; licence unverified; development-firstSa,Covered,Part 3.1/3.2,New,Workspace
+A039,celery beat,celery beat: Open source — BSD-3-Clausecelery: Open source — BSD-3-Clausecustomer-sales-automation: Claude skill/plugin; licence unverified; development-firstSa,Covered,Part 3.1/3.2,New,Admin
+A039,celery,celery beat: Open source — BSD-3-Clausecelery: Open source — BSD-3-Clausecustomer-sales-automation: Claude skill/plugin; licence unverified; development-firstSa,Covered,Part 3.1/3.2,New,Admin
+A039,customer-sales-automation,celery beat: Open source — BSD-3-Clausecelery: Open source — BSD-3-Clausecustomer-sales-automation: Claude skill/plugin; licence unverified; development-firstSa,Not covered,,New,Admin
+A039,Sales,celery beat: Open source — BSD-3-Clausecelery: Open source — BSD-3-Clausecustomer-sales-automation: Claude skill/plugin; licence unverified; development-firstSa,Covered,Part 3.1/3.2,New,Admin
+A040,calendar api,calendar api: Hybrid / commercial service; exact edition licence verify,Covered,Part 3.1/3.2,New,Workspace
+A041,calendar api,calendar api: Hybrid / commercial service; exact edition licence verify,Covered,Part 3.1/3.2,New,Admin
+A042,postgresql,postgresql: Open source — PostgreSQL License,Covered,Part 3.1/3.2,New,Workspace
+A043,postgresql,postgresql: Open source — PostgreSQL License,Covered,Part 3.1/3.2,New,Admin
+A044,meta cloud api,meta cloud api: Proprietary messaging API,Covered,Part 3.1/3.2,New,Admin
+A045,meta cloud api,meta cloud api: Proprietary messaging API,Covered,Part 3.1/3.2,Extension,Workspace
+A046,rag,rag: Proprietary model API (RAG architecture may use OSS),Covered,Part 3.1/3.2,New,Admin
+A047,Security Guidance,Security Guidance: Claude skill/plugin; licence unverified; development-first,Not covered,,New,Admin
+A048,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),New,Workspace
+A049,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),Extension,Admin
+A050,content studio,content studio: Claude skill/plugin; licence unverified; development-firstContent Studio: Claude skill/plugin; licence unverified; development-firstcontent-mark,Not covered,,New,Workspace
+A050,Content Studio,content studio: Claude skill/plugin; licence unverified; development-firstContent Studio: Claude skill/plugin; licence unverified; development-firstcontent-mark,Not covered,,New,Workspace
+A050,content-marketing,content studio: Claude skill/plugin; licence unverified; development-firstContent Studio: Claude skill/plugin; licence unverified; development-firstcontent-mark,Not covered,,New,Workspace
+A050,Marketing,content studio: Claude skill/plugin; licence unverified; development-firstContent Studio: Claude skill/plugin; licence unverified; development-firstcontent-mark,Covered,Part 3.1/3.2,New,Workspace
+A050,seo-content-creation,content studio: Claude skill/plugin; licence unverified; development-firstContent Studio: Claude skill/plugin; licence unverified; development-firstcontent-mark,Not covered,,New,Workspace
+A050,Skill Creator,content studio: Claude skill/plugin; licence unverified; development-firstContent Studio: Claude skill/plugin; licence unverified; development-firstcontent-mark,Not covered,,New,Workspace
+A050,Canva,content studio: Claude skill/plugin; licence unverified; development-firstContent Studio: Claude skill/plugin; licence unverified; development-firstcontent-mark,Not covered,,New,Workspace
+A050,PubMed,content studio: Claude skill/plugin; licence unverified; development-firstContent Studio: Claude skill/plugin; licence unverified; development-firstcontent-mark,Not covered,,New,Workspace
+A051,content studio,content studio: Claude skill/plugin; licence unverified; development-firstContent Studio: Claude skill/plugin; licence unverified; development-firstcontent-mark,Not covered,,Extension,Admin
+A051,Content Studio,content studio: Claude skill/plugin; licence unverified; development-firstContent Studio: Claude skill/plugin; licence unverified; development-firstcontent-mark,Not covered,,Extension,Admin
+A051,content-marketing,content studio: Claude skill/plugin; licence unverified; development-firstContent Studio: Claude skill/plugin; licence unverified; development-firstcontent-mark,Not covered,,Extension,Admin
+A051,Marketing,content studio: Claude skill/plugin; licence unverified; development-firstContent Studio: Claude skill/plugin; licence unverified; development-firstcontent-mark,Covered,Part 3.1/3.2,Extension,Admin
+A051,seo-content-creation,content studio: Claude skill/plugin; licence unverified; development-firstContent Studio: Claude skill/plugin; licence unverified; development-firstcontent-mark,Not covered,,Extension,Admin
+A051,Skill Creator,content studio: Claude skill/plugin; licence unverified; development-firstContent Studio: Claude skill/plugin; licence unverified; development-firstcontent-mark,Not covered,,Extension,Admin
+A051,Canva,content studio: Claude skill/plugin; licence unverified; development-firstContent Studio: Claude skill/plugin; licence unverified; development-firstcontent-mark,Not covered,,Extension,Admin
+A051,PubMed,content studio: Claude skill/plugin; licence unverified; development-firstContent Studio: Claude skill/plugin; licence unverified; development-firstcontent-mark,Not covered,,Extension,Admin
+A052,postiz,postiz: Hybrid — AGPL-3.0 self-host / paid hostedPostiz: Hybrid — AGPL-3.0 self-host / paid hostedsocial-publishing: Claude skill/plugin; licence unverified; de,Covered,Part 3.1/3.2,New,Workspace
+A052,Postiz,postiz: Hybrid — AGPL-3.0 self-host / paid hostedPostiz: Hybrid — AGPL-3.0 self-host / paid hostedsocial-publishing: Claude skill/plugin; licence unverified; de,Covered,Part 3.1/3.2,New,Workspace
+A052,social-publishing,postiz: Hybrid — AGPL-3.0 self-host / paid hostedPostiz: Hybrid — AGPL-3.0 self-host / paid hostedsocial-publishing: Claude skill/plugin; licence unverified; de,Not covered,,New,Workspace
+A052,Socialinsider,postiz: Hybrid — AGPL-3.0 self-host / paid hostedPostiz: Hybrid — AGPL-3.0 self-host / paid hostedsocial-publishing: Claude skill/plugin; licence unverified; de,Not covered,,New,Workspace
+A053,postiz,postiz: Hybrid — AGPL-3.0 self-host / paid hostedPostiz: Hybrid — AGPL-3.0 self-host / paid hostedsocial-publishing: Claude skill/plugin; licence unverified; de,Covered,Part 3.1/3.2,Extension,Admin
+A053,Postiz,postiz: Hybrid — AGPL-3.0 self-host / paid hostedPostiz: Hybrid — AGPL-3.0 self-host / paid hostedsocial-publishing: Claude skill/plugin; licence unverified; de,Covered,Part 3.1/3.2,Extension,Admin
+A053,social-publishing,postiz: Hybrid — AGPL-3.0 self-host / paid hostedPostiz: Hybrid — AGPL-3.0 self-host / paid hostedsocial-publishing: Claude skill/plugin; licence unverified; de,Not covered,,Extension,Admin
+A053,Socialinsider,postiz: Hybrid — AGPL-3.0 self-host / paid hostedPostiz: Hybrid — AGPL-3.0 self-host / paid hostedsocial-publishing: Claude skill/plugin; licence unverified; de,Not covered,,Extension,Admin
+A054,search console,search console: Proprietary Google serviceseo-analysis-monitoring: Claude skill/plugin; licence unverified; development-firstseo-content-creation: Claude skill/,Covered,Part 3.1/3.2,New,Workspace
+A054,seo-analysis-monitoring,search console: Proprietary Google serviceseo-analysis-monitoring: Claude skill/plugin; licence unverified; development-firstseo-content-creation: Claude skill/,Not covered,,New,Workspace
+A054,seo-content-creation,search console: Proprietary Google serviceseo-analysis-monitoring: Claude skill/plugin; licence unverified; development-firstseo-content-creation: Claude skill/,Not covered,,New,Workspace
+A054,seo-technical-optimization,search console: Proprietary Google serviceseo-analysis-monitoring: Claude skill/plugin; licence unverified; development-firstseo-content-creation: Claude skill/,Not covered,,New,Workspace
+A054,Writesonic,search console: Proprietary Google serviceseo-analysis-monitoring: Claude skill/plugin; licence unverified; development-firstseo-content-creation: Claude skill/,Not covered,,New,Workspace
+A055,search console,search console: Proprietary Google serviceseo-analysis-monitoring: Claude skill/plugin; licence unverified; development-firstseo-content-creation: Claude skill/,Covered,Part 3.1/3.2,New,Admin
+A055,seo-analysis-monitoring,search console: Proprietary Google serviceseo-analysis-monitoring: Claude skill/plugin; licence unverified; development-firstseo-content-creation: Claude skill/,Not covered,,New,Admin
+A055,seo-content-creation,search console: Proprietary Google serviceseo-analysis-monitoring: Claude skill/plugin; licence unverified; development-firstseo-content-creation: Claude skill/,Not covered,,New,Admin
+A055,seo-technical-optimization,search console: Proprietary Google serviceseo-analysis-monitoring: Claude skill/plugin; licence unverified; development-firstseo-content-creation: Claude skill/,Not covered,,New,Admin
+A055,Writesonic,search console: Proprietary Google serviceseo-analysis-monitoring: Claude skill/plugin; licence unverified; development-firstseo-content-creation: Claude skill/,Not covered,,New,Admin
+A056,react,react: Open source — MITLeadfeeder: Commercial service / hybrid; exact wrapper and upstream licence unverifiedPostHog: Hybrid / commercial service; exact editio,Covered,Part 3.1/3.2,New,Workspace
+A056,Leadfeeder,react: Open source — MITLeadfeeder: Commercial service / hybrid; exact wrapper and upstream licence unverifiedPostHog: Hybrid / commercial service; exact editio,Not covered,,New,Workspace
+A056,PostHog,react: Open source — MITLeadfeeder: Commercial service / hybrid; exact wrapper and upstream licence unverifiedPostHog: Hybrid / commercial service; exact editio,Not covered,,New,Workspace
+A057,react,react: Open source — MITLeadfeeder: Commercial service / hybrid; exact wrapper and upstream licence unverifiedPostHog: Hybrid / commercial service; exact editio,Covered,Part 3.1/3.2,Extension,Admin
+A057,Leadfeeder,react: Open source — MITLeadfeeder: Commercial service / hybrid; exact wrapper and upstream licence unverifiedPostHog: Hybrid / commercial service; exact editio,Not covered,,Extension,Admin
+A057,PostHog,react: Open source — MITLeadfeeder: Commercial service / hybrid; exact wrapper and upstream licence unverifiedPostHog: Hybrid / commercial service; exact editio,Not covered,,Extension,Admin
+A058,content-marketing,content-marketing: Claude skill/plugin; licence unverified; development-firstMarketing: Claude skill/plugin; licence unverified; development-first,Not covered,,New,Workspace
+A058,Marketing,content-marketing: Claude skill/plugin; licence unverified; development-firstMarketing: Claude skill/plugin; licence unverified; development-first,Covered,Part 3.1/3.2,New,Workspace
+A059,content-marketing,content-marketing: Claude skill/plugin; licence unverified; development-firstMarketing: Claude skill/plugin; licence unverified; development-first,Not covered,,New,Admin
+A059,Marketing,content-marketing: Claude skill/plugin; licence unverified; development-firstMarketing: Claude skill/plugin; licence unverified; development-first,Covered,Part 3.1/3.2,New,Admin
+A060,Adspirer,Adspirer: Commercial service / hybrid; exact wrapper and upstream licence unverified,Not covered,,New,Workspace
+A061,Adspirer,Adspirer: Commercial service / hybrid; exact wrapper and upstream licence unverified,Not covered,,Extension,Admin
+A062,zoom,zoom: Hybrid / commercial service; exact edition licence verifyZoom: Hybrid / commercial service; exact edition licence verify,Covered,Part 3.1/3.2,New,Workspace
+A062,Zoom,zoom: Hybrid / commercial service; exact edition licence verifyZoom: Hybrid / commercial service; exact edition licence verify,Covered,Part 3.1/3.2,New,Workspace
+A063,zoom,zoom: Hybrid / commercial service; exact edition licence verifyZoom: Hybrid / commercial service; exact edition licence verify,Covered,Part 3.1/3.2,New,Admin
+A063,Zoom,zoom: Hybrid / commercial service; exact edition licence verifyZoom: Hybrid / commercial service; exact edition licence verify,Covered,Part 3.1/3.2,New,Admin
+A064,Crossbeam Skills,Crossbeam Skills: Commercial service / hybrid; exact wrapper and upstream licence unverified,Not covered,,New,Admin
+A065,pandadoc,pandadoc: Hybrid / commercial service; exact edition licence verifySales: Claude skill/plugin; licence unverified; development-firstPandaDoc: Hybrid / commercia,Not covered,,New,Workspace
+A065,Sales,pandadoc: Hybrid / commercial service; exact edition licence verifySales: Claude skill/plugin; licence unverified; development-firstPandaDoc: Hybrid / commercia,Covered,Part 3.1/3.2,New,Workspace
+A065,PandaDoc,pandadoc: Hybrid / commercial service; exact edition licence verifySales: Claude skill/plugin; licence unverified; development-firstPandaDoc: Hybrid / commercia,Not covered,,New,Workspace
+A066,pandadoc,pandadoc: Hybrid / commercial service; exact edition licence verifySales: Claude skill/plugin; licence unverified; development-firstPandaDoc: Hybrid / commercia,Not covered,,Extension,Admin
+A066,Sales,pandadoc: Hybrid / commercial service; exact edition licence verifySales: Claude skill/plugin; licence unverified; development-firstPandaDoc: Hybrid / commercia,Covered,Part 3.1/3.2,Extension,Admin
+A066,PandaDoc,pandadoc: Hybrid / commercial service; exact edition licence verifySales: Claude skill/plugin; licence unverified; development-firstPandaDoc: Hybrid / commercia,Not covered,,Extension,Admin
+A067,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),New,Workspace
+A068,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),Extension,Admin
+A069,llm gateway,llm gateway: Proprietary model API (RAG architecture may use OSS)llm: Proprietary model API (RAG architecture may use OSS),Not covered,,New,Workspace
+A069,llm,llm gateway: Proprietary model API (RAG architecture may use OSS)llm: Proprietary model API (RAG architecture may use OSS),Covered,Part 3.1/3.2,New,Workspace
+A070,llm gateway,llm gateway: Proprietary model API (RAG architecture may use OSS)llm: Proprietary model API (RAG architecture may use OSS),Not covered,,Extension,Admin
+A070,llm,llm gateway: Proprietary model API (RAG architecture may use OSS)llm: Proprietary model API (RAG architecture may use OSS),Covered,Part 3.1/3.2,Extension,Admin
+A071,PandaDoc,PandaDoc: Hybrid / commercial service; exact edition licence verify,Not covered,,New,Workspace
+A072,PandaDoc,PandaDoc: Hybrid / commercial service; exact edition licence verify,Not covered,,New,Admin
+A073,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),New,Workspace
+A074,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),New,Admin
+A075,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),New,Workspace
+A076,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),Extension,Admin
+A077,Crossbeam Skills,Crossbeam Skills: Commercial service / hybrid; exact wrapper and upstream licence unverified,Not covered,,New,Workspace
+A078,Crossbeam Skills,Crossbeam Skills: Commercial service / hybrid; exact wrapper and upstream licence unverified,Not covered,,New,Admin
+A079,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),New,Workspace
+A080,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),Extension,Admin
+A081,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),New,Workspace
+A082,postgresql,postgresql: Open source — PostgreSQL LicenseSocialinsider: Commercial service / hybrid; exact wrapper and upstream licence unverifiedPostHog: Hybrid / commercia,Covered,Part 3.1/3.2,New,Workspace
+A082,Socialinsider,postgresql: Open source — PostgreSQL LicenseSocialinsider: Commercial service / hybrid; exact wrapper and upstream licence unverifiedPostHog: Hybrid / commercia,Not covered,,New,Workspace
+A082,PostHog,postgresql: Open source — PostgreSQL LicenseSocialinsider: Commercial service / hybrid; exact wrapper and upstream licence unverifiedPostHog: Hybrid / commercia,Not covered,,New,Workspace
+A083,postgresql,postgresql: Open source — PostgreSQL LicenseSocialinsider: Commercial service / hybrid; exact wrapper and upstream licence unverifiedPostHog: Hybrid / commercia,Covered,Part 3.1/3.2,New,Admin
+A083,Socialinsider,postgresql: Open source — PostgreSQL LicenseSocialinsider: Commercial service / hybrid; exact wrapper and upstream licence unverifiedPostHog: Hybrid / commercia,Not covered,,New,Admin
+A083,PostHog,postgresql: Open source — PostgreSQL LicenseSocialinsider: Commercial service / hybrid; exact wrapper and upstream licence unverifiedPostHog: Hybrid / commercia,Not covered,,New,Admin
+A084,deepeval,deepeval: Open source — Apache-2.0DeepEval: Open source — Apache-2.0Langfuse: Hybrid / commercial service; exact edition licence verifySkill Creator: Claude ski,Not covered,,Extension,Admin
+A084,DeepEval,deepeval: Open source — Apache-2.0DeepEval: Open source — Apache-2.0Langfuse: Hybrid / commercial service; exact edition licence verifySkill Creator: Claude ski,Not covered,,Extension,Admin
+A084,Langfuse,deepeval: Open source — Apache-2.0DeepEval: Open source — Apache-2.0Langfuse: Hybrid / commercial service; exact edition licence verifySkill Creator: Claude ski,Not covered,,Extension,Admin
+A084,Skill Creator,deepeval: Open source — Apache-2.0DeepEval: Open source — Apache-2.0Langfuse: Hybrid / commercial service; exact edition licence verifySkill Creator: Claude ski,Not covered,,Extension,Admin
+A085,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),New,Workspace
+A086,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),Extension,Admin
+A087,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),New,Workspace
+A088,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),Extension,Admin
+A089,react,react: Open source — MIT,Covered,Part 3.1/3.2,Extension,Admin
+A090,playwright,playwright: Open source — Apache-2.0pytest: Open source — MITPlaywright: Open source — Apache-2.0Postman: Hybrid / commercial service; exact edition licence ver,Covered,Part 3.1/3.2,Extension,Admin
+A090,pytest,playwright: Open source — Apache-2.0pytest: Open source — MITPlaywright: Open source — Apache-2.0Postman: Hybrid / commercial service; exact edition licence ver,Covered,Part 3.1/3.2,Extension,Admin
+A090,Playwright,playwright: Open source — Apache-2.0pytest: Open source — MITPlaywright: Open source — Apache-2.0Postman: Hybrid / commercial service; exact edition licence ver,Covered,Part 3.1/3.2,Extension,Admin
+A090,Postman,playwright: Open source — Apache-2.0pytest: Open source — MITPlaywright: Open source — Apache-2.0Postman: Hybrid / commercial service; exact edition licence ver,Not covered,,Extension,Admin
+A091,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),New,Workspace
+A092,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),Extension,Admin
+A093,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),New,Workspace
+A094,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),Extension,Admin
+A095,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),Extension,Workspace
+A096,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),Extension,Admin
+A097,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),Extension,Workspace
+A098,Internal / no direct plugin,Internal/custom; OSS stack preferred,Covered,Internal React/Django (Part 3.1),Extension,Admin
+A099,Internal React/Django,,Covered,Internal React/Django (Part 3.1),Contextual panel,Admin
+A100,Internal React/Django,,Covered,Internal React/Django (Part 3.1),Contextual panel,Admin
+A101,Internal React/Django,,Covered,Internal React/Django (Part 3.1),Contextual panel,Admin
+A102,Internal React/Django,,Covered,Internal React/Django (Part 3.1),Contextual panel,Admin
+A103,Internal React/Django,,Covered,Internal React/Django (Part 3.1),Contextual panel,Admin
+A104,Internal React/Django,,Covered,Internal React/Django (Part 3.1),Contextual panel,Workspace
+A105,Internal React/Django,,Covered,Internal React/Django (Part 3.1),Contextual panel,Workspace
+A106,Internal React/Django,,Covered,Internal React/Django (Part 3.1),Contextual panel,Workspace

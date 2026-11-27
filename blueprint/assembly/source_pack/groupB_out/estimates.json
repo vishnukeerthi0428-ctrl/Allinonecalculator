@@ -1,0 +1,302 @@
+{
+ "capacity": [
+  {
+   "metric": "Owned startups / external tenants",
+   "initial": "25 / 10",
+   "growth": "50+ / 100"
+  },
+  {
+   "metric": "Concurrent staff sessions",
+   "initial": "50",
+   "growth": "250"
+  },
+  {
+   "metric": "Scoped opportunities",
+   "initial": "100,000",
+   "growth": "1,000,000"
+  },
+  {
+   "metric": "Concurrent jobs / scheduled actions/day",
+   "initial": "50 / 10,000",
+   "growth": "250 / 100,000"
+  },
+  {
+   "metric": "Dashboard query p95",
+   "initial": "≤2 s",
+   "growth": "≤2.5 s"
+  },
+  {
+   "metric": "Async/webhook acknowledgement p95",
+   "initial": "≤2 s",
+   "growth": "≤2 s"
+  },
+  {
+   "metric": "Projection refresh",
+   "initial": "≤60 s",
+   "growth": "≤60 s"
+  },
+  {
+   "metric": "Critical data RPO / RTO",
+   "initial": "≤15 min / ≤4 h",
+   "growth": "≤15 min / ≤2 h"
+  },
+  {
+   "metric": "Regenerable research RPO/RTO",
+   "initial": "≤24 h / ≤8 h",
+   "growth": "≤24 h / ≤8 h"
+  }
+ ],
+ "work_packages": {
+  "66 original commercial modules (source revised effort)": "194–323",
+  "Tenant and independent SaaS controls": "35–60",
+  "Four-vertical projects, orders and fulfillment": "30–52",
+  "Autonomous planning, portability and independent QA": "28–48",
+  "Total planning range": "287–483"
+ },
+ "cost": {
+  "items": {
+   "AWS shared hosting": 5000.0,
+   "Production AI inference": 3000.0,
+   "Public search API": 1500.0,
+   "Extraction compute / overage": 1000.0,
+   "Email delivery": 500.0,
+   "WhatsApp Business": 2000.0,
+   "Monitoring / security / CI": 500.0,
+   "Apollo paid enrichment reserve": 9000.0,
+   "Claude Code developer seats": 3600.0,
+   "Optional integration reserve": 1000.0,
+   "Contingency rate": 0.15
+  },
+  "base_before_contingency": 14500.0,
+  "base_with_contingency": 16675.0,
+  "with_optional_with_contingency": 31164.999999999996
+ },
+ "discipline": {
+  "rows": [
+   {
+    "discipline": "React / UX",
+    "pd": 90.68,
+    "src_1L": "₹412,182",
+    "calc_1L": 412182,
+    "src_1_5L": "₹618,273",
+    "calc_1_5L": 618273
+   },
+   {
+    "discipline": "Django / API",
+    "pd": 111.55,
+    "src_1L": "₹507,045",
+    "calc_1L": 507045,
+    "src_1_5L": "₹760,568",
+    "calc_1_5L": 760568
+   },
+   {
+    "discipline": "PostgreSQL",
+    "pd": 52.85,
+    "src_1L": "₹240,227",
+    "calc_1L": 240227,
+    "src_1_5L": "₹360,341",
+    "calc_1_5L": 360341
+   },
+   {
+    "discipline": "AI / integration",
+    "pd": 36.23,
+    "src_1L": "₹164,682",
+    "calc_1L": 164682,
+    "src_1_5L": "₹247,023",
+    "calc_1_5L": 247023
+   },
+   {
+    "discipline": "QA",
+    "pd": 65.64,
+    "src_1L": "₹298,364",
+    "calc_1L": 298364,
+    "src_1_5L": "₹447,545",
+    "calc_1_5L": 447545
+   },
+   {
+    "discipline": "DevOps / security",
+    "pd": 28.05,
+    "src_1L": "₹127,500",
+    "calc_1L": 127500,
+    "src_1_5L": "₹191,250",
+    "calc_1_5L": 191250
+   }
+  ],
+  "total_pd": 385.0
+ },
+ "ux_tasks": {
+  "tasks": {
+   "UX-TASK-FOUNDATION": {
+    "title": "Scoped configuration and identity/audience foundation",
+    "preds": [],
+    "low": 8.0,
+    "base": 14.0,
+    "high": 24.0
+   },
+   "UX-TASK-FIELDS": {
+    "title": "Dynamic fields, linked records and shared UI state for retained screens",
+    "preds": [
+     "UX-TASK-FOUNDATION"
+    ],
+    "low": 18.0,
+    "base": 32.0,
+    "high": 55.0
+   },
+   "UX-TASK-EVENTS": {
+    "title": "Event/run/conflict orchestration and versioned graph",
+    "preds": [
+     "UX-TASK-FOUNDATION"
+    ],
+    "low": 10.0,
+    "base": 18.0,
+    "high": 30.0
+   },
+   "UX-TASK-W31": {
+    "title": "SaaS introduction, plans & demo",
+    "preds": [
+     "UX-TASK-FOUNDATION",
+     "UX-TASK-FIELDS"
+    ],
+    "low": 2.0,
+    "base": 4.0,
+    "high": 7.0
+   },
+   "UX-TASK-W32": {
+    "title": "Startup & third-party client registration",
+    "preds": [
+     "UX-TASK-FOUNDATION",
+     "UX-TASK-FIELDS"
+    ],
+    "low": 2.0,
+    "base": 4.0,
+    "high": 7.0
+   },
+   "UX-TASK-W33": {
+    "title": "AI business onboarding & configuration wizard",
+    "preds": [
+     "UX-TASK-FOUNDATION",
+     "UX-TASK-FIELDS"
+    ],
+    "low": 2.0,
+    "base": 4.0,
+    "high": 7.0
+   },
+   "UX-TASK-W34": {
+    "title": "SaaS client service portal",
+    "preds": [
+     "UX-TASK-FOUNDATION",
+     "UX-TASK-FIELDS"
+    ],
+    "low": 2.0,
+    "base": 4.0,
+    "high": 7.0
+   },
+   "UX-TASK-A109": {
+    "title": "Event & Trigger Management Centre",
+    "preds": [
+     "UX-TASK-FOUNDATION",
+     "UX-TASK-FIELDS",
+     "UX-TASK-EVENTS"
+    ],
+    "low": 2.0,
+    "base": 4.0,
+    "high": 7.0
+   },
+   "UX-TASK-A110": {
+    "title": "Live Automation Execution Monitor",
+    "preds": [
+     "UX-TASK-FOUNDATION",
+     "UX-TASK-FIELDS",
+     "UX-TASK-EVENTS"
+    ],
+    "low": 2.0,
+    "base": 4.0,
+    "high": 7.0
+   },
+   "UX-TASK-A111": {
+    "title": "Automation Coordination & Conflict Resolution",
+    "preds": [
+     "UX-TASK-FOUNDATION",
+     "UX-TASK-FIELDS",
+     "UX-TASK-EVENTS"
+    ],
+    "low": 2.0,
+    "base": 4.0,
+    "high": 7.0
+   },
+   "UX-TASK-A112": {
+    "title": "Business Configuration Change Centre",
+    "preds": [
+     "UX-TASK-FOUNDATION",
+     "UX-TASK-FIELDS",
+     "UX-TASK-EVENTS"
+    ],
+    "low": 2.0,
+    "base": 4.0,
+    "high": 7.0
+   },
+   "UX-TASK-A113": {
+    "title": "Automation Template & Node Library",
+    "preds": [
+     "UX-TASK-FOUNDATION",
+     "UX-TASK-FIELDS",
+     "UX-TASK-EVENTS"
+    ],
+    "low": 2.0,
+    "base": 4.0,
+    "high": 7.0
+   },
+   "UX-TASK-QA": {
+    "title": "Integrated expansion regression and release evidence",
+    "preds": [
+     "UX-TASK-W31",
+     "UX-TASK-W32",
+     "UX-TASK-W33",
+     "UX-TASK-W34",
+     "UX-TASK-A109",
+     "UX-TASK-A110",
+     "UX-TASK-A111",
+     "UX-TASK-A112",
+     "UX-TASK-A113"
+    ],
+    "low": 8.0,
+    "base": 14.0,
+    "high": 24.0
+   }
+  },
+  "sums": {
+   "low": 62.0,
+   "base": 114.0,
+   "high": 196.0
+  },
+  "critical_path": {
+   "low": [
+    36.0,
+    [
+     "UX-TASK-FOUNDATION",
+     "UX-TASK-FIELDS",
+     "UX-TASK-W31",
+     "UX-TASK-QA"
+    ]
+   ],
+   "base": [
+    64.0,
+    [
+     "UX-TASK-FOUNDATION",
+     "UX-TASK-FIELDS",
+     "UX-TASK-W31",
+     "UX-TASK-QA"
+    ]
+   ],
+   "high": [
+    110.0,
+    [
+     "UX-TASK-FOUNDATION",
+     "UX-TASK-FIELDS",
+     "UX-TASK-W31",
+     "UX-TASK-QA"
+    ]
+   ]
+  }
+ }
+}

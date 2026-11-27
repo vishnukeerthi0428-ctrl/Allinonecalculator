@@ -1,0 +1,1488 @@
+{
+ "03": {
+  "file": "03_End_User_Personas.txt",
+  "bytes": 33319,
+  "stats": {
+   "lines": 261,
+   "unique_lines": 174,
+   "core_lines": 87,
+   "headings": 44,
+   "tables": 7,
+   "rows": 50
+  },
+  "sections": [
+   [
+    1,
+    "Product purpose and operating boundary"
+   ],
+   [
+    2,
+    "Initial startup configurations"
+   ],
+   [
+    2,
+    "Technology and execution principles"
+   ],
+   [
+    1,
+    "Role-specific personas and operating journeys"
+   ],
+   [
+    2,
+    "Portfolio owner"
+   ],
+   [
+    2,
+    "Tenant administrator"
+   ],
+   [
+    2,
+    "Platform support operator"
+   ],
+   [
+    2,
+    "Finance controller"
+   ],
+   [
+    2,
+    "Legal/compliance approver"
+   ],
+   [
+    2,
+    "External tenant founder"
+   ],
+   [
+    2,
+    "Service billing administrator"
+   ],
+   [
+    2,
+    "Growth manager"
+   ],
+   [
+    2,
+    "Digital marketing executive"
+   ],
+   [
+    2,
+    "Research analyst"
+   ],
+   [
+    2,
+    "Sales executive"
+   ],
+   [
+    2,
+    "Bid manager"
+   ],
+   [
+    2,
+    "Procurement manager"
+   ],
+   [
+    2,
+    "Customer success manager"
+   ],
+   [
+    2,
+    "Healthcare partnerships manager"
+   ],
+   [
+    2,
+    "Education counsellor"
+   ],
+   [
+    2,
+    "School administrator"
+   ],
+   [
+    2,
+    "Buyer"
+   ],
+   [
+    2,
+    "Supplier"
+   ],
+   [
+    2,
+    "Commercial delivery coordinator"
+   ],
+   [
+    2,
+    "Agency / managed-service operator"
+   ],
+   [
+    1,
+    "Global filter hierarchy and contextual filters"
+   ],
+   [
+    1,
+    "Website and confidential Admin operating contract"
+   ],
+   [
+    2,
+    "Distinct website and Admin personas"
+   ],
+   [
+    1,
+    "Additional responsibilities and acceptance users"
+   ],
+   [
+    1,
+    "Role training and operational acceptance"
+   ],
+   [
+    1,
+    "Implementation, verification and delivery controls"
+   ],
+   [
+    2,
+    "Acceptance and evidence record"
+   ],
+   [
+    1,
+    "Persona journey approval exercises"
+   ],
+   [
+    2,
+    "Role-specific acceptance"
+   ],
+   [
+    1,
+    "Optimization engineering and acceptance"
+   ],
+   [
+    2,
+    "Reusability"
+   ],
+   [
+    2,
+    "UI/UX"
+   ],
+   [
+    1,
+    "Implementation acceptance and verification"
+   ],
+   [
+    2,
+    "User productivity"
+   ],
+   [
+    1,
+    "Implementation acceptance and final decision controls"
+   ],
+   [
+    2,
+    "User productivity"
+   ],
+   [
+    2,
+    "Boundary and acceptance conditions"
+   ],
+   [
+    1,
+    "Current multi-startup, omnichannel and automation scope"
+   ],
+   [
+    2,
+    "Personas and journeys"
+   ]
+  ],
+  "unique_by_section": {
+   "null": 3,
+   "Initial startup configurations": 4,
+   "Portfolio owner": 4,
+   "Tenant administrator": 4,
+   "Platform support operator": 4,
+   "Finance controller": 4,
+   "Legal/compliance approver": 4,
+   "External tenant founder": 4,
+   "Service billing administrator": 4,
+   "Growth manager": 4,
+   "Digital marketing executive": 4,
+   "Research analyst": 4,
+   "Sales executive": 4,
+   "Bid manager": 4,
+   "Procurement manager": 4,
+   "Customer success manager": 4,
+   "Healthcare partnerships manager": 4,
+   "Education counsellor": 4,
+   "School administrator": 4,
+   "Buyer": 4,
+   "Supplier": 4,
+   "Commercial delivery coordinator": 4,
+   "Agency / managed-service operator": 4,
+   "Global filter hierarchy and contextual filters": 13,
+   "Website and confidential Admin operating contract": 8,
+   "Distinct website and Admin personas": 1,
+   "Additional responsibilities and acceptance users": 3,
+   "Role training and operational acceptance": 1,
+   "Implementation, verification and delivery controls": 22,
+   "Acceptance and evidence record": 7,
+   "Role-specific acceptance": 9,
+   "Optimization engineering and acceptance": 1,
+   "User productivity": 5,
+   "Personas and journeys": 13
+  }
+ },
+ "11": {
+  "file": "11_Global_Market_Intelligence_and_Opportunity_Discovery.txt",
+  "bytes": 40599,
+  "stats": {
+   "lines": 399,
+   "unique_lines": 312,
+   "core_lines": 87,
+   "headings": 59,
+   "tables": 7,
+   "rows": 40
+  },
+  "sections": [
+   [
+    1,
+    "Product purpose and operating boundary"
+   ],
+   [
+    2,
+    "Initial startup configurations"
+   ],
+   [
+    2,
+    "Technology and execution principles"
+   ],
+   [
+    1,
+    "Worldwide source and evidence engine"
+   ],
+   [
+    1,
+    "Market sources and acquisition playbooks"
+   ],
+   [
+    2,
+    "Organization websites"
+   ],
+   [
+    2,
+    "Search engines"
+   ],
+   [
+    2,
+    "Official directories"
+   ],
+   [
+    2,
+    "Government procurement"
+   ],
+   [
+    2,
+    "LinkedIn"
+   ],
+   [
+    2,
+    "Facebook / Instagram"
+   ],
+   [
+    2,
+    "X / YouTube / Reddit"
+   ],
+   [
+    2,
+    "WhatsApp"
+   ],
+   [
+    2,
+    "Email"
+   ],
+   [
+    2,
+    "Startup website"
+   ],
+   [
+    2,
+    "Partner referrals"
+   ],
+   [
+    2,
+    "Webinars"
+   ],
+   [
+    2,
+    "Insurance / corporate annual reports"
+   ],
+   [
+    2,
+    "Hospitals"
+   ],
+   [
+    2,
+    "Clinics / doctors"
+   ],
+   [
+    2,
+    "Diagnostic labs"
+   ],
+   [
+    2,
+    "IT / corporate"
+   ],
+   [
+    2,
+    "Insurance"
+   ],
+   [
+    2,
+    "Universities"
+   ],
+   [
+    2,
+    "NGO / government"
+   ],
+   [
+    2,
+    "Wellness / fitness"
+   ],
+   [
+    2,
+    "Deployment partner"
+   ],
+   [
+    2,
+    "B2C"
+   ],
+   [
+    2,
+    "Healthtech"
+   ],
+   [
+    1,
+    "Business-specific acquisition and commercial conversion"
+   ],
+   [
+    1,
+    "Website and confidential Admin operating contract"
+   ],
+   [
+    2,
+    "Confidential discovery versus public evidence"
+   ],
+   [
+    1,
+    "Low-cost permitted-source discovery"
+   ],
+   [
+    1,
+    "Research quality and operational controls"
+   ],
+   [
+    1,
+    "Implementation, verification and delivery controls"
+   ],
+   [
+    2,
+    "Acceptance and evidence record"
+   ],
+   [
+    1,
+    "Worldwide evidence coverage and qualification validation"
+   ],
+   [
+    2,
+    "Coverage and examples"
+   ],
+   [
+    1,
+    "Optimization engineering and acceptance"
+   ],
+   [
+    2,
+    "Cost"
+   ],
+   [
+    2,
+    "Automation"
+   ],
+   [
+    2,
+    "API & Integration"
+   ],
+   [
+    2,
+    "AI Intelligence"
+   ],
+   [
+    2,
+    "Data Quality"
+   ],
+   [
+    1,
+    "Implementation acceptance and verification"
+   ],
+   [
+    2,
+    "Source permission and provenance"
+   ],
+   [
+    2,
+    "Evidence freshness"
+   ],
+   [
+    2,
+    "Deduplication and entity resolution"
+   ],
+   [
+    2,
+    "Classification quality"
+   ],
+   [
+    2,
+    "Source inventory completeness"
+   ],
+   [
+    1,
+    "Implementation acceptance and final decision controls"
+   ],
+   [
+    2,
+    "Source permission and provenance"
+   ],
+   [
+    2,
+    "Evidence freshness"
+   ],
+   [
+    2,
+    "Deduplication and entity resolution"
+   ],
+   [
+    2,
+    "Classification quality"
+   ],
+   [
+    2,
+    "Source inventory completeness"
+   ],
+   [
+    2,
+    "Provider and evidence benchmark"
+   ],
+   [
+    1,
+    "Current multi-startup, omnichannel and automation scope"
+   ],
+   [
+    2,
+    "Research intelligence"
+   ]
+  ],
+  "unique_by_section": {
+   "null": 3,
+   "Initial startup configurations": 4,
+   "Worldwide source and evidence engine": 16,
+   "Organization websites": 7,
+   "Search engines": 7,
+   "Official directories": 7,
+   "Government procurement": 7,
+   "LinkedIn": 7,
+   "Facebook / Instagram": 7,
+   "X / YouTube / Reddit": 7,
+   "WhatsApp": 7,
+   "Email": 7,
+   "Startup website": 7,
+   "Partner referrals": 7,
+   "Webinars": 7,
+   "Insurance / corporate annual reports": 7,
+   "Hospitals": 11,
+   "Clinics / doctors": 11,
+   "Diagnostic labs": 11,
+   "IT / corporate": 11,
+   "Insurance": 11,
+   "Universities": 11,
+   "NGO / government": 11,
+   "Wellness / fitness": 11,
+   "Deployment partner": 11,
+   "B2C": 11,
+   "Healthtech": 11,
+   "Business-specific acquisition and commercial conversion": 3,
+   "Website and confidential Admin operating contract": 8,
+   "Confidential discovery versus public evidence": 1,
+   "Low-cost permitted-source discovery": 3,
+   "Research quality and operational controls": 1,
+   "Implementation, verification and delivery controls": 22,
+   "Acceptance and evidence record": 7,
+   "Coverage and examples": 9,
+   "Optimization engineering and acceptance": 1,
+   "Source permission and provenance": 4,
+   "Evidence freshness": 4,
+   "Deduplication and entity resolution": 4,
+   "Classification quality": 5,
+   "Source inventory completeness": 4,
+   "Research intelligence": 1
+  }
+ },
+ "12": {
+  "file": "12_Digital_Marketing_and_Customer_Acquisition_Automation.txt",
+  "bytes": 34098,
+  "stats": {
+   "lines": 307,
+   "unique_lines": 139,
+   "core_lines": 168,
+   "headings": 45,
+   "tables": 8,
+   "rows": 60
+  },
+  "sections": [
+   [
+    1,
+    "Product purpose and operating boundary"
+   ],
+   [
+    2,
+    "Initial startup configurations"
+   ],
+   [
+    2,
+    "Technology and execution principles"
+   ],
+   [
+    1,
+    "Channel and communication policies"
+   ],
+   [
+    1,
+    "Inbound marketing acquisition"
+   ],
+   [
+    2,
+    "WhatsApp Business"
+   ],
+   [
+    2,
+    "Website conversational assistant"
+   ],
+   [
+    2,
+    "Unified omnichannel routing"
+   ],
+   [
+    2,
+    "Social listening"
+   ],
+   [
+    2,
+    "Content studio"
+   ],
+   [
+    2,
+    "Social publishing"
+   ],
+   [
+    2,
+    "SEO and search visibility"
+   ],
+   [
+    2,
+    "Landing pages and attribution"
+   ],
+   [
+    2,
+    "Campaign management"
+   ],
+   [
+    2,
+    "Paid ads integration"
+   ],
+   [
+    2,
+    "Webinars and demonstrations"
+   ],
+   [
+    2,
+    "Referral and partner lead capture"
+   ],
+   [
+    1,
+    "Workflow register \u2014 end-to-end execution"
+   ],
+   [
+    1,
+    "Website and confidential Admin operating contract"
+   ],
+   [
+    2,
+    "Website engagement and publishing automation"
+   ],
+   [
+    1,
+    "Low-cost approved communications and publishing"
+   ],
+   [
+    1,
+    "Communication and publication quality"
+   ],
+   [
+    1,
+    "Implementation, verification and delivery controls"
+   ],
+   [
+    2,
+    "Acceptance and evidence record"
+   ],
+   [
+    1,
+    "Engagement delivery verification and opt-out race"
+   ],
+   [
+    2,
+    "Concrete message workflow"
+   ],
+   [
+    1,
+    "Optimization engineering and acceptance"
+   ],
+   [
+    2,
+    "Cost"
+   ],
+   [
+    2,
+    "Automation"
+   ],
+   [
+    2,
+    "Data Quality"
+   ],
+   [
+    2,
+    "Business Conversion"
+   ],
+   [
+    2,
+    "Privacy & Compliance"
+   ],
+   [
+    1,
+    "Implementation acceptance and verification"
+   ],
+   [
+    2,
+    "Follow-up stop conditions"
+   ],
+   [
+    2,
+    "Inbound and outbound journeys"
+   ],
+   [
+    2,
+    "Communication eligibility"
+   ],
+   [
+    2,
+    "Public offer and claims restrictions"
+   ],
+   [
+    1,
+    "Implementation acceptance and final decision controls"
+   ],
+   [
+    2,
+    "Follow-up stop conditions"
+   ],
+   [
+    2,
+    "Inbound and outbound journeys"
+   ],
+   [
+    2,
+    "Communication eligibility"
+   ],
+   [
+    2,
+    "Public offer and claims restrictions"
+   ],
+   [
+    2,
+    "Provider and evidence benchmark"
+   ],
+   [
+    1,
+    "Current multi-startup, omnichannel and automation scope"
+   ],
+   [
+    2,
+    "Communication"
+   ]
+  ],
+  "unique_by_section": {
+   "null": 3,
+   "Initial startup configurations": 4,
+   "Channel and communication policies": 15,
+   "Inbound marketing acquisition": 17,
+   "WhatsApp Business": 1,
+   "Website conversational assistant": 1,
+   "Unified omnichannel routing": 1,
+   "Social listening": 1,
+   "Content studio": 1,
+   "Social publishing": 1,
+   "SEO and search visibility": 1,
+   "Landing pages and attribution": 1,
+   "Campaign management": 1,
+   "Paid ads integration": 1,
+   "Webinars and demonstrations": 1,
+   "Referral and partner lead capture": 1,
+   "Workflow register \u2014 end-to-end execution": 17,
+   "Website and confidential Admin operating contract": 8,
+   "Website engagement and publishing automation": 1,
+   "Low-cost approved communications and publishing": 3,
+   "Communication and publication quality": 1,
+   "Implementation, verification and delivery controls": 22,
+   "Acceptance and evidence record": 7,
+   "Concrete message workflow": 11,
+   "Optimization engineering and acceptance": 1,
+   "Follow-up stop conditions": 4,
+   "Inbound and outbound journeys": 4,
+   "Communication eligibility": 4,
+   "Public offer and claims restrictions": 4,
+   "Communication": 1
+  }
+ },
+ "13": {
+  "file": "13_Sales_Intelligence_and_Commercial_Conversion.txt",
+  "bytes": 46323,
+  "stats": {
+   "lines": 396,
+   "unique_lines": 276,
+   "core_lines": 120,
+   "headings": 51,
+   "tables": 8,
+   "rows": 44
+  },
+  "sections": [
+   [
+    1,
+    "Product purpose and operating boundary"
+   ],
+   [
+    2,
+    "Initial startup configurations"
+   ],
+   [
+    2,
+    "Technology and execution principles"
+   ],
+   [
+    1,
+    "Conversion state machines and evidence requirements"
+   ],
+   [
+    1,
+    "Business-specific acquisition and commercial conversion"
+   ],
+   [
+    2,
+    "Proposal builder"
+   ],
+   [
+    2,
+    "Quote and pricing engine"
+   ],
+   [
+    2,
+    "Negotiation and objection handling"
+   ],
+   [
+    2,
+    "Contract and MoU workflow"
+   ],
+   [
+    2,
+    "Payment and closure"
+   ],
+   [
+    2,
+    "Onboarding and handoff"
+   ],
+   [
+    2,
+    "Partner deployment pipeline"
+   ],
+   [
+    2,
+    "Retention and renewal"
+   ],
+   [
+    2,
+    "Lost deal and feedback"
+   ],
+   [
+    2,
+    "Revenue and attribution"
+   ],
+   [
+    1,
+    "Website and confidential Admin operating contract"
+   ],
+   [
+    2,
+    "External conversion interface"
+   ],
+   [
+    1,
+    "Provider-neutral conversion, documents and payments"
+   ],
+   [
+    1,
+    "Conversion and reconciliation acceptance"
+   ],
+   [
+    1,
+    "Implementation, verification and delivery controls"
+   ],
+   [
+    2,
+    "Acceptance and evidence record"
+   ],
+   [
+    1,
+    "Concrete conversion and financial acceptance"
+   ],
+   [
+    2,
+    "Fixtures"
+   ],
+   [
+    2,
+    "Separate financial ledgers"
+   ],
+   [
+    1,
+    "Optimization engineering and acceptance"
+   ],
+   [
+    2,
+    "Automation"
+   ],
+   [
+    2,
+    "Stability"
+   ],
+   [
+    2,
+    "Database"
+   ],
+   [
+    2,
+    "Data Quality"
+   ],
+   [
+    2,
+    "Business Conversion"
+   ],
+   [
+    1,
+    "Implementation acceptance and verification"
+   ],
+   [
+    2,
+    "Idempotency and duplicate delivery"
+   ],
+   [
+    2,
+    "Scope separation of business capabilities"
+   ],
+   [
+    2,
+    "Financial exactness"
+   ],
+   [
+    2,
+    "Opportunity qualification"
+   ],
+   [
+    2,
+    "Objection resolution"
+   ],
+   [
+    2,
+    "Closure and receipt distinction"
+   ],
+   [
+    2,
+    "Public offer and claims restrictions"
+   ],
+   [
+    2,
+    "Usage ledger and invoice reconciliation"
+   ],
+   [
+    1,
+    "Implementation acceptance and final decision controls"
+   ],
+   [
+    2,
+    "Idempotency and duplicate delivery"
+   ],
+   [
+    2,
+    "Scope separation of business capabilities"
+   ],
+   [
+    2,
+    "Financial exactness"
+   ],
+   [
+    2,
+    "Opportunity qualification"
+   ],
+   [
+    2,
+    "Objection resolution"
+   ],
+   [
+    2,
+    "Closure and receipt distinction"
+   ],
+   [
+    2,
+    "Public offer and claims restrictions"
+   ],
+   [
+    2,
+    "Usage ledger and invoice reconciliation"
+   ],
+   [
+    2,
+    "Boundary and acceptance conditions"
+   ],
+   [
+    1,
+    "Current multi-startup, omnichannel and automation scope"
+   ],
+   [
+    2,
+    "Conversion and closure"
+   ]
+  ],
+  "unique_by_section": {
+   "null": 3,
+   "Initial startup configurations": 4,
+   "Business-specific acquisition and commercial conversion": 16,
+   "Proposal builder": 16,
+   "Quote and pricing engine": 16,
+   "Negotiation and objection handling": 16,
+   "Contract and MoU workflow": 16,
+   "Payment and closure": 16,
+   "Onboarding and handoff": 16,
+   "Partner deployment pipeline": 16,
+   "Retention and renewal": 16,
+   "Lost deal and feedback": 16,
+   "Revenue and attribution": 16,
+   "Website and confidential Admin operating contract": 8,
+   "External conversion interface": 1,
+   "Provider-neutral conversion, documents and payments": 3,
+   "Conversion and reconciliation acceptance": 1,
+   "Implementation, verification and delivery controls": 25,
+   "Acceptance and evidence record": 7,
+   "Fixtures": 7,
+   "Separate financial ledgers": 7,
+   "Optimization engineering and acceptance": 1,
+   "Idempotency and duplicate delivery": 4,
+   "Scope separation of business capabilities": 4,
+   "Financial exactness": 4,
+   "Opportunity qualification": 4,
+   "Objection resolution": 4,
+   "Closure and receipt distinction": 4,
+   "Public offer and claims restrictions": 4,
+   "Usage ledger and invoice reconciliation": 4,
+   "Conversion and closure": 1
+  }
+ },
+ "14": {
+  "file": "14_Global_Customer_Partner_and_Account_Acquisition_Strategy.txt",
+  "bytes": 53111,
+  "stats": {
+   "lines": 562,
+   "unique_lines": 379,
+   "core_lines": 183,
+   "headings": 77,
+   "tables": 11,
+   "rows": 76
+  },
+  "sections": [
+   [
+    1,
+    "Product purpose and operating boundary"
+   ],
+   [
+    2,
+    "Initial startup configurations"
+   ],
+   [
+    2,
+    "Technology and execution principles"
+   ],
+   [
+    1,
+    "Business-specific acquisition and commercial conversion"
+   ],
+   [
+    1,
+    "Worldwide source and evidence engine"
+   ],
+   [
+    1,
+    "Market sources and acquisition playbooks"
+   ],
+   [
+    2,
+    "Organization websites"
+   ],
+   [
+    2,
+    "Search engines"
+   ],
+   [
+    2,
+    "Official directories"
+   ],
+   [
+    2,
+    "Government procurement"
+   ],
+   [
+    2,
+    "LinkedIn"
+   ],
+   [
+    2,
+    "Facebook / Instagram"
+   ],
+   [
+    2,
+    "X / YouTube / Reddit"
+   ],
+   [
+    2,
+    "WhatsApp"
+   ],
+   [
+    2,
+    "Email"
+   ],
+   [
+    2,
+    "Startup website"
+   ],
+   [
+    2,
+    "Partner referrals"
+   ],
+   [
+    2,
+    "Webinars"
+   ],
+   [
+    2,
+    "Insurance / corporate annual reports"
+   ],
+   [
+    2,
+    "Hospitals"
+   ],
+   [
+    2,
+    "Clinics / doctors"
+   ],
+   [
+    2,
+    "Diagnostic labs"
+   ],
+   [
+    2,
+    "IT / corporate"
+   ],
+   [
+    2,
+    "Insurance"
+   ],
+   [
+    2,
+    "Universities"
+   ],
+   [
+    2,
+    "NGO / government"
+   ],
+   [
+    2,
+    "Wellness / fitness"
+   ],
+   [
+    2,
+    "Deployment partner"
+   ],
+   [
+    2,
+    "B2C"
+   ],
+   [
+    2,
+    "Healthtech"
+   ],
+   [
+    1,
+    "Business-specific acquisition and commercial conversion"
+   ],
+   [
+    1,
+    "Channel and communication policies"
+   ],
+   [
+    1,
+    "Inbound marketing acquisition"
+   ],
+   [
+    2,
+    "WhatsApp Business"
+   ],
+   [
+    2,
+    "Website conversational assistant"
+   ],
+   [
+    2,
+    "Unified omnichannel routing"
+   ],
+   [
+    2,
+    "Social listening"
+   ],
+   [
+    2,
+    "Content studio"
+   ],
+   [
+    2,
+    "Social publishing"
+   ],
+   [
+    2,
+    "SEO and search visibility"
+   ],
+   [
+    2,
+    "Landing pages and attribution"
+   ],
+   [
+    2,
+    "Campaign management"
+   ],
+   [
+    2,
+    "Paid ads integration"
+   ],
+   [
+    2,
+    "Webinars and demonstrations"
+   ],
+   [
+    2,
+    "Referral and partner lead capture"
+   ],
+   [
+    1,
+    "Workflow register \u2014 end-to-end execution"
+   ],
+   [
+    1,
+    "Website and confidential Admin operating contract"
+   ],
+   [
+    2,
+    "Public visibility and acquisition boundaries"
+   ],
+   [
+    1,
+    "Measurable acquisition and cost control"
+   ],
+   [
+    1,
+    "Acquisition strategy measurement"
+   ],
+   [
+    1,
+    "Implementation, verification and delivery controls"
+   ],
+   [
+    2,
+    "Acquisition operating plan"
+   ],
+   [
+    2,
+    "Acceptance and evidence record"
+   ],
+   [
+    1,
+    "Acquisition experiments and measurable funnel"
+   ],
+   [
+    2,
+    "Issuer or business line experiment"
+   ],
+   [
+    1,
+    "Optimization engineering and acceptance"
+   ],
+   [
+    2,
+    "Cost"
+   ],
+   [
+    2,
+    "Data Quality"
+   ],
+   [
+    2,
+    "Business Conversion"
+   ],
+   [
+    2,
+    "Privacy & Compliance"
+   ],
+   [
+    1,
+    "Implementation acceptance and verification"
+   ],
+   [
+    2,
+    "Scope separation of business capabilities"
+   ],
+   [
+    2,
+    "Evidence freshness"
+   ],
+   [
+    2,
+    "Source inventory completeness"
+   ],
+   [
+    2,
+    "Opportunity qualification"
+   ],
+   [
+    2,
+    "Outcome economics"
+   ],
+   [
+    2,
+    "Cross-border and regional decision"
+   ],
+   [
+    1,
+    "Implementation acceptance and final decision controls"
+   ],
+   [
+    2,
+    "Scope separation of business capabilities"
+   ],
+   [
+    2,
+    "Evidence freshness"
+   ],
+   [
+    2,
+    "Source inventory completeness"
+   ],
+   [
+    2,
+    "Opportunity qualification"
+   ],
+   [
+    2,
+    "Outcome economics"
+   ],
+   [
+    2,
+    "Cross-border and regional decision"
+   ],
+   [
+    2,
+    "Provider and evidence benchmark"
+   ],
+   [
+    1,
+    "Current multi-startup, omnichannel and automation scope"
+   ],
+   [
+    2,
+    "Acquisition strategy"
+   ]
+  ],
+  "unique_by_section": {
+   "null": 3,
+   "Initial startup configurations": 4,
+   "Business-specific acquisition and commercial conversion": 6,
+   "Worldwide source and evidence engine": 16,
+   "Organization websites": 7,
+   "Search engines": 7,
+   "Official directories": 7,
+   "Government procurement": 7,
+   "LinkedIn": 7,
+   "Facebook / Instagram": 7,
+   "X / YouTube / Reddit": 7,
+   "WhatsApp": 7,
+   "Email": 7,
+   "Startup website": 7,
+   "Partner referrals": 7,
+   "Webinars": 7,
+   "Insurance / corporate annual reports": 7,
+   "Hospitals": 11,
+   "Clinics / doctors": 11,
+   "Diagnostic labs": 11,
+   "IT / corporate": 11,
+   "Insurance": 11,
+   "Universities": 11,
+   "NGO / government": 11,
+   "Wellness / fitness": 11,
+   "Deployment partner": 11,
+   "B2C": 11,
+   "Healthtech": 11,
+   "Channel and communication policies": 15,
+   "Inbound marketing acquisition": 17,
+   "WhatsApp Business": 1,
+   "Website conversational assistant": 1,
+   "Unified omnichannel routing": 1,
+   "Social listening": 1,
+   "Content studio": 1,
+   "Social publishing": 1,
+   "SEO and search visibility": 1,
+   "Landing pages and attribution": 1,
+   "Campaign management": 1,
+   "Paid ads integration": 1,
+   "Webinars and demonstrations": 1,
+   "Referral and partner lead capture": 1,
+   "Workflow register \u2014 end-to-end execution": 17,
+   "Website and confidential Admin operating contract": 8,
+   "Public visibility and acquisition boundaries": 1,
+   "Measurable acquisition and cost control": 3,
+   "Acquisition strategy measurement": 1,
+   "Acquisition operating plan": 18,
+   "Acceptance and evidence record": 7,
+   "Issuer or business line experiment": 11,
+   "Optimization engineering and acceptance": 1,
+   "Scope separation of business capabilities": 4,
+   "Evidence freshness": 4,
+   "Source inventory completeness": 4,
+   "Opportunity qualification": 4,
+   "Outcome economics": 5,
+   "Cross-border and regional decision": 5,
+   "Acquisition strategy": 1
+  }
+ },
+ "37": {
+  "file": "37_Sales_Marketing_Automation_Illustrative_Workflow.txt",
+  "bytes": 14635,
+  "stats": {
+   "lines": 221,
+   "unique_lines": 214,
+   "core_lines": 7,
+   "headings": 18,
+   "tables": 9,
+   "rows": 68
+  },
+  "sections": [
+   [
+    2,
+    "Reading guide"
+   ],
+   [
+    1,
+    "01  |  Operating model & daily control"
+   ],
+   [
+    2,
+    "Primary screens"
+   ],
+   [
+    1,
+    "02  |  Main business journey \u2014 discovery to engagement"
+   ],
+   [
+    2,
+    "Illustrative decision and record"
+   ],
+   [
+    1,
+    "03  |  Main business journey \u2014 conversion to verified outcome"
+   ],
+   [
+    1,
+    "04  |  Multi-startup variants"
+   ],
+   [
+    2,
+    "Activation controls"
+   ],
+   [
+    1,
+    "05  |  Independent SaaS client onboarding"
+   ],
+   [
+    2,
+    "Prototype handoff"
+   ],
+   [
+    1,
+    "06  |  Concurrent automation & exception recovery"
+   ],
+   [
+    2,
+    "Screen sequence for operators"
+   ],
+   [
+    2,
+    "Budget fixture"
+   ],
+   [
+    1,
+    "07  |  Worked event and relationship ledger"
+   ],
+   [
+    2,
+    "Replay and intervention"
+   ],
+   [
+    2,
+    "Automation responsibility"
+   ],
+   [
+    1,
+    "08  |  Demonstration script & acceptance evidence"
+   ],
+   [
+    2,
+    "Related specifications"
+   ]
+  ],
+  "unique_by_section": {
+   "null": 5,
+   "Reading guide": 1,
+   "01  |  Operating model & daily control": 13,
+   "Primary screens": 16,
+   "02  |  Main business journey \u2014 discovery to engagement": 19,
+   "Illustrative decision and record": 1,
+   "03  |  Main business journey \u2014 conversion to verified outcome": 23,
+   "04  |  Multi-startup variants": 19,
+   "Activation controls": 1,
+   "05  |  Independent SaaS client onboarding": 25,
+   "Prototype handoff": 1,
+   "06  |  Concurrent automation & exception recovery": 25,
+   "Screen sequence for operators": 1,
+   "Budget fixture": 1,
+   "07  |  Worked event and relationship ledger": 41,
+   "Replay and intervention": 1,
+   "Automation responsibility": 1,
+   "08  |  Demonstration script & acceptance evidence": 18,
+   "Related specifications": 2
+  }
+ }
+}

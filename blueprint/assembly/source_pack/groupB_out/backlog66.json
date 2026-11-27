@@ -1,0 +1,1298 @@
+{
+ "rows": [
+  {
+   "seq": 1,
+   "module": "Identity & access",
+   "pack_deps": [
+    "H02,H03"
+   ],
+   "pack_acceptance": "Existing capability; validate growth/admin access before launch (not new build).",
+   "bp_name": "Identity & access",
+   "bp_acceptance": "Cross-role access denied; session revoked",
+   "bp_deps": [],
+   "name_match": true,
+   "acceptance_match": false,
+   "deps_match": true
+  },
+  {
+   "seq": 2,
+   "module": "Product knowledge catalog",
+   "pack_deps": [
+    1
+   ],
+   "pack_acceptance": "Planned products blocked from promotion",
+   "bp_name": "Product knowledge catalog",
+   "bp_acceptance": "Planned products blocked from promotion",
+   "bp_deps": [
+    1
+   ],
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
+  },
+  {
+   "seq": 3,
+   "module": "Knowledge document ingestion",
+   "pack_deps": [
+    2
+   ],
+   "pack_acceptance": "Every answer cites approved version",
+   "bp_name": "Knowledge document ingestion",
+   "bp_acceptance": "Every answer cites approved version",
+   "bp_deps": [
+    2
+   ],
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
+  },
+  {
+   "seq": 4,
+   "module": "Consent and suppression",
+   "pack_deps": [
+    1
+   ],
+   "pack_acceptance": "Opt-out blocks all scoped sends",
+   "bp_name": "Consent and suppression",
+   "bp_acceptance": "Opt-out blocks all scoped sends",
+   "bp_deps": [
+    1
+   ],
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
+  },
+  {
+   "seq": 5,
+   "module": "Integration registry",
+   "pack_deps": [
+    1,
+    4
+   ],
+   "pack_acceptance": "Secrets never returned in API",
+   "bp_name": "Integration registry",
+   "bp_acceptance": "Secrets never returned in API",
+   "bp_deps": [
+    1,
+    4
+   ],
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
+  },
+  {
+   "seq": 6,
+   "module": "Event and audit foundation",
+   "pack_deps": [
+    1
+   ],
+   "pack_acceptance": "Duplicate delivery has one effect",
+   "bp_name": "Event and audit foundation",
+   "bp_acceptance": "Duplicate delivery has one effect",
+   "bp_deps": [
+    1
+   ],
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
+  },
+  {
+   "seq": 7,
+   "module": "Source permissions register",
+   "pack_deps": [
+    4,
+    5
+   ],
+   "pack_acceptance": "Unapproved URL blocked",
+   "bp_name": "Source permissions register",
+   "bp_acceptance": "Unapproved URL blocked",
+   "bp_deps": [
+    4,
+    5
+   ],
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
+  },
+  {
+   "seq": 8,
+   "module": "AI gateway and evaluation",
+   "pack_deps": [
+    2,
+    5,
+    6
+   ],
+   "pack_acceptance": "Invalid outputs rejected; cost cap enforced",
+   "bp_name": "AI gateway and evaluation",
+   "bp_acceptance": "Invalid outputs rejected; cost cap enforced",
+   "bp_deps": [
+    2,
+    5,
+    6
+   ],
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
+  },
+  {
+   "seq": 9,
+   "module": "Cost and usage control",
+   "pack_deps": [
+    5,
+    8
+   ],
+   "pack_acceptance": "Simulated cap stops requests",
+   "bp_name": "DevSecOps & environment",
+   "bp_acceptance": "Restore drill; secret scan; smoke test",
+   "bp_deps": [
+    1,
+    8
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 10,
+   "module": "Privacy requests and retention",
+   "pack_deps": [
+    4,
+    6
+   ],
+   "pack_acceptance": "Deletion does not re-enable outreach",
+   "bp_name": "Search query planner",
+   "bp_acceptance": "No personal health targeting queries",
+   "bp_deps": [
+    2,
+    7,
+    8
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 11,
+   "module": "DevSecOps & environment",
+   "pack_deps": [
+    1,
+    8
+   ],
+   "pack_acceptance": "Restore drill; secret scan; smoke test",
+   "bp_name": "Public web discovery",
+   "bp_acceptance": "Source URL/date recorded; blocked hosts rejected",
+   "bp_deps": [
+    10
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 12,
+   "module": "Operational observability",
+   "pack_deps": [
+    6,
+    11
+   ],
+   "pack_acceptance": "Provider outage does not lose events",
+   "bp_name": "Evidence extraction",
+   "bp_acceptance": "Evidence traceable; injection ignored",
+   "bp_deps": [
+    8,
+    11
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 13,
+   "module": "Search query planner",
+   "pack_deps": [
+    2,
+    7,
+    8
+   ],
+   "pack_acceptance": "No personal health targeting queries",
+   "bp_name": "Account discovery",
+   "bp_acceptance": "Duplicate domain/location merge safe",
+   "bp_deps": [
+    12
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 14,
+   "module": "Public web discovery",
+   "pack_deps": [
+    13
+   ],
+   "pack_acceptance": "Source URL/date recorded; blocked hosts rejected",
+   "bp_name": "Buying signal classification",
+   "bp_acceptance": "≥ 80% precision on reviewed pilot sample (DEC-001)",
+   "bp_deps": [
+    12,
+    13
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 15,
+   "module": "Evidence extraction",
+   "pack_deps": [
+    14,
+    8
+   ],
+   "pack_acceptance": "Evidence traceable; injection ignored",
+   "bp_name": "Business need discovery",
+   "bp_acceptance": "No inference labelled confirmed",
+   "bp_deps": [
+    14
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 16,
+   "module": "Account discovery",
+   "pack_deps": [
+    15
+   ],
+   "pack_acceptance": "Duplicate domain/location merge safe",
+   "bp_name": "Product solution matching",
+   "bp_acceptance": "Unavailable offering excluded from sales",
+   "bp_deps": [
+    2,
+    15
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 17,
+   "module": "Buying signal classification",
+   "pack_deps": [
+    15,
+    16
+   ],
+   "pack_acceptance": "≥80% precision on reviewed pilot sample target",
+   "bp_name": "Opportunity scoring",
+   "bp_acceptance": "Score recalculates; consent independent (DEC-011)",
+   "bp_deps": [
+    16
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 18,
+   "module": "Business need discovery",
+   "pack_deps": [
+    17
+   ],
+   "pack_acceptance": "No inference labeled confirmed",
+   "bp_name": "Decision-maker role discovery",
+   "bp_acceptance": "No private contacts or guessed emails",
+   "bp_deps": [
+    13,
+    17
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 19,
+   "module": "Product solution matching",
+   "pack_deps": [
+    2,
+    18
+   ],
+   "pack_acceptance": "Unavailable offering excluded from sales",
+   "bp_name": "Contact verification",
+   "bp_acceptance": "Verified not synonymous with consent",
+   "bp_deps": [
+    4,
+    18
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 20,
+   "module": "Opportunity scoring",
+   "pack_deps": [
+    19
+   ],
+   "pack_acceptance": "Score recalculates; consent independent",
+   "bp_name": "Research review and alerts",
+   "bp_acceptance": "Rejected leads never sent to channel",
+   "bp_deps": [
+    17,
+    19
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 21,
+   "module": "Decision-maker role discovery",
+   "pack_deps": [
+    16,
+    20
+   ],
+   "pack_acceptance": "No private contacts or guessed emails",
+   "bp_name": "CRM pipeline",
+   "bp_acceptance": "Invalid stage transition rejected",
+   "bp_deps": [
+    6,
+    20
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 22,
+   "module": "Contact verification",
+   "pack_deps": [
+    21,
+    4
+   ],
+   "pack_acceptance": "Verified not synonymous with consent",
+   "bp_name": "Lead capture and forms",
+   "bp_acceptance": "Duplicate submission → one lead",
+   "bp_deps": [
+    4,
+    21
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": true
+  },
+  {
+   "seq": 23,
+   "module": "Research review and alerts",
+   "pack_deps": [
+    20,
+    22
+   ],
+   "pack_acceptance": "Rejected leads never sent to channel",
+   "bp_name": "Customer 360",
+   "bp_acceptance": "Updates visible within 60 s",
+   "bp_deps": [
+    21,
+    22
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 24,
+   "module": "CRM pipeline",
+   "pack_deps": [
+    23,
+    6
+   ],
+   "pack_acceptance": "Invalid stage transition rejected",
+   "bp_name": "Engagement eligibility",
+   "bp_acceptance": "No send when opt-out/unknown eligibility",
+   "bp_deps": [
+    4,
+    19
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 25,
+   "module": "Lead capture and forms",
+   "pack_deps": [
+    4,
+    24
+   ],
+   "pack_acceptance": "Duplicate submission one lead",
+   "bp_name": "Personalized message drafting",
+   "bp_acceptance": "No invented relationship or diagnosis",
+   "bp_deps": [
+    8,
+    16,
+    24
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 26,
+   "module": "Customer 360",
+   "pack_deps": [
+    24,
+    25
+   ],
+   "pack_acceptance": "Updates visible within 60s target",
+   "bp_name": "Email integration",
+   "bp_acceptance": "Replay no duplicate; bounce suppress",
+   "bp_deps": [
+    5,
+    24,
+    25
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 27,
+   "module": "Engagement eligibility",
+   "pack_deps": [
+    4,
+    22
+   ],
+   "pack_acceptance": "No send when opt-out/unknown eligibility",
+   "bp_name": "Unified inbound processing",
+   "bp_acceptance": "STOP cancels; urgent/clinical routes to human",
+   "bp_deps": [
+    8,
+    26
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 28,
+   "module": "Workflow control center",
+   "pack_deps": [
+    6,
+    27
+   ],
+   "pack_acceptance": "Emergency stop blocks queued sends",
+   "bp_name": "Follow-up sequences",
+   "bp_acceptance": "No follow-up after stop or reply",
+   "bp_deps": [
+    24,
+    26,
+    27
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 29,
+   "module": "Personalized message drafting",
+   "pack_deps": [
+    8,
+    19,
+    27
+   ],
+   "pack_acceptance": "No invented relationship or diagnosis",
+   "bp_name": "Meeting and calendar",
+   "bp_acceptance": "No invented availability; conflict handled",
+   "bp_deps": [
+    21,
+    27
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 30,
+   "module": "Email integration",
+   "pack_deps": [
+    27,
+    29,
+    5
+   ],
+   "pack_acceptance": "Replay no duplicate; bounce suppress",
+   "bp_name": "Growth dashboard",
+   "bp_acceptance": "Counts reconcile with deal records",
+   "bp_deps": [
+    20,
+    29
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 31,
+   "module": "Unified inbound processing",
+   "pack_deps": [
+    30,
+    8
+   ],
+   "pack_acceptance": "STOP cancels; urgent/clinical routes to human",
+   "bp_name": "WhatsApp Business",
+   "bp_acceptance": "No private group scrape; opt-in gate",
+   "bp_deps": [
+    24,
+    27
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 32,
+   "module": "Follow-up sequences",
+   "pack_deps": [
+    27,
+    30,
+    31
+   ],
+   "pack_acceptance": "No follow-up after stop or reply",
+   "bp_name": "Website conversational assistant",
+   "bp_acceptance": "Clinical question routed; no medical data",
+   "bp_deps": [
+    8,
+    22,
+    27
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 33,
+   "module": "Meeting and calendar",
+   "pack_deps": [
+    31,
+    24
+   ],
+   "pack_acceptance": "No invented availability; conflict handled",
+   "bp_name": "Social listening",
+   "bp_acceptance": "No restricted profiles or automated DMs",
+   "bp_deps": [
+    7,
+    14
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 34,
+   "module": "Growth dashboard",
+   "pack_deps": [
+    23,
+    33
+   ],
+   "pack_acceptance": "Counts reconcile with deal records",
+   "bp_name": "Content studio",
+   "bp_acceptance": "Unapproved claims cannot publish",
+   "bp_deps": [
+    2,
+    8
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 35,
+   "module": "WhatsApp Business",
+   "pack_deps": [
+    27,
+    31
+   ],
+   "pack_acceptance": "No private group scrape; opt-in gate",
+   "bp_name": "Social publishing",
+   "bp_acceptance": "No unsupported DMs; idempotent publishing",
+   "bp_deps": [
+    5,
+    34
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 36,
+   "module": "Website conversational assistant",
+   "pack_deps": [
+    8,
+    25,
+    31
+   ],
+   "pack_acceptance": "Clinical question routed; no medical data",
+   "bp_name": "SEO and search visibility",
+   "bp_acceptance": "No fabricated ranking data",
+   "bp_deps": [
+    7,
+    34
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 37,
+   "module": "Unified omnichannel routing",
+   "pack_deps": [
+    31,
+    35,
+    36
+   ],
+   "pack_acceptance": "No duplicate replies across linked channels",
+   "bp_name": "Landing pages and attribution",
+   "bp_acceptance": "No health events to ad pixels",
+   "bp_deps": [
+    22,
+    34
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 38,
+   "module": "Compliance monitoring",
+   "pack_deps": [
+    27,
+    37
+   ],
+   "pack_acceptance": "Simulated complaints stop campaign",
+   "bp_name": "Campaign management",
+   "bp_acceptance": "Suppression applied at execution",
+   "bp_deps": [
+    24,
+    34,
+    37
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 39,
+   "module": "Social listening",
+   "pack_deps": [
+    7,
+    17
+   ],
+   "pack_acceptance": "No restricted profiles or automated DMs",
+   "bp_name": "Paid ads integration",
+   "bp_acceptance": "Budget exceeded → pause; no sensitive data",
+   "bp_deps": [
+    5,
+    38
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 40,
+   "module": "Content studio",
+   "pack_deps": [
+    2,
+    8
+   ],
+   "pack_acceptance": "Unapproved claims cannot publish",
+   "bp_name": "Webinars and demonstrations",
+   "bp_acceptance": "Opt-outs respected; attendance dedup",
+   "bp_deps": [
+    22,
+    28,
+    29
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 41,
+   "module": "Social publishing",
+   "pack_deps": [
+    40,
+    5
+   ],
+   "pack_acceptance": "No unsupported DMs; idempotent publishing",
+   "bp_name": "Unified omnichannel routing",
+   "bp_acceptance": "No duplicate replies across linked channels",
+   "bp_deps": [
+    27,
+    31,
+    32
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 42,
+   "module": "SEO and search visibility",
+   "pack_deps": [
+    7,
+    40
+   ],
+   "pack_acceptance": "No fabricated ranking data",
+   "bp_name": "Referral and partner lead capture",
+   "bp_acceptance": "No unauthorized third-party contact enrolment",
+   "bp_deps": [
+    22,
+    38
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 43,
+   "module": "Landing pages and attribution",
+   "pack_deps": [
+    25,
+    40
+   ],
+   "pack_acceptance": "No health events to ad pixels",
+   "bp_name": "Proposal builder",
+   "bp_acceptance": "Only approved version externally shared",
+   "bp_deps": [
+    2,
+    21,
+    29
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 44,
+   "module": "Campaign management",
+   "pack_deps": [
+    27,
+    40,
+    43
+   ],
+   "pack_acceptance": "Suppression applied at execution",
+   "bp_name": "Quote and pricing engine",
+   "bp_acceptance": "No unauthorized discount; totals exact (DEC-027, DEC-038)",
+   "bp_deps": [
+    2,
+    43
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 45,
+   "module": "Paid ads integration",
+   "pack_deps": [
+    44,
+    5
+   ],
+   "pack_acceptance": "Budget exceeded → pause; no sensitive data",
+   "bp_name": "Negotiation and objection handling",
+   "bp_acceptance": "Contract/price exception escalates",
+   "bp_deps": [
+    41,
+    44
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 46,
+   "module": "Webinars and demonstrations",
+   "pack_deps": [
+    25,
+    32,
+    33
+   ],
+   "pack_acceptance": "Opt-outs respected; attendance dedup",
+   "bp_name": "Contract and MoU workflow",
+   "bp_acceptance": "No AI signs contract; signed version hash stored (DEC-023)",
+   "bp_deps": [
+    43,
+    44
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 47,
+   "module": "Referral and partner lead capture",
+   "pack_deps": [
+    25,
+    44
+   ],
+   "pack_acceptance": "No unauthorized third-party contact enrollment",
+   "bp_name": "Payment and closure",
+   "bp_acceptance": "Replay no duplicate revenue; no invented closure (DEC-022, DEC-054)",
+   "bp_deps": [
+    21,
+    46
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 48,
+   "module": "Proposal builder",
+   "pack_deps": [
+    24,
+    33,
+    2
+   ],
+   "pack_acceptance": "Only approved version externally shared",
+   "bp_name": "Onboarding and handoff",
+   "bp_acceptance": "No patient data copied",
+   "bp_deps": [
+    4,
+    47
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 49,
+   "module": "Quote and pricing engine",
+   "pack_deps": [
+    48,
+    2
+   ],
+   "pack_acceptance": "No unauthorized discount; totals exact",
+   "bp_name": "Partner deployment pipeline",
+   "bp_acceptance": "No deployment claims before approval",
+   "bp_deps": [
+    43,
+    46
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 50,
+   "module": "Negotiation and objection handling",
+   "pack_deps": [
+    37,
+    49
+   ],
+   "pack_acceptance": "Contract/price exception escalates",
+   "bp_name": "Retention and renewal",
+   "bp_acceptance": "No medical data in scoring",
+   "bp_deps": [
+    28,
+    48
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 51,
+   "module": "Contract and MoU workflow",
+   "pack_deps": [
+    48,
+    49
+   ],
+   "pack_acceptance": "No AI signs contract; signed version hash stored",
+   "bp_name": "Lost deal and feedback",
+   "bp_acceptance": "No auto-recontact after loss without policy",
+   "bp_deps": [
+    21,
+    28
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 52,
+   "module": "Payment and closure",
+   "pack_deps": [
+    51,
+    24
+   ],
+   "pack_acceptance": "Replay no duplicate revenue; no invented closure",
+   "bp_name": "Revenue and attribution",
+   "bp_acceptance": "Revenue reconciles with finance; attribution caveat",
+   "bp_deps": [
+    37,
+    47
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 53,
+   "module": "Onboarding and handoff",
+   "pack_deps": [
+    52,
+    4
+   ],
+   "pack_acceptance": "No patient data copied",
+   "bp_name": "Cost and usage control",
+   "bp_acceptance": "Simulated cap stops requests",
+   "bp_deps": [
+    5,
+    8
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 54,
+   "module": "Partner deployment pipeline",
+   "pack_deps": [
+    48,
+    51
+   ],
+   "pack_acceptance": "No deployment claims before approval",
+   "bp_name": "AI quality and feedback",
+   "bp_acceptance": "Regression fails block deploy (DEC-061)",
+   "bp_deps": [
+    8,
+    51
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 55,
+   "module": "Retention and renewal",
+   "pack_deps": [
+    53,
+    32
+   ],
+   "pack_acceptance": "No medical data in scoring",
+   "bp_name": "Workflow control center",
+   "bp_acceptance": "Emergency stop blocks queued sends",
+   "bp_deps": [
+    6,
+    24
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 56,
+   "module": "Lost deal and feedback",
+   "pack_deps": [
+    24,
+    32
+   ],
+   "pack_acceptance": "No auto-recontact after loss without policy",
+   "bp_name": "Privacy requests and retention",
+   "bp_acceptance": "Deletion does not re-enable outreach",
+   "bp_deps": [
+    4,
+    6
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 57,
+   "module": "Revenue and attribution",
+   "pack_deps": [
+    43,
+    52
+   ],
+   "pack_acceptance": "Revenue reconciles with finance; attribution caveat",
+   "bp_name": "Compliance monitoring",
+   "bp_acceptance": "Simulated complaints stop campaign",
+   "bp_deps": [
+    24,
+    41
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 58,
+   "module": "AI quality and feedback",
+   "pack_deps": [
+    8,
+    56
+   ],
+   "pack_acceptance": "Regression fails block deploy",
+   "bp_name": "Operational observability",
+   "bp_acceptance": "Provider outage does not lose events",
+   "bp_deps": [
+    6,
+    9
+   ],
+   "name_match": false,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 59,
+   "module": "Competitor and market watch",
+   "pack_deps": [
+    13,
+    15
+   ],
+   "pack_acceptance": "No unverified comparative claim",
+   "bp_name": "Competitor and market watch",
+   "bp_acceptance": "No unverified comparative claim",
+   "bp_deps": [
+    10,
+    12
+   ],
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": false
+  },
+  {
+   "seq": 60,
+   "module": "Forecast and sales optimization",
+   "pack_deps": [
+    56,
+    57
+   ],
+   "pack_acceptance": "Forecast labeled estimate",
+   "bp_name": "Forecast and sales optimization",
+   "bp_acceptance": "Forecast labelled estimate",
+   "bp_deps": [
+    51,
+    52
+   ],
+   "name_match": true,
+   "acceptance_match": false,
+   "deps_match": false
+  },
+  {
+   "seq": 61,
+   "module": "Admin command center",
+   "pack_deps": [
+    1,
+    60
+   ],
+   "pack_acceptance": "Admin totals reconcile; no direct unsafe DB edits",
+   "bp_name": "Admin command center",
+   "bp_acceptance": "Admin totals reconcile; no direct unsafe DB edits (DEC-062)",
+   "bp_deps": [
+    1,
+    60
+   ],
+   "name_match": true,
+   "acceptance_match": false,
+   "deps_match": true
+  },
+  {
+   "seq": 62,
+   "module": "End-to-end production release",
+   "pack_deps": [
+    1,
+    61
+   ],
+   "pack_acceptance": "All critical tests pass; rollback verified",
+   "bp_name": "End-to-end production release",
+   "bp_acceptance": "All critical tests pass; rollback verified (DEC-063)",
+   "bp_deps": [
+    1,
+    61
+   ],
+   "name_match": true,
+   "acceptance_match": false,
+   "deps_match": true
+  },
+  {
+   "seq": 63,
+   "module": "Insurance institutional pilot",
+   "pack_deps": [
+    54,
+    38
+   ],
+   "pack_acceptance": "No underwriting or personal profiling",
+   "bp_name": "Insurance institutional pilot",
+   "bp_acceptance": "No underwriting or personal profiling",
+   "bp_deps": [
+    49,
+    57
+   ],
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": false
+  },
+  {
+   "seq": 64,
+   "module": "Technology licensing pipeline",
+   "pack_deps": [
+    51,
+    54
+   ],
+   "pack_acceptance": "No promised unready API",
+   "bp_name": "Technology licensing pipeline",
+   "bp_acceptance": "No promised unready API",
+   "bp_deps": [
+    46,
+    49
+   ],
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": false
+  },
+  {
+   "seq": 65,
+   "module": "Phygital expansion",
+   "pack_deps": [
+    54,
+    57
+   ],
+   "pack_acceptance": "Deployment sign-off required",
+   "bp_name": "Phygital expansion",
+   "bp_acceptance": "Deployment sign-off required",
+   "bp_deps": [
+    49,
+    52
+   ],
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": false
+  },
+  {
+   "seq": 66,
+   "module": "Future product commercialization",
+   "pack_deps": [
+    2,
+    38
+   ],
+   "pack_acceptance": "Planned offerings not promoted",
+   "bp_name": "Future product commercialization",
+   "bp_acceptance": "Planned offerings not promoted (DEC-060)",
+   "bp_deps": [
+    2,
+    57
+   ],
+   "name_match": true,
+   "acceptance_match": false,
+   "deps_match": false
+  }
+ ],
+ "cycles": [],
+ "levels": {
+  "1": 1,
+  "2": 2,
+  "3": 3,
+  "4": 2,
+  "5": 3,
+  "6": 2,
+  "7": 4,
+  "8": 4,
+  "9": 5,
+  "10": 3,
+  "11": 5,
+  "12": 6,
+  "13": 5,
+  "14": 6,
+  "15": 7,
+  "16": 8,
+  "17": 9,
+  "18": 10,
+  "19": 11,
+  "20": 12,
+  "21": 13,
+  "22": 14,
+  "23": 15,
+  "24": 16,
+  "25": 17,
+  "26": 18,
+  "27": 15,
+  "28": 16,
+  "29": 16,
+  "30": 17,
+  "31": 18,
+  "32": 19,
+  "33": 19,
+  "34": 20,
+  "35": 19,
+  "36": 19,
+  "37": 20,
+  "38": 21,
+  "39": 10,
+  "40": 5,
+  "41": 6,
+  "42": 6,
+  "43": 18,
+  "44": 19,
+  "45": 20,
+  "46": 20,
+  "47": 20,
+  "48": 20,
+  "49": 21,
+  "50": 22,
+  "51": 22,
+  "52": 23,
+  "53": 24,
+  "54": 23,
+  "55": 25,
+  "56": 20,
+  "57": 24,
+  "58": 21,
+  "59": 8,
+  "60": 25,
+  "61": 26,
+  "62": 27,
+  "63": 24,
+  "64": 24,
+  "65": 25,
+  "66": 22
+ },
+ "longest_chain": [
+  1,
+  4,
+  5,
+  7,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  27,
+  29,
+  30,
+  31,
+  33,
+  48,
+  49,
+  51,
+  52,
+  57,
+  60,
+  61,
+  62
+ ],
+ "forward_refs": [],
+ "counts": {
+  "rows": 66,
+  "name_match": 16,
+  "acceptance_match": 11,
+  "deps_match": 11,
+  "max_level": 27
+ }
+}

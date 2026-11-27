@@ -1,0 +1,156 @@
+source_table,screens,bp_table,bp_ent,status,match
+growth_website_publication,A107;A108;W01;W02;W03;W04;W05;W06;W07;W08;W09;W30,mkt_publication,ENT-112,Partially covered,judged synonym
+sales_brand_domain,A100;A107;A108;W01;W02;W03;W04;W05;W06;W07;W08;W09;W30,ten_domain,ENT-005,Partially covered,judged synonym
+sales_startup,A099;A100;A103;A107;A108;A112;W01;W02;W03;W04;W05;W06;W07;W08;W09;W30,ten_startup,ENT-002,Partially covered,judged synonym
+growth_attribution_event,A082;A083;CAP061;OPT-INT;W10,mkt_attribution_event,ENT-124,Covered,suffix match
+growth_content_version,A050;A051;A052;A053;A056;A057;CAP061;W10,mkt_content_version,ENT-106,Partially covered,judged synonym
+growth_form,A031;A056;A057;CAP032;CAP061;W10;W12;W13;W14;W15;W16;W17;W18;W30,crm_form,ENT-080,Covered,suffix match
+growth_landing_page,A056;A057;CAP061;W10,mkt_landing_page,ENT-111,Covered,suffix match
+growth_chat_session,CAP049;W11,eng_chat_session,ENT-099,Covered,suffix match
+growth_lead,A032;A042;A043;A064;CAP032;CAP049;CAP068;CAP070;OPT-INT;W11;W12;W13;W14;W15;W16;W17;W18;W19;W20;W22;W30,crm_lead,ENT-079,Covered,suffix match
+growth_message,A034;A036;A037;A044;A045;A046;CAP049;W11,eng_message,ENT-093,Covered,suffix match
+growth_thread,A034;A035;A036;A037;A045;A046;CAP049;W11,eng_thread,ENT-092,Covered,suffix match
+growth_consent,A007;A032;A034;CAP008;CAP032;CAP068;CAP070;W12;W13;W14;W15;W16;W17;W18;W19;W20;W29;W30,gov_consent,ENT-027,Covered,suffix match
+growth_submission,CAP032;W12;W13;W14;W15;W16;W17;W18;W30,crm_submission,ENT-082,Covered,suffix match
+growth_calendar_link,A040;A041;CAP043;W18,eng_calendar_link,ENT-104,Covered,suffix match
+growth_deal,A029;A030;A032;A038;A040;A042;A043;A065;A069;A071;A073;A074;A077;A081;A087;A088;A091;A093;A105;A106;CAP043;CAP082;OPT-INT;W18;W22;W23;W26;W28;W30,crm_deal,ENT-086,Covered,suffix match
+growth_meeting,A040;A041;A042;A043;CAP043;OPT-INT;W18,eng_meeting,ENT-103,Covered,suffix match
+growth_business_event,A062;A063;CAP068;W19,ops_domain_event,ENT-170,Partially covered,judged synonym
+growth_event_registration,A062;A063;CAP068;W19,mkt_registration,ENT-121,Partially covered,judged synonym
+growth_partner,A064;A077;A078;A091;A092;A095;A096;CAP070;W20,lcy_partner,ENT-153,Covered,suffix match
+growth_referral,A064;CAP070;W20,mkt_referral,ENT-123,Covered,suffix match
+existing membership table,A001;A002;A003;W21,ten_membership,ENT-008,Partially covered,judged synonym
+existing role table,A001;A002;A003;W21,ten_role,ENT-007,Partially covered,judged synonym
+existing user table,A001;A002;A003;A029;A030;W21,ten_user,ENT-006,Partially covered,judged synonym
+growth_audit_event,A008;A009;A012;A013;A014;A018;A019;A020;A025;A026;A029;A033;A035;A038;A039;A042;A047;A051;A052;A053;A059;A061;A066;A074;A089;A107;A108;OPT-INT;W21;W23,ops_audit_event,ENT-172,Covered,suffix match
+growth_contact,A024;A025;A026;A032;A038;W21;W22,intel_contact,ENT-074,Covered,suffix match
+sales_external_access_grant,A032;A075;W21;W22;W23;W25;W27;W28;W30,ten_portal_grant,ENT-009,Partially covered,judged synonym
+growth_onboarding,A075;A076;CAP085;W22;W27,lcy_onboarding,ENT-147,Covered,suffix match
+growth_proposal,A065;A066;A104;W23,com_proposal,ENT-125,Covered,suffix match
+growth_quote,A067;A068;A071;A105;W23,com_quote,ENT-127,Covered,suffix match
+growth_quote_line,A067;A068;W23,com_quote_line,ENT-128,Covered,suffix match
+growth_contract,A071;A072;A073;A074;A091;A092;A093;A094;CAP079;W24,com_contract,ENT-131,Covered,suffix match
+growth_signature_event,A071;A072;A073;A074;CAP079;W24,com_signature_event,ENT-132,Covered,suffix match
+sales_fulfillment,A105;W25,com_fulfillment_event,ENT-137,Partially covered,judged synonym
+sales_order,A105;W25,com_order,ENT-135,Partially covered,judged synonym
+sales_order_line,A105;W25,com_order_line,ENT-136,Partially covered,judged synonym
+growth_invoice,A073;A074;A082;A083;A105;CAP082;OPT-INT;W26,com_invoice,ENT-140,Covered,suffix match
+growth_payment,A073;A074;A082;A083;A105;CAP082;OPT-INT;W26,com_payment,ENT-142,Covered,suffix match
+growth_document,A005;A006;A075;W27,cat_document,ENT-024,Partially covered,judged synonym
+growth_handoff,A075;A076;CAP085;W27,lcy_handoff,ENT-149,Covered,suffix match
+growth_outbox,A009;A034;A037;A045;OPT-INT;W27,ops_outbox,ENT-169,Covered,suffix match
+growth_task,A035;A037;A038;A042;A043;A055;A075;A076;A102;A104;A106;CAP085;OPT-INT;W27;W28;W30,lcy_task,ENT-148,Covered,suffix match
+growth_privacy_request,A013;A103;CAP008;W28;W29;W30,gov_privacy_request,ENT-036,Covered,suffix match
+growth_renewal,A079;A080;W28;W30,lcy_renewal,ENT-150,Covered,suffix match
+growth_enrollment,A038;A039;A081;CAP008;W29,eng_enrollment,ENT-102,Covered,suffix match
+growth_policy_version,A007;A010;A023;A026;A028;A030;A031;A032;A034;A039;A046;A063;A080;A083;A088;CAP008;W29,gov_policy_version,ENT-029,Covered,suffix match
+growth_suppression,A007;A032;A034;A037;A045;CAP008;W29,gov_suppression,ENT-028,Covered,suffix match
+growth_inbound_event,A036;A037;A040;A041;A044;A045;A062;A063;A071;A072;A073;A074;CAP043;CAP068;CAP079;CAP082,eng_inbound_event,ENT-095,Covered,suffix match
+growth_event_attendance,A062;A063;CAP068,mkt_attendance,ENT-122,Partially covered,judged synonym
+growth_product,A004;A005;A015;A021;A023;A062;A065;A097;A098;A100,cat_offering,ENT-016,Partially covered,judged synonym
+growth_capability,A004;A005;A021;A023,cat_capability,ENT-018,Partially covered,judged synonym
+growth_claim,A004;A005;A034;A035;A050;A051;A098,cat_claim,ENT-020,Partially covered,judged synonym
+growth_price_version,A004;A005;A067,cat_price_version,ENT-021,Partially covered,judged synonym
+growth_approval,A004;A006;A034;A035;A044;A051;A057;A059;A061;A064;A066;A068;A070;A072;A077;A078;A079;A089;A090;A092;A094;A096;A098;A099;A100;A102;A103;A104;A105;A106;OPT-INT,gov_approval,ENT-034,Covered,suffix match
+growth_document_chunk,A005;A006,cat_chunk,ENT-025,Partially covered,judged synonym
+growth_embedding,A005;A006;A011;A017;A021;A034,cat_embedding,ENT-026,Partially covered,judged synonym
+growth_job_run,A006;A008;A009;A014;A015;A021;A024;A036;A054;A103;A106;OPT-INT,ops_job_run,ENT-173,Covered,suffix match
+growth_integration,A008;A036;A041;A044;A045;A049;A053,int_integration,ENT-040,Covered,suffix match
+growth_credential_ref,A008;A036;A044;A053,int_credential_ref,ENT-041,Covered,suffix match
+growth_quota,A008;A036,int_quota,ENT-042,Partially covered,judged synonym
+growth_source,A010;A015;A023;A048;A049;A086,intel_source,ENT-053,Covered,suffix match
+growth_source_policy,A010;A015;A049;A086,intel_source_policy,ENT-054,Covered,suffix match
+growth_prompt_version,A011;A017;A021;A034;A046;A084;OPT-INT,ai_prompt_version,ENT-045,Covered,suffix match
+growth_model_run,A011;A017;A021;A034;A050;A081;A084;OPT-INT,ai_model_run,ENT-046,Covered,suffix match
+growth_eval_case,A011;A084;OPT-INT,ai_eval_case,ENT-047,Covered,suffix match
+growth_api_usage,A011;A012;A015;A016;A017;A021;A024;A025;A026;A034;A036;A037;A044;A045;A048;A049;A052;A053;A060;A061;A101;OPT-INT,ai_usage,ENT-050,Partially covered,judged synonym
+growth_budget,A011;A012;A017;A021;A033;A034;A059;A060;A061;A101;A102;OPT-INT,ai_budget,ENT-052,Covered,suffix match
+growth_cost_ledger,A011;A012;A017;A021;A034;OPT-INT,ai_cost_ledger,ENT-051,Covered,suffix match
+growth_retention_policy,A013,gov_retention_policy,ENT-037,Covered,suffix match
+growth_release,A014;A090;OPT-INT,ops_release,ENT-177,Covered,suffix match
+growth_incident,A014;A090;OPT-INT,ops_incident,ENT-176,Covered,suffix match
+growth_search_plan,A015;A016;A023,intel_search_plan,ENT-055,Covered,suffix match
+growth_query_run,A015;A016;A023,intel_query_run,ENT-056,Covered,suffix match
+growth_source_record,A015;A016;A017;A023;A048;A049,intel_source_record,ENT-057,Covered,suffix match
+growth_fetch_log,A015;A016;A017;A023,intel_fetch_log,ENT-058,Covered,suffix match
+growth_evidence,A016;A017;A019;A020;A023;A085;A086;A104,intel_evidence,ENT-059,Covered,suffix match
+growth_organization,A018;A023;A024;A025;A026;A032;A077,intel_organization,ENT-063,Covered,suffix match
+growth_org_location,A018;A023,intel_location,ENT-064,Partially covered,judged synonym
+growth_org_alias,A018;A023;A026,intel_alias,ENT-065,Partially covered,judged synonym
+growth_signal_type,A019;A023,intel_signal_type,ENT-066,Covered,suffix match
+growth_signal,A019;A023;A048;A049,intel_signal,ENT-067,Covered,suffix match
+growth_need,A020;A021;A023,intel_need,ENT-068,Covered,suffix match
+growth_need_evidence,A020;A023,intel_need_evidence,ENT-069,Covered,suffix match
+growth_solution_match,A021;A022;A023;A027,intel_match,ENT-070,Partially covered,judged synonym
+growth_opportunity,A022;A027;A029;A034;A104,intel_opportunity,ENT-072,Covered,suffix match
+growth_score_version,A022;A023;A027,intel_score_version,ENT-073,Partially covered,judged synonym
+growth_role_hypothesis,A024;A026,intel_role_hypothesis,ENT-075,Covered,suffix match
+growth_contact_source,A024;A025;A026,intel_contact_source,ENT-076,Covered,suffix match
+growth_contact_verification,A024;A025;A026;A032;A034,intel_contact_verification,ENT-077,Covered,suffix match
+growth_review,A027;A028,intel_review,ENT-078,Covered,suffix match
+growth_notification,A027;A028;A106,ops_notification,ENT-174,Covered,suffix match
+growth_stage,A029;A030;A032,crm_stage,ENT-084,Covered,suffix match
+growth_activity,A029;A030;A032;A045;A046;A073;A074;A081,crm_activity,ENT-088,Covered,suffix match
+growth_account_projection,A032,ana_account_projection,ENT-193,Covered,suffix match
+growth_eligibility_decision,A032;A034;A037;A038;A045,gov_eligibility_decision,ENT-031,Partially covered,judged synonym
+growth_workflow,A033;A102;A109;A113,aut_workflow,ENT-159,Covered,suffix match
+growth_workflow_execution,A033;A102;A110;A111,aut_run,ENT-162,Partially covered,judged synonym
+growth_step_run,A033;A110,aut_step_run,ENT-163,Covered,suffix match
+growth_message_template,A034;A035;A039;A044;A045;A063;A080,eng_message_template,ENT-090,Partially covered,judged synonym
+growth_message_draft,A034;A035;A037;A045;A051;A059;A066;A089;OPT-INT,eng_message_draft,ENT-091,Covered,suffix match
+growth_intent,A035;A037,eng_intent,ENT-096,Covered,suffix match
+growth_delivery_event,A036;A037;A044;A045,eng_delivery_event,ENT-094,Covered,suffix match
+growth_identity_link,A037;A045;A046,eng_identity_link,ENT-097,Covered,suffix match
+growth_routing_rule,A037;A045;A046,eng_routing_rule,ENT-098,Covered,suffix match
+growth_sequence,A038;A039,eng_sequence,ENT-100,Covered,suffix match
+growth_sequence_step,A038;A039,eng_sequence_step,ENT-101,Covered,suffix match
+growth_metric_snapshot,A042;A043;A082;A083;A089;OPT-INT,ana_metric_snapshot,ENT-192,Covered,suffix match
+growth_channel_account,A044;A045;A052;A053;A060,eng_channel_account,ENT-089,Covered,suffix match
+growth_policy_decision,A047,gov_policy_decision,ENT-032,Covered,suffix match
+growth_compliance_incident,A047,gov_compliance_incident,ENT-039,Covered,suffix match
+growth_social_post,A048;A049,intel_social_post,ENT-060,Covered,suffix match
+growth_content_asset,A050;A051,mkt_content_asset,ENT-105,Covered,suffix match
+growth_social_publication,A052;A053,mkt_social_publication,ENT-107,Covered,suffix match
+growth_keyword,A054;A055,mkt_keyword,ENT-108,Covered,suffix match
+growth_seo_issue,A054;A055,mkt_seo_issue,ENT-109,Covered,suffix match
+growth_page_metric,A054;A055,mkt_page_metric,ENT-110,Covered,suffix match
+growth_audience,A058;A059,mkt_audience,ENT-117,Covered,suffix match
+growth_campaign,A058;A059;A060,mkt_campaign,ENT-115,Covered,suffix match
+growth_campaign_version,A058;A059,mkt_campaign_version,ENT-116,Covered,suffix match
+growth_ad_campaign,A060;A061,mkt_ad_campaign,ENT-118,Covered,suffix match
+growth_ad_spend_event,A060;A061,mkt_spend_event,ENT-119,Partially covered,judged synonym
+growth_proposal_version,A065;A066;A067,com_proposal_version,ENT-126,Covered,suffix match
+growth_objection,A069;A070,com_objection,ENT-129,Covered,suffix match
+growth_negotiation,A069;A070,com_negotiation,ENT-130,Covered,suffix match
+growth_pilot,A077;A078;A091;A092;A095;A096,lcy_pilot,ENT-154,Covered,suffix match
+growth_deployment,A077;A078;A095;A096,lcy_deployment,ENT-155,Covered,suffix match
+growth_subscription,A079;A080,lcy_customer_subscription,ENT-151,Partially covered,judged synonym
+growth_account_metric,A079;A080,lcy_account_metric,ENT-152,Covered,suffix match
+growth_deal_outcome,A081;A084;OPT-INT,lcy_outcome,ENT-158,Partially covered,judged synonym
+growth_feedback,A081;A084;OPT-INT,lcy_feedback,ENT-157,Partially covered,judged synonym
+growth_eval_run,A084;OPT-INT,ai_eval_run,ENT-048,Covered,suffix match
+growth_competitor,A085;A086,intel_competitor,ENT-061,Covered,suffix match
+growth_market_event,A085;A086,intel_market_event,ENT-062,Covered,suffix match
+growth_stage_metric,A087;A088,ana_stage_metric,ENT-197,Covered,suffix match
+growth_forecast,A087;A088,ana_forecast,ENT-196,Covered,suffix match
+growth_admin_projection,A089;OPT-INT,ana_admin_projection,ENT-194,Covered,suffix match
+growth_test_run,A090,ops_test_run,ENT-178,Covered,suffix match
+growth_integration_deal,A093;A094,lcy_integration_deal,ENT-156,Covered,suffix match
+growth_launch_approval,A097;A098,cat_launch_approval,ENT-023,Partially covered,judged synonym
+sales_tenant,A099;W34,ten_tenant,ENT-001,Partially covered,judged synonym
+sales_membership,A099,ten_membership,ENT-008,Partially covered,judged synonym
+sales_support_grant,A099,saas_support_access_grant,ENT-188,Partially covered,judged synonym
+sales_business_template,A100,,,Not covered,no blueprint entity
+sales_service_plan,A101;W31,saas_plan,ENT-179,Partially covered,judged synonym
+sales_service_subscription,A101;W34,saas_subscription,ENT-182,Partially covered,judged synonym
+sales_service_invoice,A101;W34,saas_service_invoice,ENT-184,Partially covered,judged synonym
+sales_usage_charge,A101;W34,saas_usage_meter_reading,ENT-183,Partially covered,judged synonym
+sales_action_plan,A102,aut_autonomy_plan,ENT-164,Partially covered,judged synonym
+sales_data_transfer,A103,saas_export_job,ENT-189,Partially covered,judged synonym
+sales_bid,A104,com_bid,ENT-133,Partially covered,judged synonym
+sales_ui_application,W32;W33,saas_application_draft,ENT-187,Partially covered,judged synonym
+sales_ui_config_revision,A112;W33,aut_config_revision,ENT-168,Partially covered,judged synonym
+sales_ui_service_request,W34,,,Not covered,no blueprint entity
+sales_ui_trigger_revision,A109,aut_trigger,ENT-161,Partially covered,judged synonym
+sales_ui_conflict,A111,aut_conflict_case,ENT-165,Partially covered,judged synonym
+sales_ui_template_revision,A113,aut_workflow_template,ENT-167,Partially covered,judged synonym

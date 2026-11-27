@@ -1,0 +1,1734 @@
+screen,kind,field,status,fr_in_bp,ux_in_bp
+W01,current,Contextual / display layout,Not applicable,True,True
+W01,add,Language,Covered,True,True
+W01,add,Region,Covered,True,True
+W01,add,Business search,Covered,True,True
+W01,add,SaaS client entry,Covered,True,True
+W01,add,Accessibility preferences,Covered,True,True
+W02,current,Sector,Covered,True,True
+W02,current,Country,Covered,True,True
+W02,add,Business capability,Covered,True,True
+W02,add,Offering search,Covered,True,True
+W02,add,Location,Covered,True,True
+W02,add,Sort,Covered,True,True
+W03,current,Contextual / display layout,Not applicable,True,True
+W03,add,Brand identity,Covered,True,True
+W03,add,Business units,Covered,True,True
+W03,add,Published offerings,Covered,True,True
+W03,add,Contact channel,Covered,True,True
+W03,add,Last updated,Covered,True,True
+W04,current,Startup,Covered,True,True
+W04,current,Business line,Covered,True,True
+W04,current,Offering,Covered,True,True
+W04,current,Delivery model,Covered,True,True
+W04,add,Category,Covered,True,True
+W04,add,Availability,Covered,True,True
+W04,add,Region,Covered,True,True
+W04,add,Price currency,Covered,True,True
+W04,add,Search,Covered,True,True
+W04,add,Sort,Covered,True,True
+W04,remove/replace,Startup: derive site context when locked,Covered,True,True
+W05,current,Contextual / display layout,Not applicable,True,True
+W05,add,Offering revision,Covered,True,True
+W05,add,Price basis,Covered,True,True
+W05,add,Eligibility,Covered,True,True
+W05,add,Availability,Covered,True,True
+W05,add,Request type,Covered,True,True
+W06,current,Offering,Covered,True,True
+W06,current,Currency,Covered,True,True
+W06,add,Price revision,Covered,True,True
+W06,add,Tax inclusion,Covered,True,True
+W06,add,Validity period,Covered,True,True
+W06,add,Region,Covered,True,True
+W06,add,Request quote,Covered,True,True
+W06,remove/replace,Currency: allowed pricing currency only,Covered,True,True
+W07,current,Industry,Covered,True,True
+W07,current,Offering,Covered,True,True
+W07,add,Use case,Covered,True,True
+W07,add,Solution capability,Covered,True,True
+W07,add,Geography,Covered,True,True
+W07,add,Business outcome evidence,Covered,True,True
+W07,remove/replace,Offering: dynamic published list,Covered,True,True
+W08,current,Topic,Covered,True,True
+W08,current,Language,Covered,True,True
+W08,add,Search,Covered,True,True
+W08,add,Content type,Covered,True,True
+W08,add,Published date,Covered,True,True
+W08,add,Evidence revision,Covered,True,True
+W08,remove/replace,Language: available translations only,Covered,True,True
+W09,current,Industry,Covered,True,True
+W09,current,Offering,Covered,True,True
+W09,add,Evidence reference,Covered,True,True
+W09,add,Publication permission,Covered,True,True
+W09,add,Date,Covered,True,True
+W09,add,Outcome context,Covered,True,True
+W10,current,Contextual / display layout,Not applicable,True,True
+W10,add,Campaign attribution ID,Covered,True,True
+W10,add,Locale,Covered,True,True
+W10,add,Offer expiry,Covered,True,True
+W10,add,Consent notice,Covered,True,True
+W10,add,CTA,Covered,True,True
+W11,current,Contextual / display layout,Not applicable,True,True
+W11,add,Session ID,Covered,True,True
+W11,add,Language,Covered,True,True
+W11,add,Knowledge revision,Covered,True,True
+W11,add,Consent,Covered,True,True
+W11,add,Human handover,Covered,True,True
+W11,add,Evidence links,Covered,True,True
+W12,current,Full name,Covered,True,True
+W12,current,Organization,Covered,True,True
+W12,current,Email,Covered,True,True
+W12,current,Country,Covered,True,True
+W12,current,Startup,Covered,True,True
+W12,current,Offering,Covered,True,True
+W12,current,Message,Covered,True,True
+W12,current,Preferred channel,Covered,True,True
+W12,current,Timezone,Covered,True,True
+W12,add,Consent notice,Covered,True,True
+W12,add,Enquiry ID,Covered,True,True
+W12,add,Source attribution,Covered,True,True
+W12,remove/replace,Startup and Offering: derive locked context,Covered,True,True
+W13,current,Full name,Partially covered,True,True
+W13,current,Organization,Partially covered,True,True
+W13,current,Email,Partially covered,True,True
+W13,current,Startup,Partially covered,True,True
+W13,current,Offering,Partially covered,True,True
+W13,current,Request type,Covered,True,True
+W13,current,Message,Partially covered,True,True
+W13,add,Meeting preference,Covered,True,True
+W13,add,Partnership category,Covered,True,True
+W13,add,Company size band,Covered,True,True
+W13,add,Consent,Covered,True,True
+W13,add,Request reference,Covered,True,True
+W13,remove/replace,Request type: configurable by capability,Covered,True,True
+W14,current,Full name,Partially covered,True,True
+W14,current,Organization,Partially covered,True,True
+W14,current,Email,Partially covered,True,True
+W14,current,Offering,Partially covered,True,True
+W14,current,Quantity,Covered,True,True
+W14,current,Unit,Covered,True,True
+W14,current,Delivery region,Covered,True,True
+W14,current,Message,Partially covered,True,True
+W14,add,SKU or service ID,Covered,True,True
+W14,add,Quote currency,Covered,True,True
+W14,add,Required by date,Covered,True,True
+W14,add,Delivery terms,Covered,True,True
+W14,add,Enquiry ID,Covered,True,True
+W14,remove/replace,Quantity and Unit: conditional for service offerings,Covered,True,True
+W15,current,Full name,Partially covered,True,True
+W15,current,Organization,Covered,True,True
+W15,current,Email,Partially covered,True,True
+W15,current,Technology,Covered,True,True
+W15,current,Delivery model,Covered,True,True
+W15,current,Deadline,Covered,True,True
+W15,current,Budget,Covered,True,True
+W15,current,Message,Partially covered,True,True
+W15,add,Project scope,Covered,True,True
+W15,add,Attachments,Covered,True,True
+W15,add,Budget currency,Covered,True,True
+W15,add,Procurement reference,Covered,True,True
+W15,add,Eligibility,Covered,True,True
+W15,add,Consent,Covered,True,True
+W15,remove/replace,Budget: optional; Technology: dynamic; Deadline: timezone-aware,Covered,True,True
+W16,current,Full name,Covered,True,True
+W16,current,Organization,Partially covered,True,True
+W16,current,Email,Partially covered,True,True
+W16,current,SKU,Covered,True,True
+W16,current,Quantity,Covered,True,True
+W16,current,Unit,Covered,True,True
+W16,current,Certification,Covered,True,True
+W16,current,Delivery region,Covered,True,True
+W16,current,Message,Partially covered,True,True
+W16,add,Supplier legal name,Covered,True,True
+W16,add,Product grade,Covered,True,True
+W16,add,Delivery terms,Covered,True,True
+W16,add,Lead time,Covered,True,True
+W16,add,Certificate expiry,Covered,True,True
+W16,remove/replace,Certification: optional by product; SKU: dynamic,Covered,True,True
+W17,current,Full name,Partially covered,True,True
+W17,current,Email,Partially covered,True,True
+W17,current,Institution,Covered,True,True
+W17,current,Programme,Covered,True,True
+W17,current,Domain,Covered,True,True
+W17,current,Grade band,Covered,True,True
+W17,current,Mode,Covered,True,True
+W17,current,Cohort,Covered,True,True
+W17,current,Guardian permission,Covered,True,True
+W17,current,Message,Partially covered,True,True
+W17,current,Preferred language,Covered,True,True
+W17,add,Enquiry audience,Covered,True,True
+W17,add,Learner age band,Covered,True,True
+W17,add,Intake consent,Covered,True,True
+W17,add,Institution type,Covered,True,True
+W17,remove/replace,Guardian permission: conditional for minors; Grade band: conditional,Covered,True,True
+W18,current,Full name,Partially covered,True,True
+W18,current,Email,Partially covered,True,True
+W18,current,Startup,Partially covered,True,True
+W18,current,Date,Partially covered,True,True
+W18,current,Timezone,Covered,True,True
+W18,add,Slot ID,Covered,True,True
+W18,add,Meeting purpose,Covered,True,True
+W18,add,Duration,Covered,True,True
+W18,add,Booking status,Covered,True,True
+W18,add,Reschedule link,Covered,True,True
+W18,remove/replace,Date: select available slot,Partially covered,True,True
+W19,current,Full name,Covered,True,True
+W19,current,Email,Partially covered,True,True
+W19,current,Event,Covered,True,True
+W19,current,Institution,Covered,True,True
+W19,current,Timezone,Covered,True,True
+W19,add,Event revision,Covered,True,True
+W19,add,Consent,Covered,True,True
+W19,add,Attendance state,Covered,True,True
+W19,add,Registration reference,Covered,True,True
+W19,add,Accessibility needs,Covered,True,True
+W19,remove/replace,Institution: conditional,Covered,True,True
+W20,current,Full name,Partially covered,True,True
+W20,current,Organization,Covered,True,True
+W20,current,Email,Partially covered,True,True
+W20,current,Referral,Covered,True,True
+W20,current,Offering,Partially covered,True,True
+W20,current,Message,Partially covered,True,True
+W20,add,Referrer relationship,Covered,True,True
+W20,add,Referral consent,Covered,True,True
+W20,add,Attribution code,Covered,True,True
+W20,add,Partner status,Covered,True,True
+W20,remove/replace,Referral: avoid unnecessary third-party personal details,Covered,True,True
+W21,current,Email,Covered,True,True
+W21,current,Password,Covered,True,True
+W21,add,MFA method,Covered,True,True
+W21,add,Recovery method,Covered,True,True
+W21,add,Terms revision,Covered,True,True
+W21,add,Identity provider,Covered,True,True
+W21,remove/replace,Password: never persist in demo,Covered,True,True
+W22,current,Contextual / display layout,Not applicable,True,True
+W22,add,Active offering,Covered,True,True
+W22,add,Open tasks,Covered,True,True
+W22,add,Next milestone,Covered,True,True
+W22,add,Unpaid verified invoices,Covered,True,True
+W22,add,Last updated,Covered,True,True
+W23,current,Offering,Partially covered,True,True
+W23,current,Status,Partially covered,True,True
+W23,add,Quote revision,Covered,True,True
+W23,add,Valid until,Covered,True,True
+W23,add,Currency,Covered,True,True
+W23,add,Approval state,Covered,True,True
+W23,add,Accept/request revision,Covered,True,True
+W23,remove/replace,Status: read-only,Partially covered,True,True
+W24,current,Document type,Covered,True,True
+W24,current,Status,Covered,True,True
+W24,add,Signature authority,Covered,True,True
+W24,add,Document revision,Covered,True,True
+W24,add,Terms hash,Covered,True,True
+W24,add,Expiry,Covered,True,True
+W24,add,Sign status,Covered,True,True
+W24,remove/replace,Status: read-only,Covered,True,True
+W25,current,Offering,Partially covered,True,True
+W25,current,Status,Covered,True,True
+W25,add,Order/project reference,Covered,True,True
+W25,add,Milestone,Covered,True,True
+W25,add,Delivery ETA,Covered,True,True
+W25,add,Exception,Covered,True,True
+W25,add,Last update,Covered,True,True
+W25,remove/replace,Status: read-only,Covered,True,True
+W26,current,Contextual / display layout,Not applicable,True,True
+W26,add,Invoice ID,Covered,True,True
+W26,add,Currency,Covered,True,True
+W26,add,Amount due,Covered,True,True
+W26,add,Receipt verification,Covered,True,True
+W26,add,Payment instruction expiry,Covered,True,True
+W27,current,Subject,Partially covered,True,True
+W27,current,Message,Covered,True,True
+W27,current,Attachment,Covered,True,True
+W27,add,Onboarding case,Covered,True,True
+W27,add,Task due,Covered,True,True
+W27,add,File scan state,Covered,True,True
+W27,add,Document revision,Covered,True,True
+W27,add,Recipient scope,Covered,True,True
+W27,remove/replace,Attachment: conditional and validated,Covered,True,True
+W28,current,Request type,Covered,True,True
+W28,current,Subject,Partially covered,True,True
+W28,current,Message,Partially covered,True,True
+W28,add,Case ID,Covered,True,True
+W28,add,Offering reference,Covered,True,True
+W28,add,Severity,Covered,True,True
+W28,add,SLA,Covered,True,True
+W28,add,Contact preference,Covered,True,True
+W28,remove/replace,Request type: route by capability,Covered,True,True
+W29,current,Email,Partially covered,True,True
+W29,current,Channel,Covered,True,True
+W29,current,Request type,Partially covered,True,True
+W29,add,Consent scope,Covered,True,True
+W29,add,Effective suppression,Covered,True,True
+W29,add,Policy revision,Covered,True,True
+W29,add,Confirmation reference,Covered,True,True
+W29,remove/replace,Email: derive verified identity where possible,Partially covered,True,True
+W30,current,Full name,Partially covered,True,True
+W30,current,Email,Partially covered,True,True
+W30,current,Request type,Covered,True,True
+W30,current,Message,Partially covered,True,True
+W30,add,Request ID,Covered,True,True
+W30,add,Tenant contact,Covered,True,True
+W30,add,Privacy notice revision,Covered,True,True
+W30,add,Response deadline,Covered,True,True
+W30,remove/replace,Full name: optional for general information,Partially covered,True,True
+W31,current,Service plan,Covered,True,True
+W31,current,Included features,Covered,True,True
+W31,current,Usage limits,Covered,True,True
+W31,current,Service model,Covered,True,True
+W31,current,Pricing basis,Covered,True,True
+W31,current,Currency,Covered,True,True
+W31,current,Demo slot,Covered,True,True
+W31,current,Terms revision,Covered,True,True
+W32,current,Legal business name,Covered,True,True
+W32,current,Legal identifier,Covered,True,True
+W32,current,Country,Covered,True,True
+W32,current,Business email,Covered,True,True
+W32,current,Administrator name,Covered,True,True
+W32,current,Website,Covered,True,True
+W32,current,Service model,Covered,True,True
+W32,current,Plan,Covered,True,True
+W32,current,Terms consent,Covered,True,True
+W32,current,Verification status,Covered,True,True
+W33,current,Business description,Covered,True,True
+W33,current,Source documents,Covered,True,True
+W33,current,Industry template,Covered,True,True
+W33,current,Capabilities,Covered,True,True
+W33,current,Business units,Covered,True,True
+W33,current,Offerings or fundraising thesis,Partially covered,True,True
+W33,current,Markets,Covered,True,True
+W33,current,Language,Covered,True,True
+W33,current,Channel permissions,Covered,True,True
+W33,current,Objectives,Covered,True,True
+W33,current,Workflow templates,Covered,True,True
+W33,current,Budget proposal,Covered,True,True
+W33,current,Readiness,Covered,True,True
+W33,current,Configuration revision,Covered,True,True
+W34,current,Tenant,Covered,True,True
+W34,current,Authorized startups,Covered,True,True
+W34,current,Service plan,Covered,True,True
+W34,current,Entitlements,Covered,True,True
+W34,current,Onboarding progress,Covered,True,True
+W34,current,Usage,Covered,True,True
+W34,current,Invoice,Covered,True,True
+W34,current,Renewal,Covered,True,True
+W34,current,Support case,Covered,True,True
+W34,current,Export request,Covered,True,True
+W34,current,Admin workspace link,Covered,True,True
+A001,current,Email,Partially covered,True,True
+A001,current,Password,Covered,True,True
+A001,current,MFA code,Covered,True,True
+A001,add,Identity provider,Covered,True,True
+A001,add,Recovery method,Covered,True,True
+A001,add,MFA method,Covered,True,True
+A001,add,Session scope,Covered,True,True
+A001,remove/replace,Password and MFA code: never persist; no raw secret display,Covered,True,True
+A002,current,User,Covered,True,True
+A002,current,Role,Covered,True,True
+A002,current,Team,Covered,True,True
+A002,current,Startup,Covered,True,True
+A002,current,Status,Covered,True,True
+A002,add,Tenant,Covered,True,True
+A002,add,Membership expiry,Covered,True,True
+A002,add,Grant scope,Covered,True,True
+A002,add,Invite status,Covered,True,True
+A002,add,Role revision,Covered,True,True
+A002,add,MFA requirement,Covered,True,True
+A002,remove/replace,Access: replace broad flag with scoped grants,Covered,True,True
+A003,current,Startup,Covered,True,True
+A003,current,Business line,Partially covered,True,True
+A003,current,Qualified leads,Partially covered,True,True
+A003,current,Pipeline,Partially covered,True,True
+A003,current,Verified revenue,Partially covered,True,True
+A003,add,Tenant,Covered,True,True
+A003,add,Capability,Covered,True,True
+A003,add,Objective,Covered,True,True
+A003,add,Offering,Covered,True,True
+A003,add,Active runs,Covered,True,True
+A003,add,Workspace freshness,Covered,True,True
+A003,remove/replace,Startup: dynamic authorized directory,Covered,True,True
+A004,current,Offering,Covered,True,True
+A004,current,Startup,Partially covered,True,True
+A004,current,Business line,Covered,True,True
+A004,current,Category,Covered,True,True
+A004,current,Delivery model,Covered,True,True
+A004,current,Approval,Covered,True,True
+A004,current,Region,Covered,True,True
+A004,add,Capability codes,Covered,True,True
+A004,add,SKU/service ID,Covered,True,True
+A004,add,Price revision,Covered,True,True
+A004,add,Tax profile,Covered,True,True
+A004,add,Lifecycle state,Covered,True,True
+A004,remove/replace,Category: dynamic taxonomy,Covered,True,True
+A005,current,Offering,Covered,True,True
+A005,current,Category,Partially covered,True,True
+A005,current,Revision,Covered,True,True
+A005,current,Source,Partially covered,True,True
+A005,current,Approval,Partially covered,True,True
+A005,current,Status,Covered,True,True
+A005,add,Knowledge ID,Covered,True,True
+A005,add,Claim references,Covered,True,True
+A005,add,Scope,Covered,True,True
+A005,add,Freshness SLA,Covered,True,True
+A005,add,Embedding revision,Covered,True,True
+A005,remove/replace,Status: computed,Covered,True,True
+A006,current,Document,Covered,True,True
+A006,current,Offering,Covered,True,True
+A006,current,Revision,Covered,True,True
+A006,current,Source,Covered,True,True
+A006,current,Reviewer,Covered,True,True
+A006,current,Status,Partially covered,True,True
+A006,add,File scan,Covered,True,True
+A006,add,Classification,Covered,True,True
+A006,add,Content hash,Covered,True,True
+A006,add,Access grant,Covered,True,True
+A006,add,Expiry,Covered,True,True
+A006,add,Approval evidence,Covered,True,True
+A006,remove/replace,Source: validated provenance,Covered,True,True
+A007,current,Policy,Covered,True,True
+A007,current,Channel,Covered,True,True
+A007,current,Jurisdiction,Covered,True,True
+A007,current,Consent,Covered,True,True
+A007,current,Frequency,Covered,True,True
+A007,current,Stop condition,Partially covered,True,True
+A007,current,Status,Partially covered,True,True
+A007,add,Consent scope,Covered,True,True
+A007,add,Quiet hours,Covered,True,True
+A007,add,Channel permission,Covered,True,True
+A007,add,Suppression ID,Covered,True,True
+A007,add,Policy revision,Covered,True,True
+A007,add,Frequency cap,Covered,True,True
+A007,remove/replace,Consent: scoped records; Frequency: explicit period,Covered,True,True
+A008,current,Provider,Covered,True,True
+A008,current,Channel,Covered,True,True
+A008,current,Scope,Covered,True,True
+A008,current,Quota,Covered,True,True
+A008,current,Health,Covered,True,True
+A008,current,Status,Partially covered,True,True
+A008,add,Connection scope,Covered,True,True
+A008,add,Credential reference,Covered,True,True
+A008,add,Capability grant,Covered,True,True
+A008,add,Auth expiry,Covered,True,True
+A008,add,Webhook health,Covered,True,True
+A008,add,Fallback,Covered,True,True
+A008,remove/replace,Provider: never display tokens,Covered,True,True
+A009,current,Event,Covered,True,True
+A009,current,Actor,Covered,True,True
+A009,current,Action,Covered,True,True
+A009,current,Timestamp,Covered,True,True
+A009,current,Outcome,Covered,True,True
+A009,current,Status,Covered,True,True
+A009,add,Correlation ID,Covered,True,True
+A009,add,Run ID,Covered,True,True
+A009,add,Tenant/startup,Covered,True,True
+A009,add,Policy revision,Covered,True,True
+A009,add,Evidence digest,Covered,True,True
+A009,remove/replace,Outcome: immutable event result,Covered,True,True
+A010,current,Source,Covered,True,True
+A010,current,Access method,Covered,True,True
+A010,current,Permission,Covered,True,True
+A010,current,Expiry,Covered,True,True
+A010,current,Category,Covered,True,True
+A010,current,Status,Covered,True,True
+A010,add,Usage licence,Covered,True,True
+A010,add,Permitted purpose,Covered,True,True
+A010,add,Refresh schedule,Covered,True,True
+A010,add,Access scope,Covered,True,True
+A010,add,Review owner,Covered,True,True
+A010,remove/replace,Permission: explicit capability not free text,Covered,True,True
+A011,current,Model,Covered,True,True
+A011,current,Task type,Covered,True,True
+A011,current,Token budget,Covered,True,True
+A011,current,Quality threshold,Covered,True,True
+A011,current,Fallback,Covered,True,True
+A011,current,Status,Partially covered,True,True
+A011,add,Model revision,Covered,True,True
+A011,add,Task route,Covered,True,True
+A011,add,Evaluation sample size,Covered,True,True
+A011,add,Cost ceiling,Covered,True,True
+A011,add,Guardrail result,Covered,True,True
+A011,add,Rollback,Covered,True,True
+A011,remove/replace,Quality threshold: task specific,Covered,True,True
+A012,current,Provider,Covered,True,True
+A012,current,Usage,Covered,True,True
+A012,current,Cost,Covered,True,True
+A012,current,Budget,Covered,True,True
+A012,current,Quota,Partially covered,True,True
+A012,current,Status,Partially covered,True,True
+A012,add,Reserved spend,Covered,True,True
+A012,add,Actual spend,Covered,True,True
+A012,add,Objective cost,Covered,True,True
+A012,add,Budget remaining,Covered,True,True
+A012,add,Forecast,Covered,True,True
+A012,add,Hard stop,Covered,True,True
+A012,remove/replace,Cost: separate actual/reserved,Covered,True,True
+A013,current,Request,Covered,True,True
+A013,current,Request type,Covered,True,True
+A013,current,Received,Covered,True,True
+A013,current,Deadline,Covered,True,True
+A013,current,Owner,Covered,True,True
+A013,current,Status,Partially covered,True,True
+A013,add,Subject scope,Covered,True,True
+A013,add,Proof,Covered,True,True
+A013,add,Legal hold,Covered,True,True
+A013,add,Data categories,Covered,True,True
+A013,add,Fulfillment evidence,Covered,True,True
+A013,remove/replace,Status: controlled transition,Partially covered,True,True
+A014,current,Service,Covered,True,True
+A014,current,Latency,Covered,True,True
+A014,current,Availability,Covered,True,True
+A014,current,Incident,Covered,True,True
+A014,current,Severity,Covered,True,True
+A014,current,Status,Covered,True,True
+A014,add,Service scope,Covered,True,True
+A014,add,Error rate,Covered,True,True
+A014,add,Queue depth,Covered,True,True
+A014,add,SLO,Covered,True,True
+A014,add,Run correlation,Covered,True,True
+A014,add,Recovery state,Covered,True,True
+A014,remove/replace,Status: monitored read-only,Covered,True,True
+A015,current,Plan name,Covered,True,True
+A015,current,Country,Covered,True,True
+A015,current,Industry,Covered,True,True
+A015,current,Organization type,Covered,True,True
+A015,current,Source,Covered,True,True
+A015,current,Frequency,Covered,True,True
+A015,current,Budget,Covered,True,True
+A015,current,Objective,Covered,True,True
+A015,add,Source policy set,Covered,True,True
+A015,add,Schedule timezone,Covered,True,True
+A015,add,Max results,Covered,True,True
+A015,add,Freshness SLA,Covered,True,True
+A015,remove/replace,Frequency: conditional for trigger type,Covered,True,True
+A016,current,Organization,Covered,True,True
+A016,current,Country,Covered,True,True
+A016,current,Industry,Covered,True,True
+A016,current,Buying signal,Covered,True,True
+A016,current,Source,Covered,True,True
+A016,current,Evidence freshness,Covered,True,True
+A016,current,Status,Covered,True,True
+A016,add,Evidence ID,Covered,True,True
+A016,add,Signal confidence,Covered,True,True
+A016,add,Objective,Covered,True,True
+A016,add,Canonical organization,Covered,True,True
+A016,add,Last verified,Covered,True,True
+A016,remove/replace,Status: derived qualification stage,Covered,True,True
+A017,current,Evidence,Covered,True,True
+A017,current,Source,Covered,True,True
+A017,current,Observed date,Covered,True,True
+A017,current,Permission,Covered,True,True
+A017,current,Confidence,Covered,True,True
+A017,current,Status,Partially covered,True,True
+A017,add,Content hash,Covered,True,True
+A017,add,Retrieved date,Covered,True,True
+A017,add,Source permission revision,Covered,True,True
+A017,add,Expiry,Covered,True,True
+A017,add,Claim link,Covered,True,True
+A017,remove/replace,Confidence: evidence score not permission,Covered,True,True
+A018,current,Organization,Covered,True,True
+A018,current,Country,Partially covered,True,True
+A018,current,Industry,Covered,True,True
+A018,current,Organization type,Covered,True,True
+A018,current,Size,Covered,True,True
+A018,current,Status,Partially covered,True,True
+A018,add,Canonical organization ID,Covered,True,True
+A018,add,Industry taxonomy,Covered,True,True
+A018,add,Region,Covered,True,True
+A018,add,Identity match,Covered,True,True
+A018,add,Source provenance,Covered,True,True
+A018,remove/replace,Size: verified band not guessed,Covered,True,True
+A019,current,Signal,Covered,True,True
+A019,current,Organization,Covered,True,True
+A019,current,Source,Covered,True,True
+A019,current,Stage,Partially covered,True,True
+A019,current,Priority,Covered,True,True
+A019,current,Observed date,Covered,True,True
+A019,add,Signal type,Covered,True,True
+A019,add,Expiry,Covered,True,True
+A019,add,Evidence ID,Covered,True,True
+A019,add,Trigger event,Covered,True,True
+A019,add,Assigned objective,Covered,True,True
+A019,remove/replace,Priority: computed with override reason,Covered,True,True
+A020,current,Organization,Partially covered,True,True
+A020,current,Need,Covered,True,True
+A020,current,Industry,Partially covered,True,True
+A020,current,Urgency,Covered,True,True
+A020,current,Evidence,Covered,True,True
+A020,current,Status,Partially covered,True,True
+A020,add,Need category,Covered,True,True
+A020,add,Evidence revision,Covered,True,True
+A020,add,Urgency basis,Covered,True,True
+A020,add,Budget confidence,Covered,True,True
+A020,add,Reviewer,Covered,True,True
+A020,remove/replace,Urgency: derived with reason,Covered,True,True
+A021,current,Organization,Covered,True,True
+A021,current,Offering,Covered,True,True
+A021,current,Business line,Partially covered,True,True
+A021,current,Fit score,Covered,True,True
+A021,current,Confidence,Partially covered,True,True
+A021,current,Status,Partially covered,True,True
+A021,add,Capability match,Covered,True,True
+A021,add,Match explanation,Covered,True,True
+A021,add,Exclusion rule,Covered,True,True
+A021,add,Pricing revision,Covered,True,True
+A021,add,Score revision,Covered,True,True
+A021,remove/replace,Fit score: computed,Covered,True,True
+A022,current,Opportunity,Covered,True,True
+A022,current,Organization,Partially covered,True,True
+A022,current,Offering,Partially covered,True,True
+A022,current,Fit score,Covered,True,True
+A022,current,Priority,Covered,True,True
+A022,current,Stage,Partially covered,True,True
+A022,current,Status,Partially covered,True,True
+A022,add,Opportunity ID,Covered,True,True
+A022,add,Score components,Covered,True,True
+A022,add,Next action,Covered,True,True
+A022,add,Conflict state,Covered,True,True
+A022,add,Freshness,Covered,True,True
+A022,remove/replace,Priority: computed,Covered,True,True
+A023,current,Rule,Covered,True,True
+A023,current,Industry,Partially covered,True,True
+A023,current,Signal weight,Covered,True,True
+A023,current,Fit threshold,Covered,True,True
+A023,current,Confidence,Partially covered,True,True
+A023,current,Status,Partially covered,True,True
+A023,add,Scoring version,Covered,True,True
+A023,add,Validation dataset,Covered,True,True
+A023,add,Weight sum,Covered,True,True
+A023,add,Exclusions,Covered,True,True
+A023,add,Approval,Covered,True,True
+A023,remove/replace,Fit threshold: validated numeric domain,Covered,True,True
+A024,current,Contact,Covered,True,True
+A024,current,Organization,Covered,True,True
+A024,current,Role,Covered,True,True
+A024,current,Channel,Covered,True,True
+A024,current,Eligibility,Partially covered,True,True
+A024,current,Status,Partially covered,True,True
+A024,add,Contact ID,Covered,True,True
+A024,add,Source entitlement,Covered,True,True
+A024,add,Verified identity,Covered,True,True
+A024,add,Consent scope,Covered,True,True
+A024,add,Preferred language,Covered,True,True
+A024,remove/replace,Channel: capability gated,Covered,True,True
+A025,current,Contact,Covered,True,True
+A025,current,Organization,Partially covered,True,True
+A025,current,Channel,Covered,True,True
+A025,current,Verification,Covered,True,True
+A025,current,Evidence,Covered,True,True
+A025,current,Status,Covered,True,True
+A025,add,Verification method,Covered,True,True
+A025,add,Evidence revision,Covered,True,True
+A025,add,Verified at,Covered,True,True
+A025,add,Expiry,Covered,True,True
+A025,add,Failure reason,Covered,True,True
+A025,remove/replace,Verification: computed status,Covered,True,True
+A026,current,Contact,Covered,True,True
+A026,current,Organization,Partially covered,True,True
+A026,current,Role,Covered,True,True
+A026,current,Confidence,Covered,True,True
+A026,current,Verified date,Partially covered,True,True
+A026,current,Status,Partially covered,True,True
+A026,add,Role taxonomy,Covered,True,True
+A026,add,Identity match confidence,Covered,True,True
+A026,add,Source revision,Covered,True,True
+A026,add,Decision authority,Covered,True,True
+A026,add,Reviewer,Covered,True,True
+A026,remove/replace,Confidence: qualified score,Covered,True,True
+A027,current,Opportunity,Covered,True,True
+A027,current,Organization,Partially covered,True,True
+A027,current,Offering,Covered,True,True
+A027,current,Fit score,Covered,True,True
+A027,current,Owner,Covered,True,True
+A027,current,Status,Partially covered,True,True
+A027,add,Qualification reason,Covered,True,True
+A027,add,Objective ID,Covered,True,True
+A027,add,Consent readiness,Covered,True,True
+A027,add,Assignment rule,Covered,True,True
+A027,add,Evidence expiry,Covered,True,True
+A027,remove/replace,Fit score: read-only,Covered,True,True
+A028,current,Rule,Covered,True,True
+A028,current,Source,Partially covered,True,True
+A028,current,Priority,Partially covered,True,True
+A028,current,Alert channel,Covered,True,True
+A028,current,Approval,Covered,True,True
+A028,current,Status,Partially covered,True,True
+A028,add,Trigger condition,Covered,True,True
+A028,add,Schedule timezone,Covered,True,True
+A028,add,Dedup window,Covered,True,True
+A028,add,Alert recipient,Covered,True,True
+A028,add,Rule revision,Covered,True,True
+A028,remove/replace,Alert channel: approved eligible channel,Covered,True,True
+A029,current,Deal,Covered,True,True
+A029,current,Organization,Covered,True,True
+A029,current,Offering,Covered,True,True
+A029,current,Stage,Covered,True,True
+A029,current,Amount,Covered,True,True
+A029,current,Owner,Covered,True,True
+A029,current,Next action,Covered,True,True
+A029,add,Opportunity ID,Covered,True,True
+A029,add,Currency,Covered,True,True
+A029,add,Stage event,Covered,True,True
+A029,add,Active workflows,Covered,True,True
+A029,add,Hold reason,Covered,True,True
+A029,add,Next action due,Covered,True,True
+A029,remove/replace,Stage: controlled transition; Amount: currency required,Covered,True,True
+A030,current,Stage,Covered,True,True
+A030,current,Entry rule,Covered,True,True
+A030,current,Exit rule,Covered,True,True
+A030,current,Assignment,Covered,True,True
+A030,current,Priority,Covered,True,True
+A030,current,Status,Partially covered,True,True
+A030,add,Rule revision,Covered,True,True
+A030,add,Capability scope,Covered,True,True
+A030,add,SLA,Covered,True,True
+A030,add,Conflict priority,Covered,True,True
+A030,add,Test fixture,Covered,True,True
+A030,remove/replace,Stage: configurable allowed state,Covered,True,True
+A031,current,Form,Covered,True,True
+A031,current,Offering,Covered,True,True
+A031,current,Routing rule,Covered,True,True
+A031,current,Consent,Covered,True,True
+A031,current,Owner,Covered,True,True
+A031,current,Status,Partially covered,True,True
+A031,add,Form revision,Covered,True,True
+A031,add,Field schema,Covered,True,True
+A031,add,Consent revision,Covered,True,True
+A031,add,Source attribution,Covered,True,True
+A031,add,Duplicate strategy,Covered,True,True
+A031,remove/replace,Offering: dynamic scoped list,Covered,True,True
+A032,current,Organization,Partially covered,True,True
+A032,current,Contact,Covered,True,True
+A032,current,Offering,Partially covered,True,True
+A032,current,Stage,Partially covered,True,True
+A032,current,Owner,Partially covered,True,True
+A032,current,Eligibility,Covered,True,True
+A032,current,Status,Partially covered,True,True
+A032,add,Canonical relationship,Covered,True,True
+A032,add,Identity links,Covered,True,True
+A032,add,Timeline,Covered,True,True
+A032,add,Consent history,Covered,True,True
+A032,add,Open orders,Covered,True,True
+A032,add,Active runs,Covered,True,True
+A032,remove/replace,Eligibility: computed read-only,Covered,True,True
+A033,current,Workflow,Covered,True,True
+A033,current,Trigger,Covered,True,True
+A033,current,Mode,Covered,True,True
+A033,current,Policy,Partially covered,True,True
+A033,current,Approval,Partially covered,True,True
+A033,current,Status,Partially covered,True,True
+A033,add,Node library,Covered,True,True
+A033,add,Edge conditions,Covered,True,True
+A033,add,Workflow revision,Covered,True,True
+A033,add,Step budget,Covered,True,True
+A033,add,Retry,Covered,True,True
+A033,add,Trigger ID,Covered,True,True
+A033,add,Test fixture,Covered,True,True
+A033,remove/replace,Trigger: select registry; Mode: policy bounded,Covered,True,True
+A034,current,Contact,Partially covered,True,True
+A034,current,Channel,Covered,True,True
+A034,current,Template,Covered,True,True
+A034,current,Subject,Partially covered,True,True
+A034,current,Eligibility,Covered,True,True
+A034,current,Approval,Covered,True,True
+A034,add,Relationship ID,Covered,True,True
+A034,add,Template revision,Covered,True,True
+A034,add,Evidence citations,Covered,True,True
+A034,add,Consent result,Covered,True,True
+A034,add,Schedule,Covered,True,True
+A034,add,Cost estimate,Covered,True,True
+A034,remove/replace,Eligibility and Approval: computed gates,Covered,True,True
+A035,current,Template,Covered,True,True
+A035,current,Channel,Covered,True,True
+A035,current,Language,Covered,True,True
+A035,current,Revision,Partially covered,True,True
+A035,current,Approval,Covered,True,True
+A035,current,Status,Covered,True,True
+A035,add,Variable schema,Covered,True,True
+A035,add,Claims references,Covered,True,True
+A035,add,Provider template ID,Covered,True,True
+A035,add,Expiry,Covered,True,True
+A035,add,Locale fallback,Covered,True,True
+A035,remove/replace,Status: derived approval,Covered,True,True
+A036,current,Sender,Covered,True,True
+A036,current,Domain,Covered,True,True
+A036,current,Provider,Partially covered,True,True
+A036,current,Daily limit,Covered,True,True
+A036,current,Authentication,Partially covered,True,True
+A036,current,Status,Partially covered,True,True
+A036,add,Credential reference,Covered,True,True
+A036,add,Domain verification,Covered,True,True
+A036,add,SPF/DKIM/DMARC result,Covered,True,True
+A036,add,Bounce rate,Covered,True,True
+A036,add,Suppression,Covered,True,True
+A036,remove/replace,Daily limit: bounded by provider; no secret values,Covered,True,True
+A037,current,Contact,Covered,True,True
+A037,current,Channel,Covered,True,True
+A037,current,Subject,Partially covered,True,True
+A037,current,Response,Partially covered,True,True
+A037,current,Owner,Partially covered,True,True
+A037,current,Status,Partially covered,True,True
+A037,add,Conversation ID,Covered,True,True
+A037,add,Identity match,Covered,True,True
+A037,add,Direction,Covered,True,True
+A037,add,Intent,Covered,True,True
+A037,add,Delivery receipt,Covered,True,True
+A037,add,Human takeover,Covered,True,True
+A037,add,Linked runs,Covered,True,True
+A037,remove/replace,Response: split inbound and draft,Partially covered,True,True
+A038,current,Task,Covered,True,True
+A038,current,Contact,Covered,True,True
+A038,current,Sequence,Covered,True,True
+A038,current,Due date,Covered,True,True
+A038,current,Priority,Covered,True,True
+A038,current,Status,Partially covered,True,True
+A038,add,Run ID,Covered,True,True
+A038,add,Wait event,Covered,True,True
+A038,add,Sequence revision,Covered,True,True
+A038,add,Stop reason,Covered,True,True
+A038,add,Deadline timezone,Covered,True,True
+A038,add,SLA,Covered,True,True
+A038,remove/replace,Due date: conditional on wait state,Covered,True,True
+A039,current,Policy,Covered,True,True
+A039,current,Channel,Covered,True,True
+A039,current,Interval,Covered,True,True
+A039,current,Max attempts,Covered,True,True
+A039,current,Stop condition,Covered,True,True
+A039,current,Status,Partially covered,True,True
+A039,add,Frequency cap scope,Covered,True,True
+A039,add,Quiet hours,Covered,True,True
+A039,add,Consent check,Covered,True,True
+A039,add,Max cumulative contacts,Covered,True,True
+A039,add,Policy revision,Covered,True,True
+A039,remove/replace,Interval: conditional by channel,Covered,True,True
+A040,current,Meeting,Covered,True,True
+A040,current,Organization,Covered,True,True
+A040,current,Date,Partially covered,True,True
+A040,current,Timezone,Covered,True,True
+A040,current,Owner,Partially covered,True,True
+A040,current,Status,Partially covered,True,True
+A040,add,Slot ID,Covered,True,True
+A040,add,Provider,Covered,True,True
+A040,add,Booking state,Covered,True,True
+A040,add,Attendees,Covered,True,True
+A040,add,Meeting outcome,Covered,True,True
+A040,add,Approved notes,Covered,True,True
+A040,remove/replace,Date: validated slot,Partially covered,True,True
+A041,current,Calendar,Covered,True,True
+A041,current,Provider,Covered,True,True
+A041,current,Timezone,Covered,True,True
+A041,current,Availability,Partially covered,True,True
+A041,current,Buffer,Covered,True,True
+A041,current,Status,Partially covered,True,True
+A041,add,Calendar identity,Covered,True,True
+A041,add,OAuth grant reference,Covered,True,True
+A041,add,Sync health,Covered,True,True
+A041,add,Work hours,Covered,True,True
+A041,add,Conflict policy,Covered,True,True
+A041,remove/replace,Availability: provider-scoped,Partially covered,True,True
+A042,current,Startup,Covered,True,True
+A042,current,Qualified leads,Covered,True,True
+A042,current,Pipeline,Covered,True,True
+A042,current,Verified revenue,Covered,True,True
+A042,current,Conversion,Covered,True,True
+A042,add,Tenant,Covered,True,True
+A042,add,Objective,Covered,True,True
+A042,add,Offering,Covered,True,True
+A042,add,Verified revenue basis,Covered,True,True
+A042,add,Cost per outcome,Covered,True,True
+A042,add,Data freshness,Covered,True,True
+A042,remove/replace,Startup: dynamic authorized list,Covered,True,True
+A043,current,Team,Covered,True,True
+A043,current,Target,Covered,True,True
+A043,current,Pipeline,Covered,True,True
+A043,current,Verified revenue,Covered,True,True
+A043,current,Conversion,Covered,True,True
+A043,add,Tenant,Partially covered,True,True
+A043,add,Team scope,Covered,True,True
+A043,add,Capacity,Covered,True,True
+A043,add,SLA,Covered,True,True
+A043,add,Budget variance,Covered,True,True
+A043,add,Intervention rate,Covered,True,True
+A043,remove/replace,Team: authorized group only,Covered,True,True
+A044,current,Template,Covered,True,True
+A044,current,Sender,Covered,True,True
+A044,current,Language,Covered,True,True
+A044,current,Category,Covered,True,True
+A044,current,Approval,Partially covered,True,True
+A044,current,Status,Covered,True,True
+A044,add,Business account ID,Covered,True,True
+A044,add,Provider template ID,Covered,True,True
+A044,add,Opt-in evidence,Covered,True,True
+A044,add,Service window,Covered,True,True
+A044,add,Health,Covered,True,True
+A044,remove/replace,Sender: verified account only,Covered,True,True
+A045,current,Contact,Partially covered,True,True
+A045,current,Channel,Partially covered,True,True
+A045,current,Subject,Partially covered,True,True
+A045,current,Response,Partially covered,True,True
+A045,current,Owner,Partially covered,True,True
+A045,current,Status,Partially covered,True,True
+A045,add,Shared thread ID,Covered,True,True
+A045,add,Service window,Covered,True,True
+A045,add,Consent,Covered,True,True
+A045,add,Delivery receipt,Covered,True,True
+A045,add,Handover,Covered,True,True
+A045,remove/replace,Response: reuse unified thread composer,Partially covered,True,True
+A046,current,FAQ,Covered,True,True
+A046,current,Channel,Covered,True,True
+A046,current,Offering,Covered,True,True
+A046,current,Answer,Covered,True,True
+A046,current,Escalation,Partially covered,True,True
+A046,current,Approval,Partially covered,True,True
+A046,add,Intent taxonomy,Covered,True,True
+A046,add,Knowledge revision,Covered,True,True
+A046,add,Confidence gate,Covered,True,True
+A046,add,Routing priority,Covered,True,True
+A046,add,Handover SLA,Covered,True,True
+A046,remove/replace,Answer: approved revision only,Covered,True,True
+A047,current,Incident,Covered,True,True
+A047,current,Channel,Covered,True,True
+A047,current,Severity,Covered,True,True
+A047,current,Policy,Covered,True,True
+A047,current,Owner,Partially covered,True,True
+A047,current,Status,Partially covered,True,True
+A047,add,Policy revision,Covered,True,True
+A047,add,Affected run,Covered,True,True
+A047,add,Containment action,Covered,True,True
+A047,add,Evidence,Covered,True,True
+A047,add,Resolution deadline,Covered,True,True
+A047,remove/replace,Severity: rule-derived with reviewer override,Covered,True,True
+A048,current,Mention,Covered,True,True
+A048,current,Platform,Covered,True,True
+A048,current,Topic,Covered,True,True
+A048,current,Sentiment,Covered,True,True
+A048,current,Source,Covered,True,True
+A048,current,Status,Partially covered,True,True
+A048,add,Permitted source ID,Covered,True,True
+A048,add,Mention timestamp,Covered,True,True
+A048,add,Attribution,Covered,True,True
+A048,add,Evidence freshness,Covered,True,True
+A048,add,Review gate,Covered,True,True
+A048,remove/replace,Sentiment: model inference label,Covered,True,True
+A049,current,Platform,Covered,True,True
+A049,current,Source,Covered,True,True
+A049,current,Permission,Covered,True,True
+A049,current,Access method,Partially covered,True,True
+A049,current,Expiry,Covered,True,True
+A049,current,Status,Partially covered,True,True
+A049,add,Provider capability grant,Covered,True,True
+A049,add,Data retention,Covered,True,True
+A049,add,Permitted purpose,Covered,True,True
+A049,add,Review expiry,Covered,True,True
+A049,add,Revocation,Covered,True,True
+A049,remove/replace,Permission: explicit capability matrix,Covered,True,True
+A050,current,Title,Covered,True,True
+A050,current,Offering,Covered,True,True
+A050,current,Channel,Covered,True,True
+A050,current,Audience,Covered,True,True
+A050,current,Revision,Covered,True,True
+A050,current,Approval,Partially covered,True,True
+A050,add,Content format,Covered,True,True
+A050,add,Claim references,Covered,True,True
+A050,add,Brand revision,Covered,True,True
+A050,add,Locale,Covered,True,True
+A050,add,Channel requirements,Covered,True,True
+A050,add,Schedule,Covered,True,True
+A050,remove/replace,Approval: computed,Partially covered,True,True
+A051,current,Content,Covered,True,True
+A051,current,Claim,Covered,True,True
+A051,current,Source,Covered,True,True
+A051,current,Revision,Partially covered,True,True
+A051,current,Reviewer,Covered,True,True
+A051,current,Status,Partially covered,True,True
+A051,add,Claim ID,Covered,True,True
+A051,add,Evidence expiry,Covered,True,True
+A051,add,Risk class,Covered,True,True
+A051,add,Approved content hash,Covered,True,True
+A051,add,Decision reason,Covered,True,True
+A051,remove/replace,Status: controlled approval,Partially covered,True,True
+A052,current,Post,Covered,True,True
+A052,current,Platform,Covered,True,True
+A052,current,Date,Partially covered,True,True
+A052,current,Timezone,Covered,True,True
+A052,current,Approval,Covered,True,True
+A052,current,Status,Covered,True,True
+A052,add,Post revision,Covered,True,True
+A052,add,Provider account,Covered,True,True
+A052,add,Schedule timezone,Covered,True,True
+A052,add,Delivery result,Covered,True,True
+A052,add,Retry state,Covered,True,True
+A052,remove/replace,Approval: immutable revision check,Covered,True,True
+A053,current,Account,Covered,True,True
+A053,current,Platform,Covered,True,True
+A053,current,Permission,Covered,True,True
+A053,current,Daily limit,Covered,True,True
+A053,current,Health,Partially covered,True,True
+A053,current,Status,Covered,True,True
+A053,add,Credential reference,Covered,True,True
+A053,add,Account ownership,Covered,True,True
+A053,add,Capability grant,Covered,True,True
+A053,add,Revocation,Covered,True,True
+A053,add,Rate remaining,Covered,True,True
+A053,remove/replace,Permission: scoped; no tokens,Covered,True,True
+A054,current,Page,Covered,True,True
+A054,current,Keyword,Covered,True,True
+A054,current,Impressions,Covered,True,True
+A054,current,Clicks,Covered,True,True
+A054,current,Rank,Covered,True,True
+A054,current,Status,Partially covered,True,True
+A054,add,Property ID,Covered,True,True
+A054,add,Period,Covered,True,True
+A054,add,Locale,Covered,True,True
+A054,add,Metric source,Covered,True,True
+A054,add,Indexability,Covered,True,True
+A054,add,Freshness,Covered,True,True
+A054,remove/replace,Rank: sourced metric not editable,Covered,True,True
+A055,current,Page,Covered,True,True
+A055,current,Issue,Covered,True,True
+A055,current,Keyword,Partially covered,True,True
+A055,current,Priority,Covered,True,True
+A055,current,Owner,Covered,True,True
+A055,current,Status,Partially covered,True,True
+A055,add,Issue evidence,Covered,True,True
+A055,add,Impact estimate,Covered,True,True
+A055,add,Page revision,Covered,True,True
+A055,add,Validation method,Covered,True,True
+A055,add,Change approval,Covered,True,True
+A055,remove/replace,Priority: derived,Covered,True,True
+A056,current,Page,Covered,True,True
+A056,current,Offering,Covered,True,True
+A056,current,Audience,Covered,True,True
+A056,current,Locale,Covered,True,True
+A056,current,Revision,Covered,True,True
+A056,current,Approval,Partially covered,True,True
+A056,add,Brand revision,Covered,True,True
+A056,add,CTA route,Covered,True,True
+A056,add,Form schema,Covered,True,True
+A056,add,Tracking consent,Covered,True,True
+A056,add,Preview URL,Covered,True,True
+A056,add,Claim references,Covered,True,True
+A056,remove/replace,Audience: approved segment,Covered,True,True
+A057,current,Page,Covered,True,True
+A057,current,Revision,Partially covered,True,True
+A057,current,Reviewer,Partially covered,True,True
+A057,current,Claim check,Covered,True,True
+A057,current,Approval,Covered,True,True
+A057,current,Status,Partially covered,True,True
+A057,add,Content hash,Covered,True,True
+A057,add,Accessibility result,Covered,True,True
+A057,add,Privacy review,Covered,True,True
+A057,add,Publish decision,Covered,True,True
+A057,add,Expiry,Covered,True,True
+A057,remove/replace,Approval: controlled decision,Covered,True,True
+A058,current,Campaign,Covered,True,True
+A058,current,Offering,Covered,True,True
+A058,current,Audience,Covered,True,True
+A058,current,Channel,Covered,True,True
+A058,current,Budget,Partially covered,True,True
+A058,current,Start date,Partially covered,True,True
+A058,current,Approval,Covered,True,True
+A058,add,Objective ID,Covered,True,True
+A058,add,Audience permission,Covered,True,True
+A058,add,Channel eligibility,Covered,True,True
+A058,add,Schedule,Covered,True,True
+A058,add,Spend cap,Covered,True,True
+A058,add,Conversion event,Covered,True,True
+A058,remove/replace,Budget: hard limit; Audience: permitted segment,Partially covered,True,True
+A059,current,Campaign,Covered,True,True
+A059,current,Audience,Partially covered,True,True
+A059,current,Channel,Partially covered,True,True
+A059,current,Budget,Covered,True,True
+A059,current,Reviewer,Partially covered,True,True
+A059,current,Status,Partially covered,True,True
+A059,add,Budget reservation,Covered,True,True
+A059,add,Approved campaign hash,Covered,True,True
+A059,add,Risk review,Covered,True,True
+A059,add,Decision reason,Covered,True,True
+A059,add,Expiry,Covered,True,True
+A059,remove/replace,Status: approval lifecycle,Partially covered,True,True
+A060,current,Campaign,Covered,True,True
+A060,current,Channel,Partially covered,True,True
+A060,current,Spend,Covered,True,True
+A060,current,Impressions,Partially covered,True,True
+A060,current,Conversions,Covered,True,True
+A060,current,Status,Partially covered,True,True
+A060,add,Provider account,Covered,True,True
+A060,add,Attribution window,Covered,True,True
+A060,add,Conversion source,Covered,True,True
+A060,add,Cost per conversion,Covered,True,True
+A060,add,Spend variance,Covered,True,True
+A060,remove/replace,Conversions: measured read-only,Covered,True,True
+A061,current,Account,Covered,True,True
+A061,current,Campaign,Partially covered,True,True
+A061,current,Daily limit,Covered,True,True
+A061,current,Monthly limit,Covered,True,True
+A061,current,Currency,Covered,True,True
+A061,current,Approval,Partially covered,True,True
+A061,add,Reserved spend,Covered,True,True
+A061,add,Actual spend,Covered,True,True
+A061,add,Effective cap,Covered,True,True
+A061,add,Account currency,Covered,True,True
+A061,add,Emergency stop,Covered,True,True
+A061,remove/replace,Approval: controlled,Partially covered,True,True
+A062,current,Event,Covered,True,True
+A062,current,Offering,Covered,True,True
+A062,current,Date,Partially covered,True,True
+A062,current,Timezone,Partially covered,True,True
+A062,current,Registrations,Covered,True,True
+A062,current,Status,Partially covered,True,True
+A062,add,Capacity,Covered,True,True
+A062,add,Event format,Covered,True,True
+A062,add,Host,Covered,True,True
+A062,add,Registration ID,Covered,True,True
+A062,add,Attendance,Covered,True,True
+A062,add,Approved content revision,Covered,True,True
+A062,remove/replace,Registrations: derived metric,Covered,True,True
+A063,current,Event,Covered,True,True
+A063,current,Channel,Covered,True,True
+A063,current,Interval,Covered,True,True
+A063,current,Consent,Covered,True,True
+A063,current,Template,Partially covered,True,True
+A063,current,Status,Partially covered,True,True
+A063,add,Quiet hours,Covered,True,True
+A063,add,Channel eligibility,Covered,True,True
+A063,add,Attendance trigger,Covered,True,True
+A063,add,Stop rule,Covered,True,True
+A063,add,Policy revision,Covered,True,True
+A063,remove/replace,Consent: scoped,Covered,True,True
+A064,current,Partner,Covered,True,True
+A064,current,Referral,Covered,True,True
+A064,current,Offering,Partially covered,True,True
+A064,current,Source,Covered,True,True
+A064,current,Approval,Covered,True,True
+A064,current,Status,Covered,True,True
+A064,add,Partner ID,Covered,True,True
+A064,add,Referral consent,Covered,True,True
+A064,add,Attribution code,Covered,True,True
+A064,add,Commission approval,Covered,True,True
+A064,add,Duplicate check,Covered,True,True
+A064,remove/replace,Source: permitted provenance,Covered,True,True
+A065,current,Proposal,Covered,True,True
+A065,current,Organization,Covered,True,True
+A065,current,Offering,Covered,True,True
+A065,current,Amount,Covered,True,True
+A065,current,Currency,Partially covered,True,True
+A065,current,Revision,Covered,True,True
+A065,current,Approval,Covered,True,True
+A065,add,Proposal ID,Covered,True,True
+A065,add,Price version,Covered,True,True
+A065,add,Validity,Covered,True,True
+A065,add,Scope version,Covered,True,True
+A065,add,Terms revision,Covered,True,True
+A065,add,Evidence links,Covered,True,True
+A065,remove/replace,Amount: computed from approved pricing,Covered,True,True
+A066,current,Proposal,Covered,True,True
+A066,current,Organization,Partially covered,True,True
+A066,current,Amount,Covered,True,True
+A066,current,Revision,Covered,True,True
+A066,current,Reviewer,Covered,True,True
+A066,current,Status,Partially covered,True,True
+A066,add,Proposal hash,Covered,True,True
+A066,add,Risk class,Covered,True,True
+A066,add,Decision reason,Covered,True,True
+A066,add,Expiry,Covered,True,True
+A066,add,Reviewer scope,Covered,True,True
+A066,remove/replace,Amount: read-only,Covered,True,True
+A067,current,Quotation,Covered,True,True
+A067,current,Offering,Partially covered,True,True
+A067,current,Quantity,Covered,True,True
+A067,current,Unit price,Covered,True,True
+A067,current,Discount,Covered,True,True
+A067,current,Tax,Covered,True,True
+A067,current,Currency,Covered,True,True
+A067,add,SKU/service line,Covered,True,True
+A067,add,Price list revision,Covered,True,True
+A067,add,Tax jurisdiction,Covered,True,True
+A067,add,Rounding rule,Covered,True,True
+A067,add,Total,Covered,True,True
+A067,add,Validity,Covered,True,True
+A067,remove/replace,Unit price and Discount: bounded by approved policy,Covered,True,True
+A068,current,Quote,Covered,True,True
+A068,current,Organization,Partially covered,True,True
+A068,current,Discount,Covered,True,True
+A068,current,Amount,Covered,True,True
+A068,current,Reviewer,Partially covered,True,True
+A068,current,Status,Partially covered,True,True
+A068,add,Discount rule,Covered,True,True
+A068,add,Margin floor,Covered,True,True
+A068,add,Approved quote hash,Covered,True,True
+A068,add,Decision reason,Covered,True,True
+A068,add,Expiry,Covered,True,True
+A068,remove/replace,Amount: computed read-only,Covered,True,True
+A069,current,Organization,Partially covered,True,True
+A069,current,Concern,Covered,True,True
+A069,current,Category,Covered,True,True
+A069,current,Response,Covered,True,True
+A069,current,Owner,Partially covered,True,True
+A069,current,Status,Partially covered,True,True
+A069,add,Relationship ID,Covered,True,True
+A069,add,Objection evidence,Covered,True,True
+A069,add,Response revision,Covered,True,True
+A069,add,Concession limit,Covered,True,True
+A069,add,Next action,Covered,True,True
+A069,remove/replace,Response: draft until approved,Covered,True,True
+A070,current,Exception,Covered,True,True
+A070,current,Organization,Partially covered,True,True
+A070,current,Category,Partially covered,True,True
+A070,current,Escalation,Partially covered,True,True
+A070,current,Reviewer,Partially covered,True,True
+A070,current,Status,Partially covered,True,True
+A070,add,Risk class,Covered,True,True
+A070,add,Linked negotiation,Covered,True,True
+A070,add,SLA,Covered,True,True
+A070,add,Decision evidence,Covered,True,True
+A070,add,Resolution condition,Covered,True,True
+A070,remove/replace,Status: controlled,Partially covered,True,True
+A071,current,Agreement,Covered,True,True
+A071,current,Organization,Partially covered,True,True
+A071,current,Type,Covered,True,True
+A071,current,Revision,Covered,True,True
+A071,current,Signature,Covered,True,True
+A071,current,Approval,Partially covered,True,True
+A071,add,Signer authority,Covered,True,True
+A071,add,Agreement hash,Covered,True,True
+A071,add,Effective date,Covered,True,True
+A071,add,Expiry,Covered,True,True
+A071,add,Signature evidence,Covered,True,True
+A071,remove/replace,Signature: verified provider state,Covered,True,True
+A072,current,Agreement,Partially covered,True,True
+A072,current,Organization,Partially covered,True,True
+A072,current,Revision,Partially covered,True,True
+A072,current,Legal reviewer,Covered,True,True
+A072,current,Approval,Covered,True,True
+A072,current,Status,Partially covered,True,True
+A072,add,Legal jurisdiction,Covered,True,True
+A072,add,Required checks,Covered,True,True
+A072,add,Approved hash,Covered,True,True
+A072,add,Decision expiry,Covered,True,True
+A072,add,Reason,Covered,True,True
+A072,remove/replace,Approval: immutable revision,Covered,True,True
+A073,current,Payment,Covered,True,True
+A073,current,Organization,Partially covered,True,True
+A073,current,Deal,Covered,True,True
+A073,current,Currency,Covered,True,True
+A073,current,Amount,Covered,True,True
+A073,current,Verification,Partially covered,True,True
+A073,current,Status,Partially covered,True,True
+A073,add,Invoice reference,Covered,True,True
+A073,add,External payment ID,Covered,True,True
+A073,add,Currency match,Covered,True,True
+A073,add,Verified receipt,Covered,True,True
+A073,add,Closure gate,Covered,True,True
+A073,remove/replace,Amount: verified not editable,Covered,True,True
+A074,current,Payment,Covered,True,True
+A074,current,Invoice,Partially covered,True,True
+A074,current,Currency,Partially covered,True,True
+A074,current,Amount,Partially covered,True,True
+A074,current,Match,Covered,True,True
+A074,current,Status,Partially covered,True,True
+A074,add,Receipt ID,Covered,True,True
+A074,add,Idempotency key,Covered,True,True
+A074,add,Allocation balance,Covered,True,True
+A074,add,FX evidence,Covered,True,True
+A074,add,Discrepancy reason,Covered,True,True
+A074,remove/replace,Match: computed,Covered,True,True
+A075,current,Customer,Covered,True,True
+A075,current,Offering,Covered,True,True
+A075,current,Stage,Covered,True,True
+A075,current,Owner,Partially covered,True,True
+A075,current,Due date,Partially covered,True,True
+A075,current,Status,Partially covered,True,True
+A075,add,Onboarding template,Covered,True,True
+A075,add,Task dependencies,Covered,True,True
+A075,add,Entitlement,Covered,True,True
+A075,add,Customer acknowledgment,Covered,True,True
+A075,add,Risk flag,Covered,True,True
+A075,remove/replace,Stage: controlled,Covered,True,True
+A076,current,Customer,Partially covered,True,True
+A076,current,Task,Covered,True,True
+A076,current,Owner,Covered,True,True
+A076,current,Due date,Covered,True,True
+A076,current,Priority,Partially covered,True,True
+A076,current,Status,Partially covered,True,True
+A076,add,Task dependency,Covered,True,True
+A076,add,SLA,Covered,True,True
+A076,add,Required evidence,Covered,True,True
+A076,add,Assignment rule,Covered,True,True
+A076,add,Escalation,Covered,True,True
+A076,remove/replace,Due date: timezone-aware,Covered,True,True
+A077,current,Partner,Covered,True,True
+A077,current,Offering,Covered,True,True
+A077,current,Stage,Covered,True,True
+A077,current,Delivery region,Covered,True,True
+A077,current,Owner,Partially covered,True,True
+A077,current,Due date,Partially covered,True,True
+A077,add,Deployment template,Covered,True,True
+A077,add,Milestone evidence,Covered,True,True
+A077,add,Capacity,Covered,True,True
+A077,add,Region eligibility,Covered,True,True
+A077,add,Block reason,Covered,True,True
+A077,remove/replace,Stage: controlled transition,Covered,True,True
+A078,current,Partner,Partially covered,True,True
+A078,current,Offering,Partially covered,True,True
+A078,current,Checklist,Covered,True,True
+A078,current,Reviewer,Partially covered,True,True
+A078,current,Approval,Covered,True,True
+A078,current,Status,Partially covered,True,True
+A078,add,Checklist revision,Covered,True,True
+A078,add,Evidence digest,Covered,True,True
+A078,add,Capability checks,Covered,True,True
+A078,add,Decision reason,Covered,True,True
+A078,add,Expiry,Covered,True,True
+A078,remove/replace,Approval: controlled,Covered,True,True
+A079,current,Customer,Covered,True,True
+A079,current,Offering,Covered,True,True
+A079,current,Date,Partially covered,True,True
+A079,current,Amount,Covered,True,True
+A079,current,Owner,Partially covered,True,True
+A079,current,Status,Partially covered,True,True
+A079,add,Renewal ID,Covered,True,True
+A079,add,Contract expiry,Covered,True,True
+A079,add,Entitlement,Covered,True,True
+A079,add,Consent,Covered,True,True
+A079,add,Next action,Covered,True,True
+A079,add,Risk score,Covered,True,True
+A079,remove/replace,Amount: approved renewal price,Covered,True,True
+A080,current,Policy,Covered,True,True
+A080,current,Offering,Partially covered,True,True
+A080,current,Interval,Covered,True,True
+A080,current,Channel,Partially covered,True,True
+A080,current,Stop condition,Covered,True,True
+A080,current,Status,Partially covered,True,True
+A080,add,Policy revision,Covered,True,True
+A080,add,Contract notice period,Covered,True,True
+A080,add,Consent scope,Covered,True,True
+A080,add,Trigger,Covered,True,True
+A080,add,Frequency cap,Covered,True,True
+A080,remove/replace,Interval: conditional,Covered,True,True
+A081,current,Deal,Covered,True,True
+A081,current,Organization,Partially covered,True,True
+A081,current,Reason,Covered,True,True
+A081,current,Feedback,Covered,True,True
+A081,current,Owner,Partially covered,True,True
+A081,current,Status,Partially covered,True,True
+A081,add,Loss reason taxonomy,Covered,True,True
+A081,add,Feedback permission,Covered,True,True
+A081,add,Reopen eligibility,Covered,True,True
+A081,add,Evidence,Covered,True,True
+A081,add,Learning action,Covered,True,True
+A081,remove/replace,Feedback: redact sensitive data,Covered,True,True
+A082,current,Channel,Covered,True,True
+A082,current,Campaign,Covered,True,True
+A082,current,Verified revenue,Covered,True,True
+A082,current,Cost,Covered,True,True
+A082,current,Conversion,Partially covered,True,True
+A082,current,Status,Partially covered,True,True
+A082,add,Attribution model revision,Covered,True,True
+A082,add,Currency basis,Covered,True,True
+A082,add,Outcome ID,Covered,True,True
+A082,add,Cost allocation,Covered,True,True
+A082,add,Freshness,Covered,True,True
+A082,remove/replace,Verified revenue: ledger-derived,Covered,True,True
+A083,current,Metric,Covered,True,True
+A083,current,Period,Partially covered,True,True
+A083,current,Source,Partially covered,True,True
+A083,current,Currency,Partially covered,True,True
+A083,current,Amount,Covered,True,True
+A083,current,Verification,Partially covered,True,True
+A083,current,Status,Partially covered,True,True
+A083,add,Metric definition,Covered,True,True
+A083,add,Denominator,Covered,True,True
+A083,add,FX date,Covered,True,True
+A083,add,Evidence reference,Covered,True,True
+A083,add,Calculation version,Covered,True,True
+A083,remove/replace,Amount: read-only computed metric,Covered,True,True
+A084,current,Model,Covered,True,True
+A084,current,Evaluation set,Covered,True,True
+A084,current,Accuracy,Covered,True,True
+A084,current,Latency,Covered,True,True
+A084,current,Cost,Covered,True,True
+A084,current,Status,Partially covered,True,True
+A084,add,Dataset revision,Covered,True,True
+A084,add,Sample size,Covered,True,True
+A084,add,Baseline quality,Covered,True,True
+A084,add,Gate result,Covered,True,True
+A084,add,Rollback,Covered,True,True
+A084,remove/replace,Accuracy: benchmark defined,Covered,True,True
+A085,current,Organization,Covered,True,True
+A085,current,Industry,Partially covered,True,True
+A085,current,Signal,Covered,True,True
+A085,current,Source,Covered,True,True
+A085,current,Observed date,Partially covered,True,True
+A085,current,Status,Covered,True,True
+A085,add,Signal taxonomy,Covered,True,True
+A085,add,Permitted source,Covered,True,True
+A085,add,Evidence freshness,Covered,True,True
+A085,add,Region,Covered,True,True
+A085,add,Alert condition,Covered,True,True
+A085,remove/replace,Status: evidence lifecycle,Covered,True,True
+A086,current,Source,Covered,True,True
+A086,current,Organization,Partially covered,True,True
+A086,current,Permission,Partially covered,True,True
+A086,current,Evidence,Covered,True,True
+A086,current,Reviewer,Partially covered,True,True
+A086,current,Status,Partially covered,True,True
+A086,add,Licence,Covered,True,True
+A086,add,Permitted purpose,Covered,True,True
+A086,add,Expiry,Covered,True,True
+A086,add,Evidence digest,Covered,True,True
+A086,add,Decision reason,Covered,True,True
+A086,remove/replace,Permission: explicit use scope,Partially covered,True,True
+A087,current,Team,Covered,True,True
+A087,current,Period,Covered,True,True
+A087,current,Pipeline,Covered,True,True
+A087,current,Weighted forecast,Covered,True,True
+A087,current,Confidence,Covered,True,True
+A087,current,Status,Partially covered,True,True
+A087,add,Currency basis,Covered,True,True
+A087,add,Forecast as-of,Covered,True,True
+A087,add,Scenario,Covered,True,True
+A087,add,Model revision,Covered,True,True
+A087,add,Confidence interval,Covered,True,True
+A087,remove/replace,Weighted forecast: computed,Covered,True,True
+A088,current,Model,Covered,True,True
+A088,current,Period,Covered,True,True
+A088,current,Stage weight,Covered,True,True
+A088,current,Confidence,Partially covered,True,True
+A088,current,Revision,Partially covered,True,True
+A088,current,Status,Partially covered,True,True
+A088,add,Training period,Covered,True,True
+A088,add,Backtest results,Covered,True,True
+A088,add,Stage weights version,Covered,True,True
+A088,add,Calibration,Covered,True,True
+A088,add,Approval,Covered,True,True
+A088,remove/replace,Confidence: validated model result,Partially covered,True,True
+A089,current,Startup,Covered,True,True
+A089,current,Qualified leads,Covered,True,True
+A089,current,Pipeline,Covered,True,True
+A089,current,Verified revenue,Covered,True,True
+A089,current,Conversion,Partially covered,True,True
+A089,add,Tenant,Covered,True,True
+A089,add,Objective,Covered,True,True
+A089,add,Offering,Covered,True,True
+A089,add,Concurrent runs,Covered,True,True
+A089,add,Held actions,Covered,True,True
+A089,add,Budget remaining,Covered,True,True
+A089,add,Freshness,Covered,True,True
+A089,remove/replace,Startup: dynamic authorized directory,Covered,True,True
+A090,current,Control,Covered,True,True
+A090,current,Evidence,Covered,True,True
+A090,current,Environment,Covered,True,True
+A090,current,Reviewer,Covered,True,True
+A090,current,Severity,Covered,True,True
+A090,current,Status,Covered,True,True
+A090,add,Release ID,Covered,True,True
+A090,add,Required control ID,Covered,True,True
+A090,add,Evidence digest,Covered,True,True
+A090,add,Independent reviewer,Covered,True,True
+A090,add,Blocking gate,Covered,True,True
+A090,remove/replace,Status: computed from mandatory evidence,Covered,True,True
+A091,current,Organization,Covered,True,True
+A091,current,Offering,Covered,True,True
+A091,current,Pilot,Covered,True,True
+A091,current,Delivery region,Partially covered,True,True
+A091,current,Stage,Partially covered,True,True
+A091,current,Status,Partially covered,True,True
+A091,add,Pilot scope revision,Covered,True,True
+A091,add,Institution type,Covered,True,True
+A091,add,Eligibility,Covered,True,True
+A091,add,Data restrictions,Covered,True,True
+A091,add,Milestone evidence,Covered,True,True
+A091,remove/replace,Offering: capability gated,Covered,True,True
+A092,current,Pilot,Covered,True,True
+A092,current,Organization,Partially covered,True,True
+A092,current,Scope,Partially covered,True,True
+A092,current,Reviewer,Partially covered,True,True
+A092,current,Approval,Covered,True,True
+A092,current,Status,Partially covered,True,True
+A092,add,Pilot revision,Covered,True,True
+A092,add,Data agreement,Covered,True,True
+A092,add,Risk review,Covered,True,True
+A092,add,Approval expiry,Covered,True,True
+A092,add,Evidence,Covered,True,True
+A092,remove/replace,Approval: controlled,Covered,True,True
+A093,current,Organization,Partially covered,True,True
+A093,current,Technology,Covered,True,True
+A093,current,Use case,Covered,True,True
+A093,current,Scope,Covered,True,True
+A093,current,Country,Partially covered,True,True
+A093,current,Status,Partially covered,True,True
+A093,add,Technology ID,Covered,True,True
+A093,add,License model,Covered,True,True
+A093,add,Permitted use,Covered,True,True
+A093,add,Region,Covered,True,True
+A093,add,Requested API capabilities,Covered,True,True
+A093,remove/replace,Scope: configurable and restricted,Covered,True,True
+A094,current,License,Partially covered,True,True
+A094,current,Organization,Partially covered,True,True
+A094,current,API scope,Covered,True,True
+A094,current,Legal reviewer,Partially covered,True,True
+A094,current,Approval,Covered,True,True
+A094,current,Status,Partially covered,True,True
+A094,add,License revision,Covered,True,True
+A094,add,Entitlement set,Covered,True,True
+A094,add,Security review,Covered,True,True
+A094,add,Expiry,Covered,True,True
+A094,add,Approved hash,Covered,True,True
+A094,remove/replace,API scope: approved capability list,Covered,True,True
+A095,current,Location,Covered,True,True
+A095,current,Partner,Covered,True,True
+A095,current,Offering,Partially covered,True,True
+A095,current,Stage,Covered,True,True
+A095,current,Owner,Partially covered,True,True
+A095,current,Due date,Partially covered,True,True
+A095,add,Location ID,Covered,True,True
+A095,add,Delivery capacity,Covered,True,True
+A095,add,Partner grant,Covered,True,True
+A095,add,Milestone evidence,Covered,True,True
+A095,add,Risk flag,Covered,True,True
+A095,remove/replace,Stage: controlled,Covered,True,True
+A096,current,Location,Partially covered,True,True
+A096,current,Partner,Partially covered,True,True
+A096,current,Checklist,Covered,True,True
+A096,current,Reviewer,Partially covered,True,True
+A096,current,Approval,Covered,True,True
+A096,current,Status,Partially covered,True,True
+A096,add,Checklist revision,Covered,True,True
+A096,add,Regional permissions,Covered,True,True
+A096,add,Evidence digest,Covered,True,True
+A096,add,Decision reason,Covered,True,True
+A096,add,Expiry,Covered,True,True
+A096,remove/replace,Approval: controlled,Covered,True,True
+A097,current,Offering,Covered,True,True
+A097,current,Startup,Partially covered,True,True
+A097,current,Category,Partially covered,True,True
+A097,current,Readiness,Covered,True,True
+A097,current,Revision,Covered,True,True
+A097,current,Status,Covered,True,True
+A097,add,Capability code,Covered,True,True
+A097,add,Launch dependency,Covered,True,True
+A097,add,Evidence revision,Covered,True,True
+A097,add,Publication status,Covered,True,True
+A097,add,Target region,Covered,True,True
+A097,remove/replace,Readiness: computed,Covered,True,True
+A098,current,Offering,Covered,True,True
+A098,current,Readiness,Covered,True,True
+A098,current,Claim check,Covered,True,True
+A098,current,Reviewer,Partially covered,True,True
+A098,current,Approval,Covered,True,True
+A098,current,Status,Partially covered,True,True
+A098,add,Launch revision,Covered,True,True
+A098,add,Claims evidence,Covered,True,True
+A098,add,Pricing approval,Covered,True,True
+A098,add,Release gate,Covered,True,True
+A098,add,Rollback,Covered,True,True
+A098,remove/replace,Approval: controlled,Covered,True,True
+A099,current,Tenant,Covered,True,True
+A099,current,Startup,Covered,True,True
+A099,current,User,Partially covered,True,True
+A099,current,Role,Partially covered,True,True
+A099,current,Status,Partially covered,True,True
+A099,add,Ownership type,Covered,True,True
+A099,add,Legal ID,Covered,True,True
+A099,add,Tenant slug,Covered,True,True
+A099,add,Service model,Covered,True,True
+A099,add,Admin invite,Covered,True,True
+A099,add,Capability profile,Covered,True,True
+A099,add,Lifecycle state,Covered,True,True
+A099,remove/replace,Access: scoped grants; Startup: dynamic directory,Partially covered,True,True
+A100,current,Template,Covered,True,True
+A100,current,Startup,Partially covered,True,True
+A100,current,Business line,Covered,True,True
+A100,current,Brand,Covered,True,True
+A100,current,Locale,Covered,True,True
+A100,current,Revision,Covered,True,True
+A100,current,Approval,Partially covered,True,True
+A100,add,Industry taxonomy,Covered,True,True
+A100,add,Capability set,Covered,True,True
+A100,add,Field schema,Covered,True,True
+A100,add,Objective templates,Covered,True,True
+A100,add,Workflow bindings,Covered,True,True
+A100,add,Locale fallback,Covered,True,True
+A100,remove/replace,Brand: separate approved theme revision,Covered,True,True
+A101,current,Tenant,Covered,True,True
+A101,current,Plan,Covered,True,True
+A101,current,Usage,Covered,True,True
+A101,current,Budget,Covered,True,True
+A101,current,Currency,Covered,True,True
+A101,current,Invoice,Covered,True,True
+A101,current,Status,Partially covered,True,True
+A101,add,Entitlement revision,Covered,True,True
+A101,add,Usage meter,Covered,True,True
+A101,add,Reserved spend,Covered,True,True
+A101,add,Billing cycle,Covered,True,True
+A101,add,Renewal date,Covered,True,True
+A101,add,Suspension reason,Covered,True,True
+A101,remove/replace,Budget: separate limit and consumption,Covered,True,True
+A102,current,Plan,Covered,True,True
+A102,current,Startup,Covered,True,True
+A102,current,Objective,Covered,True,True
+A102,current,Mode,Covered,True,True
+A102,current,Budget,Covered,True,True
+A102,current,Policy,Covered,True,True
+A102,current,Status,Partially covered,True,True
+A102,add,Objective ID,Covered,True,True
+A102,add,Plan revision,Covered,True,True
+A102,add,Template IDs,Covered,True,True
+A102,add,Concurrency limit,Covered,True,True
+A102,add,Simulation cost,Covered,True,True
+A102,add,Stop policy,Covered,True,True
+A102,add,Approval gate,Covered,True,True
+A102,remove/replace,Mode: policy bounded,Covered,True,True
+A103,current,Request type,Covered,True,True
+A103,current,Entity,Covered,True,True
+A103,current,Format,Covered,True,True
+A103,current,Scope,Covered,True,True
+A103,current,Reason,Covered,True,True
+A103,current,Approval,Covered,True,True
+A103,add,Data classification,Covered,True,True
+A103,add,Export scope,Covered,True,True
+A103,add,Redaction,Covered,True,True
+A103,add,Expiry,Covered,True,True
+A103,add,Format version,Covered,True,True
+A103,add,Legal hold,Covered,True,True
+A103,remove/replace,Entity: authorized selection,Covered,True,True
+A104,current,Tender,Covered,True,True
+A104,current,Organization,Covered,True,True
+A104,current,Technology,Covered,True,True
+A104,current,Deadline,Covered,True,True
+A104,current,Delivery model,Covered,True,True
+A104,current,Budget,Covered,True,True
+A104,current,Eligibility,Covered,True,True
+A104,current,Stage,Covered,True,True
+A104,current,Status,Partially covered,True,True
+A104,add,Tender ID,Covered,True,True
+A104,add,Capability grant,Covered,True,True
+A104,add,Deadline timezone,Covered,True,True
+A104,add,Eligibility evidence,Covered,True,True
+A104,add,Bid revision,Covered,True,True
+A104,add,Submission gate,Covered,True,True
+A104,remove/replace,Eligibility: computed; Startup position-based restrictions removed,Covered,True,True
+A105,current,Order,Covered,True,True
+A105,current,Organization,Covered,True,True
+A105,current,Direction,Covered,True,True
+A105,current,SKU,Covered,True,True
+A105,current,Quantity,Covered,True,True
+A105,current,Unit,Covered,True,True
+A105,current,Amount,Covered,True,True
+A105,current,Fulfillment,Covered,True,True
+A105,current,Status,Partially covered,True,True
+A105,add,Order ID,Covered,True,True
+A105,add,Capability grant,Covered,True,True
+A105,add,Price revision,Covered,True,True
+A105,add,Inventory/reservation,Covered,True,True
+A105,add,Tax currency,Covered,True,True
+A105,add,Fulfillment event,Covered,True,True
+A105,add,Invoice ref,Covered,True,True
+A105,remove/replace,Direction: permitted capability; Amount: calculated; fixed startup restriction removed,Covered,True,True
+A106,current,Notification,Covered,True,True
+A106,current,Severity,Covered,True,True
+A106,current,Action,Covered,True,True
+A106,current,Due date,Covered,True,True
+A106,current,Owner,Covered,True,True
+A106,current,Status,Covered,True,True
+A106,add,Event/run ID,Covered,True,True
+A106,add,Scope,Covered,True,True
+A106,add,Action link,Covered,True,True
+A106,add,Acknowledgement,Covered,True,True
+A106,add,SLA,Covered,True,True
+A106,add,Dedup key,Covered,True,True
+A106,remove/replace,Status: lifecycle-derived,Covered,True,True
+A107,current,Page,Covered,True,True
+A107,current,Domain,Covered,True,True
+A107,current,Locale,Covered,True,True
+A107,current,Template,Covered,True,True
+A107,current,Revision,Covered,True,True
+A107,current,Approval,Covered,True,True
+A107,add,Brand revision,Covered,True,True
+A107,add,Domain verification,Covered,True,True
+A107,add,Config schema,Covered,True,True
+A107,add,Publication target,Covered,True,True
+A107,add,Locale fallback,Covered,True,True
+A107,add,Claim evidence,Covered,True,True
+A107,remove/replace,Domain: verified selection,Covered,True,True
+A108,current,Page,Covered,True,True
+A108,current,Revision,Covered,True,True
+A108,current,Immutable hash,Covered,True,True
+A108,current,Reviewer,Covered,True,True
+A108,current,Approval,Covered,True,True
+A108,current,Status,Partially covered,True,True
+A108,add,Publication environment,Covered,True,True
+A108,add,Preview URL,Covered,True,True
+A108,add,Publish schedule,Covered,True,True
+A108,add,Rollback revision,Covered,True,True
+A108,add,Access policy,Covered,True,True
+A108,remove/replace,Immutable hash: read-only,Covered,True,True
+A109,current,Trigger ID,Covered,True,True
+A109,current,Event type,Covered,True,True
+A109,current,Source,Covered,True,True
+A109,current,Event schema version,Covered,True,True
+A109,current,Startup scope,Covered,True,True
+A109,current,Objective,Covered,True,True
+A109,current,Schedule,Covered,True,True
+A109,current,Timezone,Covered,True,True
+A109,current,Condition,Covered,True,True
+A109,current,Workflow version,Covered,True,True
+A109,current,Dedup window,Covered,True,True
+A109,current,Enabled,Covered,True,True
+A109,current,Last fire,Covered,True,True
+A109,current,Next fire,Covered,True,True
+A109,current,Credential reference,Covered,True,True
+A110,current,Run ID,Covered,True,True
+A110,current,Workflow revision,Covered,True,True
+A110,current,Trigger event ID,Covered,True,True
+A110,current,Startup,Covered,True,True
+A110,current,Objective,Covered,True,True
+A110,current,Mode,Covered,True,True
+A110,current,Current node,Covered,True,True
+A110,current,Progress,Covered,True,True
+A110,current,Started,Covered,True,True
+A110,current,Wait reason,Covered,True,True
+A110,current,Cost reserved,Covered,True,True
+A110,current,Actual cost,Covered,True,True
+A110,current,Retry count,Covered,True,True
+A110,current,Outcome certainty,Covered,True,True
+A110,current,Evidence,Covered,True,True
+A110,current,Owner,Covered,True,True
+A111,current,Conflict ID,Covered,True,True
+A111,current,Scope,Covered,True,True
+A111,current,Relationship ID,Covered,True,True
+A111,current,Candidate runs,Covered,True,True
+A111,current,Action type,Covered,True,True
+A111,current,Duplicate key,Covered,True,True
+A111,current,Priority,Covered,True,True
+A111,current,Frequency count,Covered,True,True
+A111,current,Suppression,Covered,True,True
+A111,current,Budget reservation,Covered,True,True
+A111,current,Conflict rule,Covered,True,True
+A111,current,Resolution,Covered,True,True
+A111,current,Reviewer,Covered,True,True
+A112,current,Configuration ID,Covered,True,True
+A112,current,Tenant,Covered,True,True
+A112,current,Startup,Covered,True,True
+A112,current,Active revision,Covered,True,True
+A112,current,Candidate revision,Covered,True,True
+A112,current,Field/capability diff,Covered,True,True
+A112,current,Affected UI and workflows,Covered,True,True
+A112,current,Risk,Covered,True,True
+A112,current,Validation report,Covered,True,True
+A112,current,Approval,Covered,True,True
+A112,current,Effective date,Covered,True,True
+A112,current,Rollback revision,Covered,True,True
+A113,current,Template ID,Covered,True,True
+A113,current,Business capability,Covered,True,True
+A113,current,Objective,Covered,True,True
+A113,current,Version,Covered,True,True
+A113,current,Node types,Covered,True,True
+A113,current,Input/output schema,Covered,True,True
+A113,current,Allowed channels,Covered,True,True
+A113,current,Required permissions,Covered,True,True
+A113,current,Risk class,Covered,True,True
+A113,current,Cost estimate,Covered,True,True
+A113,current,Test fixtures,Covered,True,True
+A113,current,Approval,Covered,True,True
+A113,current,Deprecation status,Covered,True,True

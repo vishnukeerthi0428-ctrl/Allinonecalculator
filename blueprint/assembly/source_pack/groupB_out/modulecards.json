@@ -1,0 +1,717 @@
+[
+ {
+  "module": "WhatsApp Business",
+  "fields": {
+   "Objective": "Customer initiated / opted-in messaging",
+   "Dependency": "Engagement eligibility; Unified inbound processing",
+   "Acceptance": "No private group scrape; opt-in gate",
+   "Owner": "Full-stack",
+   "Reuse": "New growth capability",
+   "Scope": "Selected commercial startup; enforce employee assignment and product entitlement; approved business profile and policy. No owner fundraising access."
+  },
+  "ops": [],
+  "entities": [],
+  "integration_candidates": "",
+  "candidates_in_bp": {}
+ },
+ {
+  "module": "Website conversational assistant",
+  "fields": {
+   "Objective": "Answer product questions and collect leads",
+   "Dependency": "AI gateway and evaluation; Lead capture and forms; Unified inbound processing",
+   "Acceptance": "Clinical question routed; no medical data",
+   "Owner": "Full-stack",
+   "Reuse": "New growth capability",
+   "Scope": "Selected commercial startup; enforce employee assignment and product entitlement; approved business profile and policy. No owner fundraising access."
+  },
+  "ops": [],
+  "entities": [],
+  "integration_candidates": "",
+  "candidates_in_bp": {}
+ },
+ {
+  "module": "Unified omnichannel routing",
+  "fields": {
+   "Objective": "Consistent user response across connected channels",
+   "Dependency": "Unified inbound processing; WhatsApp Business; Website conversational assistant",
+   "Acceptance": "No duplicate replies across linked channels",
+   "Owner": "Full-stack",
+   "Reuse": "New growth capability",
+   "Scope": "Selected commercial startup; enforce employee assignment and product entitlement; approved business profile and policy. No owner fundraising access."
+  },
+  "ops": [],
+  "entities": [],
+  "integration_candidates": "",
+  "candidates_in_bp": {}
+ },
+ {
+  "module": "Social listening",
+  "fields": {
+   "Objective": "Monitor permitted organizational signals",
+   "Dependency": "Source permissions register; Buying signal classification",
+   "Acceptance": "No restricted profiles or automated DMs",
+   "Owner": "Full-stack",
+   "Reuse": "New growth capability",
+   "Scope": "Selected commercial startup; enforce employee assignment and product entitlement; approved business profile and policy. No owner fundraising access."
+  },
+  "ops": [],
+  "entities": [],
+  "integration_candidates": "",
+  "candidates_in_bp": {}
+ },
+ {
+  "module": "Content studio",
+  "fields": {
+   "Objective": "Produce approved segment-specific content",
+   "Dependency": "Product knowledge catalog; AI gateway and evaluation",
+   "Acceptance": "Unapproved claims cannot publish",
+   "Owner": "Full-stack",
+   "Reuse": "New growth capability",
+   "Scope": "Selected commercial startup; enforce employee assignment and product entitlement; approved business profile and policy. No owner fundraising access."
+  },
+  "ops": [],
+  "entities": [],
+  "integration_candidates": "",
+  "candidates_in_bp": {}
+ },
+ {
+  "module": "Social publishing",
+  "fields": {
+   "Objective": "Schedule approved posts",
+   "Dependency": "Content studio; Integration registry",
+   "Acceptance": "No unsupported DMs; idempotent publishing",
+   "Owner": "Full-stack",
+   "Reuse": "New growth capability",
+   "Scope": "Selected commercial startup; enforce employee assignment and product entitlement; approved business profile and policy. No owner fundraising access."
+  },
+  "ops": [],
+  "entities": [],
+  "integration_candidates": "",
+  "candidates_in_bp": {}
+ },
+ {
+  "module": "SEO and search visibility",
+  "fields": {
+   "Objective": "Improve relevant search traffic",
+   "Dependency": "Source permissions register; Content studio",
+   "Acceptance": "No fabricated ranking data",
+   "Owner": "Full-stack",
+   "Reuse": "New growth capability",
+   "Scope": "Selected commercial startup; enforce employee assignment and product entitlement; approved business profile and policy. No owner fundraising access."
+  },
+  "ops": [],
+  "entities": [],
+  "integration_candidates": "",
+  "candidates_in_bp": {}
+ },
+ {
+  "module": "Landing pages and attribution",
+  "fields": {
+   "Objective": "Capture consented acquisition",
+   "Dependency": "Lead capture and forms; Content studio",
+   "Acceptance": "No health events to ad pixels",
+   "Owner": "Full-stack",
+   "Reuse": "New growth capability",
+   "Scope": "Selected commercial startup; enforce employee assignment and product entitlement; approved business profile and policy. No owner fundraising access."
+  },
+  "ops": [],
+  "entities": [],
+  "integration_candidates": "",
+  "candidates_in_bp": {}
+ },
+ {
+  "module": "Campaign management",
+  "fields": {
+   "Objective": "Coordinate approved marketing",
+   "Dependency": "Engagement eligibility; Content studio; Landing pages and attribution",
+   "Acceptance": "Suppression applied at execution",
+   "Owner": "Full-stack",
+   "Reuse": "New growth capability",
+   "Scope": "Selected commercial startup; enforce employee assignment and product entitlement; approved business profile and policy. No owner fundraising access."
+  },
+  "ops": [],
+  "entities": [],
+  "integration_candidates": "",
+  "candidates_in_bp": {}
+ },
+ {
+  "module": "Paid ads integration",
+  "fields": {
+   "Objective": "Controlled acquisition spending",
+   "Dependency": "Campaign management; Integration registry",
+   "Acceptance": "Budget exceeded → pause; no sensitive data",
+   "Owner": "Full-stack",
+   "Reuse": "New growth capability",
+   "Scope": "Selected commercial startup; enforce employee assignment and product entitlement; approved business profile and policy. No owner fundraising access."
+  },
+  "ops": [],
+  "entities": [],
+  "integration_candidates": "",
+  "candidates_in_bp": {}
+ },
+ {
+  "module": "Webinars and demonstrations",
+  "fields": {
+   "Objective": "Nurture interested accounts",
+   "Dependency": "Lead capture and forms; Follow-up sequences; Meeting and calendar",
+   "Acceptance": "Opt-outs respected; attendance dedup",
+   "Owner": "Full-stack",
+   "Reuse": "New growth capability",
+   "Scope": "Selected commercial startup; enforce employee assignment and product entitlement; approved business profile and policy. No owner fundraising access."
+  },
+  "ops": [],
+  "entities": [],
+  "integration_candidates": "",
+  "candidates_in_bp": {}
+ },
+ {
+  "module": "Referral and partner lead capture",
+  "fields": {
+   "Objective": "Track legitimate referrals",
+   "Dependency": "Lead capture and forms; Campaign management",
+   "Acceptance": "No unauthorized third-party contact enrollment",
+   "Owner": "Full-stack",
+   "Reuse": "New growth capability",
+   "Scope": "Selected commercial startup; enforce employee assignment and product entitlement; approved business profile and policy. No owner fundraising access."
+  },
+  "ops": [],
+  "entities": [],
+  "integration_candidates": "",
+  "candidates_in_bp": {}
+ },
+ {
+  "module": "Proposal builder",
+  "fields": {
+   "Objective": "Generate approved B2B pilot proposals",
+   "Dependency": "CRM pipeline; Meeting and calendar; Product knowledge catalog",
+   "Acceptance": "Only approved version externally shared",
+   "Owner": "Full-stack",
+   "Reuse": "New growth capability",
+   "React frontend / user experience": "Proposal editor, preview, versions",
+   "Django backend / design / plugin use": "Templates, readiness/claim checker, document generation",
+   "Separate admin portal / governance": "Review medical claims and commercial terms",
+   "Database entities": "Proposal,ProposalVersion",
+   "REST API / runtime interface": "POST /deals/{id}/proposals",
+   "Automation trigger → response": "Meeting completed → draft → approval",
+   "Tools / plugin category": "PandaDoc candidate",
+   "Acceptance / verification gate": "Only approved version externally shared",
+   "Cost analysis / open-source-first decision (INR; B IDs = shared budget)": "Shared budget B02/B10; no duplicate allocation. Open-source/custom implementation first.",
+   "Integration candidates": "pandadoc, Sales, PandaDoc",
+   "Licence / quota / paid rate": "pandadoc: Hybrid / commercial service; exact edition licence verifySales: Claude skill/plugin; licence unverified; development-firstPandaDoc: Hybrid / commercial service; exact edition licence verify | pandadoc: Trial/free features; production API entitlement verifySales: Claude plan limits; no independent runtime quota assumedPandaDoc: Trial/free features; production API entitlement verify | pandadoc: Paid plan/API entitlement or provider quota; current rate not verifiedSales: No separate installation fee assumed only after verification; production model/API usage billed separatelyPandaDoc: Paid plan/API entitlement or provider quota; current rate not verified",
+   "Budget treatment": "Shared budget B02/B10; no duplicate allocation. Open-source/custom implementation first.",
+   "Scope": "Selected commercial startup; enforce employee assignment and product entitlement; approved business profile and policy. No owner fundraising access."
+  },
+  "ops": [
+   {
+    "method": "POST",
+    "path": "/deals/{id}/proposals",
+    "api_id": "API-328"
+   }
+  ],
+  "entities": [
+   {
+    "entity": "Proposal",
+    "in_3_3": true,
+    "in_2_1": true
+   },
+   {
+    "entity": "ProposalVersion",
+    "in_3_3": true,
+    "in_2_1": true
+   }
+  ],
+  "integration_candidates": "pandadoc, Sales, PandaDoc",
+  "candidates_in_bp": {
+   "pandadoc": false,
+   "Sales": true,
+   "PandaDoc": false
+  }
+ },
+ {
+  "module": "Quote and pricing engine",
+  "fields": {
+   "Objective": "Accurate commercial terms",
+   "Dependency": "Proposal builder; Product knowledge catalog",
+   "Acceptance": "No unauthorized discount; totals exact",
+   "Owner": "Full-stack",
+   "Reuse": "New growth capability",
+   "React frontend / user experience": "Quote line items, validity",
+   "Django backend / design / plugin use": "Decimal calculation, approved price version, tax config",
+   "Separate admin portal / governance": "Approve pricing/discount policy",
+   "Database entities": "Quote,QuoteLine,PriceVersion",
+   "REST API / runtime interface": "POST /quotes; POST /quotes/{id}/approve",
+   "Automation trigger → response": "Approved proposal → quote → eligible delivery",
+   "Tools / plugin category": "Custom",
+   "Acceptance / verification gate": "No unauthorized discount; totals exact",
+   "Cost analysis / open-source-first decision (INR; B IDs = shared budget)": "₹0 incremental software licence; React/Django/PostgreSQL/Celery; shared compute B01 and engineering C03.",
+   "Integration candidates": "Internal / no direct plugin",
+   "Licence / quota / paid rate": "Internal/custom; OSS stack preferred | No vendor quota | ₹0 separate licence; shared infrastructure",
+   "Budget treatment": "₹0 incremental software licence; React/Django/PostgreSQL/Celery; shared compute B01 and engineering C03.",
+   "Scope": "Selected commercial startup; enforce employee assignment and product entitlement; approved business profile and policy. No owner fundraising access."
+  },
+  "ops": [
+   {
+    "method": "POST",
+    "path": "/quotes",
+    "api_id": "API-329"
+   },
+   {
+    "method": "POST",
+    "path": "/quotes/{id}/approve",
+    "api_id": "API-330"
+   }
+  ],
+  "entities": [
+   {
+    "entity": "Quote",
+    "in_3_3": true,
+    "in_2_1": true
+   },
+   {
+    "entity": "QuoteLine",
+    "in_3_3": true,
+    "in_2_1": true
+   },
+   {
+    "entity": "PriceVersion",
+    "in_3_3": true,
+    "in_2_1": true
+   }
+  ],
+  "integration_candidates": "Internal / no direct plugin",
+  "candidates_in_bp": {
+   "Internal / no direct plugin": false
+  }
+ },
+ {
+  "module": "Negotiation and objection handling",
+  "fields": {
+   "Objective": "Automate safe routine replies",
+   "Dependency": "Unified omnichannel routing; Quote and pricing engine",
+   "Acceptance": "Contract/price exception escalates",
+   "Owner": "Full-stack",
+   "Reuse": "New growth capability",
+   "React frontend / user experience": "Objection timeline, escalation",
+   "Django backend / design / plugin use": "Intent classifier, approved FAQ, negotiation bounds",
+   "Separate admin portal / governance": "Set approval limits; human exception queue",
+   "Database entities": "Objection,Negotiation,Approval",
+   "REST API / runtime interface": "POST /deals/{id}/objections",
+   "Automation trigger → response": "Reply → FAQ or exception → owner",
+   "Tools / plugin category": "LLM gateway",
+   "Acceptance / verification gate": "Contract/price exception escalates",
+   "Cost analysis / open-source-first decision (INR; B IDs = shared budget)": "Shared budget B02; no duplicate allocation. Open-source/custom implementation first.",
+   "Integration candidates": "llm gateway, llm",
+   "Licence / quota / paid rate": "llm gateway: Proprietary model API (RAG architecture may use OSS)llm: Proprietary model API (RAG architecture may use OSS) | llm gateway: No guaranteed ongoing free production inference quotallm: No guaranteed ongoing free production inference quota | llm gateway: Claude Haiku 5.5 from $0.10 input/$0.50 output per million tokens; Sonnet 5.5 $2/$10 per million; model/region limits applyllm: Claude Haiku 5.5 from $0.10 input/$0.50 output per million tokens; Sonnet 5.5 $2/$10 per million; model/region limits apply",
+   "Budget treatment": "Shared budget B02; no duplicate allocation. Open-source/custom implementation first.",
+   "Scope": "Selected commercial startup; enforce employee assignment and product entitlement; approved business profile and policy. No owner fundraising access."
+  },
+  "ops": [
+   {
+    "method": "POST",
+    "path": "/deals/{id}/objections",
+    "api_id": "API-331"
+   }
+  ],
+  "entities": [
+   {
+    "entity": "Objection",
+    "in_3_3": true,
+    "in_2_1": true
+   },
+   {
+    "entity": "Negotiation",
+    "in_3_3": true,
+    "in_2_1": true
+   },
+   {
+    "entity": "Approval",
+    "in_3_3": true,
+    "in_2_1": true
+   }
+  ],
+  "integration_candidates": "llm gateway, llm",
+  "candidates_in_bp": {
+   "llm gateway": false,
+   "llm": true
+  }
+ },
+ {
+  "module": "Contract and MoU workflow",
+  "fields": {
+   "Objective": "Manage institutional agreement",
+   "Dependency": "Proposal builder; Quote and pricing engine",
+   "Acceptance": "No AI signs contract; signed version hash stored",
+   "Owner": "Full-stack",
+   "Reuse": "New growth capability",
+   "React frontend / user experience": "Contract status, sign link",
+   "Django backend / design / plugin use": "Versioned document and e-sign adapter; callback validation",
+   "Separate admin portal / governance": "Authorized signer and legal review",
+   "Database entities": "Contract,SignatureEvent",
+   "REST API / runtime interface": "POST /contracts; POST /webhooks/esign",
+   "Automation trigger → response": "Approved contract → signature → verified receipt",
+   "Tools / plugin category": "E-sign provider",
+   "Acceptance / verification gate": "No AI signs contract; signed version hash stored",
+   "Cost analysis / open-source-first decision (INR; B IDs = shared budget)": "Shared budget B10; legally valid e-sign quote not included beyond reserve; no duplicate allocation. Open-source/custom implementation first.",
+   "Integration candidates": "PandaDoc",
+   "Licence / quota / paid rate": "PandaDoc: Hybrid / commercial service; exact edition licence verify | PandaDoc: Trial/free features; production API entitlement verify | PandaDoc: Paid plan/API entitlement or provider quota; current rate not verified",
+   "Budget treatment": "Shared budget B10; legally valid e-sign quote not included beyond reserve; no duplicate allocation. Open-source/custom implementation first.",
+   "Scope": "Selected commercial startup; enforce employee assignment and product entitlement; approved business profile and policy. No owner fundraising access."
+  },
+  "ops": [
+   {
+    "method": "POST",
+    "path": "/contracts",
+    "api_id": "API-332"
+   },
+   {
+    "method": "POST",
+    "path": "/webhooks/esign",
+    "api_id": "API-333"
+   }
+  ],
+  "entities": [
+   {
+    "entity": "Contract",
+    "in_3_3": true,
+    "in_2_1": true
+   },
+   {
+    "entity": "SignatureEvent",
+    "in_3_3": true,
+    "in_2_1": true
+   }
+  ],
+  "integration_candidates": "PandaDoc",
+  "candidates_in_bp": {
+   "PandaDoc": false
+  }
+ },
+ {
+  "module": "Payment and closure",
+  "fields": {
+   "Objective": "Close only on actual commercial evidence",
+   "Dependency": "Contract and MoU workflow; CRM pipeline",
+   "Acceptance": "Replay no duplicate revenue; no invented closure",
+   "Owner": "Full-stack",
+   "Reuse": "New growth capability",
+   "React frontend / user experience": "Payment status, won/lost workflow",
+   "Django backend / design / plugin use": "Payment adapter or finance confirmation; atomic deal transition",
+   "Separate admin portal / governance": "Reconcile payments; exception review",
+   "Database entities": "Payment,Invoice,Deal",
+   "REST API / runtime interface": "POST /webhooks/payment; POST /deals/{id}/close",
+   "Automation trigger → response": "Verified payment or executed contract per deal policy → won",
+   "Tools / plugin category": "Existing payment provider subject to API",
+   "Acceptance / verification gate": "Replay no duplicate revenue; no invented closure",
+   "Cost analysis / open-source-first decision (INR; B IDs = shared budget)": "Shared budget Payment gateway transaction charges excluded; contract dependent; no duplicate allocation. Open-source/custom implementation first.",
+   "Integration candidates": "Internal / no direct plugin",
+   "Licence / quota / paid rate": "Internal/custom; OSS stack preferred | No vendor quota | ₹0 separate licence; shared infrastructure",
+   "Budget treatment": "Shared budget Payment gateway transaction charges excluded; contract dependent; no duplicate allocation. Open-source/custom implementation first.",
+   "Scope": "Selected commercial startup; enforce employee assignment and product entitlement; approved business profile and policy. No owner fundraising access."
+  },
+  "ops": [
+   {
+    "method": "POST",
+    "path": "/webhooks/payment",
+    "api_id": "API-385"
+   },
+   {
+    "method": "POST",
+    "path": "/deals/{id}/close",
+    "api_id": "API-386"
+   }
+  ],
+  "entities": [
+   {
+    "entity": "Payment",
+    "in_3_3": true,
+    "in_2_1": true
+   },
+   {
+    "entity": "Invoice",
+    "in_3_3": true,
+    "in_2_1": true
+   },
+   {
+    "entity": "Deal",
+    "in_3_3": true,
+    "in_2_1": true
+   }
+  ],
+  "integration_candidates": "Internal / no direct plugin",
+  "candidates_in_bp": {
+   "Internal / no direct plugin": false
+  }
+ },
+ {
+  "module": "Onboarding and handoff",
+  "fields": {
+   "Objective": "Transfer commercial customer to product team",
+   "Dependency": "Payment and closure; Consent and suppression",
+   "Acceptance": "No patient data copied",
+   "Owner": "Full-stack",
+   "Reuse": "New growth capability",
+   "React frontend / user experience": "Checklist, welcome, product links",
+   "Django backend / design / plugin use": "Create onboarding task from won event; nonclinical payload",
+   "Separate admin portal / governance": "Assign onboarding owner, SLA",
+   "Database entities": "Onboarding,Task,Handoff",
+   "REST API / runtime interface": "GET /onboarding; POST /onboarding/{id}/complete",
+   "Automation trigger → response": "Deal won → welcome → onboarding",
+   "Tools / plugin category": "Custom",
+   "Acceptance / verification gate": "No patient data copied",
+   "Cost analysis / open-source-first decision (INR; B IDs = shared budget)": "₹0 incremental software licence; React/Django/PostgreSQL/Celery; shared compute B01 and engineering C03.",
+   "Integration candidates": "Internal / no direct plugin",
+   "Licence / quota / paid rate": "Internal/custom; OSS stack preferred | No vendor quota | ₹0 separate licence; shared infrastructure",
+   "Budget treatment": "₹0 incremental software licence; React/Django/PostgreSQL/Celery; shared compute B01 and engineering C03.",
+   "Scope": "Selected commercial startup; enforce employee assignment and product entitlement; approved business profile and policy. No owner fundraising access."
+  },
+  "ops": [
+   {
+    "method": "GET",
+    "path": "/onboarding",
+    "api_id": "API-412"
+   },
+   {
+    "method": "POST",
+    "path": "/onboarding/{id}/complete",
+    "api_id": "API-413"
+   }
+  ],
+  "entities": [
+   {
+    "entity": "Onboarding",
+    "in_3_3": true,
+    "in_2_1": true
+   },
+   {
+    "entity": "Task",
+    "in_3_3": true,
+    "in_2_1": true
+   },
+   {
+    "entity": "Handoff",
+    "in_3_3": true,
+    "in_2_1": true
+   }
+  ],
+  "integration_candidates": "Internal / no direct plugin",
+  "candidates_in_bp": {
+   "Internal / no direct plugin": false
+  }
+ },
+ {
+  "module": "Partner deployment pipeline",
+  "fields": {
+   "Objective": "Manage phygital and institutional pilots",
+   "Dependency": "Proposal builder; Contract and MoU workflow",
+   "Acceptance": "No deployment claims before approval",
+   "Owner": "Full-stack",
+   "Reuse": "New growth capability",
+   "React frontend / user experience": "Partner checklist, location, pilot status",
+   "Django backend / design / plugin use": "Due diligence stage, pilot goals, contract link",
+   "Separate admin portal / governance": "Approve site readiness and deployment",
+   "Database entities": "Partner,Pilot,Deployment",
+   "REST API / runtime interface": "POST /partners; POST /pilots/{id}/status",
+   "Automation trigger → response": "Qualified partner → due diligence → pilot → review",
+   "Tools / plugin category": "Custom",
+   "Acceptance / verification gate": "No deployment claims before approval",
+   "Cost analysis / open-source-first decision (INR; B IDs = shared budget)": "₹0 incremental software licence; React/Django/PostgreSQL/Celery; shared compute B01 and engineering C03.",
+   "Integration candidates": "Crossbeam Skills",
+   "Licence / quota / paid rate": "Crossbeam Skills: Commercial service / hybrid; exact wrapper and upstream licence unverified | Crossbeam Skills: Not verified — check account API quota, not UI free plan | Crossbeam Skills: Not verified — obtain current API-specific pricing/quote; no assumed free runtime",
+   "Budget treatment": "₹0 incremental software licence; React/Django/PostgreSQL/Celery; shared compute B01 and engineering C03.",
+   "Scope": "Selected commercial startup; enforce employee assignment and product entitlement; approved business profile and policy. No owner fundraising access."
+  },
+  "ops": [
+   {
+    "method": "POST",
+    "path": "/partners",
+    "api_id": "API-414"
+   },
+   {
+    "method": "POST",
+    "path": "/pilots/{id}/status",
+    "api_id": "API-415"
+   }
+  ],
+  "entities": [
+   {
+    "entity": "Partner",
+    "in_3_3": true,
+    "in_2_1": true
+   },
+   {
+    "entity": "Pilot",
+    "in_3_3": true,
+    "in_2_1": true
+   },
+   {
+    "entity": "Deployment",
+    "in_3_3": true,
+    "in_2_1": true
+   }
+  ],
+  "integration_candidates": "Crossbeam Skills",
+  "candidates_in_bp": {
+   "Crossbeam Skills": false
+  }
+ },
+ {
+  "module": "Retention and renewal",
+  "fields": {
+   "Objective": "Maintain relationships",
+   "Dependency": "Onboarding and handoff; Follow-up sequences",
+   "Acceptance": "No medical data in scoring",
+   "Owner": "Full-stack",
+   "Reuse": "New growth capability",
+   "React frontend / user experience": "Renewal calendar, account health",
+   "Django backend / design / plugin use": "Commercial usage aggregate, scheduled consented reminder",
+   "Separate admin portal / governance": "Renewal policy; cancel / opt-out",
+   "Database entities": "Renewal,Subscription,AccountMetric",
+   "REST API / runtime interface": "GET /renewals; POST /renewals/{id}/review",
+   "Automation trigger → response": "Onboard → renewal due → permitted engagement",
+   "Tools / plugin category": "Custom",
+   "Acceptance / verification gate": "No medical data in scoring",
+   "Cost analysis / open-source-first decision (INR; B IDs = shared budget)": "₹0 incremental software licence; React/Django/PostgreSQL/Celery; shared compute B01 and engineering C03.",
+   "Integration candidates": "Internal / no direct plugin",
+   "Licence / quota / paid rate": "Internal/custom; OSS stack preferred | No vendor quota | ₹0 separate licence; shared infrastructure",
+   "Budget treatment": "₹0 incremental software licence; React/Django/PostgreSQL/Celery; shared compute B01 and engineering C03.",
+   "Scope": "Selected commercial startup; enforce employee assignment and product entitlement; approved business profile and policy. No owner fundraising access."
+  },
+  "ops": [
+   {
+    "method": "GET",
+    "path": "/renewals",
+    "api_id": "API-416"
+   },
+   {
+    "method": "POST",
+    "path": "/renewals/{id}/review",
+    "api_id": "API-417"
+   }
+  ],
+  "entities": [
+   {
+    "entity": "Renewal",
+    "in_3_3": true,
+    "in_2_1": true
+   },
+   {
+    "entity": "Subscription",
+    "in_3_3": true,
+    "in_2_1": true
+   },
+   {
+    "entity": "AccountMetric",
+    "in_3_3": true,
+    "in_2_1": true
+   }
+  ],
+  "integration_candidates": "Internal / no direct plugin",
+  "candidates_in_bp": {
+   "Internal / no direct plugin": false
+  }
+ },
+ {
+  "module": "Lost deal and feedback",
+  "fields": {
+   "Objective": "Learn from commercial results",
+   "Dependency": "CRM pipeline; Follow-up sequences",
+   "Acceptance": "No auto-recontact after loss without policy",
+   "Owner": "Full-stack",
+   "Reuse": "New growth capability",
+   "React frontend / user experience": "Loss reason, feedback form",
+   "Django backend / design / plugin use": "Structured outcome events; deidentify training examples",
+   "Separate admin portal / governance": "Review learning changes",
+   "Database entities": "Outcome,Feedback",
+   "REST API / runtime interface": "POST /deals/{id}/lost; POST /feedback",
+   "Automation trigger → response": "Lost → reason → stop sequence → aggregate",
+   "Tools / plugin category": "Custom",
+   "Acceptance / verification gate": "No auto-recontact after loss without policy",
+   "Cost analysis / open-source-first decision (INR; B IDs = shared budget)": "₹0 incremental software licence; React/Django/PostgreSQL/Celery; shared compute B01 and engineering C03.",
+   "Integration candidates": "Internal / no direct plugin",
+   "Licence / quota / paid rate": "Internal/custom; OSS stack preferred | No vendor quota | ₹0 separate licence; shared infrastructure",
+   "Budget treatment": "₹0 incremental software licence; React/Django/PostgreSQL/Celery; shared compute B01 and engineering C03.",
+   "Scope": "Selected commercial startup; enforce employee assignment and product entitlement; approved business profile and policy. No owner fundraising access."
+  },
+  "ops": [
+   {
+    "method": "POST",
+    "path": "/deals/{id}/lost",
+    "api_id": "API-387"
+   },
+   {
+    "method": "POST",
+    "path": "/feedback",
+    "api_id": "API-418"
+   }
+  ],
+  "entities": [
+   {
+    "entity": "Outcome",
+    "in_3_3": true,
+    "in_2_1": true
+   },
+   {
+    "entity": "Feedback",
+    "in_3_3": true,
+    "in_2_1": true
+   }
+  ],
+  "integration_candidates": "Internal / no direct plugin",
+  "candidates_in_bp": {
+   "Internal / no direct plugin": false
+  }
+ },
+ {
+  "module": "Revenue and attribution",
+  "fields": {
+   "Objective": "Measure funnel economics",
+   "Dependency": "Landing pages and attribution; Payment and closure",
+   "Acceptance": "Revenue reconciles with finance; attribution caveat",
+   "Owner": "Full-stack",
+   "Reuse": "New growth capability",
+   "React frontend / user experience": "Revenue, CAC, pipeline, channel reports",
+   "Django backend / design / plugin use": "Aggregate first-party campaign and verified payment events",
+   "Separate admin portal / governance": "KPI definitions; reconciliation",
+   "Database entities": "MetricSnapshot,AttributionEvent,Payment",
+   "REST API / runtime interface": "GET /metrics/revenue",
+   "Automation trigger → response": "Event → attribution → report",
+   "Tools / plugin category": "PostgreSQL",
+   "Acceptance / verification gate": "Revenue reconciles with finance; attribution caveat",
+   "Cost analysis / open-source-first decision (INR; B IDs = shared budget)": "₹0 incremental software licence; React/Django/PostgreSQL/Celery; shared compute B01 and engineering C03.",
+   "Integration candidates": "postgresql, Socialinsider, PostHog",
+   "Licence / quota / paid rate": "postgresql: Open source — PostgreSQL LicenseSocialinsider: Commercial service / hybrid; exact wrapper and upstream licence unverifiedPostHog: Hybrid / commercial service; exact edition licence verify | postgresql: Self-host: no vendor execution quota; compute limits applySocialinsider: Not verified — check account API quota, not UI free planPostHog: Free quotas differ by feature | postgresql: ₹0 software licence; hosting/maintenance and connected API charges extraSocialinsider: Not verified — obtain current API-specific pricing/quote; no assumed free runtimePostHog: Paid plan/API entitlement or provider quota; current rate not verified",
+   "Budget treatment": "₹0 incremental software licence; React/Django/PostgreSQL/Celery; shared compute B01 and engineering C03.",
+   "Scope": "Selected commercial startup; enforce employee assignment and product entitlement; approved business profile and policy. No owner fundraising access."
+  },
+  "ops": [
+   {
+    "method": "GET",
+    "path": "/metrics/revenue",
+    "api_id": "API-388"
+   }
+  ],
+  "entities": [
+   {
+    "entity": "MetricSnapshot",
+    "in_3_3": true,
+    "in_2_1": true
+   },
+   {
+    "entity": "AttributionEvent",
+    "in_3_3": true,
+    "in_2_1": true
+   },
+   {
+    "entity": "Payment",
+    "in_3_3": true,
+    "in_2_1": true
+   }
+  ],
+  "integration_candidates": "postgresql, Socialinsider, PostHog",
+  "candidates_in_bp": {
+   "postgresql": true,
+   "Socialinsider": false,
+   "PostHog": false
+  }
+ }
+]

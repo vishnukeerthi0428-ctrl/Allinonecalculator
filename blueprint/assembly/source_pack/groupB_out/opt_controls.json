@@ -1,0 +1,972 @@
+[
+ {
+  "id": "OPT-03-01",
+  "title": "Native versus paid plugins",
+  "control": "Reuse Django/Celery/Valkey and official APIs; benchmark paid alternatives before enabling",
+  "docs": [
+   "04"
+  ],
+  "dimension": "Cost",
+  "acceptance": "Zero unapproved paid calls; compare full TCO including maintenance and data rights",
+  "accountable": "FinOps lead",
+  "in_frd": false,
+  "bp_parts_citing_id": [
+   "00A",
+   "00",
+   "01",
+   "04-2",
+   "06-6"
+  ]
+ },
+ {
+  "id": "OPT-03-02",
+  "title": "Model and token costs",
+  "control": "Rules first; smaller models for extraction; retrieve minimal approved context; bound output and retry tokens",
+  "docs": [
+   "04"
+  ],
+  "dimension": "Cost",
+  "acceptance": "Track INR/task and token totals; candidate meets approved quality floor before activation",
+  "accountable": "FinOps lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-03-03",
+  "title": "Research and contact costs",
+  "control": "Deduplicate permitted evidence by source and freshness; prioritize official sources and verification",
+  "docs": [
+   "04"
+  ],
+  "dimension": "Cost",
+  "acceptance": "Cost per qualified verified opportunity improves vs approved baseline without precision or coverage regression",
+  "accountable": "FinOps lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-03-04",
+  "title": "Cloud and worker sizing",
+  "control": "Right-size with measurements; scale queues from age/depth; use budgets not CPU alone; review idle capacity",
+  "docs": [
+   "04"
+  ],
+  "dimension": "Cost",
+  "acceptance": "Track cost/1000 tasks and queue age; no SLO violation during right-sizing",
+  "accountable": "FinOps lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-03-05",
+  "title": "Storage and retention costs",
+  "control": "Archive allowed aged evidence; lifecycle rules respect legal hold; compress permitted artifacts",
+  "docs": [
+   "04"
+  ],
+  "dimension": "Cost",
+  "acceptance": "Measure GB-month and restore test; no deletion of held or authoritative financial records",
+  "accountable": "FinOps lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-03-06",
+  "title": "Communication and subscription costs",
+  "control": "Suppress duplicate/ineligible outreach; stop on reply; review unused seats and API entitlements",
+  "docs": [
+   "04"
+  ],
+  "dimension": "Cost",
+  "acceptance": "Zero disallowed dispatches; compare cost per meaningful response and verified conversion",
+  "accountable": "FinOps lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-03-07",
+  "title": "Budget reservation",
+  "control": "Atomic reservation for maximum external cost across tenant/startup/action; reconcile billed actual, release unused",
+  "docs": [
+   "04"
+  ],
+  "dimension": "Cost",
+  "acceptance": "Zero unauthorized overspend under parallel reservation test; reconcile all metered costs",
+  "accountable": "FinOps lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-03-08",
+  "title": "Usage anomaly control",
+  "control": "Alert 70/90% of configured cap (proposed); pause optional jobs at cap; route unexpected bills to owner",
+  "docs": [
+   "04"
+  ],
+  "dimension": "Cost",
+  "acceptance": "No live paid fallback on exhaustion; alerts and pause observed in simulated spend spike",
+  "accountable": "FinOps lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-06-01",
+  "title": "Startup templates and tenants",
+  "control": "Configurable onboarding with schema validation and independent ownership; no per-startup hardcoding",
+  "docs": [
+   "04",
+   "05",
+   "09"
+  ],
+  "dimension": "Scalability",
+  "acceptance": "25 owned +10 external initial; 50+ owned +100 external growth validation",
+  "accountable": "Architect",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-06-02",
+  "title": "Concurrent users and jobs",
+  "control": "Stateless API, independent worker scaling and resource caps",
+  "docs": [
+   "04",
+   "09"
+  ],
+  "dimension": "Scalability",
+  "acceptance": "50/250 staff sessions; 50/250 concurrent jobs initial/growth",
+  "accountable": "Architect",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-06-03",
+  "title": "Data and scheduling volume",
+  "control": "Seed scoped 100k/1m opportunities and 10k/100k actions per day; burst/soak profiles",
+  "docs": [
+   "04",
+   "09"
+  ],
+  "dimension": "Scalability",
+  "acceptance": "Meet workload-specific p95, queue age and durability targets; document actual capacity",
+  "accountable": "Architect",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-06-04",
+  "title": "Regional expansion",
+  "control": "Explicit locale, time zone, currency and residence rules; keep region selection policy-based",
+  "docs": [
+   "04",
+   "09"
+  ],
+  "dimension": "Scalability",
+  "acceptance": "Verify local display and same-currency accounting; no unauthorized cross-region transfer",
+  "accountable": "Architect",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-06-05",
+  "title": "Noisy neighbor and capacity",
+  "control": "Per-tenant concurrency, quota and fair queue; test one overloaded tenant vs others",
+  "docs": [
+   "04",
+   "09"
+  ],
+  "dimension": "Scalability",
+  "acceptance": "No cross-tenant disclosure or starvation; demonstrate isolation and measure saturation",
+  "accountable": "Architect",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-07-01",
+  "title": "Modular monolith",
+  "control": "Separate investment/commercial Django domains; split services only with measured need",
+  "docs": [
+   "04",
+   "05",
+   "09",
+   "10"
+  ],
+  "dimension": "Architecture",
+  "acceptance": "ADR justifies each runtime dependency; no duplicated core workflow framework per startup",
+  "accountable": "Solution architect",
+  "in_frd": true,
+  "bp_parts_citing_id": [
+   "00",
+   "02-1",
+   "03-1",
+   "04-2",
+   "09-2"
+  ]
+ },
+ {
+  "id": "OPT-07-02",
+  "title": "Four frontends and two backends",
+  "control": "Keep independent deployables and data planes; reuse code not secrets/operational records",
+  "docs": [
+   "04",
+   "09",
+   "10"
+  ],
+  "dimension": "Architecture",
+  "acceptance": "Build matrix and access tests demonstrate independent deployment and rollback",
+  "accountable": "Solution architect",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-07-03",
+  "title": "Domain and adapter boundaries",
+  "control": "Typed service, event, AI gateway and provider interfaces; external calls outside DB transaction",
+  "docs": [
+   "04",
+   "09",
+   "10"
+  ],
+  "dimension": "Architecture",
+  "acceptance": "Unit and contract tests cover adapter failures; no circular dependencies",
+  "accountable": "Solution architect",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-07-04",
+  "title": "Configuration-driven design",
+  "control": "Validate business templates, filter schemas, policy versions and activation readiness",
+  "docs": [
+   "04",
+   "09",
+   "10"
+  ],
+  "dimension": "Architecture",
+  "acceptance": "New standard startup profile configured without core code changes; invalid config rejected",
+  "accountable": "Solution architect",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-07-05",
+  "title": "Complexity and reuse review",
+  "control": "Remove measured duplicates; retain financial separation and meaningful contracts",
+  "docs": [
+   "04",
+   "09",
+   "10"
+  ],
+  "dimension": "Architecture",
+  "acceptance": "No arbitrary reductions in UI/API/table counts; document before/after dependency and test impact",
+  "accountable": "Solution architect",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-13-01",
+  "title": "Code health",
+  "control": "Typed contracts, small modules, lint, tests, review AI code, isolate provider specifics",
+  "docs": [
+   "04",
+   "10"
+  ],
+  "dimension": "Maintainability",
+  "acceptance": "No unresolved blocking lint/test or known exploitable critical dependency at merge",
+  "accountable": "Engineering lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-14-01",
+  "title": "Shared code libraries",
+  "control": "Reusable React, scoped Python, AI gateway, workflow, adapter and test packages; independent runtime configs",
+  "docs": [
+   "04",
+   "10"
+  ],
+  "dimension": "Reusability",
+  "acceptance": "New standard profile uses shared code; no common secrets, queues or confidential databases",
+  "accountable": "Architect",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-14-02",
+  "title": "Template reuse",
+  "control": "Version and approve templates, rules, filters, workflows and role presets",
+  "docs": [
+   "04",
+   "10"
+  ],
+  "dimension": "Reusability",
+  "acceptance": "Configure new startup and external tenant; no inherited private records",
+  "accountable": "Architect",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-14-03",
+  "title": "Component contracts",
+  "control": "Typed inputs and stable interfaces with extension points; avoid fork per tenant",
+  "docs": [
+   "04",
+   "10"
+  ],
+  "dimension": "Reusability",
+  "acceptance": "Consumer contract tests pass for both products independently",
+  "accountable": "Architect",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-16-01",
+  "title": "Standard setup",
+  "control": "Reproducible local environments and typed scaffolding; existing identity reuse verified",
+  "docs": [
+   "04"
+  ],
+  "dimension": "Development Productivity",
+  "acceptance": "Fresh authorized developer runs offline checks using documented steps",
+  "accountable": "CTO",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-16-02",
+  "title": "Vertical slices and estimates",
+  "control": "Implement UI/API/DB/worker together, use predecessor graph and role capacity; avoid duplicated work",
+  "docs": [
+   "04"
+  ],
+  "dimension": "Development Productivity",
+  "acceptance": "Track PD actual vs estimate and rework; no unchecked dependency or double counting",
+  "accountable": "CTO",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-16-03",
+  "title": "AI-assisted development",
+  "control": "Review generated code, secrets, licences, dependency and test impact; no blind merge",
+  "docs": [
+   "04"
+  ],
+  "dimension": "Development Productivity",
+  "acceptance": "Independent review and mandatory CI evidence for every change",
+  "accountable": "CTO",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-20-01",
+  "title": "Unit economics",
+  "control": "Separate SaaS billing from issuer funds or customer receipts; allocate AI, provider, infra and support costs",
+  "docs": [
+   "04"
+  ],
+  "dimension": "SaaS Profitability",
+  "acceptance": "Contribution margin per tenant = service revenue minus attributable/allocated delivery costs; report basis",
+  "accountable": "Service owner",
+  "in_frd": false,
+  "bp_parts_citing_id": [
+   "01",
+   "04-3",
+   "06-6",
+   "08-2"
+  ]
+ },
+ {
+  "id": "OPT-20-02",
+  "title": "Entitlements and usage",
+  "control": "Version plans, quotas and pricing; reconcile metered usage and credits; use client-approved credentials",
+  "docs": [
+   "04"
+  ],
+  "dimension": "SaaS Profitability",
+  "acceptance": "100% attributable usage reconciled; no charge or service outside entitlement",
+  "accountable": "Service owner",
+  "in_frd": false,
+  "bp_parts_citing_id": [
+   "00",
+   "01",
+   "02-3",
+   "04-2",
+   "06-1",
+   "06-6",
+   "08-2"
+  ]
+ },
+ {
+  "id": "OPT-20-03",
+  "title": "Support and renewal",
+  "control": "Track onboarding effort, support tickets, renewal/churn and service commitments",
+  "docs": [
+   "04"
+  ],
+  "dimension": "SaaS Profitability",
+  "acceptance": "Measure contribution margin and churn by cohort; no unverified SLA promise",
+  "accountable": "Service owner",
+  "in_frd": false,
+  "bp_parts_citing_id": [
+   "00A",
+   "00",
+   "01",
+   "04-3",
+   "06-6",
+   "08-2",
+   "09-2"
+  ]
+ },
+ {
+  "id": "OPT-20-04",
+  "title": "Client scalability and portability",
+  "control": "Self-service standard onboarding; custom needs separately estimated; export and revoke on offboard",
+  "docs": [
+   "04"
+  ],
+  "dimension": "SaaS Profitability",
+  "acceptance": "Onboarding time and support cost improve vs baseline with isolation and retention intact",
+  "accountable": "Service owner",
+  "in_frd": false,
+  "bp_parts_citing_id": [
+   "01",
+   "06-6"
+  ]
+ },
+ {
+  "id": "OPT-04-01",
+  "title": "Daily planning and discovery",
+  "control": "Scheduled objectives, source permissions, freshness, target segments and bounded search budget",
+  "docs": [
+   "05",
+   "10"
+  ],
+  "dimension": "Automation",
+  "acceptance": "Eligible plan produced per schedule; missed runs recover once; prohibited source never fetched",
+  "accountable": "Automation lead",
+  "in_frd": true,
+  "bp_parts_citing_id": [
+   "01",
+   "02-1",
+   "02-2",
+   "02-3",
+   "05-1c",
+   "06-1",
+   "06-4",
+   "06-5",
+   "06-6",
+   "07-2",
+   "08-1"
+  ]
+ },
+ {
+  "id": "OPT-04-02",
+  "title": "Qualification and verification",
+  "control": "Classify with rules and AI; evidence required; deduplicate and verify professional contacts",
+  "docs": [
+   "05",
+   "10"
+  ],
+  "dimension": "Automation",
+  "acceptance": "Precision >=90% on approved benchmark; uncertain items routed to review",
+  "accountable": "Automation lead",
+  "in_frd": true,
+  "bp_parts_citing_id": [
+   "00A",
+   "00",
+   "02-1",
+   "04-2",
+   "06-1",
+   "09-2"
+  ]
+ },
+ {
+  "id": "OPT-04-03",
+  "title": "Outreach and response",
+  "control": "Approved audience and channel eligibility; recheck at dispatch; classify replies and stop irrelevant sequences",
+  "docs": [
+   "05",
+   "10"
+  ],
+  "dimension": "Automation",
+  "acceptance": "Zero sends to ineligible/suppressed recipient; substantive reply cancels pending generic follow-up",
+  "accountable": "Automation lead",
+  "in_frd": true,
+  "bp_parts_citing_id": [
+   "01",
+   "02-1",
+   "06-1"
+  ]
+ },
+ {
+  "id": "OPT-04-04",
+  "title": "Objection and meetings",
+  "control": "Retrieve approved evidence, abstain/escalate unresolved claims; verify availability and timezone",
+  "docs": [
+   "05",
+   "10"
+  ],
+  "dimension": "Automation",
+  "acceptance": "No unsupported promises or double-booking; all unresolved cases get assigned task",
+  "accountable": "Automation lead",
+  "in_frd": true,
+  "bp_parts_citing_id": [
+   "02-1"
+  ]
+ },
+ {
+  "id": "OPT-04-05",
+  "title": "Documents and approvals",
+  "control": "Draft from approved templates; snapshot hashes; verify required human approval before formal action",
+  "docs": [
+   "05",
+   "10"
+  ],
+  "dimension": "Automation",
+  "acceptance": "Zero execution with stale or missing mandatory approval; simulation sends nothing",
+  "accountable": "Automation lead",
+  "in_frd": true,
+  "bp_parts_citing_id": [
+   "02-1"
+  ]
+ },
+ {
+  "id": "OPT-04-06",
+  "title": "Financial and business closure",
+  "control": "Process verified callbacks; reconcile correct legal entity and currency; require route-specific conditions",
+  "docs": [
+   "05",
+   "10"
+  ],
+  "dimension": "Automation",
+  "acceptance": "Zero duplicate side effects; 100% verified transactions reconciled before closure",
+  "accountable": "Automation lead",
+  "in_frd": true,
+  "bp_parts_citing_id": [
+   "02-1"
+  ]
+ },
+ {
+  "id": "OPT-04-07",
+  "title": "Exception and learning",
+  "control": "Retry only known-safe transient failures; unknown outcome reconcile; feedback suggests changes rather than self-publishing",
+  "docs": [
+   "05",
+   "10"
+  ],
+  "dimension": "Automation",
+  "acceptance": "Workflow completion >=99% of eligible due runs within agreed window; no blind repeat",
+  "accountable": "Automation lead",
+  "in_frd": true,
+  "bp_parts_citing_id": [
+   "00",
+   "01",
+   "02-1",
+   "04-2"
+  ]
+ },
+ {
+  "id": "OPT-04-08",
+  "title": "Autonomy and stop controls",
+  "control": "Manual, assisted, supervised and controlled autonomous; per-workflow policy; emergency stop, simulation and dry run",
+  "docs": [
+   "05",
+   "10"
+  ],
+  "dimension": "Automation",
+  "acceptance": "Target >=90% eligible steps automated; stop prevents future external calls, no bypass of mandatory approval",
+  "accountable": "Automation lead",
+  "in_frd": true,
+  "bp_parts_citing_id": [
+   "00",
+   "01",
+   "02-1",
+   "04-2",
+   "08-2"
+  ]
+ },
+ {
+  "id": "OPT-05-01",
+  "title": "Transactional outbox",
+  "control": "Write business state and event atomically; lease delivery; idempotent consumer",
+  "docs": [
+   "05",
+   "09",
+   "10"
+  ],
+  "dimension": "Stability",
+  "acceptance": "Crash between commit and publish recovers; no lost committed event",
+  "accountable": "Reliability lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-05-02",
+  "title": "Idempotency and concurrency",
+  "control": "Unique scoped action key plus payload fingerprint; lock state and budget; reject mismatched key reuse",
+  "docs": [
+   "05",
+   "10"
+  ],
+  "dimension": "Stability",
+  "acceptance": "Replay same event returns same result; concurrent test yields one side effect",
+  "accountable": "Reliability lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-05-03",
+  "title": "Timeout and retry",
+  "control": "Bound provider timeout; jittered exponential backoff; circuit breaker; dead-letter with redacted evidence",
+  "docs": [
+   "05",
+   "10"
+  ],
+  "dimension": "Stability",
+  "acceptance": "Permanent errors not retried; unknown outcome moves to reconciliation; no retry storm",
+  "accountable": "Reliability lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-05-04",
+  "title": "Durable workflow state",
+  "control": "Persist step and attempt; resume after worker restart; cancel and lease fencing",
+  "docs": [
+   "05",
+   "10"
+  ],
+  "dimension": "Stability",
+  "acceptance": "Killed worker resumes safely or reconciles; no unauthorized or duplicate dispatch",
+  "accountable": "Reliability lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-05-05",
+  "title": "Backpressure and fair scheduling",
+  "control": "Cap in-flight jobs by tenant and class; reserve urgent queue capacity; reject overload explicitly",
+  "docs": [
+   "05",
+   "10"
+  ],
+  "dimension": "Stability",
+  "acceptance": "No tenant starvation under load; queue age and rate-limit metrics collected",
+  "accountable": "Reliability lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-05-06",
+  "title": "Config and AI failures",
+  "control": "Fail startup on missing mandatory config; validate structured AI; fallback only approved and within budget",
+  "docs": [
+   "05",
+   "10"
+  ],
+  "dimension": "Stability",
+  "acceptance": "No silent unsafe defaults or invalid persisted AI decisions",
+  "accountable": "Reliability lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-05-07",
+  "title": "Availability and reconciliation",
+  "control": "Health/readiness checks, independent financial verification, alert and restore drills",
+  "docs": [
+   "05",
+   "10"
+  ],
+  "dimension": "Stability",
+  "acceptance": "Proposed 99.9% critical availability over rolling 30 days; no unresolved critical financial mismatch",
+  "accountable": "Reliability lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-09-01",
+  "title": "Typed contracts",
+  "control": "Review all methods, request/response types, errors, authorization and idempotency; resolve draft gaps",
+  "docs": [
+   "05",
+   "10"
+  ],
+  "dimension": "API & Integration",
+  "acceptance": "100% applicable approved contracts before activation; run schema and contract tests",
+  "accountable": "Integration lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-10-01",
+  "title": "Rules-first model routing",
+  "control": "Deterministic calculations/permissions/state; retrieval/rules then small model; advanced reasoning only when required",
+  "docs": [
+   "05",
+   "10"
+  ],
+  "dimension": "AI Intelligence",
+  "acceptance": "Compare quality, latency and INR per task on same approved dataset",
+  "accountable": "AI lead",
+  "in_frd": true,
+  "bp_parts_citing_id": [
+   "00A",
+   "00",
+   "01",
+   "02-1",
+   "04-2",
+   "07-1",
+   "09-2"
+  ]
+ },
+ {
+  "id": "OPT-11-01",
+  "title": "Provenance and source rights",
+  "control": "Record approved URL/source, fetch date, licence/permission and confidence; do not scrape private data",
+  "docs": [
+   "05"
+  ],
+  "dimension": "Data Quality",
+  "acceptance": "100% actionable records have permitted provenance; missing rights quarantined",
+  "accountable": "Data steward",
+  "in_frd": true,
+  "bp_parts_citing_id": [
+   "00",
+   "01",
+   "02-1",
+   "02-3",
+   "04-2"
+  ]
+ },
+ {
+  "id": "OPT-01-01",
+  "title": "Authentication and privileged sessions",
+  "control": "Reuse verified identity; separate product/audience; MFA for privileged roles; expire and revoke sessions",
+  "docs": [
+   "09"
+  ],
+  "dimension": "Security",
+  "acceptance": "Zero successful revoked, wrong-audience or unauthorized privileged requests; test revoked sessions and MFA bypass",
+  "accountable": "Security lead",
+  "in_frd": true,
+  "bp_parts_citing_id": [
+   "00A",
+   "00",
+   "02-1",
+   "02-3",
+   "04-1",
+   "04-2",
+   "09-2"
+  ]
+ },
+ {
+  "id": "OPT-08-01",
+  "title": "Normalization and ownership",
+  "control": "Normalize transaction records; validated JSONB for flexible attributes; tenant/startup scoped FKs",
+  "docs": [
+   "09",
+   "10"
+  ],
+  "dimension": "Database",
+  "acceptance": "No orphan or cross-scope reference in migration and negative tests",
+  "accountable": "Database lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-18-01",
+  "title": "Independent CI/CD",
+  "control": "Separate pipelines, environments, identities and artifacts; build once, promote immutable digest",
+  "docs": [
+   "09"
+  ],
+  "dimension": "Deployment & Recovery",
+  "acceptance": "Authorized staging rehearsal and rollback for each frontend/backend/worker independently",
+  "accountable": "DevOps lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-02-01",
+  "title": "Public website assets",
+  "control": "Compress images, CDN for approved snapshots, defer nonessential JS, split bundles; measure real-user cohorts",
+  "docs": [
+   "10"
+  ],
+  "dimension": "Performance",
+  "acceptance": "LCP p75 <=2.5s; INP p75 <=200ms; CLS p75 <=0.1 on approved representative devices",
+  "accountable": "Frontend and backend leads",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-08-02",
+  "title": "Query plans and indexes",
+  "control": "Use staging EXPLAIN (ANALYZE, BUFFERS) on authorized representative reads; index actual predicates",
+  "docs": [
+   "10"
+  ],
+  "dimension": "Database",
+  "acceptance": "Measure plan time, reads and write overhead; avoid speculative indexing",
+  "accountable": "Database lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-08-03",
+  "title": "ORM and connections",
+  "control": "select_related/prefetch when needed, projected fields, bounded transaction and pool sizing",
+  "docs": [
+   "10"
+  ],
+  "dimension": "Database",
+  "acceptance": "No N+1 regression in representative list; monitor connection saturation",
+  "accountable": "Database lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-08-04",
+  "title": "Financial storage",
+  "control": "Decimal, currency, receipts, allocations, reversals and reconciliation independently tracked",
+  "docs": [
+   "10"
+  ],
+  "dimension": "Database",
+  "acceptance": "Exact synthetic amounts; no float rounding or duplicate allocation",
+  "accountable": "Database lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-08-05",
+  "title": "Vector and cache lifecycle",
+  "control": "Scope before retrieval, version embeddings, invalidate on permission or knowledge change",
+  "docs": [
+   "10"
+  ],
+  "dimension": "Database",
+  "acceptance": "No cross-scope vector match; compare recall/latency and storage before tuning",
+  "accountable": "Database lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-08-06",
+  "title": "Migration and archive",
+  "control": "Expand/backfill/validate/contract; legal hold; test backward compatibility and restore",
+  "docs": [
+   "10"
+  ],
+  "dimension": "Database",
+  "acceptance": "Zero unapproved data loss; approved rollback or forward repair; record reconciled row counts",
+  "accountable": "Database lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-09-02",
+  "title": "Consolidation and batching",
+  "control": "Reuse endpoints only for same scope and semantics; stable pagination and minimal serializers",
+  "docs": [
+   "10"
+  ],
+  "dimension": "API & Integration",
+  "acceptance": "Compare API calls and bytes; no unauthorized field or generic bypass",
+  "accountable": "Integration lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-09-03",
+  "title": "Adapter reliability",
+  "control": "Standard timeouts, rate limits, circuit breakers and explicit entitlement fallback",
+  "docs": [
+   "10"
+  ],
+  "dimension": "API & Integration",
+  "acceptance": "Contract tests for timeout, rate-limit, malformed and unknown outcomes",
+  "accountable": "Integration lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-09-04",
+  "title": "Webhook processing",
+  "control": "Verify signature and replay window; durable deduplication before acknowledgement",
+  "docs": [
+   "10"
+  ],
+  "dimension": "API & Integration",
+  "acceptance": "Invalid signatures rejected; repeat verified event no second effect; p95 ACK <=2s",
+  "accountable": "Integration lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-09-05",
+  "title": "API costs and monitoring",
+  "control": "Meter by provider, operation, tenant/startup; limit optional calls and use permitted caching",
+  "docs": [
+   "10"
+  ],
+  "dimension": "API & Integration",
+  "acceptance": "All attributable consumption metered; no unapproved paid provider calls",
+  "accountable": "Integration lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-13-02",
+  "title": "Technical debt",
+  "control": "Track issue, owner, severity, business impact and refactor benefit",
+  "docs": [
+   "10"
+  ],
+  "dimension": "Maintainability",
+  "acceptance": "Review monthly; each accepted change has regression evidence and rollback",
+  "accountable": "Engineering lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-13-03",
+  "title": "Documentation and debugging",
+  "control": "Keep contract docs and runbooks synchronized with actual code; structured redacted errors",
+  "docs": [
+   "10"
+  ],
+  "dimension": "Maintainability",
+  "acceptance": "New maintainer can reproduce test and diagnose synthetic failure using runbook",
+  "accountable": "Engineering lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-13-04",
+  "title": "Dependencies and compatibility",
+  "control": "Pin audited dependencies; upgrade in isolated branch; monitor deprecations",
+  "docs": [
+   "10"
+  ],
+  "dimension": "Maintainability",
+  "acceptance": "All mandatory compatibility and regression tests pass before activation",
+  "accountable": "Engineering lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ },
+ {
+  "id": "OPT-17-01",
+  "title": "Risk-based tests",
+  "control": "Cover positive, invalid, boundary, concurrency and recovery cases by operation; synthetic scoped fixtures",
+  "docs": [
+   "10"
+  ],
+  "dimension": "Testing & QC",
+  "acceptance": "100% mandatory product regression passed at gate; no product tests marked pass without execution",
+  "accountable": "QA lead",
+  "in_frd": false,
+  "bp_parts_citing_id": []
+ }
+]

@@ -1,0 +1,445 @@
+screen,source,method,path,status,bp_ops,match
+W01,doc06 block,GET,/api/v1/commercial/public/site/pages/{slug},Partially covered,API-290,resource-equivalent DERIVED path on same screen
+W02,doc06 block,GET,/api/v1/commercial/public/site/pages/{slug},Partially covered,API-290;API-486,resource-equivalent path elsewhere in catalogue
+W03,doc06 block,GET,/api/v1/commercial/public/site/pages/{slug},Partially covered,API-290;API-486,resource-equivalent path elsewhere in catalogue
+W04,doc06 block,GET,/api/v1/commercial/public/site/pages/{slug},Partially covered,API-290;API-486,resource-equivalent path elsewhere in catalogue
+W05,doc06 block,GET,/api/v1/commercial/public/site/pages/{slug},Partially covered,API-290;API-486,resource-equivalent path elsewhere in catalogue
+W06,doc06 block,GET,/api/v1/commercial/public/site/pages/{slug},Partially covered,API-290;API-486,resource-equivalent path elsewhere in catalogue
+W07,doc06 block,GET,/api/v1/commercial/public/site/pages/{slug},Partially covered,API-290;API-486,resource-equivalent path elsewhere in catalogue
+W08,doc06 block,GET,/api/v1/commercial/public/site/pages/{slug},Partially covered,API-290;API-486,resource-equivalent path elsewhere in catalogue
+W09,doc06 block,GET,/api/v1/commercial/public/site/pages/{slug},Partially covered,API-290;API-486,resource-equivalent path elsewhere in catalogue
+W10,doc06 block,GET,/api/v1/public/pages/{slug},Covered,API-290,exact
+W10,doc06 block,POST,/api/v1/public/events,Covered,API-291,exact
+W11,doc06 block,POST,/api/v1/public/chat,Covered,API-246,exact
+W12,doc06 block,GET,/api/v1/public/forms/{slug},Partially covered,API-228,resource-equivalent DERIVED path on same screen
+W12,doc06 block,POST,/api/v1/public/leads,Covered,API-212,exact
+W13,doc06 block,GET,/api/v1/public/forms/{slug},Partially covered,API-221;API-228,resource-equivalent path elsewhere in catalogue
+W13,doc06 block,POST,/api/v1/public/leads,Covered,API-212,exact
+W14,doc06 block,GET,/api/v1/public/forms/{slug},Partially covered,API-221;API-228,resource-equivalent path elsewhere in catalogue
+W14,doc06 block,POST,/api/v1/public/leads,Covered,API-212,exact
+W15,doc06 block,GET,/api/v1/public/forms/{slug},Partially covered,API-221;API-228,resource-equivalent path elsewhere in catalogue
+W15,doc06 block,POST,/api/v1/public/leads,Covered,API-212,exact
+W16,doc06 block,GET,/api/v1/public/forms/{slug},Partially covered,API-221;API-228,resource-equivalent path elsewhere in catalogue
+W16,doc06 block,POST,/api/v1/public/leads,Covered,API-212,exact
+W17,doc06 block,GET,/api/v1/public/forms/{slug},Partially covered,API-221;API-228,resource-equivalent path elsewhere in catalogue
+W17,doc06 block,POST,/api/v1/public/leads,Covered,API-212,exact
+W18,doc06 block,GET,/api/v1/public/meeting-slots/{token},Not covered,,no exact or equivalent operation
+W18,doc06 block,POST,/api/v1/meetings/book,Covered,API-243,exact
+W18,doc06 block,POST,/api/v1/public/leads,Covered,API-212,exact
+W19,doc06 block,GET,/api/v1/public/events/{id},Partially covered,API-326,resource-equivalent DERIVED path on same screen
+W19,doc06 block,POST,/api/v1/events/register,Covered,API-296,exact
+W20,doc06 block,POST,/api/v1/public/referrals,Covered,API-298,exact
+W21,doc06 block,POST,/auth/login,Covered,API-001,exact
+W21,doc06 block,GET,/me,Covered,API-002,exact
+W21,doc06 block,POST,/auth/logout,Partially covered,API-012,resource-equivalent DERIVED path on same screen
+W21,doc06 block,POST,/api/v1/commercial/portal/external-grants/accept,Partially covered,API-151;API-356,resource-equivalent path elsewhere in catalogue
+W22,doc06 block,GET,/api/v1/commercial/portal/overview,Not covered,,no exact or equivalent operation
+W23,doc06 block,GET,/api/v1/commercial/portal/quotations/{id},Not covered,,no exact or equivalent operation
+W23,doc06 block,POST,/api/v1/commercial/portal/quotations/{id}/respond,Not covered,,no exact or equivalent operation
+W24,doc06 block,GET,/api/v1/public/agreements/{token},Partially covered,API-358,resource-equivalent DERIVED path on same screen
+W24,doc06 block,POST,/api/v1/public/agreements/{token}/sign,Partially covered,API-359,resource-equivalent DERIVED path on same screen
+W25,doc06 block,GET,/api/v1/commercial/portal/orders/{id},Covered,API-382,exact
+W26,doc06 block,GET,/api/v1/public/payment-status/{token},Not covered,,no exact or equivalent operation
+W26,doc06 block,POST,/api/v1/invoices/{id}/payment-link,Partially covered,API-398,resource-equivalent path elsewhere in catalogue
+W27,doc06 block,GET,/api/v1/public/onboarding/{token},Partially covered,API-437,resource-equivalent DERIVED path on same screen
+W27,doc06 block,POST,/api/v1/onboarding/{id}/complete,Covered,API-413,exact
+W27,doc06 block,POST,/api/v1/commercial/portal/documents,Partially covered,API-424,resource-equivalent DERIVED path on same screen
+W27,doc06 block,POST,/api/v1/commercial/portal/documents/{id}/complete,Not covered,,no exact or equivalent operation
+W28,doc06 block,POST,/api/v1/commercial/portal/requests,Partially covered,API-069,resource-equivalent path elsewhere in catalogue
+W29,doc06 block,GET,/api/v1/public/preferences/{token},Partially covered,API-081;API-083,resource-equivalent DERIVED path on same screen
+W29,doc06 block,POST,/api/v1/consents,Covered,API-066,exact
+W29,doc06 block,POST,/api/v1/opt-out,Covered,API-067,exact
+W29,doc06 block,POST,/api/v1/privacy/requests,Covered,API-069,exact
+W30,doc06 block,GET,/api/v1/commercial/public/site/pages/{slug},Partially covered,API-290;API-486,resource-equivalent path elsewhere in catalogue
+W30,doc06 block,POST,/api/v1/public/leads,Covered,API-212,exact
+W30,doc06 block,POST,/api/v1/commercial/portal/requests,Partially covered,API-069,resource-equivalent DERIVED path on same screen
+CAP008,doc06 block,GET,/api/v1/public/preferences/{token},Partially covered,API-081;API-083,resource-equivalent path elsewhere in catalogue
+CAP008,doc06 block,POST,/api/v1/consents,Covered,API-066,exact
+CAP008,doc06 block,POST,/api/v1/opt-out,Covered,API-067,exact
+CAP008,doc06 block,POST,/api/v1/privacy/requests,Covered,API-069,exact
+CAP032,doc06 block,GET,/api/v1/public/forms/{slug},Partially covered,API-221;API-228,resource-equivalent path elsewhere in catalogue
+CAP032,doc06 block,POST,/api/v1/public/leads,Covered,API-212,exact
+CAP043,doc06 block,GET,/api/v1/public/meeting-slots/{token},Not covered,,no exact or equivalent operation
+CAP043,doc06 block,POST,/api/v1/meetings/book,Covered,API-243,exact
+CAP049,doc06 block,POST,/api/v1/public/chat,Covered,API-246,exact
+CAP061,doc06 block,GET,/api/v1/public/pages/{slug},Covered,API-290,exact
+CAP061,doc06 block,POST,/api/v1/public/events,Covered,API-291,exact
+CAP068,doc06 block,GET,/api/v1/public/events/{id},Partially covered,API-115;API-322;API-326,resource-equivalent path elsewhere in catalogue
+CAP068,doc06 block,POST,/api/v1/events/register,Covered,API-296,exact
+CAP070,doc06 block,POST,/api/v1/public/referrals,Covered,API-298,exact
+CAP079,doc06 block,GET,/api/v1/public/agreements/{token},Partially covered,API-358,resource-equivalent path elsewhere in catalogue
+CAP079,doc06 block,POST,/api/v1/public/agreements/{token}/sign,Partially covered,API-359,resource-equivalent path elsewhere in catalogue
+CAP082,doc06 block,GET,/api/v1/public/payment-status/{token},Not covered,,no exact or equivalent operation
+CAP082,doc06 block,POST,/api/v1/invoices/{id}/payment-link,Partially covered,API-398,resource-equivalent path elsewhere in catalogue
+CAP085,doc06 block,GET,/api/v1/public/onboarding/{token},Partially covered,API-412;API-422;API-437,resource-equivalent path elsewhere in catalogue
+CAP085,doc06 block,POST,/api/v1/onboarding/{id}/complete,Covered,API-413,exact
+A001,doc06 block,POST,/auth/login,Covered,API-001,exact
+A001,doc06 block,GET,/me,Covered,API-002,exact
+A001,doc06 block,POST,/auth/logout,Partially covered,API-007,resource-equivalent DERIVED path on same screen
+A002,doc06 block,GET,/me,Covered,API-002,exact
+A002,doc06 block,GET,/admin/users,Partially covered,API-019,resource-equivalent DERIVED path on same screen
+A002,doc06 block,POST,/admin/users/{id}/roles,Not covered,,no exact or equivalent operation
+A003,doc06 block,GET,/me,Covered,API-002,exact
+A004,doc06 block,GET,/api/v1/products,Covered,API-048,exact
+A004,doc06 block,GET,/api/v1/products/{id},Partially covered,API-048,resource-equivalent DERIVED path on same screen
+A004,doc06 block,POST,/api/v1/admin/products,Not covered,,no exact or equivalent operation
+A004,doc06 block,PATCH,/api/v1/admin/products/{id},Not covered,,no exact or equivalent operation
+A004,doc06 block,POST,/api/v1/admin/claims/approve,Covered,API-049,exact
+A004,doc06 block,POST,/api/v1/admin/products/{id}/prices,Partially covered,API-057,resource-equivalent DERIVED path on same screen
+A005,doc06 block,GET,/api/v1/products,Covered,API-048,exact
+A005,doc06 block,GET,/api/v1/products/{id},Partially covered,API-048,resource-equivalent DERIVED path on same screen
+A005,doc06 block,GET,/api/v1/knowledge/search,Covered,API-052,exact
+A006,doc06 block,POST,/api/v1/knowledge/uploads,Covered,API-051,exact
+A006,doc06 block,GET,/api/v1/knowledge/documents,Partially covered,API-061;API-062,resource-equivalent DERIVED path on same screen
+A006,doc06 block,POST,/api/v1/knowledge/documents/{id}/review,Not covered,,no exact or equivalent operation
+A006,doc06 block,GET,/api/v1/knowledge/search,Covered,API-052,exact
+A007,doc06 block,POST,/api/v1/consents,Covered,API-066,exact
+A007,doc06 block,GET,/api/v1/admin/policies,Partially covered,API-071,resource-equivalent DERIVED path on same screen
+A007,doc06 block,POST,/api/v1/admin/policies,Partially covered,API-072;API-073,resource-equivalent DERIVED path on same screen
+A007,doc06 block,GET,/api/v1/admin/suppressions,Partially covered,API-074,resource-equivalent DERIVED path on same screen
+A008,doc06 block,GET,/api/v1/integrations,Covered,API-095,exact
+A008,doc06 block,POST,/api/v1/admin/integrations,Partially covered,API-096;API-097;API-099,resource-equivalent DERIVED path on same screen
+A008,doc06 block,POST,/api/v1/admin/integrations/test,Covered,API-096,exact
+A008,doc06 block,POST,/api/v1/admin/integrations/{id}/disable,Partially covered,API-099,resource-equivalent DERIVED path on same screen
+A009,doc06 block,GET,/api/v1/events,Covered,API-115,exact
+A009,doc06 block,GET,/api/v1/admin/jobs,Partially covered,API-124;API-125,resource-equivalent DERIVED path on same screen
+A009,doc06 block,POST,/api/v1/admin/jobs/{id}/retry,Covered,API-116,exact
+A010,doc06 block,GET,/api/v1/sources,Covered,API-158,exact
+A010,doc06 block,POST,/api/v1/admin/sources,Covered,API-159,exact
+A010,doc06 block,PATCH,/api/v1/admin/sources/{id},Not covered,,no exact or equivalent operation
+A011,doc06 block,GET,/api/v1/admin/ai/runs,Covered,API-135,exact
+A011,doc06 block,POST,/api/v1/admin/ai/prompts,Partially covered,API-142,resource-equivalent DERIVED path on same screen
+A011,doc06 block,GET,/api/v1/admin/ai/eval-cases,Not covered,,no exact or equivalent operation
+A012,doc06 block,GET,/api/v1/admin/costs,Covered,API-136,exact
+A012,doc06 block,POST,/api/v1/admin/budgets,Covered,API-137,exact
+A012,doc06 block,POST,/api/v1/admin/budgets/{id}/pause,Partially covered,API-144,resource-equivalent DERIVED path on same screen
+A013,doc06 block,POST,/api/v1/privacy/requests,Covered,API-069,exact
+A013,doc06 block,GET,/api/v1/admin/privacy/requests,Partially covered,API-084,resource-equivalent DERIVED path on same screen
+A013,doc06 block,POST,/api/v1/admin/privacy/requests/{id}/resolve,Not covered,,no exact or equivalent operation
+A013,doc06 block,POST,/api/v1/admin/retention-policies,Not covered,,no exact or equivalent operation
+A014,doc06 block,GET,/api/v1/admin/jobs,Partially covered,API-124;API-125,resource-equivalent path elsewhere in catalogue
+A014,doc06 block,GET,/api/v1/admin/health,Covered,API-119,exact
+A014,doc06 block,POST,/api/v1/admin/incidents/{id}/resolve,Partially covered,API-130,resource-equivalent DERIVED path on same screen
+A015,doc06 block,GET,/api/v1/sources,Covered,API-158,exact
+A015,doc06 block,GET,/api/v1/research/plans,Partially covered,API-160,"path match, method differs"
+A015,doc06 block,POST,/api/v1/research/plans,Covered,API-160,exact
+A015,doc06 block,POST,/api/v1/research/run,Covered,API-161,exact
+A015,doc06 block,PATCH,/api/v1/research/plans/{id},Partially covered,API-181,resource-equivalent DERIVED path on same screen
+A016,doc06 block,GET,/api/v1/research/results,Covered,API-162,exact
+A016,doc06 block,GET,/api/v1/research/runs/{id},Partially covered,API-183,resource-equivalent DERIVED path on same screen
+A017,doc06 block,GET,/api/v1/admin/ai/runs,Covered,API-135,exact
+A017,doc06 block,GET,/api/v1/evidence/{id},Covered,API-163,exact
+A017,doc06 block,GET,/api/v1/evidence,Partially covered,API-163;API-186,resource-equivalent DERIVED path on same screen
+A018,doc06 block,GET,/api/v1/organizations,Covered,API-164,exact
+A018,doc06 block,POST,/api/v1/organizations,Covered,API-165,exact
+A018,doc06 block,GET,/api/v1/organizations/{id},Partially covered,API-164;API-189,resource-equivalent DERIVED path on same screen
+A018,doc06 block,POST,/api/v1/organizations/{id}/merge,Partially covered,API-190;API-191,resource-equivalent DERIVED path on same screen
+A019,doc06 block,GET,/api/v1/signals,Covered,API-166,exact
+A019,doc06 block,POST,/api/v1/signals/{id}/review,Covered,API-167,exact
+A020,doc06 block,GET,/api/v1/needs,Covered,API-168,exact
+A020,doc06 block,POST,/api/v1/needs/{id}/verify,Covered,API-169,exact
+A021,doc06 block,GET,/api/v1/matches,Partially covered,API-192,resource-equivalent DERIVED path on same screen
+A021,doc06 block,POST,/api/v1/matches/recompute,Covered,API-170,exact
+A022,doc06 block,GET,/api/v1/opportunities,Covered,API-171,exact
+A022,doc06 block,POST,/api/v1/opportunities/{id}/score,Covered,API-172,exact
+A023,doc06 block,GET,/api/v1/research/plans,Partially covered,API-160,"path match, method differs"
+A023,doc06 block,POST,/api/v1/research/plans,Covered,API-160,exact
+A023,doc06 block,PATCH,/api/v1/research/plans/{id},Partially covered,API-181,resource-equivalent path elsewhere in catalogue
+A023,doc06 block,GET,/api/v1/research/runs/{id},Partially covered,API-135;API-139;API-147;API-148,resource-equivalent path elsewhere in catalogue
+A023,doc06 block,GET,/api/v1/evidence,Partially covered,API-163;API-186,resource-equivalent path elsewhere in catalogue
+A023,doc06 block,GET,/api/v1/organizations,Covered,API-164,exact
+A023,doc06 block,GET,/api/v1/signals,Covered,API-166,exact
+A023,doc06 block,POST,/api/v1/admin/signal-types,Not covered,,no exact or equivalent operation
+A023,doc06 block,GET,/api/v1/needs,Covered,API-168,exact
+A023,doc06 block,GET,/api/v1/matches,Partially covered,API-192,resource-equivalent path elsewhere in catalogue
+A023,doc06 block,POST,/api/v1/admin/scoring-rules,Not covered,,no exact or equivalent operation
+A024,doc06 block,GET,/api/v1/organizations/{id}/contacts,Covered,API-173,exact
+A024,doc06 block,POST,/api/v1/organizations/{id}/contacts/discover,Partially covered,API-196,resource-equivalent DERIVED path on same screen
+A025,doc06 block,GET,/api/v1/contacts/verification-queue,Not covered,,no exact or equivalent operation
+A025,doc06 block,POST,/api/v1/contacts/{id}/verify,Covered,API-174,exact
+A025,doc06 block,PATCH,/api/v1/contacts/{id},Partially covered,API-197,resource-equivalent DERIVED path on same screen
+A026,doc06 block,POST,/api/v1/organizations/{id}/merge,Partially covered,API-190;API-198,resource-equivalent DERIVED path on same screen
+A026,doc06 block,GET,/api/v1/organizations/{id}/contacts,Covered,API-173,exact
+A026,doc06 block,POST,/api/v1/admin/role-mappings,Partially covered,API-199,resource-equivalent DERIVED path on same screen
+A026,doc06 block,GET,/api/v1/contacts/verification-queue,Not covered,,no exact or equivalent operation
+A026,doc06 block,PATCH,/api/v1/contacts/{id},Partially covered,API-197,resource-equivalent path elsewhere in catalogue
+A027,doc06 block,GET,/api/v1/opportunities,Covered,API-171,exact
+A027,doc06 block,POST,/api/v1/opportunities/{id}/review,Covered,API-175,exact
+A027,doc06 block,GET,/api/v1/alerts,Covered,API-176,exact
+A027,doc06 block,POST,/api/v1/alerts/{id}/read,Not covered,,no exact or equivalent operation
+A028,doc06 block,GET,/api/v1/alerts,Covered,API-176,exact
+A028,doc06 block,POST,/api/v1/admin/research-review-rules,Not covered,,no exact or equivalent operation
+A029,doc06 block,GET,/api/v1/deals,Covered,API-209,exact
+A029,doc06 block,POST,/api/v1/deals,Covered,API-210,exact
+A029,doc06 block,GET,/api/v1/deals/{id},Partially covered,API-209;API-214;API-217,resource-equivalent DERIVED path on same screen
+A029,doc06 block,POST,/api/v1/deals/{id}/transition,Covered,API-211,exact
+A029,doc06 block,POST,/api/v1/deals/{id}/assign,Partially covered,API-216,resource-equivalent DERIVED path on same screen
+A030,doc06 block,GET,/api/v1/admin/pipeline-stages,Not covered,,no exact or equivalent operation
+A030,doc06 block,POST,/api/v1/admin/pipeline-stages,Not covered,,no exact or equivalent operation
+A030,doc06 block,POST,/api/v1/deals/{id}/assign,Partially covered,API-216,resource-equivalent DERIVED path on same screen
+A031,doc06 block,GET,/api/v1/admin/forms,Partially covered,API-221,resource-equivalent DERIVED path on same screen
+A031,doc06 block,POST,/api/v1/admin/forms,Partially covered,API-222;API-223,resource-equivalent DERIVED path on same screen
+A032,doc06 block,GET,/api/v1/deals/{id},Partially covered,API-209;API-214,resource-equivalent path elsewhere in catalogue
+A032,doc06 block,GET,/api/v1/organizations/{id}/360,Covered,API-213,exact
+A032,doc06 block,POST,/api/v1/engagement/check,Covered,API-068,exact
+A033,doc06 block,POST,/api/v1/admin/budgets/{id}/pause,Partially covered,API-445,resource-equivalent DERIVED path on same screen
+A033,doc06 block,GET,/api/v1/workflows,Covered,API-444,exact
+A033,doc06 block,POST,/api/v1/admin/workflows,Partially covered,API-445;API-446;API-448;API-449,resource-equivalent DERIVED path on same screen
+A033,doc06 block,POST,/api/v1/admin/workflows/pause,Covered,API-445,exact
+A033,doc06 block,POST,/api/v1/admin/workflows/{id}/resume,Not covered,,no exact or equivalent operation
+A033,doc06 block,GET,/api/v1/workflows/{id}/executions,Not covered,,no exact or equivalent operation
+A034,doc06 block,POST,/api/v1/engagement/check,Covered,API-068,exact
+A034,doc06 block,POST,/api/v1/messages/draft,Covered,API-237,exact
+A034,doc06 block,POST,/api/v1/messages/drafts/{id}/review,Not covered,,no exact or equivalent operation
+A034,doc06 block,POST,/api/v1/messages/send,Covered,API-238,exact
+A035,doc06 block,GET,/api/v1/admin/message-templates,Not covered,,no exact or equivalent operation
+A035,doc06 block,POST,/api/v1/admin/message-templates,Not covered,,no exact or equivalent operation
+A035,doc06 block,POST,/api/v1/messages/drafts/{id}/review,Not covered,,no exact or equivalent operation
+A035,doc06 block,GET,/api/v1/admin/approvals,Partially covered,API-540;API-542,resource-equivalent path elsewhere in catalogue
+A035,doc06 block,POST,/api/v1/threads/{id}/handoff,Not covered,,no exact or equivalent operation
+A036,doc06 block,POST,/api/v1/admin/integrations,Partially covered,API-097,resource-equivalent path elsewhere in catalogue
+A036,doc06 block,POST,/api/v1/admin/integrations/test,Covered,API-096,exact
+A037,doc06 block,POST,/api/v1/messages/send,Covered,API-238,exact
+A037,doc06 block,POST,/api/v1/webhooks/email,Covered,API-239,exact
+A037,doc06 block,GET,/api/v1/messages/{id},Not covered,,no exact or equivalent operation
+A037,doc06 block,POST,/api/v1/webhooks/inbound,Covered,API-240,exact
+A037,doc06 block,GET,/api/v1/threads,Covered,API-241,exact
+A037,doc06 block,GET,/api/v1/threads/{id}/messages,Not covered,,no exact or equivalent operation
+A037,doc06 block,POST,/api/v1/threads/{id}/handoff,Not covered,,no exact or equivalent operation
+A037,doc06 block,GET,/api/v1/inbox,Covered,API-247,exact
+A038,doc06 block,GET,/api/v1/sequences,Partially covered,API-261,resource-equivalent DERIVED path on same screen
+A038,doc06 block,POST,/api/v1/sequences/{id}/enroll,Covered,API-242,exact
+A038,doc06 block,POST,/api/v1/enrollments/{id}/stop,Partially covered,API-264,resource-equivalent DERIVED path on same screen
+A038,doc06 block,GET,/api/v1/enrollments,Partially covered,API-263,resource-equivalent DERIVED path on same screen
+A038,doc06 block,GET,/api/v1/tasks,Partially covered,API-265,resource-equivalent DERIVED path on same screen
+A038,doc06 block,PATCH,/api/v1/tasks/{id},Partially covered,API-266,resource-equivalent path elsewhere in catalogue
+A039,doc06 block,GET,/api/v1/sequences,Partially covered,API-261,resource-equivalent DERIVED path on same screen
+A039,doc06 block,POST,/api/v1/admin/sequences,Partially covered,API-262,resource-equivalent DERIVED path on same screen
+A039,doc06 block,POST,/api/v1/enrollments/{id}/stop,Partially covered,API-264;API-458,resource-equivalent path elsewhere in catalogue
+A040,doc06 block,GET,/api/v1/meetings,Partially covered,API-268,resource-equivalent DERIVED path on same screen
+A040,doc06 block,POST,/api/v1/meetings/book,Covered,API-243,exact
+A040,doc06 block,POST,/api/v1/webhooks/calendar,Covered,API-244,exact
+A041,doc06 block,POST,/api/v1/admin/calendar-links,Not covered,,no exact or equivalent operation
+A042,doc06 block,GET,/api/v1/metrics/funnel,Covered,API-537,exact
+A042,doc06 block,GET,/api/v1/tasks,Partially covered,API-265,resource-equivalent DERIVED path on same screen
+A042,doc06 block,PATCH,/api/v1/tasks/{id},Partially covered,API-266,resource-equivalent DERIVED path on same screen
+A043,doc06 block,GET,/api/v1/metrics/funnel,Covered,API-537,exact
+A043,doc06 block,GET,/api/v1/tasks,Partially covered,API-265,resource-equivalent path elsewhere in catalogue
+A044,doc06 block,GET,/api/v1/admin/whatsapp/accounts,Not covered,,no exact or equivalent operation
+A044,doc06 block,POST,/api/v1/admin/whatsapp/accounts,Partially covered,API-107,resource-equivalent DERIVED path on same screen
+A044,doc06 block,POST,/api/v1/admin/whatsapp/templates,Partially covered,API-108,resource-equivalent DERIVED path on same screen
+A045,doc06 block,POST,/api/v1/messages/send,Covered,API-238,exact
+A045,doc06 block,GET,/api/v1/webhooks/whatsapp,Covered,API-249,exact
+A045,doc06 block,POST,/api/v1/webhooks/whatsapp,Covered,API-245,exact
+A045,doc06 block,GET,/api/v1/whatsapp/conversations,Not covered,,no exact or equivalent operation
+A045,doc06 block,GET,/api/v1/inbox,Covered,API-247,exact
+A045,doc06 block,POST,/api/v1/threads/{id}/assign,Covered,API-248,exact
+A046,doc06 block,POST,/api/v1/admin/chat/settings,Not covered,,no exact or equivalent operation
+A046,doc06 block,GET,/api/v1/inbox,Covered,API-247,exact
+A046,doc06 block,POST,/api/v1/threads/{id}/assign,Covered,API-248,exact
+A046,doc06 block,POST,/api/v1/admin/routing-rules,Partially covered,API-283,resource-equivalent DERIVED path on same screen
+A047,doc06 block,GET,/api/v1/admin/compliance,Covered,API-070,exact
+A047,doc06 block,POST,/api/v1/admin/compliance/{id}/resolve,Partially covered,API-094,resource-equivalent DERIVED path on same screen
+A048,doc06 block,GET,/api/v1/social/signals,Covered,API-177,exact
+A049,doc06 block,POST,/api/v1/admin/social/sources,Partially covered,API-206,resource-equivalent DERIVED path on same screen
+A050,doc06 block,GET,/api/v1/content,Partially covered,API-299;API-300,resource-equivalent DERIVED path on same screen
+A050,doc06 block,POST,/api/v1/content/draft,Covered,API-284,exact
+A050,doc06 block,PATCH,/api/v1/content/{id},Not covered,,no exact or equivalent operation
+A051,doc06 block,GET,/api/v1/admin/approvals,Partially covered,API-542,resource-equivalent DERIVED path on same screen
+A051,doc06 block,GET,/api/v1/content,Partially covered,API-299;API-300,resource-equivalent path elsewhere in catalogue
+A051,doc06 block,POST,/api/v1/content/{id}/approve,Covered,API-285,exact
+A052,doc06 block,GET,/api/v1/social/posts,Partially covered,API-286,"path match, method differs"
+A052,doc06 block,POST,/api/v1/social/posts,Covered,API-286,exact
+A052,doc06 block,GET,/api/v1/social/status,Covered,API-287,exact
+A052,doc06 block,POST,/api/v1/social/posts/{id}/cancel,Partially covered,API-303,resource-equivalent DERIVED path on same screen
+A053,doc06 block,GET,/api/v1/social/posts,Partially covered,API-286,"path match, method differs"
+A053,doc06 block,GET,/api/v1/social/status,Covered,API-287,exact
+A053,doc06 block,POST,/api/v1/admin/social/accounts,Partially covered,API-113;API-114,resource-equivalent DERIVED path on same screen
+A053,doc06 block,POST,/api/v1/social/posts/{id}/cancel,Partially covered,API-303,resource-equivalent DERIVED path on same screen
+A054,doc06 block,GET,/api/v1/seo/audit,Covered,API-288,exact
+A054,doc06 block,POST,/api/v1/seo/audit/run,Partially covered,API-134;API-138;API-161;API-533,resource-equivalent path elsewhere in catalogue
+A055,doc06 block,GET,/api/v1/seo/audit,Covered,API-288,exact
+A055,doc06 block,POST,/api/v1/seo/tasks,Covered,API-289,exact
+A056,doc06 block,GET,/api/v1/landing-pages,Partially covered,API-308,resource-equivalent DERIVED path on same screen
+A056,doc06 block,POST,/api/v1/landing-pages,Partially covered,API-309,resource-equivalent DERIVED path on same screen
+A057,doc06 block,GET,/api/v1/landing-pages,Partially covered,API-308,resource-equivalent path elsewhere in catalogue
+A057,doc06 block,POST,/api/v1/landing-pages/{id}/publish,Partially covered,API-073;API-223,resource-equivalent path elsewhere in catalogue
+A058,doc06 block,GET,/api/v1/campaigns,Partially covered,API-292,"path match, method differs"
+A058,doc06 block,POST,/api/v1/campaigns,Covered,API-292,exact
+A059,doc06 block,GET,/api/v1/admin/approvals,Partially covered,API-540;API-542,resource-equivalent path elsewhere in catalogue
+A059,doc06 block,GET,/api/v1/campaigns,Partially covered,API-292,"path match, method differs"
+A059,doc06 block,POST,/api/v1/campaigns/{id}/approve,Covered,API-293,exact
+A059,doc06 block,POST,/api/v1/campaigns/{id}/pause,Not covered,,no exact or equivalent operation
+A060,doc06 block,POST,/api/v1/ads/drafts,Covered,API-294,exact
+A060,doc06 block,GET,/api/v1/ads/metrics,Covered,API-295,exact
+A061,doc06 block,GET,/api/v1/ads/metrics,Covered,API-295,exact
+A061,doc06 block,POST,/api/v1/ads/{id}/launch,Partially covered,API-318,resource-equivalent DERIVED path on same screen
+A061,doc06 block,POST,/api/v1/ads/{id}/pause,Partially covered,API-319,resource-equivalent DERIVED path on same screen
+A062,doc06 block,GET,/api/v1/events/business,Not covered,,no exact or equivalent operation
+A062,doc06 block,POST,/api/v1/events/business,Not covered,,no exact or equivalent operation
+A062,doc06 block,POST,/api/v1/webhooks/events,Covered,API-297,exact
+A063,doc06 block,GET,/api/v1/events/business,Not covered,,no exact or equivalent operation
+A063,doc06 block,POST,/api/v1/admin/events/{id}/settings,Not covered,,no exact or equivalent operation
+A064,doc06 block,GET,/api/v1/admin/referrals,Partially covered,API-327,resource-equivalent DERIVED path on same screen
+A064,doc06 block,POST,/api/v1/admin/referrals/{id}/review,Not covered,,no exact or equivalent operation
+A065,doc06 block,GET,/api/v1/deals/{id}/proposals,Partially covered,API-328,"path match, method differs"
+A065,doc06 block,POST,/api/v1/deals/{id}/proposals,Covered,API-328,exact
+A066,doc06 block,GET,/api/v1/admin/approvals,Partially covered,API-542,resource-equivalent DERIVED path on same screen
+A066,doc06 block,GET,/api/v1/deals/{id}/proposals,Partially covered,API-328,"path match, method differs"
+A066,doc06 block,POST,/api/v1/proposals/{id}/review,Not covered,,no exact or equivalent operation
+A067,doc06 block,GET,/api/v1/quotes,Partially covered,API-329,"path match, method differs"
+A067,doc06 block,POST,/api/v1/quotes,Covered,API-329,exact
+A068,doc06 block,GET,/api/v1/quotes,Partially covered,API-329,"path match, method differs"
+A068,doc06 block,POST,/api/v1/quotes/{id}/approve,Covered,API-330,exact
+A069,doc06 block,GET,/api/v1/deals/{id}/objections,Partially covered,API-331,"path match, method differs"
+A069,doc06 block,POST,/api/v1/deals/{id}/objections,Covered,API-331,exact
+A070,doc06 block,GET,/api/v1/deals/{id}/objections,Partially covered,API-331,"path match, method differs"
+A070,doc06 block,POST,/api/v1/negotiations/{id}/review,Not covered,,no exact or equivalent operation
+A071,doc06 block,GET,/api/v1/contracts,Partially covered,API-332,"path match, method differs"
+A071,doc06 block,POST,/api/v1/contracts,Covered,API-332,exact
+A071,doc06 block,POST,/api/v1/webhooks/esign,Covered,API-333,exact
+A072,doc06 block,GET,/api/v1/contracts,Partially covered,API-332,"path match, method differs"
+A072,doc06 block,POST,/api/v1/contracts/{id}/approve,Not covered,,no exact or equivalent operation
+A073,doc06 block,GET,/api/v1/deals/{id}/payments,Partially covered,API-393,resource-equivalent DERIVED path on same screen
+A073,doc06 block,POST,/api/v1/deals/{id}/invoices,Partially covered,API-390;API-392,resource-equivalent DERIVED path on same screen
+A073,doc06 block,POST,/api/v1/webhooks/payment,Covered,API-385,exact
+A073,doc06 block,POST,/api/v1/deals/{id}/close,Covered,API-386,exact
+A073,doc06 block,POST,/api/v1/invoices/{id}/payment-link,Partially covered,API-398,resource-equivalent path elsewhere in catalogue
+A074,doc06 block,GET,/api/v1/deals/{id}/payments,Partially covered,API-393,resource-equivalent DERIVED path on same screen
+A074,doc06 block,POST,/api/v1/webhooks/payment,Covered,API-385,exact
+A074,doc06 block,POST,/api/v1/deals/{id}/close,Covered,API-386,exact
+A074,doc06 block,POST,/api/v1/payments/{id}/reconcile,Partially covered,API-154;API-254;API-304,resource-equivalent path elsewhere in catalogue
+A075,doc06 block,GET,/api/v1/onboarding,Covered,API-412,exact
+A075,doc06 block,POST,/api/v1/onboarding/{id}/complete,Covered,API-413,exact
+A076,doc06 block,GET,/api/v1/onboarding,Covered,API-412,exact
+A076,doc06 block,POST,/api/v1/onboarding/{id}/assign,Partially covered,API-425,resource-equivalent DERIVED path on same screen
+A077,doc06 block,GET,/api/v1/partners,Partially covered,API-414,"path match, method differs"
+A077,doc06 block,POST,/api/v1/partners,Covered,API-414,exact
+A077,doc06 block,POST,/api/v1/pilots/{id}/status,Covered,API-415,exact
+A077,doc06 block,POST,/api/v1/partner-pilots,Not covered,,no exact or equivalent operation
+A078,doc06 block,GET,/api/v1/partners,Partially covered,API-414,"path match, method differs"
+A078,doc06 block,POST,/api/v1/pilots/{id}/status,Covered,API-415,exact
+A079,doc06 block,GET,/api/v1/renewals,Covered,API-416,exact
+A079,doc06 block,POST,/api/v1/renewals/{id}/review,Covered,API-417,exact
+A080,doc06 block,GET,/api/v1/renewals,Covered,API-416,exact
+A080,doc06 block,POST,/api/v1/admin/renewal-policies,Not covered,,no exact or equivalent operation
+A081,doc06 block,POST,/api/v1/deals/{id}/lost,Covered,API-387,exact
+A081,doc06 block,POST,/api/v1/feedback,Covered,API-418,exact
+A081,doc06 block,GET,/api/v1/feedback,Partially covered,API-418,"path match, method differs"
+A082,doc06 block,GET,/api/v1/metrics/revenue,Covered,API-388,exact
+A083,doc06 block,GET,/api/v1/metrics/revenue,Covered,API-388,exact
+A083,doc06 block,POST,/api/v1/admin/kpi-definitions,Not covered,,no exact or equivalent operation
+A084,doc06 block,POST,/api/v1/feedback,Covered,API-418,exact
+A084,doc06 block,GET,/api/v1/feedback,Partially covered,API-418,"path match, method differs"
+A084,doc06 block,POST,/api/v1/admin/evals/run,Covered,API-138,exact
+A084,doc06 block,GET,/api/v1/admin/evals/results,Partially covered,API-162,resource-equivalent path elsewhere in catalogue
+A085,doc06 block,GET,/api/v1/market/competitors,Covered,API-178,exact
+A086,doc06 block,GET,/api/v1/market/competitors,Covered,API-178,exact
+A086,doc06 block,POST,/api/v1/admin/competitor-sources,Not covered,,no exact or equivalent operation
+A087,doc06 block,GET,/api/v1/metrics/forecast,Covered,API-389,exact
+A088,doc06 block,GET,/api/v1/metrics/forecast,Covered,API-389,exact
+A088,doc06 block,POST,/api/v1/admin/forecast-settings,Not covered,,no exact or equivalent operation
+A089,doc06 block,GET,/api/v1/admin/approvals,Partially covered,API-540,resource-equivalent DERIVED path on same screen
+A089,doc06 block,GET,/api/v1/admin/dashboard,Covered,API-538,exact
+A089,doc06 block,POST,/api/v1/admin/approvals/{id}/decide,Covered,API-539,exact
+A090,doc06 block,GET,/api/v1/admin/releases,Covered,API-120,exact
+A090,doc06 block,POST,/api/v1/admin/releases/{id}/approve,Partially covered,API-132,resource-equivalent DERIVED path on same screen
+A091,doc06 block,GET,/api/v1/insurance/pilots,Not covered,,no exact or equivalent operation
+A091,doc06 block,POST,/api/v1/pilots,Covered,API-419,exact
+A092,doc06 block,GET,/api/v1/insurance/pilots,Not covered,,no exact or equivalent operation
+A092,doc06 block,POST,/api/v1/insurance/pilots/{id}/approve,Not covered,,no exact or equivalent operation
+A093,doc06 block,GET,/api/v1/integration-enquiries,Partially covered,API-420,"path match, method differs"
+A093,doc06 block,POST,/api/v1/integration-enquiries,Covered,API-420,exact
+A094,doc06 block,GET,/api/v1/integration-enquiries,Partially covered,API-420,"path match, method differs"
+A094,doc06 block,POST,/api/v1/integration-enquiries/{id}/approve,Not covered,,no exact or equivalent operation
+A095,doc06 block,GET,/api/v1/deployments,Covered,API-421,exact
+A095,doc06 block,PATCH,/api/v1/deployments/{id},Partially covered,API-435,resource-equivalent DERIVED path on same screen
+A096,doc06 block,GET,/api/v1/deployments,Covered,API-421,exact
+A096,doc06 block,POST,/api/v1/deployments/{id}/approve,Not covered,,no exact or equivalent operation
+A097,doc06 block,GET,/api/v1/admin/products/planned,Partially covered,API-064,resource-equivalent DERIVED path on same screen
+A098,doc06 block,GET,/api/v1/admin/products/planned,Partially covered,API-064,resource-equivalent path elsewhere in catalogue
+A098,doc06 block,POST,/api/v1/admin/products/{id}/launch,Covered,API-050,exact
+A099,doc06 block,GET,/api/v1/sales/tenants,Partially covered,API-026,resource-equivalent DERIVED path on same screen
+A099,doc06 block,POST,/api/v1/sales/tenants,Partially covered,API-027;API-028,resource-equivalent DERIVED path on same screen
+A099,doc06 block,POST,/api/v1/sales/tenants/{id}/control,Not covered,,no exact or equivalent operation
+A099,doc06 block,GET,/api/v1/sales/startups,Partially covered,API-029,resource-equivalent DERIVED path on same screen
+A099,doc06 block,POST,/api/v1/sales/startups,Partially covered,API-030,resource-equivalent DERIVED path on same screen
+A099,doc06 block,PATCH,/api/v1/sales/startups/{id},Not covered,,no exact or equivalent operation
+A099,doc06 block,POST,/api/v1/sales/memberships,Not covered,,no exact or equivalent operation
+A099,doc06 block,POST,/api/v1/sales/support-grants,Partially covered,API-024,resource-equivalent DERIVED path on same screen
+A100,doc06 block,GET,/api/v1/sales/templates,Partially covered,API-033,resource-equivalent DERIVED path on same screen
+A100,doc06 block,POST,/api/v1/sales/templates,Partially covered,API-034;API-035;API-036;API-037,resource-equivalent DERIVED path on same screen
+A100,doc06 block,POST,/api/v1/sales/templates/{id}/control,Not covered,,no exact or equivalent operation
+A100,doc06 block,GET,/api/v1/sales/domains,Partially covered,API-044,resource-equivalent DERIVED path on same screen
+A100,doc06 block,POST,/api/v1/sales/domains,Partially covered,API-045,resource-equivalent path elsewhere in catalogue
+A100,doc06 block,POST,/api/v1/sales/domains/{id}/control,Not covered,,no exact or equivalent operation
+A101,doc06 block,GET,/api/v1/sales/service-plans,Not covered,,no exact or equivalent operation
+A101,doc06 block,POST,/api/v1/sales/service-plans,Not covered,,no exact or equivalent operation
+A101,doc06 block,GET,/api/v1/sales/service-subscriptions,Not covered,,no exact or equivalent operation
+A101,doc06 block,POST,/api/v1/sales/service-subscriptions/{id}/control,Not covered,,no exact or equivalent operation
+A101,doc06 block,GET,/api/v1/sales/service-invoices,Partially covered,API-526,resource-equivalent DERIVED path on same screen
+A101,doc06 block,POST,/api/v1/sales/service-invoices/{id}/reconcile,Partially covered,API-154;API-254;API-304,resource-equivalent path elsewhere in catalogue
+A101,doc06 block,GET,/api/v1/sales/usage-charges,Not covered,,no exact or equivalent operation
+A101,doc06 block,POST,/api/v1/sales/usage-charges/{id}/adjust,Not covered,,no exact or equivalent operation
+A102,doc06 block,GET,/api/v1/sales/action-plans,Not covered,,no exact or equivalent operation
+A102,doc06 block,POST,/api/v1/sales/action-plans,Not covered,,no exact or equivalent operation
+A102,doc06 block,POST,/api/v1/sales/action-plans/{id}/control,Not covered,,no exact or equivalent operation
+A103,doc06 block,GET,/api/v1/sales/data-transfers,Not covered,,no exact or equivalent operation
+A103,doc06 block,POST,/api/v1/sales/data-transfers,Not covered,,no exact or equivalent operation
+A103,doc06 block,POST,/api/v1/sales/data-transfers/{id}/complete,Not covered,,no exact or equivalent operation
+A103,doc06 block,POST,/api/v1/sales/data-transfers/{id}/control,Not covered,,no exact or equivalent operation
+A103,doc06 block,GET,/api/v1/sales/data-transfers/{id}/download,Partially covered,API-535,resource-equivalent DERIVED path on same screen
+A104,doc06 block,GET,/api/v1/sales/bids,Partially covered,API-362;API-364,resource-equivalent DERIVED path on same screen
+A104,doc06 block,POST,/api/v1/sales/bids,Partially covered,API-363;API-366;API-367;API-368,resource-equivalent DERIVED path on same screen
+A104,doc06 block,PATCH,/api/v1/sales/bids/{id},Partially covered,API-365,resource-equivalent DERIVED path on same screen
+A104,doc06 block,POST,/api/v1/sales/bids/{id}/control,Not covered,,no exact or equivalent operation
+A105,doc06 block,GET,/api/v1/sales/orders,Partially covered,API-370;API-372,resource-equivalent DERIVED path on same screen
+A105,doc06 block,POST,/api/v1/sales/orders,Partially covered,API-371;API-374;API-375;API-376,resource-equivalent DERIVED path on same screen
+A105,doc06 block,PATCH,/api/v1/sales/orders/{id},Partially covered,API-373,resource-equivalent DERIVED path on same screen
+A105,doc06 block,POST,/api/v1/sales/orders/{id}/control,Not covered,,no exact or equivalent operation
+A105,doc06 block,POST,/api/v1/sales/orders/{id}/milestones,Not covered,,no exact or equivalent operation
+A105,doc06 block,POST,/api/v1/sales/milestones/{id}/accept,Partially covered,API-151;API-356,resource-equivalent path elsewhere in catalogue
+A106,doc06 block,GET,/api/v1/sales/notifications,Partially covered,API-549,resource-equivalent DERIVED path on same screen
+A106,doc06 block,PATCH,/api/v1/sales/notifications/{id},Not covered,,no exact or equivalent operation
+A107,doc06 block,GET,/api/v1/commercial/admin/website/pages,Partially covered,API-486,resource-equivalent DERIVED path on same screen
+A107,doc06 block,POST,/api/v1/commercial/admin/website/pages,Partially covered,API-487;API-489,resource-equivalent DERIVED path on same screen
+A108,doc06 block,GET,/api/v1/commercial/admin/website/pages,Partially covered,API-290;API-486,resource-equivalent path elsewhere in catalogue
+A108,doc06 block,POST,/api/v1/commercial/admin/website/pages/{id}/control,Not covered,,no exact or equivalent operation
+W31,doc06 decisions,GET,/api/v1/commercial/workspace/public/plans,Partially covered,API-501,resource-equivalent DERIVED path on same screen
+W32,doc06 decisions,POST,/api/v1/commercial/workspace/public/applications,Partially covered,API-503;API-505;API-506,resource-equivalent DERIVED path on same screen
+W33,doc06 decisions,GET,/api/v1/commercial/workspace/onboarding/{id},Partially covered,API-412;API-422;API-437,resource-equivalent path elsewhere in catalogue
+W33,doc06 decisions,PATCH,/api/v1/commercial/workspace/onboarding/{id},Partially covered,API-509,resource-equivalent DERIVED path on same screen
+W33,doc06 decisions,POST,/api/v1/commercial/workspace/onboarding/{id}/submit,Partially covered,API-511,resource-equivalent DERIVED path on same screen
+W34,doc06 decisions,GET,/api/v1/commercial/workspace/client/service,Partially covered,API-513;API-514;API-515;API-518,resource-equivalent DERIVED path on same screen
+W34,doc06 decisions,POST,/api/v1/commercial/workspace/client/service-requests,Not covered,,no exact or equivalent operation
+A109,doc06 decisions,GET,/api/v1/commercial/workspace/admin/triggers,Partially covered,API-459,resource-equivalent DERIVED path on same screen
+A109,doc06 decisions,POST,/api/v1/commercial/workspace/admin/triggers,Partially covered,API-460;API-462;API-463;API-464,resource-equivalent DERIVED path on same screen
+A109,doc06 decisions,POST,/api/v1/commercial/workspace/admin/triggers/{id}/control,Not covered,,no exact or equivalent operation
+A110,doc06 decisions,GET,/api/v1/commercial/workspace/admin/executions,Not covered,,no exact or equivalent operation
+A111,doc06 decisions,GET,/api/v1/commercial/workspace/admin/conflicts,Partially covered,API-473;API-474,resource-equivalent DERIVED path on same screen
+A111,doc06 decisions,POST,/api/v1/commercial/workspace/admin/conflicts/{id}/resolve,Partially covered,API-475,resource-equivalent DERIVED path on same screen
+A112,doc06 decisions,GET,/api/v1/commercial/workspace/admin/configurations,Not covered,,no exact or equivalent operation
+A112,doc06 decisions,POST,/api/v1/commercial/workspace/admin/configurations,Not covered,,no exact or equivalent operation
+A112,doc06 decisions,POST,/api/v1/commercial/workspace/admin/configurations/{id}/control,Not covered,,no exact or equivalent operation
+A113,doc06 decisions,GET,/api/v1/commercial/workspace/admin/automation-templates,Not covered,,no exact or equivalent operation
+A113,doc06 decisions,POST,/api/v1/commercial/workspace/admin/automation-templates,Not covered,,no exact or equivalent operation
+A113,doc06 decisions,POST,/api/v1/commercial/workspace/admin/automation-templates/{id}/control,Not covered,,no exact or equivalent operation
+OPT-INT,doc06 optimization intelligence,GET,/api/v1/admin/approvals,Partially covered,API-540;API-542,resource-equivalent path elsewhere in catalogue
+OPT-INT,doc06 optimization intelligence,GET,/api/v1/admin/dashboard,Covered,API-538,exact
+OPT-INT,doc06 optimization intelligence,POST,/api/v1/admin/approvals/{id}/decide,Covered,API-539,exact
+OPT-INT,doc06 optimization intelligence,GET,/api/v1/events,Covered,API-115,exact
+OPT-INT,doc06 optimization intelligence,GET,/api/v1/admin/jobs,Partially covered,API-124;API-125,resource-equivalent path elsewhere in catalogue
+OPT-INT,doc06 optimization intelligence,POST,/api/v1/admin/jobs/{id}/retry,Covered,API-116,exact
+OPT-INT,doc06 optimization intelligence,GET,/api/v1/admin/costs,Covered,API-136,exact
+OPT-INT,doc06 optimization intelligence,POST,/api/v1/admin/budgets,Covered,API-137,exact
+OPT-INT,doc06 optimization intelligence,POST,/api/v1/admin/budgets/{id}/pause,Not covered,,no exact or equivalent operation
+OPT-INT,doc06 optimization intelligence,GET,/api/v1/admin/health,Covered,API-119,exact
+OPT-INT,doc06 optimization intelligence,POST,/api/v1/admin/incidents/{id}/resolve,Not covered,,no exact or equivalent operation
+OPT-INT,doc06 optimization intelligence,POST,/api/v1/feedback,Covered,API-418,exact
+OPT-INT,doc06 optimization intelligence,GET,/api/v1/feedback,Partially covered,API-418,"path match, method differs"
+OPT-INT,doc06 optimization intelligence,POST,/api/v1/admin/evals/run,Covered,API-138,exact
+OPT-INT,doc06 optimization intelligence,GET,/api/v1/admin/evals/results,Partially covered,API-162,resource-equivalent path elsewhere in catalogue
+OPT-INT,doc06 optimization intelligence,GET,/api/v1/metrics/funnel,Covered,API-537,exact
+OPT-INT,doc06 optimization intelligence,GET,/api/v1/tasks,Partially covered,API-265,resource-equivalent path elsewhere in catalogue
+OPT-INT,doc06 optimization intelligence,PATCH,/api/v1/tasks/{id},Partially covered,API-266,resource-equivalent path elsewhere in catalogue
+OPT-INT,doc06 optimization intelligence,GET,/api/v1/metrics/revenue,Covered,API-388,exact

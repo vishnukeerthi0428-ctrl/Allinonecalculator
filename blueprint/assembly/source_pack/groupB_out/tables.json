@@ -1,0 +1,2444 @@
+{
+ "04": [
+  {
+   "section": "Initial startup configurations",
+   "line": 12,
+   "header": [
+    "Legal entity",
+    "Business profile",
+    "Commercial focus"
+   ],
+   "rows": [
+    [
+     "AppNAI Technologies Pvt. Ltd.",
+     "Worldwide AI project bidding, AI/GenAI software development, engineering, consulting and delivery",
+     "Global enterprises, IT firms, procurement portals; project, bid, deadline, technology and delivery model"
+    ],
+    [
+     "MedMaarg Healthcare Solutions Pvt. Ltd.",
+     "AppNAI-powered AI Hospital: Wellness AI Scanner, Planner, Advisor; Doctor Connect, Pathology Lab Connect; preventive wellness and healthcare partnerships",
+     "Hospitals, clinics, doctors, diagnostic labs, insurers, corporates, universities; offering, organization, demo/pilot and geography"
+    ],
+    [
+     "EduVerse Future Skills Pvt. Ltd.",
+     "AI Skill School: student training in GenAI, ML, DL, NLP, CV, AI Backend, AI Frontend, AWS/cloud deployment; school-level AI education, educational products and innovative services; institutional/corporate training",
+     "Students/guardians, schools, colleges, universities, employers; programme, domain, grade band, cohort, mode, product/service"
+    ],
+    [
+     "OrganicSpec Pvt. Ltd.",
+     "Organic products, buying, selling, agriculture services and training; RamVan and Smart Biochar subject to approved readiness",
+     "Buyers, suppliers, distributors, FPOs, institutions; trade direction, SKU, quantity/unit, quality, price, location and delivery"
+    ]
+   ]
+  },
+  {
+   "section": "Independent deployment topology",
+   "line": 38,
+   "header": [
+    "Layer",
+    "Design contract"
+   ],
+   "rows": [
+    [
+     "Browser",
+     "Separate product origin and routes; shared component library only; authorized tenant/startup and scoped cache"
+    ],
+    [
+     "Identity",
+     "Existing SSO if compatible; unique audience, independent memberships and token invalidation"
+    ],
+    [
+     "API",
+     "Independent Django app/runtime, serializers, permissions, scoped query and domain transactions"
+    ],
+    [
+     "Domain",
+     "Market, marketing, account, bidding, procurement, sales and renewal only"
+    ],
+    [
+     "Persistence",
+     "Independent PostgreSQL, credentials, migrations, storage keys and vector namespace"
+    ],
+    [
+     "Workers",
+     "Separate broker/queue namespace, schedule, outbox, budget reservation and dead letter queue"
+    ],
+    [
+     "External adapters",
+     "Account-bound secrets, validated callbacks, independent quotas; no cross-product dispatch"
+    ],
+    [
+     "Admin",
+     "Product-specific policy, tenant support, billing, audit and emergency stops"
+    ],
+    [
+     "Operations",
+     "Independent deployment, health, logs, backup restore, incident and recovery; no shared confidential logs"
+    ]
+   ]
+  },
+  {
+   "section": "Capacity, reliability and recovery acceptance",
+   "line": 74,
+   "header": [
+    "Metric",
+    "Initial target",
+    "Growth target"
+   ],
+   "rows": [
+    [
+     "Owned startups / external tenants",
+     "25 / 10",
+     "50+ / 100"
+    ],
+    [
+     "Concurrent staff sessions",
+     "50",
+     "250"
+    ],
+    [
+     "Scoped opportunities",
+     "100,000",
+     "1,000,000"
+    ],
+    [
+     "Concurrent jobs / scheduled actions/day",
+     "50 / 10,000",
+     "250 / 100,000"
+    ],
+    [
+     "Dashboard query p95",
+     "≤2 s",
+     "≤2.5 s"
+    ],
+    [
+     "Async/webhook acknowledgement p95",
+     "≤2 s",
+     "≤2 s"
+    ],
+    [
+     "Projection refresh",
+     "≤60 s",
+     "≤60 s"
+    ],
+    [
+     "Critical data RPO / RTO",
+     "≤15 min / ≤4 h",
+     "≤15 min / ≤2 h"
+    ],
+    [
+     "Regenerable research RPO/RTO",
+     "≤24 h / ≤8 h",
+     "≤24 h / ≤8 h"
+    ]
+   ]
+  },
+  {
+   "section": "Dependency-ordered implementation and operations",
+   "line": 120,
+   "header": [
+    "Order",
+    "Work package",
+    "Completion evidence"
+   ],
+   "rows": [
+    [
+     "1",
+     "Tenant/product boundaries and reuse",
+     "Identity compatibility, separate database/roles, scope and negative tests"
+    ],
+    [
+     "2",
+     "Startup configuration and source policies",
+     "Templates, approved thesis/offerings, contacts and permission"
+    ],
+    [
+     "3",
+     "Discovery and qualification",
+     "Evidence, scoring and dedupe, directory and workflow"
+    ],
+    [
+     "4",
+     "Engagement and follow-up",
+     "Approved channels, inbox, suppression, objections and meetings"
+    ],
+    [
+     "5",
+     "Route-specific conversion",
+     "Bid, campaign, proposal, quote, commercial agreement, order and fulfillment"
+    ],
+    [
+     "6",
+     "Independent operations",
+     "Billing, usage, planner, alerts, portability, retention, audit"
+    ],
+    [
+     "7",
+     "Production verification",
+     "Tests, migration/restore, provider entitlement, approvals, monitored deployment"
+    ]
+   ]
+  },
+  {
+   "section": "Commercial module delivery backlog",
+   "line": 156,
+   "header": [
+    "Sequence",
+    "Module",
+    "Dependency / acceptance"
+   ],
+   "rows": [
+    [
+     "1",
+     "Identity & access",
+     "H02,H03 | Existing capability; validate growth/admin access before launch (not new build)."
+    ],
+    [
+     "2",
+     "Product knowledge catalog",
+     "Identity & access | Planned products blocked from promotion"
+    ],
+    [
+     "3",
+     "Knowledge document ingestion",
+     "Product knowledge catalog | Every answer cites approved version"
+    ],
+    [
+     "4",
+     "Consent and suppression",
+     "Identity & access | Opt-out blocks all scoped sends"
+    ],
+    [
+     "5",
+     "Integration registry",
+     "Identity & access; Consent and suppression | Secrets never returned in API"
+    ],
+    [
+     "6",
+     "Event and audit foundation",
+     "Identity & access | Duplicate delivery has one effect"
+    ],
+    [
+     "7",
+     "Source permissions register",
+     "Consent and suppression; Integration registry | Unapproved URL blocked"
+    ],
+    [
+     "8",
+     "AI gateway and evaluation",
+     "Product knowledge catalog; Integration registry; Event and audit foundation | Invalid outputs rejected; cost cap enforced"
+    ],
+    [
+     "9",
+     "Cost and usage control",
+     "Integration registry; AI gateway and evaluation | Simulated cap stops requests"
+    ],
+    [
+     "10",
+     "Privacy requests and retention",
+     "Consent and suppression; Event and audit foundation | Deletion does not re-enable outreach"
+    ],
+    [
+     "11",
+     "DevSecOps & environment",
+     "Identity & access; AI gateway and evaluation | Restore drill; secret scan; smoke test"
+    ],
+    [
+     "12",
+     "Operational observability",
+     "Event and audit foundation; DevSecOps & environment | Provider outage does not lose events"
+    ],
+    [
+     "13",
+     "Search query planner",
+     "Product knowledge catalog; Source permissions register; AI gateway and evaluation | No personal health targeting queries"
+    ],
+    [
+     "14",
+     "Public web discovery",
+     "Search query planner | Source URL/date recorded; blocked hosts rejected"
+    ],
+    [
+     "15",
+     "Evidence extraction",
+     "Public web discovery; AI gateway and evaluation | Evidence traceable; injection ignored"
+    ],
+    [
+     "16",
+     "Account discovery",
+     "Evidence extraction | Duplicate domain/location merge safe"
+    ],
+    [
+     "17",
+     "Buying signal classification",
+     "Evidence extraction; Account discovery | ≥80% precision on reviewed pilot sample target"
+    ],
+    [
+     "18",
+     "Business need discovery",
+     "Buying signal classification | No inference labeled confirmed"
+    ],
+    [
+     "19",
+     "Product solution matching",
+     "Product knowledge catalog; Business need discovery | Unavailable offering excluded from sales"
+    ],
+    [
+     "20",
+     "Opportunity scoring",
+     "Product solution matching | Score recalculates; consent independent"
+    ],
+    [
+     "21",
+     "Decision-maker role discovery",
+     "Account discovery; Opportunity scoring | No private contacts or guessed emails"
+    ],
+    [
+     "22",
+     "Contact verification",
+     "Decision-maker role discovery; Consent and suppression | Verified not synonymous with consent"
+    ],
+    [
+     "23",
+     "Research review and alerts",
+     "Opportunity scoring; Contact verification | Rejected leads never sent to channel"
+    ],
+    [
+     "24",
+     "CRM pipeline",
+     "Research review and alerts; Event and audit foundation | Invalid stage transition rejected"
+    ],
+    [
+     "25",
+     "Lead capture and forms",
+     "Consent and suppression; CRM pipeline | Duplicate submission one lead"
+    ],
+    [
+     "26",
+     "Customer 360",
+     "CRM pipeline; Lead capture and forms | Updates visible within 60s target"
+    ],
+    [
+     "27",
+     "Engagement eligibility",
+     "Consent and suppression; Contact verification | No send when opt-out/unknown eligibility"
+    ],
+    [
+     "28",
+     "Workflow control center",
+     "Event and audit foundation; Engagement eligibility | Emergency stop blocks queued sends"
+    ],
+    [
+     "29",
+     "Personalized message drafting",
+     "AI gateway and evaluation; Product solution matching; Engagement eligibility | No invented relationship or diagnosis"
+    ],
+    [
+     "30",
+     "Email integration",
+     "Engagement eligibility; Personalized message drafting; Integration registry | Replay no duplicate; bounce suppress"
+    ],
+    [
+     "31",
+     "Unified inbound processing",
+     "Email integration; AI gateway and evaluation | STOP cancels; urgent/clinical routes to human"
+    ],
+    [
+     "32",
+     "Follow-up sequences",
+     "Engagement eligibility; Email integration; Unified inbound processing | No follow-up after stop or reply"
+    ],
+    [
+     "33",
+     "Meeting and calendar",
+     "Unified inbound processing; CRM pipeline | No invented availability; conflict handled"
+    ],
+    [
+     "34",
+     "Growth dashboard",
+     "Research review and alerts; Meeting and calendar | Counts reconcile with deal records"
+    ],
+    [
+     "35",
+     "WhatsApp Business",
+     "Engagement eligibility; Unified inbound processing | No private group scrape; opt-in gate"
+    ],
+    [
+     "36",
+     "Website conversational assistant",
+     "AI gateway and evaluation; Lead capture and forms; Unified inbound processing | Clinical question routed; no medical data"
+    ],
+    [
+     "37",
+     "Unified omnichannel routing",
+     "Unified inbound processing; WhatsApp Business; Website conversational assistant | No duplicate replies across linked channels"
+    ],
+    [
+     "38",
+     "Compliance monitoring",
+     "Engagement eligibility; Unified omnichannel routing | Simulated complaints stop campaign"
+    ],
+    [
+     "39",
+     "Social listening",
+     "Source permissions register; Buying signal classification | No restricted profiles or automated DMs"
+    ],
+    [
+     "40",
+     "Content studio",
+     "Product knowledge catalog; AI gateway and evaluation | Unapproved claims cannot publish"
+    ],
+    [
+     "41",
+     "Social publishing",
+     "Content studio; Integration registry | No unsupported DMs; idempotent publishing"
+    ],
+    [
+     "42",
+     "SEO and search visibility",
+     "Source permissions register; Content studio | No fabricated ranking data"
+    ],
+    [
+     "43",
+     "Landing pages and attribution",
+     "Lead capture and forms; Content studio | No health events to ad pixels"
+    ],
+    [
+     "44",
+     "Campaign management",
+     "Engagement eligibility; Content studio; Landing pages and attribution | Suppression applied at execution"
+    ],
+    [
+     "45",
+     "Paid ads integration",
+     "Campaign management; Integration registry | Budget exceeded → pause; no sensitive data"
+    ],
+    [
+     "46",
+     "Webinars and demonstrations",
+     "Lead capture and forms; Follow-up sequences; Meeting and calendar | Opt-outs respected; attendance dedup"
+    ],
+    [
+     "47",
+     "Referral and partner lead capture",
+     "Lead capture and forms; Campaign management | No unauthorized third-party contact enrollment"
+    ],
+    [
+     "48",
+     "Proposal builder",
+     "CRM pipeline; Meeting and calendar; Product knowledge catalog | Only approved version externally shared"
+    ],
+    [
+     "49",
+     "Quote and pricing engine",
+     "Proposal builder; Product knowledge catalog | No unauthorized discount; totals exact"
+    ],
+    [
+     "50",
+     "Negotiation and objection handling",
+     "Unified omnichannel routing; Quote and pricing engine | Contract/price exception escalates"
+    ],
+    [
+     "51",
+     "Contract and MoU workflow",
+     "Proposal builder; Quote and pricing engine | No AI signs contract; signed version hash stored"
+    ],
+    [
+     "52",
+     "Payment and closure",
+     "Contract and MoU workflow; CRM pipeline | Replay no duplicate revenue; no invented closure"
+    ],
+    [
+     "53",
+     "Onboarding and handoff",
+     "Payment and closure; Consent and suppression | No patient data copied"
+    ],
+    [
+     "54",
+     "Partner deployment pipeline",
+     "Proposal builder; Contract and MoU workflow | No deployment claims before approval"
+    ],
+    [
+     "55",
+     "Retention and renewal",
+     "Onboarding and handoff; Follow-up sequences | No medical data in scoring"
+    ],
+    [
+     "56",
+     "Lost deal and feedback",
+     "CRM pipeline; Follow-up sequences | No auto-recontact after loss without policy"
+    ],
+    [
+     "57",
+     "Revenue and attribution",
+     "Landing pages and attribution; Payment and closure | Revenue reconciles with finance; attribution caveat"
+    ],
+    [
+     "58",
+     "AI quality and feedback",
+     "AI gateway and evaluation; Lost deal and feedback | Regression fails block deploy"
+    ],
+    [
+     "59",
+     "Competitor and market watch",
+     "Search query planner; Evidence extraction | No unverified comparative claim"
+    ],
+    [
+     "60",
+     "Forecast and sales optimization",
+     "Lost deal and feedback; Revenue and attribution | Forecast labeled estimate"
+    ],
+    [
+     "61",
+     "Admin command center",
+     "Identity & access; Forecast and sales optimization | Admin totals reconcile; no direct unsafe DB edits"
+    ],
+    [
+     "62",
+     "End-to-end production release",
+     "Identity & access; Admin command center | All critical tests pass; rollback verified"
+    ],
+    [
+     "63",
+     "Insurance institutional pilot",
+     "Partner deployment pipeline; Compliance monitoring | No underwriting or personal profiling"
+    ],
+    [
+     "64",
+     "Technology licensing pipeline",
+     "Contract and MoU workflow; Partner deployment pipeline | No promised unready API"
+    ],
+    [
+     "65",
+     "Phygital expansion",
+     "Partner deployment pipeline; Revenue and attribution | Deployment sign-off required"
+    ],
+    [
+     "66",
+     "Future product commercialization",
+     "Product knowledge catalog; Compliance monitoring | Planned offerings not promoted"
+    ]
+   ]
+  },
+  {
+   "section": "Production runbook",
+   "line": 427,
+   "header": [
+    "Routine / incident",
+    "Operator action"
+   ],
+   "rows": [
+    [
+     "Predeployment",
+     "Validate independent environment, secret references, migration dry run, provider access and approval; freeze unsafe actions"
+    ],
+    [
+     "Release",
+     "Apply validated migration, deploy API then workers and frontend; verify health, scope, queue, smoke and rollback point"
+    ],
+    [
+     "Daily operations",
+     "Review failed jobs, pending approvals, budget, receipts, source freshness, suppression, backup status"
+    ],
+    [
+     "Provider outage",
+     "Circuit break adapter, pause affected actions, reconcile uncertain effects, retry bounded"
+    ],
+    [
+     "Budget cap",
+     "Block new reservations, notify, approve revised budget only within authority"
+    ],
+    [
+     "Data incident",
+     "Isolate scope/product, revoke credential, preserve audit, investigate, restore and authorize restart"
+    ],
+    [
+     "Recovery",
+     "Restore independent backup in isolated environment; validate RPO/RTO and financial/outbox reconciliation"
+    ],
+    [
+     "Client offboard",
+     "Stop workflows, revoke access, approved export, retention and charge settlement"
+    ]
+   ]
+  },
+  {
+   "section": "Consolidated effort and operating cost assumptions",
+   "line": 458,
+   "header": [
+    "Work package",
+    "Person-days"
+   ],
+   "rows": [
+    [
+     "66 original commercial modules (source revised effort)",
+     "194–323"
+    ],
+    [
+     "Tenant and independent SaaS controls",
+     "35–60"
+    ],
+    [
+     "Four-vertical projects, orders and fulfillment",
+     "30–52"
+    ],
+    [
+     "Autonomous planning, portability and independent QA",
+     "28–48"
+    ],
+    [
+     "Total planning range",
+     "287–483"
+    ]
+   ]
+  },
+  {
+   "section": "Consolidated effort and operating cost assumptions",
+   "line": 479,
+   "header": [
+    "Pilot item",
+    "Retained monthly INR / rate",
+    "Scope assumption"
+   ],
+   "rows": [
+    [
+     "AWS shared hosting",
+     "5000",
+     "Django, workers, PostgreSQL, Valkey, storage/backups; small pilot allowance; validate region/HA needs."
+    ],
+    [
+     "Production AI inference",
+     "3000",
+     "Illustrative reserve: low-cost model routing, caching, embeddings and quality checks; actual token usage billed separately."
+    ],
+    [
+     "Public search API",
+     "1500",
+     "500 source fetch pilot; Tavily 1,000 free credits/month; reserve for advanced queries/overage; Exa alternative only."
+    ],
+    [
+     "Extraction compute / overage",
+     "1000",
+     "Self-host permitted extraction first; extra worker compute/cloud fallback reserve beyond B01."
+    ],
+    [
+     "Email delivery",
+     "500",
+     "2,000 eligible sends/month plus receiving/attachments buffer; actual SES billing varies."
+    ],
+    [
+     "WhatsApp Business",
+     "2000",
+     "1,000 chargeable templates/month illustrative allowance, not official per-message rate; verify India category pricing."
+    ],
+    [
+     "Monitoring / security / CI",
+     "500",
+     "Incremental growth monitoring/CI reserve only; provisional ₹500 reduction from original ₹1,000 mixed security/monitoring line. Existing security not re-budgeted; validate actual incremental usage."
+    ],
+    [
+     "Apollo paid enrichment reserve",
+     "9000",
+     "Optional planning cap, NOT confirmed plan price. Free pilot first; one eligible account/plan subject to credit/API and India coverage checks; alternatives not additive."
+    ],
+    [
+     "Claude Code developer seats",
+     "3600",
+     "2 Pro seats × $20/month × assumed ₹90/USD; taxes excluded; usage caps apply. If existing paid seats, incremental cost may be zero."
+    ],
+    [
+     "Optional integration reserve",
+     "1000",
+     "Calendar, social API, validation, meetings or e-sign pilot contingencies; paid enterprise or broad social listening not covered."
+    ],
+    [
+     "Contingency rate",
+     "0.15",
+     "15% planning contingency applied to selected monthly budgets."
+    ]
+   ]
+  },
+  {
+   "section": "Capacity, reliability and recovery acceptance",
+   "line": 532,
+   "header": [
+    "Metric",
+    "Initial target",
+    "Growth target"
+   ],
+   "rows": [
+    [
+     "Owned startups / external tenants",
+     "25 / 10",
+     "50+ / 100"
+    ],
+    [
+     "Concurrent staff sessions",
+     "50",
+     "250"
+    ],
+    [
+     "Scoped opportunities",
+     "100,000",
+     "1,000,000"
+    ],
+    [
+     "Concurrent jobs / scheduled actions/day",
+     "50 / 10,000",
+     "250 / 100,000"
+    ],
+    [
+     "Dashboard query p95",
+     "≤2 s",
+     "≤2.5 s"
+    ],
+    [
+     "Async/webhook acknowledgement p95",
+     "≤2 s",
+     "≤2 s"
+    ],
+    [
+     "Projection refresh",
+     "≤60 s",
+     "≤60 s"
+    ],
+    [
+     "Critical data RPO / RTO",
+     "≤15 min / ≤4 h",
+     "≤15 min / ≤2 h"
+    ],
+    [
+     "Regenerable research RPO/RTO",
+     "≤24 h / ≤8 h",
+     "≤24 h / ≤8 h"
+    ]
+   ]
+  },
+  {
+   "section": "Website and confidential Admin operating contract",
+   "line": 613,
+   "header": [
+    "Surface",
+    "Audience",
+    "Exposure and controls"
+   ],
+   "rows": [
+    [
+     "Website — Public",
+     "Anonymous visitor",
+     "Approved pages, bounded enquiry forms; no directory of private contacts or internal financial data."
+    ],
+    [
+     "Website — Portal",
+     "Authenticated external customer/supplier",
+     "Own permitted records, identity-bound grants, field minimization; no staff permissions."
+    ],
+    [
+     "Admin",
+     "Assigned employees and authorized management",
+     "Confidential Command Centre, private evidence, workflows and approvals."
+    ],
+    [
+     "Internal / callback",
+     "Service identities / verified providers",
+     "No browser access; signature and idempotency checks."
+    ]
+   ]
+  },
+  {
+   "section": "Dependency-based work breakdown and cost discipline",
+   "line": 652,
+   "header": [
+    "Work / decision",
+    "Implementation and measurable acceptance",
+    "Accountable role"
+   ],
+   "rows": [
+    [
+     "Identity compatibility",
+     "Verify existing product audiences, membership model, MFA, session revocation and scoped roles. No duplicate identity system or redevelopment estimate.",
+     "Security / architect"
+    ],
+    [
+     "Domain foundation",
+     "Approve product data scope, issuer/tenant constraints, actual schemas and migration plan; build fixtures before dependent APIs.",
+     "Database lead"
+    ],
+    [
+     "Vertical slices",
+     "For each named UI deliver reviewed requirement, backend service, typed contract, schema, React panel, automated test and business acceptance together.",
+     "Engineering lead"
+    ],
+    [
+     "External integration",
+     "Use approved source and mock adapter first; benchmark native alternative before selecting paid service.",
+     "Integration lead"
+    ],
+    [
+     "Quality and deployment",
+     "Reserve separate effort for isolation, load, backup/restore, migration and handover; do not hide these as optional tasks.",
+     "CTO / QA"
+    ],
+    [
+     "Resource allocation",
+     "Assign named frontend, backend, database, AI, DevOps and QA owners; estimate each distinct task once. Reconcile estimates to prior work package ranges and avoid charging shared libraries twice.",
+     "Project manager"
+    ]
+   ]
+  },
+  {
+   "section": "Dependency-based work breakdown and cost discipline",
+   "line": 683,
+   "header": [
+    "Delivery slice",
+    "Dependency evidence",
+    "Gate"
+   ],
+   "rows": [
+    [
+     "Identity and tenant setup",
+     "Verified identity and memberships",
+     "Cross-product/tenant deny tests"
+    ],
+    [
+     "Catalog and contracts",
+     "Reviewed physical ownership, typed inputs/outputs",
+     "No unreviewed production contract"
+    ],
+    [
+     "Website / portal",
+     "Verified domain, published snapshot, external grants",
+     "No private DTO"
+    ],
+    [
+     "Admin / workflows",
+     "Approved per-role actions, simulation, budgets, retry",
+     "No unauthorized or duplicate dispatch"
+    ],
+    [
+     "Closure and reporting",
+     "Verified ledger, reconciliation and legal/finance approvals as applicable",
+     "Correct outcome accounting"
+    ],
+    [
+     "Delivery",
+     "Quality evidence, restore, smoke and owner sign-off",
+     "Go-live approval"
+    ]
+   ]
+  },
+  {
+   "section": "Acceptance and evidence record",
+   "line": 715,
+   "header": [
+    "Evidence field",
+    "Required record"
+   ],
+   "rows": [
+    [
+     "Responsible / reviewer",
+     "Name and role of implementing owner and independent reviewer"
+    ],
+    [
+     "Artifact / test evidence",
+     "Commit, environment, scenario ID, actual result and secure evidence reference"
+    ],
+    [
+     "Decision",
+     "Pending / Pass / Fail / approved N/A with reason"
+    ],
+    [
+     "Remediation",
+     "Defect, owner, corrective action and retest"
+    ],
+    [
+     "Business acceptance",
+     "Authorized sign-off after required gates pass"
+    ]
+   ]
+  },
+  {
+   "section": "Task-level estimates and executable predecessor plan",
+   "line": 737,
+   "header": [
+    "Discipline",
+    "Base PD",
+    "₹ at 1L/month",
+    "₹ at 1.5L/month"
+   ],
+   "rows": [
+    [
+     "React / UX",
+     "90.68",
+     "₹412,182",
+     "₹618,273"
+    ],
+    [
+     "Django / API",
+     "111.55",
+     "₹507,045",
+     "₹760,568"
+    ],
+    [
+     "PostgreSQL",
+     "52.85",
+     "₹240,227",
+     "₹360,341"
+    ],
+    [
+     "AI / integration",
+     "36.23",
+     "₹164,682",
+     "₹247,023"
+    ],
+    [
+     "QA",
+     "65.64",
+     "₹298,364",
+     "₹447,545"
+    ],
+    [
+     "DevOps / security",
+     "28.05",
+     "₹127,500",
+     "₹191,250"
+    ]
+   ]
+  },
+  {
+   "section": "Architecture and delivery",
+   "line": 907,
+   "header": [
+    "ID",
+    "New interface",
+    "Purpose / acceptance"
+   ],
+   "rows": [
+    [
+     "W31",
+     "SaaS introduction, plans & demo",
+     "SaaS service entry separate from investor/customer journey No private fundraising offers or implied outcomes; publish only approved service terms"
+    ],
+    [
+     "W32",
+     "Startup & third-party client registration",
+     "Create application for an independent client, not a marketplace investor or customer Prove administrator authority; no provisioning before verified identity and approval"
+    ],
+    [
+     "W33",
+     "AI business onboarding & configuration wizard",
+     "Configure business without core code changes AI proposals are unverified; no real dispatch or spend during onboarding"
+    ],
+    [
+     "W34",
+     "SaaS client service portal",
+     "Manage subscription and service lifecycle separately from investor/customer portal Client-only scoped billing; no cross-tenant or investor/customer records"
+    ],
+    [
+     "A109",
+     "Event & Trigger Management Centre",
+     "Manage event definitions, timers and incoming webhooks independently of workflow design Verify signatures and scope; dedupe; never replay a live side effect"
+    ],
+    [
+     "A110",
+     "Live Automation Execution Monitor",
+     "Inspect concurrent runs and step-level history Pause/resume revalidate policy; unknown external outcome must reconcile before retry"
+    ],
+    [
+     "A111",
+     "Automation Coordination & Conflict Resolution",
+     "Resolve conflicting actions across authorized workflows Never expose unrelated tenant data; use idempotency and policy before dispatch"
+    ],
+    [
+     "A112",
+     "Business Configuration Change Centre",
+     "Govern post-onboarding changes, version comparison and safe rollout Running workflow revisions remain immutable; no authorization expansion without review"
+    ],
+    [
+     "A113",
+     "Automation Template & Node Library",
+     "Govern reusable workflow templates and node schemas separately from workflow execution Only approved nodes; no arbitrary code or secret values; immutable published versions"
+    ]
+   ]
+  },
+  {
+   "section": "Architecture and delivery",
+   "line": 949,
+   "header": [
+    "Task",
+    "Work item",
+    "Predecessors",
+    "Low/base/high PD"
+   ],
+   "rows": [
+    [
+     "UX-TASK-FOUNDATION",
+     "Scoped configuration and identity/audience foundation",
+     "Review baseline dependencies",
+     "8/14/24"
+    ],
+    [
+     "UX-TASK-FIELDS",
+     "Dynamic fields, linked records and shared UI state for retained screens",
+     "UX-TASK-FOUNDATION",
+     "18/32/55"
+    ],
+    [
+     "UX-TASK-EVENTS",
+     "Event/run/conflict orchestration and versioned graph",
+     "UX-TASK-FOUNDATION",
+     "10/18/30"
+    ],
+    [
+     "UX-TASK-W31",
+     "SaaS introduction, plans & demo",
+     "UX-TASK-FOUNDATION; UX-TASK-FIELDS",
+     "2/4/7"
+    ],
+    [
+     "UX-TASK-W32",
+     "Startup & third-party client registration",
+     "UX-TASK-FOUNDATION; UX-TASK-FIELDS",
+     "2/4/7"
+    ],
+    [
+     "UX-TASK-W33",
+     "AI business onboarding & configuration wizard",
+     "UX-TASK-FOUNDATION; UX-TASK-FIELDS",
+     "2/4/7"
+    ],
+    [
+     "UX-TASK-W34",
+     "SaaS client service portal",
+     "UX-TASK-FOUNDATION; UX-TASK-FIELDS",
+     "2/4/7"
+    ],
+    [
+     "UX-TASK-A109",
+     "Event & Trigger Management Centre",
+     "UX-TASK-FOUNDATION; UX-TASK-FIELDS; UX-TASK-EVENTS",
+     "2/4/7"
+    ],
+    [
+     "UX-TASK-A110",
+     "Live Automation Execution Monitor",
+     "UX-TASK-FOUNDATION; UX-TASK-FIELDS; UX-TASK-EVENTS",
+     "2/4/7"
+    ],
+    [
+     "UX-TASK-A111",
+     "Automation Coordination & Conflict Resolution",
+     "UX-TASK-FOUNDATION; UX-TASK-FIELDS; UX-TASK-EVENTS",
+     "2/4/7"
+    ],
+    [
+     "UX-TASK-A112",
+     "Business Configuration Change Centre",
+     "UX-TASK-FOUNDATION; UX-TASK-FIELDS; UX-TASK-EVENTS",
+     "2/4/7"
+    ],
+    [
+     "UX-TASK-A113",
+     "Automation Template & Node Library",
+     "UX-TASK-FOUNDATION; UX-TASK-FIELDS; UX-TASK-EVENTS",
+     "2/4/7"
+    ],
+    [
+     "UX-TASK-QA",
+     "Integrated expansion regression and release evidence",
+     "UX-TASK-W31; UX-TASK-W32; UX-TASK-W33; UX-TASK-W34; UX-TASK-A109; UX-TASK-A110; UX-TASK-A111; UX-TASK-A112; UX-TASK-A113",
+     "8/14/24"
+    ]
+   ]
+  }
+ ],
+ "05": [
+  {
+   "section": "Initial startup configurations",
+   "line": 12,
+   "header": [
+    "Legal entity",
+    "Business profile",
+    "Commercial focus"
+   ],
+   "rows": [
+    [
+     "AppNAI Technologies Pvt. Ltd.",
+     "Worldwide AI project bidding, AI/GenAI software development, engineering, consulting and delivery",
+     "Global enterprises, IT firms, procurement portals; project, bid, deadline, technology and delivery model"
+    ],
+    [
+     "MedMaarg Healthcare Solutions Pvt. Ltd.",
+     "AppNAI-powered AI Hospital: Wellness AI Scanner, Planner, Advisor; Doctor Connect, Pathology Lab Connect; preventive wellness and healthcare partnerships",
+     "Hospitals, clinics, doctors, diagnostic labs, insurers, corporates, universities; offering, organization, demo/pilot and geography"
+    ],
+    [
+     "EduVerse Future Skills Pvt. Ltd.",
+     "AI Skill School: student training in GenAI, ML, DL, NLP, CV, AI Backend, AI Frontend, AWS/cloud deployment; school-level AI education, educational products and innovative services; institutional/corporate training",
+     "Students/guardians, schools, colleges, universities, employers; programme, domain, grade band, cohort, mode, product/service"
+    ],
+    [
+     "OrganicSpec Pvt. Ltd.",
+     "Organic products, buying, selling, agriculture services and training; RamVan and Smart Biochar subject to approved readiness",
+     "Buyers, suppliers, distributors, FPOs, institutions; trade direction, SKU, quantity/unit, quality, price, location and delivery"
+    ]
+   ]
+  },
+  {
+   "section": "Workflow register — end-to-end execution",
+   "line": 38,
+   "header": [
+    "Workflow",
+    "Trigger / processing",
+    "Acceptance / stop"
+   ],
+   "rows": [
+    [
+     "Startup catalogue",
+     "Approve offering, price, claims, market segment, customer roles, pipeline and workflow",
+     "No unapproved offerings or unscoped access"
+    ],
+    [
+     "Market discovery",
+     "Plan source query → evidence → signals/need → solution match → qualify",
+     "Allowed source and review; freshness and confidence"
+    ],
+    [
+     "Professional contacts",
+     "Find organization decision-maker, verify channel/source, deduplicate and eligibility",
+     "No private scraping; contact score does not grant permission"
+    ],
+    [
+     "Inbound acquisition",
+     "Landing page, authorized chat/email/WhatsApp/social/event/referral → lead and attribution",
+     "Scope, consent, dedupe; no medical records or minor targeting"
+    ],
+    [
+     "Content/campaign",
+     "Generate approved content, SEO, social publishing, ad/landing plan, audience, budget",
+     "Claim and channel approval; cost caps, actual publication"
+    ],
+    [
+     "Outreach and replies",
+     "Preview eligible contacts → approved messages → callback → classify intent",
+     "Opt-out/complaint stop; response halts generic sequence"
+    ],
+    [
+     "Follow-up & meetings",
+     "Schedule tasks based on intent, preference, local time; verify calendar",
+     "Caps, rejection and suppression stop"
+    ],
+    [
+     "Project bid",
+     "AppNAI qualify RFP/requirements, deadline, bid/no-bid, proposal, authorized submission",
+     "No unauthorized portal submission; actual award proof"
+    ],
+    [
+     "Proposal / quote",
+     "Approved pricing and terms; objections, controlled discount/negotiation",
+     "Revision and approvals; no unsupported promises"
+    ],
+    [
+     "Order / fulfillment",
+     "Create buy/sell/service/training/project order with lines; delivery, receipt and acceptance",
+     "Payables/receivables independent; quantity and evidence checked"
+    ],
+    [
+     "Commercial closure",
+     "Verified signed contract/payment per route; actual receipts/obligations; onboarding",
+     "No duplicate cash or false won state"
+    ],
+    [
+     "Retention & renewal",
+     "Handoff, milestones, feedback, renewal and eligible re-engagement",
+     "Record outcomes and preferences; no duplicated revenue"
+    ],
+    [
+     "Autonomous plan",
+     "Simulate workload, eligible recipients, cost and deadlines; approve hash, execute",
+     "No live effect during dry run; revalidate at dispatch"
+    ],
+    [
+     "Suspend/offboard",
+     "Stop schedules, revoke sender and client access, export/retain allowed records",
+     "Separate tenant/product; reconcile unknown results"
+    ]
+   ]
+  },
+  {
+   "section": "Channel and communication policies",
+   "line": 102,
+   "header": [
+    "Channel",
+    "Operational contract"
+   ],
+   "rows": [
+    [
+     "Email",
+     "Verified sender domain; SPF/DKIM/DMARC alignment; bounce and complaint suppression; unsubscribe as applicable; rate cap; actual delivery and reply events"
+    ],
+    [
+     "WhatsApp",
+     "Official Business API, permitted recipient and template/category where applicable; opt-out immediately enforced"
+    ],
+    [
+     "Web / portal",
+     "Approved information, identity/consent as applicable, scoped enquiry capture and actual confirmation"
+    ],
+    [
+     "Calendar / events",
+     "Check availability/time zone, invitation status, no recording without appropriate permission"
+    ],
+    [
+     "Referrals",
+     "Consent and context; no automatic sharing of private contacts"
+    ],
+    [
+     "Social sources",
+     "Approved publication and authorized engagement via official API; content and claims approval"
+    ]
+   ]
+  },
+  {
+   "section": "Inbound marketing acquisition",
+   "line": 127,
+   "header": [
+    "Capability",
+    "Implementation and acceptance"
+   ],
+   "rows": [
+    [
+     "Content and SEO",
+     "Approved offering claims, content brief, draft, review, schedule, actual publication; search visibility audit, Search Console where entitled, no guaranteed ranking"
+    ],
+    [
+     "Social publishing",
+     "Account permission, asset validation, schedule, preview, rate limit and actual external post ID"
+    ],
+    [
+     "Landing pages",
+     "Approved startup, responsive form, consent and attribution token; dedupe lead and prevent injection"
+    ],
+    [
+     "Website assistant",
+     "RAG over approved knowledge only; escalate unclear claims; capture permitted contact and route"
+    ],
+    [
+     "Campaign audiences",
+     "Segment criteria, eligible unique recipients, preview/cost, approval hash and suppression"
+    ],
+    [
+     "Paid ads",
+     "Budget and targeting approval, actual provider spend and conversion; no medical or child-sensitive profiling"
+    ],
+    [
+     "Webinars and demos",
+     "Registration and preferences; actual attendance, reminder and follow-up"
+    ],
+    [
+     "Attribution",
+     "Capture source/campaign/referrer with permission, distinct event ID; first/last-touch with window and unknown bucket; no duplicate conversion"
+    ]
+   ]
+  },
+  {
+   "section": "Workflow register — end-to-end execution",
+   "line": 241,
+   "header": [
+    "Workflow",
+    "Trigger / processing",
+    "Acceptance / stop"
+   ],
+   "rows": [
+    [
+     "Startup catalogue",
+     "Approve offering, price, claims, market segment, customer roles, pipeline and workflow",
+     "No unapproved offerings or unscoped access"
+    ],
+    [
+     "Market discovery",
+     "Plan source query → evidence → signals/need → solution match → qualify",
+     "Allowed source and review; freshness and confidence"
+    ],
+    [
+     "Professional contacts",
+     "Find organization decision-maker, verify channel/source, deduplicate and eligibility",
+     "No private scraping; contact score does not grant permission"
+    ],
+    [
+     "Inbound acquisition",
+     "Landing page, authorized chat/email/WhatsApp/social/event/referral → lead and attribution",
+     "Scope, consent, dedupe; no medical records or minor targeting"
+    ],
+    [
+     "Content/campaign",
+     "Generate approved content, SEO, social publishing, ad/landing plan, audience, budget",
+     "Claim and channel approval; cost caps, actual publication"
+    ],
+    [
+     "Outreach and replies",
+     "Preview eligible contacts → approved messages → callback → classify intent",
+     "Opt-out/complaint stop; response halts generic sequence"
+    ],
+    [
+     "Follow-up & meetings",
+     "Schedule tasks based on intent, preference, local time; verify calendar",
+     "Caps, rejection and suppression stop"
+    ],
+    [
+     "Project bid",
+     "AppNAI qualify RFP/requirements, deadline, bid/no-bid, proposal, authorized submission",
+     "No unauthorized portal submission; actual award proof"
+    ],
+    [
+     "Proposal / quote",
+     "Approved pricing and terms; objections, controlled discount/negotiation",
+     "Revision and approvals; no unsupported promises"
+    ],
+    [
+     "Order / fulfillment",
+     "Create buy/sell/service/training/project order with lines; delivery, receipt and acceptance",
+     "Payables/receivables independent; quantity and evidence checked"
+    ],
+    [
+     "Commercial closure",
+     "Verified signed contract/payment per route; actual receipts/obligations; onboarding",
+     "No duplicate cash or false won state"
+    ],
+    [
+     "Retention & renewal",
+     "Handoff, milestones, feedback, renewal and eligible re-engagement",
+     "Record outcomes and preferences; no duplicated revenue"
+    ],
+    [
+     "Autonomous plan",
+     "Simulate workload, eligible recipients, cost and deadlines; approve hash, execute",
+     "No live effect during dry run; revalidate at dispatch"
+    ],
+    [
+     "Suspend/offboard",
+     "Stop schedules, revoke sender and client access, export/retain allowed records",
+     "Separate tenant/product; reconcile unknown results"
+    ]
+   ]
+  },
+  {
+   "section": "Business-specific acquisition and commercial conversion",
+   "line": 306,
+   "header": [
+    "Business",
+    "Operating sequence"
+   ],
+   "rows": [
+    [
+     "AppNAI Technologies Pvt. Ltd.",
+     "Global RFP/project discovery → technical and eligibility review → bid/no-bid → proposal/quote → authorized submission → award/contract → accepted delivery → verified payment"
+    ],
+    [
+     "MedMaarg Healthcare Solutions Pvt. Ltd.",
+     "Institutional wellness need → match approved product → decision-maker → demo/pilot → signed partnership → deployment and payment → renewal"
+    ],
+    [
+     "EduVerse Future Skills Pvt. Ltd.",
+     "Student/guardian/institution requirement → programme fit → approved counselling/demo → registration or MoU/educational order → delivery → receipt/renewal. School protection and institutional permissions; no commercial AI project acquisition."
+    ],
+    [
+     "OrganicSpec Pvt. Ltd.",
+     "Buyer/supplier discovery → RFQ → quote → purchase/sales order (line items) → dispatch/receipt/service/training acceptance → reconcile payable or receivable."
+    ]
+   ]
+  },
+  {
+   "section": "Business-specific acquisition and commercial conversion",
+   "line": 324,
+   "header": [
+    "State transition",
+    "Required evidence / guard"
+   ],
+   "rows": [
+    [
+     "Project bid",
+     "AppNAI qualify RFP/requirements, deadline, bid/no-bid, proposal, authorized submission • No unauthorized portal submission; actual award proof"
+    ],
+    [
+     "Proposal / quote",
+     "Approved pricing and terms; objections, controlled discount/negotiation • Revision and approvals; no unsupported promises"
+    ],
+    [
+     "Order / fulfillment",
+     "Create buy/sell/service/training/project order with lines; delivery, receipt and acceptance • Payables/receivables independent; quantity and evidence checked"
+    ],
+    [
+     "Commercial closure",
+     "Verified signed contract/payment per route; actual receipts/obligations; onboarding • No duplicate cash or false won state"
+    ],
+    [
+     "Retention & renewal",
+     "Handoff, milestones, feedback, renewal and eligible re-engagement • Record outcomes and preferences; no duplicated revenue"
+    ]
+   ]
+  },
+  {
+   "section": "Website and confidential Admin operating contract",
+   "line": 537,
+   "header": [
+    "Surface",
+    "Audience",
+    "Exposure and controls"
+   ],
+   "rows": [
+    [
+     "Website — Public",
+     "Anonymous visitor",
+     "Approved pages, bounded enquiry forms; no directory of private contacts or internal financial data."
+    ],
+    [
+     "Website — Portal",
+     "Authenticated external customer/supplier",
+     "Own permitted records, identity-bound grants, field minimization; no staff permissions."
+    ],
+    [
+     "Admin",
+     "Assigned employees and authorized management",
+     "Confidential Command Centre, private evidence, workflows and approvals."
+    ],
+    [
+     "Internal / callback",
+     "Service identities / verified providers",
+     "No browser access; signature and idempotency checks."
+    ]
+   ]
+  },
+  {
+   "section": "Implementation, verification and delivery controls",
+   "line": 578,
+   "header": [
+    "Workflow",
+    "Trigger",
+    "Preconditions",
+    "Durable outcome",
+    "Stop / recovery"
+   ],
+   "rows": [
+    [
+     "Market discovery",
+     "Approved business objective/source schedule",
+     "Source terms, quota, startup and target offering",
+     "Discover project/customer/supplier, evidence, match, assigned lead",
+     "Restricted source, duplicate, outdated bid; stop/review"
+    ],
+    [
+     "Campaign/inbound",
+     "Approved content or enquiry",
+     "Published hash, consent, scoped audience, budget",
+     "Route lead, dedup, assign; eligible channel action via outbox",
+     "Unapproved claim, suppressed recipient, provider uncertainty"
+    ],
+    [
+     "Sales follow-up",
+     "Qualified commercial opportunity",
+     "Current eligibility, pricing evidence, sender and cap",
+     "Draft, approve or send, classify reply, escalate objection, book meeting",
+     "Reply, rejection, STOP, budget exhausted"
+    ],
+    [
+     "Proposal and commercial close",
+     "Approved bid/quote or order",
+     "Deadline, price version, direction, agreement approval, account",
+     "Quote/contract/order, fulfillment, verify receipt or payable",
+     "Expired bid, wrong unit, duplicate callback, quality rejection"
+    ],
+    [
+     "Renewal",
+     "Eligible upcoming due date",
+     "Active agreement and contact eligibility",
+     "Recommend renewal, notify, follow up, record disposition",
+     "Cancelled contract, suppression, negative feedback"
+    ]
+   ]
+  },
+  {
+   "section": "Acceptance and evidence record",
+   "line": 626,
+   "header": [
+    "Evidence field",
+    "Required record"
+   ],
+   "rows": [
+    [
+     "Responsible / reviewer",
+     "Name and role of implementing owner and independent reviewer"
+    ],
+    [
+     "Artifact / test evidence",
+     "Commit, environment, scenario ID, actual result and secure evidence reference"
+    ],
+    [
+     "Decision",
+     "Pending / Pass / Fail / approved N/A with reason"
+    ],
+    [
+     "Remediation",
+     "Defect, owner, corrective action and retest"
+    ],
+    [
+     "Business acceptance",
+     "Authorized sign-off after required gates pass"
+    ]
+   ]
+  },
+  {
+   "section": "Deterministic execution",
+   "line": 648,
+   "header": [
+    "Control / scenario",
+    "Implementation and acceptance"
+   ],
+   "rows": [
+    [
+     "Planned",
+     "Pin tenant/startup, objective, policy/config version and cost cap; simulate first."
+    ],
+    [
+     "Eligible",
+     "Check consent/route/evidence, budget, approval and current actor at enqueue and lease."
+    ],
+    [
+     "Dispatch",
+     "Create outbox and reserve budget in same transaction; idempotency key scoped by tenant/startup/action."
+    ],
+    [
+     "Provider timeout",
+     "Record uncertain outcome; reconcile before retry; no blind repeat."
+    ],
+    [
+     "Reply / opt-out / expiry",
+     "Stop generic sequence; cancel pending actions and release unused reservation."
+    ],
+    [
+     "Verified closure",
+     "Record financial or commercial evidence and audit; never infer closure from AI draft."
+    ]
+   ]
+  },
+  {
+   "section": "Business regression fixtures",
+   "line": 672,
+   "header": [
+    "Scenario",
+    "Synthetic input",
+    "Expected result"
+   ],
+   "rows": [
+    [
+     "Quotation calculation",
+     "2 units × INR 150.00, 10% discount, before tax",
+     "270.00 INR; server recomputes from approved price version; reject invalid discount or price."
+    ],
+    [
+     "Bid expiry",
+     "Deadline 2030-06-01 09:00 UTC; submit at or after deadline",
+     "Reject submission and create exception; no false award or external call."
+    ],
+    [
+     "Order fulfillment",
+     "Order 2 kg; deliver 1 kg twice with same event key; then attempt 2 additional kg",
+     "First event accepted once, duplicate no effect; excessive quantity rejected."
+    ],
+    [
+     "EduVerse routing",
+     "External AI development request vs school AI education request",
+     "Owned portfolio routes external development to AppNAI; education to EduVerse; client templates independently configured."
+    ]
+   ]
+  },
+  {
+   "section": "Workflow design",
+   "line": 819,
+   "header": [
+    "ID",
+    "New interface",
+    "Purpose / acceptance"
+   ],
+   "rows": [
+    [
+     "W31",
+     "SaaS introduction, plans & demo",
+     "SaaS service entry separate from investor/customer journey No private fundraising offers or implied outcomes; publish only approved service terms"
+    ],
+    [
+     "W32",
+     "Startup & third-party client registration",
+     "Create application for an independent client, not a marketplace investor or customer Prove administrator authority; no provisioning before verified identity and approval"
+    ],
+    [
+     "W33",
+     "AI business onboarding & configuration wizard",
+     "Configure business without core code changes AI proposals are unverified; no real dispatch or spend during onboarding"
+    ],
+    [
+     "W34",
+     "SaaS client service portal",
+     "Manage subscription and service lifecycle separately from investor/customer portal Client-only scoped billing; no cross-tenant or investor/customer records"
+    ],
+    [
+     "A109",
+     "Event & Trigger Management Centre",
+     "Manage event definitions, timers and incoming webhooks independently of workflow design Verify signatures and scope; dedupe; never replay a live side effect"
+    ],
+    [
+     "A110",
+     "Live Automation Execution Monitor",
+     "Inspect concurrent runs and step-level history Pause/resume revalidate policy; unknown external outcome must reconcile before retry"
+    ],
+    [
+     "A111",
+     "Automation Coordination & Conflict Resolution",
+     "Resolve conflicting actions across authorized workflows Never expose unrelated tenant data; use idempotency and policy before dispatch"
+    ],
+    [
+     "A112",
+     "Business Configuration Change Centre",
+     "Govern post-onboarding changes, version comparison and safe rollout Running workflow revisions remain immutable; no authorization expansion without review"
+    ],
+    [
+     "A113",
+     "Automation Template & Node Library",
+     "Govern reusable workflow templates and node schemas separately from workflow execution Only approved nodes; no arbitrary code or secret values; immutable published versions"
+    ]
+   ]
+  }
+ ],
+ "09": [
+  {
+   "section": "Initial startup configurations",
+   "line": 12,
+   "header": [
+    "Legal entity",
+    "Business profile",
+    "Commercial focus"
+   ],
+   "rows": [
+    [
+     "AppNAI Technologies Pvt. Ltd.",
+     "Worldwide AI project bidding, AI/GenAI software development, engineering, consulting and delivery",
+     "Global enterprises, IT firms, procurement portals; project, bid, deadline, technology and delivery model"
+    ],
+    [
+     "MedMaarg Healthcare Solutions Pvt. Ltd.",
+     "AppNAI-powered AI Hospital: Wellness AI Scanner, Planner, Advisor; Doctor Connect, Pathology Lab Connect; preventive wellness and healthcare partnerships",
+     "Hospitals, clinics, doctors, diagnostic labs, insurers, corporates, universities; offering, organization, demo/pilot and geography"
+    ],
+    [
+     "EduVerse Future Skills Pvt. Ltd.",
+     "AI Skill School: student training in GenAI, ML, DL, NLP, CV, AI Backend, AI Frontend, AWS/cloud deployment; school-level AI education, educational products and innovative services; institutional/corporate training",
+     "Students/guardians, schools, colleges, universities, employers; programme, domain, grade band, cohort, mode, product/service"
+    ],
+    [
+     "OrganicSpec Pvt. Ltd.",
+     "Organic products, buying, selling, agriculture services and training; RamVan and Smart Biochar subject to approved readiness",
+     "Buyers, suppliers, distributors, FPOs, institutions; trade direction, SKU, quantity/unit, quality, price, location and delivery"
+    ]
+   ]
+  },
+  {
+   "section": "Independent deployment topology",
+   "line": 38,
+   "header": [
+    "Layer",
+    "Design contract"
+   ],
+   "rows": [
+    [
+     "Browser",
+     "Separate product origin and routes; shared component library only; authorized tenant/startup and scoped cache"
+    ],
+    [
+     "Identity",
+     "Existing SSO if compatible; unique audience, independent memberships and token invalidation"
+    ],
+    [
+     "API",
+     "Independent Django app/runtime, serializers, permissions, scoped query and domain transactions"
+    ],
+    [
+     "Domain",
+     "Market, marketing, account, bidding, procurement, sales and renewal only"
+    ],
+    [
+     "Persistence",
+     "Independent PostgreSQL, credentials, migrations, storage keys and vector namespace"
+    ],
+    [
+     "Workers",
+     "Separate broker/queue namespace, schedule, outbox, budget reservation and dead letter queue"
+    ],
+    [
+     "External adapters",
+     "Account-bound secrets, validated callbacks, independent quotas; no cross-product dispatch"
+    ],
+    [
+     "Admin",
+     "Product-specific policy, tenant support, billing, audit and emergency stops"
+    ],
+    [
+     "Operations",
+     "Independent deployment, health, logs, backup restore, incident and recovery; no shared confidential logs"
+    ]
+   ]
+  },
+  {
+   "section": "Capacity, reliability and recovery acceptance",
+   "line": 74,
+   "header": [
+    "Metric",
+    "Initial target",
+    "Growth target"
+   ],
+   "rows": [
+    [
+     "Owned startups / external tenants",
+     "25 / 10",
+     "50+ / 100"
+    ],
+    [
+     "Concurrent staff sessions",
+     "50",
+     "250"
+    ],
+    [
+     "Scoped opportunities",
+     "100,000",
+     "1,000,000"
+    ],
+    [
+     "Concurrent jobs / scheduled actions/day",
+     "50 / 10,000",
+     "250 / 100,000"
+    ],
+    [
+     "Dashboard query p95",
+     "≤2 s",
+     "≤2.5 s"
+    ],
+    [
+     "Async/webhook acknowledgement p95",
+     "≤2 s",
+     "≤2 s"
+    ],
+    [
+     "Projection refresh",
+     "≤60 s",
+     "≤60 s"
+    ],
+    [
+     "Critical data RPO / RTO",
+     "≤15 min / ≤4 h",
+     "≤15 min / ≤2 h"
+    ],
+    [
+     "Regenerable research RPO/RTO",
+     "≤24 h / ≤8 h",
+     "≤24 h / ≤8 h"
+    ]
+   ]
+  },
+  {
+   "section": "Unified Command Centre — seven primary views",
+   "line": 120,
+   "header": [
+    "View",
+    "Purpose and controls"
+   ],
+   "rows": [
+    [
+     "Overview",
+     "Commercial KPIs, pipeline, forecast, verified receipts/payables, campaign attribution and actions"
+    ],
+    [
+     "Discovery",
+     "Public sources, needs, organizations, contacts, project bids, buyers and suppliers"
+    ],
+    [
+     "Outreach & Marketing",
+     "Content, SEO, social, ads, landing pages, email, WhatsApp, events, campaigns and inbox"
+    ],
+    [
+     "Follow-ups",
+     "Sequences, meetings, next action, tasks, customer onboarding and renewal"
+    ],
+    [
+     "Objections",
+     "Approved factual answers, pricing/contract exceptions and escalation"
+    ],
+    [
+     "Closure",
+     "Proposal, quote, tender award, contract, purchase/sales order, fulfillment and verified payment"
+    ],
+    [
+     "Automation",
+     "Connected separate admin workspace, permissions, approvals, workflow builder, costs, tenant and billing"
+    ]
+   ]
+  },
+  {
+   "section": "Website and confidential Admin operating contract",
+   "line": 185,
+   "header": [
+    "Surface",
+    "Audience",
+    "Exposure and controls"
+   ],
+   "rows": [
+    [
+     "Website — Public",
+     "Anonymous visitor",
+     "Approved pages, bounded enquiry forms; no directory of private contacts or internal financial data."
+    ],
+    [
+     "Website — Portal",
+     "Authenticated external customer/supplier",
+     "Own permitted records, identity-bound grants, field minimization; no staff permissions."
+    ],
+    [
+     "Admin",
+     "Assigned employees and authorized management",
+     "Confidential Command Centre, private evidence, workflows and approvals."
+    ],
+    [
+     "Internal / callback",
+     "Service identities / verified providers",
+     "No browser access; signature and idempotency checks."
+    ]
+   ]
+  },
+  {
+   "section": "Production boundary and deployment decisions",
+   "line": 223,
+   "header": [
+    "Work / decision",
+    "Implementation and measurable acceptance",
+    "Accountable role"
+   ],
+   "rows": [
+    [
+     "Independent products",
+     "Each track has separate React Website and Admin, Django runtime, DB, object storage, vector index, queues, API secrets and logs. Shared libraries are source code only.",
+     "Architect"
+    ],
+    [
+     "Ingress",
+     "Public DNS/CDN/WAF routes approved public + portal endpoints; Admin origin requires verified staff audience and access policy. Worker endpoints private; callbacks authenticated.",
+     "Security / DevOps"
+    ],
+    [
+     "Data durability",
+     "Critical financial and authorization data RPO <=15 minutes, initial RTO <=4 hours, growth RTO <=2 hours. Regenerable research RPO <=24h/RTO <=8h. Validate restore before SLA.",
+     "Database / Ops"
+    ],
+    [
+     "Scaling",
+     "Initial 25 owned +10 clients; growth 50+ owned +100 clients. 50/250 concurrent staff; 100k/1m scoped opportunities; 50/250 concurrent jobs. Use queue partitioning and per-tenant quotas.",
+     "Architect"
+    ],
+    [
+     "Failure boundaries",
+     "Cache keys scope product, tenant, startup and audience; DB source of truth; circuit breakers isolate failing providers.",
+     "Engineering"
+    ],
+    [
+     "Regional strategy",
+     "Choose data residency and provider routing from approved contractual/regulatory requirements; no cross-region replication before approval.",
+     "Legal / security"
+    ]
+   ]
+  },
+  {
+   "section": "Acceptance and evidence record",
+   "line": 256,
+   "header": [
+    "Evidence field",
+    "Required record"
+   ],
+   "rows": [
+    [
+     "Responsible / reviewer",
+     "Name and role of implementing owner and independent reviewer"
+    ],
+    [
+     "Artifact / test evidence",
+     "Commit, environment, scenario ID, actual result and secure evidence reference"
+    ],
+    [
+     "Decision",
+     "Pending / Pass / Fail / approved N/A with reason"
+    ],
+    [
+     "Remediation",
+     "Defect, owner, corrective action and retest"
+    ],
+    [
+     "Business acceptance",
+     "Authorized sign-off after required gates pass"
+    ]
+   ]
+  },
+  {
+   "section": "Architecture decisions",
+   "line": 278,
+   "header": [
+    "Control / scenario",
+    "Implementation and acceptance"
+   ],
+   "rows": [
+    [
+     "Network",
+     "Separate product/environment account or strict IAM/network boundary; private app/data subnets and approved ingress."
+    ],
+    [
+     "Frontend",
+     "Two independent origins per product; public CDN cache only published snapshots; Admin never caches confidential responses publicly."
+    ],
+    [
+     "Backend",
+     "Django API behind approved ingress; Celery workers no public inbound; durable PostgreSQL outbox, independent Valkey."
+    ],
+    [
+     "Data",
+     "Encrypted private PostgreSQL, storage and vector index; independent keys, backups, restore rehearsals."
+    ],
+    [
+     "Recovery",
+     "Critical RPO ≤15 min; initial RTO ≤4 h, growth target ≤2 h. Test and measure, not SLA promise."
+    ],
+    [
+     "Operational approval",
+     "Actual region, VPC, TLS/DNS, capacity, identity and cost require engineering decisions before applying IaC."
+    ]
+   ]
+  },
+  {
+   "section": "High-level design",
+   "line": 399,
+   "header": [
+    "ID",
+    "New interface",
+    "Purpose / acceptance"
+   ],
+   "rows": [
+    [
+     "W31",
+     "SaaS introduction, plans & demo",
+     "SaaS service entry separate from investor/customer journey No private fundraising offers or implied outcomes; publish only approved service terms"
+    ],
+    [
+     "W32",
+     "Startup & third-party client registration",
+     "Create application for an independent client, not a marketplace investor or customer Prove administrator authority; no provisioning before verified identity and approval"
+    ],
+    [
+     "W33",
+     "AI business onboarding & configuration wizard",
+     "Configure business without core code changes AI proposals are unverified; no real dispatch or spend during onboarding"
+    ],
+    [
+     "W34",
+     "SaaS client service portal",
+     "Manage subscription and service lifecycle separately from investor/customer portal Client-only scoped billing; no cross-tenant or investor/customer records"
+    ],
+    [
+     "A109",
+     "Event & Trigger Management Centre",
+     "Manage event definitions, timers and incoming webhooks independently of workflow design Verify signatures and scope; dedupe; never replay a live side effect"
+    ],
+    [
+     "A110",
+     "Live Automation Execution Monitor",
+     "Inspect concurrent runs and step-level history Pause/resume revalidate policy; unknown external outcome must reconcile before retry"
+    ],
+    [
+     "A111",
+     "Automation Coordination & Conflict Resolution",
+     "Resolve conflicting actions across authorized workflows Never expose unrelated tenant data; use idempotency and policy before dispatch"
+    ],
+    [
+     "A112",
+     "Business Configuration Change Centre",
+     "Govern post-onboarding changes, version comparison and safe rollout Running workflow revisions remain immutable; no authorization expansion without review"
+    ],
+    [
+     "A113",
+     "Automation Template & Node Library",
+     "Govern reusable workflow templates and node schemas separately from workflow execution Only approved nodes; no arbitrary code or secret values; immutable published versions"
+    ]
+   ]
+  }
+ ],
+ "10": [
+  {
+   "section": "Initial startup configurations",
+   "line": 12,
+   "header": [
+    "Legal entity",
+    "Business profile",
+    "Commercial focus"
+   ],
+   "rows": [
+    [
+     "AppNAI Technologies Pvt. Ltd.",
+     "Worldwide AI project bidding, AI/GenAI software development, engineering, consulting and delivery",
+     "Global enterprises, IT firms, procurement portals; project, bid, deadline, technology and delivery model"
+    ],
+    [
+     "MedMaarg Healthcare Solutions Pvt. Ltd.",
+     "AppNAI-powered AI Hospital: Wellness AI Scanner, Planner, Advisor; Doctor Connect, Pathology Lab Connect; preventive wellness and healthcare partnerships",
+     "Hospitals, clinics, doctors, diagnostic labs, insurers, corporates, universities; offering, organization, demo/pilot and geography"
+    ],
+    [
+     "EduVerse Future Skills Pvt. Ltd.",
+     "AI Skill School: student training in GenAI, ML, DL, NLP, CV, AI Backend, AI Frontend, AWS/cloud deployment; school-level AI education, educational products and innovative services; institutional/corporate training",
+     "Students/guardians, schools, colleges, universities, employers; programme, domain, grade band, cohort, mode, product/service"
+    ],
+    [
+     "OrganicSpec Pvt. Ltd.",
+     "Organic products, buying, selling, agriculture services and training; RamVan and Smart Biochar subject to approved readiness",
+     "Buyers, suppliers, distributors, FPOs, institutions; trade direction, SKU, quantity/unit, quality, price, location and delivery"
+    ]
+   ]
+  },
+  {
+   "section": "Independent deployment topology",
+   "line": 38,
+   "header": [
+    "Layer",
+    "Design contract"
+   ],
+   "rows": [
+    [
+     "Browser",
+     "Separate product origin and routes; shared component library only; authorized tenant/startup and scoped cache"
+    ],
+    [
+     "Identity",
+     "Existing SSO if compatible; unique audience, independent memberships and token invalidation"
+    ],
+    [
+     "API",
+     "Independent Django app/runtime, serializers, permissions, scoped query and domain transactions"
+    ],
+    [
+     "Domain",
+     "Market, marketing, account, bidding, procurement, sales and renewal only"
+    ],
+    [
+     "Persistence",
+     "Independent PostgreSQL, credentials, migrations, storage keys and vector namespace"
+    ],
+    [
+     "Workers",
+     "Separate broker/queue namespace, schedule, outbox, budget reservation and dead letter queue"
+    ],
+    [
+     "External adapters",
+     "Account-bound secrets, validated callbacks, independent quotas; no cross-product dispatch"
+    ],
+    [
+     "Admin",
+     "Product-specific policy, tenant support, billing, audit and emergency stops"
+    ],
+    [
+     "Operations",
+     "Independent deployment, health, logs, backup restore, incident and recovery; no shared confidential logs"
+    ]
+   ]
+  },
+  {
+   "section": "Capacity, reliability and recovery acceptance",
+   "line": 74,
+   "header": [
+    "Metric",
+    "Initial target",
+    "Growth target"
+   ],
+   "rows": [
+    [
+     "Owned startups / external tenants",
+     "25 / 10",
+     "50+ / 100"
+    ],
+    [
+     "Concurrent staff sessions",
+     "50",
+     "250"
+    ],
+    [
+     "Scoped opportunities",
+     "100,000",
+     "1,000,000"
+    ],
+    [
+     "Concurrent jobs / scheduled actions/day",
+     "50 / 10,000",
+     "250 / 100,000"
+    ],
+    [
+     "Dashboard query p95",
+     "≤2 s",
+     "≤2.5 s"
+    ],
+    [
+     "Async/webhook acknowledgement p95",
+     "≤2 s",
+     "≤2 s"
+    ],
+    [
+     "Projection refresh",
+     "≤60 s",
+     "≤60 s"
+    ],
+    [
+     "Critical data RPO / RTO",
+     "≤15 min / ≤4 h",
+     "≤15 min / ≤2 h"
+    ],
+    [
+     "Regenerable research RPO/RTO",
+     "≤24 h / ≤8 h",
+     "≤24 h / ≤8 h"
+    ]
+   ]
+  },
+  {
+   "section": "Global filter hierarchy and contextual filters",
+   "line": 120,
+   "header": [
+    "Family",
+    "Typed field set"
+   ],
+   "rows": [
+    [
+     "Scope",
+     "Tenant → startup → business line → offering/issuer thesis → opportunity type → contextual filters; authorized aggregate read-only"
+    ],
+    [
+     "Geography",
+     "Country, state, city, location, investment/delivery geography as applicable, currency, language, timezone"
+    ],
+    [
+     "Evidence",
+     "Source, permission, observed/published date, freshness, verified status, confidence"
+    ],
+    [
+     "Engagement",
+     "Owner/team, priority, stage, channel, eligibility, response, follow-up, meeting, objection and escalation"
+    ],
+    [
+     "Operations",
+     "Workflow state, approval, cost, quota, deadline, task, error and as_of"
+    ],
+    [
+     "Marketing",
+     "Campaign, audience, content, channel, sender reputation, spend, source, attribution, conversion window"
+    ],
+    [
+     "Commercial",
+     "Offering, customer/supplier type, need, bid, quotation, order direction, fulfillment, renewal, receivable/payable"
+    ],
+    [
+     "AppNAI",
+     "Technology, RFP/portal, eligibility, project budget/deadline, remote/onsite/hybrid, award"
+    ],
+    [
+     "MedMaarg",
+     "Organization type, preventive healthcare need, Scanner/Planner/Advisor, Doctor/Lab Connect, demo/pilot and deployment"
+    ],
+    [
+     "EduVerse",
+     "GenAI/ML/DL/NLP/CV, frontend/backend/cloud, learner/grade, institution, mode, cohort, product/service, guardian permission"
+    ],
+    [
+     "OrganicSpec",
+     "Buy/sell/service/training, SKU, unit, quantity, certification, buyer/supplier, price, delivery region"
+    ]
+   ]
+  },
+  {
+   "section": "Workflow register — end-to-end execution",
+   "line": 160,
+   "header": [
+    "Workflow",
+    "Trigger / processing",
+    "Acceptance / stop"
+   ],
+   "rows": [
+    [
+     "Startup catalogue",
+     "Approve offering, price, claims, market segment, customer roles, pipeline and workflow",
+     "No unapproved offerings or unscoped access"
+    ],
+    [
+     "Market discovery",
+     "Plan source query → evidence → signals/need → solution match → qualify",
+     "Allowed source and review; freshness and confidence"
+    ],
+    [
+     "Professional contacts",
+     "Find organization decision-maker, verify channel/source, deduplicate and eligibility",
+     "No private scraping; contact score does not grant permission"
+    ],
+    [
+     "Inbound acquisition",
+     "Landing page, authorized chat/email/WhatsApp/social/event/referral → lead and attribution",
+     "Scope, consent, dedupe; no medical records or minor targeting"
+    ],
+    [
+     "Content/campaign",
+     "Generate approved content, SEO, social publishing, ad/landing plan, audience, budget",
+     "Claim and channel approval; cost caps, actual publication"
+    ],
+    [
+     "Outreach and replies",
+     "Preview eligible contacts → approved messages → callback → classify intent",
+     "Opt-out/complaint stop; response halts generic sequence"
+    ],
+    [
+     "Follow-up & meetings",
+     "Schedule tasks based on intent, preference, local time; verify calendar",
+     "Caps, rejection and suppression stop"
+    ],
+    [
+     "Project bid",
+     "AppNAI qualify RFP/requirements, deadline, bid/no-bid, proposal, authorized submission",
+     "No unauthorized portal submission; actual award proof"
+    ],
+    [
+     "Proposal / quote",
+     "Approved pricing and terms; objections, controlled discount/negotiation",
+     "Revision and approvals; no unsupported promises"
+    ],
+    [
+     "Order / fulfillment",
+     "Create buy/sell/service/training/project order with lines; delivery, receipt and acceptance",
+     "Payables/receivables independent; quantity and evidence checked"
+    ],
+    [
+     "Commercial closure",
+     "Verified signed contract/payment per route; actual receipts/obligations; onboarding",
+     "No duplicate cash or false won state"
+    ],
+    [
+     "Retention & renewal",
+     "Handoff, milestones, feedback, renewal and eligible re-engagement",
+     "Record outcomes and preferences; no duplicated revenue"
+    ],
+    [
+     "Autonomous plan",
+     "Simulate workload, eligible recipients, cost and deadlines; approve hash, execute",
+     "No live effect during dry run; revalidate at dispatch"
+    ],
+    [
+     "Suspend/offboard",
+     "Stop schedules, revoke sender and client access, export/retain allowed records",
+     "Separate tenant/product; reconcile unknown results"
+    ]
+   ]
+  },
+  {
+   "section": "Website and confidential Admin operating contract",
+   "line": 395,
+   "header": [
+    "Surface",
+    "Audience",
+    "Exposure and controls"
+   ],
+   "rows": [
+    [
+     "Website — Public",
+     "Anonymous visitor",
+     "Approved pages, bounded enquiry forms; no directory of private contacts or internal financial data."
+    ],
+    [
+     "Website — Portal",
+     "Authenticated external customer/supplier",
+     "Own permitted records, identity-bound grants, field minimization; no staff permissions."
+    ],
+    [
+     "Admin",
+     "Assigned employees and authorized management",
+     "Confidential Command Centre, private evidence, workflows and approvals."
+    ],
+    [
+     "Internal / callback",
+     "Service identities / verified providers",
+     "No browser access; signature and idempotency checks."
+    ]
+   ]
+  },
+  {
+   "section": "Service-level execution decisions",
+   "line": 442,
+   "header": [
+    "Work / decision",
+    "Implementation and measurable acceptance",
+    "Accountable role"
+   ],
+   "rows": [
+    [
+     "HTTP request",
+     "Middleware authenticates; service resolves scope; serializer validates; query filters only authorized objects. No role from arbitrary request field.",
+     "Backend"
+    ],
+    [
+     "Atomic domain write",
+     "Select-for-update required for conflicting transitions/budget. Domain row, audit and outbox commit together. External provider call outside transaction.",
+     "Backend"
+    ],
+    [
+     "Worker claim",
+     "Lease with expiry, bounded attempts; duplicate delivery resolved by idempotency. Recheck permission/approval/budget immediately before external side effect.",
+     "Automation"
+    ],
+    [
+     "Publication pointer",
+     "Approve exact content hash; atomically update published revision; invalidate scoped cache and public projection; never read draft through public endpoint.",
+     "Backend / frontend"
+    ],
+    [
+     "Financial reconciliation",
+     "Provider webhook persisted once; verify reference, account, legal entity, currency, amount and state; allocation separately auditable.",
+     "Finance / backend"
+    ],
+    [
+     "Provider adapter",
+     "Normalize success, transient error, permanent error and uncertain effect. Unknown never automatically resent.",
+     "Integration"
+    ],
+    [
+     "RAG and AI",
+     "Verify current scoped approved evidence before ranking; validate output; unknown or protected action escalates.",
+     "AI lead"
+    ]
+   ]
+  },
+  {
+   "section": "Acceptance and evidence record",
+   "line": 487,
+   "header": [
+    "Evidence field",
+    "Required record"
+   ],
+   "rows": [
+    [
+     "Responsible / reviewer",
+     "Name and role of implementing owner and independent reviewer"
+    ],
+    [
+     "Artifact / test evidence",
+     "Commit, environment, scenario ID, actual result and secure evidence reference"
+    ],
+    [
+     "Decision",
+     "Pending / Pass / Fail / approved N/A with reason"
+    ],
+    [
+     "Remediation",
+     "Defect, owner, corrective action and retest"
+    ],
+    [
+     "Business acceptance",
+     "Authorized sign-off after required gates pass"
+    ]
+   ]
+  },
+  {
+   "section": "Transaction patterns",
+   "line": 509,
+   "header": [
+    "Control / scenario",
+    "Implementation and acceptance"
+   ],
+   "rows": [
+    [
+     "Authorized command",
+     "Resolve tenant/startup and actor from verified server context; validate exact DTO; never trust payload identity."
+    ],
+    [
+     "Revision lock",
+     "SELECT FOR UPDATE or optimistic revision; stale revision returns conflict; no second side effect."
+    ],
+    [
+     "Budget/outbox",
+     "Check remaining quota inside transaction, insert scoped unique key and reserve; commit before external worker delivery."
+    ],
+    [
+     "Receipt/financial result",
+     "Verify signed event and designated account; allocate using Decimal and row lock; duplicate ref remains one receipt."
+    ],
+    [
+     "Projection",
+     "Async projection refresh target ≤60 sec; server enforces filter allowlist and read-only aggregate."
+    ],
+    [
+     "Recovery",
+     "Retry transient failures only; uncertain send/payment reconciled before retry; permanent failure escalated with evidence."
+    ]
+   ]
+  },
+  {
+   "section": "Detailed-level design",
+   "line": 739,
+   "header": [
+    "ID",
+    "New interface",
+    "Purpose / acceptance"
+   ],
+   "rows": [
+    [
+     "W31",
+     "SaaS introduction, plans & demo",
+     "SaaS service entry separate from investor/customer journey No private fundraising offers or implied outcomes; publish only approved service terms"
+    ],
+    [
+     "W32",
+     "Startup & third-party client registration",
+     "Create application for an independent client, not a marketplace investor or customer Prove administrator authority; no provisioning before verified identity and approval"
+    ],
+    [
+     "W33",
+     "AI business onboarding & configuration wizard",
+     "Configure business without core code changes AI proposals are unverified; no real dispatch or spend during onboarding"
+    ],
+    [
+     "W34",
+     "SaaS client service portal",
+     "Manage subscription and service lifecycle separately from investor/customer portal Client-only scoped billing; no cross-tenant or investor/customer records"
+    ],
+    [
+     "A109",
+     "Event & Trigger Management Centre",
+     "Manage event definitions, timers and incoming webhooks independently of workflow design Verify signatures and scope; dedupe; never replay a live side effect"
+    ],
+    [
+     "A110",
+     "Live Automation Execution Monitor",
+     "Inspect concurrent runs and step-level history Pause/resume revalidate policy; unknown external outcome must reconcile before retry"
+    ],
+    [
+     "A111",
+     "Automation Coordination & Conflict Resolution",
+     "Resolve conflicting actions across authorized workflows Never expose unrelated tenant data; use idempotency and policy before dispatch"
+    ],
+    [
+     "A112",
+     "Business Configuration Change Centre",
+     "Govern post-onboarding changes, version comparison and safe rollout Running workflow revisions remain immutable; no authorization expansion without review"
+    ],
+    [
+     "A113",
+     "Automation Template & Node Library",
+     "Govern reusable workflow templates and node schemas separately from workflow execution Only approved nodes; no arbitrary code or secret values; immutable published versions"
+    ]
+   ]
+  }
+ ]
+}

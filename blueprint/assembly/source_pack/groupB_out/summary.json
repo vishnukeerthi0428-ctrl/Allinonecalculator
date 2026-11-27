@@ -1,0 +1,53 @@
+{
+ "doc_sizes_bytes": {
+  "04": 59240,
+  "05": 65364,
+  "09": 37451,
+  "10": 70407
+ },
+ "doc_lines": {
+  "04": 1023,
+  "05": 862,
+  "09": 442,
+  "10": 784
+ },
+ "common_core_identical_lines_vs_04": {
+  "04": 1023,
+  "05": 37,
+  "09": 119,
+  "10": 119
+ },
+ "sections": {
+  "04": 61,
+  "05": 73,
+  "09": 56,
+  "10": 106
+ },
+ "tables": {
+  "04": 16,
+  "05": 13,
+  "09": 9,
+  "10": 10
+ },
+ "table_rows": {
+  "04": 177,
+  "05": 88,
+  "09": 59,
+  "10": 78
+ },
+ "backlog66": {
+  "rows": 66,
+  "name_match": 16,
+  "acceptance_match": 11,
+  "deps_match": 11,
+  "max_level": 27
+ },
+ "module_cards": 22,
+ "module_card_ops": 17,
+ "module_card_ops_found": 17,
+ "module_card_entities": 27,
+ "module_card_entities_in_3_3": 27,
+ "opt_controls": 64,
+ "opt_in_frd": 12,
+ "opt_cited_in_bp": 17
+}
