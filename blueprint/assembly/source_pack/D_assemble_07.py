@@ -184,6 +184,23 @@ for cls in ["Runtime provider", "OSS library", "Developer plugin", "Unapproved S
     t.append(f"| {cls} | " + " | ".join(map(str, vals)) + f" | {sum(vals)} |")
 PSUM = "\n".join(t)
 
+def escape_dollars(text):
+    out, fence = [], False
+    for line in text.split("\n"):
+        if line.startswith("```"):
+            fence = not fence
+            out.append(line)
+            continue
+        if fence:
+            out.append(line)
+            continue
+        parts = line.split("`")
+        for i in range(0, len(parts), 2):
+            parts[i] = parts[i].replace("\\$", "$").replace("$", "\\$")
+        out.append("`".join(parts))
+    return "\n".join(out)
+
+
 REPL = {
     "<<ASPECT_COUNT_TABLE>>": ASPECT_COUNT, "<<SUMMARY_TABLE>>": SUMMARY, "<<ASPECTS_TABLE>>": ASPECTS_TABLE,
     "<<CATALOGUE_FAMILY_ROWS>>": FAMROWS, "<<COUNTS_REL>>": frag("counts_rel.md"), "<<COUNTS_BOUNDARY>>": frag("counts_boundary.md"),
@@ -199,6 +216,7 @@ for sk, out in [("D_skeleton_a.md", "Part-03-5a_Source_Pack_API_Catalog_Reconcil
         j = s.index(">>", i)
         s = s[:i] + frag(s[i + 7:j]) + s[j + 2:]
     s = s.replace("website ingress allowlist (80 operations)", f"website ingress allowlist ({NALLOW} operations)")
+    s = escape_dollars(s)
     assert "<<" not in s, s[s.index("<<"):s.index("<<") + 40]
     open(os.path.join(BP, out), "w", encoding="utf-8").write(s)
     print(out, len(s))

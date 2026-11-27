@@ -202,7 +202,7 @@ for c in cands:
         "verification_status": c["Verification status"], "evidence_url": c["Official / evidence URL"],
         "doc21_listing": src21, "decision_doc21": dec21, "capability_doc21": cap,
         "blueprint_adapter_or_module": exp or adapter, "blueprint_ag_au": agau, "blueprint_replacement_decision": bpdec,
-        "blueprint_status": status, "activation_default": "Disabled; procurement gate PG-01…PG-10 (Part 7.4 §7.4.5.6)",
+        "blueprint_status": status, "activation_default": "Disabled; procurement gate PG-01…PG-10 (Part 7.4b §7.4.5.8.2)",
     }
     out.append(row)
     cat_ct[c["Category"]] += 1; pri_ct[c["Source priority"]] += 1; lic_ct[lc] += 1
