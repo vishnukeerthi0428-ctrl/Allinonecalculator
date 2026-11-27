@@ -1,0 +1,77 @@
+source_br,blueprint_br,name,source_acceptance,source_dependencies,blueprint_dependencies,epic,wave,status,note,cited_in_doc24_rtm
+M01,BR-M01,Identity & access (seq 1),Existing capability; validate growth/admin access before launch (not new build).,"H02,H03",,EP-01,W0,Covered,Dependencies match,yes
+M02,BR-M02,Product knowledge catalog (seq 2),Planned products blocked from promotion,M01,M01,EP-02,W0,Covered,Dependencies match,yes
+M03,BR-M03,Knowledge document ingestion (seq 3),Every answer cites approved version,M02,M02,EP-02,W0,Covered,Dependencies match,yes
+M04,BR-M04,Consent and suppression (seq 4),Opt-out blocks all scoped sends,M01,M01,EP-03,W0,Covered,Dependencies match,yes
+M05,BR-M05,Integration registry (seq 5),Secrets never returned in API,M01;M04,M01;M04,EP-01,W0,Covered,Dependencies match,yes
+M06,BR-M06,Event and audit foundation (seq 6),Duplicate delivery has one effect,M01,M01,EP-01,W0,Covered,Dependencies match,yes
+M07,BR-M07,Source permissions register (seq 7),Unapproved URL blocked,M04;M05,M04;M05,EP-05,W0,Covered,Dependencies match,yes
+M08,BR-M08,AI gateway and evaluation (seq 8),Invalid outputs rejected; cost cap enforced,M02;M05;M06,M02;M05;M06,EP-04,W0,Covered,Dependencies match,yes
+M09,BR-M09,DevSecOps & environment (seq 11),Restore drill; secret scan; smoke test,M01;M08,M01;M08,EP-21,W0,Covered,Dependencies match,yes
+M10,BR-M10,Search query planner (seq 13),No personal health targeting queries,M02;M07;M08,M02;M07;M08,EP-05,W1,Covered,Dependencies match,yes
+M11,BR-M11,Public web discovery (seq 14),Source URL/date recorded; blocked hosts rejected,M10,M10,EP-05,W1,Covered,Dependencies match,yes
+M12,BR-M12,Evidence extraction (seq 15),Evidence traceable; injection ignored,M08;M11,M08;M11,EP-05,W1,Covered,Dependencies match,yes
+M13,BR-M13,Account discovery (seq 16),Duplicate domain/location merge safe,M12,M12,EP-05,W1,Covered,Dependencies match,yes
+M14,BR-M14,Buying signal classification (seq 17),≥80% precision on reviewed pilot sample target,M12;M13,M12;M13,EP-05,W1,Covered,Dependencies match,yes
+M15,BR-M15,Business need discovery (seq 18),No inference labeled confirmed,M14,M14,EP-05,W1,Covered,Dependencies match,yes
+M16,BR-M16,Product solution matching (seq 19),Unavailable offering excluded from sales,M02;M15,M02;M15,EP-05,W1,Covered,Dependencies match,yes
+M17,BR-M17,Opportunity scoring (seq 20),Score recalculates; consent independent,M16,M16,EP-06,W1,Covered,Dependencies match,yes
+M18,BR-M18,Decision-maker role discovery (seq 21),No private contacts or guessed emails,M13;M17,M13;M17,EP-06,W1,Covered,Dependencies match,yes
+M19,BR-M19,Contact verification (seq 22),Verified not synonymous with consent,M04;M18,M04;M18,EP-06,W1,Covered,Dependencies match,yes
+M20,BR-M20,Research review and alerts (seq 23),Rejected leads never sent to channel,M17;M19,M17;M19,EP-06,W1,Covered,Dependencies match,yes
+M21,BR-M21,CRM pipeline (seq 24),Invalid stage transition rejected,M06;M20,M06;M20,EP-07,W2,Covered,Dependencies match,yes
+M22,BR-M22,Lead capture and forms (seq 25),Duplicate submission one lead,M04;M21,M04;M21,EP-07,W2,Covered,Dependencies match,yes
+M23,BR-M23,Customer 360 (seq 26),Updates visible within 60s target,M21;M22,M21;M22,EP-07,W2,Covered,Dependencies match,yes
+M24,BR-M24,Engagement eligibility (seq 27),No send when opt-out/unknown eligibility,M04;M19,M04;M19,EP-03,W2,Covered,Dependencies match,yes
+M25,BR-M25,Personalized message drafting (seq 29),No invented relationship or diagnosis,M08;M16;M24,M08;M16;M24,EP-08,W2,Covered,Dependencies match,yes
+M26,BR-M26,Email integration (seq 30),Replay no duplicate; bounce suppress,M05;M24;M25,M05;M24;M25,EP-08,W2,Covered,Dependencies match,yes
+M27,BR-M27,Unified inbound processing (seq 31),STOP cancels; urgent/clinical routes to human,M08;M26,M08;M26,EP-08,W2,Covered,Dependencies match,yes
+M28,BR-M28,Follow-up sequences (seq 32),No follow-up after stop or reply,M24;M26;M27,M24;M26;M27,EP-08,W2,Covered,Dependencies match,yes
+M29,BR-M29,Meeting and calendar (seq 33),No invented availability; conflict handled,M21;M27,M21;M27,EP-09,W2,Covered,Dependencies match,yes
+M30,BR-M30,Growth dashboard (seq 34),Counts reconcile with deal records,M20;M29,M20;M29,EP-17,W2,Covered,Dependencies match,yes
+M31,BR-M31,WhatsApp Business (seq 35),No private group scrape; opt-in gate,M24;M27,M24;M27,EP-10,W3,Covered,Dependencies match,yes
+M32,BR-M32,Website conversational assistant (seq 36),Clinical question routed; no medical data,M08;M22;M27,M08;M22;M27,EP-10,W3,Covered,Dependencies match,yes
+M33,BR-M33,Social listening (seq 39),No restricted profiles or automated DMs,M07;M14,M07;M14,EP-05,W3,Covered,Dependencies match,yes
+M34,BR-M34,Content studio (seq 40),Unapproved claims cannot publish,M02;M08,M02;M08,EP-11,W3,Covered,Dependencies match,yes
+M35,BR-M35,Social publishing (seq 41),No unsupported DMs; idempotent publishing,M05;M34,M05;M34,EP-11,W3,Covered,Dependencies match,yes
+M36,BR-M36,SEO and search visibility (seq 42),No fabricated ranking data,M07;M34,M07;M34,EP-11,W3,Covered,Dependencies match,yes
+M37,BR-M37,Landing pages and attribution (seq 43),No health events to ad pixels,M22;M34,M22;M34,EP-12,W3,Covered,Dependencies match,yes
+M38,BR-M38,Campaign management (seq 44),Suppression applied at execution,M24;M34;M37,M24;M34;M37,EP-12,W3,Covered,Dependencies match,yes
+M39,BR-M39,Paid ads integration (seq 45),Budget exceeded → pause; no sensitive data,M05;M38,M05;M38,EP-12,W3,Covered,Dependencies match,yes
+M40,BR-M40,Webinars and demonstrations (seq 46),Opt-outs respected; attendance dedup,M22;M28;M29,M22;M28;M29,EP-09,W3,Covered,Dependencies match,yes
+M41,BR-M41,Unified omnichannel routing (seq 37),No duplicate replies across linked channels,M27;M31;M32,M27;M31;M32,EP-08,W3,Covered,Dependencies match,yes
+M42,BR-M42,Referral and partner lead capture (seq 47),No unauthorized third-party contact enrollment,M22;M38,M22;M38,EP-12,W3,Covered,Dependencies match,yes
+M43,BR-M43,Proposal builder (seq 48),Only approved version externally shared,M02;M21;M29,M02;M21;M29,EP-13,W4,Covered,Dependencies match,yes
+M44,BR-M44,Quote and pricing engine (seq 49),No unauthorized discount; totals exact,M02;M43,M02;M43,EP-13,W4,Covered,Dependencies match,yes
+M45,BR-M45,Negotiation and objection handling (seq 50),Contract/price exception escalates,M41;M44,M41;M44,EP-13,W4,Covered,Dependencies match,yes
+M46,BR-M46,Contract and MoU workflow (seq 51),No AI signs contract; signed version hash stored,M43;M44,M43;M44,EP-13,W4,Covered,Dependencies match,yes
+M47,BR-M47,Payment and closure (seq 52),Replay no duplicate revenue; no invented closure,M21;M46,M21;M46,EP-15,W4,Covered,Dependencies match,yes
+M48,BR-M48,Onboarding and handoff (seq 53),No patient data copied,M04;M47,M04;M47,EP-16,W4,Covered,Dependencies match,yes
+M49,BR-M49,Partner deployment pipeline (seq 54),No deployment claims before approval,M43;M46,M43;M46,EP-16,W4,Covered,Dependencies match,yes
+M50,BR-M50,Retention and renewal (seq 55),No medical data in scoring,M28;M48,M28;M48,EP-16,W4,Covered,Dependencies match,yes
+M51,BR-M51,Lost deal and feedback (seq 56),No auto-recontact after loss without policy,M21;M28,M21;M28,EP-16,W4,Covered,Dependencies match,yes
+M52,BR-M52,Revenue and attribution (seq 57),Revenue reconciles with finance; attribution caveat,M37;M47,M37;M47,EP-15,W5,Covered,Dependencies match,yes
+M53,BR-M53,Cost and usage control (seq 9),Simulated cap stops requests,M05;M08,M05;M08,EP-04,W0,Covered,Dependencies match,yes
+M54,BR-M54,AI quality and feedback (seq 58),Regression fails block deploy,M08;M51,M08;M51,EP-04,W0 (harness) / W5 (loop),Covered,Dependencies match,yes
+M55,BR-M55,Workflow control center (seq 28),Emergency stop blocks queued sends,M06;M24,M06;M24,EP-18,W2,Covered,Dependencies match,yes
+M56,BR-M56,Privacy requests and retention (seq 10),Deletion does not re-enable outreach,M04;M06,M04;M06,EP-03,W0,Covered,Dependencies match,yes
+M57,BR-M57,Compliance monitoring (seq 38),Simulated complaints stop campaign,M24;M41,M24;M41,EP-03,W3,Covered,Dependencies match,yes
+M58,BR-M58,Operational observability (seq 12),Provider outage does not lose events,M06;M09,M06;M09,EP-21,W0,Covered,Dependencies match,yes
+M59,BR-M59,Competitor and market watch (seq 59),No unverified comparative claim,M10;M12,M10;M12,EP-05,W5,Covered,Dependencies match,yes
+M60,BR-M60,Forecast and sales optimization (seq 60),Forecast labeled estimate,M51;M52,M51;M52,EP-17,W5,Covered,Dependencies match,yes
+M61,BR-M61,Admin command center (seq 61),Admin totals reconcile; no direct unsafe DB edits,M01;M60,M01;M60,EP-17,W0 (shell) / W5,Covered,Dependencies match,yes
+M62,BR-M62,End-to-end production release (seq 62),All critical tests pass; rollback verified,M01;M61,M01;M61,EP-21,W0 (pipeline) / W5,Covered,Dependencies match,yes
+M63,BR-M63,Insurance institutional pilot (seq 63),No underwriting or personal profiling,M49;M57,M49;M57,EP-16,W6,Covered,Dependencies match,yes
+M64,BR-M64,Technology licensing pipeline (seq 64),No promised unready API,M46;M49,M46;M49,EP-16,W6,Covered,Dependencies match,yes
+M65,BR-M65,Phygital expansion (seq 65),Deployment sign-off required,M49;M52,M49;M52,EP-16,W6,Covered,Dependencies match,yes
+M66,BR-M66,Future product commercialization (seq 66),Planned offerings not promoted,M02;M57,M02;M57,EP-02,W0 / W6,Covered,Dependencies match,yes
+B-TENANT,BR-TENANT,Independent tenant/startup operation,Zero cross-scope disclosure or side effects,,"M01, M05, M06","EP-01, EP-14",W0–W5,Covered,Cross-cutting BR present in Part 1,yes
+B-WEB,BR-WEB,Approved public website and external portal,Verified host serves approved snapshot only; external users access only granted objects; Admin routes deny external identities,,"M02, M22, BR-TENANT",EP-19,W2–W3,Covered,Cross-cutting BR present in Part 1,yes
+B-AUTO,BR-AUTO,Controlled autonomous operations,"Simulate without side effects; recheck eligibility, budget and approval before dispatch; pause stops new actions; audit every state",,"M06, M24, M55",EP-18,W2 / W5,Covered,Cross-cutting BR present in Part 1,yes
+B-SVC,BR-SVC,Service subscriptions and client portability,"Provision, meter, invoice, suspend and export one tenant without modifying another; reconcile charges to usage",,"BR-TENANT, M53",EP-20,W5,Covered,Cross-cutting BR present in Part 1,yes
+B-QA,BR-QA,"Reliable, independently verified delivery",Each approved requirement has implementation and test evidence; go-live gates passed; restore and rollback rehearsed,,All,EP-21,W0–W5,Covered,Cross-cutting BR present in Part 1,yes
+XBR-01 (unnumbered),BR-S138,Dynamic startup/tenant onboarding,Doc 38 counts 5 added BRs without IDs,,,EP-20/EP-18,W5,Partially covered,[GAP-440] [ASSUMPTION-441] interpreted as the five BRD §17.1 scope statements,no
+XBR-02 (unnumbered),BR-S138,Independent SaaS clients,Doc 38 counts 5 added BRs without IDs,,,EP-20/EP-18,W5,Partially covered,[GAP-440] [ASSUMPTION-441] interpreted as the five BRD §17.1 scope statements,no
+XBR-03 (unnumbered),BR-S138,Multiple scoped business objectives,Doc 38 counts 5 added BRs without IDs,,,EP-20/EP-18,W5,Partially covered,[GAP-440] [ASSUMPTION-441] interpreted as the five BRD §17.1 scope statements,no
+XBR-04 (unnumbered),BR-S138,No new core code per ordinary startup,Doc 38 counts 5 added BRs without IDs,,,EP-20/EP-18,W5,Partially covered,[GAP-440] [ASSUMPTION-441] interpreted as the five BRD §17.1 scope statements,no
+XBR-05 (unnumbered),BR-S138,"Measure verified outcomes, not message volume",Doc 38 counts 5 added BRs without IDs,,,EP-20/EP-18,W5,Partially covered,[GAP-440] [ASSUMPTION-441] interpreted as the five BRD §17.1 scope statements,no

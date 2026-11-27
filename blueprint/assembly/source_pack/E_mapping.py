@@ -46,7 +46,7 @@ M = {
 127:("ENT-196",[],"Renamed",""),128:("ENT-194",[],"Renamed",""),129:("ENT-178",[],"Renamed",""),130:("ENT-156",[],"Renamed",""),
 131:("ENT-023",[],"Renamed",""),
 132:("ENT-001",[],"Renamed","sales_tenant -> ten_tenant"),133:("ENT-002",[],"Renamed",""),134:("ENT-008",["ten_membership_grant"],"Merged","sales_membership and existing membership both land in ten_membership + grant"),
-135:("ENT-200",["ENT-002","ENT-167"],"New (proposed)","No blueprint entity for the business profile template; ten_startup.template_ref points at an undefined 'business template config'"),
+135:("ENT-ENH-E-01",["ENT-002","ENT-167"],"New (proposed)","No blueprint entity for the business profile template; ten_startup.template_ref points at an undefined 'business template config'"),
 136:("ENT-005",[],"Renamed",""),137:("ENT-179",["ENT-180"],"Split","plan + plan_version"),138:("ENT-182",[],"Renamed",""),
 139:("ENT-184",["ENT-185"],"Split","service invoice + lines"),140:("ENT-188",[],"Renamed",""),
 141:("ENT-185",["ENT-183","ENT-186"],"Split","usage charge spread across meter reading, invoice line and credit"),
@@ -59,5 +59,5 @@ M = {
 "sales_ui_trigger_revision":("ENT-161",[],"Renamed","candidate C3"),
 "sales_ui_conflict":("ENT-165",["aut_run_conflict"],"Renamed","candidate C4"),
 "sales_ui_template_revision":("ENT-167",["ENT-166"],"Renamed","candidate C5"),
-"sales_ui_service_request":("ENT-201",[],"New (proposed)","candidate C6: W34 'support case' has no blueprint entity"),
+"sales_ui_service_request":("ENT-ENH-E-02",[],"New (proposed)","candidate C6: W34 'support case' has no blueprint entity"),
 }

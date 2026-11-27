@@ -25,6 +25,8 @@ for i, line in enumerate(L):
         for s in sets: std += STD.get(s, [])
         if not sets: std = ['id','revision','created_at','created_by','updated_at','updated_by']
         e['std_columns'] = sorted(set(std)); continue
+    if cur and cur in cat and line.startswith('|'):
+        cat[cur].setdefault('text', ''); cat[cur]['text'] += line + '\n'
     if cur and line.startswith('| `'):
         cell = line.split('|')[1]
         for nm in re.findall(r'`([a-z_0-9]+)`', cell): cat[cur]['columns'].append(nm)
@@ -39,8 +41,11 @@ for i, line in enumerate(L):
         if not sets: std = ['id','revision','created_at','created_by','updated_at','updated_by']
         e['std_columns'] = sorted(set(std))
         e['columns'] += re.findall(r'`(\w+)`', m2.group(4))
-        e['keys_text'] = m2.group(5)
+        e['keys_text'] = m2.group(5); e['text'] = e.get('text','') + line
         e['key_text_cols'] = re.findall(r'`(\w+)`', m2.group(5))
+sec8 = T.split('## 3.3.8 ')[1].split('## 3.3.9 ')[0]
+for e in cat.values():
+    e['sec8'] = [l for l in sec8.split('\n') if e['table'] in l]
 json.dump(cat, open(out,'w'), indent=1)
 print(len(cat), 'entities;', sum(1 for e in cat.values() if e['dict_section']), 'with dictionary;', sum(len(e['columns']) for e in cat.values()), 'specific columns')
 print([k for k,e in cat.items() if not e['dict_section']])

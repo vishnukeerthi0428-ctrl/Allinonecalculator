@@ -48,8 +48,10 @@ for p in sorted(B.glob("Part-05-*.md")):
         def f(name):
             mm = re.search(r"^\| " + name + r" \| (.*?) \|$", blk, re.M)
             return mm.group(1).strip() if mm else ""
-        stories[sid] = dict(id=sid, title=m.group(2).strip(), type=f("Type"), traces=f("Traces"), priority=f("Priority"),
-                            wave=f("Wave"), points=f("Points"), deps=f("Dependencies"), part=p.name)
+        pwp = f("Priority · Wave · Points").split(" · ")
+        stories[sid] = dict(id=sid, title=m.group(2).strip(), type=f("Type"), traces=f("Traces") or f("Linked"),
+                            priority=f("Priority") or (pwp[0] if pwp else ""), wave=f("Wave") or (pwp[1] if len(pwp) > 1 else ""),
+                            points=f("Points") or (pwp[-1] if len(pwp) > 2 else ""), deps=f("Dependencies"), part=p.name)
 idx["stories"] = stories
 # ---- Part 6.6 FR -> stories
 p66 = txt("Part-06-6_*.md")

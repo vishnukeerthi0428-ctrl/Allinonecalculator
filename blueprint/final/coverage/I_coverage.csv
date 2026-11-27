@@ -1,0 +1,484 @@
+doc,section,aspect_id,aspect_summary,status,blueprint_location,action,new_ids
+18,Purpose and operating boundary,I-18-001,"Product purpose, investor exclusion, independent deployment, 25+ startups, tenant vs startup, aggregate read-only",Not applicable,Part 0 §0.1; Part 1; DEC-009,Common core: see document 01/02 coverage,
+18,Current design scope,I-18-002,"147 interfaces (34 Website + 113 Admin), 302+19 API operations, 149+6 entities, 624+175 tests",Not applicable,Part 2.5; Part 3.2; Part 3.3,Common core: see document 01/02 coverage (counts reconciled by groups owning docs 06/07/08/38),
+18,Product-specific application / Business controls,I-18-003,"AppNAI, MedMaarg, EduVerse, OrganicSpec, campaign business controls (5 rows)",Not applicable,Part 2.2 WF-08…WF-10; Part 2.3 BRL,Common core: see document 01/02 coverage,
+18,Completion and approval / Acceptance and evidence record,I-18-004,"Responsible lead, independent reviewer, PO sign-off; five evidence fields (BRD §12.2)",Covered,Part 8.2 §8.2.4.2; Part 6.1 §6.1.5.4 EVR,None (BRD §12.2 already mapped),
+18,"Implementation, verification and delivery controls (preamble)",I-18-005,"Proposed contracts are not production approval; actions subject to authorization, budget and approval",Not applicable,"BRD §13.2, §16; BLK-11",Common core: see document 01/02 coverage,
+25,Purpose and operating boundary,I-25-001,"Product purpose, investor exclusion, independent deployment, 25+ startups, tenant vs startup, aggregate read-only",Not applicable,Part 0 §0.1; Part 1; DEC-009,Common core: see document 01/02 coverage,
+25,Current design scope,I-25-002,"147 interfaces (34 Website + 113 Admin), 302+19 API operations, 149+6 entities, 624+175 tests",Not applicable,Part 2.5; Part 3.2; Part 3.3,Common core: see document 01/02 coverage (counts reconciled by groups owning docs 06/07/08/38),
+25,Product-specific application / Business controls,I-25-003,"AppNAI, MedMaarg, EduVerse, OrganicSpec, campaign business controls (5 rows)",Not applicable,Part 2.2 WF-08…WF-10; Part 2.3 BRL,Common core: see document 01/02 coverage,
+25,Completion and approval / Acceptance and evidence record,I-25-004,"Responsible lead, independent reviewer, PO sign-off; five evidence fields (BRD §12.2)",Covered,Part 8.2 §8.2.4.2; Part 6.1 §6.1.5.4 EVR,None (BRD §12.2 already mapped),
+25,"Implementation, verification and delivery controls (preamble)",I-25-005,"Proposed contracts are not production approval; actions subject to authorization, budget and approval",Not applicable,"BRD §13.2, §16; BLK-11",Common core: see document 01/02 coverage,
+26,Purpose and operating boundary,I-26-001,"Product purpose, investor exclusion, independent deployment, 25+ startups, tenant vs startup, aggregate read-only",Not applicable,Part 0 §0.1; Part 1; DEC-009,Common core: see document 01/02 coverage,
+26,Current design scope,I-26-002,"147 interfaces (34 Website + 113 Admin), 302+19 API operations, 149+6 entities, 624+175 tests",Not applicable,Part 2.5; Part 3.2; Part 3.3,Common core: see document 01/02 coverage (counts reconciled by groups owning docs 06/07/08/38),
+26,Product-specific application / Business controls,I-26-003,"AppNAI, MedMaarg, EduVerse, OrganicSpec, campaign business controls (5 rows)",Not applicable,Part 2.2 WF-08…WF-10; Part 2.3 BRL,Common core: see document 01/02 coverage,
+26,Completion and approval / Acceptance and evidence record,I-26-004,"Responsible lead, independent reviewer, PO sign-off; five evidence fields (BRD §12.2)",Covered,Part 8.2 §8.2.4.2; Part 6.1 §6.1.5.4 EVR,None (BRD §12.2 already mapped),
+26,"Implementation, verification and delivery controls (preamble)",I-26-005,"Proposed contracts are not production approval; actions subject to authorization, budget and approval",Not applicable,"BRD §13.2, §16; BLK-11",Common core: see document 01/02 coverage,
+27,Purpose and operating boundary,I-27-001,"Product purpose, investor exclusion, independent deployment, 25+ startups, tenant vs startup, aggregate read-only",Not applicable,Part 0 §0.1; Part 1; DEC-009,Common core: see document 01/02 coverage,
+27,Current design scope,I-27-002,"147 interfaces (34 Website + 113 Admin), 302+19 API operations, 149+6 entities, 624+175 tests",Not applicable,Part 2.5; Part 3.2; Part 3.3,Common core: see document 01/02 coverage (counts reconciled by groups owning docs 06/07/08/38),
+27,Product-specific application / Business controls,I-27-003,"AppNAI, MedMaarg, EduVerse, OrganicSpec, campaign business controls (5 rows)",Not applicable,Part 2.2 WF-08…WF-10; Part 2.3 BRL,Common core: see document 01/02 coverage,
+27,Completion and approval / Acceptance and evidence record,I-27-004,"Responsible lead, independent reviewer, PO sign-off; five evidence fields (BRD §12.2)",Covered,Part 8.2 §8.2.4.2; Part 6.1 §6.1.5.4 EVR,None (BRD §12.2 already mapped),
+27,"Implementation, verification and delivery controls (preamble)",I-27-005,"Proposed contracts are not production approval; actions subject to authorization, budget and approval",Not applicable,"BRD §13.2, §16; BLK-11",Common core: see document 01/02 coverage,
+29,Purpose and operating boundary,I-29-001,"Product purpose, investor exclusion, independent deployment, 25+ startups, tenant vs startup, aggregate read-only",Not applicable,Part 0 §0.1; Part 1; DEC-009,Common core: see document 01/02 coverage,
+29,Current design scope,I-29-002,"147 interfaces (34 Website + 113 Admin), 302+19 API operations, 149+6 entities, 624+175 tests",Not applicable,Part 2.5; Part 3.2; Part 3.3,Common core: see document 01/02 coverage (counts reconciled by groups owning docs 06/07/08/38),
+29,Product-specific application / Business controls,I-29-003,"AppNAI, MedMaarg, EduVerse, OrganicSpec, campaign business controls (5 rows)",Not applicable,Part 2.2 WF-08…WF-10; Part 2.3 BRL,Common core: see document 01/02 coverage,
+29,Completion and approval / Acceptance and evidence record,I-29-004,"Responsible lead, independent reviewer, PO sign-off; five evidence fields (BRD §12.2)",Covered,Part 8.2 §8.2.4.2; Part 6.1 §6.1.5.4 EVR,None (BRD §12.2 already mapped),
+29,"Implementation, verification and delivery controls (preamble)",I-29-005,"Proposed contracts are not production approval; actions subject to authorization, budget and approval",Not applicable,"BRD §13.2, §16; BLK-11",Common core: see document 01/02 coverage,
+30,Purpose and operating boundary,I-30-001,"Product purpose, investor exclusion, independent deployment, 25+ startups, tenant vs startup, aggregate read-only",Not applicable,Part 0 §0.1; Part 1; DEC-009,Common core: see document 01/02 coverage,
+30,Current design scope,I-30-002,"147 interfaces (34 Website + 113 Admin), 302+19 API operations, 149+6 entities, 624+175 tests",Not applicable,Part 2.5; Part 3.2; Part 3.3,Common core: see document 01/02 coverage (counts reconciled by groups owning docs 06/07/08/38),
+30,Product-specific application / Business controls,I-30-003,"AppNAI, MedMaarg, EduVerse, OrganicSpec, campaign business controls (5 rows)",Not applicable,Part 2.2 WF-08…WF-10; Part 2.3 BRL,Common core: see document 01/02 coverage,
+30,Completion and approval / Acceptance and evidence record,I-30-004,"Responsible lead, independent reviewer, PO sign-off; five evidence fields (BRD §12.2)",Covered,Part 8.2 §8.2.4.2; Part 6.1 §6.1.5.4 EVR,None (BRD §12.2 already mapped),
+30,"Implementation, verification and delivery controls (preamble)",I-30-005,"Proposed contracts are not production approval; actions subject to authorization, budget and approval",Not applicable,"BRD §13.2, §16; BLK-11",Common core: see document 01/02 coverage,
+31,Purpose and operating boundary,I-31-001,"Product purpose, investor exclusion, independent deployment, 25+ startups, tenant vs startup, aggregate read-only",Not applicable,Part 0 §0.1; Part 1; DEC-009,Common core: see document 01/02 coverage,
+31,Current design scope,I-31-002,"147 interfaces (34 Website + 113 Admin), 302+19 API operations, 149+6 entities, 624+175 tests",Not applicable,Part 2.5; Part 3.2; Part 3.3,Common core: see document 01/02 coverage (counts reconciled by groups owning docs 06/07/08/38),
+31,Product-specific application / Business controls,I-31-003,"AppNAI, MedMaarg, EduVerse, OrganicSpec, campaign business controls (5 rows)",Not applicable,Part 2.2 WF-08…WF-10; Part 2.3 BRL,Common core: see document 01/02 coverage,
+31,Completion and approval / Acceptance and evidence record,I-31-004,"Responsible lead, independent reviewer, PO sign-off; five evidence fields (BRD §12.2)",Covered,Part 8.2 §8.2.4.2; Part 6.1 §6.1.5.4 EVR,None (BRD §12.2 already mapped),
+31,"Implementation, verification and delivery controls (preamble)",I-31-005,"Proposed contracts are not production approval; actions subject to authorization, budget and approval",Not applicable,"BRD §13.2, §16; BLK-11",Common core: see document 01/02 coverage,
+32,Purpose and operating boundary,I-32-001,"Product purpose, investor exclusion, independent deployment, 25+ startups, tenant vs startup, aggregate read-only",Not applicable,Part 0 §0.1; Part 1; DEC-009,Common core: see document 01/02 coverage,
+32,Current design scope,I-32-002,"147 interfaces (34 Website + 113 Admin), 302+19 API operations, 149+6 entities, 624+175 tests",Not applicable,Part 2.5; Part 3.2; Part 3.3,Common core: see document 01/02 coverage (counts reconciled by groups owning docs 06/07/08/38),
+32,Product-specific application / Business controls,I-32-003,"AppNAI, MedMaarg, EduVerse, OrganicSpec, campaign business controls (5 rows)",Not applicable,Part 2.2 WF-08…WF-10; Part 2.3 BRL,Common core: see document 01/02 coverage,
+32,Completion and approval / Acceptance and evidence record,I-32-004,"Responsible lead, independent reviewer, PO sign-off; five evidence fields (BRD §12.2)",Covered,Part 8.2 §8.2.4.2; Part 6.1 §6.1.5.4 EVR,None (BRD §12.2 already mapped),
+32,"Implementation, verification and delivery controls (preamble)",I-32-005,"Proposed contracts are not production approval; actions subject to authorization, budget and approval",Not applicable,"BRD §13.2, §16; BLK-11",Common core: see document 01/02 coverage,
+18,Initial startup configurations / technology principles,I-18-006,Four seed startup profiles and open-source-first technology principles,Not applicable,Part 1 §1.2; Part 3.1 §3.1.8,Common core: see document 01/02 coverage,
+18,Authority and data protection,I-18-007,"Owner/founder: portfolio view, selected-startup mutation, no other tenant by default",Covered,"Part 2.3 R01, ABAC-01; DEC-065",None,
+18,Authority and data protection,I-18-008,"Employee/growth manager: assigned scope, no investor records",Covered,Part 2.3 R02–R07; BRL-TEN-12,None,
+18,Authority and data protection,I-18-009,Finance/legal maker-checker; no autonomous financial transfer,Covered,DEC-038; BRL-APR; DEC-064,None,
+18,Authority and data protection,I-18-010,Tenant administrator not automatically a business approver,Covered,Part 2.3 R12; SoD rules,None,
+18,Authority and data protection,I-18-011,"Platform support/billing: metadata only, bounded client-approved grant",Covered,DEC-056 SupportAccessGrant; BRL-TEN-09,None,
+18,Authority and data protection,I-18-012,External prospect/customer: own invite/portal records only,Covered,Part 2.3 R16; portal grants,None,
+18,Authority and data protection,I-18-013,Other application user denied by audience even with same SSO identity,Covered,DEC-019; NFR-003; ADR-033,None,
+18,Authority and data protection,I-18-014,"Server-side permission on every object, nested FK, search, vector, export, notification, worker, webhook",Covered,NFR-002; Part 4.1 §4.4,None,
+18,Threat model and governance controls,I-18-015,Cross-product / cross-tenant leak,Covered,"Part 4.1 TB-09, NFR-031/032",None,
+18,Threat model and governance controls,I-18-016,Privilege escalation / confused deputy,Covered,Part 4.1 TB-04,None,
+18,Threat model and governance controls,I-18-017,Prompt injection / hallucination,Covered,Part 4.1 §4.15,None,
+18,Threat model and governance controls,I-18-018,Duplicate message / transaction,Covered,"NFR-005, ADR-023",None,
+18,Threat model and governance controls,I-18-019,Secret or webhook compromise,Covered,"Part 4.1 §4.6, RB-009, RB-013",None,
+18,Threat model and governance controls,I-18-020,Unexpected cost / abusive execution,Covered,"BRL-AI-08, NFR-022, RB-005",None,
+18,Threat model and governance controls,I-18-021,Privacy / communications,Covered,Part 4.1 §4.11–4.12,None,
+18,Threat model and governance controls,I-18-022,Financial corruption,Covered,"DEC-038, NFR-018",None,
+18,Threat model and governance controls,I-18-023,"Unauthorized extraction: scope export, approve manifest hash, short-lived link, revoke",Partially covered,Part 2.4 exports; AL-35,Export manifest hash approval added as rule,FR-ENH-I-012
+18,Threat model and governance controls,I-18-024,"Regulatory controls are operational requirements, not legal advice; investor route text",Not applicable,Investor product out of scope (DEC-009),None,
+18,Threat model and governance controls,I-18-025,Health and school data excluded from acquisition profiling; minors protected,Covered,"DEC-010/011 (MedMaarg, EduVerse); BRL-ELG",None,
+18,Threat model and governance controls,I-18-026,"Incident: stop scope, revoke, preserve, notify, verify restore, reconcile, restart approval",Covered,Part 4.1 §4.17; RB-004 resume,None,
+18,Threat model and governance controls,I-18-027,Independent backup and restore drills per product,Covered,Part 4.3 §4.47; NFR-031,None,
+18,"Capacity, reliability and recovery acceptance",I-18-028,"Owned startups / external tenants 25/10 initial, 50+/100 growth",Conflict,DEC-031 (40/10 Y1; 100/30 Y2),Test workload profiles added; conflict raised,"CONFLICT-461; WP-01, WP-02"
+18,"Capacity, reliability and recovery acceptance",I-18-029,Concurrent staff sessions 50 / 250,Conflict,DEC-031 internal users 60/200; Part 4.2 §4.25.3,As above,"CONFLICT-461; WP-01, WP-02"
+18,"Capacity, reliability and recovery acceptance",I-18-030,"Scoped opportunities 100,000 / 1,000,000",Not covered,No opportunity-volume design point,Seeded volume added to workload profiles,"WP-01, WP-02; LT-ENH-I-01"
+18,"Capacity, reliability and recovery acceptance",I-18-031,"Concurrent jobs 50/250; scheduled actions 10,000/100,000 per day",Conflict,"Part 4.2 §4.25.3 (≈1,154 msgs/day Y1)",Adopted as stress workload; conflict raised,CONFLICT-461; LT-ENH-I-02
+18,"Capacity, reliability and recovery acceptance",I-18-032,Dashboard query p95 ≤ 2 s / ≤ 2.5 s,Covered,"Part 4.2 §4.24 C10 (800 ms p95, stricter)",Mapped to OKPI-05/26,OKPI map
+18,"Capacity, reliability and recovery acceptance",I-18-033,Async/webhook acknowledgement p95 ≤ 2 s,Covered,"NFR-051, C6 (stricter)",Mapped to OKPI-27,OKPI map
+18,"Capacity, reliability and recovery acceptance",I-18-034,Projection refresh ≤ 60 s,Conflict,NFR-008 (360 ≤ 60 s) vs NFR-047 (dashboards ≤ 15 min),Conflict raised,CONFLICT-463
+18,"Capacity, reliability and recovery acceptance",I-18-035,"Critical RPO ≤ 15 min; RTO ≤ 4 h initial, ≤ 2 h growth",Conflict,DEC-018; NFR-056/057,Growth RTO conflict raised,CONFLICT-462
+18,"Capacity, reliability and recovery acceptance",I-18-036,Regenerable research data RPO ≤ 24 h / RTO ≤ 8 h,Not covered,No recovery class for regenerable data,Recovery class RC-2 added,GAP-462; FR-ENH-I-020
+18,"Capacity, reliability and recovery acceptance",I-18-037,"Targets are test targets, not SLA; fairness and independent budget/recovery on shared infra",Covered,DEC-044; NFR-062,None,
+18,Website and confidential Admin operating contract,I-18-038,"Surface table: Public, Portal, Admin, Internal/callback audiences and controls",Covered,NFR-001; Part 4.1 §4.1.3 trust zones,None,
+18,Website and confidential Admin operating contract,I-18-039,Routing: canonical legacy paths retained; /public /portal /admin namespaces; default deny; CORS not authorization,Covered,Part 3.2 namespaces; Part 4.1 §4.9,None,
+18,Website and confidential Admin operating contract,I-18-040,Verified custom domain → one tenant/startup; unknown host 404; immutable snapshot; preview grants; atomic swap,Covered,NFR-020; ADR-010; BRL-TEN-10,None,
+18,Website and confidential Admin operating contract,I-18-041,Public intake → scoped durable event + outbox; workers recheck before acting,Covered,ARP-03/04; Part 3.1 §3.1.7.1,None,
+18,Website and confidential Admin operating contract,I-18-042,Website/portal threat list (10 threats) and controls,Covered,"Part 4.1 TB-01, TB-02",None,
+18,Website and confidential Admin operating contract,I-18-043,Emergency unpublish and revoke access without deleting authoritative evidence,Partially covered,RB-004; BRL-PUB,Public-content incident runbook added,RB-017
+18,Open-source supply chain and external-service controls,I-18-044,"SBOM, pinned versions, licence review incl. copyleft, network-use terms, separately licensed model weights",Partially covered,PL-09/PL-10; Part 4.1 §4.16.1; GL-L06,Model-weight and network-use licence rule added,CS-DEP-04
+18,Open-source supply chain and external-service controls,I-18-045,"Container/dependency scan, secret redaction, least privilege, approved egress",Covered,PL-09/11; Part 4.1 §4.9,None,
+18,Open-source supply chain and external-service controls,I-18-046,"No unofficial channel automation, CAPTCHA/paywall bypass, private scraping",Covered,BRL-SRC; FR source policy,None,
+18,Open-source supply chain and external-service controls,I-18-047,"Verify provider processing, retention, residency, deletion",Covered,Part 4.1 §4.14,None,
+18,Open-source supply chain and external-service controls,I-18-048,"Security acceptance list incl. SSRF, forged callback, replay, exfiltration, cost exhaustion, recovery",Covered,Part 4.1 §4.16; Part 6,Mapped in SVM,SVM-01…12
+18,Open-source supply chain and external-service controls,I-18-049,"Independent reviewer validates threat model, isolation, cache, RAG, replay, finance; critical defects block",Covered,BLK-1…BLK-4,None,
+18,Product security and governance controls (table),I-18-050,Product boundary (distinct audiences),Covered,"Part 4.1 §4.1–4.4, §4.11, §4.17",None,
+18,Product security and governance controls (table),I-18-051,Tenant/issuer isolation with composite constraints,Covered,"Part 4.1 §4.1–4.4, §4.11, §4.17",None,
+18,Product security and governance controls (table),I-18-052,"Public publication (verified host, snapshot)",Covered,"Part 4.1 §4.1–4.4, §4.11, §4.17",None,
+18,Product security and governance controls (table),I-18-053,"Data minimization (no wealth inference, no clinical/child data)",Covered,"Part 4.1 §4.1–4.4, §4.11, §4.17",None,
+18,Product security and governance controls (table),I-18-054,Regulated route (approved claims/pricing),Covered,"Part 4.1 §4.1–4.4, §4.11, §4.17",None,
+18,Product security and governance controls (table),I-18-055,"Security response (revoke, isolate, stop dispatch)",Covered,"Part 4.1 §4.1–4.4, §4.11, §4.17",None,
+18,Threat-control implementation matrix,I-18-056,Broken object authorization (tenant A/B same ID shape),Covered,Part 4.1 §4.8.2; NFR-001/032; Part 6,Mapped to SVM,SVM map
+18,Threat-control implementation matrix,I-18-057,Cross-product identity,Covered,Part 4.1 §4.8.2; NFR-001/032; Part 6,Mapped to SVM,SVM map
+18,Threat-control implementation matrix,I-18-058,Confidential public data (DTO and bundle inspection),Covered,Part 4.1 §4.8.2; NFR-001/032; Part 6,Mapped to SVM,SVM map
+18,Threat-control implementation matrix,I-18-059,Workflow attack surface,Covered,Part 4.1 §4.8.2; NFR-001/032; Part 6,Mapped to SVM,SVM map
+18,Threat-control implementation matrix,I-18-060,"AI and knowledge (vector namespaces, metadata filters)",Covered,Part 4.1 §4.8.2; NFR-001/032; Part 6,Mapped to SVM,SVM map
+18,Threat-control implementation matrix,I-18-061,Finance and consent,Covered,Part 4.1 §4.8.2; NFR-001/032; Part 6,Mapped to SVM,SVM map
+18,Implementation acceptance and verification (15 procedures),I-18-062,Product and audience isolation,Covered,NFR-003; AP-10,Mapped to acceptance-procedure table,§4.4.4.6
+18,Implementation acceptance and verification (15 procedures),I-18-063,Tenant and startup isolation,Covered,NFR-032; AP-10,Mapped to acceptance-procedure table,§4.4.4.6
+18,Implementation acceptance and verification (15 procedures),I-18-064,Privileged identity and revocation,Covered,NFR-050,Mapped to acceptance-procedure table,§4.4.4.6
+18,Implementation acceptance and verification (15 procedures),I-18-065,Autonomy and approval at all levels,Covered,DEC-064; BRL-AUT,Mapped to acceptance-procedure table,§4.4.4.6
+18,Implementation acceptance and verification (15 procedures),I-18-066,Independent client tenant lifecycle,Covered,EP-20; FR-W31…W34,Mapped to acceptance-procedure table,§4.4.4.6
+18,Implementation acceptance and verification (15 procedures),I-18-067,Authorization and error contract,Covered,NFR-015; ADR-022,Mapped to acceptance-procedure table,§4.4.4.6
+18,Implementation acceptance and verification (15 procedures),I-18-068,RAG scope and evidence,Covered,Part 6.4 AIE,Mapped to acceptance-procedure table,§4.4.4.6
+18,Implementation acceptance and verification (15 procedures),I-18-069,Source permission and provenance,Covered,NFR-028,Mapped to acceptance-procedure table,§4.4.4.6
+18,Implementation acceptance and verification (15 procedures),I-18-070,Existing identity reuse,Covered,US-0101; BLK-9,Mapped to acceptance-procedure table,§4.4.4.6
+18,Implementation acceptance and verification (15 procedures),I-18-071,Public/portal/Admin separation,Covered,NFR-001,Mapped to acceptance-procedure table,§4.4.4.6
+18,Implementation acceptance and verification (15 procedures),I-18-072,Communication eligibility,Covered,NFR-095,Mapped to acceptance-procedure table,§4.4.4.6
+18,Implementation acceptance and verification (15 procedures),I-18-073,Public offer and claims restrictions,Covered,DEC-060; GL-C06,Mapped to acceptance-procedure table,§4.4.4.6
+18,Implementation acceptance and verification (15 procedures),I-18-074,Cross-border and regional decision,Covered,GL-C02,Mapped to acceptance-procedure table,§4.4.4.6
+18,Implementation acceptance and verification (15 procedures),I-18-075,"Retention, portability and deletion",Covered,"NFR-075/076, NFR-086",Mapped to acceptance-procedure table,§4.4.4.6
+18,Implementation acceptance and verification (15 procedures),I-18-076,Sensitive data exclusions,Covered,DEC-010/011,Mapped to acceptance-procedure table,§4.4.4.6
+18,Implementation acceptance and verification (15 procedures),I-18-077,"Authorization-safe cache key: product, tenant, startup, principal/grant fingerprint, permission, policy, model, knowledge revisions, normalized query",Partially covered,Part 3.1 §3.1.11 (scope + revision only),Key composition standard added,CS-SEC-07; FR-ENH-I-010; RECOMMENDATION-467
+18,Implementation acceptance and verification (15 procedures),I-18-078,"Numeric validation: reject invalid weights, non-finite inputs, negative counts, out-of-range ratios",Not covered,No numeric guardrail rule,Rule and tests added,CS-PY-09; FR-ENH-I-011; RECOMMENDATION-473
+18,Implementation acceptance and verification (15 procedures),I-18-079,"Boundary conditions: revalidate permission, eligibility, budget, content at execution",Covered,ARP-04; PDP dispatch recheck,None,
+18,Current scope: security and applicant draft,I-18-080,"Separate product, portal, applicant, Admin audiences; MFA Admin; consent/jurisdiction fail closed",Covered,DEC-019; ARP-05,None,
+18,Current scope: security and applicant draft,I-18-081,"Applicant draft boundary: opaque expiring reference, isolated draft storage, idempotent provisioning after authority",Covered,Part 3.3 ENT-187 saas_application_draft; BRL-SVC-02; FRD §16.3,None,
+25,Repository and change discipline,I-25-006,"Separate website React, Admin React, Django domain, deployment configs; shared libs without data/credentials",Covered,Part 4.3 §4.32.1 ADR-060; import-linter,None,
+25,Repository and change discipline,I-25-007,Acceptance: dependency graph proves no cross-product runtime import,Partially covered,NFR-085 (module contracts only),Cross-product import contract added,CS-GEN-03; TC-ENH-I-001
+25,Repository and change discipline,I-25-008,"Git workflow: issue-linked branches, focused commits, protected main, independent approval, green CI",Covered,Part 4.3 §4.32.2,Expanded in coding standard,CS-GIT-01…08
+25,Repository and change discipline,I-25-009,Emergency fixes follow same audit trail with expedited reviewer,Partially covered,Part 4.3 hotfix row,Expedited-review rule added,CS-REV-09
+25,Repository and change discipline,I-25-010,AI-assisted coding: treat generated code as untrusted; never paste secrets/real records; no invented APIs,Not covered,None (B09 seats only),AI-assisted coding policy added,CS-AIC-01…08; GAP-460
+25,Frontend engineering,I-25-011,TypeScript strict; validate server payloads at boundaries; no any for business/financial fields; generated contracts,Partially covered,Part 4.3 PL-03; Part 3.1 Zod,Full TS standard,CS-TS-01…10
+25,Frontend engineering,I-25-012,"React: separate presentation, query hooks, mutation services; no side effects during render; cancel stale requests",Partially covered,NFR-027; Part 3.1 TanStack Query,Full React standard,CS-RE-01…12
+25,Frontend engineering,I-25-013,"Component tests cover loading, error, denied and empty states",Partially covered,Part 2.5 UI states,Test rule added,CS-TEST-06
+25,Frontend engineering,I-25-014,"Scope-aware query keys (product, tenant, startup, audience, filters, identity); clear caches on switch/logout; no private payload in service worker",Partially covered,NFR-027; FR-UIS-01,Query-key standard added,CS-RE-04…06
+25,Frontend engineering,I-25-015,"Forms: client validation for UX, server for authority; sanitize rich content; disable duplicate submit; show approval requirement",Partially covered,Part 2.5 forms,Form standard added,CS-RE-08…10
+25,Frontend engineering,I-25-016,"Accessibility: keyboard, focus, labelled errors, responsive; WCAG 2.2 AA; documented exceptions",Covered,NFR-088/089; Part 2.5 §2.46,Coding rules restated,CS-A11Y-01…06
+25,Backend and persistence,I-25-017,"Python: type hints, explicit DTOs, narrow exceptions, Ruff; no silent catch-all",Partially covered,Part 4.3 tooling row,Python standard,CS-PY-01…10
+25,Backend and persistence,I-25-018,Django: views authenticate/validate; service owns transaction and transition; selectors enforce scope; no logic only in UI or signals,Not covered,Not specified,Service/selector layering standard,CS-DJ-01…10
+25,Backend and persistence,I-25-019,"DRF: allowlist fields, deny by default, scope queryset before lookup, bounded pagination, validated sort/filter, safe error + correlation ID",Partially covered,NFR-015; PL-05 __all__ ban,DRF standard,CS-API-01…12
+25,Backend and persistence,I-25-020,"PostgreSQL: UUID, UTC, Decimal, FK/unique/check, composite ownership, RLS, parameterized queries; query plans reviewed",Covered,NFR-017; Part 3.3,SQL standard restated with checks,CS-SQL-01…09
+25,Backend and persistence,I-25-021,"Outbox and concurrency: atomic commit, async dispatch, lock or revision compare, unique action key",Covered,"ARP-03; NFR-006, NFR-025; ADR-023",Code pattern added,CS-DJ-07; pattern P-04
+25,Backend and persistence,I-25-022,"Failure semantics: retry 429/5xx with backoff, jitter, Retry-After; no retry on permanent denial; unknown → reconcile",Covered,"NFR-016, NFR-026; DEC-050",Code rule added,CS-WRK-04…06
+25,AI and integration engineering,I-25-023,"Prompt contract: schema, purpose, allowed evidence, prohibited disclosure, abstention, tool limits; approved revision and eval results",Covered,Part 7.2 agent specs; BRL-AI-09,Coding rule restated,CS-AI-01…06
+25,AI and integration engineering,I-25-024,"Retrieval: filter before nearest-neighbour; approved, non-revoked sources; content as data",Covered,ADR-041; Part 4.1 §4.15,Restated,CS-AI-04
+25,AI and integration engineering,I-25-025,"Adapters: typed interface with timeout, retry, quota reservation, signature verification, sandbox mode; no vendor SDK in domain",Covered,ADR-009; ARP-06,Restated,CS-ADP-01…07
+25,AI and integration engineering,I-25-026,"Telemetry: structured event with correlation, scope ref, duration, outcome; redact tokens and content",Covered,Part 4.3 §4.39.1; NFR-078,Restated,CS-OBS-01…06
+25,Review and definition of done,I-25-027,"Reviewer examines acceptance, role, scope, finance, error paths, schema, tests, cost, rollback; record tradeoffs",Partially covered,Part 4.3 §4.32.2 checklist,Full review checklist by risk class,CR-CHK-01…40
+25,Review and definition of done,I-25-028,Changed-line coverage ≥ 80% on eligible domain code; critical decision branches tested; generated code excluded only with approval,Conflict,NFR-082 (overall coverage),Diff-coverage gate added; conflict raised,CONFLICT-468; CS-TEST-03
+25,Review and definition of done,I-25-029,"Completion: merge only after UI/API/table links updated, evidence attached, operational impact assessed",Partially covered,Part 5 DoD,DoD code addendum,CS-REV-12
+25,Code review rules and repository layout (table),I-25-030,"Per-product layout website-react/, admin-react/, backend/, tests/, infra/, docs/",Covered,Part 4.3 §4.32.1 (equivalent monorepo layout),Mapping noted,CS-GEN-02
+25,Code review rules and repository layout (table),I-25-031,"Frontend lead: strict TS, accessible, scoped keys, abort stale, no browser credentials",Partially covered,As above,Standard,"CS-TS, CS-RE"
+25,Code review rules and repository layout (table),I-25-032,"Backend lead: small services, serializer validation, authorization in service, transaction/outbox, deterministic errors",Partially covered,As above,Standard,CS-DJ
+25,Code review rules and repository layout (table),I-25-033,"Database lead: tenant ownership, composite FKs, fixed precision, uniqueness, measured query plans",Covered,NFR-017,Standard,CS-SQL
+25,Code review rules and repository layout (table),I-25-034,"Tech lead review: scope, security, failure modes, migrations, unit/SIT, maintainability; no AI code merged without human review",Partially covered,Part 4.3 §4.32.2,Standard,"CS-REV, CS-AIC"
+25,Code review rules and repository layout (table),I-25-035,"CI: lint/type, tests, secret/dependency scans, digest, approved migration, review evidence",Covered,Part 4.3 §4.33.2 PL-02…PL-11,None,
+25,Reference code patterns,I-25-036,Correct scoped lookup pattern (membership check then filtered get),Partially covered,ARP-02 principle only,Pattern P-01 with negative example,P-01
+25,Reference code patterns,I-25-037,React stale-response protection with AbortController and live flag,Not covered,Not specified,Pattern P-02,P-02
+25,Reference code patterns,I-25-038,"Safe financial arithmetic with Decimal; validate currency, entity, provider reference",Partially covered,ADR-030,Pattern P-03,P-03
+25,Reference code patterns,I-25-039,"Executable reference: commercial_quote('2','150.00','10') = 270.00",Covered,BLK-6; FRD §12.1 worked example,Pattern P-03 test,P-03
+25,Practical implementation rules (code acceptance table),I-25-040,React/TS: server-authorized data; scope switch invalidates; no secret/internal DTO in Website bundle,Covered,NFR-001; NFR-027,None,
+25,Practical implementation rules (code acceptance table),I-25-041,"Django: serializer allowlist; membership, object grant, permission, expected revision; transaction and outbox",Covered,NFR-025; ARP-02/03,None,
+25,Practical implementation rules (code acceptance table),I-25-042,"PostgreSQL: composite scoped FKs, unique idempotency keys, numeric money, no cascade deleting posted records",Partially covered,NFR-017/018,No-cascade rule added,CS-SQL-07
+25,Practical implementation rules (code acceptance table),I-25-043,"Python AI: schema- and evidence-check; AI never decides authorization, legal or payment truth",Covered,ARP-08; BRL-AI-07,None,
+25,Practical implementation rules (code acceptance table),I-25-044,"Review: run lint/type/unit/integration in actual repos; review generated code, deps, scope, concurrency, rollback",Partially covered,Part 4.3 §4.33,Review checklist,CR-CHK
+25,Implementation acceptance procedures (9),I-25-045,Upload and dependency safety,Covered,NFR-021; PL-09,Covered,
+25,Implementation acceptance procedures (9),I-25-046,"Query and rendering efficiency (query count, EXPLAIN ANALYZE, React profiler)",Partially covered,Part 3.1 lever 1,Added,CS-PERF-01…08; TC-ENH-I-003
+25,Implementation acceptance procedures (9),I-25-047,Idempotency and duplicate delivery (same key changed payload rejected),Covered,NFR-005; ADR-023,Covered,
+25,Implementation acceptance procedures (9),I-25-048,Shared library boundaries (wrong product config),Partially covered,NFR-031,Added,TC-ENH-I-002
+25,Implementation acceptance procedures (9),I-25-049,"Repository and modular boundaries (owner, tests, public interface)",Partially covered,NFR-085,Added,CS-GEN-04
+25,Implementation acceptance procedures (9),I-25-050,Shared workflow and adapter code,Covered,"ADR-009, ADR-027",Covered,
+25,Implementation acceptance procedures (9),I-25-051,UI component reuse with distinct business settings,Covered,Part 2.5 §2.45,Covered,
+25,Implementation acceptance procedures (9),I-25-052,Test fixture reuse without leakage; deterministic,Covered,RECOMMENDATION-017,Covered,
+25,Implementation acceptance procedures (9),I-25-053,AI-assisted coding quality,Not covered,—,Added,CS-AIC; TC-ENH-I-004
+25,Current scope: coding standards,I-25-054,Typed dynamic forms and explicit capability predicates; no hardcoded startup position; safe rendering,Partially covered,FR config-driven forms (CFG),Rule added,CS-RE-11; CS-GEN-06
+26,Deployment topology,I-26-006,Separately built frontends with distinct origins and audiences; public ingress allowlist,Covered,NFR-001; ADR-006,None,
+26,Deployment topology,I-26-007,"Stateless Django behind LB; private PostgreSQL, storage, Valkey; separate Celery pools",Covered,Part 3.1 §3.1.6,None,
+26,Deployment topology,I-26-008,"Separate research, AI, communication, financial and priority control queues; one scheduler per scope; prefetch/limits; bounded retries",Conflict,ADR-021 (no finance or control queue; prefetch not set),Queue additions proposed,CONFLICT-473; FR-ENH-I-030
+26,Deployment topology,I-26-009,"IaC OpenTofu/Terraform; separate product/env state; encrypted backend, locking; plan review",Covered,Part 4.3 §4.34; ADR-012/051,None,
+26,Continuous integration,I-26-010,"PR: locked deps, lint/type, unit, secret, dependency and container scan; synthetic data",Covered,PL-02…PL-09,None,
+26,Continuous integration,I-26-011,Build: env-specific public values only; non-root pinned base; SBOM; immutable digests,Covered,PL-10/11,None,
+26,Continuous integration,I-26-012,"SIT: ephemeral PostgreSQL/Valkey, migrations, synthetic fixtures, API contracts, workflow/browser integration, stub providers",Partially covered,PL-06/07/15 (named CI/test),SIT stage mapping added,§4.4.5.2 table; CONFLICT-471
+26,Continuous integration,I-26-013,Staging/UAT: promote exact digest; sanitized or synthetic data; sandbox credentials; independent test audiences,Covered,Part 3.1 §3.1.14; PL-14,None,
+26,Continuous delivery and rollback,I-26-014,"Pre-deploy: capacity, compatibility, backup point, migration plan, flags, on-call, approval; freeze conflicting changes; signed go/no-go",Partially covered,"PL-17 (no freeze, no on-call check)",Pre-deploy checklist added,DPL-PRE-01…10
+26,Continuous delivery and rollback,I-26-015,"Deploy order: expand schema, validate, API, workers/scheduler, Admin and website separately, smoke before automation",Partially covered,PL-18 (order not stated),Ordered deployment runbook,DPL-SEQ-01…09
+26,Continuous delivery and rollback,I-26-016,"Canary: limited internal/approved cohort; compare error, latency, queue lag, invariants; operator approves widening",Partially covered,ADR-053 blue/green at scale only,Cohort canary for activation,RECOMMENDATION-461; DPL-CAN
+26,Continuous delivery and rollback,I-26-017,Rollback: disable automation first; preserve receipts and outbox; revert compatible artifact; no blind schema reversal; reconcile,Covered,Part 4.3 §4.38; RB-012,None,
+26,Continuous delivery and rollback,I-26-018,"Post-deploy: role-based smoke, publication check, queue drain, reconciliation, budget verification, observation window",Partially covered,PL-19 (30 min SLO watch),Smoke catalogue added,SMK-01…14
+26,Infrastructure controls,I-26-019,"Network: private DB/broker, restricted ports, WAF/rate limit, Admin MFA, optional access gateway",Covered,Part 4.1 §4.9; GL-S07,None,
+26,Infrastructure controls,I-26-020,Identity: short-lived CI credentials via workload identity; least-privilege deploy roles; approver ≠ developer,Covered,ADR-026/050; PL-17,None,
+26,Infrastructure controls,I-26-021,Capacity: requests/limits; autoscale on latency and queue age; protect priority queues; per-tenant caps,Partially covered,Part 4.2 §4.27 (manual triggers),Queue-age scaling rule added,FR-ENH-I-031
+26,Infrastructure controls,I-26-022,Recovery: automated encrypted backups and isolated restore rehearsal; no shared resources across trust boundary,Covered,Part 4.3 §4.47,None,
+26,Pipeline outline and delivery table,I-26-023,Pipeline outline PR→SIT→staging→production→controlled activation,Covered,Part 4.3 §4.33.3,Activation stage made explicit,DPL-SEQ-09
+26,Pipeline outline and delivery table,I-26-024,Activation stage: explicit owner/CTO approval; enable gradually within approved budgets; stop on gate failure,Partially covered,Part 8.2 GL-B04 (charter),Activation stage added,DPL-ACT-01…06
+26,Pipeline outline and delivery table,I-26-025,"Reference CI workflow (offline starter: unittest, compileall, verify_catalogs)",Not applicable,Pack reference asset only,Noted; product CI is Part 4.3,
+26,Pipeline outline and delivery table,I-26-026,Companion root CI command and PostgreSQL compose/AWS blueprint are review assets,Not applicable,Pack assets,Noted,
+26,Reproducible CI and isolated rehearsal (table),I-26-027,"Offline CI with archived artifacts, no deployment step",Not applicable,Part 4.3 §4.33–4.38,None,
+26,Reproducible CI and isolated rehearsal (table),I-26-028,"Product CI incl. browser tests, migration checks, SBOM, signed image",Covered,Part 4.3 §4.33–4.38,None,
+26,Reproducible CI and isolated rehearsal (table),I-26-029,Staging independent Website/Admin/API/workers/DB/cache via approved IaC; no live dispatch,Covered,Part 4.3 §4.33–4.38,None,
+26,Reproducible CI and isolated rehearsal (table),I-26-030,"Release reviews Terraform plan, migration/recovery, evidence gate, security and load",Covered,Part 4.3 §4.33–4.38,None,
+26,Reproducible CI and isolated rehearsal (table),I-26-031,"Rollback with compatible previous image, pause workers, reconcile, reviewed restore",Covered,Part 4.3 §4.33–4.38,None,
+26,Implementation acceptance procedures (7),I-26-032,"Load test reproducibility (pin dataset, commit, mix, ramp, warmup, error budget)",Partially covered,Part 4.2 §4.26,Load-test record template,LTR-01…14
+26,Implementation acceptance procedures (7),I-26-033,"Capacity and region decisions (residency, saturation, scale limits)",Covered,DEC-040; Part 3.1 §3.1.12,None,
+26,Implementation acceptance procedures (7),I-26-034,Migration backward compatibility in disposable restored DB; row counts reconciled,Covered,Part 4.3 §4.37.2; PL-07,None,
+26,Implementation acceptance procedures (7),I-26-035,"Independent CI and environment (digest, config, scoped identity)",Covered,PL-10/11/14,None,
+26,Implementation acceptance procedures (7),I-26-036,IaC completeness with cost estimate; no prod apply without approval,Covered,Part 4.3 §4.34,None,
+26,Implementation acceptance procedures (7),I-26-037,"Fail-closed evidence inventory (required-ID list, reject missing/extra/duplicate, mandatory N/A)",Not covered,A090 evidence assembly (no validator rules),Release gate validator specified,RGV-01…14; GAP-463
+26,Implementation acceptance procedures (7),I-26-038,Resource and deployment approval: incremental effort estimate per change; approval before cost/SLA promise,Partially covered,Part 8.2 §8.2.2.4 change control,Rule restated,DPL-PRE-10
+26,Implementation acceptance procedures (7),I-26-039,"Current scope: browser route/interaction checks per product; deploy only after migration, QA, release sign-off",Covered,PL-15; Part 8.2,None,
+27,Environment matrix,I-27-006,"Local: disposable DB/broker, mock providers, developer credentials, no production data",Covered,Part 3.1 §3.1.14 local,Environment mapping added,CONFLICT-471; ENV matrix
+27,Environment matrix,I-27-007,"Shared development: integration branch, separate identities, limited quotas",Conflict,Not provided (trunk-based),Environment mapping added,CONFLICT-471; ENV matrix
+27,Environment matrix,I-27-008,"SIT: pinned artifact, isolated DB, fake/sandbox callbacks, repeatable reset",Partially covered,test/CI env,Environment mapping added,CONFLICT-471; ENV matrix
+27,Environment matrix,I-27-009,"UAT: business users, sandbox channels, approved test identities",Partially covered,staging,Environment mapping added,CONFLICT-471; ENV matrix
+27,Environment matrix,I-27-010,"Staging: production-like, masked/synthetic data, recovery rehearsal",Covered,staging,Environment mapping added,CONFLICT-471; ENV matrix
+27,Environment matrix,I-27-011,"Production: separate credentials, real channels only after activation, audited access",Covered,prod,Environment mapping added,CONFLICT-471; ENV matrix
+27,Environment matrix,I-27-012,Recovery: isolated recovery environment; no dispatch until reconciliation and restart,Partially covered,Part 4.3 backup restore sandbox,Environment mapping added,CONFLICT-471; ENV matrix
+27,Configuration contract,I-27-013,"Identity config: PRODUCT_ID, APP_ENV, WEBSITE_ORIGIN, ADMIN_ORIGIN, OAUTH_ISSUER, WEBSITE_AUDIENCE, ADMIN_AUDIENCE; fail closed",Not covered,Parameter Store paths only,Config contract catalogue,ENV-01…07; GAP-461
+27,Configuration contract,I-27-014,"Persistence refs: DATABASE_URL, BROKER_URL, OBJECT_BUCKET, VECTOR_NAMESPACE as secret refs/scoped IDs, never frontend",Partially covered,Part 4.1 §4.6.1,Catalogue,ENV-08…11
+27,Configuration contract,I-27-015,"Execution: AUTOMATION_ENABLED false in nonprod; PAID_FALLBACK_ENABLED false; timeout, retry, budget ceilings",Partially covered,Flags (Part 4.3 §4.36) OFF by default,Catalogue,ENV-12…16
+27,Configuration contract,I-27-016,"Provider config references connection, sender, entitlement, purpose, scope; vault secrets server-side",Covered,Part 4.1 §4.6,None,
+27,Configuration contract,I-27-017,"Observability config: LOG_LEVEL, OTEL endpoint, redaction rules, alert destination",Partially covered,Part 4.3 §4.39,Catalogue,ENV-17…20
+27,Configuration contract,I-27-018,"Feature flags typed, scoped, time-bounded; owner approval for external dispatch; default off; audited, reversible",Covered,Part 4.3 §4.36,None,
+27,Secrets and dependencies,I-27-019,"Secret lifecycle: generate in vault, store reference, rotate with overlap, revoke, test; emergency revocation stops job",Covered,Part 4.1 §4.6.2,Procedure detailed,SEC-ROT-01…08
+27,Secrets and dependencies,I-27-020,Developer access: temporary env-specific with MFA; no shared credentials; revoke on departure; monthly review,Partially covered,SC-48 (no standing DB access),Access review procedure,GAP-469; ACC-01…07
+27,Secrets and dependencies,I-27-021,"Dependency locking incl. container digest, migration compatibility, model/prompt revision; licence and vuln at change",Partially covered,uv/pnpm lockfiles; PL-09,Model/prompt revision pinned in release manifest,CS-DEP-01…08
+27,Secrets and dependencies,I-27-022,Config drift: schema validation at startup; deployed non-secret config hash vs approved manifest,Partially covered,IaC drift only (AL-47),Config-hash drift check,FR-ENH-I-040; AL-55; RECOMMENDATION-468
+27,Secrets and dependencies,I-27-023,Recovery: restore secret references and config from protected inventory; no secrets in backup notes,Partially covered,Part 3.1 §3.1.13.2 secrets row,Recovery step added,ENV recovery rule
+27,Configuration table (15 variables),I-27-024,APP_PRODUCT=commercial immutable,Not covered,Part 4.1 §4.6; Part 3.1 §3.1.14,Catalogue row,ENV-01…24
+27,Configuration table (15 variables),I-27-025,APP_ENV local/dev/SIT/UAT/staging/prod,Not covered,Part 4.1 §4.6; Part 3.1 §3.1.14,Catalogue row,ENV-01…24
+27,Configuration table (15 variables),I-27-026,DATABASE_URL secret reference,Partially covered,Part 4.1 §4.6; Part 3.1 §3.1.14,Catalogue row,ENV-01…24
+27,Configuration table (15 variables),I-27-027,SECRET_MANAGER_REF,Not covered,Part 4.1 §4.6; Part 3.1 §3.1.14,Catalogue row,ENV-01…24
+27,Configuration table (15 variables),I-27-028,ADMIN_AUDIENCE rejects external identity,Partially covered,Part 4.1 §4.6; Part 3.1 §3.1.14,Catalogue row,ENV-01…24
+27,Configuration table (15 variables),I-27-029,PORTAL_AUDIENCE rejects staff privileges,Partially covered,Part 4.1 §4.6; Part 3.1 §3.1.14,Catalogue row,ENV-01…24
+27,Configuration table (15 variables),I-27-030,"ALLOWED_HOSTS verified, no wildcard",Partially covered,Part 4.1 §4.6; Part 3.1 §3.1.14,Catalogue row,ENV-01…24
+27,Configuration table (15 variables),I-27-031,EXTERNAL_DISPATCH_ENABLED false,Partially covered,Part 4.1 §4.6; Part 3.1 §3.1.14,Catalogue row,ENV-01…24
+27,Configuration table (15 variables),I-27-032,PAID_FALLBACK_ENABLED false,Partially covered,Part 4.1 §4.6; Part 3.1 §3.1.14,Catalogue row,ENV-01…24
+27,Configuration table (15 variables),I-27-033,WORKER_QUEUE_PREFIX per product/env,Not covered,Part 4.1 §4.6; Part 3.1 §3.1.14,Catalogue row,ENV-01…24
+27,Configuration table (15 variables),I-27-034,OBJECT_STORE_REF / VECTOR_STORE_REF,Partially covered,Part 4.1 §4.6; Part 3.1 §3.1.14,Catalogue row,ENV-01…24
+27,Configuration table (15 variables),I-27-035,PROVIDER_SECRET_REF,Partially covered,Part 4.1 §4.6; Part 3.1 §3.1.14,Catalogue row,ENV-01…24
+27,Configuration table (15 variables),I-27-036,MAX_REQUEST_BYTES / RATE_LIMIT,Partially covered,Part 4.1 §4.6; Part 3.1 §3.1.14,Catalogue row,ENV-01…24
+27,Configuration table (15 variables),I-27-037,LOG_REDACTION_POLICY,Not covered,Part 4.1 §4.6; Part 3.1 §3.1.14,Catalogue row,ENV-01…24
+27,Configuration table (15 variables),I-27-038,RECOVERY_TARGETS,Not covered,Part 4.1 §4.6; Part 3.1 §3.1.14,Catalogue row,ENV-01…24
+27,Configuration table (15 variables),I-27-039,Rotation procedure (inventory → issue → stage/test → atomic switch → revoke → verify; compromise → disable dispatch),Partially covered,Part 4.1 §4.6.2 (cadence only),Step procedure,SEC-ROT-01…08
+27,Environment manifest and rotation (table),I-27-040,Required config incl. automation_enabled=false,Partially covered,ABAC-12; Part 4.1 §4.6,Covered by ENV/SEC-ROT,"ENV, SEC-ROT"
+27,Environment manifest and rotation (table),I-27-041,"Secret handling: no secrets in bundle, Git, logs, fixtures, workbook",Covered,ABAC-12; Part 4.1 §4.6,Covered by ENV/SEC-ROT,"ENV, SEC-ROT"
+27,Environment manifest and rotation (table),I-27-042,Dependency control incl. model artefacts,Partially covered,ABAC-12; Part 4.1 §4.6,Covered by ENV/SEC-ROT,"ENV, SEC-ROT"
+27,Environment manifest and rotation (table),I-27-043,Rotation create/validate/deploy/verify/revoke/audit,Partially covered,ABAC-12; Part 4.1 §4.6,Covered by ENV/SEC-ROT,"ENV, SEC-ROT"
+27,Environment manifest and rotation (table),I-27-044,Nonproduction never points at production accounts,Covered,ABAC-12; Part 4.1 §4.6,Covered by ENV/SEC-ROT,"ENV, SEC-ROT"
+27,Implementation acceptance procedures (5),I-27-045,"Dependency and technical debt inventory (owner, remediation date)",Not covered,No tech-debt register,Tech-debt register,CS-DOC-05; TDR fields; RECOMMENDATION-472
+27,Implementation acceptance procedures (5),I-27-046,Privileged identity and revocation,Covered,NFR-050; NFR-021; BLK-9; PL-10,None (duplicate of docs 18/25/26),
+27,Implementation acceptance procedures (5),I-27-047,Upload and dependency safety,Covered,NFR-050; NFR-021; BLK-9; PL-10,None (duplicate of docs 18/25/26),
+27,Implementation acceptance procedures (5),I-27-048,Existing identity reuse,Covered,NFR-050; NFR-021; BLK-9; PL-10,None (duplicate of docs 18/25/26),
+27,Implementation acceptance procedures (5),I-27-049,Independent CI and environment,Covered,NFR-050; NFR-021; BLK-9; PL-10,None (duplicate of docs 18/25/26),
+27,Implementation acceptance procedures (5),I-27-050,Current scope: connection references only in UI; per-product/tenant secret store; pinned config revision,Covered,Part 4.1 §4.6.1; A112,None,
+29,Workload and measurement,I-29-006,"Initial capacity workload (25+10, 50 staff, 100k opps, 50 jobs, 10k actions/day)",Conflict,DEC-031,Workload profile WP-01,CONFLICT-461; WP-01
+29,Workload and measurement,I-29-007,"Growth capacity workload (50+/100, 250 staff, 1m opps, 250 jobs, 100k/day)",Conflict,DEC-031,Workload profile WP-02,CONFLICT-461; WP-02
+29,Workload and measurement,I-29-008,"Measurement conditions: indexed dashboard excludes live research; ACK after durable acceptance; record dataset, hardware, cache, mix, stubs",Partially covered,Part 4.2 §4.21,Load-test record template,LTR-01…14
+29,Workload and measurement,I-29-009,"Traffic mix 60% list/filter, 20% details, 10% safe writes, 10% background status; public separate",Conflict,Part 4.2 LT-01 70/15/10/5,Profile adopted for dashboard test,CONFLICT-466; WP-03
+29,Test scenarios,I-29-010,"Baseline: single user, one worker, cold/warm cache, SQL and trace",Not covered,No baseline scenario,Added,LT-ENH-I-03
+29,Test scenarios,I-29-011,"Load: ramp to initial then growth, hold 30 min each",Partially covered,LT-01 30 min at Y1,Added,"LT-ENH-I-01, -02"
+29,Test scenarios,I-29-012,Stress beyond target until saturation; stop on resource/correctness threshold,Covered,Part 6.1 LT-08,None,
+29,Test scenarios,I-29-013,Spike: 3× baseline public enquiries and callbacks,Conflict,Burst 2× in same doc; LT-05/07,Conflict raised,CONFLICT-465; LT-ENH-I-04
+29,Test scenarios,I-29-014,"Endurance: 8-hour soak at initial target; memory, connections, bloat, queue age",Conflict,LT-02 4 h; GL-T04 24 h/72 h,Conflict raised,CONFLICT-467; LT-ENH-I-05
+29,Test scenarios,I-29-015,Noisy neighbour: one tenant at quota while another uses dashboard,Covered,LT-11; NFR-062,None,
+29,Test scenarios,I-29-016,"Provider outage: timeout/429/5xx/unknown; retry budget, circuit, recovery",Covered,CH-01; RB-001,None,
+29,Test scenarios,I-29-017,"Recovery: restore DB, replay outbox in dispatch-off mode; RPO/RTO and reconciliation",Partially covered,CH-03; RB-007 (no dispatch-off replay),Dispatch-off replay step,LT-ENH-I-06; RB-007 addendum
+29,Optimization and capacity,I-29-018,"Frontend: bundle, LCP/INP/CLS p75 targets; Lighthouse plus RUM after consent",Covered,NFR-042/043,None,
+29,Optimization and capacity,I-29-019,"Database: EXPLAIN ANALYZE, index tenant/startup/stage/time/cursor, N+1, lock waits",Partially covered,Part 3.3 indexes; lever 1,Perf coding rules,CS-PERF-01…08
+29,Optimization and capacity,I-29-020,"Workers: queue age, throughput, retry, latency, per-tenant fairness; tune concurrency/prefetch",Partially covered,Part 4.3 metrics,Prefetch rule and queue-age metric,CS-WRK-08; AL-51
+29,Optimization and capacity,I-29-021,"AI: tokens, latency, cache hit, abstention; local vs paid benchmark on fixed set",Covered,Part 7.3; NFR-030,None,
+29,Optimization and capacity,I-29-022,Capacity plan: resource cost per workload; autoscale ceiling; budget alert; monthly review,Covered,Part 4.3 §4.46.6; Part 4.2 §4.27,None,
+29,Delivery-control scenario table (7 rows),I-29-023,Burst: 2× approved short burst; bounded 429/queue; recover to baseline,Partially covered,"LT-05, LT-07",Burst acceptance,LT-ENH-I-04
+29,Delivery-control scenario table (7 rows),I-29-024,"Endurance 8 h; no leak, no backlog; budgets reconcile",Conflict,LT-02 4 h,See CONFLICT-467,LT-ENH-I-05
+29,Delivery-control scenario table (7 rows),I-29-025,Projection: committed event to visible timestamp ≤ 60 s,Conflict,NFR-047,See CONFLICT-463,
+29,Delivery-control scenario table (7 rows),I-29-026,"Recovery: stop worker/provider, restart, replay; no duplicates; backlog drains within window",Covered,CH-02; NFR-007,None,
+29,Delivery-control scenario table (7 rows),I-29-027,"Instrumentation list (histograms, saturation, pool, plans, queue age, provider failure)",Covered,Part 4.3 §4.39.2,None,
+29,Delivery-control scenario table (7 rows),I-29-028,Mock-health k6 script is a smoke only; authenticated tests need approved contract and synthetic identity,Covered,PL-16; Part 6.1,None,
+29,Workload and performance test execution (table),I-29-029,Acceptance: proposed error rate < 1% during valid read-only test,Covered,LT-01 < 0.5% (stricter),None,
+29,Workload and performance test execution (table),I-29-030,k6 staging read-only script with explicit nonprod URL and synthetic token; never production,Partially covered,Part 4.2 load tooling,Safety guard rules,LT-SAFE-01…05
+29,Workload and performance test execution (table),I-29-031,"Evidence: workload, DB row count, latency distribution, errors, resources, config digest",Partially covered,Release record,Load-test record template,LTR-01…14
+29,Mandatory measurable gates (25 rows),I-29-032,Gate table of 25 metrics with target and verification context,Partially covered,Spread across NFR/KPI/SLO; no single OKPI register,OKPI register mapped,§4.4.4.2; RECOMMENDATION-470
+29,Implementation acceptance procedures (11),I-29-033,"Dashboard latency at 50/250 staff, 100k/1m opportunities",Conflict,C10,Added,LT-ENH-I-01/02
+29,Implementation acceptance procedures (11),I-29-034,"Public website responsiveness, lab proxy labelled",Covered,NFR-042,Mapped,
+29,Implementation acceptance procedures (11),I-29-035,Async acknowledgement measured separately from completion,Covered,C6; NFR-051,Mapped,
+29,Implementation acceptance procedures (11),I-29-036,Query and rendering efficiency,Partially covered,—,Added,CS-PERF
+29,Implementation acceptance procedures (11),I-29-037,Load test reproducibility,Partially covered,§4.26,Added,LTR
+29,Implementation acceptance procedures (11),I-29-038,"Availability and error budget: eligible minutes, exclusions, zero denominator unassessed",Partially covered,Part 4.2 §4.21,Added,FR-ENH-I-050
+29,Implementation acceptance procedures (11),I-29-039,"Numeric guardrail validation (NaN, infinity, negatives)",Not covered,—,Added,FR-ENH-I-011; TC-ENH-I-020
+29,Implementation acceptance procedures (11),I-29-040,Growth workload matrix,Conflict,DEC-031,Added,WP-02
+29,Implementation acceptance procedures (11),I-29-041,Noisy neighbour protection (tenant B progresses),Covered,LT-11,Mapped,
+29,Implementation acceptance procedures (11),I-29-042,Accessibility keyboard/screen reader,Covered,NFR-089,Mapped,
+29,Implementation acceptance procedures (11),I-29-043,Observability and incident recovery (inject failure; alert reaches owner; no PII),Covered,Part 4.3 §4.41; NFR-078,Mapped,
+29,Implementation acceptance procedures (11),I-29-044,"Resource and deployment approval (incremental estimate, approval before SLA)",Covered,Part 8.2 §8.2.2.4,None,
+29,Implementation acceptance procedures (11),I-29-045,"Current scope: 26 owned startups, ten tenants, 20 simulated runs; indexed lists, cursor, fair scheduling, budget reservation",Covered,RECOMMENDATION-017 seeds; NFR-015,None,
+30,Authorization and test rules,I-30-006,"Written authorization: hosts, environments, identities, techniques, time window; staging/synthetic only",Not covered,Part 4.1 §4.16.2 scope only,Rules of engagement,PT-ROE-01…12; GAP-466
+30,Authorization and test rules,I-30-007,Threat model mapping all boundaries; threat register with mitigation owner,Covered,Part 4.1 §4.2,None,
+30,Authorization and test rules,I-30-008,"Severity: Critical = confidential disclosure, financial integrity, production credential, uncontrolled dispatch",Conflict,Part 4.1 §4.16.3 CVSS-based,Business-impact overlay,CONFLICT-472
+30,Authorization and test rules,I-30-009,"Evidence: minimal redacted request/response, build, env, role, expected/observed; no secrets",Partially covered,EVR (Part 6.1),Finding record template,PT-FND-01…14
+30,Security verification matrix (12 rows),I-30-010,"Public exposure (draft, unknown host, Admin endpoint, cache variants)",Covered,"Part 4.1 §4.8, §4.16; Part 6 TCs",Consolidated in SVM with TC-ENH-I,SVM-01…12
+30,Security verification matrix (12 rows),I-30-011,"Portal object scope (two invitees, expired grant, revoked invite)",Covered,"Part 4.1 §4.8, §4.16; Part 6 TCs",Consolidated in SVM with TC-ENH-I,SVM-01…12
+30,Security verification matrix (12 rows),I-30-012,"Admin role and audience (external token, owner-only op, cross-product token)",Covered,"Part 4.1 §4.8, §4.16; Part 6 TCs",Consolidated in SVM with TC-ENH-I,SVM-01…12
+30,Security verification matrix (12 rows),I-30-013,"Tenant isolation in query, export, worker, object URL, cache",Covered,"Part 4.1 §4.8, §4.16; Part 6 TCs",Consolidated in SVM with TC-ENH-I,SVM-01…12
+30,Security verification matrix (12 rows),I-30-014,"Input safety (injection fixtures, malformed JSON, oversized upload, rich text, URL)",Covered,"Part 4.1 §4.8, §4.16; Part 6 TCs",Consolidated in SVM with TC-ENH-I,SVM-01…12
+30,Security verification matrix (12 rows),I-30-015,CSRF/CORS/CSP,Covered,"Part 4.1 §4.8, §4.16; Part 6 TCs",Consolidated in SVM with TC-ENH-I,SVM-01…12
+30,Security verification matrix (12 rows),I-30-016,"Session and recovery (expiry, rotation, MFA, invitation replay)",Covered,"Part 4.1 §4.8, §4.16; Part 6 TCs",Consolidated in SVM with TC-ENH-I,SVM-01…12
+30,Security verification matrix (12 rows),I-30-017,"Webhook replay (signature, wrong connection, stale timestamp, duplicate)",Covered,"Part 4.1 §4.8, §4.16; Part 6 TCs",Consolidated in SVM with TC-ENH-I,SVM-01…12
+30,Security verification matrix (12 rows),I-30-018,"AI and RAG (embedded instruction, cross-startup evidence)",Covered,"Part 4.1 §4.8, §4.16; Part 6 TCs",Consolidated in SVM with TC-ENH-I,SVM-01…12
+30,Security verification matrix (12 rows),I-30-019,"Workflow authority (unapproved template, budget, stale hash, cancelled job, duplicate)",Covered,"Part 4.1 §4.8, §4.16; Part 6 TCs",Consolidated in SVM with TC-ENH-I,SVM-01…12
+30,Security verification matrix (12 rows),I-30-020,"Financial integrity (wrong issuer, currency, duplicate receipt/refund, premature closure)",Covered,"Part 4.1 §4.8, §4.16; Part 6 TCs",Consolidated in SVM with TC-ENH-I,SVM-01…12
+30,Security verification matrix (12 rows),I-30-021,"Dependencies and infrastructure (SBOM, images, IaC, exposure, vault)",Covered,"Part 4.1 §4.8, §4.16; Part 6 TCs",Consolidated in SVM with TC-ENH-I,SVM-01…12
+30,Assessment and remediation,I-30-022,"Tooling: ZAP in staging, dependency scanners, secret scan, SAST, manual role/object tests; record tool version, scope, false positives",Partially covered,Part 4.1 §4.16.1 (no false-positive review record),Finding record fields,PT-FND
+30,Assessment and remediation,I-30-023,Independent reviewer verifies findings and fixes; retest evidence per defect,Covered,BLK-1/4; Part 6.1,None,
+30,Assessment and remediation,I-30-024,Go-live: security lead and owner accept residual risk within policy; never waive critical isolation/financial defect,Covered,BLK rows; GL-S03,None,
+30,Threat/asset verification table (8 rows),I-30-025,Admin identity,Covered,Part 4.1; BLK-1…5,Mapped to SVM,SVM
+30,Threat/asset verification table (8 rows),I-30-026,Tenant/issuer data,Covered,Part 4.1; BLK-1…5,Mapped to SVM,SVM
+30,Threat/asset verification table (8 rows),I-30-027,Website publication,Covered,Part 4.1; BLK-1…5,Mapped to SVM,SVM
+30,Threat/asset verification table (8 rows),I-30-028,Portal invitations,Covered,Part 4.1; BLK-1…5,Mapped to SVM,SVM
+30,Threat/asset verification table (8 rows),I-30-029,Workflow/financial,Covered,Part 4.1; BLK-1…5,Mapped to SVM,SVM
+30,Threat/asset verification table (8 rows),I-30-030,AI,Covered,Part 4.1; BLK-1…5,Mapped to SVM,SVM
+30,Threat/asset verification table (8 rows),I-30-031,Supply chain,Covered,Part 4.1; BLK-1…5,Mapped to SVM,SVM
+30,Threat/asset verification table (8 rows),I-30-032,"Incident readiness: exercise containment, revoke, stop dispatch, preserve logs, recover",Covered,Part 4.3 §4.47 tabletop; RB-004/008/013,None,
+30,Threat/asset verification table (8 rows),I-30-033,Testing only in nonproduction or scoped pen-test; never attack third parties or use real records,Partially covered,Part 4.1 §4.16.2 out-of-scope list,RoE rules,PT-ROE
+30,Authorized security test evidence matrix (5 rows),I-30-034,"Scope documented (date, tester, exclusions)",Not covered,Part 4.1 §4.8.2,RoE / SVM,PT-ROE; SVM
+30,Authorized security test evidence matrix (5 rows),I-30-035,IDOR/BOLA read/update/download,Covered,Part 4.1 §4.8.2,RoE / SVM,PT-ROE; SVM
+30,Authorized security test evidence matrix (5 rows),I-30-036,"Public security (publish, host, URL, input, rate)",Covered,Part 4.1 §4.8.2,RoE / SVM,PT-ROE; SVM
+30,Authorized security test evidence matrix (5 rows),I-30-037,"AI/worker (untrusted text, tool, retrieval, duplicate webhook, budget, stop)",Covered,Part 4.1 §4.8.2,RoE / SVM,PT-ROE; SVM
+30,Authorized security test evidence matrix (5 rows),I-30-038,Remediation: critical/high confidentiality/auth/financial/regulated findings block go-live; actual pen test not performed,Covered,NFR-072; GL-S03,None,
+30,Implementation acceptance procedures (6),I-30-039,Product and audience isolation,Covered,Part 6.4; NFR-003/032/050,None (duplicate),
+30,Implementation acceptance procedures (6),I-30-040,Tenant and startup isolation,Covered,Part 6.4; NFR-003/032/050,None (duplicate),
+30,Implementation acceptance procedures (6),I-30-041,Privileged identity and revocation,Covered,Part 6.4; NFR-003/032/050,None (duplicate),
+30,Implementation acceptance procedures (6),I-30-042,Upload and dependency safety,Covered,Part 6.4; NFR-003/032/050,None (duplicate),
+30,Implementation acceptance procedures (6),I-30-043,Prompt injection and tool access,Covered,Part 6.4; NFR-003/032/050,None (duplicate),
+30,Implementation acceptance procedures (6),I-30-044,"Evidence integrity: reject missing controls, duplicates, mandatory N/A, blank evidence, executor = reviewer; verify hashes",Not covered,EVR independence rule only,Validator rules,RGV-01…14
+30,Current scope: cybersecurity scenario table (UX-QC-01…10 duplicate),I-30-045,Ten scenario rows (scope onboarding … accessibility navigation),Partially covered,Part 6 TCs (partial),See doc 32 UX-QC mapping,§4.4.4.5
+31,Observability design,I-31-006,"Metrics: request count/error/latency by surface; queue age, retries, DLQ, scheduler, DB connections, locks, replication/backup",Covered,Part 4.3 §4.39.2,Add lock-wait and scheduler metrics,MET-01…06
+31,Observability design,I-31-007,"Business signals: eligible opportunities, dispatch outcome, follow-up due, objection escalation, approvals, verified closure",Partially covered,RP-xx reports; metrics catalogue,Business signal metrics,MET-07…12
+31,Observability design,I-31-008,"AI metrics: model, prompt revision, tokens, latency, schema failure, abstention, cost; no raw prompts",Covered,§4.39.2 ai_* metrics,None,
+31,Observability design,I-31-009,Tracing correlation across browser/API/outbox/worker/adapter,Covered,§4.39.1; NFR-079,None,
+31,Observability design,I-31-010,"Tools: OpenTelemetry, Prometheus, Grafana, structured logs; monitoring works when business UI fails",Covered,ADR-058/025 (CloudWatch; Grafana optional),Independent monitoring path test,TC-ENH-I-030
+31,Alerts and triage,I-31-011,"P1 critical: leak, financial mismatch, unapproved dispatch, outage; ack 15 min; pause and page",Covered,§4.43.1 Sev1,P-to-Sev map,§4.4.5.6
+31,Alerts and triage,I-31-012,"P2 high: persistent errors, backlog, provider degradation, missed business deadline; ack 1 h",Covered,Sev2 ack ≤ 30 min (stricter),Missed business deadline alert added,AL-54
+31,Alerts and triage,I-31-013,"P3 medium: noncritical UI, isolated failed job, quality decline; next business day",Covered,Sev3,None,
+31,Alerts and triage,I-31-014,Thresholds: p95 over target 10 min; 5xx > 2% 5 min; projection lag > 60 s; integrity event immediate,Partially covered,"AL-04/05 (15 min), AL-06",Projection-lag alert added,AL-52
+31,Alerts and triage,I-31-015,"Budget warn 80%, deny/pause at hard cap, paid fallback needs authorization",Covered,AL-14; BRL-AI-08,None,
+31,Incident runbooks,I-31-016,Provider outage runbook,Covered,RB-001,None,
+31,Incident runbooks,I-31-017,Data isolation incident runbook,Covered,RB-008,None,
+31,Incident runbooks,I-31-018,Queue backlog runbook,Covered,RB-002,None,
+31,Incident runbooks,I-31-019,"Financial exception runbook (quarantine, stop closure, finance verifies, append correction)",Not covered,No RB for financial mismatch,RB-016 added,RB-016; GAP-465
+31,Incident runbooks,I-31-020,"Public content incident runbook (unpublish, purge, retain audit, approve replacement)",Not covered,No RB,RB-017 added,RB-017; GAP-465
+31,Incident runbooks,I-31-021,"Postmortem: impact, timeline, root cause, contributing factors, actions, owners, dates; regression case",Covered,§4.43.5,None,
+31,Support operations,I-31-022,"Intake: ticket with product, tenant, role, issue, severity, redacted evidence; verify caller authority",Partially covered,§4.45 (caller authority not stated),Caller verification step,SUP-01…05
+31,Support operations,I-31-023,"Support grants client-authorized, time-limited, purpose-scoped, audited, revoked on completion",Covered,DEC-056,None,
+31,Support operations,I-31-024,Communication: status and workaround without confidential details; escalate finance/legal/security,Covered,§4.43.4,None,
+31,Support operations,I-31-025,"Review cadence: daily critical queue, weekly incident trends, monthly SLA/cost/quality",Partially covered,Monthly ops review; FinOps cadence,Cadence table,SUP-06…08
+31,Metric/alert table (8 rows),I-31-026,HTTP p95 dashboard > 2 s / 2.5 s; ACK > 2 s,Covered,AL-04/05 (stricter),None,
+31,Metric/alert table (8 rows),I-31-027,Error ratio 5xx > 1% for 10 min,Conflict,AL-06 > 2% for 5 min,Two-tier alert,CONFLICT-464; AL-50
+31,Metric/alert table (8 rows),I-31-028,Queue age: oldest eligible ready job > 5 min for 5 min,Partially covered,AL-07 outbox oldest > 5 min; AL-27,Per-queue age alert,AL-51
+31,Metric/alert table (8 rows),I-31-029,Budget hard limit breached or negative remaining → immediate dispatch stop,Partially covered,AL-14 (no negative-remaining check),Negative remaining alert,AL-53
+31,Metric/alert table (8 rows),I-31-030,"Isolation/credential: unauthorized success, suspicious token, secret exposure",Covered,AL-31/33/41,None,
+31,Metric/alert table (8 rows),I-31-031,Financial mismatch: duplicate/unmatched/wrong issuer/currency/unreconciled callback → freeze,Not covered,No alert rule,AL-56 + RB-016,AL-56
+31,Metric/alert table (8 rows),I-31-032,"AI quality: critical leakage or unsupported action → disable, revert prompt, regression",Covered,AL-39/49; RB-015,None,
+31,Metric/alert table (8 rows),I-31-033,Backup missing or restore not verified by cadence → block unsafe deployment,Covered,"AL-23, AL-46; PL-17",None,
+31,Metric/alert table (8 rows),I-31-034,Incident lifecycle (detect → classify → commander → contain → preserve → diagnose → remediate → verify → communicate → RCA),Covered,§4.43.3; Part 4.1 §4.17,None,
+31,Operating signals table (5 rows),I-31-035,"Dashboard/ACK p95 alert with slow query, queue lag, projection",Covered,"Part 4.3 §4.41, §4.43",None,
+31,Operating signals table (5 rows),I-31-036,"Queue/outbox: oldest age, repeated failure, uncertain, duplicate event, exhausted budget",Partially covered,"Part 4.3 §4.41, §4.43",Added,AL-57
+31,Operating signals table (5 rows),I-31-037,Confidentiality: foreign access or secret/PII in logs → stop feature,Partially covered,"Part 4.3 §4.41, §4.43",Added,AL-58
+31,Operating signals table (5 rows),I-31-038,Financial mismatch hold closing,Not covered,"Part 4.3 §4.41, §4.43",Added,AL-56; RB-016
+31,Operating signals table (5 rows),I-31-039,"Operational record: detected/contained/restored times, correlation IDs, root cause, retest; no unsupported SLA claim",Partially covered,"Part 4.3 §4.41, §4.43",Added,INC-REC
+31,Optimization intelligence (reuse Admin interfaces),I-31-040,No public/portal access; scoped filters; show 'unassessed' when no denominator; label stale metrics,Partially covered,RPT-R1 numerator/denominator; as-of,Unassessed rule added,FR-ENH-I-050
+31,Optimization intelligence (reuse Admin interfaces),I-31-041,"Seven dashboards: command centre, audit/jobs, cost/budget, health/incidents, AI quality, growth, revenue (19 API ops, 25 persistence sources)",Partially covered,Part 3.2 (14 of 19 ops); Part 3.3 equivalents,Catalogue reconciled,§4.4.4.3; CONFLICT-469; GAP-467
+31,Implementation acceptance procedures (6),I-31-042,Cost metering and anomaly response (duplicate usage not billed; hard limit halts),Covered,"NFR-014, NFR-035; KPI-24",None,
+31,Implementation acceptance procedures (6),I-31-043,Workflow failure orchestration (timeout before/after unknown outcome),Covered,NFR-026/065; RB-003,None,
+31,Implementation acceptance procedures (6),I-31-044,Availability and error budget (zero denominator unassessed),Partially covered,§4.40,FR-ENH-I-050,
+31,Implementation acceptance procedures (6),I-31-045,Numeric guardrail validation,Not covered,—,FR-ENH-I-011,
+31,Implementation acceptance procedures (6),I-31-046,Observability and incident recovery,Covered,§4.41,None,
+31,Implementation acceptance procedures (6),I-31-047,SLA and support commitments: no contractual claim before measured validation and signed terms,Covered,DEC-044; OPT-20-03,None,
+31,Implementation acceptance procedures (6),I-31-048,"Current scope: trace trigger/event/run/action IDs; step latency, cost, conflict, suppression; alert stale runs, unknown outcome, budget anomaly",Partially covered,run_id in logs; AL-10/14/15,Stale-run alert,AL-57
+32,Pre-go-live gates (9),I-32-006,Business acceptance (PO signs),Covered,Part 8.2 §8.2.4.3 GL-B01,None,
+32,Pre-go-live gates (9),I-32-007,UI and API smoke; all catalogued items implemented or dispositioned,Covered,Part 8.2 §8.2.4.3 GL-T02; BLK-10,None,
+32,Pre-go-live gates (9),I-32-008,"Data: migration rehearsal, counts, constraints, balances, backup/restore",Covered,"Part 8.2 §8.2.4.3 GL-D04, GL-T05",None,
+32,Pre-go-live gates (9),I-32-009,"AI/workflow: eval, dry-run, suppression, approvals, budget, kill switch",Covered,Part 8.2 §8.2.4.3 GL-A01…A04,None,
+32,Pre-go-live gates (9),I-32-010,"Test completion (critical paths, defects closed, exceptions accepted)",Covered,Part 8.2 §8.2.4.3 GL-T02; BLK-10,None,
+32,Pre-go-live gates (9),I-32-011,"Security: negative tests, vulnerability remediation, pen test",Covered,Part 8.2 §8.2.4.3 GL-S01…S04,None,
+32,Pre-go-live gates (9),I-32-012,Performance: initial targets tested; growth documented; capacity approved,Covered,Part 8.2 §8.2.4.3 GL-T04,None,
+32,Pre-go-live gates (9),I-32-013,"Operations: monitoring, roster, alert drill, recovery, escalation",Covered,"Part 8.2 §8.2.4.3 GL-T06, GL-P02",None,
+32,Pre-go-live gates (9),I-32-014,Compliance: route/channel/financial/legal and public claims,Covered,Part 8.2 §8.2.4.3 GL-C01…C08,None,
+32,Deployment sequence,I-32-015,"Prepare: immutable artifact record, window, communication plan, backup point, rollback owner, freeze",Partially covered,PL-17,DPL-PRE,DPL-PRE-01…10
+32,Deployment sequence,I-32-016,"Execute: disable dispatch, migrate compatible schema, deploy API, workers, website/Admin separately, verify health",Partially covered,PL-18,DPL-SEQ,DPL-SEQ-01…09
+32,Deployment sequence,I-32-017,"Smoke: anonymous page, external own record, unauthorized denial, Admin scoped query, synthetic intake, outbox, verified callback",Partially covered,PL-19 smoke set,Smoke catalogue,SMK-01…14
+32,Deployment sequence,I-32-018,Activate: approved scopes/routes only; low-volume monitored execution,Covered,GL-B04 activation charter,DPL-ACT,DPL-ACT-01…06
+32,Deployment sequence,I-32-019,"Observe: agreed observation period: error, latency, queue, cost, financial consistency; formal acceptance",Covered,Part 8.2 §8.2.5 hypercare,None,
+32,Rollback decision,I-32-020,"Triggers: cross-tenant disclosure, invalid funds/receipt, duplicate effect, critical smoke failure, sustained severe error",Partially covered,RB-012 (deploy-caused only),Rollback trigger matrix,RBK-T01…T08
+32,Rollback decision,I-32-021,"Contain: pause automation, revoke access, preserve event and financial records",Covered,RB-004; RB-012,None,
+32,Rollback decision,I-32-022,Restore: revert compatible artifact; roll-forward or restore only after approved reconciliation,Covered,§4.38,None,
+32,Rollback decision,I-32-023,"Reconcile provider/bank records, outbox, commitments before resume; finance and ops approve",Partially covered,RB-003 (no finance/ops dual approval),Resume approval rule,RBK-R01…R05
+32,Rollback decision,I-32-024,Resume: rerun critical smoke and security tests; explicit owner approval for live dispatch; restart audit,Covered,RB-004 resume,None,
+32,Delivery package,I-32-025,"Technical handover: repos, artifacts, API/schema contracts, config refs, SBOM, test evidence, dashboards, recovery",Not covered,No delivery package,Handover checklist,HO-T01…T10; GAP-464
+32,Delivery package,I-32-026,"Business handover: training, operating instructions, scope, contacts, exceptions, acceptance",Partially covered,Part 8.2 §8.2.2 training; hypercare exit 8,Handover checklist,HO-B01…B06
+32,Delivery package,I-32-027,"Access handover: transfer account/vault ownership, rotate temporary credentials, remove developer production access",Not covered,—,Handover checklist,HO-A01…A06
+32,Delivery package,I-32-028,Acceptance record left unsigned until actual delivery,Covered,BRD §12.2 EVR; BLK-11,None,
+32,Checkpoint table (8 rows) and no-go criteria,I-32-029,"Preparation: freeze scope, verify contracts, migration graph, environment, digest, support roles",Partially covered,Part 4.3 §4.37–4.38; Part 8.2 §8.2.4,DPL / HO,"DPL, HO"
+32,Checkpoint table (8 rows) and no-go criteria,I-32-030,"Before deployment: restore rehearsal, deploy identity, config, cost limits, rollback package",Partially covered,Part 4.3 §4.37–4.38; Part 8.2 §8.2.4,DPL / HO,"DPL, HO"
+32,Checkpoint table (8 rows) and no-go criteria,I-32-031,"Deploy schema: approved expand migration, lock/timeout, integrity",Covered,Part 4.3 §4.37–4.38; Part 8.2 §8.2.4,DPL / HO,"DPL, HO"
+32,Checkpoint table (8 rows) and no-go criteria,I-32-032,Deploy application independently; dispatch disabled,Partially covered,Part 4.3 §4.37–4.38; Part 8.2 §8.2.4,DPL / HO,"DPL, HO"
+32,Checkpoint table (8 rows) and no-go criteria,I-32-033,"Verify business: synthetic E2E, portal, financial sandbox",Covered,Part 4.3 §4.37–4.38; Part 8.2 §8.2.4,DPL / HO,"DPL, HO"
+32,Checkpoint table (8 rows) and no-go criteria,I-32-034,Activate gradually; CTO/owner decision; monitoring active,Covered,Part 4.3 §4.37–4.38; Part 8.2 §8.2.4,DPL / HO,"DPL, HO"
+32,Checkpoint table (8 rows) and no-go criteria,I-32-035,"Rollback: stop external actions, revert, reconcile, approved DR",Covered,Part 4.3 §4.37–4.38; Part 8.2 §8.2.4,DPL / HO,"DPL, HO"
+32,Checkpoint table (8 rows) and no-go criteria,I-32-036,"Handover: access, manuals, support, training, residual risk",Not covered,Part 4.3 §4.37–4.38; Part 8.2 §8.2.4,DPL / HO,"DPL, HO"
+32,Checkpoint table (8 rows) and no-go criteria,I-32-037,"No-go list (authorization leak, financial discrepancy, mandatory test failure, missing backup, unapproved schema/API change, unsupported regulated op, unverified sender or paid fallback, absent monitoring/owner)",Partially covered,BLK-1…11 (sender verification and paid fallback not explicit),No-go rows added,GL-E01…E06
+32,Checkpoint table (8 rows) and no-go criteria,I-32-038,"Rollback does not undo an external payment, offer or message; reconcile instead of replaying",Covered,DEC-050; §4.38,None,
+32,Go-live execution and hard-blocking gates,I-32-039,Preflight: all mandatory evidence approved; backup and rollback rehearsed,Covered,GL-T05; BLK-8,None,
+32,Go-live execution and hard-blocking gates,I-32-040,Evidence check: release_gate.py against signed QC/acceptance register and manifests; pending returns non-zero,Not covered,A090 manual assembly,Release gate validator,RGV-01…14; RECOMMENDATION-462
+32,Go-live execution and hard-blocking gates,I-32-041,Deploy with automation disabled; confirm no public Admin data,Covered,NFR-001; SMK,None,
+32,Go-live execution and hard-blocking gates,I-32-042,"Activate eligible bounded workflows; monitor replies, spend, duplicates, finance",Covered,§8.2.5.3,None,
+32,Go-live execution and hard-blocking gates,I-32-043,Rollback on critical isolation/finance/security/availability failure,Covered,RB-012; BLK,None,
+32,Mandatory measurable gates (21 rows),I-32-044,21 mandatory OKPI gates (see doc 38 OKPI-01…35),Partially covered,Spread across NFR/KPI/SLO,OKPI register mapping,§4.4.4.2
+32,Implementation acceptance procedures (7) and approval gates,I-32-045,"Evidence gate fail-closed (delete QC row, duplicate ID, mandatory N/A)",Not covered,—,RGV + TC,RGV; TC-ENH-I-040…042
+32,Implementation acceptance procedures (7) and approval gates,I-32-046,"Recovery and rollback: RPO 15 min, RTO 4 h / 2 h growth",Conflict,DEC-018,See CONFLICT-462,
+32,Implementation acceptance procedures (7) and approval gates,I-32-047,"Granular QC and evidence (all QC IDs, owners, evidence; required ID baseline)",Partially covered,Part 6.6 RTM; A090,RGV,RGV
+32,Implementation acceptance procedures (7) and approval gates,I-32-048,"Backup and restore proof (hashes, counts; restore does not overwrite live)",Covered,§4.47,None,
+32,Implementation acceptance procedures (7) and approval gates,I-32-049,Go-live and rollback gate rehearsal with incomplete evidence: no activation,Partially covered,BLK-11,TC added,TC-ENH-I-043
+32,Implementation acceptance procedures (7) and approval gates,I-32-050,"Outstanding approval gates: 38 exact API definitions, 0 partial, 4 DB confirmations, 138 UI semantic mappings",Not covered,Pack-baseline counts not reconciled,Gap raised to coordinator,GAP-468
+32,Implementation acceptance procedures (7) and approval gates,I-32-051,Fail-closed evidence inventory (authoritative required-ID list from immutable baseline),Not covered,—,RGV-01…05,RGV
+32,Implementation acceptance procedures (7) and approval gates,I-32-052,Evidence integrity and final acceptance (executor ≠ reviewer after normalization; non-blank approval; artifact hashes),Partially covered,EVR independence,RGV-06…14,RGV
+32,Implementation acceptance procedures (7) and approval gates,I-32-053,"Combined preflight: 1,188 records across six groups incl. 21 mandatory KPIs; CTO and PO authenticate and sign",Not covered,No combined preflight,Blueprint-equivalent preflight defined,RGV-15; GAP-468
+32,Current scope: release gates and UX-QC,I-32-054,"Original evidence preflight plus expansion gate; field mapping, contract/DB decisions, new tests, independent review",Partially covered,BLK-10/11,RGV,RGV
+32,Current scope: release gates and UX-QC,I-32-055,"UX-QC-01 Scope and onboarding (26 owned startups, ten client tenants)",Partially covered,Part 6 TCs; see §4.4.4.5,Mapped; gaps get TC-ENH-I,UX-QC-01
+32,Current scope: release gates and UX-QC,I-32-056,UX-QC-02 Capability-based routing (EduVerse blocked from external AI projects),Covered,Part 6 TCs; see §4.4.4.5,Mapped; gaps get TC-ENH-I,UX-QC-02
+32,Current scope: release gates and UX-QC,I-32-057,"UX-QC-03 Concurrent workflows (20 runs, revision pinning)",Covered,Part 6 TCs; see §4.4.4.5,Mapped; gaps get TC-ENH-I,UX-QC-03
+32,Current scope: release gates and UX-QC,I-32-058,UX-QC-04 Event replay and conflict (E1 twice; competing action held),Covered,Part 6 TCs; see §4.4.4.5,Mapped; gaps get TC-ENH-I,UX-QC-04
+32,Current scope: release gates and UX-QC,I-32-059,UX-QC-05 Omnichannel suppression (email and WhatsApp opt-out),Covered,Part 6 TCs; see §4.4.4.5,Mapped; gaps get TC-ENH-I,UX-QC-05
+32,Current scope: release gates and UX-QC,I-32-060,UX-QC-06 Budget and recovery (below estimate; unknown outcome),Covered,Part 6 TCs; see §4.4.4.5,Mapped; gaps get TC-ENH-I,UX-QC-06
+32,Current scope: release gates and UX-QC,I-32-061,UX-QC-07 Shared closure state (consistent opportunity/quote/order IDs),Partially covered,Part 6 TCs; see §4.4.4.5,Mapped; gaps get TC-ENH-I,UX-QC-07
+32,Current scope: release gates and UX-QC,I-32-062,"UX-QC-08 Website and Admin handoff (SaaS application import, snapshot)",Partially covered,Part 6 TCs; see §4.4.4.5,Mapped; gaps get TC-ENH-I,UX-QC-08
+32,Current scope: release gates and UX-QC,I-32-063,"UX-QC-09 Configuration lifecycle (revision 2, suspend, rollback)",Covered,Part 6 TCs; see §4.4.4.5,Mapped; gaps get TC-ENH-I,UX-QC-09
+32,Current scope: release gates and UX-QC,I-32-064,"UX-QC-10 Accessibility and navigation (every route, keyboard, widths)",Partially covered,Part 6 TCs; see §4.4.4.5,Mapped; gaps get TC-ENH-I,UX-QC-10
+"OPT(18,25,27,30,32)",Optimization engineering (OPT-01-01),I-OPT-001,OPT-01-01 Authentication and privileged sessions,Covered,NFR-003; NFR-050,Mapped in §4.4.4.1,OPT-01-01
+"OPT(18,25,30)",Optimization engineering (OPT-01-02),I-OPT-002,OPT-01-02 Authorization and product isolation,Covered,NFR-002; NFR-031,Mapped in §4.4.4.1,OPT-01-02
+"OPT(18,25,30)",Optimization engineering (OPT-01-03),I-OPT-003,OPT-01-03 Tenant and startup isolation,Covered,NFR-032,Mapped in §4.4.4.1,OPT-01-03
+"OPT(18,25,30)",Optimization engineering (OPT-01-04),I-OPT-004,OPT-01-04 Public/portal/Admin boundary,Covered,NFR-001,Mapped in §4.4.4.1,OPT-01-04
+"OPT(18,25,30)",Optimization engineering (OPT-01-05),I-OPT-005,"OPT-01-05 API and network security (bounded input, private network, egress allowlist)",Covered,Part 4.1 §4.9; NFR-022,Mapped in §4.4.4.1,OPT-01-05
+"OPT(18,25,30)",Optimization engineering (OPT-01-06),I-OPT-006,OPT-01-06 Secrets and supply chain,Covered,Part 4.1 §4.6; NFR-068,Mapped in §4.4.4.1,OPT-01-06
+"OPT(18,25,30)",Optimization engineering (OPT-01-07),I-OPT-007,OPT-01-07 AI and uploaded files,Covered,NFR-021; Part 4.1 §4.15,Mapped in §4.4.4.1,OPT-01-07
+"OPT(18,25,30)",Optimization engineering (OPT-01-08),I-OPT-008,OPT-01-08 Financial and audit security,Covered,NFR-018; DEC-038,Mapped in §4.4.4.1,OPT-01-08
+"OPT(25,26,29,31)",Optimization engineering (OPT-02-01),I-OPT-009,OPT-02-01 Public website assets (LCP/INP/CLS),Covered,NFR-042/043,Mapped in §4.4.4.1,OPT-02-01
+OPT(29),Optimization engineering (OPT-02-02),I-OPT-010,"OPT-02-02 React rendering and filters (debounce, cancel, virtualize, scope cache)",Partially covered,"NFR-027, NFR-044",Mapped in §4.4.4.1; enhancement added,OPT-02-02
+OPT(29),Optimization engineering (OPT-02-03),I-OPT-011,OPT-02-03 API payload and pagination,Covered,NFR-015; C3,Mapped in §4.4.4.1,OPT-02-03
+OPT(29),Optimization engineering (OPT-02-04),I-OPT-012,OPT-02-04 Read projections cached by permission revision,Partially covered,Part 3.1 §3.1.11,Mapped in §4.4.4.1; enhancement added,OPT-02-04
+OPT(29),Optimization engineering (OPT-02-05),I-OPT-013,"OPT-02-05 Async processing: durable ACK then enqueue; progress, cancel, timeout",Covered,ARP-09; C6,Mapped in §4.4.4.1,OPT-02-05
+OPT(29),Optimization engineering (OPT-02-06),I-OPT-014,"OPT-02-06 Database and network: plans, N+1, pooling, streaming",Partially covered,Part 3.1 lever 1,Mapped in §4.4.4.1; enhancement added,OPT-02-06
+OPT(29),Optimization engineering (OPT-02-07),I-OPT-015,OPT-02-07 Parallel and batch operations bounded by tenant/provider,Partially covered,ADR-021,Mapped in §4.4.4.1; enhancement added,OPT-02-07
+"OPT(26,27,31)",Optimization engineering (OPT-03-01),I-OPT-016,OPT-03-01 Native versus paid plugins (zero unapproved paid calls),Covered,NFR-037,Mapped in §4.4.4.1,OPT-03-01
+OPT(31),Optimization engineering (OPT-04-01),I-OPT-017,OPT-04-01 Daily planning and discovery,Covered,FR register (BRD OPT-04-01),Mapped in §4.4.4.1,OPT-04-01
+OPT(all),Optimization engineering (OPT-05-01),I-OPT-018,OPT-05-01 Transactional outbox,Covered,"NFR-006, NFR-063",Mapped in §4.4.4.1,OPT-05-01
+"OPT(26,31)",Optimization engineering (OPT-05-02),I-OPT-019,OPT-05-02 Idempotency and concurrency (key + payload fingerprint),Covered,"NFR-005, NFR-066",Mapped in §4.4.4.1,OPT-05-02
+"OPT(26,31)",Optimization engineering (OPT-05-03),I-OPT-020,"OPT-05-03 Timeout and retry, circuit breaker, DLQ",Covered,"NFR-016, NFR-064",Mapped in §4.4.4.1,OPT-05-03
+"OPT(26,31)",Optimization engineering (OPT-05-04),I-OPT-021,"OPT-05-04 Durable workflow state, lease fencing",Covered,ADR-027,Mapped in §4.4.4.1,OPT-05-04
+"OPT(26,31)",Optimization engineering (OPT-05-05),I-OPT-022,OPT-05-05 Backpressure and fair scheduling; reserve urgent capacity,Partially covered,ADR-021 (no reserved control capacity),Mapped in §4.4.4.1; enhancement added,OPT-05-05
+"OPT(26,31)",Optimization engineering (OPT-05-06),I-OPT-023,OPT-05-06 Config and AI failures: fail startup on missing config,Not covered,No config validation at startup,Mapped in §4.4.4.1; enhancement added,OPT-05-06
+"OPT(26,31)",Optimization engineering (OPT-05-07),I-OPT-024,OPT-05-07 Availability 99.9% and reconciliation,Conflict,DEC-018 99.5%,Mapped in §4.4.4.1; enhancement added,OPT-05-07
+"OPT(26,29,31)",Optimization engineering (OPT-06-01),I-OPT-025,OPT-06-01 Startup templates and tenants 25+10 / 50+ +100,Conflict,DEC-031,Mapped in §4.4.4.1; enhancement added,OPT-06-01
+"OPT(26,29)",Optimization engineering (OPT-06-02),I-OPT-026,OPT-06-02 Concurrent users and jobs 50/250,Conflict,DEC-031,Mapped in §4.4.4.1; enhancement added,OPT-06-02
+"OPT(26,29)",Optimization engineering (OPT-06-03),I-OPT-027,OPT-06-03 Data and scheduling volume 100k/1m; 10k/100k,Conflict,DEC-031,Mapped in §4.4.4.1; enhancement added,OPT-06-03
+"OPT(26,29)",Optimization engineering (OPT-06-04),I-OPT-028,"OPT-06-04 Regional expansion: locale, time zone, currency, residence",Covered,DEC-026; NFR-096/097,Mapped in §4.4.4.1,OPT-06-04
+"OPT(26,29)",Optimization engineering (OPT-06-05),I-OPT-029,OPT-06-05 Noisy neighbour and capacity,Covered,NFR-062,Mapped in §4.4.4.1,OPT-06-05
+"OPT(25,26)",Optimization engineering (OPT-07-01),I-OPT-030,OPT-07-01 Modular monolith,Covered,ADR-001; NFR-029,Mapped in §4.4.4.1,OPT-07-01
+OPT(25),Optimization engineering (OPT-07-02),I-OPT-031,OPT-07-02 Four frontends and two backends (investment + commercial),Not applicable,Investor product out of scope (DEC-009); isolation via NFR-031,Mapped in §4.4.4.1; enhancement added,OPT-07-02
+OPT(25),Optimization engineering (OPT-07-03),I-OPT-032,OPT-07-03 Domain and adapter boundaries; external calls outside DB transaction,Covered,ARP-06; ADR-009,Mapped in §4.4.4.1,OPT-07-03
+OPT(25),Optimization engineering (OPT-07-04),I-OPT-033,OPT-07-04 Configuration-driven design; invalid config rejected,Covered,Part 2.4 CFG,Mapped in §4.4.4.1,OPT-07-04
+OPT(25),Optimization engineering (OPT-07-05),I-OPT-034,OPT-07-05 Complexity and reuse review,Partially covered,No reuse review procedure,Mapped in §4.4.4.1; enhancement added,OPT-07-05
+"OPT(25,29)",Optimization engineering (OPT-08-01),I-OPT-035,OPT-08-01 Normalization and ownership; validated JSONB,Covered,Part 3.3,Mapped in §4.4.4.1,OPT-08-01
+"OPT(25,29)",Optimization engineering (OPT-09-01),I-OPT-036,OPT-09-01 Typed contracts 100% before activation,Covered,NFR-015; BLK-10,Mapped in §4.4.4.1,OPT-09-01
+"OPT(25,29,30,31)",Optimization engineering (OPT-10-01),I-OPT-037,OPT-10-01 Rules-first model routing,Covered,DEC-007; NFR-030,Mapped in §4.4.4.1,OPT-10-01
+OPT(31),Optimization engineering (OPT-12-01),I-OPT-038,OPT-12-01 Qualified funnel numerator/denominator,Covered,KPI register (BRD OPT-12-01),Mapped in §4.4.4.1,OPT-12-01
+"OPT(25,27)",Optimization engineering (OPT-13-01),I-OPT-039,OPT-13-01 Code health,Partially covered,PL gates; no coding standard,Mapped in §4.4.4.1; enhancement added,OPT-13-01
+OPT(25),Optimization engineering (OPT-13-02),I-OPT-040,"OPT-13-02 Technical debt register, monthly review",Not covered,None,Mapped in §4.4.4.1; enhancement added,OPT-13-02
+OPT(25),Optimization engineering (OPT-13-03),I-OPT-041,OPT-13-03 Documentation and debugging runbooks synchronized,Partially covered,Runbooks RB-###,Mapped in §4.4.4.1; enhancement added,OPT-13-03
+OPT(25),Optimization engineering (OPT-13-04),I-OPT-042,"OPT-13-04 Dependencies and compatibility, isolated upgrade branch",Covered,NFR-084,Mapped in §4.4.4.1,OPT-13-04
+OPT(25),Optimization engineering (OPT-14-01),I-OPT-043,OPT-14-01 Shared code libraries with independent runtime config,Covered,ADR-006/060,Mapped in §4.4.4.1,OPT-14-01
+OPT(25),Optimization engineering (OPT-14-02),I-OPT-044,OPT-14-02 Template reuse versioned and approved,Covered,Part 2.4 CFG; DEC,Mapped in §4.4.4.1,OPT-14-02
+OPT(25),Optimization engineering (OPT-14-03),I-OPT-045,"OPT-14-03 Component contracts, no fork per tenant",Covered,Part 2.5 §2.45,Mapped in §4.4.4.1,OPT-14-03
+"OPT(25,26)",Optimization engineering (OPT-16-01),I-OPT-046,OPT-16-01 Standard setup: reproducible local env,Partially covered,Part 3.1 local env; no onboarding procedure,Mapped in §4.4.4.1; enhancement added,OPT-16-01
+"OPT(25,26)",Optimization engineering (OPT-16-02),I-OPT-047,OPT-16-02 Vertical slices and estimates (actual vs estimate),Covered,Part 8.1,Mapped in §4.4.4.1,OPT-16-02
+"OPT(25,26)",Optimization engineering (OPT-16-03),I-OPT-048,OPT-16-03 AI-assisted development review,Not covered,None,Mapped in §4.4.4.1; enhancement added,OPT-16-03
+"OPT(25,32)",Optimization engineering (OPT-17-01),I-OPT-049,OPT-17-01 Risk-based tests; 100% mandatory regression,Covered,Part 6.1,Mapped in §4.4.4.1,OPT-17-01
+"OPT(26,27,31,32)",Optimization engineering (OPT-18-01),I-OPT-050,"OPT-18-01 Independent CI/CD; build once, promote digest",Covered,§4.33,Mapped in §4.4.4.1,OPT-18-01
+"OPT(26,27,32)",Optimization engineering (OPT-18-02),I-OPT-051,OPT-18-02 Migration and rollback expand/backfill/contract,Covered,§4.37.2,Mapped in §4.4.4.1,OPT-18-02
+"OPT(26,27,32)",Optimization engineering (OPT-18-03),I-OPT-052,OPT-18-03 Backup and DR RPO/RTO incl. growth 2 h and regenerable 24 h/8 h,Conflict,DEC-018,Mapped in §4.4.4.1; enhancement added,OPT-18-03
+"OPT(26,27,32)",Optimization engineering (OPT-18-04),I-OPT-053,"OPT-18-04 Observability and incident drills (scope denials, stale projections)",Partially covered,§4.41 (no stale-projection alert),Mapped in §4.4.4.1; enhancement added,OPT-18-04
+"OPT(18,27,30,32)",Optimization engineering (OPT-19-01),I-OPT-054,OPT-19-01 Minimize data and source eligibility,Covered,NFR-028; DEC-010/011,Mapped in §4.4.4.1,OPT-19-01
+"OPT(18,30)",Optimization engineering (OPT-19-02),I-OPT-055,OPT-19-02 Communications and jurisdiction,Covered,NFR-095,Mapped in §4.4.4.1,OPT-19-02
+"OPT(18,30)",Optimization engineering (OPT-19-03),I-OPT-056,OPT-19-03 Rights and exports,Covered,NFR-075/076,Mapped in §4.4.4.1,OPT-19-03
+"OPT(18,30)",Optimization engineering (OPT-19-04),I-OPT-057,OPT-19-04 Clinical and education boundaries,Covered,DEC-010/011,Mapped in §4.4.4.1,OPT-19-04

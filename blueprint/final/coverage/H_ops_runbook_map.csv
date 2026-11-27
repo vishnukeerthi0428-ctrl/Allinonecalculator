@@ -1,0 +1,47 @@
+kind,item,source_text,status,blueprint_location,note
+Runbook,Predeployment,"Validate independent environment, secret references, migration dry run, provider access and approval; freeze unsafe actions",Partially covered,"Part 4.3 §4.37, §4.48; GL-T01…T10","No single predeployment runbook (freeze unsafe actions, provider access check) → RB-ENH-H-01"
+Runbook,Release,"Apply validated migration, deploy API then workers and frontend; verify health, scope, queue, smoke and rollback point",Covered,Part 4.3 §4.37.1 deploy order; RB-012; GL-T05,Order API → workers → frontend matches §4.37.1
+Runbook,Daily operations,"Review failed jobs, pending approvals, budget, receipts, source freshness, suppression, backup status",Partially covered,Part 4.3 §4.45; Part 8.2 §8.2.5.3 (hypercare only),Steady-state daily operations routine absent → RB-ENH-H-02
+Runbook,Provider outage,"Circuit break adapter, pause affected actions, reconcile uncertain effects, retry bounded",Covered,RB-001; RB-003,
+Runbook,Budget cap,"Block new reservations, notify, approve revised budget only within authority",Covered,RB-005,
+Runbook,Data incident,"Isolate scope/product, revoke credential, preserve audit, investigate, restore and authorize restart",Covered,RB-008; RB-013; §4.43,
+Runbook,Recovery,Restore independent backup in isolated environment; validate RPO/RTO and financial/outbox reconciliation,Covered,RB-007; §4.47; US-2108,
+Runbook,Client offboard,"Stop workflows, revoke access, approved export, retention and charge settlement",Partially covered,US-2009; AP-09,"No operator runbook (stop workflows, revoke, export, retention, settlement) → RB-ENH-H-03"
+Work package,1 Tenant/product boundaries and reuse,"Identity compatibility, separate database/roles, scope and negative tests",Covered,"W0; EP-01; US-0101, US-0107; DEC-019",
+Work package,2 Startup configuration and source policies,"Templates, approved thesis/offerings, contacts and permission",Covered,"W0–W1; EP-02, EP-03, EP-05; US-0201, US-0501",
+Work package,3 Discovery and qualification,"Evidence, scoring and dedupe, directory and workflow",Covered,"W1; EP-05, EP-06",
+Work package,4 Engagement and follow-up,"Approved channels, inbox, suppression, objections and meetings",Covered,W2; EP-07…EP-10,
+Work package,5 Route-specific conversion,"Bid, campaign, proposal, quote, commercial agreement, order and fulfillment",Covered,W3–W4; EP-11…EP-15,
+Work package,6 Independent operations,"Billing, usage, planner, alerts, portability, retention, audit",Covered,"W4–W5; EP-16, EP-18, EP-20",
+Work package,7 Production verification,"Tests, migration/restore, provider entitlement, approvals, monitored deployment",Covered,Every wave gate; EP-21; Part 8.2 §8.2.4,
+Capacity,Owned startups / external tenants,Initial 25 / 10; growth 50+ / 100,Conflict,DEC-031 (25–40 / 2–10 Year 1; 100 / 30 Year 2); §4.25.1,Growth 50+/100 vs Year 2 100/30 [CONFLICT-441]
+Capacity,Concurrent staff sessions,Initial 50; growth 250,Conflict,"§4.25.1 (60 internal users Year 1, 200 Year 2; peak concurrency 0.5)",50/250 concurrent sessions vs 30/100 peak [CONFLICT-441]
+Capacity,Scoped opportunities,"Initial 100,000; growth 1,000,000",Partially covered,§4.25.5 data volume; NFR-060,100k / 1M opportunity volume not a named load profile [CONFLICT-441]
+Capacity,Concurrent jobs / scheduled actions/day,"Initial 50 / 10,000; growth 250 / 100,000",Partially covered,"NFR-058, NFR-059; §4.25.3",10k / 100k scheduled actions per day not stated [CONFLICT-441]
+Capacity,Dashboard query p95,Initial ≤2 s; growth ≤2.5 s,Covered,"Part 4.2 C10 Dashboards p95 800 ms / p99 2,000 ms",Blueprint is stricter
+Capacity,Async/webhook acknowledgement p95,Initial ≤2 s; growth ≤2 s,Covered,NFR-051,
+Capacity,Projection refresh,Initial ≤60 s; growth ≤60 s,Conflict,NFR-008 (Customer 360 ≤ 60 s); NFR-047 (dashboards ≤ 15 min),Source ≤ 60 s for all projections [CONFLICT-443]
+Capacity,Critical data RPO / RTO,Initial ≤15 min / ≤4 h; growth ≤15 min / ≤2 h,Conflict,DEC-018 as amended by DEC-079 (≤ 15 min / ≤ 4 h; regional ≤ 24 h),Growth target RTO ≤ 2 h not in blueprint [CONFLICT-444]
+Capacity,Regenerable research RPO/RTO,Initial ≤24 h / ≤8 h; growth ≤24 h / ≤8 h,Not covered,—,≤ 24 h / ≤ 8 h class absent from NFR-056/057 [GAP-446]
+Execution backlog,Task selection,Use approved requirement and dependency; assign one accountable engineer/lead; clarify estimates and acceptance before start.,Covered,Part 8.1 §8.1.4.1 ceremonies; RACI §8.1.5.5,
+Execution backlog,Definition of ready,"Source requirement, scope, exact UI/API/table effects, test fixture and approval constraints reviewed.",Covered,Part 5.1a §5.2 DoR R-1…R-7,
+Execution backlog,Definition of done,"Code reviewed, actual contracts/migration approved, automated tests pass, QC evidence linked, UAT accepted, docs updated.",Covered,Part 5.1a §5.3 DoD D-1…D-18,
+Execution backlog,Dependency tracking,Foundation → vertical slice → integration → performance/security → deployment/acceptance. No product release tiers.,Covered,Part 8.1 §8.1.7 critical path; story Dependencies field,
+Execution backlog,Operational handover,"Named on-call, support, data retention, backup, recovery, cost caps, incident response and credential ownership.",Partially covered,Part 4.3 §4.45; §4.48; Part 8.2 §8.2.3.2 (credential ownership absent → §6.9.5.5),
+Execution backlog,Progress measurement,"Count accepted tasks only; track blocked tasks and open defects, estimated vs actual person-days and verified costs.",Partially covered,Part 8.1 §8.1.6 (estimates); no estimate-vs-actual PD tracking or accepted-task count → §6.9.5.4.4,
+Pilot cost,AWS shared hosting,"5000 — Django, workers, PostgreSQL, Valkey, storage/backups; small pilot allowance; validate regi",Covered,DEC-020 B01; DEC-004; Part 8.2 §8.2.7.2,"Figures identical to BRD §6 (verify provider prices at implementation, as of 27 Nov 2026)"
+Pilot cost,Production AI inference,"3000 — Illustrative reserve: low-cost model routing, caching, embeddings and quality checks; actu",Covered,DEC-020 B02; DEC-004; Part 8.2 §8.2.7.2,"Figures identical to BRD §6 (verify provider prices at implementation, as of 27 Nov 2026)"
+Pilot cost,Public search API,"1500 — 500 source fetch pilot; Tavily 1,000 free credits/month; reserve for advanced queries/over",Covered,DEC-020 B03; DEC-004; Part 8.2 §8.2.7.2,"Figures identical to BRD §6 (verify provider prices at implementation, as of 27 Nov 2026)"
+Pilot cost,Extraction compute / overage,1000 — Self-host permitted extraction first; extra worker compute/cloud fallback reserve beyond B,Covered,DEC-020 B04; DEC-004; Part 8.2 §8.2.7.2,"Figures identical to BRD §6 (verify provider prices at implementation, as of 27 Nov 2026)"
+Pilot cost,Email delivery,"500 — 2,000 eligible sends/month plus receiving/attachments buffer; actual SES billing varies.",Covered,DEC-020 B05; DEC-004; Part 8.2 §8.2.7.2,"Figures identical to BRD §6 (verify provider prices at implementation, as of 27 Nov 2026)"
+Pilot cost,WhatsApp Business,"2000 — 1,000 chargeable templates/month illustrative allowance, not official per-message rate; ve",Covered,DEC-020 B06; DEC-004; Part 8.2 §8.2.7.2,"Figures identical to BRD §6 (verify provider prices at implementation, as of 27 Nov 2026)"
+Pilot cost,Monitoring / security / CI,500 — Incremental growth monitoring/CI reserve only; provisional ₹500 reduction from original ₹1,Covered,DEC-020 B07; DEC-004; Part 8.2 §8.2.7.2,"Figures identical to BRD §6 (verify provider prices at implementation, as of 27 Nov 2026)"
+Pilot cost,Apollo paid enrichment reserve,"9000 — Optional planning cap, NOT confirmed plan price. Free pilot first; one eligible account/pl",Covered,DEC-020 B08; DEC-004; Part 8.2 §8.2.7.2,"Figures identical to BRD §6 (verify provider prices at implementation, as of 27 Nov 2026)"
+Pilot cost,Claude Code developer seats,3600 — 2 Pro seats × $20/month × assumed ₹90/USD; taxes excluded; usage caps apply. If existing p,Covered,DEC-020 B09; DEC-004; Part 8.2 §8.2.7.2,"Figures identical to BRD §6 (verify provider prices at implementation, as of 27 Nov 2026)"
+Pilot cost,Optional integration reserve,"1000 — Calendar, social API, validation, meetings or e-sign pilot contingencies; paid enterprise ",Covered,DEC-020 B10; DEC-004; Part 8.2 §8.2.7.2,"Figures identical to BRD §6 (verify provider prices at implementation, as of 27 Nov 2026)"
+Pilot cost,Contingency rate,0.15 — 15% planning contingency applied to selected monthly budgets.,Covered,DEC-020 B11; DEC-004; Part 8.2 §8.2.7.2,"Figures identical to BRD §6 (verify provider prices at implementation, as of 27 Nov 2026)"
+Effort,66 original commercial modules (source revised effort),194–323,Covered,DEC-012; BR-S102…S105; Part 8.1 §8.1.6,
+Effort,Tenant and independent SaaS controls,35–60,Covered,DEC-012; BR-S102…S105; Part 8.1 §8.1.6,
+Effort,"Four-vertical projects, orders and fulfillment",30–52,Covered,DEC-012; BR-S102…S105; Part 8.1 §8.1.6,
+Effort,"Autonomous planning, portability and independent QA",28–48,Covered,DEC-012; BR-S102…S105; Part 8.1 §8.1.6,
+Effort,Total planning range,287–483,Covered,DEC-012; BR-S102…S105; Part 8.1 §8.1.6,
