@@ -12,6 +12,8 @@ Sources parsed (regexes only, no manual data):
     Part 4.2 §4.22/23 NFR-001…099 with test method; Part 6.1 §6.1.3/§6.1.14 non-functional plans
     Part 5.1–5.3      stories US-#### with their Traces/Links/Linked rows and AC-####-## scenarios
     Part 6.2–6.5      test cases TC-##-###, TC-AI-AG###-###, TC-AU-AU###-### (Links columns + coverage tables)
+    Part 6.7          closure items: TC-NFR-###, TC-FLT-###, TC-BRS-### (test cases, "Linked" column) and
+                      VER-### verification items (inspection/review/analysis/demonstration; "Linked" column)
     Part 7.1          agent and automation catalogue AG-###, AU-###
 """
 import csv
@@ -37,7 +39,9 @@ AC = r"AC-\d{4}-\d{2}"
 TC_E = r"TC-\d{2}-\d{3}"
 TC_AI = r"TC-AI-AG\d{3}-\d{3}"
 TC_AU = r"TC-AU-AU\d{3}-\d{3}"
-TC_ANY = rf"(?:{TC_AI}|{TC_AU}|{TC_E})"
+TC_X = r"TC-(?:NFR|FLT|BRS)-\d{3}"        # Part 6.7 closure test cases
+VER = r"VER-\d{3}"                         # Part 6.7 verification items (not test cases)
+TC_ANY = rf"(?:{TC_X}|{TC_AI}|{TC_AU}|{TC_E})"
 ELL = r"\s*(?:…|\.\.\.|–|-)\s*"   # range separators
 
 
@@ -99,7 +103,7 @@ def req_ids(text):
 def expand_tc_ranges(text, defined):
     """TC-08-001…025, TC-08-001…TC-08-025, TC-AI-AG024-001…006 → list of defined TC IDs."""
     out = []
-    for m in re.finditer(rf"({TC_ANY}){ELL}(?:(TC-(?:AI-AG\d{{3}}|AU-AU\d{{3}}|\d{{2}})-)?(\d{{3}}))", text):
+    for m in re.finditer(rf"({TC_ANY}){ELL}(?:(TC-(?:AI-AG\d{{3}}|AU-AU\d{{3}}|NFR|FLT|BRS|\d{{2}})-)?(\d{{3}}))", text):
         start = m.group(1)
         pref, a = start.rsplit("-", 1)
         b = m.group(3)
@@ -120,6 +124,10 @@ def tc_sort_key(t):
         return (2, t)
     if t.startswith("TC-AU-"):
         return (3, t)
+    if re.match(r"TC-(?:NFR|FLT|BRS)-", t):
+        return (4, t)
+    if t.startswith("VER-"):
+        return (5, t)
     return (1, t)
 
 
@@ -268,6 +276,7 @@ BATCHES = [
     ("6.3a", "Part-06-3a_*.md", "EP-15…EP-18"), ("6.3b", "Part-06-3b_*.md", "EP-19…EP-21"),
     ("6.4", "Part-06-4_*.md", "AI agents AG-001…036 and automations AU-001…043"),
     ("6.5", "Part-06-5_*.md", "EP-01…EP-07"),
+    ("6.7", "Part-06-7_*.md", "Closure: NFR (TC-NFR), filters (TC-FLT), BR-S (TC-BRS) and verification items (VER)"),
 ]
 
 
@@ -340,6 +349,28 @@ def load_tcs(status):
     return tcs, resolved
 
 
+# ----------------------------------------------------------------------------- Part 6.7: verification items
+def load_ver():
+    """VER-### rows of Part 6.7: requirement links from the 'Linked' column, plus method, owner and wave."""
+    ver = OrderedDict()
+    for f in sorted(glob.glob(BP + "Part-06-7_*.md")):
+        header = None
+        for line in read(f).split("\n"):
+            if not line.startswith("| "):
+                continue
+            c = cells(line)
+            if c and c[0] == "ID":
+                header = [h.lower() for h in c]
+                continue
+            m = re.match(rf"\| ({VER}) \|", line)
+            if not m or not header:
+                continue
+            col = lambda key, default="": next((c[i] for i, h in enumerate(header) if h.startswith(key) and i < len(c)), default)
+            ver[m.group(1)] = dict(title=c[1], links=set(req_ids(col("linked"))), method=col("method"),
+                                   owner=col("owner"), wave=col("wave"), file=os.path.basename(f))
+    return ver
+
+
 # ----------------------------------------------------------------------------- Part 7: AG / AU
 def load_ai():
     t = read(BP + "Part-07-1_AI_Discovery_and_Catalogue.md")
@@ -363,7 +394,12 @@ def build():
     nfr, nfr_plan = load_nfr()
     stories = load_stories()
     tcs, cov = load_tcs(status)
+    ver = load_ver()
     ag, au = load_ai()
+    ver_req = defaultdict(set)          # requirement -> VER items
+    for vid, v in ver.items():
+        for r in v["links"]:
+            ver_req[r].add(vid)
 
     ac_story = {a: s for s, st in stories.items() for a in st["acs"]}
     # requirement -> TCs (direct link in Links column)
@@ -428,6 +464,9 @@ def build():
         for n in set(re.findall(NFR, t["row"])):
             if n in nfr_tc:
                 nfr_tc[n].add(tid)
+    # verification items (Part 6.7): counted separately from test cases
+    br_ver = {b: set(ver_req.get(b, set())) for b in list(br) + list(brs)}
+    nfr_ver = {n: set(ver_req.get(n, set())) for n in nfr}
     # AG / AU
     ag_tc = defaultdict(set)
     au_tc = defaultdict(set)
@@ -449,6 +488,7 @@ def render(D):
     frs, xfr, br, brs, brl, nfr, stories, tcs, ag, au = (D[k] for k in ("frs", "xfr", "br", "brs", "brl", "nfr", "stories", "tcs", "ag", "au"))
     fr_tc, fr_us, br_fr, br_us, br_tc, us_tc = (D[k] for k in ("fr_tc", "fr_us", "br_fr", "br_us", "br_tc", "us_tc"))
     brl_tc, nfr_tc, nfr_plan, ag_tc, au_tc, ac_cov = (D[k] for k in ("brl_tc", "nfr_tc", "nfr_plan", "ag_tc", "au_tc", "ac_cov"))
+    ver, br_ver, nfr_ver = D["ver"], D["br_ver"], D["nfr_ver"]
     status = D["status"]
     S = {}
     L = []
@@ -459,7 +499,8 @@ def render(D):
     W("|---|---|---|---|")
     for code, f, scope, stt in status:
         n = sum(1 for t in tcs.values() if t["file"] == f)
-        W(f"| {code} | `{f}` | {scope} | {stt}; {n} TC rows parsed |")
+        nv = sum(1 for v in ver.values() if v["file"] == f)
+        W(f"| {code} | `{f}` | {scope} | {stt}; {n} TC rows parsed" + (f"; {nv} VER rows parsed" if nv else "") + " |")
     S["sources"] = "\n".join(L)
     L.clear()
 
@@ -469,8 +510,12 @@ def render(D):
     n_e = sum(1 for t in tcs if re.fullmatch(TC_E, t))
     n_ai = sum(1 for t in tcs if t.startswith("TC-AI-"))
     n_au = sum(1 for t in tcs if t.startswith("TC-AU-"))
+    n_x = {k: sum(1 for t in tcs if t.startswith(f"TC-{k}-")) for k in ("NFR", "FLT", "BRS")}
     cov_br = sum(1 for b in br if br_tc[b])
     cov_brs = sum(1 for b in brs if br_tc[b])
+    cov_brs_ver = sum(1 for b in brs if br_ver[b])
+    cov_brs_vonly = sum(1 for b in brs if br_ver[b] and not br_tc[b])
+    cov_brs_any = sum(1 for b in brs if br_tc[b] or br_ver[b])
     cov_fr = sum(1 for f in frs if fr_tc[f])
     cov_fr_ex = sum(1 for f in frs if D["fr_tc_explicit"][f])
     cov_xfr = sum(1 for f in xfr if fr_tc[f])
@@ -479,28 +524,34 @@ def render(D):
     cov_ac = sum(1 for a in acs if ac_cov[a])
     cov_brl = sum(1 for r in brl if brl_tc[r])
     cov_nfr_tc = sum(1 for n in nfr if nfr_tc[n])
+    cov_nfr_ver = sum(1 for n in nfr if nfr_ver[n])
+    cov_nfr_vonly = sum(1 for n in nfr if nfr_ver[n] and not nfr_tc[n])
+    cov_nfr_tcver = sum(1 for n in nfr if nfr_tc[n] or nfr_ver[n])
     cov_nfr_any = sum(1 for n in nfr if nfr_tc[n] or nfr_plan.get(n))
     cov_ag = sum(1 for a in ag if ag_tc.get(a))
     cov_au = sum(1 for a in au if au_tc.get(a))
-    W("| Level | Items in scope | Covered (≥ 1 TC) | Coverage | Basis of the count |")
-    W("|---|---|---|---|---|")
-    W(f"| Primary business requirements (BR-M, BR-TENANT/WEB/AUTO/SVC/QA) | {len(br)} | {cov_br} | **{pct(cov_br, len(br))}** | TC links the BR, or covers an FR or story that traces to it |")
-    W(f"| Supplementary business requirements (BR-S) | {len(brs)} | {cov_brs} | {pct(cov_brs, len(brs))} | Same rule; BR-S trace to stories and FRs |")
-    W(f"| Interface and operation FRs (FR-W, FR-A, FR-OP) | {len(frs)} | {cov_fr} | **{pct(cov_fr, len(frs))}** | TC links the FR, or covers a story whose links include it ({cov_fr_ex} with an explicit FR link) |")
-    W(f"| Cross-cutting FRs (FLT, STD, DM, UIS, ENG, PUB, ADP, CSM, COP, SRCH, NEG) | {len(xfr)} | {cov_xfr} | {pct(cov_xfr, len(xfr))} | Same rule |")
-    W(f"| User stories (Part 5.1–5.3) | {len(stories)} | {cov_us} | **{pct(cov_us, len(stories))}** | TC links the story or one of its AC |")
-    W(f"| Acceptance criteria (Gherkin AC) | {len(acs)} | {cov_ac} | **{pct(cov_ac, len(acs))}** | TC links the AC (Links column or coverage table) |")
-    W(f"| Business rules (BRL, Part 2.3) | {len(brl)} defined ({D['brl_stated']} stated) | {cov_brl} | **{pct(cov_brl, len(brl))}** | Rule ID in a TC row (links, data or expected) |")
-    W(f"| NFRs with ≥ 1 test case (Part 4.2, NFR-001…099) | {len(nfr)} | {cov_nfr_tc} | {pct(cov_nfr_tc, len(nfr))} | TC row cites the NFR |")
-    W(f"| NFRs with a test case or a Part 6.1 non-functional plan item | {len(nfr)} | {cov_nfr_any} | **{pct(cov_nfr_any, len(nfr))}** | Adds LT-, DR-, M-, T-type and §6.1.14 plan rows that cite the NFR |")
-    W(f"| AI agents (AG, Part 7.1) | {len(ag)} | {cov_ag} | **{pct(cov_ag, len(ag))}** | ≥ 1 TC-AI case |")
-    W(f"| Automations (AU, Part 7.1) | {len(au)} | {cov_au} | **{pct(cov_au, len(au))}** | ≥ 1 TC-AU case |")
-    W(f"| Test cases parsed | {n_tc} | — | — | {n_e} epic TCs · {n_ai} TC-AI · {n_au} TC-AU |")
+    W("| Level | Items in scope | Covered by test case | Covered by verification item (VER) | Covered (test case or VER) | Coverage | Basis of the count |")
+    W("|---|---|---|---|---|---|---|")
+    W(f"| Primary business requirements (BR-M, BR-TENANT/WEB/AUTO/SVC/QA) | {len(br)} | {cov_br} | — | {cov_br} | **{pct(cov_br, len(br))}** | TC links the BR, or covers an FR or story that traces to it |")
+    W(f"| Supplementary business requirements (BR-S) | {len(brs)} | {cov_brs} | {cov_brs_ver} ({cov_brs_vonly} by VER only) | {cov_brs_any} | **{pct(cov_brs_any, len(brs))}** | TC path as above, incl. TC-BRS (Part 6.7); VER = verification item for non-executable statements (budget, effort, phase gate, team, procurement, business goal) |")
+    W(f"| Interface and operation FRs (FR-W, FR-A, FR-OP) | {len(frs)} | {cov_fr} | — | {cov_fr} | **{pct(cov_fr, len(frs))}** | TC links the FR, or covers a story whose links include it ({cov_fr_ex} with an explicit FR link) |")
+    W(f"| Cross-cutting FRs (FLT, STD, DM, UIS, ENG, PUB, ADP, CSM, COP, SRCH, NEG) | {len(xfr)} | {cov_xfr} | — | {cov_xfr} | **{pct(cov_xfr, len(xfr))}** | Same rule; FR-FLT via the TC-FLT suite (Part 6.7) |")
+    W(f"| **All FRs** ({len(frs)} + {len(xfr)} cross-cutting, errata 82) | {len(frs) + len(xfr)} | {cov_fr + cov_xfr} | — | {cov_fr + cov_xfr} | **{pct(cov_fr + cov_xfr, len(frs) + len(xfr))}** | Sum of the two rows above |")
+    W(f"| User stories (Part 5.1–5.3) | {len(stories)} | {cov_us} | — | {cov_us} | **{pct(cov_us, len(stories))}** | TC links the story or one of its AC |")
+    W(f"| Acceptance criteria (Gherkin AC) | {len(acs)} | {cov_ac} | — | {cov_ac} | **{pct(cov_ac, len(acs))}** | TC links the AC (Links column or coverage table) |")
+    W(f"| Business rules (BRL, Part 2.3; {len(brl)} per errata 81) | {len(brl)} | {cov_brl} | — | {cov_brl} | **{pct(cov_brl, len(brl))}** | Rule ID in a TC row (links, data or expected) |")
+    W(f"| NFRs (Part 4.2, NFR-001…099) | {len(nfr)} | {cov_nfr_tc} | {cov_nfr_ver} ({cov_nfr_vonly} by VER only) | {cov_nfr_tcver} | **{pct(cov_nfr_tcver, len(nfr))}** | TC row cites the NFR (one TC-NFR per NFR in Part 6.7); VER items record production attainment in addition |")
+    W(f"| AI agents (AG, Part 7.1) | {len(ag)} | {cov_ag} | — | {cov_ag} | **{pct(cov_ag, len(ag))}** | ≥ 1 TC-AI case |")
+    W(f"| Automations (AU, Part 7.1) | {len(au)} | {cov_au} | — | {cov_au} | **{pct(cov_au, len(au))}** | ≥ 1 TC-AU case |")
+    W(f"| Test cases parsed | {n_tc} | — | — | — | — | {n_e} epic TCs · {n_ai} TC-AI · {n_au} TC-AU · {n_x['NFR']} TC-NFR · {n_x['FLT']} TC-FLT · {n_x['BRS']} TC-BRS |")
+    W(f"| Verification items parsed | {len(ver)} | — | — | — | — | VER-### rows of Part 6.7 (not counted as test cases) |")
     S["levels"] = "\n".join(L)
     L.clear()
     D["summary"] = dict(br=(cov_br, len(br)), fr=(cov_fr, len(frs)), xfr=(cov_xfr, len(xfr)), us=(cov_us, len(stories)),
                         ac=(cov_ac, len(acs)), brl=(cov_brl, len(brl)), nfr=(cov_nfr_tc, cov_nfr_any, len(nfr)),
-                        ag=(cov_ag, len(ag)), au=(cov_au, len(au)), tc=(n_tc, n_e, n_ai, n_au), brs=(cov_brs, len(brs)))
+                        ag=(cov_ag, len(ag)), au=(cov_au, len(au)), tc=(n_tc, n_e, n_ai, n_au), brs=(cov_brs, len(brs)),
+                        brs_ver=(cov_brs_ver, cov_brs_vonly, cov_brs_any), nfr_ver=(cov_nfr_ver, cov_nfr_vonly, cov_nfr_tcver),
+                        tcx=(n_x["NFR"], n_x["FLT"], n_x["BRS"]), ver=len(ver))
 
     # ---- per epic
     W("| Epic | FRs (Part 2.1) | FRs covered | FR % | Stories | Stories covered | AC | AC covered | AC % | Epic TCs |")
@@ -529,6 +580,14 @@ def render(D):
         W(f"| {b} | {d['title']} | {d['moscow']} · {d['wave']} | {d['epic']} | {fs or '—'} | {len(f)} | {us or '—'} | {len(u)} | {len(t)} | {compress(t, 3)} | {'Covered' if t else '**Not covered**'} |")
     S["a"] = "\n".join(L)
     L.clear()
+    W("| BR-S | Statement (condensed) | Traces to (Part 1) | # TC | TC IDs (sample runs) | Verification items | Coverage basis |")
+    W("|---|---|---|---|---|---|---|")
+    for b, d in brs.items():
+        t, v = br_tc[b], sorted(br_ver[b])
+        basis = ("Test case + VER" if t and v else "Test case" if t else "Verification item" if v else "**Not covered**")
+        W(f"| {b} | {d['title']} | {d['traces']} | {len(t)} | {compress(t, 2)} | {', '.join(v) or '—'} | {basis} |")
+    S["a2"] = "\n".join(L)
+    L.clear()
 
     # ---- (b) FR → US → TC
     W("| FR | Interface / operation | Wave · Epic | Aliases (DEC-017) | Stories | # TC (explicit) | # TC (total) | TC IDs (sample runs) | Status |")
@@ -551,14 +610,17 @@ def render(D):
     L.clear()
 
     # ---- (d) NFR → test
-    W("| NFR | Category | Requirement (Part 4.2) | Part 4.2 test method | Part 6.1 plan items | # TC | TC IDs (sample runs) | Status |")
-    W("|---|---|---|---|---|---|---|---|")
+    W("| NFR | Category | Requirement (Part 4.2) | Part 4.2 test method | Part 6.1 plan items | # TC | TC IDs (sample runs) | Verification items | Status |")
+    W("|---|---|---|---|---|---|---|---|---|")
     for n, d in nfr.items():
         plan = sorted(nfr_plan.get(n, ()))
-        ps = ", ".join(plan[:5]) + (f" (+{len(plan) - 5})" if len(plan) > 5 else "") if plan else "—"
-        t = nfr_tc[n]
-        stt = "Covered (TC)" if t else ("Planned (Part 6.1), no TC" if plan else "**Method only (Part 4.2), no TC**")
-        W(f"| {n} | {d['cat']} | {d['req']} | {d['method']} | {ps} | {len(t)} | {compress(t, 2)} | {stt} |")
+        ps = ", ".join(plan[:4]) + (f" (+{len(plan) - 4})" if len(plan) > 4 else "") if plan else "—"
+        t, v = nfr_tc[n], sorted(nfr_ver[n])
+        if t:
+            stt = "Covered (test case + VER)" if v else "Covered (test case)"
+        else:
+            stt = "Covered (VER only)" if v else ("Planned (Part 6.1), no TC" if plan else "**Method only (Part 4.2), no TC**")
+        W(f"| {n} | {d['cat']} | {d['req']} | {d['method']} | {ps} | {len(t)} | {compress(t, 2)} | {', '.join(v) or '—'} | {stt} |")
     S["d"] = "\n".join(L)
     L.clear()
 
@@ -605,6 +667,9 @@ def render(D):
     for b in br:
         if not br_tc[b]:
             unc.append(("BR", b, br[b]["title"], "Add a story/TC or confirm the BR is realized only by non-test evidence (business milestone)", br[b]["epic"]))
+    for b in brs:
+        if not br_tc[b] and not br_ver[b]:
+            unc.append(("BR-S", b, brs[b]["title"], "Add a TC-BRS (testable) or a VER item with method, owner, evidence and wave (Part 6.7)", "QA Lead / statement owner"))
     for f, d in frs.items():
         if not fr_tc[f]:
             unc.append(("FR", f, d["title"], f"Add ≥ 1 TC in the {d['epic'] or 'owning'} batch, or link existing TCs explicitly", d["epic"] or "—"))
@@ -626,7 +691,8 @@ def render(D):
             unc.append(("BRL", r, brl[r], "Add a decision-table or BVA TC citing the rule", "Owner of the rule's epic"))
     for n, d in nfr.items():
         if not nfr_tc[n]:
-            how = "Part 6.1 plan item exists" if nfr_plan.get(n) else "only the Part 4.2 test method exists"
+            how = ("VER only" if nfr_ver[n] else "Part 6.1 plan item exists" if nfr_plan.get(n)
+                   else "only the Part 4.2 test method exists")
             unc.append(("NFR", n, f"{d['req']} ({how})", f"Add a TC that cites {n} and executes: {d['method'][:70]}", d["epic"]))
     for a in ag:
         if not ag_tc.get(a):
@@ -651,17 +717,30 @@ def write_csv(D):
     os.makedirs(os.path.dirname(OUT_CSV), exist_ok=True)
     frs, xfr, br, brs, brl, nfr, stories = (D[k] for k in ("frs", "xfr", "br", "brs", "brl", "nfr", "stories"))
     with open(OUT_CSV, "w", newline="", encoding="utf-8") as f:
-        w = csv.writer(f)
+        raw = csv.writer(f)
+
+        class _W:            # pad rows without VER data: ver_count 0, no VER IDs, basis from the TC count
+            @staticmethod
+            def writerow(r):
+                if len(r) == 11 and r[0] != "requirement_type":
+                    r = r + [0, "", "Test case" if r[8] else "None"]
+                raw.writerow(r)
+        w = _W()
         w.writerow(["requirement_type", "requirement_id", "title", "epic", "wave", "linked_fr", "linked_us", "aliases",
-                    "tc_count", "tc_ids", "coverage_flag"])
+                    "tc_count", "tc_ids", "coverage_flag", "ver_count", "ver_ids", "coverage_basis"])
+
+        def basis(t, v):
+            return "Test case + VER" if t and v else "Test case" if t else "Verification item" if v else "None"
         for b, d in br.items():
             t = D["br_tc"][b]
             w.writerow(["BR", b, d["title"], d["epic"], d["wave"], " ".join(sorted(D["br_fr"].get(b, ()))),
                         " ".join(sorted(D["br_us"].get(b, ()))), "", len(t), compress(t), "Covered" if t else "Not covered"])
         for b, d in brs.items():
             t = D["br_tc"][b]
+            v = sorted(D["br_ver"][b])
             w.writerow(["BR-S", b, d["title"], "", "", " ".join(sorted(D["br_fr"].get(b, ()))),
-                        " ".join(sorted(D["br_us"].get(b, ()))), "", len(t), compress(t), "Covered" if t else "Not covered"])
+                        " ".join(sorted(D["br_us"].get(b, ()))), "", len(t), compress(t),
+                        "Covered" if t or v else "Not covered", len(v), " ".join(v), basis(t, v)])
         for f, d in frs.items():
             t = D["fr_tc"][f]
             w.writerow(["FR", f, d["title"], d["epic"], d["wave"], "", " ".join(sorted(D["fr_us"].get(f, ()))), sm_alias(f),
@@ -683,8 +762,10 @@ def write_csv(D):
         for n, d in nfr.items():
             t = D["nfr_tc"][n]
             plan = sorted(D["nfr_plan"].get(n, ()))
-            flag = "Covered" if t else ("Plan only" if plan else "Not covered")
-            w.writerow(["NFR", n, d["req"], d["epic"], "", "", "", "; ".join(plan), len(t), compress(t), flag])
+            v = sorted(D["nfr_ver"][n])
+            flag = "Covered" if t or v else ("Plan only" if plan else "Not covered")
+            w.writerow(["NFR", n, d["req"], d["epic"], "", "", "", "; ".join(plan), len(t), compress(t), flag,
+                        len(v), " ".join(v), basis(t, v)])
         for a, nm in D["ag"].items():
             t = D["ag_tc"].get(a, set())
             w.writerow(["AG", a, nm, "", "", "", "", "", len(t), compress(t), "Covered" if t else "Not covered"])
@@ -725,6 +806,11 @@ def main():
         "UNC_N": str(len(D["uncovered"])), "BRS_N": f"{sm['brs'][0]} of {sm['brs'][1]}",
         "NFR_PLAN_ONLY": ", ".join(D["nfr_plan_only"]) or "none",
         "BRL_STATED": str(D["brl_stated"]), "BRL_DEFINED": str(len(D["brl"])),
+        "BRS_ANY_PCT": pct(sm["brs_ver"][2], sm["brs"][1]), "BRS_ANY_N": f"{sm['brs_ver'][2]} of {sm['brs'][1]}",
+        "BRS_VONLY": str(sm["brs_ver"][1]),
+        "FR_ALL_PCT": pct(sm["fr"][0] + sm["xfr"][0], sm["fr"][1] + sm["xfr"][1]),
+        "FR_ALL_N": f"{sm['fr'][0] + sm['xfr'][0]} of {sm['fr'][1] + sm['xfr'][1]}",
+        "NFR_VER_N": str(sm["nfr_ver"][0]), "TC_X": str(sum(sm["tcx"])), "VER_N": str(sm["ver"]),
     })
     out = TEMPLATE_MARK.sub(lambda m: vals.get(m.group(1), m.group(0)), tpl)
     with open(OUT_MD, "w", encoding="utf-8") as f:
@@ -739,15 +825,15 @@ TEMPLATE = r"""# AI Growth Engine: Employee Sales & Marketing Automation
 
 | Field | Value |
 |---|---|
-| Document | Application Blueprint, Part 6 (Batch 6.6): the **requirement-to-test traceability matrix (RTM)** for the whole product. It traces business requirements (BR) → functional requirements (FR) → user stories (US) and acceptance criteria (AC) → test cases (TC, TC-AI, TC-AU), reports coverage % per level and per epic, traces non-functional requirements (NFR), business rules (BRL), AI agents (AG) and automations (AU) to tests, and flags every uncovered item with a remediation. Generated by `assembly/build_rtm.py` from the Markdown of Parts 1, 2.1, 2.3, 4.2, 5.1–5.3, 6.1–6.5 and 7.1; the CSV export is `final/RTM.csv` |
-| Version | 1.0 · 27 Nov 2026 |
-| Baseline | Part 1 §1.12 (71 primary BR, 140 BR-S), Part 2.1 §2.4 (150 interface/operation FRs + cross-cutting FRs), Part 2.3 §2.25 (BRL rules), Part 4.2 §4.22–§4.23 (NFR-001…099 with test methods), Part 5.1–5.3 (US and Gherkin AC), Part 6.1 (conventions §6.1.12, traceability specification §6.1.12.6, non-functional plans §6.1.14), Batches 6.2a/6.2b/6.3a/6.3b/6.4/6.5 (test cases), Part 7.1 (AG-001…036, AU-001…043); DEC-017 (TC IDs and SM-* aliases), DEC-014 (AP-08 semantic approval), BRD §12.1 (no required FR without a tested result) |
-| Roles applied | QA Lead (primary), Business Systems Analyst, Product Owner (AP-08 approver), Principal Engineer, Security/Compliance/AI Governance Lead, DevOps/SRE Lead |
-| Tag ranges used | GAP-172 · RECOMMENDATION-080 in this file; ASSUMPTION-194…196 and GAP-170…171 were issued in Batch 6.5 (same allocation) and are used here |
+| Document | Application Blueprint, Part 6 (Batch 6.6): the **requirement-to-test traceability matrix (RTM)** for the whole product. It traces business requirements (BR, BR-S) → functional requirements (FR) → user stories (US) and acceptance criteria (AC) → test cases (TC, TC-AI, TC-AU, TC-NFR, TC-FLT, TC-BRS) and, for statements that are not software behaviour, verification items (VER); reports coverage % per level and per epic, distinguishing coverage by **test case** from coverage by **verification item**; traces non-functional requirements (NFR), business rules (BRL), AI agents (AG) and automations (AU) to tests; and flags every uncovered item with a remediation. Generated by `assembly/build_rtm.py` from the Markdown of Parts 1, 2.1, 2.3, 4.2, 5.1–5.3, 6.1–6.5, 6.7 and 7.1; the CSV export is `final/RTM.csv` |
+| Version | 1.1 · 27 Nov 2026 (regenerated after Batch 6.7) |
+| Baseline | Part 1 §1.12 (71 primary BR, 140 BR-S); Part 2.1 §2.4: **181 FRs = 150 interface/operation FRs + 31 cross-cutting FRs** (errata 82; the register's stated 33 cross-cutting / 183 total is superseded); Part 2.3 §2.25: **161 business rules** (errata 81; the stated 162 is superseded); Part 4.2 §4.22–§4.23 (NFR-001…099 with test methods); Part 5.1–5.3 (US and Gherkin AC); Part 6.1 (conventions §6.1.12, traceability specification §6.1.12.6, non-functional plans §6.1.14; owner of LT-01…LT-12 per errata 83); Batches 6.2a/6.2b/6.3a/6.3b/6.4/6.5 (test cases); Batch 6.7 (TC-NFR, TC-FLT, TC-BRS, VER); Part 7.1 (AG-001…036, AU-001…043); DEC-017 (TC IDs and SM-* aliases), DEC-014 (AP-08 semantic approval), BRD §12.1 (no required FR without a tested result) |
+| Roles applied | QA Lead (primary), Business Systems Analyst, Product Owner (AP-08 approver), Principal Engineer, Security/Compliance/AI Governance Lead, DevOps/SRE Lead, FinOps Lead (budget verification items) |
+| Tag ranges used | GAP-172 · RECOMMENDATION-080 issued in this file; ASSUMPTION-194…196 and GAP-170…171 issued in Batch 6.5; ASSUMPTION-215…218 and RECOMMENDATION-090 issued in Batch 6.7 and used here |
 
-**Acronyms used in this batch.** AC acceptance criterion · AG AI agent (Part 7) · AP acceptance procedure · AU automation (Part 7) · BR business requirement · BRL business rule · BVA boundary value analysis · CI continuous integration · CSV comma-separated values · DT decision table · EVR evidence record · FR functional requirement · NFR non-functional requirement · RTM requirements traceability matrix · TC test case · TS test scenario · US user story.
+**Acronyms used in this batch.** AC acceptance criterion · AG AI agent (Part 7) · AP acceptance procedure · AU automation (Part 7) · BR business requirement · BR-S supplementary business requirement · BRL business rule · BVA boundary value analysis · CI continuous integration · CSV comma-separated values · DT decision table · EVR evidence record · FR functional requirement · NFR non-functional requirement · RTM requirements traceability matrix · TC test case · TS test scenario · US user story · VER verification item.
 
-**Time-sensitive facts.** This matrix is a design-time trace: it proves that every requirement has at least one *designed* test. Execution results (Pass/Fail/Pending with EVR and build digest, Part 6.1 §6.1.12.6) are added by the CI run of the same script against test markers once the code exists. No production certification is implied (BRD §13.2; Part 6.1 §6.1.5.5). Tool versions referenced: verify at time of implementation (as of 27 Nov 2026).
+**Time-sensitive facts.** This matrix is a design-time trace: it proves that every requirement has at least one *designed* test case or verification item. Execution results (Pass/Fail/Pending with EVR and build digest, Part 6.1 §6.1.12.6) are added by the CI run of the same script against test markers and VER evidence records once the code exists (RECOMMENDATION-080, RECOMMENDATION-090). No production certification is implied (BRD §13.2; Part 6.1 §6.1.5.5). Tool versions referenced: verify at time of implementation (as of 27 Nov 2026).
 
 ---
 
@@ -761,10 +847,11 @@ The matrix is **generated, not hand-maintained** [RECOMMENDATION-080]. `assembly
 |---|---|
 | 1 Requirements | Primary BR rows of Part 1 §1.12.1 (`BR-M##`, `BR-TENANT/WEB/AUTO/SVC/QA`) and BR-S rows of §1.12.2; FR rows of Part 2.1 §2.4 (`FR-W##`, `FR-A###`, `FR-OP###`; cross-cutting `FR-FLT/STD/DM/UIS/ENG/PUB/ADP/CSM/COP/SRCH/NEG`) with their BR traces, wave and epic; BRL rows of Part 2.3 §2.25; NFR rows of Part 4.2 with their test method; AG and AU rows of Part 7.1 |
 | 2 Stories | Every `US-####` heading in Part 5.1 (files 1b, 1c), 5.2 and 5.3, with the IDs in its *Traces* / *Links* / *Linked* row (ranges such as `BRL-ELG-01…18` and `FR-A065–A072` expanded) and its `AC-####-##` scenarios |
-| 3 Test cases | Every table row whose first cell is `TC-##-###`, `TC-AI-AG###-###` or `TC-AU-AU###-###` in Batches 6.2–6.5. Links are taken from the column whose header contains "Link"; AC shorthand (`AC-1602-04, -05`) and ranges are expanded. Coverage tables in those batches (rows starting with an FR/BR/BRL/NFR/US/AC ID that list TC IDs or TC ranges such as `TC-08-001…025`) add links; a range only resolves to TC IDs that are defined somewhere |
-| 4 Derived links | AC → its story; TC → story via AC; FR → TC = explicit FR link **or** any TC of a story whose links include the FR; BR → TC = explicit BR link, via its FRs (Part 2.1 traces) or via stories that trace to it; BRL and NFR → TC = the rule/NFR ID appears anywhere in the TC row; AG/AU → TC from the TC-AI/TC-AU identifier |
-| 5 Flags | *Covered* (≥ 1 TC), *Not covered*; for NFRs also *Planned (Part 6.1), no TC* and *Method only (Part 4.2), no TC*. Execution status is outside this design-time build |
-| 6 Outputs | This document (tables marked "generated") and `final/RTM.csv` (columns: requirement_type, requirement_id, title, epic, wave, linked_fr, linked_us, aliases, tc_count, tc_ids, coverage_flag) |
+| 3 Test cases | Every table row whose first cell is `TC-##-###`, `TC-AI-AG###-###` or `TC-AU-AU###-###` in Batches 6.2–6.5, and `TC-NFR-###`, `TC-FLT-###` or `TC-BRS-###` in Batch 6.7. Links are taken from the column whose header contains "Link" (Batch 6.7 uses "Linked"); AC shorthand (`AC-1602-04, -05`) and ranges are expanded. Coverage tables (rows starting with an FR/BR/BRL/NFR/US/AC ID that list TC IDs or TC ranges such as `TC-08-001…025`) add links; a range only resolves to TC IDs that are defined somewhere |
+| 4 Verification items | Every row whose first cell is `VER-###` in Batch 6.7; requirement links from its "Linked" column; method (inspection, review, analysis, demonstration), owner and wave from the named columns. VER items are **not** test cases: they are counted in their own column and never raise the test-case count |
+| 5 Derived links | AC → its story; TC → story via AC; FR → TC = explicit FR link **or** any TC of a story whose links include the FR; BR → TC = explicit BR link, via its FRs (Part 2.1 traces) or via stories that trace to it; BRL and NFR → TC = the rule/NFR ID appears anywhere in the TC row; AG/AU → TC from the TC-AI/TC-AU identifier; BR-S and NFR → VER from the VER "Linked" column |
+| 6 Flags | *Covered* (≥ 1 TC or ≥ 1 VER), with the basis *Test case*, *Verification item* or *Test case + VER*; *Not covered* otherwise. Execution status is outside this design-time build |
+| 7 Outputs | This document (tables marked "generated") and `final/RTM.csv` (columns: requirement_type, requirement_id, title, epic, wave, linked_fr, linked_us, aliases, tc_count, tc_ids, coverage_flag, ver_count, ver_ids, coverage_basis) |
 
 Re-run: `python3 assembly/build_rtm.py` from the blueprint folder (writes this file and the CSV); `--check` prints the summary only. The FRD aliases are computed per DEC-017 and Part 6.1 §6.1.12.5 (SM-UAT-S001–S030 = FR-W01…W30, S031–S138 = FR-A001…A108; SM-UX-UAT per screen).
 
@@ -780,11 +867,11 @@ Re-run: `python3 assembly/build_rtm.py` from the blueprint folder (writes this f
 
 <!--RTM:levels-->
 
-**Headline.** Primary BR <!--RTM:BR_PCT--> (<!--RTM:BR_N-->) · interface/operation FR <!--RTM:FR_PCT--> (<!--RTM:FR_N-->) · stories <!--RTM:US_PCT--> (<!--RTM:US_N-->) · acceptance criteria <!--RTM:AC_PCT--> (<!--RTM:AC_N-->) · business rules <!--RTM:BRL_PCT--> (<!--RTM:BRL_N-->; <!--RTM:BRL_DT--> with a decision-table or BVA case) · NFR with a test case <!--RTM:NFR_TC_PCT--> (<!--RTM:NFR_TC_N-->), with a test case or Part 6.1 plan item <!--RTM:NFR_ANY_PCT--> (<!--RTM:NFR_ANY_N-->) · agents <!--RTM:AG_N--> · automations <!--RTM:AU_N-->. <!--RTM:TC_N--> test cases parsed (<!--RTM:TC_E--> epic TCs, <!--RTM:TC_AI--> TC-AI, <!--RTM:TC_AU--> TC-AU).
+**Headline.** Primary BR <!--RTM:BR_PCT--> (<!--RTM:BR_N-->) · BR-S <!--RTM:BRS_ANY_PCT--> (<!--RTM:BRS_ANY_N-->: <!--RTM:BRS_N--> by test case, <!--RTM:BRS_VONLY--> by verification item only) · FRs <!--RTM:FR_ALL_PCT--> (<!--RTM:FR_ALL_N--> = <!--RTM:FR_N--> interface/operation + <!--RTM:XFR_N--> cross-cutting) · stories <!--RTM:US_PCT--> (<!--RTM:US_N-->) · acceptance criteria <!--RTM:AC_PCT--> (<!--RTM:AC_N-->) · business rules <!--RTM:BRL_PCT--> (<!--RTM:BRL_N-->; <!--RTM:BRL_DT--> with a decision-table or BVA case) · NFRs with a test case <!--RTM:NFR_TC_PCT--> (<!--RTM:NFR_TC_N-->; <!--RTM:NFR_VER_N--> also have a production verification item) · agents <!--RTM:AG_N--> · automations <!--RTM:AU_N-->. <!--RTM:TC_N--> test cases parsed (<!--RTM:TC_E--> epic TCs, <!--RTM:TC_AI--> TC-AI, <!--RTM:TC_AU--> TC-AU, <!--RTM:TC_X--> Part 6.7 closure TCs) and <!--RTM:VER_N--> verification items. Remaining exceptions: <!--RTM:UNC_N-->.
 
 ### 6.6.2.2 Coverage % per epic
 
-FR count is the Part 2.1 epic column (FR-OP001 counts under EP-04, FR-OP002/OP003 under EP-21, per Part 9.1 §9.1.4 errata DEC-125…131). "Epic TCs" counts `TC-<epic>-###` rows; TC-AI/TC-AU cases are reported in §6.6.7.
+FR count is the Part 2.1 epic column (FR-OP001 counts under EP-04, FR-OP002/OP003 under EP-21, per Part 9.1 §9.1.4 errata DEC-125…131). "Epic TCs" counts `TC-<epic>-###` rows; TC-AI/TC-AU cases are reported in §6.6.7 and the Part 6.7 closure cases in §6.6.2.1.
 
 <!--RTM:epics-->
 
@@ -796,7 +883,11 @@ One row per primary business requirement. FRs are those whose Part 2.1 traces ci
 
 <!--RTM:a-->
 
-Supplementary business requirements (BR-S, 140): <!--RTM:BRS_N--> reached by at least one TC through their stories and FRs (full list in the CSV; BR-S rows have no epic column in Part 1 and are traced through primary BRs, so a BR-S without a TC path is flagged for the Part 9 matrix rather than here).
+### 6.6.3.1 Supplementary business requirements BR-S001…S140 → TC / VER (generated)
+
+A BR-S is covered by a **test case** when a TC reaches it (directly, through its traced FRs and stories, or through a TC-BRS of Part 6.7 §6.7.5.2), and by a **verification item** when a VER of Part 6.7 §6.7.5.3 links it. Statements that are not software behaviour (budget lines, effort ranges, team and timeline, phase gates, procurement, business goal) are verified by VER only: budget lines by FinOps review at the go/no-go gate, phase gates by the release readiness review at the wave gate (Part 6.7 §6.7.1.3, ASSUMPTION-217). <!--RTM:BRS_ANY_N--> covered: <!--RTM:BRS_N--> by test case, <!--RTM:BRS_VONLY--> by verification item only.
+
+<!--RTM:a2-->
 
 ---
 
@@ -806,7 +897,9 @@ Supplementary business requirements (BR-S, 140): <!--RTM:BRS_N--> reached by at 
 
 <!--RTM:b-->
 
-### 6.6.4.1 Cross-cutting FRs (generated)
+### 6.6.4.1 Cross-cutting FRs, 31 (generated)
+
+The filter FRs FR-FLT-01…11 and FR-FLT-RULES are covered by the parameterized filter suite TC-FLT-001…045 (Part 6.7 §6.7.4) in addition to the epic cases.
 
 <!--RTM:b2-->
 
@@ -814,7 +907,7 @@ Supplementary business requirements (BR-S, 140): <!--RTM:BRS_N--> reached by at 
 
 ## 6.6.5 (d) NFR → test (generated)
 
-Columns: the Part 4.2 test method (as written there; LT IDs in Part 4.2 collide with Part 6.1's catalogue, GAP-171), the Part 6.1 non-functional plan items that cite the NFR (test types T01…T21, load tests LT-01…12, DR drills DR-1…9, migration tests M-01…17 and the §6.1.14 plan rows), and the test cases that cite it. NFRs with plan items but no TC: <!--RTM:NFR_PLAN_ONLY-->.
+Columns: the Part 4.2 test method (as written there), the Part 6.1 non-functional plan items that cite the NFR (test types T01…T21, load tests LT-01…12, DR drills DR-1…9, migration tests M-01…17 and the §6.1.14 plan rows), the test cases that cite it (every NFR has its gate-level TC-NFR in Part 6.7 §6.7.2) and the production verification items of Part 6.7 §6.7.3. **LT identifiers are Part 6.1's** (errata 83, DEC-116): Part 4.2's LT-01…LT-11 and CH-01…04 are NFR load profiles executed inside the Part 6.1 runs according to the mapping in Part 6.7 §6.7.1.4 (GAP-171 resolved).
 
 <!--RTM:d-->
 
@@ -822,7 +915,7 @@ Columns: the Part 4.2 test method (as written there; LT IDs in Part 4.2 collide 
 
 ## 6.6.6 (e) BRL rule → TC coverage summary (generated)
 
-Part 2.3 states <!--RTM:BRL_STATED--> rules; <!--RTM:BRL_DEFINED--> distinct BRL IDs are defined and used as the denominator (GAP-170). A rule counts as covered when its ID appears in a TC row; the DT/BVA column counts rules with at least one covering TC whose technique is DT or BVA (Part 6.1 §6.1.9.6 target 100%).
+Part 2.3 states <!--RTM:BRL_STATED--> rules; errata 81 corrects the count to **<!--RTM:BRL_DEFINED-->**, the number of distinct BRL IDs defined, which is the denominator here (GAP-170 resolved). A rule counts as covered when its ID appears in a TC row; the DT/BVA column counts rules with at least one covering TC whose technique is DT or BVA (Part 6.1 §6.1.9.6 target 100%).
 
 <!--RTM:e-->
 
@@ -846,43 +939,46 @@ Part 2.3 states <!--RTM:BRL_STATED--> rules; <!--RTM:BRL_DEFINED--> distinct BRL
 
 <!--RTM:g-->
 
-### 6.6.8.1 Remediation plan
+### 6.6.8.1 Remediation plan and closure status
 
-| Item class | Remediation | Owner | By |
+| Item class (first build) | Remediation | Status after Batch 6.7 | Owner |
 |---|---|---|---|
-| Batch not complete at build time | Finish the batch, then re-run `build_rtm.py`; the matrix and CSV regenerate without manual edits | Batch author; QA Lead | Before Part 9 assembly |
-| FRs and stories of an incomplete batch | Covered by the batch when complete; until then they are listed above and block A090 for their wave | Batch author | Before the wave's G4 gate |
-| Cross-cutting filter FRs (FR-FLT-02, -04…-11) | Add a parameterized filter suite per list screen that cites the FR-FLT ID: allowlisted fields, OR-within/AND-across, Unknown ≠ 0, reset of invalid child filters on scope change, cursor stability (FR-FLT-RULES); owner EP-17 (shell) with each list screen's epic | QA Lead; EP-17 | W2 (Admin lists) |
-| NFR-039…099 without a TC [GAP-172] | Part 4.2's new NFRs (performance, availability, security, privacy, observability, maintainability, cost) have a test *method* but no TC cites them, because Batches 6.2–6.5 were written against NFR-001…038. Add NFR markers to the existing load, DR, security and observability TCs of EP-21 (Batch 6.3b) and EP-01/03/04 (Batch 6.5) that already exercise them (for example DR drills → NFR-056/057; outbox lag → NFR-045; revocation → NFR-050), and add LT/CH runs as TCs where none exists | QA Lead; SRE; Security Lead | Release 1 gate (W3) for W0–W3 NFRs; Release 2 for the rest |
-| BRL rules without a TC | Add one decision-table or BVA TC per rule in the owning epic's batch (rule owner from Part 2.3 "Enforced" column) | Owning batch | Before the wave gate |
-| AC without a TC | Add or link a TC per AC | Owning batch | Immediately (QO-6 requires 100%) |
+| Cross-cutting filter FRs FR-FLT-02, -04…-11 (9) | Parameterized filter suite citing the FR-FLT IDs: allowlists, OR-within/AND-across, Unknown ≠ 0, ranges and currency units, child reset on scope change, stale query cancel, saved-view scoping, stable cursor sort, export and bulk recheck, per-vertical values | **Closed**: TC-FLT-001…045 (Part 6.7 §6.7.4) | QA Lead; EP-17 with each list screen's epic |
+| NFRs without a TC: NFR-010, 015, 024, 034 and 57 of NFR-039…099 (61) [GAP-172] | One gate-level TC per NFR mapped to LT-01…LT-12, DR-1…DR-9, the security, accessibility and localization plans and existing epic TCs; production attainment as VER | **Closed**: TC-NFR-001…099 (Part 6.7 §6.7.2) and VER-001…022 (§6.7.3) | QA Lead; SRE; Security Lead; FinOps Lead |
+| BR-S without a test path (34) | TC-BRS for testable statements; VER (inspection, review, analysis, demonstration) with owner, evidence and wave for the others | **Closed**: TC-BRS-001…013 (10 statements) and VER-023…048 (24 statements by VER only; BR-S080 and BR-S083 also gate-verified) | Product Owner; FinOps Lead; QA Lead |
+| BRL rules without a TC | One decision-table or BVA TC per rule in the owning epic's batch | None open at this build | Owning batch |
+| AC without a TC | Add or link a TC per AC | None open at this build | Owning batch |
+| Any new requirement added later | Re-run `build_rtm.py`; a new item without TC or VER appears in §6.6.8 automatically and blocks A090 for its wave | Continuous | QA Lead |
 
 ### 6.6.8.2 Semantic approval (AP-08)
 
-The mechanical matrix proves that a link exists, not that the test is the right test. AP-08 (DEC-014; Part 6.1 §6.1.13.6) requires the Product Owner to approve the requirement → test mapping for each release scope after a **10% spot check** of links for semantic correctness. The spot-check sample is drawn by the QA Lead from `final/RTM.csv` (stratified: every P0 risk area RA-01…RA-20 and RA-26, at least 5 FRs per epic in scope), and the result is recorded as an EVR with business acceptance.
+The mechanical matrix proves that a link exists, not that the test is the right test. AP-08 (DEC-014; Part 6.1 §6.1.13.6) requires the Product Owner to approve the requirement → test mapping for each release scope after a **10% spot check** of links for semantic correctness. The spot-check sample is drawn by the QA Lead from `final/RTM.csv` (stratified: every P0 risk area RA-01…RA-20 and RA-26, at least 5 FRs per epic in scope, and at least 5 VER items per release, checking that the method, owner and evidence fit the statement), and the result is recorded as an EVR with business acceptance.
 
 ---
 
 ## 6.6.9 Register of tags and findings
 
-### 6.6.9.1 Tags issued in this batch
+### 6.6.9.1 Tags issued or used in this batch
 
 | ID | Type | Statement | Basis | Owner / validate by |
 |---|---|---|---|---|
-| GAP-172 | Gap | NFR-039…NFR-099 (Part 4.2 part B) have measurable targets and test methods but **no test case cites them**; Batches 6.2–6.5 trace to NFR-001…038 only, and Part 6.1's non-functional plans pre-date Part 4.2. NFR coverage by TC is therefore low although many of these NFRs are exercised in practice by existing load, DR, security and observability cases | This matrix (§6.6.5); Part 4.2 §4.23 | QA Lead with SRE and Security Lead: add NFR markers and missing LT/CH cases (remediation in §6.6.8.1) before the Release 1 gate |
+| GAP-172 | Gap (**closed by Batch 6.7**) | NFR-039…NFR-099 had measurable targets and test methods but no test case cited them (61 NFRs incl. NFR-010, 015, 024, 034). Batch 6.7 adds one TC-NFR per NFR and production VER items | This matrix (§6.6.5); Part 4.2 §4.23; errata 87 | QA Lead: closed; regression guarded by the §6.6.8 flag |
 | RECOMMENDATION-080 | Recommendation | Run `build_rtm.py` (extended to read the pytest/Playwright `tc`/`req` markers and EVR results) as a **CI artefact on G3 and G4**; fail G4 when any in-scope FR, AC or P0 BRL is *Not covered* or has no passing TC, and publish the CSV to the A090 test dashboard (RP-26 extension) | Part 6.1 §6.1.9.2 (traceability from markers), §6.1.10.1 (requirement coverage metric), RBR-6; BRD §12.1 | QA Lead; DevOps |
-| ASSUMPTION-194…196, GAP-170…171 | (used) | Issued in Batch 6.5 §6.5.10: fixture key mapping, DM-R numbering, test-oracle interpretations, BRL count 161 vs 162, LT ID collision between Part 4.2 and Part 6.1 | Batch 6.5 | As registered there |
+| RECOMMENDATION-090 | Recommendation (Batch 6.7) | Store each VER item's evidence as an EVR of type review/inspection/analysis/demonstration and let `build_rtm.py` read the EVR status, so the RTM shows Pending/Pass for VER items as it does for TCs; a VER with no EVR by its wave gate blocks A090 like a missing test | Part 6.7 §6.7.1.3; Part 8.2 §8.2.4.2 | QA Lead; Product Owner |
+| ASSUMPTION-215…218 | (used) | Issued in Batch 6.7: named LT variants for Part 4.2 profiles without a Part 6.1 equivalent; EDGE-FLT fixture pack and filter values; VER counts as coverage for non-executable statements; production-only NFR targets verified by VER after a staging measurement test | Batch 6.7 §6.7.8 | As registered there |
+| ASSUMPTION-194…196, GAP-170…171 | (used) | Issued in Batch 6.5 §6.5.10. GAP-170 (BRL count) resolved by errata 81; GAP-171 (LT collision) resolved by errata 83 | Batch 6.5 | As registered there |
 
-### 6.6.9.2 Findings from building the matrix (reported, not fixed)
+### 6.6.9.2 Findings from building the matrix
 
-| # | Where | Finding | Suggested action |
+| # | Where | Finding | Resolution |
 |---|---|---|---|
-| 1 | Part 2.3 §2.25 | 161 BRL IDs defined, 162 stated (GAP-170) | Correct the count |
-| 2 | Part 2.1 §2.4.12 | Register totals state 33 cross-cutting FRs; 31 distinct cross-cutting FR rows exist (FLT-01…11 and FLT-RULES, STD-01…04, DM-01…04, UIS-01…04, ENG-01, PUB-01, ADP-01, CSM-01, COP-01, SRCH-01, NEG-01), so the stated total of 183 FRs is 181 | Correct the totals |
-| 3 | Part 4.2 §4.26 vs Part 6.1 §6.1.14.1 | LT-01…LT-12 defined twice with different meanings (GAP-171) | Rename one catalogue |
-| 4 | Batches 6.2–6.5 | TCs cite NFR-001…038 only (GAP-172) | Add NFR-039…099 markers |
-| 5 | Part 6.1 §6.1.12.1 | Coverage formula "BRL coverage = … ÷ 162" | Use the defined-rule count (161) |
+| 1 | Part 2.3 §2.25 | 161 BRL IDs defined, 162 stated (GAP-170) | **Resolved** by errata 81: 161 is the count; this matrix uses 161 |
+| 2 | Part 2.1 §2.4.12 | Register totals state 33 cross-cutting FRs (183 FRs); 31 distinct cross-cutting FR rows exist | **Resolved** by errata 82: 181 FRs = 150 + 31 |
+| 3 | Part 4.2 §4.26 vs Part 6.1 §6.1.14.1 | LT-01…LT-12 defined twice with different meanings (GAP-171) | **Resolved** by errata 83: Part 6.1 owns LT-xx; Part 4.2 profiles mapped in Part 6.7 §6.7.1.4 |
+| 4 | Batches 6.2–6.5 | TCs cited NFR-001…038 only (GAP-172) | **Resolved** by Batch 6.7 (TC-NFR-001…099) |
+| 5 | Part 6.1 §6.1.12.1 | Coverage formula "BRL coverage = … ÷ 162" | Use 161 per errata 81 (Part 6.1 text still to be corrected by its owner) |
 | 6 | Batches 6.3a/6.3b | Some AC are referenced in shorthand (`AC-1602-04, -05`); the script expands it, but CI marker parsing should require full IDs | Use full AC IDs in markers |
+| 7 | Part 6.1 §6.1.3.1 T09 vs Part 4.2 NFR-090 | Usability pass criteria differ (task success ≥ 80% and SUS ≥ 68 vs ≥ 90% and ≥ 70) | Part 4.2 NFR-090 governs in TC-NFR-090; Part 6.1 owner to align T09 |
 
 ---
 
@@ -891,16 +987,16 @@ The mechanical matrix proves that a link exists, not that the test is the right 
 | # | Check | Result | Notes and fixes applied |
 |---|---|---|---|
 | 1 | Every requirement traced to a source | **Pass** | Every row of the matrix is parsed from a numbered source part; nothing is hand-entered |
-| 2 | Assumptions, gaps and conflicts tagged and logged | **Pass** | GAP-172 and RECOMMENDATION-080 issued here; ASSUMPTION-194…196 and GAP-170…171 registered in Batch 6.5; findings in §6.6.9.2 |
-| 3 | IDs unique and consistent with earlier parts | **Pass** | TC IDs parsed from all batches are unique keys (duplicates merged and reported by the script); TC-AI/TC-AU formats per Batch 6.4 |
-| 4 | No story lacks AC and no requirement lacks a test | **Pass with flagged exceptions** | Coverage: BR <!--RTM:BR_PCT-->, FR <!--RTM:FR_PCT-->, US <!--RTM:US_PCT-->, AC <!--RTM:AC_PCT-->, BRL <!--RTM:BRL_PCT-->, NFR (TC) <!--RTM:NFR_TC_PCT-->; every uncovered item is listed in §6.6.8 with remediation (BRD §12.1 requires these to be closed or waived before release) |
-| 5 | Negative, edge, security and accessibility cases covered | **Pass (by reference)** | Assessed per batch (6.2–6.5 quality gates); this batch checks link coverage, not case content |
+| 2 | Assumptions, gaps and conflicts tagged and logged | **Pass** | GAP-172 (closed) and RECOMMENDATION-080 issued here; RECOMMENDATION-090 and ASSUMPTION-215…218 in Batch 6.7; ASSUMPTION-194…196 and GAP-170…171 in Batch 6.5; findings in §6.6.9.2 |
+| 3 | IDs unique and consistent with earlier parts | **Pass** | TC IDs parsed from all batches are unique keys (duplicates merged by the script); TC-AI/TC-AU formats per Batch 6.4; TC-NFR/TC-FLT/TC-BRS/VER per Batch 6.7; counts per errata 81–82 |
+| 4 | No story lacks AC and no requirement lacks a test | **Pass** | Coverage: BR <!--RTM:BR_PCT-->, BR-S <!--RTM:BRS_ANY_PCT--> (test case or VER), FR <!--RTM:FR_ALL_PCT--> of 181, US <!--RTM:US_PCT-->, AC <!--RTM:AC_PCT-->, BRL <!--RTM:BRL_PCT-->, NFR (test case) <!--RTM:NFR_TC_PCT-->; remaining exceptions: <!--RTM:UNC_N--> (§6.6.8) |
+| 5 | Negative, edge, security and accessibility cases covered | **Pass (by reference)** | Assessed per batch (6.2–6.5, 6.7 quality gates); this batch checks link coverage, not case content |
 | 6 | No agent lacks guardrail, fallback, KPI and cost estimate | **Pass** | AG coverage <!--RTM:AG_N-->, AU coverage <!--RTM:AU_N--> (§6.6.7); guardrail, fallback and cost cases per agent are in Batch 6.4 |
-| 7 | Time-sensitive facts flagged "verify" with an as-of date | **Pass** | Design-time matrix; execution results to be added by CI (RECOMMENDATION-080) |
+| 7 | Time-sensitive facts flagged "verify" with an as-of date | **Pass** | Design-time matrix; execution results to be added by CI (RECOMMENDATION-080, RECOMMENDATION-090) |
 | 8 | No restricted data routed to free-tier models | **N/A** | No routing content in this batch |
-| 9 | Consistent with earlier parts | **Pass, with findings** | Six findings in §6.6.9.2 |
+| 9 | Consistent with earlier parts | **Pass, with findings** | Findings 1–4 resolved by errata 81–83 and Batch 6.7; findings 5–7 open for their owners (§6.6.9.2) |
 
-**Status: Part 6 Batch 6.6 complete. The requirement-to-test traceability matrix is generated by `assembly/build_rtm.py` (CSV `final/RTM.csv`): primary BR <!--RTM:BR_PCT-->, interface/operation FR <!--RTM:FR_PCT-->, stories <!--RTM:US_PCT-->, AC <!--RTM:AC_PCT-->, BRL <!--RTM:BRL_PCT-->, NFR with a TC <!--RTM:NFR_TC_PCT-->, agents <!--RTM:AG_N-->, automations <!--RTM:AU_N-->; <!--RTM:UNC_N--> uncovered items flagged with remediation. Part 6 is complete; Part 9 consumes the CSV for the final ID registry and traceability.**
+**Status: Part 6 Batch 6.6 complete (regenerated after Batch 6.7). The requirement-to-test traceability matrix is generated by `assembly/build_rtm.py` (CSV `final/RTM.csv`): primary BR <!--RTM:BR_PCT-->, BR-S <!--RTM:BRS_ANY_PCT--> (<!--RTM:BRS_N--> by test case, <!--RTM:BRS_VONLY--> by verification item only), FRs <!--RTM:FR_ALL_PCT--> (<!--RTM:FR_ALL_N-->), stories <!--RTM:US_PCT-->, AC <!--RTM:AC_PCT-->, BRL <!--RTM:BRL_PCT--> (<!--RTM:BRL_N-->), NFR with a test case <!--RTM:NFR_TC_PCT-->, agents <!--RTM:AG_N-->, automations <!--RTM:AU_N-->; <!--RTM:UNC_N--> uncovered items. Part 9 consumes the CSV for the final ID registry and traceability.**
 """
 
 if __name__ == "__main__":

@@ -492,3 +492,169 @@ Method definitions: **Inspection** = examine an artefact against a checklist; **
 | VER-047 | Effort for four-vertical projects, orders and fulfilment within 30–52 pd | BR-S104 | Analysis | Product Owner | Principal Engineer | Effort actuals | R2 retrospective | As VER-045 |
 | VER-048 | Effort for autonomous planning, portability and QA within 28–48 pd | BR-S105 | Analysis | Product Owner | Principal Engineer | Effort actuals | R2 retrospective | As VER-045 |
 
+---
+
+## 6.7.6 Coverage closure tables
+
+### 6.7.6.1 NFR → TC-NFR → existing test cases, plan items and verification items
+
+First wave gate from Part 4.2 §4.28 (W0–W6). "Existing TCs" are the Batch 6.2–6.5 cases the TC-NFR consolidates; `build_rtm.py` credits them to the NFR through this table.
+
+| NFR | Gate-level TC | Existing TCs | Part 6.1 plan item | Verification items | First gate |
+|---|---|---|---|---|---|
+| NFR-001 | TC-NFR-001 | TC-19-087, TC-21-010, TC-17-008 | §6.1.3.2 | — | W0 |
+| NFR-002 | TC-NFR-002 | TC-01-111, TC-10-044, TC-15-085 | §6.1.14.2 authorization matrix | — | W0 |
+| NFR-003 | TC-NFR-003 | TC-01-004…007, TC-01-037 | DEC-019 spike | — | W0 |
+| NFR-004 | TC-NFR-004 | TC-01-082, TC-01-095, TC-04-056 | §6.1.3.2 | — | W0 |
+| NFR-005 | TC-NFR-005 | TC-15-001, TC-07-052, TC-13-089 | T16 | — | W3 |
+| NFR-006 | TC-NFR-006 | TC-01-067…068 | DR-5 | — | W0 |
+| NFR-007 | TC-NFR-007 | TC-21-035, TC-21-097 | DR-7 (CH-01) | — | W3 |
+| NFR-008 | TC-NFR-008 | TC-07-023, TC-07-046…047 | LT-10 | — | W2 |
+| NFR-009 | TC-NFR-009 | TC-08-102, TC-08-132 | LT-09 | VER-007 | W3 |
+| NFR-010 | TC-NFR-010 | — | T19; DT §6.1.11.3 | VER-001 | W5 |
+| NFR-011 | TC-NFR-011 | TC-04-009…010, TC-05-044 | T14 | VER-002 | W1 |
+| NFR-012 | TC-NFR-012 | TC-21-045, TC-01-014 | DR-1 | VER-022 | W0 |
+| NFR-013 | TC-NFR-013 | TC-21-076, TC-21-098 | DR-8 | VER-022 | W0 |
+| NFR-014 | TC-NFR-014 | TC-04-026 | T20 | — | W1 |
+| NFR-015 | TC-NFR-015 | — | T04; §6.1.14.2 API fuzzing | — | W0 |
+| NFR-016 | TC-NFR-016 | TC-21-043, TC-01-095…096 | — | — | W3 |
+| NFR-017 | TC-NFR-017 | TC-21-007, TC-01-051 | — | — | W0 |
+| NFR-018 | TC-NFR-018 | TC-01-073…074 | — | — | W0 |
+| NFR-019 | TC-NFR-019 | TC-21-013…015 | T21 | — | W0 |
+| NFR-020 | TC-NFR-020 | TC-19-002, TC-11-075, TC-19-017 | §6.1.3.2 | — | W2 |
+| NFR-021 | TC-NFR-021 | TC-02-019…021 | §6.1.14.2 file uploads | — | W3 |
+| NFR-022 | TC-NFR-022 | TC-01-011, TC-05-073 | LT-07 | — | W2 |
+| NFR-023 | TC-NFR-023 | TC-11-068, TC-01-103 | §6.1.14.3 publication gate | — | W2 (with NFR-088) |
+| NFR-024 | TC-NFR-024 | TC-08-030, TC-09-014 | §6.1.14.6 | — | W2 (with NFR-096, NFR-097) |
+| NFR-025 | TC-NFR-025 | TC-02-007, TC-02-009, TC-07-006 | — | — | W3 |
+| NFR-026 | TC-NFR-026 | TC-04-003, TC-21-040, TC-08-138 | T18 | — | W3 |
+| NFR-027 | TC-NFR-027 | TC-17-003…004 | — | — | W2 |
+| NFR-028 | TC-NFR-028 | TC-05-001, TC-05-026 | — | VER-021 | W1 |
+| NFR-029 | TC-NFR-029 | TC-18-001 | — | — | W0 |
+| NFR-030 | TC-NFR-030 | TC-04-014…016 | — | — | W1 |
+| NFR-031 | TC-NFR-031 | TC-01-054 | T15 | — | W0 |
+| NFR-032 | TC-NFR-032 | TC-01-110…121, TC-21-065 | T15 | — | W0 |
+| NFR-033 | TC-NFR-033 | TC-21-003, TC-04-011 | T14 | — | W0 |
+| NFR-034 | TC-NFR-034 | — | T09 | — | W5 |
+| NFR-035 | TC-NFR-035 | TC-20-036, TC-04-028 | T20 | VER-019 | W4 |
+| NFR-036 | TC-NFR-036 | TC-03-001, TC-03-006, TC-03-074 | — | — | W5 |
+| NFR-037 | TC-NFR-037 | TC-01-104…108, TC-04-005 | T20 | VER-020 | W0 |
+| NFR-038 | TC-NFR-038 | TC-03-033, TC-08-019 | T17 | — | W0 |
+| NFR-039 | TC-NFR-039 | TC-03-035 | LT-01 | — | W2 |
+| NFR-040 | TC-NFR-040 | — | LT-01 | — | W2 |
+| NFR-041 | TC-NFR-041 | TC-19-017 | LT-02 | — | W2 |
+| NFR-042 | TC-NFR-042 | TC-19-039, TC-19-082 | LT-12 | VER-003 | W2 |
+| NFR-043 | TC-NFR-043 | TC-19-082 | LT-12 | — | W2 |
+| NFR-044 | TC-NFR-044 | — | LT-12-ADM [ASSUMPTION-215] | — | W2 |
+| NFR-045 | TC-NFR-045 | TC-01-067 | LT-04, LT-06 | — | W2 |
+| NFR-046 | TC-NFR-046 | TC-02-034, TC-05-043 | LT-03 | — | W2 |
+| NFR-047 | TC-NFR-047 | — | LT-04 (4.2-LT-04) | — | W2 |
+| NFR-048 | TC-NFR-048 | TC-01-079, TC-03-070 | LT-03 | — | W4 |
+| NFR-049 | TC-NFR-049 | TC-03-016, TC-08-020 | LT-04-STOP (CH-04) | — | W2 |
+| NFR-050 | TC-NFR-050 | TC-01-007, TC-01-035, TC-17-006 | — | — | W0 |
+| NFR-051 | TC-NFR-051 | TC-15-001, TC-21-042 | LT-05 | — | W3 |
+| NFR-052 | TC-NFR-052 | — | LT-01-AIGW [ASSUMPTION-215] | — | W1, W3 (LT-09 profile dates; not listed in §4.28) |
+| NFR-053 | TC-NFR-053 | TC-21-027…029 | T21 | VER-004 | W2 |
+| NFR-054 | TC-NFR-054 | TC-21-028…029 | T21 | VER-005 | W2 |
+| NFR-055 | TC-NFR-055 | TC-21-042, TC-15-095 | — | VER-006 | W3 |
+| NFR-056 | TC-NFR-056 | TC-21-069, TC-21-091, TC-21-094 | DR-1, DR-2, DR-4 (CH-03) | — | W4 |
+| NFR-057 | TC-NFR-057 | TC-21-068, TC-21-071…072, TC-21-092…093 | DR-2, DR-3, DR-9 | — | W4 |
+| NFR-058 | TC-NFR-058 | TC-08-102 | LT-09 | VER-007 | W3 |
+| NFR-059 | TC-NFR-059 | TC-05-083 | — | VER-007 | W1 |
+| NFR-060 | TC-NFR-060 | — | LT-11, LT-06 (4.2-LT-02) | — | W2 |
+| NFR-061 | TC-NFR-061 | — | LT-08-Y2 [ASSUMPTION-215] | — | W5 |
+| NFR-062 | TC-NFR-062 | — | LT-01-SKEW [ASSUMPTION-215] | — | W5 |
+| NFR-063 | TC-NFR-063 | TC-21-036, TC-21-095…096 | DR-5, DR-6 (CH-02) | — | W0 |
+| NFR-064 | TC-NFR-064 | TC-21-037…039 | CH-02 | — | W3 |
+| NFR-065 | TC-NFR-065 | TC-08-138…139, TC-21-077 | T18 | VER-008 | W3 |
+| NFR-066 | TC-NFR-066 | TC-08-054, TC-03-061 | — | — | W0 |
+| NFR-067 | TC-NFR-067 | TC-21-008 | §6.1.14.2 SCA | — | W5 |
+| NFR-068 | TC-NFR-068 | TC-21-002, TC-01-016 | §6.1.14.2 secret scanning | — | W0 |
+| NFR-069 | TC-NFR-069 | — | §6.1.14.2 | — | W0 |
+| NFR-070 | TC-NFR-070 | — | §6.1.14.2 IaC | — | W0 |
+| NFR-071 | TC-NFR-071 | — | §6.1.14.2 DAST | — | W2 |
+| NFR-072 | TC-NFR-072 | — | §6.1.14.2 external pen test; GL-S03 | VER-009 | W3 |
+| NFR-073 | TC-NFR-073 | TC-01-012, TC-01-074 | — | — | W0 |
+| NFR-074 | TC-NFR-074 | TC-01-037 | DEC-019 check 10 | — | W2 |
+| NFR-075 | TC-NFR-075 | TC-03-059…060, TC-03-070…071 | — | VER-010 | W5 |
+| NFR-076 | TC-NFR-076 | TC-03-072, TC-03-075, TC-04-053 | — | — | W5 |
+| NFR-077 | TC-NFR-077 | TC-AI-AG001-012, TC-AI-AG002-011 | T14 | — | W1 |
+| NFR-078 | TC-NFR-078 | TC-21-021, TC-21-025, TC-AI-AG028-003 | T21 | — | W5 |
+| NFR-079 | TC-NFR-079 | TC-21-020, TC-01-094, TC-08-163 | T21 | — | W0 |
+| NFR-080 | TC-NFR-080 | TC-21-028, TC-21-031 | GL-P02 | VER-013 | W5 |
+| NFR-081 | TC-NFR-081 | — | T21 | — | W0 |
+| NFR-082 | TC-NFR-082 | TC-01-022 | §6.1.9.6 | — | W0 |
+| NFR-083 | TC-NFR-083 | TC-AI-AG034-001 | — | VER-014 | W5 |
+| NFR-084 | TC-NFR-084 | — | §6.1.14.2 SCA | VER-015 | W5 |
+| NFR-085 | TC-NFR-085 | TC-02-037 | — | — | W0 |
+| NFR-086 | TC-NFR-086 | TC-20-070 | — | — | W5 |
+| NFR-087 | TC-NFR-087 | TC-01-014, TC-01-018 | — | — | W0 |
+| NFR-088 | TC-NFR-088 | TC-01-103, TC-21-009 | §6.1.14.3 pages | — | W2 |
+| NFR-089 | TC-NFR-089 | TC-03-088, TC-08-157 | §6.1.14.3 keyboard, screen readers | — | W3 |
+| NFR-090 | TC-NFR-090 | — | T09 | — | W2 |
+| NFR-091 | TC-NFR-091 | TC-01-019 | T20 | VER-016 | W5 |
+| NFR-092 | TC-NFR-092 | TC-04-015, TC-04-052 | T20 | VER-017 | W1 |
+| NFR-093 | TC-NFR-093 | — | T20 | VER-018 | W5 |
+| NFR-094 | TC-NFR-094 | — | GL-S09 | VER-011 | W5 |
+| NFR-095 | TC-NFR-095 | TC-03-021…022 | T19 | VER-012 | W3 |
+| NFR-096 | TC-NFR-096 | TC-10-028, TC-08-030 | §6.1.14.6 | — | W2 |
+| NFR-097 | TC-NFR-097 | TC-03-043…045 | §6.1.14.6 | — | W3 |
+| NFR-098 | TC-NFR-098 | TC-01-028, TC-08-084, TC-01-101 | T10 | — | W2 |
+| NFR-099 | TC-NFR-099 | — | T21 | — | W0 |
+
+### 6.7.6.2 Filter FRs → TC-FLT
+
+| FR | TC-FLT cases | # |
+|---|---|---|
+| FR-FLT-01 | TC-FLT-011…012, TC-FLT-014…015 | 4 |
+| FR-FLT-02 | TC-FLT-001, TC-FLT-009, TC-FLT-013, TC-FLT-033, TC-FLT-045 | 5 |
+| FR-FLT-03 | TC-FLT-034 | 1 |
+| FR-FLT-04 | TC-FLT-002, TC-FLT-035 | 2 |
+| FR-FLT-05 | TC-FLT-009, TC-FLT-037 | 2 |
+| FR-FLT-06 | TC-FLT-038 | 1 |
+| FR-FLT-07 | TC-FLT-008, TC-FLT-016, TC-FLT-039 | 3 |
+| FR-FLT-08 | TC-FLT-007, TC-FLT-040 | 2 |
+| FR-FLT-09 | TC-FLT-041 | 1 |
+| FR-FLT-10 | TC-FLT-042 | 1 |
+| FR-FLT-11 | TC-FLT-010, TC-FLT-043 | 2 |
+| FR-FLT-RULES | TC-FLT-001…010, TC-FLT-012…013, TC-FLT-016…033, TC-FLT-036, TC-FLT-044…045 | 33 |
+
+### 6.7.6.3 Totals for Batch 6.7 test cases
+
+| Priority | P0 | P1 | P2 | P3 | Total |
+|---|---|---|---|---|---|
+| TC-NFR | 43 | 45 | 10 | 1 | 99 |
+| TC-FLT | 17 | 19 | 9 | 0 | 45 |
+| TC-BRS | 8 | 5 | 0 | 0 | 13 |
+| **All** | 68 | 69 | 19 | 1 | 157 |
+
+| Type | T01 | T02 | T03 | T04 | T07 | T08 | T09 | T10 | T12 | T13 | T14 | T15 | T16 | T17 | T18 | T19 | T20 | T21 | Total |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| TC-NFR | 8 | 2 | 18 | 2 | 17 | 3 | 2 | 1 | 9 | 3 | 4 | 3 | 3 | 1 | 2 | 6 | 6 | 9 | 99 |
+| TC-FLT | 23 | 0 | 1 | 0 | 5 | 1 | 0 | 0 | 0 | 3 | 0 | 8 | 0 | 0 | 0 | 4 | 0 | 0 | 45 |
+| TC-BRS | 1 | 0 | 0 | 0 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 1 | 0 | 0 | 13 |
+| **All** | 32 | 2 | 19 | 2 | 30 | 4 | 2 | 1 | 9 | 6 | 4 | 14 | 3 | 1 | 2 | 11 | 6 | 9 | 157 |
+
+| Technique (first listed) | BVA | DT | EG | EP | EXP | PBT | PW | ST | UC | Total |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-NFR | 28 | 10 | 10 | 35 | 2 | 2 | 3 | 2 | 7 | 99 |
+| TC-FLT | 4 | 9 | 3 | 19 | 0 | 1 | 1 | 8 | 0 | 45 |
+| TC-BRS | 0 | 7 | 0 | 6 | 0 | 0 | 0 | 0 | 0 | 13 |
+| **All** | 32 | 26 | 13 | 60 | 2 | 3 | 4 | 10 | 7 | 157 |
+
+| Automation candidate | N | Y | Total |
+|---|---|---|---|
+| TC-NFR | 7 | 92 | 99 |
+| TC-FLT | 0 | 45 | 45 |
+| TC-BRS | 0 | 13 | 13 |
+| **All** | 7 | 150 | 157 |
+
+| Level | CT | E2E | IT | SYS | UAT | UT | Total |
+|---|---|---|---|---|---|---|---|
+| TC-NFR | 19 | 10 | 16 | 50 | 2 | 2 | 99 |
+| TC-FLT | 2 | 12 | 16 | 14 | 0 | 1 | 45 |
+| TC-BRS | 1 | 6 | 0 | 6 | 0 | 0 | 13 |
+| **All** | 22 | 28 | 32 | 70 | 2 | 3 | 157 |
+
+Verification items by method: Analysis 21, Demonstration 1, Inspection 6, Review 20 (total 48; combined methods counted under the first).
+
