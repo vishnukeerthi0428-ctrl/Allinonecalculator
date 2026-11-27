@@ -32,3 +32,9 @@
 23. AI "Usage" vs SaaS "UsageMeterReading". Resolution: AI Usage → CostLedger entries (M53); UsageMeterReading = billable SaaS meters (B-SVC); a mapping job aggregates AI cost into tenant meters.
 24. Entity count is 199 vs the source's 155 (17 FRD-retained names unidentifiable, GAP-112). Accepted as a DERIVED superset.
 25. Embedding dimension of 1024 is provisional until Part 7 selects the embedding model (GAP-111).
+
+## From Part 7
+26. Part 0 §0.2 says "about 3 FTE" and "pgvector optionally"; both are superseded by DEC-005 (4.0 + 0.5 FTE) and ADRs (pgvector adopted).
+27. CONFLICT-122: no budget line for delivery-lifecycle AI (CI review/eval agents). Resolution: add **B23 Delivery AI reserve ≈ ₹1,000/month** (estimate; RECOMMENDATION-061), separate from runtime B02.
+28. BRL-AUT-06 cites Part 7: agent-level caps are defined in Part 7 §7.2.9 and complement the workflow caps.
+29. The embedding model choice in Part 7 resolves GAP-111 of Part 3.3 (vector dimension to match).
