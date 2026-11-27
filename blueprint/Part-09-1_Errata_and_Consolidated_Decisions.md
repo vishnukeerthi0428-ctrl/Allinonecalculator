@@ -117,11 +117,29 @@
 
 **Total errata decisions: DEC-066…DEC-140.**
 
+## 9.1.5 Final errata decisions (third review cycle)
+
+| DEC | Errata | Found in | Conflict | Decision (binding) | Affected parts |
+|---|---|---|---|---|---|
+| DEC-141 | E-81 | Part 6.6 (GAP-170) | Part 2.3 states 162 business rules; 161 are defined | Rule count corrected to **161** | 2.3 |
+| DEC-142 | E-82 | Part 6.6 | Part 2.1 states 33 cross-cutting FRs (183 total) | **181 FRs** (150 interface/operation + 31 cross-cutting) | 2.1 |
+| DEC-143 | E-83 | Part 6.6 (GAP-171) | LT-01…12 defined in Parts 4.2 and 6.1 with different meanings | **Part 6.1 owns LT-xx**; Part 4.2 tables are "NFR load profiles", mapped to LT-xx in Part 6.7 | 4.2, 6.1, 6.7 |
+| DEC-144 | E-84 | Part 6.6 | Second-tenant fixture naming varies | Canonical name **"T2 External-A"** (GSE-SYN) | 5, 6 |
+| DEC-145 | E-85 | Part 6.6 | Seven stories without an FR link | They are enablers tracing to BR/NFR/DEC; acceptable | 5.1 |
+| DEC-146 | E-86 | Part 6.6 | Part 6.1 risk matrix lacks a product-truth area | Add **Product truth and claims gating (EP-02)** at P0 depth | 6.1 |
+| DEC-147 | E-87 | Part 6.6 | NFR (61), FLT (9) and BR-S coverage gaps | Closed by **Part 6.7** (TC-NFR, TC-FLT, TC-BRS and VER items); RTM regenerated | 6.6, 6.7 |
+| DEC-148 | E-88 | Part 9.2 (GAP-181) | ID family collisions: AD-## (3.1 drivers vs 3.2 adapters), PP-## (1 principles vs 6.2 precondition profiles), D-# (3.3 drills vs 5.1a DoD items), B-## (3.1 cost rows vs budget lines B##) | IDs stay as written; **cross-part references must be qualified with the part** (e.g. "3.2/AD-05", "6.2/PP-03", "3.3/D-2", "3.1/B-07"). Unqualified AD-/PP-/D-/B- references mean the owning definitions in Parts 3.1, 1, 5.1a and the DEC-020 budget lines respectively | 1, 3, 5.1, 6.2 |
+| DEC-149 | E-89 | Part 9.2 (GAP-182) | 68 RECOMMENDATIONs have no recorded accept/reject | **All proposed RECOMMENDATION-001…090 are accepted into the baseline** under the delegated authority, **except** where a DEC states otherwise (e.g. ADR-043 superseded by DEC-081). They are implemented through the stories and tests that cite them | All |
+| DEC-150 | E-90 | Part 9.2 | ADR overlap: Part 4.3 ADR-050/051/052 vs Part 3.1 ADR-026/012/015 | **Part 3.1 ADRs govern** (DEC-083); Part 4.3's ADRs are operational elaborations of them | 3.1, 4.3 |
+| DEC-151 | E-91 | Part 9.2 (GAP-180) | No central tag allocation log | §9.2.3 reconstruction is authoritative; future tags continue from the highest number in each register | 9.2 |
+
+**Total errata decisions: DEC-066…DEC-151. Total decisions in the blueprint: DEC-001…DEC-151.**
+
 ## 9.1.3 Quality gate: Batch 9.1
 
 | Check | Result | Notes |
 |---|---|---|
-| Every inconsistency reported by contributors resolved | Pass | 80 logged items → DEC-066…140 (some items merged) |
+| Every inconsistency reported by contributors resolved | Pass | 91 logged items → DEC-066…151 (some items merged) |
 | Decisions traceable to the finding and affected parts | Pass | Columns "Found in" and "Affected parts" |
 | Time-sensitive items flagged | Pass | CERT-In/DPDP log rules, WAF and backup costs, model licence marked verify |
 | Consistency | Pass | Precedence rule stated; Part 10 assembly includes this register |

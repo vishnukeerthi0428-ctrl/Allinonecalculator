@@ -6,7 +6,7 @@
 | Document | Part 9, Batch 2 (appendices) |
 | Version | 1.0 · 27 Nov 2026 |
 | Purpose | One place to look up every term, every ID family and every tag issued across the blueprint, with the resolution status of each conflict and recommendation, and a map of all part files |
-| Baseline | Parts 0, 0A, 1, 2.1–2.5, 3.1–3.3, 4.1–4.3, 5.1a–5.3, 6.1 and the Part 6 test-case batches present at build time, 7.1–7.3, 9.1 (DEC-066…108) |
+| Baseline | Parts 0, 0A, 1, 2.1–2.5, 3.1–3.3, 4.1–4.3, 5.1a–5.3, 6.1–6.6, 7.1–7.3, 8.1–8.2, 9.1 (DEC-066…140) |
 | Generator | `blueprint/assembly/build_registers.py` (standard-library Python + `pdfinfo`). It scans every `Part-*.md` except this file, fills the generated blocks below and writes CSVs to `blueprint/final/` |
 | Roles applied | Business Systems Analyst (lead: glossary, registers), Product Owner (resolution status), Solutions Architect (ADR index), QA Lead (ID integrity and duplicate check), Technical Writer (document map) |
 
@@ -422,7 +422,7 @@ Every ID family used across the parts. **Actual range found** and **Distinct IDs
 | FR-OP### | Operational/platform functional requirement (health, readiness, config) | 001–003 | 3 | 2.1 (§2.4) | 2.1, 6.6, 5.3, 6.3b | 21 |
 | FR-{area}-## | Cross-cutting functional requirement by area (standards, data mgmt, UI states, filters, publication, adapters, …) | ADP 01; COP 01; CSM 01; DM 01–04; ENG 01; FLT 01–11; NEG 01; PUB 01; SRCH 01; STD 01–04; UIS 01–04 | 30 | 2.1 (§2.4) | 2.1, 6.6, 6.3a, 6.2b | 27 |
 | NFR-### | Non-functional requirement | 001–099 | 99 | 0 (§0.6); detailed in 4.2 | 4.2, 6.6, 0, 6.4 | 31 |
-| DEC-### | Binding decision (DEC-001…065 Part 0A; DEC-066… Part 9.1) | 001–140 (1 unused) | 139 | 0A, 9.1 | 9.1, 0A, 5.2, 6.4 | 32 |
+| DEC-### | Binding decision (DEC-001…065 Part 0A; DEC-066…140 Part 9.1) | 001–140 (1 unused) | 139 | 0A, 9.1 | 9.1, 0A, 5.2, 6.4 | 32 |
 | BRL-{domain}-## | Business rule, by rule domain | AI 01–12; APR 01–11; AUT 01–10; BID 01–06; CTR 01–05; ELG 01–18; FIN 01–08; LCY 01–06; MKT 01–10; MTG 01–06; ORD 01–06; PRV 01–07; PUB 01–06; QTE 01–07; SCR 01–09; SEQ 01–05; SRC 01–10; SVC 01–07; TEN 01–12 | 161 | 2.3 | 2.3, 6.5, 6.3a, 6.3b | 27 |
 | R## | RBAC role (R01–R20; L suffix = startup-scoped lead variant) | 01–20; L 03–05 (1 unused) | 22 | 2.3 (§2.21) | 2.3, 7.3 | 26 |
 | P## | Persona | 01–90 (72 unused) | 18 | 1 (§1.6) | 1, 7.1, 8.1 | 16 |
@@ -432,8 +432,8 @@ Every ID family used across the parts. **Actual range found** and **Distinct IDs
 | AC-####-## | Acceptance criterion of a user story | AC-0101-01 … AC-2110-05 (story-scoped; numbering restarts per story) | 1356 | 5 | 6.4 | 15 |
 | TS-##-## | Test scenario (epic-based, DEC-093) | 01 01–20; 02 01–08; 03 01–11; 04 01–08; 05 01–12; 06 01–08; 07 01–10; 08 01–18; 09 01–07; 10 01–08; 11 01–11; 12 01–11; 13 01–14; 14 01–13; 15 01–14; 16 01–11; 17 01–11; 18 01–17; 19 01–13; 20 01–13; 21 01–12 | 250 | 6 | 6.5, 6.3a, 6.2a, 6.2b | 6 |
 | TC-##-### | Test case (epic-based, DEC-093) | 01 001–133; 02 001–057; 03 001–099; 04 001–056; 05 001–086; 06 001–056; 07 001–075; 08 001–191; 09 001–047; 10 001–060; 11 001–075; 12 001–083 (1 unused); 13 001–128; 14 001–101; 15 001–109; 16 001–084; 17 001–091; 18 001–138; 19 001–102; 20 001–105; … (21 families) | 1980 | 6 | 6.5, 6.3a, 6.2a, 6.3b | 8 |
-| TC-AI-AG###-## | AI agent test case (per agent) | 001 001–017; 002 001–024; 003 001–015; 004 001–021; 005 001–019; 006 001–018; 007 001–014; 008 001–016; 009 001–017; 010 001–014; 011 001–021; 012 001–018; 013 001–021; 014 001–019; 015 001–030; 016 001–016; 017 001–031; 018 001–019; 019 001–018; … (36 families) | 586 | 6 | 6.4 | 2 |
-| TC-AU-AU###-## | Automation test case (per automation) | 001 001–005; 002 001–015 (1 unused); 003 001–004; 004 001–005; 005 001–005; 006 001–015; 007 001–004; 008 001–004; 009 001–003; 010 001–009; 011 001–004; 012 001–008; 013 001–003; 014 001–004; 015 001–004; 016 001–004; 017 001–004; 018 001–003; … (43 families) | 187 | 6 | 6.4 | 2 |
+| TC-AI-AG###-### | AI agent test case (per agent; format per DEC-113) | 001 001–017; 002 001–024; 003 001–015; 004 001–021; 005 001–019; 006 001–018; 007 001–014; 008 001–016; 009 001–017; 010 001–014; 011 001–021; 012 001–018; 013 001–021; 014 001–019; 015 001–030; 016 001–016; 017 001–031; 018 001–019; 019 001–018; … (36 families) | 586 | 6 | 6.4 | 2 |
+| TC-AU-AU###-### | Automation test case (per automation; DEC-113) | 001 001–005; 002 001–015 (1 unused); 003 001–004; 004 001–005; 005 001–005; 006 001–015; 007 001–004; 008 001–004; 009 001–003; 010 001–009; 011 001–004; 012 001–008; 013 001–003; 014 001–004; 015 001–004; 016 001–004; 017 001–004; 018 001–003; … (43 families) | 187 | 6 | 6.4 | 2 |
 | AG-### | AI agent | 001–036 | 36 | 7.1/7.2 | 7.2, 6.4, 7.1, 6.6 | 12 |
 | AU-### | Deterministic or AI-assisted automation | 001–043 | 43 | 7.1/7.2 | 7.1, 6.4, 6.6, 7.2 | 6 |
 | ADR-### | Architecture decision record | 001–085 (15 unused) | 70 | 3.1 (001–043), 4.1/4.3 (050–069), 7.3 (070–085) | 3.1, 7.3, 4.3, 4.1 | 13 |
@@ -467,7 +467,7 @@ Every ID family used across the parts. **Actual range found** and **Distinct IDs
 | G-## | Business goal | 01–10 | 10 | 1 | 1 | 4 |
 | OQ-### | Open question (all answered in 0A) | 001–030 | 30 | 0, 0A | 0, 0A | 3 |
 | AMB-# | Ambiguity in the source (resolved DEC-049…058) | 1–10 | 10 | 0, 0A | 0 | 3 |
-| E-## | Errata item (Part 9.1); note E-# (one digit) = engine invariant in 2.2 | 01–80 (2 unused) | 78 | 9.1 | referenced only | 1 |
+| E-## | Errata item (Part 9.1, E-01…); note E-# (one digit) = engine invariant in 2.2 | 01–80 (2 unused) | 78 | 9.1 | referenced only | 1 |
 | ABAC-## | Attribute-based access control rule | 01–12 | 12 | 2.3 | 2.3 | 20 |
 | ENT-### | Logical data entity | 001–199 | 199 | 3.3 | 3.3 | 3 |
 | CK-## | Database check constraint pattern | 01–24 | 24 | 3.3 | 3.3 | 2 |
@@ -509,7 +509,7 @@ Every ID family used across the parts. **Actual range found** and **Distinct IDs
 | OPT-##-## | FRD optimisation item (source ID, cited) | 01 01; 03 01; 04 01–08; 07 01; 10 01; 11 01; 12 01–04; 15 01; 20 01–04 | 22 | Source (FRD) | 2.1 | 20 |
 | SM-UT-### | Source test alias (FRD; aliases only, DEC-094) | 001–057 (51 unused) | 6 | Source (FRD); 6 | referenced only | 4 |
 | M## | Source module M01–M66 (BRD §7) | 01–66 | 66 | Source (BRD) | referenced only | 28 |
-| W## / A### | Screen ID: Website/Portal W01–W34, Admin A001–A113 | A 01–113; W 01–34 | 147 | Source (FRD §16.2); 2.5 | 2.5, 6.4 | 33 |
+| W## / A### | Screen ID: Website/Portal W01–W34, Admin A001–A113 | A 001–113; W 001–034 | 147 | Source (FRD §16.2); 2.5 | 2.5, 6.4 | 33 |
 
 <!-- GEN:IDREG:END -->
 
@@ -803,7 +803,7 @@ Status "Cited by DEC-…" means a DEC row in Part 0A or 9.1 cites the assumption
 
 ### 9.2.4(c) CONFLICT register (with resolution status)
 
-Resolution sources: **Part 0A** (DEC-001…065), **Part 9.1** (DEC-066…108) or **locally** in the issuing part (the register row states the rule applied).
+Resolution sources: **Part 0A** (DEC-001…065), **Part 9.1** (DEC-066…140, including the second review cycle §9.1.4) or **locally** in the issuing part (the register row states the rule applied).
 
 <!-- GEN:CONFLICT:BEGIN -->
 
@@ -1036,9 +1036,9 @@ Status is taken from the ADR's own "Status" row (Part 3.1) or the status column 
 
 <!-- GEN:ADR:END -->
 
-### 9.2.4(f) DEC index (DEC-001…108)
+### 9.2.4(f) DEC index (DEC-001…140)
 
-One line per decision. The full text in Part 0A and Part 9.1 is binding. Part 9.1 decisions override Part 0A where they amend it (Part 9.1 §9.1.2).
+One line per decision. The full text in Part 0A and Part 9.1 is binding. Part 9.1 decisions (§9.1.1 first cycle DEC-066…108, §9.1.4 second cycle DEC-109…140) override Part 0A where they amend it (Part 9.1 §9.1.2).
 
 <!-- GEN:DEC:BEGIN -->
 
@@ -1218,10 +1218,10 @@ The script compares every ID defined (first cell of a table row) in more than on
 | 6 | **P##** personas vs **P-##** pilot cost rows (Part 3.1 §3.1.6.2) and priority labels P0–P2 (Part 6) | Manual review | Low | Keep; formats differ (two digits vs hyphen vs one digit) |
 | 7 | **CA-<code>** acceptance profiles (Part 2.1) vs **CA-R#** Canada rules (Part 4.1) | Manual review | Low | Keep; letter code vs R-number; cite "CASL CA-R#" in prose |
 | 8 | **E-##** errata (Part 9.1) vs **E-#** engine invariants (Part 2.2) | Manual review | Low | Keep; formats differ |
-| 9 | **TC-AI-AG###-##** (DEC-093) vs **TC-AI-AG###-###** (three-digit suffix, Parts 6.1 and 6.3a) | Registry scan | Test IDs not matching the DEC-093 pattern fail ID validation in the RTM | Amend DEC-093 to allow a **two- or three-digit** suffix, or renumber; decide before the RTM build |
+| 9 | **TC-AI-AG###-##** (DEC-093) vs **TC-AI-AG###-###** (three-digit suffix, Parts 6.1 and 6.3a) | Registry scan | Test IDs not matching the DEC-093 pattern fail ID validation in the RTM | **Resolved by DEC-113**: TC-AI-AG###-### and TC-AU-AU###-### govern. No further action |
 | 10 | **CI-###** candidate AI ideas (Part 7.1) vs **CI** (continuous integration) and incident examples such as CI-0007 | Manual review | Low | Keep; four-digit incident IDs are fixture data |
 
-None of the tag IDs (ASSUMPTION/GAP/CONFLICT/RECOMMENDATION) is used with two different meanings. These collisions need errata decisions; they are logged as [GAP-181] for the Part 9.1 owner.
+None of the tag IDs (ASSUMPTION/GAP/CONFLICT/RECOMMENDATION) is used with two different meanings. Items 2 (DEC-092) and 9 (DEC-113) are already decided. Items 1, 3, 4 and 5 need errata decisions; they are logged as [GAP-181] for the Part 9.1 owner.
 
 ---
 
@@ -1266,9 +1266,9 @@ Every part file, its contents (top-level sections, excluding tag registers and q
 | 8.1 | Part-08-1_Roadmap_Releases_Sprints.md | PART 8 (Batch 8.1), Delivery Plan: Roadmap, Releases, Sprint Plans, Team and RACI, Estimation, Critical Path | Purpose, inputs and planning baseline; Phased roadmap; Release plan; Sprint plans; Team composition, QA gap, UAT and RACI; Estimation method and effort ranges; Critical path and external dependencies; … (+1) | 54 | 3 | 17,878 | Complete |
 | 8.2 | Part-08-2_Risks_Change_GoLive_Hypercare.md | PART 8 (Batch 8.2), Delivery Plan: Risk Register, Change Management and Training, Operational Readiness, Go-Live Checklist, Hypercare, KPI Tracking and Budget | Risk register; Change management and training; Operational readiness: DR and support model for go-live (errata 16, 17, 43); Go-live checklist; Hypercare plan ASSUMPTION-206 RECOMMENDATION-089; Post-launch KPI tracking (KPI-01…KPI-31); Budget summary (estimates); … (+1) | 44 | 1 | 14,988 | Complete |
 | 9.1 | Part-09-1_Errata_and_Consolidated_Decisions.md | PART 9 (Batch 9.1), Errata Register and Consolidated Decisions | Errata decisions; Effect on earlier decisions; Additional errata decisions (second review cycle) | 11 | 0 | 3,092 | Complete |
-| 9.2 | Part-09-2_Glossary_and_Registers.md | PART 9 (Batch 9.2), Appendices: Glossary, ID Registry and Consolidated Registers | Generation method and controls; Glossary; ID registry; Tag numbers issued, by issuing part; Consolidated registers; Duplicate-ID check; Document map | 100 | 1 | 31,777 | Complete |
+| 9.2 | Part-09-2_Glossary_and_Registers.md | PART 9 (Batch 9.2), Appendices: Glossary, ID Registry and Consolidated Registers | Generation method and controls; Glossary; ID registry; Tag numbers issued, by issuing part; Consolidated registers; Duplicate-ID check; Document map | 102 | 1 | 32,572 | Complete |
 
-**Totals:** 2,216 pages across 34 rendered PDFs; 119 Mermaid diagrams; 770,435 words.
+**Totals:** 2,218 pages across 34 rendered PDFs; 119 Mermaid diagrams; 771,230 words.
 
 <!-- GEN:DOCMAP:END -->
 
@@ -1284,7 +1284,7 @@ Every part file, its contents (top-level sections, excluding tag registers and q
 | [ASSUMPTION-213] | Glossary "first use" is the first textual occurrence of the key in reading order, outside code fences; acronyms are matched case-sensitively, phrases case-insensitively | §9.2.1 | BSA |
 | [ASSUMPTION-214] | ID ranges count every mention, including citations; synthetic fixture identifiers inside Gherkin and test data are not ID families | §9.2.0, §9.2.2 | QA Lead |
 | [GAP-180] | No central tag-allocation log exists; the per-part allocation in §9.2.3 is reconstructed from issued numbers, so unused allocated numbers cannot be told apart from lost ones | §9.2.3 | Programme owner: keep an allocation table in the Part 10 front matter |
-| [GAP-181] | ID-family collisions (AD-, PP-, D-, B-/B##, TC-AI suffix width) have no errata decision yet | §9.2.5.2 | Part 9.1 owner: issue DEC-109 onwards |
+| [GAP-181] | ID-family collisions AD- (3.1 vs 3.2), PP- (1 vs 6.2), D- (3.3 vs 5.1a) and B-/B## (3.1 vs budget lines) have no errata decision yet (TC-AI width settled by DEC-113, LT- by DEC-092) | §9.2.5.2 | Part 9.1 owner: issue DEC-141 onwards |
 | [GAP-182] | Most RECOMMENDATION tags issued after Part 0 have no recorded accept/reject decision (shown as "Proposed" in §9.2.4(d)); the baseline has no mechanism to record owner acceptance outside a DEC row | §9.2.4(d) | Product Owner: record accept/reject per tag at Part 10 assembly (a DEC row or an acceptance column in the workbook) |
 
 ---
@@ -1303,4 +1303,4 @@ Every part file, its contents (top-level sections, excluding tag registers and q
 | 8 | No restricted data routed to free-tier models | Pass | Glossary restates DEC-007 and BRL-AI-06; no routing defined here |
 | 9 | Consistent with earlier parts | Pass | Statements copied from the issuing parts; Part 9.1 overrides recorded in the DEC index and ADR note. Mermaid diagram renders; `pdftotext … \| grep -ci "diagram error"` = 0 |
 
-**Status: Part 9 Batch 9.2 complete. Glossary (322 terms), ID registry (104 families), tag-allocation table, consolidated ASSUMPTION/GAP/CONFLICT/RECOMMENDATION registers, ADR and DEC indexes, duplicate-ID check and document map generated from all 33 part files (Parts 0–9.1, including 6.2–6.6 and 8.1–8.2). Next: Part 10 assembly.**
+**Status: Part 9 Batch 9.2 complete. Glossary (322 terms), ID registry (96 families), tag-allocation table, consolidated ASSUMPTION/GAP/CONFLICT/RECOMMENDATION registers, ADR and DEC indexes, duplicate-ID check and document map generated from all 33 part files (Parts 0–9.1, including 6.2–6.6 and 8.1–8.2). Next: Part 10 assembly.**
