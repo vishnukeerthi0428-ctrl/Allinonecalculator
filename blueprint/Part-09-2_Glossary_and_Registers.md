@@ -176,7 +176,7 @@ Columns: **Term** (bold = the searchable key), **Definition** (with the governin
 | **NFR** (Non-Functional Requirement) | Quality requirement NFR-001… (performance, security, availability, accessibility) (Part 0 §0.6; Part 4.2) | Part 0 §0.3.1 |
 | **NSE** (No Side Effect) | Test shorthand: no state change, no outbox row, no provider call, and a denial audit event (Part 6 test cases) | Part 6.2a front matter |
 | **OIDC** (OpenID Connect) | Authentication protocol on top of OAuth 2.0 used between the BFFs and the IdP (ADR-005) | Part 0 §0.4 |
-| **OKR** (Objectives and Key Results) | Goal framework linking G-## goals to KPIs (Part 1) | not found in Parts 0–9.1 |
+| **OKR** (Objectives and Key Results) | Goal framework linking G-## goals to KPIs (Part 1) | Part 0 §0.11 |
 | **OSS** (Open-Source Software) | Preferred for tooling where it fits the budget (ADR-057, ADR-079, ADR-080) | Part 0 §0.8 |
 | **OTP** (One-Time Password) | Single-use code; used to verify guardians and portal users (DEC-030) | Part 0A §C |
 | **OWASP** (Open Worldwide Application Security Project) | Community that publishes the Top 10, API Security Top 10, ASVS and ZAP; used as checklists (Part 4.1, Part 6.1) | Part 0 §0.11 |
@@ -272,7 +272,7 @@ Columns: **Term** (bold = the searchable key), **Definition** (with the governin
 | **seven views** | Command Centre navigation: Overview, Discovery, Outreach & Marketing, Follow-ups, Objections, Closure, Automation (BRD §3; UX-02) | Part 1 §1.1 |
 | **Action Centre** | In-app notification and task centre (A106) with e-mail digest (DEC-036) | Part 1 §1.12.2 |
 | **Admin Copilot** | Read-only, grounded assistant in the Admin side panel; answers from authorised records with citations; drafts but never executes (DEC-035, ADR-041) | Part 0 §0.4 |
-| **signal** | A piece of public evidence suggesting a need or opportunity, reviewed by a human; ≥ 80% precision gate on ≥ 100 reviewed signals (DEC-001, DEC-096) | Part 0 §0.3.3 |
+| **signal** | A piece of public evidence suggesting a need or opportunity, reviewed by a human; ≥ 80% precision gate on ≥ 100 reviewed signals (DEC-001, DEC-096) | Part 0 §0.3.2 |
 | **evidence** | Source record with URL, date, licence/permission and confidence that grounds signals, opportunities and drafts (PP-05; BRL-SRC) | Part 0 §0.1.2 |
 | **claim** | An approved, dated statement about an offering that external content may use; unapproved claims are blocked (BRL-AI-05; M02) | Part 0 §0.2 |
 | **opportunity score** | round(100 × Σ wᵢcᵢ / Σ w over known components); "Unknown – review required" when known weight < 0.60; bands ≥ 75 / 50–74 / < 50 (DEC-011) | Part 0 §0.7 |
@@ -282,11 +282,11 @@ Columns: **Term** (bold = the searchable key), **Definition** (with the governin
 | **suppression list** | Hashed identifiers that must never be contacted again; kept indefinitely (DEC-028) | Part 0 §0.7 |
 | **quiet hours** | Local-time window in which outbound messages are deferred; deferrals are not counted late (DEC-032) | Part 0 §0.8 |
 | **jurisdiction rule pack** | PDP rule set per recipient country (India, EU/UK, US, Canada …) with an outbound allowlist (DEC-029) | Part 0 §0.8 |
-| **first-touch template** | Approved template for first outreach; until approved, first touch is L1, then L2 dispatch with variables only (DEC-071) | not found in Parts 0–9.1 |
-| **sequence** | Scheduled multi-step outreach with stop rules; contacts are enrolled (enrolment) and leave on reply, opt-out or stop (BRL-SEQ) | Part 1 §1.12.2 |
+| **first-touch template** | Approved template for first outreach; until approved, first touch is L1, then L2 dispatch with variables only (DEC-071) | Part 1 §1.4.2 |
+| **sequence** | Scheduled multi-step outreach with stop rules; contacts are enrolled (enrolment) and leave on reply, opt-out or stop (BRL-SEQ) | Part 0 §0.1.2 |
 | **approval hash** | Hash of the exact approved content, recipients, parameters and policy version. Dispatch proceeds only if the hash still matches (PDP recheck; BRL-APR) | Part 1 §1.1 |
 | **approval policy** | Versioned per-startup thresholds that decide who must approve (discounts, contracts, cross-border); tightening free, loosening needs founder approval (DEC-038) | Part 0A §C |
-| **autonomy L0–L3** | Autonomy levels: L0 suggest only, L1 draft for human approval, L2 act with post-review for routine eligible actions, L3 act within guardrails. Consequential actions capped at L1 (ASSUMPTION-010, DEC-064) | not found in Parts 0–9.1 |
+| **autonomy L0–L3** | Autonomy levels: L0 suggest only, L1 draft for human approval, L2 act with post-review for routine eligible actions, L3 act within guardrails. Consequential actions capped at L1 (ASSUMPTION-010, DEC-064) | Part 0 §0.4 |
 | **Manual / Assisted / Supervised / Controlled Autonomous** | The four autonomy modes of the source, mapped to L0–L3 (ASSUMPTION-010) | Part 0 §0.2 |
 | **autonomy cap matrix** | Maximum autonomy per action class: money movement not supported; contracts, quotes, discounts, bid submission, legal terms L1 max (DEC-064, DEC-071) | Part 0A §F |
 | **simulation** | Dry-run of a workflow or configuration with zero live effects, required before activation (BRD §1.2; ConfigRevision state "simulated") | Part 0 §0.2 |
@@ -304,9 +304,9 @@ Columns: **Term** (bold = the searchable key), **Definition** (with the governin
 | **outcome certainty** | Result state of an external action: confirmed, uncertain, failed, reconciled_confirmed, reconciled_failed. Uncertain blocks retry until reconciled (DEC-050) | Part 0 §0.6 |
 | **uncertain outcome** | Provider call whose effect is unknown (timeout after submit); reconciled on a schedule before any retry (ASSUMPTION-162) | Part 2.4 §2.30.2 |
 | **closure policy** | Per opportunity type: project/contract types close on executed contract (Won-Contracted) and are marked Paid separately; order types close on verified payment (DEC-054) | Part 0 §0.6 |
-| **receipt** | Verified money received, distinct from closure; recorded with maker-checker verification (DEC-022, DEC-054) | Part 0 §0.3.2 |
+| **receipt** | Verified money received, distinct from closure; recorded with maker-checker verification (DEC-022, DEC-054) | Part 0 §0.2 |
 | **maker-checker** | Two-person verification: one Finance user records (MakerVerified), a second verifies (CheckerVerified) (DEC-022) | Part 0 §0.3.2 |
-| **receivable / payable ledger** | Separate ledgers for money owed to and by OrganicSpec (buy and sell orders) | not found in Parts 0–9.1 |
+| **receivable / payable ledger** | Separate ledgers for money owed to and by OrganicSpec (buy and sell orders) | Part 0 §0.2 |
 | **reservation** | Stock held for an approved order; released on cancellation or expiry (DEC-045, DEC-070) | Part 0 §0.2 |
 | **bid desk** | Workspace that prepares bid packages and checklists; a human always submits (DEC-053) | Part 0 §0.5 |
 | **order desk** | Workspace for buy/sell orders, fulfilment and ledgers, enabled by capability profile (DEC-052) | Part 2.3 §2.26.1 |
@@ -321,7 +321,7 @@ Columns: **Term** (bold = the searchable key), **Definition** (with the governin
 | **AI task** | One completed agent invocation returning a validated output; the SaaS metering unit (RECOMMENDATION-064; DEC-086) | Part 3.1 §3.1.4.7 |
 | **CostLedger** | Record of AI cost per run, agent, startup and tenant (M53; DEC-086) | Part 2.1 §2.2 |
 | **UsageMeterReading** | Billable SaaS meter values, including the nightly "AI tasks" aggregate (DEC-086) | Part 0A §C |
-| **CustomerSubscription / ServiceSubscription** | Customer renewals (M50) versus the tenant's SaaS billing subscription (B-SVC) (DEC-085) | not found in Parts 0–9.1 |
+| **CustomerSubscription / ServiceSubscription** | Customer renewals (M50) versus the tenant's SaaS billing subscription (B-SVC) (DEC-085) | Part 3.1 front matter |
 | **ConfigRevision** | Typed, versioned configuration with states draft → validated → simulated → approved → scheduled → active → superseded (Part 3.3 ENT-168) | Part 0 §0.4 |
 | **ConflictCase** | Record raised when two automations or people contend for the same contact or object (conflict coordinator, A111) | Part 0 §0.4 |
 | **DiscrepancyCase** | Reconciliation exception (e.g. settlement vs payment allocation) for human review (REC-01; A074) | Part 3.2 §3.2.6.4 |
@@ -390,7 +390,7 @@ Columns: **Term** (bold = the searchable key), **Definition** (with the governin
 | **Data classification** (Public / Internal / Confidential / Restricted) | Four classes; Restricted (personal, children's, health-adjacent, financial, credentials) never goes to free-tier models (RECOMMENDATION-004; BRL-AI-06) | Part 0 §0.8 |
 | **Public / Internal / Confidential / Restricted** | See Data classification | Part 0 §0.8 |
 | **retention** | Keep periods: invoices 8 years, contracts term + 8, audit 7 years, security/application logs 1 year, AI payloads 90 days, marketing contacts 24 months after last eligible interaction (DEC-028, DEC-078) | Part 0 §0.3.3 |
-| **rights request** | Data-principal request (access, correction, erasure, grievance); default deadline 30 days with escalation at 70% (DEC-100) | not found in Parts 0–9.1 |
+| **rights request** | Data-principal request (access, correction, erasure, grievance); default deadline 30 days with escalation at 70% (DEC-100) | Part 0 §0.11 |
 | **breach notification** | Notice of a personal-data breach to the Data Protection Board and to CERT-In within required times (verify, as of 27 Nov 2026) (Part 4.1) | Part 4.1 §4.11.5 |
 | **opt-out** | Recipient withdrawal of consent (e.g. STOP keyword); takes effect before the next dispatch (BRL-ELG) | Part 0 §0.10.3 |
 | **DLT** (Distributed Ledger Technology registration under TCCCPR) | Indian SMS sender/template registration platform; relevant only if SMS is enabled (verify) | Part 4.1 §4.12.3 |
@@ -398,8 +398,8 @@ Columns: **Term** (bold = the searchable key), **Definition** (with the governin
 | **e-invoice** | GST invoice registered on the government portal with an IRN; later scope (L-01) | Part 0A §C |
 | **SOC 2** (System and Organization Controls 2) | US assurance framework; controls are aligned, no certification sought (ASSUMPTION-003) | Part 0 §0.7 |
 | **HIPAA** (Health Insurance Portability and Accountability Act, US) | Not applicable: no protected health information by design (ASSUMPTION-003) | Part 0 §0.7 |
-| **EU AI Act risk class** | Classification of each AI use under the EU AI Act; none of this product's uses is intended as high-risk (Part 7.3; verify) | not found in Parts 0–9.1 |
-| **Meta WhatsApp Business policy** | Platform rules: opt-in before business-initiated messages, approved templates, 24-hour service window (WA-R1…; ADR-039) | not found in Parts 0–9.1 |
+| **EU AI Act risk class** | Classification of each AI use under the EU AI Act; none of this product's uses is intended as high-risk (Part 7.3; verify) | Part 0 §0.11 |
+| **Meta WhatsApp Business policy** | Platform rules: opt-in before business-initiated messages, approved templates, 24-hour service window (WA-R1…; ADR-039) | Part 0 §0.7 |
 | **children's data** | Data of anyone under 18 (ASSUMPTION-016); no tracking, profiling or targeted ads (DEC-030; DPDP) | Part 0 §0.8 |
 
 <!-- GLOSSARY:END -->
@@ -509,7 +509,7 @@ Every ID family used across the parts. **Actual range found** and **Distinct IDs
 | OPT-##-## | FRD optimisation item (source ID, cited) | 01 01; 03 01; 04 01–08; 07 01; 10 01; 11 01; 12 01–04; 15 01; 20 01–04 | 22 | Source (FRD) | 2.1 | 17 |
 | SM-UT-### | Source test alias (FRD; aliases only, DEC-094) | 001–057 (51 unused) | 6 | Source (FRD); 6 | referenced only | 4 |
 | M## | Source module M01–M66 (BRD §7) | 01–66 | 66 | Source (BRD) | referenced only | 28 |
-| W## / A### | Screen ID: Website/Portal W01–W34, Admin A001–A113 | A 001–113; W 001–049 (14 unused) | 148 | Source (FRD §16.2); 2.5 | 2.5, 6.4 | 29 |
+| W## / A### | Screen ID: Website/Portal W01–W34, Admin A001–A113 | A 01–113; W 01–49 (14 unused) | 148 | Source (FRD §16.2); 2.5 | 2.5, 6.4 | 29 |
 
 <!-- GEN:IDREG:END -->
 
@@ -1188,9 +1188,9 @@ Every part file, its contents (top-level sections, excluding tag registers and q
 | 7.2 | Part-07-2_AI_Agent_Specifications.md | PART 7 (Batch 7.2), AI Agent and Automation Specifications and Multi-Agent Orchestration | Specification table; Agent detail cards; Automation specifications (AU, deterministic, Tier 0); Tool registry (DEC-048); Multi-agent orchestration design: overview; Shared memory and state; Inter-agent protocol; … (+5) | 49 | 4 | 25,335 | Complete |
 | 7.3 | Part-07-3_AI_Model_Strategy_Cost_Governance.md | PART 7 (Batch 7.3), AI Model Strategy, Routing and Fallback, Cost Optimization, Subscriptions and TCO, AI Governance, Cross-Role Review | Model strategy, routing and fallback; Cost optimization for the paid model (quantified); Subscriptions, tooling and total cost of ownership; AI governance and safeguards; Cross-role review (client spec Section 9) and red-team of the catalogue; Registers for Part 7 | 34 | 2 | 12,612 | Complete |
 | 9.1 | Part-09-1_Errata_and_Consolidated_Decisions.md | PART 9 (Batch 9.1), Errata Register and Consolidated Decisions | Errata decisions; Effect on earlier decisions | 8 | 0 | 2,047 | Complete |
-| 9.2 | Part-09-2_Glossary_and_Registers.md | PART 9 (Batch 9.2), Appendices: Glossary, ID Registry and Consolidated Registers | Generation method and controls; Glossary; ID registry; Tag numbers issued, by issuing part; Consolidated registers; Duplicate-ID check; Document map | not rendered | 1 | 9,433 | Complete |
+| 9.2 | Part-09-2_Glossary_and_Registers.md | PART 9 (Batch 9.2), Appendices: Glossary, ID Registry and Consolidated Registers | Generation method and controls; Glossary; ID registry; Tag numbers issued, by issuing part; Consolidated registers; Duplicate-ID check; Document map | not rendered | 1 | 29,804 | Complete |
 
-**Totals:** 1,662 pages across 27 rendered PDFs; 113 Mermaid diagrams; 647,743 words.
+**Totals:** 1,662 pages across 27 rendered PDFs; 113 Mermaid diagrams; 668,114 words.
 
 <!-- GEN:DOCMAP:END -->
 
