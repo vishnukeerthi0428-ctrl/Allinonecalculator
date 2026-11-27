@@ -8,7 +8,7 @@
 | Purpose | Present the programme budget as **two separate ledgers**, at the Founder's request: (A) **development cost**, the one-time cost to design, build, test and launch, and (B) **subscription and running cost**, the recurring monthly cost of cloud, AI usage, providers and software subscriptions |
 | Baseline | Part 8.1 (team and rates), Part 8.2 §8.2.7 (budget lines B01–B23), Part 9.5 §9.5.2.6 (re-plan budget), DEC-228 (Option 2b approved) |
 | Roles applied | FinOps Lead (lead), Product Owner, Delivery Lead, Solutions Architect |
-| Authority | DEC-229 (below) makes this ledger split the authoritative presentation of the budget. Figures are **estimates**; every provider price is "verify at time of implementation (as of 27 Nov 2026)" |
+| Authority | DEC-229 (below) makes this ledger split the authoritative presentation of the budget. **Both ledgers approved by the Founder on 27 Nov 2026: Ledger A by DEC-230, Ledger B by DEC-231 (Part 9.5 §9.5.2.9).** Figures are **estimates**; every provider price is "verify at time of implementation (as of 27 Nov 2026)" |
 
 **Rates and conventions used throughout**
 

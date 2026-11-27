@@ -6,14 +6,14 @@
 | 0.2 | 27 Nov 2026 | Delegated Product Owner authority | Part 0A: 65 decisions resolving all conflicts, gaps and open questions |
 | 0.3–0.9 | 27 Nov 2026 | Blueprint team | Parts 1–8 drafted, reviewed and rendered |
 | 0.95 | 27 Nov 2026 | Blueprint team | Part 9 errata (DEC-066…156), registers, final quality report |
-| 1.0 | 27 Nov 2026 | Blueprint team + Founder | Full 38-document source-pack review (Part 0B and ten enhancement parts); decisions DEC-157…227 (Part 9.5); Founder approval of Option 2b (DEC-228); Part 10 assembly (this document) |
+| 1.0 | 27 Nov 2026 | Blueprint team + Founder | Full 38-document source-pack review (Part 0B and ten enhancement parts); decisions DEC-157…227 (Part 9.5); Founder approvals of Option 2b (DEC-228), both budgets, the QA/growth uplift and the XBR reading (DEC-230…233); Part 10 assembly (this document) |
 
 | Item | Value |
 |---|---|
 | Inputs | The complete 38-document engineering package (01 BRD, 02 FRD, 03–36 domain specifications, 37 illustrative workflow, 38 all numbers). Coverage of every document is reported in Part 0B |
 | Classification | Confidential: internal and authorized delivery partners |
-| Decision authority | Product Owner delegated decision-making to the blueprint team (27 Nov 2026). Every decision is listed (DEC-001…229) and can be overridden through change control (BRD §11) |
-| Precedence | Later decisions override earlier text: Part 8.4 (DEC-229) > Part 9.5 (DEC-157…228) > Part 9.1 (DEC-066…156) > Part 0A (DEC-001…065) > earlier part text > source documents, where a decision resolves a conflict or gap |
+| Decision authority | Product Owner delegated decision-making to the blueprint team (27 Nov 2026). Every decision is listed (DEC-001…233) and can be overridden through change control (BRD §11) |
+| Precedence | Later decisions override earlier text: Part 9.5 §9.5.2.9 (DEC-230…233) > Part 8.4 (DEC-229) > Part 9.5 (DEC-157…228) > Part 9.1 (DEC-066…156) > Part 0A (DEC-001…065) > earlier part text > source documents, where a decision resolves a conflict or gap |
 | Time-sensitive facts | Prices, model names, free tiers, provider terms and regulatory dates are marked "verify at time of implementation (as of 27 Nov 2026)" |
 
 # Executive summary
@@ -62,7 +62,7 @@ AI never signs, pays, submits bids or sets prices.
 | User stories | 230, with about 1,357 Gherkin scenarios |
 | Test cases | 2,912 (2,138 functional, NFR, filter and BR-S + 774 AI/automation evaluations) + 952 enhancement cases (TC-ENH, including 64 closure cases in Part 6.10) plus verification items; 799 source-pack tests mapped; **100% traceability at every level, including the 38-document source pack** |
 | AI agents and automations | 90 (38 agents + 52 automations), each with guardrails, fallbacks, KPIs and costs; plus a 100-use-case automation library |
-| Decisions | 229 (DEC-229: development vs subscription cost ledgers, Part 8.4) |
+| Decisions | 233 (DEC-229: cost ledgers; DEC-230…233: Founder approvals of both budgets, the QA/growth uplift and the XBR reading) |
 | Source-pack coverage | 11,269 aspects of the 38 documents reviewed line by line; every gap and conflict addressed (Part 0B) |
 | Optimization model | 21 dimensions, 104 controls, 24 scenarios, 35 optimization KPIs OKPI-01…35 (21 mandatory) |
 
@@ -93,9 +93,9 @@ AI never signs, pays, submits bids or sets prices.
 
 **Decisions needed from the owner (confirm or override).**
 1. ~~Choose the staffing option~~: **done; Option 2b approved (DEC-228).** Start procuring the two contract engineers in Sprint 0.
-2. Confirm the QA uplift and the 0.75 growth/compliance allocation in W4–W5 (DEC-132/133).
-3. Approve the two budgets separately: Ledger A development ₹52.7–84.1 L and Ledger B monthly running cost ₹19,895–26,335 (Part 8.4, DEC-229).
-4. Confirm the reading of the source pack's "+5 business requirements" as expansion statements XBR-01…05 (Part 9.5, ASSUMPTION-506).
+2. ~~Confirm the QA uplift and the 0.75 growth/compliance allocation in W4–W5~~: **done; confirmed (DEC-232).**
+3. ~~Approve the two budgets~~: **done; Ledger A development ₹52.7–84.1 L approved (DEC-230) and Ledger B running cost ₹19,895–26,335 per month approved (DEC-231).**
+4. ~~Confirm the reading of the "+5 business requirements" as XBR-01…05~~: **done; confirmed (DEC-233).**
 5. Obtain the legal confirmations listed in Part 8.
 
 All other decisions are recorded and can proceed as defaulted.
