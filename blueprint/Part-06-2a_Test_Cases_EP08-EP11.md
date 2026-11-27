@@ -109,8 +109,8 @@ The object keys used in Part 5.2 Gherkin are added to GSE-SYN as a versioned edg
 | J-11-01 ★ | P05 → R05L | A050 brief → draft → validate (a11y, claims) → A051 approve → W08 published | TC-11-074 | W3 |
 | J-12-01 ★ | P15 Public | W10 campaign landing page → consented RFQ → lead with attribution | TC-12-082 (file b) | W3 |
 | J-12-02 | P05 → R05L | A058 campaign simulate → A059 approve and reserve → run with execution-time suppression | TC-12-083 (file b) | W3 |
-| J-13-01 ★ | P07 → R03L → R16 | A067 quote → A068 approval → W23 accept | TC-13-123 (file b) | W4 |
-| J-13-02 ★ | R10 → R16 signatory | A071/A072 contract → W24 sign (signed-PDF path) → Executed | TC-13-124 (file b) | W4 |
+| J-13-01 ★ | P07 → R03L → R16 | A067 quote → A068 approval → W23 accept | TC-13-127 (file b) | W4 |
+| J-13-02 ★ | R10 → R16 signatory | A071/A072 contract → W24 sign (signed-PDF path) → Executed | TC-13-128 (file b) | W4 |
 | J-14-01 ★ | P06 → R02 | A104 bid → checklist → decision → submission evidence → award | TC-14-099 (file b) | W4 |
 | J-14-02 ★ | P14d buyer → P07 | W14 RFQ → A067 quote → A105 order → fulfilment → W25 accept → receivable | TC-14-100 (file b) | W4 |
 
@@ -1204,7 +1204,7 @@ TC count = TCs that link the FR explicitly or link a story that Part 5.2 §5.2.1
 | UAT | 2 |
 
 
-Note on the pyramid (§6.1.9.1): the counts above are *test-case designs*. Parameterized rule rows (quiet hours, caps, bounces, routing, template usability) run first as unit tests of the domain module and then as one SYS smoke per rule family, so the automated test *count* follows the 60–70% unit share even though most designs name SYS as their acceptance level (same pattern as §6.1.12.4, TC-13-008).
+Note on the pyramid (§6.1.9.1): the counts above are *test-case designs*. Parameterized rule rows (quiet hours, caps, bounces, routing, template usability) run first as unit tests of the domain module and then as one SYS smoke per rule family, so the automated test *count* follows the 60–70% unit share even though most designs name SYS as their acceptance level (same pattern as the Part 6.1 §6.1.12.4 worked example).
 
 ---
 
@@ -1215,7 +1215,7 @@ Note on the pyramid (§6.1.9.1): the counts above are *test-case designs*. Param
 | Tag | Statement | Where used | Owner / closure |
 |---|---|---|---|
 | [RECOMMENDATION-075] | One **adapter conformance battery** (checks B1–B7: outcome normalisation, idempotent submit, uncertain path, signed webhook, secret hygiene, environment guard, disabled-by-default) run as a single parameterized suite for SES, WhatsApp, Google Calendar, social, ads and e-sign; a channel flag (CFG-31) cannot be turned on until its battery row is green | §6.2.1.6; TC-08-036…052, TC-09-001…015, TC-10-001…009, TC-11-033…054; file b TC-12-042…048, TC-13-086…094 | QA Lead with Principal Engineer; implements RECOMMENDATION-054 and TP-06 |
-| [RECOMMENDATION-076] | **E2E journey register** for EP-08…EP-14 (J-08-01…J-14-02), each journey one Playwright TC with axe scans; ★ journeys proposed for the wave's manual top-20 accessibility audit (Part 2.5 §2.46) | §6.2.1.7; TC-08-188, 189; TC-09-045, 046; TC-10-059, 060; TC-11-074; file b TC-12-082, 083; TC-13-123, 124; TC-14-099, 100 | Lead UX/UI Designer and QA Lead; Part 8 wave plans |
+| [RECOMMENDATION-076] | **E2E journey register** for EP-08…EP-14 (J-08-01…J-14-02), each journey one Playwright TC with axe scans; ★ journeys proposed for the wave's manual top-20 accessibility audit (Part 2.5 §2.46) | §6.2.1.7; TC-08-188, 189; TC-09-045, 046; TC-10-059, 060; TC-11-074; file b TC-12-082, 083; TC-13-127, 128; TC-14-099, 100 | Lead UX/UI Designer and QA Lead; Part 8 wave plans |
 | [ASSUMPTION-185] | Test-oracle interpretations O-1…O-11 for EP-08…EP-11 where the baseline leaves a boundary, window, precedence or approver open (rolling windows half-open, SES daily reset, STOP matching, confidence inclusivity, stricter loosening approver, DST Sunday case, hold extension timing, rate-limit counting, approval expiry instant, dedup window, order of denial checks) | §6.2.1.8 | Product Owner and Compliance Lead confirm in Sprint 0; a different confirmed interpretation changes the TC, not the code silently |
 | [ASSUMPTION-186] | Test-oracle interpretations O-12…O-21 for EP-12…EP-14 (MFA freshness boundary, business-day definition, validity end of day, inclusive commission and concession limits, anomaly strictly above 150%, duplicate-referral window, renewal notice date, reservation expiry, holdout rounding, deadline warning instants) | File b §6.2.8.2 | Product Owner, Finance lead, Legal |
 | [ASSUMPTION-187] | Part 5.2 Gherkin object keys (users, opportunities, messages, threads, campaigns, quotes, contracts, bids, orders) are added to GSE-SYN as the versioned edge pack **EDGE-P52** with stable keys; values not stated in Part 5.2 are fixture choices | §6.2.1.4; file b §6.2.8.1 | QA automation; GSE-SYN v1.4.0 manifest review (§6.1.7.3 rule 5) |

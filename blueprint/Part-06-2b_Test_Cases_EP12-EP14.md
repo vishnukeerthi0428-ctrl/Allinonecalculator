@@ -100,7 +100,7 @@ Stories US-1201…US-1210 (49 AC). FRs: FR-A056…FR-A061, FR-A064, FR-W10, FR-W
 
 | ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
 |---|---|---|---|---|---|---|---|---|---|---|
-| TC-12-008 | Approve exact hash and publish with atomic pointer swap and tenant-keyed purge (L1) | TS-12-02 · US-1202 AC-1202-01 · FR-A057; BRL-PUB-01, BRL-PUB-02 | Pre: PP-01, OrganicSpec, R05L. Data: LP-14 checks pass, hash `sha256:9a1b` | Approve; publish; GET public URL on `organicspec.example` | Pointer swapped once; purge request keyed by tenant/startup/locale/revision; page served at new revision | P0 | T01 | DT | Y | SYS |
+| TC-12-008 | Approve exact hash and publish with atomic pointer swap and tenant-keyed purge (L1) | TS-12-02 · US-1202 AC-1202-01 · FR-A057; BRL-PUB-01, BRL-PUB-02, BRL-MKT-01 | Pre: PP-01, OrganicSpec, R05L. Data: LP-14 checks pass, hash `sha256:9a1b` | Approve; publish; GET public URL on `organicspec.example` | Pointer swapped once; purge request keyed by tenant/startup/locale/revision; page served at new revision | P0 | T01 | DT | Y | SYS |
 | TC-12-009 | Two critical axe violations disable Approve (L2) | TS-12-02 · US-1202 AC-1202-02 · BRL-PUB-06 | Data: LP-14 with 2 critical violations | Open approval; POST approve | Button disabled with list; API 422 `ACCESSIBILITY_GATE` | P0 | T08 | DT | Y | SYS |
 | TC-12-010 | Publish request with a mismatched hash returns 409 (L3) | TS-12-02 · US-1202 AC-1202-03 · BRL-PUB-01 | Data: hash `sha256:0000` | POST publish | 409; live page unchanged | P0 | T07 | DT | Y | SYS |
 | TC-12-011 | Rollback to the prior approved hash with NT-037 | TS-12-02 · US-1202 AC-1202-04 · BRL-PUB-02; NT-037 | Data: LP-14 rev 2 published, rev 1 prior approved | Roll back | Visitors see rev 1 after purge; never mixed (revision header = body hash); NT-037 sent | P0 | T01 | EG | Y | SYS |
@@ -157,7 +157,7 @@ Stories US-1201…US-1210 (49 AC). FRs: FR-A056…FR-A061, FR-A064, FR-W10, FR-W
 | TC-12-038 | Finance sees spend and reservation but no Approve | TS-12-05 · US-1205 AC-1205-05 | Pre: `lata` R08 | Open CMP-9; POST approve | Spend and reservation visible; action absent; API 403 | P1 | T07 | EP | Y | SYS |
 | TC-12-039 | Campaign without R10 claims approval stays pending (K6) | TS-12-05 · US-1205 Links · DEC-038 | Data: claims approval missing | `farah` approves | State remains `PendingApproval` "awaiting claims approval (R10)" | P0 | T19 | DT | Y | SYS |
 | TC-12-040 | Approval expires at the campaign end date | TS-12-05 · US-1205 Notes · BRL-APR-03 | Data: end date 2026-12-20 23:59:59 IST; send batch due 2026-12-21 09:00 | Advance clock | Campaign `Completed` at end date; 0 sends on 12-21 | P1 | T01 | BVA | Y | SYS |
-| TC-12-041 | Resume after pause rechecks approval validity and policy | TS-12-05 · US-1205 · §2.27.13 Paused→Running | Data: CMP-9 Paused; claim CL-12 expired meanwhile | POST resume | 409 "approval no longer valid"; stays `Paused` | P0 | T19 | ST | Y | SYS |
+| TC-12-041 | Resume after pause rechecks approval validity and policy | TS-12-05 · US-1205 · §2.27.13 Paused→Running; BRL-MKT-01 | Data: CMP-9 Paused; claim CL-12 expired meanwhile | POST resume | 409 "approval no longer valid"; stays `Paused` | P0 | T19 | ST | Y | SYS |
 
 #### Group TC-12-F: Contract and decision table – ads provider adapter (US-1206; battery B1–B7)
 
@@ -289,7 +289,7 @@ Stories US-1301…US-1313 (67 AC). FRs: FR-A065…FR-A072, FR-W23, FR-W24; cross
 
 | ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
 |---|---|---|---|---|---|---|---|---|---|---|
-| TC-13-001 | Proposal draft from template with frozen price snapshot and read-only amount | TS-13-01 · US-1301 AC-1301-01 · FR-A065; BRL-QTE-01 | Pre: PP-01, MedMaarg, `asha`; clock 2026-11-27 11:00 IST. Data: D-210 with Completed demo; MM-PILOT v2; "Scanner corporate pilot" PV-7 (2 units × INR 150.00, 10% pilot discount); replay fixture `ag020_mm_pilot` | Generate | P-55 v1 `Draft` with scope sections, evidence links; amount INR 270.00 computed by the pricing library from PV-7; snapshot ID stored; amount field read-only in A065 | P0 | T01 | UC | Y | SYS |
+| TC-13-001 | Proposal draft from template with frozen price snapshot and read-only amount | TS-13-01 · US-1301 AC-1301-01 · FR-A065; BRL-QTE-01, BRL-AI-03 | Pre: PP-01, MedMaarg, `asha`; clock 2026-11-27 11:00 IST. Data: D-210 with Completed demo; MM-PILOT v2; "Scanner corporate pilot" PV-7 (2 units × INR 150.00, 10% pilot discount); replay fixture `ag020_mm_pilot` | Generate | P-55 v1 `Draft` with scope sections, evidence links; amount INR 270.00 computed by the pricing library from PV-7; snapshot ID stored; amount field read-only in A065 | P0 | T01 | UC | Y | SYS |
 | TC-13-002 | Guarantee sentence removed and flagged | TS-13-01 · US-1301 AC-1301-02 · BRL-AI-05 | Data: replay output contains "guaranteed 30% reduction in sick days" | Generate | Sentence removed; note "unsupported promise removed"; audit entry | P0 | T14, T19 | EG | Y | SYS |
 | TC-13-003 | Planned offering refused | TS-13-01 · US-1301 AC-1301-03 · BRL-MKT-02 | Data: "Doctor Connect" Planned | Generate | 422 BRL-MKT-02; no proposal | P1 | T19 | EP | Y | SYS |
 | TC-13-004 | Price version validity boundary | TS-13-01 · US-1301 AC-1301-03 · BRL-QTE-01 | Data: PV-7 valid until 2026-11-30 23:59:59 IST | Generate at 2026-11-30 23:59:59 and 2026-12-01 00:00:00 IST | First succeeds; second 422 "Current price version required" | P0 | T01 | BVA | Y | SYS |
@@ -397,7 +397,7 @@ Stories US-1301…US-1313 (67 AC). FRs: FR-A065…FR-A072, FR-W23, FR-W24; cross
 
 | ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
 |---|---|---|---|---|---|---|---|---|---|---|
-| TC-13-064 | Approved answer suggested and objection resolved with time recorded | TS-13-07 · US-1307 AC-1307-01 · FR-A069; KPI-28 | Pre: PP-01, MedMaarg, `asha`. Data: objection "data privacy concern" on D-210; FAQ-31 citing KR-9 | Record; use answer | FAQ-31 suggested with KR-9; objection `Resolved`; time-to-resolution stored | P1 | T01 | EP | Y | SYS |
+| TC-13-064 | Approved answer suggested and objection resolved with time recorded | TS-13-07 · US-1307 AC-1307-01 · FR-A069; BRL-AI-03; KPI-28 | Pre: PP-01, MedMaarg, `asha`. Data: objection "data privacy concern" on D-210; FAQ-31 citing KR-9 | Record; use answer | FAQ-31 suggested with KR-9; objection `Resolved`; time-to-resolution stored | P1 | T01 | EP | Y | SYS |
 | TC-13-065 | Concession limit: 5.00% within, 5.01% and 8.00% escalate | TS-13-07 · US-1307 AC-1307-02 · O-15 | Data: MedMaarg limit 5.00% | Propose 5.00, 5.01, 8.00 | 5.00 allowed as a quote revision draft; 5.01 and 8.00 create exceptions in A070; nothing promised to the customer | P0 | T19 | BVA | Y | SYS |
 | TC-13-066 | No evidence: no comparative answer | TS-13-07 · US-1307 AC-1307-03 · BRL-SRC-10, BRL-AI-04 | Data: "your competitor is cheaper by 40%" | Request suggestion | Abstains; no comparative claim generated | P0 | T14, T19 | EP | Y | SYS |
 | TC-13-067 | AI output offering a discount is blocked | TS-13-07 · US-1307 AC-1307-04 · BRL-AI-07; DEC-064 | Data: replay output "we can offer 15% off" | Request suggestion | Blocked; audit event; no quote revision created | P0 | T14, T19 | EG | Y | SYS |
@@ -560,7 +560,7 @@ Stories US-1401…US-1412 (62 AC). FRs: FR-A104, FR-A105, FR-W14, FR-W15, FR-W16
 | TS-14-09 | Fulfilment events are idempotent and never exceed ordered quantity beyond policy tolerance | US-1409 · FR-DM-03, FR-A105 | RA-08 · **P0** | TC-14-066…072 |
 | TS-14-10 | Acceptance posts receivables and payables to separate append-only ledgers | US-1410 · FR-A105 | RA-07, RA-08 · **P0** | TC-14-073…079 |
 | TS-14-11 | Portal status shows granted orders only, with units and accessible timelines | US-1411 · FR-W25 | RA-15 · **P0** | TC-14-080…085 |
-| TS-14-12 | Imports of price lists, availability and open deals are dry-run first, idempotent and consent-safe | US-1412 · FR-A104, FR-A105 (via A103) | RA-18, RA-17 · **P0** | TC-14-086…094 |
+| TS-14-12 | Imports of price lists, availability and open deals are dry-run first, idempotent and consent-safe | US-1412 · FR-A104, FR-A105 (via A103) | RA-18, RA-17 · **P0** | TC-14-086…094, TC-14-101 |
 | TS-14-13 | Bid and order state machines; full synthetic deal journeys for AppNAI and OrganicSpec | US-1401…US-1411 · §2.27.4, §2.27.8 | RA-08, RA-09 · **P0** | TC-14-095…100 |
 
 ### 6.2.11.2 Test cases
@@ -580,7 +580,7 @@ Stories US-1401…US-1412 (62 AC). FRs: FR-A104, FR-A105, FR-W14, FR-W15, FR-W16
 
 | ID | Request category · entry point · capability state | Expected routing | Links | P | Type | Tech | Auto | Lvl |
 |---|---|---|---|---|---|---|---|---|
-| TC-14-007 | External AI/software project · AppNAI site or Admin · AppNAI has `bid_desk` | AppNAI bid desk | TS-14-01 · US-1401 · BRL-BID-06; FR-DM-04 | P0 | T01 | DT | Y | SYS |
+| TC-14-007 | External AI/software project · AppNAI site or Admin · AppNAI has `bid_desk` | AppNAI bid desk | TS-14-01 · US-1401 · BRL-BID-06; FR-DM-04, FR-CSM-01 | P0 | T01 | DT | Y | SYS |
 | TC-14-008 | External AI development request · entered on the EduVerse site | Routed to AppNAI (FR-DM-04) | TS-14-01 · US-1401 · FR-DM-04 | P0 | T01 | DT | Y | SYS |
 | TC-14-009 | Institutional wellness tender · MedMaarg without `bid_desk` grant | Refused "capability required (BRL-BID-06)"; no bid | TS-14-01 · US-1401 · BRL-BID-06; ABAC-08 | P0 | T01 | DT | Y | SYS |
 | TC-14-010 | Same tender · MedMaarg after R12 grants `bid_desk` (configuration, no code change) | MedMaarg bid created | TS-14-01 · US-1401 · DEC-052; BRL-TEN-11 | P1 | T01 | DT | Y | SYS |
@@ -666,7 +666,7 @@ Stories US-1401…US-1412 (62 AC). FRs: FR-A104, FR-A105, FR-W14, FR-W15, FR-W16
 
 | ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
 |---|---|---|---|---|---|---|---|---|---|---|
-| TC-14-058 | Sell order approved, priced and reserved | TS-14-08 · US-1408 AC-1408-01 · FR-A105; BRL-ORD-01, BRL-ORD-04 | Pre: PP-01, OrganicSpec, `sunil` creates, `gopal` approves. Data: TUR-A available 50 kg; SO-71 2 kg at 150.00 with 10% | Create; approve | Total INR 270.00 before tax; 2 kg reserved; available 48 kg; SO-71 `Approved` | P0 | T01 | BVA | Y | SYS |
+| TC-14-058 | Sell order approved, priced and reserved | TS-14-08 · US-1408 AC-1408-01 · FR-A105, FR-CSM-01; BRL-ORD-01, BRL-ORD-04 | Pre: PP-01, OrganicSpec, `sunil` creates, `gopal` approves. Data: TUR-A available 50 kg; SO-71 2 kg at 150.00 with 10% | Create; approve | Total INR 270.00 before tax; 2 kg reserved; available 48 kg; SO-71 `Approved` | P0 | T01 | BVA | Y | SYS |
 | TC-14-059 | Quantity equal to availability succeeds; one more kilogram fails | TS-14-08 · US-1408 AC-1408-02 · BRL-ORD-04 | Data: SO-72 48 kg, then SO-73 1 kg | Approve each | SO-72 approved, available 0; SO-73 409 "Insufficient available quantity" | P0 | T01 | BVA | Y | SYS |
 | TC-14-060 | Two concurrent approvals for the last 2 kg: exactly one succeeds | TS-14-08 · US-1408 AC-1408-03 · NFR-005 | Pre: PP-05. Data: available 2 kg; SO-74 and SO-75 each 2 kg | Approve concurrently (20 repetitions) | Exactly one approved each time; the other 409; availability never negative | P0 | T16 | EG | Y | IT |
 | TC-14-061 | Cancellation releases the reservation and is audited | TS-14-08 · US-1408 AC-1408-04 · BRL-ORD-04 | Data: SO-71 Approved | Cancel with reason | 2 kg back to availability; `Cancelled`; audit | P0 | T01 | ST | Y | SYS |
@@ -723,6 +723,7 @@ Stories US-1401…US-1412 (62 AC). FRs: FR-A104, FR-A105, FR-W14, FR-W15, FR-W16
 | TC-14-092 | Re-running the same file creates no duplicates | TS-14-12 · US-1412 · NFR-005; §6.1.14.5 | Data: same committed file again | Commit | Run report all "unchanged"; 0 new rows | P0 | T11, T16 | EG | Y | SYS |
 | TC-14-093 | Imported deal contacts stay ineligible until consent is verified | TS-14-12 · US-1412 Notes · DEC-039; BRL-ELG-03 | Data: open deals with 25 contacts | Import; enrol a contact | Enrol refused (no verified lawful basis) | P0 | T19 | EP | Y | SYS |
 | TC-14-094 | A T2 import never writes T1 rows | TS-14-12 · US-1412 D6 · BRL-TEN-03 | Pre: `b-admin` R12. Data: file containing a T1 startup code | Import | Rows scoped to T2; foreign scope codes rejected; 0 T1 rows changed | P0 | T15 | EG | Y | SYS |
+| TC-14-101 | Import error report link is classification-redacted and expires after 72 h | TS-14-12 · US-1412 Links · BRL-PRV-07; DEC-039 | Data: dry-run report for a file containing supplier contact emails; link created 2026-12-01 10:00 IST | Download at 2026-12-04 09:59:59 and 10:00:00 IST; inspect content | First download works with contact emails masked; second returns expired (410/404); access logged | P1 | T19 | BVA | Y | SYS |
 
 #### Group TC-14-K: State transition and use case – bid and order machines; full synthetic deals
 
@@ -757,7 +758,7 @@ Stories US-1401…US-1412 (62 AC). FRs: FR-A104, FR-A105, FR-W14, FR-W15, FR-W16
 | US-1409 | 01→066 · 02→067 · 03→069 · 04→070 · 05→071 · extra→068, 072 |
 | US-1410 | 01→073 · 02→074 · 03→075 · 04→076 · 05→077 · 06→078 · extra→079 |
 | US-1411 | 01→080 · 02→081 · 03→082 · 04→083 · 05→084 · extra→085 |
-| US-1412 | 01→086 · 02→087 · 03→088 · 04→089, 090 · 05→091 · extra→092, 093, 094 |
+| US-1412 | 01→086 · 02→087 · 03→088 · 04→089, 090 · 05→091 · extra→092, 093, 094, 101 |
 
 All 62 EP-14 AC covered.
 

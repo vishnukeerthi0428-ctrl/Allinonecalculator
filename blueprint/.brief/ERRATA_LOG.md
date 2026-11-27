@@ -82,3 +82,15 @@
 61. Restore-drill canary interval: Part 6.1 (10 s) governs.
 62. "Subscription" in Part 5.3 means ServiceSubscription (DEC-085).
 63. The W22 card label "unpaid verified invoices" is renamed "Outstanding balance (verified invoices)".
+
+## From Part 8
+64. CONFLICT-142: Release 1 scope (~307 pd) cannot be built by Day 90 (~169 pd capacity). Resolution: **plan of record = re-baselined schedule** (Release 1 go/no-go about Day 152; Release 2 built by Day 180; W5 exit after the 30-day monitored pilot at about Day 201). Founder's optional acceleration lever: two contract engineers (₹5.5–8.3 L), bringing Release 1 to about Day 124. The DEC-006 wave labels stay; the day targets for W2–W5 are superseded by Part 8.
+65. CONFLICT-140/141: W0 scope vs W0-A/W0-B dates. Resolution: the Part 8 sprint allocation governs which stories land in W0-A/W0-B. Gates are defined by Part 8's minimum gate scope.
+66. CONFLICT-143: pen-test timing (Part 4.1 vs 6.1). Resolution: external pen test before the Release 1 go-live, retest before Release 2, then annually and after major changes.
+67. CONFLICT-144: ADR-043 "no paid WAF at pilot" is superseded by DEC-081 (WAF from W2). B07 stays ₹500; the WAF cost sits in B21 (≈ ₹1,300–1,800, per Part 8).
+68. DEC-020 budget lines are updated by Part 8: B01 ₹5,000–7,000, B20 ₹300–600, B21 ₹1,300–1,800, B23 ₹1,000. Monthly base with contingency ₹19,665–22,885; with optional items ₹34,155–37,375.
+69. Duplicate risks RSK-304/342, 331/362, 332/363: the Part 8 consolidated register governs; the duplicates are merged there.
+70. FR-OP001 → EP-04; FR-OP002/003 → EP-21.
+71. Story dependencies US-0113→US-0108 and US-0303→US-0301: the Part 8 sprint sequencing orders the dependency first.
+72. The 0.5 growth/compliance lead is over-allocated in W4–W5. Resolution: raise to 0.75 FTE for W4–W5, or add contract legal/compliance support (cost per Part 8).
+73. QA: 1.0 FTE from Sprint 3 (+₹2.75–4.13 L) is adopted (resolves GAP-165/DEC-095).

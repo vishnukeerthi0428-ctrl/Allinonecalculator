@@ -675,7 +675,7 @@ Cost (₹)            cost = pd × rate ;  rate = ₹4,545 (₹1.0 L ÷ 22) to �
 | Scope contingency (MoSCoW buffer) | Tier 1 spill 41.0 SP (28.7 pd) already applied; tier 2 53 SP (≈ 37 pd) ready | Founder/PO | Velocity < 40 SP after S4, or uplifts not approved |
 | Schedule buffer | ≈ 22 SP (≈ 15 pd) unallocated, mostly in S12 (hardening) | PO | UAT defects, pen-test fixes, DR drill findings |
 | Effort risk to P80 | P80 − central = 29 pd (≈ ₹1.3–2.0 L) | Finance (management reserve) | Re-estimate at S3 and S7 reviews |
-| Run-cost contingency | B11 = 15% of selected monthly lines (Part 8.2 §8.2.6.2) | Founder | Each draw recorded (Part 4.3 §4.46.4) |
+| Run-cost contingency | B11 = 15% of selected monthly lines (Part 8.2 §8.2.7.2) | Founder | Each draw recorded (Part 4.3 §4.46.4) |
 | AI ceiling headroom | Part 7 base estimate ₹1,150 vs ₹3,000 pilot ceiling (38% used) | FinOps | Degradation ladder (Part 7 §7.5.7) |
 
 Recommended management reserve on C03: **10% of the central pd value (≈ 42 pd; ₹1.9–2.8 L)**, drawn only after the scope contingency is exhausted.
@@ -686,7 +686,7 @@ Recommended management reserve on C03: **10% of the central pd value (≈ 42 pd;
 
 ### 8.1.7.1 Critical path chain
 
-The chain below has zero float in the re-baselined plan: a one-sprint slip in any node moves the Release 2 build go/no-go beyond Day 180. Nodes in brackets are external dependencies that must arrive before the node that consumes them.
+The chain below has zero float in the re-baselined plan: a one-sprint slip in any node moves the Release 2 build go/no-go beyond Day 180. Nodes that start with a DP identifier are external dependencies that must arrive before the node they feed.
 
 ```mermaid
 flowchart TD
