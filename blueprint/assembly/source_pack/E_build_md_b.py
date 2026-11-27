@@ -118,9 +118,9 @@ P("""Additional columns required by the conflict resolutions and checks (not der
 
 ```sql
 ALTER TABLE com_order ADD COLUMN order_kind text NOT NULL DEFAULT 'goods' CHECK (order_kind IN ('goods','service','training','project'));  -- CONFLICT-386; source sales_order.direction values service/training/project
-ALTER TABLE intel_score_version ADD COLUMN version_no integer;  -- IX-ENH-E-18; sequence per opportunity, set by trigger max+1
-ALTER TABLE intel_signal ADD COLUMN dedupe_key char(64);  -- IX-ENH-E-16; sha256(organization_id, signal_type_id, sorted evidence ids)
-ALTER TABLE eng_intent ADD COLUMN superseded_by uuid REFERENCES eng_intent (id);  -- IX-ENH-E-27; re-classification keeps history (append-only)
+ALTER TABLE intel_score_version ADD COLUMN version_no integer;  -- IX-ENH-E-17; sequence per opportunity, set by trigger max+1
+ALTER TABLE intel_signal ADD COLUMN dedupe_key char(64);  -- IX-ENH-E-15; sha256(organization_id, signal_type_id, sorted evidence ids)
+ALTER TABLE eng_intent ADD COLUMN superseded_by uuid REFERENCES eng_intent (id);  -- IX-ENH-E-25; re-classification keeps history (append-only)
 ALTER TABLE gov_policy_decision ADD COLUMN reason_codes text[] NOT NULL DEFAULT '{}';  -- source growth_policy_decision.reason
 ALTER TABLE mkt_publication_snapshot ADD COLUMN page_type text;  -- source growth_website_publication.page_type (mirrors mkt_publication.target_kind at publish time)
 ALTER TABLE eng_message_draft ALTER COLUMN body SET DATA TYPE text;  -- no type change; reclassify body as Rest (PII-R protection in doc 08 #65)
@@ -707,7 +707,7 @@ Feature: Service requests are safe (US-20-EE01)
 | CONFLICT-386 | Conflict | Order direction values vs ledger side → `order_kind` | §3.6.4.6 |
 | CONFLICT-387 | Conflict | Sequence delay seconds vs business days | §3.6.6 |
 | GAP-388 | Gap | Missing entities: business template, service request, eval case result (and milestone via CONFLICT-383); interim retention for service requests | §3.6.5.1 |
-| GAP-389 | Gap | 113 column additions on 77 tables (incl. portal grant invite/redemption columns) | §3.6.4.5, §3.6.5.1(b) |
+| GAP-389 | Gap | 113 column additions on 73 tables (incl. portal grant invite/redemption columns) | §3.6.4.5, §3.6.5.1(b) |
 | GAP-390 | Gap | 54 keys and indexes IX-ENH-E-01…54 | §3.6.4.7, §3.6.5.1(c) |
 | GAP-391 | Gap | No table-level exposure register | §3.6.5.3 |
 | GAP-392 | Gap | No schema decision register; 136 field records, 4 blocked rows, 38 API and 138 UI approvals outstanding | §3.6.4.8, §3.6.5.3 |

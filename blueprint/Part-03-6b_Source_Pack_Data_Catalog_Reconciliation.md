@@ -112,7 +112,7 @@ ALTER TABLE ten_startup ADD COLUMN industry_code text NULL;  -- source sales_sta
 ALTER TABLE ten_startup ADD COLUMN profile jsonb NOT NULL DEFAULT '{}'::jsonb;  -- source sales_startup.profile
 ALTER TABLE ten_startup ADD COLUMN autonomy_caps jsonb NOT NULL DEFAULT '{}'::jsonb;  -- source sales_startup.autonomy; DEC caps
 ALTER TABLE ten_startup ADD COLUMN approved_config_hash char(64) NULL;  -- source sales_startup.approved_hash
-ALTER TABLE ten_domain ADD COLUMN brand jsonb NULL (logo/colour tokens;  -- source sales_brand_domain.brand; approved assets only)
+ALTER TABLE ten_domain ADD COLUMN brand jsonb NULL;  -- source sales_brand_domain.brand; logo/colour tokens; approved assets only
 ALTER TABLE ten_portal_grant ADD COLUMN contact_id uuid NULL REFERENCES intel_contact (id);  -- source sales_external_access_grant.contact_id
 ALTER TABLE ten_portal_grant ADD COLUMN invite_token_hash char(64) NULL UNIQUE;  -- source sales_external_access_grant.invite_secret_hash; Rest
 ALTER TABLE ten_portal_grant ADD COLUMN redeemed_at timestamptz NULL;  -- source sales_external_access_grant.redeemed_at
@@ -129,7 +129,7 @@ ALTER TABLE cat_chunk ADD COLUMN source_locator text NULL;  -- source growth_doc
 **Governance**
 
 ```sql
-ALTER TABLE gov_eligibility_decision ADD COLUMN valid_until timestamptz NULL (decision reuse window;  -- source growth_eligibility_decision.expires_at; dispatch rechecks)
+ALTER TABLE gov_eligibility_decision ADD COLUMN valid_until timestamptz NULL;  -- source growth_eligibility_decision.expires_at; decision reuse window; dispatch rechecks
 ALTER TABLE gov_policy_decision ADD COLUMN policy_version_id uuid NOT NULL REFERENCES gov_policy_version (id);  -- source growth_policy_decision.policy_version_id
 ALTER TABLE gov_compliance_incident ADD COLUMN policy_decision_id uuid NULL REFERENCES gov_policy_decision (id);  -- source growth_compliance_incident.policy_decision_id
 ALTER TABLE gov_compliance_incident ADD COLUMN message_id uuid NULL REFERENCES eng_message (id);  -- source growth_compliance_incident.message_id
@@ -178,7 +178,7 @@ ALTER TABLE intel_social_post ADD COLUMN permalink text NULL;  -- source growth_
 **CRM**
 
 ```sql
-ALTER TABLE crm_deal ADD COLUMN closure_evidence_ref text NULL (DEC-054 closure evidence;  -- source growth_deal.closure_evidence_ref; required when closure_status = won)
+ALTER TABLE crm_deal ADD COLUMN closure_evidence_ref text NULL;  -- source growth_deal.closure_evidence_ref; DEC-054 closure evidence; required when closure_status = won
 ALTER TABLE crm_submission ADD COLUMN subject_hmac char(64) NULL;  -- source growth_submission.subject_key; dedupe, Rest
 ALTER TABLE crm_submission ADD COLUMN consent_id uuid NULL REFERENCES gov_consent (id);  -- source growth_submission.consent_id
 ```
@@ -226,7 +226,7 @@ ALTER TABLE com_negotiation ADD COLUMN proposed_terms jsonb NULL;  -- source gro
 ALTER TABLE com_bid ADD COLUMN opportunity_id uuid NULL REFERENCES intel_opportunity (id);  -- source sales_bid.opportunity_id
 ALTER TABLE com_bid ADD COLUMN proposal_id uuid NULL REFERENCES com_proposal (id);  -- source sales_bid.proposal_id
 ALTER TABLE com_order ADD COLUMN quote_id uuid NULL REFERENCES com_quote (id);  -- source sales_order.quote_id
-ALTER TABLE com_order ADD COLUMN external_ref text NULL (counterparty PO no.;  -- source sales_order.external_ref; UQ per counterparty)
+ALTER TABLE com_order ADD COLUMN external_ref text NULL;  -- source sales_order.external_ref; counterparty PO no.; UQ per counterparty
 ALTER TABLE com_order_line ADD COLUMN description text NULL;  -- source sales_order_line.description
 ALTER TABLE com_order_line ADD COLUMN tax_amount numeric(18,2) NOT NULL DEFAULT 0;  -- source sales_order_line.tax
 ```
@@ -268,7 +268,7 @@ ALTER TABLE ops_incident ADD COLUMN summary text NULL;  -- source growth_inciden
 **SaaS**
 
 ```sql
-ALTER TABLE saas_service_invoice ADD COLUMN payment_ref text NULL (provider receipt id;  -- source sales_service_invoice.payment_ref; UQ with provider account)
+ALTER TABLE saas_service_invoice ADD COLUMN payment_ref text NULL;  -- source sales_service_invoice.payment_ref; provider receipt id; UQ with provider account
 ALTER TABLE saas_service_invoice_line ADD COLUMN cost_amount numeric(18,4) NULL;  -- source sales_usage_charge.cost; FinOps margin, Conf
 ALTER TABLE saas_service_invoice_line ADD COLUMN rate_snapshot jsonb NOT NULL;  -- source sales_usage_charge.rate_snapshot; plan version rates at rating time
 ALTER TABLE saas_export_job ADD COLUMN file_sha256 char(64) NULL;  -- source sales_data_transfer.checksum
@@ -291,9 +291,9 @@ Additional columns required by the conflict resolutions and checks (not derived 
 
 ```sql
 ALTER TABLE com_order ADD COLUMN order_kind text NOT NULL DEFAULT 'goods' CHECK (order_kind IN ('goods','service','training','project'));  -- CONFLICT-386; source sales_order.direction values service/training/project
-ALTER TABLE intel_score_version ADD COLUMN version_no integer;  -- IX-ENH-E-18; sequence per opportunity, set by trigger max+1
-ALTER TABLE intel_signal ADD COLUMN dedupe_key char(64);  -- IX-ENH-E-16; sha256(organization_id, signal_type_id, sorted evidence ids)
-ALTER TABLE eng_intent ADD COLUMN superseded_by uuid REFERENCES eng_intent (id);  -- IX-ENH-E-27; re-classification keeps history (append-only)
+ALTER TABLE intel_score_version ADD COLUMN version_no integer;  -- IX-ENH-E-17; sequence per opportunity, set by trigger max+1
+ALTER TABLE intel_signal ADD COLUMN dedupe_key char(64);  -- IX-ENH-E-15; sha256(organization_id, signal_type_id, sorted evidence ids)
+ALTER TABLE eng_intent ADD COLUMN superseded_by uuid REFERENCES eng_intent (id);  -- IX-ENH-E-25; re-classification keeps history (append-only)
 ALTER TABLE gov_policy_decision ADD COLUMN reason_codes text[] NOT NULL DEFAULT '{}';  -- source growth_policy_decision.reason
 ALTER TABLE mkt_publication_snapshot ADD COLUMN page_type text;  -- source growth_website_publication.page_type (mirrors mkt_publication.target_kind at publish time)
 ALTER TABLE eng_message_draft ALTER COLUMN body SET DATA TYPE text;  -- no type change; reclassify body as Rest (PII-R protection in doc 08 #65)
@@ -328,7 +328,7 @@ CREATE INDEX CONCURRENTLY ixp_crm_lead__queue ON crm_lead (tenant_id, startup_id
 CREATE UNIQUE INDEX CONCURRENTLY uq_aut_workflow__code ON aut_workflow (tenant_id, startup_id, workflow_code);  -- IX-ENH-E-22; version uniqueness by STD-V on aut_workflow_revision
 CREATE UNIQUE INDEX CONCURRENTLY uq_eng_message_template__code ON eng_message_template (tenant_id, startup_id, template_code, channel, locale, version_no);  -- IX-ENH-E-23
 CREATE UNIQUE INDEX CONCURRENTLY uq_eng_thread__external ON eng_thread (channel_account_id, external_thread_ref) WHERE external_thread_ref IS NOT NULL;  -- IX-ENH-E-24
-CREATE UNIQUE INDEX CONCURRENTLY uq_eng_intent__inbound ON eng_intent (inbound_event_id) WHERE superseded_by IS NULL (one current intent per inbound event);  -- IX-ENH-E-25
+CREATE UNIQUE INDEX CONCURRENTLY uq_eng_intent__inbound ON eng_intent (inbound_event_id) WHERE superseded_by IS NULL;  -- IX-ENH-E-25; one current intent per inbound event
 CREATE UNIQUE INDEX CONCURRENTLY uq_eng_calendar_link__external ON eng_calendar_link (integration_id, external_calendar_id);  -- IX-ENH-E-26; new column external_calendar_id
 CREATE INDEX CONCURRENTLY ix_gov_approval__object ON gov_approval (tenant_id, startup_id, object_type, object_id, created_at DESC);  -- IX-ENH-E-27
 CREATE UNIQUE INDEX CONCURRENTLY uq_eng_identity_link__address ON eng_identity_link (tenant_id, startup_id, channel_account_id, address_hmac);  -- IX-ENH-E-28
@@ -341,7 +341,7 @@ CREATE INDEX CONCURRENTLY ixp_mkt_seo_issue__open ON mkt_seo_issue (tenant_id, s
 CREATE UNIQUE INDEX CONCURRENTLY uq_mkt_page_metric__day ON mkt_page_metric (tenant_id, startup_id, page_id, COALESCE(keyword_id, '00000000-0000-0000-0000-000000000000'::uuid), metric_date, source);  -- IX-ENH-E-35
 CREATE UNIQUE INDEX CONCURRENTLY uq_mkt_attribution_event__key ON mkt_attribution_event (tenant_id, startup_id, event_key);  -- IX-ENH-E-36; new column event_key
 CREATE INDEX CONCURRENTLY ix_mkt_campaign__state ON mkt_campaign (tenant_id, startup_id, state, starts_at);  -- IX-ENH-E-37
-CREATE UNIQUE INDEX CONCURRENTLY uq_mkt_spend_event__key ON mkt_spend_event (ad_campaign_id, event_key) for manual/CSV spend rows (UQ-IDEM-19 covers provider reports);  -- IX-ENH-E-38
+CREATE UNIQUE INDEX CONCURRENTLY uq_mkt_spend_event__key ON mkt_spend_event (ad_campaign_id, event_key);  -- IX-ENH-E-38; for manual/CSV spend rows, UQ-IDEM-19 covers provider reports
 CREATE INDEX CONCURRENTLY ix_mkt_event__starts ON mkt_event (tenant_id, startup_id, starts_at, state);  -- IX-ENH-E-39
 CREATE UNIQUE INDEX CONCURRENTLY uq_mkt_registration__event_contact ON mkt_registration (event_id, contact_id);  -- IX-ENH-E-40
 CREATE UNIQUE INDEX CONCURRENTLY uq_mkt_attendance__provider ON mkt_attendance (registration_id, provider_ref) WHERE provider_ref IS NOT NULL;  -- IX-ENH-E-41
@@ -966,7 +966,7 @@ Feature: Service requests are safe (US-20-EE01)
 | CONFLICT-386 | Conflict | Order direction values vs ledger side → `order_kind` | §3.6.4.6 |
 | CONFLICT-387 | Conflict | Sequence delay seconds vs business days | §3.6.6 |
 | GAP-388 | Gap | Missing entities: business template, service request, eval case result (and milestone via CONFLICT-383); interim retention for service requests | §3.6.5.1 |
-| GAP-389 | Gap | 113 column additions on 77 tables (incl. portal grant invite/redemption columns) | §3.6.4.5, §3.6.5.1(b) |
+| GAP-389 | Gap | 113 column additions on 73 tables (incl. portal grant invite/redemption columns) | §3.6.4.5, §3.6.5.1(b) |
 | GAP-390 | Gap | 54 keys and indexes IX-ENH-E-01…54 | §3.6.4.7, §3.6.5.1(c) |
 | GAP-391 | Gap | No table-level exposure register | §3.6.5.3 |
 | GAP-392 | Gap | No schema decision register; 136 field records, 4 blocked rows, 38 API and 138 UI approvals outstanding | §3.6.4.8, §3.6.5.3 |

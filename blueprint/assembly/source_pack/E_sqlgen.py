@@ -5,8 +5,11 @@ def coldef(table, text, src):
     """text like 'name text NOT NULL; UQ (...)' or 'x uuid NULL -> tbl (comment)'"""
     comment = [f'source {src}']
     t = text
-    if ';' in t:
-        t, extra = t.split(';', 1); comment.append(extra.strip())
+    depth = 0
+    for i, ch in enumerate(t):
+        depth += (ch == '(') - (ch == ')')
+        if ch == ';' and depth == 0:
+            comment.append(t[i+1:].strip()); t = t[:i]; break
     fk = None
     if ' -> ' in t:
         t, fkpart = t.split(' -> ', 1)

@@ -761,7 +761,7 @@ Developers porting code or tests written against document 08 names use this cros
 | IX-ENH-E-22 | `growth_workflow` | unique(workflow_key,version) | uq_aut_workflow__code (tenant_id, startup_id, workflow_code); version uniqueness by STD-V on aut_workflow_revision |
 | IX-ENH-E-23 | `growth_message_template` | unique(template_key,version,channel) | uq_eng_message_template__code (tenant_id, startup_id, template_code, channel, locale, version_no) |
 | IX-ENH-E-24 | `growth_thread` | unique(channel,external_thread_ref) | uq_eng_thread__external (channel_account_id, external_thread_ref) WHERE external_thread_ref IS NOT NULL |
-| IX-ENH-E-25 | `growth_intent` | unique(inbound_event_id) | uq_eng_intent__inbound (inbound_event_id) WHERE superseded_by IS NULL (one current intent per inbound event) |
+| IX-ENH-E-25 | `growth_intent` | unique(inbound_event_id) | uq_eng_intent__inbound (inbound_event_id) WHERE superseded_by IS NULL; one current intent per inbound event |
 | IX-ENH-E-26 | `growth_calendar_link` | unique(integration_id,external_calendar_id) | uq_eng_calendar_link__external (integration_id, external_calendar_id) on new column external_calendar_id |
 | IX-ENH-E-27 | `growth_approval` | index(object_type,object_id) | ix_gov_approval__object (tenant_id, startup_id, object_type, object_id, created_at DESC) |
 | IX-ENH-E-28 | `growth_identity_link` | unique(channel_account_id,external_subject_hash) | uq_eng_identity_link__address (tenant_id, startup_id, channel_account_id, address_hmac) |
@@ -774,7 +774,7 @@ Developers porting code or tests written against document 08 names use this cros
 | IX-ENH-E-35 | `growth_page_metric` | unique(page_url,date,metric_key) | uq_mkt_page_metric__day (tenant_id, startup_id, page_id, COALESCE(keyword_id, zero-uuid), metric_date, source) |
 | IX-ENH-E-36 | `growth_attribution_event` | unique(event_key) | uq_mkt_attribution_event__key (tenant_id, startup_id, event_key) on new column event_key |
 | IX-ENH-E-37 | `growth_campaign` | index(state) | ix_mkt_campaign__state (tenant_id, startup_id, state, starts_at) |
-| IX-ENH-E-38 | `growth_ad_spend_event` | unique(event_key) | uq_mkt_spend_event__key (ad_campaign_id, event_key) for manual/CSV spend rows (UQ-IDEM-19 covers provider reports) |
+| IX-ENH-E-38 | `growth_ad_spend_event` | unique(event_key) | uq_mkt_spend_event__key (ad_campaign_id, event_key); for manual/CSV spend rows, UQ-IDEM-19 covers provider reports |
 | IX-ENH-E-39 | `growth_business_event` | index(starts_at,state) | ix_mkt_event__starts (tenant_id, startup_id, starts_at, state) |
 | IX-ENH-E-40 | `growth_event_registration` | unique(event_id,lead_id) | uq_mkt_registration__event_contact (event_id, contact_id) |
 | IX-ENH-E-41 | `growth_event_attendance` | unique(registration_id,provider_ref) | uq_mkt_attendance__provider (registration_id, provider_ref) WHERE provider_ref IS NOT NULL |

@@ -1676,7 +1676,7 @@ Each row is the blueprint test for one source SIT (SM-SIT-A###) or new operation
 | TC-ENH-D-E023 | — | SM-OP-293/294 | API-ENH-D-023 | List external grants by counterparty/object with expiry and state: authorized role succeeds with documented status; audit event written | N01, N02, N03, N05 | API SIT (CT-04/05) | P1 |
 | TC-ENH-D-E024 | — | SM-OP-041 | API-ENH-D-024 | Record privacy request received offline on behalf of a subject (identity verification pending): authorized role succeeds with documented status; audit event written | N01, N02, N04, N06, N07, N09 | API SIT (CT-04/05) | P1 |
 
-**Test count.** 302 operation tests (TC-ENH-D-001…302) + 19 candidate tests (TC-ENH-D-C01…C19) + 24 enhancement-operation tests (TC-ENH-D-E001…E024) + 22 family/gate tests (TC-ENH-D-N01…N22) = **367 test cases**. Gherkin scenarios in §3.5.5.11.2 (38) are executed through these test IDs.
+**Test count.** 302 operation tests (TC-ENH-D-001…302) + 19 candidate tests (TC-ENH-D-C01…C19) + 24 enhancement-operation tests (TC-ENH-D-E001…E024) + 22 family/gate tests (TC-ENH-D-N01…N22) = **367 test cases**. Gherkin scenarios in §3.5.5.11.2 (42) are executed through these test IDs.
 
 ---
 
@@ -1792,7 +1792,7 @@ Unused from the allocated ranges: ASSUMPTION-367…379, GAP-368…379, CONFLICT-
 | 1 | Every requirement traced to a source | Pass | Each new operation names its SM-OP/SM-UX-API source; each FR-ENH-D cites the document 07 section; field contracts are row-for-row from the source DTOs |
 | 2 | Assumptions/gaps/conflicts tagged and logged | Pass | 7 assumptions, 8 gaps, 13 conflicts, 12 recommendations, all in allocated ranges (§3.5.8) |
 | 3 | IDs unique and consistent with earlier parts | Pass | New IDs use ENH/D prefixes; source DEC renamed SRC07-DEC (CONFLICT-364); API/AD/ENT/NFR/DEC references checked against Parts 3.2, 3.3, 4.2, 0A |
-| 4 | No story lacks AC; no requirement lacks a test | Pass | 16 stories with 38 Gherkin scenarios; 20 FRs each with TC-ENH-D tests; every source operation and new operation has a test row |
+| 4 | No story lacks AC; no requirement lacks a test | Pass | 16 stories with 42 Gherkin scenarios; 20 FRs each with TC-ENH-D tests; every source operation and new operation has a test row |
 | 5 | Negative, edge, security and accessibility cases covered | Pass | 22 negative/gate families; security reviewer section; accessibility N/A for API contracts (UI accessibility in Part 2.5/NFR-088) |
 | 6 | Agents: guardrail, fallback, KPI, cost | N/A | No agent added; AI operations unchanged |
 | 7 | Time-sensitive facts flagged "verify" with as-of date | Pass | Provider quotas, prices, signature schemes and licences flagged "verify (as of 27 Nov 2026)"; source prices quoted as the source's statements only |
