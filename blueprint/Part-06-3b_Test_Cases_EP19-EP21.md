@@ -466,3 +466,249 @@ Spec: Part 7.2 AG-030 (L1; applicant edits; platform approval before provisionin
 
 ---
 
+## 6.3.11 EP-21 Release readiness, QA and observability
+
+Risk areas: RA-16 (release, rollback, backup and restore; **P0, depth D3**), RA-04 (lossless event handling during outages; P0), RA-30 (observability screens; P2) and the release-blocking rules RBR-1…RBR-8 (Part 6.1 §6.1.8.5). EP-21 **owns** release gates, rollback, restore, observability, performance and DR tests (Part 6.1 §6.1.12.1). Waves W0 (US-2101…2106 basic, 2108…2110), W5 (US-2106 complete, US-2107).
+
+### 6.3.11.1 Scenarios
+
+| TS ID | Title | Linked US / FR | Risk area · Priority | TCs |
+|---|---|---|---|---|
+| TS-21-01 | Pipeline blocks builds on every failing gate and deploys to production only through the approved pipeline role | US-2101; FR-NEG-01 | RA-16 · P0 | TC-21-001…012 |
+| TS-21-02 | Liveness and readiness endpoints act correctly without exposing internals | US-2102; FR-OP002, FR-OP003 | RA-16 · P1; disclosure P0 | TC-21-013…019 |
+| TS-21-03 | One trace per flow, redacted logs and errors, tenant-scoped log access | US-2103 | RA-01/RA-16 · P0 (redaction) / P1 | TC-21-020…026 |
+| TS-21-04 | SLO dashboard, burn-rate alerts and incident lifecycle with containment | US-2104; FR-A014 | RA-16 · P1; containment P0 | TC-21-027…034 |
+| TS-21-05 | Provider and broker outages lose no events and duplicate no effects; DLQ replay rechecks policy | US-2105; FR-A009, FR-STD-04 | RA-04 · P0 | TC-21-035…043 |
+| TS-21-06 | A090 release gate fails closed on incomplete evidence and requires independent approval | US-2106; FR-A090 | RA-16 · P0 | TC-21-044…053 |
+| TS-21-07 | Twelve synthetic journeys gate every release and run safely in production | US-2107; FR-DM-01…04 | RA-16 · P0 | TC-21-054…067 |
+| TS-21-08 | Restore drill proves RPO ≤ 15 min and RTO ≤ 4 h with integrity checks | US-2108 | RA-16 · P0 | TC-21-068…075 |
+| TS-21-09 | Rollback rehearsal for application, migrations, flags, websites and in-flight work | US-2109; FR-PUB-01 | RA-16 · P0 | TC-21-076…083 |
+| TS-21-10 | Requirements traceability and evidence records block untested requirements | US-2110 | RA-16 · P0 | TC-21-084…090 |
+| TS-21-11 | DR / failover drill catalogue DR-1…DR-9 executed with measured results | US-2105, US-2108, US-2109; Part 6.1 §6.1.14.4 | RA-16 · P0 | TC-21-091…099 |
+| TS-21-12 | End-to-end release drill from release candidate to production with canary watch and automatic rollback | US-2101, US-2106, US-2109 | RA-16 · P0 | TC-21-100…105 |
+
+### 6.3.11.2 Group TC-21-A: Decision table – pipeline gates (technique: DT, EG) · TS-21-01
+
+Every gate is one condition; any failing gate blocks promotion (first failure reported, all failures listed). Gate set per US-2101 Notes and Part 6.1 §6.1.9.5.
+
+| Gate | Failing input used in the test | Blocks | TC |
+|---|---|---|---|
+| Unit + integration | One failing pytest | Merge | TC-21-001 (inverse) |
+| Secret scan | AWS access-key pattern | Merge; rotation review flag | TC-21-002 |
+| AI eval regression | `draft-reply v8` precision below threshold | Deploy of the change | TC-21-003 |
+| No-fundraising check | Model `InvestorProfile`, route `/fundraising` | Merge | TC-21-004 |
+| Migration compatibility | Drop column still read by release N | Merge | TC-21-005 |
+| RLS / two-tenant | Table without forced RLS | Merge | TC-21-007 |
+| Dependency / container scan | Critical CVE in base image (test fixture) | Merge | TC-21-008 |
+| axe-core critical | Missing form label | Merge | TC-21-009 |
+| Bundle separation | Admin route in public bundle | Merge | TC-21-010 (and TC-19-087) |
+| Post-deploy smoke | Smoke failure in staging | Promotion | TC-21-011 |
+
+| ID | Title | Links | Pre-conditions and data | Steps | Expected | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-21-001 | Promote a green commit to staging and hold production for an approved A090 release | AC-2101-01; BR-M62; DEC-063 | Commit `a1b2c3d` all gates green | 1. Merge. 2. Observe pipeline. 3. Attempt production stage without approval | Staging deploy + smoke pass; production job waits; with approved release ID it proceeds with the same image digest | P0 | T02 | DT | Y | SYS |
+| TC-21-002 | Block the build on an AWS access-key pattern and flag for rotation review | AC-2101-02; NFR-004 | Commit adds `AKIA` + 16 chars (synthetic, non-functional key) | 1. Push | gitleaks gate fails; build blocked; flag "rotation review" created | P0 | T07 | DT | Y | CT |
+| TC-21-003 | Block deployment on an AI eval regression | AC-2101-03; BRL-AI-09; DEC-061; NFR-033 | Prompt `draft-reply v8` lowers precision below threshold on the recorded eval set | 1. Run G1 AI smoke and G3 full eval | Eval gate fails; deploy of the change blocked (RBR-8) | P0 | T14 | DT | Y | CT |
+| TC-21-004 | Fail the build on a fundraising model or route | AC-2101-04; FR-NEG-01; BRL-TEN-12; DEC-002 | Migration adds `InvestorProfile`; URL conf adds `/fundraising`; i18n key `investor_pitch` | 1. Run negative regression check | Fails naming each item | P0 | T19 | DT | Y | CT |
+| TC-21-005 | Fail the backward-compatibility check when a column still read by release N is dropped | AC-2101-05; NFR-013 | Migration drops `deal.legacy_stage` used by release N | 1. Run release-N test suite against new schema | Fails naming the column | P0 | T02 | DT | Y | CT |
+| TC-21-006 | Deny a manual production deploy with personal credentials | AC-2101-06 | Engineer IAM user | 1. `ecs update-service` / deploy API with personal credentials | IAM AccessDenied; CloudTrail event; only the pipeline role with an approved release ID succeeds | P0 | T07 | EP | Y | SYS |
+| TC-21-007 | Fail the RLS catalogue gate for a table without forced RLS | AC-2101-01 (gates); NFR-032 | New table `tmp_report` without policy | 1. Run catalogue test | Fails naming the table | P0 | T15 | DT | Y | IT |
+| TC-21-008 | Block a critical container vulnerability | AC-2101-01 (gates) | Base image fixture with a known critical CVE (verify current CVE at implementation) | 1. Trivy scan | Gate fails; risk acceptance path only via Security Lead | P0 | T07 | DT | Y | CT |
+| TC-21-009 | Block merge on a critical axe-core violation | AC-2101-01 (gates); BRL-PUB-06 | Missing label on W12 form | 1. Run G1 component and G3 page scans | Gate fails | P1 | T08 | DT | Y | CT |
+| TC-21-010 | Block merge on Admin code in the public bundle | AC-2101-01 (gates); NFR-001 | Import of Admin component in public app | 1. Build and scan | Gate fails | P0 | T07 | DT | Y | CT |
+| TC-21-011 | Stop promotion when post-deploy smoke fails in staging | AC-2101-01 | Smoke endpoint returns 500 | 1. Deploy | Promotion halted; NT-043 to engineering | P0 | T02 | DT | Y | SYS |
+| TC-21-012 | Promote the identical image digest from staging to production | AC-2101-01; Part 6.1 §6.1.6.2 | Release candidate digest `sha256:…` | 1. Compare digests across environments; rebuild attempt | Same digest; a rebuilt image restarts at `ci` (EVR digest mismatch → A090 Pending) | P0 | T02 | EG | Y | SYS |
+
+### 6.3.11.3 Group TC-21-B: Equivalence partitions – health and readiness (technique: EP, BVA) · TS-21-02
+
+| ID | Title | Links | Pre-conditions and data | Steps | Expected | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-21-013 | Return 200 healthy within 50 ms without a database call when PostgreSQL is down | AC-2102-01; FR-OP002 | PostgreSQL stopped; DB query counter | 1. GET `/api/v1/health` 100 times | 200 "healthy"; p95 ≤ 50 ms; DB calls 0 | P1 | T21 | EP | Y | IT |
+| TC-21-014 | Return 503 with per-dependency status when Valkey is down | AC-2102-02; FR-OP003 | Valkey stopped | 1. GET `/api/v1/ready` | 503 `{"ready": false, "dependencies": {"database": "ok", "cache": "unavailable", "storage": "ok"}}` | P1 | T21 | EP | Y | IT |
+| TC-21-015 | Return no hostnames, versions, connection strings, stack traces or tenant data | AC-2102-03; NFR-004 | Each dependency failing in turn | 1. Call both endpoints; regex scan | 0 matches for host, version, DSN, trace, tenant patterns | P0 | T07 | EP | Y | CT |
+| TC-21-016 | Rate-limit external /ready callers while allowlisted monitors pass | AC-2102-04 | External 100 req/s; monitor IP on allowlist | 1. Run 30 s | External excess 429; monitor 100% 200 | P1 | T07 | BVA | Y | SYS |
+| TC-21-017 | Return 401 for unauthenticated detailed diagnostics | AC-2102-05 | Anonymous | 1. GET `/api/v1/commercial/admin/health` | 401; A014 shows details to permitted roles | P1 | T07 | EP | Y | IT |
+| TC-21-018 | Mark readiness 503 when storage is slow beyond the probe timeout | AC-2102-02 | S3 emulator latency 3 s; probe timeout 2 s [ASSUMPTION-190] | 1. GET `/ready` | 503 "storage": "degraded" | P2 | T21 | BVA | Y | IT |
+| TC-21-019 | Load balancer drains an instance whose readiness fails and keeps it alive | AC-2102-01, -02 | Two instances; one loses DB | 1. Observe target group | Unready instance removed from rotation; not restarted (liveness 200) | P1 | T12 | EP | Y | SYS |
+
+### 6.3.11.4 Group TC-21-C: Error guessing – tracing and redaction (techniques: EG, EP) · TS-21-03
+
+| ID | Title | Links | Pre-conditions and data | Steps | Expected | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-21-020 | Link API request, outbox publish, worker step and adapter call in one trace | AC-2103-01; NFR-019 | OpenTelemetry test exporter | 1. Approve a message; worker sends | One trace ID across 4 spans; correlation ID in each | P1 | T21 | EP | Y | IT |
+| TC-21-021 | Mask emails and drop message bodies in Sentry and CloudWatch | AC-2103-02; BRL-AI-10; NFR-004 | Exception with `meera.sen@citycare.in` and body text | 1. Trigger exception | Sentry/CloudWatch contain "m***@citycare.in" (masking rule per AC) and no body; redaction corpus (T21) passes | P0 | T19 | EG | Y | IT |
+| TC-21-022 | Carry tenant_id and startup_id on every log record and restrict support to metadata | AC-2103-03; Part 2.4 §2.35.2 | Log sample of 10,000 lines; R13 log role | 1. Validate fields. 2. R13 queries content fields | 100% records have both IDs; R13 sees metadata only | P0 | T15 | EP | Y | SYS |
+| TC-21-023 | Continue to CloudWatch with sampling and alert R11 when Sentry quota is exhausted | AC-2103-04 | Sentry test DSN returns 429 | 1. Generate errors | CloudWatch receives sampled errors; alert to R11 | P2 | T21 | EG | Y | IT |
+| TC-21-024 | Deny raw logs to a Startup Head and show scoped A014 summaries | AC-2103-05 | Ravi R02 | 1. Request log query. 2. Open A014 | 403; MedMaarg summaries only | P1 | T07 | EP | Y | SYS |
+| TC-21-025 | Redact phone numbers, GSTIN and UTR values from logs | AC-2103-02 | Requests containing `+919876543210`, `29ABCDE1234F1Z5`, `UTR1234567890` | 1. Search logs | 0 raw values | P0 | T19 | EG | Y | IT |
+| TC-21-026 | Keep correlation ID through a webhook arriving from a provider | AC-2103-01; E-9 | SES webhook for a sent message | 1. Deliver webhook | Webhook span joins the original trace by message correlation ID | P2 | T21 | EP | Y | IT |
+
+### 6.3.11.5 Group TC-21-D: State transition and boundaries – SLOs and incidents (techniques: ST, BVA) · TS-21-04
+
+Incident states: Open → Acknowledged → Resolved. Burn-rate rules (ASSUMPTION-174): fast 2% of monthly budget in 1 h; slow 5% in 6 h.
+
+| ID | Title | Links | Pre-conditions and data | Steps | Expected | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-21-027 | Show availability, p95, error rate, queue depth, outbox lag and error budget per service | AC-2104-01; FR-A014 | Arun R11 | 1. Open A014 | All six series per service for the month | P1 | T21 | EP | Y | E2E |
+| TC-21-028 | Open a Critical incident at 2% budget burn in 1 h, not at 1.9% | AC-2104-02; NT-034; ASSUMPTION-174 | Monthly budget 0.5% of requests (99.5%); inject errors to burn 1.9% then 2.0% | 1. Inject. 2. Evaluate alert | 1.9%: no fast-burn alert; 2.0%: Critical incident; NT-034 pages on-call and R11 | P1 | T21 | BVA | Y | SYS |
+| TC-21-029 | Open an incident on 5% burn in 6 h (slow burn) | AC-2104-02; ASSUMPTION-174 | Slow error injection | 1. Advance 6 h | Incident opened at 5% | P2 | T21 | BVA | Y | SYS |
+| TC-21-030 | Pause email-sending steps during an SES failure incident and resume after resolution with recheck | AC-2104-03 | SES failures 21% for 10 min | 1. Incident opens. 2. Resolve. 3. Resume | Steps paused "incident INC-0042"; after resolution resumed with PDP recheck; 0 sends during pause | P0 | T01 | ST | Y | SYS |
+| TC-21-031 | Audit acknowledge and resolve with root cause and include in wave evidence | AC-2104-04 | INC-0042 | 1. Ack. 2. Resolve with root cause | Timestamps, actor, evidence audited; incident listed in next wave gate EVR | P1 | T01 | ST | Y | SYS |
+| TC-21-032 | Show metrics and incident metadata only to support without a grant | AC-2104-05; BRL-TEN-09 | Sam R13 | 1. Open A014 | Metrics and incident metadata; no tenant business content | P0 | T07 | EP | Y | SYS |
+| TC-21-033 | Reject Resolved → Open without a new incident and Open → Resolved without acknowledgement | AC-2104-04 | Incidents in states | 1. Attempt | 409 [ASSUMPTION-188: acknowledgement required before resolution] | P2 | T01 | ST | Y | UT |
+| TC-21-034 | Hold containment below the 20% / 10 min threshold boundary | AC-2104-03 | 19.9% for 10 min; 20.1% for 9 min 59 s; 20.1% for 10 min | 1. Evaluate | Only the last triggers containment [ASSUMPTION-188: "> 20% for 10 minutes" sustained] | P1 | T01 | BVA | Y | UT |
+
+### 6.3.11.6 Group TC-21-E: Error guessing and state transition – outages, DLQ and replay (techniques: EG, ST, BVA) · TS-21-05
+
+| ID | Title | Links | Pre-conditions and data | Steps | Expected | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-21-035 | Keep 300 sends in the outbox through a 45-minute SES outage and deliver each exactly once | AC-2105-01; NFR-007; DR-7 | Simulator SES 503 for 45 min | 1. Queue 300. 2. Recover | Backoff with jitter (capped); 0 lost; 300 delivered; simulator unique message count 300 | P0 | T12 | EG | Y | SYS |
+| TC-21-036 | Republish on Valkey restart with one effect per event | AC-2105-02; NFR-005; DR-6 | Restart during processing | 1. Restart | Events republished from outbox; 1 effect each | P0 | T16 | EG | Y | SYS |
+| TC-21-037 | Move a poison message to the DLQ after 3 validation failures | AC-2105-03 | Malformed event | 1. Process | DLQ entry with error class and correlation ID | P1 | T01 | BVA | Y | IT |
+| TC-21-038 | Alert when DLQ depth exceeds 10, not at 10 | AC-2105-03 | 10 then 11 poison messages | 1. Add | 10: no alert; 11: alert | P1 | T21 | BVA | Y | IT |
+| TC-21-039 | Recheck scope, eligibility, budget and approval on DLQ replay | AC-2105-04 | Replay after fix; contact suppressed meanwhile; second event still eligible | 1. Arun replays both | Suppressed → denied `SUPPRESSED`; eligible → sent once | P0 | T19 | DT | Y | SYS |
+| TC-21-040 | Route timeout-after-submit to reconciliation, never to retry | AC-2105-05; DEC-050 | Simulator `timeout_after_submit` | 1. Process | Reconciling; 0 retries (references TC-18-076 battery) | P0 | T18 | ST | Y | SYS |
+| TC-21-041 | Deny DLQ replay to a Startup Head | AC-2105-06; FR-A009 | Ravi | 1. POST replay | 403 | P1 | T07 | EP | Y | IT |
+| TC-21-042 | Persist webhooks before acknowledgement during a worker outage | AC-2105-01; NFR-007; LT-05 | Workers stopped; 500 webhooks | 1. Deliver. 2. Restart workers | 500 persisted before 200; processed after restart; 0 duplicates | P0 | T12 | EG | Y | SYS |
+| TC-21-043 | Cap retry backoff at the configured maximum interval | AC-2105-01 | Outage 6 h | 1. Inspect retry schedule | Intervals grow then cap (e.g. 15 min) with jitter; no tight loop [ASSUMPTION-190] | P2 | T01 | BVA | Y | UT |
+
+### 6.3.11.7 Group TC-21-F: Decision table – A090 release approval (technique: DT, ST) · TS-21-06
+
+Release states: Planned → Building → Testing → AwaitingEvidence → Approved → Deployed → RolledBack. RBR-1…RBR-8 from Part 6.1 §6.1.8.5 are the conditions.
+
+| Condition | R1 | R2 | R3 | R4 | R5 | R6 |
+|---|---|---|---|---|---|---|
+| All blocking gates Pass with evidence digests (RBR-5, RBR-6, RBR-7) | N | Y | Y | Y | Y | Y |
+| 0 open S1; 0 open S2 in P0 areas (RBR-1, RBR-2) | – | N | Y | Y | Y | Y |
+| Approver ≠ release manager / author | – | – | N | Y | Y | Y |
+| Error budget available, or release labelled "fix", or R01 exception | – | – | – | N | Y | Y |
+| AI regression green for changed agents (RBR-8) | – | – | – | – | N | Y |
+| **Action** | Approve disabled "Blocking gate pending: …"; API 409 | Blocked until fixed or waived (S2 outside P0 only) | 403 "Independent reviewer required" | Blocked (RECOMMENDATION-059) | Blocked for the affected agent change | Approved; pipeline may deploy |
+
+| ID | Title | Links | Pre-conditions and data | Steps | Expected | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-21-044 | Approve R-2027.07.1 when all gates pass and an independent reviewer approves | AC-2106-01; FR-A090 | All gates Pass; 0 S1 | 1. Reviewer approves | Approved; pipeline may deploy | P0 | T01 | DT (R6) | Y | SYS |
+| TC-21-045 | Disable approval with the pending restore-drill gate named | AC-2106-02; RBR-6 | Restore-drill EVR missing | 1. Open A090. 2. POST approve | Disabled "Blocking gate pending: restore drill"; 409 | P0 | T01 | DT (R1) | Y | SYS |
+| TC-21-046 | Block approval with an open S1 confidentiality defect; reject a waiver for S1 | AC-2106-03; BR-S135; RBR-1 | Open S1 | 1. Approve. 2. Record waiver | 1: blocked. 2: waiver rejected (S1 cannot be deferred, Part 6.1 §6.1.8.1) | P0 | T01 | DT (R2) | Y | SYS |
+| TC-21-047 | Allow an S2 outside P0 areas only with a waiver having owner, independent reviewer and expiry ≤ 30 days | AC-2106-03; RBR-3 | Open S2 in RA-25 | 1. Waiver with expiry 31 days. 2. With 30 days | 1: rejected. 2: accepted; release approvable | P1 | T01 | BVA | Y | SYS |
+| TC-21-048 | Deny the release manager approving own release | AC-2106-04; BRL-APR-01 | Release manager | 1. Approve | 403 "Independent reviewer required" | P0 | T07 | DT (R3) | Y | IT |
+| TC-21-049 | Allow only "fix" releases when the error budget is exhausted unless R01 records an exception | AC-2106-05; RECOMMENDATION-059 | Admin API budget exhausted | 1. Approve feature release. 2. Approve "fix" release. 3. R01 exception with reason; approve feature | 1: blocked. 2: allowed. 3: allowed, exception audited | P1 | T01 | DT (R4) | Y | SYS |
+| TC-21-050 | Send NT-043 on gate failure, deployment and rollback with an R01 digest | AC-2106-06; NT-043 | Gate fails; release deploys; rollback | 1. Trigger each | NT-043 to engineering each time; R01 digest | P2 | T01 | EP | Y | IT |
+| TC-21-051 | Show the ladder level and the "not production certification" label | AC-2106-01; RECOMMENDATION-072; BRD §13.2 | Staging-only evidence | 1. Open A090 | Level L-T; label "Synthetic/staging evidence; not production certification" | P0 | T01 | EP | Y | E2E |
+| TC-21-052 | Reject an evidence digest that differs from the deployed image | AC-2106-01; RBR-6 | EVR digest of a rebuilt image | 1. Compute gate | Gate Pending; approve disabled | P0 | T01 | EG | Y | SYS |
+| TC-21-053 | Walk the release states and reject Deployed → Approved | AC-2106-01 | Release R-2027.07.2 | 1. Drive Planned → … → Deployed → RolledBack. 2. Attempt Deployed → Approved | Valid transitions audited; invalid 409 | P1 | T01 | ST | Y | UT |
+
+### 6.3.11.8 Group TC-21-G: Use case – twelve synthetic journeys (techniques: UC, PW) · TS-21-07
+
+Journeys J1…J12 per ASSUMPTION-175 (Part 5.3). Each journey is one automated TC on `staging` (and production synthetic runs where stated); browsers per Part 6.1 §6.1.2 (Chromium and WebKit for P0).
+
+| ID | Title | Links | Pre-conditions and data | Steps | Expected | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-21-054 | J1 public visit → enquiry → lead with routing | AC-2107-01, -02; FR-DM-04; AP-02 | FX-ROUTE | 1. Visit W03; submit W12 "external AI development project" on EduVerse site | Lead in AppNAI (routed); second run "school AI education programme" → EduVerse | P0 | T01 | UC | Y | E2E |
+| TC-21-055 | J2 AppNAI tender to award with deadline handling | AC-2107-02; FR-DM-02; BRL-BID-01 | `TND-AI-7781` deadline 2030-06-01 09:00 UTC; clock control | 1. Drive tender to submission; record submission at 2030-06-01 09:00:00 UTC. 2. Record at 08:59:59 UTC | 1: rejected and exception created (as AC-2107-02). 2: accepted (ERRATA 3: recording evidence of a submission made before the deadline is allowed) | P0 | T01 | UC, BVA | Y | E2E |
+| TC-21-056 | J3 MedMaarg partnership → contract → onboarding | AC-2107-01 | `D-MM-0117` | 1. Proposal → signed contract (hash) → WonContracted → onboarding | `ONB-0117` created; Signed 1, Paid 0 | P0 | T01 | UC | Y | E2E |
+| TC-21-057 | J4 EduVerse guardian-verified enquiry | AC-2107-01; DEC-030 | EDGE-MINORS learner 15 y | 1. Enquiry; guardian OTP; declaration | Consent record; 0 messages to learner | P0 | T19 | UC | Y | E2E |
+| TC-21-058 | J5 OrganicSpec RFQ → quote INR 270.00 → order → 1 kg + 1 kg duplicate key → receivable | AC-2107-02; FR-DM-01, FR-DM-03 | FX-FIN, FX-ORD | 1. RFQ; quote 2 × 150.00 at 10%. 2. Order 2 kg. 3. Deliver 1 kg twice same key, then 1 kg new key | Quote 270.00; after duplicate fulfilled 1 kg; after third 2 kg; receivable entry | P0 | T01 | UC | Y | E2E |
+| TC-21-059 | J6 outreach with opt-out stop | AC-2107-01; BRL-ELG-02 | Eligible contact; STOP reply | 1. Send; reply "STOP" | Queued steps cancelled; suppression recorded; KPI-17 = 0 | P0 | T19 | UC | Y | E2E |
+| TC-21-060 | J7 WhatsApp inbound reply | AC-2107-01 | WhatsApp test number | 1. Inbound; reply within service window | Reply sent from approved template/FAQ; thread updated | P1 | T01 | UC | Y | E2E |
+| TC-21-061 | J8 payment partial then full (AP-04) | AC-2107-01; AP-04 | FX-FIN | 1. 118.60 then 200.00 verified | PartiallyPaid then Paid (mirrors TC-15-098) | P0 | T01 | UC | Y | E2E |
+| TC-21-062 | J9 workflow simulation → approval → run → stop | AC-2107-01; AP-06 | `WF-MM-FOLLOWUP` | 1. Simulate; approve; run; STOP | 0 live effects in simulation; run; stop ≤ 60 s | P0 | T01 | UC | Y | E2E |
+| TC-21-063 | J10 SaaS application → provisioning → export | AC-2107-01 | Priya | 1. Apply; approve; provision; export | One tenant; export only T2 | P0 | T01 | UC | Y | E2E |
+| TC-21-064 | J11 portal quote acceptance | AC-2107-01 | Neha; quote valid | 1. Accept quote in portal | Accepted bound to quote hash; expired quote rejected in variant | P0 | T01 | UC | Y | E2E |
+| TC-21-065 | J12 two-tenant boundary (AP-10) | AC-2107-01; AP-10 | FX-TEN-2 | 1. Execute TC-20-089 subset through the UI | All denials; KPI-30 = 0 | P0 | T15 | UC | Y | E2E |
+| TC-21-066 | Run J1 and J11 hourly in production for "QA Synthetic" with sandbox adapters and KPI exclusion | AC-2107-03, -06 | Production synthetic tenant | 1. Scheduled run. 2. Check adapters and KPIs. 3. Real user searches for the synthetic tenant | 0 real messages, payments, signatures, publications; excluded from KPIs; synthetic tenant invisible to real users and vice versa | P0 | T21 | UC | Y | SYS |
+| TC-21-067 | Run J1, J8, J11 at 360 px with axe checks; count a retry-pass as failure until triaged | AC-2107-04, -05 | Mobile viewport; flaky fixture forcing one retry | 1. Run | axe results attached; flaky journey counted failed for gate; defect raised (Part 6.1 §6.1.9.7) | P1 | T08 | UC | Y | E2E |
+
+### 6.3.11.9 Group TC-21-H: Boundary values – restore drill (techniques: BVA, UC) · TS-21-08
+
+**Restore drill procedure (DR-1 on staging, executed per US-2108, before each wave exit and monthly during pilot, ASSUMPTION-176).**
+
+| Step | Action | Measurement / evidence |
+|---|---|---|
+| 1 | Start canary writer (one row per minute per AC-2108-02; heartbeat every 10 s per Part 6.1) | Canary table timestamps |
+| 2 | Declare drill start; record target time 2027-06-15 10:00:00 IST | Drill report: declared time |
+| 3 | Restore PostgreSQL PITR to target into an isolated VPC/account | AWS restore job ID |
+| 4 | Restore sampled S3 objects (versioning) | Hash comparison list |
+| 5 | Bring up application from IaC with the release digest; run smoke + P0 subset | Smoke report |
+| 6 | Run integrity checklist 1–10 (Part 6.1 §6.1.14.4) | Checklist results |
+| 7 | Compute RPO and RTO; attach drill report (RECOMMENDATION-078) | EVR |
+| 8 | Destroy restored environment; audit deletion | Deletion audit event |
+
+| ID | Title | Links | Pre-conditions and data | Steps | Expected | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-21-068 | Restore to 2027-06-15 10:00:00 IST and pass smoke within 4 h | AC-2108-01; NFR-012; DEC-018 | Staging full dataset; drill start 10:05 | 1. Execute steps 2–5 | Smoke green at ≤ 14:05 (RTO ≤ 4 h measured from declaration) | P0 | T12 | BVA, UC | Y | SYS |
+| TC-21-069 | Verify RPO ≤ 15 min with the canary | AC-2108-02 | Canary rows | 1. Newest restored canary vs target | Gap ≤ 15 min; example pass: newest 09:59:00 → 1 min; fail case: 09:44:59 → 15 min 1 s | P0 | T12 | BVA | Y | SYS |
+| TC-21-070 | Restore sampled S3 documents with matching hashes and verify the audit chain | AC-2108-03; NFR-018 | 200 sampled objects | 1. Compare SHA-256. 2. Verify hash chain | 200/200 match; chain verifies end to end | P0 | T12 | UC | Y | SYS |
+| TC-21-071 | Restore from the second-region copy | AC-2108-04; DEC-040; ERRATA 16 | Cross-region copy (verify ap-south-2 availability) | 1. Restore in region 2 | Restore succeeds; measured RPO/RTO recorded against the regional targets (RTO ≤ 24 h, RPO ≤ 15 min per ERRATA 16) | P0 | T12 | UC | Y | SYS |
+| TC-21-072 | Mark the drill Fail and block A090 when restore exceeds 4 h | AC-2108-05; RBR-7 | Throttled restore (fault) | 1. Run | Drill Fail; A090 blocks next release; remediation recorded | P0 | T12 | BVA | Y | SYS |
+| TC-21-073 | Restrict the restored environment to the SRE drill role and audit its deletion | AC-2108-06 | Restored env | 1. Non-drill role access. 2. Destroy | 1: denied. 2: deletion audited | P0 | T07 | EP | Y | SYS |
+| TC-21-074 | Reconcile outbox rows after the restore point without re-sending | AC-2108-01; Part 6.1 EG-18 | 25 sends executed after the restore point | 1. Run integrity step 2 | 25 marked reconciled via provider query; 0 re-sends | P0 | T16 | EG | Y | SYS |
+| TC-21-075 | Keep restore drill evidence within the 35-day backup window | AC-2108-01; DEC-028 | Drill target 36 days ago | 1. Attempt PITR | Rejected (outside retention); drill uses a valid target | P2 | T12 | BVA | Y | SYS |
+
+### 6.3.11.10 Group TC-21-I: State transition – rollback rehearsal (techniques: ST, BVA) · TS-21-09
+
+**Rollback rehearsal procedure (DR-8, every release, NFR-013).** 1. Deploy N+1 with expand-only migration to staging under LT-04 load (20 workflow steps in flight). 2. Trigger rollback through the pipeline role. 3. Measure time to N serving 100% traffic. 4. Reconcile uncertain outcomes. 5. Toggle the N+1 feature flag off. 6. Roll back a website to the prior approved hash. 7. Attach the drill report.
+
+| ID | Title | Links | Pre-conditions and data | Steps | Expected | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-21-076 | Roll back N+1 to N within 15 minutes with smoke green and no data loss | AC-2109-01; NFR-013 | Expand-only migration; LT-04 load | 1. Steps 1–3 | N serving ≤ 15 min (14:59 pass, 15:01 fail); smoke green; row counts unchanged | P0 | T12 | BVA, ST | Y | SYS |
+| TC-21-077 | Reconcile 20 in-flight steps before resumption without blind retry | AC-2109-02; DEC-050 | 20 in-flight steps, 3 timeout-after-submit | 1. Step 4 | 3 uncertain reconciled; 0 blind retries; 17 resume normally | P0 | T18 | ST | Y | SYS |
+| TC-21-078 | Remove a capability for all tenants within 60 s via feature flag | AC-2109-03 | Flag on for T1 and T2 | 1. Turn off. 2. Probe at 59 s and 61 s | Capability absent for all tenants by 60 s; no redeploy | P0 | T01 | BVA | Y | SYS |
+| TC-21-079 | Serve the prior approved website revision within the purge target | AC-2109-04; BRL-PUB-02 | Rev 12 live | 1. Rollback to 11 | Rev 11 at edges ≤ 5 min p95 (TC-19-029) | P0 | T01 | ST | Y | SYS |
+| TC-21-080 | Refuse "rollback-safe" for a destructive migration without a contract phase | AC-2109-05; RBR-7 | Migration dropping a column in one step | 1. Pipeline analysis | Not rollback-safe; A090 gate failing | P0 | T02 | DT | Y | CT |
+| TC-21-081 | Deny production rollback with personal credentials | AC-2109-06 | Engineer IAM user | 1. Attempt rollback | IAM denied; only pipeline role with release ID and approver | P0 | T07 | EP | Y | SYS |
+| TC-21-082 | Keep emergency stop state across rollback | AC-2109-02; E-7 | STOP active for OrganicSpec before rollback | 1. Roll back | STOP still active; 0 OrganicSpec calls | P0 | T01 | EG | Y | SYS |
+| TC-21-083 | Run release N against the N+1 expanded schema (compatibility) | AC-2109-01; Part 6.1 §6.1.2.2 IT | Schema after N+1 expand | 1. Run N's IT suite | 0 failures | P0 | T02 | EP | Y | IT |
+
+### 6.3.11.11 Group TC-21-J: Decision table – traceability and evidence records (techniques: DT, EP) · TS-21-10
+
+| ID | Title | Links | Pre-conditions and data | Steps | Expected | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-21-084 | Produce the release traceability report with FR/BR → stories → commits → TC and alias IDs | AC-2110-01; DEC-017; AP-08 | R-2027.07.1 scope | 1. Generate | Each in-scope FR/BR with stories, commits, TC IDs and SM-UT/SM-UAT aliases | P1 | T01 | EP | Y | SYS |
+| TC-21-085 | Block exit for an untested required FR unless a documented waiver exists | AC-2110-02; BR-S043 | FR-A073 without a passing TC | 1. Compute gate. 2. Add waiver with owner and independent reviewer | 1: "Untested requirement: FR-A073"; blocked. 2: unblocked, waiver listed | P0 | T01 | DT | Y | SYS |
+| TC-21-086 | Reject a waiver without an independent reviewer | AC-2110-03; BR-S135 | Waiver reviewer = owner | 1. Save | Rejected | P0 | T01 | DT | Y | IT |
+| TC-21-087 | Keep an evidence record Pending while its artefact is missing | AC-2110-04; BR-S136 | EVR without `evidence_ref` | 1. Set Pass | Stays Pending | P0 | T01 | DT | Y | UT |
+| TC-21-088 | Give the auditor read-only access to all evidence records in the tenant | AC-2110-05; R15 | Auditor | 1. List. 2. PATCH | List all; 403 on edit | P1 | T07 | EP | Y | IT |
+| TC-21-089 | Make evidence records append-only | AC-2110-04; NFR-018 | Existing EVR | 1. UPDATE via ORM and raw SQL | Both rejected; corrections only as new records | P0 | T07 | EG | Y | IT |
+| TC-21-090 | Record AP-08 semantic approval with a 10% spot-check of links | AC-2110-01; AP-08; Part 6.1 §6.1.13.6 | Traceability matrix | 1. PO spot-checks 10% (random seed recorded) | Approval record with spot-check results; failures re-linked | P1 | T01 | UC | N (semantic review) | UAT |
+
+### 6.3.11.12 Group TC-21-K: DR / failover drill catalogue (techniques: UC, EG, BVA) · TS-21-11
+
+The drill catalogue of Part 6.1 §6.1.14.4 executed as test cases. Measurement method: heartbeat writer every 10 s; RPO = failure-injection time − last heartbeat present after recovery; RTO = incident declared → `/ready` green **and** integrity checklist 1–10 passed. Each drill emits the drill report of RECOMMENDATION-078.
+
+| ID | Title | Links | Pre-conditions and data | Steps | Expected | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-21-091 | DR-1: PITR restore before a destructive change | US-2108; NFR-012 | Bad data deletion injected at 11:00:00 | 1. Restore to 10:55:00 into new instance; repoint app | RPO ≤ 15 min; RTO ≤ 4 h; integrity 10/10 | P0 | T12 | UC | Y | SYS |
+| TC-21-092 | DR-2: database instance loss (pilot single-AZ) | US-2108; DEC-040 | Instance stopped | 1. Restore from latest PITR | RPO ≤ 15 min; RTO ≤ 4 h | P0 | T12 | UC | Y | SYS |
+| TC-21-093 | DR-3: region-level loss restored in the secondary region | US-2108; ERRATA 16 | Primary region simulated unavailable | 1. IaC in region 2 from cross-region copy | Measured RPO/RTO recorded; regional target RTO ≤ 24 h, RPO ≤ 15 min; gap raised as risk | P0 | T12 | UC | N (twice-yearly game day, partly manual) | SYS |
+| TC-21-094 | DR-4: object storage overwrite recovered from versioning | US-2108 | 100 objects overwritten in a tenant prefix | 1. Recover versions | 100% recovered; hashes match | P0 | T12 | UC | Y | SYS |
+| TC-21-095 | DR-5: web and worker containers killed under load | US-2105 | LT-04 running | 1. Kill containers | No lost events; outbox resumes; 0 duplicate sends | P0 | T12 | EG | Y | SYS |
+| TC-21-096 | DR-6: Valkey loss during dispatch | US-2105 | Flush Valkey | 1. Flush during burst | Tasks re-enqueued from outbox; 0 duplicates | P0 | T12 | EG | Y | SYS |
+| TC-21-097 | DR-7: 30-minute provider outage (SES, WhatsApp, payment) | US-2105; NFR-007 | Simulator 5xx/timeouts 30 min | 1. Run | No event loss; backoff; uncertain reconciled; exception queue | P0 | T12 | EG | Y | SYS |
+| TC-21-098 | DR-8: bad deployment rolled back | US-2109; NFR-013 | Release with failing health | 1. Deploy; auto/manual rollback | Rollback ≤ 15 min; schema compatible | P0 | T12 | BVA | Y | SYS |
+| TC-21-099 | DR-9: Multi-AZ failover (after the scale gate) | US-2108; DEC-018 | Multi-AZ enabled (scale gate only) | 1. Force failover | Failover within managed-service time (verify); 0 data loss | P1 | T12 | UC | Y | SYS |
+
+### 6.3.11.13 Group TC-21-L: Use case – end-to-end release drill (techniques: UC, ST) · TS-21-12
+
+The release drill rehearses one complete release on the production-like path each wave: release candidate → staging gates → A090 → production deploy → canary watch → automatic rollback trigger. It uses a no-op "drill release" with a harmless version banner change.
+
+| Step | Action | Pass criterion | TC |
+|---|---|---|---|
+| 1 | Tag release candidate; G4 runs in staging | All gates Pass; evidence complete | TC-21-100 |
+| 2 | Independent reviewer approves in A090 | Approved; digest bound | TC-21-101 |
+| 3 | Pipeline deploys to production | Same digest; G5 smoke read-only, no external effects | TC-21-102 |
+| 4 | 60-minute error-budget watch (canary) | No SLO breach | TC-21-103 |
+| 5 | Injected SLO breach in a second drill triggers automatic rollback | Rollback ≤ 15 min; NT-043 | TC-21-104 |
+| 6 | Drill report and EVR | Machine-readable report ingested by A090 | TC-21-105 |
+
+| ID | Title | Links | Pre-conditions and data | Steps | Expected | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-21-100 | Pass all G4 gates for the drill release in staging | US-2101; US-2106 | Drill release `R-DRILL-W2` | 1. Tag; run G4 | Full regression, P0 pack ×2 green, ZAP, restore, rollback, UAT N/A (drill) | P0 | T02 | UC | Y | SYS |
+| TC-21-101 | Approve the drill release with independent reviewer and digest binding | US-2106 | A090 | 1. Approve | Approved; digest recorded | P0 | T01 | ST | Y | SYS |
+| TC-21-102 | Deploy the same digest to production with read-only smoke | US-2101; G5 | Production | 1. Deploy; run G5 smoke | Same digest; smoke green; 0 writes with external effects | P0 | T02 | UC | Y | SYS |
+| TC-21-103 | Watch the error budget for 60 minutes without breach | US-2104, US-2106 | Production metrics | 1. Observe | No burn alert; release state Deployed | P1 | T21 | UC | Y | SYS |
+| TC-21-104 | Roll back automatically on an injected SLO breach | US-2109; NFR-013 | Second drill with injected 5xx on canary | 1. Deploy; inject | Automatic rollback ≤ 15 min; detection ≤ 5 min [ASSUMPTION-190]; NT-043; state RolledBack | P0 | T12 | ST | Y | SYS |
+| TC-21-105 | Ingest the drill report as EVR and chart trends on A014 | US-2110; RECOMMENDATION-078 | Drill reports from TC-21-100…104 | 1. Ingest | EVR created with measured values; A014 trend updated | P1 | T21 | UC | Y | SYS |
+
+---
+
