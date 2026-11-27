@@ -55,7 +55,7 @@ AI never signs, pays, submits bids or sets prices.
 | Screens, each described | 147 |
 | Data entities | 199 |
 | API operations | 555 |
-| Architecture decision records | ≈ 80 |
+| Architecture decision records | 70 |
 | Non-functional requirements | 99 |
 | Security threats | 82 |
 | User stories | 230, with about 1,357 Gherkin scenarios |
