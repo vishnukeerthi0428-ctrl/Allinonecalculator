@@ -541,3 +541,225 @@ All 67 EP-13 AC covered.
 
 ---
 
+## 6.2.11 EP-14 Bids, orders and fulfilment (vertical routes)
+
+Stories US-1401…US-1412 (62 AC). FRs: FR-A104, FR-A105, FR-W14, FR-W15, FR-W16, FR-W25; cross-cutting FR-DM-02, FR-DM-03, FR-DM-04, FR-CSM-01. State machines Part 2.3 §2.27.4 (bid) and §2.27.8 (order and fulfilment). Agent exercised deterministically: AG-019 Bid / RFP Analyzer (checklist suggestions only, L1).
+
+### 6.2.11.1 Test scenarios
+
+| TS ID | Scenario | Linked stories / FR | Risk area · Priority | TCs |
+|---|---|---|---|---|
+| TS-14-01 | Bid desk creates tenders with UTC deadlines and routes them by capability profile | US-1401 · FR-A104, FR-DM-04, FR-CSM-01 | RA-09, RA-01 · **P0** | TC-14-001…011 |
+| TS-14-02 | Mandatory eligibility checklist gates the Startup Head's bid/no-bid decision | US-1402 · FR-A104 | RA-09 · **P0** | TC-14-012…018 |
+| TS-14-03 | Deadline guard warns, locks approval at deadline − buffer and rejects evidence at or after the deadline | US-1403 · FR-DM-02, FR-A104 | RA-09 · **P0** | TC-14-019…030 |
+| TS-14-04 | Human submission evidence, award proof, clarification and withdrawal; the system never submits | US-1404 · FR-A104 | RA-09, RA-19 · **P0** | TC-14-031…039 |
+| TS-14-05 | Project requirement intake routes securely with scanned uploads | US-1405 · FR-W15, FR-DM-04 | RA-23, RA-12 · **P0** | TC-14-040…046 |
+| TS-14-06 | RFQ intake creates a scoped draft quote that no service identity can approve | US-1406 · FR-W14 | RA-06, RA-15 · **P0** | TC-14-047…052 |
+| TS-14-07 | Supplier registration with certificate checks and no self-verification | US-1407 · FR-W16 | RA-08, RA-15 · **P0** | TC-14-053…057 |
+| TS-14-08 | Sell and Buy orders with exact reservations, capability checks and separation of duties | US-1408 · FR-A105, FR-CSM-01 | RA-08 · **P0** | TC-14-058…065 |
+| TS-14-09 | Fulfilment events are idempotent and never exceed ordered quantity beyond policy tolerance | US-1409 · FR-DM-03, FR-A105 | RA-08 · **P0** | TC-14-066…072 |
+| TS-14-10 | Acceptance posts receivables and payables to separate append-only ledgers | US-1410 · FR-A105 | RA-07, RA-08 · **P0** | TC-14-073…079 |
+| TS-14-11 | Portal status shows granted orders only, with units and accessible timelines | US-1411 · FR-W25 | RA-15 · **P0** | TC-14-080…085 |
+| TS-14-12 | Imports of price lists, availability and open deals are dry-run first, idempotent and consent-safe | US-1412 · FR-A104, FR-A105 (via A103) | RA-18, RA-17 · **P0** | TC-14-086…094 |
+| TS-14-13 | Bid and order state machines; full synthetic deal journeys for AppNAI and OrganicSpec | US-1401…US-1411 · §2.27.4, §2.27.8 | RA-08, RA-09 · **P0** | TC-14-095…100 |
+
+### 6.2.11.2 Test cases
+
+#### Group TC-14-A: Decision table and equivalence partitioning – bid desk and capability routing (US-1401)
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-14-001 | Create an AppNAI tender with UTC deadline and dual-zone display | TS-14-01 · US-1401 AC-1401-01 · FR-A104; BRL-BID-01 | Pre: PP-01, AppNAI, `imran` R06. Data: "GeM/2026/B/5501" "AI document classification platform", deadline 2030-06-01 09:00 UTC (portal zone Asia/Kolkata), budget INR 45,00,000.00 | POST bid; open A104 | B-31 `Identified` → `EligibilityCheck`; stored `2030-06-01T09:00:00Z` with portal zone; display "01 Jun 2030 14:30 IST / 09:00 UTC" | P1 | T01 | EP | Y | SYS |
+| TC-14-002 | School AI curriculum request proposes EduVerse and blocks AppNAI | TS-14-01 · US-1401 AC-1401-02 · FR-DM-04; DEC-052 | Data: opportunity "AI curriculum for a school" | Convert to bid in AppNAI | Blocked "Education requests route to EduVerse (DEC-052, FR-DM-04)"; EduVerse proposed | P0 | T01 | DT | Y | SYS |
+| TC-14-003 | Deadline without time zone fails validation | TS-14-01 · US-1401 AC-1401-03 · BRL-BID-01 | Data: "2030-06-01 09:00" without zone | POST | 422 zone required | P1 | T01 | EP | Y | SYS |
+| TC-14-004 | Duplicate tender ID opens the existing bid | TS-14-01 · US-1401 AC-1401-03 · NFR-005 | Data: "GeM/2026/B/5501" again in AppNAI | POST | 200 with existing B-31 (no new row) | P1 | T16 | EG | Y | SYS |
+| TC-14-005 | Client tenant with bid_desk creates bids and sees no T1 bids | TS-14-01 · US-1401 AC-1401-04 · NFR-032; DEC-052 | Pre: T2 `b-r06` R06 in "B-Tech" with `bid_desk` | Create bid; list; GET B-31 ID | Bid created in T2; list has 0 T1 rows; B-31 → U404 | P0 | T15 | EP | Y | SYS |
+| TC-14-006 | No bid_desk capability or wrong role cannot create bids | TS-14-01 · US-1401 AC-1401-05 · ABAC-08 | Data: `imran`-equivalent R06 in OrganicSpec (no `bid_desk`); `sunil` R07 in AppNAI | POST bid each | 403 both; NSE | P0 | T07 | EP | Y | SYS |
+
+**Routing decision table (BRL-BID-06, FR-DM-04, DEC-052).** Common for TC-14-007…011: Pre: PP-01, T1 portfolio defaults; Steps: submit the intake or conversion; read the proposed startup and the result.
+
+| ID | Request category · entry point · capability state | Expected routing | Links | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|
+| TC-14-007 | External AI/software project · AppNAI site or Admin · AppNAI has `bid_desk` | AppNAI bid desk | TS-14-01 · US-1401 · BRL-BID-06; FR-DM-04 | P0 | T01 | DT | Y | SYS |
+| TC-14-008 | External AI development request · entered on the EduVerse site | Routed to AppNAI (FR-DM-04) | TS-14-01 · US-1401 · FR-DM-04 | P0 | T01 | DT | Y | SYS |
+| TC-14-009 | Institutional wellness tender · MedMaarg without `bid_desk` grant | Refused "capability required (BRL-BID-06)"; no bid | TS-14-01 · US-1401 · BRL-BID-06; ABAC-08 | P0 | T01 | DT | Y | SYS |
+| TC-14-010 | Same tender · MedMaarg after R12 grants `bid_desk` (configuration, no code change) | MedMaarg bid created | TS-14-01 · US-1401 · DEC-052; BRL-TEN-11 | P1 | T01 | DT | Y | SYS |
+| TC-14-011 | Category not determinable | Not auto-routed; triage task to the portfolio owner (TP-01) | TS-14-01 · US-1401 · FR-DM-04; BRL-ELG-01 pattern | P1 | T01 | DT | Y | SYS |
+
+#### Group TC-14-B: Decision table – eligibility checklist and bid/no-bid (US-1402)
+
+| Rule | All mandatory items | Waiver approved by R02 | Decider | Result | TC |
+|---|---|---|---|---|---|
+| E1 | Pass with evidence | – | R02 | Bid available → Preparing | TC-14-012 |
+| E2 | One failed | N | R02 | Bid disabled; No-bid only | TC-14-013 |
+| E3 | One failed | Y (with reason) | R02 | Bid available | TC-14-014 |
+| E4 | Any | – | R06 | 403 | TC-14-016 |
+| E5 | Evidence missing on an item | N | R02 | Bid disabled | TC-14-013 |
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-14-012 | All checks evidenced; Startup Head decides Bid (E1) | TS-14-02 · US-1402 AC-1402-01 · FR-A104; BRL-BID-02, BRL-BID-03 | Pre: PP-01, AppNAI, `rhea` R02. Data: B-31 items ISO 27001, turnover ≥ INR 2 crore FY2025-26, India delivery with evidence | POST decision Bid | B-31 `BidDecision` → `Preparing`; decision audited with checklist snapshot | P0 | T01 | DT | Y | SYS |
+| TC-14-013 | Failed mandatory item or missing evidence leaves only No-bid (E2, E5) | TS-14-02 · US-1402 AC-1402-02 · BRL-BID-02 | Data: "CMMI Level 3" failed; "India delivery" without evidence | Open decision; POST Bid | Bid option disabled; API 409 `CHECKLIST_INCOMPLETE` | P0 | T19 | DT | Y | SYS |
+| TC-14-014 | Approved waiver makes Bid available (E3) | TS-14-02 · US-1402 AC-1402-03 · BRL-BID-02 | Data: waive "local office in Delhi", reason "consortium partner office" | `rhea` waives; decides Bid | Item `Waived`; Bid accepted | P1 | T01 | DT | Y | SYS |
+| TC-14-015 | No-bid requires a reason | TS-14-02 · US-1402 AC-1402-04 · BRL-APR-08 | Data: No-bid without reason | POST | 400 | P2 | T01 | EP | Y | SYS |
+| TC-14-016 | Bid manager cannot decide (E4) | TS-14-02 · US-1402 AC-1402-05 · BRL-BID-03 | Pre: `imran` R06 | POST Bid | 403 | P0 | T07 | DT | Y | SYS |
+| TC-14-017 | Bid manager cannot waive a checklist item | TS-14-02 · US-1402 Notes · BRL-BID-02 | Pre: `imran` | POST waiver | 403 | P0 | T07 | EP | Y | SYS |
+| TC-14-018 | AI pre-fill is suggestion only; the agent cannot mark items passed | TS-14-02 · US-1402 Notes · BRL-AI-07; DEC-064 | Data: AG-019 suggestions for 5 items; R20 token | Call checklist update as R20 | Suggestions stored as `suggested`; R20 update 403; items change state only by R06/R02 action | P0 | T07, T14 | EP | Y | SYS |
+
+#### Group TC-14-C: Boundary values – tender deadline guard (US-1403; FR-DM-02; CONFLICT-133)
+
+**Common for TC-14-019…030:** Pre: PP-01, AppNAI; B-31 deadline 2030-06-01 09:00:00 UTC, buffer 24 h (lock instant 2030-05-31 09:00:00 UTC) unless stated; trusted server clock via clock control. Steps: advance the clock and perform the action. Expected as listed.
+
+| ID | Data (instant · action) | Expected | Links | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|
+| TC-14-019 | 2030-05-25, 05-29 and 05-31 at 09:00:00 UTC with 2 checklist items open; repeat with all items closed | NT-020 Normal, High, Critical at those instants; no NT-020 when no item is open | TS-14-03 · US-1403 AC-1403-01 · NT-020; O-21 | P1 | T01 | BVA | Y | SYS |
+| TC-14-020 | 2030-05-31 08:59:59 UTC · R02 approves submission | Accepted; `ReadyToSubmit` | TS-14-03 · US-1403 AC-1403-02 · BRL-BID-01 | P0 | T01 | BVA | Y | SYS |
+| TC-14-021 | 2030-05-31 09:00:00 UTC · R02 approves submission | Rejected "Within submission buffer (BRL-BID-01)"; exception created; state unchanged | TS-14-03 · US-1403 AC-1403-02 · BRL-BID-01 | P0 | T01 | BVA | Y | SYS |
+| TC-14-022 | Evidence with portal timestamp 2030-06-01 09:00:00 UTC | Rejected; B-31 `Expired`; award cannot be recorded; 0 external calls (FR-DM-02) | TS-14-03 · US-1403 AC-1403-03 · FR-DM-02; DEC-053 | P0 | T19 | BVA | Y | SYS |
+| TC-14-023 | Evidence with portal timestamp 2030-06-01 08:59:59 UTC recorded at 2030-06-01 11:00 UTC after the buffer lock, with R02 acknowledgement | Accepted, flagged "inside buffer"; `Submitted` (O-21) | TS-14-03 · US-1403 AC-1403-03 · CONFLICT-133 | P0 | T19 | BVA | Y | SYS |
+| TC-14-024 | Same evidence without R02 acknowledgement | Held pending acknowledgement; state not Submitted; R02 task created | TS-14-03 · US-1403 AC-1403-03 · CONFLICT-133 | P0 | T19 | DT | Y | SYS |
+| TC-14-025 | Viewer zone America/Los_Angeles | "01 Jun 2030 02:00 PDT / 09:00 UTC" | TS-14-03 · US-1403 AC-1403-04 · BRL-MTG-03 pattern | P2 | T13 | EP | Y | E2E |
+| TC-14-026 | Scheduler down 2030-05-31 08:00–10:00 UTC | On recovery the lock and the Critical warning are applied once; NT-021; no duplicate notifications (BRL-AUT-10) | TS-14-03 · US-1403 AC-1403-05 · BRL-AUT-10; NT-021 | P0 | T12, T16 | EG | Y | SYS |
+| TC-14-027 | `imran` R06 changes the buffer | 403 | TS-14-03 · US-1403 AC-1403-06 | P1 | T07 | EP | Y | SYS |
+| TC-14-028 | `rhea` R02 sets buffer 1 h, 1 h 59 m, 2 h | 1 h and 1 h 59 m → 422 "minimum 2 h"; 2 h accepted | TS-14-03 · US-1403 AC-1403-06 · BRL-BID-01 | P1 | T01 | BVA | Y | SYS |
+| TC-14-029 | Request carries client timestamp `2030-05-31T08:00:00Z` while server clock is 09:00:01 | Server time used; approval rejected; client value ignored and logged | TS-14-03 · US-1403 Notes · BRL-BID-01 | P0 | T07 | EG | Y | SYS |
+| TC-14-030 | Buffer 2 h: approval at 2030-06-01 06:59:59 and 07:00:00 UTC | First accepted; second rejected | TS-14-03 · US-1403 D6 · BRL-BID-01 | P0 | T01 | BVA | Y | SYS |
+
+#### Group TC-14-D: State transition and equivalence partitioning – submission evidence, award and withdrawal (US-1404)
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-14-031 | Record a human portal submission with receipt hash | TS-14-04 · US-1404 AC-1404-01 · FR-A104; BRL-BID-04 | Pre: PP-01, AppNAI, `imran`; B-31 `ReadyToSubmit`. Data: reference "GEM-SUB-88812", timestamp 2030-05-30 11:20 UTC, receipt PDF | POST evidence | Receipt SHA-256 stored; B-31 `Submitted`; KPI-11 counts the submission | P0 | T01 | ST | Y | SYS |
+| TC-14-032 | Evidence without receipt or reference is refused | TS-14-04 · US-1404 D4 · BRL-BID-04 | Data: missing receipt; then missing reference | POST each | 422; state unchanged | P0 | T01 | EP | Y | SYS |
+| TC-14-033 | Award without a document is refused | TS-14-04 · US-1404 AC-1404-02 · BRL-BID-05 | Data: "Awarded" with no attachment | POST | 422 BRL-BID-05 | P0 | T19 | EP | Y | SYS |
+| TC-14-034 | Award with letter verified by R02 is tracked separately from Signed and Paid | TS-14-04 · US-1404 AC-1404-02 · BRL-BID-05; DEC-054; BR-S045 | Data: award letter PDF | `imran` attaches; `rhea` verifies | B-31 `Awarded`; deal shows Awarded, Signed = No, Paid = No; deal not Won-Contracted | P0 | T01 | ST | Y | SYS |
+| TC-14-035 | Clarification loop returns to Submitted | TS-14-04 · US-1404 AC-1404-03 · §2.27.4 | Data: buyer query; response evidence | Record query; record response | `Clarification` → `Submitted` | P1 | T01 | ST | Y | SYS |
+| TC-14-036 | AI agent cannot use any portal submission tool | TS-14-04 · US-1404 AC-1404-04 · DEC-053; BRL-AI-07 | Pre: R20 token for AG-019/AG-020 | Call submission tool | Registry denies; audit entry; 0 external calls | P0 | T07 | EP | Y | SYS |
+| TC-14-037 | Withdrawal is pending Startup Head approval with reason | TS-14-04 · US-1404 AC-1404-05 · §2.27.4 | Pre: `imran` | POST withdraw {reason} | Pending R02; on `rhea` approval → `Withdrawn` | P1 | T01 | ST | Y | SYS |
+| TC-14-038 | Duplicate evidence with the same receipt hash creates no second record | TS-14-04 · US-1404 D4 · NFR-005 | Data: same receipt uploaded twice | POST twice | One evidence record | P1 | T16 | EG | Y | SYS |
+| TC-14-039 | Submission evidence before ReadyToSubmit is refused | TS-14-04 · US-1404 · BRL-BID-03 | Data: B-32 `Preparing` | POST evidence | 409 `INVALID_TRANSITION` | P0 | T01 | ST | Y | SYS |
+
+#### Group TC-14-E: Equivalence partitioning – project requirement, RFQ and supplier intake (US-1405, US-1406, US-1407)
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-14-040 | AI project requirement creates one lead routed to AppNAI | TS-14-05 · US-1405 AC-1405-01 · FR-W15; FR-DM-04 | Pre: PP-02 `appnai.example`. Data: "Computer vision QA for a factory line", deadline 2027-02-15 17:00 IST, INR 25,00,000.00, consent | Submit | One lead routed to AppNAI | P1 | T01 | EP | Y | SYS |
+| TC-14-041 | Anonymous visitor is asked to sign in before uploading | TS-14-05 · US-1405 AC-1405-02 · NFR-021 | Pre: PP-02 anonymous | Attach file | "Sign in to upload"; upload API 401 | P1 | T07 | EP | Y | E2E |
+| TC-14-042 | Infected file is rejected and not stored | TS-14-05 · US-1405 AC-1405-02 · NFR-021 | Pre: PP-03 signed in. Data: EICAR file | Upload | Rejected with reason; no object in storage | P0 | T07 | EG | Y | SYS |
+| TC-14-043 | Budget without currency or past deadline fails | TS-14-05 · US-1405 AC-1405-03 | Data: budget "2500000"; deadline 2026-11-30 | Submit | 422 for each | P2 | T01 | EP | Y | SYS |
+| TC-14-044 | Scanner down: uploads quarantined until clean | TS-14-05 · US-1405 AC-1405-04 | Data: scanner 503 then clean | Upload; restore scanner | Quarantined, not attached; attached after clean result | P1 | T12 | EG | Y | SYS |
+| TC-14-045 | Submitter cannot read another enquiry | TS-14-05 · US-1405 AC-1405-05 · CA-PORTAL | Data: other enquiry ID | GET | 404 | P0 | T15 | EP | Y | SYS |
+| TC-14-046 | Sensitive identifiers in free text are redacted at intake | TS-14-05 · US-1405 Links · BRL-PRV-06 | Data: description containing a PAN-like number | Submit | Stored redacted; lead created | P0 | T19 | EG | Y | SYS |
+| TC-14-047 | RFQ creates a draft quote with price-list values and sends nothing | TS-14-06 · US-1406 AC-1406-01 · FR-W14; DEC-064 | Pre: PP-02 `organicspec.example`. Data: 2 kg TUR-A to Kolkata by 2026-12-20 | Submit | One RFQ; quote draft for R07 with 150.00/kg; 0 outbound messages to the buyer except NX acknowledgement if eligible | P0 | T01 | EP | Y | SYS |
+| TC-14-048 | Unit not allowed for the SKU | TS-14-06 · US-1406 AC-1406-02 · BRL-QTE-07 | Data: unit "litre" | UI list; API | Not offered; API 400 | P1 | T01 | EP | Y | SYS |
+| TC-14-049 | Duplicate RFQ with the same key | TS-14-06 · US-1406 AC-1406-03 · CA-INTAKE | Data: same idempotency key twice | Submit twice | One RFQ | P0 | T16 | EG | Y | SYS |
+| TC-14-050 | No service identity can approve the draft quote | TS-14-06 · US-1406 AC-1406-04 · BRL-AUT-01; BRL-AI-07 | Pre: R19 and R20 tokens | POST approve | 403 both; approval only by humans per US-1305 | P0 | T07 | EP | Y | SYS |
+| TC-14-051 | Portal buyer lists only her own RFQs | TS-14-06 · US-1406 AC-1406-05 · ABAC-09 | Pre: PP-03 `buyer@agro.example` | GET RFQs | Only RFQs under her grants | P0 | T15 | EP | Y | SYS |
+| TC-14-052 | Quantity 0 rejected | TS-14-06 · US-1406 D4 · BRL-QTE-07 | Data: qty 0 | Submit | 422 | P2 | T01 | BVA | Y | SYS |
+| TC-14-053 | Supplier registration creates a review task | TS-14-07 · US-1407 AC-1407-01 · FR-W16 | Pre: PP-02. Data: "Koraput Organic FPO", turmeric Grade A, 500 kg/month, lead time 10 days, NPOP certificate valid to 2027-08-31 | Submit | Review task for R07; status `Received` | P2 | T01 | EP | Y | SYS |
+| TC-14-054 | Expired certificate flags the product line | TS-14-07 · US-1407 AC-1407-02 · BRL-QTE-07 | Data: expiry 2026-10-31 (and boundary 2026-12-01 at CLK-0: valid through the day) | Submit; R07 verifies | 2026-10-31 → "certificate expired", cannot verify; 2026-12-01 → verifiable today | P1 | T01 | BVA | Y | SYS |
+| TC-14-055 | Same legal name and GSTIN updates the existing application | TS-14-07 · US-1407 AC-1407-03 · NFR-005 | Data: same GSTIN `21AAAAA0000A1Z5` (synthetic) | Submit again | Existing application updated; no duplicate | P1 | T16 | EG | Y | SYS |
+| TC-14-056 | Supplier cannot set itself Verified | TS-14-07 · US-1407 AC-1407-04 · CA-PORTAL | Pre: PP-03 supplier | PATCH status Verified | 403 | P0 | T07 | EP | Y | SYS |
+| TC-14-057 | or-IN supplier form | TS-14-07 · US-1407 D8 · DEC-026 | Pre: approved or-IN form | Submit with Odia text | Stored NFC; labels and errors in Odia | P3 | T13 | EP | Y | E2E |
+
+#### Group TC-14-F: Boundary values and error guessing – order desk with reservation (US-1408)
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-14-058 | Sell order approved, priced and reserved | TS-14-08 · US-1408 AC-1408-01 · FR-A105; BRL-ORD-01, BRL-ORD-04 | Pre: PP-01, OrganicSpec, `sunil` creates, `gopal` approves. Data: TUR-A available 50 kg; SO-71 2 kg at 150.00 with 10% | Create; approve | Total INR 270.00 before tax; 2 kg reserved; available 48 kg; SO-71 `Approved` | P0 | T01 | BVA | Y | SYS |
+| TC-14-059 | Quantity equal to availability succeeds; one more kilogram fails | TS-14-08 · US-1408 AC-1408-02 · BRL-ORD-04 | Data: SO-72 48 kg, then SO-73 1 kg | Approve each | SO-72 approved, available 0; SO-73 409 "Insufficient available quantity" | P0 | T01 | BVA | Y | SYS |
+| TC-14-060 | Two concurrent approvals for the last 2 kg: exactly one succeeds | TS-14-08 · US-1408 AC-1408-03 · NFR-005 | Pre: PP-05. Data: available 2 kg; SO-74 and SO-75 each 2 kg | Approve concurrently (20 repetitions) | Exactly one approved each time; the other 409; availability never negative | P0 | T16 | EG | Y | IT |
+| TC-14-061 | Cancellation releases the reservation and is audited | TS-14-08 · US-1408 AC-1408-04 · BRL-ORD-04 | Data: SO-71 Approved | Cancel with reason | 2 kg back to availability; `Cancelled`; audit | P0 | T01 | ST | Y | SYS |
+| TC-14-062 | Buy order reserves nothing and targets the payable ledger | TS-14-08 · US-1408 AC-1408-05 · BRL-ORD-01, BRL-ORD-06 | Data: PO-15 500 kg from Koraput Organic FPO | Create; approve | No reservation change; ledger target `Payable` | P0 | T01 | EP | Y | SYS |
+| TC-14-063 | Creator cannot approve own order | TS-14-08 · US-1408 AC-1408-06 · BRL-APR-01 | Pre: `sunil` | Approve SO-71 | 403 | P0 | T07 | EP | Y | SYS |
+| TC-14-064 | No order_desk capability, no order | TS-14-08 · US-1408 AC-1408-06 · ABAC-08 | Pre: R07 in AppNAI | POST order | 403 | P0 | T07 | EP | Y | SYS |
+| TC-14-065 | Issued Sell order not acknowledged within 14 days releases its reservation | TS-14-08 · US-1408 Notes · ASSUMPTION-166; DEC-045; O-19 | Data: SO-76 issued 2026-12-01 10:00 IST | Check at 2026-12-15 09:59:59 and 10:00:00 IST | Reserved at first; released and flagged at second; order owner notified | P1 | T01 | BVA | Y | SYS |
+
+#### Group TC-14-G: Boundary values and property-based tests – fulfilment idempotency (US-1409; FR-DM-03)
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-14-066 | Worked example FR-DM-03 | TS-14-09 · US-1409 AC-1409-01 · FR-DM-03; BRL-ORD-02, BRL-ORD-03; NT-022 | Pre: PP-01, SO-71 line 2 kg `Acknowledged` | Record 1 kg `DLV-71-1`; again `DLV-71-1`; 1 kg `DLV-71-2`; 2 kg `DLV-71-3` | PartiallyFulfilled 1/2 kg; duplicate no effect; Fulfilled 2/2 kg; over-delivery rejected and NT-022 sent | P0 | T16, T01 | BVA | Y | SYS |
+| TC-14-067 | Tolerance 2% on 100 kg: 102.00 accepted, 102.01 rejected | TS-14-09 · US-1409 AC-1409-02 · BRL-ORD-02 | Data: policy 2%; cumulative 101.00 then +1.00, then +0.01 | Record | 102.00 accepted; 102.01 rejected | P0 | T01 | BVA | Y | SYS |
+| TC-14-068 | Default tolerance 0%: 100.00 accepted, 100.01 rejected | TS-14-09 · US-1409 · BRL-ORD-02 | Data: policy default | Record | As stated | P0 | T01 | BVA | Y | SYS |
+| TC-14-069 | Concurrent duplicate events keep one row | TS-14-09 · US-1409 AC-1409-03 · NFR-005; BRL-ORD-03 | Pre: PP-05. Data: same key from two workers | Submit simultaneously | Unique constraint keeps one row; both callers get success; one effect | P0 | T16 | EG | Y | IT |
+| TC-14-070 | Unit mismatch without approved conversion is rejected | TS-14-09 · US-1409 AC-1409-04 · BRL-QTE-07 | Data: delivery 0.02 quintal on a kg line | Record | 422 unit mismatch | P1 | T01 | EP | Y | SYS |
+| TC-14-071 | Finance cannot record fulfilment | TS-14-09 · US-1409 AC-1409-05 | Pre: `lata` R08 | POST delivery | 403 | P1 | T07 | EP | Y | SYS |
+| TC-14-072 | Property: cumulative fulfilled ≤ ordered × (1 + tolerance) for any event sequence | TS-14-09 · US-1409 · BRL-ORD-02, BRL-ORD-03; §6.1.11.7 | Pre: PP-04 Hypothesis `release` | Random sequences with duplicates and reorderings | Invariant holds; duplicates never change totals | P0 | T16 | PBT | Y | UT |
+
+#### Group TC-14-H: Boundary values – acceptance and ledger postings (US-1410)
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-14-073 | Buyer acceptance posts a receivable of INR 318.60 | TS-14-10 · US-1410 AC-1410-01 · FR-A105; BRL-ORD-05; KPI-12 | Pre: PP-03 buyer; SO-71 `Fulfilled` | Accept in W25 | ReceivableEntry 318.60 (270.00 + CGST 24.30 + SGST 24.30); SO-71 `LedgerPosted`; no payment record (DEC-022) | P0 | T01 | EP | Y | SYS |
+| TC-14-074 | Buy receipt posts a payable and never nets the receivable | TS-14-10 · US-1410 AC-1410-02 · BRL-ORD-06; KPI-14 | Data: counterparty is both buyer (SO-77, receivable 1,000.00) and supplier (PO-15) | Accept PO-15 receipt | PayableEntry posted; receivable balance unchanged at 1,000.00; no netting entry | P0 | T01, T19 | EP | Y | SYS |
+| TC-14-075 | Deemed acceptance at exactly 7 days | TS-14-10 · US-1410 AC-1410-03 · BRL-ORD-05 | Data: fulfilled 2026-12-01 10:00 IST | Check at 2026-12-08 09:59 and 10:00 IST | No posting at 09:59; deemed acceptance posts at 10:00 | P0 | T01 | BVA | Y | SYS |
+| TC-14-076 | Partial acceptance posts 1 kg and opens a dispute | TS-14-10 · US-1410 AC-1410-04 · GAP-158 | Data: accept 1 of 2 kg; dispute 1 kg | Accept partially | Receivable 135.00 + CGST 12.15 + SGST 12.15 = 159.30; dispute case; state `PartiallyAccepted` → `LedgerPosted` | P0 | T01 | EP | Y | SYS |
+| TC-14-077 | Corrections are reversing entries; edits refused | TS-14-10 · US-1410 AC-1410-05 · BRL-FIN-05 | Pre: `lata` R08 | PATCH amount; POST reversal with reason | PATCH 405/409; reversal entry with reason; balance correct; original unchanged | P0 | T01 | EG | Y | SYS |
+| TC-14-078 | External user cannot settle a receivable | TS-14-10 · US-1410 AC-1410-06 · CA-PORTAL | Pre: PP-03 buyer | POST settle | 403 | P0 | T07 | EP | Y | SYS |
+| TC-14-079 | Replayed acceptance event posts once | TS-14-10 · US-1410 · NFR-005 | Data: acceptance event delivered twice | Process | One ReceivableEntry | P0 | T16 | EG | Y | IT |
+
+#### Group TC-14-I: Equivalence partitioning – portal order status (US-1411)
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-14-080 | Partial delivery shown with units, ETA and last update | TS-14-11 · US-1411 AC-1411-01 · FR-W25 | Pre: PP-03 buyer; SO-71 1 of 2 kg | Open W25 | "1 of 2 kg delivered", ETA, last update time | P1 | T01 | EP | Y | SYS |
+| TC-14-081 | Discrepancy moves the order to Disputed and notifies the coordinator | TS-14-11 · US-1411 AC-1411-02 · BRL-ORD-05 | Data: "0.2 kg short" | Raise discrepancy | `Disputed`; R07 notified | P1 | T01 | ST | Y | SYS |
+| TC-14-082 | Empty state and 200-order pagination of 20 per page | TS-14-11 · US-1411 AC-1411-03 | Data: user with 0 orders; user with 200 | Open list | Empty-state text; 10 pages of 20 with stable order | P2 | T01 | BVA | Y | E2E |
+| TC-14-083 | Milestone timeline is an ordered list with text status | TS-14-11 · US-1411 AC-1411-04 · NFR-023 | Pre: PP-06 | Inspect DOM and axe | `<ol>` with text statuses; no colour-only meaning; axe 0 critical/serious | P1 | T08 | EP | Y | E2E |
+| TC-14-084 | Another buyer's order returns 404 and is never cached | TS-14-11 · US-1411 AC-1411-05 · CA-PORTAL; BRL-PUB-05 | Data: request PO-15 (not granted) | GET via portal and CDN | 404; `Cache-Control: private, no-store`; no CDN hit | P0 | T15 | EP | Y | SYS |
+| TC-14-085 | Accept and dispute actions only on granted orders | TS-14-11 · US-1411 Notes · ABAC-09 | Data: buyer POST accept on PO-15 | POST | U404; NSE | P0 | T07 | EP | Y | SYS |
+
+#### Group TC-14-J: Equivalence partitioning and boundary values – data migration imports (US-1412; T11)
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-14-086 | Dry run reports 117 valid and 3 invalid rows and writes nothing | TS-14-12 · US-1412 AC-1412-01 · DEC-039; BRL-QTE-07 | Pre: PP-01, OrganicSpec, `sana` R12. Data: `organicspec_pricelist_v1.csv` 120 rows, 3 invalid units | Upload dry run | Report with row numbers; 0 rows written (DB row counts unchanged) | P1 | T11 | EP | Y | SYS |
+| TC-14-087 | Commit creates a Draft price version needing Finance approval | TS-14-12 · US-1412 AC-1412-02 · BRL-QTE-01 | Data: 117 valid rows | Commit | PV-OS-13 `Draft`; not usable by quotes until `lata` R08 approves | P0 | T11 | EP | Y | SYS |
+| TC-14-088 | Open bids keep UTC deadlines; past-deadline bids import as Expired | TS-14-12 · US-1412 AC-1412-03 · BRL-BID-01 | Data: 4 AppNAI bids, one with deadline 2026-11-30 09:00 UTC | Import at CLK-0 | 3 in `EligibilityCheck` with exact UTC deadlines; 1 `Expired` | P0 | T11 | BVA | Y | SYS |
+| TC-14-089 | Repeated order reference rejected as duplicate | TS-14-12 · US-1412 AC-1412-04 · BRL-ORD-01 | Data: file repeats "SO-IMP-9" | Import | Second row rejected "duplicate" | P1 | T11, T16 | EG | Y | SYS |
+| TC-14-090 | 10,000 availability rows import asynchronously with progress and audit | TS-14-12 · US-1412 AC-1412-04 · NFR-028 | Data: 10,000 rows | Import | Job progress visible; completes; audit with counts; API stays within p95 targets during the job | P2 | T11, T03 | BVA | Y | SYS |
+| TC-14-091 | Growth manager cannot import price lists | TS-14-12 · US-1412 AC-1412-05 | Pre: R03 | Upload | 403 | P1 | T07 | EP | Y | SYS |
+| TC-14-092 | Re-running the same file creates no duplicates | TS-14-12 · US-1412 · NFR-005; §6.1.14.5 | Data: same committed file again | Commit | Run report all "unchanged"; 0 new rows | P0 | T11, T16 | EG | Y | SYS |
+| TC-14-093 | Imported deal contacts stay ineligible until consent is verified | TS-14-12 · US-1412 Notes · DEC-039; BRL-ELG-03 | Data: open deals with 25 contacts | Import; enrol a contact | Enrol refused (no verified lawful basis) | P0 | T19 | EP | Y | SYS |
+| TC-14-094 | A T2 import never writes T1 rows | TS-14-12 · US-1412 D6 · BRL-TEN-03 | Pre: `b-admin` R12. Data: file containing a T1 startup code | Import | Rows scoped to T2; foreign scope codes rejected; 0 T1 rows changed | P0 | T15 | EG | Y | SYS |
+
+#### Group TC-14-K: State transition and use case – bid and order machines; full synthetic deals
+
+0-switch map, bid (16 transitions): Identified→EligibilityCheck (TC-14-001) · EligibilityCheck→BidDecision, BidDecision→Preparing (TC-14-012) · EligibilityCheck→NoBid, BidDecision→NoBid (TC-14-095) · Preparing→ReadyToSubmit (TC-14-020) · ReadyToSubmit→Expired, Preparing→Expired (TC-14-022, TC-14-095) · ReadyToSubmit→Submitted (TC-14-031) · Submitted→Clarification→Submitted (TC-14-035) · Submitted→Awarded (TC-14-034) · Submitted→NotAwarded (TC-14-095) · Submitted→Withdrawn (TC-14-037). Order (20 transitions): Draft→PendingApproval→Approved (TC-14-058) · PendingApproval→Draft (TC-14-097) · Approved→Issued→Acknowledged (TC-14-097) · Acknowledged→PartiallyFulfilled→Fulfilled (TC-14-066) · Acknowledged→Fulfilled (TC-14-097) · Fulfilled→Accepted→LedgerPosted (TC-14-073) · Fulfilled→Disputed (TC-14-081) · Disputed→Accepted, Disputed→PartiallyAccepted→LedgerPosted (TC-14-076, TC-14-097) · LedgerPosted→Closed (TC-14-097) · Draft→Cancelled, Issued→Cancelled (TC-14-097) · Approved→Cancelled (TC-14-061).
+
+**Common for TC-14-095…098:** Pre: PP-01; drive transitions through the API with clock control.
+
+| ID | Data (transitions) | Expected | Links | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|
+| TC-14-095 | Bid valid set: EligibilityCheck→NoBid (mandatory failed, decision No-bid with reason); BidDecision→NoBid; Preparing→Expired (deadline passed before ReadyToSubmit); Submitted→NotAwarded (result recorded with evidence) | Each once with audit; terminal states accept no further event | TS-14-13 · US-1402…US-1404 · §2.27.4 | P1 | T01 | ST | Y | SYS |
+| TC-14-096 | Bid sneak paths: Identified→Submitted; Preparing→Submitted; Expired→Submitted; NoBid→Preparing; Awarded→Withdrawn | 409 `INVALID_TRANSITION`; NSE | TS-14-13 · US-1403, US-1404 · BRL-BID-01, BRL-BID-04; DEC-053 | P0 | T01 | ST | Y | UT |
+| TC-14-097 | Order valid set: PendingApproval→Draft (rejected); Approved→Issued; Issued→Acknowledged; Acknowledged→Fulfilled (single full event); Disputed→Accepted (resolved); LedgerPosted→Closed (settled per EP-15 signal); Draft→Cancelled; Issued→Cancelled (mutual, reservation released) | Each once with audit; reservations correct after each | TS-14-13 · US-1408…US-1410 · §2.27.8 | P1 | T01 | ST | Y | SYS |
+| TC-14-098 | Order sneak paths: Draft→Fulfilled; Cancelled→Approved; Fulfilled→PartiallyFulfilled; LedgerPosted→Disputed; Closed→Accepted | 409; no ledger or reservation change | TS-14-13 · US-1409, US-1410 · BRL-ORD-02, BRL-FIN-05 | P0 | T01 | ST | Y | UT |
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-14-099 | J-14-01: AppNAI full synthetic bid route (W4 exit evidence) | TS-14-13 · US-1401…US-1404 · FR-A104; UAT-PK-AN; AP-03 | Pre: PP-06; lanes `imran`, `rhea`, `dev`; clock control | Create B-31 → checklist → Bid → proposal and quote approvals (EP-13) → ReadyToSubmit before lock → record human submission → clarification → award verified | B-31 Awarded; deal shows Awarded ≠ Signed ≠ Paid; 0 automated submissions; axe 0 critical/serious on A104 | P0 | T01 | UC | Y | E2E |
+| TC-14-100 | J-14-02: OrganicSpec full synthetic order route (W4 exit evidence) | TS-14-13 · US-1406…US-1411 · FR-W14, FR-A105, FR-W25; UAT-PK-OS; AP-04 | Pre: PP-06; lanes buyer, `sunil`, `gopal`, `lata` | W14 RFQ → quote → approval → buyer accepts → SO-71 approved and reserved → issued → partial then full delivery (with a duplicate event) → W25 acceptance → receivable posted | Exact quantities; duplicate no effect; ReceivableEntry 318.60; PO-15 payable separate; KPI-12 updated | P0 | T01 | UC | Y | E2E |
+
+### 6.2.11.3 EP-14 coverage
+
+| Story | AC → TC |
+|---|---|
+| US-1401 | 01→001 · 02→002 · 03→003, 004 · 04→005 · 05→006 · extra→007…011 |
+| US-1402 | 01→012 · 02→013 · 03→014 · 04→015 · 05→016 · extra→017, 018 |
+| US-1403 | 01→019 · 02→020, 021 · 03→022, 023, 024 · 04→025 · 05→026 · 06→027, 028 · extra→029, 030 |
+| US-1404 | 01→031 · 02→033, 034 · 03→035 · 04→036 · 05→037 · extra→032, 038, 039 |
+| US-1405 | 01→040 · 02→041, 042 · 03→043 · 04→044 · 05→045 · extra→046 |
+| US-1406 | 01→047 · 02→048 · 03→049 · 04→050 · 05→051 · extra→052 |
+| US-1407 | 01→053 · 02→054 · 03→055 · 04→056 · extra→057 |
+| US-1408 | 01→058 · 02→059 · 03→060 · 04→061 · 05→062 · 06→063, 064 · extra→065 |
+| US-1409 | 01→066 · 02→067 · 03→069 · 04→070 · 05→071 · extra→068, 072 |
+| US-1410 | 01→073 · 02→074 · 03→075 · 04→076 · 05→077 · 06→078 · extra→079 |
+| US-1411 | 01→080 · 02→081 · 03→082 · 04→083 · 05→084 · extra→085 |
+| US-1412 | 01→086 · 02→087 · 03→088 · 04→089, 090 · 05→091 · extra→092, 093, 094 |
+
+All 62 EP-14 AC covered.
+
+---
+
