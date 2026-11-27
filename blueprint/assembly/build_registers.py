@@ -140,7 +140,7 @@ REGISTRY = [
     ("SC-##", r"\bSC-(?P<n>\d{2})\b", "Security control", "4.1"),
     ("RB-###", r"\bRB-(?P<n>\d{3})\b", "Operational runbook", "4.3"),
     ("SLO-##", r"\bSLO-(?P<n>\d{2})\b", "Service level objective", "4.2/4.3"),
-    ("AL-##", r"\bAL-(?P<n>\d{2})\b", "Alert rule", "4.1/4.3"),
+    ("AL-##", r"\bAL-(?P<n>\d{2})\b(?!\.\d)", "Alert rule (AL-50…58 added in 4.4b)", "4.1/4.3, 4.4b"),
     ("LT-##", r"\bLT-(?P<n>\d{2})\b", "Load/performance test (DEC-092: owned by 6.1)", "6.1"),
     ("DQ-###", r"\bDQ-(?P<n>\d{3})\b", "Data quality check", "3.3"),
     ("API-###", r"\bAPI-(?P<n>\d{3})\b", "API operation in the derived catalogue (555 ops, DEC-104)", "3.2"),
@@ -165,7 +165,7 @@ REGISTRY = [
     ("G-##", r"\bG-(?P<n>\d{2})\b", "Business goal", "1"),
     ("OQ-###", r"\bOQ-(?P<n>\d{3})\b", "Open question (all answered in 0A)", "0, 0A"),
     ("AMB-#", r"\bAMB-(?P<n>\d{1,2})\b", "Ambiguity in the source (resolved DEC-049…058)", "0, 0A"),
-    ("E-##", r"\bE-(?P<n>\d{2})\b", "Errata item (Part 9.1, E-01…); note E-# (one digit) = engine invariant in 2.2", "9.1"),
+    ("E-##", r"(?<![-\w])E-(?P<n>\d{2})\b", "Errata item (Part 9.1, E-01…); note E-# (one digit) = engine invariant in 2.2", "9.1"),
     ("ABAC-##", r"\bABAC-(?P<n>\d{2})\b", "Attribute-based access control rule", "2.3"),
     ("ENT-###", r"\bENT-(?P<n>\d{3})\b", "Logical data entity", "3.3"),
     ("CK-##", r"\bCK-(?P<n>\d{2})\b", "Database check constraint pattern", "3.3"),
@@ -208,6 +208,65 @@ REGISTRY = [
     ("SM-UT-###", r"\bSM-UT-(?P<n>\d{3})\b", "Source test alias (FRD; aliases only, DEC-094)", "Source (FRD); 6"),
     ("M##", r"(?<![-\w])M(?P<n>\d{2})\b", "Source module M01–M66 (BRD §7)", "Source (BRD)"),
     ("W## / A###", r"(?<![-\w])(?P<f>W)(?P<n>\d{2})\b|(?<![-\w])A(?P<n2>\d{3})\b", "Screen ID: Website/Portal W01–W34, Admin A001–A113", "Source (FRD §16.2); 2.5"),
+    # ---- source-pack enhancement families (Parts 0B, 2.6–2.7, 3.4–3.6, 4.4, 6.8–6.10, 7.4, 8.3, 9.4–9.5)
+    ("FR-ENH-{G}-###", r"\bFR-ENH-(?P<f>[A-K])-(?P<n>\d{3})\b", "Source-pack enhanced functional requirement; group letter = enhancement part (A 2.6, B 3.4, C 2.7, D 3.5, E 3.6, F 7.4, H 6.9, I 4.4, J 8.3)", "2.6, 2.7, 3.4–3.6, 4.4, 6.9, 7.4, 8.3"),
+    ("NFR-ENH-{G}-##", r"\bNFR-ENH-(?P<f>[A-K])-(?P<n>\d{2})\b", "Source-pack non-functional requirement (growth scale, recovery by class, unit cost)", "3.4"),
+    ("US-##-E{G}##", r"\bUS-(?P<f>\d{2}-E[A-K])(?P<n>\d{2})\b", "Source-pack enhancement user story (epic, group letter, sequence)", "2.6–8.3 enhancement parts"),
+    ("AC-##E{G}##-## / AC-##-E{G}##-##", r"\bAC-(?P<f>\d{2}-?E[A-K]\d{2})-(?P<n>\d{2})\b", "Acceptance criterion of an enhancement story", "2.6–8.3 enhancement parts"),
+    ("TC-ENH-{G}-###", r"\bTC-ENH-(?P<f>[A-K]-[CEN]?)(?P<n>\d{2,3})\b", "Source-pack enhancement test case (D-C candidate, D-E enhancement-operation, D-N negative family; K = coverage closure, Part 6.10)", "2.6–8.3 enhancement parts; 6.10"),
+    ("LT-ENH-{G}-##", r"\bLT-ENH-(?P<f>[A-K])-(?P<n>\d{2})\b", "Source-pack load/resilience test (indexed under WP-01…03, DEC-161/216)", "2.7a, 3.4, 4.4b"),
+    ("TC-{NFR|FLT|BRS}-###", r"\bTC-(?P<f>NFR|FLT|BRS)-(?P<n>\d{3})\b", "Coverage-closure test case (NFR gate, filter suite, BR-S)", "6.7"),
+    ("VER-###", r"\bVER-(?P<n>\d{3})\b", "Verification item (inspection, review, analysis, demonstration); not a test case", "6.7"),
+    ("VER-ENH-K-###", r"\bVER-ENH-K-(?P<n>\d{3})\b", "Source-pack closure verification item", "6.10"),
+    ("OKPI-##", r"\bOKPI-(?P<n>\d{2})\b", "Optimization KPI of the source pack (document 38 KPI-01…35, renamed to avoid KPI-01…31; 21 mandatory)", "4.4a, 6.9a, 8.3c"),
+    ("QC-##/###", r"\bQC-(?P<n>\d{2,3})\b", "Source-pack quality control (document 23; 245 QCs)", "6.9a/b"),
+    ("QCL-##", r"\bQCL-(?P<n>\d{2})\b", "Quality-control layer (document 23; 31 layers with sign-off role)", "6.9a/b"),
+    ("UX-QC-##", r"\bUX-QC-(?P<n>\d{2})\b", "Expansion quality control and sign-off check", "4.4a, 6.9"),
+    ("SPDEC-### / SPDEC-X-…", r"\bSPDEC-(?:(?P<n>\d{3})\b|(?P<f>X)-[A-Za-z0-9_]+)", "Source-pack engineering decision of document 24 (180 retained + expansion), never a binding DEC (DEC-178)", "6.9b; 9.5"),
+    ("SRC07-DEC-###", r"\bSRC07-DEC-(?P<n>\d{3})\b", "Document 07 API decision, renamed (DEC-178)", "3.5b"),
+    ("SDEC-08-###", r"\bSDEC-08-(?P<n>\d{3})\b", "Document 08 schema decision, renamed (DEC-178)", "3.6b"),
+    ("SM-SIT-{A|F|M}###", r"\bSM-SIT-(?P<f>[AFM])(?P<n>\d{3})\b", "Source SIT test alias (A = operation, F = flow, M = module)", "3.5, 6.8, 6.9"),
+    ("SM-UAT-{S|F}###", r"\bSM-UAT-(?P<f>[SF])(?P<n>\d{3})\b", "Source UAT test alias (S = screen, F = flow)", "6.1, 6.8"),
+    ("SM-OP-###", r"\bSM-OP-(?P<n>\d{3})\b", "Source API/adapter operation (document 07)", "3.5a/b"),
+    ("SM-UX-API-##", r"\bSM-UX-API-(?P<n>\d{2})\b", "Source expansion-interface API candidate", "3.5b"),
+    ("SM-FR-{W|A|OP}…", r"\bSM-FR-(?P<f>W|A|OP)(?P<n>\d{2,3})\b", "Source FR alias of FR-W/FR-A/FR-OP (DEC-017)", "6.9a"),
+    ("SM-UX-FR- / FR-UX-<screen>", r"\b(?:SM-UX-FR|FR-UX)-(?P<f>[WA])(?P<n>\d{2,3})\b", "Per-screen field-specification alias, not a separate FR (DEC-180)", "6.9a; 9.5"),
+    ("SM-UX-UAT-<screen>", r"\bSM-UX-UAT-(?P<f>[WA])(?P<n>\d{2,3})\b", "Per-screen UAT alias", "6.1; 6.8"),
+    ("SM-UX-SIT-X##", r"\bSM-UX-SIT-X(?P<n>\d{2})\b", "Source expansion SIT check", "6.8"),
+    ("API-ENH-{G}-###", r"\bAPI-ENH-(?P<f>[A-K])-(?P<n>\d{2,3})\b", "Enhancement API operation", "3.5b, 4.4b"),
+    ("{family}-ENH-{G}-##", r"\b(?P<f>(?:BRL|ABAC|CFG|KPI|RP|AP|ENT|IX|CK|RB|RSK)-ENH-[A-Z0-9]+)-(?P<n>\d{2})\b", "Enhancement item extending a baseline family (rule, ABAC, configuration, KPI, report, acceptance procedure, entity, index, check, runbook, risk)", "2.6, 3.6, 6.9, 9.5"),
+    ("XBR-##", r"\bXBR-(?P<n>\d{2})\b", "Expansion scope statement mapped to BR-S138 (no new BR; DEC-180)", "9.5"),
+    ("RC-#", r"\bRC-(?P<n>[1-3])\b", "Recovery class: RC-1 critical, RC-2 regenerable, RC-3 ephemeral (DEC-158)", "3.4; 4.4b; 9.5"),
+    ("DR-T#", r"\bDR-T(?P<n>\d)\b", "Recovery tier of Part 3.6b, alias of RC (DEC-158)", "3.6b"),
+    ("WP-##", r"\bWP-(?P<n>\d{2})\b", "Load-test workload profile (WP-01 release gates, WP-02 scale gate, WP-03 traffic mix; DEC-161)", "4.4b; 9.5"),
+    ("PC-##", r"\bPC-(?P<n>\d{2})\b", "Typed AI prompt contract (PC-01…18)", "7.4a/b"),
+    ("PG-##", r"\bPG-(?P<n>\d{2})\b", "Integration procurement/activation gate (PG-01…10, AU-044)", "7.4a/b"),
+    ("IC-###", r"\bIC-(?P<n>\d{3})\b", "Integration candidate of the capability replacement register", "7.4a"),
+    ("AL-##.#", r"\bAL-(?P<f>\d{2})\.(?P<n>\d)\b", "Automation-library use case (20 groups × 5)", "7.4b"),
+    ("TPL-##", r"\bTPL-(?P<n>\d{2})\b", "Automation-library industry template", "7.4b"),
+    ("SLA-##", r"\bSLA-(?P<n>\d{2})\b", "SaaS SLA schedule term (SLA-01…12)", "8.3c"),
+    ("CSO-##", r"\bCSO-(?P<n>\d{2})\b", "Client service stage and gate (CSO-01…12)", "8.3c"),
+    ("MNT-{cadence}##", r"\bMNT-(?P<f>[A-Z])(?P<n>\d{2})\b", "Recurring maintenance activity (D daily, W weekly, M monthly, Q quarterly, A annual, B before update, R release, I after incident)", "8.3c"),
+    ("TRN-SCR-<screen>", r"\bTRN-SCR-(?P<f>[WA])(?P<n>\d{2,3})\b", "Training task card per screen", "8.3b"),
+    ("TRN-EX-##", r"\bTRN-EX-(?P<n>\d{2})\b", "Training exercise with worked answer", "8.3b"),
+    ("TM-##", r"\bTM-(?P<n>\d{2})\b", "Training module", "8.3a/b"),
+    ("LJ-##", r"\bLJ-(?P<n>\d{2})\b", "Role learning journey (document 33)", "8.3b"),
+    ("OPT-## / OPT-TEST-##", r"\bOPT-(?:(?P<n>\d{2})\b(?!-)|(?P<f>TEST)-\d{2}\b)", "Optimization dimension (21) / optimization test scenario (24) of document 38", "4.4a, 8.3c"),
+    ("CS-{family}-##", r"\bCS-(?P<f>[A-Z0-9]{2,5})-(?P<n>\d{2})\b", "Coding-standard rule, by family (186 rules)", "4.4a"),
+    ("CR-CHK-##", r"\bCR-CHK-(?P<n>\d{2})\b", "Code-review checklist item", "4.4a"),
+    ("SG-##", r"\bSG-(?P<n>\d{2})\b", "Custom Semgrep rule", "4.4a/b"),
+    ("RGV-##", r"\bRGV-(?P<n>\d{2})\b", "Release-gate validator rule (PL-17)", "4.4b"),
+    ("SMK-##", r"\bSMK-(?P<n>\d{2})\b", "Post-deploy smoke check", "4.4b"),
+    ("DPL-{PRE|SEQ|ACT}-##", r"\bDPL-(?P<f>PRE|SEQ|ACT)-(?P<n>\d{2})\b", "Deployment pre-check, sequence step or activation stage", "4.4b"),
+    ("RBK-{T|R}##", r"\bRBK-(?P<f>[TR])(?P<n>\d{2})\b", "Rollback trigger / resume rule", "4.4b"),
+    ("HO-{T|B|A}##", r"\bHO-(?P<f>[TBA])(?P<n>\d{2})\b", "Delivery handover item (technical, business, access)", "4.4b"),
+    ("ACC-## / SEC-ROT-## / ENV-##", r"\b(?P<f>ACC|SEC-ROT|ENV)-(?P<n>\d{2})\b", "Access-lifecycle rule / secret-rotation step / configuration-contract item", "4.4b"),
+    ("PT-{ROE|FND}-##", r"\bPT-(?P<f>ROE|FND)-(?P<n>\d{2})\b", "Penetration-test rule of engagement / finding-record field", "4.4b"),
+    ("SVM-## / MET-## / SUP-##", r"\b(?P<f>SVM|MET|SUP)-(?P<n>\d{2})\b", "Security verification matrix row / metric / support-operations rule", "4.4b"),
+    ("LT-SAFE-## / LTR-##", r"\b(?P<f>LT-SAFE|LTR)-(?P<n>\d{2})\b", "Load-test safety rule / load-test record field", "4.4b"),
+    ("GL-{area}##", r"\bGL-(?P<f>[A-Z])(?P<n>\d{2})\b", "Go-live checklist item by area (B business, C compliance, D data, E enhancement, L legal, P people, S security, T technical)", "8.2; 4.4b"),
+    ("BLK-#", r"\bBLK-(?P<n>\d{1,2})\b", "Activation blocker (BRD §11)", "8.2; 6.9"),
+    ("WQG-##", r"\bWQG-(?P<n>\d{2})\b", "Workflow quality gate (graph, node, schedule checks)", "3.4"),
 ]
 
 
@@ -351,12 +410,26 @@ def scan_tags(parts):
     return occ, regdefs
 
 
+DEC_LOGS = ("0A", "9.1", "9.5")       # decision logs: DEC-001…065, DEC-066…156, DEC-157…227
+REJECT_RX = re.compile(r"\b(?:reject(?:ed|s)?|not (?:accepted|adopted)|declined|withdrawn)\b", re.I)
+
+
+def dec_log(dec):
+    n = int(dec.split("-")[1])
+    return "0A" if n <= 65 else "9.1" if n <= 156 else "9.5"
+
+
 def status_rules(parts):
-    """Resolution evidence from the decision logs (Part 0A, Part 9.1): id -> list of DEC IDs / notes."""
+    """Resolution evidence from the decision logs (Parts 0A, 9.1, 9.5): id -> set of DEC IDs / notes.
+    Also returns the RECOMMENDATIONs accepted by name, blanket acceptance ranges (DEC-149: 001…090; DEC-221: 300…491),
+    rejected RECOMMENDATIONs (a DEC row that names the ID next to 'rejected'/'not accepted'), and GAPs narrowed."""
     res = defaultdict(set)
     accepted = set()
+    status_rules.blanket = []           # (lo, hi, DEC)
+    status_rules.rejected = {}
+    status_rules.narrowed = defaultdict(set)
     for p in parts:
-        if p["label"] not in ("0A", "9.1"):
+        if p["label"] not in DEC_LOGS:
             continue
         for ln in p["lines"]:
             if not is_table_row(ln):
@@ -366,6 +439,17 @@ def status_rules(parts):
             ids = expand_ids(" ".join(cs[1:]), TAGS)
             m = re.fullmatch(r"DEC-(\d{3})", first)
             if m:
+                rowtxt = clean(" ".join(cs))
+                if re.search(r"\baccepted\b", rowtxt):
+                    for mm in re.finditer(r"RECOMMENDATION-(\d{3})\s*(?:…|\.\.\.|–)\s*(?:RECOMMENDATION-)?(\d{3})", rowtxt):
+                        status_rules.blanket.append((int(mm.group(1)), int(mm.group(2)), first))
+                for mm in re.finditer(r"RECOMMENDATION-\d{3}", rowtxt):
+                    window = rowtxt[max(0, mm.start() - 60): mm.end() + 60]
+                    if REJECT_RX.search(window):
+                        status_rules.rejected[mm.group(0)] = first
+                for mm in re.finditer(r"GAP-\d{3}", rowtxt):
+                    if re.search(r"narrow", rowtxt[mm.start(): mm.end() + 40], re.I):
+                        status_rules.narrowed[mm.group(0)].add(first)
                 for t in ids:
                     res[t].add(first)
                 for t in re.findall(r"RECOMMENDATION-\d{3}\]?\)?\s*(?:\(|is\s+)?accepted", " ".join(cs)):
@@ -377,6 +461,23 @@ def status_rules(parts):
                         if t.startswith("RECOMMENDATION"):
                             accepted.add(t)
             else:
+                # Conflict-to-decision index (Part 9.5 §9.5.1.11): cells alternate CONFLICT-### | DEC-###
+                cl = [clean(c) for c in cs]
+                pairs = [(cl[k], cl[k + 1]) for k in range(0, len(cl) - 1, 2)
+                         if re.fullmatch(r"CONFLICT-\d{3}", cl[k]) and re.fullmatch(r"DEC-\d{3}", cl[k + 1])]
+                if pairs:
+                    for t, d in pairs:
+                        res[t].add(d)
+                    continue
+                # "Effect on earlier decisions" rows: "| GAP-103, GAP-112, GAP-167 | Closed by DEC-170, DEC-191, DEC-204 |"
+                body_raw = clean(" ".join(cs[1:]))
+                tags_first = sorted(expand_ids(first, TAGS), key=nat_key)
+                decs_body = sorted(expand_ids(body_raw, ("DEC",)), key=nat_key)
+                if tags_first and decs_body and re.search(r"\b(closed|narrowed)\b", body_raw, re.I):
+                    for k, t in enumerate(tags_first):
+                        d = decs_body[k] if len(decs_body) == len(tags_first) else decs_body[0]
+                        (status_rules.narrowed[t].add(d) if re.search(r"narrow", body_raw, re.I) else res[t].add(d))
+                    continue
                 # Summary rows such as "| CONFLICT-001…014 | Open | All resolved (DEC-001…014) |"
                 tags_here = sorted(expand_ids(first, TAGS), key=nat_key)
                 decs = sorted(expand_ids(" ".join(cs[1:]), ("DEC",)), key=nat_key)
@@ -432,9 +533,8 @@ def build_tag_registers(parts):
         if kind == "CONFLICT":
             decs = sorted(res.get(tid, []), key=nat_key)
             if decs:
-                src = "Part 0A" if any(re.match(r"DEC-0[0-5]\d|DEC-06[0-5]", d) for d in decs) else "Part 9.1"
-                if any(re.match(r"DEC-0[0-5]\d|DEC-06[0-5]", d) for d in decs) and any(re.match(r"DEC-(06[6-9]|0[7-9]\d|1\d\d)", d) for d in decs):
-                    src = "Parts 0A + 9.1"
+                logs = sorted({dec_log(d) for d in decs if d.startswith("DEC-")}, key=lambda x: ("0A", "9.1", "9.5").index(x))
+                src = ("Part " if len(logs) == 1 else "Parts ") + " + ".join(logs) if logs else "Part 0A §G"
                 rec["status"] = f"Resolved — {src} ({', '.join(decs)})"
             else:
                 low = (status_cell + " " + full).lower()
@@ -443,17 +543,26 @@ def build_tag_registers(parts):
                 else:
                     rec["status"] = "Open — owner per source part"
         elif kind == "RECOMMENDATION":
+            # Rule (DEC-149, DEC-221): every RECOMMENDATION is accepted unless a DEC rejects it
             low = (status_cell + " " + full).lower()
-            if tid in accepted or res.get(tid):
-                decs = sorted(res.get(tid, []), key=nat_key)
-                rec["status"] = "Accepted" + (f" ({', '.join(decs)})" if decs else "")
+            num = int(tid.split("-")[1])
+            blanket = next((d for a, b, d in status_rules.blanket if a <= num <= b), None)
+            decs = sorted((d for d in res.get(tid, []) if d.startswith("DEC-")), key=nat_key)
+            if tid in status_rules.rejected:
+                rec["status"] = f"Rejected ({status_rules.rejected[tid]})"
+            elif decs or tid in accepted:
+                rec["status"] = "Accepted" + (f" ({', '.join(([blanket] if blanket and blanket not in decs else []) + decs)})" if decs or blanket else "")
+            elif blanket:
+                rec["status"] = f"Accepted ({blanket})"
             elif re.search(r"\baccepted\b|\badopted\b", low):
                 rec["status"] = f"Accepted (Part {owner})"
             else:
-                rec["status"] = "Proposed"
+                rec["status"] = f"Accepted (no rejecting DEC; issued in Part {owner})"
         elif kind == "GAP":
             decs = sorted(res.get(tid, []), key=nat_key)
-            if decs:
+            if status_rules.narrowed.get(tid) and not [d for d in decs if d not in status_rules.narrowed[tid]]:
+                rec["status"] = "Narrowed by " + ", ".join(sorted(status_rules.narrowed[tid], key=nat_key))
+            elif decs:
                 rec["status"] = "Closed by " + ", ".join(d.replace(" summary", "") for d in decs)
             else:
                 rec["status"] = md_cell(status_cell, 90) if status_cell else "Open — handling per source part"
@@ -514,7 +623,7 @@ def build_adr(parts):
 def build_dec(parts):
     rows = OrderedDict()
     for p in parts:
-        if p["label"] not in ("0A", "9.1"):
+        if p["label"] not in DEC_LOGS:
             continue
         hdr = None
         section = ""
@@ -535,11 +644,15 @@ def build_dec(parts):
                 subject = clean(cs[3]) if len(cs) > 3 else ""
                 decision = clean(cs[4]) if len(cs) > 4 else ""
                 src = "Errata " + clean(cs[1]) if len(cs) > 1 else ""
+            elif p["label"] == "9.5":           # | DEC | Conflicts resolved / source | Issue | Decision (binding) | Rationale | Affected |
+                subject = clean(cs[2]) if len(cs) > 2 else ""
+                decision = clean(cs[3]) if len(cs) > 3 else ""
+                src = clean(cs[1]) if len(cs) > 1 else ""
             else:
                 subject = clean(cs[1])
                 decision = clean(cs[-1])
                 src = section.split(".")[0] if section else ""
-            rows[first] = [first, "0A" if p["label"] == "0A" else "9.1", md_cell(subject, 90), md_cell(decision, 230)]
+            rows[first] = [first, p["label"], md_cell(subject, 90), md_cell(decision, 230)]
     return list(rows.values())
 
 

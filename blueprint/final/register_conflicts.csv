@@ -13,17 +13,17 @@ CONFLICT-011,0 §0.5,0,"Scoring components are ""normalized 0–1"", but thresho
 CONFLICT-012,0 §0.5,0,"The engineering estimate is said to be ""superseded"", yet the ""original estimate retained: ₹9–13.5L/3 months; ₹18–27L/6 months""",Resolved — Part 0A (DEC-012),"0, 0A",2
 CONFLICT-013,0 §0.5,0,"""MVP growth dashboard"" (M30 label in BRD §12) vs ""no separate product release labels""",Resolved — Part 0A (DEC-013),"0, 0A",2
 CONFLICT-014,0 §0.5,0,BRD §15 and §16 (and FRD §14/§15) repeat the same acceptance procedures with slightly different wording,Resolved — Part 0A (DEC-014),"0, 0A",3
-CONFLICT-101,3.1 front matter,3.1,DEC-018 RTO ≤ 4 h (all failures) vs DEC-040 single-region pilot,Resolved — Part 9.1 (DEC-079),"3.1, 3.2",10
+CONFLICT-101,3.1 front matter,3.1,DEC-018 RTO ≤ 4 h (all failures) vs DEC-040 single-region pilot,Resolved — Part 9.1 (DEC-079),"3.1, 3.2, 3.4, 4.4b, 9.5",20
 CONFLICT-102,3.1 §3.1.6.2,3.1,"B01 ₹5,000 vs DEC-040 pilot topology plus staging",Resolved — Part 9.1 (DEC-105),"3.1, 3.2, 8.2, 9.1",7
-CONFLICT-103,3.1 §3.1.16,3.2,"DEC-015 ""105 named operations"" vs 102 distinct FRD-named entries (104 HTTP operations)",Resolved — Part 9.1 (DEC-104),"3.1, 3.2, 9.1",7
-CONFLICT-106,3.3 §3.3.3.2,3.3,"Homonyms in the sources: Plan, Subscription, Feedback, Event (two meanings each); Execution = Run. Resolved by distinct physical names",Resolved locally in Part 3.3,3.3,9
+CONFLICT-103,3.1 §3.1.16,3.2,"DEC-015 ""105 named operations"" vs 102 distinct FRD-named entries (104 HTTP operations)",Resolved — Part 9.1 (DEC-104),"3.1, 3.2, 3.5a, 9.1",9
+CONFLICT-106,3.3 §3.3.3.2,3.3,"Homonyms in the sources: Plan, Subscription, Feedback, Event (two meanings each); Execution = Run. Resolved by distinct physical names",Resolved locally in Part 3.3,"3.3, 3.6a",11
 CONFLICT-107,3.3 §3.3.11.1,3.3,Rejected leads purged at 6 months (DEC-028) vs rejected opportunities never contacted (BRL-ELG-15). Resolved: keep an exclusion hash in suppression,Resolved locally in Part 3.3,3.3,2
 CONFLICT-108,3.3 §3.3.3.2,3.3,Audit log 7 years vs financial 8 years / contracts term + 8 years: approvals and audit events about financial/contract objects follow the governed object's retention,Resolved locally in Part 3.3,3.3,4
 CONFLICT-109,3.3 §3.3.6.9,3.3,"Marketing contact 24 months vs contract signer evidence term + 8 years. Resolved: marketing profile erased, contractual signer record retained under CTR",Resolved locally in Part 3.3,3.3,3
 CONFLICT-110,4.1 front matter,4.3,"B07 (₹500/month monitoring/security/CI) and B21 (CDN/WAF, ₹0 until approved) vs the need for AWS WAF on public intake (NFR-022, THR-003) and possible CI minute overage",Resolved — Part 9.1 (DEC-081),"4.1, 4.3, 9.1",4
 CONFLICT-111,4.1 §4.10.2,4.1,"DEC-028 sets AI run logs and chat transcripts at 90 days, and no retention for security/application logs. CERT-In requires ICT logs for 180 days in India, and the DPDP Rules are understood to require processing logs for one year (verify)",Resolved — Part 9.1 (DEC-078),"4.1, 4.2, 9.1",9
-CONFLICT-112,4.2 §4.23.2,4.2,"DEC-018 RTO ≤ 4 h vs DEC-040 pilot topology (single-region, single-AZ application, backups copied cross-region): a full regional outage cannot be recovered in 4 h without pre-provisioned DR infrastructure, which B01 (₹5,000) does not fund",Resolved — Part 9.1 (DEC-079),"4.2, 4.3, 9.1",7
-CONFLICT-113,4.2 §4.23.7,4.2,"DEC-044 support hours (10:00–18:00 IST, Mon–Sat) vs 24×7 availability SLOs (DEC-018) and Critical escalation in 30 min (Part 2.4 §2.30.2)",Resolved — Part 9.1 (DEC-080),"4.2, 4.3, 9.1",7
+CONFLICT-112,4.2 §4.23.2,4.2,"DEC-018 RTO ≤ 4 h vs DEC-040 pilot topology (single-region, single-AZ application, backups copied cross-region): a full regional outage cannot be recovered in 4 h without pre-provisioned DR infrastructure, which B01 (₹5,000) does not fund",Resolved — Part 9.1 (DEC-079),"4.2, 4.3, 4.4b, 9.1",9
+CONFLICT-113,4.2 §4.23.7,4.2,"DEC-044 support hours (10:00–18:00 IST, Mon–Sat) vs 24×7 availability SLOs (DEC-018) and Critical escalation in 30 min (Part 2.4 §2.30.2)",Resolved — Part 9.1 (DEC-080),"4.2, 4.3, 4.4b, 9.1",9
 CONFLICT-114,4.1 TB-03 Admin Command Centre,4.1,"DEC-019 spike check 5 expects WebAuthn for privileged roles, while BRL-TEN-08 says ""TOTP minimum, WebAuthn recommended""",Resolved — Part 9.1 (DEC-077),"4.1, 6.5, 9.1",7
 CONFLICT-120,7.1 front matter,7.3,"DEC-007 groups self-hosted open models with free-tier fallbacks (Tier 2), while BRL-AI-06 restricts Tier 2 to Public/Internal-non-personal; a self-hosted model in our VPC has none of the third-party data risk",Resolved locally in Part 7.3,"7.1, 7.3",4
 CONFLICT-121,6.4 §6.4.10.1,7.3,"The Copilot panel is part of the W0–W2 shell (DEC-062, Part 2.5) but DEC-035 sets no wave for Copilot capability",Resolved locally in Part 7.3,"6.4, 7.3, 8.1",5
@@ -39,6 +39,108 @@ CONFLICT-137,5.3 §5.30.1,5.3,"Part 0 §0.10.2 lists EP-19 screens W01–W10, wh
 CONFLICT-138,5.3 US-2008 Import with dry-run validation a,5.3,"FR-A103 import is W1 (DEC-039) but sits in EP-20 (a W5 epic) under BR-SVC (Should), although owned startups (BR-TENANT, Must) need import in W1. Resolution: US-2008 is scheduled in W1 at Should (cannot exceed its BR); the Product Owner may re-trace import to BR-TENANT to raise it to Must",Resolved — Part 9.1 (DEC-073),"5.3, 8.1, 9.1",4
 CONFLICT-140,8.1 front matter,8.1,"Errata 34 defines W0-A as environments, identity spike, CI, RLS/outbox/PDP skeletons and catalogue core, while Part 5.1a §5.5.3 lists US-0104, US-0301, US-0401, US-0402 and US-0404 in W0-A. Resolution: errata 34 is binding; those five stories move to Sprint 1 (W0-B); US-0111 and US-0201 join W0-A",Resolved — Part 9.1 (DEC-125),"8.1, 8.2, 9.1",6
 CONFLICT-141,8.1 §8.1.2.2,8.1,"The full DEC-034 W0 scope (139 SP mid including EP-17 and EP-21 W0 stories) cannot complete by Day 30 even with the split. Resolution: Gate W0-B (Day 30) checks the control set built in Sprint 1; a W0-B completion checkpoint on Day 40 covers MFA step-up, claims approval, readiness gate, tier routing and injection guard; the remaining ≈ 48 SP of non-gating W0 stories complete in S3–S7, each before the first activation that uses it (§8.1.4.6)",Resolved — Part 9.1 (DEC-125),8.1,2
-CONFLICT-142,6.7 §6.7.5.3,8.1,BRD §8 day-phase gates vs DEC-005 capacity distribution: Release 1 content ≈ 307 pd vs ≈ 169 pd capacity by Day 90. Resolution: RECOMMENDATION-081 (re-baselined calendar) with Option E available,Resolved — Part 9.1 (DEC-124),"6.7, 8.1, 8.2, 9.1",13
+CONFLICT-142,3.4 Document(s) 04,8.1,BRD §8 day-phase gates vs DEC-005 capacity distribution: Release 1 content ≈ 307 pd vs ≈ 169 pd capacity by Day 90. Resolution: RECOMMENDATION-081 (re-baselined calendar) with Option E available,Resolved — Part 9.1 (DEC-124),"3.4, 6.7, 8.1, 8.2, 9.1",16
 CONFLICT-143,8.1 §8.1.8.2,8.2,"Pen-test timing: Part 4.1 §4.16 ""before Release 1 production exposure of the portal (end W3)"" vs Part 6.1 RECOMMENDATION-073 ""before the first real controlled pilot (W4)"". Resolution: pen test 1 at Day 141–150 covers both (portal live in staging since S8; real pilot from Day 169); pen test 2 before external tenants and payments (Day 169–178)",Resolved — Part 9.1 (DEC-126),"8.1, 8.2, 9.1",7
 CONFLICT-144,8.2 §8.2.1.2,8.2,"Part 3.1 ADR-043 plans ""no paid WAF at pilot"", while errata 18 requires AWS WAF from W2; errata 18 also says ""B07 is revised"" without a figure. Resolution: errata 18 governs; WAF is charged to B21 (≈ ₹1,300–1,800/month) from public intake (Day 68); B07 stays ₹500 and excludes WAF",Resolved — Part 9.1 (DEC-127),"8.2, 9.1",6
+CONFLICT-300,2.6 front matter,2.6,Two opportunity scoring models,Resolved locally in Part 2.6,"2.6, 6.6, 9.5",14
+CONFLICT-301,2.6 Document Common core (shared by all 38 d,2.6,Residual investor/fundraising wording in group A documents,Resolved locally in Part 2.6,"2.6, 9.5",16
+CONFLICT-302,2.6 Document 11 Global Market Intelligence &,2.6,Definition of source coverage,Open — owner per source part,"2.6, 9.5",5
+CONFLICT-303,2.6 Document 12 Digital Marketing & Customer,2.6,Reply classification taxonomy,Resolved locally in Part 2.6,"2.6, 6.6, 9.5",12
+CONFLICT-304,2.6 Document 13 Sales Intelligence & Commerc,2.6,Single relationship stage vs separate state machines,Open — owner per source part,"2.6, 9.5",8
+CONFLICT-320,3.4 front matter,3.4,"Deployment technology: ECS Fargate + ALB + ElastiCache Redis + ""Redis broker""",Resolved locally in Part 3.4,"3.4, 9.5",11
+CONFLICT-321,3.4 Document(s) 04/09/10,3.4,Capacity design points: initial 25 owned / 10 external; growth 50+ / 100,Open — owner per source part,"3.4, 9.5",7
+CONFLICT-322,3.4 Document(s) 04/09/10,3.4,Growth RTO ≤ 2 h,Resolved locally in Part 3.4,"3.4, 9.5",6
+CONFLICT-323,3.4 Document(s) 05/10,3.4,"Availability ""99.9% critical availability over rolling 30 days""",Resolved locally in Part 3.4,"3.4, 9.5",4
+CONFLICT-324,3.4 Document(s) 04,3.4,Budget alert thresholds 70/90%,Open — owner per source part,"3.4, 9.5",5
+CONFLICT-325,3.4 Document(s) 04,3.4,"""No cross-region replication before approval""",Open — owner per source part,"3.4, 9.5",6
+CONFLICT-326,3.4 Document(s) 05,3.4,"Investor-product wording: ""lead/investor record"", ""investor/customer tokens"", ""investment/commercial Django domains"", event product = investment_or_commercial",Open — owner per source part,"3.4, 9.5",6
+CONFLICT-327,3.4 Document(s) 10,3.4,"Agent decomposition: ""six runtime responsibilities"" vs 18 responsibilities vs blueprint catalogue",Resolved locally in Part 3.4,"3.4, 9.5",5
+CONFLICT-328,3.4 Document(s) 04,3.4,Effort and critical path: 385 PD base for 149 work items; dependency-only path 113.5 days,Resolved locally in Part 3.4,"3.4, 9.5",7
+CONFLICT-329,3.4 Document(s) 04/09,3.4,"Names: Django apps (accounts, catalog, …, reporting) and monorepo paths (apps/growth-ui, …)",Open — owner per source part,"3.4, 9.5",5
+CONFLICT-330,3.4 §D,3.4,"Product webhook into the marketing database vs ""no live cross-product join or automatic handoff""",Resolved locally in Part 3.4,"3.4, 9.5",5
+CONFLICT-340,2.7a front matter,2.7a,"Residual investor wording not in DEC-002's replacement list: ""separate from investor/customer journey"" (W31), ""not a marketplace investor or customer"" (W32), ""separately from investor/customer portal"", ""no … investor/customer records"" (W34), ""Authorized investor/customer completes synthetic enquiry"" (OPT-15-03), ""create scoped lead/investor record"" (doc 17 inbound journeys), ""no stale previous issuer/company data"" (doc 17 startup switch)",Open — owner per source part,"2.7a, 9.5",10
+CONFLICT-341,2.7a §2.7.3.1,2.7a,"""Inspect … two products, four frontends"" vs DEC-009 ""two frontends only""",Open — owner per source part,"2.7a, 9.5",3
+CONFLICT-342,2.7a §2.7.2,2.7a,"Breakpoints: doc 17 desktop ≥ 1200, tablet 768–1199, mobile < 768, tests at 360/768/1440; Part 2.5 §2.48 five tiers (360–599, 600–899, 900–1279, 1280–1679, ≥ 1680); DEC-043 Admin desktop-first 1280 px, usable to 768 px for review/approval",Resolved locally in Part 2.7a,"2.7a, 9.5",9
+CONFLICT-343,2.7a §2.7.3.1,2.7a,"API namespaces: doc 06 uses /api/v1/sales/* (A099–A106) and /api/v1/commercial/workspace/{public,client,onboarding,admin}/* (W31–W34, A109–A113); Part 3.2 uses ~/admin/*, ~/portal/*, ~/public/*",Open — owner per source part,"2.7a, 9.5",54
+CONFLICT-344,2.7a §2.7.4.3,2.7a,"Generic POST …/{id}/control (12 resources) vs per-action endpoints in Part 3.2 (approve, issue, cancel, suspend, pause, resume, publish, rollback …)",Open — owner per source part,"2.7a, 9.5",17
+CONFLICT-345,2.7a §2.7.4.3,2.7a,"Legacy per-object approve/review routes (e.g. /contracts/{id}/approve, /proposals/{id}/review, /messages/drafts/{id}/review, /insurance/pilots/{id}/approve) vs Part 3.2's single Approval resource with only four retained aliases",Open — owner per source part,"2.7a, 9.5",14
+CONFLICT-346,2.7a §2.7.2,2.7a,"Development-time Claude plugins (for example CLAUDE.md Management, Claude Code Setup, Plugin Developer Toolkit, Skill Creator, Figma, Postman, document skills) are listed as integrations of runtime screens (A006, A008, A011, A014, A017, A029–A039, A047, A050–A059, A065–A066, A084, A090), while the same document states ""developer plugins are not runtime entitlements""",Open — owner per source part,"2.7a, 2.7b, 9.5",29
+CONFLICT-347,2.7a §2.7.4.7,2.7a,"Doc 06 states provider prices as facts (for example a per-million-token rate for a named Claude model, per-credit search pricing, hosted plan fees)",Resolved locally in Part 2.7a,"2.7a, 9.5",4
+CONFLICT-348,2.7a §2.7.3.1,2.7a,"OPT-02-04 ""read projections refresh ≤ 60 s"" vs NFR-047 dashboards ≤ 15 min (A110 monitor ≤ 5 min)",Open — owner per source part,"2.7a, 9.5",7
+CONFLICT-349,2.7a §2.7.3.1,2.7a,"Scale figures: OPT-06-01 ""25 owned + 10 external initial; 50+ owned + 100 external growth""; dashboard procedure ""50/250 concurrent staff, 100k/1m opportunities"" vs DEC-031 (Year 1: 25–40 workspaces, 2–10 tenants, 15–60 users; Year 2: 100 workspaces, 30 tenants, 200 internal users)",Open — owner per source part,"2.7a, 9.5",5
+CONFLICT-350,2.7a §2.7.5.1,2.7a,"Retained capability 082 (website) lists POST /api/v1/invoices/{id}/payment-link, an Admin operation, among its operations",Open — owner per source part,"2.7a, 9.5",4
+CONFLICT-351,2.7a §2.7.5.4,2.7a,Source single table sales_data_transfer vs blueprint saas_import_job + saas_export_job; source sales_ui_trigger_revision / sales_ui_template_revision vs blueprint versioned aut_trigger / aut_workflow_template,Open — owner per source part,"2.7a, 9.5",5
+CONFLICT-360,3.5a front matter,3.5b,"Path canon. Document 07 retains ""canonical legacy method/path contracts"" for 288 operations (e.g. /api/v1/sales/tenants, /api/v1/admin/jobs), while Part 3.2 keeps only the 104 FRD-named paths and gives every other operation a derived ~/ path. Operation 289 adds /api/v1/commercial/public/site/pages/{slug} beside the legacy /api/v1/public/pages/{slug}",Resolved locally in Part 3.5b,"3.5a, 3.5b, 9.5",6
+CONFLICT-361,3.5a §3.5.3.1,3.5b,Idempotency key and revision as body fields (source) vs headers (Part 3.2),Open — owner per source part,"3.5a, 3.5b, 9.5",7
+CONFLICT-362,3.5a §3.5.3.1,3.5b,List contract naming: page_size / items / next_cursor vs limit / data / page.next_cursor,Open — owner per source part,"3.5a, 3.5b, 9.5",5
+CONFLICT-363,3.5b §3.5.5.1,3.5b,Async response job_id with states queued,Open — owner per source part,"3.5b, 9.5",4
+CONFLICT-364,3.5a §3.5.3.1,3.5b,Source-local DEC-001…038 collide with binding DEC-001…065,Open — owner per source part,"3.5a, 3.5b, 9.5",7
+CONFLICT-365,3.5a §3.5.3.1,3.5b,Inventory counts (288 vs 302; 138 vs 147 UI; 149 vs 155 vs 199 entities; 302 vs 555 operations),Open — owner per source part,"3.5a, 3.5b, 9.5",7
+CONFLICT-366,3.5a §3.5.3.1,3.5b,"Audience mismatches on five ""Portal + Admin"" operations (consents, privacy requests, meetings/book, payment-link, onboarding complete) and one Admin acceptance route",Resolved locally in Part 3.5b,"3.5a, 3.5b, 9.5",6
+CONFLICT-367,3.5a §3.5.3.1,3.5b,"Token routes under /public/ are ""restricted portal endpoints"" (source) but API-083 is classified public; agreements, payment status and onboarding are token routes in the source but portal-session routes in Part 3.2",Open — owner per source part,"3.5a, 3.5b, 9.5",6
+CONFLICT-368,3.5b §3.5.5.6.4,3.5b,"Budget allocation per provider (B07/B10 ""shared optional"") vs DEC-020 dedicated lines (B13, B15, B16, B18, B22)",Resolved locally in Part 3.5b,"3.5b, 9.5",5
+CONFLICT-369,3.5b §3.5.6,3.5b,"Retention policy operation: source ""Version data-class retention"" (create versions freely) vs Part 3.2 API-091 ""tighten override only"" (DEC-028)",Resolved locally in Part 3.5b,"3.5b, 9.5",3
+CONFLICT-370,3.5a §3.5.3.1,3.5b,Status codes: 24 source proposals differ from the SE-class rule; bid control lists submit as an action,Open — owner per source part,"3.5a, 3.5b, 9.5",7
+CONFLICT-371,3.5b §3.5.5.6.2,3.5b,"Provider shortlists: e-sign PandaDoc (source) vs Indian Aadhaar eSign/DSC providers + DocuSign (DEC-023, AD-10); social publishing through Postiz (AGPL self-host) vs direct platform APIs (AD-08)",Resolved locally in Part 3.5b,"3.5b, 9.5",5
+CONFLICT-372,3.5a §3.5.3.1,3.5b,"Integration ""claude/openai api"" on AI operations",Open — owner per source part,"3.5a, 3.5b, 9.5",6
+CONFLICT-373,9.5 §9.5.1.1,9.5,"1. Collection. Every row of the ten conflict sections was read, plus every conflict and earlier-part issue listed in SOURCE_PACK_LOG.md. The 101 conflict IDs are: A 300–304 (5), B 320–330 (11), C 340–351 (12), D 360–372 (13), E 380–387 (8), F 400–412 (13), G 420–424 (5), H 440–447 (8), I 460–473 (14), J 480–491 (12). CONFLICT-373…379 were allocated to Group D but never used (Part 3.5b §3.5.8).",Open — owner per source part,9.5,1
+CONFLICT-380,3.6a §3.6.0,3.6b,Doc 08 numbers its four schema decisions DEC-039…DEC-042; blueprint DEC-039 is the seed-migration decision and DEC-040…042 have other meanings,Open — owner per source part,"3.6a, 3.6b, 9.5",8
+CONFLICT-381,3.6a §3.6.3,3.6b,"Doc 08 leaves the embedding dimension open (""vector(d)"", ""do not guess"") while Part 3.3 fixes halfvec(1024)",Open — owner per source part,"3.6a, 3.6b, 9.5",8
+CONFLICT-382,3.6a §3.6.3,3.6b,"Doc 08 says reuse the existing identity tables and ""no duplicate identity tables""; Part 3.3 defines ten_user as a product-local identity mirror",Resolved locally in Part 3.6b,"3.6a, 3.6b, 9.5",10
+CONFLICT-383,3.6a §3.6.4.2,3.6b,Doc 08 sales_fulfillment is a mutable milestone with state and due date; Part 3.3 com_fulfillment_event is append-only evidence,Open — owner per source part,"3.6a, 3.6b, 9.5",9
+CONFLICT-384,3.6a §3.6.4.7,3.6b,"Doc 08 business keys are global (unique(code), unique(base_url), unique(invoice_no)); FRD §5 and DEC-009 require tenant/startup scope",Open — owner per source part,"3.6a, 3.6b, 9.5",9
+CONFLICT-385,3.6a §3.6.3,3.6b,"Doc 28 sets RTO ≤ 2 h ""growth""; DEC-018/DEC-079 set RTO ≤ 4 h (and 24 h regional at pilot)",Open — owner per source part,"3.6a, 3.6b, 9.5",6
+CONFLICT-386,3.6a §3.6.4.6,3.6b,"Doc 08 sales_order.direction includes service, training and project; Part 3.3 com_order.direction is sell/buy only",Open — owner per source part,"3.6a, 3.6b, 9.5",8
+CONFLICT-387,3.6b §3.6.6,3.6b,Doc 08 growth_sequence_step.delay_seconds vs Part 3.3 wait_business_days,Resolved locally in Part 3.6b,"3.6b, 9.5",4
+CONFLICT-400,7.4a front matter,7.4b,Model strategy,Resolved locally in Part 7.4b,"7.4a, 7.4b, 9.5",11
+CONFLICT-401,7.4a §7.4.3,7.4b,Search primary,Open — owner per source part,"7.4a, 7.4b, 9.5",11
+CONFLICT-402,7.4a §7.4.3,7.4b,Extraction primary,Open — owner per source part,"7.4a, 7.4b, 9.5",8
+CONFLICT-403,7.4a §7.4.3,7.4b,Budget alert thresholds,Resolved locally in Part 7.4b,"7.4a, 7.4b, 9.5",5
+CONFLICT-404,7.4a §7.4.3,7.4b,Schema-valid threshold,Open — owner per source part,"7.4a, 7.4b, 9.5",7
+CONFLICT-405,7.4a §7.4.3,7.4b,Classification precision,Resolved locally in Part 7.4b,"7.4a, 7.4b, 9.5",8
+CONFLICT-406,7.4a §7.4.3,7.4b,Investor wording,Open — owner per source part,"7.4a, 7.4b, 9.5",4
+CONFLICT-407,7.4a §7.4.3,7.4b,Candidate mis-mapping,Open — owner per source part,"7.4a, 7.4b, 9.5",5
+CONFLICT-408,7.4b §7.4.6,7.4b,Hunter budget line,Open — owner per source part,"7.4b, 9.5",3
+CONFLICT-409,7.4a §7.4.3,7.4b,Error tracking,Open — owner per source part,"7.4a, 7.4b, 9.5",6
+CONFLICT-410,7.4a front matter,7.4b,Section numbering,Open — owner per source part,"7.4a, 7.4b, 9.5",5
+CONFLICT-411,7.4a §7.4.3,7.4b,Cost routing as AI task,Open — owner per source part,"7.4a, 7.4b, 9.5",5
+CONFLICT-412,7.4a §7.4.3,7.4b,Pilot runtime figure,Resolved locally in Part 7.4b,"7.4a, 7.4b, 9.5",5
+CONFLICT-420,6.8a front matter,6.8c,"DEC-094 retains SM-UT-037, -049 and -050 as unassigned aliases with no test obligation, but document 22 defines them (webhook signature/replay; planned offering cannot be published; wellness need matching)",Open — owner per source part,"6.8a, 6.8b, 6.8c, 9.5",14
+CONFLICT-421,6.8a §6.8.3.1,6.8c,"Unit coverage gates differ: document 22 ""≥ 80% domain-service branch"", document 19 ""critical branch ≥ 90%"", Part 6.1 §6.1.9.6 ""domain core ≥ 90% branch + mutation score"", NFR-082 ""branch ≥ 70% overall""",Open — owner per source part,"6.8a, 6.8c, 9.5",6
+CONFLICT-422,6.8a §6.8.3.3,6.8c,Document 22 SM-UT-057 uses an absolute INR discount; DEC-038 thresholds and BRL-APR-04 are percentages,Open — owner per source part,"6.8a, 6.8c, 9.5",5
+CONFLICT-423,6.8a §6.8.3.2,6.8c,"Severity scales: document 22 ""Critical/P0 … Low/P3"" vs Part 6.1 S1–S4 with separate fix priority FP1–FP4",Resolved locally in Part 6.8c,"6.8a, 6.8c, 9.5",5
+CONFLICT-424,6.8a §6.8.3.1,6.8c,Growth-point RTO for critical data ≤ 2 h (document 19) vs DEC-018 RTO ≤ 4 h,Resolved locally in Part 6.8c,"6.8a, 6.8c, 9.5",6
+CONFLICT-440,6.9a §6.9.3.2,6.9b,Critical-rule branch coverage,Open — owner per source part,"6.9a, 6.9b, 9.5",9
+CONFLICT-441,6.9a §6.9.3.1,6.9b,Capacity and workload targets,Resolved locally in Part 6.9b,"6.9a, 6.9b, 9.5",14
+CONFLICT-442,6.9a §6.9.3.1,6.9b,Semantic approval coverage,Open — owner per source part,"6.9a, 6.9b, 9.5",145
+CONFLICT-443,6.9a §6.9.3.1,6.9b,Projection refresh,Open — owner per source part,"6.9a, 6.9b, 9.5",7
+CONFLICT-444,6.9a §6.9.3.1,6.9b,Growth critical RTO,Resolved locally in Part 6.9b,"6.9a, 6.9b, 9.5",6
+CONFLICT-445,6.9a §6.9.1.3,6.9b,Decision ID collision,Resolved locally in Part 6.9b,"6.9a, 6.9b, 9.5",7
+CONFLICT-446,6.9a §6.9.3.1,6.9b,Expansion effort,Open — owner per source part,"6.9a, 6.9b, 9.5",5
+CONFLICT-447,6.9a §6.9.3.1,6.9b,BR traces on 11 FRs,Open — owner per source part,"6.9a, 6.9b, 9.5",16
+CONFLICT-460,4.4a §4.4.4.1,4.4b,Critical-service availability,Open — owner per source part,"4.4a, 4.4b, 9.5",7
+CONFLICT-461,4.4a §4.4.3.1,4.4b,Capacity design points,Resolved locally in Part 4.4b,"4.4a, 4.4b, 9.5",12
+CONFLICT-462,4.4a §4.4.3.1,4.4b,Recovery time,Resolved locally in Part 4.4b,"4.4a, 4.4b, 9.5",7
+CONFLICT-463,4.4a §4.4.3.1,4.4b,Projection refresh,Open — owner per source part,"4.4a, 4.4b, 9.5",6
+CONFLICT-464,4.4a §4.4.3.7,4.4b,5xx alert threshold (internal to doc 31),Open — owner per source part,"4.4a, 4.4b, 9.5",5
+CONFLICT-465,4.4a §4.4.3.5,4.4b,Spike multiplier (internal to doc 29),Open — owner per source part,"4.4a, 4.4b, 9.5",4
+CONFLICT-466,4.4a §4.4.3.5,4.4b,Traffic mix,Open — owner per source part,"4.4a, 4.4b, 9.5",4
+CONFLICT-467,4.4a §4.4.3.5,4.4b,Soak duration,Resolved locally in Part 4.4b,"4.4a, 4.4b, 9.5",5
+CONFLICT-468,4.4a §4.4.3.2,4.4b,Coverage gate,Resolved locally in Part 4.4b,"4.4a, 4.4b, 9.5",7
+CONFLICT-469,4.4a §4.4.3.7,4.4b,Five doc-31 API paths,Resolved locally in Part 4.4b,"4.4a, 4.4b, 9.5",7
+CONFLICT-470,4.4a §4.4.4.1,4.4b,Product topology,Open — owner per source part,"4.4a, 4.4b, 9.5",3
+CONFLICT-471,4.4a §4.4.3.3,4.4b,Environment set,Open — owner per source part,"4.4a, 4.4b, 9.5",11
+CONFLICT-472,4.4a §4.4.3.6,4.4b,Vulnerability severity basis,Resolved locally in Part 4.4b,"4.4a, 4.4b, 9.5",5
+CONFLICT-473,4.4a §4.4.3.3,4.4b,Queue topology,Open — owner per source part,"4.4a, 4.4b, 9.5",5
+CONFLICT-480,8.3a §8.3.4.6,8.3c,"Projection refresh ≤ 60 s for all scoped projections (OKPI-28, OPT-02-04)",Open — owner per source part,"8.3a, 8.3c, 9.5",9
+CONFLICT-481,8.3c §8.3.5.15.3,8.3c,Usage anomaly alerts at 70% and 90% of cap; pause optional jobs at cap (OPT-03-08),Resolved locally in Part 8.3c,"8.3c, 9.5",4
+CONFLICT-482,8.3c §8.3.5.13.6,8.3c,"Critical availability ≥ 99.9% rolling 30 days (OKPI-06, OPT-05-07)",Resolved locally in Part 8.3c,"8.3c, 9.5",5
+CONFLICT-483,8.3c §8.3.5.15.3,8.3c,"Growth validation 50+ owned startups and 100 external tenants (OPT-06-01); 250 staff sessions, 1 m opportunities, 100 k actions/day (OPT-06-02/03)",Resolved locally in Part 8.3c,"8.3c, 9.5",3
+CONFLICT-484,8.3a §8.3.3.3,8.3c,"Response P1 15 min, P2 1 h, P3 next business day (document 34)",Open — owner per source part,"8.3a, 8.3c, 9.5",5
+CONFLICT-485,8.3a §8.3.3.3,8.3c,"Plans: self-service, managed, enterprise",Open — owner per source part,"8.3a, 8.3c, 9.5",5
+CONFLICT-486,8.3a §8.3.1.5,8.3c,20 weighted dimensions (documents 36 and 38); assignment brief says 21,Resolved locally in Part 8.3c,"8.3a, 8.3c, 9.5",7
+CONFLICT-487,8.3a §8.3.4.1,8.3c,76 business requirements (71 retained + 5 added),Open — owner per source part,"8.3a, 8.3c, 9.5",3
+CONFLICT-488,8.3a §8.3.4.1,8.3c,Gross effort 349 / 499 / 679 PD (baseline + expansion before overlap),Resolved locally in Part 8.3c,"8.3a, 8.3c, 9.5",6
+CONFLICT-489,8.3a §8.3.3.3,8.3c,"Pack text carries investor-product language: ""owner investment data"", ""investment thesis"", ""funding goals"", ""formal securities offers"", ""four frontends and two backends"", ""investment-related compensation""",Open — owner per source part,"8.3a, 8.3c, 9.5",8
+CONFLICT-490,8.3c §8.3.5.15.3,8.3c,Schema-valid AI outputs ≥ 99.5% with invalid/timeout counted (OKPI-13),Open — owner per source part,"8.3c, 9.5",4
+CONFLICT-491,8.3a §8.3.3.5,8.3c,"Combined preflight 1,188 records in 6 groups (document 36) vs 1,545 in 9 groups (document 38)",Resolved locally in Part 8.3c,"8.3a, 8.3c, 9.5",6

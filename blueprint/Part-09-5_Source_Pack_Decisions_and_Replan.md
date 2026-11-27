@@ -21,7 +21,7 @@
 
 | # | What you need to know | Where |
 |---|---|---|
-| 1 | **101 conflicts resolved** by **59 conflict decisions** (DEC-157…DEC-215); **12 further decisions** close the earlier-part inconsistencies the reviewers reported and fix the re-plan (DEC-216…DEC-227). **71 decisions in total** | §9.5.1 |
+| 1 | **101 conflicts resolved** by **59 conflict decisions** (DEC-157…DEC-215); **12 further decisions** close the earlier-part inconsistencies the reviewers reported and fix the re-plan (DEC-216…DEC-227). **72 decisions in total, including the Founder's approval of Option 2b as DEC-228** | §9.5.1 |
 | 2 | Recurring themes are settled once: availability (99.5% pilot, 99.9% for critical services from the scale gate), recovery (4 h pilot, 2 h at the scale gate, regenerable data 24 h / 8 h, regional 24 h), projection freshness (≤ 60 s operational, ≤ 15 min analytical), capacity (pack figures are load-test targets, DEC-031 stays the business baseline), budget alerts (70 / 90 / 100%), infrastructure (ECS on EC2 and Valkey for the pilot), API paths (**the source's legacy method/path contracts are canonical**), quality thresholds (the pack's stricter figures) | DEC-157…DEC-177 |
 | 3 | The ten enhancement parts add **330–567 pd gross** (central 449 pd, after normalising one group's conversion rate). After removing **62–128 pd** (46–76 pd of cross-group duplicates, the 14.5–49.4 pd field-standardization residual moved to the management reserve, and alias work moved into a new path-canon package), adding 4.5–9 pd for this part's own decisions, and allowing **10–20% of work that merges into existing stories**, the **net addition is 218 / 306 / 403 pd** (low / central / high) | §9.5.2.1–9.5.2.4 |
 | 4 | **Must** items (safety, compliance, financial integrity, isolation, the 21 mandatory OKPIs) are **190 pd central in Release 1** and **14 pd in Release 2**. **Should/Could** items (100 pd central) move to **W6** | §9.5.2.3 |
@@ -602,6 +602,12 @@ flowchart TD
 | RSK-ENH-95-06 Stricter quality thresholds slow early sprints | 2 × 3 | Critical-rule branch coverage < 90% blocks merges in S1–S3 | Tests written with the rule code (DoD); coverage gate on critical modules only |
 
 ---
+
+### 9.5.2.9 Founder decision recorded (27 Nov 2026)
+
+| DEC | Decision | Authority | Effect |
+|---|---|---|---|
+| DEC-228 | **Option 2b approved:** two contract engineers from Sprint 3 to the Release 2 build gate | **Founder / Product Owner instruction in this engagement, 27 Nov 2026** ("go with option 2b") | **Plan of record:** Release 1 go/no-go **Fri 4 Jun 2027 (Day 180)**; Release 2 build **Fri 2 Jul 2027 (Day 208)**; W5 exit after the 30-day monitored pilot **Fri 23 Jul 2027 (Day 229)**. Contract engineer cost **₹10.9–16.4 L** (estimate); total incremental one-time cash **₹13.3–21.5 L**; cash to reach the Release 2 gate **₹53.6–85.1 L**. The Option 1 fallback dates in §9.5.2.5 no longer apply. Procurement of the two contract engineers starts in Sprint 0 so they can join at Sprint 3. Effort baseline **532 / 722 / 921 pd** (low / central / high) |
 
 ## 9.5.3 Tags register (allocated ranges ASSUMPTION-500…509, RECOMMENDATION-500…509)
 

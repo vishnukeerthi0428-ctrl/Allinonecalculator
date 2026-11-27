@@ -69,3 +69,13 @@ ADR-082,No agent holds an external-side-effect tool; dispatch only by the engine
 ADR-083,"Per-agent, startup, tenant and global AI budgets with 80% alert and 100% hard stop; reserved 10% safety slice",Accepted in part (no status column),7.3
 ADR-084,Prompt registry in git + immutable DB versions with eval run links,Accepted in part (no status column),7.3
 ADR-085,Multi-scope kill switch via Valkey flags checked by gateway and engine,Accepted in part (no status column),7.3
+ADR-100,Container compute: ECS on EC2 retained; Fargate for on-demand tasks,Proposed (resolves CONFLICT-320 with ADR-013),3.4
+ADR-101,Valkey as broker and cache engine,"Proposed (confirms CN-01, ADR-003; resolves CONFLICT-320 wording)",3.4
+ADR-102,Data recovery classes RC-1…RC-3,Proposed (FR-ENH-B-002; resolves CONFLICT-322 and GAP-321),3.4
+ADR-103,Adapter port contract v2,Proposed (FR-ENH-B-004; extends ADR-009),3.4
+ADR-104,Agent envelope v1.1,Proposed (FR-ENH-B-009; extends Part 7.2 §7.2.7),3.4
+ADR-105,Product-event ingress through an allowlisted internal adapter,Proposed (FR-ENH-B-010; resolves CONFLICT-330),3.4
+ADR-106,"Commercial journey as a projection, not a state machine",Proposed (FR-ENH-B-011),3.4
+ADR-107,Declared execution policy per workflow revision,"Proposed (FR-ENH-B-012, FR-ENH-B-013)",3.4
+ADR-108,Growth-scale validation profiles,Proposed (FR-ENH-B-001; resolves CONFLICT-321),3.4
+ADR-109,Four permission base classes per ingress namespace,Proposed (FR-ENH-B-005),3.4

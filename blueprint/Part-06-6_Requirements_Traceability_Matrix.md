@@ -29,7 +29,7 @@ The matrix is **generated, not hand-maintained** [RECOMMENDATION-080]. `assembly
 | 4 Verification items | Every row whose first cell is `VER-###` in Batch 6.7; requirement links from its "Linked" column; method (inspection, review, analysis, demonstration), owner and wave from the named columns. VER items are **not** test cases: they are counted in their own column and never raise the test-case count |
 | 5 Derived links | AC → its story; TC → story via AC; FR → TC = explicit FR link **or** any TC of a story whose links include the FR; BR → TC = explicit BR link, via its FRs (Part 2.1 traces) or via stories that trace to it; BRL and NFR → TC = the rule/NFR ID appears anywhere in the TC row; AG/AU → TC from the TC-AI/TC-AU identifier; BR-S and NFR → VER from the VER "Linked" column |
 | 6 Flags | *Covered* (≥ 1 TC or ≥ 1 VER), with the basis *Test case*, *Verification item* or *Test case + VER*; *Not covered* otherwise. Execution status is outside this design-time build |
-| 7 Outputs | This document (tables marked "generated") and `final/RTM.csv` (columns: requirement_type, requirement_id, title, epic, wave, linked_fr, linked_us, aliases, tc_count, tc_ids, coverage_flag, ver_count, ver_ids, coverage_basis) |
+| 7 Outputs | This document (tables marked "generated") and `final/RTM.csv` (columns: requirement_type, requirement_id, title, epic, wave, linked_fr, linked_us, aliases, tc_count, tc_ids, coverage_flag, ver_count, ver_ids, coverage_basis, and since v1.2 **api_ids, sit_aliases** per DEC-217 [ASSUMPTION-512]). Since v1.2 the CSV also has one row per source-pack item: FR-ENH, US-ENH, AC-ENH, NFR-ENH, LT-ENH, OKPI, AG/AU, SM-UT/SM-SIT/SM-UAT, SIT-ALIAS, SRC-API, QC, every TC-ENH (A…K, merged per DEC-217) and VER-ENH-K |
 | 8 Source-pack layer (v1.2) | `rtm_enh.py` parses **every** `Part-*.md` (except the generated Parts 6.6, 9.2 and 9.3). A table row belongs to the IDs in its first cell (in grid tables every TC cell; in family-keyed rows such as `N01 \| TC-ENH-D-N01` the TC in the second cell); every other ID in the row is a link, with range and list expansion (`TC-ENH-B-011…014`, `TC-ENH-F-007, 008`, `FR-ENH-I-001…003`). Definitions: FR-ENH, NFR-ENH, LT-ENH, OKPI, AG/AU and TC-ENH rows whose first cell is the ID; stories from `US-<EP>-E<G><nn>` headings, story tables and Gherkin `Feature:` lines, with their `AC-…-E…` scenarios. Derived links: story → tests of the FR-ENH it realizes; FR-ENH → tests citing a control ID named in its requirement (RGV-, SMK-, AL-, ACC-, SEC-ROT, RBK-) [ASSUMPTION-510]; NFR-ENH and AG/AU → tests of the FR-ENH they name; OKPI → TC-NFR/VER of its NFRs and tests of its NFR-ENH; QC → tests and VER of the requirements and controls (AP-, DEC-, CA-, GL-, EG-, BLK-, RB-, ABAC-) in its `blueprint_verification_refs` [ASSUMPTION-511]. Aliases from the CSVs: `G_test_mapping.csv` (799 source tests → primary/supporting/TC-ENH tests), `H_sit_alias_map.csv` (SIT alias rule of §6.6.4), `D_api_mapping.csv` (source operation → TC-ENH-D test), `H_qc_map.csv` (QC). A referenced test counts only when it is defined somewhere in the blueprint |
 
 Re-run: `python3 assembly/build_rtm.py` from the blueprint folder (writes this file and the CSV); `--check` prints the summary only. The FRD aliases are computed per DEC-017 and Part 6.1 §6.1.12.5 (SM-UAT-S001–S030 = FR-W01…W30, S031–S138 = FR-A001…A108; SM-UX-UAT per screen).
@@ -840,7 +840,7 @@ Part 2.3 states 162 rules; errata 81 corrects the count to **161**, the number o
 
 ### 6.6.8.2 Semantic approval (AP-08)
 
-The mechanical matrix proves that a link exists, not that the test is the right test. AP-08 (DEC-014; Part 6.1 §6.1.13.6) requires the Product Owner to approve the requirement → test mapping for each release scope after a **10% spot check** of links for semantic correctness. The spot-check sample is drawn by the QA Lead from `final/RTM.csv` (stratified: every P0 risk area RA-01…RA-20 and RA-26, at least 5 FRs per epic in scope, and at least 5 VER items per release, checking that the method, owner and evidence fit the statement), and the result is recorded as an EVR with business acceptance.
+**Amended by DEC-203 (Part 9.5):** 100% of requirement-to-test links are individually approved (OKPI-20, tiers T-A/T-B/T-C of Part 6.9b §6.9.5.3.5); the 10% spot check described below is kept only as a QA sampling audit. The mechanical matrix proves that a link exists, not that the test is the right test. AP-08 (DEC-014; Part 6.1 §6.1.13.6) requires the Product Owner to approve the requirement → test mapping for each release scope after a **10% spot check** of links for semantic correctness. The spot-check sample is drawn by the QA Lead from `final/RTM.csv` (stratified: every P0 risk area RA-01…RA-20 and RA-26, at least 5 FRs per epic in scope, and at least 5 VER items per release, checking that the method, owner and evidence fit the statement), and the result is recorded as an EVR with business acceptance.
 
 ---
 
@@ -1188,19 +1188,21 @@ A story is covered directly when a test cites the story or one of its AC, and ot
 
 ### 6.6.9.3 LT-ENH load tests → requirements (generated)
 
-| LT-ENH | Scenario | Requirements verified | Status |
-|---|---|---|---|
-| LT-ENH-C-01 | Workload: identical scoped dashboard mix (A089, A042, A043, A082, A087) at 50 then 250 con | FR-ENH-C-017 | Traced |
-| LT-ENH-B-01 | Growth tenancy and sessions | NFR-ENH-B-01, NFR-ENH-B-02 | Traced |
-| LT-ENH-B-02 | Data volume and dashboards | NFR-039, NFR-ENH-B-03, NFR-ENH-B-05 | Traced |
-| LT-ENH-B-03 | Job and schedule volume | NFR-ENH-B-04 | Traced |
-| LT-ENH-B-04 | Saturation and region policy | NFR-ENH-B-02, NFR-ENH-B-04, OKPI-26 | Traced |
-| LT-ENH-I-01 | Dashboard latency, initial | FR-ENH-I-081, OKPI-05 | Traced |
-| LT-ENH-I-02 | Dashboard latency, growth | FR-ENH-I-081, OKPI-26 | Traced |
-| LT-ENH-I-03 | Baseline | FR-ENH-I-081 | Traced |
-| LT-ENH-I-04 | Spike and burst | FR-ENH-I-081 | Traced |
-| LT-ENH-I-05 | Endurance | FR-ENH-I-081 | Traced |
-| LT-ENH-I-06 | Recovery replay in dispatch-off mode | FR-ENH-I-081 | Traced |
+Indexed under the workload profiles of DEC-161 (Part 9.5): WP-01 = Release 1 and 2 gates (50 concurrent staff sessions, 100k opportunities), WP-02 = scale gate (250 sessions, 1M opportunities, 100k actions/day), WP-03 = dashboard traffic mix. A profile marked * is derived from the load figures in the row; the others are named in it. DEC-216 confirms that Part 6.1 owns LT-01…12 and that the LT-ENH IDs are kept.
+
+| LT-ENH | Scenario | Workload profile (DEC-161) | Requirements verified | Status |
+|---|---|---|---|---|
+| LT-ENH-C-01 | Workload: identical scoped dashboard mix (A089, A042, A043, A082, A087) at 50 then 250 con | WP-01*, WP-02* | FR-ENH-C-017 | Traced |
+| LT-ENH-B-01 | Growth tenancy and sessions | WP-02* | NFR-ENH-B-01, NFR-ENH-B-02 | Traced |
+| LT-ENH-B-02 | Data volume and dashboards | WP-02* | NFR-039, NFR-ENH-B-03, NFR-ENH-B-05 | Traced |
+| LT-ENH-B-03 | Job and schedule volume | WP-02* | NFR-ENH-B-04 | Traced |
+| LT-ENH-B-04 | Saturation and region policy | WP-02* | NFR-ENH-B-02, NFR-ENH-B-04, OKPI-26 | Traced |
+| LT-ENH-I-01 | Dashboard latency, initial | WP-01, WP-03 | FR-ENH-I-081, OKPI-05 | Traced |
+| LT-ENH-I-02 | Dashboard latency, growth | WP-02 | FR-ENH-I-081, OKPI-26 | Traced |
+| LT-ENH-I-03 | Baseline | — (baseline, spike or drill) | FR-ENH-I-081 | Traced |
+| LT-ENH-I-04 | Spike and burst | — (baseline, spike or drill) | FR-ENH-I-081 | Traced |
+| LT-ENH-I-05 | Endurance | WP-01 | FR-ENH-I-081 | Traced |
+| LT-ENH-I-06 | Recovery replay in dispatch-off mode | — (baseline, spike or drill) | FR-ENH-I-081 | Traced |
 
 ### 6.6.9.4 New agents and automations AG-037/038, AU-044…052 → tests (generated)
 

@@ -554,11 +554,18 @@ def render_enh(D, X, compress):
         if not a | b:
             unc.append(("NFR-ENH", n, d["title"], "Add a TC-ENH-K or VER-ENH-K item in Part 6.10 that cites the NFR", "EP-21"))
     S["h3"] = "\n".join(L); L.clear()
-    W("| LT-ENH | Scenario | Requirements verified | Status |")
-    W("|---|---|---|---|")
+    W("| LT-ENH | Scenario | Workload profile (DEC-161) | Requirements verified | Status |")
+    W("|---|---|---|---|---|")
     for l, d in lt.items():
         r = X["lt_req"][l]
-        W(f"| {l} | {d['title'][:90]} | {_short(r, 6)} | {'Traced' if r else '**Untraced**'} |")
+        txt = d["row"]                     # the defining row only
+        wp = sorted(set(re.findall(r"WP-0\d", txt)))
+        if not wp:                         # DEC-161 design points: WP-01 initial (50 sessions, 100k), WP-02 growth (250, 1 M, 100k actions/day)
+            if re.search(r"\b50 then 250\b", txt):
+                wp = ["WP-01*", "WP-02*"]
+            elif re.search(r"\b250\b|1 M\b|1,000,000|100,000 scheduled|growth", txt):
+                wp = ["WP-02*"]
+        W(f"| {l} | {d['title'][:90]} | {', '.join(wp) or '— (baseline, spike or drill)'} | {_short(r, 6)} | {'Traced' if r else '**Untraced**'} |")
         if not r:
             unc.append(("LT-ENH", l, d["title"][:80], "Cite the NFR/OKPI the load test verifies", "SRE"))
     S["h4"] = "\n".join(L); L.clear()
@@ -683,9 +690,62 @@ def csv_rows_enh(D, X, compress):
         row("SRC-API", a, f"{d['method']} {d['path']}", "", "", "", "", d["bp"], d["tests"])
     for a, d in X["qc"].items():
         row("QC", a, d["check"][:120], "", "", " ".join(d["via_refs"]), "", d["layer"], d["direct"] | d["via"])
-    for t, d in E.defs["TC"].items():
-        if t.startswith("TC-ENH-K-"):
-            out.append(["TC-ENH-K", t, d["title"][:120], "", "", " ".join(sorted(X["tce_req"][t])), "", "", 1, t, "Closure test", 0, "", "Test case"])
-    for v, d in E.defs["VER"].items():
-        out.append(["VER-ENH-K", v, d["title"][:120], "", "", " ".join(sorted(E.own_ids(v))), "", "", 0, "", "Closure VER", 1, v, "Verification item"])
+    for t, d in E.defs["TC"].items():        # DEC-217: every TC-ENH-A…K is merged into the RTM
+        req = X["tce_req"][t]
+        lfr = sorted(y for y in req if re.fullmatch(rf"{FR_ENH}|{NFR_ENH}|FR-(?:W\d{{2}}|A\d{{3}}|OP\d{{3}})|NFR-\d{{3}}|{OKPI}|{AG_N}|{AU_N}|{QC}|BRL-[A-Z]{{2,4}}-\d{{2}}", y))
+        lus = sorted(y for y in req if re.fullmatch(rf"{US_E}|US-\d{{4}}", y))
+        als = sorted(y for y in req if y.startswith("SM-"))
+        out.append(["TC-ENH", t, d["title"][:120], "", "", " ".join(lfr), " ".join(lus), " ".join(als), 1, t,
+                    "Traced" if req else "Untraced", 0, "", "Test case"])
     return out
+
+
+def extra_cols(D, X, bp):
+    """DEC-217: api_ids and sit_aliases per RTM row (function returning the two cells for a row)."""
+    C = bp + "final/coverage/"
+    with open(C + "H_sit_alias_map.csv", encoding="utf-8") as fh:
+        sm = list(csv.DictReader(fh))
+    with open(C + "D_api_mapping.csv", encoding="utf-8") as fh:
+        dm = list(csv.DictReader(fh))
+    sit_fr, sit_us = defaultdict(set), defaultdict(set)
+    for r in sm:
+        for f in r["blueprint_frs"].split(";"):
+            if f:
+                sit_fr[f].add(r["sm_sit_id"])
+        for u in r["blueprint_stories"].split(","):
+            if u.strip():
+                sit_us[u.strip()].add(r["sm_sit_id"])
+    api_sit, api_src, sit_tc, api_tc = defaultdict(set), {}, defaultdict(set), defaultdict(set)
+    for r in dm:
+        ops = set(re.findall(r"API-(?:ENH-[A-Z]-)?\d{3}", r["blueprint_ops"]))
+        if r["sit_id"]:
+            api_sit[r["sit_id"]] |= ops
+        api_src[r["source_id"]] = (ops, r["sit_id"])
+        for t in re.findall(TC_ENH, r["test"]):
+            api_tc[t] |= ops
+            if r["sit_id"]:
+                sit_tc[t].add(r["sit_id"])
+    E = X["E"]
+
+    def cols(row):
+        typ, rid = row[0], row[1]
+        sits, apis = set(), set()
+        if typ in ("FR", "FR-XC"):
+            sits = set(sit_fr.get(rid, ()))
+        elif typ == "US":
+            sits = set(sit_us.get(rid, ()))
+        elif typ in ("SIT-ALIAS", "SM-SIT") and rid.startswith("SM-SIT-A"):
+            sits = {rid}
+        elif typ == "SRC-API":
+            apis, sit = api_src.get(rid, (set(), ""))
+            sits = {sit} if sit else set()
+            apis = set(apis)
+        elif typ in ("TC-ENH", "FR-ENH", "US-ENH"):
+            own = E.own_ids(rid) | set(re.findall(r"API-(?:ENH-[A-Z]-)?\d{3}", " ".join("|".join(E.rows[i][2]) for i in E.subj_rows.get(rid, []))))
+            sits = {y for y in own if re.fullmatch(r"SM-SIT-A\d{3}", y)} | sit_tc.get(rid, set())
+            apis = {y for y in own if y.startswith("API-")} | api_tc.get(rid, set())
+        for x in sits:
+            apis |= api_sit.get(x, set())
+        k = lambda v: [int(t) if t.isdigit() else t for t in re.split(r"(\d+)", v)]
+        return [" ".join(sorted(apis, key=k)), " ".join(sorted(sits, key=k))]
+    return cols

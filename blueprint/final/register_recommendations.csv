@@ -2,7 +2,7 @@ ID,First seen,Issuing part,Statement,Status / resolution,Parts referencing,Occur
 RECOMMENDATION-001,0 §0.3.3,0,"Adopt WCAG 2.2 AA as the accessibility standard for Website, Portal and Admin; automated axe checks in CI plus manual screen-reader passes","Accepted (DEC-098, DEC-149)","0, 0A, 2.1, 2.3, 2.5, 4.1, 4.2, 5.1a, 5.1b, 5.1c, 5.2, 5.3, 6.1, 6.2a, 9.1",27
 RECOMMENDATION-002,0 §0.4,0,"Initial SLOs: Website/Portal availability 99.5% (pilot) → 99.9% (scale gate); Admin 99.5%; p95 API read ≤ 500 ms, write ≤ 800 ms (excluding provider calls); RPO ≤ 15 min (PITR), RTO ≤ 4 h; outbox dispatch lag p95 ≤ 60 s (consistent with NFR-008)","Accepted (DEC-018, DEC-149)","0, 0A, 2.4",5
 RECOMMENDATION-003,0 §0.5,0,"Allow a lighter Claude tier (e.g. Haiku-class) for high-volume classification/extraction where evals show parity. Deviates from ""Sonnet only"", consistent with FRD OPT-10-01","Accepted (DEC-007, DEC-149)","0, 0A, 5.1b, 6.5, 7.3",9
-RECOMMENDATION-004,0 §0.8,0,"Data classification scheme (Public, Internal, Confidential, Restricted). Restricted = personal data, children's data, health-adjacent, financial, credentials. Restricted data never goes to free-tier models; redact or block",Accepted (DEC-149),"0, 3.3, 4.1, 5.1a, 5.1b",10
+RECOMMENDATION-004,0 §0.8,0,"Data classification scheme (Public, Internal, Confidential, Restricted). Restricted = personal data, children's data, health-adjacent, financial, credentials. Restricted data never goes to free-tier models; redact or block",Accepted (DEC-149),"0, 3.3, 3.6a, 3.6b, 4.1, 5.1a, 5.1b",13
 RECOMMENDATION-005,0 §0.8,0,"Feature flags (open-source, e.g. django-waffle or Unleash OSS) for every external channel, autonomy mode and paid adapter; flags default OFF",Accepted (DEC-149),"0, 2.4, 3.1, 4.3, 5.1a, 5.1b, 6.1, 6.5, 8.1",20
 RECOMMENDATION-006,0 §0.8,0,OpenTelemetry traces/metrics with a correlation ID propagated from HTTP → outbox → Celery → adapter → webhook,Accepted (DEC-149),"0, 3.3, 4.2, 4.3, 5.1b, 5.1c, 6.1, 6.7, 7.2",11
 RECOMMENDATION-007,0 §0.8,0,STRIDE threat model plus DPIAs (Data Protection Impact Assessments) for EduVerse (children) and MedMaarg (health-adjacent) flows before activation,Accepted (DEC-149),"0, 3.3, 4.1, 5.1b, 5.1c, 6.1, 6.5",7
@@ -13,17 +13,17 @@ RECOMMENDATION-011,0 §0.8,0,"Consumer-driven / schema contract tests for every 
 RECOMMENDATION-012,0 §0.8,0,"A single Policy Decision Point service (deterministic) for eligibility, consent, jurisdiction, quiet hours, frequency caps, budget and approval-hash checks, called at plan time *and* at dispatch",Accepted (DEC-149),"0, 1, 2.1, 2.2, 2.3, 2.4, 3.1, 3.3, 4.1, 5.1a, 5.1b, 6.4, 6.6, 7.1, 7.2",19
 RECOMMENDATION-013,0 §0.5,0,"Merge duplicated acceptance procedures (BRD §15/§16, FRD §14/§15) into one acceptance register",Accepted (DEC-149),0,2
 RECOMMENDATION-014,0 §0.3.1,0,"Create FR-W31…FR-W34 and FR-A109…FR-A113 with full acceptance, matching the SM-FR pattern",Accepted (DEC-149),0,3
-RECOMMENDATION-015,0 §0.8,0,"A Reconciliation console pattern (uncertain outcomes queue) shared by email, WhatsApp, social, ads, e-sign, payments",Accepted (DEC-149),"0, 2.2, 3.2, 3.3, 4.2, 6.4, 7.2",8
+RECOMMENDATION-015,0 §0.8,0,"A Reconciliation console pattern (uncertain outcomes queue) shared by email, WhatsApp, social, ads, e-sign, payments",Accepted (DEC-149),"0, 2.2, 3.2, 3.3, 4.2, 6.4, 7.2, 9.4",9
 RECOMMENDATION-016,0 §0.8,0,"A Jurisdiction rule pack in the eligibility engine (India DPDP/TRAI, EU GDPR/PECR, US CAN-SPAM, Canada CASL); unknown jurisdiction = deny","Accepted (DEC-029, DEC-149)","0, 0A, 5.1b",3
-RECOMMENDATION-017,0 §0.8,0,"Seed synthetic data sets (two tenants, 26 startups, all four verticals, minors and health fixtures) as a versioned test asset",Accepted (DEC-149),"0, 3.1, 3.2, 3.3, 4.1, 4.2, 4.3, 5.1a, 5.1b, 5.1c, 6.1, 6.4, 6.5, 7.1, 7.2, 7.3",30
-RECOMMENDATION-018,0 §0.8,0,"Use the dual-ledger pattern: receivables and payables as separate append-only ledgers; deal/closure states derived, never manually set",Accepted (DEC-149),"0, 1, 3.1, 3.2, 3.3, 6.1, 6.6",10
+RECOMMENDATION-017,0 §0.8,0,"Seed synthetic data sets (two tenants, 26 startups, all four verticals, minors and health fixtures) as a versioned test asset",Accepted (DEC-149),"0, 3.1, 3.2, 3.3, 4.1, 4.2, 4.3, 4.4a, 5.1a, 5.1b, 5.1c, 6.1, 6.4, 6.5, 7.1, 7.2, 7.3, 7.4a, 7.4b, 9.4",38
+RECOMMENDATION-018,0 §0.8,0,"Use the dual-ledger pattern: receivables and payables as separate append-only ledgers; deal/closure states derived, never manually set",Accepted (DEC-149),"0, 1, 3.1, 3.2, 3.3, 3.6a, 6.1, 6.6",12
 RECOMMENDATION-019,1 §1.4.2,1,KPI-03 · Verified contact rate · contacts with verified professional channel ÷ contacts discovered · Baseline in W1; +10 pp by W5 RECOMMENDATION-019 · Monthly · Research lead · A025,Accepted (DEC-149),"1, 8.2",9
 RECOMMENDATION-020,2.3 §2.25.6,2.3,BRL-APR-09 · Delegation · Approvers may delegate for ≤ 14 days to a user with an equal or higher role in the same scope; audited · None · SVC · Policy,Accepted (DEC-149),2.3,3
 RECOMMENDATION-021,2.3 §2.26.1,2.3,"R15 · Auditor (read-only) · n/a · Admin · Tenant read-only, incl. audit · RECOMMENDATION-021 For internal audit and legal review",Accepted (DEC-149),2.3,1
 RECOMMENDATION-022,2.4 §2.31.4,2.4,"Attribution models offered · First-touch, last non-direct touch (default), linear, position-based (40/20/40) · M52 ""attribution caveat""; default chosen for simplicity and explainability RECOMMENDATION-022",Accepted (DEC-149),2.4,2
 RECOMMENDATION-023,2.4 §2.33.5,2.4,"User lifecycle: invite, activate, change role, expire, revoke, access review (quarterly attestation) RECOMMENDATION-023 · A002",Accepted (DEC-149),"2.4, 3.2, 3.3, 4.1, 5.1b",7
 RECOMMENDATION-024,2.4 §2.34.2,2.4,"prev_hash, hash · Hash chain per tenant for tamper evidence RECOMMENDATION-024",Accepted (DEC-149),"2.4, 3.3, 4.1, 4.2, 5.1b, 6.7",7
-RECOMMENDATION-025,2.4 §2.35.2,2.4,Application · DRF permission classes + object-level checks; scoped querysets by default (no unscoped manager in business code) · Static check: unscoped query usage fails CI RECOMMENDATION-025,Accepted (DEC-149),"2.4, 3.1, 4.1, 4.3, 5.1b, 6.5",12
+RECOMMENDATION-025,2.4 §2.35.2,2.4,Application · DRF permission classes + object-level checks; scoped querysets by default (no unscoped manager in business code) · Static check: unscoped query usage fails CI RECOMMENDATION-025,Accepted (DEC-149),"2.4, 3.1, 4.1, 4.3, 4.4a, 5.1b, 6.5",13
 RECOMMENDATION-026,2.4 §2.36.2,2.4,"I18N-04 · Numbers formatted per locale; en-IN uses Indian digit grouping (1,00,000) with an option for international grouping in Admin; lakh/crore labels in INR summaries RECOMMENDATION-026",Accepted (DEC-149),2.4,1
 RECOMMENDATION-027,2.5 §2.45.1,2.5,Dark mode · Admin: supported via tokens; Website: per startup theme option RECOMMENDATION-027,Accepted (DEC-149),2.5,2
 RECOMMENDATION-028,2.5 §2.48,2.5,"Performance budgets (public): LCP ≤ 2.5 s (p75, mid-range mobile on 4G), INP ≤ 200 ms, CLS ≤ 0.1; JS ≤ 150 KB gzip per public route RECOMMENDATION-028.",Accepted (DEC-149),"2.5, 4.2, 5.3, 6.1, 6.3b, 6.7",8
@@ -36,8 +36,8 @@ RECOMMENDATION-034,3.2 §3.2.5,3.2,Fourteen-layer contract testing approach (CT-
 RECOMMENDATION-035,3.1 §3.1.6.2,3.1,Managed malware scanning of uploads (GuardDuty Malware Protection for S3) at pilot (defined in Part 3.2),Accepted (DEC-149),"3.1, 3.2",5
 RECOMMENDATION-036,3.2 §3.2.1.2,3.3,UUIDv7 primary keys generated in the application; never expose raw IDs as capabilities; 256-bit random tokens stored as hashes for every shared link,Accepted (DEC-149),"3.2, 3.3",3
 RECOMMENDATION-037,3.2 §3.2.8.1,3.3,"RLS with transaction-local session variables, FORCE ROW LEVEL SECURITY, a separate write-scope variable that enforces portfolio read-only in the database, no BYPASSRLS roles, and a CI guard",Accepted (DEC-149),"3.2, 3.3",3
-RECOMMENDATION-038,3.1 §3.1.6.1,3.3,"Field-level envelope encryption with per-tenant KMS keys, HMAC blind indexes for lookup/suppression, crypto-shredding at offboarding",Accepted (DEC-149),"3.1, 3.2, 3.3",6
-RECOMMENDATION-039,3.3 §3.3.6.3,3.3,"halfvec(1024) embeddings with HNSW (m 16, ef_construction 64), iterative filtered scans, hybrid retrieval; IVFFlat rejected",Accepted (DEC-149),3.3,3
+RECOMMENDATION-038,3.1 §3.1.6.1,3.3,"Field-level envelope encryption with per-tenant KMS keys, HMAC blind indexes for lookup/suppression, crypto-shredding at offboarding",Accepted (DEC-149),"3.1, 3.2, 3.3, 3.4",9
+RECOMMENDATION-039,3.3 §3.3.6.3,3.3,"halfvec(1024) embeddings with HNSW (m 16, ef_construction 64), iterative filtered scans, hybrid retrieval; IVFFlat rejected",Accepted (DEC-149),"3.3, 3.6a",5
 RECOMMENDATION-040,4.1 front matter,4.2,"Admin SPA budgets (NFR-044), search p95 ≤ 1 s (NFR-046), chat session caps (NFR-022), AI gateway overhead and first-token targets (NFR-052) where the baseline had none",Accepted (DEC-149),"4.1, 4.2",8
 RECOMMENDATION-041,4.1 §4.16.3,4.1,"Vulnerability remediation SLAs (Critical 7 d, High 30 d, Medium 90 d)",Accepted (DEC-149),"4.1, 4.2, 6.7",4
 RECOMMENDATION-042,4.1 §4.5.3,4.1,Field-level envelope encryption with blind indexes for Restricted fields,Accepted (DEC-149),4.1,2
@@ -65,7 +65,7 @@ RECOMMENDATION-063,6.4 AU-004 Data classification & PII redacti,7.3,"Presidio wi
 RECOMMENDATION-064,6.4 AU-042 Usage metering & entitlement enfo,7.3,"Define ""AI task"" as one completed agent invocation returning a validated output (§7.5.4)",Accepted (DEC-149),"6.4, 7.2, 7.3",5
 RECOMMENDATION-065,7.3 §7.3.3,7.3,"First Tier 2 opt-in limited to Owner Portfolio, agents AG-003/004/005/017, after legal review",Accepted (DEC-149),7.3,2
 RECOMMENDATION-066,7.3 §7.4.2,7.3,"Weekly 30-minute AI cost and quality review (RP-20, RP-21) owned by the FinOps lead",Accepted (DEC-149),7.3,2
-RECOMMENDATION-067,7.3 §7.3.3,7.3,W6 spike: self-hosted small open model (vLLM in ap-south-1) as Tier 2e for classifiers; evaluate cost vs Haiku,Accepted (DEC-149),7.3,3
+RECOMMENDATION-067,7.3 §7.3.3,7.3,W6 spike: self-hosted small open model (vLLM in ap-south-1) as Tier 2e for classifiers; evaluate cost vs Haiku,Accepted (DEC-149),"7.3, 7.4a, 7.4b",6
 RECOMMENDATION-068,6.4 §6.4.9.2,7.3,AI incident severity scheme AI-S1…S3 (§7.6.10),Accepted (DEC-149),"6.4, 7.3",3
 RECOMMENDATION-069,6.4 AG-018 Content & Campaign Studio Drafter,7.3,Configurable AI-content labelling per jurisdiction (EU AI Act Art. 50; India IT Rules amendments if adopted),Accepted (DEC-149),"6.4, 7.3, 8.2",5
 RECOMMENDATION-070,6.1 front matter,6.1,"Test pyramid target proportions (unit 60–70%, integration 15–25%, contract 4–6%, system 5–8%, E2E 2–4%) and coverage targets per layer, including mutation score ≥ 85% for money, tax, ledger and PDP modules, ≥ 80% for scoring and ≥ 75% for state-machine guards",Accepted (DEC-149),"6.1, 8.2",6
@@ -78,7 +78,7 @@ RECOMMENDATION-076,6.2a §6.2.1.7,6.2a,"E2E journey register for EP-08…EP-14 (
 RECOMMENDATION-077,6.3a front matter,6.3a,"Run a closure-integrity oracle as an after-each hook in every EP-15 integration and system test and in the AP-04 run: KPI-31 = 0, Σ receivable ledger entries = Σ allocations per invoice, Σ allocations ≤ invoice total, no deal in WonContracted or Paid without its ClosurePolicy evidence. The same check is the nightly production monitor of US-1510 (RECOMMENDATION-057), so tests and operations share one oracle",Accepted (DEC-149),"6.3a, 6.3b",9
 RECOMMENDATION-078,6.3a §6.3.7.1,6.3a,"Every drill (restore DR-1…DR-9, rollback rehearsal, emergency-stop latency, provider outage) emits a machine-readable drill report (JSON: drill ID, release, digest, injected-failure time, last surviving heartbeat, declared and recovered times, measured RPO and RTO, integrity checklist results 1–10, duplicate-effect count, reviewer) that A090 ingests as the EVR artefact, so RBR-7 is evaluated mechanically and trends are charted on A014",Accepted (DEC-149),"6.3a, 6.3b",5
 RECOMMENDATION-079,6.4 front matter,6.4,"Two-tier safety gate with violation classes. Classify every red-team and adversarial result as V1–V7; V1–V6 (external effect, cross-scope disclosure, Restricted to Tier 2, prohibited content to a person, prompt/canary leak, injected state change) are zero-tolerance and cannot be overridden; V7 (degraded output without effect) counts toward Part 7's ""≥ 98% of corpus cases without violation"". This reconciles Part 7 §7.6.9 (≥ 98%) with Part 4.1 §4.8.3 and AIR-01 (""0 policy violations"")","Accepted (DEC-109, DEC-149)","6.4, 9.1",37
-RECOMMENDATION-080,6.5 front matter,6.6,"Run build_rtm.py (extended to read the pytest/Playwright tc/req markers and EVR results) as a CI artefact on G3 and G4; fail G4 when any in-scope FR, AC or P0 BRL is *Not covered* or has no passing TC, and publish the CSV to the A090 test dashboard (RP-26 extension)",Accepted (DEC-149),"6.5, 6.6, 6.7, 9.3",12
+RECOMMENDATION-080,6.5 front matter,6.6,"Run build_rtm.py (extended to read the pytest/Playwright tc/req markers and EVR results) as a CI artefact on G3 and G4; fail G4 when any in-scope FR, AC or P0 BRL is *Not covered* or has no passing TC, and publish the CSV to the A090 test dashboard (RP-26 extension)",Accepted (DEC-149),"6.5, 6.6, 6.7, 6.9b, 6.10, 8.3c, 9.3",15
 RECOMMENDATION-081,8.1 front matter,8.1,"Adopt the re-baselined wave calendar (§8.1.2.2): keep errata 34 gates; Release 1 go/no-go Day 152, Release 2 build go/no-go Day 180, W5 exit ≈ Day 201; activate each capability as soon as it passes (continuous delivery, DEC-006); flag naming proposals in §8.1.3.3",Accepted (DEC-149),"8.1, 8.2",7
 RECOMMENDATION-082,8.1 §8.1.4.2,8.1,Raise QA to 1.0 FTE from Sprint 3 to the end of Release 2 hypercare (+₹2.75–4.13 L),Accepted (DEC-149),"8.1, 8.2",6
 RECOMMENDATION-083,8.1 §8.1.4.2,8.1,Front-load DevOps/SRE to 1.0 FTE in Sprints 0–1 (+₹0.6–0.9 L),Accepted (DEC-149),"8.1, 8.2",5
@@ -88,4 +88,125 @@ RECOMMENDATION-086,8.1 §8.1.2.1,8.1,"Option E acceleration (two contract engine
 RECOMMENDATION-087,8.1 §8.1.4.3,8.1,"Run a procurement track from Sprint 0 (SES, Anthropic terms, WABA, OAuth, merchant, e-sign, pen-test vendor, CloudFront quotas) with owners and dates (§8.1.7.3)",Accepted (DEC-149),"8.1, 8.2",3
 RECOMMENDATION-088,8.2 §8.2.2.4,8.2,"Change control with an impact record (journey, UI, API, persistence, cost, tests), Minor/Major/Emergency classes, a weekly CCB and release scope freezes (S8, S11)",Accepted (DEC-149),8.2,3
 RECOMMENDATION-089,8.2 §8.2.5,8.2,"Hypercare windows (2 weeks per activation, 4 weeks per release), daily metrics and exit criteria; adoption metrics with a training gate before send/approve/publish rights",Accepted (DEC-149),8.2,2
-RECOMMENDATION-090,6.6 front matter,6.6,Recommendation (Batch 6.7),Accepted (DEC-149),"6.6, 6.7",8
+RECOMMENDATION-090,6.6 front matter,6.6,Recommendation (Batch 6.7),Accepted (DEC-149),"6.6, 6.7, 6.10",9
+RECOMMENDATION-300,2.6 front matter,2.6,"Persona variants (P03a, P03b, P03c, P07a, P07b, P10a, P13a, P13b, P14e, website roles) and new personas P17–P20",Proposed,"2.6, 9.5",7
+RECOMMENDATION-301,2.6 §2.6.5.3.2,2.6,"New role R21 and sub-roles R11T, R12I with ABAC-ENH-A-01…05",Proposed,2.6,2
+RECOMMENDATION-302,2.6 Document 11 Global Market Intelligence &,2.6,Source-family and segment playbook registry SPB-01…24,Proposed,2.6,28
+RECOMMENDATION-303,2.6 §2.6.5.1.5,2.6,Coverage ledger and KPI-ENH-A-01 with weekly ≥ 90% target once stable,Proposed,2.6,3
+RECOMMENDATION-304,2.6 §2.6.5.2.4,2.6,Paid data provider enabled only with ≥ 20% better cost per usable opportunity or incremental eligible records on the same corpus,Proposed,2.6,2
+RECOMMENDATION-305,"2.6 Document 14 Global Customer, Partner & A",2.6,Acquisition operating plan AOP-01…05 and weekly acquisition review,Proposed,2.6,4
+RECOMMENDATION-306,2.6 Document 12 Digital Marketing & Customer,2.6,Experiment registry with single-variable rule and stop triggers,Proposed,2.6,2
+RECOMMENDATION-307,2.6 §2.6.5.1.5,2.6,Outcome economics report and KPI-ENH-A-03,Proposed,2.6,2
+RECOMMENDATION-308,2.6 §2.6.8.4,2.6,Jurisdiction activation decision record,Proposed,2.6,1
+RECOMMENDATION-309,2.6 Document 13 Sales Intelligence & Commerc,2.6,Relationship ID and derived relationship stage,Proposed,2.6,2
+RECOMMENDATION-310,2.6 Document 37 Sales & Marketing Automation,2.6,UAT packs and demonstration script from document 37,Proposed,2.6,4
+RECOMMENDATION-311,2.6 Document 03 End User Personas,2.6,Training and competence record that never grants authority,Proposed,2.6,3
+RECOMMENDATION-312,2.6 Document 11 Global Market Intelligence &,2.6,Integration candidate disposition table,Proposed,2.6,4
+RECOMMENDATION-313,2.6 Document 03 End User Personas,2.6,Acceptance RACI and AP-ENH-A-01…12,Proposed,2.6,5
+RECOMMENDATION-314,2.6 Document 03 End User Personas,2.6,User-productivity measurement protocol,Proposed,2.6,4
+RECOMMENDATION-315,2.6 Document 03 End User Personas,2.6,Bulk action preview with hash,Proposed,2.6,2
+RECOMMENDATION-320,3.4 front matter,3.4,Validate the pack's capacity matrix with LT-ENH-B-01…04; buy no capacity before a §3.1.6.4 trigger,Proposed,3.4,4
+RECOMMENDATION-321,3.4 Document(s) 04/09/10,3.4,Adopt recovery classes RC-1…RC-3 with class-ordered restore,Proposed,3.4,2
+RECOMMENDATION-322,3.4 §A,3.4,Adopt agent envelope v1.1,Proposed,3.4,2
+RECOMMENDATION-323,3.4 §D,3.4,"Adopt the product-event ingress allowlist, off by default",Proposed,3.4,2
+RECOMMENDATION-324,3.4 §E,3.4,Build the commercial journey projection as a read model,Proposed,3.4,2
+RECOMMENDATION-325,3.4 Document(s) 05,3.4,Run the 90-cell workflow regression matrix in SIT from W2,Proposed,3.4,3
+RECOMMENDATION-326,3.4 §D,3.4,Keep a technical-debt register with monthly review and a 10% capacity reservation for S1/S2 debt,Proposed,3.4,2
+RECOMMENDATION-327,3.4 Document(s) 04,3.4,Enforce a benchmark record before any paid provider activation,Proposed,3.4,2
+RECOMMENDATION-328,3.4 Document(s) 04,3.4,Use the pack's discipline shares as a capacity cross-check; skew any Option E hire to backend; schedule the dynamic-field framework before the nine expansion screens,Proposed,3.4,4
+RECOMMENDATION-329,3.4 §B,3.4,Adopt four DRF permission base classes with CI enforcement,Proposed,3.4,2
+RECOMMENDATION-330,3.4 §A,3.4,Price per-tenant KMS keys into plans or use per-tenant data keys under a shared CMK for tenants without a contractual need,Proposed,3.4,2
+RECOMMENDATION-331,3.4 §3.4.4.4,3.4,"Cite OPT IDs in the ""Source"" column of implementing artefacts",Proposed,3.4,2
+RECOMMENDATION-340,2.7a front matter,2.7a,"Legacy alias routing layer (single canonical handler, Deprecation/Link headers, alias table)",Proposed,2.7a,2
+RECOMMENDATION-341,2.7a §2.7.8,2.7a,"Generate a machine-readable field-contract registry (YAML per screen) from Batch 2.7b to drive FormSchemaRenderer, serializers and tests",Proposed,2.7a,1
+RECOMMENDATION-342,2.7a §2.7.6,2.7a,Viewport test matrix 360/768/1280/1440 plus 320 reflow,Proposed,2.7a,2
+RECOMMENDATION-343,2.7a §2.7.3.1,2.7a,"AdapterCard component (licence, capacity, residual cost, benchmark, fallback approval) reused in A008, A011, A012, A033, A102",Proposed,2.7a,3
+RECOMMENDATION-344,2.7a §2.7.5.2,2.7a,Add the Unassessed UI state,Proposed,2.7a,2
+RECOMMENDATION-345,2.7a §2.7.8,2.7a,"""Related"" menu component carrying scope and record ID",Proposed,2.7a,1
+RECOMMENDATION-346,2.7a §2.7.8,2.7a,Design evidence pack per wave stored as EVR evidence,Proposed,2.7a,1
+RECOMMENDATION-347,2.7a §2.7.3.2,2.7a,"Productivity benchmark protocol (baseline vs candidate, named user, no safeguard reduction)",Proposed,2.7a,2
+RECOMMENDATION-348,2.7a §2.7.3.1,2.7a,Projection freshness tiers O (≤ 60 s) and A (≤ 15 min),Proposed,2.7a,4
+RECOMMENDATION-349,2.7a §2.7.5.8,2.7a,Build-class weighting for screen-level estimation,Proposed,2.7a,2
+RECOMMENDATION-360,3.5a front matter,3.5b,"OpenAPI x-source-op, x-source-path, x-sit-id, x-contract-state on every operation",Proposed,"3.5a, 3.5b",5
+RECOMMENDATION-361,3.5b §3.5.5.3,3.5b,"Use §3.5.5.3 as the review oracle for serializer-generated OpenAPI (contract-first review, code-first generation)",Proposed,3.5b,2
+RECOMMENDATION-362,3.5b §3.5.5.12.1,3.5b,Negative fixture families N01…N22 bound to SE classes,Proposed,3.5b,2
+RECOMMENDATION-363,3.5a §3.5.3.1,3.5b,AdapterCommand/AdapterResult envelope,Proposed,"3.5a, 3.5b",3
+RECOMMENDATION-364,3.5b §3.5.5.9.1,3.5b,Operation contract state machine with route flags and three-lead approval,Proposed,3.5b,2
+RECOMMENDATION-365,3.5a §3.5.3.1,3.5b,Provider/tool register with four classes; developer plugins and unapproved SaaS never runtime,Proposed,"3.5a, 3.5b",2
+RECOMMENDATION-366,3.5a §3.5.3.1,3.5b,Website ingress allowlist generated from the catalogue,Proposed,"3.5a, 3.5b",3
+RECOMMENDATION-367,3.5b §3.5.5.9.4,3.5b,Catalogue-integrity CI gate CI-1…CI-8,Proposed,3.5b,2
+RECOMMENDATION-368,3.5a §3.5.3.1,3.5b,"PubMed as an optional, off-by-default evidence source for MedMaarg claims behind SearchPort, with SourcePolicy",Proposed,"3.5a, 3.5b",2
+RECOMMENDATION-369,3.5a §3.5.3.1,3.5b,Exclude reverse-IP visitor identification and third-party analytics on public pages; keep the first-party beacon,Proposed,"3.5a, 3.5b",3
+RECOMMENDATION-370,3.5b §3.5.5.1,3.5b,Four new error codes,Proposed,"3.5b, 9.5",4
+RECOMMENDATION-371,3.5b §3.5.5.10,3.5b,Per-operation performance budgets (x-perf) with query-count limits,Proposed,3.5b,3
+RECOMMENDATION-380,3.6a front matter,3.6a,Section numbering · 3.6.x (this batch); tags ASSUMPTION/GAP/CONFLICT/RECOMMENDATION-380…399 only,Proposed,"3.6a, 3.6b",2
+RECOMMENDATION-398,3.6a §3.6.3,3.6b,"Governance package: two-axis classification, adapter persistence AP-1…6, OPT trace, DCE, backfill quarantine",Proposed,"3.6a, 3.6b",12
+RECOMMENDATION-399,3.6a §3.6.3,3.6b,Logical backup checksum manifest and restore-credential check; secret-reference table restricted to R01/R13 with audited reads,Proposed,"3.6a, 3.6b, 9.5",9
+RECOMMENDATION-400,7.4a front matter,7.4b,Adopt AI result envelope v2,Proposed,"7.4a, 7.4b",6
+RECOMMENDATION-401,7.4b §7.4.5.1,7.4b,Register PC-01…PC-18 prompt contracts with a common minimum output,Proposed,7.4b,2
+RECOMMENDATION-402,7.4b §7.4.5.3,7.4b,Authorization-safe private cache key,Proposed,7.4b,2
+RECOMMENDATION-403,7.4b §7.4.5.2,7.4b,Two-sided RAG ACL and AU-046 revocation propagation,Proposed,7.4b,2
+RECOMMENDATION-404,7.4b §7.4.5.8.1,7.4b,Integration candidate register and PG-01…PG-10 procurement gate (AU-044),Proposed,7.4b,2
+RECOMMENDATION-405,7.4a §7.4.3,7.4b,"Four-method adapter port, denied class, lifecycle with Retire; add Documenso to the e-sign evaluation shortlist after licence/evidentiary review",Proposed,"7.4a, 7.4b",5
+RECOMMENDATION-406,7.4a §7.4.3,7.4b,Replacement economics metrics with quarterly re-evaluation,Proposed,"7.4a, 7.4b",8
+RECOMMENDATION-407,7.4b §7.4.8,7.4b,Matched-sample benchmark harness AU-045 as the only path to PG-05,Proposed,7.4b,1
+RECOMMENDATION-408,7.4b §7.4.8,7.4b,Licence register with model weights and CI gate AU-047,Proposed,7.4b,1
+RECOMMENDATION-409,7.4b §7.4.8,7.4b,Provider invoice reconciliation AU-048,Proposed,7.4b,1
+RECOMMENDATION-410,7.4b §7.4.8,7.4b,Tenant contribution margin AU-049,Proposed,7.4b,1
+RECOMMENDATION-411,7.4b §7.4.5.7,7.4b,Seed A113 with the 100/20/13 library,Proposed,7.4b,2
+RECOMMENDATION-412,7.4a §7.4.3,7.4b,Add AG-037 and AG-038 (Release 2) and place them on ladder steps 3 and 2,Proposed,"7.4a, 7.4b",3
+RECOMMENDATION-413,7.4b §7.4.8,7.4b,"Wire OKPI-08…16, 21, 24, 35 into A012/RP-20 with n and undefined handling",Proposed,7.4b,1
+RECOMMENDATION-414,7.4a §7.4.3,7.4b,Budget per surface with a public-AI cap,Proposed,"7.4a, 7.4b",3
+RECOMMENDATION-415,7.4a §7.4.4.4,7.4b,Charge benchmark trial spend to B10 with a per-candidate cap,Proposed,"7.4a, 7.4b",3
+RECOMMENDATION-416,7.4b §7.4.5.10,7.4b,Add the budget views of §7.4.5.10 to Part 8.2,Proposed,7.4b,2
+RECOMMENDATION-420,6.8a front matter,6.8c,Generate the operation-class data rows from the OpenAPI documents so new operations get a class row automatically (CT-05/CT-03 with IDs),Proposed,"6.8a, 6.8b, 6.8c",5
+RECOMMENDATION-421,6.8c §6.8.5.1.6,6.8c,Adopt UAT-PK-MKT and UAT-PK-CS,Proposed,6.8c,2
+RECOMMENDATION-422,6.8a §6.8.3.2,6.8c,Add execution_status to the EVR,Proposed,"6.8a, 6.8c",4
+RECOMMENDATION-423,6.8a front matter,6.8c,Extend DEC-017 aliases to all SM-* source families,Proposed,"6.8a, 6.8c",4
+RECOMMENDATION-424,6.8a §6.8.3.1,6.8c,Import the source's 164 candidate request and 165 response examples as OpenAPI examples once DTOs are approved (CT-04),Proposed,"6.8a, 6.8c",3
+RECOMMENDATION-425,6.8c §6.8.5.1.1,6.8c,build_rtm.py reads final/coverage/G_test_mapping.csv into the Aliases column,Proposed,6.8c,3
+RECOMMENDATION-440,6.9b front matter,6.9b,Adopt the QC register and layer sign-off as A090 inputs,Proposed,6.9b,3
+RECOMMENDATION-441,6.9b §6.9.5.2,6.9b,Use the SPDEC alias and decision queue,Proposed,6.9b,2
+RECOMMENDATION-442,6.9b §6.9.5.1.4,6.9b,Run the fail-closed validator in PL-17 / G4 with exit-code contract 0/1/2,Proposed,6.9b,3
+RECOMMENDATION-443,6.9b §6.9.5.1.5,6.9b,"Link tests to QCs by qc(""QC-###"") markers and extend build_rtm.py with qc_ids, sit_aliases, decision_ids",Proposed,6.9b,2
+RECOMMENDATION-444,6.9a §6.9.3.2,6.9b,Add 1440 px to the viewport matrix,Proposed,"6.9a, 6.9b",4
+RECOMMENDATION-445,6.9a §6.9.3.2,6.9b,Semgrep rule: no external I/O inside transaction.atomic,Proposed,"6.9a, 6.9b",4
+RECOMMENDATION-446,6.9a §6.9.3.2,6.9b,"Fixture GSE-SYN-X10 (26 owned + 10 × 2 client startups, 20 runs)",Proposed,"6.9a, 6.9b",5
+RECOMMENDATION-447,6.9a §6.9.3.2,6.9b,Full route keyboard sweep and one accessible-error UAT step per interface,Proposed,"6.9a, 6.9b",6
+RECOMMENDATION-448,6.9b §6.9.5.4.1,6.9b,Log actual PD per work item weekly; report estimate vs actual,Proposed,6.9b,3
+RECOMMENDATION-449,6.9b §6.9.5.1.6,6.9b,Same-workload benchmark protocol for non-AI replacements with TCO formula,Proposed,6.9b,2
+RECOMMENDATION-460,4.4a §4.4.5.1,4.4b,Adopt the coding standard §4.4.5.1 as binding with its enforcement matrix,Proposed,"4.4a, 4.4b",4
+RECOMMENDATION-461,4.4a §4.4.3.3,4.4b,Cohort canary for every external activation (DPL-ACT-02),Proposed,"4.4a, 4.4b",3
+RECOMMENDATION-462,4.4a §4.4.3.8,4.4b,Release-gate validator RGV in PL-17,Proposed,"4.4a, 4.4b",3
+RECOMMENDATION-463,4.4b §4.4.5.2.2,4.4b,Add control and finance queues (amend ADR-021),Proposed,4.4b,2
+RECOMMENDATION-464,4.4b §4.4.5.6.3,4.4b,Add alerts AL-50…58 and metrics MET-01…12,Proposed,4.4b,2
+RECOMMENDATION-465,4.4b §4.4.5.6.4,4.4b,Add runbooks RB-016…018 to the drill schedule,Proposed,4.4b,2
+RECOMMENDATION-466,4.4b §4.4.8.1,4.4b,Adopt workload profiles WP-01…03 and LT-ENH-I-01…06,Proposed,4.4b,1
+RECOMMENDATION-467,4.4a §4.4.3.1,4.4b,Authorization-safe cache-key composition (CS-SEC-07),Proposed,"4.4a, 4.4b",2
+RECOMMENDATION-468,4.4a §4.4.3.4,4.4b,Configuration manifest hash and drift detection,Proposed,"4.4a, 4.4b",3
+RECOMMENDATION-469,4.4b §4.4.5.7.2,4.4b,Delivery package and access handover at R1/R2,Proposed,4.4b,2
+RECOMMENDATION-470,4.4a §4.4.3.5,4.4b,Track OKPI-01…35 in the A090 release record with numeric-domain validation; 21 mandatory OKPIs feed RGV-12,Proposed,"4.4a, 4.4b",2
+RECOMMENDATION-471,4.4b §4.4.8.1,4.4b,Penetration-test RoE and severity overlay,Proposed,4.4b,1
+RECOMMENDATION-472,4.4a §4.4.3.4,4.4b,Technical-debt register with monthly review,Proposed,"4.4a, 4.4b",2
+RECOMMENDATION-473,4.4a §4.4.3.1,4.4b,"Numeric guardrail library (P-08) shared by gates, optimizer and budgets",Proposed,"4.4a, 4.4b",2
+RECOMMENDATION-480,8.3c §8.3.5.15.4,8.3c,8.3c §8.3.5.15.4,Proposed,8.3c,3
+RECOMMENDATION-481,8.3c §8.3.5.15.7,8.3c,8.3c §8.3.5.15.7,Proposed,8.3c,2
+RECOMMENDATION-482,8.3c §8.3.5.15.9,8.3c,8.3c FR-ENH-J-016,Proposed,8.3c,2
+RECOMMENDATION-483,8.3c §8.3.5.15.9,8.3c,8.3c FR-ENH-J-015,Proposed,8.3c,2
+RECOMMENDATION-484,8.3b §8.3.5.8,8.3c,8.3b §8.3.5.8,Proposed,"8.3b, 8.3c",3
+RECOMMENDATION-485,8.3b §8.3.5.12,8.3c,8.3b §8.3.5.12,Proposed,"8.3b, 8.3c",2
+RECOMMENDATION-486,8.3c §8.3.5.13.1,8.3c,8.3c §8.3.5.13.1,Proposed,8.3c,2
+RECOMMENDATION-487,8.3c §8.3.5.14.2,8.3c,8.3c §8.3.5.14.2,Proposed,8.3c,2
+RECOMMENDATION-488,8.3c §8.3.5.14.4,8.3c,8.3c §8.3.5.14.4,Proposed,8.3c,2
+RECOMMENDATION-489,8.3c §8.3.5.13.6,8.3c,8.3c §8.3.5.13.6,Proposed,8.3c,2
+RECOMMENDATION-490,8.3c §8.3.5.13.7,8.3c,8.3c §8.3.5.13.7,Proposed,8.3c,2
+RECOMMENDATION-500,9.5 §9.5.2.5,9.5,Adopt Option 2b: two contract engineers from Sprint 3 to the Release 2 build gate,Proposed,9.5,5
+RECOMMENDATION-501,9.5 §9.5.2.8,9.5,"Approve the Option 2b spend by Day 1, at the latest by the W0-A gate (Day 15)",Proposed,9.5,2
+RECOMMENDATION-502,9.5 §9.5.2.8,9.5,Track estimate versus actual per discipline from Sprint 0 in a sheet until B-15 is built,Proposed,9.5,2
+RECOMMENDATION-503,9.5 §9.5.2.5,9.5,"Hire one backend/platform engineer (I, E, D, X) and one full-stack AI/test-automation engineer (F-1, G, H)",Proposed,9.5,3
+RECOMMENDATION-504,9.5 §9.5.2.8,9.5,Hold the UX-TASK-FIELDS residual (14.5–49.4 pd) in the management reserve and size it at the S3 review,Proposed,9.5,2
+RECOMMENDATION-505,9.5 §9.5.2.6,9.5,Contract a technical writer for the training content (14.5–28 pd) instead of loading the 0.5 FTE growth/compliance lead,Proposed,9.5,3
+RECOMMENDATION-506,9.5 §9.5.2.6,9.5,Use free uptime checks for availability probes; add CloudWatch Synthetics only if OKPI-06 evidence requires it,Proposed,9.5,2
+RECOMMENDATION-507,9.5 §9.5.3,9.5,"Generate one consolidated enhancement backlog (package ID, story IDs, MoSCoW, release) from §9.5.2.3 into the backlog tool in Sprint 0, and merge all TC-ENH IDs into the RTM (DEC-217)",Proposed,9.5,1
+RECOMMENDATION-508,9.5 §9.5.3,9.5,"At assembly, add a one-line pointer in each enhancement part's conflicts section to the DEC that resolved each conflict (§9.5.1.11)",Proposed,9.5,1
+RECOMMENDATION-509,9.5 §9.5.2.8,9.5,"Keep activating capabilities as soon as their stories and Must packages pass, so the business sees value before the Release 1 gate",Proposed,9.5,2

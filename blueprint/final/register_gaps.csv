@@ -1,7 +1,7 @@
 ID,First seen,Issuing part,Statement,Status / resolution,Parts referencing,Occurrences
-GAP-001,0 §0.3.1,0,API catalogue of 302 retained + 19 candidate operations is not attached; only 105 operations are named,Closed by DEC-015,"0, 0A",4
+GAP-001,0 §0.3.1,0,API catalogue of 302 retained + 19 candidate operations is not attached; only 105 operations are named,Closed by DEC-015,"0, 0A, 8.3a",5
 GAP-002,0 §0.3.1,0,"Entity catalogue of 149 + 6 is not attached; 132 named. Core entities are unnamed: Tenant, Startup, BusinessLine, Offering/SKU, PublicationSnapshot, Domain, Bid/Tender, Order, OrderLine, FulfillmentEvent, Plan, Entitlement, ServiceInvoice, UsageMeter, Trigger, NodeTemplate, ConfigRevision, ApplicationDraft, ConflictCase",Closed by DEC-016,"0, 0A, 3.3",4
-GAP-003,0 §0.3.1,0,"Test catalogue (624 + 175) is not attached. SM-UT-001…066, SM-UAT-S001…, SM-UX-UAT-* are referenced but not defined",Closed by DEC-017,"0, 0A, 6.1",5
+GAP-003,0 §0.3.1,0,"Test catalogue (624 + 175) is not attached. SM-UT-001…066, SM-UAT-S001…, SM-UX-UAT-* are referenced but not defined",Closed by DEC-017,"0, 0A, 6.1, 6.8a",6
 GAP-004,0 §0.3.3,0,"No explicit NFR targets: availability, latency, throughput, concurrency, RTO/RPO, volume growth, browser support",Closed by DEC-018,"0, 0A",4
 GAP-005,0 §0.4,0,"Identity dependencies ""H02, H03"" undefined; the existing auth technology (session vs OIDC provider, MFA method) is unknown",Closed by DEC-019,"0, 0A",2
 GAP-006,0 §0.4,0,"Budget IDs B01–B22 and engineering ID C03 are referenced, but the cost table rows carry no IDs; ""11 Budget"" section is not present",Closed by DEC-020,"0, 0A",3
@@ -17,7 +17,7 @@ GAP-015,0 §0.4,0,"Regulations outside India not addressed although AppNAI is wo
 GAP-016,0 §0.4,0,Mechanism for verifiable guardian consent (children) not specified,Closed by DEC-030,"0, 0A",2
 GAP-017,0 §0.4,0,"Number of internal users, portal users and growth trajectory unknown",Closed by DEC-031,"0, 0A",2
 GAP-018,0 §0.3.3,0,"""Agreed window"" for the 99% workflow-completion target undefined",Closed by DEC-032,"0, 0A",3
-GAP-019,0 §0.4,0,The 9 new interfaces have SM-UX-FR rows but no SM-FR rows,Closed by DEC-033,"0, 0A",4
+GAP-019,0 §0.4,0,The 9 new interfaces have SM-UX-FR rows but no SM-FR rows,Closed by DEC-033,"0, 0A, 8.3a",5
 GAP-020,0 §0.4,0,"Phase gates cite M-ranges (""M01–M09"", ""M10–M20"" …), but IDs are not sequential in the register (M53, M56, M58 sit in the foundation block; M55 in the CRM block; M41 in omnichannel)",Closed by DEC-034,"0, 0A",2
 GAP-021,0 §0.4,0,"""Approved Copilot"" is mentioned with no functional spec, screen or limits",Closed by DEC-035,"0, 0A",4
 GAP-022,0 §0.4,0,"Internal notification channels (in-app, email, push, chat) and digest rules unspecified",Closed by DEC-036,"0, 0A",2
@@ -35,28 +35,28 @@ GAP-033,0 §0.4,0,"SaaS plan catalogue (plans, quotas, prices for W31/A101) not 
 GAP-034,0 §0.4,0,"Admin ""Copilot"" and agent permissions to call internal tools are not enumerated (tool registry)",Closed by DEC-048,"0, 0A",2
 GAP-101,3.1 front matter,3.1,"DEC-040 requires cross-region backup copies, but B20 (backup/DR storage) is ₹0 until approved",Request ≈ ₹200/month approval,"3.1, 3.2, 8.2",7
 GAP-102,3.1 §3.1.6.2,3.1,DEC-020 does not say whether B01 covers non-production environments (staging),FinOps/PO decision,"3.1, 3.2",4
-GAP-103,3.1 §3.1.16,3.2,The original 302-operation catalogue (BRD §9) is not available; one-to-one reconciliation impossible,Mapping table when supplied (DEC-015),"3.1, 3.2",7
+GAP-103,2.7a §2.7.2,3.2,The original 302-operation catalogue (BRD §9) is not available; one-to-one reconciliation impossible,Mapping table when supplied (DEC-015),"2.7a, 3.1, 3.2, 3.5a, 3.5b, 6.8c, 9.5",21
 GAP-104,3.1 §3.1.6.2,3.1,No WAF budget at pilot (B21 ₹0) while NFR-022 requires abuse controls on public intake,Compensating controls; revisit at W3,"3.1, 3.2",5
 GAP-105,3.2 §3.2.4.3,3.2,"Several providers lack full sandboxes (social posting, some e-sign and ads features, WhatsApp production templates)",Recorded fixtures + internal-recipient canaries,3.2,3
 GAP-107,3.1 §3.1.6.1,3.1,"Approach and limits for 25+ startup custom domains on CloudFront (certificates, alternate names, KVS) not specified",Verify quotas in Sprint 0,"3.1, 8.1, 8.2",5
 GAP-111,3.2 §3.2.4.2,3.3,Embedding model/provider not decided in the baseline (the Claude API is not assumed to provide embeddings; verify). Interim: dimension 1024 fixed per model; provider chosen in Part 7,Open — handling per source part,"3.2, 3.3",4
-GAP-112,3.2 §3.2.8.7,3.3,"The original 149-entity catalogue was not supplied; 17 retained entities cannot be identified, so a one-to-one reconciliation is impossible",Closed by DEC-087,"3.2, 3.3, 9.1",4
+GAP-112,2.7a §2.7.3.1,3.3,"The original 149-entity catalogue was not supplied; 17 retained entities cannot be identified, so a one-to-one reconciliation is impossible",Closed by DEC-087,"2.7a, 3.2, 3.3, 3.6a, 3.6b, 9.1, 9.5",16
 GAP-113,3.3 §3.3.3.1,3.3,"DEC-028 does not cover delivery events, eligibility/policy decisions, meetings, business records and configuration; interim periods given; Legal to confirm",Open — handling per source part,3.3,11
 GAP-114,3.3 §3.3.11.3,3.3,Archive retrieval SLA not defined; interim 5 business days,Open — handling per source part,3.3,2
 GAP-115,3.3 §3.3.16.7,3.3,DPDP verifiable parental consent mechanism to be confirmed; the consent model keeps capture_method and evidence extensible,Open — handling per source part,3.3,2
 GAP-116,3.3 §3.3.6.4,3.3,"""Global"" suppression scope in BRL-ELG-02 is undefined; interpreted as tenant-wide (cross-tenant suppression is prohibited by DEC-065)",Open — handling per source part,3.3,2
-GAP-120,4.1 front matter,4.1,No budget line for external penetration tests (B07 is ₹500/month; B11 contingency is shared). Estimated ₹1.5–4 lakh per engagement for this scope (estimate; verify quotes),Founder to approve a security testing line before end W3,"4.1, 4.2, 8.1, 8.2",11
+GAP-120,4.1 front matter,4.1,No budget line for external penetration tests (B07 is ₹500/month; B11 contingency is shared). Estimated ₹1.5–4 lakh per engagement for this scope (estimate; verify quotes),Founder to approve a security testing line before end W3,"4.1, 4.2, 4.4b, 8.1, 8.2",12
 GAP-121,4.1 §4.12.1,4.1,No named Grievance Officer / DPDP contact person or CERT-In point of contact,Founder to designate before W2 public launch,"4.1, 8.1, 8.2",6
-GAP-122,4.3 §4.43.2,4.3,No on-call compensation or out-of-hours coverage commitment in the baseline,Founder decision before W3,4.3,4
-GAP-123,4.3 §4.49.2,4.3,"Part 3 ADRs (compute platform, IaC, CI) not available while this batch was written; ADR-050…053, 058…060 may duplicate or conflict",Closed by DEC-083,"4.3, 9.1",2
+GAP-122,4.3 §4.43.2,4.3,No on-call compensation or out-of-hours coverage commitment in the baseline,Founder decision before W3,"4.3, 4.4b",5
+GAP-123,4.3 §4.49.2,4.3,"Part 3 ADRs (compute platform, IaC, CI) not available while this batch was written; ADR-050…053, 058…060 may duplicate or conflict",Closed by DEC-083,"4.3, 4.4b, 9.1",3
 GAP-124,4.1 §4.12.10,4.1,Cyber insurance not considered,Evaluate at W4 when payments go live,4.1,2
 GAP-125,4.1 §4.12.5,4.1,GDPR Art. 27 EU representative and UK representative not addressed for EU/UK outbound under DEC-029,Counsel decision before enabling the EU/UK pack,"4.1, 8.2",3
 GAP-126,4.3 §4.43.4,4.3,No customer-facing status page or incident communication channel for SaaS tenants,Decide before onboarding external tenants (W5),"4.3, 8.2",3
 GAP-127,4.3 §4.49.2,4.3,"B22 (LLM observability/eval tooling) is ₹0; the eval harness must run on OSS (DeepEval candidate, M54) and CI minutes",Accept OSS-only at pilot; revisit at the growth gate,"4.3, 8.2",2
 GAP-140,7.1 front matter,7.3,No measured AI usage baseline exists,Open — handling per source part,"7.1, 7.3, 8.2",4
 GAP-141,7.3 §7.3.1,7.3,"Anthropic commercial terms for this deployment (data retention, training exclusion, DPA, cross-border processing, ZDR eligibility) not yet confirmed",Open — handling per source part,"7.3, 8.1, 8.2",9
-GAP-142,6.4 §6.4.2.1,7.3,"Golden eval datasets do not exist (≥ 200 labelled per vertical for qualification, DEC-001)",Open — handling per source part,"6.4, 7.3",5
-GAP-143,7.1 §7.1.7,7.1,No lawful meeting-recording or transcript source exists; meeting summarization is excluded until one is approved with consent,Open — handling per source part,"7.1, 7.3",4
+GAP-142,6.4 §6.4.2.1,7.3,"Golden eval datasets do not exist (≥ 200 labelled per vertical for qualification, DEC-001)",Open — handling per source part,"6.4, 7.3, 7.4a, 7.4b",10
+GAP-143,3.4 Document(s) 05,7.1,No lawful meeting-recording or transcript source exists; meeting summarization is excluded until one is approved with consent,Open — handling per source part,"3.4, 7.1, 7.3, 7.4a, 7.4b, 9.4, 9.5",28
 GAP-144,6.4 §6.4.6,7.3,"Tier 2 provider terms (Groq DPA, Gemini/OpenRouter/Mistral free terms) not legally reviewed",Open — handling per source part,"6.4, 7.3, 8.1",4
 GAP-145,7.3 §7.5.4,7.3,"DEC-047 ""AI tasks"" quotas have no defined unit or cost basis",Open — handling per source part,7.3,2
 GAP-150,5.1a front matter,5.1c,"Import template columns for catalogues, organizations, contacts and deals are not specified",Open — handling per source part,"5.1a, 5.1b, 5.1c, 8.2",8
@@ -76,19 +76,131 @@ GAP-163,5.3 US-1706 Sales forecast (estimate) and fo,5.3,"No default forecast st
 GAP-164,"5.3 US-1911 Public site accessibility, acces",5.3,The owner and legal wording of the per-startup accessibility statement are not defined. Interim: a platform template approved by R10 per startup,Legal/DPO (P09),"5.3, 6.3b",3
 GAP-165,6.1 front matter,6.1,"Test capacity. QA-owned test effort is estimated at 43–97 pd against ≈ 50 pd of QA capacity (0.5 FTE, DEC-005), a shortfall of up to ≈ 47 pd at the high end; business UAT participation (60–120 participant-days over W0–W5) is not in any budget or plan","Closed by DEC-095, DEC-133","6.1, 6.2b, 8.1, 8.2, 9.1",17
 GAP-166,6.1 §6.1.3.1,6.1,"Dependent catalogues not yet available: Part 7 agent catalogue (AG IDs, per-agent thresholds, eval harness choice) and the Part 5.1 dimension matrix were not published when this batch was written",Batch 6.3 takes AG IDs and thresholds from Part 7; harness choice defaults to the …,"6.1, 6.4",5
-GAP-167,6.1 §6.1.16.5,6.1,"Retained test catalogue and missing alias IDs. The BRD's ""624 retained product tests + 175 candidate tests"" (BRD §9, §17) were not supplied; SM-UT-037, SM-UT-049 and SM-UT-050 are absent from the FRD although the range runs to 066",Closed by DEC-094,6.1,1
+GAP-167,2.7a §2.7.3.1,6.1,"Retained test catalogue and missing alias IDs. The BRD's ""624 retained product tests + 175 candidate tests"" (BRD §9, §17) were not supplied; SM-UT-037, SM-UT-049 and SM-UT-050 are absent from the FRD although the range runs to 066",Closed by DEC-094,"2.7a, 6.1, 6.8a, 6.8c, 9.5",9
 GAP-168,6.4 front matter,6.4,"Multilingual evaluation resources. No plan or budget for bilingual labellers (Hindi, Tamil, Odia, code-mixed Hinglish) or for curating ML-01…ML-05 and the multilingual red-team set RT-11; Part 7 GAP-142 sizes labelling at 6–10 person-days for golden sets only",Closed by DEC-116,"6.4, 9.1",5
 GAP-169,6.4 §6.4.11.1,6.4,"No approved crisis/self-harm response. The baseline requires handover for clinical topics but defines no approved message, helpline reference or escalation for a visitor or sender in crisis (AG-017, AG-013)",Closed by DEC-115,"6.4, 9.1",5
 GAP-170,6.5 front matter,6.5,"Part 2.3 §2.25 states ""162 business rules"", but its family counts (TEN 12, ELG 18, SRC 10, SCR 9, AI 12, APR 11, SEQ 5, MTG 6, MKT 10, BID 6, QTE 7, CTR 5, ORD 6, FIN 8, LCY 6, PUB 6, AUT 10, PRV 7, SVC 7) sum to 161, and 161 distinct BRL IDs are defined. Part 6.1 coverage formulas divide by 162",Closed by DEC-141,"6.5, 6.6, 9.1",11
 GAP-171,6.5 §6.5.10.2,6.5,"Load-test IDs collide: Part 4.2 §4.26 defines LT-01…LT-12 differently from Part 6.1 §6.1.14.1 (for example LT-02 is ""Soak at design load"" in 4.2 but ""Public website and portal"" in 6.1; LT-05 is 50 webhooks/s for 10 min vs 2 min). ERRATA-30 says Part 6.1 owns LT-01…LT-12, but Part 4.2's NFR rows cite its own LT meanings",Closed by DEC-143,"6.5, 6.6, 9.1",6
-GAP-172,6.5 front matter,6.6,Gap (closed by Batch 6.7),Open — handling per source part,"6.5, 6.6",8
+GAP-172,6.5 front matter,6.6,Gap (closed by Batch 6.7),Open — handling per source part,"6.5, 6.6, 6.10",10
 GAP-173,8.1 front matter,8.1,No named business UAT participants or approved time exist (second half of GAP-165),Open — handling per source part,"8.1, 8.2",7
 GAP-174,8.1 §8.1.6.5,8.1,"C03 has no line for the QA uplift, DevOps front-load, UX contractor, independent reviewer, pen tests or external counsel",Open — handling per source part,"8.1, 8.2",6
 GAP-175,8.2 §8.2.6,8.2,"KPI-03, 05, 09, 10, 11, 15, 22, 26, 28 have ""baseline"" targets without values; baseline capture dates are set in §8.2.6",Open — handling per source part,8.2,3
 GAP-176,8.1 §8.1.3.4,8.1,No Service Owner is named for SaaS activation and DEC-047 plan approval,Open — handling per source part,8.1,3
 GAP-177,8.1 §8.1.1.3,8.1,The organisation's holiday calendar and leave policy are not in the baseline,Open — handling per source part,8.1,3
-GAP-178,8.2 §8.2.2.2,8.2,No owner for help-centre content and training materials,Open — handling per source part,8.2,3
-GAP-179,8.1 §8.1.3.3,8.2,No tenant-facing status page or incident channel (Part 4.3 GAP-126) is decided before the first external tenant,Open — handling per source part,"8.1, 8.2",4
+GAP-178,8.2 §8.2.2.2,8.2,No owner for help-centre content and training materials,Open — handling per source part,"8.2, 8.3b, 8.3c",5
+GAP-179,8.1 §8.1.3.3,8.2,No tenant-facing status page or incident channel (Part 4.3 GAP-126) is decided before the first external tenant,Open — handling per source part,"8.1, 8.2, 8.3c",6
 GAP-180,9.1 §9.1.5,9.1,DEC-151 · E-91 · Part 9.2 (GAP-180) · No central tag allocation log · §9.2.3 reconstruction is authoritative; future tags continue from the highest number in each register · 9.2,Closed by DEC-151,9.1,1
 GAP-181,9.1 §9.1.5,9.1,"DEC-148 · E-88 · Part 9.2 (GAP-181) · ID family collisions: AD-## (3.1 drivers vs 3.2 adapters), PP-## (1 principles vs 6.2 precondition profiles), D-# (3.3 drills vs 5.1a DoD items), B-## (3.1 cost rows vs budget lines B##) · IDs stay as written; cross-part references must be qualified with the part (e.g. ""3.2/AD-05"", ""6.2/PP-03"", ""3.3/D-2"", ""3.1/B-07""). Unqualified AD-/PP-/D-/B- references mean the owning definitions in Parts 3.1, 1, 5.1a and the DEC-020 budget lines respectively · 1, 3, 5.1, 6.2",Closed by DEC-148,9.1,1
 GAP-182,9.1 §9.1.5,9.1,"DEC-149 · E-89 · Part 9.2 (GAP-182) · 68 RECOMMENDATIONs have no recorded accept/reject · All proposed RECOMMENDATION-001…090 are accepted into the baseline under the delegated authority, except where a DEC states otherwise (e.g. ADR-043 superseded by DEC-081). They are implemented through the stories and tests that cite them · All",Closed by DEC-149,9.1,1
+GAP-300,2.6 front matter,2.6,"Referenced artefacts not supplied: ""15-sheet commercial source cell inventory"" (SP-11, SP-14) and ""deck slides 10–14"" (SP-11 MedMaarg segments)",Request from the founder; until then AP-ENH-A-05 is Pending and segment claims stay …,2.6,8
+GAP-301,2.6 Document 03 End User Personas,2.6,Agency / managed-service operator persona and delegation model absent,"P17, R21, FR-ENH-A-015",2.6,4
+GAP-302,2.6 Document 37 Sales & Marketing Automation,2.6,Service arrangement (self-service / managed / hybrid) not modelled,"FR-ENH-A-015, CFG-ENH-A-07",2.6,3
+GAP-303,"2.6 Document 14 Global Customer, Partner & A",2.6,Website legal disclosure per legal entity not specified,FR-ENH-A-017,2.6,3
+GAP-304,2.6 Document 11 Global Market Intelligence &,2.6,No coverage ledger or per-family freshness,"FR-ENH-A-001, BRL-ENH-A-02",2.6,3
+GAP-305,"2.6 Document 14 Global Customer, Partner & A",2.6,No acquisition operating plan or weekly review,"FR-ENH-A-010, 012",2.6,3
+GAP-306,2.6 Document 03 End User Personas,2.6,NFR-034 baseline undefined,Productivity protocol §2.6.5.1.4,2.6,5
+GAP-307,2.6 Document 03 End User Personas,2.6,Integration administrator and template reviewer not defined,"P18/R12I, P19/R11T",2.6,5
+GAP-308,2.6 Document 12 Digital Marketing & Customer,2.6,No rule on meeting/webinar recording consent,BRL-ENH-A-05,2.6,3
+GAP-309,2.6 Document 11 Global Market Intelligence &,2.6,No benchmark sample design for discovery,FR-ENH-A-005,2.6,3
+GAP-310,2.6 Document 11 Global Market Intelligence &,2.6,"Tool candidates (Scrapy, Trafilatura, SearXNG, PandaDoc, Crossbeam, PostHog, Socialinsider) not dispositioned",§2.6.5.6,2.6,4
+GAP-320,3.4 front matter,3.4,"No load profile for the pack's growth column (250 sessions, 1 M opportunities, 100 k actions/day, 100 tenants)",Open — handling per source part,3.4,4
+GAP-321,3.4 Document(s) 04/09/10,3.4,No recovery class for regenerable research data,Open — handling per source part,3.4,4
+GAP-322,3.4 Document(s) 10,3.4,Adapter ports lack estimate/health and a denied outcome,Open — handling per source part,3.4,3
+GAP-323,3.4 Document(s) 10,3.4,Agent envelope lacks 7 of the 11 fields in doc 10,Open — handling per source part,3.4,3
+GAP-324,3.4 §D,3.4,No contract for product events from startups' own delivered products,Open — handling per source part,3.4,2
+GAP-325,3.4 Document(s) 05,3.4,Workflow definitions have no declared execution-policy block,Open — handling per source part,3.4,3
+GAP-326,3.4 Document(s) 05,3.4,Reply taxonomy lacks decline and meeting-request classes,Open — handling per source part,3.4,3
+GAP-327,3.4 Document(s) 04,3.4,No daily-operations runbook; client offboard and data-incident runbooks incomplete,Open — handling per source part,3.4,3
+GAP-328,3.4 Document(s) 10,3.4,No branch-coverage metric for critical decision code,Open — handling per source part,3.4,3
+GAP-329,3.4 Document(s) 10,3.4,No technical-debt register,Open — handling per source part,3.4,3
+GAP-330,3.4 Document(s) 04,3.4,"Approval-gate items (38 API definitions, 4 DB confirmations, 138 UI mappings) not tracked",Open — handling per source part,3.4,4
+GAP-331,3.4 Document(s) 05,3.4,"Pack integration candidates (PandaDoc, Crossbeam Skills, Socialinsider, PostHog) not evaluated",Open — handling per source part,3.4,4
+GAP-332,3.4 Document(s) 10,3.4,No website/portal/Admin URL route map,Open — handling per source part,3.4,3
+GAP-333,3.4 Document(s) 04/09/10,3.4,No composite dashboard load target,Open — handling per source part,3.4,2
+GAP-334,3.4 Document(s) 05/10,3.4,No fail-fast rule for mandatory configuration,Open — handling per source part,3.4,3
+GAP-335,3.4 Document(s) 05,3.4,No lawful meeting-notes summarization path (GAP-143 excludes recordings),Open — handling per source part,3.4,4
+GAP-340,2.7a front matter,2.7a,278 retained-baseline fields had no field-level specification in the blueprint,Open — handling per source part,"2.7a, 2.7b",6
+GAP-341,2.7a §2.7.3.1,2.7a,No legacy screen ID crosswalk or retained website capability mapping,Open — handling per source part,2.7a,2
+GAP-342,2.7a §2.7.2,2.7a,83 distinct legacy operations have no blueprint equivalent; 113 only an equivalent under another path,Open — handling per source part,2.7a,4
+GAP-343,2.7a §2.7.2,2.7a,435 related-screen links not represented in navigation,Open — handling per source part,2.7a,2
+GAP-344,2.7a §2.7.3.1,2.7a,"Per-screen integration associations, licence and capacity display not specified",Open — handling per source part,2.7a,2
+GAP-345,2.7a §2.7.3.1,2.7a,Optimization Intelligence panel not specified,Open — handling per source part,2.7a,3
+GAP-346,2.7a §2.7.3.1,2.7a,"Dashboard latency load scenario (50/250 staff, 100k/1m opportunities) missing",Open — handling per source part,2.7a,2
+GAP-347,2.7a §2.7.3.1,2.7a,Design handoff record and design evidence pack missing,Open — handling per source part,2.7a,4
+GAP-348,2.7a §2.7.3.2,2.7a,"Status footer items, filter result count and focus restoration missing",Open — handling per source part,2.7a,3
+GAP-349,2.7a §2.7.2,2.7a,"No entity for sales_business_template or sales_ui_service_request; Part 3.2 support-case operations (API-440, API-442) have no entity",Open — handling per source part,"2.7a, 2.7b",6
+GAP-360,3.5a front matter,3.5b,Part 3.2 had no per-operation request/response field contracts,Open — handling per source part,"3.5a, 3.5b",3
+GAP-361,3.5b §3.5.8,3.5b,38 source operations have only descriptive payloads,Open — handling per source part,3.5b,1
+GAP-362,3.5a §3.5.3.1,3.5b,No operation-level SIT in Part 6,Open — handling per source part,"3.5a, 3.5b",2
+GAP-363,3.5b §3.5.8,3.5b,24 operations missing in Part 3.2,Open — handling per source part,3.5b,1
+GAP-364,3.5b §3.5.8,3.5b,"Three adapter ports missing (storage/extraction, contact verification, own-site audit)",Open — handling per source part,3.5b,1
+GAP-365,3.5a §3.5.3.1,3.5b,"Document 07's ""4 database reuse/field confirmations"" are not identified anywhere in the document",Open — handling per source part,"3.5a, 3.5b",3
+GAP-366,3.5a §3.5.3.1,3.5b,"The ""catalog-complete OpenAPI draft"" and the 164/164/165 offline examples are not in the package",Open — handling per source part,"3.5a, 3.5b",3
+GAP-367,3.5a §3.5.3.1,3.5b,PubMed listed on 10 operations has no blueprint home,Open — handling per source part,"3.5a, 3.5b",3
+GAP-388,3.6a §3.6.3,3.6b,"Missing entities: business template, service request, eval case result (and milestone via CONFLICT-383); interim retention for service requests",Open — handling per source part,"3.6a, 3.6b",8
+GAP-389,3.6a §3.6.3,3.6b,113 column additions on 73 tables (incl. portal grant invite/redemption columns),Open — handling per source part,"3.6a, 3.6b",4
+GAP-390,3.6a §3.6.3,3.6b,54 keys and indexes IX-ENH-E-01…54,Open — handling per source part,"3.6a, 3.6b",3
+GAP-391,3.6a §3.6.3,3.6b,No table-level exposure register,Open — handling per source part,"3.6a, 3.6b",4
+GAP-392,3.6a §3.6.3,3.6b,"No schema decision register; 136 field records, 4 blocked rows, 38 API and 138 UI approvals outstanding",Open — handling per source part,"3.6a, 3.6b",8
+GAP-393,3.6a §3.6.3,3.6b,No tiered recovery objectives (regenerable data 24 h / 8 h),Open — handling per source part,"3.6a, 3.6b",5
+GAP-394,3.6a §3.6.3,3.6b,"Restore-drill completeness (dispatch disabled, checksums, object inventory, config history, dedupe keys), disposable DBs and reference SQL smoke missing",Open — handling per source part,"3.6a, 3.6b",9
+GAP-395,3.6a §3.6.3,3.6b,No data-layer offboarding runbook,Open — handling per source part,"3.6a, 3.6b",3
+GAP-400,7.4a front matter,7.4b,Source priority codes V/X/R are undefined in documents 16 and 21,Open — handling per source part,"7.4a, 7.4b",6
+GAP-401,7.4a §7.4.1.4,7.4b,"The pack names none of the 100 use cases, 20 templates or 13 node types",Open — handling per source part,"7.4a, 7.4b",4
+GAP-402,7.4a §7.4.3,7.4b,"No blueprint entity records candidate, entitlement, approved spend, expiry or benchmark result",Open — handling per source part,"7.4a, 7.4b",3
+GAP-403,7.4a §7.4.3,7.4b,No dependency/model-weight licence register,Open — handling per source part,"7.4a, 7.4b",3
+GAP-404,7.4a §7.4.3,7.4b,No adapter retirement procedure,Open — handling per source part,"7.4a, 7.4b",2
+GAP-405,7.4a §7.4.3,7.4b,Inter-agent envelope lacks six source fields,Open — handling per source part,"7.4a, 7.4b",3
+GAP-406,7.4a §7.4.3,7.4b,Exact cache key lacks grant fingerprint and permission/policy revisions,Open — handling per source part,"7.4a, 7.4b",3
+GAP-407,7.4a §7.4.3,7.4b,No post-ranking ACL recheck or revocation propagation to embeddings/caches,Open — handling per source part,"7.4a, 7.4b",3
+GAP-408,7.4b §7.4.5.9,7.4b,"No replacement-economics metrics (net saving, break-even, verified outcome cost)",Open — handling per source part,7.4b,2
+GAP-409,7.4a §7.4.3,7.4b,"Part 8.2 lacks annual, quarterly, seats-only and paid-Apollo-runtime budget views",Open — handling per source part,"7.4a, 7.4b",3
+GAP-410,7.4a §7.4.3,7.4b,No provider invoice-to-usage reconciliation,Open — handling per source part,"7.4a, 7.4b",3
+GAP-411,7.4a §7.4.3,7.4b,Contribution margin per tenant stated (NFR-035) but not computed,Open — handling per source part,"7.4a, 7.4b",3
+GAP-412,7.4b §7.4.5.11,7.4b,Enhancement effort 68–110 pd is outside the BRD §6 287–483 pd envelope,Open — handling per source part,7.4b,3
+GAP-420,6.8a front matter,6.8c,Part 6 had no operation-level SIT TCs; CT-01…14 had no TC IDs,Open — handling per source part,"6.8a, 6.8b, 6.8c",10
+GAP-421,6.8a §6.8.2.3,6.8c,81 source operations have no Part 3.2 counterpart (list in Part 6.8a §6.8.3.4),Open — handling per source part,"6.8a, 6.8b, 6.8c",7
+GAP-422,6.8a §6.8.2.3,6.8c,No UAT pack for marketing or customer-success journeys,Open — handling per source part,"6.8a, 6.8c",5
+GAP-423,6.8a §6.8.3.2,6.8c,EVR lacks execution statuses Not run and Blocked,Open — handling per source part,"6.8a, 6.8c",5
+GAP-424,6.8a §6.8.3.1,6.8c,Capacity growth targets and the regenerable data class (RPO 24 h / RTO 8 h) are not in Part 4.2/4.3,Open — handling per source part,"6.8a, 6.8c",7
+GAP-425,6.8a §6.8.3.1,6.8c,Combined production preflight over six evidence groups is not in the blueprint,Open — handling per source part,"6.8a, 6.8c",3
+GAP-440,6.9a §6.9.2.2,6.9b,Doc 38 counts 76 BRs; only 71 are enumerated anywhere in the pack,Open — handling per source part,"6.9a, 6.9b, 9.5",11
+GAP-441,6.9b §6.9.5.2,6.9b,The 172 expansion decisions have no IDs or individual records in the pack,Open — handling per source part,6.9b,2
+GAP-442,6.9a §6.9.2.2,6.9b,SM-SIT-A001…A302 not aliased in the blueprint RTM,Open — handling per source part,"6.9a, 6.9b",6
+GAP-443,6.9a §6.9.3.1,6.9b,"No layer-wise QC register, evidence manifest or layer sign-off",Open — handling per source part,"6.9a, 6.9b",6
+GAP-444,6.9a §6.9.2.2,6.9b,No per-item approval record for source contract/DB/UI decisions,Open — handling per source part,"6.9a, 6.9b",6
+GAP-445,6.9b §6.9.5.7,6.9b,"No entities for EVR, QC, decision, trace approval, work item",Open — handling per source part,6.9b,2
+GAP-446,6.9a §6.9.3.1,6.9b,No regenerable-data RPO/RTO class,Open — handling per source part,"6.9a, 6.9b",4
+GAP-447,6.9a §6.9.3.2,6.9b,Erasure scope omits derived embeddings and cached snippets,Open — handling per source part,"6.9a, 6.9b",4
+GAP-448,6.9a §6.9.3.1,6.9b,No SaaS client service request entity,Open — handling per source part,"6.9a, 6.9b",6
+GAP-449,6.9b §6.9.5.5.4,6.9b,No production credential handover procedure or access inventory,Open — handling per source part,6.9b,2
+GAP-450,6.9a §6.9.3.1,6.9b,Approval review effort (32.55/62.85/123.70 PD) unbudgeted,Open — handling per source part,"6.9a, 6.9b",4
+GAP-451,6.9a §6.9.3.1,6.9b,No discipline baseline or estimate-vs-actual tracking,Open — handling per source part,"6.9a, 6.9b",4
+GAP-452,6.9b §6.9.5.5.1,6.9b,"No predeployment, daily operations or client offboarding runbook",Open — handling per source part,6.9b,4
+GAP-453,6.9b §6.9.5.5.5,6.9b,No artefact/version consistency or document inventory check,Open — handling per source part,6.9b,3
+GAP-460,4.4a §4.4.3.2,4.4b,"The blueprint had no coding-standards, development-guideline and code-review document",Closed by §4.4.5.1,"4.4a, 4.4b",5
+GAP-461,4.4a §4.4.3.4,4.4b,No typed configuration contract with fail-closed validation,"Closed by ENV-01…24, FR-ENH-I-041","4.4a, 4.4b",3
+GAP-462,4.4a §4.4.3.1,4.4b,No recovery class for regenerable data (OKPI-33/34),Closed by FR-ENH-I-020,"4.4a, 4.4b",3
+GAP-463,4.4a §4.4.3.3,4.4b,Release evidence completeness checked manually; no fail-closed validator,"Closed by RGV, FR-ENH-I-060","4.4a, 4.4b",3
+GAP-464,4.4a §4.4.3.8,4.4b,No delivery package or access handover at release,"Closed by HO-T/B/A, FR-ENH-I-061","4.4a, 4.4b",3
+GAP-465,4.4a §4.4.3.7,4.4b,No financial-exception or public-content runbook,"Closed by RB-016, RB-017","4.4a, 4.4b",4
+GAP-466,4.4a §4.4.3.6,4.4b,No penetration-test rules of engagement,Closed by PT-ROE,"4.4a, 4.4b",3
+GAP-467,4.4a §4.4.3.7,4.4b,No budget pause operation (doc 31),"Candidate API-ENH-I-01/02, FR-ENH-I-051; Part 3.2 owner to accept","4.4a, 4.4b",3
+GAP-468,4.4a §4.4.3.8,4.4b,"Pack approval-gate counts (38 API, 4 DB, 138 UI) and the 1,188-record preflight not reconciled to blueprint IDs",Coordinator with groups owning docs 06/07/08/38,"4.4a, 4.4b",6
+GAP-469,4.4a §4.4.3.4,4.4b,No developer/operator access review and offboarding procedure,Closed by ACC-01…07,"4.4a, 4.4b",3
+GAP-480,8.3c §8.3.5.15.3,8.3c,8.3c OKPI-32,Open — handling per source part,8.3c,5
+GAP-481,8.3c §8.3.5.15.3,8.3c,8.3c OKPI-33/34,Open — handling per source part,8.3c,5
+GAP-482,8.3b §8.3.5.4,8.3c,8.3a/8.3b,Open — handling per source part,"8.3b, 8.3c",2
+GAP-483,8.3b §8.3.5.8,8.3c,8.3b §8.3.5.8,Open — handling per source part,"8.3b, 8.3c",2
+GAP-484,8.3c §8.3.5.13.6,8.3c,8.3c §8.3.5.13.6,Open — handling per source part,8.3c,2
+GAP-485,8.3c §8.3.5.14,8.3c,8.3c §8.3.5.14,Open — handling per source part,8.3c,2
+GAP-486,8.3c §8.3.5.15,8.3c,8.3c §8.3.5.15,Open — handling per source part,8.3c,2
+GAP-487,8.3c §8.3.5.15.5,8.3c,8.3c TC-ENH-J-002,Open — handling per source part,8.3c,2
+GAP-488,8.3a §8.3.4.1,8.3c,8.3a §8.3.4.1,Open — handling per source part,"8.3a, 8.3c",4
+GAP-489,8.3a §8.3.3.3,8.3c,8.3c §8.3.5.13.5,Open — handling per source part,"8.3a, 8.3c",3
+GAP-490,8.3a §8.3.4.1,8.3c,8.3a §8.3.4.1,Open — handling per source part,"8.3a, 8.3c",4
+GAP-510,6.6 front matter,6.10,"Part 2.7a stories US-01-EC01, US-04-EC01, US-17-EC01…04, US-19-EC01, US-21-EC01 are Gherkin features without AC IDs, story fields or FR links",Open — handling per source part,"6.6, 6.10",8
+GAP-511,6.6 §6.6.13.2,6.10,"Part 3.6b stories US-01-EE01, US-14-EE01, US-20-EE01/02, US-21-EE01/02 state AC inline (""AC-1 …"") without IDs",Open — handling per source part,"6.6, 6.10",2
+GAP-512,6.6 §6.6.13.2,6.10,"Part 4.4b TC-ENH-I rows cite control IDs (CS-, RGV-, SMK-) in their Requirement column rather than the FR-ENH-I they verify; six FR-ENH-I had no test",Open — handling per source part,"6.6, 6.10",2
+GAP-513,6.10 §6.10.8,6.10,"54 of 245 QCs had blueprint_verification_refs that are section citations with no test, VER or control ID",Open — handling per source part,6.10,1
+GAP-514,6.6 §6.6.13.2,6.10,"Part 6.5 cites ""Batch 6.6 §6.6.9"" for the tag register; Part 6.6 now numbers the register §6.6.13 after adding sections h, i, j",Open — handling per source part,"6.6, 6.10",2

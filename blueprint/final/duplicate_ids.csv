@@ -1,6 +1,46 @@
 Kind,ID,Part A,Meaning A,Part B,Meaning B,Similarity
+Tag,CONFLICT-300,Part 2.6,Two opportunity scoring models,Part 9.5,DEC-211,0.11
+Tag,CONFLICT-301,Part 2.6,Residual investor/fundraising wording in group A documents,Part 9.5,DEC-179,0.06
+Tag,CONFLICT-302,Part 2.6,Definition of source coverage,Part 9.5,DEC-212,0.17
+Tag,CONFLICT-303,Part 2.6,Reply classification taxonomy,Part 9.5,DEC-213,0.11
+Tag,CONFLICT-304,Part 2.6,Single relationship stage vs separate state machines,Part 9.5,DEC-214,0.07
+Tag,CONFLICT-320,Part 3.4,"Deployment technology: ECS Fargate + ALB + ElastiCache Redis + ""Redis broker""",Part 9.5,DEC-163,0.07
+Tag,CONFLICT-321,Part 3.4,Capacity design points: initial 25 owned / 10 external; growth 50+ / 100,Part 9.5,DEC-161,0.10
+Tag,CONFLICT-322,Part 3.4,Growth RTO ≤ 2 h,Part 9.5,DEC-158,0.00
+Tag,CONFLICT-323,Part 3.4,"Availability ""99.9% critical availability over rolling 30 days""",Part 9.5,DEC-157,0.03
+Tag,CONFLICT-324,Part 3.4,Budget alert thresholds 70/90%,Part 9.5,DEC-162,0.11
+Tag,CONFLICT-325,Part 3.4,"""No cross-region replication before approval""",Part 9.5,DEC-164,0.08
+Tag,CONFLICT-326,Part 3.4,"Investor-product wording: ""lead/investor record"", ""investor/customer tokens"", ""investment/commercial Django domains"", event product = investment_or_commercial",Part 9.5,DEC-179,0.04
+Tag,CONFLICT-327,Part 3.4,"Agent decomposition: ""six runtime responsibilities"" vs 18 responsibilities vs blueprint catalogue",Part 9.5,DEC-183,0.10
+Tag,CONFLICT-328,Part 3.4,Effort and critical path: 385 PD base for 149 work items; dependency-only path 113.5 days,Part 9.5,DEC-181,0.12
+Tag,CONFLICT-329,Part 3.4,"Names: Django apps (accounts, catalog, …, reporting) and monorepo paths (apps/growth-ui, …)",Part 9.5,DEC-183,0.06
+Tag,CONFLICT-330,Part 3.4,"Product webhook into the marketing database vs ""no live cross-product join or automatic handoff""",Part 9.5,DEC-169,0.06
+Tag,CONFLICT-340,Part 2.7a,"Residual investor wording not in DEC-002's replacement list: ""separate from investor/customer journey"" (W31), ""not a marketplace investor or customer"" (W32), ""separately from investor/customer portal"", ""no … investor/customer records"" (W34), ""Authorized investor/customer completes synthetic enquiry"" (OPT-15-03), ""create scoped lead/investor record"" (doc 17 inbound journeys), ""no stale previous issuer/company data"" (doc 17 startup switch)",Part 9.5,DEC-179,0.05
+Tag,CONFLICT-341,Part 2.7a,"""Inspect … two products, four frontends"" vs DEC-009 ""two frontends only""",Part 9.5,DEC-169,0.13
+Tag,CONFLICT-342,Part 2.7a,"Breakpoints: doc 17 desktop ≥ 1200, tablet 768–1199, mobile < 768, tests at 360/768/1440; Part 2.5 §2.48 five tiers (360–599, 600–899, 900–1279, 1280–1679, ≥ 1680); DEC-043 Admin desktop-first 1280 px, usable to 768 px for review/approval",Part 9.5,DEC-215,0.05
+Tag,CONFLICT-343,Part 2.7a,"API namespaces: doc 06 uses /api/v1/sales/* (A099–A106) and /api/v1/commercial/workspace/{public,client,onboarding,admin}/* (W31–W34, A109–A113); Part 3.2 uses ~/admin/*, ~/portal/*, ~/public/*",Part 9.5,DEC-170,0.03
+Tag,CONFLICT-344,Part 2.7a,"Generic POST …/{id}/control (12 resources) vs per-action endpoints in Part 3.2 (approve, issue, cancel, suspend, pause, resume, publish, rollback …)",Part 9.5,DEC-171,0.04
+Tag,CONFLICT-345,Part 2.7a,"Legacy per-object approve/review routes (e.g. /contracts/{id}/approve, /proposals/{id}/review, /messages/drafts/{id}/review, /insurance/pilots/{id}/approve) vs Part 3.2's single Approval resource with only four retained aliases",Part 9.5,DEC-172,0.03
+Tag,CONFLICT-346,Part 2.7a,"Development-time Claude plugins (for example CLAUDE.md Management, Claude Code Setup, Plugin Developer Toolkit, Skill Creator, Figma, Postman, document skills) are listed as integrations of runtime screens (A006, A008, A011, A014, A017, A029–A039, A047, A050–A059, A065–A066, A084, A090), while the same document states ""developer plugins are not runtime entitlements""",Part 9.5,DEC-202,0.03
+Tag,CONFLICT-347,Part 2.7a,"Doc 06 states provider prices as facts (for example a per-million-token rate for a named Claude model, per-credit search pricing, hosted plan fees)",Part 9.5,DEC-202,0.05
+Tag,CONFLICT-348,Part 2.7a,"OPT-02-04 ""read projections refresh ≤ 60 s"" vs NFR-047 dashboards ≤ 15 min (A110 monitor ≤ 5 min)",Part 9.5,DEC-160,0.10
+Tag,CONFLICT-349,Part 2.7a,"Scale figures: OPT-06-01 ""25 owned + 10 external initial; 50+ owned + 100 external growth""; dashboard procedure ""50/250 concurrent staff, 100k/1m opportunities"" vs DEC-031 (Year 1: 25–40 workspaces, 2–10 tenants, 15–60 users; Year 2: 100 workspaces, 30 tenants, 200 internal users)",Part 9.5,DEC-161,0.06
+Tag,GAP-143,Part 7.1,No lawful meeting-recording or transcript source exists; meeting summarization is excluded until one is approved with consent,Part 9.5,Narrowed by DEC-218,0.14
 Tag,RECOMMENDATION-090,Part 6.6,Recommendation (Batch 6.7),Part 6.7,"Store every VER item's evidence as an EVR of type review/inspection/analysis/demonstration and extend build_rtm.py to read EVR status, so VER items show Pending/Pass like TCs; a VER without an EVR by its wave gate blocks A090",0.04
+ADR,ADR-021,Part 3.1,Queue topology and priorities,Part 9.5,Amended by DEC-167 (control and finance queues),0.16
 Registry,AD-01…AD-12 (12 IDs),Part 3.1,e.g. AD-01 = Tenant and startup isolation,Part 3.2,e.g. AD-01 = Amazon SES (EmailPort),low
+Registry,B-11…B-13 (3 IDs),Part 3.1,e.g. B-11 = KMS customer-managed keys,Part 9.5,e.g. B-11 = Regression matrix: remaining scenarios (US-18-EB03 part),low
+Registry,C-1…C-8 (8 IDs),Part 3.3,e.g. C-1 = Provision workspace from template + capability profile W0,Part 6.9b,e.g. C-1 = Bulk-action preview QC-082,low
+Registry,C-1…C-7 (7 IDs),Part 3.3,e.g. C-1 = Provision workspace from template + capability profile W0,Part 9.5,"e.g. C-1 = Optimization Intelligence panel as the UI of the J scorecard (US-17-EC01, half)",low
+Registry,CAP-01…CAP-10 (10 IDs),Part 2.1,"e.g. CAP-01 = Tenancy, identity and access",Part 3.4,e.g. CAP-01 = Owned startups / external tenants,low
 Registry,D-1…D-4 (4 IDs),Part 3.3,e.g. D-1 = Automated snapshot restore Weekly + every release (NFR-012),Part 5.1a,e.g. D-1 = Code,low
+Registry,D-1…D-4 (4 IDs),Part 3.3,e.g. D-1 = Automated snapshot restore Weekly + every release (NFR-012),Part 9.5,"e.g. D-1 = Contract approval gate and evidence (US-21-ED01, merged with H-2)",low
+Registry,D-5…D-16 (12 IDs),Part 5.1a,e.g. D-5 = Isolation tests,Part 9.5,e.g. D-5 = Adapter command/result envelope with budget reservation (US-01-ED02),low
+Registry,E-2…E-7 (6 IDs),Part 2.2,"e.g. E-2 = State change, audit append, budget reservation and outbox insert happen in one database transaction",Part 9.5,e.g. E-2 = Service request entity and flow (US-20-EE01; replaces H story),low
+Registry,G-1…G-4 (4 IDs),Part 6.9b,e.g. G-1 = Decision approvals (baseline) 180,Part 9.5,"e.g. G-1 = Operation-contract class harness (17 classes), execution-status field, SM-UT-037/049/050",low
+Registry,J-10…J-15 (3 IDs),Part 1,e.g. J-10 = Reply to meeting,Part 9.5,e.g. J-10 = SLA schedule (US-20-EJ01),low
+Registry,L-01…L-06 (6 IDs),Part 1,e.g. L-01 = Statutory GST e-invoice (IRN) integration,Part 3.5b,"e.g. L-01 = Every operation (API-###, API-ENH-D-###) has an OpenAPI x-contract-state; CI blocks a merge that mounts a route whose state is below Implemented; production deploy blocks a route below Verified (FR-ENH-D-001)",low
 Registry,LT-01…LT-11 (9 IDs),Part 4.2,e.g. LT-01 = Baseline API mix,Part 6.1,e.g. LT-01 = Admin mixed API load,low
 Registry,PP-01…PP-07 (7 IDs),Part 1,"e.g. PP-01 = Outcomes over activity. Measure qualified opportunities, meetings, awards, fulfilment, receipts, renewals and margin, never AI or message volume",Part 6.2a,"e.g. PP-01 = Admin API (SYS) Deployed build in test; BFF session (audience growth-engine, client growth-admin, DEC-003); dataset gse_syn 1.4.0 profile m with edge packs and story pack EDGE-P52 (§6.2.1.4); fixtures T1 and T2 loaded (TP-07)",low
+Registry,V-01…V-14 (14 IDs),Part 3.3,e.g. V-01 = File SHA-256 not previously imported for this template (UQ-IDEM-18),Part 6.9b,e.g. V-01 = A required QC ID missing from the submission set,low
+Registry,WF-13,Part 2.2,"e.g. WF-13 = M55, B-AUTO",Part 9.4,e.g. WF-13 = Autonomous plan,low
