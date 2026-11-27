@@ -65,7 +65,7 @@ The 31 layers are the 25 engineering layers and 5 business invariants of documen
 | QCL-22 | UAT | Business owner | Product Owner + vertical owner | QA Lead (or Security Lead for QA-owned layers) | UAT exit and GL-B01 | Every wave gate that changes the layer | evr/qc/<release>/QCL-22-signoff.json |
 | QCL-23 | Infrastructure and deployment | DevOps lead | DevOps/SRE Lead | QA Lead (or Security Lead for QA-owned layers) | G4/G5 promotion | Every release (R1, R2) and every later activation | evr/qc/<release>/QCL-23-signoff.json |
 | QCL-24 | Production readiness | Operations lead | DevOps/SRE Lead + Operations | QA Lead (or Security Lead for QA-owned layers) | Go/no-go (Part 8.2 §8.2.4) | Every release (R1, R2) and every later activation | evr/qc/<release>/QCL-24-signoff.json |
-| QCL-25 | Delivery and handover | Product owner | Product Owner + CTO | QA Lead (or Security Lead for QA-owned layers) | Go/no-go and hypercare exit | Every wave gate that changes the layer | evr/qc/<release>/QCL-25-signoff.json |
+| QCL-25 | Delivery and handover | Product owner | Product Owner + Founder (R01) | QA Lead (or Security Lead for QA-owned layers) | Go/no-go and hypercare exit | Every wave gate that changes the layer | evr/qc/<release>/QCL-25-signoff.json |
 | QCL-26 | AppNAI project delivery | Business owner | AppNAI Startup Head (R02) + QA | Independent engineer not on the change, or Auditor (R15) | UAT pack AppNAI | Every release (R1, R2) and every later activation | evr/qc/<release>/QCL-26-signoff.json |
 | QCL-27 | MedMaarg healthcare | Business owner | MedMaarg Startup Head (R02) + DPO (R10) | QA Lead (or Security Lead for QA-owned layers) | UAT pack MedMaarg | Every release (R1, R2) and every later activation | evr/qc/<release>/QCL-27-signoff.json |
 | QCL-28 | EduVerse education | Business owner | EduVerse Startup Head (R02) + DPO (R10) | QA Lead (or Security Lead for QA-owned layers) | UAT pack EduVerse | Every release (R1, R2) and every later activation | evr/qc/<release>/QCL-28-signoff.json |
@@ -449,15 +449,15 @@ Columns: QC ID · layer · check (source title) · priority · blueprint signato
 | QC-220 | QCL-24 | Support | High | DevOps/SRE Lead + Operations | DEC-044; §4.45 | Go/no-go (Part 8.2 §8.2.4) | Covered |
 | QC-221 | QCL-24 | Kill switch | Critical | DevOps/SRE Lead + Operations | NFR-049; RB-004 | Go/no-go (Part 8.2 §8.2.4) | Covered |
 | QC-222 | QCL-24 | Go/no-go | High | DevOps/SRE Lead + Operations | §8.2.4; US-2106 | Go/no-go (Part 8.2 §8.2.4) | Covered |
-| QC-25 | QCL-25 | Transfer runbooks, access ownership, source, training and ac | High | Product Owner + CTO | §8.2.2; §8.2.5; GL-B03 | Go/no-go and hypercare exit | Partially covered: No access-ownership inventory or source/credential transfer record (§6.9.5.5) |
-| QC-223 | QCL-25 | Training | High | Product Owner + CTO | §8.2.2.2; GL-B03 | Go/no-go and hypercare exit | Covered |
-| QC-224 | QCL-25 | Access handover | High | Product Owner + CTO | — | Go/no-go and hypercare exit | Not covered: No secure production-credential handover procedure or access inventory (§6.9.5.5) |
-| QC-225 | QCL-25 | Customer onboarding | High | Product Owner + CTO | US-2002; DEC-047 | Go/no-go and hypercare exit | Covered |
-| QC-226 | QCL-25 | Support ownership | High | Product Owner + CTO | §8.2.3.2; GL-P01 | Go/no-go and hypercare exit | Covered |
-| QC-227 | QCL-25 | Documentation | High | Product Owner + CTO | D-13 documentation | Go/no-go and hypercare exit | Partially covered: No artefact/version consistency check between approved documents and the deployed artefact (§6.9.5.5) |
-| QC-228 | QCL-25 | Data portability | High | Product Owner + CTO | US-2009; AP-09 | Go/no-go and hypercare exit | Covered |
-| QC-229 | QCL-25 | Billing | High | Product Owner + CTO | US-2006; NFR-035 | Go/no-go and hypercare exit | Covered |
-| QC-230 | QCL-25 | Acceptance | High | Product Owner + CTO | §8.2.5.4 hypercare exit; GL-B01 | Go/no-go and hypercare exit | Covered |
+| QC-25 | QCL-25 | Transfer runbooks, access ownership, source, training and ac | High | Product Owner + Founder (R01) | §8.2.2; §8.2.5; GL-B03 | Go/no-go and hypercare exit | Partially covered: No access-ownership inventory or source/credential transfer record (§6.9.5.5) |
+| QC-223 | QCL-25 | Training | High | Product Owner + Founder (R01) | §8.2.2.2; GL-B03 | Go/no-go and hypercare exit | Covered |
+| QC-224 | QCL-25 | Access handover | High | Product Owner + Founder (R01) | — | Go/no-go and hypercare exit | Not covered: No secure production-credential handover procedure or access inventory (§6.9.5.5) |
+| QC-225 | QCL-25 | Customer onboarding | High | Product Owner + Founder (R01) | US-2002; DEC-047 | Go/no-go and hypercare exit | Covered |
+| QC-226 | QCL-25 | Support ownership | High | Product Owner + Founder (R01) | §8.2.3.2; GL-P01 | Go/no-go and hypercare exit | Covered |
+| QC-227 | QCL-25 | Documentation | High | Product Owner + Founder (R01) | D-13 documentation | Go/no-go and hypercare exit | Partially covered: No artefact/version consistency check between approved documents and the deployed artefact (§6.9.5.5) |
+| QC-228 | QCL-25 | Data portability | High | Product Owner + Founder (R01) | US-2009; AP-09 | Go/no-go and hypercare exit | Covered |
+| QC-229 | QCL-25 | Billing | High | Product Owner + Founder (R01) | US-2006; NFR-035 | Go/no-go and hypercare exit | Covered |
+| QC-230 | QCL-25 | Acceptance | High | Product Owner + Founder (R01) | §8.2.5.4 hypercare exit; GL-B01 | Go/no-go and hypercare exit | Covered |
 | QC-26 | QCL-26 | Verify tender eligibility, deadline, budget, technical requi | High | AppNAI Startup Head (R02) + QA | DEC-053; FR-DM-02; DEC-068 | UAT pack AppNAI | Covered |
 | QC-231 | QCL-26 | Tender submission | Critical | AppNAI Startup Head (R02) + QA | DEC-053; DEC-068; FR-DM-02 | UAT pack AppNAI | Covered |
 | QC-27 | QCL-27 | Qualify organization-level needs, approved AI Hospital claim | High | MedMaarg Startup Head (R02) + DPO (R10) | AP-05; DEC-021 | UAT pack MedMaarg | Covered |

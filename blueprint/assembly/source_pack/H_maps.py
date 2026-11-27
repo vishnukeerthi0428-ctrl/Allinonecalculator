@@ -29,7 +29,7 @@ LAYER = {
  "UAT": ("Part 6.1 §6.1.13; GL-B01, GL-B02; AP-01…AP-10", "Product Owner + vertical owner", "UAT exit and GL-B01", "QCL-22"),
  "Infrastructure and deployment": ("Part 4.3 §4.32–§4.38; GL-T01, GL-T05; NFR-012, NFR-013, NFR-087; RB-012", "DevOps/SRE Lead", "G4/G5 promotion", "QCL-23"),
  "Production readiness": ("Part 4.3 §4.40–§4.48; Part 8.2 §8.2.3; GL-T04, GL-T06, GL-T07, GL-P02; RB-001…015", "DevOps/SRE Lead + Operations", "Go/no-go (Part 8.2 §8.2.4)", "QCL-24"),
- "Delivery and handover": ("Part 8.2 §8.2.2, §8.2.4, §8.2.5; GL-B03, GL-P01…P05; US-2106", "Product Owner + CTO", "Go/no-go and hypercare exit", "QCL-25"),
+ "Delivery and handover": ("Part 8.2 §8.2.2, §8.2.4, §8.2.5; GL-B03, GL-P01…P05; US-2106", "Product Owner + Founder (R01)", "Go/no-go and hypercare exit", "QCL-25"),
  "AppNAI project delivery": ("DEC-052, DEC-053, DEC-068; FR-DM-02; BRL-BID; FR-A104; EP-14", "AppNAI Startup Head (R02) + QA", "UAT pack AppNAI", "QCL-26"),
  "MedMaarg healthcare": ("DEC-021; AP-05; BRL-PRV; NFR-077; FR-W11 clinical routing", "MedMaarg Startup Head (R02) + DPO (R10)", "UAT pack MedMaarg", "QCL-27"),
  "EduVerse education": ("DEC-030, DEC-052; AP-02, AP-05; FR-W17; FR-DM-04", "EduVerse Startup Head (R02) + DPO (R10)", "UAT pack EduVerse", "QCL-28"),

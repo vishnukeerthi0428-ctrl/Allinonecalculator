@@ -761,7 +761,7 @@ The per-QC table with sign-off role and gate is the register in Part 6.9b §6.9.
 | QCL-22 | UAT | 9 | 0 | 9 | 8 | 1 | Part 6.1 §6.1.13; GL-B01, GL-B02; AP-01…AP-10 | Product Owner + vertical owner | UAT exit and GL-B01 |
 | QCL-23 | Infrastructure and deployment | 9 | 8 | 1 | 9 | 0 | Part 4.3 §4.32–§4.38; GL-T01, GL-T05; NFR-012, NFR-013, NFR-087; RB-012 | DevOps/SRE Lead | G4/G5 promotion |
 | QCL-24 | Production readiness | 9 | 1 | 8 | 8 | 1 | Part 4.3 §4.40–§4.48; Part 8.2 §8.2.3; GL-T04, GL-T06, GL-T07, GL-P02; RB-001…015 | DevOps/SRE Lead + Operations | Go/no-go (Part 8.2 §8.2.4) |
-| QCL-25 | Delivery and handover | 9 | 0 | 9 | 6 | 3 | Part 8.2 §8.2.2, §8.2.4, §8.2.5; GL-B03, GL-P01…P05; US-2106 | Product Owner + CTO | Go/no-go and hypercare exit |
+| QCL-25 | Delivery and handover | 9 | 0 | 9 | 6 | 3 | Part 8.2 §8.2.2, §8.2.4, §8.2.5; GL-B03, GL-P01…P05; US-2106 | Product Owner + Founder (R01) | Go/no-go and hypercare exit |
 | QCL-26 | AppNAI project delivery | 2 | 1 | 1 | 2 | 0 | DEC-052, DEC-053, DEC-068; FR-DM-02; BRL-BID; FR-A104; EP-14 | AppNAI Startup Head (R02) + QA | UAT pack AppNAI |
 | QCL-27 | MedMaarg healthcare | 2 | 1 | 1 | 2 | 0 | DEC-021; AP-05; BRL-PRV; NFR-077; FR-W11 clinical routing | MedMaarg Startup Head (R02) + DPO (R10) | UAT pack MedMaarg |
 | QCL-28 | EduVerse education | 2 | 1 | 1 | 2 | 0 | DEC-030, DEC-052; AP-02, AP-05; FR-W17; FR-DM-04 | EduVerse Startup Head (R02) + DPO (R10) | UAT pack EduVerse |
