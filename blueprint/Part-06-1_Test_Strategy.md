@@ -603,3 +603,564 @@ Default: **no production-derived data in any non-production environment.** Excep
 | Access | Non-production data access follows the same RBAC; support grants (BRL-TEN-09) are exercised in tests, not bypassed |
 
 ---
+## 6.1.8 Defect management
+
+### 6.1.8.1 Lifecycle
+
+```mermaid
+stateDiagram-v2
+  [*] --> New
+  New --> Triaged : severity, priority, area and owner set
+  New --> Rejected : not a defect or duplicate with link
+  Triaged --> InProgress : assigned
+  Triaged --> Deferred : waiver approved by owner and independent reviewer
+  InProgress --> Resolved : fix merged with regression test
+  Resolved --> Verified : retest passed in target environment
+  Resolved --> Reopened : retest failed
+  Reopened --> InProgress : reassigned
+  Verified --> Closed : evidence record linked
+  Deferred --> Triaged : waiver expired or risk changed
+  Rejected --> [*]
+  Closed --> [*]
+```
+
+| State | Entry rule | Who |
+|---|---|---|
+| New | Any team member, UAT participant or monitoring alert raises it with steps, expected/actual, environment, build digest, fixture IDs, evidence (no personal data) | Anyone |
+| Triaged | Severity (S1–S4) and fix priority (FP1–FP4) set; risk area RA-## and requirement IDs linked; release-blocking flag computed (§6.1.8.5) | QA Lead (S1/S2 with Principal Engineer; security defects with Security Lead) |
+| InProgress | Owner assigned; for S1 a containment action is recorded first (feature flag off, emergency stop, rollback) | Engineering |
+| Resolved | Fix merged; a **regression test that failed before the fix** is linked (mandatory for S1/S2, expected for S3) | Engineer + reviewer |
+| Verified | Retest passed in the environment where it was found (or higher); EVR written | QA (not the fixer) |
+| Deferred | Waiver with owner, independent reviewer, expiry date and compensating control (BRD §12.1). Not allowed for S1, nor for S2 in P0 areas | PO + independent reviewer |
+| Closed | EVR linked; root-cause category recorded | QA Lead |
+
+**Mandatory defect fields.** ID, title, severity, fix priority, status, risk area, linked FR/BR/BRL/US/AC/TC IDs, environment, build digest, dataset version, steps, expected, actual, evidence reference, found-in level (UT…UAT, prod), injected-in phase (requirements, design, code, config, data, environment), root-cause category, containment, fix commit, regression TC, verifier, waiver reference.
+
+### 6.1.8.2 Severity matrix S1–S4 (product-specific)
+
+Defect severity measures **impact on the product's integrity and users**. It is distinct from the support ticket severity in DEC-044, which measures customer urgency; a production S1 defect always opens at least a support/incident S1.
+
+| Severity | Definition | Product-specific examples (each is that severity or higher) |
+|---|---|---|
+| **S1 Critical** (activation blocker class) | Breach of confidentiality, an unauthorized or duplicate external effect, financial misstatement, regulatory ineligibility, data loss beyond RPO, or failed rollback. Any occurrence, any environment, any frequency | **Any cross-tenant or cross-startup disclosure** (record, search hit, vector chunk, file, cache entry, notification, log line, export) · **any send to a suppressed or ineligible recipient** (KPI-17) · **any duplicate revenue, payment, ledger or receivable/payable entry** · a dispatch, publication, booking, spend, e-sign request or bid record without a matching current approval hash (E-8) · AI agent performing an L1-capped action (DEC-064) · outreach to a minor or use of a minor's data beyond grade band in prompts (DEC-030) · health/patient attributes in messages, audiences, ad events or prompts (BRL-ELG-14) · Restricted data routed to a Tier 2 model (DEC-007) · spend beyond a hard budget cap (BRL-AI-08) · wrong quote/invoice total or tax on a customer-visible document · deal marked Won/Paid without route evidence (KPI-31) · simulation causing any live effect (NFR-038) · uncertain outcome blindly retried · RLS bypass or authorization bypass, secret in an API response (NFR-004) · draft/private content served publicly · restore drill fails RPO/RTO or rollback fails · audit records mutable · fundraising capability present (DEC-002) |
+| **S2 Major** | A core function is broken or wrong with no acceptable workaround, or a control degrades without an actual breach | Approval routed to a **higher** level than required (safe but blocking) · webhook processing stalls but events are persisted (no loss) · outbox lag p95 > 60 s or automation timeliness < 99% in soak · emergency stop takes > 60 s but < 5 min · Customer 360 freshness > 60 s · WCAG A/AA failure that blocks a P0 journey for keyboard or screen-reader users · AI precision below gate on the benchmark (blocks L2/L3, not activation of L1) · eval regression beyond tolerance (blocks deploy, NFR-033) · p95 latency > 2× target · data import produces wrong counts but is caught by the dry-run report · KPI shows wrong numerator/denominator |
+| **S3 Moderate** | A non-core function is wrong, or a core function has a reasonable workaround; no integrity or compliance effect | Filter combination returns correct data but wrong sort · saved view not restored · digest email arrives in the wrong batch window · non-blocking WCAG issue with an alternative path · p95 latency 1.0–2.0× target on a non-critical endpoint · translation fallback indicator missing |
+| **S4 Minor** | Cosmetic or wording issues without functional effect | Misaligned icon, typo in non-legal copy, inconsistent spacing |
+
+**Escalation rules.** (1) If the severity is uncertain between two levels, choose the higher one (TP-01). (2) A defect that *could* produce an S1 effect under another data condition is S1 (for example a missing tenant filter that returns no foreign rows only because the fixture has none). (3) Security vulnerabilities map by exploitability and impact: critical/high CVSS (verify current CVSS version) in a reachable path → S1; medium → S2; low → S3.
+
+### 6.1.8.3 Fix priority
+
+| Priority | Meaning | Typical pairing |
+|---|---|---|
+| FP1 Immediate | Stop other work; containment now | S1 always; S2 in production P0 areas |
+| FP2 High | Fix in the current sprint before release | S2; S3 on a P0 journey |
+| FP3 Normal | Plan into the next sprint | S3 |
+| FP4 Low | Backlog; fix opportunistically | S4 |
+
+Priority may be raised (never lowered below the pairing) by the Product Owner, for example to meet a UAT date.
+
+### 6.1.8.4 Service levels to fix (pilot team capacity, DEC-005) [RECOMMENDATION-074]
+
+| Severity | Acknowledge / triage | Containment | Fix available (pre-production) | Fix in production | Verification |
+|---|---|---|---|---|---|
+| S1 | ≤ 1 business hour (≤ 30 min in production business hours, aligned with DEC-044 S1 response ≤ 2 h) | Production: ≤ 4 h via flag off, emergency stop or rollback | ≤ 2 business days; blocks merge to release branch | ≤ 2 business days after containment | Same day as fix; independent verifier |
+| S2 | ≤ 4 business hours | Production: ≤ 1 business day if a P0 area | ≤ 5 business days | Next release or hotfix if a P0 area | ≤ 2 business days |
+| S3 | ≤ 2 business days | n/a | Next sprint | Next scheduled release | Next regression cycle |
+| S4 | ≤ 5 business days | n/a | Backlog | Backlog | Opportunistic |
+
+Business hours follow the pilot support window (10:00–18:00 IST, Monday–Saturday, DEC-044). SLA breach for S1/S2 raises a High notification to the Product Owner (Part 2.4 §2.30.2).
+
+### 6.1.8.5 Release-blocking rules
+
+| Rule | Condition | Effect |
+|---|---|---|
+| RBR-1 | Any open S1 in the release scope | Release and activation **blocked** (BRD §11: open critical confidentiality, financial integrity or unauthorized-action defects block activation) |
+| RBR-2 | Any open S2 in a P0 risk area (RA-01…RA-20, RA-26) | Blocked; no waiver |
+| RBR-3 | Open S2 outside P0 areas | Allowed only with a waiver (owner + independent reviewer + expiry ≤ 30 days + compensating control) recorded in the EVR (BRD §12.1) |
+| RBR-4 | Open S3/S4 | Allowed; listed in the release readiness report |
+| RBR-5 | Any P0 test failing, skipped or quarantined | Blocked (a quarantined P0 test counts as failing) |
+| RBR-6 | Required evidence missing (EVR `Pending`) for a gate | Blocked: A090 fails closed (FR-A090) |
+| RBR-7 | Critical rollback check failed or not executed for this release | Blocked (BRD §10; NFR-013) |
+| RBR-8 | AI regression suite failing (NFR-033) | Deploy of the affected agent/prompt/model blocked; unrelated changes may proceed only if the AI change is reverted |
+
+### 6.1.8.6 Root-cause analysis and escaped defects
+
+- Every S1 and every production escape gets a blameless root-cause analysis within 5 business days, recording why existing tests missed it and which test was added (the "test gap" field).
+- Root-cause categories: requirement gap, design gap, code, configuration/policy, data/migration, environment, third-party/provider, test gap.
+- Escaped defects feed the risk matrix: an area with an escape in the last two releases has its likelihood raised by 1 for the next release.
+
+---
+
+## 6.1.9 Automation strategy
+
+### 6.1.9.1 Test pyramid and target proportions [RECOMMENDATION-070]
+
+```mermaid
+flowchart TD
+  E2E["E2E browser journeys<br/>Playwright, about 3 percent of automated tests"]
+  SYS["System and API tests<br/>about 7 percent"]
+  CT["Contract tests<br/>about 5 percent"]
+  IT["Integration tests with real PostgreSQL RLS, Celery, outbox<br/>about 20 percent"]
+  UT["Unit and property-based tests<br/>about 65 percent"]
+  MAN["Manual layer outside the counts<br/>exploratory, screen reader, usability, UAT"]
+  AIE["AI evaluation suites<br/>separate datasets per agent"]
+  E2E --> SYS
+  SYS --> CT
+  CT --> IT
+  IT --> UT
+  MAN -.-> E2E
+  AIE -.-> SYS
+```
+
+| Layer | Target share of automated test count | Target share of CI time | Rationale |
+|---|---|---|---|
+| Unit + PBT | 60–70% | ≤ 20% | Rules, money, scoring and state machines are pure logic: fastest feedback |
+| Integration | 15–25% | ≈ 30% | RLS, outbox atomicity, workers and webhooks only fail for real with a real database and broker |
+| Contract | 4–6% | ≈ 10% | Seven provider adapters and four API surfaces change independently |
+| System / API | 5–8% | ≈ 20% | Tenancy matrix, CA-DISPATCH batteries, workflow suites |
+| E2E | 2–4% | ≈ 20% | Expensive; only top journeys and cross-surface flows |
+| Manual | Not counted | n/a | Exploratory (session-based, 90-minute charters per wave per risk area P0), assistive technology, usability, UAT |
+
+Anti-pattern guard: if the E2E share exceeds 6% or the E2E nightly runtime exceeds 45 minutes, the QA Lead must push tests down a layer before adding more.
+
+### 6.1.9.2 Tool stack (all versions: verify at implementation, as of 27 Nov 2026)
+
+| Purpose | Tool | Notes |
+|---|---|---|
+| Backend test runner | pytest, pytest-django, pytest-xdist, pytest-cov | Markers: `tc`, `req`, `risk`, `level`, `p0` (§6.1.9.3) |
+| Factories and data | factory_boy, Faker (fixed seed) | Shared factories build GSE-SYN |
+| Property-based tests | Hypothesis (incl. `RuleBasedStateMachine`) | Money, scoring, state machines, idempotency (§6.1.11.7) |
+| Time control | time-machine or freezegun; Playwright clock | §6.1.6.5 |
+| API contract and fuzzing | schemathesis (stateless and stateful), openapi-diff | Per surface |
+| Adapter contracts | Pact (consumer-driven) where both sides are ours (frontend ↔ BFF); JSON Schema + recorded fixtures for third-party providers | RECOMMENDATION-011 |
+| Frontend unit/component | Vitest, React Testing Library, user-event, MSW (Mock Service Worker) for network, vitest-axe | Both React apps and the shared component package |
+| E2E | Playwright (Chromium, Firefox, WebKit) | Trace **off** by default; `on-first-retry` only in the quarantine job; screenshots on failure only |
+| Accessibility | @axe-core/playwright, vitest-axe, Lighthouse CI; NVDA, VoiceOver for manual passes | §6.1.14.3 |
+| Load | **k6** (primary, HTTP and browser-less scenarios); Python queue injector for Celery; Locust allowed for Python-heavy worker scenarios | §6.1.14.1 |
+| DAST | OWASP ZAP (baseline, full, API scan with OpenAPI import, authenticated contexts per role) | §6.1.14.2 |
+| SAST / SCA / secrets / IaC / containers | Semgrep, Bandit, ESLint security rules; pip-audit or OSV-Scanner, npm audit; gitleaks; Checkov; Trivy | Part 4.1 SC-11 |
+| Mutation testing | mutmut (Python) on money, tax, ledger, PDP and scoring modules; Stryker (TypeScript) optional for MoneyInput/QuantityInput | §6.1.9.6 |
+| AI evaluation | In-house harness on pytest (datasets, scorers, thresholds, baselines) as the gate; promptfoo or DeepEval optional for red-team generation and rubric grading (align with Part 7, GAP-166) | §6.1.3.4 |
+| Test management and traceability | Requirement/test IDs as code markers; traceability matrix generated from markers and Gherkin tags into the test dashboard; issue tracker for defects (tool chosen in Part 8; open-source-first per BRD §10) | §6.1.10 |
+
+### 6.1.9.3 Framework structure and conventions
+
+```
+repo/
+  backend/
+    apps/<app>/tests/unit/          # pure domain and serializer tests
+    apps/<app>/tests/integration/   # DB/RLS/Celery/outbox/webhook tests
+    tests/contract/                 # OpenAPI, adapters, route inventory, bundle scans
+    tests/system/                   # API-level SYS suites against a deployed env
+    tests/properties/               # Hypothesis suites (money, scoring, state machines)
+    tests/tenancy/                  # two-tenant isolation matrix (T15)
+    tests/dispatch/                 # CA-DISPATCH batteries (T16-T18)
+    tests/ai_eval/                  # datasets/, scorers/, baselines/, test_<agent>.py
+    testdata/gse_syn/               # manifest.json, seeds, factories, edge packs
+  frontend/
+    packages/ui/src/**/__tests__/   # component tests + axe
+    apps/website/src/**/__tests__/
+    apps/admin/src/**/__tests__/
+  e2e/
+    journeys/<persona>/<journey>.spec.ts   # Playwright, POM in e2e/pages/
+    fixtures/                               # login states per role, lanes
+  perf/
+    k6/<LT-ID>.js                   # one script per load test
+    workload/model.yaml             # §6.1.14.1 parameters
+  tools/provider_simulator/         # RECOMMENDATION-071
+```
+
+| Convention | Rule |
+|---|---|
+| Naming | `test_<behaviour>__<condition>__<expected>` (Python); `it("<expected> when <condition>")` (TS) |
+| Traceability markers | Every test carries `@pytest.mark.tc("TC-13-004")` and `@pytest.mark.req("FR-A067","BRL-QTE-02")`; Playwright tests carry tags `@TC-19-003 @FR-W12 @P0`; Gherkin scenarios from Part 5 carry `@AC-0801-03 @TC-08-012` |
+| Priority marker | `@pytest.mark.p0` / Playwright `@P0`; P0 selection runs in every pipeline stage that gates release |
+| One assertion focus | Each test verifies one behaviour; multiple asserts allowed for one outcome (e.g. "exactly one effect" checks DB, outbox and simulator log) |
+| No sleeps | Waiting uses explicit conditions or clock control; `time.sleep`/`page.waitForTimeout` fail lint |
+| No hidden data | Tests build what they need with factories or reference GSE-SYN IDs by stable keys, never by position |
+| Isolation | Tests are order-independent (pytest-randomly in CI); no shared mutable global state |
+| Page objects | Playwright uses page objects with role-based locators (`getByRole`) to reinforce accessible markup |
+| Secrets | No credentials in tests; test IdP accounts from the CI secret store |
+| Ownership | `CODEOWNERS` assigns test folders to the owning module team; QA reviews new SYS/E2E tests |
+
+### 6.1.9.4 Where AI coding assistants fit
+
+Claude Code seats (B09, ASSUMPTION-020) may draft tests. Drafted tests follow the same review, marker and mutation rules; a generated test that does not fail against a mutated implementation is rejected (mutation check on money/eligibility modules makes this visible).
+
+### 6.1.9.5 CI integration: gates and where they run
+
+```mermaid
+flowchart TD
+  A["Commit"] --> G0["G0 pre-commit, local<br/>format, lint, secret scan"]
+  G0 --> G1["G1 pull request, ci<br/>unit, PBT, IT subset, contract, SAST, SCA,<br/>coverage diff, no-fundraising check, AI smoke"]
+  G1 --> R1{"G1 green and review approved"}
+  R1 -- "No" --> FX["Fix, or quarantine non-P0 flaky test"]
+  FX --> G1
+  R1 -- "Yes" --> G2["G2 merge to main, ci then dev<br/>full IT, schemathesis, bundle scans,<br/>image build, Trivy, deploy dev, smoke"]
+  G2 --> G3["G3 nightly, test env<br/>full SYS, E2E 3 engines, tenancy matrix,<br/>ZAP baseline, axe pages, AI eval full,<br/>mutation on changed modules, perf smoke"]
+  G3 --> G4["G4 pre-release, staging<br/>full regression, P0 pack, ZAP full,<br/>restore drill, rollback rehearsal,<br/>perf load set, UAT, evidence check"]
+  G4 --> R2{"A090 all blocking gates pass"}
+  R2 -- "No" --> FX2["Defect and retest"]
+  FX2 --> G4
+  R2 -- "Yes" --> G5["G5 production deploy<br/>post-deploy smoke, no external effects,<br/>canary metrics watch"]
+```
+
+| Gate | Trigger | Environment | Contents | Time budget | Blocking? |
+|---|---|---|---|---|---|
+| G0 | Local commit | `local` | Ruff/format, ESLint, type check, gitleaks, forbidden-call lint (`datetime.now`, float in money modules, `sleep`) | ≤ 1 min | Local (also re-run in G1) |
+| G1 | Pull request | `ci` | Backend and frontend unit + PBT (default Hypothesis profile), IT subset for touched apps, CT (OpenAPI diff, adapter fixtures, route inventory), SAST, SCA, no-fundraising check (DEC-002), migration check, tenancy fast subset, coverage diff vs targets, mutation on changed money/eligibility files (incremental), AI eval smoke on recorded set if prompts/models/routes changed | ≤ 15 min p90 | Yes |
+| G2 | Merge to `main` | `ci` → `dev` | Full IT, schemathesis per surface, bundle scans (NFR-001), image build, Trivy and Checkov, deploy to `dev`, smoke | ≤ 30 min | Yes (main stays green; failing main blocks merges) |
+| G3 | Nightly | `test` | Full SYS, full tenancy matrix, CA-DISPATCH batteries, E2E on Chromium/Firefox/WebKit, ZAP baseline (authenticated per role), axe page scans, full AI eval (live within test budget), Hypothesis extended profile, full mutation on money/eligibility weekly, k6 smoke 5 min, sandbox contract drift | ≤ 3 h | Next-morning triage; a red nightly blocks the next release candidate |
+| G4 | Release candidate tag | `staging` (+ `perf`) | Full regression, P0 pack ×2 consecutive green runs, ZAP full + API scan, authz matrix, restore drill, rollback rehearsal, load/stress set for the wave, accessibility manual audit, UAT, EVR completeness | 1–5 days | Yes (A090) |
+| G5 | Approved deployment | `prod` | Health/ready, read-only synthetic checks (public pages per startup, login page, API version), no writes with external effects; error-budget watch for 60 min; automatic rollback trigger on SLO breach (Part 4) | ≤ 60 min | Yes (rollback on failure) |
+
+### 6.1.9.6 Coverage targets [RECOMMENDATION-070]
+
+| Layer / artefact | Line coverage | Branch coverage | Other targets |
+|---|---|---|---|
+| Domain core: money, tax, rounding, ledgers, PDP/eligibility, scoring, state-machine guards, approval policy | ≥ 95% | ≥ 90% | **Mutation score ≥ 85%** (money, tax, ledger, PDP); ≥ 80% (scoring); ≥ 75% (state-machine guards) |
+| API layer (views, serializers, permissions, BFF) | ≥ 85% | ≥ 75% | 100% of endpoints in OpenAPI exercised by schemathesis |
+| Workers, outbox relay, adapters, webhook handlers | ≥ 85% | ≥ 75% | 100% of failure classes (transient, permanent, uncertain) per adapter |
+| Model gateway and guardrails | ≥ 90% | ≥ 85% | 100% of routing tiers and data-class paths |
+| Overall backend | ≥ 85% | ≥ 75% | No file in domain core below 90% line |
+| Shared UI component package | ≥ 85% | ≥ 75% | 100% of components with an axe test |
+| Website/Portal and Admin app code | ≥ 75% | ≥ 65% | 100% of UI states in Part 2.5 §2.47 rendered in tests for each LP pattern |
+| **State machines** (17 diagrams + 21 tabular lifecycles, Part 2.3 §2.27) | — | — | **100% of valid transitions** (0-switch); ≥ 1 invalid-event test per state; 1-switch for Payment, Message, Order and Deal machines |
+| **Business rules** (162 BRL) | — | — | **100% with a decision-table test** (each rule row = ≥ 1 TC); 100% of numeric/temporal thresholds with BVA |
+| **Functional requirements** (150 interface/operation FRs + 33 cross-cutting) | — | — | **100% of FRs with ≥ 1 test**; 100% of FR acceptance profiles CA-* applied per FR |
+| Acceptance criteria (Part 5 Gherkin AC) | — | — | 100% of AC with ≥ 1 TC; 100% of P0 AC automated |
+| NFR-001…038 (and Part 4 extensions) | — | — | 100% with a test method and at least one executed test before Release 2 |
+| RBAC matrix (Part 2.3 §2.26.3) | — | — | 100% of role × screen-group × mutating-action cells tested (allow and deny) |
+| AP-01…AP-10 | — | — | 100% executed with EVR before Release 2 |
+
+Coverage is measured per PR as a **diff gate** (new/changed lines must meet the layer target) and as an absolute trend. Coverage exclusions (migrations, generated code, settings) are listed in configuration and reviewed.
+
+### 6.1.9.7 Flaky-test policy [RECOMMENDATION-074]
+
+| Item | Rule |
+|---|---|
+| Definition | A test that both passes and fails on the same commit and environment |
+| Detection | Gating jobs do **not** auto-retry (except E2E: 1 retry, reported as "flaky pass" and counted). A nightly flake detector reruns failures 3× and computes a per-test flake rate over 14 days |
+| Quarantine | A non-P0 test with flake rate > 2% is moved to the quarantine job within 1 business day, with a ticket (FP2) and owner |
+| P0 tests | **Cannot be quarantined.** A flaky P0 test blocks release (RBR-5) until fixed |
+| Time limit | Quarantined tests are fixed or deleted (with a replacement covering the same requirement) within 10 business days |
+| Cap | Quarantine ≤ 2% of the suite; above the cap, new feature merges pause for the owning team until under the cap |
+| Root causes to check | Real-time waits, shared data lanes, ordering assumptions, clock not controlled, network to sandboxes, async UI without role-based waits, Celery eager vs real differences |
+| Reporting | Flake rate per suite on the test dashboard; quarantined tests listed in the release readiness report |
+
+---
+
+## 6.1.10 Metrics and reporting
+
+### 6.1.10.1 Test metrics
+
+| Metric | Formula | Target | Source | Cadence | Owner |
+|---|---|---|---|---|---|
+| Requirement coverage % | FRs with ≥ 1 linked TC that passed in the current release ÷ FRs in release scope | 100% at release exit (BRD §12.1) | Traceability matrix (Batch 6.3) | Per build | QA Lead |
+| AC coverage % | AC with ≥ 1 passing TC ÷ AC in scope | 100% | Gherkin tags | Per build | QA Lead |
+| BRL coverage % | BRL rules with ≥ 1 decision-table TC passing ÷ 162 | 100% | Markers | Per build | QA Lead |
+| State transition coverage % | Valid transitions exercised ÷ valid transitions defined (per machine) | 100% | Transition coverage plugin (records `from→to` per test) | Nightly | QA automation |
+| Code coverage (line/branch per layer) | Per §6.1.9.6 | Targets met | pytest-cov, Vitest coverage | Per PR | Engineering |
+| Mutation score | Killed mutants ÷ (total − equivalent) | §6.1.9.6 | mutmut | Weekly | Principal Engineer |
+| Pass rate | Passed ÷ executed (per suite, per gate) | 100% for gating suites | CI | Per run | QA |
+| Automation rate | Automated TC ÷ total TC (and for P0) | ≥ 85% overall; 100% of P0 except UAT and assistive-technology checks | Test catalogue | Per sprint | QA Lead |
+| Defect density | Valid defects found ÷ story points delivered (also ÷ KLOC changed) per wave | Trend down per wave; baseline in W1 | Issue tracker | Per wave | QA Lead |
+| Defect removal efficiency (DRE) | Defects found before release ÷ (before + found in production within 30 days) | ≥ 90% | Issue tracker | Per release | QA Lead |
+| Escape rate | Production defects (30 days) ÷ total defects for the release | ≤ 10%; **0 S1 escapes** | Issue tracker | Per release | QA Lead |
+| MTTR for defects | Mean (verified time − triaged time) by severity | Within SLAs (§6.1.8.4) | Issue tracker | Weekly | Engineering lead |
+| Open defects by severity and age | Count and age buckets | 0 S1; S2 within SLA | Issue tracker | Daily | QA Lead |
+| Flake rate | Flaky executions ÷ executions (14-day window) | ≤ 1% suite average | CI | Daily | QA automation |
+| Pipeline time | p90 duration per gate | G1 ≤ 15 min; G2 ≤ 30 min; G3 ≤ 3 h | CI | Weekly | DevOps |
+| AI eval scores | Per agent: precision, recall, groundedness, abstention accuracy, red-team pass rate, schema validity, INR/task, p95 latency | Per Part 7 thresholds; DEC-001 gates | AI harness | Nightly and per change | AI lead |
+| Non-functional results | p95 latency, TTFB, outbox lag, error rate, RPO/RTO measured, axe violations, ZAP findings | §6.1.14 targets | k6, ZAP, axe, DR logs | Per run | SRE, Security, UX |
+| Evidence completeness | Gates with complete EVR ÷ required gates | 100% for release | A090 | Per release candidate | QA Lead |
+| Compliance test health | KPI-17 and KPI-30 in tests | 0 / 0 | Test suites | Per run | Compliance Lead |
+
+### 6.1.10.2 Test dashboard (RP-26 extension)
+
+The test dashboard extends RP-26 *Release readiness* (Part 2.4) and is rendered inside the Admin Automation view → Operations (A090) for engineering and the Product Owner.
+
+| Panel | Content | Freshness |
+|---|---|---|
+| Gate status | G1–G5 last runs, pass/fail, duration, build digest | Real time |
+| Requirement coverage | % by epic EP-01…EP-21 and by wave; drill-down to FRs without passing tests | Per build |
+| Risk coverage | RA-01…RA-30 with test depth achieved vs required (D1–D4) | Nightly |
+| P0 health | P0 pass rate, failing P0 list, quarantined count (must be 0) | Per run |
+| Defects | Open by severity/area/age; SLA breaches; release-blocking flags | Real time |
+| Non-functional | Latest load/soak/DR/DAST/axe results vs targets | Per run |
+| AI quality | Per-agent scores vs thresholds and baseline; last eval date | Nightly |
+| Flakiness | Top 10 flaky tests; quarantine size vs 2% cap | Daily |
+| Evidence | EVR completeness per gate; ladder level per activation scope (L-S/L-T/L-C/L-P) | Real time |
+
+### 6.1.10.3 Release readiness report (A090)
+
+A090 computes the report; the QA Lead prepares the narrative; the independent reviewer signs.
+
+| Section | Content | Source |
+|---|---|---|
+| 1. Release identity | Release ID, waves, scope (FRs, stories), build digest, config revision, environment | Pipeline, EVR |
+| 2. Gate table | Each required control ID → evidence digest, environment, reviewer, blocking gate, severity, status (computed: Pass / Fail / Pending) | FR-A090 fields |
+| 3. Coverage | Requirement, AC, BRL, state-transition, RBAC coverage %; FRs without tests (must be none or waived) | Traceability matrix |
+| 4. Results | Pass rates per level; P0 summary; non-functional results; AI eval summary; DR/rollback measured values | Dashboard |
+| 5. Defects | Open by severity; blocking rules RBR-1…RBR-8 evaluation; waivers with expiry | Issue tracker |
+| 6. Risks | Residual risks by RA; untested combinations accepted (pairwise exclusions) | QA Lead |
+| 7. Certification level | Ladder level per scope; explicit statement "Synthetic/staging evidence; not production certification" where applicable (BRD §13.2) | EVR |
+| 8. Activation recommendation | Which feature flags may be turned on, with caps and monitoring windows | PO + Compliance |
+| 9. Sign-offs | QA Lead, Principal Engineer, Security/Compliance Lead, Product Owner, independent reviewer | EVR `business_acceptance` |
+
+A090 shows **Approve release** disabled until every blocking gate is Pass (Part 2.5 §2.43.11 A090 row; FR-A090 "fail closed on incomplete evidence").
+
+---
+## 6.1.11 Test design techniques catalogue (with worked examples from this product)
+
+| Code | Technique | Use it when | Primary sources of conditions |
+|---|---|---|---|
+| EP | Equivalence partitioning | Inputs fall into classes that the system treats the same way | Field specs (FRD §16.2), filters (FR-FLT-*), jurisdiction packs |
+| BVA | Boundary value analysis | Numeric, temporal or count thresholds | BRL thresholds, DEC-038, DEC-011, DEC-028, quiet hours, caps |
+| DT | Decision tables | Several conditions combine into an action | BRL rules, PDP, approval policy, routing (DEC-052) |
+| ST | State-transition testing | Entities with lifecycles | Part 2.3 §2.27 state machines |
+| PW | Pairwise / combinatorial | Many independent dimensions | Part 5.1 dimension matrix D1–D8 (persona/role, permission, state, data condition, channel, tenant/config, integration availability, locale; as applied in Part 5.2) |
+| EG | Error guessing | Known failure patterns of this stack and domain | Defect history, threat model (Part 4.1), this catalogue |
+| PBT | Property-based testing | Invariants over large input spaces | Money, scoring, state machines, idempotency |
+| UC | Use-case / journey testing | End-to-end business flows | WF-01…WF-14, vertical routes, personas |
+| EXP | Exploratory (session-based) | New or risky areas; UX | Risk matrix P0 areas, new screens |
+
+**Boundary inclusivity and precedence.** Where the baseline gives a threshold without saying whether it is inclusive, the oracle below states the interpretation used; Part 3/Part 4 specifications must confirm it, and any difference changes the tests, not the code silently [ASSUMPTION-184].
+
+### 6.1.11.1 Equivalence partitioning: outbound first-touch email recipient jurisdiction (BRL-ELG-05/06, DEC-029)
+
+| Partition | Class | Representative value | Expected PDP result |
+|---|---|---|---|
+| EP-J1 | India, lawful basis recorded | `IN`, consent recorded | Allow (subject to other rules) |
+| EP-J2 | EU/EEA/UK, role-based or professionally published business address, LIA recorded, one-click opt-out present | `DE`, `procurement@…` | Allow |
+| EP-J3 | EU/EEA/UK, personal address or no LIA | `FR`, `firstname.lastname@gmail.example` | Deny `EU_LIA_OR_ROLE_ADDRESS_REQUIRED` |
+| EP-J4 | US with identification, physical address and opt-out in template | `US` | Allow |
+| EP-J5 | US template missing physical address | `US` | Deny at template validation (CAN-SPAM pack) |
+| EP-J6 | UAE/Singapore/Australia with opt-in | `AE` opt-in | Allow |
+| EP-J7 | UAE/Singapore/Australia without opt-in | `SG` no opt-in | Deny `OPT_IN_REQUIRED` |
+| EP-J8 | Any other listed-but-not-enabled country | `BR` | Deny `JURISDICTION_NOT_ENABLED` |
+| EP-J9 | Unknown or unresolvable jurisdiction | country null | Deny (fail closed, BRL-ELG-01) |
+| EP-J10 | Reply within an existing inbound conversation (any jurisdiction) | `BR` reply | Allow (exception in BRL-ELG-05) |
+
+Result: 10 partitions replace 200+ country values; each partition is one TC, and the jurisdiction pack's country list itself is tested by a data test (every enabled country maps to exactly one pack).
+
+### 6.1.11.2 Boundary value analysis: discount thresholds 0/10/20% and margin floor (DEC-038; BRL-APR-04)
+
+Interpretation: discount stored to 2 decimal places of a percent; thresholds as written in BRL-APR-04 (0 < d ≤ 10; 10 < d ≤ 20; d > 20); "margin below floor" means strictly less than 25.00% [ASSUMPTION-184]. Base case margin = 40% unless stated.
+
+| TC hint | Discount d (%) | Margin after discount (%) | Expected required approver(s) | Note |
+|---|---|---|---|---|
+| BVA-D01 | −0.01 | n/a | 400 validation error; no quote revision created | Invalid partition |
+| BVA-D02 | 0.00 | 40.00 | No discount approval (standard quote approval rules still apply) | "> 0%" triggers Sales Manager |
+| BVA-D03 | 0.01 | 39.99 | Sales Lead (R03L) or Startup Head (R02) | Lower boundary + ε |
+| BVA-D04 | 9.99 | 33.3 | R03L or R02 | |
+| BVA-D05 | **10.00** | 33.3 | R03L or R02 | On boundary (≤ 10) |
+| BVA-D06 | 10.01 | 33.3 | Startup Head (R02) | Boundary + ε |
+| BVA-D07 | 19.99 | 25.0 | R02 | |
+| BVA-D08 | **20.00** | 25.0 | R02 | On boundary (≤ 20); margin exactly at floor is not below floor |
+| BVA-D09 | 20.01 | 24.99 | Founder (R01) + Finance | Both conditions true; one approval chain, not two |
+| BVA-D10 | 5.00 | **25.00** | R03L or R02 | Margin at floor |
+| BVA-D11 | 5.00 | **24.99** | R01 + Finance | Margin below floor overrides the low discount |
+| BVA-D12 | 100.00 | negative | R01 + Finance; warning "price zero" | Upper valid bound |
+| BVA-D13 | 100.01 | n/a | 400 validation error | Invalid partition |
+| BVA-D14 | 10.00 by R03L who authored the quote | n/a | Approval denied (author ≠ approver, BRL-APR-01) | SoD combined with boundary |
+
+Worked arithmetic check (FR-DM-01; DEC-027): 2 × INR 150.00 × (1 − 0.10) = **270.00 INR**; approver at d = 10.00 is R03L/R02 (BVA-D05).
+
+**Other boundaries to be generated in Batch 6.2 using the same pattern:**
+
+| Threshold | Values to test | Source |
+|---|---|---|
+| Contract value ≥ ₹10 lakh → Founder + Legal | ₹9,99,999.99 / ₹10,00,000.00 / ₹10,00,000.01; any cross-border at ₹1 | BRL-APR-06 |
+| Score bands | 49 / 50 / 74 / 75; known weight 0.59 / 0.60; score computing to x.5 (rounding half-up, not banker's rounding) | BRL-SCR-01…03; DEC-011 [ASSUMPTION-184] |
+| Quiet hours 09:00–19:00 recipient local, Monday–Saturday | 08:59:59 defer · 09:00:00 allow · 18:59:59 allow · 19:00:00 defer (half-open window [09:00, 19:00)) · Sunday 10:00 defer · India public holiday | BRL-ELG-08 [ASSUMPTION-184] |
+| Frequency caps | 2nd marketing touch in 7 days allow; 3rd deny; touch at exactly t + 168 h allow | BRL-ELG-09 |
+| Bid deadline − 24 h buffer | deadline − 24 h − 1 s allow; − 24 h deny; buffer configured 2 h (minimum) and 1 h 59 m (invalid) | BRL-BID-01; FR-DM-02 |
+| Complaint threshold | 0.10% vs 0.11%; 2 vs 3 complaints in 24 h | BRL-ELG-11 |
+| Soft bounces | 2 vs 3 in 7 days | BRL-ELG-12 |
+| Over-delivery tolerance | 0% default; with policy 2%: 102.00% allow, 102.01% reject | BRL-ORD-02 |
+| Age | 17 y 364 d → minor path; 18 y 0 d → adult path; birthday at IST midnight vs UTC | DEC-030; BRL-ELG-13 |
+| Budget | 79.99% no alert; 80.00% alert; 100.00% hard stop; reservation that would cross 100% denied | BRL-AI-08 |
+| Support grant | 72 h allowed; 72 h + 1 s denied | BRL-TEN-09 |
+| Page size | 200 allowed; 201 rejected or clamped per API contract | Part 4.1 THR-028 |
+| Webhook payload | 256 KB allowed; 256 KB + 1 B rejected | Part 4.1 THR-041 |
+
+### 6.1.11.3 Decision table: eligibility Policy Decision Point (dispatch-time recheck)
+
+Conditions are evaluated at dispatch (BRL-ELG-18). The table is written as a **first-match** table in precedence order; precedence is deny-before-defer and compliance-before-commercial [ASSUMPTION-184]. "–" = don't care. Every rule column is at least one TC; the PDP returns the primary reason code and the list of all failed checks.
+
+| Condition / Rule | R1 | R2 | R3 | R4 | R5 | R6 | R7 | R8 | R9 | R10 | R11 | R12 | R13 | R14 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| C1 Subject and object in the same tenant/startup scope | N | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y |
+| C2 Emergency stop active in scope | – | Y | N | N | N | N | N | N | N | N | N | N | N | N |
+| C3 Recipient suppressed for channel × purpose × startup (or global) | – | – | Y | Y | N | N | N | N | N | N | N | N | N | N |
+| C4 Message flagged lawful *transactional* notice | – | – | N | Y | – | – | – | – | – | – | – | – | Y | – |
+| C5 Recipient is a minor or learner-flagged | – | – | – | – | Y | N | N | N | N | N | N | N | N | N |
+| C6 Health/patient attributes in content or audience | – | – | – | – | – | Y | N | N | N | N | N | N | N | N |
+| C7 Jurisdiction enabled for channel (or reply in inbound thread) | – | – | – | – | – | – | N | Y | Y | Y | Y | Y | Y | Y |
+| C8 Lawful basis recorded and known for purpose and channel | – | – | – | – | – | – | – | N | Y | Y | Y | Y | Y | Y |
+| C9 Approved hash equals content hash and approval unexpired | – | – | – | – | – | – | – | – | N | Y | Y | Y | Y | Y |
+| C10 Budget reservation succeeds (entitlement, caps) | – | – | – | – | – | – | – | – | – | N | Y | Y | Y | Y |
+| C11 Frequency cap would be exceeded (not a reply to own inbound) | – | – | – | – | – | – | – | – | – | – | Y | N | N | N |
+| C12 Outside recipient quiet hours | – | – | – | – | – | – | – | – | – | – | – | Y | Y | N |
+| **Action** | Deny 404 `SCOPE` | Deny `STOPPED` | Deny `SUPPRESSED`; cancel queued | Suppression waived for a lawful transactional notice only; evaluation continues with C5–C12 (C3 treated as N) | Deny `MINOR` | Deny `HEALTH_DATA` | Deny `JURISDICTION` | Deny `NO_LAWFUL_BASIS`; task | Deny `APPROVAL_STALE` | Deny `BUDGET` | Deny `FREQ_CAP` | Defer to next window `QUIET_HOURS` | Allow (transactional exception to quiet hours) | **Allow** |
+| Rule source | BRL-TEN-03/04 | BRL-AUT-05 | BRL-ELG-02 | BRL-ELG-02 exception | BRL-ELG-13 | BRL-ELG-14 | BRL-ELG-05/06 | BRL-ELG-01/03 | BRL-APR-02/03 | BRL-AI-08; BRL-SVC-03 | BRL-ELG-09 | BRL-ELG-08 | BRL-ELG-08 exception | — |
+
+Complete-table check: 12 binary conditions = 4,096 raw combinations; the first-match structure collapses them to 14 rules. Batch 6.2 adds (a) one TC per rule, (b) **precedence pairs** (two conditions failing at once, e.g. C3 and C7, verify the primary reason is C3 and both are listed), and (c) a Hypothesis test that generates random condition vectors and compares the PDP with this table implemented as an independent reference oracle in the test code.
+
+### 6.1.11.4 State-transition testing: Deal and Payment machines (Part 2.3 §2.27.3, §2.27.7)
+
+**Deal (default commercial template): 23 valid transitions.**
+
+| # | From → To | Event / guard | Test focus |
+|---|---|---|---|
+| 1 | Qualified → Engaged | First eligible contact or inbound reply | Eligibility checked (PDP), not just state |
+| 2 | Engaged → MeetingScheduled | Meeting booked | Calendar adapter success |
+| 3 | MeetingScheduled → Discovery | Meeting held | Attended status, not booked (KPI-06) |
+| 4 | Discovery → ProposalDraft | Scope agreed | |
+| 5 | ProposalDraft → ProposalSent | Approved hash published | Hash match (BRL-APR-02) |
+| 6 | ProposalSent → Negotiation | Objection or change request | |
+| 7 | Negotiation → ProposalDraft | New revision | Old approval voided (BRL-QTE-06) |
+| 8 | ProposalSent → Committed | Accepted [quote valid] | Expired quote rejected (BRL-QTE-05) |
+| 9 | Committed → WonContracted | Signed contract verified [contract-type policy] | Hash equals legally approved hash (BRL-CTR-02) |
+| 10 | Committed → Fulfilment | Order issued [order-type policy] | ClosurePolicy by type (DEC-054) |
+| 11 | WonContracted → Fulfilment | Delivery starts | |
+| 12 | Fulfilment → PartiallyPaid | Partial verified payment | Driven by Payment machine CheckerVerified |
+| 13 | PartiallyPaid → Paid | Allocations equal invoice total | BRL-FIN-04 |
+| 14 | Fulfilment → Paid | Full verified payment | |
+| 15–20 | Qualified, Engaged, Discovery, ProposalSent, Negotiation, Committed → Lost | Reason required; Committed only "cancelled before signature" | Reason code mandatory (BRL-APR-08 pattern) |
+| 21 | Lost → Qualified | Reopen [policy allows, new evidence] | Cooling period (BRL-ELG-16) |
+| 22 | Qualified → OnHold | Hold reason | |
+| 23 | OnHold → Qualified | Resume | |
+
+**Payment and invoice: 16 valid transitions.** InvoiceDraft → InvoiceApproved (maker and checker) · InvoiceApproved → Issued · Issued → AwaitingPayment · AwaitingPayment → EvidenceReceived · EvidenceReceived → Duplicate · EvidenceReceived → MakerVerified · EvidenceReceived → Discrepancy · Discrepancy → MakerVerified · Discrepancy → Rejected · MakerVerified → CheckerVerified · CheckerVerified → PartiallyPaid · CheckerVerified → Paid · PartiallyPaid → AwaitingPayment · Issued → Cancelled · Paid → Refunded · Rejected → AwaitingPayment.
+
+**Invalid transitions (sneak paths) — at least one per state; examples that must be rejected with `INVALID_TRANSITION` and no side effect:**
+
+| Machine | From | Attempted event / target | Why invalid | Expected |
+|---|---|---|---|---|
+| Deal | Qualified | → Paid | Skips proposal, commitment and verified payment | 409; audit of attempt; KPI-31 unaffected |
+| Deal | ProposalDraft | → Committed | Proposal not sent with approved hash | 409 |
+| Deal | Committed | → Paid | Must pass through WonContracted/Fulfilment per ClosurePolicy | 409 |
+| Deal | Paid | → Lost | Terminal | 409 |
+| Deal | Lost | → Qualified without new evidence or inside cooling period | Guard false | 409 with guard reason |
+| Payment | MakerVerified | → Paid | Checker step skipped | 409 |
+| Payment | MakerVerified | → CheckerVerified by the same user | Maker = checker (BRL-APR-07; ABAC-03) | 403 |
+| Payment | Duplicate | any | Terminal for the duplicate evidence | 409; original unaffected |
+| Payment | Refunded | → Paid | Terminal | 409 |
+| Payment | AwaitingPayment | → CheckerVerified | Evidence and maker steps skipped | 409 |
+| Payment | Issued | → Paid via external portal user action | External users cannot change receipt state (CA-PORTAL) | 403 |
+
+**Coverage required:** 0-switch 100% (23 + 16 transitions); every state × every event not in the table (sneak-path matrix generated from the machine definition); **1-switch** (pairs of consecutive transitions) for Payment, because duplicate and partial paths interact — e.g. `CheckerVerified → PartiallyPaid → AwaitingPayment → EvidenceReceived → Duplicate` must leave allocations unchanged. A Hypothesis `RuleBasedStateMachine` (§6.1.11.7) drives random event sequences against both machines and checks invariants after each step.
+
+### 6.1.11.5 Pairwise testing: role × scope × channel × integration availability (× mode)
+
+Dimensions follow the Part 5.1 dimension matrix as applied in Part 5.2 (D1 persona/role, D3 object state, D5 channel, D6 tenant/config, D7 integration availability). Action under test: *dispatch an approved outbound message* (CA-DISPATCH).
+
+**Set A (scope and permission).** Factors: Role {R03 assigned, R03 unassigned, R12, R01} × Scope {single startup T1/MedMaarg, portfolio, object in T2} × Channel {email first-touch, WhatsApp template, email reply in inbound thread} × Integration {available, timeout after submit, down before submit} × Mode {live, simulation}. Full factorial = 216; all-pairs = **14 rows** (generated with a greedy all-pairs algorithm; Batch 6.2 regenerates with the chosen tool and the same factor file).
+
+| Row | Role | Scope | Channel | Integration | Mode | Expected |
+|---|---|---|---|---|---|---|
+| PW-01 | R03 assigned | Single startup | Email first-touch | Available | Live | PDP allow; outbox → provider; Sent, then Delivered by signed webhook |
+| PW-02 | R03 assigned | Portfolio | WhatsApp template | Timeout after submit | Simulation | 409 `SELECT_SINGLE_STARTUP`; nothing queued (BRL-TEN-05) |
+| PW-03 | R03 unassigned | Single startup | Email reply in inbound thread | Down before submit | Simulation | Uniform 404 (ABAC-02; BRL-TEN-04) |
+| PW-04 | R12 | Object in T2 | WhatsApp template | Down before submit | Live | Uniform 404; no PDP call; denial audited (BRL-TEN-03/04) |
+| PW-05 | R01 | Portfolio | Email reply in inbound thread | Available | Live | 409 `SELECT_SINGLE_STARTUP` |
+| PW-06 | R01 | Object in T2 | Email first-touch | Timeout after submit | Simulation | Uniform 404 |
+| PW-07 | R03 unassigned | Single startup | WhatsApp template | Timeout after submit | Live | Uniform 404 |
+| PW-08 | R12 | Portfolio | Email first-touch | Available | Simulation | 409 `SELECT_SINGLE_STARTUP` |
+| PW-09 | R03 assigned | Object in T2 | Email reply in inbound thread | Available | Live | Uniform 404 |
+| PW-10 | R03 unassigned | Portfolio | Email first-touch | Down before submit | Live | 409 `SELECT_SINGLE_STARTUP` |
+| PW-11 | R12 | Single startup | Email reply in inbound thread | Timeout after submit | Live | 403: R12 is not a business sender (Part 2.3 §2.26.1) |
+| PW-12 | R03 unassigned | Object in T2 | WhatsApp template | Available | Live | Uniform 404 |
+| PW-13 | R01 | Single startup | WhatsApp template | Down before submit | Live | Transient failure before submit; backoff retry ≤ 3; then exception queue (BRL-AUT-07) |
+| PW-14 | R03 assigned | Single startup | Email first-touch | Down before submit | Live | Same as PW-13 |
+
+**Masking lesson.** In Set A, denial values (portfolio, T2, unassigned, R12) mask the channel/integration/mode values in 11 of 14 rows, so those pairs are not really exercised. Rule for Batch 6.2: run **separate pairwise sets for invalid (denial) values and for valid values**, so each valid pair is exercised in a row whose other values are all valid.
+
+**Set B (valid scope only).** Factors: Role {R03 assigned, R01} × Channel {email first-touch, WhatsApp template, email reply in inbound thread} × Recipient jurisdiction {IN, DE (EU), BR (not enabled)} × Integration {3} × Mode {2}. Full factorial = 108; all-pairs = **12 rows**. Fixture: IN and DE contacts have recorded lawful basis; the DE email address is role-based with an LIA; the IN contact has WhatsApp opt-in.
+
+| Row | Role | Channel | Jurisdiction | Integration | Mode | Expected |
+|---|---|---|---|---|---|---|
+| PW-15 | R03 assigned | Email first-touch | IN | Available | Live | Sent → Delivered via signed SES webhook |
+| PW-16 | R03 assigned | WhatsApp template | DE | Timeout after submit | Simulation | Deny `EU_NO_WHATSAPP_COLD` (BRL-ELG-06); listed in simulation report; 0 provider calls |
+| PW-17 | R01 | Email first-touch | BR | Down before submit | Simulation | Deny `JURISDICTION_NOT_ENABLED` (BRL-ELG-05); listed in simulation report |
+| PW-18 | R01 | Email reply in inbound thread | IN | Timeout after submit | Live | `uncertain`; retry blocked until reconciled (FR-STD-02) |
+| PW-19 | R03 assigned | WhatsApp template | BR | Down before submit | Live | Deny `JURISDICTION_NOT_ENABLED`; message Blocked; task created |
+| PW-20 | R01 | Email reply in inbound thread | DE | Available | Simulation | Allow; simulated send; 0 provider calls (BRL-AUT-04) |
+| PW-21 | R03 assigned | Email reply in inbound thread | IN | Down before submit | Simulation | Allow; simulated; 0 provider calls |
+| PW-22 | R03 assigned | Email first-touch | DE | Timeout after submit | Live | `uncertain`; retry blocked |
+| PW-23 | R01 | WhatsApp template | IN | Available | Live | Sent → Delivered via signed WhatsApp webhook |
+| PW-24 | R03 assigned | Email reply in inbound thread | BR | Available | Live | Allow (inbound-reply exception) → Sent → Delivered |
+| PW-25 | R03 assigned | Email first-touch | DE | Down before submit | Live | Retry with backoff ≤ 3, then exception queue |
+| PW-26 | R03 assigned | Email first-touch | BR | Timeout after submit | Live | Deny `JURISDICTION_NOT_ENABLED` before any provider call |
+
+**Higher-strength rule.** For P0 areas with 3 or more interacting factors known to interact (scope × role × action in RA-01; channel × jurisdiction × consent in RA-03), Batch 6.2 uses **3-wise** coverage on the valid set. Exclusions (impossible combinations, e.g. WhatsApp for a startup without the WhatsApp capability, ABAC-08) are listed explicitly in the factor file and reported as "excluded by constraint".
+
+### 6.1.11.6 Error guessing catalogue (stack- and domain-specific)
+
+| # | Suspected error | Test idea | Related |
+|---|---|---|---|
+| EG-01 | Float sneaks into money (JSON number parsed as float in TS or Python) | Send `"unit_price": 0.1` × 3 and compare with Decimal; lint check | NFR-017; TP-09 |
+| EG-02 | Python `round()` banker's rounding used for scores or money | Score exactly 74.5 and line total x.xx5 | DEC-011; DEC-027 |
+| EG-03 | Double-click on Approve/Send creates two effects | Two concurrent POSTs with and without the same idempotency key | NFR-005 |
+| EG-04 | Browser back after approval re-submits a stale form | Replay old revision → 409 | NFR-025 |
+| EG-05 | Two tabs with different startup scopes; stale tab mutates | Switch scope in tab B, act in tab A | NFR-027; FR-STD-01 |
+| EG-06 | Webhook arrives before the outbox transaction commits | Simulator sends event within 1 ms of submit | E-2, E-4 |
+| EG-07 | Celery task retried after commit causes second side effect | Kill worker after provider call, before ack | NFR-005 |
+| EG-08 | Unicode normalization defeats dedupe and suppression (NFC vs NFD, case, Gmail dots/plus) | Same email in variant forms; suppression must match by normalized blind index | BRL-ELG-02; Part 4.1 blind index |
+| EG-09 | STOP variants not recognized (lowercase, trailing space, "stop." , Hindi/Tamil/Odia words, emoji) | Corpus of opt-out phrasings per language | BRL-ELG-02; DEC-026 |
+| EG-10 | Time zone stored as local instead of UTC; DST shifts quiet hours | US/EU recipients on DST change dates | I18N-03 |
+| EG-11 | Cache key misses tenant or locale; CDN serves T1 page on T2 host | Same slug on two hosts | NFR-020 |
+| EG-12 | Search/trigram or vector query forgets tenant filter in one code path (e.g. "similar records") | Unique token search from T2 | DEC-037 |
+| EG-13 | Export job runs with the requester's scope at creation but the scope changed before execution | Revoke membership between request and run | NFR-002 |
+| EG-14 | Prompt injection in an inbound email instructs the agent to send or reveal data | Red-team corpus | BRL-AI-05, BRL-AI-07 |
+| EG-15 | Large file or zip bomb in uploads | Size and decompression limits | NFR-021 |
+| EG-16 | Approval delegation chain lets an author approve via a delegate they control | Delegate = author's subordinate | BRL-APR-09 |
+| EG-17 | Partial refund after partial payment yields negative receivable | Sequence test | BRL-FIN-04/05 |
+| EG-18 | Restored backup re-dispatches outbox rows already sent | DR drill with in-flight outbox | §6.1.14.4 |
+| EG-19 | Translation outdated but still published after source change | Change source; try republish locale | Part 2.4 §2.36.3 |
+| EG-20 | Feature flag default ON in a new environment | Environment bootstrap test asserts all channel/paid flags OFF | RECOMMENDATION-005; BRD §10 |
+
+### 6.1.11.7 Property-based testing (Hypothesis)
+
+| Domain | Property (must hold for all generated inputs) | Generators |
+|---|---|---|
+| Line money | `line_total == quantize_half_up(qty × unit_price × (1 − d/100), 2)`; `0 ≤ line_total ≤ qty × unit_price` for 0 ≤ d ≤ 100 | Decimals with 2 dp, quantities per unit rules, d in [0, 100] at 0.01 step |
+| Document totals | `doc_total == Σ rounded line totals + Σ tax lines` (never round the sum again) | Lists of 1–200 lines, mixed tax types |
+| Currency | No operation mixes currencies; adding INR to USD raises | Pairs of Money values |
+| Allocations | `Σ allocations ≤ invoice_total` after any event sequence; `state == Paid ⇔ Σ allocations == invoice_total` | Event sequences incl. duplicates and refunds |
+| Ledgers | Append-only: entry count never decreases; balance equals Σ entries; corrections only via reversing entries | Random operations including "edit" attempts |
+| Score | `0 ≤ score ≤ 100`; monotonic non-decreasing in each component; result "Unknown" iff known weight < 0.60; weights sum to 1.00 | Component values in [0, 1] or None |
+| PDP | PDP(c) equals the decision-table oracle (§6.1.11.3) for random condition vectors | 12 booleans + context |
+| Idempotency | For any request r: `apply(r); apply(r)` ≡ `apply(r)` (DB state, outbox, simulator log) | Random mutating API requests |
+| State machines | No sequence reaches a state not reachable in the diagram; terminal states have no outgoing transitions | `RuleBasedStateMachine` per machine |
+| Frequency caps | For any send history, the number of allowed marketing touches in any 7-day window ≤ 2 | Random timestamps across time zones |
+
+Sketch (illustrative only; final code in the repository):
+
+```python
+from decimal import Decimal, ROUND_HALF_UP
+from hypothesis import given, strategies as st
+
+money = st.decimals(min_value=Decimal("0.01"), max_value=Decimal("9999999.99"), places=2)
+pct = st.decimals(min_value=Decimal("0"), max_value=Decimal("100"), places=2)
+qty = st.integers(min_value=1, max_value=10_000)
+
+@given(qty, money, pct)
+def test_line_total_is_half_up_and_bounded(q, price, d):
+    total = line_total(q, price, d)  # system under test
+    expected = (Decimal(q) * price * (1 - d / 100)).quantize(Decimal("0.01"), ROUND_HALF_UP)
+    assert total == expected
+    assert Decimal("0") <= total <= Decimal(q) * price
+```
+
+Hypothesis profiles: `ci` (100 examples per test, deadline 200 ms), `nightly` (2,000 examples), `release` (10,000 examples for money and PDP). Failing examples are stored in the Hypothesis database and promoted to explicit regression tests.
+
+### 6.1.11.8 Use-case and exploratory testing
+
+- **Use-case (journey) tests** follow WF-01…WF-14 and the vertical routes (Part 2.2), one main success scenario plus the alternate and exception flows listed in each workflow; they become TS-level scenarios in Batch 6.2.
+- **Exploratory sessions**: 90-minute chartered sessions, two per P0 area per wave, with a charter ("Explore *quote revisions* with *concurrent approvers* to discover *approval binding errors*"), notes, bugs and test ideas recorded; new test ideas enter the backlog as TCs.
+
+---

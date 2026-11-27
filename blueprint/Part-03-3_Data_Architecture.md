@@ -3336,3 +3336,472 @@ Role grants: `ten_membership_grant (id, tenant_id, membership_id → ten_members
 | `access_count` | integer | N | 0 | | Int | Every access audited and visible to tenant |
 
 ---
+
+## 3.3.7 Compact dictionary: remaining 131 entities
+
+Each row gives the standard set (§3.3.6.1), the entity-specific key columns (type in brackets where not obvious) and the keys and constraints. Classification defaults to **Int** unless a column is marked (Conf) or (Rest).
+
+| ENT | Table | Std set | Key columns | Keys and constraints |
+|---|---|---|---|---|
+| ENT-003 | `ten_business_line` | STD-S | `code`, `name`, `description`, `owner_id` | UQ (tenant_id, startup_id, code) WHERE archived_at IS NULL |
+| ENT-004 | `ten_capability_profile` | STD-S + STD-V | `capabilities` jsonb {bid_desk, order_desk, whatsapp, ads, website, webinars, licensing, pilots…}, `granted_by_approval_id` | UQ (startup_id, version_no); one `active` per startup (partial UQ); ABAC-08 reads active row |
+| ENT-005 | `ten_domain` | STD-S | `hostname` (lower), `is_platform_subdomain`, `verification_state` (pending, verified, failed, revoked), `verification_token_hash`, `verified_at`, `tls_state` | UQ (hostname) globally WHERE verification_state = 'verified' (one tenant/startup per host, BRL-TEN-10); CHECK hostname regex |
+| ENT-006 | `ten_user` | id, revision, created/updated | `idp_subject` (Int), `user_kind` (internal, external, service, ai_agent), `display_name` (Conf), `email_enc` (Rest), `email_hmac` (Rest), `locale`, `timezone`, `status` (active, disabled), `last_seen_at` | UQ (idp_subject); UQ (email_hmac); no credentials stored (DEC-019) |
+| ENT-009 | `ten_portal_grant` | STD-S | `subject_user_id`, `object_type` (proposal, quote, contract, invoice, order, onboarding, renewal, ticket), `object_id`, `actions` text[], `expires_at`, `revoked_at`, `granted_by` | UQ (subject_user_id, object_type, object_id) WHERE revoked_at IS NULL; CHECK expires_at > created_at; RLS portal predicate (§3.3.9.4) |
+| ENT-010 | `ten_saved_view` | STD-S | `user_id`, `screen_code` (A0xx), `name`, `filter_spec` jsonb (allowlisted fields), `is_shared_team` | UQ (user_id, screen_code, name); filter_spec validated against FR-FLT allowlist |
+| ENT-011 | `ref_dataset` | STD-X + STD-V | `code` (COUNTRY_SUBDIVISION, INDUSTRY, ROLE_TAXONOMY, SIGNAL_CATEGORY, NEED_CATEGORY, LOSS_REASON, OBJECTION_CATEGORY, HSN_SAC, PUBLIC_HOLIDAY, ORG_TYPE, TECHNOLOGY, PROGRAMME, SKU_CATALOGUE…), `owner_role`, `is_extensible_by_tenant` | UQ (COALESCE(tenant_id), code, version_no) |
+| ENT-012 | `ref_value` | STD-X | `dataset_id`, `code`, `label`, `parent_id` (tree), `attributes` jsonb (e.g. GST rate for HSN, holiday date, region), `valid_from`, `valid_to`, `sort_order` | UQ (dataset_id, code); CHECK no cycles (trigger); tenant values may extend, never alter, platform values |
+| ENT-013 | `ref_currency` | P | `code` char(3) PK, `name`, `minor_units` smallint, `is_active` | CHECK code ~ '^[A-Z]{3}$'; seeded from ISO 4217 |
+| ENT-014 | `ref_country` | P | `code` char(2) PK, `name`, `iso3`, `jurisdiction_pack` (india, eu_eea_uk, us, consent_first, denied), `subdivisions` via ref_value | CHECK code ~ '^[A-Z]{2}$'; DEC-029 mapping |
+| ENT-015 | `ref_unit` | X | `code` PK, `dimension` (mass, volume, count, time, data, session), `base_code`, `to_base_factor` numeric(18,8), `tenant_id` (NULL = platform) | CHECK to_base_factor > 0; conversions only within a dimension |
+| ENT-018 | `cat_capability` | STD-S | `code`, `name`, `taxonomy_ref` (TECHNOLOGY/PROGRAMME value), `description` | UQ (tenant_id, startup_id, code) |
+| ENT-019 | `cat_offering_capability` | STD-S | `offering_version_id`, `capability_id`, `fit_level` (core, supported, partner), `evidence_document_id` | UQ (offering_version_id, capability_id); frozen with version |
+| ENT-022 | `cat_tax_profile` | STD-S + STD-V | `gstin` (Conf), `legal_name` (Conf), `state_code`, `lut_number` (Conf), `lut_valid_until`, `einvoice_applicable` bool, `registered_address` (Conf) | UQ (tenant_id, gstin, version_no); CHECK gstin regex `^[0-9]{2}[A-Z0-9]{13}$`; verify GST rules (DEC-027) |
+| ENT-023 | `cat_launch_approval` | STD-SA | `offering_id`, `from_readiness`, `to_readiness`, `approval_id`, `checklist_results` jsonb | Immutable; CHECK to_readiness IN (approved, available) requires approval_id |
+| ENT-030 | `gov_jurisdiction_rule` | STD-X + STD-V | `country_code`, `pack_code`, `channel`, `outbound_mode` (allowed, role_based_only, opt_in_only, denied), `requires_lia`, `opt_out_sla_days`, `quiet_hours` jsonb | UQ (COALESCE(tenant_id), country_code, channel, version_no); tenant rows may only tighten (validator) |
+| ENT-032 | `gov_policy_decision` | STD-SA + STD-W (partitioned monthly) | `object_type`, `object_id`, `action`, `decision` (allow, deny, hold), `rule_ids` text[], `inputs_digest`, `approval_hash_checked`, `budget_reservation_id` | PK (id, created_at); index (object_type, object_id) |
+| ENT-033 | `gov_approval_policy` | STD-T + STD-V | `policy_kind` (discount, margin, contract_value, cross_border, legal_terms, invoice, payment, bid, campaign, ad_spend, publish), `thresholds` jsonb, `approver_roles` text[] | UQ (tenant_id, COALESCE(startup_id), policy_kind, version_no); loosening requires R01 approval (DEC-038) |
+| ENT-035 | `gov_approval_delegation` | STD-S | `delegator_id`, `delegate_id`, `role_code`, `valid_from`, `valid_to`, `revoked_at` | CHECK valid_to − valid_from ≤ 14 days; CHECK delegator ≠ delegate (BRL-APR-09) |
+| ENT-036 | `gov_privacy_request` | STD-T | `request_type` (access, correction, erasure, withdraw_consent, grievance, nominate), `subject_hmac` (Rest), `contact_ids` uuid[], `identity_verification` (pending, verified, failed), `state` (§2.27.17), `due_at`, `escalate_at` (70% of deadline), `legal_hold_id`, `fulfilment_report_key` | CHECK escalate_at < due_at; deadlines per DPDP (verify) |
+| ENT-037 | `gov_retention_policy` | STD-X + STD-V | `data_class` (FIN, CTR, AUD, MKT, SUP, EVD, AIL, CHT, REJ, APP, OPS, BUS, CFG), `retention_period` interval, `clock_start` (created, last_interaction, term_end, fy_end, rejected_at), `action` (delete, pseudonymize, null_content, archive_then_drop, keep_hash) | UQ (COALESCE(tenant_id), data_class, version_no); tenant override only stricter (CFG-28) |
+| ENT-038 | `gov_legal_hold` | STD-T | `hold_scope` (tenant, startup, object, subject, matter), `target_ref`, `matter_ref` (Conf), `placed_by`, `released_by`, `state` (active, released), `reason` | Release requires R10 + R01 (two approvals); purge and erasure check active holds |
+| ENT-039 | `gov_compliance_incident` | STD-S | `incident_type` (complaint, suppression_breach, cross_scope_exposure, data_leak, policy_violation), `severity`, `state` (§2.27.18), `containment_action`, `affected_scope`, `opened_at`, `resolved_at`, `dpb_notified_at` | Index on (state, severity); KPI-17, KPI-30 |
+| ENT-040 | `int_integration` | STD-S | `provider_code` (ses, meta_whatsapp, google_calendar, razorpay…), `adapter_kind`, `environment` (sandbox, production), `state` (draft, testing, active, degraded, disabled), `scopes` text[], `health_checked_at`, `is_paid` | UQ (tenant_id, startup_id, provider_code, environment, account_label); paid adapters off by default (BRD §10) |
+| ENT-041 | `int_credential_ref` | STD-S | `integration_id`, `secret_arn` (AWS Secrets Manager ARN, never the value), `rotates_at`, `last_rotated_at` | UQ (integration_id); NFR-004: no secret column exists |
+| ENT-042 | `int_quota` | STD-S | `integration_id`, `unit`, `limit_value` numeric, `period`, `consumed` numeric, `resets_at` | CHECK consumed ≥ 0 |
+| ENT-043 | `int_provider_event` | STD-SA (partitioned monthly) | `integration_id`, `provider_account`, `provider_event_id`, `event_type`, `signature_valid` bool, `payload_min` jsonb, `processing_state` (received, processed, ignored_duplicate, failed), `received_at` | **UQ (provider_account, provider_event_id, received_month)** + dedupe lookup table `int_provider_event_key (provider_account, provider_event_id)` PK unpartitioned (FRD §5) |
+| ENT-044 | `ai_agent_definition` | STD-X + STD-V | `agent_code` (AG-xx, Part 7), `max_autonomy` (L0–L3), `tool_scopes` jsonb, `allowed_tiers` text[], `budget_id`, `kpi_refs` | UQ (COALESCE(tenant_id), agent_code, version_no); CHECK no approval tools (BRL-AI-07) |
+| ENT-045 | `ai_prompt_version` | STD-X + STD-V | `prompt_code`, `template_hash`, `output_schema` jsonb, `eval_run_id` (gate), `model_routing` jsonb | UQ (COALESCE(tenant_id), prompt_code, version_no); CHECK status 'active' requires passing eval_run (BRL-AI-09) |
+| ENT-047 | `ai_eval_case` | STD-X + STD-V | `suite_code`, `vertical`, `input_fixture` jsonb (synthetic or redacted), `expected` jsonb, `label_source`, `is_benchmark` | UQ (suite_code, case_key, version_no); ≥ 200 labelled per vertical for qualification (DEC-001) |
+| ENT-048 | `ai_eval_run` | STD-SA (X) | `suite_code`, `prompt_version_id`, `model_id`, `precision_score`, `recall_score`, `abstention_rate`, `cost_total`, `gate_result` (pass, fail) | Immutable; links release (NFR-033) |
+| ENT-049 | `ai_feedback` | STD-SA | `model_run_id`, `reviewer_id`, `verdict` (accept, edit, reject), `reason_code`, `edit_distance` | Feeds KPI-01/KPI-02 and eval set curation |
+| ENT-050 | `ai_usage` | STD-SA | `model_run_id` or `provider_call_ref`, `unit` (input_tokens, output_tokens, search_query, fetch, embedding_tokens), `quantity`, `unit_cost` numeric(18,4) | UQ (model_run_id, unit) |
+| ENT-054 | `intel_source_policy` | STD-S + STD-V | `source_id`, `licence_ref`, `terms_reviewed_by`, `purpose`, `allowed_fields` text[], `rate_limit`, `expires_at` | UQ (source_id, version_no); expiry stops collection (BRL-SRC-02) |
+| ENT-055 | `intel_search_plan` | STD-S + STD-V | `objective`, `query_spec` jsonb, `source_ids` uuid[], `schedule_cron`, `budget_cap` numeric(18,4) | Runs only within source permissions and budget (M10) |
+| ENT-056 | `intel_query_run` | STD-SA + STD-W | `search_plan_id`, `status` (completed, partial, failed), `results_count`, `cost_reserved`, `cost_actual`, `stopped_reason` | BRL-SRC-09 partial result |
+| ENT-057 | `intel_source_record` | STD-S | `source_id`, `canonical_url`, `url_hash` char(64), `title`, `published_at`, `metadata` jsonb, `blocked_reason` | UQ (tenant_id, startup_id, url_hash) |
+| ENT-058 | `intel_fetch_log` | STD-SA (partitioned monthly) | `source_record_id`, `http_status`, `bytes`, `robots_allowed`, `outcome`, `duration_ms` | Retention OPS 13 m |
+| ENT-060 | `intel_social_post` | STD-S | `platform`, `post_ref`, `author_org_id`, `posted_at`, `text_excerpt` (Conf), `licence_basis` | UQ (tenant_id, startup_id, platform, post_ref); organizational posts only (M33) |
+| ENT-061 | `intel_competitor` | STD-S | `name`, `website`, `segments` text[], `internal_only` bool default true | CHECK internal_only = true (BRL-SRC-10) |
+| ENT-062 | `intel_market_event` | STD-S | `competitor_id`, `event_type`, `event_date`, `summary`, `evidence_id` | Internal alerts only |
+| ENT-064 | `intel_location` | STD-S | `organization_id`, `country_code`, `subdivision_code`, `city`, `address` (Conf), `geo` point (optional) | Index (organization_id) |
+| ENT-065 | `intel_alias` | STD-S | `organization_id`, `alias_name`, `alias_kind` (trading, former, abbreviation, domain) | UQ (organization_id, lower(alias_name)); trigram index |
+| ENT-066 | `intel_signal_type` | STD-X | `code`, `label`, `examples` jsonb (for AI), `default_ttl_days` | UQ (COALESCE(tenant_id), code) |
+| ENT-069 | `intel_need_evidence` | STD-SA | `need_id`, `evidence_id`, `relevance` numeric(5,4) | UQ (need_id, evidence_id) |
+| ENT-070 | `intel_match` | STD-S + STD-W | `need_id`, `offering_version_id`, `match_score` numeric(5,4), `rank`, `exclusion_reason`, `readiness_ok` bool | UQ (need_id, offering_version_id); CHECK readiness_ok = true or exclusion_reason not null (BRL-SCR-04) |
+| ENT-071 | `intel_scoring_model` | STD-S + STD-V | `w_fit`, `w_evidence`, `w_intent`, `w_readiness`, `w_timing` numeric(5,4), `min_known_weight` (0.60), `band_priority` (75), `band_nurture` (50) | **CHECK w_fit + w_evidence + w_intent + w_readiness + w_timing = 1.0000**; each weight 0–1 (BRL-SCR-01) |
+| ENT-075 | `intel_role_hypothesis` | STD-S + STD-W | `organization_id`, `role_code`, `confidence`, `source_evidence_id`, `resolved_contact_id` | Published sources only (BRL-SRC-04) |
+| ENT-076 | `intel_contact_source` | STD-SA | `contact_id`, `source_url` (Conf), `observed_at`, `field_names` text[], `licence_basis` | No guessed emails: CHECK licence_basis <> 'pattern_inferred' (BRL-SRC-05) |
+| ENT-077 | `intel_contact_verification` | STD-SA + STD-W | `contact_id`, `channel`, `method` (published_source, provider_check, reply_confirmed), `result` (verified, failed, risky), `expires_at`, `provider_ref` | Verified ≠ consent (BRL-ELG-03) |
+| ENT-078 | `intel_review` | STD-SA | `opportunity_id` or `signal_id` or `need_id` (exactly one), `decision` (qualify, reject, nurture, request_research), `reason_code`, `reviewer_id`, `qualification_checks` jsonb | Immutable; feeds KPI-01 |
+| ENT-080 | `crm_form` | STD-S | `form_code`, `purpose` (contact, demo, partnership, bid_enquiry, order_enquiry, guardian_intake, referral, saas_application), `active_version_id` | UQ (tenant_id, startup_id, form_code) |
+| ENT-081 | `crm_form_version` | STD-S + STD-V | `form_id`, `field_schema` jsonb (allowlist), `consent_text_policy_id`, `minor_handling` (none, age_gate_guardian) | UQ (form_id, version_no); minors rule (DEC-030) |
+| ENT-082 | `crm_submission` | STD-SA + STD-W | `form_version_id`, `idempotency_key`, `body_hash`, `payload_min` jsonb (Rest/Conf fields encrypted), `ip_hmac`, `screening_result` (accepted, spam, rate_limited, sensitive_redacted) | **UQ (tenant_id, startup_id, form_version_id, idempotency_key)** (CA-INTAKE) |
+| ENT-083 | `crm_pipeline` | STD-S + STD-V | `opportunity_type`, `closure_policy_id`, `name` | UQ (tenant_id, startup_id, opportunity_type, version_no) |
+| ENT-084 | `crm_stage` | STD-S | `pipeline_id`, `code`, `ordinal`, `default_weight` numeric(5,4), `is_terminal`, `entry_rules` jsonb, `exit_rules` jsonb, `allowed_next` text[] | UQ (pipeline_id, code); UQ (pipeline_id, ordinal); CHECK weight 0–1 |
+| ENT-085 | `crm_closure_policy` | STD-S + STD-V | `opportunity_type`, `close_on` (executed_contract, verified_payment, accepted_delivery), `evidence_required` jsonb | DEC-054 / BRL-FIN-01 |
+| ENT-089 | `eng_channel_account` | STD-S | `channel`, `integration_id`, `sender_identity` (email domain / WA number, Conf), `ses_configuration_set`, `reputation_state`, `daily_cap` | UQ (channel, sender_identity) globally (no shared senders, Part 2.4 §2.35.2) |
+| ENT-090 | `eng_message_template` | STD-S + STD-V | `channel`, `locale`, `purpose`, `body` jsonb, `provider_template_ref` (WhatsApp), `claim_ids` | UQ (tenant_id, startup_id, code, locale, version_no) |
+| ENT-091 | `eng_message_draft` | STD-S + STD-W | `template_id`, `opportunity_id`, `contact_id`, `body` (Conf), `content_hash`, `citations` uuid[], `model_run_id`, `state` (drafted, policy_checked, awaiting_approval, approved, rejected) | Approval binds content_hash |
+| ENT-095 | `eng_inbound_event` | STD-SA | `thread_id`, `channel_account_id`, `provider_message_id`, `sender_hmac` (Rest), `body_storage_key` (Conf), `is_stop_keyword`, `received_at` | **UQ (channel_account_id, provider_message_id)** |
+| ENT-096 | `eng_intent` | STD-SA | `inbound_event_id`, `intent_code` (interested, meeting_request, objection, opt_out, complaint, question, out_of_office, other), `confidence`, `model_run_id`, `rule_hit` | opt_out/complaint → suppression within the same transaction (M04) |
+| ENT-097 | `eng_identity_link` | STD-S | `contact_id`, `channel`, `address_hmac` (Rest), `verified` | UQ (tenant_id, startup_id, channel, address_hmac) |
+| ENT-098 | `eng_routing_rule` | STD-S + STD-V | `priority`, `condition` jsonb, `assign_to` (user/team/queue), `handover_sla_minutes` | UQ (startup_id, priority, version_no) |
+| ENT-099 | `eng_chat_session` | STD-S | `visitor_ref` (cookie hash), `locale`, `state` (active, handed_over, closed), `transcript_storage_key` (Conf, 90 d), `lead_id`, `expires_at` | Retention CHT 90 days |
+| ENT-101 | `eng_sequence_step` | STD-S | `sequence_id`, `ordinal`, `channel`, `template_id`, `wait_business_days`, `condition` jsonb | UQ (sequence_id, ordinal) |
+| ENT-104 | `eng_calendar_link` | STD-S | `user_id`, `provider` (google, microsoft), `integration_id`, `work_hours` jsonb, `buffer_minutes` (15) | UQ (user_id, provider); free/busy only (DEC-024) |
+| ENT-105 | `mkt_content_asset` | STD-S | `asset_type` (blog, social_post, case_study, landing_copy, email_newsletter, ad_creative, faq), `title`, `owner_id`, `brief` | — |
+| ENT-107 | `mkt_social_publication` | STD-S + STD-W | `content_version_id`, `channel_account_id`, `scheduled_at`, `idempotency_key`, `provider_post_id`, `state`, `outcome_certainty` | **UQ (channel_account_id, idempotency_key)**; UQ (channel_account_id, provider_post_id) |
+| ENT-108 | `mkt_keyword` | STD-S | `phrase`, `locale`, `intent`, `target_page_id` | UQ (startup_id, lower(phrase), locale) |
+| ENT-109 | `mkt_seo_issue` | STD-S | `page_id`, `issue_code`, `severity`, `state`, `detected_at`, `source` (search_console, crawler) | Metrics from authorized sources only (BRL-MKT-08) |
+| ENT-110 | `mkt_page_metric` | STD-SA | `page_id`, `keyword_id`, `metric_date`, `impressions`, `clicks`, `avg_position`, `enquiries`, `source` | UQ (page_id, COALESCE(keyword_id), metric_date, source); CHECK counts ≥ 0 |
+| ENT-111 | `mkt_landing_page` | STD-S | `page_kind` (site_page, landing_page), `slug`, `locale`, `template_code`, `blocks_version_id`, `form_id`, `is_health_related` (first-party analytics only, BRL-MKT-06) | UQ (tenant_id, startup_id, slug, locale) |
+| ENT-113 | `mkt_publication_snapshot` | STD-SA | `publication_id`, `content_version_id`, `snapshot_hash`, `storage_key`, `approval_id`, `published_at`, `published_by` | UQ (publication_id, snapshot_hash); approval hash = snapshot_hash (BRL-PUB-01) |
+| ENT-114 | `mkt_preview_grant` | STD-S | `publication_id`, `token_hash`, `expires_at` (default 24 h), `created_for` | UQ (token_hash); noindex enforced by serving layer (BRL-PUB-03) |
+| ENT-116 | `mkt_campaign_version` | STD-S + STD-V | `campaign_id`, `audience_id`, `content_version_ids`, `budget_cap`, `currency`, `schedule` jsonb, `simulation_result` jsonb | UQ (campaign_id, version_no) |
+| ENT-117 | `mkt_audience` | STD-S + STD-V | `criteria` jsonb (no health or minor attributes), `member_count`, `frozen_at`, `excluded_counts` jsonb | Members in `mkt_audience_member`; CHECK criteria excludes forbidden attributes (validator, BRL-ELG-14) |
+| ENT-118 | `mkt_ad_campaign` | STD-S + STD-W | `campaign_id`, `platform`, `provider_campaign_id`, `daily_cap`, `monthly_cap`, `currency`, `state`, `budget_id` | UQ (platform, provider_campaign_id); spend caps (BRL-MKT-05) |
+| ENT-119 | `mkt_spend_event` | STD-SA | `ad_campaign_id`, `spend_date`, `amount`, `currency`, `provider_report_id` | **UQ (ad_campaign_id, spend_date, provider_report_id)**; CHECK amount ≥ 0 |
+| ENT-120 | `mkt_event` | STD-S | `event_kind` (webinar, demo, workshop), `title`, `starts_at`, `ends_at`, `capacity`, `provider_event_ref`, `state` | CHECK ends_at > starts_at |
+| ENT-121 | `mkt_registration` | STD-S | `event_id`, `contact_id`, `consent_id`, `state` (registered, cancelled, attended, no_show) | UQ (event_id, contact_id) |
+| ENT-122 | `mkt_attendance` | STD-SA | `registration_id`, `joined_at`, `left_at`, `minutes_attended`, `source` | UQ (registration_id, source) |
+| ENT-123 | `mkt_referral` | STD-S | `partner_id`, `referral_code`, `referred_contact_id`, `consent_id`, `proposed_commission_pct`, `approval_id`, `state` | UQ (tenant_id, referral_code); referred person not enrolled before own consent (BRL-ELG-17); payouts outside platform (DEC-046) |
+| ENT-124 | `mkt_attribution_event` | STD-SA (partitioned monthly at Y2) | `touch_type` (page_view, form_submit, campaign_click, referral, outbound_reply), `anonymous_ref` (first-party cookie hash), `lead_id`, `campaign_id`, `referral_id`, `utm` jsonb, `occurred_at` | First-party only; no health events to pixels (BRL-MKT-06) |
+| ENT-126 | `com_proposal_version` | STD-S + STD-V | `proposal_id`, `body_storage_key`, `price_snapshot` jsonb, `content_hash`, `author_id` | UQ (proposal_id, version_no); approver ≠ author |
+| ENT-129 | `com_objection` | STD-S + STD-W | `deal_id`, `negotiation_id`, `category_code`, `raised_text` (Conf), `approved_answer_ref`, `state` (raised, answered, escalated, resolved), `resolved_at` | KPI-28 |
+| ENT-130 | `com_negotiation` | STD-S | `deal_id`, `concession_limit_pct`, `exception_requested`, `exception_approval_id`, `state` | UQ (deal_id) WHERE state <> 'closed' |
+| ENT-134 | `com_bid_checklist_item` | STD-S | `bid_id`, `criterion_code` (capability, certification, financial, geography, documents), `result` (pass, fail, waived, pending), `evidence_ref`, `waiver_approval_id` | UQ (bid_id, criterion_code); CHECK waived requires approval (BRL-BID-02) |
+| ENT-138 | `com_sku_availability` | STD-S | `sku_code`, `offering_version_id`, `availability_status` (available, limited, unavailable), `available_qty`, `reserved_qty`, `unit_code` | UQ (tenant_id, startup_id, sku_code); **CHECK available_qty ≥ 0 AND reserved_qty ≥ 0 AND reserved_qty ≤ available_qty** (DEC-045) |
+| ENT-139 | `com_inventory_reservation` | STD-S | `sku_availability_id`, `order_line_id`, `quantity`, `state` (held, consumed, released, expired), `expires_at` | UQ (order_line_id) WHERE state = 'held'; CHECK quantity > 0 |
+| ENT-141 | `com_invoice_line` | STD-S | `invoice_id`, `line_no`, `source_type` (quote_line, order_line, milestone), `source_id`, `description`, `quantity`, `unit_price`, `discount_pct`, `line_total`, `hsn_sac_code`, `tax_rate_pct`, `tax_amount`, `tax_split` jsonb (cgst/sgst/igst) | UQ (invoice_id, line_no); same rounding CHECK as quote line |
+| ENT-144 | `com_discrepancy_case` | STD-S | `payment_id`, `invoice_id`, `discrepancy_type` (amount, currency, payer, reference, duplicate), `expected` jsonb, `observed` jsonb, `state`, `resolution` | BRL-FIN-03 |
+| ENT-147 | `lcy_onboarding` | STD-S + STD-W | `deal_id`, `offering_id`, `template_ref`, `state` (created, in_progress, blocked, completed, handed_off), `sla_due_at`, `mandatory_open_count` | CHECK handed_off requires mandatory_open_count = 0 (BRL-LCY-01) |
+| ENT-148 | `lcy_task` | STD-S + STD-W | `subject_type`, `subject_id`, `title`, `assignee_id`, `due_at`, `priority`, `state` (open, in_progress, done, cancelled), `is_mandatory`, `source` (system, user, ai_draft) | Partial index open tasks by assignee |
+| ENT-149 | `lcy_handoff` | STD-SA | `onboarding_id`, `from_owner_id`, `to_owner_id`, `checklist` jsonb (no clinical data, BRL-LCY-02), `handed_off_at` | Immutable |
+| ENT-150 | `lcy_renewal` | STD-S + STD-W | `customer_subscription_id` or `contract_id`, `due_date`, `state` (upcoming, due, in_review, renewed, churned, deferred), `risk_score` (excludes health attributes, BRL-LCY-03), `outcome_id` | UQ (customer_subscription_id, due_date) |
+| ENT-151 | `lcy_customer_subscription` | STD-S | `contract_id`, `organization_id`, `offering_id`, `start_date`, `end_date`, `billing_terms` jsonb, `state` (active, expiring, renewed, ended) | CHECK start ≤ end |
+| ENT-152 | `lcy_account_metric` | STD-SA | `organization_id`, `metric_code` (usage, nps, tickets, adoption), `value` numeric, `as_of_date`, `source` | UQ (organization_id, metric_code, as_of_date) |
+| ENT-153 | `lcy_partner` | STD-S | `organization_id`, `partner_type` (referral, deployment, technology, insurer, institution), `due_diligence_state`, `agreement_contract_id` | UQ (tenant_id, startup_id, organization_id, partner_type) |
+| ENT-154 | `lcy_pilot` | STD-S + STD-W | `partner_id`, `pilot_type` (partner, insurance, phygital), `state` (proposed, due_diligence, approved, running, evaluated, rolled_out, stopped), `readiness_approval_id`, `data_restrictions` jsonb (organization-level only, BRL-LCY-05) | CHECK running requires readiness approval (BRL-LCY-04) |
+| ENT-155 | `lcy_deployment` | STD-S | `pilot_id`, `partner_id`, `location_ref`, `readiness_checklist` jsonb, `state`, `go_live_date` | M49, M65 |
+| ENT-156 | `lcy_integration_deal` | STD-S + STD-W | `partner_id`, `api_capabilities` jsonb (approved only, BRL-LCY-06), `technical_review_state`, `legal_review_state`, `contract_id`, `state` | M64 |
+| ENT-157 | `lcy_feedback` | STD-SA | `feedback_kind` (loss_reason, nps, survey, complaint), `subject_type`, `subject_id`, `category_code`, `body_redacted` (Conf), `contact_id` | Free text redacted for sensitive data (BRL-PRV-06) |
+| ENT-158 | `lcy_outcome` | STD-SA | `subject_type` (deal, renewal, pilot, bid), `subject_id`, `outcome_code` (won, lost, renewed, churned, awarded, not_awarded, stopped), `loss_reason_code`, `learning_actions` jsonb, `recorded_at` | UQ (subject_type, subject_id, outcome_code) |
+| ENT-164 | `aut_autonomy_plan` | STD-S + STD-W | `objective_code`, `mode` (L1–L3 within caps), `plan_revision`, `template_ids`, `concurrency_limit`, `budget_cap`, `simulation_cost`, `stop_policy` jsonb, `approval_id`, `state` (§2.27.15), `expires_at` (30 d) | CHECK concurrency_limit ≤ 20; approval expires (BRL-APR-03) |
+| ENT-165 | `aut_conflict_case` | STD-S | `relationship_ref`, `action_type`, `duplicate_key`, `priority_rule` (compliance > transactional > sales > marketing), `frequency_count`, `budget_reservation_id`, `resolution` (merged, chosen, escalated), `reviewer_id`, `state` (detected, held, resolved) | UQ (tenant_id, startup_id, duplicate_key) WHERE state <> 'resolved' |
+| ENT-166 | `aut_node_template` | STD-X + STD-V | `node_type`, `input_schema`, `output_schema`, `side_effect_class`, `required_permissions`, `risk_class`, `allowed_channels`, `cost_estimate` | UQ (COALESCE(tenant_id), node_type, version_no); no code nodes (DEC-051) |
+| ENT-167 | `aut_workflow_template` | STD-X + STD-V | `template_code`, `business_capability`, `objective`, `node_types` text[], `test_fixtures` jsonb, `deprecation_status` | UQ (COALESCE(tenant_id), template_code, version_no); published versions immutable |
+| ENT-170 | `ops_domain_event` | STD-SA (partitioned monthly) | `event_type`, `schema_version`, `aggregate_type`, `aggregate_id`, `aggregate_revision`, `payload` jsonb (references, no Restricted values), `occurred_at`, `global_seq` bigint (identity) | UQ (outbox_id); consumers track `last_event_seq` per projection |
+| ENT-171 | `ops_idempotency_key` | STD-S (ephemeral) | `scope_key` (route or operation + actor), `key_value`, `body_hash`, `response_status`, `response_ref`, `expires_at` (35 d) | **UQ (tenant_id, startup_id, scope_key, key_value)**; same key + different body_hash → 409 (NFR-015) |
+| ENT-173 | `ops_job_run` | STD-X (partitioned monthly) | `job_name`, `queue` (transactional, interactive, batch), `state` (queued, running, succeeded, failed, dead_letter, retried), `attempt`, `scope` jsonb, `error_class`, `started_at`, `finished_at` | Index (state, queue) partial on failed/dead_letter |
+| ENT-174 | `ops_notification` | STD-S | `recipient_id`, `severity`, `category`, `title`, `action_link`, `event_ref`, `run_id`, `dedup_key`, `due_at`, `acknowledged_at`, `state` (new, read, archived, escalated) | UQ (recipient_id, dedup_key) WHERE state IN ('new','read') (FR-A106) |
+| ENT-175 | `ops_notification_preference` | STD-T | `user_id`, `category`, `digest_mode` (immediate, hourly, daily, off), `channel` (in_app, email) | UQ (user_id, category, channel); High/Critical always immediate (DEC-036) |
+| ENT-176 | `ops_incident` | STD-X | `severity`, `title`, `state`, `opened_at`, `resolved_at`, `postmortem_ref`, `affected_tenants_count` | Index (state, severity) |
+| ENT-177 | `ops_release` | P | `version_tag`, `state` (§2.27.18 Release), `gate_results` jsonb, `evidence_refs`, `approved_by`, `deployed_at`, `rollback_of` | UQ (version_tag) |
+| ENT-178 | `ops_test_run` | P | `release_id`, `suite` (unit, integration, e2e, eval, restore_drill, security), `result`, `report_key`, `executed_at` | Restore drill result per release (NFR-012) |
+| ENT-180 | `saas_plan_version` | P + STD-V | `plan_id`, `base_fee` numeric(18,2), `currency`, `billing_cycle`, `trial_days`, `published_price` bool | UQ (plan_id, version_no); price visible only when approved (DEC-047) |
+| ENT-184 | `saas_service_invoice` | STD-T | `invoice_no`, `subscription_id`, `period_start`, `period_end`, `subtotal`, `tax`, `total_amount`, `currency`, `state` (draft, approved, issued, paid, void), `maker_approval_id`, `checker_approval_id` | UQ (invoice_no) platform-wide; frozen after issued; excluded from commercial receipts (BRL-FIN-08) |
+| ENT-185 | `saas_service_invoice_line` | STD-T | `service_invoice_id`, `line_kind` (base_fee, overage, credit), `meter_code`, `quantity`, `unit_price`, `amount`, `reading_count`, `readings_digest` | UQ (service_invoice_id, line_kind, meter_code); Σ readings = quantity (reconciliation, KPI-24) |
+| ENT-186 | `saas_credit` | STD-SA (T) | `subscription_id`, `amount`, `currency`, `reason_code`, `approval_id`, `applied_invoice_id`, `reverses_id` | Immutable, reason mandatory (BRL-SVC-07) |
+| ENT-189 | `saas_export_job` | STD-T | `request_type` (portability, report, privacy_access, offboarding), `entity_selection` jsonb, `format`, `format_version`, `classification_max`, `redaction_profile`, `approval_id`, `legal_hold_checked`, `file_storage_key`, `link_token_hash`, `link_expires_at` (72 h), `state` (§2.27.18) | Restricted requires R10 approval (BRL-PRV-07); file deleted after 7 days |
+| ENT-190 | `saas_import_job` | STD-S | `template_code`, `template_version`, `source_file_key`, `source_sha256`, `dry_run` bool, `validation_report_key`, `rows_total`, `rows_accepted`, `rows_rejected`, `rows_merged`, `approval_id`, `state` (§2.27.18), `rollback_state` | UQ (tenant_id, startup_id, source_sha256, template_code) WHERE state = 'completed' (no double import) |
+| ENT-191 | `ana_metric_definition` | STD-X + STD-V | `metric_code` (KPI-01…31, MD-*), `formula_text`, `numerator_ref`, `denominator_ref` (named SQL view), `filters` jsonb, `currency_basis`, `owner_role` | UQ (COALESCE(tenant_id), metric_code, version_no); changes via A083 with approval |
+| ENT-192 | `ana_metric_snapshot` | STD-SA | `metric_definition_id`, `metric_version`, `scope` jsonb, `period_start`, `period_end`, `as_of`, `numerator`, `denominator`, `value`, `unknown_count`, `currency` | UQ (metric_definition_id, startup_id, period_start, period_end, as_of); RPT-R1/R2 |
+| ENT-193 | `ana_account_projection` | STD-S (rebuildable) | `organization_id`, `summary` jsonb, `open_deals`, `last_touch_at`, `receivable_balance`, `last_event_seq` | UQ (startup_id, organization_id); freshness ≤ 60 s (NFR-008) |
+| ENT-194 | `ana_admin_projection` | STD-T (rebuildable) | `panel_code`, `startup_ids` (permitted set hash), `payload` jsonb, `refreshed_at`, `last_event_seq` | UQ (tenant_id, panel_code, startup_scope_hash); never cross-tenant (RPT-R8) |
+| ENT-195 | `ana_pipeline_projection` | STD-S (rebuildable) | `deal_id`, `stage_code`, `owner_id`, `expected_value`, `currency`, `weighted_value`, `age_days`, `is_simulated` | UQ (deal_id); simulated excluded from KPIs (RPT-R7) |
+| ENT-196 | `ana_forecast` | STD-SA | `period`, `scenario` (base, low, high), `method` (historical, configured), `weighted_value`, `ci_low`, `ci_high`, `currency`, `assumptions` jsonb, `is_estimate` = true | CHECK is_estimate = true (RPT-R4); CHECK ci_low ≤ weighted_value ≤ ci_high |
+| ENT-197 | `ana_stage_metric` | STD-SA | `pipeline_id`, `stage_code`, `period`, `conversion_rate` numeric(5,4), `sample_size`, `median_days` | Historical weights only when ≥ 30 closed deals (Part 2.4 §2.31.4) |
+| ENT-198 | `ana_fx_snapshot` | STD-SA (T) | `base_currency`, `quote_currency`, `rate` numeric(18,8), `rate_source`, `rate_date` | UQ (tenant_id, base_currency, quote_currency, rate_date, rate_source); CHECK rate > 0; never applied to stored actuals (DEC-027) |
+| ENT-199 | `ana_report_subscription` | STD-T | `user_id`, `report_code` (RP-01…30), `scope` jsonb, `frequency`, `format`, `last_sent_at` | Permission recheck at send (RPT-R10) |
+
+---
+
+## 3.3.8 Indexes, unique (idempotency) constraints and check constraints
+
+### 3.3.8.1 Index policy
+
+| Rule | Specification |
+|---|---|
+| IX-R1 | Every foreign key column (or composite FK) has a supporting B-tree index whose leading columns are `(tenant_id, startup_id, <fk>)`, so RLS predicates and joins use one index |
+| IX-R2 | Every list screen's default sort has a covering index `(tenant_id, startup_id, <sort_col> DESC, id DESC)` for stable cursor pagination (NFR-015, FR-FLT-RULES "stable cursor sort plus ID") |
+| IX-R3 | Queue-like predicates use **partial indexes** on the small "live" subset (pending, open, due) instead of full indexes |
+| IX-R4 | Simulated rows are excluded from KPI indexes (`WHERE is_simulated = false`) (BRL-AUT-04) |
+| IX-R5 | Append-only, time-ordered partitions get a **BRIN** index on the time column in addition to the B-tree PK |
+| IX-R6 | New indexes on populated tables are created `CONCURRENTLY` in a separate migration; each index has an owner and a query it serves (reviewed quarterly with `pg_stat_user_indexes`; unused > 90 days → drop candidate) |
+| IX-R7 | No index on encrypted `_enc` columns; lookups use the `_hmac` blind index (§3.3.16.4) |
+
+### 3.3.8.2 Key B-tree and partial indexes (selection)
+
+| Index | Table | Definition | Serves |
+|---|---|---|---|
+| `ixp_ops_outbox__pending` | ops_outbox | `(available_at, id) WHERE status IN ('pending','failed')` | Dispatcher claim with `FOR UPDATE SKIP LOCKED`; lag ≤ 60 s |
+| `ixp_eng_message__dispatchable` | eng_message | `(tenant_id, startup_id, scheduled_for) WHERE state IN ('queued','policy_checked') AND is_simulated = false` | Dispatch and quiet-hours deferral |
+| `ixp_eng_message__uncertain` | eng_message | `(tenant_id, startup_id, sent_at) WHERE outcome_certainty = 'uncertain'` | Reconciliation console (RECOMMENDATION-015) |
+| `ixp_eng_enrollment__due` | eng_enrollment | `(next_due_at) WHERE state IN ('active','waiting')` | Sequence scheduler (Celery Beat) |
+| `ixp_gov_suppression__active` | gov_suppression | `(tenant_id, identifier_hmac, channel, purpose) WHERE lifted_by_id IS NULL` | PDP suppression check (hot path) |
+| `ix_gov_consent__current` | gov_consent | `(tenant_id, startup_id, subject_hmac, channel, purpose, effective_at DESC)` | Latest consent row lookup |
+| `ixp_intel_opportunity__review` | intel_opportunity | `(tenant_id, startup_id, current_score DESC) WHERE state IN ('priority_review','scored') AND archived_at IS NULL` | A022/A027 review queues |
+| `ixp_crm_deal__open` | crm_deal | `(tenant_id, startup_id, stage_code, owner_id) WHERE closure_status = 'open' AND archived_at IS NULL` | Pipeline board (A029) |
+| `ixp_lcy_task__open` | lcy_task | `(tenant_id, startup_id, assignee_id, due_at) WHERE state IN ('open','in_progress')` | Action centre (A106), A043 |
+| `ixp_ops_notification__unread` | ops_notification | `(recipient_id, created_at DESC) WHERE state = 'new'` | Notification badge |
+| `ixp_aut_run__active` | aut_run | `(tenant_id, startup_id, state, due_at) WHERE state IN ('pending','running','waiting','held','paused','reconciling')` | Live monitor (A110) |
+| `ixp_com_invoice__receivable` | com_invoice | `(tenant_id, startup_id, due_date) WHERE state IN ('issued','awaiting_payment','partially_paid')` | Ageing (RP-14, RP-15) |
+| `ixp_intel_contact__retention` | intel_contact | `(tenant_id, last_eligible_interaction_at) WHERE erased_at IS NULL` | Retention purge candidate scan (DEC-028) |
+| `ix_crm_activity__timeline` | crm_activity | `(tenant_id, startup_id, organization_id, occurred_at DESC, id DESC)` | Customer 360 timeline |
+| `ixb_ops_audit_event__time` | ops_audit_event (each partition) | `BRIN (occurred_at)` | Time-range audit search (A009) |
+| `ix_ops_audit_event__object` | ops_audit_event | `(tenant_id, object_type, object_id, occurred_at DESC)` | Object history |
+| `ix_ai_model_run__agent_day` | ai_model_run | `(tenant_id, agent_id, created_at)` | Cost per agent per day (KPI-21) |
+
+### 3.3.8.3 Search indexes: full-text and trigram (DEC-037, RECOMMENDATION-009)
+
+| Index | Table | Definition | Notes |
+|---|---|---|---|
+| `ixg_intel_organization__name_trgm` | intel_organization | `GIN (normalized_name gin_trgm_ops)` | Fuzzy name search and duplicate candidates (BRL-SRC-08) |
+| `ixg_intel_alias__trgm` | intel_alias | `GIN (lower(alias_name) gin_trgm_ops)` | |
+| `ixg_intel_contact__name_trgm` | intel_contact | `GIN (name_search gin_trgm_ops) WHERE erased_at IS NULL` | Name only; emails searched by exact HMAC |
+| `ixg_crm_deal__title_trgm` | crm_deal | `GIN (lower(title) gin_trgm_ops)` | |
+| `ixg_com_bid__tender_trgm` | com_bid | `GIN (lower(tender_ref) gin_trgm_ops)` | |
+| `ixg_cat_chunk__tsv` | cat_chunk | `GIN (tsv) WHERE is_searchable` | Hybrid retrieval (keyword leg) |
+| `ixg_intel_organization__tsv` | intel_organization | `GIN (tsv)` | Global search |
+| `ixg_mkt_content_version__tsv` | mkt_content_version | `GIN (to_tsvector(cfg, body_text))` (generated column) | Content search |
+| `ixg_*__jsonb` | jsonb filter columns used by allowlisted filters (e.g. `cat_offering_version.specification`, `com_bid.technology_codes`) | `GIN (col jsonb_path_ops)` or `GIN (array_col)` | Vertical filters FR-FLT-08…11 |
+
+**Text search configuration.** `english` for `en-*` content; `simple` (no stemming) for `hi-IN`, `ta-IN`, `or-IN` content because PostgreSQL ships no stemmers for these languages; trigram search covers transliteration variance. [ASSUMPTION-117] A generated column `ts_config regconfig` chooses the configuration from the row locale.
+
+**Global search (FR-SRCH-01).** Implemented as a `UNION ALL` over per-entity search views (`v_search_organization`, `v_search_contact`, `v_search_deal`, `v_search_bid`, `v_search_order`, `v_search_document`, `v_search_content`), each exposing only permitted fields (masked per role, §3.3.16.5) and filtered by RLS; ranked by `ts_rank_cd` + trigram `similarity`; capped at 50 results.
+
+### 3.3.8.4 Vector indexes (pgvector) [RECOMMENDATION-039]
+
+| Decision | Specification | Rationale |
+|---|---|---|
+| Column type | `halfvec(1024)` (16-bit floats) | Halves storage and index memory versus `vector(1024)` (≈ 2 KB vs 4 KB per vector) with negligible recall loss for retrieval at this scale; matters because the Year 2 estimate is ≈ 1.6 M chunks (§3.3.10) on a cost-capped instance (B01) |
+| Dimension | 1024, fixed per `model_id`; a model change creates a new embedding set (re-embed job) and the old set is dropped after cut-over | Embedding provider is not fixed by the baseline [GAP-111] |
+| Index type | **HNSW** `USING hnsw (embedding halfvec_cosine_ops) WITH (m = 16, ef_construction = 64)` | HNSW gives better recall/latency trade-off without a training step and handles continuous inserts; **IVFFlat rejected** because its lists must be trained on representative data and degrade as data grows, requiring periodic rebuilds, which a 0.5-FTE SRE cannot babysit |
+| Query settings | `SET LOCAL hnsw.ef_search = 100; SET LOCAL hnsw.iterative_scan = relaxed_order;` (pgvector ≥ 0.8, verify) | Iterative scans keep recall when RLS and `classification`/`offering_version_ids` filters remove many neighbours |
+| Tenant isolation | Retrieval query always includes `tenant_id`, `startup_id`, `classification IN (…)` predicates **and** runs under RLS (Part 2.4 §2.35.2 "namespace as mandatory filter") | Defence in depth: filter + RLS |
+| Scale path | When one startup exceeds ≈ 250 k vectors or p95 retrieval > 150 ms: (a) partial HNSW index per large startup `WHERE startup_id = '<id>'`, then (b) list-partition `cat_embedding` by `tenant_id` | "Separate tables or partitions per tenant at scale" (Part 2.4 §2.35.2) |
+| Hybrid retrieval | Vector top-k (k = 40) ∪ full-text top-k (k = 40) → reciprocal rank fusion → top 8 cited chunks | Grounding with citations (BRL-AI-03) |
+| Restricted data | No embeddings are created for chunks classified **Restricted** or for any personal contact data, learner data or financial evidence | Minimization; DEC-030 |
+
+### 3.3.8.5 Unique constraints for idempotency and de-duplication
+
+| Constraint | Table | Columns | Requirement |
+|---|---|---|---|
+| UQ-IDEM-01 | `int_provider_event_key` | PK (`provider_account`, `provider_event_id`) | Verified callbacks deduplicated by provider account + event ID (FRD §5, NFR-005) |
+| UQ-IDEM-02 | `com_payment` | (`tenant_id`, `provider_account`, `provider_payment_id`) | Payment replay → no effect (BRL-FIN-02) |
+| UQ-IDEM-03 | `eng_delivery_event` | (`channel_account_id`, `provider_event_id`, `occurred_at`) + key table `eng_delivery_event_key (channel_account_id, provider_event_id)` | Duplicate delivery webhook → no effect |
+| UQ-IDEM-04 | `eng_message` | (`channel_account_id`, `idempotency_key`) | One provider send per logical message |
+| UQ-IDEM-05 | `eng_inbound_event` | (`channel_account_id`, `provider_message_id`) | One inbound per provider message |
+| UQ-IDEM-06 | `ops_idempotency_key` | (`tenant_id`, `startup_id`, `scope_key`, `key_value`) + `body_hash` compare | Idempotency key + body hash (NFR-015); same key, different body → 409 |
+| UQ-IDEM-07 | `crm_submission` | (`tenant_id`, `startup_id`, `form_version_id`, `idempotency_key`) | One lead per duplicate submission (CA-INTAKE) |
+| UQ-IDEM-08 | `com_fulfillment_event` | (`tenant_id`, `startup_id`, `order_line_id`, `event_key`) | FR-DM-03 same event key accepted once |
+| UQ-IDEM-09 | `com_signature_event` | (`provider_account`, `provider_event_id`) | E-sign webhook replay |
+| UQ-IDEM-10 | `mkt_social_publication` | (`channel_account_id`, `idempotency_key`) | Idempotent publish (M35) |
+| UQ-IDEM-11 | `aut_step_run` | (`tenant_id`, `startup_id`, `idempotency_key`) | One external action per step attempt series |
+| UQ-IDEM-12 | `aut_run` | (`tenant_id`, `startup_id`, `trigger_id`, `trigger_event_id`) | Trigger dedup window (BRL-AUT-08) |
+| UQ-IDEM-13 | `ops_outbox` | (`tenant_id`, `dedup_key`, `created_at`) | Exactly-once publish |
+| UQ-IDEM-14 | `com_receivable_entry`, `com_payable_entry` | (`tenant_id`, `startup_id`, `source_type`, `source_id`, `entry_type`) | Each source posts once |
+| UQ-IDEM-15 | `ai_cost_ledger` | (`source_type`, `source_id`, `entry_type`) | One reserve/settle/release per call |
+| UQ-IDEM-16 | `saas_usage_meter_reading` | (`tenant_id`, `startup_id`, `meter_code`, `period_start`) WHERE base row | No double metering |
+| UQ-IDEM-17 | `saas_application_draft` | (`provisioned_tenant_id`) | Re-running provisioning has no duplicate effect (FRD §16.3) |
+| UQ-IDEM-18 | `saas_import_job` | (`tenant_id`, `startup_id`, `source_sha256`, `template_code`) WHERE completed | Same file cannot be imported twice |
+| UQ-IDEM-19 | `mkt_spend_event` | (`ad_campaign_id`, `spend_date`, `provider_report_id`) | Ad spend report replay |
+| UQ-DUP-01 | `crm_lead` | (`tenant_id`, `startup_id`, `dedupe_key`) WHERE live | Lead dedupe |
+| UQ-DUP-02 | `intel_opportunity` | (`tenant_id`, `startup_id`, `organization_id`, `offering_id`) WHERE live | Qualified de-duplicated per org × offering × startup |
+| UQ-DUP-03 | `intel_contact` | (`tenant_id`, `startup_id`, `email_hmac`) WHERE not archived | Contact dedupe |
+| UQ-DUP-04 | `intel_evidence` | (`tenant_id`, `startup_id`, `content_hash`, `organization_id`) | Evidence dedupe |
+| UQ-DUP-05 | `ten_domain` | (`hostname`) WHERE verified | One tenant/startup per host |
+
+### 3.3.8.6 Check constraints (consolidated)
+
+| ID | Rule | Tables | Source |
+|---|---|---|---|
+| CK-01 | Quantities > 0 (lines) or ≥ 0 (balances, counters) | quote/order/invoice lines, fulfilment events, SKU availability, usage readings | BRL-ORD-02, DEC-045 |
+| CK-02 | Money ≥ 0 except ledger/credit/reversal rows (≠ 0) and credit notes (≤ 0) | All money columns | BRL-FIN-05 |
+| CK-03 | `currency ~ '^[A-Z]{3}$'` and FK to `ref_currency` | Every currency column | DEC-027 |
+| CK-04 | `discount_pct` and other percentages between 0 and 100 | Quote/invoice lines, price versions, plans | DEC-038 |
+| CK-05 | Line total = ROUND_HALF_UP(qty × unit price × (1 − d/100), 2) via immutable SQL function `fn_round_half_up(numeric, int)` (implemented as `round()` on numeric, which rounds half away from zero, equal to HALF_UP for non-negative values) | Quote, invoice lines | BRL-QTE-02, FR-DM-01 |
+| CK-06 | Document total = subtotal + tax | Quote, invoice, order, service invoice | DEC-027 |
+| CK-07 | Scoring weights sum to 1.0000; each in [0,1] | `intel_scoring_model` | BRL-SCR-01 |
+| CK-08 | Score NULL ⇔ known_weight < 0.60; score in [0,100] | `intel_score_version`, `intel_opportunity` | BRL-SCR-02 |
+| CK-09 | `fulfilled_qty ≤ quantity × (1 + tolerance/100)`, tolerance ≤ 2 | `com_order_line` | BRL-ORD-02 |
+| CK-10 | `reserved_qty ≤ available_qty` | `com_sku_availability` | DEC-045 |
+| CK-11 | `signed_hash IS NULL OR signed_hash = approved_hash` | `com_contract` | BRL-CTR-02 |
+| CK-12 | `submitted_at < deadline_utc` and all submission evidence present when `submitted` | `com_bid` | FR-DM-02, BRL-BID-04 |
+| CK-13 | `maker_id <> checker_id` | `com_payment`, invoices (via approvals) | BRL-APR-07 |
+| CK-14 | Support grant window ≤ 72 h | `saas_support_access_grant` | BRL-TEN-09 |
+| CK-15 | Delegation window ≤ 14 days, delegator ≠ delegate | `gov_approval_delegation` | BRL-APR-09 |
+| CK-16 | Tier 2 rows cannot carry Confidential/Restricted or personal data | `ai_model_run` | DEC-007 |
+| CK-17 | `age_band = 'under_18'` ⇒ `guardian_contact_id IS NOT NULL` | `intel_contact` | DEC-030 |
+| CK-18 | Inferred signal/need cannot be `confirmed` without evidence | `intel_signal`, `intel_need` | BRL-SCR-05 |
+| CK-19 | `health_data_flag = false` | `intel_need` (guard), audience criteria validator | BRL-ELG-14 |
+| CK-20 | Time windows: `ends_at > starts_at`, `valid_to ≥ valid_from`, `expires_at > created_at` | Meetings, prices, grants, events | General integrity |
+| CK-21 | Non-overlapping approved price ranges (`EXCLUDE USING gist (offering_version_id WITH =, price_list_code WITH =, currency WITH =, unit_code WITH =, daterange(valid_from, valid_to, '[]') WITH &&) WHERE status = 'approved'`) | `cat_price_version` | BRL-QTE-01 |
+| CK-22 | Enumerated states only (CHECK IN lists mirror Part 2.3 §2.27) | All stateful tables | Part 2.3 |
+| CK-23 | `forecast.is_estimate = true`; `ci_low ≤ weighted_value ≤ ci_high` | `ana_forecast` | RPT-R4 |
+| CK-24 | `max_steps ≤ 50`, `attempt ≤ 3`, `max_concurrent_runs ≤ 20` | Automation tables | BRL-AUT-06 |
+
+---
+
+## 3.3.9 Row-level security (RLS) design [RECOMMENDATION-037]
+
+### 3.3.9.1 Session-variable pattern
+
+Every request and every worker job runs inside one database transaction that first sets **transaction-local** variables. Because they are set with `is_local = true`, they disappear at commit/rollback and cannot leak to the next user of a pooled connection.
+
+| Variable | Set from | Meaning |
+|---|---|---|
+| `app.tenant_id` | Membership-derived claim (BRL-TEN-01), never a browser value | Tenant in scope |
+| `app.startup_ids` | Membership grants ∩ requested scope, as `{uuid,…}` | Startups readable in this request (one, or several in portfolio mode) |
+| `app.write_startup_id` | Set **only** when exactly one startup is selected; empty in portfolio mode | Startup writable in this request (DEC-055 enforced in the database) |
+| `app.actor_id`, `app.actor_type` | Authenticated principal | Used by defaults and audit triggers |
+| `app.actor_kind` | `internal`, `portal`, `public`, `service`, `ai_agent`, `support` | Selects extra predicates (portal object grants, support grants) |
+| `app.portal_subject_id` | External user ID (R16) | Portal object-grant predicate |
+| `app.support_grant_id` | Active `saas_support_access_grant` (R13) | Read-only support predicate |
+| `app.simulation` | `on` for simulation runs | Triggers force `is_simulated = true` on inserts (NFR-038) |
+| `app.retention_run_id` | Retention job only | Unlocks purge of immutable rows (§3.3.5.9) |
+
+```sql
+-- Helper functions (STABLE, fail closed: unset or empty -> NULL -> predicate is false)
+CREATE FUNCTION app_tenant() RETURNS uuid LANGUAGE sql STABLE AS
+$$ SELECT NULLIF(current_setting('app.tenant_id', true), '')::uuid $$;
+
+CREATE FUNCTION app_startups() RETURNS uuid[] LANGUAGE sql STABLE AS
+$$ SELECT COALESCE(NULLIF(current_setting('app.startup_ids', true), '')::uuid[], '{}'::uuid[]) $$;
+
+CREATE FUNCTION app_write_startup() RETURNS uuid LANGUAGE sql STABLE AS
+$$ SELECT NULLIF(current_setting('app.write_startup_id', true), '')::uuid $$;
+
+CREATE FUNCTION app_actor_kind() RETURNS text LANGUAGE sql STABLE AS
+$$ SELECT COALESCE(NULLIF(current_setting('app.actor_kind', true), ''), 'none') $$;
+
+-- Per request (Django middleware / Celery task base class), first statement of the transaction:
+SELECT set_config('app.tenant_id',        $1, true),
+       set_config('app.startup_ids',      $2, true),   -- e.g. '{6f1c…,8a2d…}'
+       set_config('app.write_startup_id', $3, true),   -- '' in portfolio mode
+       set_config('app.actor_id',         $4, true),
+       set_config('app.actor_kind',       $5, true);
+```
+
+### 3.3.9.2 Policies for a startup-scoped table (scope S)
+
+```sql
+ALTER TABLE crm_deal ENABLE ROW LEVEL SECURITY;
+ALTER TABLE crm_deal FORCE ROW LEVEL SECURITY;      -- applies to the table owner too
+
+CREATE POLICY rls_crm_deal__select ON crm_deal FOR SELECT
+  USING (tenant_id = app_tenant() AND startup_id = ANY (app_startups())
+         AND app_actor_kind() IN ('internal','service','ai_agent','support'));
+
+CREATE POLICY rls_crm_deal__insert ON crm_deal FOR INSERT
+  WITH CHECK (tenant_id = app_tenant() AND startup_id = app_write_startup()
+              AND app_actor_kind() IN ('internal','service','ai_agent'));
+
+CREATE POLICY rls_crm_deal__update ON crm_deal FOR UPDATE
+  USING      (tenant_id = app_tenant() AND startup_id = app_write_startup())
+  WITH CHECK (tenant_id = app_tenant() AND startup_id = app_write_startup()
+              AND app_actor_kind() IN ('internal','service','ai_agent'));
+-- No DELETE policy: business rows are archived, never deleted by the application.
+```
+
+Effects: portfolio mode (several `startup_ids`, empty `write_startup_id`) can read but **cannot write** (BRL-TEN-05 enforced twice: API returns 409 `SELECT_SINGLE_STARTUP`, database denies); support users can only read (DEC-056); a row can never be moved to another startup because `WITH CHECK` pins `startup_id`.
+
+### 3.3.9.3 Tenant-scoped, mixed and platform tables
+
+```sql
+-- Scope T: tenant-wide rows (startup_id NULL) are visible to every startup in the tenant
+CREATE POLICY rls_gov_suppression__select ON gov_suppression FOR SELECT
+  USING (tenant_id = app_tenant()
+         AND (startup_id IS NULL OR startup_id = ANY (app_startups())));
+CREATE POLICY rls_gov_suppression__insert ON gov_suppression FOR INSERT
+  WITH CHECK (tenant_id = app_tenant()
+              AND (startup_id IS NULL OR startup_id = app_write_startup()));
+
+-- Scope X: platform defaults readable by all, tenant overrides only by the owner tenant
+CREATE POLICY rls_ai_prompt_version__select ON ai_prompt_version FOR SELECT
+  USING (tenant_id IS NULL OR tenant_id = app_tenant());
+CREATE POLICY rls_ai_prompt_version__write ON ai_prompt_version FOR INSERT
+  WITH CHECK (tenant_id = app_tenant());           -- platform rows only via ge_owner migrations
+
+-- Scope P (reference data): no RLS; GRANT SELECT only to ge_app/ge_worker
+REVOKE INSERT, UPDATE, DELETE ON ref_currency, ref_country FROM ge_app, ge_worker;
+```
+
+### 3.3.9.4 Portal (external user) predicate (CA-PORTAL, ABAC-09)
+
+```sql
+CREATE POLICY rls_com_invoice__portal ON com_invoice FOR SELECT
+  USING (
+    tenant_id = app_tenant() AND startup_id = ANY (app_startups())
+    AND app_actor_kind() = 'portal'
+    AND state IN ('issued','awaiting_payment','partially_paid','paid')
+    AND EXISTS (SELECT 1 FROM ten_portal_grant g
+                WHERE g.tenant_id = com_invoice.tenant_id
+                  AND g.startup_id = com_invoice.startup_id
+                  AND g.object_type = 'invoice' AND g.object_id = com_invoice.id
+                  AND g.subject_user_id = NULLIF(current_setting('app.portal_subject_id', true), '')::uuid
+                  AND g.revoked_at IS NULL AND g.expires_at > now()));
+```
+
+Portal policies exist only on the tables a portal screen reads (proposal, quote, contract, invoice, order, onboarding task, renewal, support ticket); every other table has **no** policy for `actor_kind = 'portal'`, so the database returns zero rows even if a serializer bug occurs. Field minimization remains the serializer's job (portal DTOs).
+
+### 3.3.9.5 Special cases
+
+| Case | Design |
+|---|---|
+| Audit append | `ops_audit_event` has INSERT allowed only through `fn_append_audit()` (SECURITY DEFINER, owner `ge_audit_writer`), which also computes the hash chain; SELECT policy: tenant match + role check function `app_has_role('R10','R15','R01','R13')` (R13 sees metadata columns via the masked view only) |
+| Application drafts (pre-tenant) | `saas_application_draft` policy `USING (applicant_user_id = app_actor_id() OR app_actor_kind() = 'service')` |
+| Workers | The Celery task base class reads the **signed** scope in the job payload, validates it against current membership/state, sets variables, then runs; a job with a forged scope fails signature validation (Part 2.4 §2.35.2) |
+| Cross-startup batch jobs | Iterate per startup, one transaction per scope; no job runs with all startups in scope |
+| Platform metadata (R14 billing, R13 support) | SECURITY DEFINER functions returning aggregates only (`fn_platform_usage_summary(period)`), never business rows (BRL-TEN-06 exception) |
+| Analytics read replica | Same RLS (policies replicate); analysts connect as `ge_readonly` through masked views |
+| Vector retrieval | Same RLS on `cat_embedding` plus explicit predicates (§3.3.8.4) |
+
+### 3.3.9.6 RLS assurance
+
+| Control | Mechanism |
+|---|---|
+| CI guard | Migration test fails if any table in schema `ge` with a `tenant_id` column has `relrowsecurity = false` or `relforcerowsecurity = false`, or lacks a SELECT policy: `SELECT c.relname FROM pg_class c JOIN pg_attribute a ON a.attrelid = c.oid AND a.attname = 'tenant_id' WHERE c.relnamespace = 'ge'::regnamespace AND c.relkind IN ('r','p') AND NOT (c.relrowsecurity AND c.relforcerowsecurity);` must return zero rows |
+| Two-tenant fixture | Automated tests run every API, export, search and vector query as tenant A against tenant B data: zero rows, zero side effects (NFR-032, AP-10) |
+| Unset-variable test | A connection with no variables set returns zero rows from every scoped table (fail closed) |
+| Performance | Policies use only indexed columns and STABLE functions; `EXPLAIN` checks in CI for the top 20 queries confirm index use with RLS on |
+
+---
+
+## 3.3.10 Partitioning strategy and volume estimates
+
+### 3.3.10.1 Volume drivers (DEC-031 design points) [ASSUMPTION-112]
+
+| Driver | Symbol | Year 1 | Year 2 | Basis |
+|---|---|---|---|---|
+| Startup workspaces | W | 40 (upper bound of 25–40) | 100 | DEC-031 |
+| External tenants | T | 10 | 30 | DEC-031 |
+| Internal users | U | 60 | 200 | DEC-031 |
+| Startups actively doing outbound | Wₐ | 10 | 40 | ASSUMPTION-112 (25% Y1, 40% Y2) |
+| Outbound messages per active startup per month | m | 3,000 | 3,000 | BRD §8 pilot volumes: 2,000 emails + 1,000 WhatsApp |
+| Delivery events per message | e | 4 | 4 | accepted, delivered, open/read, click/bounce (average) |
+| Audited user actions per user per working day | a | 120 | 120 | ASSUMPTION-112 |
+| Working days per month | d | 22 | 22 | |
+| Gateway calls per active startup per day (incl. Tier 0 cache hits) | g | 150 | 300 | ASSUMPTION-112; SaaS tenants pay their own budget (DEC-008) |
+| Job runs per month | j | 50,000 | 200,000 | ASSUMPTION-112 |
+| Knowledge documents per startup × chunks per document | k | 200 × 40 | 400 × 40 | ASSUMPTION-112 |
+| Organizations per startup | o | 2,000 | 5,000 | ASSUMPTION-112; 2.5 contacts per organization |
+| Research fetches per active startup per month | f | 500 | 1,000 | BRD §8 pilot (500 fetches) |
+| Meters × hourly buckets | M × H | 6 × 720 | 6 × 720 | DEC-047 dimensions; ASSUMPTION-119 |
+
+### 3.3.10.2 Row volume formulas and results
+
+| Table | Formula (per month) | Year 1 / month | Year 1 / year | Year 2 / month | Year 2 / year |
+|---|---|---|---|---|---|
+| `eng_message` | Wₐ × m | 30,000 | 360,000 | 120,000 | 1.44 M |
+| `eng_delivery_event` | Wₐ × m × e | 120,000 | 1.44 M | 480,000 | 5.76 M |
+| `gov_eligibility_decision` | ≈ 2 × messages + enrolments (≈ 0.7 × messages) | ≈ 80,000 | ≈ 0.96 M | ≈ 320,000 | ≈ 3.84 M |
+| `ai_model_run` | Wₐ × g × 30 | 45,000 | 540,000 | 360,000 | 4.32 M |
+| `ops_audit_event` | U × a × d + 3 × messages + 2 × model runs + j | 158,400 + 90,000 + 90,000 + 50,000 ≈ **390,000** | ≈ 4.7 M | 528,000 + 360,000 + 720,000 + 200,000 ≈ **1.8 M** | ≈ 21.7 M |
+| `ops_domain_event` | ≈ 0.8 × audit system events + user mutations (≈ 30% of user actions) | ≈ 300,000 | ≈ 3.6 M | ≈ 1.5 M | ≈ 18 M |
+| `saas_usage_meter_reading` | W × M × H (upper bound, every bucket stored) | 172,800 | 2.07 M | 432,000 | 5.18 M |
+| `intel_fetch_log` | Wₐ × f | 5,000 | 60,000 | 40,000 | 480,000 |
+| `ops_job_run` | j | 50,000 | 600,000 | 200,000 | 2.4 M |
+| `cat_chunk` / `cat_embedding` (stock) | W × k | stock 320,000 | — | stock 1.6 M | — |
+| `intel_organization` / `intel_contact` (stock) | W × o; × 2.5 | 80,000 / 200,000 | — | 500,000 / 1.25 M | — |
+
+### 3.3.10.3 Storage estimate (hot database)
+
+Formula: **size = rows × average row bytes × 1.6** (indexes, TOAST and bloat overhead factor). Average row bytes are estimates [ASSUMPTION-114].
+
+| Table | Avg row | Year 1 growth / year | Year 2 growth / year | Hot retention in DB | Hot size at end of Year 2 |
+|---|---|---|---|---|---|
+| `ops_audit_event` | 0.8 KB | 4.7 M × 0.8 × 1.6 ≈ 6.0 GB | 21.7 M × 0.8 × 1.6 ≈ 27.8 GB | 13 months hot, then archived (7 y total) | ≈ 30 GB |
+| `eng_delivery_event` | 0.5 KB | ≈ 1.2 GB | ≈ 4.6 GB | 24 months | ≈ 5.8 GB |
+| `gov_eligibility_decision` | 0.6 KB | ≈ 0.9 GB | ≈ 3.7 GB | 24 months | ≈ 4.6 GB |
+| `ai_model_run` (metadata only; payload in S3) | 0.6 KB | ≈ 0.5 GB | ≈ 4.1 GB | 13 months | ≈ 4.5 GB |
+| `ops_domain_event` | 1.0 KB | ≈ 5.8 GB | ≈ 28.8 GB | 13 months | ≈ 31 GB |
+| `saas_usage_meter_reading` | 0.2 KB | ≈ 0.7 GB | ≈ 1.7 GB | 8 years (FIN), older partitions archived after 25 months | ≈ 2.4 GB |
+| `cat_embedding` (halfvec + HNSW, factor 2.0 instead of 1.6) | 2.2 KB | 320 k × 2.2 × 2.0 ≈ 1.4 GB | 1.6 M × 2.2 × 2.0 ≈ 7.0 GB | Life of document version | ≈ 7 GB |
+| `cat_chunk` (text + tsvector) | 3.0 KB | ≈ 1.5 GB | ≈ 7.7 GB | Life of document | ≈ 7.7 GB |
+| All other tables | — | ≈ 3–6 GB | ≈ 10–20 GB | Per class | ≈ 15–25 GB |
+| **Total hot database** | | **≈ 20–30 GB at end of Year 1** | | | **≈ 110–150 GB at end of Year 2** |
+
+S3 holds message bodies, documents, evidence snapshots, AI payloads (90 days) and archives. AI payload volume (Year 2): 360,000 runs × ≈ 6 KB × 3 months ≈ 6.5 GB rolling. Instance and storage cost is sized in Part 3.1/Part 9 (estimates, verify prices).
+
+### 3.3.10.4 Partitioned tables
+
+All use PostgreSQL declarative **range** partitioning on a time column, managed by `pg_partman` (pre-create 3 future partitions; a daily maintenance job; alarm if fewer than 2 future partitions exist, RSK-323). The partition key is part of the primary key (`PRIMARY KEY (id, <time_col>)`), so foreign keys **into** these tables are replaced by logical references validated at insert, plus small unpartitioned **key tables** where uniqueness across partitions is required.
+
+| Table | Key | Interval | Hot retention | After hot retention | Partition-level action |
+|---|---|---|---|---|---|
+| `ops_audit_event` | `occurred_at` | Monthly | 13 months | Archive to S3 (Parquet + hash manifest, Object Lock); keep 7 y (FIN/CTR-class events 8 y / term + 8 y) | `DETACH PARTITION CONCURRENTLY` → export → verify hash → `DROP` |
+| `eng_delivery_event` | `occurred_at` | Monthly | 24 months | Drop (aggregates kept in metric snapshots) [GAP-113] | Drop partition |
+| `gov_eligibility_decision` | `created_at` | Monthly | 24 months | Drop (digest remains in audit) [GAP-113] | Drop partition |
+| `gov_policy_decision` | `created_at` | Monthly | 24 months | Drop (digest in audit) | Drop partition |
+| `ai_model_run` | `created_at` | Monthly | 13 months metadata; payload objects in S3 expire at 90 days | Aggregates (cost, quality) kept in metric snapshots | Drop partition |
+| `saas_usage_meter_reading` | `period_start` | Monthly | 25 months | Archive (FIN 8 y) | Detach → archive → drop |
+| `ops_domain_event` | `occurred_at` | Monthly | 13 months | Drop (projections rebuilt from authoritative tables if needed) | Drop partition |
+| `int_provider_event` | `received_at` | Monthly | 13 months | Drop (key table keeps dedupe keys 25 months) | Drop partition |
+| `intel_fetch_log`, `ops_job_run` | `created_at` | Monthly | 13 months | Drop | Drop partition |
+| `ops_outbox` | `created_at` | Weekly | 30 days after dispatch | Drop | Drop partition (only when no pending rows) |
+
+**Not partitioned (Year 1), revisit at Year 2:** `aut_run`/`aut_step_run` (≈ 1–3 M rows/year), `mkt_attribution_event`, `crm_activity`. Trigger to partition: table > 50 M rows or > 20 GB, or vacuum time > 30 min.
+
+---
