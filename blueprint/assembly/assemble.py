@@ -87,7 +87,7 @@ def cover_html(nparts, date="27 Nov 2026"):
     <tr><td>Document</td><td>Application Blueprint (Parts 0–9, assembled in Part 10)</td></tr>
     <tr><td>Version</td><td>1.0</td></tr><tr><td>Date</td><td>{date}</td></tr>
     <tr><td>Classification</td><td>Confidential: internal and authorized delivery partners</td></tr>
-    <tr><td>Inputs</td><td>01 Business Requirements (BRD), 02 Functional Specification (FRD)</td></tr>
+    <tr><td>Inputs</td><td>01 Business Requirements (BRD), 02 Functional Specification (FRD), and the complete 38-document engineering source pack (Part 0B)</td></tr>
     <tr><td>Source files</td><td>{nparts} part documents</td></tr>
   </table>
 </div>"""
@@ -146,8 +146,9 @@ def md_to_html(md_text, html_path, extra_css_path):
                                encoding="utf-8")
 
 
-def render_pdf(html, pdf):
-    subprocess.run(["node", str(ASM / "render_pdf.js"), str(html), str(pdf), str(MJS), HEADER], check=True)
+def render_pdf(html, pdf, mode=""):
+    subprocess.run(["node", str(ASM / "render_pdf.js"), str(html), str(pdf), str(MJS), HEADER, mode], check=True,
+                   stdout=subprocess.DEVNULL)
 
 
 def find_pages(pdf, hs, start_page):
@@ -169,27 +170,99 @@ def find_pages(pdf, hs, start_page):
     return res
 
 
+def split_h1(md):
+    segs, cur, fence = [], [], False
+    for ln in md.split("\n"):
+        if ln.startswith("```"):
+            fence = not fence
+        if not fence and ln.startswith("# ") and any(x.strip() for x in cur):
+            segs.append("\n".join(cur)); cur = []
+        cur.append(ln)
+    if any(x.strip() for x in cur):
+        segs.append("\n".join(cur))
+    return segs
+
+
 def build_pdf(front, body, name, tmp):
-    hs = headings(body)
-    css2 = Path(tmp) / "extra.css"
-    css2.write_text(EXTRA_CSS)
+    """Render each part separately (Chromium culls badly on one 2,700-page page), then merge.
+
+    Global page numbers are stamped after the merge; the TOC and bookmarks use the merged page numbers."""
+    import pikepdf
+    from concurrent.futures import ThreadPoolExecutor
+    from reportlab.pdfgen import canvas as rlcanvas
+    tmp = Path(tmp)
+    css2 = tmp / "extra.css"
+    css2.write_text(EXTRA_CSS + "\nh1{page-break-before:avoid}\n")
+    segs = split_h1(body)
+    print(f"PDF: rendering {len(segs)} segments")
+
+    def one(i):
+        d = tmp / f"seg{i:03d}"; d.mkdir(exist_ok=True)
+        html = d / "s.html"; pdf = d / "s.pdf"
+        md_to_html(segs[i], html, css2)
+        render_pdf(html, pdf, "nofooter")
+        hs = headings(segs[i])
+        return pdf, hs, find_pages(pdf, hs, 0), int(re.search(r"Pages:\s+(\d+)", subprocess.run(
+            ["pdfinfo", str(pdf)], capture_output=True, text=True).stdout).group(1))
+    with ThreadPoolExecutor(3) as ex:
+        res = list(ex.map(one, range(len(segs))))
+
     nparts = len(collect_parts())
-    def compose(pages):
+    all_hs = [h for r in res for h in r[1]]
+
+    def front_pdf(pages):
+        html = tmp / "front.html"; pdf = tmp / "front.pdf"
         fm = f'<div class="fm">\n\n{front}\n\n</div>\n\n' if front else ""
-        return cover_html(nparts) + "\n\n" + toc_html(hs, pages) + "\n\n" + fm + body
-    html = Path(tmp) / "master.html"
-    md_to_html(compose(None), html, css2)
-    pdf1 = Path(tmp) / "pass1.pdf"
-    render_pdf(html, pdf1)
-    # TOC ends where the first body heading appears; search body headings after the TOC pages
-    txt = subprocess.run(["pdftotext", str(pdf1), "-"], capture_output=True, text=True).stdout.split("\f")
-    toc_end = next(i for i, pg in enumerate(txt) if "TOCENDSENTINEL" in pg) + 1
-    pages = find_pages(pdf1, hs, toc_end)
-    md_to_html(compose(pages), html, css2)
+        md_to_html(cover_html(nparts) + "\n\n" + toc_html(all_hs, pages) + "\n\n" + fm, html, css2)
+        render_pdf(html, pdf, "nofooter")
+        return pdf, len(pikepdf.open(pdf).pages)
+
+    fpdf, nfront = front_pdf(None)
+    for _ in range(2):
+        pages, off = [], nfront
+        for pdf, hs, pg, n in res:
+            pages += [str(int(p) + off) if p else "" for p in pg]
+            off += n
+        fpdf, n2 = front_pdf(pages)
+        if n2 == nfront:
+            break
+        nfront = n2
+
+    out_pdf = pikepdf.new()
+    for p in [fpdf] + [r[0] for r in res]:
+        src = pikepdf.open(p)
+        out_pdf.pages.extend(src.pages)
+    total = len(out_pdf.pages)
+
+    # page-number overlay
+    ov = tmp / "numbers.pdf"
+    w, h = float(out_pdf.pages[0].mediabox[2]), float(out_pdf.pages[0].mediabox[3])
+    c = rlcanvas.Canvas(str(ov), pagesize=(w, h))
+    for i in range(total):
+        c.setFont("Helvetica", 7); c.setFillGray(0.4)
+        c.drawCentredString(w / 2, 22, f"Page {i + 1} of {total}")
+        c.showPage()
+    c.save()
+    ovp = pikepdf.open(ov)
+    for i, pg in enumerate(out_pdf.pages):
+        pg.add_overlay(ovp.pages[i])
+
+    with out_pdf.open_outline() as ol:
+        ol.root.clear()
+        h1 = None
+        for (lvl, txt), p in zip(all_hs, pages):
+            if not p:
+                continue
+            item = pikepdf.OutlineItem(plain(txt), int(p) - 1)
+            if lvl == 1 or h1 is None:
+                ol.root.append(item); h1 = item
+            else:
+                h1.children.append(item)
+    out_pdf.docinfo["/Title"] = TITLE
     out = OUT / f"{name}.pdf"
-    render_pdf(html, out)
+    out_pdf.save(out, compress_streams=True, object_stream_mode=pikepdf.ObjectStreamMode.generate)
     missing = sum(1 for p in pages if not p)
-    print(f"PDF: {out}  headings={len(hs)} unresolved_toc={missing}")
+    print(f"PDF: {out}  pages={total} headings={len(all_hs)} unresolved_toc={missing} size={out.stat().st_size // 1_000_000} MB")
     return out
 
 

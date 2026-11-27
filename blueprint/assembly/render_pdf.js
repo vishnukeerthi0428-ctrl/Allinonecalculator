@@ -2,7 +2,7 @@
 // Usage: node render_pdf.js <in.html> <out.pdf> <mermaid.min.js> "<header text>"
 const { chromium } = require("playwright");
 (async () => {
-  const [html, out, mjs, header] = process.argv.slice(2);
+  const [html, out, mjs, header, mode] = process.argv.slice(2);
   const browser = await chromium.launch();
   const p = await browser.newPage({ viewport: { width: 1500, height: 1000 } });
   await p.goto("file://" + html, { waitUntil: "load" });
@@ -37,7 +37,7 @@ const { chromium } = require("playwright");
     path: out, format: "A4", landscape: true, printBackground: true, outline: true, tagged: false,
     margin: { top: "14mm", bottom: "16mm", left: "12mm", right: "12mm" }, displayHeaderFooter: true,
     headerTemplate: `<div style="font-size:7pt;width:100%;display:flex;justify-content:space-between;padding:0 12mm;color:#666"><span>${header}</span><span>Confidential · v1.0 · 27 Nov 2026</span></div>`,
-    footerTemplate: `<div style="font-size:7pt;width:100%;text-align:center;color:#666">Page <span class=pageNumber></span> of <span class=totalPages></span></div>`,
+    footerTemplate: mode === "nofooter" ? `<span></span>` : `<div style="font-size:7pt;width:100%;text-align:center;color:#666">Page <span class=pageNumber></span> of <span class=totalPages></span></div>`,
   });
   await browser.close();
   console.log(out + " (" + n + " diagrams)");
