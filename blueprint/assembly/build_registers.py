@@ -287,11 +287,16 @@ def scan_registry(parts):
         ids, fams, nums, in_parts, defs = set(), defaultdict(list), [], OrderedDict(), defaultdict(int)
         for p in parts:
             hit = False
+            if not r.search(p["text"]):          # fast path: family absent from this part
+                continue
             for i, ln in enumerate(p["lines"]):
+                ms = list(r.finditer(ln))
+                if not ms:                       # no mention, so no definition either
+                    continue
                 if NOT_ISSUED_RX.search(ln) or (label in FIXTURE_SENSITIVE and FIXTURE_RX.search(ln)) \
                         or (label in LINE_EXCLUDE and re.search(LINE_EXCLUDE[label], ln)):
                     continue
-                for m in r.finditer(ln):
+                for m in ms:
                     ids.add(m.group(0))
                     gd = m.groupdict()
                     n = gd.get("n") or gd.get("n2")
@@ -644,10 +649,18 @@ def build_dec(parts):
                 subject = clean(cs[3]) if len(cs) > 3 else ""
                 decision = clean(cs[4]) if len(cs) > 4 else ""
                 src = "Errata " + clean(cs[1]) if len(cs) > 1 else ""
-            elif p["label"] == "9.5":           # | DEC | Conflicts resolved / source | Issue | Decision (binding) | Rationale | Affected |
-                subject = clean(cs[2]) if len(cs) > 2 else ""
-                decision = clean(cs[3]) if len(cs) > 3 else ""
-                src = clean(cs[1]) if len(cs) > 1 else ""
+            elif p["label"] == "9.5":
+                # | DEC | Conflicts resolved / source | Issue | Decision (binding) | Rationale | Affected |  or
+                # | DEC | Decision | Authority | Effect |  (§9.5.2.9, DEC-228)
+                h = hdr or []
+                if "issue" in h:
+                    si, di = h.index("issue"), next(i for i, x in enumerate(h) if x.startswith("decision"))
+                else:
+                    si = 1
+                    di = h.index("effect") if "effect" in h else len(cs) - 1
+                subject = clean(cs[si]) if len(cs) > si else ""
+                decision = clean(cs[di]) if len(cs) > di else ""
+                src = ""
             else:
                 subject = clean(cs[1])
                 decision = clean(cs[-1])
