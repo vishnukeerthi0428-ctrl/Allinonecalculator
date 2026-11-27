@@ -73,3 +73,12 @@
 54. AU-006 gate tooling: the pytest harness is the CI gate; promptfoo/DeepEval are optional dataset runners invoked by it.
 55. GAP-169: there is no approved crisis/self-harm response for the public assistant. Resolution: add a fixed, Legal-approved safe-response template with helpline references (verify India helplines) and immediate human handover. Never generated.
 56. GAP-168: no bilingual labelling resource. Resolution: budget part-time bilingual reviewers per locale in W5 (Part 8).
+
+## From Part 6.3
+57. AC-1710-02 calls NT-034 High; Part 2.4 says Critical. Resolution: Part 2.4 governs (Critical).
+58. AC-1813-02 asks for 89.9% precision on 240 items, which is not achievable as a whole number. Resolution: the gate is evaluated as ≥ 90% (≥ 216/240); the test uses 215/240 = 89.58% as the "fail" boundary.
+59. Business days: AC-1602-01 uses Mon–Fri; DEC-044 support is Mon–Sat. Resolution: business days for SLAs = Mon–Sat excluding configured public holidays (DEC-044 governs), unless a contract states otherwise.
+60. AC-2107-02 rejects recording a submission at the deadline. Resolution: per DEC-068, recording evidence of a submission made before the deadline is allowed; recording at/after the deadline a submission that claims a time at/after the deadline is rejected.
+61. Restore-drill canary interval: Part 6.1 (10 s) governs.
+62. "Subscription" in Part 5.3 means ServiceSubscription (DEC-085).
+63. The W22 card label "unpaid verified invoices" is renamed "Outstanding balance (verified invoices)".

@@ -114,20 +114,20 @@ def nat_key(s):
 REGISTRY = [
     ("BR-M##", r"\bBR-M(?P<n>\d{2})\b", "Business requirement derived from a BRD module line (M01–M66)", "1 (§1.12)"),
     ("BR-S###", r"\bBR-S(?P<n>\d{3})\b", "Business requirement derived from a source statement", "1 (§1.12)"),
-    ("BR-<group>", r"\bBR-(?P<f>TENANT|WEB|AUTO|SVC|QA)\b", "Group-level business requirement (tenant, website, automation, service, QA)", "1 (§1.12)"),
+    ("BR-{group}", r"\bBR-(?P<f>TENANT|WEB|AUTO|SVC|QA)\b", "Group-level business requirement (tenant, website, automation, service, QA)", "1 (§1.12)"),
     ("FR-W##", r"\bFR-W(?P<n>\d{2})\b", "Functional requirement for Website/Portal screen W01–W34", "2.1 (§2.4)"),
     ("FR-A###", r"\bFR-A(?P<n>\d{3})\b", "Functional requirement for Admin Command Centre screen A001–A113", "2.1 (§2.4)"),
     ("FR-OP###", r"\bFR-OP(?P<n>\d{3})\b", "Operational/platform functional requirement (health, readiness, config)", "2.1 (§2.4)"),
-    ("FR-<area>-##", r"\bFR-(?P<f>STD|DM|UIS|FLT|PUB|ADP|ENG|COP|SRCH|NEG|CSM|SEC|AUD|NOT|RPT|I18N|CFG)-(?P<n>\d{2})\b", "Cross-cutting functional requirement by area (standards, data mgmt, UI states, filters, publication, adapters, …)", "2.1 (§2.4)"),
+    ("FR-{area}-##", r"\bFR-(?P<f>STD|DM|UIS|FLT|PUB|ADP|ENG|COP|SRCH|NEG|CSM|SEC|AUD|NOT|RPT|I18N|CFG)-(?P<n>\d{2})\b", "Cross-cutting functional requirement by area (standards, data mgmt, UI states, filters, publication, adapters, …)", "2.1 (§2.4)"),
     ("NFR-###", r"\bNFR-(?P<n>\d{3})\b", "Non-functional requirement", "0 (§0.6); detailed in 4.2"),
     ("DEC-###", r"\bDEC-(?P<n>\d{3})\b", "Binding decision (DEC-001…065 Part 0A; DEC-066… Part 9.1)", "0A, 9.1"),
-    ("BRL-<dom>-##", r"\bBRL-(?P<f>[A-Z]{2,4})-(?P<n>\d{2})\b", "Business rule, by rule domain", "2.3"),
-    ("R##", r"\bR(?P<n>\d{2})(?P<f>L?)\b", "RBAC role (R01–R20; L suffix = startup-scoped lead variant)", "2.3 (§2.21)"),
-    ("P##", r"\bP(?P<n>\d{2})\b", "Persona", "1 (§1.6)"),
+    ("BRL-{domain}-##", r"\bBRL-(?P<f>[A-Z]{2,4})-(?P<n>\d{2})\b", "Business rule, by rule domain", "2.3"),
+    ("R##", r"(?<![-\w])R(?P<n>\d{2})(?P<f>L?)\b", "RBAC role (R01–R20; L suffix = startup-scoped lead variant)", "2.3 (§2.21)"),
+    ("P##", r"(?<![-\w])P(?P<n>\d{2})\b", "Persona", "1 (§1.6)"),
     ("KPI-##", r"\bKPI-(?P<n>\d{2})\b", "Key performance indicator", "1 (§1.4)"),
     ("EP-##", r"\bEP-(?P<n>\d{2})\b", "Epic", "0 (§0.10.2); stories in 5"),
-    ("US-####", r"\bUS-(?P<n>\d{4})\b", "User story (first two digits = epic)", "5"),
-    ("AC-####-##", r"\bAC-(?P<n>\d{4})-\d{2}\b", "Acceptance criterion of a user story", "5"),
+    ("US-####", r"\bUS-(?P<f>\d{2})(?P<n>\d{2})\b", "User story (first two digits = epic)", "5"),
+    ("AC-####-##", r"\bAC-\d{4}-\d{2}\b", "Acceptance criterion of a user story", "5"),
     ("TS-##-##", r"\bTS-(?P<f>\d{2})-(?P<n>\d{2})\b", "Test scenario (epic-based, DEC-093)", "6"),
     ("TC-##-###", r"\bTC-(?P<f>\d{2})-(?P<n>\d{3})\b", "Test case (epic-based, DEC-093)", "6"),
     ("TC-AI-AG###-##", r"\bTC-AI-AG(?P<f>\d{3})-(?P<n>\d{2,3})\b", "AI agent test case (per agent)", "6"),
@@ -152,7 +152,7 @@ REGISTRY = [
     ("WF-##", r"\bWF-(?P<n>\d{2})\b", "End-to-end workflow / process flow", "2.2"),
     ("AP-##", r"\bAP-(?P<n>\d{2})\b", "Acceptance procedure (DEC-014)", "0A; tests in 6"),
     ("CAP-##", r"\bCAP-(?P<n>\d{2})\b", "Business capability (capability map)", "2.1"),
-    ("CA-<code>", r"\bCA-(?P<f>[A-Z]{2,9})\b", "Acceptance profile applied to FRs (e.g. CA-PUB, CA-FIN)", "2.1"),
+    ("CA-{code}", r"\bCA-(?P<f>[A-Z]{2,9})\b", "Acceptance profile applied to FRs (e.g. CA-PUB, CA-FIN)", "2.1"),
     ("J-##", r"\bJ-(?P<n>\d{2})\b", "User journey", "1 (§1.11)"),
     ("SH-##", r"\bSH-(?P<n>\d{2})\b", "Stakeholder", "1"),
     ("CN-##", r"\bCN-(?P<n>\d{2})\b", "Constraint", "1"),
@@ -169,14 +169,14 @@ REGISTRY = [
     ("ABAC-##", r"\bABAC-(?P<n>\d{2})\b", "Attribute-based access control rule", "2.3"),
     ("ENT-###", r"\bENT-(?P<n>\d{3})\b", "Logical data entity", "3.3"),
     ("CK-##", r"\bCK-(?P<n>\d{2})\b", "Database check constraint pattern", "3.3"),
-    ("UQ-<kind>-##", r"\bUQ-(?P<f>IDEM|DUP)-(?P<n>\d{2})\b", "Uniqueness/idempotency key or duplicate rule", "3.3"),
+    ("UQ-{kind}-##", r"\bUQ-(?P<f>IDEM|DUP)-(?P<n>\d{2})\b", "Uniqueness/idempotency key or duplicate rule", "3.3"),
     ("AD-##", r"\bAD-(?P<n>\d{2})\b", "Architecture driver", "3.1"),
     ("ARP-##", r"\bARP-(?P<n>\d{2})\b", "Architecture principle", "3.1"),
     ("FM-##", r"\bFM-(?P<n>\d{2})\b", "Failure mode (resilience analysis)", "3.1"),
     ("IP-##", r"\bIP-(?P<n>\d{2})\b", "Integration pattern", "3.2"),
     ("CT-##", r"\bCT-(?P<n>\d{2})\b", "Contract-test gate", "3.2"),
     ("REC-##", r"\bREC-(?P<n>\d{2})\b", "Reconciliation job", "3.2"),
-    ("XR-<role>-##", r"\bXR-(?P<f>[A-Z]{2,3})-(?P<n>\d{2})\b", "Cross-role review finding", "3.2"),
+    ("XR-{role}-##", r"\bXR-(?P<f>[A-Z]{2,3})-(?P<n>\d{2})\b", "Cross-role review finding", "3.2"),
     ("TB-##", r"\bTB-(?P<n>\d{2})\b", "Trust boundary", "4.1"),
     ("AZ-##", r"\bAZ-(?P<n>\d{2})\b", "Authorization enforcement layer", "4.1"),
     ("SE-##", r"\bSE-(?P<n>\d{2})\b", "Security event (logged/alerted)", "4.1"),
@@ -184,7 +184,7 @@ REGISTRY = [
     ("SI-#", r"\bSI-(?P<n>\d{1,2})\b", "Security incident class", "4.1"),
     ("AIR-##", r"\bAIR-(?P<n>\d{2})\b", "AI-specific risk (injection, leakage, …)", "4.1"),
     ("DPIA-T#", r"\bDPIA-T(?P<n>\d{1,2})\b", "DPIA trigger", "4.1"),
-    ("<reg>-R#", r"\b(?P<f>EU|IT|WA|PCI|TR|GST|CA|IX|RPT)-R(?P<n>\d{1,2})\b", "Regulatory or design rule set (EU/UK GDPR, IT Act, WhatsApp, PCI, TRAI, GST, Canada, index, reporting)", "4.1, 3.3, 2.4"),
+    ("{rule set}-R#", r"\b(?P<f>EU|IT|WA|PCI|TR|GST|CA|IX|RPT)-R(?P<n>\d{1,2})\b", "Regulatory or design rule set (EU/UK GDPR, IT Act, WhatsApp, PCI, TRAI, GST, Canada, index, reporting)", "4.1, 3.3, 2.4"),
     ("CH-##", r"\bCH-(?P<n>\d{2})\b", "Chaos/resilience experiment", "4.2"),
     ("PL-##", r"\bPL-(?P<n>\d{2})\b", "CI/CD pipeline stage", "4.3"),
     ("DB-##", r"\bDB-(?P<n>\d{2})\b", "Operational dashboard", "4.3"),
@@ -200,15 +200,25 @@ REGISTRY = [
     ("DR-#", r"\bDR-(?P<n>\d{1,2})\b", "Disaster-recovery drill", "6.1"),
     ("CI-###", r"\bCI-(?P<n>\d{3})\b", "Candidate AI idea (discovery register)", "7.1"),
     ("TL-##", r"\bTL-(?P<n>\d{2})\b", "Agent tool in the tool registry", "7.2"),
-    ("D0#", r"\bD0(?P<n>\d)\b", "Delivery persona (delivery-lifecycle AI)", "7.1"),
-    ("B##", r"\bB(?P<n>\d{2})\b", "Budget line (cost table; GAP-006, DEC-020)", "0, 0A, 8"),
+    ("D0#", r"(?<![-\w])D0(?P<n>\d)\b", "Delivery persona (delivery-lifecycle AI)", "7.1"),
+    ("B##", r"(?<![-\w])B(?P<n>\d{2})\b", "Budget line (cost table; GAP-006, DEC-020)", "0, 0A, 8"),
     ("UX-##", r"\bUX-(?P<n>\d{2})\b", "UX principle", "2.5"),
     ("I18N-##", r"\bI18N-(?P<n>\d{2})\b", "Internationalization rule", "2.4"),
     ("OPT-##-##", r"\bOPT-(?P<f>\d{2})-(?P<n>\d{2})\b", "FRD optimisation item (source ID, cited)", "Source (FRD)"),
     ("SM-UT-###", r"\bSM-UT-(?P<n>\d{3})\b", "Source test alias (FRD; aliases only, DEC-094)", "Source (FRD); 6"),
-    ("M##", r"\bM(?P<n>\d{2})\b", "Source module M01–M66 (BRD §7)", "Source (BRD)"),
-    ("W## / A###", r"\b(?P<f>W)(?P<n>\d{2})\b|\bA(?P<n2>\d{3})\b", "Screen ID: Website/Portal W01–W34, Admin A001–A113", "Source (FRD §16.2); 2.5"),
+    ("M##", r"(?<![-\w])M(?P<n>\d{2})\b", "Source module M01–M66 (BRD §7)", "Source (BRD)"),
+    ("W## / A###", r"(?<![-\w])(?P<f>W)(?P<n>\d{2})\b|(?<![-\w])A(?P<n2>\d{3})\b", "Screen ID: Website/Portal W01–W34, Admin A001–A113", "Source (FRD §16.2); 2.5"),
 ]
+
+
+# Families whose short IDs also occur as synthetic fixture values in test rows (e.g. "portal grant G-55",
+# "contract CT-58"): lines that describe fixtures are skipped for these families only.
+FIXTURE_SENSITIVE = {"G-##", "CT-##", "J-##", "P##", "R##", "W## / A###", "D0#", "SH-##", "X-##", "L-##", "DP-##", "PR-##"}
+FIXTURE_RX = re.compile(r"fixture|gse_syn|GSE-SYN|replay|Pre: |Given |\bWhen |\bThen ", re.I)
+
+
+# Lines where a short family token is really part of another family's shorthand (e.g. "DM-R01…R40").
+LINE_EXCLUDE = {"R##": r"DM-R\d", "G-##": r"grant G-\d", "D0#": r"BVA-D\d"}
 
 
 def scan_registry(parts):
@@ -219,6 +229,9 @@ def scan_registry(parts):
         for p in parts:
             hit = False
             for i, ln in enumerate(p["lines"]):
+                if NOT_ISSUED_RX.search(ln) or (label in FIXTURE_SENSITIVE and FIXTURE_RX.search(ln)) \
+                        or (label in LINE_EXCLUDE and re.search(LINE_EXCLUDE[label], ln)):
+                    continue
                 for m in r.finditer(ln):
                     ids.add(m.group(0))
                     gd = m.groupdict()
@@ -241,6 +254,10 @@ def scan_registry(parts):
         if not ids:
             continue
         rng = []
+        if label == "AC-####-##":
+            srt = sorted(ids, key=nat_key)
+            fams = {}
+            rng.append(f"{srt[0]} {ELL} {srt[-1]} (story-scoped; numbering restarts per story)")
         for f in sorted(fams, key=nat_key):
             vals = sorted({v for v in fams[f] if v is not None})
             if vals:
@@ -301,7 +318,7 @@ def context_statement(line, tag):
     return s
 
 
-NOT_ISSUED_RX = re.compile(r"not used|unused|not issued|reserved,? not|left unissued", re.I)
+NOT_ISSUED_RX = re.compile(r"not used|unused|not issued|reserved,? not|left unissued|not needed|were not required", re.I)
 
 
 def scan_tags(parts):
@@ -370,10 +387,8 @@ def status_rules(parts):
                             accepted.add(t)
                         if decs and len(decs) == len(tags_here):
                             res[t].add(decs[k])
-                        elif decs:
-                            res[t].add(decs[0] + ELL + decs[-1])
-                        elif "resolved" in body:
-                            res[t].add("Part " + p["label"] + " summary")
+                        elif "resolved" in body or "retained" in body:
+                            res[t].add("Part " + p["label"] + " §G summary")
     return res, accepted
 
 
@@ -439,12 +454,14 @@ def build_tag_registers(parts):
         elif kind == "GAP":
             decs = sorted(res.get(tid, []), key=nat_key)
             if decs:
-                rec["status"] = "Closed by " + ", ".join(decs)
+                rec["status"] = "Closed by " + ", ".join(d.replace(" summary", "") for d in decs)
             else:
                 rec["status"] = md_cell(status_cell, 90) if status_cell else "Open — handling per source part"
         else:
             decs = sorted(res.get(tid, []), key=nat_key)
-            rec["status"] = ("Adopted/affected by " + ", ".join(decs)) if decs else (md_cell(status_cell, 90) if status_cell else "Open — validate per source part")
+            real = [d for d in decs if d.startswith("DEC-")]
+            rec["status"] = ("Cited by " + ", ".join(real)) if real else ("Retained (Part 0A §G)" if decs else None)
+            rec["status"] = rec["status"] or (md_cell(status_cell, 90) if status_cell else "Open — validate per source part")
         by_kind[kind].append(rec)
     return by_kind, dups
 
@@ -781,10 +798,10 @@ def main():
 
     text = replace_block(text, "IDREG", md_table(["Prefix", "Meaning", "Actual range found", "Distinct IDs", "Owning part", "Defined in (most rows)", "Parts citing"], reg_rows))
     summary = [[k.title(), counts[k],
-                sum(1 for r in tags[k] if r["status"].startswith(("Resolved", "Accepted", "Closed", "Adopted"))),
-                sum(1 for r in tags[k] if not r["status"].startswith(("Resolved", "Accepted", "Closed", "Adopted")))]
+                sum(1 for r in tags[k] if r["status"].startswith(("Resolved", "Accepted", "Closed", "Cited"))),
+                sum(1 for r in tags[k] if not r["status"].startswith(("Resolved", "Accepted", "Closed", "Cited")))]
                for k in TAGS]
-    text = replace_block(text, "TAGSUMMARY", md_table(["Register", "Tags found", "Resolved / accepted / closed by DEC", "Other status"], summary)
+    text = replace_block(text, "TAGSUMMARY", md_table(["Register", "Tags found", "Resolved / accepted / closed / cited by DEC", "Other status"], summary)
                          + f"\n\nADR index: **{len(adr_rows)}** ADRs. DEC index: **{len(dec_rows)}** decisions. Parts scanned: **{len(parts)}** ({parts[0]['label']}–{parts[-1]['label']}).")
     text = replace_block(text, "ALLOC", md_table(["Issuing part", "ASSUMPTION", "GAP", "CONFLICT", "RECOMMENDATION", "Tags"], build_alloc(tags, parts)))
     text = replace_block(text, "ASSUMPTION", md_table(["ID", "First seen", "Statement (from the issuing register, else text near the tag)", "Status"],

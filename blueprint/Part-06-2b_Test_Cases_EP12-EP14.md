@@ -24,7 +24,7 @@
 | Campaigns and pages | CMP-9 (MedMaarg email campaign), segment "Odisha clinics - HR heads" (1,200 contacts), C-777, landing page LP-14 "OrganicSpec bulk turmeric buyers" (offer ends 2026-12-31 23:59:59 IST), form schema F-RFQ v2, campaign code CMP-9-LI | Simulation fixture: 842 eligible; excluded 211 (BRL-ELG-02), 97 (BRL-ELG-05), 50 (BRL-ELG-09); estimated cost INR 412.50; MedMaarg campaign budget INR 2,000.00 available |
 | Ads | AD-3 (OrganicSpec), ads account `ads-os` (currency INR), `ads-us` (currency USD) | Daily cap INR 500.00; reserved INR 10,000.00 monthly; expected daily spend INR 300.00 |
 | Referrals | PRT-22 (active partner), PRT-99 (inactive), REF-101 "Lotus Hospitals, Cuttack" (MedMaarg) | Commission proposal 5.00% |
-| Proposals and quotes | D-210 (MedMaarg deal, Sunrise Clinics, demo Completed), template MM-PILOT v2, offering "Scanner corporate pilot", PV-7 (valid until 2026-11-30 23:59:59 IST), P-55; OrganicSpec price list PL-OS-12 with SKU TUR-A "Turmeric finger, Grade A" INR 150.00/kg, units {kg}, min 1 max 5,000 kg, direct cost INR 100.00/kg; Q-88 rev 2 | Q-88 rev 2 = 2 kg × 150.00 × 0.90 = 270.00 + CGST 24.30 + SGST 24.30 = **318.60 INR**, valid until 2026-12-27 23:59:59 IST |
+| Proposals and quotes | D-210 (MedMaarg deal, Sunrise Clinics, demo Completed), template MM-PILOT v2, offering "Scanner corporate pilot", PV-7 (valid until 2026-11-30 23:59:59 IST), P-55; OrganicSpec price list PL-OS-12 with SKU TUR-A "Turmeric finger, Grade A" INR 150.00/kg, units {kg}, min 1 max 5,000 kg, direct cost INR 80.00/kg; OS-RICE-25KG INR 2,400.00 per bag (cost 1,300.00); GIN-B ginger INR 120.00/kg (cost 60.00); USD list PL-OS-USD-2 (TUR-A USD 2.00/kg, OS-RICE-25KG USD 30.00, GIN-B USD 1.50/kg) for export quotes; Q-88 rev 2 | Q-88 rev 2 = 2 kg × 150.00 × 0.90 = 270.00 + CGST 24.30 + SGST 24.30 = **318.60 INR**, valid until 2026-12-27 23:59:59 IST |
 | Contracts | CT-14 "EduVerse x Kalinga College" MoU from template EV-MOU v4, effective 2027-01-01, expiry 2027-12-31; signatory `registrar@kalinga.example` with authority evidence AL-3 | Legally approved hash `sha256:ct14a` |
 | Bids | B-31 tender "GeM/2026/B/5501" (AppNAI), deadline 2030-06-01 09:00 UTC, buffer 24 h, budget INR 45,00,000.00; T2 startup "B-Tech" with capability `bid_desk` | Checklist template v3: ISO 27001, turnover ≥ INR 2 crore FY2025-26, India delivery, CMMI Level 3, local office in Delhi |
 | Orders | SO-71 (Sell, buyer "Agro Traders", Odisha), PO-15 (Buy, supplier "Koraput Organic FPO"), SKU TUR-A available 50 kg; portal users `buyer@agro.example` (grant on SO-71), `cfo@agro.example` (no grant) | Tolerance policy default 0%; test policy 2% on a 100 kg line |
@@ -53,3 +53,491 @@
 | EP-14 | RA-08 (P0), RA-09 (P0), RA-07 (P0) for postings, RA-18 for imports | **P0** | Full synthetic deal per route is a W4 exit criterion (§6.1.5.2) |
 
 ---
+
+## 6.2.9 EP-12 Campaigns, landing pages, ads and referrals
+
+Stories US-1201…US-1210 (49 AC). FRs: FR-A056…FR-A061, FR-A064, FR-W10, FR-W20; cross-cutting FR-PUB-01, FR-ADP-01, FR-STD-02. Agent exercised deterministically: AG-018 (landing copy mode). Campaign state machine Part 2.3 §2.27.13.
+
+### 6.2.9.1 Test scenarios
+
+| TS ID | Scenario | Linked stories / FR | Risk area · Priority | TCs |
+|---|---|---|---|---|
+| TS-12-01 | Landing pages built only from approved blocks, offerings and form schemas, with expiring noindex previews | US-1201 · FR-A056 | RA-20, RA-14 · **P0** | TC-12-001…007 |
+| TS-12-02 | Landing pages approved after accessibility, privacy and claims checks; published and rolled back atomically | US-1202 · FR-A057, FR-PUB-01 | RA-14 · **P0** | TC-12-008…014 |
+| TS-12-03 | Public campaign page captures consented, deduplicated leads with first-party attribution and no sensitive events to pixels | US-1203 · FR-W10 | RA-20, RA-12 · **P0** | TC-12-015…022 |
+| TS-12-04 | Campaign builder simulates a lawful audience and cost before submission | US-1204 · FR-A058 | RA-20, RA-03, RA-11 · **P0** | TC-12-023…031 |
+| TS-12-05 | Campaign approval binds the version and reserves budget; execution rechecks every recipient and auto-pauses | US-1205 · FR-A059 | RA-20, RA-03, RA-05 · **P0** | TC-12-032…041 |
+| TS-12-06 | Ads adapter is disabled until the budget is approved and passes the conformance battery | US-1206 · FR-A060, FR-A061, FR-ADP-01 | RA-20 · **P0** | TC-12-042…049 |
+| TS-12-07 | Ads dashboard shows spend against caps and pauses on anomalies | US-1207 · FR-A060 | RA-20 · **P0** | TC-12-050…054 |
+| TS-12-08 | Ads launch only within the effective cap; 100% cap and emergency stop pause spend | US-1208 · FR-A061 | RA-20 · **P0** | TC-12-055…061 |
+| TS-12-09 | Partner referral form collects minimum data and never enables outreach before the referred party's consent | US-1209 · FR-W20 | RA-03, RA-17 · **P0** | TC-12-062…067 |
+| TS-12-10 | Referral approvals assign qualified opportunities and record commission without any payout path | US-1210 · FR-A064 | RA-05, RA-07 · **P0** | TC-12-068…073 |
+| TS-12-11 | Campaign state machine, pairwise campaign matrix and end-to-end journeys | US-1203…US-1205 · §2.27.13 | RA-20 · **P0** | TC-12-074…083 |
+
+### 6.2.9.2 Test cases
+
+#### Group TC-12-A: Equivalence partitioning and boundary values – landing page builder (US-1201)
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-12-001 | Build a draft page with offer, form schema, consent notice and a 24 h noindex preview | TS-12-01 · US-1201 AC-1201-01 · FR-A056; BRL-PUB-03 | Pre: PP-01, OrganicSpec, R05 of OrganicSpec. Data: LP-14 with hero, offer (ends 2026-12-31), F-RFQ v2, consent notice PN-5 | Save; generate preview | Page `Draft`; preview URL with grant expiring CLK-0 + 24 h; response header `X-Robots-Tag: noindex` and meta robots noindex | P1 | T01 | EP | Y | SYS |
+| TC-12-002 | Block referencing a Planned offering fails validation | TS-12-01 · US-1201 AC-1201-02 · BRL-MKT-02 | Data: offer block bound to a Planned SKU | Validate | 422 BRL-MKT-02; not `Validated` | P1 | T19 | EP | Y | SYS |
+| TC-12-003 | MedMaarg page cannot enable a third-party ad pixel | TS-12-01 · US-1201 AC-1201-03 · BRL-MKT-06; BRL-ELG-14 | Pre: MedMaarg R05. Data: tracking setting `third_party_pixel = meta` | Save | 422 "First-party analytics only for health-related pages (BRL-MKT-06)" | P0 | T19 | EP | Y | SYS |
+| TC-12-004 | Preview valid at 23 h 59 m 59 s, expired at 24 h; anonymous access refused | TS-12-01 · US-1201 AC-1201-04 · BRL-PUB-03 | Data: preview created 2026-12-01 10:00:00 IST | Open as Admin at 2026-12-02 09:59:59 and 10:00:00; open without Admin session | 09:59:59 renders; 10:00:00 expired state; anonymous 401/404 with no content | P0 | T07 | BVA | Y | SYS |
+| TC-12-005 | Growth manager cannot edit landing pages | TS-12-01 · US-1201 AC-1201-05 | Pre: R03 OrganicSpec | PATCH page | 403; NSE | P1 | T07 | EP | Y | SYS |
+| TC-12-006 | Tracking-consent field is mandatory in every form schema used on a page | TS-12-01 · US-1201 Notes · CA-INTAKE | Data: form schema without the tracking consent field | Validate | 422 "Tracking consent field required" | P1 | T19 | EP | Y | SYS |
+| TC-12-007 | or-IN page variant uses its own approved translation | TS-12-01 · US-1201 D8 · DEC-026 | Data: or-IN variant machine-translated, unapproved | Validate or-IN variant | Variant blocked until approved; en-IN variant unaffected | P3 | T13 | EP | Y | SYS |
+
+#### Group TC-12-B: Decision table – landing page approval and publication (US-1202)
+
+| Rule | Accessibility (0 critical) | Privacy review by R10 | Claims valid | Approver ≠ author | Publish hash = approved hash | Result | TC |
+|---|---|---|---|---|---|---|---|
+| L1 | Y | Y | Y | Y | Y | Approved → Published (pointer swap + purge) | TC-12-008 |
+| L2 | N | – | – | – | – | Approve disabled, violations listed | TC-12-009 |
+| L3 | Y | Y | Y | Y | N | 409 | TC-12-010 |
+| L4 | Y | Y | Y | N | – | 403 | TC-12-012 |
+| L5 | Y | N | Y | Y | – | Approve disabled "privacy review pending" | TC-12-014 |
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-12-008 | Approve exact hash and publish with atomic pointer swap and tenant-keyed purge (L1) | TS-12-02 · US-1202 AC-1202-01 · FR-A057; BRL-PUB-01, BRL-PUB-02 | Pre: PP-01, OrganicSpec, R05L. Data: LP-14 checks pass, hash `sha256:9a1b` | Approve; publish; GET public URL on `organicspec.example` | Pointer swapped once; purge request keyed by tenant/startup/locale/revision; page served at new revision | P0 | T01 | DT | Y | SYS |
+| TC-12-009 | Two critical axe violations disable Approve (L2) | TS-12-02 · US-1202 AC-1202-02 · BRL-PUB-06 | Data: LP-14 with 2 critical violations | Open approval; POST approve | Button disabled with list; API 422 `ACCESSIBILITY_GATE` | P0 | T08 | DT | Y | SYS |
+| TC-12-010 | Publish request with a mismatched hash returns 409 (L3) | TS-12-02 · US-1202 AC-1202-03 · BRL-PUB-01 | Data: hash `sha256:0000` | POST publish | 409; live page unchanged | P0 | T07 | DT | Y | SYS |
+| TC-12-011 | Rollback to the prior approved hash with NT-037 | TS-12-02 · US-1202 AC-1202-04 · BRL-PUB-02; NT-037 | Data: LP-14 rev 2 published, rev 1 prior approved | Roll back | Visitors see rev 1 after purge; never mixed (revision header = body hash); NT-037 sent | P0 | T01 | EG | Y | SYS |
+| TC-12-012 | Author cannot approve own page (L4) | TS-12-02 · US-1202 AC-1202-05 · BRL-APR-01 | Pre: R05 author | POST approve | 403; NSE | P0 | T07 | DT | Y | SYS |
+| TC-12-013 | Approval expiry is the earlier of offer end and 90 days | TS-12-02 · US-1202 Notes · BRL-APR-03 | Data: approved 2026-12-01 10:00 IST; offer ends 2026-12-31 23:59:59 IST | Read approval; advance clock to 2027-01-01 00:00:00 IST | Expiry = 2026-12-31 23:59:59 IST (not 2027-03-01); page shows "Offer ended" state; approval `Expired` | P1 | T01 | BVA | Y | SYS |
+| TC-12-014 | Approve disabled until R10 privacy review is recorded (L5) | TS-12-02 · US-1202 AC-1202-01 · DEC-038 | Data: no privacy review | POST approve | 422 `PRIVACY_REVIEW_PENDING` | P0 | T19 | DT | Y | SYS |
+
+#### Group TC-12-C: Equivalence partitioning and error guessing – public campaign landing page (US-1203)
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-12-015 | Enquiry with campaign code creates one attributed lead | TS-12-03 · US-1203 AC-1203-01 · FR-W10; CA-INTAKE; NX-01 | Pre: PP-02 `organicspec.example`. Data: URL `?utm_campaign=CMP-9-LI`; RFQ form; consent PN-5 | Submit | One lead; AttributionEvent CMP-9-LI (first-party); NX-01 queued only if eligible (PDP) | P1 | T01 | EP | Y | SYS |
+| TC-12-016 | Double submit within 5 s with the same key creates one lead | TS-12-03 · US-1203 AC-1203-02 · NFR-005 | Data: same idempotency key twice, 2 s apart | Submit twice | One lead; second response returns the first reference | P0 | T16 | EG | Y | SYS |
+| TC-12-017 | MedMaarg page makes no third-party pixel request on load or submit | TS-12-03 · US-1203 AC-1203-03 · BRL-MKT-06, BRL-ELG-14 | Pre: PP-06 with network capture | Load page; submit form | 0 requests to non-first-party hosts; only first-party events stored; CSP `connect-src` excludes ad hosts | P0 | T19, T07 | EP | Y | E2E |
+| TC-12-018 | Offer end boundary shows "Offer ended" from the first second after expiry | TS-12-03 · US-1203 AC-1203-04 | Data: offer ends 2026-12-31 23:59:59 IST | GET at 23:59:59 and at 2027-01-01 00:00:00 IST | First: offer shown. Second: "Offer ended" with general enquiry link; form posts to general enquiry | P1 | T01 | BVA | Y | SYS |
+| TC-12-019 | Page and API responses contain no internal metrics or other visitors' data | TS-12-03 · US-1203 AC-1203-05 · CA-PUB; NFR-020 | Data: page with lead counter fixture in Admin | Scan HTML, JSON and headers | 0 lead counts, internal IDs, other visitors' data | P0 | T07, T15 | EP | Y | SYS |
+| TC-12-020 | No personal data in URLs or attribution parameters | TS-12-03 · US-1203 Notes · BRL-PRV-06 | Data: URL `?utm_content=asha%40corp.example` | Load and submit | Email-like and phone-like values in query parameters dropped from the stored AttributionEvent; not echoed in page | P0 | T19 | EG | Y | SYS |
+| TC-12-021 | Invalid email or missing consent is rejected | TS-12-03 · US-1203 D4 · CA-INTAKE | Data: `buyer@` and consent unticked | Submit each | 422 with field errors; no lead | P1 | T01 | EP | Y | SYS |
+| TC-12-022 | ta-IN page renders Tamil script and localized errors | TS-12-03 · US-1203 D8 · DEC-026 | Pre: approved ta-IN variant | Submit invalid form | Tamil labels and errors; `lang="ta"` | P3 | T13 | EP | Y | E2E |
+
+#### Group TC-12-D: Equivalence partitioning and boundary values – campaign builder and simulation (US-1204)
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-12-023 | Simulation shows eligible count, exclusions by rule and cost; nothing queued | TS-12-04 · US-1204 AC-1204-01 · FR-A058; BRL-AUT-04; RECOMMENDATION-056 | Pre: PP-01, MedMaarg, `priya`. Data: segment of 1,200; email; cap INR 2,000.00 | POST simulate | 842 eligible; excluded 211 BRL-ELG-02, 97 BRL-ELG-05, 50 BRL-ELG-09; estimate INR 412.50; 0 messages, 0 outbox rows, 0 reservations | P0 | T17, T19 | EP | Y | SYS |
+| TC-12-024 | Health-condition audience filter cannot be saved | TS-12-04 · US-1204 AC-1204-02 · BRL-ELG-14 | Data: filter `condition = diabetic` | Save | 422 BRL-ELG-14 | P0 | T19 | EP | Y | SYS |
+| TC-12-025 | EduVerse learners under 18 are excluded with BRL-ELG-13 | TS-12-04 · US-1204 AC-1204-02 · BRL-ELG-13; DEC-030 | Pre: EduVerse. Data: segment of 300 incl. 40 learners < 18 and 12 school-learner flags without age | Simulate | 52 excluded with BRL-ELG-13; guardians included only with verified consent | P0 | T19 | EP | Y | SYS |
+| TC-12-026 | Hard spend cap required: empty and 0.00 rejected, 0.01 accepted | TS-12-04 · US-1204 AC-1204-03 · BRL-MKT-04 | Data: cap empty, INR 0.00, INR 0.01 | Save | Empty and 0.00 → 422 "Hard spend cap required"; 0.01 accepted | P1 | T01 | BVA | Y | SYS |
+| TC-12-027 | 10% holdout selects 84 of 842 deterministically | TS-12-04 · US-1204 AC-1204-04 · BRL-MKT-10; O-20 | Data: holdout 10% | Simulate twice | 84 held out both times, identical IDs | P1 | T01 | BVA | Y | SYS |
+| TC-12-028 | Growth manager cannot edit campaigns | TS-12-04 · US-1204 AC-1204-05 | Pre: `asha` | PATCH campaign | 403; NSE | P1 | T07 | EP | Y | SYS |
+| TC-12-029 | Rejected opportunities are excluded from every campaign | TS-12-04 · US-1204 Links · BRL-ELG-15 | Data: 9 contacts linked to rejected opportunities | Simulate | 9 excluded BRL-ELG-15 | P0 | T19 | EP | Y | SYS |
+| TC-12-030 | Empty audience cannot be submitted | TS-12-04 · US-1204 D4 | Data: segment with 0 eligible after exclusions | Simulate; submit | Simulation shows 0; submit 422 "No eligible recipients" | P2 | T01 | BVA | Y | SYS |
+| TC-12-031 | Experiment stops when opt-out rate exceeds baseline + 50% | TS-12-04 · US-1204 Links · BRL-MKT-10 | Data: baseline opt-out 0.40%; variant reaches 0.61% (> 0.60%) | Run experiment (simulator) | Variant stopped; holdout unchanged; owner notified | P1 | T19 | BVA | Y | SYS |
+
+#### Group TC-12-E: Decision table – campaign approval, reservation and execution (US-1205)
+
+| Rule | Approved campaign hash current | Claims approved by R10 | Budget reservation succeeds | Recipient eligible at execution | Complaint threshold reached | Result | TC |
+|---|---|---|---|---|---|---|---|
+| K1 | Y | Y | Y | Y | N | Send | TC-12-032 |
+| K2 | Y | Y | Y | N | N | Skip recipient, count "excluded at execution" | TC-12-033 |
+| K3 | Y | Y | Y | – | Y | Pause campaign | TC-12-034 |
+| K4 | Y | Y | N | – | – | Approval fails | TC-12-035 |
+| K5 | N | – | – | – | – | Approval void, back to Draft | TC-12-036 |
+| K6 | Y | N | – | – | – | Not Approved, awaiting R10 | TC-12-039 |
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-12-032 | Approve hash and reserve INR 2,000.00 (K1) | TS-12-05 · US-1205 AC-1205-01 · FR-A059; BRL-MKT-04; DEC-038 | Pre: PP-01, MedMaarg, `farah` R05L; R10 claims approval present. Data: CMP-9 hash `sha256:aa11` | POST approve | CMP-9 `Approved`; reservation INR 2,000.00 in the MedMaarg campaign budget ledger; approval expiry = campaign end date | P0 | T01, T20 | DT | Y | SYS |
+| TC-12-033 | Recipient who opted out after approval is skipped at execution (K2) | TS-12-05 · US-1205 AC-1205-02 · BRL-ELG-02, BRL-ELG-18 | Data: C-777 opted out after approval | Run CMP-9 | C-777 skipped with BRL-ELG-02; counted under "excluded at execution"; 0 provider calls for C-777 | P0 | T19 | DT | Y | SYS |
+| TC-12-034 | Third complaint in 24 h pauses the campaign (K3) | TS-12-05 · US-1205 AC-1205-03 · BRL-ELG-11; NT-027 | Data: 2 complaints in 24 h | Inject 3rd | CMP-9 `Paused`; NT-027; no further sends | P0 | T19 | DT | Y | SYS |
+| TC-12-035 | Insufficient budget fails approval at the boundary (K4) | TS-12-05 · US-1205 AC-1205-04 · BRL-AI-08 pattern; NFR-014 | Data: remaining budget INR 1,500.00; then INR 1,999.99; then INR 2,000.00 | POST approve each | 1,500.00 and 1,999.99 → 422 "Budget reservation failed"; 2,000.00 → Approved | P0 | T20 | BVA | Y | SYS |
+| TC-12-036 | Editing the audience after approval voids it (K5) | TS-12-05 · US-1205 AC-1205-04 · BRL-APR-02 | Data: CMP-9 Approved | `priya` edits audience | Approval void; CMP-9 `Draft`; reservation released | P0 | T19 | DT | Y | SYS |
+| TC-12-037 | Author cannot approve own campaign | TS-12-05 · US-1205 AC-1205-05 · BRL-APR-01 | Pre: `priya` | POST approve | 403; NSE | P0 | T07 | EP | Y | SYS |
+| TC-12-038 | Finance sees spend and reservation but no Approve | TS-12-05 · US-1205 AC-1205-05 | Pre: `lata` R08 | Open CMP-9; POST approve | Spend and reservation visible; action absent; API 403 | P1 | T07 | EP | Y | SYS |
+| TC-12-039 | Campaign without R10 claims approval stays pending (K6) | TS-12-05 · US-1205 Links · DEC-038 | Data: claims approval missing | `farah` approves | State remains `PendingApproval` "awaiting claims approval (R10)" | P0 | T19 | DT | Y | SYS |
+| TC-12-040 | Approval expires at the campaign end date | TS-12-05 · US-1205 Notes · BRL-APR-03 | Data: end date 2026-12-20 23:59:59 IST; send batch due 2026-12-21 09:00 | Advance clock | Campaign `Completed` at end date; 0 sends on 12-21 | P1 | T01 | BVA | Y | SYS |
+| TC-12-041 | Resume after pause rechecks approval validity and policy | TS-12-05 · US-1205 · §2.27.13 Paused→Running | Data: CMP-9 Paused; claim CL-12 expired meanwhile | POST resume | 409 "approval no longer valid"; stays `Paused` | P0 | T19 | ST | Y | SYS |
+
+#### Group TC-12-F: Contract and decision table – ads provider adapter (US-1206; battery B1–B7)
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-12-042 | Ads adapter disabled while B12 is not approved (battery B7) | TS-12-06 · US-1206 AC-1206-01 · NFR-037; DEC-020 | Pre: PP-01, OrganicSpec, B12 not approved | POST launch AD-3 | 403 `PAID_ADAPTER_DISABLED`; 0 provider calls | P0 | T20, T07 | EP | Y | SYS |
+| TC-12-043 | Contract: pause, spend report and timeout normalised (battery B1) | TS-12-06 · US-1206 AC-1206-02 · FR-ADP-01; ASSUMPTION-168 | Pre: PP-04 + recorded sandbox fixtures | Replay | `paused`; spend {amount "812.40", currency INR, as_of}; `uncertain` | P1 | T01 | EP | Y | CT |
+| TC-12-044 | Account currency differs from cap currency | TS-12-06 · US-1206 AC-1206-03 · DEC-027 | Data: account `ads-us` (USD) with INR cap | Enable | 422 "Currency mismatch: caps must be in account currency"; no FX conversion performed | P1 | T01 | EP | Y | SYS |
+| TC-12-045 | Pause timeout marked "pause uncertain", spend polled every 5 min and pause reissued (battery B3) | TS-12-06 · US-1206 AC-1206-04 · FR-STD-02; BRL-AUT-07 | Data: pause call times out | Run; advance clock 15 min | Status "pause uncertain"; spend checks at +5, +10, +15 min; pause reissued with same key (idempotent); confirmed paused | P0 | T18 | ST | Y | SYS |
+| TC-12-046 | Enabling the paid adapter by R11 alone stays pending Founder approval | TS-12-06 · US-1206 AC-1206-05 · CFG-24; BRL-APR-11 | Pre: `arjun` R11 | Enable | Change pending R01; adapter still disabled; after `vikram` approval enabled | P0 | T19 | EP | Y | SYS |
+| TC-12-047 | Ads credentials stored as references only (battery B5) | TS-12-06 · US-1206 · NFR-004 | Data: developer token reference | GET config; scan logs | No token value in API, UI or logs | P0 | T07 | EP | Y | SYS |
+| TC-12-048 | Launch request re-submitted after worker crash creates one campaign (battery B2) | TS-12-06 · US-1206 · NFR-005 | Pre: PP-05; kill worker after provider accept | Restart | 1 provider campaign; key `AD-3:launch:1` | P0 | T16 | EG | Y | IT |
+| TC-12-049 | No health events or minors' data sent to ad platform conversion APIs | TS-12-06 · US-1206 Links · BRL-MKT-06 | Data: MedMaarg lead events; EduVerse learner lead | Run conversion export (simulator) | 0 MedMaarg health-related events and 0 learner records in the payload; export blocked for MedMaarg pages | P0 | T19 | EP | Y | SYS |
+
+#### Group TC-12-G: Boundary values – ads dashboard and anomaly detection (US-1207)
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-12-050 | Spend versus caps with as-of time | TS-12-07 · US-1207 AC-1207-01 · FR-A060; KPI-10 | Pre: PP-01, `priya`. Data: daily INR 312.00 of 500.00; monthly INR 4,120.00 of 10,000.00 | Open dashboard | Values and as-of shown read-only | P2 | T01 | EP | Y | SYS |
+| TC-12-051 | Spend at 150.3% of expected pauses and alerts | TS-12-07 · US-1207 AC-1207-02 · BRL-MKT-05; NT-026; O-16 | Data: expected INR 300.00; spend reaches INR 451.00 | Spend poll | AD-3 paused via adapter; NT-026 to owner and `lata` R08 | P0 | T20 | BVA | Y | SYS |
+| TC-12-052 | Anomaly boundary: 450.00 (150.00%) no pause; 450.01 pause | TS-12-07 · US-1207 · BRL-MKT-05; O-16 | Data: two runs | Spend poll | 450.00 → running; 450.01 → paused | P0 | T20 | BVA | Y | UT |
+| TC-12-053 | Metrics 3 hours late are labelled stale and not used to resume | TS-12-07 · US-1207 AC-1207-03 | Data: provider lag 3 h; AD-3 paused for anomaly | Attempt auto-resume | Stale indicator; resume refused "metrics stale" | P1 | T01 | EP | Y | SYS |
+| TC-12-054 | Conversion counts cannot be edited | TS-12-07 · US-1207 AC-1207-04 | Pre: `vikram` R01 | PATCH conversions | 403 (measured, read-only) | P1 | T07 | EP | Y | SYS |
+
+#### Group TC-12-H: Boundary values – ad spend caps, launch and pause (US-1208)
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-12-055 | Launch within cap with two-step confirmation pushes the effective cap | TS-12-08 · US-1208 AC-1208-01 · FR-A061; CA-DISPATCH | Pre: PP-01, OrganicSpec, R05; B12 approved. Data: AD-3 approved, daily cap 500.00, reserved 10,000.00 | Confirm, confirm again | AD-3 `Running`; provider daily budget = INR 500.00 | P0 | T20 | UC | Y | SYS |
+| TC-12-056 | Effective cap is the minimum of daily cap, remaining monthly and reserved | TS-12-08 · US-1208 Notes · BRL-MKT-05 | Data: monthly remaining INR 300.00 | Launch | Provider daily budget INR 300.00 | P0 | T20 | BVA | Y | UT |
+| TC-12-057 | Monthly cap boundary: 9,999.99 runs; 10,000.00 pauses with NT-025 Critical | TS-12-08 · US-1208 AC-1208-02 · BRL-MKT-05; O-16 | Data: spend polls 9,999.99 then 10,000.00 | Spend poll | First: running; second: paused via provider; NT-025 Critical | P0 | T20 | BVA | Y | SYS |
+| TC-12-058 | Raising the monthly cap stays pending Founder approval | TS-12-08 · US-1208 AC-1208-03 · BRL-APR-11 | Pre: R05L. Data: 10,000.00 → 15,000.00 | Save | Pending R01; provider cap unchanged | P0 | T19 | EP | Y | SYS |
+| TC-12-059 | Emergency stop pauses all running ad campaigns within 60 s | TS-12-08 · US-1208 AC-1208-04 · BRL-AUT-05 | Data: 3 running campaigns | `gopal` R02 activates stop at T | Pause calls for all 3 issued by T + 60 s; 0 launch calls after T | P0 | T19 | BVA | Y | SYS |
+| TC-12-060 | Growth manager cannot launch | TS-12-08 · US-1208 AC-1208-05 | Pre: R03 OrganicSpec | POST launch | 403; NSE | P1 | T07 | EP | Y | SYS |
+| TC-12-061 | A single confirmation does not launch | TS-12-08 · US-1208 Story · CA-DISPATCH | Data: confirm once, close dialog | Check state | `Approved`, not Running; 0 provider calls | P1 | T01 | EP | Y | E2E |
+
+#### Group TC-12-I: Equivalence partitioning – partner referral form (US-1209)
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-12-062 | Referral recorded with partner attribution | TS-12-09 · US-1209 AC-1209-01 · FR-W20 | Pre: PP-02 `medmaarg.example`. Data: code PRT-22, "Lotus Hospitals, Cuttack", role "Admin head", attestation ticked | Submit | REF-101 `Received` with attribution PRT-22 | P2 | T01 | EP | Y | SYS |
+| TC-12-063 | Referred contact is not eligible for any outreach before own consent | TS-12-09 · US-1209 AC-1209-02 · BRL-ELG-17 | Data: REF-101 contact | Enrol in a sequence; simulate a campaign including it | Enrol 422 BRL-ELG-17; campaign simulation excludes it with BRL-ELG-17 | P0 | T19 | EP | Y | SYS |
+| TC-12-064 | Unnecessary personal data redacted with a minimisation warning | TS-12-09 · US-1209 AC-1209-03 · BRL-PRV-06 | Data: notes with "+91 98xxxxxx10" and "DOB 12/03/1980" | Submit | Stored notes show redaction markers; referrer sees the warning | P0 | T19 | EG | Y | SYS |
+| TC-12-065 | Duplicate referral within 90 days is linked; attribution follows the first | TS-12-09 · US-1209 AC-1209-04 · O-17 | Data: second partner refers the same organisation at +90 d exactly and at +90 d + 1 s | Submit | +90 d: linked as duplicate, attribution PRT-22; +90 d + 1 s: new referral | P2 | T01 | BVA | Y | SYS |
+| TC-12-066 | Inactive partner code accepted without attribution and flagged | TS-12-09 · US-1209 AC-1209-05 | Data: PRT-99 | Submit | Referral created, attribution empty, review flag | P2 | T01 | EP | Y | SYS |
+| TC-12-067 | Referral status is not readable without an object grant | TS-12-09 · US-1209 AC-1209-05 · CA-PORTAL; ABAC-09 | Data: anonymous; partner R16 with grant on REF-101; other partner without grant | GET `/referrals/REF-101` | Anonymous 404; granted partner sees status only; other partner U404 | P0 | T07, T15 | EP | Y | SYS |
+
+#### Group TC-12-J: Boundary values – referral approvals and commission record (US-1210)
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-12-068 | Approve referral with commission recorded only and assign opportunity | TS-12-10 · US-1210 AC-1210-01 · FR-A064; DEC-046 | Pre: PP-01, MedMaarg, `meera` R02; review by `priya`. Data: REF-101, 5.00%, reason "verified partner" | POST approve | Qualified opportunity assigned to the MedMaarg owner; commission record "approved – record only", Decimal 5.00 | P1 | T01 | EP | Y | SYS |
+| TC-12-069 | No payable, payment instruction or payout exists for a commission | TS-12-10 · US-1210 AC-1210-02 · DEC-046; BRL-FIN-08 | Data: approved commission | Query ledgers, payment instructions, actions API | 0 payable entries; 0 payout actions; API has no payout endpoint (route inventory) | P0 | T19, T07 | EP | Y | SYS |
+| TC-12-070 | Commission range 0.00–50.00 inclusive | TS-12-10 · US-1210 AC-1210-03 · O-15 | Data: −0.01, 0.00, 50.00, 50.01, 150.00 | Save each | 0.00 and 50.00 accepted; others 422 "0.00 to 50.00%" | P1 | T01 | BVA | Y | SYS |
+| TC-12-071 | Rejection requires a reason | TS-12-10 · US-1210 AC-1210-04 · BRL-APR-08 | Pre: `meera` | POST reject {} | 400 | P2 | T01 | EP | Y | SYS |
+| TC-12-072 | Reviewer who submitted the referral cannot approve | TS-12-10 · US-1210 AC-1210-05 · BRL-APR-01 | Pre: `priya` | POST approve | 403; NSE | P0 | T07 | EP | Y | SYS |
+| TC-12-073 | Approval does not make the referred contact eligible | TS-12-10 · US-1210 Links · BRL-ELG-17 | Data: REF-101 approved, no consent recorded | Enrol contact | 422 BRL-ELG-17 | P0 | T19 | EP | Y | SYS |
+
+#### Group TC-12-K: State transition, pairwise and use case – campaign machine, matrix and journeys
+
+**Common for TC-12-074 and TC-12-075:** Pre: PP-01, MedMaarg campaign; Part 2.3 §2.27.13 (12 transitions). Steps: drive each transition through the API.
+
+| ID | Data (transitions) | Expected | Links | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|
+| TC-12-074 | Valid: Draft→Simulated; Simulated→PendingApproval; PendingApproval→Draft (reject with reason); PendingApproval→Approved (TC-12-032); Approved→Running at start date; Running→Paused (manual); Paused→Running (TC-12-041 positive variant); Running→Completed (end date, TC-12-040); Paused→Cancelled; Approved→Cancelled (reservation released) | Each transition once with audit; cancellation releases the reservation in the budget ledger | TS-12-11 · US-1204, US-1205 · §2.27.13 | P1 | T01 | ST | Y | SYS |
+| TC-12-075 | Sneak paths: Draft→Running; Simulated→Approved; PendingApproval→Running; Completed→Running | 409 `INVALID_TRANSITION`; 0 sends; 0 reservations | TS-12-11 · US-1205 · BRL-MKT-04 | P0 | T01 | ST | Y | UT |
+
+Pairwise set (factor file `ff_12_campaign.yaml`): Startup {MedMaarg, OrganicSpec} × Channel {email, WhatsApp template} × Segment {IN B2B consented, EU role-based with LIA, mixed with suppressed and minors} × Budget {sufficient, insufficient} × Mode {live, simulation}. Full factorial 48; all-pairs 6 rows. **Common:** approve and run the campaign; read results and simulator log.
+
+| ID | Startup · Channel · Segment · Budget · Mode | Expected | Links | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|
+| TC-12-076 | MedMaarg · email · IN consented · sufficient · live | Approved; all eligible sent; reservation consumed by actual cost | TS-12-11 · US-1205 · BRL-MKT-04 | P0 | T19 | PW | Y | SYS |
+| TC-12-077 | MedMaarg · WhatsApp · EU role-based · insufficient · simulation | Simulation lists all EU recipients excluded `EU_NO_WHATSAPP_COLD`; approval would fail on budget; 0 calls | TS-12-11 · US-1204 · BRL-ELG-06 | P0 | T19, T17 | PW | Y | SYS |
+| TC-12-078 | MedMaarg · email · mixed · sufficient · simulation | Suppressed and minors excluded by rule; 0 calls | TS-12-11 · US-1204 · BRL-ELG-02, BRL-ELG-13 | P0 | T17 | PW | Y | SYS |
+| TC-12-079 | OrganicSpec · WhatsApp · IN consented · sufficient · live | Only opted-in contacts with usable template sent | TS-12-11 · US-1205 · BRL-ELG-07 | P0 | T19 | PW | Y | SYS |
+| TC-12-080 | OrganicSpec · email · EU role-based · insufficient · live | Approval fails "Budget reservation failed"; 0 sends | TS-12-11 · US-1205 · NFR-014 | P0 | T20 | PW | Y | SYS |
+| TC-12-081 | OrganicSpec · WhatsApp · mixed · insufficient · simulation | Simulation shows exclusions; submit blocked on budget | TS-12-11 · US-1204 · BRL-MKT-04 | P1 | T17 | PW | Y | SYS |
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-12-082 | J-12-01: campaign landing page to attributed lead | TS-12-11 · US-1203 · FR-W10 | Pre: PP-06 (Chromium, WebKit), 360 px | Open `?utm_campaign=CMP-9-LI` → submit RFQ with consent → Admin opens lead | Lead with attribution and consent; 0 third-party requests; axe 0 critical/serious | P0 | T01, T19 | UC | Y | E2E |
+| TC-12-083 | J-12-02: simulate, approve with reservation, run with execution-time suppression | TS-12-11 · US-1204, US-1205 · FR-A058, FR-A059 | Pre: PP-06, `priya` and `farah` lanes | Build → simulate → submit → approve → C-777 opts out → run | Reservation shown; C-777 skipped; KPI-17 = 0; axe 0 critical/serious | P0 | T01, T19 | UC | Y | E2E |
+
+### 6.2.9.3 EP-12 coverage
+
+| Story | AC → TC |
+|---|---|
+| US-1201 | 01→001 · 02→002 · 03→003 · 04→004 · 05→005 · extra→006, 007 |
+| US-1202 | 01→008, 014 · 02→009 · 03→010 · 04→011 · 05→012 · extra→013 |
+| US-1203 | 01→015 · 02→016 · 03→017 · 04→018 · 05→019 · extra→020, 021, 022, 082 |
+| US-1204 | 01→023 · 02→024, 025 · 03→026 · 04→027 · 05→028 · extra→029, 030, 031, 077, 078, 081 |
+| US-1205 | 01→032 · 02→033 · 03→034 · 04→035, 036 · 05→037, 038 · extra→039, 040, 041, 074, 075, 083 |
+| US-1206 | 01→042 · 02→043 · 03→044 · 04→045 · 05→046 · extra→047, 048, 049 |
+| US-1207 | 01→050 · 02→051, 052 · 03→053 · 04→054 |
+| US-1208 | 01→055 · 02→057 · 03→058 · 04→059 · 05→060 · extra→056, 061 |
+| US-1209 | 01→062 · 02→063 · 03→064 · 04→065 · 05→066, 067 |
+| US-1210 | 01→068 · 02→069 · 03→070 · 04→071 · 05→072 · extra→073 |
+
+All 49 EP-12 AC covered.
+
+---
+
+## 6.2.10 EP-13 Proposal, quote, negotiation and contract
+
+Stories US-1301…US-1313 (67 AC). FRs: FR-A065…FR-A072, FR-W23, FR-W24; cross-cutting FR-DM-01, FR-ADP-01, FR-STD-02. Agents exercised deterministically: AG-020 Proposal & Bid Response Drafter, AG-021 Objection & Negotiation Assistant, AG-012 guard. State machines Part 2.3 §2.27.5 (proposal and quote) and §2.27.6 (contract). Pricing modules carry mutation score ≥ 85% (§6.1.9.6).
+
+### 6.2.10.1 Test scenarios
+
+| TS ID | Scenario | Linked stories / FR | Risk area · Priority | TCs |
+|---|---|---|---|---|
+| TS-13-01 | Proposal drafts use approved templates, current price versions and read-only computed amounts; AI promises removed | US-1301 · FR-A065 | RA-06, RA-13 · **P0** | TC-13-001…008 |
+| TS-13-02 | Proposal approval binds the exact revision, adds Legal for non-standard terms, escalates and supersedes | US-1302 · FR-A066 | RA-05 · **P0** | TC-13-009…015 |
+| TS-13-03 | Decimal pricing library computes lines, tax and totals exactly and deterministically | US-1303 · FR-DM-01, FR-A067, FR-A105 | RA-06 · **P0** | TC-13-016…028 |
+| TS-13-04 | Quotation builder validates units, quantities, currency and price-list freshness with live totals | US-1304 · FR-A067 | RA-06 · **P0** | TC-13-029…035 |
+| TS-13-05 | Discount and margin thresholds route each quote to exactly the required approvers | US-1305 · FR-A068 | RA-05, RA-06 · **P0** | TC-13-036…055 |
+| TS-13-06 | Portal review lets the grantee accept or request changes only on a valid, current revision | US-1306 · FR-W23 | RA-15, RA-06 · **P0** | TC-13-056…063 |
+| TS-13-07 | Objections get approved answers; concessions beyond limit escalate; AI never offers price or terms | US-1307 · FR-A069 | RA-13, RA-05 · **P0** | TC-13-064…068 |
+| TS-13-08 | Negotiation exceptions are decided with risk class, Legal where needed and SLA escalation | US-1308 · FR-A070 | RA-05 · **P0** | TC-13-069…072 |
+| TS-13-09 | Contracts generated from approved templates are sent only after legal approval and executed only on matching hashes | US-1309 · FR-A071 | RA-10 · **P0** | TC-13-073…079 |
+| TS-13-10 | Legal approval binds the contract hash and adds the Founder at value or cross-border thresholds | US-1310 · FR-A072 | RA-10, RA-05 · **P0** | TC-13-080…085 |
+| TS-13-11 | E-sign adapter records consistent signature evidence on the signed-PDF and provider paths | US-1311 · FR-A071, FR-W24, FR-ADP-01 | RA-10, RA-04 · **P0** | TC-13-086…094 |
+| TS-13-12 | Portal signatory reviews, declares authority and signs only the current version | US-1312 · FR-W24 | RA-10, RA-15 · **P0** | TC-13-095…101 |
+| TS-13-13 | Step-up MFA, delegation, replay protection and separation of duties on every commercial approval | US-1313 · FR-A066, FR-A068, FR-A070, FR-A072 | RA-05, RA-02 · **P0** | TC-13-102…110 |
+| TS-13-14 | Proposal/quote and contract state machines; pairwise pricing matrix; journeys J-13-01 and J-13-02 | US-1302…US-1312 · §2.27.5, §2.27.6 | RA-06, RA-10 · **P0** | TC-13-111…128 |
+
+### 6.2.10.2 Test cases
+
+#### Group TC-13-A: Equivalence partitioning and error guessing – proposal builder (US-1301)
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-13-001 | Proposal draft from template with frozen price snapshot and read-only amount | TS-13-01 · US-1301 AC-1301-01 · FR-A065; BRL-QTE-01 | Pre: PP-01, MedMaarg, `asha`; clock 2026-11-27 11:00 IST. Data: D-210 with Completed demo; MM-PILOT v2; "Scanner corporate pilot" PV-7 (2 units × INR 150.00, 10% pilot discount); replay fixture `ag020_mm_pilot` | Generate | P-55 v1 `Draft` with scope sections, evidence links; amount INR 270.00 computed by the pricing library from PV-7; snapshot ID stored; amount field read-only in A065 | P0 | T01 | UC | Y | SYS |
+| TC-13-002 | Guarantee sentence removed and flagged | TS-13-01 · US-1301 AC-1301-02 · BRL-AI-05 | Data: replay output contains "guaranteed 30% reduction in sick days" | Generate | Sentence removed; note "unsupported promise removed"; audit entry | P0 | T14, T19 | EG | Y | SYS |
+| TC-13-003 | Planned offering refused | TS-13-01 · US-1301 AC-1301-03 · BRL-MKT-02 | Data: "Doctor Connect" Planned | Generate | 422 BRL-MKT-02; no proposal | P1 | T19 | EP | Y | SYS |
+| TC-13-004 | Price version validity boundary | TS-13-01 · US-1301 AC-1301-03 · BRL-QTE-01 | Data: PV-7 valid until 2026-11-30 23:59:59 IST | Generate at 2026-11-30 23:59:59 and 2026-12-01 00:00:00 IST | First succeeds; second 422 "Current price version required" | P0 | T01 | BVA | Y | SYS |
+| TC-13-005 | Gateway down inserts template sections and still computes the amount | TS-13-01 · US-1301 AC-1301-04 · DEC-007 | Data: gateway 503 | Generate | Unpersonalised sections; amount INR 270.00; draft saved | P1 | T01 | EG | Y | SYS |
+| TC-13-006 | Marketing cannot create proposals | TS-13-01 · US-1301 AC-1301-05 | Pre: `priya` R05 | POST proposal on D-210 | 403; NSE | P1 | T07 | EP | Y | SYS |
+| TC-13-007 | Client-side change to a computed amount is ignored | TS-13-01 · US-1301 Notes · BRL-QTE-01; NFR-017 | Data: PATCH amount "100.00" | PATCH | Amount stays 270.00; tamper warning audited | P0 | T07 | EG | Y | SYS |
+| TC-13-008 | T2 user cannot draft against a T1 deal | TS-13-01 · US-1301 · BRL-TEN-03 | Pre: T2 `b-r03` | POST proposal with D-210 ID | U404 | P0 | T15 | EP | Y | SYS |
+
+#### Group TC-13-B: Decision table and boundary values – proposal approval (US-1302)
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-13-009 | Approve exact revision, publish to the portal grant and queue NX-04 | TS-13-02 · US-1302 AC-1302-01 · FR-A066; BRL-APR-02 | Pre: PP-01, `meera` R02, MFA 1 h. Data: P-55 v1 hash `sha256:p55v1`, standard terms | POST approve; publish | `Approved` then `Sent` to the grantee; NX-04 queued (transactional) | P0 | T01 | DT | Y | SYS |
+| TC-13-010 | Changed liability clause requires Legal in addition | TS-13-02 · US-1302 AC-1302-02 · BRL-APR-05 | Data: liability clause differs from template | `meera` approves; then `dev` R10 | After R02: still `PendingApproval` "awaiting Legal"; after R10: `Approved` | P0 | T19 | DT | Y | SYS |
+| TC-13-011 | SLA escalation after 1 business day; never auto-approved | TS-13-02 · US-1302 AC-1302-03 · BRL-APR-10; O-13 | Data: submitted Sat 2026-12-05 11:00 IST | Advance to Mon 2026-12-07 10:59:59 and 11:00:00 IST | No escalation at 10:59:59; escalation to `vikram` R01 at 11:00:00; state stays `PendingApproval` indefinitely | P1 | T01 | BVA | Y | SYS |
+| TC-13-012 | New revision supersedes v1 in the portal | TS-13-02 · US-1302 AC-1302-04 · BRL-QTE-06 | Data: v1 Sent; Asha creates v2 | Create v2; open v1 in portal; POST accept v1 | v1 `Superseded`; banner "A newer version exists"; accept 409 | P0 | T01 | ST | Y | SYS |
+| TC-13-013 | Author cannot approve | TS-13-02 · US-1302 AC-1302-05 · BRL-APR-01 | Pre: `asha` | POST approve P-55 v1 | 403; NSE | P0 | T07 | EP | Y | SYS |
+| TC-13-014 | A lower role that is not the author cannot approve | TS-13-02 · US-1302 AC-1302-05 · ABAC-04 | Pre: `kiran` R03 | POST approve | 403 `ABOVE_APPROVAL_LIMIT` | P0 | T07 | EP | Y | SYS |
+| TC-13-015 | Approving a stale revision returns 409 | TS-13-02 · US-1302 · NFR-025 | Data: R02 opened v1; v2 saved | Approve v1 | 409 `STALE_REVISION` | P1 | T01 | EG | Y | SYS |
+
+#### Group TC-13-C: Worked examples, boundary values and property-based tests – Decimal pricing library (US-1303)
+
+**Common:** Pre: PP-04 (library only), Decimal context precision 28, ROUND_HALF_UP; TaxProfile fixture with illustrative 18% (ASSUMPTION-169).
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-13-016 | Worked example FR-DM-01: 2 × 150.00 at 10% = 270.00 | TS-13-03 · US-1303 AC-1303-01 · FR-DM-01; BRL-QTE-02 | Data: qty 2, unit INR 150.00, discount 10.00 | `line_total()` | `Decimal("270.00")` INR exactly (type Decimal, exponent −2) | P0 | T01 | BVA | Y | UT |
+| TC-13-017 | HALF_UP per line; subtotal = Σ rounded lines | TS-13-03 · US-1303 AC-1303-02 · BRL-QTE-02 | Data: A = 1 × 5.33 at 50% (2.665); B = 3 × 10.05 at 15% (25.6275) | Compute document | A 2.67; B 25.63; subtotal 28.30 (not 28.29 from rounding 28.2925) | P0 | T01 | BVA | Y | UT |
+| TC-13-018 | Intra-state: CGST 24.30 + SGST 24.30 on 270.00 = 318.60 | TS-13-03 · US-1303 AC-1303-03 · BRL-QTE-03; DEC-027 | Data: supplier Odisha (21), buyer Odisha, SAC 998314 | Compute | CGST 24.30; SGST 24.30; total 318.60 | P0 | T01 | EP | Y | UT |
+| TC-13-019 | Inter-state: IGST 48.60, total 318.60 | TS-13-03 · US-1303 AC-1303-03 · BRL-QTE-03 | Data: buyer Tamil Nadu (33) | Compute | IGST 48.60; total 318.60 | P0 | T01 | EP | Y | UT |
+| TC-13-020 | Export with active LUT is zero-rated | TS-13-03 · US-1303 AC-1303-03 · BRL-QTE-03 | Data: buyer abroad; LUT active for the financial year | Compute | Tax 0.00; LUT reference on the document | P0 | T01, T19 | EP | Y | UT |
+
+**Common for TC-13-021…024 (invalid inputs, AC-1303-04):** Steps: call the library through the quote API. Expected: validation error, nothing persisted, no revision created.
+
+| ID | Data | Expected | Links | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|
+| TC-13-021 | Discount 100.01% | 400 `DISCOUNT_OUT_OF_RANGE` | TS-13-03 · US-1303 AC-1303-04 · BRL-QTE-04 | P0 | T01 | BVA | Y | UT, SYS |
+| TC-13-022 | Discount −0.01% | 400 `DISCOUNT_OUT_OF_RANGE` | TS-13-03 · US-1303 AC-1303-04 | P0 | T01 | BVA | Y | UT |
+| TC-13-023 | Quantity 0 | 400 `QUANTITY_OUT_OF_RANGE` | TS-13-03 · US-1303 AC-1303-04 · BRL-QTE-07 | P0 | T01 | BVA | Y | UT |
+| TC-13-024 | Line currencies INR and USD in one document | 400 `CURRENCY_MIXED` (BRL-QTE-04) | TS-13-03 · US-1303 AC-1303-04 · BRL-QTE-04 | P0 | T01 | EP | Y | UT |
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-13-025 | Property: invariants hold over 10,000 generated documents | TS-13-03 · US-1303 AC-1303-05 · RECOMMENDATION-055; §6.1.11.7 | Data: Hypothesis `release` profile; 1–200 lines, quantities per unit rules, discounts 0.00–100.00 step 0.01, mixed tax cases | Run | No float type anywhere; total = Σ rounded lines + Σ rounded tax lines; 0 ≤ line ≤ qty × unit; recomputation identical; mutation score ≥ 85% on the module | P0 | T01 | PBT | Y | UT |
+| TC-13-026 | Client-supplied total is ignored and a tamper warning recorded | TS-13-03 · US-1303 AC-1303-06 · NFR-017 | Pre: PP-01. Data: request body `"total": "1.00"` for a 270.00 quote | POST quote | Stored total 270.00; tamper warning in audit | P0 | T07 | EG | Y | SYS |
+| TC-13-027 | Extreme values: ₹99,99,99,999.99 and ₹0.01 lines compute without overflow or precision loss | TS-13-03 · US-1303 D4 · EDGE-MONEY | Data: unit 99,99,99,999.99 × qty 1; unit 0.01 × qty 1 at 50% (0.005 → 0.01) | Compute | Exact Decimal results; 0.005 rounds to 0.01 | P1 | T01 | BVA | Y | UT |
+| TC-13-028 | Static check: no float in money paths | TS-13-03 · US-1303 Notes · TP-09; EG-01 | Data: lint rule over `money`, `pricing`, `ledger` packages; seeded violation `float(price)` | Run lint in CI | Seeded violation fails G0/G1; clean tree passes | P0 | T01 | EG | Y | CT |
+
+#### Group TC-13-D: Equivalence partitioning and boundary values – quotation builder (US-1304)
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-13-029 | OrganicSpec quote with live totals, validity and approver chip | TS-13-04 · US-1304 AC-1304-01 · FR-A067; BRL-QTE-02, BRL-QTE-05 | Pre: PP-01, OrganicSpec, `sunil` R07; clock 2026-11-27 11:00 IST. Data: PL-OS-12, TUR-A 2 kg, 10%, buyer Odisha | Build quote in A067 | Line 270.00; CGST 24.30; SGST 24.30; total INR 318.60; validity 2026-12-27 (O-14); chip "Sales Lead (≤ 10%)" | P0 | T01 | EP | Y | SYS |
+| TC-13-030 | Unit not allowed for the SKU | TS-13-04 · US-1304 AC-1304-02 · BRL-QTE-07 | Data: 2 quintal | Add line | "Unit not allowed for SKU"; API 422 | P1 | T01 | EP | Y | SYS |
+| TC-13-031 | Quantity boundaries 1…5,000 kg | TS-13-04 · US-1304 AC-1304-02 · BRL-QTE-07 | Data: 0, 1, 5,000, 5,001, 6,000 kg | Add each | 1 and 5,000 accepted; 0, 5,001 and 6,000 → "Quantity must be between 1 and 5,000 kg" | P1 | T01 | BVA | Y | SYS |
+| TC-13-032 | Manual unit price becomes a 20.00% discount needing the Startup Head | TS-13-04 · US-1304 AC-1304-03 · BRL-QTE-01; BRL-APR-04 | Data: unit price overridden to 120.00 | Save | Recorded as discount 20.00%; chip "Startup Head"; margin (240.00 − 160.00) ÷ 240.00 = 33.33% above floor | P0 | T01 | EP | Y | SYS |
+| TC-13-033 | USD line on an INR quote is refused | TS-13-04 · US-1304 AC-1304-04 · BRL-QTE-04 | Data: line from PL-OS-USD-2 | Add | 422 `CURRENCY_MIXED` | P0 | T01 | EP | Y | SYS |
+| TC-13-034 | Price list changed during edit returns 409 on submit | TS-13-04 · US-1304 AC-1304-05 · NFR-025 | Data: PL-OS-13 approved while the quote is open | Submit | 409 "Price list changed - review lines" | P1 | T01 | EG | Y | SYS |
+| TC-13-035 | Another startup's price list is not offered and its ID returns 404 | TS-13-04 · US-1304 AC-1304-06 · BRL-TEN-04 | Data: MedMaarg price list ID | Open picker; POST line with the ID | Not listed; API U404 | P0 | T15 | EP | Y | SYS |
+
+#### Group TC-13-E: Boundary values and decision table – discount and margin approval routing (US-1305; converted from Part 6.1 BVA-D01…D14)
+
+**Common for TC-13-036…049:** Pre: PP-01, OrganicSpec; quote QTE-220, 1 line OS-RICE-25KG, qty 40, unit INR 2,400.00 from PV-9; margin fixtures built by the helper `margin_fixture()` (§6.1.12.4); author `sunil` R07. Steps: set discount (and margin fixture), submit for approval, read the computed approval chain. Interpretations per ASSUMPTION-184 (two-decimal percentages; floor strictly below 25.00%).
+
+| ID | Data: discount · margin | Expected approval chain | Links | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|
+| TC-13-036 | −0.01% | 400 validation; no revision (BVA-D01) | TS-13-05 · US-1305 · BRL-QTE-04 | P0 | T01 | BVA | Y | UT, SYS |
+| TC-13-037 | 0.00% · 40.00% (line 96,000.00) | No discount approval; standard quote approval only (BVA-D02) | TS-13-05 · US-1305 · BRL-APR-04 | P0 | T01 | BVA | Y | UT |
+| TC-13-038 | 0.01% · 39.99% (95,990.40) | R03L or R02 (BVA-D03) | TS-13-05 · US-1305 · BRL-APR-04 | P0 | T01 | BVA | Y | UT |
+| TC-13-039 | 9.99% (86,409.60) | R03L or R02 (BVA-D04) | TS-13-05 · US-1305 · BRL-APR-04 | P0 | T01 | BVA | Y | UT |
+| TC-13-040 | **10.00%** (86,400.00) | R03L (AC-1305-01) or R02 (BVA-D05) | TS-13-05 · US-1305 AC-1305-01 · BRL-APR-04 | P0 | T01 | BVA | Y | UT, SYS |
+| TC-13-041 | 10.01% (86,390.40) | R02 (BVA-D06) | TS-13-05 · US-1305 AC-1305-01 · BRL-APR-04 | P0 | T01 | BVA | Y | UT, SYS |
+| TC-13-042 | 19.99% (76,809.60) | R02 (BVA-D07) | TS-13-05 · US-1305 · BRL-APR-04 | P0 | T01 | BVA | Y | UT |
+| TC-13-043 | **20.00%** · 25.00% (76,800.00) | R02; margin exactly at floor is not below (BVA-D08) | TS-13-05 · US-1305 AC-1305-01 · BRL-APR-04 | P0 | T01 | BVA | Y | UT, SYS |
+| TC-13-044 | 20.01% · 24.99% (76,790.40) | R01 + R08 in one chain, not two (BVA-D09; Part 6.1 worked example "TC-13-008") | TS-13-05 · US-1305 AC-1305-01 · BRL-APR-04; DEC-038 | P0 | T01 | BVA, DT | Y | UT, SYS |
+| TC-13-045 | 5.00% · **25.00%** (91,200.00) | R03L or R02 (BVA-D10) | TS-13-05 · US-1305 · BRL-APR-04 | P0 | T01 | BVA | Y | UT |
+| TC-13-046 | 5.00% · **24.99%** (91,200.00) | R01 + R08: margin floor overrides the band (BVA-D11) | TS-13-05 · US-1305 AC-1305-02 · BRL-APR-04 | P0 | T01 | BVA, DT | Y | UT, SYS |
+| TC-13-047 | 100.00% · negative (0.00) | R01 + R08; warning "price zero" (BVA-D12) | TS-13-05 · US-1305 · BRL-APR-04 | P0 | T01 | BVA | Y | UT |
+| TC-13-048 | 100.01% | 400 validation (BVA-D13) | TS-13-05 · US-1305 · BRL-QTE-04 | P0 | T01 | BVA | Y | UT |
+| TC-13-049 | 10.00% submitted, then approval attempted by the R03L who authored the quote | 403 author ≠ approver (BVA-D14) | TS-13-05 · US-1305 · BRL-APR-01 | P0 | T07 | BVA, DT | Y | SYS |
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-13-050 | High-value or cross-border quote adds Founder and Legal | TS-13-05 · US-1305 AC-1305-03 · BRL-APR-06; O-15 | Data: quote totals INR 9,99,999.99 and INR 10,00,000.00 (domestic, 5% discount); and a UAE buyer quote of INR 1.00 | Submit each | 9,99,999.99 → band approver only; 10,00,000.00 → + R01 + R10; UAE → + R01 + R10 regardless of value | P0 | T01 | BVA | Y | SYS |
+| TC-13-051 | Any line change after approval creates a new revision and voids approval | TS-13-05 · US-1305 AC-1305-04 · BRL-QTE-06 | Data: approved rev 3; change quantity 40 → 41 | PATCH | Rev 4 `Draft`; rev 3 approval void; portal still shows rev 3 only if Sent and not superseded | P0 | T01 | ST | Y | SYS |
+| TC-13-052 | Sales Lead cannot approve a 12.00% discount | TS-13-05 · US-1305 AC-1305-05 · ABAC-04 | Pre: `neha`-equivalent R03L of OrganicSpec | POST approve | 403 `ABOVE_APPROVAL_LIMIT` | P0 | T07 | EP | Y | SYS |
+| TC-13-053 | Finance user who prepared the margin analysis cannot approve as Finance | TS-13-05 · US-1305 AC-1305-05 · ABAC-03; BRL-APR-07 | Data: `lata` R08 prepared margin analysis on QTE-220 (20.01%) | `lata` approves as Finance | 403; another R08 user's approval accepted | P0 | T07 | EP | Y | SYS |
+| TC-13-054 | Margin = (net − attributable direct cost) ÷ net from the price-version cost | TS-13-05 · US-1305 Notes · BRL-APR-04 | Pre: PP-04. Data: net 76,790.40; cost 40 × 1,300.00 = 52,000.00 | Compute | 32.28% (Part 6.1 §6.1.12.4); cost read from PV-9, not from the request | P0 | T01 | EP | Y | UT |
+| TC-13-055 | Tighter startup override routes 6.00% to the Startup Head | TS-13-05 · US-1305 D6 · CFG-17; BRL-APR-11 (tightening immediate) | Data: OrganicSpec policy: Sales Lead limit 5.00% | Submit 6.00% | Chain = R02; policy change applied immediately without Founder approval (tightening) | P1 | T01 | DT | Y | SYS |
+
+#### Group TC-13-F: State transition and boundary values – portal proposal and quote review (US-1306)
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-13-056 | Grantee views and accepts a valid quote | TS-13-06 · US-1306 AC-1306-01 · FR-W23; NT-014 | Pre: PP-03, `buyer@agro.example` with grant on Q-88. Data: Q-88 rev 2 INR 318.60 valid until 2026-12-27 | Open; accept | Viewed (NT-014 to owner); Accepted with identity, timestamp, revision 2 and hash `sha256:q88r2` | P0 | T01 | ST | Y | SYS |
+| TC-13-057 | Request change keeps terms unchanged | TS-13-06 · US-1306 AC-1306-02 | Data: comment "need delivery to Kolkata" | POST request-change | `ChangeRequested`; owner notified; lines and totals unchanged | P1 | T01 | ST | Y | SYS |
+| TC-13-058 | Validity boundary: accept at 23:59:59 on 27 Dec; disabled from 00:00:00 on 28 Dec | TS-13-06 · US-1306 AC-1306-03 · BRL-QTE-05; O-14 | Data: Q-88 rev 2 | Accept at 2026-12-27 23:59:59 IST (case a, fresh fixture) and 2026-12-28 00:00:00 IST (case b) | a: Accepted. b: Accept disabled with "This quote expired on 27 Dec 2026"; API 409 `QUOTE_EXPIRED`; state `Expired` | P0 | T01 | BVA | Y | SYS |
+| TC-13-059 | Superseded revision cannot be accepted | TS-13-06 · US-1306 AC-1306-03 · BRL-QTE-06 | Data: rev 3 exists | Open rev 2; accept | Banner "A newer version exists"; 409 | P0 | T01 | ST | Y | SYS |
+| TC-13-060 | Double accept is idempotent | TS-13-06 · US-1306 AC-1306-04 · NFR-005 | Data: two accept requests 300 ms apart | POST twice | One acceptance record | P0 | T16 | EG | Y | SYS |
+| TC-13-061 | Forwarded link without a grant shows the denied state and no data | TS-13-06 · US-1306 AC-1306-05 · CA-PORTAL; BRL-CTR-03 | Pre: `cfo@agro.example` signed in, no grant | Open forwarded link; call API | Denied state; API U404; response contains no quote fields; not cached (`Cache-Control: private, no-store`, BRL-PUB-05) | P0 | T07, T15 | EP | Y | SYS |
+| TC-13-062 | Acceptance creates no invoice and no payment | TS-13-06 · US-1306 Notes · DEC-022 | Data: accepted Q-88 | Query invoices, payment links, ledgers | 0 invoice, 0 payment link, 0 ledger entries | P0 | T19 | EP | Y | SYS |
+| TC-13-063 | Mobile and hi-IN review | TS-13-06 · US-1306 D5, D8 · NFR-023 | Pre: PP-06 WebKit 360 px, locale hi-IN | Open and accept | No horizontal scroll; totals with ₹ and Indian digit grouping; axe 0 critical/serious | P2 | T08, T13 | EP | Y | E2E |
+
+#### Group TC-13-G: Equivalence partitioning and boundary values – objections and exceptions (US-1307, US-1308)
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-13-064 | Approved answer suggested and objection resolved with time recorded | TS-13-07 · US-1307 AC-1307-01 · FR-A069; KPI-28 | Pre: PP-01, MedMaarg, `asha`. Data: objection "data privacy concern" on D-210; FAQ-31 citing KR-9 | Record; use answer | FAQ-31 suggested with KR-9; objection `Resolved`; time-to-resolution stored | P1 | T01 | EP | Y | SYS |
+| TC-13-065 | Concession limit: 5.00% within, 5.01% and 8.00% escalate | TS-13-07 · US-1307 AC-1307-02 · O-15 | Data: MedMaarg limit 5.00% | Propose 5.00, 5.01, 8.00 | 5.00 allowed as a quote revision draft; 5.01 and 8.00 create exceptions in A070; nothing promised to the customer | P0 | T19 | BVA | Y | SYS |
+| TC-13-066 | No evidence: no comparative answer | TS-13-07 · US-1307 AC-1307-03 · BRL-SRC-10, BRL-AI-04 | Data: "your competitor is cheaper by 40%" | Request suggestion | Abstains; no comparative claim generated | P0 | T14, T19 | EP | Y | SYS |
+| TC-13-067 | AI output offering a discount is blocked | TS-13-07 · US-1307 AC-1307-04 · BRL-AI-07; DEC-064 | Data: replay output "we can offer 15% off" | Request suggestion | Blocked; audit event; no quote revision created | P0 | T14, T19 | EG | Y | SYS |
+| TC-13-068 | Marketing cannot record objections | TS-13-07 · US-1307 AC-1307-05 | Pre: `priya` | POST objection | 403 | P1 | T07 | EP | Y | SYS |
+| TC-13-069 | Counter-proposal drafts a new quote revision for approval, not sent | TS-13-08 · US-1308 AC-1308-01 · FR-A070; BRL-AUT-01 | Pre: `meera` R02. Data: exception 8.00% | Counter-propose 6.00% | New quote revision at 6.00% `Draft` routed per US-1305 (R02); no portal publication; L1 | P0 | T01 | EP | Y | SYS |
+| TC-13-070 | 120-day payment term exception needs Legal | TS-13-08 · US-1308 AC-1308-02 · BRL-APR-05 | Data: payment term 120 days | `meera` approves | Pending R10; resolved only after `dev` approves | P0 | T19 | DT | Y | SYS |
+| TC-13-071 | Exception SLA breach escalates to the Founder and stays open | TS-13-08 · US-1308 AC-1308-03 · BRL-APR-10; O-13 | Data: opened Tue 2026-12-01 17:00 IST | Advance to Wed 2026-12-02 16:59:59 and 17:00:00 | Escalation at 17:00:00 only; exception `Open` | P1 | T01 | BVA | Y | SYS |
+| TC-13-072 | Requester cannot approve own exception | TS-13-08 · US-1308 AC-1308-04 · BRL-APR-01 | Pre: `asha` | POST approve | 403 | P0 | T07 | EP | Y | SYS |
+
+#### Group TC-13-H: Decision table and state transition – contracts, legal approval and e-sign (US-1309…US-1311)
+
+| Rule | Contract value | Cross-border | Template deviation | Required approvers | TC |
+|---|---|---|---|---|---|
+| C1 | < ₹10,00,000.00 | N | N | R10 | TC-13-080, TC-13-081 |
+| C2 | ≥ ₹10,00,000.00 | N | N | R10 + R01 | TC-13-082 |
+| C3 | any | Y | – | R10 + R01 | TC-13-083 |
+| C4 | any | – | Y | R10 (deviation reviewed) + per C1–C3 | TC-13-074 |
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-13-073 | Generate MoU from approved template with hash, dates and signer slots | TS-13-09 · US-1309 AC-1309-01 · FR-A071; BRL-CTR-01 | Pre: PP-01, EduVerse, `asha`-equivalent R03. Data: accepted quote; EV-MOU v4 | Generate | CT-14 rev 1 `Drafting`; SHA-256 hash; effective 2027-01-01; signer slots for both parties | P1 | T01 | EP | Y | SYS |
+| TC-13-074 | Clause deviation highlighted and routed to Legal (C4) | TS-13-09 · US-1309 AC-1309-02 · BRL-CTR-01, BRL-APR-05 | Data: clause 7 edited | Submit | Deviation highlighted; review task for R10 | P0 | T19 | DT | Y | SYS |
+| TC-13-075 | Send for signature before legal approval is blocked | TS-13-09 · US-1309 AC-1309-03 · BRL-CTR-04 | Data: CT-14 `Drafting` | `dev` POST send | 409 BRL-CTR-04; 0 e-sign calls | P0 | T19 | ST | Y | SYS |
+| TC-13-076 | Signed PDF whose hash differs stays OutForSignature | TS-13-09 · US-1309 AC-1309-04 · BRL-CTR-02 | Data: approved `sha256:ct14a`; upload hashes `sha256:ct14x` | Upload | State `OutForSignature`; message "Signed document differs from approved version"; no Executed | P0 | T19 | EP | Y | SYS |
+| TC-13-077 | Executed contract notifies the closure gate and sets the renewal notice date | TS-13-09 · US-1309 AC-1309-05 · BRL-CTR-05; DEC-054; O-18 | Data: all signatures verified, hashes equal; expiry 2027-12-31 | Complete | `Executed`; closure gate event (DEC-054); renewal notice 2027-11-01 00:00 IST; at 2027-10-31 23:59:59 no notice | P0 | T01 | BVA | Y | SYS |
+| TC-13-078 | Growth manager cannot dispatch e-sign; only Legal | TS-13-09 · US-1309 AC-1309-06 · RBAC A071 | Pre: R03 | POST send | 403 | P0 | T07 | EP | Y | SYS |
+| TC-13-079 | Sending needs recorded signer authority for both parties | TS-13-09 · US-1309 · BRL-CTR-03; GAP-159 | Data: LegallyApproved, counterparty authority missing | `dev` POST send | 422 "Signer authority required"; state `LegallyApproved` | P0 | T19 | ST | Y | SYS |
+| TC-13-080 | Legal approves the exact hash; approval expiry 30 days (C1) | TS-13-10 · US-1310 AC-1310-01 · FR-A072; BRL-APR-02 | Pre: `dev` R10 (not the drafter), MFA 1 h. Data: CT-14 rev 1 `sha256:ct14a`, value INR 4,50,000.00 domestic | POST approve | `LegallyApproved`; approval expiry 2026-12-31 10:00 IST (from CLK-0) | P0 | T01 | DT | Y | SYS |
+
+**Common for TC-13-081 and TC-13-082 (value boundary, AC-1310-02):** Pre: domestic counterparty; R10 approval recorded. Steps: submit; read required approvers.
+
+| ID | Data | Expected | Links | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|
+| TC-13-081 | Value INR 9,99,999.99 | R10 alone suffices → LegallyApproved | TS-13-10 · US-1310 AC-1310-02 · BRL-APR-06 | P0 | T01 | BVA | Y | SYS |
+| TC-13-082 | Value INR 10,00,000.00 | R01 also required; stays LegalReview until R01 approves | TS-13-10 · US-1310 AC-1310-02 · BRL-APR-06; O-15 | P0 | T01 | BVA | Y | SYS |
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-13-083 | Cross-border counterparty needs R01 and R10 regardless of value (C3) | TS-13-10 · US-1310 AC-1310-03 · BRL-APR-06 | Data: counterparty Dubai, UAE; value INR 50,000.00 | Submit | Required approvers R10 + R01 | P0 | T01 | DT | Y | SYS |
+| TC-13-084 | Drafter of the deviation cannot approve; rejection needs a reason | TS-13-10 · US-1310 AC-1310-04 · BRL-APR-01, BRL-APR-08 | Data: deviation drafted by `dev` | `dev` approves; second R10 rejects without reason | 403; 400 | P0 | T07 | EP | Y | SYS |
+| TC-13-085 | Expired legal approval blocks sending | TS-13-10 · US-1310 AC-1310-01 · BRL-APR-03 | Data: approval 2026-12-01 10:00 IST (30 days) | Send at 2026-12-31 09:59:59 and 10:00:00 IST | First allowed; second 409 "Legal approval expired" | P1 | T01 | BVA | Y | SYS |
+| TC-13-086 | Signed-PDF path: scan, hash, compare and record method | TS-13-11 · US-1311 AC-1311-01 · FR-W24; BRL-CTR-02; DEC-023 | Pre: PP-03 counterparty upload in W24 | Upload signed PDF (hash `sha256:ct14a`); confirm | Malware scan clean; SHA-256 computed and equal; signature event method `signed_pdf` | P0 | T01, T19 | EP | Y | SYS |
+| TC-13-087 | Malware test file is rejected and not stored | TS-13-11 · US-1311 AC-1311-01 · NFR-021 | Data: EICAR test file renamed `.pdf` | Upload | Rejected with reason; object not retained; incident logged | P0 | T07 | EG | Y | SYS |
+| TC-13-088 | Provider path stores the envelope with idempotency key (battery B2) | TS-13-11 · US-1311 AC-1311-02 · NFR-005 | Pre: W5 build, provider sandbox (verify). Data: key `CT-14:rev1`; worker restart after accept | Send; restart | One envelope; ID stored; "completed" webhook → signed document fetched, hashed, compared before Executed | P0 | T16 | EG | Y | IT |
+| TC-13-089 | Replayed completion webhook creates no second signature event (battery B4) | TS-13-11 · US-1311 AC-1311-03 · BRL-AUT-08 | Data: "completed" event twice; one with invalid HMAC | Inject | One signature event; invalid HMAC → 401 | P0 | T16, T07 | EG | Y | IT |
+| TC-13-090 | Send timeout is Uncertain and reconciled by envelope lookup (battery B3) | TS-13-11 · US-1311 AC-1311-03 · FR-STD-02; NFR-026 | Data: simulator `accept_then_timeout` | Send; advance 5 min | `Uncertain` → lookup finds envelope → OutForSignature; 0 resends | P0 | T18 | ST | Y | SYS |
+| TC-13-091 | Declined or expired signature window | TS-13-11 · US-1311 AC-1311-04 · NT-015 | Data: provider "declined"; second contract with window expiry | Inject | `Declined` with NT-015 High; second `Expired` | P1 | T01 | ST | Y | SYS |
+| TC-13-092 | AI agent identity cannot call the e-sign tool | TS-13-11 · US-1311 AC-1311-05 · BRL-AI-07, BRL-CTR-04 | Pre: R20 token for AG-020 | Call e-sign tool | Tool registry denies; audit; 0 provider calls | P0 | T07 | EP | Y | SYS |
+| TC-13-093 | Contract: provider responses normalised (battery B1) | TS-13-11 · US-1311 · FR-ADP-01; RECOMMENDATION-054 | Pre: PP-04 + recorded fixtures (sent, declined, rate limited, timeout) | Replay | sent / permanent / retryable / uncertain | P1 | T01 | EP | Y | CT |
+| TC-13-094 | E-sign credentials are references; sandbox only outside prod (batteries B5, B6) | TS-13-11 · US-1311 · NFR-004; ABAC-12 | Pre: `staging` with a live key configured | Start service; scan responses and logs | Start-up check fails on the live key; no secret in responses or logs | P0 | T07 | EG | Y | SYS |
+
+#### Group TC-13-I: Equivalence partitioning – portal agreement review and e-signature (US-1312)
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-13-095 | Authorised signatory re-verifies with OTP and signs via the provider | TS-13-12 · US-1312 AC-1312-01 · FR-W24; NX-05 | Pre: PP-03, `registrar@kalinga.example` with grant on CT-14; authority evidence AL-3 | Open; declare authority; OTP; sign | Status "Signed by Kalinga College"; after all parties sign and hashes match, Executed and NX-05 sends the signed copy | P0 | T01 | UC | Y | SYS |
+| TC-13-096 | Old revision link is refused when rev 2 exists | TS-13-12 · US-1312 AC-1312-02 · BRL-CTR-02 | Data: rev 2 created; open rev 1 link | Attempt sign | "This version is no longer valid"; no signature | P0 | T19 | EP | Y | SYS |
+| TC-13-097 | Sign stays disabled without the authority declaration | TS-13-12 · US-1312 AC-1312-03 · BRL-CTR-03 | Data: declaration unticked | Click Sign; call API | Button disabled; API 422 `AUTHORITY_REQUIRED` | P0 | T19 | EP | Y | SYS |
+| TC-13-098 | Provider down: signed-PDF path offered only if Legal enabled it | TS-13-12 · US-1312 AC-1312-04 · DEC-023 | Data: provider 503; CT-14 with signed-PDF fallback enabled; CT-15 without | Open both | CT-14 offers upload path; CT-15 shows "Signing temporarily unavailable" | P1 | T01 | EP | Y | SYS |
+| TC-13-099 | Agreement viewer is real text, navigable by headings, with labelled declaration and error summary | TS-13-12 · US-1312 AC-1312-05 · NFR-023 | Pre: PP-06 plus PP-07 pass | Navigate by headings; submit without declaration | Headings present; checkbox labelled; error summary focused; axe 0 critical/serious | P1 | T08 | EP | Y | E2E |
+| TC-13-100 | Colleague without a grant sees the denied state | TS-13-12 · US-1312 AC-1312-06 · CA-PORTAL; BRL-CTR-03 | Pre: another Kalinga user without grant | Open the link | Denied state; no contract text in the response | P0 | T07, T15 | EP | Y | SYS |
+| TC-13-101 | Wrong or expired OTP prevents signing | TS-13-12 · US-1312 Notes · NFR-003 | Data: wrong OTP ×3; OTP older than its validity | Submit | No signature; lockout after configured attempts; audit | P0 | T07 | BVA | Y | SYS |
+
+#### Group TC-13-J: Boundary values and decision table – step-up MFA, delegation and separation of duties (US-1313)
+
+**Common for TC-13-102…104 (MFA freshness, O-12):** Pre: PP-01, `meera` R02 approving P-55 v1. Steps: set session `mfa_at` to the stated age; POST approve.
+
+| ID | Data: MFA age | Expected | Links | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|
+| TC-13-102 | 11 h 59 m 59 s | Approval succeeds | TS-13-13 · US-1313 AC-1313-01 · ABAC-11; BRL-TEN-08 | P0 | T07 | BVA | Y | SYS |
+| TC-13-103 | 12 h 00 m 00 s | Approval succeeds (O-12) | TS-13-13 · US-1313 AC-1313-01 · ABAC-11 | P0 | T07 | BVA | Y | SYS |
+| TC-13-104 | 12 h 00 m 01 s and 12 h 01 m | 401 `STEP_UP_REQUIRED`; after MFA the same request succeeds | TS-13-13 · US-1313 AC-1313-01 · ABAC-11 | P0 | T07 | BVA | Y | SYS |
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-13-105 | Delegation to an equal role for 7 days is recorded "on behalf of" | TS-13-13 · US-1313 AC-1313-02 · BRL-APR-09; ABAC-07 | Data: `meera` delegates to another MedMaarg R02 from CLK-0 for 7 days | Delegate approves on day 3 | Approved; audit "on behalf of meera" | P0 | T07 | EP | Y | SYS |
+| TC-13-106 | Delegation length boundary 14 days | TS-13-13 · US-1313 AC-1313-02 · BRL-APR-09 | Data: delegation from 2026-12-01 10:00 IST for 14 days; attempt to create 15 days | Approve at 2026-12-15 09:59:59 and 10:00:00 IST; create 15-day delegation | 09:59:59 allowed; 10:00:00 denied (expired, day 15); 15-day creation 422 | P0 | T07 | BVA | Y | SYS |
+| TC-13-107 | Delegation to a lower role or another startup is refused | TS-13-13 · US-1313 · BRL-APR-09 | Data: R02 → R03; R02 MedMaarg → R02 OrganicSpec | Create | 422 for both | P0 | T07 | EP | Y | SYS |
+| TC-13-108 | Replayed approval with the same nonce returns 409 | TS-13-13 · US-1313 AC-1313-03 · NFR-018 | Data: captured approval request | Replay | 409; one approval record | P0 | T07, T16 | EG | Y | SYS |
+| TC-13-109 | Identity provider unavailable: approvals fail closed | TS-13-13 · US-1313 AC-1313-04 · TP-01 | Data: IdP step-up endpoint 503; MFA age 13 h | Approve | Denied with retry message; no fallback without MFA | P0 | T07 | EG | Y | SYS |
+| TC-13-110 | Quote author denied; portfolio scope denied | TS-13-13 · US-1313 AC-1313-05 · BRL-APR-01, BRL-TEN-05 | Data: author `sunil`; `vikram` in All startups | Approve each | 403; 409 SSS | P0 | T07, T15 | EP | Y | SYS |
+
+#### Group TC-13-K: State transition – proposal/quote and contract machines (Part 2.3 §2.27.5, §2.27.6)
+
+0-switch map, proposal/quote (17 transitions): Draft→Validating, Validating→PendingApproval (TC-13-029, TC-13-111) · Validating→Draft (TC-13-030) · PendingApproval→Draft (TC-13-111) · PendingApproval→Approved (TC-13-009) · Approved→Sent (TC-13-009) · Sent→Viewed, Viewed→Accepted (TC-13-056) · Viewed→ChangeRequested (TC-13-057) · Sent→Expired, Viewed→Expired (TC-13-058, TC-13-111) · ChangeRequested→Superseded, Approved→Superseded (TC-13-012, TC-13-111) · Sent→Withdrawn (TC-13-111). Contract (16 transitions): Drafting→LegalReview, LegalReview→Drafting (TC-13-113) · LegalReview→LegallyApproved (TC-13-080) · LegallyApproved→OutForSignature (TC-13-095) · OutForSignature→PartiallySigned→Executed (TC-13-095) · OutForSignature→Executed (TC-13-077) · OutForSignature→Declined/Expired (TC-13-091) · Executed→Active, Active→RenewalDue, RenewalDue→Renewed/Terminated, Active→Terminated (TC-13-113).
+
+**Common for TC-13-111…114:** Pre: PP-01; drive each transition through the API with clock control.
+
+| ID | Data (transitions) | Expected | Links | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|
+| TC-13-111 | Quote valid set: Validating→PendingApproval; PendingApproval→Draft (reject with reason); Sent→Expired at validity end without view; Approved→Superseded on new revision; Sent→Withdrawn by sender with reason | Each succeeds once; portal reflects state; withdrawn quote not acceptable | TS-13-14 · US-1302, US-1306 · §2.27.5 | P1 | T01 | ST | Y | SYS |
+| TC-13-112 | Quote sneak paths: Draft→Approved; PendingApproval→Sent; Expired→Accepted; Superseded→Accepted; Accepted→ChangeRequested | 409 `INVALID_TRANSITION`; NSE | TS-13-14 · US-1305, US-1306 · BRL-APR-02, BRL-QTE-05 | P0 | T01 | ST | Y | UT |
+| TC-13-113 | Contract valid set: Drafting→LegalReview→Drafting (changes required); Executed→Active on 2027-01-01; Active→RenewalDue on 2027-11-01; RenewalDue→Renewed (new contract executed); RenewalDue→Terminated; Active→Terminated (early termination with reason) | Each succeeds once with audit; renewal notice NT raised at RenewalDue | TS-13-14 · US-1309 · §2.27.6; BRL-CTR-05 | P1 | T01 | ST | Y | SYS |
+| TC-13-114 | Contract sneak paths: Drafting→OutForSignature; LegalReview→Executed; Declined→Executed; Executed→Drafting | 409; 0 e-sign calls | TS-13-14 · US-1309 · BRL-CTR-04 | P0 | T01 | ST | Y | UT |
+
+#### Group TC-13-L: Pairwise – pricing, tax and approval matrix (factor file `ff_13_quote.yaml`)
+
+Factors: Tax case {intra-state Odisha, inter-state Tamil Nadu, export with LUT} × Discount {0.00, 10.00, 15.00, 20.01} × Lines {1, 3 mixed SKUs, 200} × Creator role {R03, R07}. Constraint: export quotes use PL-OS-USD-2 (USD), domestic quotes PL-OS-12 (INR). Full factorial 72; all-pairs **12 rows** (each tax × discount pair once; other pairs verified). Fixture costs (§6.2.8.1) keep every row above the 25% margin floor except the 20.01% rows, so the discount band alone drives the approver. Mixed lines = TUR-A 2 kg, OS-RICE-25KG 1 bag, GIN-B 3 kg. Tax at the illustrative 18% (ASSUMPTION-169), rounded per line. **Common:** build the quote via API; read lines, tax, total and approval chain; recompute independently in the test with the reference oracle.
+
+| ID | Tax · Discount · Lines · Role | Expected (subtotal; tax; total; approvers) | Links | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|
+| TC-13-115 | Intra · 0.00 · 1 · R07 | 300.00; CGST 27.00 + SGST 27.00; INR 354.00; standard approval only | TS-13-14 · US-1303, US-1304 · BRL-QTE-02, BRL-QTE-03 | P0 | T01 | PW | Y | SYS |
+| TC-13-116 | Intra · 10.00 · 200 (TUR-A 2 kg each) · R03 | 54,000.00; CGST 4,860.00 + SGST 4,860.00; INR 63,720.00; R03L | TS-13-14 · US-1304, US-1305 · BRL-APR-04 | P0 | T01 | PW | Y | SYS |
+| TC-13-117 | Intra · 15.00 · 3 mixed · R03 | 255.00 + 2,040.00 + 306.00 = 2,601.00; CGST 22.95 + 183.60 + 27.54 = 234.09 and SGST 234.09; INR 3,069.18; R02 | TS-13-14 · US-1303 · BRL-QTE-02 | P0 | T01 | PW | Y | SYS |
+| TC-13-118 | Intra · 20.01 · 1 · R03 | 239.97; CGST 21.60 + SGST 21.60; INR 283.17; R01 + R08 | TS-13-14 · US-1305 · BRL-APR-04 | P0 | T01 | PW | Y | SYS |
+| TC-13-119 | Inter · 0.00 · 3 mixed · R03 | 300.00 + 2,400.00 + 360.00 = 3,060.00; IGST 54.00 + 432.00 + 64.80 = 550.80; INR 3,610.80; standard | TS-13-14 · US-1303 · BRL-QTE-03 | P0 | T01 | PW | Y | SYS |
+| TC-13-120 | Inter · 10.00 · 1 · R07 | 270.00; IGST 48.60; INR 318.60; R03L | TS-13-14 · US-1303 · FR-DM-01 | P0 | T01 | PW | Y | SYS |
+| TC-13-121 | Inter · 15.00 · 200 · R07 | 51,000.00; IGST 45.90 × 200 = 9,180.00; INR 60,180.00; R02 | TS-13-14 · US-1304 · BRL-QTE-02 | P0 | T01 | PW | Y | SYS |
+| TC-13-122 | Inter · 20.01 · 200 · R03 | 47,994.00; IGST 43.19 × 200 = 8,638.00 (not 8,638.92 from rounding the subtotal); INR 56,632.00; R01 + R08 | TS-13-14 · US-1303 · BRL-QTE-02; EG-02 | P0 | T01 | PW, EG | Y | SYS |
+| TC-13-123 | Export LUT · 0.00 · 200 · R03 | USD 800.00; tax 0.00; USD 800.00; standard; no FX applied (DEC-027) | TS-13-14 · US-1303 · BRL-QTE-03, BRL-QTE-04 | P0 | T01 | PW | Y | SYS |
+| TC-13-124 | Export LUT · 10.00 · 3 mixed · R07 | 3.60 + 27.00 + 4.05 = USD 34.65; tax 0.00; R03L | TS-13-14 · US-1303 · BRL-QTE-03 | P0 | T01 | PW | Y | SYS |
+| TC-13-125 | Export LUT · 15.00 · 1 · R07 | USD 3.40; tax 0.00; R02 | TS-13-14 · US-1304 · BRL-APR-04 | P0 | T01 | PW | Y | SYS |
+| TC-13-126 | Export LUT · 20.01 · 3 mixed · R07 | 3.20 + 24.00 + 3.60 = USD 30.80; tax 0.00; R01 + R08 | TS-13-14 · US-1305 · BRL-APR-04 | P0 | T01 | PW | Y | SYS |
+
+#### Group TC-13-M: Use case – commercial journeys
+
+| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-13-127 | J-13-01: quote, approval and portal acceptance | TS-13-14 · US-1304, US-1305, US-1306 · FR-A067, FR-A068, FR-W23 | Pre: PP-06 (Chromium, WebKit); lanes `sunil` R07, R03L, `buyer@agro.example`; clock 2026-11-27 | Build Q-88 (10%) → R03L approves with MFA → publish → buyer accepts on 360 px | Accepted rev with hash; NT-014; no invoice; axe 0 critical/serious on A067, A068, W23 | P0 | T01 | UC | Y | E2E |
+| TC-13-128 | J-13-02: contract to execution on the signed-PDF path | TS-13-14 · US-1309…US-1312 · FR-A071, FR-A072, FR-W24 | Pre: PP-06; lanes `dev` R10, registrar | Generate CT-14 → legal approval → send → registrar declares authority, OTP, uploads signed PDF with matching hash → countersign | `Executed`; renewal notice date set; closure gate event; NX-05 | P0 | T01 | UC | Y | E2E |
+
+### 6.2.10.3 EP-13 coverage
+
+| Story | AC → TC |
+|---|---|
+| US-1301 | 01→001 · 02→002 · 03→003, 004 · 04→005 · 05→006 · extra→007, 008 |
+| US-1302 | 01→009 · 02→010 · 03→011 · 04→012 · 05→013, 014 · extra→015, 111 |
+| US-1303 | 01→016 · 02→017 · 03→018, 019, 020 · 04→021…024 · 05→025 · 06→026 · extra→027, 028, 115…126 |
+| US-1304 | 01→029 · 02→030, 031 · 03→032 · 04→033 · 05→034 · 06→035 · extra→127 |
+| US-1305 | 01→040, 041, 043, 044 · 02→046 · 03→050 · 04→051 · 05→052, 053 · extra→036…039, 042, 045, 047, 048, 049, 054, 055 |
+| US-1306 | 01→056 · 02→057 · 03→058, 059 · 04→060 · 05→061 · extra→062, 063 |
+| US-1307 | 01→064 · 02→065 · 03→066 · 04→067 · 05→068 |
+| US-1308 | 01→069 · 02→070 · 03→071 · 04→072 |
+| US-1309 | 01→073 · 02→074 · 03→075 · 04→076 · 05→077 · 06→078 · extra→079, 113, 114 |
+| US-1310 | 01→080, 085 · 02→081, 082 · 03→083 · 04→084 |
+| US-1311 | 01→086, 087 · 02→088 · 03→089, 090 · 04→091 · 05→092 · extra→093, 094 |
+| US-1312 | 01→095 · 02→096 · 03→097 · 04→098 · 05→099 · 06→100 · extra→101, 128 |
+| US-1313 | 01→102, 103, 104 · 02→105, 106 · 03→108 · 04→109 · 05→110 · extra→107 |
+
+All 67 EP-13 AC covered.
+
+---
+
