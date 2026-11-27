@@ -346,3 +346,205 @@ Agent spec: Part 7.2 AG-024 (L0 pre-fill; Haiku tier with 5% escalation; Restric
 
 ---
 
+## 6.3.3 EP-16 Onboarding, retention, partners and expansion pilots
+
+Risk areas: RA-29 (onboarding, retention, renewal, partners, pilots; P2 base, depth D2), promoted to **P0** where a case exercises a regulatory or unauthorized-action condition: eligibility of renewal reminders and lost-deal re-contact (RA-03), health/minor data exclusion (RA-12, RA-11), insurer individual profiling (BRL-LCY-05) and unapproved licensing provisioning (BRL-LCY-06) (Part 6.1 §6.1.4.3 promotion rule). Waves W4 (US-1601…1607, 1611, 1612) and W6 (US-1608…1610).
+
+### 6.3.3.1 Scenarios
+
+| TS ID | Title | Linked US / FR | Risk area · Priority | TCs |
+|---|---|---|---|---|
+| TS-16-01 | Won deal instantiates the offering's onboarding template exactly once and gates handoff | US-1601; FR-A075 | RA-29 · P1 | TC-16-001…009 |
+| TS-16-02 | Onboarding tasks carry timezone-aware due dates, reminders and non-completing escalation | US-1602; FR-A076 | RA-29 · P2 | TC-16-010…015 |
+| TS-16-03 | Customer completes onboarding tasks and uploads documents safely in the portal | US-1603; FR-W27 | RA-15/RA-12 · P0 | TC-16-016…022 |
+| TS-16-04 | Customer raises support, feedback and renewal requests without changing contracts | US-1604; FR-W28 | RA-29 · P2 | TC-16-023…028 |
+| TS-16-05 | Renewal calendar and only eligible, rechecked renewal reminders | US-1605; FR-A079, FR-A080 | RA-03 · P0 | TC-16-029…038 |
+| TS-16-06 | Lost deals stop follow-ups, respect the cooling period and learn from reasons | US-1606; FR-A081 | RA-03 · P0 (re-contact) / P2 | TC-16-039…045 |
+| TS-16-07 | Partner, insurer and phygital pilots need readiness approval before any claim or deployment | US-1607, US-1608, US-1610; FR-A077, FR-A078, FR-A091, FR-A092, FR-A095, FR-A096 | RA-29 · P1; BRL-LCY-05 cases P0 | TC-16-046…059 |
+| TS-16-08 | Licensing offers and provisions only approved, ready API capabilities | US-1609; FR-A093, FR-A094 | RA-29 · P0 (provisioning) | TC-16-060…063 |
+| TS-16-09 | Lifecycle records reject patient, clinical and minors' data on every channel | US-1611; FR-A075, A079, A081, A091, W27, W28 | RA-12/RA-11 · P0 | TC-16-064…070 |
+| TS-16-10 | Onboarding, renewal, loss and pilot reporting with honest denominators | US-1612; RP-18, RP-19, RP-30 | RA-27 · P2 | TC-16-071…075 |
+| TS-16-11 | Onboarding Handoff Summarizer (AG-025) and Loss & Feedback Analyzer (AG-026) | US-1601, US-1606; FR-A075, FR-A081 | RA-13 · P1 | TC-AI-AG025-001…004, TC-AI-AG026-001…005 |
+
+### 6.3.3.2 Group TC-16-A: State transition – onboarding (technique: ST) · TS-16-01
+
+Onboarding machine (Part 2.3 §2.27.18; US-1601 Notes): Created → InProgress → Blocked → InProgress → Completed → HandedOff.
+
+| From \ Event | first task started | blocker raised | blocker cleared | all mandatory done + Complete | Hand off | Hand off with mandatory open |
+|---|---|---|---|---|---|---|
+| Created | InProgress (TC-16-003) | Blocked (TC-16-004) | ✗ | ✗ 409 | ✗ 409 | ✗ 409 |
+| InProgress | – | Blocked (TC-16-004) | ✗ | Completed (TC-16-003) | ✗ 409 | ✗ 409 `MANDATORY_TASKS_OPEN` (TC-16-002) |
+| Blocked | ✗ | – | InProgress (TC-16-004) | ✗ | ✗ | ✗ 409 |
+| Completed | ✗ | ✗ | ✗ | – | HandedOff (TC-16-003) | n/a |
+| HandedOff | ✗ terminal | ✗ | ✗ | ✗ | ✗ | ✗ |
+
+| ID | Title | Links | Pre-conditions and data | Steps | Expected | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-16-001 | Instantiate onboarding once from the offering's approved template on WonContracted | AC-1601-01; FR-A075; BRL-LCY-01; WF-12 | Offering "Wellness Scanner – Institutional" with template `OT-MM-SCAN v3` (6 tasks, 3 mandatory); deal `D-MM-0117` | 1. Transition deal to WonContracted (US-1504 path). 2. GET onboarding. 3. Dr Rao opens W27 | 2: `ONB-0117` Created, 6 tasks, pinned to v3. 3: customer-facing tasks visible to Dr Rao only | P1 | T01 | ST | Y | SYS |
+| TC-16-002 | Block handoff while a mandatory task is open | AC-1601-03; BRL-LCY-01 | `ONB-0117` InProgress; 2 of 3 mandatory done | 1. Meera POST `/handoff` | 409 `MANDATORY_TASKS_OPEN` naming the open task; state InProgress; no handoff notification | P1 | T01 | ST, DT | Y | IT |
+| TC-16-003 | Walk the valid path Created → InProgress → Completed → HandedOff | AC-1601-01, -03; FR-A075 | `ONB-0117` | 1. Start task. 2. Complete all mandatory and optional. 3. Mark Complete. 4. Hand off | States in order; each transition audited; HandedOff terminal | P1 | T01 | ST | Y | IT |
+| TC-16-004 | Block and unblock an onboarding with a blocker reason | AC-1601-03; Part 2.3 §2.27.18 | `ONB-0117` InProgress | 1. Raise blocker "Awaiting customer IT approval". 2. Attempt handoff. 3. Clear blocker | 1: Blocked. 2: 409. 3: InProgress | P2 | T01 | ST | Y | IT |
+| TC-16-005 | Create no second onboarding when the won event is delivered twice | AC-1601-02; NFR-005 | Deal-won event redelivered (Celery `acks_late` redelivery) | 1. Deliver event twice | Exactly one onboarding for `D-MM-0117`; second handler run logs "already instantiated" | P1 | T16 | EG | Y | IT |
+| TC-16-006 | Fall back to the startup default template and create a Normal task when none exists | AC-1601-04 | Offering "Planner – Pilot" without template | 1. Win its deal | Default template used; Normal task "Assign an offering-specific template" for Ravi | P2 | T01 | EP | Y | IT |
+| TC-16-007 | Return 404 to a user without a MedMaarg grant | AC-1601-05; BRL-TEN-04 | `U-AN-GM` R03 AppNAI only | 1. GET `/admin/onboardings/ONB-0117`. 2. PATCH a task | Both 404; no change | P0 | T15 | EP | Y | SYS |
+| TC-16-008 | Keep a running onboarding on v3 when v4 is approved | AC-1601-06; BRL-AUT-03 | `ONB-0117` created on v3; v4 approved later | 1. Approve v4. 2. Win another deal | `ONB-0117` still v3 tasks; new onboarding pinned to v4 | P1 | T01 | ST | Y | IT |
+| TC-16-009 | Do not instantiate onboarding for a simulated won event | AC-1601-01; BRL-AUT-04 | Workflow simulation emits `deal.won` with `simulated=true` | 1. Run simulation | No onboarding created; simulation report lists "would create ONB from OT-MM-SCAN v3" | P0 | T17 | EG | Y | SYS |
+
+### 6.3.3.3 Group TC-16-B: Boundary values – task SLA, due dates and escalation (technique: BVA, EP) · TS-16-02
+
+| Assignment time (owner tz) | SLA | Due | Escalation to Startup Head | TC |
+|---|---|---|---|---|
+| Fri 2027-04-02 16:00 IST | 3 business days | Wed 2027-04-07 16:00 IST | Thu 2027-04-08 16:00 IST | TC-16-010, -011 |
+| Thu 2027-04-01 16:00 IST with a configured public holiday Mon 2027-04-05 [test calendar entry] | 3 business days | Wed 2027-04-07 16:00 IST (Tue 2027-04-06 without the holiday) | Thu 2027-04-08 16:00 IST | TC-16-012 |
+| Template gives no SLA | default 3 business days (ASSUMPTION-173) | as row 1 | as row 1 | TC-16-013 |
+
+| ID | Title | Links | Pre-conditions and data | Steps | Expected | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-16-010 | Compute the due date excluding the weekend and notify the assignee | AC-1602-01; FR-A076 | Ravi assigns "Upload MoU annexure" (SLA 3 business days) to Meera at Fri 2027-04-02 16:00 IST | 1. Assign. 2. Read due date; A106 | Due Wed 2027-04-07 16:00 IST; Meera has an A106 item | P2 | T01 | BVA | Y | UT |
+| TC-16-011 | Send NT-023 Normal at due time and High to the Startup Head 1 business day later | AC-1602-02; NT-023 | Task open; clock control | 1. Advance to 2027-04-07 15:59:59. 2. 16:00:00. 3. 2027-04-08 15:59:59. 4. 16:00:00 | 1: none. 2: NT-023 Normal to Meera. 3: no escalation. 4: High to Ravi | P2 | T01 | BVA | Y | SYS |
+| TC-16-012 | Skip a configured public holiday in the due date | AC-1602-01; ASSUMPTION-188 | Holiday calendar entry 2027-04-05 (test calendar) | 1. Assign at Thu 2027-04-01 16:00 IST. 2. Repeat with the holiday entry removed | 1: due Wed 2027-04-07 16:00 IST. 2: due Tue 2027-04-06 16:00 IST | P2 | T01 | BVA | Y | UT |
+| TC-16-013 | Apply the default 3-business-day SLA when the template has none | AC-1602-01; ASSUMPTION-173 | Task with null SLA | 1. Assign Fri 2027-04-02 16:00 IST | Due Wed 2027-04-07 16:00 IST; "default SLA" badge | P3 | T01 | EP | Y | UT |
+| TC-16-014 | Keep the task Open and prevent handoff when escalation fires | AC-1602-03; BRL-APR-10 | Overdue mandatory task | 1. Escalation fires. 2. Inspect task and onboarding | Task "Open"; onboarding not handed off; no auto-complete | P1 | T01 | EG | Y | SYS |
+| TC-16-015 | Reject an out-of-scope assignee and deny reassignment to a Research Analyst | AC-1602-04, -05 | `U-EV-ONLY`; `U-RA1` R04 | 1. Ravi assigns to `U-EV-ONLY`. 2. R04 POST `/assign` | 1: 400 `ASSIGNEE_OUT_OF_SCOPE`. 2: 403; "Assign" absent in UI | P1 | T07 | EP | Y | IT |
+
+### 6.3.3.4 Group TC-16-C: Equivalence partitions – portal onboarding uploads (techniques: EP, BVA, EG) · TS-16-03
+
+| ID | Title | Links | Pre-conditions and data | Steps | Expected | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-16-016 | Upload a requested document, scan clean and submit task for review | AC-1603-01; FR-W27; NFR-021 | Dr Rao object grant on `ONB-0117`; `signed-annexure.pdf` 2 MB | 1. Upload on W27. 2. Wait for scan (simulated clean) | Status "Scanning…" then "Clean"; task "Submitted for review"; Meera notified (NX-08) | P1 | T01 | EP | Y | E2E |
+| TC-16-017 | Quarantine an infected file and keep it undownloadable for staff | AC-1603-02; NFR-021 | EICAR test file renamed `annexure.pdf` | 1. Upload. 2. Meera GET file | 1: "File rejected: failed security scan. Please upload a clean copy." 2: 403; object in quarantine prefix only | P0 | T07 | EP | Y | SYS |
+| TC-16-018 | Block a task message containing patient and clinical values | AC-1603-03; BRL-LCY-02; BRL-PRV-06 | EDGE-HEALTH string "patient Ramesh, HbA1c 9.1" | 1. Submit message | Blocked "Please do not share patient or clinical information here"; nothing stored (DB, logs, search index) | P0 | T19 | EP | Y | SYS |
+| TC-16-019 | Show the expired-link state after the grant expiry | AC-1603-04; ABAC-09 | Grant expires 2027-05-01 00:00 IST | 1. Open task at 2027-04-30 23:59:59. 2. At 2027-05-01 00:00:01 | 1: task loads. 2: "This link has expired. Request a new one." | P1 | T01 | BVA | Y | E2E |
+| TC-16-020 | Return 404 for another hospital's onboarding | AC-1603-05; BRL-TEN-04 | `ONB-0122` of another hospital | 1. Dr Rao GET `/portal/onboardings/ONB-0122` | 404 neutral state; no metadata | P0 | T15 | EP | Y | SYS |
+| TC-16-021 | Announce scan status in a polite live region with 24×24 targets | AC-1603-06; NFR-023; WCAG 2.2 2.5.8 | Keyboard only; NVDA + Chrome | 1. Tab to upload, select file with keyboard. 2. Observe announcements. 3. Target-size script | Status change announced politely; all controls ≥ 24×24 CSS px; no keyboard trap | P1 | T08 | EP | N (screen-reader pass; target-size script automated) | E2E |
+| TC-16-022 | Reject unsupported types and files over the size limit | AC-1603-01; NFR-021 | `.docm` macro file; 10 MB + 1 B PDF | 1. Upload each | Both rejected with type/size reason; nothing outside quarantine | P1 | T07 | BVA | Y | IT |
+
+### 6.3.3.5 Group TC-16-D: Equivalence partitions – portal support, feedback and renewal requests (technique: EP) · TS-16-04
+
+| ID | Title | Links | Pre-conditions and data | Steps | Expected | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-16-023 | Create a support case routed to the owner with the internal target text | AC-1604-01; FR-W28; DEC-044 | Neha; 2027-04-10 11:00 IST (Saturday, inside support hours) | 1. Create case "Delivery issue", offering "Organic turmeric 1 kg", S2 | `CS-0901` routed to OrganicSpec owner; text "We aim to respond within 8 business hours (10:00–18:00 IST, Mon–Sat)"; no public SLA wording | P2 | T01 | EP | Y | E2E |
+| TC-16-024 | Create a renewal review from renewal interest without touching the contract | AC-1604-02; FR-A079 | Dr Rao; `RN-0117` Upcoming | 1. Select "Interested in renewing" | `RN-0117` InReview; A079 task created; contract record hash unchanged | P2 | T01 | EP | Y | SYS |
+| TC-16-025 | Route a price-change request without creating any quote or discount | AC-1604-03; DEC-064 | Message "Please reduce price by 15%" | 1. Submit | Case classified "commercial request"; routed; 0 quotes, 0 discount approvals created | P1 | T01 | EG | Y | SYS |
+| TC-16-026 | Reject invalid severity values | AC-1604-04 | API severity "S0", "s2", "" | 1. POST each | 400 listing S1, S2, S3; "s2" rejected (case-sensitive enum) [ASSUMPTION-188] | P3 | T01 | EP | Y | UT |
+| TC-16-027 | List only the customer's own and granted organization cases | AC-1604-05; ABAC-09 | Neha; 3 own cases, 2 cases of another GreenMart contact with org grant, 4 cases of another buyer | 1. List cases | 5 returned; 0 of the other buyer | P0 | T15 | EP | Y | SYS |
+| TC-16-028 | Show next-business-day expectation for a case created outside support hours | AC-1604-01; DEC-044 | Case at Sunday 2027-04-11 20:00 IST | 1. Create S3 case | Text references support hours; internal due computed from Monday 10:00 IST | P3 | T01 | BVA | Y | UT |
+
+### 6.3.3.6 Group TC-16-E: Boundary values and decision table – renewal reminders (techniques: BVA, DT, ST) · TS-16-05
+
+Renewal states: Upcoming → Due → InReview → Renewed / Churned / Deferred. Contract `CT-CityCare-01` expires 2027-12-31; notice 60 days → due 2027-11-01 (BRL-CTR-05); policy `RP-MM v2` reminders at 90/60/30 days before expiry, max 3.
+
+| Reminder | Fire date (IST) | Eligibility at dispatch (PDP, BRL-ELG-18) | Expected | TC |
+|---|---|---|---|---|
+| 90-day | 2027-10-02 | Eligible, weekday 10:00 | NT-024 internal + NX-14 queued | TC-16-029, -030 |
+| 60-day | 2027-11-01 | Opted out 2027-10-15 | Not sent; phone task; stop reason | TC-16-031 |
+| 30-day | 2027-12-01 | Due 21:30 IST Saturday | Deferred to Monday 09:00 recipient tz | TC-16-032 |
+| 4th reminder | n/a | Max 3 reached | Never scheduled | TC-16-034 |
+| Any | after renewal order approved | — | Cancelled | TC-16-035 |
+
+| ID | Title | Links | Pre-conditions and data | Steps | Expected | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-16-029 | Compute renewal due date and internal NT-024 dates from contract expiry | AC-1605-01; FR-A079; BRL-CTR-05; NT-024 | Contract expiry 2027-12-31, notice 60 days | 1. Create renewal. 2. Read schedule | `RN-0117` Upcoming, due 2027-11-01; NT-024 to Meera and Ravi on 2027-10-02, 2027-11-01, 2027-12-01 | P1 | T01 | BVA | Y | UT |
+| TC-16-030 | Dispatch an eligible reminder with approved template hash and dispatch-time recheck | AC-1605-02; BRL-ELG-18; CA-DISPATCH | Dr Rao eligible; 2027-11-01 10:00 IST Monday | 1. Due job runs. 2. Inspect PDP decision and outbox | NX-14 queued with approved template hash; PDP recheck logged (consent, suppression, caps, quiet hours) at send; simulator: 1 send | P0 | T19 | DT | Y | SYS |
+| TC-16-031 | Send nothing to an opted-out contact and create a lawful-contact task | AC-1605-03; BRL-ELG-02 | Opt-out recorded 2027-10-15 | 1. 60-day reminder due | 0 sends; task "Contact by phone only if lawful"; stop reason `opted_out`; KPI-17 = 0 | P0 | T19 | DT | Y | SYS |
+| TC-16-032 | Defer a reminder falling in quiet hours to the next allowed window | AC-1605-04; BRL-ELG-08 | Due Saturday 2027-11-27 21:30 IST (rescheduled test case) | 1. Run due job | Deferred to Monday 2027-11-29 09:00 IST; not skipped; timeliness metric does not count it late (DEC-032) | P0 | T19 | BVA | Y | SYS |
+| TC-16-033 | Fail CI if a health attribute enters the renewal risk feature list | AC-1605-05; BRL-LCY-03 | Feature-list test; mutant adds `wellness_condition_flag` | 1. Run feature-list contract test. 2. Run with mutant | 1: pass, features = usage, tickets, payment timeliness. 2: test fails | P0 | T19 | EG | Y | CT |
+| TC-16-034 | Never schedule a 4th reminder beyond the policy maximum | AC-1605-01; CFG-20; BRL-ELG-09 | Policy max 3 | 1. Inspect schedule; force-run scheduler for day 15 | 3 reminders only; no 4th | P1 | T01 | BVA | Y | UT |
+| TC-16-035 | Cancel pending reminders on renewal and avoid duplicated revenue | AC-1605-06; BR-S017 | Renewal order approved 2027-11-20 | 1. Approve order. 2. Inspect queue and revenue | 30-day reminder cancelled; `RN-0117` Renewed; revenue counted once | P1 | T01 | ST | Y | SYS |
+| TC-16-036 | Require Startup Head and DPO approval for loosening the policy | AC-1605-07; BRL-APR-11 | Meera edits max to 6 | 1. Submit | Revision pending R02 and R10; active `RP-MM v2` unchanged; reminders keep max 3 | P0 | T01 | DT | Y | SYS |
+| TC-16-037 | Count NX-14 against the marketing frequency cap unless marked contractual | AC-1605-02; BRL-ELG-09 | Dr Rao had 2 marketing touches in the last 7 days | 1. Reminder due | Denied `FREQ_CAP`; rescheduled per policy; with "contractually required" flag set by R10, allowed as transactional | P0 | T19 | DT | Y | SYS |
+| TC-16-038 | Reconcile an uncertain reminder send before retry | AC-1605-02; FR-STD-02 | Simulator `timeout_after_submit` on SES | 1. Reminder due. 2. Retry attempt | `uncertain`; retry blocked until reconciled; one provider message | P0 | T18 | ST | Y | SYS |
+
+### 6.3.3.7 Group TC-16-F: Boundary values – lost deals and cooling period (techniques: BVA, EP) · TS-16-06
+
+| ID | Title | Links | Pre-conditions and data | Steps | Expected | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-16-039 | Record a loss with reason and cancel pending sequence steps | AC-1606-01; FR-A081; NT-013 | `D-MM-0120` with 2 pending sequence steps | 1. Meera marks Lost "Budget not approved" + note | Deal Lost; 2 steps cancelled, stop reason `deal_lost`; NT-013 sent | P0 | T01 | EP | Y | SYS |
+| TC-16-040 | Keep the AI loss category as an unconfirmed draft | AC-1606-02; CA-AI; BRL-AI-03 | AG-026 suggests "Pricing" citing objection record | 1. Open loss form | "AI suggestion – confirm"; category not saved until confirm | P1 | T01 | EP | Y | E2E |
+| TC-16-041 | Deny re-contact inside the 90-day cooling period and allow it at the boundary | AC-1606-03; BRL-ELG-16 | Lost 2027-05-01; recipient tz IST | 1. Enrol on 2027-06-15. 2. 2027-07-29 23:59:59. 3. 2027-07-30 00:00:00 | 1–2: PDP deny "Lost-deal cooling period until 2027-07-30". 3: allowed (subject to other rules) [ASSUMPTION-188] | P0 | T19 | BVA | Y | UT |
+| TC-16-042 | Allow a reply when the contact initiated contact during cooling | AC-1606-03; BRL-ELG-05 inbound exception | Inbound email from contact 2027-06-20 | 1. Reply from inbox | Allowed as reply in inbound thread; sequence enrolment still denied | P0 | T19 | DT | Y | SYS |
+| TC-16-043 | Require new evidence to reopen a lost deal | AC-1606-04; Part 6.1 §6.1.11.4 #21 | Ravi; no new evidence | 1. POST reopen. 2. With evidence `EVD-2027-0711` after cooling | 1: 409 `REOPEN_REQUIRES_EVIDENCE`. 2: Qualified | P1 | T01 | ST | Y | IT |
+| TC-16-044 | Save a loss manually when the gateway is degraded | AC-1606-05; DEC-007 Tier 3 | Gateway Tier 3 | 1. Mark lost with manual category | Saved; no error; "AI unavailable" hint | P2 | T01 | EG | Y | IT |
+| TC-16-045 | Require Startup Head for correcting a loss reason older than 30 days | AC-1606-06 | Lost record 31 days old; record 30 days old | 1. Meera edits 31-day record. 2. Edits 30-day record | 1: requires Ravi; audited "authorized correction". 2: Meera may edit [ASSUMPTION-188: "older than 30 days" = age > 30 × 24 h] | P2 | T01 | BVA | Y | IT |
+
+### 6.3.3.8 Group TC-16-G: Decision table – pilot and deployment readiness (technique: DT, ST) · TS-16-07
+
+Shared readiness model for partner deployments (A077/A078), insurer pilots (A091/A092) and phygital sites (A095/A096): BRL-LCY-04, BRL-APR-01, BRL-APR-02.
+
+| Condition / Rule | R1 | R2 | R3 | R4 | R5 | R6 |
+|---|---|---|---|---|---|---|
+| All checklist items evidenced (incl. regional permission or data agreement) | N | Y | Y | Y | Y | Y |
+| Approver ≠ requester | – | N | Y | Y | Y | Y |
+| Approved hash = current checklist revision hash | – | – | N | Y | Y | Y |
+| Approval unexpired (30 days, phygital) | – | – | – | N | Y | Y |
+| Insurer scope contains individual-level field | – | – | – | – | Y | N |
+| **Action** | 409 `READINESS_CHECK_FAILED` | 403 `AUTHOR_CANNOT_APPROVE` | Approval void; back to DueDiligence | "Approval expired" | Validation error (BRL-LCY-05) | Approved; deployment may start |
+
+| ID | Title | Links | Pre-conditions and data | Steps | Expected | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-16-046 | Approve partner readiness on a fully evidenced checklist | AC-1607-01; FR-A077, FR-A078 | `PIL-07` "Odisha Diagnostics", checklist rev 2 complete | 1. Asha approves with hash `h-pil07-r2` | Approved; "Start deployment" enabled | P1 | T01 | DT (R6) | Y | SYS |
+| TC-16-047 | Block approval when a checklist item lacks evidence | AC-1607-02; BRL-LCY-04 | "Data agreement signed" unevidenced | 1. Ravi requests Approved | 409 `READINESS_CHECK_FAILED` | P1 | T01 | DT (R1) | Y | IT |
+| TC-16-048 | Fail claim validation for "Live at Odisha Diagnostics" before approval | AC-1607-03; BRL-MKT-02 | Content draft with the claim; PIL-07 DueDiligence | 1. Submit content for approval | Claim validation fails "Deployment not approved"; content not submittable | P0 | T19 | DT | Y | SYS |
+| TC-16-049 | Void approval when the checklist changes | AC-1607-04; BRL-APR-02 | Approved rev 2; rev 3 created | 1. Save rev 3 | Approval void; pilot DueDiligence; deployment start 409 | P1 | T01 | ST, DT (R3) | Y | IT |
+| TC-16-050 | Deny the requester approving own readiness | AC-1607-05; BRL-APR-01 | Ravi requested | 1. Ravi approves | 403 `AUTHOR_CANNOT_APPROVE` | P0 | T07 | DT (R2) | Y | IT |
+| TC-16-051 | Walk the pilot path Proposed → DueDiligence → Approved → Running → Evaluated → RolledOut and the Stopped branch | AC-1607-01; FR-A078 | PIL-07 and PIL-08 | 1. Drive PIL-07 to RolledOut. 2. Drive PIL-08 Running → Stopped. 3. Attempt Proposed → Running | 1–2: transitions audited. 3: 409 | P2 | T01 | ST | Y | IT |
+| TC-16-052 | Approve an organization-level insurer pilot by Legal and Founder | AC-1608-01; FR-A091, FR-A092 | `INS-01` "SafeLife", scope "member wellness, aggregated reporting only", data agreement signed | 1. Lata approves. 2. Asha approves | Approved only after both; tasks may start | P1 | T01 | DT (R6) | Y | SYS |
+| TC-16-053 | Reject an individual risk score field in an insurer pilot scope | AC-1608-02; BRL-LCY-05; X-03 | Scope field "individual risk score per member" | 1. Save scope | Validation error "Insurance pilots are organization-level only; underwriting and individual profiling are prohibited"; nothing saved | P0 | T19 | DT (R5) | Y | UT |
+| TC-16-054 | Reject a synonym-based individual profiling field | AC-1608-02; BRL-LCY-05 | Field names "per-member premium loading", "employee_health_band" | 1. Save each | Both rejected by the profiling lexicon and the "per member/per employee" pattern | P0 | T19 | EG | Y | UT |
+| TC-16-055 | Block deployment of an unapproved insurer pilot revision | AC-1608-03 | `INS-01` revision 2 unapproved | 1. Start deployment | 409 `PILOT_NOT_APPROVED` | P1 | T01 | DT | Y | IT |
+| TC-16-056 | Make insurer pilots read-only for a Growth Manager | AC-1608-04 | Meera R03 | 1. Open A091. 2. POST create | Read-only; create absent; 403 | P2 | T07 | EP | Y | IT |
+| TC-16-057 | Activate a phygital site after approval and create deployment tasks | AC-1610-01; FR-A095, FR-A096 | `BBSR-02` checklist rev 1 with regional permission | 1. Asha approves. 2. Activate | Stage Active; deployment tasks created | P2 | T01 | DT (R6) | Y | SYS |
+| TC-16-058 | Block approval without regional permission and refuse activation after 30-day expiry | AC-1610-02, -03 | Missing permission; another site approved 2027-06-01 10:00 IST | 1. Approve missing-permission site. 2. Activate second site at 2027-07-01 09:59:59 and at 10:00:01 | 1: 409 `READINESS_CHECK_FAILED`. 2: allowed at 09:59:59; "Approval expired" at 10:00:01 [ASSUMPTION-188] | P2 | T01 | BVA, DT (R4) | Y | UT |
+| TC-16-059 | Hide approve in portfolio scope until one startup is selected | AC-1610-04; DEC-055 | Asha portfolio scope | 1. Open A096. 2. POST approve | Hidden; 409 `SELECT_SINGLE_STARTUP` | P1 | T15 | EP | Y | SYS |
+
+### 6.3.3.9 Group TC-16-H: Equivalence partitions – licensing capability readiness (technique: EP, DT) · TS-16-08
+
+| ID | Title | Links | Pre-conditions and data | Steps | Expected | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-16-060 | Approve licence scope containing only Available capabilities | AC-1609-01; FR-A093, FR-A094; BRL-LCY-06 | `LIC-03` requests `wellness-score-api`, `report-pdf-api` (Available) | 1. Lata and Asha approve rev 1 hash `h-lic03-r1` | Entitlement list = exactly those two | P1 | T01 | EP | Y | SYS |
+| TC-16-061 | Reject Planned or Approved-but-not-Available capabilities | AC-1609-02; BRL-LCY-06 | `doctor-connect-api` Planned; `lab-connect-api` Approved (not Available) | 1. Add each to scope | "Capability not ready for licensing" for both | P0 | T01 | EP | Y | UT |
+| TC-16-062 | Deny provisioning outside the approved entitlement set | AC-1609-03; BRL-LCY-06 | Engineer requests `lab-connect-api` for `LIC-03` | 1. POST provisioning | Denied "Not in approved entitlement set"; 0 credentials minted | P0 | T07 | DT | Y | SYS |
+| TC-16-063 | Deny a Marketing Specialist access to licensing screens | AC-1609-04 | `U-MS1` R05 | 1. GET A093 | 403 | P2 | T07 | EP | Y | IT |
+
+### 6.3.3.10 Group TC-16-I: Pairwise and error guessing – sensitive-data exclusion (techniques: PW, EG) · TS-16-09
+
+Factors: Record {onboarding note, handoff, renewal note, feedback, pilot scope} × Channel {Admin UI, portal, API, import} × Data {diagnosis text, lab value, medication, patient ID, learner DOB}. All-pairs over 5 × 4 × 5 = 25 rows; the cases below are representative; the full pairwise set is a parameterized SYS test (TC-16-064).
+
+| ID | Title | Links | Pre-conditions and data | Steps | Expected | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-16-064 | Block clinical free text across record × channel pairs | AC-1611-01; BRL-LCY-02; BRL-PRV-06 | EDGE-HEALTH corpus; 25 pairwise rows | 1. Save each combination | All blocked with the sensitive-data message; metric `lifecycle.sensitive_blocked` +25; 0 rows stored | P0 | T19 | PW | Y | SYS |
+| TC-16-065 | Offer no date-of-birth field for EduVerse onboarding learners | AC-1611-02; DEC-030 | EduVerse institutional onboarding | 1. Inspect form schema. 2. POST with `date_of_birth` | 1: only grade band. 2: 400 unknown field; nothing stored | P0 | T19 | EP | Y | IT |
+| TC-16-066 | Send only redacted text to the gateway from the feedback classifier | AC-1611-03; BRL-AI-06 | Lost-deal note "Dr Sen said patient numbers fell; call 98xxxxxx12" | 1. Run AG-026. 2. Capture gateway request (test exporter) | Request contains redacted placeholders; run log "redaction applied" | P0 | T19 | EG | Y | IT |
+| TC-16-067 | Fail the build when a migration adds a diagnosis-like column to lifecycle tables | AC-1611-04 | Migration adding `patient_id` and `diagnosis_code` | 1. Run schema policy check in G1 | Build fails naming both columns | P0 | T19 | EG | Y | CT |
+| TC-16-068 | Apply the block to the Founder with no override control | AC-1611-05 | Asha R01 | 1. Save blocked note. 2. Inspect UI for override | Blocked; no override in UI or API | P0 | T19 | EP | Y | E2E |
+| TC-16-069 | Detect clinical values in Hindi, Odia and Tamil script text | AC-1611-01; DEC-026; EDGE-TEXT | Devanagari "मधुमेह", Odia and Tamil equivalents with numeric lab values | 1. Save each | Blocked; false-positive check: "wellness programme" alone allowed | P1 | T19 | EG | Y | UT |
+| TC-16-070 | Block sensitive content in uploaded attachments' extracted text | AC-1611-01; BRL-PRV-06 | PDF with lab report table | 1. Upload to onboarding task | File held "sensitive content detected"; staff review task; not attached to record | P0 | T19 | EG | Y | SYS |
+
+### 6.3.3.11 Group TC-16-J: Boundary values – lifecycle reporting (techniques: BVA, EP) · TS-16-10
+
+| ID | Title | Links | Pre-conditions and data | Steps | Expected | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-16-071 | Show renewal rate with numerator, denominator, as-of and version | AC-1612-01; KPI-15; RP-18 | Q3 2027: 8 due, 6 renewed | 1. Open report | 75.0% (6 / 8), as-of, metric version | P2 | T01 | BVA | Y | UT |
+| TC-16-072 | Show Unknown when no renewals were due | AC-1612-02; RPT-R2 | Q2 2027: 0 due | 1. Open report | "Unknown (0 due)" | P2 | T01 | BVA | Y | UT |
+| TC-16-073 | Exclude simulated onboardings from onboarding time | AC-1612-03; BRL-AUT-04 | 4 real (2, 4, 6, 8 days) + 2 simulated (1 day) | 1. Compute median | Median 5.0 days (real only) | P1 | T17 | EP | Y | UT |
+| TC-16-074 | Aggregate portfolio reports from T1 startups only and without edit actions | AC-1612-04; DEC-055, DEC-065 | Asha portfolio scope; T2 has renewals | 1. Open RP-18 | T1 only; drill-down links; no edit controls | P0 | T15 | EP | Y | SYS |
+| TC-16-075 | Show loss reasons by taxonomy with Unknown bucket | AC-1612-01; RP-19 | 10 losses: 4 Pricing, 3 Timing, 3 uncategorized | 1. Open RP-19 | Pricing 4, Timing 3, Unknown 3 (not omitted) | P3 | T01 | EP | Y | UT |
+
+### 6.3.3.12 AI evaluation cases – AG-025 Onboarding Handoff Summarizer and AG-026 Loss & Feedback Analyzer · TS-16-11
+
+AG-025 (Part 7.2): L1 draft approved by owner; Haiku via Batch; Confidential, no Tier 2; completeness ≥ 95%; ≤ ₹0.10 per handoff. AG-026: L2 labels (owner can correct); Haiku via Batch; Tier 2 allowed only for de-identified Internal-non-personal text if opted in; category accuracy ≥ 85%; ≤ ₹0.01 per item; never triggers re-contact. Prices: verify at time of implementation (as of 27 Nov 2026). Datasets: `handoff_eval v1` (40 won deals across four verticals), `loss_eval v1` (300 labelled loss notes, balanced by vertical and offering).
+
+| ID | Title | Links | Pre-conditions and data | Steps | Expected | P | Type | Tech | Auto | Lvl |
+|---|---|---|---|---|---|---|---|---|---|---|
+| TC-AI-AG025-001 | Cite a contract or proposal clause ID for every commitment in the handoff | AC-1601-01; BRL-AI-03 | `handoff_eval v1` | 1. Run harness | 100% commitments cited; completeness checklist ≥ 95% | P1 | T14 | EP | Y | SYS |
+| TC-AI-AG025-002 | Copy no patient or clinical data into handoff drafts | AC-1611-03; BRL-LCY-02 | 10 deals with EDGE-HEALTH notes in the timeline | 1. Run | 0 clinical tokens in outputs (detector corpus) | P0 | T14 | EG | Y | SYS |
+| TC-AI-AG025-003 | Keep the draft unsent until the owner approves | AC-1601-01; DEC-064 L1 | Draft produced | 1. Inspect outbox | 0 outbox rows before approval | P0 | T14 | EP | Y | IT |
+| TC-AI-AG025-004 | Fall back to a link-only template on Tier 3 and stay within ₹0.10 per handoff | AC-1601-04; NFR-030 | Gateway down; then normal | 1. Run both | Tier 3 template with record links; mean cost ≤ ₹0.10 (estimate; verify) | P2 | T20 | EG | Y | SYS |
+| TC-AI-AG026-001 | Classify loss reasons at ≥ 85% accuracy into the closed taxonomy | AC-1606-02; FR-A081 | `loss_eval v1` | 1. Run | Accuracy ≥ 85%; output enum ∈ taxonomy ∪ {other} 100% | P1 | T14 | EP | Y | SYS |
+| TC-AI-AG026-002 | Show no accuracy gap greater than 10 points between verticals and languages | AC-1606-02; bias dimension (Part 7.2) | Strata: 4 verticals × {EN, Hindi-transliterated} | 1. Run; compute per-stratum accuracy | Max − min ≤ 10 percentage points [ASSUMPTION-190] | P2 | T14 | EP | Y | SYS |
+| TC-AI-AG026-003 | Never trigger re-contact or sequence enrolment from a classification | AC-1606-03; BRL-ELG-16 | 50 losses classified "Timing" | 1. Run; inspect workflow triggers | 0 enrolments; tool registry has only classification.write | P0 | T14 | EG | Y | IT |
+| TC-AI-AG026-004 | Mask PII before the model call and block Tier 2 unless text is de-identified and the tenant opted in | AC-1611-03; DEC-007 | Notes with names and phone numbers; Tier 2 opt-in off, then on | 1. Run | Off: 0 Tier 2 calls. On: Tier 2 only for items whose redacted text passes the de-identification check | P0 | T14 | DT | Y | IT |
+| TC-AI-AG026-005 | Return schema-valid JSON and route to the uncategorized bucket on failure | AC-1606-05; BRL-AI-02 | Simulator invalid JSON ×3 | 1. Run | Item in "uncategorized" for manual tagging; no crash | P2 | T14 | EG | Y | IT |
+
+---
+

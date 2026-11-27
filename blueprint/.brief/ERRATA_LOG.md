@@ -54,3 +54,12 @@
 39. FR-COP-01 and FR-SRCH-01 → EP-17 (covered in Part 5.3).
 40. Dimension code notation differs between 5.1 (value codes) and 5.2/5.3 (D1–D8); the mapping note is in Part 5.1a §5.6.6.
 41. EP-21 overlaps EP-01 Sprint 0 enablers by about 5–6 pd. Programme central ≈ 421.5 − 5.5 ≈ 416 pd (inside 287–483).
+
+## From Part 3.1/3.2
+42. CONFLICT-103: DEC-015 says 105 named operations; actually 102 unique (3 duplicate spellings) + 3 OP = 105 FR operations. API catalogue total = 555 operations (DERIVED superset of the BRD's 302+19; approval actions merged into one Approval resource).
+43. CONFLICT-101 (same as item 16): RTO is scoped by failure type (AZ/instance ≤ 4 h; region ≤ 24 h in pilot).
+44. CONFLICT-102 / GAP-101/102: **B01 revised to ₹5,000–7,000/month estimate** (prod + staging, with 1-yr commitments at the low end; verify). Staging may be scaled to zero outside working hours to stay near ₹5,000. **B20 backup/DR ≈ ₹300–600/month** for cross-region backup copies (verify).
+45. Part 2.4 §2.35.3 rate limits extended by Part 3.2 rate-limit classes (login, chat, portal, webhooks, heavy ops); Part 3.2 governs.
+46. Entity names: Part 3.3 names govern over Part 2.1 names (e.g. Product → Offering, CustomerSubscription/ServiceSubscription).
+47. AI run volume: the Part 3.3 projection of ≈ 45,000 AI runs/month (Year 1) counts all gateway runs including Tier 0 cache/rules; paid calls are a fraction. Part 7 Year 1 scale estimate (≈ ₹4,600 at 4× pilot) applies under the ₹12,000 growth ceiling; the ₹3,000 cap applies only to the pilot volume.
+48. Part 4 compute/IaC/CI assumptions (GAP-123) reconcile to Part 3.1 ADRs; Part 3.1 governs.

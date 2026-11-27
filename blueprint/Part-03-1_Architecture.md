@@ -771,7 +771,7 @@ flowchart TD
 | VPC | One VPC per environment, /20; public and private subnets in **two AZs created from day one** (no cost until used) so the scale gate needs no re-addressing | AD-12 |
 | Ingress | Only CloudFront reaches origins. Pilot: security group allows 443 only from the CloudFront origin-facing managed prefix list. Scale: ALB security group the same; instances accept traffic only from the ALB | NFR-001 |
 | Admin access to hosts | No SSH. AWS Systems Manager Session Manager with IAM, MFA and session logging | ARP-14 |
-| Encryption | TLS 1.2+ everywhere; RDS, EBS, S3 encrypted; AWS-managed keys at pilot, customer-managed KMS keys at scale gate | ADR-014 |
+| Encryption | TLS 1.2+ everywhere; RDS, EBS, S3 encrypted with AWS-managed keys at pilot (customer-managed at scale gate); field-level envelope encryption of Restricted columns with **per-tenant customer-managed KMS keys from W0** (Part 3.3 RECOMMENDATION-038) | ADR-014 |
 | DNS | Route 53 for the platform domain; startup custom domains point a CNAME at the website distribution after verification (FR-A107) | GAP-107 |
 | Tags | `env`, `app=growth-engine`, `component`, `cost-centre` (budget ID B01, B04, B07, B19–B22), `data-class` | DEC-020, ARP-15 |
 
@@ -855,9 +855,10 @@ flowchart TD
 | P-12 | Malware scan of uploads (GuardDuty Malware Protection for S3) | GB scanned × rate (verify); pilot ≈ 2 GB | 0.2–1.5 | 20–135 | B01 [RECOMMENDATION-035, Part 3.2] |
 | P-13 | RDS cross-Region automated backups to ap-south-2 (snapshots + transaction logs, 7-day window) | ≈ 10–15 GB × backup storage rate + inter-region transfer of changed data (verify) | 1.0–2.0 | 90–180 | **B20 (₹0 today) → GAP-101** |
 | P-14 | Egress to providers (API calls, not via CloudFront) | First 100 GB/month to internet free across services (verify) | 0–0.5 | 0–45 | B01 |
-| | **Production subtotal, on-demand** | Σ P-01…P-14 | **≈ 55–64** | **≈ 4,920–5,790** | |
-| | **Production subtotal, with P-01c and P-03c** | Σ with P-01c, P-03c in place of P-01, P-03 | **≈ 41–54** | **≈ 3,720–4,850** | |
-| | **Production subtotal, committed, excluding P-13 (funded from B20)** | | **≈ 40–52** | **≈ 3,630–4,670** | B01 |
+| P-15 | KMS customer-managed keys for field-level encryption: one per tenant (1–3 tenants at pilot) + requests | n × $1 + requests (verify) | 1.0–3.2 | 90–290 | B01 |
+| | **Production subtotal, on-demand** | Σ P-01…P-15 | **≈ 56–68** | **≈ 5,010–6,080** | |
+| | **Production subtotal, with P-01c and P-03c** | Σ with P-01c, P-03c in place of P-01, P-03 | **≈ 42–57** | **≈ 3,810–5,140** | |
+| | **Production subtotal, committed, excluding P-13 (funded from B20)** | | **≈ 41–55** | **≈ 3,720–4,960** | B01 |
 
 **Staging (pilot) cost lines.** Staging mirrors production containers but runs PostgreSQL as a container on its own instance and is scheduled on only during working hours [ASSUMPTION-106].
 
@@ -869,7 +870,7 @@ flowchart TD
 | S-04 | Secrets (sandbox credentials), logs, S3 | ≈ 3 × $0.40 + ≈ $0.8 | 2.0 | 180 |
 | | **Staging subtotal** | | **≈ 10.4–11.0** | **≈ 945–995** |
 
-**Pilot verdict (FinOps).** Production (committed, P-13 on B20) + staging ≈ **₹4,570–5,660/month**; fully on-demand ≈ **₹5,760–6,600/month**; all before GST [ASSUMPTION-110]. B01 (₹5,000) therefore fits at the low-to-mid end only if (a) the Savings Plan and RDS reservation are bought once usage is stable (end of W0), (b) staging is scheduled (≤ 60 h/week), and (c) the cross-region backup replication is funded from B20 rather than B01. Otherwise the overrun is ≈ ₹700–1,600/month. This is logged as **CONFLICT-102** (budget B01 vs the DEC-040 pilot topology plus a staging environment) and **RSK-301**. Proposed resolution: approve B20 at ≈ ₹200/month, state that B01 covers staging (GAP-102), and draw on contingency B11 for the first quarter until commitments apply. Non-production `dev` runs locally (Docker Compose, ₹0) and `test` runs in CI (B07).
+**Pilot verdict (FinOps).** Production (committed, P-13 on B20) + staging ≈ **₹4,670–5,960/month**; fully on-demand ≈ **₹5,850–6,890/month**; all before GST [ASSUMPTION-110]. B01 (₹5,000) therefore fits at the low-to-mid end only if (a) the Savings Plan and RDS reservation are bought once usage is stable (end of W0), (b) staging is scheduled (≤ 60 h/week), and (c) the cross-region backup replication is funded from B20 rather than B01. Otherwise the overrun is ≈ ₹850–1,900/month. This is logged as **CONFLICT-102** (budget B01 vs the DEC-040 pilot topology plus a staging environment) and **RSK-301**. Proposed resolution: approve B20 at ≈ ₹200/month, state that B01 covers staging (GAP-102), and draw on contingency B11 for the first quarter until commitments apply. Non-production `dev` runs locally (Docker Compose, ₹0) and `test` runs in CI (B07).
 
 **Not in B01 at pilot (by design):** AWS WAF (B21, ₹0 — GAP-104; compensating controls in §3.1.11 and Part 3.2 §3.2.1.7), Multi-AZ, ALB, NAT, ElastiCache, customer-managed KMS keys, interface VPC endpoints.
 
@@ -1362,7 +1363,7 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 | Field | Content |
 |---|---|
 | Status | Accepted (baseline): FRD §6 M05 "AWS Secrets Manager", NFR-004 |
-| Decision | Provider credentials live in Secrets Manager; the database stores only **credential references** (CredentialRef: ARN + version stage + scope). One secret per provider group per environment to limit cost; per-tenant OAuth tokens (calendar, social, ads) stored as KMS-encrypted columns with envelope encryption, keyed per tenant (Part 3.3), because per-token secrets would cost $0.40 each. Rotation: automatic where provider supports it; refresh tokens rotated on use. Non-secret configuration in SSM Parameter Store (standard tier, no charge) |
+| Decision | Provider credentials live in Secrets Manager; the database stores only **credential references** (CredentialRef: ARN + version stage + scope). One secret per provider group per environment to limit cost; per-tenant OAuth tokens (calendar, social, ads) and other Restricted columns stored with envelope encryption under **per-tenant customer-managed KMS keys** (Part 3.3 RECOMMENDATION-038; ≈ $1 per tenant per month, verify), because per-token secrets would cost $0.40 each; offboarding can crypto-shred by scheduling key deletion after retention ends. Rotation: automatic where provider supports it; refresh tokens rotated on use. Non-secret configuration in SSM Parameter Store (standard tier, no charge) |
 | Alternatives | HashiCorp Vault (ops cost); environment variables (leak risk) |
 | Consequences | + No secret ever returned by an API (NFR-004). − Envelope encryption code must be reviewed (Security) |
 | Review trigger | Compliance requirement for HSM-backed per-tenant keys |
@@ -1770,7 +1771,7 @@ Design points from DEC-031; per-user behaviour is an assumption to be replaced b
 
 | RSK | Risk | Likelihood | Impact | Mitigation | Owner |
 |---|---|---|---|---|---|
-| RSK-301 | Pilot hosting exceeds B01 (₹5,000) by ≈ ₹700–1,600/month if commitments or staging scheduling are not applied | Medium | Low | Savings Plan + RDS reservation after W0; scheduled staging; B20 for regional backups; monthly FinOps review | FinOps Lead |
+| RSK-301 | Pilot hosting exceeds B01 (₹5,000) by ≈ ₹850–1,900/month if commitments or staging scheduling are not applied | Medium | Low | Savings Plan + RDS reservation after W0; scheduled staging; B20 for regional backups; monthly FinOps review | FinOps Lead |
 | RSK-302 | Step change in run cost at the scale gate (≈ ₹21,000/month Year 1; ≈ ₹66,600 Year 2) | Medium | Medium | Gate tied to measured revenue (DEC-008); SaaS plans carry attributable cost (NFR-035); intermediate vertical scaling first | Founder, FinOps |
 | RSK-303 | AGPL-3.0 obligations for self-hosted Firecrawl if modified or exposed | Low | Medium | Run unmodified as a private network service; legal review before any change; trafilatura fallback | Security/Legal |
 | RSK-304 | Single-instance pilot and single-region deployment: extended outage on regional loss (CONFLICT-101) | Low | High | Cross-Region automated backups; rehearsed IaC rebuild; CDN keeps static site up; PO acceptance | SRE Lead |
@@ -1809,7 +1810,7 @@ Design points from DEC-031; per-user behaviour is an assumption to be replaced b
 | ADR-001…ADR-043 | Architecture decisions | §3.1.9 | 23 accepted (baseline; 4 with proposed mechanisms), 19 proposed, 1 deferred |
 | RSK-301…RSK-312 | Risks | §3.1.15 | Open |
 
-ASSUMPTION-107 and -108, GAP-103, -105, -106, CONFLICT-103 and RECOMMENDATION-031…034 are issued in Batch 3.2.
+ASSUMPTION-107 and -108, GAP-103, -105, CONFLICT-103 and RECOMMENDATION-031…034 are issued in Batch 3.2.
 
 ---
 
