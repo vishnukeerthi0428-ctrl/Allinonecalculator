@@ -446,7 +446,7 @@ Authorization is **RBAC (roles R01–R20, Part 2.3 §2.26) refined by ABAC (ABAC
 | App → Valkey | TLS + AUTH/ACL | TLS 1.2+ | Managed |
 | App → AWS APIs | HTTPS via VPC endpoints | TLS 1.2+ | AWS |
 | Workers → providers / Anthropic | HTTPS via egress proxy | TLS 1.2+; certificate validation never disabled | Public CAs |
-| Email | SES with TLS required on the configuration set (`TlsPolicy=Require`, verify, 27 Nov 2026); MTA-STS and TLS-RPT published for startup sending domains [RECOMMENDATION-043] | — | — |
+| Email | SES with TLS required on the configuration set (`TlsPolicy=Require`, verify, 27 Nov 2026); MTA-STS and TLS-RPT published for startup sending domains [RECOMMENDATION-048] | — | — |
 
 ### 4.5.2 At rest and KMS key hierarchy
 
@@ -468,7 +468,7 @@ All keys are customer-managed, created by IaC, with deletion windows of 30 days 
 
 ### 4.5.3 Field-level encryption (Restricted fields) [RECOMMENDATION-042]
 
-**Pattern:** envelope encryption. A data encryption key (DEK) per tenant per data domain is generated with KMS `GenerateDataKey` under `alias/gse-field` and cached in memory for ≤ 5 min. Values are encrypted with AES-256-GCM. Associated data = `tenant_id|table|column|row_id` binds ciphertext to its row. A **blind index** (HMAC-SHA-256 of the normalized value under `alias/gse-blind-index`, truncated to 16 bytes) supports equality lookups such as dedupe by email and suppression checks without decrypting.
+**Pattern [ADR-056]:** envelope encryption. A data encryption key (DEK) per tenant per data domain is generated with KMS `GenerateDataKey` under `alias/gse-field` and cached in memory for ≤ 5 min. Values are encrypted with AES-256-GCM. Associated data = `tenant_id|table|column|row_id` binds ciphertext to its row. A **blind index** (HMAC-SHA-256 of the normalized value under `alias/gse-blind-index`, truncated to 16 bytes) supports equality lookups such as dedupe by email and suppression checks without decrypting.
 
 | Field group | Encrypted | Blind index | Notes |
 |---|---|---|---|
@@ -480,7 +480,7 @@ All keys are customer-managed, created by IaC, with deletion windows of 30 days 
 | Suppression identifiers | **Hash only** (HMAC of normalized identifier) | n/a | Indefinite retention, minimal (DEC-028) |
 | Chat transcripts, inbound message bodies | Encrypted column | No | 90-day retention (DEC-028) |
 
-Full-text search does not index Restricted fields. Search on contact names uses the name only where the role is cleared (ABAC-05) [GAP-120 is unrelated; see §4.19].
+Full-text search does not index Restricted fields. Search on contact names uses the name only where the role is cleared (ABAC-05).
 
 ### 4.5.4 Hashing and signing
 
