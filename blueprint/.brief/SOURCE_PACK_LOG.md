@@ -32,3 +32,9 @@ Earlier-part issues: B23 not in DEC-020 (DEC-090 adds it); Part 7.3 file contain
 
 ## CROSS-CUTTING: effort growth from the enhancements
 Running total so far: A +43–72, I +29.5–54, F +68–110 pd (others pending). A re-plan decision is needed: MoSCoW triage of the enhancements into R1/R2/W6.
+
+## Group D (doc 07): done
+Coverage: 394 Covered / 360 Partial / 340 Not covered / 11 Conflict / 38 N/A (1,143 aspects). Endpoints: 297/321 covered (106 exact, 139 alias, 44 split, 8 folded into Approval); 18 partial; 6 not covered. Per-operation field contracts and per-operation tests were missing → added. Part-03-5a (44 pp), 5b (96 pp).
+Additions: full mapping (closes GAP-103); 24 new ops API-ENH-D-001…024; field contracts for 247 ops; SRC07-DEC-001…038 contracts; AdapterCommand/Result envelope; AD-D01…D03; provider register (74); 84-route website ingress allowlist; contract lifecycle state machine; integrity gate; 20 FR-ENH-D; 16 stories; 367 TC-ENH-D.
+Conflicts 360–372: canonical paths (360); idempotency/revision placement, list envelope, async states (361–363); source DEC IDs renamed SRC07-DEC (364); inventory counts (365); Portal+Admin audience (366); token routes (367); budget allocation (368); retention semantics (369); 24 status-code differences and bid "submit" meaning (370); PandaDoc/Postiz (371); OpenAI listed (372).
+Earlier-part issues: Part 6 tests lack API IDs (now addressed by TC-ENH-D); port list; API-083 token route; missing webhook/upload error codes. Open: GAP-365 (4 DB confirmations not identified), GAP-366 (OpenAPI draft not supplied), 212 blueprint-only ops lack operation-level test rows.

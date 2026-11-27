@@ -115,7 +115,9 @@ for dmn in order:
             if r['bp_column'].startswith('ai_eval_case_result'):
                 P(f"-- {r['src_table']}.{r['column']}: carried by new table ai_eval_case_result (ENT-ENH-E-04), no column on {t}"); continue
             for part in r['bp_column'].split(' + '):
-                P(coldef(t, part, f"{r['src_table']}.{r['column']}"))
+                tt = t; mm = re.search(r' on ([a-z_]+)$', part)
+                if mm: tt = mm.group(1); part = part[:mm.start()]
+                P(coldef(tt, part, f"{r['src_table']}.{r['column']}"))
     P("```\n")
 P("""Additional columns required by the conflict resolutions and checks (not derived from a single source column):
 
@@ -126,7 +128,7 @@ ALTER TABLE intel_signal ADD COLUMN dedupe_key char(64);  -- IX-ENH-E-15; sha256
 ALTER TABLE eng_intent ADD COLUMN superseded_by uuid REFERENCES eng_intent (id);  -- IX-ENH-E-25; re-classification keeps history (append-only)
 ALTER TABLE gov_policy_decision ADD COLUMN reason_codes text[] NOT NULL DEFAULT '{}';  -- source growth_policy_decision.reason
 ALTER TABLE mkt_publication_snapshot ADD COLUMN page_type text;  -- source growth_website_publication.page_type (mirrors mkt_publication.target_kind at publish time)
-ALTER TABLE eng_message_draft ALTER COLUMN body SET DATA TYPE text;  -- no type change; reclassify body as Rest (PII-R protection in doc 08 #65)
+COMMENT ON COLUMN eng_message_draft.body IS 'class=Rest';  -- reclassification only (doc 08 #65 PII-R); masking rules of Part 3.3 section 3.3.16.5 apply
 ```
 
 #### (c) Keys and indexes IX-ENH-E-01…54 [GAP-390]

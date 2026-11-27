@@ -215,7 +215,7 @@ ALTER TABLE mkt_event ADD COLUMN offering_id uuid NULL REFERENCES cat_offering (
 ALTER TABLE mkt_registration ADD COLUMN lead_id uuid NULL REFERENCES crm_lead (id);  -- source growth_event_registration.lead_id
 ALTER TABLE mkt_attendance ADD COLUMN provider_ref text NULL;  -- source growth_event_attendance.provider_ref; UQ (registration_id, provider_ref)
 ALTER TABLE mkt_referral ADD COLUMN lead_id uuid NULL REFERENCES crm_lead (id);  -- source growth_referral.lead_id
-ALTER TABLE mkt_publication ADD COLUMN approved_asset_refs jsonb NOT NULL DEFAULT '[]'::jsonb on mkt_publication_snapshot;  -- source growth_website_publication.approved_asset_refs
+ALTER TABLE mkt_publication_snapshot ADD COLUMN approved_asset_refs jsonb NOT NULL DEFAULT '[]'::jsonb;  -- source growth_website_publication.approved_asset_refs
 ```
 
 **Commerce**
@@ -297,7 +297,7 @@ ALTER TABLE intel_signal ADD COLUMN dedupe_key char(64);  -- IX-ENH-E-15; sha256
 ALTER TABLE eng_intent ADD COLUMN superseded_by uuid REFERENCES eng_intent (id);  -- IX-ENH-E-25; re-classification keeps history (append-only)
 ALTER TABLE gov_policy_decision ADD COLUMN reason_codes text[] NOT NULL DEFAULT '{}';  -- source growth_policy_decision.reason
 ALTER TABLE mkt_publication_snapshot ADD COLUMN page_type text;  -- source growth_website_publication.page_type (mirrors mkt_publication.target_kind at publish time)
-ALTER TABLE eng_message_draft ALTER COLUMN body SET DATA TYPE text;  -- no type change; reclassify body as Rest (PII-R protection in doc 08 #65)
+COMMENT ON COLUMN eng_message_draft.body IS 'class=Rest';  -- reclassification only (doc 08 #65 PII-R); masking rules of Part 3.3 section 3.3.16.5 apply
 ```
 
 #### (c) Keys and indexes IX-ENH-E-01…54 [GAP-390]
