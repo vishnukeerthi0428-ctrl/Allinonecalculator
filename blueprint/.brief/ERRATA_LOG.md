@@ -63,3 +63,13 @@
 46. Entity names: Part 3.3 names govern over Part 2.1 names (e.g. Product → Offering, CustomerSubscription/ServiceSubscription).
 47. AI run volume: the Part 3.3 projection of ≈ 45,000 AI runs/month (Year 1) counts all gateway runs including Tier 0 cache/rules; paid calls are a fraction. Part 7 Year 1 scale estimate (≈ ₹4,600 at 4× pilot) applies under the ₹12,000 growth ceiling; the ₹3,000 cap applies only to the pilot volume.
 48. Part 4 compute/IaC/CI assumptions (GAP-123) reconcile to Part 3.1 ADRs; Part 3.1 governs.
+
+## From Part 6.4 (to append to Part 9.1 as DEC-109+)
+49. Injection threshold: Part 7 "≥98% clean" vs Part 4.1 "0 violations". Resolution: RECOMMENDATION-079 two-tier gate. V1–V6 (data leak, unauthorized action, restricted data to Tier 2, etc.) are zero tolerance; V7 counts toward the ≥98% pass rule.
+50. AG-026/AG-032 are marked Tier 2 eligible, but the §7.3.3 chain lists no Tier 2 provider for them. Resolution: Tier 2 is **not enabled** for these agents until a provider is listed and evaluated; fallback goes to Tier 3.
+51. US-1707 says "Tier 1b for answers", but Part 7 routes about 70% of Copilot turns to Haiku. Resolution: Part 7 routing governs (Tier 1a for retrieval answers with citations, Tier 1b for synthesis/drafting).
+52. US-1004 confidence gate of 0.75 vs Part 7 default of 0.7. Resolution: the per-agent threshold table in Part 6.4/7 governs; the chat FAQ gate is 0.75 (stricter, customer-facing).
+53. TC-AI format: Part 6.4 TC-AI-AG###-### and TC-AU-AU###-### govern (supersedes the Part 6.1 example).
+54. AU-006 gate tooling: the pytest harness is the CI gate; promptfoo/DeepEval are optional dataset runners invoked by it.
+55. GAP-169: there is no approved crisis/self-harm response for the public assistant. Resolution: add a fixed, Legal-approved safe-response template with helpline references (verify India helplines) and immediate human handover. Never generated.
+56. GAP-168: no bilingual labelling resource. Resolution: budget part-time bilingual reviewers per locale in W5 (Part 8).

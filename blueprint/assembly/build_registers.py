@@ -637,7 +637,13 @@ GLOSS_SEARCH = {  # term key -> regex when the bold key itself is not the search
     "W01–W34": r"\bW01\b", "A001–A113": r"\bA001\b", "Release 1 / 2 / Future": r"Release 1",
     "Manual / Assisted / Supervised / Controlled Autonomous": r"Controlled Autonomous",
     "Public / Internal / Confidential / Restricted": r"Restricted",
-    "MoSCoW": r"MoSCoW", "INVEST": r"\bINVEST\b", "p95": r"\bp95\b",
+    "MoSCoW": r"MoSCoW", "OKR": r"\bOKRs?\b", "first-touch template": r"(?i)first-touch",
+    "autonomy L0–L3": r"\bL[0-3]\b", "receivable / payable ledger": r"(?i)receivable",
+    "CustomerSubscription / ServiceSubscription": r"CustomerSubscription|ServiceSubscription",
+    "rights request": r"(?i)rights request|data principal rights|privacy request", "EU AI Act risk class": r"EU AI Act",
+    "Meta WhatsApp Business policy": r"WhatsApp Business", "story point": r"(?i)story points?\b",
+    "receipt": r"(?i)\breceipts?\b", "reservation": r"(?i)\breservations?\b", "claim": r"(?i)\bclaims?\b",
+    "signal": r"(?i)\bsignals?\b", "sequence": r"(?i)\bsequences?\b", "tenant": r"(?i)\btenants?\b", "INVEST": r"\bINVEST\b", "p95": r"\bp95\b",
 }
 
 
@@ -684,6 +690,31 @@ def glossary_first_use(parts, md_text):
 # ----------------------------------------------------------------------------------------------
 # Markdown rendering helpers
 # ----------------------------------------------------------------------------------------------
+def compress(nums):
+    nums = sorted(set(nums))
+    out, i = [], 0
+    while i < len(nums):
+        j = i
+        while j + 1 < len(nums) and nums[j + 1] == nums[j] + 1:
+            j += 1
+        out.append(f"{nums[i]:03d}" if i == j else f"{nums[i]:03d}–{nums[j]:03d}")
+        i = j + 1
+    return ", ".join(out)
+
+
+def build_alloc(tags, parts):
+    order = [p["label"] for p in parts]
+    per = defaultdict(lambda: defaultdict(list))
+    for k, recs in tags.items():
+        for r in recs:
+            per[r["owner"]][k].append(int(r["id"].split("-")[1]))
+    rows = []
+    for lab in order:
+        if lab in per:
+            rows.append([f"Part {lab}"] + [compress(per[lab][k]) or "—" for k in TAGS] + [str(sum(len(per[lab][k]) for k in TAGS))])
+    return rows
+
+
 def md_table(header, rows):
     out = ["| " + " | ".join(header) + " |", "|" + "|".join("---" for _ in header) + "|"]
     for r in rows:
@@ -755,6 +786,7 @@ def main():
                for k in TAGS]
     text = replace_block(text, "TAGSUMMARY", md_table(["Register", "Tags found", "Resolved / accepted / closed by DEC", "Other status"], summary)
                          + f"\n\nADR index: **{len(adr_rows)}** ADRs. DEC index: **{len(dec_rows)}** decisions. Parts scanned: **{len(parts)}** ({parts[0]['label']}–{parts[-1]['label']}).")
+    text = replace_block(text, "ALLOC", md_table(["Issuing part", "ASSUMPTION", "GAP", "CONFLICT", "RECOMMENDATION", "Tags"], build_alloc(tags, parts)))
     text = replace_block(text, "ASSUMPTION", md_table(["ID", "First seen", "Statement (from the issuing register, else text near the tag)", "Status"],
                          [[r["id"], r["first"], md_cell(r["stmt"], 260), md_cell(r["status"], 70)] for r in tags["ASSUMPTION"]]))
     text = replace_block(text, "GAP", md_table(["ID", "First seen", "Gap (statement)", "Status / handling"],

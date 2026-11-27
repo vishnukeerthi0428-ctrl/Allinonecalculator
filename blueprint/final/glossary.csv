@@ -1,0 +1,323 @@
+Term,Definition,First use
+AA (WCAG conformance level AA),"The middle WCAG conformance level. The blueprint targets WCAG 2.2 AA for Website, Portal and Admin (RECOMMENDATION-001, accepted; DEC-098)",Part 0 §0.3.3
+ABAC (Attribute-Based Access Control),"Access decisions from attributes of user, resource and context (scope, ownership, MFA age, data class) in addition to role. Rules ABAC-01…12 (Part 2.3)",Part 0 §0.11
+ACM (AWS Certificate Manager),"AWS service that issues and renews TLS certificates for CloudFront and the load balancer, including verified tenant custom domains",Part 3.1 §3.1.13.3
+ADOT (AWS Distro for OpenTelemetry),AWS-supported OpenTelemetry collector that ships traces and metrics to X-Ray and CloudWatch (ADR-058),"Part 3.1 ADR-025 Observability: OpenTelemetry, Se"
+ADR (Architecture Decision Record),"A recorded architecture decision with context, alternatives, consequences and review trigger. Index in §9.2.5(e)",Part 0 §0.3.3
+AES (Advanced Encryption Standard),Symmetric cipher. AES-256-GCM is used for field-level envelope encryption of Restricted fields (ADR-056),Part 3.3 §3.3.16.4
+AI (Artificial Intelligence),"In this product: model-assisted drafting, classification, extraction, matching and summarising. AI never signs, pays, submits bids or sets prices (DEC-064, ADR-082)",Part 0
+AIE (AI evaluation test),"Test type for AI behaviour: grounding, abstention, injection resistance, output schema, cost (Part 4.1 abbreviation, used in Part 6)",Part 4.1 §4.2.1
+ALB (Application Load Balancer),AWS layer-7 load balancer in front of the API process groups,Part 3.1 front matter
+API (Application Programming Interface),"Here, the REST/JSON interface of the backend. The derived catalogue holds 555 operations API-001… (DEC-015, DEC-104)",Part 0 §0.1.2
+ASGI (Asynchronous Server Gateway Interface),Python interface for asynchronous web servers; relevant if Server-Sent Events are added later (ADR-034),Part 3.1 §3.1.8
+ASVS (Application Security Verification Standard),OWASP checklist of security requirements; Level 2 is the verification target (RECOMMENDATION-073),Part 6.1 front matter
+AWS (Amazon Web Services),"The cloud provider; primary region ap-south-1 Mumbai (ASSUMPTION-004, DEC-040)",Part 0 §0.3.2
+AZ (Availability Zone),"An isolated data-centre group inside an AWS region. Pilot runs single-AZ app + PITR database; Multi-AZ at the scale gate (DEC-040, DEC-079)",Part 0 §0.4
+B2B (Business-to-Business),"Sales to organisations (institutions, enterprises, buyers), the main motion for AppNAI, MedMaarg and OrganicSpec",Part 0 §0.7
+BFF (Backend for Frontend),"A server-side layer per frontend that holds the OIDC session, exchanges tokens and exposes only that surface's routes (ADR-005)",Part 0A §E
+BFLA (Broken Function-Level Authorization),OWASP API risk: calling an operation the role must not call. Covered by RBAC tests and AZ- layers (Part 4.1),Part 4.1 TB-04 BFF/API and domain services
+BOLA (Broken Object-Level Authorization),OWASP API risk: reading or changing another tenant's or user's object by ID. Covered by RLS + object grants (Part 4.1),Part 4.1 TB-02 External portal
+BR (Business Requirement),"Requirement at business level: BR-M01…M66, BR-S001…S140, group BRs BR-TENANT/WEB/AUTO/SVC/QA (Part 1 §1.12; DEC-059)",Part 0 §0.3.1
+BRD (Business Requirements Document),One of the two source documents. Cited as BRD §n per the Part 0 §0.1.2 convention,Part 0 front matter
+BRIN (Block Range Index),"PostgreSQL index type for very large, time-ordered tables (audit, events) (Part 3.3)",Part 3.3 §3.3.1.3
+BRL (Business Rule),"Deterministic business rule BRL- -## (162 in Part 2.3), e.g. BRL-ELG eligibility, BRL-AI AI guardrails",Part 0 §0.11
+BVA (Boundary Value Analysis),Test technique on thresholds and limits; data rows BVA-D01… (Part 6.1),Part 0 §0.11
+CAN-SPAM (Controlling the Assault of Non-Solicited Pornography And Marketing Act),"US law on commercial e-mail: identification, opt-out, physical address (ASSUMPTION-003; Part 4.1)",Part 0 §0.4
+CASL (Canada's Anti-Spam Legislation),"Canadian law requiring express or implied consent for commercial electronic messages (CA-R rules, Part 4.1)",Part 0 §0.4
+CDN (Content Delivery Network),"CloudFront, serving publication snapshots and static assets (ADR-010)",Part 0 §0.3.3
+CERT-In (Indian Computer Emergency Response Team),"Indian national CERT; its directions require incident reporting within 6 hours and log retention of 180 days (verify, as of 27 Nov 2026) (DEC-078)",Part 4.1 §4.10.2
+CGST (Central Goods and Services Tax),"Central half of intra-state GST, charged with SGST (DEC-027)",Part 0A §C
+CI (Continuous Integration),"Automated build, test and scan on every change (GitHub Actions, ADR-026). Not to be confused with CI-### candidate AI ideas (Part 7.1)",Part 0 §0.8
+CI/CD (Continuous Integration / Continuous Delivery),The pipeline from commit to production with gates PL-01… (Part 4.3),Part 0 §0.11
+CLS (Cumulative Layout Shift),Core Web Vital for visual stability of public pages (Part 4.2),Part 2.5 §2.48
+CMK (Customer-Managed Key),"KMS key controlled by the operator, per data domain (ADR-055)",Part 4.1 front matter
+CORS (Cross-Origin Resource Sharing),Browser rule set controlling which origins may call the API; locked to the product's own origins (Part 4.1),Part 1 §1.12.2
+CRM (Customer Relationship Management),"Organisations, contacts, deals, stages and activities (module group around A018, A029, A032)",Part 0 §0.4
+CSP (Content Security Policy),"HTTP header restricting script and resource origins on Website, Portal and Admin (Part 4.1)",Part 4.1 front matter
+CSRF (Cross-Site Request Forgery),Attack that makes a signed-in browser send an unwanted request; mitigated by SameSite cookies and tokens in the BFF (Part 4.1),Part 3.1 §3.1.4.1
+CTA (Call to Action),"Button or link that asks the visitor to act (enquire, book, download) on public pages",Part 2.1 §2.4.1
+CVSS (Common Vulnerability Scoring System),Severity score used to set vulnerability fix deadlines (Part 4.1),Part 4.1 §4.16.3
+DAG (Directed Acyclic Graph),"Shape of a declarative workflow: approved node types, no cycles (DEC-051, ADR-027)",Part 0A §D
+DAST (Dynamic Application Security Testing),"Security testing against a running build (OWASP ZAP, ADR-057)",Part 4.1 front matter
+DB (Database),PostgreSQL in this product. Also the prefix of operational dashboards DB-01… (Part 4.3),Part 0 §0.1.2
+DBA (Database Administrator),"Role responsible for schema, indexes, backups and restore drills (Part 3.3)",Part 3.1 front matter
+DEK (Data Encryption Key),Per-tenant key that encrypts field data; itself wrapped by a KMS key (ADR-055/056),Part 3.3 §3.3.1.3
+DKIM (DomainKeys Identified Mail),E-mail signature standard; enforced per startup sender domain on SES (DEC-025),Part 0A §C
+DLP (Data Loss Prevention),"Controls that detect and block personal or restricted data in prompts, logs and exports (Presidio, ADR-080)",Part 4.1 front matter
+DLQ (Dead-Letter Queue),"Queue holding messages that failed all retries, for human review and replay (Part 3.1, US-2105)",Part 2.1 §2.2
+"DMARC (Domain-based Message Authentication, Reporting and Conformance)",E-mail policy that tells receivers how to treat mail failing SPF/DKIM (DEC-025),Part 0A §C
+DNS (Domain Name System),Used for tenant custom-domain verification (TXT records) and e-mail authentication,Part 1 §1.11
+DoR/DoD (Definition of Ready / Definition of Done),"Entry and exit checklists for a story: ready = INVEST, AC, data, design; done = tests, scans, accessibility, docs, evidence (Part 5.1a)",Part 0 §0.11
+DPA (Data Processing Agreement),"Contract with a processor (Anthropic, AWS, providers) on data use, retention and sub-processing (GAP-141)",Part 4.1 front matter
+"DPDP (Digital Personal Data Protection Act 2023, India)","India's personal-data law with the DPDP Rules; consent, notice, children's data, rights and breach duties. Verify commencement dates (as of 27 Nov 2026) (ASSUMPTION-003, ASSUMPTION-128)",Part 0 §0.4
+DPIA (Data Protection Impact Assessment),"Assessment before high-risk processing (children, health-adjacent); triggers DPIA-T1… (RECOMMENDATION-007; Part 4.1)",Part 0A §C
+DPO (Data Protection Officer),Person accountable for privacy compliance and rights requests,Part 0 §0.9
+DR (Disaster Recovery),"Restoring service after a major failure; drills DR-1…DR-8 (Part 6.1), RTO/RPO per DEC-079",Part 0 §0.4
+DRF (Django REST Framework),The Python REST toolkit on which the backend API is built (CN-01),Part 0 §0.7
+DSC (Digital Signature Certificate),"Indian certificate-based e-signature, one of the legal e-sign routes (DEC-023)",Part 0 §0.9
+DTO (Data Transfer Object),Typed request/response shape at the API boundary (Part 3.2),Part 2.1 §2.3
+E2E (End-to-End test),"Browser-level test of a complete journey across frontend, API and workers (Playwright; Part 6.1)",Part 0A §F
+ECR (Elastic Container Registry),AWS registry for the backend container images (ADR-036),Part 3.1 front matter
+ECS (Elastic Container Service),AWS container orchestrator; pilot runs ECS on one EC2 instance (ADR-013),Part 3.1 front matter
+EU AI Act (European Union Artificial Intelligence Act),"EU regulation classifying AI systems by risk; Part 7.3 classifies this product's AI uses (verify obligations, as of 27 Nov 2026)",Part 0 §0.11
+EVR (Evidence Record),Structured test-evidence record implementing BRD §12.2 fields (RECOMMENDATION-072),Part 6.1 front matter
+FAQ (Frequently Asked Questions),Approved question-and-answer content used by the website assistant and pages,Part 0A §F
+FinOps (Financial Operations),Practice of tracking and controlling cloud and AI spend against budget lines B01… (Part 8),Part 0 front matter
+FK (Foreign Key),Database reference to another table; composite with tenant/startup keys in this product (ADR-002),Part 0 §0.3.3
+FPO (Farmer Producer Organisation),Collective of farmers; a typical OrganicSpec supplier,Part 1 P14 External Customer / Prospect (portal
+FR (Functional Requirement),"FR-W01…W34, FR-A001…A113, FR-OP001…003 and cross-cutting FR- -## (Part 2.1 §2.4)",Part 0 §0.1.2
+FRD (Functional Requirements Document),The second source document. Cited as FRD §n,Part 0 front matter
+FTE (Full-Time Equivalent),Staffing unit. Team = 4.0 engineering FTE + 0.5 growth/compliance (DEC-005),Part 0 §0.2
+FX (Foreign Exchange),"Currency conversion. Planning rate ₹90/USD (ASSUMPTION-101, ASSUMPTION-144); FX snapshot recorded per document, no automatic conversion of actuals (DEC-027)",Part 0 §0.4
+GA (General Availability),A provider release state; only GA model versions are used in production (DEC-007),Part 0A §B
+GDPR (General Data Protection Regulation),EU (and UK GDPR) data-protection law for EU/UK recipients; rules EU-R1… (Part 4.1; DEC-029),Part 0 §0.4
+GIN (Generalized Inverted Index),PostgreSQL index used for full-text and trigram search (ADR-029),Part 3.1 ADR-029 PostgreSQL full-text and trigram
+GST (Goods and Services Tax),"Indian indirect tax: CGST+SGST intra-state, IGST inter-state, exports zero-rated under LUT (DEC-027)",Part 0 §0.4
+GSTIN (GST Identification Number),"15-character GST registration of a startup or buyer, held on the TaxProfile (DEC-027)",Part 0A §C
+GTM (Go-To-Market),Plan for reaching customers per startup and for the SaaS offer (BRD §8),Part 0 §0.1.2
+HA (High Availability),Redundancy that keeps service up through component failure; deferred to the scale gate (DEC-040),Part 0 §0.4
+HITL (Human-in-the-Loop),A human approves or edits before an AI output has any effect (autonomy L0/L1),Part 0 §0.11
+HMAC (Hash-based Message Authentication Code),Keyed hash. Used for webhook signatures and blind indexes over encrypted fields (ADR-056),Part 3.2 front matter
+HNSW (Hierarchical Navigable Small World),Approximate nearest-neighbour index type in pgvector (Part 3.3),Part 3.1 ADR-007 pgvector instead of an external
+HSN/SAC (Harmonized System of Nomenclature / Services Accounting Code),GST classification codes for goods (HSN) and services (SAC); held per offering (DEC-027),Part 0A §C
+HSTS (HTTP Strict Transport Security),Header forcing browsers to use HTTPS only (Part 4.1),Part 4.1 §4.5.1
+IaC (Infrastructure as Code),"Infrastructure defined in versioned code (OpenTofu, ADR-012; DEC-083)",Part 0 §0.11
+IAM (Identity and Access Management),AWS service for roles and policies; CI deploys through OIDC-federated roles (ADR-026),Part 2.4 §2.35.2
+ICU (International Components for Unicode),Library family; ICU MessageFormat is the string format for plurals and variables (DEC-026),Part 0A §C
+IdP (Identity Provider),"The reused AppNAI identity service issuing tokens for audience growth-engine (DEC-003, DEC-019)",Part 0 §0.6
+IDOR (Insecure Direct Object Reference),Accessing an object by guessing its ID; same family as BOLA (Part 4.1),Part 4.1 §4.8.1
+IGST (Integrated Goods and Services Tax),GST on inter-state supply (DEC-027),Part 0A §C
+INP (Interaction to Next Paint),Core Web Vital for responsiveness (Part 4.2),Part 2.5 §2.48
+INR (Indian Rupee),"Base currency; amounts stored as Decimal with ISO 4217 code (ASSUMPTION-012, DEC-027)",Part 0 §0.3.1
+"INVEST (Independent, Negotiable, Valuable, Estimable, Small, Testable)",Quality criteria every user story must meet before it is Ready (Part 5.1a),Part 0 §0.11
+IRN (Invoice Reference Number),Number issued by the GST e-invoice portal; statutory e-invoicing is later scope L-01,Part 0A §C
+ISO 4217 (currency code standard),Three-letter currency codes stored with every money amount (ASSUMPTION-012),Part 0 §0.3.3
+IST (Indian Standard Time),"UTC+05:30; business-hour, quiet-hour and support windows are stated in IST (DEC-044)",Part 0A §C
+"IT Act (Information Technology Act 2000, India)","Indian law on electronic records, e-signatures and intermediaries; rules IT-R1… (Part 4.1)",Part 0 §0.4
+JSON (JavaScript Object Notation),Data format of the API and of structured AI outputs (ADR-072),Part 0 §0.3.3
+JWKS (JSON Web Key Set),Published public keys used to verify IdP tokens (ASSUMPTION-104),Part 3.1 §3.1.16
+KEK (Key Encryption Key),KMS key that wraps data encryption keys (ADR-055),Part 3.3 §3.3.1.3
+KMS (Key Management Service),"AWS service holding encryption keys (ADR-014, ADR-055)",Part 3.1 front matter
+KPI (Key Performance Indicator),"Measured outcome KPI-01…31 with formula, target and owner (Part 1 §1.4)",Part 0 §0.3.2
+LCP (Largest Contentful Paint),Core Web Vital for load speed of public pages (Part 4.2),Part 2.5 §2.48
+LLM (Large Language Model),Model such as Claude Haiku or Sonnet used through the model gateway (Part 7),Part 0A §B
+LUT (Letter of Undertaking),GST filing that lets an exporter supply without paying IGST; held on the TaxProfile (DEC-027),Part 0A §C
+MAPE (Mean Absolute Percentage Error),Forecast-accuracy metric (BR-M60 forecasting; Part 7),Part 1 §1.4.2
+MFA (Multi-Factor Authentication),"Second factor at sign-in: TOTP minimum, passkeys/WebAuthn required for privileged and approver roles (DEC-019, DEC-077)",Part 0 §0.3.3
+"MoSCoW (Must, Should, Could, Won't)",Prioritisation scheme for BRs and stories (Part 1),Part 0 §0.5
+MoU (Memorandum of Understanding),Agreement with an institution (e.g. a school) that allows EduVerse outreach through it (DEC-030),Part 0A §C
+MTTR (Mean Time To Restore),Average time from incident start to service restoration (Part 4.3),Part 4.2 front matter
+NAT (Network Address Translation),Gateway that gives private subnets outbound internet; cost line in Part 3.1,Part 3.1 §3.1.6.2
+NFR (Non-Functional Requirement),"Quality requirement NFR-001… (performance, security, availability, accessibility) (Part 0 §0.6; Part 4.2)",Part 0 §0.3.1
+NSE (No Side Effect),"Test shorthand: no state change, no outbox row, no provider call, and a denial audit event (Part 6 test cases)",Part 6.2a front matter
+OIDC (OpenID Connect),Authentication protocol on top of OAuth 2.0 used between the BFFs and the IdP (ADR-005),Part 0 §0.4
+OKR (Objectives and Key Results),Goal framework linking G-## goals to KPIs (Part 1),not found in Parts 0–9.1
+OSS (Open-Source Software),"Preferred for tooling where it fits the budget (ADR-057, ADR-079, ADR-080)",Part 0 §0.8
+OTP (One-Time Password),Single-use code; used to verify guardians and portal users (DEC-030),Part 0A §C
+OWASP (Open Worldwide Application Security Project),"Community that publishes the Top 10, API Security Top 10, ASVS and ZAP; used as checklists (Part 4.1, Part 6.1)",Part 0 §0.11
+p95 (95th percentile),Latency below which 95% of requests complete; SLO unit (DEC-018),Part 0 §0.3.3
+PAN (Permanent Account Number),Indian tax identifier; treated as Restricted data,Part 4.1 §4.5.3
+PCI DSS (Payment Card Industry Data Security Standard),"Card-data security standard; scope is minimised by hosted checkout, so the platform never stores card data (ASSUMPTION-015; PCI-R rules)",Part 0 §0.7
+pd (person-day),Effort unit. Programme 287–483 pd; central ≈ 416 pd after DEC-103,Part 0 §0.3.1
+PDF (Portable Document Format),"Format of generated quotes, invoices and contracts (WeasyPrint, ADR-032)",Part 0 §0.9
+PDP (Policy Decision Point),"Deterministic in-process library that rechecks scope, consent, suppression, jurisdiction, quiet hours, caps, entitlement, budget and approval hash at dispatch; first deny wins (ADR-004; BRL-ELG)",Part 2.1 §2.2
+"PECR (Privacy and Electronic Communications Regulations, UK)",UK rules on electronic marketing alongside UK GDPR (ASSUMPTION-003),Part 0 §0.4
+PII (Personally Identifiable Information),Data that identifies a person; classified Restricted (RECOMMENDATION-004),Part 0 §0.11
+PITR (Point-In-Time Recovery),Database restore to any second within the retention window; basis of RPO ≤ 15 min (DEC-018),Part 0 §0.8
+PK (Primary Key),Unique row identifier; UUIDv7 generated in the application (RECOMMENDATION-036),Part 3.3 §3.3.1.2
+PKCE (Proof Key for Code Exchange),OAuth extension that protects the authorization-code flow (ASSUMPTION-104),Part 0A §C
+PO (Product Owner),Accountable for backlog and acceptance; the founder/CTO (DEC-005). In OrganicSpec context also *purchase order*,Part 0 §0.5
+QA (Quality Assurance),Testing discipline; 0.5 FTE automation QA (DEC-005); BR-QA group,Part 0 front matter
+"RACI (Responsible, Accountable, Consulted, Informed)",Responsibility matrix for roles and processes (Part 8),Part 0 §0.11
+RAG (Retrieval-Augmented Generation),"AI answers grounded on retrieved approved records with citations; pgvector retrieval scoped by RLS (ADR-041, ADR-077)",Part 2.1 §2.2
+RBAC (Role-Based Access Control),Permissions by role R01–R20 (Part 2.3 §2.26),Part 0 §0.11
+REST (Representational State Transfer),API style used with OpenAPI 3.1 and problem+json errors (ADR-022),Part 0 §0.2
+RFP (Request for Proposal),Buyer document inviting proposals; AppNAI bid desk input (AG-019),Part 0 §0.2
+RFQ (Request for Quotation),Buyer request for prices; drives quotes (WF-01),Part 0 §0.2
+RLS (Row-Level Security),"PostgreSQL feature that filters every row by tenant and startup session variables; the primary isolation control (ADR-002, RECOMMENDATION-037)",Part 0 §0.1.2
+RPO/RTO (Recovery Point Objective / Recovery Time Objective),"Maximum data loss and maximum downtime. RPO ≤ 15 min; RTO ≤ 4 h for instance/AZ/database failure, ≤ 24 h for regional outage in the pilot (DEC-018, DEC-079)",Part 0 §0.3.3
+RPS (Requests Per Second),Load-model throughput unit (Part 4.2),Part 4.2 front matter
+RUM (Real User Monitoring),"Field measurement of page performance from real browsers (first-party web-vitals beacon, ADR-058)",Part 4.2 front matter
+S3 (Amazon Simple Storage Service),"Object storage for documents, uploads and publication snapshots; Object Lock compliance mode for audit anchors (DEC-082)",Part 0 §0.7
+SaaS (Software as a Service),The product sold to external tenants on metered plans (BR-SVC; DEC-047),Part 0 §0.1.2
+SAST (Static Application Security Testing),"Source-code security scanning (Semgrep, Bandit; ADR-057)",Part 4.1 front matter
+SBOM (Software Bill of Materials),Inventory of components in a build for vulnerability tracking (Part 4.3),Part 3.1 ADR-026 CI/CD with GitHub Actions and OI
+SCA (Software Composition Analysis),"Dependency vulnerability scanning (OSV-Scanner, pip-audit; ADR-057)",Part 4.1 front matter
+SES (Amazon Simple Email Service),"E-mail provider; per-startup configuration sets (DEC-025, ADR-016)",Part 0 §0.4
+SEO (Search Engine Optimisation),Public-page structure and metadata for search visibility (EP-11),Part 0 §0.10.2
+SGST (State Goods and Services Tax),State half of intra-state GST (DEC-027),Part 0A §C
+SKU (Stock Keeping Unit),Sellable item variant with availability and reservation (OrganicSpec; DEC-045),Part 0 §0.4
+SLA (Service Level Agreement),"Contractual service promise; pilot support targets are internal, not contractual (DEC-044)",Part 0 §0.4
+SLI (Service Level Indicator),The measured quantity behind an SLO (Part 4.3),Part 4.2 front matter
+SLO (Service Level Objective),Internal reliability target SLO-01… (DEC-018; Part 4.3),Part 0 §0.3.3
+SNS (Amazon Simple Notification Service),Delivers SES bounce and complaint events to webhooks (DEC-025),Part 0A §C
+SoD (Segregation of Duties),Author cannot approve own item; maker cannot be checker (BRL-APR; SOD_AUTHOR_CANNOT_APPROVE),Part 2.3 §2.29
+SP (Story Points),"Relative effort unit; 1 SP ≈ 0.5–1.0 pd, central 0.7 (ASSUMPTION-150)",Part 5.1a front matter
+SPA (Single-Page Application),Browser application model of both React frontends,Part 3.1 §3.1.3.2
+SPF (Sender Policy Framework),DNS record listing servers allowed to send mail for a domain (DEC-025),Part 0A §C
+SQL (Structured Query Language),PostgreSQL query language,Part 3.3 §3.3.1.1
+SRE (Site Reliability Engineering),"Operations discipline owning SLOs, alerts and runbooks; 0.5 DevOps/SRE FTE (DEC-005)",Part 0 front matter
+SSE (Server-Sent Events),One-way push from server to browser; later option after polling (ADR-034),Part 3.1 §3.1.3.2
+SSO (Single Sign-On),One sign-in across applications through the shared IdP (DEC-003),Part 0 §0.2
+SSRF (Server-Side Request Forgery),Attack that makes the server fetch internal URLs; mitigated by egress allowlists for crawling and webhooks (Part 4.1),Part 3.2 front matter
+"STRIDE (Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege)",Threat-modelling categories used for THR-001… (RECOMMENDATION-007; Part 4.1),Part 0 §0.8
+SUS (System Usability Scale),"Ten-item usability questionnaire used in usability testing (Part 2.5, Part 6)",Part 4.2 front matter
+TCCCPR (Telecom Commercial Communications Customer Preference Regulations 2018),"TRAI regulations on commercial SMS/voice, headers, templates and preferences (DLT). Applicability to WhatsApp/e-mail to verify (ASSUMPTION-003; TR-R rules)",Part 0 §0.7
+TCO (Total Cost of Ownership),Full cost of a component over time (AI TCO in Part 7.3),Part 0 §0.11
+TLS (Transport Layer Security),Encryption in transit; TLS 1.2+ everywhere (Part 4.1),Part 3.1 §3.1.3.2
+TOTP (Time-based One-Time Password),Authenticator-app second factor; interim minimum until passkeys (DEC-077),Part 0A §C
+TRAI (Telecom Regulatory Authority of India),Indian telecom regulator issuing TCCCPR (ASSUMPTION-003),Part 0 §0.7
+TTFB (Time To First Byte),Server responsiveness metric for public pages (DEC-018),Part 0A §C
+TTL (Time To Live),"Expiry of a cache entry, token or lock (e.g. prompt cache 5 min / 1 h, ADR-075)",Part 3.1 §3.1.3.2
+UAT (User Acceptance Testing),"Business acceptance by real users before release (DEC-095, Part 8)",Part 0 §0.1.2
+UI (User Interface),Screens of the Website/Portal and Admin Command Centre (Part 2.5),Part 0 §0.1.2
+UPI (Unified Payments Interface),Indian instant bank payment rail; pilot payment evidence path with UTR (DEC-022),Part 0A §C
+URL (Uniform Resource Locator),Web address; slugs are part of publication snapshots,Part 1 §1.12.1
+USD (United States Dollar),Currency of most provider prices; converted at the planning rate (ASSUMPTION-144),Part 0 §0.7
+UTC (Coordinated Universal Time),Storage time standard; displayed in the user's time zone (ADR-030),Part 0 §0.3.3
+UTR (Unique Transaction Reference),Bank/UPI transfer reference recorded as payment evidence; duplicates are blocked (DEC-022),Part 3.3 §3.3.6.9
+UUID (Universally Unique Identifier),Identifier format; UUIDv7 used for primary keys (RECOMMENDATION-036),Part 0 §0.3.3
+UX (User Experience),Design discipline; principles UX-01… (Part 2.5),Part 0 front matter
+VPC (Virtual Private Cloud),"Isolated AWS network for the application, database and caches",Part 3.1 front matter
+WABA (WhatsApp Business Account),Meta account through which approved WhatsApp templates and replies are sent via the Cloud API (ADR-039; WA-R rules),Part 2.1 §2.2
+WAF (Web Application Firewall),Filter for malicious HTTP traffic; AWS WAF on CloudFront from W2 (DEC-081),Part 0A §C
+WCAG (Web Content Accessibility Guidelines),W3C accessibility standard; version 2.2 level AA is the target (RECOMMENDATION-001),Part 0 §0.3.3
+"WORM (Write Once, Read Many)",Immutable storage; S3 Object Lock compliance mode for audit anchors (DEC-082),Part 2.4 §2.34.3
+XSS (Cross-Site Scripting),"Injection of script into pages; mitigated by output encoding, CSP and sanitised rich text (Part 4.1)",Part 3.1 ADR-005 Backend-for-Frontend authenticat
+ZAP (Zed Attack Proxy),OWASP open-source DAST scanner (ADR-057),Part 4.1 §4.2.1
+ZDR (Zero Data Retention),Provider option under which prompts and outputs are not stored; eligibility to verify (GAP-141),Part 7.3 §7.8.2
+Owner Portfolio Tenant,The single tenant that holds all 25+ owned startups as startup workspaces (DEC-065),Part 0A §F
+tenant,The top isolation boundary: the Owner Portfolio Tenant or one external SaaS client. Cross-tenant aggregation is never permitted (DEC-065; ADR-002),Part 0 §0.1.2
+startup workspace,"A startup inside a tenant (e.g. AppNAI, MedMaarg) with its own catalogue, senders, budgets and data; RLS key below tenant (DEC-065)",Part 0A §B
+portfolio scope,"Multi-startup view inside one tenant: aggregates and drill-down only, every mutating control hidden and denied (DEC-055)",Part 2.1 §2.3
+business line,"A commercial line inside a startup workspace (entity BusinessLine) used for scope and reporting (DEC-016, DEC-084)",Part 2.1 §2.4.1
+offering,"A product or service a startup sells, with versions, claims, prices and status planned/approved/available (DEC-016; Part 3.3 name per DEC-107)",Part 0 §0.4
+capability profile,"Per startup/tenant switchboard that enables desks and features (bid desk, order desk, pilots, guardian intake) instead of hard-coding them to a startup (DEC-052, DEC-084)",Part 0 §0.6
+AppNAI,Owned startup for global AI project bids; default route for external AI projects (DEC-052),Part 0 §0.2
+MedMaarg,Owned startup for institutional wellness partnerships; no patient data (BRD §5; DEC-021),Part 0 §0.1.2
+EduVerse,"Owned startup in education; no direct outreach, profiling or targeted ads to anyone under 18 (DEC-030)",Part 0 §0.2
+OrganicSpec,Owned agri buy/sell startup with separate receivable and payable ledgers and SKU reservation (DEC-045),Part 0 §0.2
+Website/Portal,"Public frontend commercial-website-react: 34 screens W01–W34 (public pages, intake, chat, booking and signed-in external portal) (DEC-009)",Part 0 §0.7
+Admin Command Centre,"Confidential frontend commercial-admin-react: 113 screens A001–A113 in seven views (DEC-009, DEC-062)",Part 1 §1.1
+seven views,"Command Centre navigation: Overview, Discovery, Outreach & Marketing, Follow-ups, Objections, Closure, Automation (BRD §3; UX-02)",Part 1 §1.1
+Action Centre,In-app notification and task centre (A106) with e-mail digest (DEC-036),Part 1 §1.12.2
+Admin Copilot,"Read-only, grounded assistant in the Admin side panel; answers from authorised records with citations; drafts but never executes (DEC-035, ADR-041)",Part 0 §0.4
+signal,"A piece of public evidence suggesting a need or opportunity, reviewed by a human; ≥ 80% precision gate on ≥ 100 reviewed signals (DEC-001, DEC-096)",Part 0 §0.3.3
+evidence,"Source record with URL, date, licence/permission and confidence that grounds signals, opportunities and drafts (PP-05; BRL-SRC)",Part 0 §0.1.2
+claim,"An approved, dated statement about an offering that external content may use; unapproved claims are blocked (BRL-AI-05; M02)",Part 0 §0.2
+opportunity score,"round(100 × Σ wᵢcᵢ / Σ w over known components); ""Unknown – review required"" when known weight < 0.60; bands ≥ 75 / 50–74 / < 50 (DEC-011)",Part 0 §0.7
+qualified opportunity,"Counted only with evidence, fit and an accountable owner, de-duplicated; unknown remains unqualified (BR-S039; KPI-07)",Part 0 §0.3.2
+cost per qualified opportunity,(AI + data + channel + allocated infrastructure) ÷ qualified opportunities; scale-gate metric (KPI-22; BR-S090),Part 0A §B
+eligibility,"Whether a contact may be messaged on a channel now: consent or lawful basis, suppression, jurisdiction, quiet hours, caps, entitlement. Unknown fails closed (BRL-ELG-01)",Part 0 §0.2
+suppression list,Hashed identifiers that must never be contacted again; kept indefinitely (DEC-028),Part 0 §0.7
+quiet hours,Local-time window in which outbound messages are deferred; deferrals are not counted late (DEC-032),Part 0 §0.8
+jurisdiction rule pack,"PDP rule set per recipient country (India, EU/UK, US, Canada …) with an outbound allowlist (DEC-029)",Part 0 §0.8
+first-touch template,"Approved template for first outreach; until approved, first touch is L1, then L2 dispatch with variables only (DEC-071)",not found in Parts 0–9.1
+sequence,"Scheduled multi-step outreach with stop rules; contacts are enrolled (enrolment) and leave on reply, opt-out or stop (BRL-SEQ)",Part 1 §1.12.2
+approval hash,"Hash of the exact approved content, recipients, parameters and policy version. Dispatch proceeds only if the hash still matches (PDP recheck; BRL-APR)",Part 1 §1.1
+approval policy,"Versioned per-startup thresholds that decide who must approve (discounts, contracts, cross-border); tightening free, loosening needs founder approval (DEC-038)",Part 0A §C
+autonomy L0–L3,"Autonomy levels: L0 suggest only, L1 draft for human approval, L2 act with post-review for routine eligible actions, L3 act within guardrails. Consequential actions capped at L1 (ASSUMPTION-010, DEC-064)",not found in Parts 0–9.1
+Manual / Assisted / Supervised / Controlled Autonomous,"The four autonomy modes of the source, mapped to L0–L3 (ASSUMPTION-010)",Part 0 §0.2
+autonomy cap matrix,"Maximum autonomy per action class: money movement not supported; contracts, quotes, discounts, bid submission, legal terms L1 max (DEC-064, DEC-071)",Part 0A §F
+simulation,"Dry-run of a workflow or configuration with zero live effects, required before activation (BRD §1.2; ConfigRevision state ""simulated"")",Part 0 §0.2
+emergency stop,"Control that halts sends and runs at tenant, startup, workflow or channel scope; effective ≤ 60 s and blocks queued sends (BRL-AUT-05; BR-M55; ADR-085)",Part 0 §0.2
+kill switch,Multi-scope stop flag in Valkey checked by the gateway and the engine; implements the emergency stop for AI (ADR-085),Part 0 §0.11
+Tier 0–3,"Model routing tiers: Tier 0 rules/templates/cache; Tier 1a lighter Claude (Haiku-class); Tier 1b Claude Sonnet; Tier 2 free/open-weight fallbacks (Public or Internal-non-personal only, opt-in, default off); Tier 3 degrade to queue/human (DEC-007)",Part 0 §0.5
+model gateway,"The single module through which every model call passes: redaction, routing, budget reservation, caching, audit (ADR-008, ADR-070)",Part 1 §1.1
+abstention,An AI output that declines to assert a fact because current evidence is missing (e.g. NO_CURRENT_EVIDENCE) (BRL-AI-04),Part 0A §B
+AI budget ceilings,"Hard monthly caps on owned-portfolio AI spend: pilot ₹3,000, growth ₹12,000, scale ₹40,000; 80% alert, 100% stop (DEC-008, ADR-083)",Part 1 §1.15
+growth gate,"Unlock of the ₹12,000 AI ceiling when the BRD §8 scale gate metrics are met (DEC-008)",Part 0A §B
+scale gate,"BRD §8 condition to increase vendor spend: verified cost per qualified opportunity, consent compliance and conversion (BR-S090)",Part 0 §0.5
+pilot,"First controlled real use with owned startups at BRD §8 volumes (500 fetches, 100 reviewed signals, 2,000 e-mails, 1,000 WhatsApp templates/month) (ASSUMPTION-002)",Part 0 §0.2
+W0–W6,"Delivery waves keyed to source day-phases: W0 Day 1–15 (split W0-A/W0-B, DEC-096) … W5 Day 121–180, W6 Day 181–365 (DEC-006, DEC-034)",Part 0 §0.5
+Release 1 / 2 / Future,"Planning groupings: Release 1 = W0–W3, Release 2 = W4–W5, Future = W6+; not product versions (DEC-006)",Part 0 §0.5
+outcome certainty,"Result state of an external action: confirmed, uncertain, failed, reconciled_confirmed, reconciled_failed. Uncertain blocks retry until reconciled (DEC-050)",Part 0 §0.6
+uncertain outcome,Provider call whose effect is unknown (timeout after submit); reconciled on a schedule before any retry (ASSUMPTION-162),Part 2.4 §2.30.2
+closure policy,Per opportunity type: project/contract types close on executed contract (Won-Contracted) and are marked Paid separately; order types close on verified payment (DEC-054),Part 0 §0.6
+receipt,"Verified money received, distinct from closure; recorded with maker-checker verification (DEC-022, DEC-054)",Part 0 §0.3.2
+maker-checker,"Two-person verification: one Finance user records (MakerVerified), a second verifies (CheckerVerified) (DEC-022)",Part 0 §0.3.2
+receivable / payable ledger,Separate ledgers for money owed to and by OrganicSpec (buy and sell orders),not found in Parts 0–9.1
+reservation,"Stock held for an approved order; released on cancellation or expiry (DEC-045, DEC-070)",Part 0 §0.2
+bid desk,Workspace that prepares bid packages and checklists; a human always submits (DEC-053),Part 0 §0.5
+order desk,"Workspace for buy/sell orders, fulfilment and ledgers, enabled by capability profile (DEC-052)",Part 2.3 §2.26.1
+tender,Formal public procurement; submission is never automated (DEC-053),Part 0 §0.4
+publication snapshot,"Immutable, versioned build of public pages per tenant/startup/locale, switched live by an atomic pointer (ADR-010; DEC-084)",Part 2.1 §2.3
+preview grant,"Expiring, non-indexed link to unpublished content (DEC-084)","Part 3.2 Website publishing (B-WEB; A107, A108)"
+custom domain,Verified tenant/startup domain mapped to a publication; unknown host returns 404 (BRL-TEN-10; NT-046),Part 2.3 §2.25.1
+guardian,Adult verified by OTP who acts for a learner under 18 in EduVerse (DEC-030),Part 0 §0.4
+support access grant,"Time-boxed (≤ 72 h), scoped, tenant-approved access by platform support (DEC-056)",Part 2.3 §2.27.18
+plan archetype,"Starter, Growth and Scale SaaS plans with configurable entitlements; no published price until approved (DEC-047)",Part 2.5 §2.43.1
+entitlement,"Plan-granted right or quota (users, workspaces, channels, AI tasks) checked by the PDP (DEC-047)",Part 0 §0.4
+AI task,One completed agent invocation returning a validated output; the SaaS metering unit (RECOMMENDATION-064; DEC-086),Part 3.1 §3.1.4.7
+CostLedger,"Record of AI cost per run, agent, startup and tenant (M53; DEC-086)",Part 2.1 §2.2
+UsageMeterReading,"Billable SaaS meter values, including the nightly ""AI tasks"" aggregate (DEC-086)",Part 0A §C
+CustomerSubscription / ServiceSubscription,Customer renewals (M50) versus the tenant's SaaS billing subscription (B-SVC) (DEC-085),not found in Parts 0–9.1
+ConfigRevision,"Typed, versioned configuration with states draft → validated → simulated → approved → scheduled → active → superseded (Part 3.3 ENT-168)",Part 0 §0.4
+ConflictCase,"Record raised when two automations or people contend for the same contact or object (conflict coordinator, A111)",Part 0 §0.4
+DiscrepancyCase,Reconciliation exception (e.g. settlement vs payment allocation) for human review (REC-01; A074),Part 3.2 §3.2.6.4
+Customer 360,"Single view of an organisation: owner, stage, eligibility per channel, activity, documents (A032)",Part 0 §0.3.3
+acceptance procedure,Business acceptance check AP-01…AP-10 (DEC-014),Part 0A §B
+acceptance profile,Reusable set of FR acceptance conditions CA- (Part 2.1),Part 2.1 §2.4.12
+two-tenant fixture,"Test data with two tenants (T1, T2) to prove isolation (AP-10; TP-07)",Part 0 §0.3.3
+DERIVED,"Label for catalogue items created by the blueprint because the source catalogue was not supplied (DEC-015, DEC-016, DEC-087)",Part 0 §0.4
+Unknown – review required,Display value whenever a score or fact cannot be computed safely; never shown as a number (DEC-011),Part 0A §B
+B-SVC,"The service (SaaS) business line: plans, billing and support for external tenants (DEC-008, DEC-047)",Part 0 §0.1.2
+modular monolith,"One Django codebase and image, split into bounded apps with import-linter rules, run as separate process groups (ADR-001)",Part 0 §0.2
+process group,"A runtime role of the same image: api-web, api-admin, api-hooks, relay, workers, beat (ADR-001)",Part 3.1 §3.1.3.2
+transactional outbox,"Events written in the same database transaction as the state change, then relayed to Celery; guarantees no lost or phantom sends (ADR-003)",Part 0 §0.3.3
+idempotency key,Client- or provider-supplied key that makes a repeated request or webhook have one effect (ADR-023; UQ-IDEM),Part 0 §0.3.3
+Celery,"Python task queue used for workers and scheduled jobs (ADR-003, ADR-028)",Part 0 §0.2
+Celery Beat,Celery scheduler with a database-backed schedule (ADR-028),Part 0 §0.7
+Valkey,"Open-source Redis-compatible in-memory store: broker, cache, rate limits, kill-switch flags (ADR-003, ADR-085)",Part 0 §0.2
+pgvector,"PostgreSQL extension for vector similarity; used for RAG, matching and the semantic cache (ADR-007, ADR-077)",Part 0 §0.2
+embedding,"Vector representation of text; multilingual E5-large class, 1,024 dimensions, self-hosted (DEC-088)",Part 2.1 §2.2
+semantic cache,"Cache of model answers keyed by meaning (cosine ≥ 0.92), Public/Internal data only (ADR-076)",Part 0A §B
+prompt caching,Provider-side reuse of a stable prompt prefix to cut input cost (ADR-075),Part 7.3 §7.4.1
+Batch API,Provider asynchronous API at a discount for non-interactive work (ADR-074),Part 6.4 AG-001 Knowledge & Claim Ingestion Assis
+structured output,Model output constrained to a JSON Schema and validated before use (ADR-072),Part 2.1 §2.3
+prompt injection,"Untrusted text that tries to change model instructions; defended by isolation, tool limits and checks (AIR-01; Part 4.1)",Part 3.2 §3.2.1.12
+ports and adapters,Business code calls typed ports; adapters implement providers and return normalised results (ADR-009; IP-01),Part 3.1 ADR-009 Provider adapter pattern (ports
+circuit breaker,Stops calling a failing provider for a cool-down period (RECOMMENDATION-031),Part 3.1 §3.1.13.3
+feature flag,"Switch that enables a capability per scope, default OFF for channels and paid adapters (RECOMMENDATION-005, ADR-015)",Part 1 §1.11
+expand/contract migration,Schema change in backward-compatible steps; no production down-migrations (ADR-053),Part 5.3 US-2109 Rollback rehearsal
+OpenAPI,Machine-readable API contract (version 3.1) with breaking-change gate CT-01 (ADR-022),Part 3.1 §3.1.8
+problem+json,RFC 9457 error format used by every API error (ADR-022),Part 3.1 §3.1.4
+OpenTelemetry,"Vendor-neutral tracing and metrics standard; correlation ID from HTTP through outbox to adapter (RECOMMENDATION-006, ADR-025)",Part 0 §0.8
+Sentry,Error-tracking service (DEC-041),Part 0 §0.4
+CloudFront,AWS CDN in front of public snapshots and APIs (ADR-010),Part 0A §C
+OpenTofu,Open-source Terraform-compatible IaC tool (ADR-012),Part 0 §0.8
+WeasyPrint,Server-side HTML-to-PDF renderer for documents (ADR-032),Part 3.1 §3.1.8
+Presidio,Open-source PII detection and masking with Indian recognisers (ADR-080),Part 6.4 front matter
+Langfuse,"Open-source LLM observability, self-hosted from the growth gate (ADR-078)",Part 7.2 §7.2.1
+promptfoo,Open-source prompt evaluation tool used in CI (ADR-079),Part 6.1 §6.1.3.1
+Playwright,Browser automation framework for E2E tests and PDF rendering,Part 2.1 §2.2
+provider simulator,"Test-only provider fake with scriptable faults: timeouts after submit, duplicate and out-of-order webhooks (RECOMMENDATION-071)",Part 6.1 §6.1.2.1
+certification ladder,Evidence levels L-S synthetic → L-T test → L-C controlled → L-P production; synthetic results are never shown as production certification (RECOMMENDATION-072),Part 6.1 §6.1.1.1
+mutation score,"Share of injected code mutations caught by tests; ≥ 85% for money, tax, ledger and PDP (RECOMMENDATION-070)",Part 4.2 §4.23.8
+error budget,Allowed unreliability under an SLO; burn rates drive alerts (Part 4.3),Part 2.4 §2.31.3
+runbook,Step-by-step operational procedure RB-001… (Part 4.3),Part 3.1 §3.1.13.3
+blind index,HMAC of a normalised value that allows equality search over encrypted fields (ADR-056),Part 3.3 §3.3.6.5
+envelope encryption,"Data encrypted with a data key, which is encrypted with a KMS key (ADR-056)",Part 3.1 §3.1.6.1
+Object Lock,S3 feature preventing deletion or change; compliance mode for audit anchors (DEC-082),Part 2.4 §2.34.3
+monorepo,"One repository for both frontends, shared UI, backend, AI assets, IaC and ops (ADR-060)",Part 3.1 §3.1.8
+story point,See SP,Part 5.1a front matter
+Gherkin,Given/When/Then syntax for acceptance criteria (Part 5),Part 0 §0.11
+dimension matrix,"Story test-design dimensions D1–D8 (actor, permission, state, data, channel, tenant, integration, locale) with rows DM-### (Part 5.1a)",Part 0 §0.11
+data principal,DPDP term for the person the data is about,Part 4.1 §4.11.1
+data fiduciary,DPDP term for the entity that decides the purpose and means of processing; each tenant for its own contacts,Part 4.1 §4.12.1
+consent,"Free, specific, informed, unambiguous agreement, with evidence stored; one of the lawful bases recorded per contact (BRL-ELG-03; DEC-029)",Part 0 §0.2
+legitimate interest,GDPR lawful basis recorded where it applies to B2B contacts in the EU/UK (DEC-029),Part 4.1 §4.11.4
+Data classification (Public / Internal / Confidential / Restricted),"Four classes; Restricted (personal, children's, health-adjacent, financial, credentials) never goes to free-tier models (RECOMMENDATION-004; BRL-AI-06)",Part 0 §0.8
+Public / Internal / Confidential / Restricted,See Data classification,Part 0 §0.8
+retention,"Keep periods: invoices 8 years, contracts term + 8, audit 7 years, security/application logs 1 year, AI payloads 90 days, marketing contacts 24 months after last eligible interaction (DEC-028, DEC-078)",Part 0 §0.3.3
+rights request,"Data-principal request (access, correction, erasure, grievance); default deadline 30 days with escalation at 70% (DEC-100)",not found in Parts 0–9.1
+breach notification,"Notice of a personal-data breach to the Data Protection Board and to CERT-In within required times (verify, as of 27 Nov 2026) (Part 4.1)",Part 4.1 §4.11.5
+opt-out,Recipient withdrawal of consent (e.g. STOP keyword); takes effect before the next dispatch (BRL-ELG),Part 0 §0.10.3
+DLT (Distributed Ledger Technology registration under TCCCPR),Indian SMS sender/template registration platform; relevant only if SMS is enabled (verify),Part 4.1 §4.12.3
+e-sign,Legally recognised electronic signature (Aadhaar eSign or DSC under the IT Act); pilot uses signed-PDF upload with hash (DEC-023),Part 0 §0.4
+e-invoice,GST invoice registered on the government portal with an IRN; later scope (L-01),Part 0A §C
+SOC 2 (System and Organization Controls 2),"US assurance framework; controls are aligned, no certification sought (ASSUMPTION-003)",Part 0 §0.7
+"HIPAA (Health Insurance Portability and Accountability Act, US)",Not applicable: no protected health information by design (ASSUMPTION-003),Part 0 §0.7
+EU AI Act risk class,Classification of each AI use under the EU AI Act; none of this product's uses is intended as high-risk (Part 7.3; verify),not found in Parts 0–9.1
+Meta WhatsApp Business policy,"Platform rules: opt-in before business-initiated messages, approved templates, 24-hour service window (WA-R1…; ADR-039)",not found in Parts 0–9.1
+children's data,"Data of anyone under 18 (ASSUMPTION-016); no tracking, profiling or targeted ads (DEC-030; DPDP)",Part 0 §0.8

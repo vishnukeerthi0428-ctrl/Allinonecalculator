@@ -146,6 +146,7 @@ Where Part 5.2 or Part 2.3 leave a boundary or precedence open, the TCs use the 
 | O-11 | Order of denial checks | Object visibility (tenant, startup, assignment; BRL-TEN-03/04, ABAC-01/02) is evaluated before the role permission, so an object outside the caller's scope returns U404 even when the role would also be refused (AC-0801-06 uses R05, which RBAC A034 grants view only; reported as inconsistency 3 in §6.2.7.3) | TC-08-009 |
 
 ---
+
 ## 6.2.2 EP-08 Messaging: drafting, email, inbound, sequences, omnichannel
 
 Stories US-0801…US-0815 (78 AC). FRs: FR-A034…FR-A039; cross-cutting FR-ENG-01, FR-STD-02, FR-UIS-04, FR-ADP-01. Agents exercised deterministically: AG-011 Outreach & Follow-up Message Drafter, AG-012 Claims & Policy Guard, AG-013 Inbound Intent Classifier & Router (Part 7.1); their statistical quality is measured by the TC-AI families of those agents (Batch 6.3 / Part 7), not here.
@@ -579,6 +580,7 @@ Factors: Role {R03 assigned, R01 single-startup scope} × Channel {email first-t
 All 78 EP-08 AC covered (TC numbers abbreviated: 001 = TC-08-001). TC-08-169…189 add state-machine, pairwise and journey coverage across stories.
 
 ---
+
 ## 6.2.3 EP-09 Meetings, webinars and demos
 
 Stories US-0901…US-0906 (31 AC). FRs: FR-A040, FR-A041, FR-A062, FR-A063, FR-W18, FR-W19. Risk area RA-25 (P2) with P0 promotion for calendar side effects, reminder eligibility, minors and private-calendar exposure (§6.2.1.5).
@@ -706,6 +708,7 @@ Stories US-0901…US-0906 (31 AC). FRs: FR-A040, FR-A041, FR-A062, FR-A063, FR-W
 All 31 EP-09 AC covered.
 
 ---
+
 ## 6.2.4 EP-10 WhatsApp and website assistant
 
 Stories US-1001…US-1007 (36 AC). FRs: FR-A044, FR-A045, FR-A046, FR-W11; cross-cutting FR-ADP-01. Risk area RA-26 (**P0**, depth D4). Agents exercised deterministically: AG-017 Website Assistant, AG-013 (routing), AG-014 Reply Assistant (FAQ at L3). WhatsApp provider rules (customer-service window length, error code 131056, template categories) are **verify at implementation (as of 27 Nov 2026)**; the simulator uses a 24-hour window fixture.
@@ -865,6 +868,7 @@ Partitions of visitor questions: answerable from this startup's approved public 
 All 36 EP-10 AC covered.
 
 ---
+
 ## 6.2.5 EP-11 Content, SEO and social publishing
 
 Stories US-1101…US-1110 (47 AC). FRs: FR-A050…FR-A055, FR-W08, FR-W09; cross-cutting FR-PUB-01, FR-STD-02, FR-UIS-04, FR-ADP-01. Agents exercised deterministically: AG-018 Content & Campaign Studio Drafter and AG-012 Claims & Policy Guard. Risk areas RA-28 (P1) and RA-14 (P0) for publication.
@@ -1055,3 +1059,201 @@ Stories US-1101…US-1110 (47 AC). FRs: FR-A050…FR-A055, FR-W08, FR-W09; cross
 All 47 EP-11 AC covered.
 
 ---
+
+## 6.2.6 Coverage and totals for file a (EP-08 to EP-11)
+
+### 6.2.6.1 Acceptance-criteria coverage
+
+All **192 of 192** acceptance criteria of US-0801…US-1110 have at least one TC (per-story maps in §6.2.2.3, §6.2.3.3, §6.2.4.3, §6.2.5.3). The check is mechanical: every `AC-xxxx-yy` in Part 5.2 Gherkin for these epics appears in the Links cell of at least one TC row (script over the Markdown tables; re-run in CI against the test markers `@AC-…`, §6.1.9.3). **Uncovered AC: none.**
+
+### 6.2.6.2 FR → test cases (FRs whose Part 2.1 epic is EP-08…EP-11)
+
+TC count = TCs that link the FR explicitly or link a story that Part 5.2 §5.2.10.1 maps to the FR. Aliases follow §6.1.12.5 (S = 030 + n for FR-A0nn; S0nn = FR-W nn). **24 of 24 FRs covered (100%).**
+
+| FR | Aliases (DEC-017) | Stories | TCs (explicit + via story) | TC IDs |
+|---|---|---|---|---|
+| FR-A034 | SM-UAT-S064 · SM-UX-UAT-A034 | US-0801, US-0802, US-0811, US-0814 | 74 | TC-08-001…025, TC-08-114…137, TC-08-155…161, TC-08-169, TC-08-171…173, TC-08-175…178, TC-08-180…182, TC-08-184…190 |
+| FR-A035 | SM-UAT-S065 · SM-UX-UAT-A035 | US-0803, US-1002 | 19 | TC-08-026…035, TC-10-010…018 |
+| FR-A036 | SM-UAT-S066 · SM-UX-UAT-A036 | US-0804, US-0806, US-0815 | 26 | TC-08-036…044, TC-08-056…065, TC-08-162…168 |
+| FR-A037 | SM-UAT-S067 · SM-UX-UAT-A037 | US-0802, US-0805, US-0806, US-0807, US-0808, US-0812, US-0813, US-0814, US-0815, US-1003 | 117 | TC-08-013…025, TC-08-045…084, TC-08-138…189, TC-10-003, TC-10-019…028, TC-10-060 |
+| FR-A038 | SM-UAT-S068 · SM-UX-UAT-A038 | US-0809, US-0811 | 45 | TC-08-085…103, TC-08-114…137, TC-08-189, TC-08-191 |
+| FR-A039 | SM-UAT-S069 · SM-UX-UAT-A039 | US-0810, US-0811 | 34 | TC-08-104…137 |
+| FR-A040 | SM-UAT-S070 · SM-UX-UAT-A040 | US-0902, US-0904 | 18 | TC-09-008…016, TC-09-024…030, TC-09-045, TC-09-047 |
+| FR-A041 | SM-UAT-S071 · SM-UX-UAT-A041 | US-0901 | 7 | TC-09-001…007 |
+| FR-A044 | SM-UAT-S074 · SM-UX-UAT-A044 | US-1001, US-1002 | 18 | TC-10-001…018 |
+| FR-A045 | SM-UAT-S075 · SM-UX-UAT-A045 | US-1003 | 11 | TC-10-019…028, TC-10-060 |
+| FR-A046 | SM-UAT-S076 · SM-UX-UAT-A046 | US-1006 | 8 | TC-10-045…051, TC-10-059 |
+| FR-A050 | SM-UAT-S080 · SM-UX-UAT-A050 | US-1101, US-1110 | 16 | TC-11-001…009, TC-11-066…071, TC-11-074 |
+| FR-A051 | SM-UAT-S081 · SM-UX-UAT-A051 | US-1102 | 11 | TC-11-010…018, TC-11-072, TC-11-074 |
+| FR-A052 | SM-UAT-S082 · SM-UX-UAT-A052 | US-1104, US-1106, US-1107 | 19 | TC-11-029…032, TC-11-040…054 |
+| FR-A053 | SM-UAT-S083 · SM-UX-UAT-A053 | US-1104, US-1105 | 11 | TC-11-029…039 |
+| FR-A054 | SM-UAT-S084 · SM-UX-UAT-A054 | US-1108 | 6 | TC-11-055…060 |
+| FR-A055 | SM-UAT-S085 · SM-UX-UAT-A055 | US-1109 | 5 | TC-11-061…065 |
+| FR-A062 | SM-UAT-S092 · SM-UX-UAT-A062 | US-0905 | 5 | TC-09-031…035 |
+| FR-A063 | SM-UAT-S093 · SM-UX-UAT-A063 | US-0906 | 10 | TC-09-036…044, TC-09-046 |
+| FR-W08 | SM-UAT-S008 · SM-UX-UAT-W08 | US-1103, US-1110 | 20 | TC-11-019…028, TC-11-066…075 |
+| FR-W09 | SM-UAT-S009 · SM-UX-UAT-W09 | US-1103, US-1110 | 20 | TC-11-019…028, TC-11-066…075 |
+| FR-W11 | SM-UAT-S011 · SM-UX-UAT-W11 | US-1004, US-1005, US-1007 | 24 | TC-10-029…044, TC-10-052…059 |
+| FR-W18 | SM-UAT-S018 · SM-UX-UAT-W18 | US-0903 | 8 | TC-09-017…023, TC-09-045 |
+| FR-W19 | SM-UAT-S019 · SM-UX-UAT-W19 | US-0906 | 10 | TC-09-036…044, TC-09-046 |
+
+### 6.2.6.3 Cross-cutting FRs exercised (explicit links)
+
+| Cross-cutting FR | TCs (count) | TC IDs |
+|---|---|---|
+| FR-ENG-01 | 1 | TC-08-045 |
+| FR-STD-02 | 5 | TC-08-138, TC-08-179, TC-09-015, TC-10-009, TC-11-049 |
+| FR-UIS-04 | 2 | TC-08-079, TC-11-049 |
+| FR-ADP-01 | 5 | TC-08-037, TC-08-170, TC-09-002, TC-10-004, TC-11-038 |
+| FR-PUB-01 | 2 | TC-11-019, TC-11-027 |
+| FR-A109 | 1 | TC-08-045 |
+| FR-OP001 | 1 | TC-08-190 |
+
+### 6.2.6.4 BRL rules cited by EP-08…EP-11 stories → test cases (explicit links)
+
+**61 of 61 cited rules have at least one TC (100%).** Rules owned by other epics (for example the full PDP table of EP-03) keep their complete decision-table suites in those epics; the TCs here verify the rule as applied by this batch's stories.
+
+| BRL rule | TCs (count) | TC IDs | BRL rule | TCs (count) | TC IDs |
+|---|---|---|---|---|---|
+| BRL-AI-01 | 2 | TC-08-001, TC-11-001 | BRL-ELG-14 | 1 | TC-11-048 |
+| BRL-AI-02 | 1 | TC-08-190 | BRL-ELG-16 | 1 | TC-08-093 |
+| BRL-AI-03 | 3 | TC-08-001, TC-10-029, TC-11-001 | BRL-ELG-18 | 6 | TC-08-013…014, TC-08-097, TC-08-137, TC-08-141, TC-08-189 |
+| BRL-AI-04 | 5 | TC-08-002…003, TC-08-071, TC-10-038, TC-10-047 | BRL-MKT-01 | 6 | TC-08-029, TC-09-031…032, TC-11-001…002, TC-11-015 |
+| BRL-AI-05 | 5 | TC-08-004…005, TC-10-031, TC-10-042, TC-11-002 | BRL-MKT-02 | 2 | TC-08-006, TC-11-008 |
+| BRL-AI-06 | 3 | TC-08-012, TC-08-076, TC-10-037 | BRL-MKT-03 | 2 | TC-11-003…004 |
+| BRL-AI-08 | 4 | TC-08-001, TC-08-007…008, TC-10-034 | BRL-MKT-07 | 2 | TC-11-031, TC-11-034 |
+| BRL-AI-10 | 2 | TC-08-055, TC-10-043 | BRL-MKT-08 | 2 | TC-11-055, TC-11-060 |
+| BRL-AI-11 | 5 | TC-08-069, TC-10-030…031, TC-10-036, TC-10-047 | BRL-MKT-09 | 2 | TC-11-020…021 |
+| BRL-APR-01 | 6 | TC-08-018, TC-08-032, TC-08-113, TC-10-050, TC-11-016, TC-11-070 | BRL-MTG-01 | 1 | TC-09-005 |
+| BRL-APR-02 | 11 | TC-08-013, TC-08-015, TC-08-021, TC-08-026, TC-08-104, TC-08-171, TC-10-015, TC-10-017, TC-10-045…046, TC-11-010 | BRL-MTG-02 | 4 | TC-09-008…010, TC-09-013 |
+| BRL-APR-03 | 5 | TC-08-026…027, TC-11-010, TC-11-013, TC-11-043 | BRL-MTG-03 | 3 | TC-09-002, TC-09-014, TC-11-047 |
+| BRL-APR-08 | 4 | TC-08-033, TC-08-100, TC-08-169, TC-11-017 | BRL-MTG-04 | 2 | TC-09-002…003 |
+| BRL-APR-11 | 3 | TC-08-109, TC-08-111, TC-08-134 | BRL-MTG-05 | 3 | TC-09-026…027, TC-09-047 |
+| BRL-AUT-01 | 3 | TC-08-017, TC-08-022, TC-08-078 | BRL-MTG-06 | 4 | TC-09-024…025, TC-09-028, TC-09-040 |
+| BRL-AUT-04 | 5 | TC-08-019, TC-08-173, TC-08-181…182, TC-11-044 | BRL-PRV-06 | 4 | TC-09-029, TC-10-031, TC-10-033, TC-10-043 |
+| BRL-AUT-05 | 5 | TC-08-020, TC-08-099, TC-08-145, TC-08-165, TC-11-045 | BRL-PUB-01 | 7 | TC-11-019, TC-11-027, TC-11-040, TC-11-042, TC-11-063, TC-11-072…073 |
+| BRL-AUT-06 | 1 | TC-08-191 | BRL-PUB-02 | 3 | TC-11-019, TC-11-022, TC-11-072 |
+| BRL-AUT-07 | 8 | TC-08-044, TC-08-079, TC-08-140, TC-08-146, TC-08-186, TC-09-015, TC-10-009, TC-11-051 | BRL-PUB-05 | 1 | TC-11-075 |
+| BRL-AUT-08 | 3 | TC-08-048, TC-10-002…003 | BRL-PUB-06 | 3 | TC-10-057, TC-11-066, TC-11-069 |
+| BRL-AUT-09 | 2 | TC-08-149, TC-08-154 | BRL-SEQ-01 | 3 | TC-08-085…086, TC-08-097 |
+| BRL-ELG-01 | 3 | TC-08-016, TC-08-097, TC-08-133 | BRL-SEQ-02 | 10 | TC-08-087…093, TC-08-098, TC-08-108, TC-09-008 |
+| BRL-ELG-02 | 11 | TC-08-014, TC-08-056, TC-08-063, TC-08-067…068, TC-08-089, TC-08-152, TC-08-172, TC-08-189, TC-09-042, TC-10-027 | BRL-SEQ-03 | 2 | TC-08-094…095 |
+| BRL-ELG-06 | 3 | TC-08-177, TC-08-183, TC-10-023 | BRL-SEQ-04 | 2 | TC-08-085, TC-08-096 |
+| BRL-ELG-07 | 7 | TC-08-184, TC-10-010…011, TC-10-019…022 | BRL-SEQ-05 | 2 | TC-08-105…106 |
+| BRL-ELG-08 | 16 | TC-08-103, TC-08-114…121, TC-08-127…130, TC-08-158, TC-09-025, TC-09-041 | BRL-SRC-04 | 1 | TC-11-031 |
+| BRL-ELG-09 | 8 | TC-08-099, TC-08-114, TC-08-122…126, TC-08-136 | BRL-SRC-07 | 2 | TC-08-070, TC-10-042 |
+| BRL-ELG-10 | 2 | TC-08-066, TC-08-088 | BRL-SRC-10 | 1 | TC-11-026 |
+| BRL-ELG-11 | 4 | TC-08-060…062, TC-08-090 | BRL-TEN-03 | 8 | TC-08-011, TC-08-034, TC-08-052, TC-08-064, TC-08-153, TC-10-036, TC-11-009, TC-11-059 |
+| BRL-ELG-12 | 5 | TC-08-041, TC-08-056…058, TC-08-091 | BRL-TEN-05 | 2 | TC-08-010, TC-08-081 |
+| BRL-ELG-13 | 2 | TC-09-039, TC-10-025 |  |  |  |
+
+### 6.2.6.5 Totals for file a
+
+| Epic | Scenarios | TCs | P0 | P1 | P2 | P3 | Automated (Y) | Manual (N) | AC covered |
+|---|---|---|---|---|---|---|---|---|---|
+| EP-08 | 18 | 191 | 110 | 66 | 15 | 0 | 189 | 2 | 78 / 78 |
+| EP-09 | 7 | 47 | 15 | 21 | 10 | 1 | 47 | 0 | 31 / 31 |
+| EP-10 | 8 | 60 | 37 | 18 | 5 | 0 | 59 | 1 | 36 / 36 |
+| EP-11 | 11 | 75 | 38 | 26 | 10 | 1 | 73 | 2 | 47 / 47 |
+| **Total** | **44** | **373** | **200** | **131** | **40** | **2** | **368** | **5** | **192 / 192** |
+
+**By type** (a TC may carry two types):
+
+| Type | Name | TCs tagged |
+|---|---|---|
+| T01 | Functional | 114 |
+| T03 | Performance (load) | 2 |
+| T07 | Security | 56 |
+| T08 | Accessibility | 23 |
+| T10 | Compatibility | 2 |
+| T12 | DR / resilience | 2 |
+| T13 | Localization | 13 |
+| T14 | AI (deterministic gateway/guardrail) | 14 |
+| T15 | Multi-tenant isolation | 20 |
+| T16 | Idempotency and replay | 23 |
+| T17 | Simulation zero-effect | 8 |
+| T18 | Uncertain outcome | 25 |
+| T19 | Compliance | 114 |
+| T20 | Cost control | 6 |
+| T21 | Operability | 5 |
+
+**By technique** (a TC may use two techniques):
+
+| Technique | Name | TCs tagged |
+|---|---|---|
+| EP | Equivalence partitioning | 147 |
+| BVA | Boundary value analysis | 72 |
+| DT | Decision table | 47 |
+| ST | State transition | 36 |
+| PW | Pairwise | 12 |
+| EG | Error guessing | 52 |
+| PBT | Property-based | 2 |
+| UC | Use case / journey | 22 |
+| EXP | Exploratory / review | 2 |
+
+**By level:**
+
+| Level | TCs tagged |
+|---|---|
+| UT | 30 |
+| IT | 26 |
+| CT | 6 |
+| SYS | 283 |
+| E2E | 28 |
+| SYS-M | 3 |
+| UAT | 2 |
+
+
+Note on the pyramid (§6.1.9.1): the counts above are *test-case designs*. Parameterized rule rows (quiet hours, caps, bounces, routing, template usability) run first as unit tests of the domain module and then as one SYS smoke per rule family, so the automated test *count* follows the 60–70% unit share even though most designs name SYS as their acceptance level (same pattern as §6.1.12.4, TC-13-008).
+
+---
+
+## 6.2.7 Register, inconsistencies and quality gate for file a
+
+### 6.2.7.1 Tags issued in Batch 6.2 (both files)
+
+| Tag | Statement | Where used | Owner / closure |
+|---|---|---|---|
+| [RECOMMENDATION-075] | One **adapter conformance battery** (checks B1–B7: outcome normalisation, idempotent submit, uncertain path, signed webhook, secret hygiene, environment guard, disabled-by-default) run as a single parameterized suite for SES, WhatsApp, Google Calendar, social, ads and e-sign; a channel flag (CFG-31) cannot be turned on until its battery row is green | §6.2.1.6; TC-08-036…052, TC-09-001…015, TC-10-001…009, TC-11-033…054; file b TC-12-042…048, TC-13-086…094 | QA Lead with Principal Engineer; implements RECOMMENDATION-054 and TP-06 |
+| [RECOMMENDATION-076] | **E2E journey register** for EP-08…EP-14 (J-08-01…J-14-02), each journey one Playwright TC with axe scans; ★ journeys proposed for the wave's manual top-20 accessibility audit (Part 2.5 §2.46) | §6.2.1.7; TC-08-188, 189; TC-09-045, 046; TC-10-059, 060; TC-11-074; file b TC-12-082, 083; TC-13-123, 124; TC-14-099, 100 | Lead UX/UI Designer and QA Lead; Part 8 wave plans |
+| [ASSUMPTION-185] | Test-oracle interpretations O-1…O-11 for EP-08…EP-11 where the baseline leaves a boundary, window, precedence or approver open (rolling windows half-open, SES daily reset, STOP matching, confidence inclusivity, stricter loosening approver, DST Sunday case, hold extension timing, rate-limit counting, approval expiry instant, dedup window, order of denial checks) | §6.2.1.8 | Product Owner and Compliance Lead confirm in Sprint 0; a different confirmed interpretation changes the TC, not the code silently |
+| [ASSUMPTION-186] | Test-oracle interpretations O-12…O-21 for EP-12…EP-14 (MFA freshness boundary, business-day definition, validity end of day, inclusive commission and concession limits, anomaly strictly above 150%, duplicate-referral window, renewal notice date, reservation expiry, holdout rounding, deadline warning instants) | File b §6.2.8.2 | Product Owner, Finance lead, Legal |
+| [ASSUMPTION-187] | Part 5.2 Gherkin object keys (users, opportunities, messages, threads, campaigns, quotes, contracts, bids, orders) are added to GSE-SYN as the versioned edge pack **EDGE-P52** with stable keys; values not stated in Part 5.2 are fixture choices | §6.2.1.4; file b §6.2.8.1 | QA automation; GSE-SYN v1.4.0 manifest review (§6.1.7.3 rule 5) |
+
+### 6.2.7.2 Local identifiers introduced (not tags)
+
+| Prefix | Meaning | Range in file a |
+|---|---|---|
+| PP-0n | Precondition profiles | PP-01…PP-07 |
+| CLK-0 | Default virtual clock (Tue 2026-12-01 10:00 IST) | 1 |
+| O-n | Oracle interpretations (ASSUMPTION-185/186) | O-1…O-11 (file b O-12…O-21) |
+| B1–B7 | Adapter conformance battery checks | 7 |
+| J-nn-nn | E2E journeys | J-08-01…J-11-01 (file b J-12-01…J-14-02) |
+| R/M/W/T/A/P/D rule letters | Rule columns inside a group's decision table | Local to each table |
+| NSE, U404, 409 SSS | Expected-result shorthand | §6.2.1.2 |
+
+### 6.2.7.3 Inconsistencies observed in earlier parts (reported, not edited)
+
+| # | Where | Observation | Handling in the tests | Suggested owner action |
+|---|---|---|---|---|
+| 1 | Part 5.2 AC-0810-03 vs Part 2.3 BRL-APR-11 | AC names R02 as approver for loosening max attempts to 10; BRL-APR-11 requires the Founder for loosening (as AC-0811-06 does for caps) | Oracle uses the stricter R01 (O-5, TC-08-109) | Part 5.2 author / Part 9: align AC-0810-03 to R01 |
+| 2 | Part 5.2 AC-0811-05 | 2027-03-28 (UK DST start) is a Sunday; with the default Monday–Saturday window the deferral target is Monday 09:00 BST, not "09:00 local" the same day | Both cases tested (O-6, TC-08-130, TC-08-131) | Part 5.2 author: change the date to a Monday DST case (e.g. America/New_York 2027-03-15 after the 2027-03-14 change) or state a seven-day window |
+| 3 | Part 5.2 AC-0801-06 vs Part 2.3 RBAC (Outreach and inbox row) | The "unassigned user" example is R05, whose role has view-only rights on A034; the denial could be 403 by role rather than 404 by assignment | Oracle O-11: scope check first → U404 (TC-08-009) | Part 5.2 author: use an unassigned R03 in the example |
+| 4 | Part 0 §0.10.2 vs Part 2.1 (A046, W08/W09) | Already logged as ERRATA items 1, 2 and CONFLICT-135 | TCs follow Part 2.1 (A046 in EP-10; W08/W09 in EP-11) | None new |
+| 5 | Part 6.1 §6.1.12.1 | States that TC-AI IDs wait for Part 7; Part 7.1 is now published (AG-011…AG-021) | TCs here cross-reference AG IDs; TC-AI cases remain with Batch 6.3/Part 7 | Batch 6.3 author: confirm ownership of TC-AI-AG011/012/013/017/018/020/021 |
+
+### 6.2.7.4 Quality gate: Batch 6.2 file a
+
+| # | Check | Result | Notes and fixes applied |
+|---|---|---|---|
+| 1 | Every requirement traced to a source | **Pass** | Every TC links its TS, story/AC and at least one FR, BRL, NFR, DEC or ABAC; P0 TCs link a BRL or NFR or DEC (§6.1.12.2) |
+| 2 | Assumptions, gaps, conflicts tagged and logged | **Pass** | RECOMMENDATION-075, -076 and ASSUMPTION-185…187 used within the allocated ranges and registered in §6.2.7.1; no gaps or conflicts issued (not in range); inconsistencies reported in §6.2.7.3 |
+| 3 | IDs unique and consistent with earlier parts | **Pass** | TS-08-01…TS-11-11, TC-08-001…191, TC-09-001…047, TC-10-001…060, TC-11-001…075 unique (checked by script: no duplicates, no gaps); roles R01–R20, personas, BRL, NT/NX, AG IDs as defined in Parts 1, 2.3, 2.4, 7.1 |
+| 4 | No story lacks AC and no requirement lacks a test | **Pass** | 38/38 stories, 192/192 AC, 24/24 FRs, 61/61 cited BRL rules covered. *Fixes applied during self-check:* added TC-08-190 (BRL-AI-02), TC-08-191 (BRL-AUT-06), TC-11-075 (BRL-PUB-05) and explicit FR-A063, FR-W09, FR-A109 links |
+| 5 | Negative, edge, security and accessibility cases covered | **Pass** | Every story has ≥ 1 denial TC; cross-tenant TCs in every epic (e.g. TC-08-011, TC-09-007, TC-10-036, TC-11-059); duplicate/replay (T16, 23 TCs), uncertain outcome (T18, 25), simulation (T17, 8), accessibility (T08, 23 incl. 5 manual AT passes), localization (T13, 13) |
+| 6 | No agent lacks guardrail, fallback, KPI and cost estimate | **N/A** | Agents are specified in Part 7; this file tests their deterministic guardrails, routing tiers, Tier 3 fallbacks and budget stops (T14, T20); statistical quality belongs to TC-AI families |
+| 7 | Time-sensitive facts flagged "verify" with an as-of date | **Pass** | Provider behaviour (SES simulator addresses, Meta error codes and window, Google OAuth, platform scopes, Search Console) and AT versions marked "verify at implementation (as of 27 Nov 2026)"; budget amounts are fixtures |
+| 8 | No restricted data routed to free-tier models | **Pass** | TC-08-012, TC-08-076 and TC-10-037 assert 0 Restricted data to Tier 2 even with a test-only opt-in; a violation is S1 (§6.1.8.2) |
+| 9 | Consistent with earlier parts | **Pass, with 5 reported observations** | Dates, time zones and money values recomputed (e.g. 15:00 IST = 09:30 UTC = 13:30 GST; 90-day expiry 2027-03-01; 2027-03-28 is a Sunday, reported) |
+
+**Status: Part 6 Batch 6.2 file a complete. EP-08 to EP-11: 44 scenarios and 373 test cases (200 P0, 131 P1, 40 P2, 2 P3; 368 automated) covering 38 stories, 192/192 AC, 24/24 FRs and 61/61 cited BRL rules. Continue with file b (EP-12 to EP-14).**

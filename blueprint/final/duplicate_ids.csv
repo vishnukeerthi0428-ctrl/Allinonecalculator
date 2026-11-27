@@ -1,5 +1,6 @@
 Kind,ID,Part A,Meaning A,Part B,Meaning B,Similarity
 Registry,AD-01…AD-12 (12 IDs),Part 3.1,e.g. AD-01 = Tenant and startup isolation,Part 3.2,e.g. AD-01 = Amazon SES (EmailPort),low
 Registry,D-1…D-4 (4 IDs),Part 3.3,e.g. D-1 = Automated snapshot restore Weekly + every release (NFR-012),Part 5.1a,e.g. D-1 = Code,low
+Registry,EP-13…EP-14 (2 IDs),Part 0,"e.g. EP-13 = Proposal, quote, negotiation and contract",Part 6.2b,"e.g. EP-13 = RA-05 (P0), RA-06 (P0), RA-10 (P0), RA-15 (P0) for portal review",low
 Registry,LT-01…LT-11 (9 IDs),Part 4.2,e.g. LT-01 = Baseline API mix,Part 6.1,e.g. LT-01 = Admin mixed API load,low
 Registry,PP-01…PP-07 (7 IDs),Part 1,"e.g. PP-01 = Outcomes over activity. Measure qualified opportunities, meetings, awards, fulfilment, receipts, renewals and margin, never AI or message volume",Part 6.2a,"e.g. PP-01 = Admin API (SYS) Deployed build in test; BFF session (audience growth-engine, client growth-admin, DEC-003); dataset gse_syn 1.4.0 profile m with edge packs and story pack EDGE-P52 (§6.2.1.4); fixtures T1 and T2 loaded (TP-07)",low
