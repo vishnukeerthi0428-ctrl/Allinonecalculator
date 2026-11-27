@@ -144,8 +144,8 @@ ALTER TABLE ai_usage ADD COLUMN integration_id uuid NULL REFERENCES int_integrat
 ALTER TABLE ai_cost_ledger ADD COLUMN usage_id uuid NULL REFERENCES ai_usage (id);  -- source growth_cost_ledger.usage_id; in addition to source_type/source_id
 ALTER TABLE ai_cost_ledger ADD COLUMN entry_key text NOT NULL;  -- source growth_cost_ledger.entry_key; UQ (tenant_id, entry_key) idempotent ledger post
 ALTER TABLE ai_feedback ADD COLUMN correction jsonb NULL;  -- source growth_feedback.correction; structured human correction, Conf
-ALTER TABLE ai_eval_run ADD COLUMN ai_eval_case_result (new ENT-ENH-E-04) child rows;  -- source growth_eval_run.eval_case_id; eval_run_id, eval_case_id, passed, result
-ALTER TABLE ai_eval_run ADD COLUMN ai_eval_case_result.result jsonb;  -- source growth_eval_run.result
+-- growth_eval_run.eval_case_id: carried by new table ai_eval_case_result (ENT-ENH-E-04), no column on ai_eval_run
+-- growth_eval_run.result: carried by new table ai_eval_case_result (ENT-ENH-E-04), no column on ai_eval_run
 ```
 
 **Intelligence**
@@ -159,7 +159,8 @@ ALTER TABLE intel_source_record ADD COLUMN last_fetched_at timestamptz NULL;  --
 ALTER TABLE intel_fetch_log ADD COLUMN source_id uuid NOT NULL REFERENCES intel_source (id);  -- source growth_fetch_log.source_id; failed fetch has no record
 ALTER TABLE intel_fetch_log ADD COLUMN query_run_id uuid NULL REFERENCES intel_query_run (id);  -- source growth_fetch_log.query_run_id
 ALTER TABLE intel_evidence ADD COLUMN locator text NULL;  -- source growth_evidence.locator; citation anchor
-ALTER TABLE intel_evidence ADD COLUMN verified_at timestamptz NULL + verified_by uuid NULL;  -- source growth_evidence.verified_at
+ALTER TABLE intel_evidence ADD COLUMN verified_at timestamptz NULL;  -- source growth_evidence.verified_at
+ALTER TABLE intel_evidence ADD COLUMN verified_by uuid NULL;  -- source growth_evidence.verified_at
 ALTER TABLE intel_alias ADD COLUMN source_record_id uuid NULL REFERENCES intel_source_record (id);  -- source growth_org_alias.source_record_id; OPT-11-01 provenance
 ALTER TABLE intel_signal_type ADD COLUMN detection_rules jsonb NULL;  -- source growth_signal_type.rules; schema-validated, rules-first Tier 0
 ALTER TABLE intel_need ADD COLUMN confidence numeric(5,4) NULL CHECK (confidence BETWEEN 0 AND 1);  -- source growth_need.confidence

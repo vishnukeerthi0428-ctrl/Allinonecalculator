@@ -112,7 +112,10 @@ for dmn in order:
     P(f"**{dmn}**\n\n```sql")
     for t, rs in dom[dmn].items():
         for r in rs:
-            P(coldef(t, r['bp_column'], f"{r['src_table']}.{r['column']}"))
+            if r['bp_column'].startswith('ai_eval_case_result'):
+                P(f"-- {r['src_table']}.{r['column']}: carried by new table ai_eval_case_result (ENT-ENH-E-04), no column on {t}"); continue
+            for part in r['bp_column'].split(' + '):
+                P(coldef(t, part, f"{r['src_table']}.{r['column']}"))
     P("```\n")
 P("""Additional columns required by the conflict resolutions and checks (not derived from a single source column):
 
