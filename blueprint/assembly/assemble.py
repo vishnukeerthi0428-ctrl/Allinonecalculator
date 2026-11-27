@@ -123,11 +123,27 @@ h1{page-break-before:always}
 
 
 def md_to_html(md_text, html_path, extra_css_path):
-    src = Path(html_path).with_suffix(".md")
-    src.write_text(md_text, encoding="utf-8")
-    subprocess.run(["pandoc", str(src), "-f", "markdown+raw_html", "-s", "--metadata", f"title={TITLE}",
-                    "-c", str(CSS), "-c", str(extra_css_path), "--embed-resources", "-o", str(html_path)],
-                   check=True, env={**os.environ, "LANG": "C.UTF-8", "LC_ALL": "C.UTF-8"})
+    """Convert in chunks (split at top-level headings outside code fences) to keep pandoc memory bounded."""
+    env = {**os.environ, "LANG": "C.UTF-8", "LC_ALL": "C.UTF-8"}
+    chunks, cur, fence = [], [], False
+    for ln in md_text.split("\n"):
+        if ln.startswith("```") or ln.startswith("~~~"):
+            fence = not fence
+        if not fence and ln.startswith("# ") and sum(len(x) for x in cur) > 200_000:
+            chunks.append("\n".join(cur)); cur = []
+        cur.append(ln)
+    chunks.append("\n".join(cur))
+    frags = []
+    for i, ch in enumerate(chunks):
+        src = Path(html_path).with_name(f"chunk{i:03d}.md")
+        src.write_text(ch, encoding="utf-8")
+        r = subprocess.run(["pandoc", str(src), "-f", "markdown+raw_html", "-t", "html5", "--section-divs=false",
+                            "--id-prefix", f"c{i}-"], check=True, env=env, capture_output=True, text=True)
+        frags.append(r.stdout)
+    css = Path(CSS).read_text(encoding="utf-8") + "\n" + Path(extra_css_path).read_text(encoding="utf-8")
+    Path(html_path).write_text('<!DOCTYPE html><html><head><meta charset="utf-8"><title>' + TITLE.replace("&", "&amp;") +
+                               '</title><style>' + css + '</style></head><body>\n' + "\n".join(frags) + "\n</body></html>",
+                               encoding="utf-8")
 
 
 def render_pdf(html, pdf):
