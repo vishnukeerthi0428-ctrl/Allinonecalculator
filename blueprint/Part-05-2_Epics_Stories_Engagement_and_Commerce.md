@@ -29,11 +29,11 @@ Definitions owned by **Batch 5.1** are referenced, not redefined:
 
 | Item | Where defined | How this batch applies it |
 |---|---|---|
-| Definition of Ready (DoR) | Part 5.1 §5.x (Definition of Ready) | Every story below has a statement, links, priority, wave, points, dependencies and Gherkin AC, so it meets DoR once its dependencies are Done |
-| Definition of Done (DoD) | Part 5.1 §5.x (Definition of Done) | Applies unchanged; stories with an external side effect additionally need the CA-DISPATCH evidence (recheck, idempotency, uncertain path) |
-| Estimation basis | Part 5.1 §5.x (Estimation basis) | 1 SP ≈ 0.5–1.0 person-day (pd), central 0.7. Epic pd range = Σ low SP × 0.5 to Σ high SP × 1.0; **central pd = Σ mid SP × 0.7** [ASSUMPTION-160] |
-| Permutation / dimension matrix | Part 5.1 §5.x (Dimension matrix) | Each story's *Dimensions* row names the values its AC exercise for **D1** persona/role, **D2** permission level, **D3** object state, **D4** data condition, **D5** channel, **D6** tenant/config, **D7** integration availability, **D8** locale (order as listed in the Part 5 brief) |
-| INVEST | Part 5.1 §5.x | Stories ≤ 13 SP (none here exceeds 5) and independently testable |
+| Definition of Ready (DoR) | Part 5.1a §5.2 (Definition of Ready) | Every story below has a statement, links, priority, wave, points, dependencies and Gherkin AC, so it meets DoR once its dependencies are Done |
+| Definition of Done (DoD) | Part 5.1a §5.3 (Definition of Done) | Applies unchanged; stories with an external side effect additionally need the CA-DISPATCH evidence (recheck, idempotency, uncertain path) |
+| Estimation basis | Part 5.1a §5.5 (Estimation basis) | 1 SP ≈ 0.5–1.0 person-day (pd), central 0.7. Epic pd range = Σ low SP × 0.5 to Σ high SP × 1.0; **central pd = Σ mid SP × 0.7** [ASSUMPTION-160] |
+| Permutation / dimension matrix | Part 5.1a §5.6 (Dimension matrix) | Each story's *Dimensions* row names the values its AC exercise for **D1** persona/role, **D2** permission level, **D3** object state, **D4** data condition, **D5** channel, **D6** tenant/config, **D7** integration availability, **D8** locale (order as listed in the Part 5 brief) |
+| INVEST | Part 5.1a §5.4 | Stories ≤ 13 SP (none here exceeds 5) and independently testable |
 
 **Common Background (applies to every Gherkin block unless overridden).** Tenant **T1** = Owner Portfolio Tenant with startups AppNAI, MedMaarg, EduVerse, OrganicSpec (DEC-065). Tenant **T2** = external client tenant "Client B" used as the two-tenant isolation fixture (AP-10, NFR-032). Server clock in UTC; default display zone Asia/Kolkata (IST, UTC+05:30). Money uses Decimal with ISO 4217 currency (NFR-017). Every Admin request carries audience `growth-engine` and client `growth-admin`; portal requests use client `growth-website` (DEC-003). Acceptance profiles CA-ALL plus those listed per story apply in full (Part 2.1 §2.3). An explicit denial scenario is still written for every story.
 

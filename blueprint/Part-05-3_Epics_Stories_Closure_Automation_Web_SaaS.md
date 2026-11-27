@@ -33,10 +33,10 @@ Website FRs W08, W09 (EP-11), W10, W20 (EP-12), W11 (EP-10), W12, W13, W17 (EP-0
 
 | Item | Rule used in this batch | Defined in |
 |---|---|---|
-| Definition of Ready (DoR) | Every story below meets the DoR: linked FR/BR, persona, AC in Gherkin, dependencies named, estimate given, permission scenario present, test data identified | Part 5.1 §5.x (Definition of Ready) |
-| Definition of Done (DoD) | Code, unit and integration tests, AC automated where marked, audit events, accessibility checks, security checks, documentation, evidence record (BR-S136) | Part 5.1 §5.x (Definition of Done) |
-| Estimation basis | 1 story point (SP) ≈ 0.5–1.0 person-day (pd), central 0.7. Epic pd range = Σ low SP × 0.5 to Σ high SP × 1.0; central = Σ mid SP × 0.7 | Part 5.1 §5.x (estimation basis, ASSUMPTION owned by 5.1) |
-| Permutation dimensions | Each story's *Notes* row lists the dimensions its AC exercises: **ROLE** persona/role · **PERM** permission level · **STATE** object state · **DATA** data condition (valid / invalid / boundary / null / duplicate / large) · **CHAN** channel (web / mobile / API) · **TEN** tenant/config variation · **INT** integration availability · **LOC** locale/timezone/currency | Part 5.1 §5.x (dimension matrix and coverage rationale) |
+| Definition of Ready (DoR) | Every story below meets the DoR: linked FR/BR, persona, AC in Gherkin, dependencies named, estimate given, permission scenario present, test data identified | Part 5.1a §5.2 (Definition of Ready) |
+| Definition of Done (DoD) | Code, unit and integration tests, AC automated where marked, audit events, accessibility checks, security checks, documentation, evidence record (BR-S136) | Part 5.1a §5.3 (Definition of Done) |
+| Estimation basis | 1 story point (SP) ≈ 0.5–1.0 person-day (pd), central 0.7. Epic pd range = Σ low SP × 0.5 to Σ high SP × 1.0; central = Σ mid SP × 0.7 | Part 5.1a §5.5 (estimation basis, ASSUMPTION owned by 5.1) |
+| Permutation dimensions | Each story's *Notes* row lists the dimensions its AC exercises: **ROLE** persona/role · **PERM** permission level · **STATE** object state · **DATA** data condition (valid / invalid / boundary / null / duplicate / large) · **CHAN** channel (web / mobile / API) · **TEN** tenant/config variation · **INT** integration availability · **LOC** locale/timezone/currency | Part 5.1a §5.6 (dimension matrix and coverage rationale) |
 | Story ID | `US-<epic><seq>`, e.g. US-1501 | Part 5 brief |
 | AC ID | `AC-<story>-<seq>`, e.g. AC-1501-01; each `Scenario:` starts with its AC ID | Part 5 brief |
 | Types | Feature, Enabler, Spike, Security, Accessibility, Observability, Data-migration, Compliance | Part 5 brief |
@@ -3976,7 +3976,7 @@ Cross-cutting FRs exercised (owned elsewhere or shared): FR-DM-01 (US-1502, US-2
 
 ## 5.39 Estimation summary for Batch 5.3
 
-Basis (Part 5.1 §5.x, owned by Batch 5.1): pd low = Σ low SP × 0.5; pd high = Σ high SP × 1.0; central = Σ mid SP × 0.7.
+Basis (Part 5.1a §5.5, owned by Batch 5.1): pd low = Σ low SP × 0.5; pd high = Σ high SP × 1.0; central = Σ mid SP × 0.7.
 
 | Epic | Stories | SP range | pd range | Central pd | Guidance mid pd | Deviation | Reason |
 |---|---|---|---|---|---|---|---|
@@ -4039,5 +4039,5 @@ Basis (Part 5.1 §5.x, owned by Batch 5.1): pd low = Σ low SP × 0.5; pd high =
 | 8 | No restricted data routed to free-tier models | **Pass** | US-1707, US-2003 and US-1611 require redaction and forbid Tier 2 for Restricted data (DEC-007, BRL-AI-06); payment evidence excluded from AI and search (US-1509) |
 | 9 | Consistent with earlier parts | **Pass with conflicts logged** | Waves follow Part 2.1 and DEC-034/060–063; priorities never exceed the BR's MoSCoW; three conflicts in earlier parts logged as CONFLICT-136…138 and three observations reported in §5.40 |
 
-**Status: Part 5 Batch 5.3 complete. 7 epics (EP-15…EP-21), 83 stories, 482 Gherkin scenarios, 155–255 SP (77.5–255 pd; central 143.5 pd). All 56 owned interface/operation FRs and 3 owned cross-cutting FRs covered. Cross-references to Part 5.1 §5.x (DoR, DoD, estimation basis, dimension matrix) to be resolved to final section numbers when the three batches are consolidated.**
+**Status: Part 5 Batch 5.3 complete. 7 epics (EP-15…EP-21), 83 stories, 482 Gherkin scenarios, 155–255 SP (77.5–255 pd; central 143.5 pd). All 56 owned interface/operation FRs and 3 owned cross-cutting FRs covered. Cross-references to Part 5.1a §5.5 (DoR, DoD, estimation basis, dimension matrix) to be resolved to final section numbers when the three batches are consolidated.**
 

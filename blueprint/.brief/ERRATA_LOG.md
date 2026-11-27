@@ -44,3 +44,13 @@
 31. Part 1 §1.14 lists TS-###/TC-###. Resolution: the epic-based format (TS-<EP>-##, TC-<EP>-###, TC-AI-…) per Part 6.1 governs.
 32. SM-UT-037/049/050 are unused in the FRD (GAP-167); retained as unassigned aliases.
 33. GAP-165: QA capacity of 0.5 FTE vs 43–97 pd QA effort, and business UAT time (60–120 participant-days) unplanned. To be resolved in Part 8 (staffing and UAT plan).
+
+## From Part 5.1
+34. CONFLICT-130: the W0 scope (113.5 SP) does not fit Day 1–15. Resolution: adopt RECOMMENDATION-050, splitting W0 into **W0-A (Day 1–15: environments, identity spike, CI, RLS/outbox/PDP skeletons, catalogue core)** and **W0-B (Day 16–30: remaining governance controls, AI gateway and eval harness, cost control, privacy, observability)**. W1 shifts to Day 24–45 with overlap; the "100 reviewed signals" target moves to about Day 45. Part 8 plans accordingly.
+35. CONFLICT-131: Part 0 epic map for A003 and W14–W16 is superseded by Part 2.1 (A003 → EP-17, W14–W16 → EP-14).
+36. CA-PUB cites DEC-001 for WCAG; the correct citation is RECOMMENDATION-001.
+37. The A004 RBAC row should give R08 (Finance) "A(price)" to match WF-01.
+38. GAP-151: defaults. Contact verification expiry is 180 days. The privacy request response deadline is set per the DPDP Rules (verify; system default 30 days, escalation at 70%).
+39. FR-COP-01 and FR-SRCH-01 → EP-17 (covered in Part 5.3).
+40. Dimension code notation differs between 5.1 (value codes) and 5.2/5.3 (D1–D8); the mapping note is in Part 5.1a §5.6.6.
+41. EP-21 overlaps EP-01 Sprint 0 enablers by about 5–6 pd. Programme central ≈ 421.5 − 5.5 ≈ 416 pd (inside 287–483).
