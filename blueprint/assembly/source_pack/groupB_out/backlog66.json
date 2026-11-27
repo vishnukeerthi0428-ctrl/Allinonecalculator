@@ -2,10 +2,12 @@
  "rows": [
   {
    "seq": 1,
+   "br": "BR-M01",
    "module": "Identity & access",
    "pack_deps": [
     "H02,H03"
    ],
+   "pack_deps_br": [],
    "pack_acceptance": "Existing capability; validate growth/admin access before launch (not new build).",
    "bp_name": "Identity & access",
    "bp_acceptance": "Cross-role access denied; session revoked",
@@ -16,8 +18,12 @@
   },
   {
    "seq": 2,
+   "br": "BR-M02",
    "module": "Product knowledge catalog",
    "pack_deps": [
+    1
+   ],
+   "pack_deps_br": [
     1
    ],
    "pack_acceptance": "Planned products blocked from promotion",
@@ -32,8 +38,12 @@
   },
   {
    "seq": 3,
+   "br": "BR-M03",
    "module": "Knowledge document ingestion",
    "pack_deps": [
+    2
+   ],
+   "pack_deps_br": [
     2
    ],
    "pack_acceptance": "Every answer cites approved version",
@@ -48,8 +58,12 @@
   },
   {
    "seq": 4,
+   "br": "BR-M04",
    "module": "Consent and suppression",
    "pack_deps": [
+    1
+   ],
+   "pack_deps_br": [
     1
    ],
    "pack_acceptance": "Opt-out blocks all scoped sends",
@@ -64,8 +78,13 @@
   },
   {
    "seq": 5,
+   "br": "BR-M05",
    "module": "Integration registry",
    "pack_deps": [
+    1,
+    4
+   ],
+   "pack_deps_br": [
     1,
     4
    ],
@@ -82,8 +101,12 @@
   },
   {
    "seq": 6,
+   "br": "BR-M06",
    "module": "Event and audit foundation",
    "pack_deps": [
+    1
+   ],
+   "pack_deps_br": [
     1
    ],
    "pack_acceptance": "Duplicate delivery has one effect",
@@ -98,8 +121,13 @@
   },
   {
    "seq": 7,
+   "br": "BR-M07",
    "module": "Source permissions register",
    "pack_deps": [
+    4,
+    5
+   ],
+   "pack_deps_br": [
     4,
     5
    ],
@@ -116,8 +144,14 @@
   },
   {
    "seq": 8,
+   "br": "BR-M08",
    "module": "AI gateway and evaluation",
    "pack_deps": [
+    2,
+    5,
+    6
+   ],
+   "pack_deps_br": [
     2,
     5,
     6
@@ -136,30 +170,111 @@
   },
   {
    "seq": 9,
+   "br": "BR-M53",
    "module": "Cost and usage control",
    "pack_deps": [
     5,
     8
    ],
+   "pack_deps_br": [
+    5,
+    8
+   ],
    "pack_acceptance": "Simulated cap stops requests",
+   "bp_name": "Cost and usage control",
+   "bp_acceptance": "Simulated cap stops requests",
+   "bp_deps": [
+    5,
+    8
+   ],
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
+  },
+  {
+   "seq": 10,
+   "br": "BR-M56",
+   "module": "Privacy requests and retention",
+   "pack_deps": [
+    4,
+    6
+   ],
+   "pack_deps_br": [
+    4,
+    6
+   ],
+   "pack_acceptance": "Deletion does not re-enable outreach",
+   "bp_name": "Privacy requests and retention",
+   "bp_acceptance": "Deletion does not re-enable outreach",
+   "bp_deps": [
+    4,
+    6
+   ],
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
+  },
+  {
+   "seq": 11,
+   "br": "BR-M09",
+   "module": "DevSecOps & environment",
+   "pack_deps": [
+    1,
+    8
+   ],
+   "pack_deps_br": [
+    1,
+    8
+   ],
+   "pack_acceptance": "Restore drill; secret scan; smoke test",
    "bp_name": "DevSecOps & environment",
    "bp_acceptance": "Restore drill; secret scan; smoke test",
    "bp_deps": [
     1,
     8
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
-   "seq": 10,
-   "module": "Privacy requests and retention",
+   "seq": 12,
+   "br": "BR-M58",
+   "module": "Operational observability",
    "pack_deps": [
-    4,
-    6
+    6,
+    11
    ],
-   "pack_acceptance": "Deletion does not re-enable outreach",
+   "pack_deps_br": [
+    6,
+    9
+   ],
+   "pack_acceptance": "Provider outage does not lose events",
+   "bp_name": "Operational observability",
+   "bp_acceptance": "Provider outage does not lose events",
+   "bp_deps": [
+    6,
+    9
+   ],
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
+  },
+  {
+   "seq": 13,
+   "br": "BR-M10",
+   "module": "Search query planner",
+   "pack_deps": [
+    2,
+    7,
+    8
+   ],
+   "pack_deps_br": [
+    2,
+    7,
+    8
+   ],
+   "pack_acceptance": "No personal health targeting queries",
    "bp_name": "Search query planner",
    "bp_acceptance": "No personal health targeting queries",
    "bp_deps": [
@@ -167,263 +282,358 @@
     7,
     8
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
-   "seq": 11,
-   "module": "DevSecOps & environment",
+   "seq": 14,
+   "br": "BR-M11",
+   "module": "Public web discovery",
    "pack_deps": [
-    1,
-    8
+    13
    ],
-   "pack_acceptance": "Restore drill; secret scan; smoke test",
+   "pack_deps_br": [
+    10
+   ],
+   "pack_acceptance": "Source URL/date recorded; blocked hosts rejected",
    "bp_name": "Public web discovery",
    "bp_acceptance": "Source URL/date recorded; blocked hosts rejected",
    "bp_deps": [
     10
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
-   "seq": 12,
-   "module": "Operational observability",
+   "seq": 15,
+   "br": "BR-M12",
+   "module": "Evidence extraction",
    "pack_deps": [
-    6,
+    14,
+    8
+   ],
+   "pack_deps_br": [
+    8,
     11
    ],
-   "pack_acceptance": "Provider outage does not lose events",
+   "pack_acceptance": "Evidence traceable; injection ignored",
    "bp_name": "Evidence extraction",
    "bp_acceptance": "Evidence traceable; injection ignored",
    "bp_deps": [
     8,
     11
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
-   "seq": 13,
-   "module": "Search query planner",
+   "seq": 16,
+   "br": "BR-M13",
+   "module": "Account discovery",
    "pack_deps": [
-    2,
-    7,
-    8
+    15
    ],
-   "pack_acceptance": "No personal health targeting queries",
+   "pack_deps_br": [
+    12
+   ],
+   "pack_acceptance": "Duplicate domain/location merge safe",
    "bp_name": "Account discovery",
    "bp_acceptance": "Duplicate domain/location merge safe",
    "bp_deps": [
     12
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
-   "seq": 14,
-   "module": "Public web discovery",
+   "seq": 17,
+   "br": "BR-M14",
+   "module": "Buying signal classification",
    "pack_deps": [
+    15,
+    16
+   ],
+   "pack_deps_br": [
+    12,
     13
    ],
-   "pack_acceptance": "Source URL/date recorded; blocked hosts rejected",
+   "pack_acceptance": "≥80% precision on reviewed pilot sample target",
    "bp_name": "Buying signal classification",
    "bp_acceptance": "≥ 80% precision on reviewed pilot sample (DEC-001)",
    "bp_deps": [
     12,
     13
    ],
-   "name_match": false,
+   "name_match": true,
    "acceptance_match": false,
-   "deps_match": false
+   "deps_match": true
   },
   {
-   "seq": 15,
-   "module": "Evidence extraction",
+   "seq": 18,
+   "br": "BR-M15",
+   "module": "Business need discovery",
    "pack_deps": [
-    14,
-    8
+    17
    ],
-   "pack_acceptance": "Evidence traceable; injection ignored",
+   "pack_deps_br": [
+    14
+   ],
+   "pack_acceptance": "No inference labeled confirmed",
    "bp_name": "Business need discovery",
    "bp_acceptance": "No inference labelled confirmed",
    "bp_deps": [
     14
    ],
-   "name_match": false,
+   "name_match": true,
    "acceptance_match": false,
-   "deps_match": false
+   "deps_match": true
   },
   {
-   "seq": 16,
-   "module": "Account discovery",
+   "seq": 19,
+   "br": "BR-M16",
+   "module": "Product solution matching",
    "pack_deps": [
+    2,
+    18
+   ],
+   "pack_deps_br": [
+    2,
     15
    ],
-   "pack_acceptance": "Duplicate domain/location merge safe",
+   "pack_acceptance": "Unavailable offering excluded from sales",
    "bp_name": "Product solution matching",
    "bp_acceptance": "Unavailable offering excluded from sales",
    "bp_deps": [
     2,
     15
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
-   "seq": 17,
-   "module": "Buying signal classification",
+   "seq": 20,
+   "br": "BR-M17",
+   "module": "Opportunity scoring",
    "pack_deps": [
-    15,
+    19
+   ],
+   "pack_deps_br": [
     16
    ],
-   "pack_acceptance": "≥80% precision on reviewed pilot sample target",
+   "pack_acceptance": "Score recalculates; consent independent",
    "bp_name": "Opportunity scoring",
    "bp_acceptance": "Score recalculates; consent independent (DEC-011)",
    "bp_deps": [
     16
    ],
-   "name_match": false,
+   "name_match": true,
    "acceptance_match": false,
-   "deps_match": false
+   "deps_match": true
   },
   {
-   "seq": 18,
-   "module": "Business need discovery",
+   "seq": 21,
+   "br": "BR-M18",
+   "module": "Decision-maker role discovery",
    "pack_deps": [
+    16,
+    20
+   ],
+   "pack_deps_br": [
+    13,
     17
    ],
-   "pack_acceptance": "No inference labeled confirmed",
+   "pack_acceptance": "No private contacts or guessed emails",
    "bp_name": "Decision-maker role discovery",
    "bp_acceptance": "No private contacts or guessed emails",
    "bp_deps": [
     13,
     17
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
-   "seq": 19,
-   "module": "Product solution matching",
+   "seq": 22,
+   "br": "BR-M19",
+   "module": "Contact verification",
    "pack_deps": [
-    2,
+    21,
+    4
+   ],
+   "pack_deps_br": [
+    4,
     18
    ],
-   "pack_acceptance": "Unavailable offering excluded from sales",
+   "pack_acceptance": "Verified not synonymous with consent",
    "bp_name": "Contact verification",
    "bp_acceptance": "Verified not synonymous with consent",
    "bp_deps": [
     4,
     18
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
-   "seq": 20,
-   "module": "Opportunity scoring",
+   "seq": 23,
+   "br": "BR-M20",
+   "module": "Research review and alerts",
    "pack_deps": [
+    20,
+    22
+   ],
+   "pack_deps_br": [
+    17,
     19
    ],
-   "pack_acceptance": "Score recalculates; consent independent",
+   "pack_acceptance": "Rejected leads never sent to channel",
    "bp_name": "Research review and alerts",
    "bp_acceptance": "Rejected leads never sent to channel",
    "bp_deps": [
     17,
     19
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
-   "seq": 21,
-   "module": "Decision-maker role discovery",
+   "seq": 24,
+   "br": "BR-M21",
+   "module": "CRM pipeline",
    "pack_deps": [
-    16,
+    23,
+    6
+   ],
+   "pack_deps_br": [
+    6,
     20
    ],
-   "pack_acceptance": "No private contacts or guessed emails",
+   "pack_acceptance": "Invalid stage transition rejected",
    "bp_name": "CRM pipeline",
    "bp_acceptance": "Invalid stage transition rejected",
    "bp_deps": [
     6,
     20
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
-   "seq": 22,
-   "module": "Contact verification",
+   "seq": 25,
+   "br": "BR-M22",
+   "module": "Lead capture and forms",
    "pack_deps": [
-    21,
-    4
+    4,
+    24
    ],
-   "pack_acceptance": "Verified not synonymous with consent",
+   "pack_deps_br": [
+    4,
+    21
+   ],
+   "pack_acceptance": "Duplicate submission one lead",
    "bp_name": "Lead capture and forms",
    "bp_acceptance": "Duplicate submission → one lead",
    "bp_deps": [
     4,
     21
    ],
-   "name_match": false,
-   "acceptance_match": false,
+   "name_match": true,
+   "acceptance_match": true,
    "deps_match": true
   },
   {
-   "seq": 23,
-   "module": "Research review and alerts",
+   "seq": 26,
+   "br": "BR-M23",
+   "module": "Customer 360",
    "pack_deps": [
-    20,
+    24,
+    25
+   ],
+   "pack_deps_br": [
+    21,
     22
    ],
-   "pack_acceptance": "Rejected leads never sent to channel",
+   "pack_acceptance": "Updates visible within 60s target",
    "bp_name": "Customer 360",
    "bp_acceptance": "Updates visible within 60 s",
    "bp_deps": [
     21,
     22
    ],
-   "name_match": false,
+   "name_match": true,
    "acceptance_match": false,
-   "deps_match": false
+   "deps_match": true
   },
   {
-   "seq": 24,
-   "module": "CRM pipeline",
+   "seq": 27,
+   "br": "BR-M24",
+   "module": "Engagement eligibility",
    "pack_deps": [
-    23,
-    6
+    4,
+    22
    ],
-   "pack_acceptance": "Invalid stage transition rejected",
+   "pack_deps_br": [
+    4,
+    19
+   ],
+   "pack_acceptance": "No send when opt-out/unknown eligibility",
    "bp_name": "Engagement eligibility",
    "bp_acceptance": "No send when opt-out/unknown eligibility",
    "bp_deps": [
     4,
     19
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
-   "seq": 25,
-   "module": "Lead capture and forms",
+   "seq": 28,
+   "br": "BR-M55",
+   "module": "Workflow control center",
    "pack_deps": [
-    4,
+    6,
+    27
+   ],
+   "pack_deps_br": [
+    6,
     24
    ],
-   "pack_acceptance": "Duplicate submission one lead",
+   "pack_acceptance": "Emergency stop blocks queued sends",
+   "bp_name": "Workflow control center",
+   "bp_acceptance": "Emergency stop blocks queued sends",
+   "bp_deps": [
+    6,
+    24
+   ],
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
+  },
+  {
+   "seq": 29,
+   "br": "BR-M25",
+   "module": "Personalized message drafting",
+   "pack_deps": [
+    8,
+    19,
+    27
+   ],
+   "pack_deps_br": [
+    8,
+    16,
+    24
+   ],
+   "pack_acceptance": "No invented relationship or diagnosis",
    "bp_name": "Personalized message drafting",
    "bp_acceptance": "No invented relationship or diagnosis",
    "bp_deps": [
@@ -431,18 +641,25 @@
     16,
     24
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
-   "seq": 26,
-   "module": "Customer 360",
+   "seq": 30,
+   "br": "BR-M26",
+   "module": "Email integration",
    "pack_deps": [
+    27,
+    29,
+    5
+   ],
+   "pack_deps_br": [
+    5,
     24,
     25
    ],
-   "pack_acceptance": "Updates visible within 60s target",
+   "pack_acceptance": "Replay no duplicate; bounce suppress",
    "bp_name": "Email integration",
    "bp_acceptance": "Replay no duplicate; bounce suppress",
    "bp_deps": [
@@ -450,36 +667,48 @@
     24,
     25
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
-   "seq": 27,
-   "module": "Engagement eligibility",
+   "seq": 31,
+   "br": "BR-M27",
+   "module": "Unified inbound processing",
    "pack_deps": [
-    4,
-    22
+    30,
+    8
    ],
-   "pack_acceptance": "No send when opt-out/unknown eligibility",
+   "pack_deps_br": [
+    8,
+    26
+   ],
+   "pack_acceptance": "STOP cancels; urgent/clinical routes to human",
    "bp_name": "Unified inbound processing",
    "bp_acceptance": "STOP cancels; urgent/clinical routes to human",
    "bp_deps": [
     8,
     26
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
-   "seq": 28,
-   "module": "Workflow control center",
+   "seq": 32,
+   "br": "BR-M28",
+   "module": "Follow-up sequences",
    "pack_deps": [
-    6,
+    27,
+    30,
+    31
+   ],
+   "pack_deps_br": [
+    24,
+    26,
     27
    ],
-   "pack_acceptance": "Emergency stop blocks queued sends",
+   "pack_acceptance": "No follow-up after stop or reply",
    "bp_name": "Follow-up sequences",
    "bp_acceptance": "No follow-up after stop or reply",
    "bp_deps": [
@@ -487,75 +716,94 @@
     26,
     27
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
-   "seq": 29,
-   "module": "Personalized message drafting",
+   "seq": 33,
+   "br": "BR-M29",
+   "module": "Meeting and calendar",
    "pack_deps": [
-    8,
-    19,
+    31,
+    24
+   ],
+   "pack_deps_br": [
+    21,
     27
    ],
-   "pack_acceptance": "No invented relationship or diagnosis",
+   "pack_acceptance": "No invented availability; conflict handled",
    "bp_name": "Meeting and calendar",
    "bp_acceptance": "No invented availability; conflict handled",
    "bp_deps": [
     21,
     27
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
-   "seq": 30,
-   "module": "Email integration",
+   "seq": 34,
+   "br": "BR-M30",
+   "module": "Growth dashboard",
    "pack_deps": [
-    27,
-    29,
-    5
+    23,
+    33
    ],
-   "pack_acceptance": "Replay no duplicate; bounce suppress",
+   "pack_deps_br": [
+    20,
+    29
+   ],
+   "pack_acceptance": "Counts reconcile with deal records",
    "bp_name": "Growth dashboard",
    "bp_acceptance": "Counts reconcile with deal records",
    "bp_deps": [
     20,
     29
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
-   "seq": 31,
-   "module": "Unified inbound processing",
+   "seq": 35,
+   "br": "BR-M31",
+   "module": "WhatsApp Business",
    "pack_deps": [
-    30,
-    8
+    27,
+    31
    ],
-   "pack_acceptance": "STOP cancels; urgent/clinical routes to human",
+   "pack_deps_br": [
+    24,
+    27
+   ],
+   "pack_acceptance": "No private group scrape; opt-in gate",
    "bp_name": "WhatsApp Business",
    "bp_acceptance": "No private group scrape; opt-in gate",
    "bp_deps": [
     24,
     27
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
-   "seq": 32,
-   "module": "Follow-up sequences",
+   "seq": 36,
+   "br": "BR-M32",
+   "module": "Website conversational assistant",
    "pack_deps": [
-    27,
-    30,
+    8,
+    25,
     31
    ],
-   "pack_acceptance": "No follow-up after stop or reply",
+   "pack_deps_br": [
+    8,
+    22,
+    27
+   ],
+   "pack_acceptance": "Clinical question routed; no medical data",
    "bp_name": "Website conversational assistant",
    "bp_acceptance": "Clinical question routed; no medical data",
    "bp_deps": [
@@ -563,166 +811,25 @@
     22,
     27
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
-  },
-  {
-   "seq": 33,
-   "module": "Meeting and calendar",
-   "pack_deps": [
-    31,
-    24
-   ],
-   "pack_acceptance": "No invented availability; conflict handled",
-   "bp_name": "Social listening",
-   "bp_acceptance": "No restricted profiles or automated DMs",
-   "bp_deps": [
-    7,
-    14
-   ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
-  },
-  {
-   "seq": 34,
-   "module": "Growth dashboard",
-   "pack_deps": [
-    23,
-    33
-   ],
-   "pack_acceptance": "Counts reconcile with deal records",
-   "bp_name": "Content studio",
-   "bp_acceptance": "Unapproved claims cannot publish",
-   "bp_deps": [
-    2,
-    8
-   ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
-  },
-  {
-   "seq": 35,
-   "module": "WhatsApp Business",
-   "pack_deps": [
-    27,
-    31
-   ],
-   "pack_acceptance": "No private group scrape; opt-in gate",
-   "bp_name": "Social publishing",
-   "bp_acceptance": "No unsupported DMs; idempotent publishing",
-   "bp_deps": [
-    5,
-    34
-   ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
-  },
-  {
-   "seq": 36,
-   "module": "Website conversational assistant",
-   "pack_deps": [
-    8,
-    25,
-    31
-   ],
-   "pack_acceptance": "Clinical question routed; no medical data",
-   "bp_name": "SEO and search visibility",
-   "bp_acceptance": "No fabricated ranking data",
-   "bp_deps": [
-    7,
-    34
-   ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
    "seq": 37,
+   "br": "BR-M41",
    "module": "Unified omnichannel routing",
    "pack_deps": [
     31,
     35,
     36
    ],
-   "pack_acceptance": "No duplicate replies across linked channels",
-   "bp_name": "Landing pages and attribution",
-   "bp_acceptance": "No health events to ad pixels",
-   "bp_deps": [
-    22,
-    34
-   ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
-  },
-  {
-   "seq": 38,
-   "module": "Compliance monitoring",
-   "pack_deps": [
+   "pack_deps_br": [
     27,
-    37
+    31,
+    32
    ],
-   "pack_acceptance": "Simulated complaints stop campaign",
-   "bp_name": "Campaign management",
-   "bp_acceptance": "Suppression applied at execution",
-   "bp_deps": [
-    24,
-    34,
-    37
-   ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
-  },
-  {
-   "seq": 39,
-   "module": "Social listening",
-   "pack_deps": [
-    7,
-    17
-   ],
-   "pack_acceptance": "No restricted profiles or automated DMs",
-   "bp_name": "Paid ads integration",
-   "bp_acceptance": "Budget exceeded → pause; no sensitive data",
-   "bp_deps": [
-    5,
-    38
-   ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
-  },
-  {
-   "seq": 40,
-   "module": "Content studio",
-   "pack_deps": [
-    2,
-    8
-   ],
-   "pack_acceptance": "Unapproved claims cannot publish",
-   "bp_name": "Webinars and demonstrations",
-   "bp_acceptance": "Opt-outs respected; attendance dedup",
-   "bp_deps": [
-    22,
-    28,
-    29
-   ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
-  },
-  {
-   "seq": 41,
-   "module": "Social publishing",
-   "pack_deps": [
-    40,
-    5
-   ],
-   "pack_acceptance": "No unsupported DMs; idempotent publishing",
+   "pack_acceptance": "No duplicate replies across linked channels",
    "bp_name": "Unified omnichannel routing",
    "bp_acceptance": "No duplicate replies across linked channels",
    "bp_deps": [
@@ -730,36 +837,261 @@
     31,
     32
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
+  },
+  {
+   "seq": 38,
+   "br": "BR-M57",
+   "module": "Compliance monitoring",
+   "pack_deps": [
+    27,
+    37
+   ],
+   "pack_deps_br": [
+    24,
+    41
+   ],
+   "pack_acceptance": "Simulated complaints stop campaign",
+   "bp_name": "Compliance monitoring",
+   "bp_acceptance": "Simulated complaints stop campaign",
+   "bp_deps": [
+    24,
+    41
+   ],
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
+  },
+  {
+   "seq": 39,
+   "br": "BR-M33",
+   "module": "Social listening",
+   "pack_deps": [
+    7,
+    17
+   ],
+   "pack_deps_br": [
+    7,
+    14
+   ],
+   "pack_acceptance": "No restricted profiles or automated DMs",
+   "bp_name": "Social listening",
+   "bp_acceptance": "No restricted profiles or automated DMs",
+   "bp_deps": [
+    7,
+    14
+   ],
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
+  },
+  {
+   "seq": 40,
+   "br": "BR-M34",
+   "module": "Content studio",
+   "pack_deps": [
+    2,
+    8
+   ],
+   "pack_deps_br": [
+    2,
+    8
+   ],
+   "pack_acceptance": "Unapproved claims cannot publish",
+   "bp_name": "Content studio",
+   "bp_acceptance": "Unapproved claims cannot publish",
+   "bp_deps": [
+    2,
+    8
+   ],
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
+  },
+  {
+   "seq": 41,
+   "br": "BR-M35",
+   "module": "Social publishing",
+   "pack_deps": [
+    40,
+    5
+   ],
+   "pack_deps_br": [
+    5,
+    34
+   ],
+   "pack_acceptance": "No unsupported DMs; idempotent publishing",
+   "bp_name": "Social publishing",
+   "bp_acceptance": "No unsupported DMs; idempotent publishing",
+   "bp_deps": [
+    5,
+    34
+   ],
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
    "seq": 42,
+   "br": "BR-M36",
    "module": "SEO and search visibility",
    "pack_deps": [
     7,
     40
    ],
+   "pack_deps_br": [
+    7,
+    34
+   ],
    "pack_acceptance": "No fabricated ranking data",
+   "bp_name": "SEO and search visibility",
+   "bp_acceptance": "No fabricated ranking data",
+   "bp_deps": [
+    7,
+    34
+   ],
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
+  },
+  {
+   "seq": 43,
+   "br": "BR-M37",
+   "module": "Landing pages and attribution",
+   "pack_deps": [
+    25,
+    40
+   ],
+   "pack_deps_br": [
+    22,
+    34
+   ],
+   "pack_acceptance": "No health events to ad pixels",
+   "bp_name": "Landing pages and attribution",
+   "bp_acceptance": "No health events to ad pixels",
+   "bp_deps": [
+    22,
+    34
+   ],
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
+  },
+  {
+   "seq": 44,
+   "br": "BR-M38",
+   "module": "Campaign management",
+   "pack_deps": [
+    27,
+    40,
+    43
+   ],
+   "pack_deps_br": [
+    24,
+    34,
+    37
+   ],
+   "pack_acceptance": "Suppression applied at execution",
+   "bp_name": "Campaign management",
+   "bp_acceptance": "Suppression applied at execution",
+   "bp_deps": [
+    24,
+    34,
+    37
+   ],
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
+  },
+  {
+   "seq": 45,
+   "br": "BR-M39",
+   "module": "Paid ads integration",
+   "pack_deps": [
+    44,
+    5
+   ],
+   "pack_deps_br": [
+    5,
+    38
+   ],
+   "pack_acceptance": "Budget exceeded → pause; no sensitive data",
+   "bp_name": "Paid ads integration",
+   "bp_acceptance": "Budget exceeded → pause; no sensitive data",
+   "bp_deps": [
+    5,
+    38
+   ],
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
+  },
+  {
+   "seq": 46,
+   "br": "BR-M40",
+   "module": "Webinars and demonstrations",
+   "pack_deps": [
+    25,
+    32,
+    33
+   ],
+   "pack_deps_br": [
+    22,
+    28,
+    29
+   ],
+   "pack_acceptance": "Opt-outs respected; attendance dedup",
+   "bp_name": "Webinars and demonstrations",
+   "bp_acceptance": "Opt-outs respected; attendance dedup",
+   "bp_deps": [
+    22,
+    28,
+    29
+   ],
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
+  },
+  {
+   "seq": 47,
+   "br": "BR-M42",
+   "module": "Referral and partner lead capture",
+   "pack_deps": [
+    25,
+    44
+   ],
+   "pack_deps_br": [
+    22,
+    38
+   ],
+   "pack_acceptance": "No unauthorized third-party contact enrollment",
    "bp_name": "Referral and partner lead capture",
    "bp_acceptance": "No unauthorized third-party contact enrolment",
    "bp_deps": [
     22,
     38
    ],
-   "name_match": false,
+   "name_match": true,
    "acceptance_match": false,
-   "deps_match": false
+   "deps_match": true
   },
   {
-   "seq": 43,
-   "module": "Landing pages and attribution",
+   "seq": 48,
+   "br": "BR-M43",
+   "module": "Proposal builder",
    "pack_deps": [
-    25,
-    40
+    24,
+    33,
+    2
    ],
-   "pack_acceptance": "No health events to ad pixels",
+   "pack_deps_br": [
+    2,
+    21,
+    29
+   ],
+   "pack_acceptance": "Only approved version externally shared",
    "bp_name": "Proposal builder",
    "bp_acceptance": "Only approved version externally shared",
    "bp_deps": [
@@ -767,289 +1099,251 @@
     21,
     29
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
-   "seq": 44,
-   "module": "Campaign management",
+   "seq": 49,
+   "br": "BR-M44",
+   "module": "Quote and pricing engine",
    "pack_deps": [
-    27,
-    40,
+    48,
+    2
+   ],
+   "pack_deps_br": [
+    2,
     43
    ],
-   "pack_acceptance": "Suppression applied at execution",
+   "pack_acceptance": "No unauthorized discount; totals exact",
    "bp_name": "Quote and pricing engine",
    "bp_acceptance": "No unauthorized discount; totals exact (DEC-027, DEC-038)",
    "bp_deps": [
     2,
     43
    ],
-   "name_match": false,
+   "name_match": true,
    "acceptance_match": false,
-   "deps_match": false
+   "deps_match": true
   },
   {
-   "seq": 45,
-   "module": "Paid ads integration",
+   "seq": 50,
+   "br": "BR-M45",
+   "module": "Negotiation and objection handling",
    "pack_deps": [
-    44,
-    5
+    37,
+    49
    ],
-   "pack_acceptance": "Budget exceeded → pause; no sensitive data",
+   "pack_deps_br": [
+    41,
+    44
+   ],
+   "pack_acceptance": "Contract/price exception escalates",
    "bp_name": "Negotiation and objection handling",
    "bp_acceptance": "Contract/price exception escalates",
    "bp_deps": [
     41,
     44
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
-   "seq": 46,
-   "module": "Webinars and demonstrations",
+   "seq": 51,
+   "br": "BR-M46",
+   "module": "Contract and MoU workflow",
    "pack_deps": [
-    25,
-    32,
-    33
+    48,
+    49
    ],
-   "pack_acceptance": "Opt-outs respected; attendance dedup",
+   "pack_deps_br": [
+    43,
+    44
+   ],
+   "pack_acceptance": "No AI signs contract; signed version hash stored",
    "bp_name": "Contract and MoU workflow",
    "bp_acceptance": "No AI signs contract; signed version hash stored (DEC-023)",
    "bp_deps": [
     43,
     44
    ],
-   "name_match": false,
+   "name_match": true,
    "acceptance_match": false,
-   "deps_match": false
+   "deps_match": true
   },
   {
-   "seq": 47,
-   "module": "Referral and partner lead capture",
+   "seq": 52,
+   "br": "BR-M47",
+   "module": "Payment and closure",
    "pack_deps": [
-    25,
-    44
+    51,
+    24
    ],
-   "pack_acceptance": "No unauthorized third-party contact enrollment",
+   "pack_deps_br": [
+    21,
+    46
+   ],
+   "pack_acceptance": "Replay no duplicate revenue; no invented closure",
    "bp_name": "Payment and closure",
    "bp_acceptance": "Replay no duplicate revenue; no invented closure (DEC-022, DEC-054)",
    "bp_deps": [
     21,
     46
    ],
-   "name_match": false,
+   "name_match": true,
    "acceptance_match": false,
-   "deps_match": false
+   "deps_match": true
   },
   {
-   "seq": 48,
-   "module": "Proposal builder",
+   "seq": 53,
+   "br": "BR-M48",
+   "module": "Onboarding and handoff",
    "pack_deps": [
-    24,
-    33,
-    2
+    52,
+    4
    ],
-   "pack_acceptance": "Only approved version externally shared",
+   "pack_deps_br": [
+    4,
+    47
+   ],
+   "pack_acceptance": "No patient data copied",
    "bp_name": "Onboarding and handoff",
    "bp_acceptance": "No patient data copied",
    "bp_deps": [
     4,
     47
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
-   "seq": 49,
-   "module": "Quote and pricing engine",
+   "seq": 54,
+   "br": "BR-M49",
+   "module": "Partner deployment pipeline",
    "pack_deps": [
     48,
-    2
+    51
    ],
-   "pack_acceptance": "No unauthorized discount; totals exact",
+   "pack_deps_br": [
+    43,
+    46
+   ],
+   "pack_acceptance": "No deployment claims before approval",
    "bp_name": "Partner deployment pipeline",
    "bp_acceptance": "No deployment claims before approval",
    "bp_deps": [
     43,
     46
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
-   "seq": 50,
-   "module": "Negotiation and objection handling",
+   "seq": 55,
+   "br": "BR-M50",
+   "module": "Retention and renewal",
    "pack_deps": [
-    37,
-    49
+    53,
+    32
    ],
-   "pack_acceptance": "Contract/price exception escalates",
+   "pack_deps_br": [
+    28,
+    48
+   ],
+   "pack_acceptance": "No medical data in scoring",
    "bp_name": "Retention and renewal",
    "bp_acceptance": "No medical data in scoring",
    "bp_deps": [
     28,
     48
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
-   "seq": 51,
-   "module": "Contract and MoU workflow",
+   "seq": 56,
+   "br": "BR-M51",
+   "module": "Lost deal and feedback",
    "pack_deps": [
-    48,
-    49
+    24,
+    32
    ],
-   "pack_acceptance": "No AI signs contract; signed version hash stored",
+   "pack_deps_br": [
+    21,
+    28
+   ],
+   "pack_acceptance": "No auto-recontact after loss without policy",
    "bp_name": "Lost deal and feedback",
    "bp_acceptance": "No auto-recontact after loss without policy",
    "bp_deps": [
     21,
     28
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
-   "seq": 52,
-   "module": "Payment and closure",
+   "seq": 57,
+   "br": "BR-M52",
+   "module": "Revenue and attribution",
    "pack_deps": [
-    51,
-    24
+    43,
+    52
    ],
-   "pack_acceptance": "Replay no duplicate revenue; no invented closure",
+   "pack_deps_br": [
+    37,
+    47
+   ],
+   "pack_acceptance": "Revenue reconciles with finance; attribution caveat",
    "bp_name": "Revenue and attribution",
    "bp_acceptance": "Revenue reconciles with finance; attribution caveat",
    "bp_deps": [
     37,
     47
    ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "name_match": true,
+   "acceptance_match": true,
+   "deps_match": true
   },
   {
-   "seq": 53,
-   "module": "Onboarding and handoff",
+   "seq": 58,
+   "br": "BR-M54",
+   "module": "AI quality and feedback",
    "pack_deps": [
-    52,
-    4
+    8,
+    56
    ],
-   "pack_acceptance": "No patient data copied",
-   "bp_name": "Cost and usage control",
-   "bp_acceptance": "Simulated cap stops requests",
-   "bp_deps": [
-    5,
-    8
-   ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
-  },
-  {
-   "seq": 54,
-   "module": "Partner deployment pipeline",
-   "pack_deps": [
-    48,
+   "pack_deps_br": [
+    8,
     51
    ],
-   "pack_acceptance": "No deployment claims before approval",
+   "pack_acceptance": "Regression fails block deploy",
    "bp_name": "AI quality and feedback",
    "bp_acceptance": "Regression fails block deploy (DEC-061)",
    "bp_deps": [
     8,
     51
    ],
-   "name_match": false,
+   "name_match": true,
    "acceptance_match": false,
-   "deps_match": false
-  },
-  {
-   "seq": 55,
-   "module": "Retention and renewal",
-   "pack_deps": [
-    53,
-    32
-   ],
-   "pack_acceptance": "No medical data in scoring",
-   "bp_name": "Workflow control center",
-   "bp_acceptance": "Emergency stop blocks queued sends",
-   "bp_deps": [
-    6,
-    24
-   ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
-  },
-  {
-   "seq": 56,
-   "module": "Lost deal and feedback",
-   "pack_deps": [
-    24,
-    32
-   ],
-   "pack_acceptance": "No auto-recontact after loss without policy",
-   "bp_name": "Privacy requests and retention",
-   "bp_acceptance": "Deletion does not re-enable outreach",
-   "bp_deps": [
-    4,
-    6
-   ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
-  },
-  {
-   "seq": 57,
-   "module": "Revenue and attribution",
-   "pack_deps": [
-    43,
-    52
-   ],
-   "pack_acceptance": "Revenue reconciles with finance; attribution caveat",
-   "bp_name": "Compliance monitoring",
-   "bp_acceptance": "Simulated complaints stop campaign",
-   "bp_deps": [
-    24,
-    41
-   ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
-  },
-  {
-   "seq": 58,
-   "module": "AI quality and feedback",
-   "pack_deps": [
-    8,
-    56
-   ],
-   "pack_acceptance": "Regression fails block deploy",
-   "bp_name": "Operational observability",
-   "bp_acceptance": "Provider outage does not lose events",
-   "bp_deps": [
-    6,
-    9
-   ],
-   "name_match": false,
-   "acceptance_match": false,
-   "deps_match": false
+   "deps_match": true
   },
   {
    "seq": 59,
+   "br": "BR-M59",
    "module": "Competitor and market watch",
    "pack_deps": [
     13,
     15
+   ],
+   "pack_deps_br": [
+    10,
+    12
    ],
    "pack_acceptance": "No unverified comparative claim",
    "bp_name": "Competitor and market watch",
@@ -1060,14 +1354,19 @@
    ],
    "name_match": true,
    "acceptance_match": true,
-   "deps_match": false
+   "deps_match": true
   },
   {
    "seq": 60,
+   "br": "BR-M60",
    "module": "Forecast and sales optimization",
    "pack_deps": [
     56,
     57
+   ],
+   "pack_deps_br": [
+    51,
+    52
    ],
    "pack_acceptance": "Forecast labeled estimate",
    "bp_name": "Forecast and sales optimization",
@@ -1078,12 +1377,17 @@
    ],
    "name_match": true,
    "acceptance_match": false,
-   "deps_match": false
+   "deps_match": true
   },
   {
    "seq": 61,
+   "br": "BR-M61",
    "module": "Admin command center",
    "pack_deps": [
+    1,
+    60
+   ],
+   "pack_deps_br": [
     1,
     60
    ],
@@ -1100,8 +1404,13 @@
   },
   {
    "seq": 62,
+   "br": "BR-M62",
    "module": "End-to-end production release",
    "pack_deps": [
+    1,
+    61
+   ],
+   "pack_deps_br": [
     1,
     61
    ],
@@ -1118,10 +1427,15 @@
   },
   {
    "seq": 63,
+   "br": "BR-M63",
    "module": "Insurance institutional pilot",
    "pack_deps": [
     54,
     38
+   ],
+   "pack_deps_br": [
+    49,
+    57
    ],
    "pack_acceptance": "No underwriting or personal profiling",
    "bp_name": "Insurance institutional pilot",
@@ -1132,14 +1446,19 @@
    ],
    "name_match": true,
    "acceptance_match": true,
-   "deps_match": false
+   "deps_match": true
   },
   {
    "seq": 64,
+   "br": "BR-M64",
    "module": "Technology licensing pipeline",
    "pack_deps": [
     51,
     54
+   ],
+   "pack_deps_br": [
+    46,
+    49
    ],
    "pack_acceptance": "No promised unready API",
    "bp_name": "Technology licensing pipeline",
@@ -1150,14 +1469,19 @@
    ],
    "name_match": true,
    "acceptance_match": true,
-   "deps_match": false
+   "deps_match": true
   },
   {
    "seq": 65,
+   "br": "BR-M65",
    "module": "Phygital expansion",
    "pack_deps": [
     54,
     57
+   ],
+   "pack_deps_br": [
+    49,
+    52
    ],
    "pack_acceptance": "Deployment sign-off required",
    "bp_name": "Phygital expansion",
@@ -1168,14 +1492,19 @@
    ],
    "name_match": true,
    "acceptance_match": true,
-   "deps_match": false
+   "deps_match": true
   },
   {
    "seq": 66,
+   "br": "BR-M66",
    "module": "Future product commercialization",
    "pack_deps": [
     2,
     38
+   ],
+   "pack_deps_br": [
+    2,
+    57
    ],
    "pack_acceptance": "Planned offerings not promoted",
    "bp_name": "Future product commercialization",
@@ -1186,7 +1515,7 @@
    ],
    "name_match": true,
    "acceptance_match": false,
-   "deps_match": false
+   "deps_match": true
   }
  ],
  "cycles": [],
@@ -1290,9 +1619,9 @@
  "forward_refs": [],
  "counts": {
   "rows": 66,
-  "name_match": 16,
-  "acceptance_match": 11,
-  "deps_match": 11,
+  "name_match": 66,
+  "acceptance_match": 52,
+  "deps_match": 66,
   "max_level": 27
  }
 }

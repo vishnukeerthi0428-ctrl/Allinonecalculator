@@ -155,15 +155,17 @@ def main():
                 deps.append(name_to_seq[d.lower()])
             elif d:
                 deps.append(d)  # e.g. H02,H03 (pre-existing capability ids)
-        b = brm.get(seq, {})
+        byname = {v["name"].lower(): (kk, v) for kk, v in brm.items()}
+        brnum, b = byname.get(name.lower(), (None, {}))
+        seq_to_br = {sq: byname.get(nm, (None, None))[0] for nm, sq in name_to_seq.items()}
         bp_deps = sorted(int(x) for x in re.findall(r"M(\d\d)", b.get("deps", "")))
-        pk_deps = sorted(x for x in deps if isinstance(x, int))
+        pk_deps = sorted(seq_to_br[x] for x in deps if isinstance(x, int) and seq_to_br.get(x))
         acc_norm = re.sub(r"\W+", " ", acc.lower()).strip()
         bacc_norm = re.sub(r"\W+", " ", b.get("acceptance", "").lower()).strip()
         rows.append({
-            "seq": seq, "module": name, "pack_deps": deps, "pack_acceptance": acc.strip(),
+            "seq": seq, "br": "BR-M%02d" % brnum if brnum else None, "module": name, "pack_deps": deps, "pack_deps_br": pk_deps, "pack_acceptance": acc.strip(),
             "bp_name": b.get("name"), "bp_acceptance": b.get("acceptance"), "bp_deps": bp_deps,
-            "name_match": b.get("name", "").lower() == name.lower(),
+            "name_match": brnum is not None,
             "acceptance_match": acc_norm == bacc_norm,
             "deps_match": pk_deps == bp_deps,
         })

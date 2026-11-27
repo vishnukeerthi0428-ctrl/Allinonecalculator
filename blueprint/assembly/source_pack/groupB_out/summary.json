@@ -37,9 +37,9 @@
  },
  "backlog66": {
   "rows": 66,
-  "name_match": 16,
-  "acceptance_match": 11,
-  "deps_match": 11,
+  "name_match": 66,
+  "acceptance_match": 52,
+  "deps_match": 66,
   "max_level": 27
  },
  "module_cards": 22,
