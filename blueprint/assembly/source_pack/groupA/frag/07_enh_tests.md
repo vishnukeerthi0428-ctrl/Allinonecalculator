@@ -107,4 +107,4 @@ Extends AP-01…AP-10 (DEC-014). Each procedure is a named bundle of tests with 
 | AP-ENH-A-11 | Cross-border and regional decision (SP-14) | Record jurisdiction, source, communications, privacy, commercial route | Specialist sign-off before regulated activation | Privacy and compliance lead | TC-ENH-A-030 |
 | AP-ENH-A-12 | User productivity (SP-03) | Timed representative tasks with sample users | Baseline/candidate time and error rate measured; no reduced safeguards | UX lead | TC-ENH-A-040 |
 
-**Test count added by this part:** 50 test cases (TC-ENH-A-001…050), of which 27 are P0, 21 automated at SYS/SIT/UT level, 12 UAT. Traceability: every FR-ENH-A and BRL-ENH-A item maps to at least one TC (FR table §2.6.5.2.1 and the rules' "Tests" are listed in the stories).
+**Test count added by this part:** 50 test cases (TC-ENH-A-001…050): 32 P0, 17 P1, 1 P2; 41 automated; levels 37 SYS, 3 SIT, 1 UT and 9 UAT. Traceability: every FR-ENH-A and BRL-ENH-A item maps to at least one TC (FR table §2.6.5.2.1 and the rules' "Tests" are listed in the stories).

@@ -10,3 +10,10 @@ Open: 83 unmatched legacy operations need alias-vs-new decisions (Group D); 196 
 Coverage: 549 Covered / 358 Partial / 5 Not covered / 4 Conflict / 2 N/A / 5 common core (923 aspects). All 799 source tests mapped (Unit 75 / SIT 422 / UAT 302): 187 equivalent, 285 alias-equivalent, 302 operation-class, 24 partial plus a new case, 1 with no equivalent. New TC-ENH-G-001…045; 17 operation-contract classes; UAT packs MKT and CS; execution-status field.
 Conflicts: CONFLICT-420 (SM-UT-037/049/050 defined by the source; overrides DEC-094), 421 (unit coverage targets differ), 422 (absolute-amount discount vs % thresholds), 423 (P0–P3 vs S1–S4), 424 (growth RTO 2 h vs 4 h).
 Earlier-part issues: DEC-094/GAP-167 superseded; SM-SIT-M numbering ≠ BR-M## (mapped by name); 81 source ops lack a Part 3.2 counterpart (Group D); NFR-082 vs §6.1.9.6 coverage scope. Open: 21 nearest-match operations need API-owner confirmation.
+
+## Group I (docs 18, 25–27, 29–32): done
+Coverage: 267 Covered / 116 Partial / 37 Not covered / 25 Conflict / 38 N/A (483 aspects). Files: Part-04-4a (73 pp), 4-4b (42 pp).
+Additions: coding standards (186 rules, 40-item review checklist, lint rules, AI-assisted coding policy); typed config contract and drift detection; release-gate validator; reserved control/finance queues; ordered deployment, smoke checks and canary; AL-50…58 and 3 runbooks; growth workload profiles and 6 load tests; pen-test rules of engagement; delivery package; recovery classes. 25 FRs, 10 stories, 41 TCs; +29.5–54 pd.
+Conflicts CONFLICT-460…473. Key: availability 99.9% vs 99.5% (DEC-018); capacity vs DEC-031; growth RTO 2 h; 60 s projections vs 15 min.
+Earlier-part issues: LT ID duplication (resolved by DEC-116/143); regional RTO 8 h (3.1) vs 24 h (4.2/8.2); Part 4.3 duplicate ADRs (DEC-150); environment naming 3.1 vs 4.3; restore-drill location/frequency; pilot load balancer assumption; §4.4 numbering clash with Part 4.1.
+Open: GAP-468, mapping of the pack's outstanding approval counts and 1,188-record preflight (needs groups C/D/E/J).

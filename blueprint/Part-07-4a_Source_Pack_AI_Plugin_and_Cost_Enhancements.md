@@ -76,14 +76,14 @@
 | Integration candidates IC-001…IC-538 (16 + 21) | 485 | 0 | 0 | 1 | 52 | 538 |
 | **Total** | **625** | **50** | **45** | **17** | **67** | **804** |
 
-**Reading the table.** The source pack is largely consistent with the blueprint's AI design: 625 of 804 rows are already covered (59 of 98 document-15 aspects, including 13 of the 18 prompt contracts). The 50 partial and 45 not-covered rows cluster in five places: (1) the **AI result envelope and prompt-contract minimum output**, (2) **RAG revocation and authorization-safe caching**, (3) **procurement records, licence/model-weight register, benchmark harness and adapter retirement**, (4) **replacement economics, invoice reconciliation and tenant margin**, and (5) **budget views** that Part 8.2 does not show. The 17 conflicts are listed with resolutions in §7.4.6. The 52 "Not applicable" candidate rows are investor, clinical, learner-assessment and HR tools that fall outside the commercial scope (DEC-002, DEC-030) or have no runtime need.
+**Reading the table.** The source pack is largely consistent with the blueprint's AI design: 625 of 804 rows are already covered (59 of 98 document-15 aspects, including 13 of the 18 prompt contracts). The 50 partial and 45 not-covered rows cluster in five places: (1) the **AI result envelope and prompt-contract minimum output**, (2) **RAG revocation and authorization-safe caching**, (3) **procurement records, licence/model-weight register, benchmark harness and adapter retirement**, (4) **replacement economics, invoice reconciliation and tenant margin**, and (5) **budget views** that Part 8.2 does not show. The 17 conflict rows (13 distinct conflicts, CONFLICT-400…412) are resolved in Part 7.4b §7.4.6. The 52 "Not applicable" candidate rows are investor, clinical, learner-assessment and HR tools that fall outside the commercial scope (DEC-002, DEC-030) or have no runtime need.
 
 | Status | What it means for the build |
 |---|---|
 | Covered (625) | No change; the cited blueprint section is authoritative |
 | Partially covered (50) | Enhancement in Part 7.4b adds the missing field, rule, automation or test |
 | Not covered (45) | New requirement, automation, entity, metric or test in Part 7.4b |
-| Conflict (17) | Proposed resolution in §7.4.6 for the coordinator to turn into a decision |
+| Conflict (17 rows) | Proposed resolution in Part 7.4b §7.4.6 for the coordinator to turn into a decision |
 | Not applicable (67) | Common-core repeats and duplicate procedures (15 aspects); out-of-scope or no-runtime-need candidates (52) |
 
 ---
@@ -701,7 +701,7 @@ All amounts are monthly INR estimates unless stated; **verify all rates at time 
 | 6 | No agent lacks guardrail, fallback, KPI and cost | N/A | New agents specified in Part 7.4b |
 | 7 | Time-sensitive facts flagged "verify" with as-of date | Pass | All rates and free tiers marked historical and "verify at implementation (as of 27 Nov 2026)" |
 | 8 | No restricted data routed to free-tier models | Pass | No change to DEC-007 routing proposed |
-| 9 | Consistent with earlier parts | Pass with conflicts logged | 17 conflicts carried to §7.4.6; numbering collision CONFLICT-410 |
+| 9 | Consistent with earlier parts | Pass with conflicts logged | 17 conflict rows (13 distinct conflicts) carried to Part 7.4b §7.4.6; numbering collision CONFLICT-410 |
 
 **Fixes applied during drafting.** (1) The first parser pass classified 452 licences as "unverified" because it searched for keywords; it now classifies by the source's own licence phrases (six classes). (2) A first status pass marked the 19 investor and clinical candidates as "Covered (deferred)"; they are now "Not applicable" with an explicit never-activate rule. (3) IC-270 *Apollo GraphQL* was first accepted under its document-21 mapping; it is now a conflict.
 

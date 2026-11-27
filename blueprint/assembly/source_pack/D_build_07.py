@@ -298,7 +298,7 @@ for dc in DOM.values():
         if r["relation"] in ("split", "approval"):
             tl = [x for x in r["blueprint_ops"].split(";") if x in bp]
             st = ", ".join(f'{x[4:]}:{final_status(bp[x]["se"], bp[x]["method"], o["proposed_status"], r["path"])}' for x in tl)
-        err = ERRP.get(se, "E-W") + ((" + " + extras(o, b)) if extras(o, b) else "")
+        err = ("E-H" if b["ns"] == "hooks" else ERRP.get(se, "E-W")) + ((" + " + extras(o, b)) if extras(o, b) else "")
         tgt = b["id"] if r["relation"] not in ("partial", "none") else (r["enhancement"] + (" (+" + r["blueprint_ops"].replace(";", ", ") + ")" if r["blueprint_ops"] else ""))
         if r["relation"] in ("split", "approval"):
             tgt = r["blueprint_ops"].replace(";", ", ")
@@ -489,9 +489,6 @@ for n, v in prov.items():
     st2 = {"Conflict": "Conflict"}.get(st, st)
     cov.append(["07", "Per-operation Integration/Licence/Quota/Rate/Allocation columns", "PROV-" + re.sub(r"[^a-z0-9]+", "-", n).strip("-"), f"Provider/tool '{n}' ({cls}) on {len(v.get('ops', []))} ops", st2, loc,
                 "Classified in provider register" + ("; conflict resolved" if st == "Conflict" else ""), "Part 3.5 §3.5.5.6.4" + ("; CONFLICT-368/371" if st == "Conflict" else "")])
-for oid, title, a, b2, own in d["opts"]:
-    cov.append(["07", "Optimization engineering and acceptance", oid, f"{title}: {a[:80]}", "Covered" if not oid.startswith("OPT-09") else "Partially covered",
-                "Part 4.2 NFRs (see §3.5.5.10)", "Mapped" if not oid.startswith("OPT-09") else "API-level control and evidence added", "Part 3.5 §3.5.5.10"])
 json.dump({"cov": cov}, open(os.path.join(FR, "cov_ops.json"), "w"))
 print("fragments written; field rows", FCOUNT, "status diffs", NSTAT, "reverse", REV, "providers", dict(PCOUNT))
 print("cov rows (ops part)", len(cov))
