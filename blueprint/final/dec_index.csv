@@ -139,3 +139,19 @@ DEC-137,9.1,Worked-example IDs in Part 6.1,Superseded by Part 6.2 IDs (TC-13-036
 DEC-138,9.1,AC-1206-05 title,R11 requests; R01 approves
 DEC-139,9.1,GST rates in examples,Illustrative only; finance advisor confirms (DEC-027 verify)
 DEC-140,9.1,Test automation effort (~100–240 pd),Mostly inside story estimates (DoD: developers write unit/integration/contract tests; QA writes E2E and evals). Residual risk tracked as RSK-003
+DEC-141,9.1,Part 2.3 states 162 business rules; 161 are defined,Rule count corrected to 161
+DEC-142,9.1,Part 2.1 states 33 cross-cutting FRs (183 total),181 FRs (150 interface/operation + 31 cross-cutting)
+DEC-143,9.1,LT-01…12 defined in Parts 4.2 and 6.1 with different meanings,"Part 6.1 owns LT-xx; Part 4.2 tables are ""NFR load profiles"", mapped to LT-xx in Part 6.7"
+DEC-144,9.1,Second-tenant fixture naming varies,"Canonical name ""T2 External-A"" (GSE-SYN)"
+DEC-145,9.1,Seven stories without an FR link,They are enablers tracing to BR/NFR/DEC; acceptable
+DEC-146,9.1,Part 6.1 risk matrix lacks a product-truth area,Add Product truth and claims gating (EP-02) at P0 depth
+DEC-147,9.1,"NFR (61), FLT (9) and BR-S coverage gaps","Closed by Part 6.7 (TC-NFR, TC-FLT, TC-BRS and VER items); RTM regenerated"
+DEC-148,9.1,"ID family collisions: AD-## (3.1 drivers vs 3.2 adapters), PP-## (1 principles vs 6.2 …","IDs stay as written; cross-part references must be qualified with the part (e.g. ""3.2/AD-05"", ""6.2/PP-03"", ""3.3/D-2"", ""3.1/B-07""). Unqualified AD-/PP-/D-/B- references mean the owning definitions in Parts 3.1, 1, 5.1a and the …"
+DEC-149,9.1,68 RECOMMENDATIONs have no recorded accept/reject,"All proposed RECOMMENDATION-001…090 are accepted into the baseline under the delegated authority, except where a DEC states otherwise (e.g. ADR-043 superseded by DEC-081). They are implemented through the stories and tests that …"
+DEC-150,9.1,ADR overlap: Part 4.3 ADR-050/051/052 vs Part 3.1 ADR-026/012/015,Part 3.1 ADRs govern (DEC-083); Part 4.3's ADRs are operational elaborations of them
+DEC-151,9.1,No central tag allocation log,§9.2.3 reconstruction is authoritative; future tags continue from the highest number in each register
+DEC-152,9.1,Part 6.1 §6.1.12.1 divides rule coverage by 162,Denominator is 161 (DEC-141)
+DEC-153,9.1,"Usability targets differ: Part 6.1 (task success ≥ 80%, SUS ≥ 68) vs NFR-090 (≥ 90%, ≥ 70)",Two levels: ≥ 80% / SUS ≥ 68 is the per-wave minimum gate; ≥ 90% / SUS ≥ 70 is the NFR-090 target by Release 2
+DEC-154,9.1,"Load-test volumes differ between Part 6.1 and Part 4.2 (20 vs 30 req/s; 1,000 vs 5,000 …","The higher Part 4.2 design-capacity figures govern the load runs (LT-01 at 30 req/s; 5,000 due runs); the Part 6.1 figures are the expected Year-1 load"
+DEC-155,9.1,"GSE-SYN still names the second tenant ""Client B""","Canonical ""T2 External-A"" (DEC-144)"
+DEC-156,9.1,Part 4.2 §4.28 wave plan has no gate for NFR-023/024/052,Gates: NFR-023 (accessibility) every wave from W2; NFR-024 (localization) at W5; NFR-052 at Release 2

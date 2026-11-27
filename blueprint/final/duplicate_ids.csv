@@ -1,4 +1,5 @@
 Kind,ID,Part A,Meaning A,Part B,Meaning B,Similarity
+Tag,RECOMMENDATION-090,Part 6.6,Recommendation (Batch 6.7),Part 6.7,"Store every VER item's evidence as an EVR of type review/inspection/analysis/demonstration and extend build_rtm.py to read EVR status, so VER items show Pending/Pass like TCs; a VER without an EVR by its wave gate blocks A090",0.04
 Registry,AD-01…AD-12 (12 IDs),Part 3.1,e.g. AD-01 = Tenant and startup isolation,Part 3.2,e.g. AD-01 = Amazon SES (EmailPort),low
 Registry,D-1…D-4 (4 IDs),Part 3.3,e.g. D-1 = Automated snapshot restore Weekly + every release (NFR-012),Part 5.1a,e.g. D-1 = Code,low
 Registry,LT-01…LT-11 (9 IDs),Part 4.2,e.g. LT-01 = Baseline API mix,Part 6.1,e.g. LT-01 = Admin mixed API load,low

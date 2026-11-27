@@ -33,7 +33,7 @@ FR_XC = r"FR-(?:FLT|STD|DM|UIS|ENG|PUB|ADP|CSM|COP|SRCH|NEG)-(?:\d{2}|RULES)"
 BR_P = r"BR-(?:M\d{2}|TENANT|WEB|AUTO|SVC|QA)"
 BR_S = r"BR-S\d{3}"
 BRL = r"BRL-[A-Z]{2,4}-\d{2}"
-NFR = r"NFR-\d{3}"
+NFR = r"(?<!TC-)NFR-\d{3}"         # lookbehind: TC-NFR-### is a test case, not a requirement mention
 US = r"US-\d{4}"
 AC = r"AC-\d{4}-\d{2}"
 TC_E = r"TC-\d{2}-\d{3}"
@@ -249,6 +249,17 @@ def load_nfr():
             key = c[0] if re.match(r"(T\d{2}|LT-\d{2}|DR-\d|M-\d{2})$", c[0]) else f"§{secname[4:]} {c[0][:28]}"
             for n in set(re.findall(NFR, line) + expand_req_ranges(line)):
                 plan[n].add(key)
+    # Part 6.7 §6.7.6.1: Part 4.2 load profiles mapped onto Part 6.1 runs (errata 83) add plan items per NFR
+    for f in sorted(glob.glob(BP + "Part-06-7_*.md")):
+        t7 = read(f)
+        if "### 6.7.6.1" not in t7:
+            continue
+        body = t7.split("### 6.7.6.1", 1)[1].split("\n### ", 1)[0]
+        for line in body.split("\n"):
+            m = re.match(rf"\| ({NFR}) \|", line)
+            if m and len(cells(line)) >= 4:
+                for k in re.findall(r"LT-\d{2}(?:-[A-Z0-9]+)?|DR-\d|T\d{2}\b|§6\.1\.[\d.]+", cells(line)[3]):
+                    plan[m.group(1)].add(k)
     return nfr, plan
 
 
@@ -907,7 +918,7 @@ The filter FRs FR-FLT-01…11 and FR-FLT-RULES are covered by the parameterized 
 
 ## 6.6.5 (d) NFR → test (generated)
 
-Columns: the Part 4.2 test method (as written there), the Part 6.1 non-functional plan items that cite the NFR (test types T01…T21, load tests LT-01…12, DR drills DR-1…9, migration tests M-01…17 and the §6.1.14 plan rows), the test cases that cite it (every NFR has its gate-level TC-NFR in Part 6.7 §6.7.2) and the production verification items of Part 6.7 §6.7.3. **LT identifiers are Part 6.1's** (errata 83, DEC-116): Part 4.2's LT-01…LT-11 and CH-01…04 are NFR load profiles executed inside the Part 6.1 runs according to the mapping in Part 6.7 §6.7.1.4 (GAP-171 resolved).
+Columns: the Part 4.2 test method (as written there), the Part 6.1 non-functional plan items that cite the NFR (test types T01…T21, load tests LT-01…12, DR drills DR-1…9, migration tests M-01…17 and the §6.1.14 plan rows, plus the Part 6.1 runs and drills that Part 6.7 §6.7.6.1 maps to the NFR), the test cases that cite it (every NFR has its gate-level TC-NFR in Part 6.7 §6.7.2) and the production verification items of Part 6.7 §6.7.3. **LT identifiers are Part 6.1's** (errata 83, DEC-116): Part 4.2's LT-01…LT-11 and CH-01…04 are NFR load profiles executed inside the Part 6.1 runs according to the mapping in Part 6.7 §6.7.1.4 (GAP-171 resolved).
 
 <!--RTM:d-->
 

@@ -414,65 +414,65 @@ Every ID family used across the parts. **Actual range found** and **Distinct IDs
 
 | Prefix | Meaning | Actual range found | Distinct IDs | Owning part | Defined in (most rows) | Parts citing |
 |---|---|---|---|---|---|---|
-| BR-M## | Business requirement derived from a BRD module line (M01–M66) | 01–66 | 66 | 1 (§1.12) | 1, 6.6, 5.2 | 21 |
-| BR-S### | Business requirement derived from a source statement | 001–140 | 140 | 1 (§1.12) | 1 | 23 |
-| BR-{group} | Group-level business requirement (tenant, website, automation, service, QA) | AUTO; QA; SVC; TENANT; WEB | 5 | 1 (§1.12) | 1, 6.6 | 18 |
-| FR-W## | Functional requirement for Website/Portal screen W01–W34 | 01–34 | 34 | 2.1 (§2.4) | 2.1, 6.6, 5.3, 6.3b | 21 |
-| FR-A### | Functional requirement for Admin Command Centre screen A001–A113 | 001–113 | 113 | 2.1 (§2.4) | 2.1, 6.6, 5.1c, 6.5 | 23 |
-| FR-OP### | Operational/platform functional requirement (health, readiness, config) | 001–003 | 3 | 2.1 (§2.4) | 2.1, 6.6, 5.3, 6.3b | 21 |
-| FR-{area}-## | Cross-cutting functional requirement by area (standards, data mgmt, UI states, filters, publication, adapters, …) | ADP 01; COP 01; CSM 01; DM 01–04; ENG 01; FLT 01–11; NEG 01; PUB 01; SRCH 01; STD 01–04; UIS 01–04 | 30 | 2.1 (§2.4) | 2.1, 6.6, 6.3a, 6.2b | 27 |
-| NFR-### | Non-functional requirement | 001–099 | 99 | 0 (§0.6); detailed in 4.2 | 4.2, 6.6, 0, 6.4 | 31 |
-| DEC-### | Binding decision (DEC-001…065 Part 0A; DEC-066…140 Part 9.1) | 001–140 (1 unused) | 139 | 0A, 9.1 | 9.1, 0A, 5.2, 6.4 | 32 |
-| BRL-{domain}-## | Business rule, by rule domain | AI 01–12; APR 01–11; AUT 01–10; BID 01–06; CTR 01–05; ELG 01–18; FIN 01–08; LCY 01–06; MKT 01–10; MTG 01–06; ORD 01–06; PRV 01–07; PUB 01–06; QTE 01–07; SCR 01–09; SEQ 01–05; SRC 01–10; SVC 01–07; TEN 01–12 | 161 | 2.3 | 2.3, 6.5, 6.3a, 6.3b | 27 |
-| R## | RBAC role (R01–R20; L suffix = startup-scoped lead variant) | 01–20; L 03–05 (1 unused) | 22 | 2.3 (§2.21) | 2.3, 7.3 | 26 |
-| P## | Persona | 01–90 (72 unused) | 18 | 1 (§1.6) | 1, 7.1, 8.1 | 16 |
-| KPI-## | Key performance indicator | 01–31 | 31 | 1 (§1.4) | 1, 8.2 | 27 |
-| EP-## | Epic | 01–21 | 21 | 0 (§0.10.2); stories in 5 | 0, 6.6, 8.1, 5.2 | 23 |
+| BR-M## | Business requirement derived from a BRD module line (M01–M66) | 01–66 | 66 | 1 (§1.12) | 1, 6.6, 5.2 | 22 |
+| BR-S### | Business requirement derived from a source statement | 001–140 | 140 | 1 (§1.12) | 1, 6.6, 6.7 | 25 |
+| BR-{group} | Group-level business requirement (tenant, website, automation, service, QA) | AUTO; QA; SVC; TENANT; WEB | 5 | 1 (§1.12) | 1, 6.6 | 19 |
+| FR-W## | Functional requirement for Website/Portal screen W01–W34 | 01–34 | 34 | 2.1 (§2.4) | 2.1, 6.6, 5.3, 6.3b | 22 |
+| FR-A### | Functional requirement for Admin Command Centre screen A001–A113 | 001–113 | 113 | 2.1 (§2.4) | 2.1, 6.6, 5.1c, 6.5 | 24 |
+| FR-OP### | Operational/platform functional requirement (health, readiness, config) | 001–003 | 3 | 2.1 (§2.4) | 2.1, 6.6, 5.3, 6.3b | 22 |
+| FR-{area}-## | Cross-cutting functional requirement by area (standards, data mgmt, UI states, filters, publication, adapters, …) | ADP 01; COP 01; CSM 01; DM 01–04; ENG 01; FLT 01–11; NEG 01; PUB 01; SRCH 01; STD 01–04; UIS 01–04 | 30 | 2.1 (§2.4) | 2.1, 6.6, 6.3a, 6.7 | 28 |
+| NFR-### | Non-functional requirement | 001–099 | 99 | 0 (§0.6); detailed in 4.2 | 4.2, 6.6, 6.7, 0 | 33 |
+| DEC-### | Binding decision (DEC-001…065 Part 0A; DEC-066…140 Part 9.1) | 001–156 (1 unused) | 155 | 0A, 9.1 | 9.1, 0A, 5.2, 6.4 | 34 |
+| BRL-{domain}-## | Business rule, by rule domain | AI 01–12; APR 01–11; AUT 01–10; BID 01–06; CTR 01–05; ELG 01–18; FIN 01–08; LCY 01–06; MKT 01–10; MTG 01–06; ORD 01–06; PRV 01–07; PUB 01–06; QTE 01–07; SCR 01–09; SEQ 01–05; SRC 01–10; SVC 01–07; TEN 01–12 | 161 | 2.3 | 2.3, 6.5, 6.3a, 6.3b | 29 |
+| R## | RBAC role (R01–R20; L suffix = startup-scoped lead variant) | 01–20; L 03–05 (1 unused) | 22 | 2.3 (§2.21) | 2.3, 7.3 | 27 |
+| P## | Persona | 01–90 (72 unused) | 18 | 1 (§1.6) | 1, 7.1, 8.1 | 18 |
+| KPI-## | Key performance indicator | 01–31 | 31 | 1 (§1.4) | 1, 8.2 | 29 |
+| EP-## | Epic | 01–21 | 21 | 0 (§0.10.2); stories in 5 | 0, 6.6, 8.1, 5.2 | 24 |
 | US-#### | User story (first two digits = epic) | 01 0001–0017; 02 0001–0008; 03 0001–0011; 04 0001–0008; 05 0001–0012; 06 0001–0008; 07 0001–0010; 08 0001–0015; 09 0001–0006; 10 0001–0007; 11 0001–0010; 12 0001–0010; 13 0001–0013; 14 0001–0012; 15 0001–0011; 16 0001–0012; 17 0001–0010; 18 0001–0015; … (21 families) | 230 | 5 | 5.3, 6.5, 5.2, 5.1b | 18 |
 | AC-####-## | Acceptance criterion of a user story | AC-0101-01 … AC-2110-05 (story-scoped; numbering restarts per story) | 1356 | 5 | 6.4 | 15 |
 | TS-##-## | Test scenario (epic-based, DEC-093) | 01 01–20; 02 01–08; 03 01–11; 04 01–08; 05 01–12; 06 01–08; 07 01–10; 08 01–18; 09 01–07; 10 01–08; 11 01–11; 12 01–11; 13 01–14; 14 01–13; 15 01–14; 16 01–11; 17 01–11; 18 01–17; 19 01–13; 20 01–13; 21 01–12 | 250 | 6 | 6.5, 6.3a, 6.2a, 6.2b | 6 |
-| TC-##-### | Test case (epic-based, DEC-093) | 01 001–133; 02 001–057; 03 001–099; 04 001–056; 05 001–086; 06 001–056; 07 001–075; 08 001–191; 09 001–047; 10 001–060; 11 001–075; 12 001–083 (1 unused); 13 001–128; 14 001–101; 15 001–109; 16 001–084; 17 001–091; 18 001–138; 19 001–102; 20 001–105; … (21 families) | 1980 | 6 | 6.5, 6.3a, 6.2a, 6.3b | 8 |
-| TC-AI-AG###-### | AI agent test case (per agent; format per DEC-113) | 001 001–017; 002 001–024; 003 001–015; 004 001–021; 005 001–019; 006 001–018; 007 001–014; 008 001–016; 009 001–017; 010 001–014; 011 001–021; 012 001–018; 013 001–021; 014 001–019; 015 001–030; 016 001–016; 017 001–031; 018 001–019; 019 001–018; … (36 families) | 586 | 6 | 6.4 | 2 |
+| TC-##-### | Test case (epic-based, DEC-093) | 01 001–133; 02 001–057; 03 001–099; 04 001–056; 05 001–086; 06 001–056; 07 001–075; 08 001–191; 09 001–047; 10 001–060; 11 001–075; 12 001–083 (1 unused); 13 001–128; 14 001–101; 15 001–109; 16 001–084; 17 001–091; 18 001–138; 19 001–102; 20 001–105; … (21 families) | 1980 | 6 | 6.5, 6.3a, 6.2a, 6.3b | 9 |
+| TC-AI-AG###-### | AI agent test case (per agent; format per DEC-113) | 001 001–017; 002 001–024; 003 001–015; 004 001–021; 005 001–019; 006 001–018; 007 001–014; 008 001–016; 009 001–017; 010 001–014; 011 001–021; 012 001–018; 013 001–021; 014 001–019; 015 001–030; 016 001–016; 017 001–031; 018 001–019; 019 001–018; … (36 families) | 586 | 6 | 6.4 | 3 |
 | TC-AU-AU###-### | Automation test case (per automation; DEC-113) | 001 001–005; 002 001–015 (1 unused); 003 001–004; 004 001–005; 005 001–005; 006 001–015; 007 001–004; 008 001–004; 009 001–003; 010 001–009; 011 001–004; 012 001–008; 013 001–003; 014 001–004; 015 001–004; 016 001–004; 017 001–004; 018 001–003; … (43 families) | 187 | 6 | 6.4 | 2 |
 | AG-### | AI agent | 001–036 | 36 | 7.1/7.2 | 7.2, 6.4, 7.1, 6.6 | 12 |
 | AU-### | Deterministic or AI-assisted automation | 001–043 | 43 | 7.1/7.2 | 7.1, 6.4, 6.6, 7.2 | 6 |
 | ADR-### | Architecture decision record | 001–085 (15 unused) | 70 | 3.1 (001–043), 4.1/4.3 (050–069), 7.3 (070–085) | 3.1, 7.3, 4.3, 4.1 | 13 |
-| RSK-### | Risk (feeds the Part 8 risk register) | 001–379 (217 unused) | 162 | 8 (raised in 3–7) | 8.2, 7.3, 3.1, 4.1 | 12 |
+| RSK-### | Risk (feeds the Part 8 risk register) | 001–379 (217 unused) | 162 | 8 (raised in 3–7) | 8.2, 7.3, 3.1, 4.1 | 13 |
 | THR-### | STRIDE threat | 001–082 | 82 | 4.1 (§4.2.2) | 4.1, 6.4 | 9 |
-| SC-## | Security control | 01–50 | 50 | 4.1 | 4.1, 6.4 | 8 |
+| SC-## | Security control | 01–50 | 50 | 4.1 | 4.1, 6.4 | 9 |
 | RB-### | Operational runbook | 001–015 | 15 | 4.3 | 4.3 | 5 |
 | SLO-## | Service level objective | 01–12 | 12 | 4.2/4.3 | 4.3 | 1 |
 | AL-## | Alert rule | 01–49 | 49 | 4.1/4.3 | 4.3 | 2 |
-| LT-## | Load/performance test (DEC-092: owned by 6.1) | 01–12 | 12 | 6.1 | 6.1, 4.2 | 11 |
+| LT-## | Load/performance test (DEC-092: owned by 6.1) | 01–12 | 12 | 6.1 | 6.1, 4.2 | 12 |
 | DQ-### | Data quality check | 001–032 | 32 | 3.3 | 3.3 | 2 |
 | API-### | API operation in the derived catalogue (555 ops, DEC-104) | 001–555 | 555 | 3.2 | 3.2 | 1 |
 | NT-### | Internal notification type | 001–046 | 46 | 2.4 | 2.4 | 16 |
 | NX-## | External (customer-facing) notification type | 01–15 | 15 | 2.4 | 2.4 | 10 |
-| RP-## | Report/analytics view | 01–30 | 30 | 2.4 | 2.4 | 14 |
+| RP-## | Report/analytics view | 01–30 | 30 | 2.4 | 2.4 | 15 |
 | SR-## | Search capability | 01–08 | 8 | 2.4 | 2.4 | 11 |
 | CFG-## | Configuration domain | 01–32 | 32 | 2.4 | 2.4 | 20 |
-| WF-## | End-to-end workflow / process flow | 01–14 | 14 | 2.2 | 2.2 | 23 |
-| AP-## | Acceptance procedure (DEC-014) | 01–10 | 10 | 0A; tests in 6 | 6.1 | 27 |
+| WF-## | End-to-end workflow / process flow | 01–14 | 14 | 2.2 | 2.2 | 25 |
+| AP-## | Acceptance procedure (DEC-014) | 01–10 | 10 | 0A; tests in 6 | 6.1 | 28 |
 | CAP-## | Business capability (capability map) | 01–20 | 20 | 2.1 | 2.1 | 1 |
 | CA-{code} | Acceptance profile applied to FRs (e.g. CA-PUB, CA-FIN) | ADMIN; AI; ALL; APPROVE; CONFIG; DISPATCH; FIN; INTAKE; PORTAL; PUB | 10 | 2.1 | 2.1 | 26 |
 | J-## | User journey | 01–77 (30 unused) | 47 | 1 (§1.11) | 1 | 4 |
 | SH-## | Stakeholder | 01–14 | 14 | 1 | 1 | 3 |
-| CN-## | Constraint | 01–15 | 15 | 1 | 1 | 8 |
+| CN-## | Constraint | 01–15 | 15 | 1 | 1 | 9 |
 | DP-## | External dependency | 01–15 | 15 | 1 | 1, 8.1 | 12 |
-| X-## | Explicit exclusion (out of scope) | 01–12 | 12 | 1 | 1 | 5 |
-| L-## | Later / future scope item (W6+) | 01–09 | 9 | 1 | 1 | 6 |
+| X-## | Explicit exclusion (out of scope) | 01–12 | 12 | 1 | 1 | 6 |
+| L-## | Later / future scope item (W6+) | 01–09 | 9 | 1 | 1 | 7 |
 | VH-## | Value hypothesis | 01–06 | 6 | 1 | 1 | 4 |
-| PP-## | Product principle | 01–12 | 12 | 1 | 1 | 8 |
+| PP-## | Product principle | 01–12 | 12 | 1 | 1 | 11 |
 | PR-## | Problem statement | 01–10 | 10 | 1 | 1 | 1 |
 | G-## | Business goal | 01–10 | 10 | 1 | 1 | 4 |
 | OQ-### | Open question (all answered in 0A) | 001–030 | 30 | 0, 0A | 0, 0A | 3 |
 | AMB-# | Ambiguity in the source (resolved DEC-049…058) | 1–10 | 10 | 0, 0A | 0 | 3 |
-| E-## | Errata item (Part 9.1, E-01…); note E-# (one digit) = engine invariant in 2.2 | 01–80 (2 unused) | 78 | 9.1 | referenced only | 1 |
+| E-## | Errata item (Part 9.1, E-01…); note E-# (one digit) = engine invariant in 2.2 | 01–96 (2 unused) | 94 | 9.1 | referenced only | 1 |
 | ABAC-## | Attribute-based access control rule | 01–12 | 12 | 2.3 | 2.3 | 20 |
 | ENT-### | Logical data entity | 001–199 | 199 | 3.3 | 3.3 | 3 |
 | CK-## | Database check constraint pattern | 01–24 | 24 | 3.3 | 3.3 | 2 |
 | UQ-{kind}-## | Uniqueness/idempotency key or duplicate rule | DUP 01–05; IDEM 01–19 | 24 | 3.3 | 3.3 | 2 |
-| AD-## | Architecture driver | 01–20 | 20 | 3.1 | 3.2, 3.1 | 2 |
+| AD-## | Architecture driver | 01–20 | 20 | 3.1 | 3.2, 3.1 | 3 |
 | ARP-## | Architecture principle | 01–15 | 15 | 3.1 | 3.1 | 2 |
 | FM-## | Failure mode (resilience analysis) | 01–17 | 17 | 3.1 | 3.1 | 2 |
 | IP-## | Integration pattern | 01–10 | 10 | 3.2 | 3.2 | 1 |
@@ -487,29 +487,29 @@ Every ID family used across the parts. **Actual range found** and **Distinct IDs
 | AIR-## | AI-specific risk (injection, leakage, …) | 01–12 | 12 | 4.1 | 4.1, 6.4 | 3 |
 | DPIA-T# | DPIA trigger | 1–10 | 10 | 4.1 | 4.1 | 1 |
 | {rule set}-R# | Regulatory or design rule set (EU/UK GDPR, IT Act, WhatsApp, PCI, TRAI, GST, Canada, index, reporting) | CA 1; EU 1–11; GST 1–5; IT 1–5; IX 1–7 (1 unused); PCI 1–4; RPT 1–10; TR 1–3; WA 1–7 | 52 | 4.1, 3.3, 2.4 | 4.1, 2.4, 3.3 | 10 |
-| CH-## | Chaos/resilience experiment | 01–04 | 4 | 4.2 | 4.2 | 2 |
+| CH-## | Chaos/resilience experiment | 01–04 | 4 | 4.2 | 4.2 | 4 |
 | PL-## | CI/CD pipeline stage | 01–44 (23 unused) | 21 | 4.3 | 4.3 | 3 |
 | DB-## | Operational dashboard | 01–10 | 10 | 4.3 | 4.3 | 2 |
 | DM-### | Story-dimension matrix row (Part 5.1a) | 001–057 | 57 | 5.1a | 5.1a | 2 |
 | MAS-# / RR-# | Mandatory AC scenario / required-risk scenario (story template) | MAS 1–9; RR 1–8 | 17 | 5.1a | referenced only | 4 |
 | TP-## | Test principle | 01–12 | 12 | 6.1 | 6.1 | 7 |
-| QO-# | Quality objective | 1–10 | 10 | 6.1 | 6.1 | 4 |
+| QO-# | Quality objective | 1–10 | 10 | 6.1 | 6.1 | 3 |
 | RA-## | Risk area (risk-based testing) | 01–30 | 30 | 6.1 | 6.1 | 7 |
 | RBR-# | Release-blocking rule | 1–8 | 8 | 6.1 | 6.1 | 5 |
 | PW-## | Pairwise test combination | 01–26 | 26 | 6.1 | 6.1 | 2 |
 | EG-## | Error-guessing test idea | 01–20 | 20 | 6.1 | 6.1 | 7 |
 | BVA-D## | Boundary-value analysis datum | 01–14 | 14 | 6.1 | 6.1 | 3 |
-| DR-# | Disaster-recovery drill | 1–9 | 9 | 6.1 | 6.1 | 5 |
+| DR-# | Disaster-recovery drill | 1–9 | 9 | 6.1 | 6.1 | 6 |
 | CI-### | Candidate AI idea (discovery register) | 001–135 | 135 | 7.1 | 7.1 | 4 |
 | TL-## | Agent tool in the tool registry | 01–20 | 20 | 7.2 | 7.2 | 3 |
 | D0# | Delivery persona (delivery-lifecycle AI) | 01–06 | 6 | 7.1 | 7.1 | 3 |
-| B## | Budget line (cost table; GAP-006, DEC-020) | 01–23 | 23 | 0, 0A, 8 | 8.2 | 24 |
+| B## | Budget line (cost table; GAP-006, DEC-020) | 01–23 | 23 | 0, 0A, 8 | 8.2 | 27 |
 | UX-## | UX principle | 01–09 | 9 | 2.5 | 2.5 | 4 |
 | I18N-## | Internationalization rule | 01–11 | 11 | 2.4 | 2.4 | 9 |
-| OPT-##-## | FRD optimisation item (source ID, cited) | 01 01; 03 01; 04 01–08; 07 01; 10 01; 11 01; 12 01–04; 15 01; 20 01–04 | 22 | Source (FRD) | 2.1 | 20 |
+| OPT-##-## | FRD optimisation item (source ID, cited) | 01 01; 03 01; 04 01–08; 07 01; 10 01; 11 01; 12 01–04; 15 01; 20 01–04 | 22 | Source (FRD) | 2.1 | 21 |
 | SM-UT-### | Source test alias (FRD; aliases only, DEC-094) | 001–057 (51 unused) | 6 | Source (FRD); 6 | referenced only | 4 |
-| M## | Source module M01–M66 (BRD §7) | 01–66 | 66 | Source (BRD) | referenced only | 28 |
-| W## / A### | Screen ID: Website/Portal W01–W34, Admin A001–A113 | A 001–113; W 001–034 | 147 | Source (FRD §16.2); 2.5 | 2.5, 6.4 | 33 |
+| M## | Source module M01–M66 (BRD §7) | 01–66 | 66 | Source (BRD) | referenced only | 30 |
+| W## / A### | Screen ID: Website/Portal W01–W34, Admin A001–A113 | A 001–113; W 001–034 | 147 | Source (FRD §16.2); 2.5 | 2.5, 6.4 | 34 |
 
 <!-- GEN:IDREG:END -->
 
@@ -548,11 +548,13 @@ The programme allocates a tag number range to each batch. The table below is **g
 | Part 6.3a | 188–190 | — | — | 077–078 | 5 |
 | Part 6.4 | 191–193 | 168–169 | — | 079 | 6 |
 | Part 6.5 | 194–196 | 170–171 | — | — | 5 |
-| Part 6.6 | — | 172 | — | 080 | 2 |
+| Part 6.6 | — | 172 | — | 080, 090 | 3 |
+| Part 6.7 | 215–218 | — | — | — | 4 |
 | Part 7.1 | 146 | 143 | — | 061 | 3 |
 | Part 7.3 | 140–145, 147 | 140–142, 144–145 | 120–122 | 060, 062–069 | 24 |
 | Part 8.1 | 197–205, 207, 209 | 173–174, 176–177 | 140–142 | 081–087 | 25 |
 | Part 8.2 | 206, 208 | 175, 178–179 | 143–144 | 088–089 | 9 |
+| Part 9.1 | — | 180–182 | — | — | 3 |
 
 <!-- GEN:ALLOC:END -->
 
@@ -566,12 +568,12 @@ The programme allocates a tag number range to each batch. The table below is **g
 
 | Register | Tags found | Resolved / accepted / closed / cited by DEC | Other status |
 |---|---|---|---|
-| Assumption | 116 | 4 | 112 |
-| Gap | 90 | 42 | 48 |
+| Assumption | 120 | 4 | 116 |
+| Gap | 93 | 47 | 46 |
 | Conflict | 43 | 43 | 0 |
-| Recommendation | 89 | 21 | 68 |
+| Recommendation | 90 | 90 | 0 |
 
-ADR index: **70** ADRs. DEC index: **140** decisions. Parts scanned: **33** (0–9.1).
+ADR index: **70** ADRs. DEC index: **156** decisions. Parts scanned: **35** (0–9.3).
 
 <!-- GEN:TAGSUMMARY:END -->
 
@@ -699,6 +701,10 @@ Status "Cited by DEC-…" means a DEC row in Part 0A or 9.1 cites the assumption
 | ASSUMPTION-207 | 8.1 §8.1.7.3 | External dependency lead times are typical ranges; each is verified when the request is made | Open — validate per source part |
 | ASSUMPTION-208 | 8.2 §8.2.2.2 | Training is delivered in-house (QA, growth/compliance lead, PO) with help articles and recorded sessions; no learning-management system is bought | Open — validate per source part |
 | ASSUMPTION-209 | 8.1 §8.1.2.2 | The 30-day monitored pilot (BRD §8 W5 exit) may start on Release 1 scope after its go/no-go and extend to the closure scope when that is activated; the W5 exit needs 30 days on each scope | Open — validate per source part |
+| ASSUMPTION-215 | 6.6 front matter | Part 4.2 NFR load profiles with no Part 6.1 equivalent run as named variants of Part 6.1 runs, not as new LT IDs: LT-01-AIGW (AI gateway, 4.2-LT-09), LT-01-SKEW (noisy neighbour, 4.2-LT-11), LT-08-Y2 (Year 2 profile, 4.2-LT-10), LT-12-ADM (Admin front-end … | Open — validate per source part |
+| ASSUMPTION-216 | 6.7 §6.7.4.2 | A filter fixture pack EDGE-FLT (FLT-FIX-A/M/E/O) is added to GSE-SYN with the exact rows of §6.7.4; the per-vertical filter labels are fixture values (configurable per tenant), and role-specific filter fields (e.g. margin_pct for R02 only) follow the … | Open — validate per source part |
+| ASSUMPTION-217 | 6.6 §6.6.3.1 | A verification item (inspection, review, analysis, demonstration) with owner, independent reviewer, evidence and wave counts as coverage for statements that are not software behaviour; the RTM reports it separately from test-case coverage | Open — validate per source part |
+| ASSUMPTION-218 | 6.7 §6.7.2.6 | NFR targets defined over a production period (availability, field Core Web Vitals, DORA, monthly FinOps, DSR completion, timeliness SLIs) are verified in two steps: a TC-NFR proves the measurement and control in staging/test; a VER records attainment from … | Open — validate per source part |
 
 <!-- GEN:ASSUMPTION:END -->
 
@@ -788,9 +794,9 @@ Status "Cited by DEC-…" means a DEC row in Part 0A or 9.1 cites the assumption
 | GAP-167 | 6.1 §6.1.16.5 | Retained test catalogue and missing alias IDs. The BRD's "624 retained product tests + 175 candidate tests" (BRD §9, §17) were not supplied; SM-UT-037, SM-UT-049 and SM-UT-050 are absent from the FRD although the range runs to 066 | Closed by DEC-094 |
 | GAP-168 | 6.4 front matter | Multilingual evaluation resources. No plan or budget for bilingual labellers (Hindi, Tamil, Odia, code-mixed Hinglish) or for curating ML-01…ML-05 and the multilingual red-team set RT-11; Part 7 GAP-142 sizes labelling at 6–10 person-days for golden sets only | Closed by DEC-116 |
 | GAP-169 | 6.4 §6.4.11.1 | No approved crisis/self-harm response. The baseline requires handover for clinical topics but defines no approved message, helpline reference or escalation for a visitor or sender in crisis (AG-017, AG-013) | Closed by DEC-115 |
-| GAP-170 | 6.5 front matter | Part 2.3 §2.25 states "162 business rules", but its family counts (TEN 12, ELG 18, SRC 10, SCR 9, AI 12, APR 11, SEQ 5, MTG 6, MKT 10, BID 6, QTE 7, CTR 5, ORD 6, FIN 8, LCY 6, PUB 6, AUT 10, PRV 7, SVC 7) sum to 161, and 161 distinct BRL IDs are defined. … | Batch 6.6 uses the 161 defined IDs as the denominator; Part 2.3 owner to correct the … |
-| GAP-171 | 6.5 §6.5.10.2 | Load-test IDs collide: Part 4.2 §4.26 defines LT-01…LT-12 differently from Part 6.1 §6.1.14.1 (for example LT-02 is "Soak at design load" in 4.2 but "Public website and portal" in 6.1; LT-05 is 50 webhooks/s for 10 min vs 2 min). ERRATA-30 says Part 6.1 owns … | Batch 6.6 traces NFRs to the Part 6.1 LT catalogue and reports the Part 4.2 cited LT … |
-| GAP-172 | 6.5 front matter | NFR-039…NFR-099 (Part 4.2 part B) have measurable targets and test methods but no test case cites them; Batches 6.2–6.5 trace to NFR-001…038 only, and Part 6.1's non-functional plans pre-date Part 4.2. NFR coverage by TC is therefore low although many of … | Open — handling per source part |
+| GAP-170 | 6.5 front matter | Part 2.3 §2.25 states "162 business rules", but its family counts (TEN 12, ELG 18, SRC 10, SCR 9, AI 12, APR 11, SEQ 5, MTG 6, MKT 10, BID 6, QTE 7, CTR 5, ORD 6, FIN 8, LCY 6, PUB 6, AUT 10, PRV 7, SVC 7) sum to 161, and 161 distinct BRL IDs are defined. … | Closed by DEC-141 |
+| GAP-171 | 6.5 §6.5.10.2 | Load-test IDs collide: Part 4.2 §4.26 defines LT-01…LT-12 differently from Part 6.1 §6.1.14.1 (for example LT-02 is "Soak at design load" in 4.2 but "Public website and portal" in 6.1; LT-05 is 50 webhooks/s for 10 min vs 2 min). ERRATA-30 says Part 6.1 owns … | Closed by DEC-143 |
+| GAP-172 | 6.5 front matter | Gap (closed by Batch 6.7) | Open — handling per source part |
 | GAP-173 | 8.1 front matter | No named business UAT participants or approved time exist (second half of GAP-165) | Open — handling per source part |
 | GAP-174 | 8.1 §8.1.6.5 | C03 has no line for the QA uplift, DevOps front-load, UX contractor, independent reviewer, pen tests or external counsel | Open — handling per source part |
 | GAP-175 | 8.2 §8.2.6 | KPI-03, 05, 09, 10, 11, 15, 22, 26, 28 have "baseline" targets without values; baseline capture dates are set in §8.2.6 | Open — handling per source part |
@@ -798,6 +804,9 @@ Status "Cited by DEC-…" means a DEC row in Part 0A or 9.1 cites the assumption
 | GAP-177 | 8.1 §8.1.1.3 | The organisation's holiday calendar and leave policy are not in the baseline | Open — handling per source part |
 | GAP-178 | 8.2 §8.2.2.2 | No owner for help-centre content and training materials | Open — handling per source part |
 | GAP-179 | 8.1 §8.1.3.3 | No tenant-facing status page or incident channel (Part 4.3 GAP-126) is decided before the first external tenant | Open — handling per source part |
+| GAP-180 | 9.1 §9.1.5 | DEC-151 · E-91 · Part 9.2 (GAP-180) · No central tag allocation log · §9.2.3 reconstruction is authoritative; future tags continue from the highest number in each register · 9.2 | Closed by DEC-151 |
+| GAP-181 | 9.1 §9.1.5 | DEC-148 · E-88 · Part 9.2 (GAP-181) · ID family collisions: AD-## (3.1 drivers vs 3.2 adapters), PP-## (1 principles vs 6.2 precondition profiles), D-# (3.3 drills vs 5.1a DoD items), B-## (3.1 cost rows vs budget lines B##) · IDs stay as written; cross-part … | Closed by DEC-148 |
+| GAP-182 | 9.1 §9.1.5 | DEC-149 · E-89 · Part 9.2 (GAP-182) · 68 RECOMMENDATIONs have no recorded accept/reject · All proposed RECOMMENDATION-001…090 are accepted into the baseline under the delegated authority, except where a DEC states otherwise (e.g. ADR-043 superseded by … | Closed by DEC-149 |
 
 <!-- GEN:GAP:END -->
 
@@ -849,7 +858,7 @@ Resolution sources: **Part 0A** (DEC-001…065), **Part 9.1** (DEC-066…140, in
 | CONFLICT-138 | 5.3 US-2008 Import with dry-run validation a | FR-A103 import is W1 (DEC-039) but sits in EP-20 (a W5 epic) under BR-SVC (Should), although owned startups (BR-TENANT, Must) need import in W1. Resolution: US-2008 is scheduled in W1 at Should (cannot exceed its BR); the Product Owner … | Resolved — Part 9.1 (DEC-073) |
 | CONFLICT-140 | 8.1 front matter | Errata 34 defines W0-A as environments, identity spike, CI, RLS/outbox/PDP skeletons and catalogue core, while Part 5.1a §5.5.3 lists US-0104, US-0301, US-0401, US-0402 and US-0404 in W0-A. Resolution: errata 34 is binding; those five … | Resolved — Part 9.1 (DEC-125) |
 | CONFLICT-141 | 8.1 §8.1.2.2 | The full DEC-034 W0 scope (139 SP mid including EP-17 and EP-21 W0 stories) cannot complete by Day 30 even with the split. Resolution: Gate W0-B (Day 30) checks the control set built in Sprint 1; a W0-B completion checkpoint on Day 40 … | Resolved — Part 9.1 (DEC-125) |
-| CONFLICT-142 | 8.1 §8.1.2.1 | BRD §8 day-phase gates vs DEC-005 capacity distribution: Release 1 content ≈ 307 pd vs ≈ 169 pd capacity by Day 90. Resolution: RECOMMENDATION-081 (re-baselined calendar) with Option E available | Resolved — Part 9.1 (DEC-124) |
+| CONFLICT-142 | 6.7 §6.7.5.3 | BRD §8 day-phase gates vs DEC-005 capacity distribution: Release 1 content ≈ 307 pd vs ≈ 169 pd capacity by Day 90. Resolution: RECOMMENDATION-081 (re-baselined calendar) with Option E available | Resolved — Part 9.1 (DEC-124) |
 | CONFLICT-143 | 8.1 §8.1.8.2 | Pen-test timing: Part 4.1 §4.16 "before Release 1 production exposure of the portal (end W3)" vs Part 6.1 RECOMMENDATION-073 "before the first real controlled pilot (W4)". Resolution: pen test 1 at Day 141–150 covers both (portal live in … | Resolved — Part 9.1 (DEC-126) |
 | CONFLICT-144 | 8.2 §8.2.1.2 | Part 3.1 ADR-043 plans "no paid WAF at pilot", while errata 18 requires AWS WAF from W2; errata 18 also says "B07 is revised" without a figure. Resolution: errata 18 governs; WAF is charged to B21 (≈ ₹1,300–1,800/month) from public intake … | Resolved — Part 9.1 (DEC-127) |
 
@@ -863,95 +872,96 @@ Resolution sources: **Part 0A** (DEC-001…065), **Part 9.1** (DEC-066…140, in
 
 | ID | First seen | Recommendation (statement) | Status |
 |---|---|---|---|
-| RECOMMENDATION-001 | 0 §0.3.3 | Adopt WCAG 2.2 AA as the accessibility standard for Website, Portal and Admin; automated axe checks in CI plus manual screen-reader passes | Accepted (DEC-098) |
-| RECOMMENDATION-002 | 0 §0.4 | Initial SLOs: Website/Portal availability 99.5% (pilot) → 99.9% (scale gate); Admin 99.5%; p95 API read ≤ 500 ms, write ≤ 800 ms (excluding provider calls); RPO ≤ 15 min (PITR), RTO ≤ 4 h; outbox dispatch lag p95 ≤ 60 s (consistent with … | Accepted (DEC-018) |
-| RECOMMENDATION-003 | 0 §0.5 | Allow a lighter Claude tier (e.g. Haiku-class) for high-volume classification/extraction where evals show parity. Deviates from "Sonnet only", consistent with FRD OPT-10-01 | Accepted (DEC-007) |
-| RECOMMENDATION-004 | 0 §0.8 | Data classification scheme (Public, Internal, Confidential, Restricted). Restricted = personal data, children's data, health-adjacent, financial, credentials. Restricted data never goes to free-tier models; redact or block | Accepted |
-| RECOMMENDATION-005 | 0 §0.8 | Feature flags (open-source, e.g. django-waffle or Unleash OSS) for every external channel, autonomy mode and paid adapter; flags default OFF | Accepted |
-| RECOMMENDATION-006 | 0 §0.8 | OpenTelemetry traces/metrics with a correlation ID propagated from HTTP → outbox → Celery → adapter → webhook | Accepted |
-| RECOMMENDATION-007 | 0 §0.8 | STRIDE threat model plus DPIAs (Data Protection Impact Assessments) for EduVerse (children) and MedMaarg (health-adjacent) flows before activation | Accepted |
-| RECOMMENDATION-008 | 0 §0.8 | Define the Admin Copilot as a read-only, grounded assistant (L0/L1) that answers from scoped records and approved knowledge with citations and can draft but never execute | Accepted (DEC-035) |
-| RECOMMENDATION-009 | 0 §0.4 | Scoped global search (PostgreSQL full-text + trigram) across organizations, contacts, deals, documents, with RLS enforced | Accepted |
-| RECOMMENDATION-010 | 0 §0.8 | Infrastructure as Code (Terraform/OpenTofu) and immutable container images; environments dev → test → staging → prod | Accepted |
-| RECOMMENDATION-011 | 0 §0.8 | Consumer-driven / schema contract tests for every provider adapter and webhook, with sandbox fixtures | Accepted |
-| RECOMMENDATION-012 | 0 §0.8 | A single Policy Decision Point service (deterministic) for eligibility, consent, jurisdiction, quiet hours, frequency caps, budget and approval-hash checks, called at plan time *and* at dispatch | Accepted |
-| RECOMMENDATION-013 | 0 §0.5 | Merge duplicated acceptance procedures (BRD §15/§16, FRD §14/§15) into one acceptance register | Accepted |
-| RECOMMENDATION-014 | 0 §0.3.1 | Create FR-W31…FR-W34 and FR-A109…FR-A113 with full acceptance, matching the SM-FR pattern | Accepted |
-| RECOMMENDATION-015 | 0 §0.8 | A Reconciliation console pattern (uncertain outcomes queue) shared by email, WhatsApp, social, ads, e-sign, payments | Accepted |
-| RECOMMENDATION-016 | 0 §0.8 | A Jurisdiction rule pack in the eligibility engine (India DPDP/TRAI, EU GDPR/PECR, US CAN-SPAM, Canada CASL); unknown jurisdiction = deny | Accepted (DEC-029) |
-| RECOMMENDATION-017 | 0 §0.8 | Seed synthetic data sets (two tenants, 26 startups, all four verticals, minors and health fixtures) as a versioned test asset | Accepted |
-| RECOMMENDATION-018 | 0 §0.8 | Use the dual-ledger pattern: receivables and payables as separate append-only ledgers; deal/closure states derived, never manually set | Accepted |
-| RECOMMENDATION-019 | 1 §1.4.2 | KPI-03 · Verified contact rate · contacts with verified professional channel ÷ contacts discovered · Baseline in W1; +10 pp by W5 RECOMMENDATION-019 · Monthly · Research lead · A025 | Proposed |
-| RECOMMENDATION-020 | 2.3 §2.25.6 | BRL-APR-09 · Delegation · Approvers may delegate for ≤ 14 days to a user with an equal or higher role in the same scope; audited · None · SVC · Policy | Proposed |
-| RECOMMENDATION-021 | 2.3 §2.26.1 | R15 · Auditor (read-only) · n/a · Admin · Tenant read-only, incl. audit · RECOMMENDATION-021 For internal audit and legal review | Proposed |
-| RECOMMENDATION-022 | 2.4 §2.31.4 | Attribution models offered · First-touch, last non-direct touch (default), linear, position-based (40/20/40) · M52 "attribution caveat"; default chosen for simplicity and explainability RECOMMENDATION-022 | Proposed |
-| RECOMMENDATION-023 | 2.4 §2.33.5 | User lifecycle: invite, activate, change role, expire, revoke, access review (quarterly attestation) RECOMMENDATION-023 · A002 | Proposed |
-| RECOMMENDATION-024 | 2.4 §2.34.2 | prev_hash, hash · Hash chain per tenant for tamper evidence RECOMMENDATION-024 | Proposed |
-| RECOMMENDATION-025 | 2.4 §2.35.2 | Application · DRF permission classes + object-level checks; scoped querysets by default (no unscoped manager in business code) · Static check: unscoped query usage fails CI RECOMMENDATION-025 | Proposed |
-| RECOMMENDATION-026 | 2.4 §2.36.2 | I18N-04 · Numbers formatted per locale; en-IN uses Indian digit grouping (1,00,000) with an option for international grouping in Admin; lakh/crore labels in INR summaries RECOMMENDATION-026 | Proposed |
-| RECOMMENDATION-027 | 2.5 §2.45.1 | Dark mode · Admin: supported via tokens; Website: per startup theme option RECOMMENDATION-027 | Proposed |
-| RECOMMENDATION-028 | 2.5 §2.48 | Performance budgets (public): LCP ≤ 2.5 s (p75, mid-range mobile on 4G), INP ≤ 200 ms, CLS ≤ 0.1; JS ≤ 150 KB gzip per public route RECOMMENDATION-028. | Proposed |
-| RECOMMENDATION-029 | 3.1 front matter | Atomic publication pointer via PostgreSQL (authoritative) mirrored to CloudFront KeyValueStore with immutable revision prefixes and prerendered pages | Proposed |
-| RECOMMENDATION-030 | 3.1 §3.1.1.1 | Single-instance ECS-on-EC2 pilot behind CloudFront without ALB or NAT gateway | Proposed |
-| RECOMMENDATION-031 | 3.1 §3.1.16 | Timeouts, retry policy by failure class, circuit breaker and bulkhead parameters | Proposed |
-| RECOMMENDATION-032 | 3.2 §3.2.1.7 | Extended rate-limit classes (auth, chat, portal, heavy Admin, webhooks, internal) keeping Part 2.4 defaults | Proposed |
-| RECOMMENDATION-033 | 3.1 ADR-020 Event schema versioning | CloudEvents-aligned event envelope with schema registry, major/minor versioning and dual publishing | Proposed |
-| RECOMMENDATION-034 | 3.2 §3.2.5 | Fourteen-layer contract testing approach (CT-01…CT-14) | Proposed |
-| RECOMMENDATION-035 | 3.1 §3.1.6.2 | Managed malware scanning of uploads (GuardDuty Malware Protection for S3) at pilot (defined in Part 3.2) | Proposed |
-| RECOMMENDATION-036 | 3.2 §3.2.1.2 | UUIDv7 primary keys generated in the application; never expose raw IDs as capabilities; 256-bit random tokens stored as hashes for every shared link | Proposed |
-| RECOMMENDATION-037 | 3.2 §3.2.8.1 | RLS with transaction-local session variables, FORCE ROW LEVEL SECURITY, a separate write-scope variable that enforces portfolio read-only in the database, no BYPASSRLS roles, and a CI guard | Proposed |
-| RECOMMENDATION-038 | 3.1 §3.1.6.1 | Field-level envelope encryption with per-tenant KMS keys, HMAC blind indexes for lookup/suppression, crypto-shredding at offboarding | Proposed |
-| RECOMMENDATION-039 | 3.3 §3.3.6.3 | halfvec(1024) embeddings with HNSW (m 16, ef_construction 64), iterative filtered scans, hybrid retrieval; IVFFlat rejected | Proposed |
-| RECOMMENDATION-040 | 4.1 front matter | Admin SPA budgets (NFR-044), search p95 ≤ 1 s (NFR-046), chat session caps (NFR-022), AI gateway overhead and first-token targets (NFR-052) where the baseline had none | Proposed |
-| RECOMMENDATION-041 | 4.1 §4.16.3 | Vulnerability remediation SLAs (Critical 7 d, High 30 d, Medium 90 d) | Proposed |
-| RECOMMENDATION-042 | 4.1 §4.5.3 | Field-level envelope encryption with blind indexes for Restricted fields | Proposed |
-| RECOMMENDATION-043 | 4.1 §4.3.3 | MFA required for every user holding Restricted-data clearance (ABAC-05) from W2, not only privileged roles | Proposed |
-| RECOMMENDATION-044 | 4.1 §4.1.5 | Allowlisting egress proxy for workers and an SSRF-hardened fetcher pool | Proposed |
-| RECOMMENDATION-045 | 4.2 §4.21 | Release strategy: weekly trains, deploy windows inside support hours, rolling → blue/green, expand/contract migrations, monthly rollback rehearsal | Proposed |
-| RECOMMENDATION-046 | 4.2 §4.23.8 | Track DORA metrics with targets (NFR-083) | Proposed |
-| RECOMMENDATION-047 | 4.3 §4.36.1 | Feature-flag tooling and lifecycle (classes, defaults OFF, ≤ 90-day release flags, audited changes) | Proposed |
-| RECOMMENDATION-048 | 4.1 §4.5.1 | External security hygiene: MTA-STS and TLS-RPT for sending domains, security.txt, vulnerability disclosure policy; bug bounty considered at W6 | Proposed |
-| RECOMMENDATION-049 | 4.1 TB-08 Model gateway | AI red-team cadence per wave gate and canary strings to detect system-prompt and cross-tenant leakage | Proposed |
-| RECOMMENDATION-050 | 5.1a front matter | Split the W0 gate into W0-A (Day 15: identity, RLS, outbox, consent, PDP, gateway, cost cap, seed data, CI/IaC, flags) and W0-B (Day 30: remaining W0 stories, owner and claims sign-off) | Proposed |
-| RECOMMENDATION-051 | 5.1a §5.7.3 | Scenario tag convention (@happy/@alt/@neg/@val/@perm/@edge, @sec/@a11y/@obs, rule and DM tags) | Proposed |
-| RECOMMENDATION-052 | 5.1b US-0208 Import of seed catalogues and pr | One shared import engine (versioned templates, dry run, consent gating, async jobs) built in W1 and reused by EP-20 | Proposed |
-| RECOMMENDATION-053 | 5.1a §5.6.2 | Table-driven RBAC test generated from Part 2.3 §2.26.3 (42 × 15 + 10 × 4 = 670 cells) | Proposed |
-| RECOMMENDATION-054 | 5.2 US-0804 Amazon SES email adapter and ema | Shared provider-adapter contract-test kit: consumer-driven contract tests with recorded sandbox fixtures, normalised outcome classes and a nightly sandbox smoke run, used by SES, WhatsApp, Google Calendar, social, ads and e-sign adapters | Proposed |
-| RECOMMENDATION-055 | 5.2 US-1303 Decimal pricing library with exh | Property-based tests (e.g. Hypothesis) over the Decimal pricing library asserting invariants (no float, total = Σ rounded lines + tax, deterministic recompute) plus a lint rule forbidding float in money paths | Proposed |
-| RECOMMENDATION-056 | 5.2 US-0811 Quiet-hours and frequency-cap en | Eligibility "explain" API returning rule IDs and next eligible time, reused by A034 BlockedReason, A039 simulation and A058 exclusion counts | Proposed |
-| RECOMMENDATION-057 | 5.3 front matter | Closure-integrity invariant job (nightly plus event-driven): any WonContracted/Paid deal without policy evidence raises a Critical alert and enters the A089 exception queue, keeping KPI-31 at 0 | Accepted (Part 5.3) |
-| RECOMMENDATION-058 | 5.3 US-1902 Immutable publication snapshots, | Publication purge target: p95 ≤ 5 minutes from publish or rollback to all CDN edges, verified by a post-publish synthetic fetch | Proposed |
-| RECOMMENDATION-059 | 5.3 US-2106 Production release readiness and | Error-budget release policy: when a production SLO's monthly error budget is exhausted, A090 blocks non-fix releases unless the Founder records an exception | Proposed |
-| RECOMMENDATION-060 | 7.1 front matter | Haiku-first routing with per-agent eval parity and measured escalation shares | Proposed |
-| RECOMMENDATION-061 | 6.4 §6.4.1.1 | Delivery-lifecycle API usage (CI review, eval judge, fixture generation) gets its own delivery AI reserve under C03 rather than consuming B02 | Proposed |
-| RECOMMENDATION-062 | 7.2 §7.2.6 | Keep LLM traces in gateway tables + OpenTelemetry in pilot; adopt Langfuse self-hosted at growth gate; B22 stays ₹0 in pilot | Proposed |
-| RECOMMENDATION-063 | 6.4 AU-004 Data classification & PII redacti | Presidio with Indian recognizers (PAN, Aadhaar patterns, Indian phone formats, Indic names) for AU-004 | Proposed |
-| RECOMMENDATION-064 | 6.4 AU-042 Usage metering & entitlement enfo | Define "AI task" as one completed agent invocation returning a validated output (§7.5.4) | Proposed |
-| RECOMMENDATION-065 | 7.3 §7.3.3 | First Tier 2 opt-in limited to Owner Portfolio, agents AG-003/004/005/017, after legal review | Proposed |
-| RECOMMENDATION-066 | 7.3 §7.4.2 | Weekly 30-minute AI cost and quality review (RP-20, RP-21) owned by the FinOps lead | Proposed |
-| RECOMMENDATION-067 | 7.3 §7.3.3 | W6 spike: self-hosted small open model (vLLM in ap-south-1) as Tier 2e for classifiers; evaluate cost vs Haiku | Proposed |
-| RECOMMENDATION-068 | 6.4 §6.4.9.2 | AI incident severity scheme AI-S1…S3 (§7.6.10) | Proposed |
-| RECOMMENDATION-069 | 6.4 AG-018 Content & Campaign Studio Drafter | Configurable AI-content labelling per jurisdiction (EU AI Act Art. 50; India IT Rules amendments if adopted) | Accepted (Part 7.3) |
-| RECOMMENDATION-070 | 6.1 front matter | Test pyramid target proportions (unit 60–70%, integration 15–25%, contract 4–6%, system 5–8%, E2E 2–4%) and coverage targets per layer, including mutation score ≥ 85% for money, tax, ledger and PDP modules, ≥ 80% for scoring and ≥ 75% for … | Proposed |
-| RECOMMENDATION-071 | 6.1 §6.1.6.3 | A test-only provider simulator with scriptable fault modes (timeout-after-submit, duplicate and out-of-order webhooks, signature failures, throttling) contract-tested against recorded sandbox fixtures, plus a clock control facility … | Proposed |
-| RECOMMENDATION-072 | 6.1 §6.1.5.4 | Evidence record (EVR) schema implementing the BRD §12.2 fields, and the certification ladder L-S → L-T → L-C → L-P so that A090 can fail closed and no synthetic result is shown as production certification | Proposed |
-| RECOMMENDATION-073 | 6.1 §6.1.3.1 | Independent external penetration test before the first real controlled pilot (W4) and before the first external tenant (W5), then annually; OWASP ASVS Level 2 and WSTG as checklists (verify current versions and cost) | Proposed |
-| RECOMMENDATION-074 | 6.1 §6.1.5.3 | Defect fix SLAs by severity aligned with DEC-044 support hours, the hotfix evidence path, and the flaky-test policy (no auto-retry in gating jobs, 2% quarantine cap, P0 tests never quarantined, 10-day fix limit) | Proposed |
-| RECOMMENDATION-075 | 6.2a front matter | One adapter conformance battery (checks B1–B7: outcome normalisation, idempotent submit, uncertain path, signed webhook, secret hygiene, environment guard, disabled-by-default) run as a single parameterized suite for SES, WhatsApp, Google … | Proposed |
-| RECOMMENDATION-076 | 6.2a §6.2.1.7 | E2E journey register for EP-08…EP-14 (J-08-01…J-14-02), each journey one Playwright TC with axe scans; ★ journeys proposed for the wave's manual top-20 accessibility audit (Part 2.5 §2.46) | Proposed |
-| RECOMMENDATION-077 | 6.3a front matter | Run a closure-integrity oracle as an after-each hook in every EP-15 integration and system test and in the AP-04 run: KPI-31 = 0, Σ receivable ledger entries = Σ allocations per invoice, Σ allocations ≤ invoice total, no deal in … | Proposed |
-| RECOMMENDATION-078 | 6.3a §6.3.7.1 | Every drill (restore DR-1…DR-9, rollback rehearsal, emergency-stop latency, provider outage) emits a machine-readable drill report (JSON: drill ID, release, digest, injected-failure time, last surviving heartbeat, declared and recovered … | Proposed |
-| RECOMMENDATION-079 | 6.4 front matter | Two-tier safety gate with violation classes. Classify every red-team and adversarial result as V1–V7; V1–V6 (external effect, cross-scope disclosure, Restricted to Tier 2, prohibited content to a person, prompt/canary leak, injected state … | Accepted (DEC-109) |
-| RECOMMENDATION-080 | 6.5 front matter | Run build_rtm.py (extended to read the pytest/Playwright tc/req markers and EVR results) as a CI artefact on G3 and G4; fail G4 when any in-scope FR, AC or P0 BRL is *Not covered* or has no passing TC, and publish the CSV to the A090 test … | Proposed |
-| RECOMMENDATION-081 | 8.1 front matter | Adopt the re-baselined wave calendar (§8.1.2.2): keep errata 34 gates; Release 1 go/no-go Day 152, Release 2 build go/no-go Day 180, W5 exit ≈ Day 201; activate each capability as soon as it passes (continuous delivery, DEC-006); flag … | Proposed |
-| RECOMMENDATION-082 | 8.1 §8.1.4.2 | Raise QA to 1.0 FTE from Sprint 3 to the end of Release 2 hypercare (+₹2.75–4.13 L) | Proposed |
-| RECOMMENDATION-083 | 8.1 §8.1.4.2 | Front-load DevOps/SRE to 1.0 FTE in Sprints 0–1 (+₹0.6–0.9 L) | Proposed |
-| RECOMMENDATION-084 | 8.1 §8.1.5.1 | Fractional UX contractor, 1 day/week in S2–S9 (≈ 16 days, ₹0.87–1.31 L) | Proposed |
-| RECOMMENDATION-085 | 8.1 §8.1.4.7 | Pre-approve the tier 1 spill list (41.0 SP) as W6 backlog and the tier 2 list as the next contingency, in the order shown | Proposed |
-| RECOMMENDATION-086 | 8.1 §8.1.2.1 | Option E acceleration (two contract engineers S2–S6, ₹5.5–8.3 L) only if Release 1 is needed near Day 124 | Proposed |
-| RECOMMENDATION-087 | 8.1 §8.1.4.3 | Run a procurement track from Sprint 0 (SES, Anthropic terms, WABA, OAuth, merchant, e-sign, pen-test vendor, CloudFront quotas) with owners and dates (§8.1.7.3) | Proposed |
-| RECOMMENDATION-088 | 8.2 §8.2.2.4 | Change control with an impact record (journey, UI, API, persistence, cost, tests), Minor/Major/Emergency classes, a weekly CCB and release scope freezes (S8, S11) | Proposed |
-| RECOMMENDATION-089 | 8.2 §8.2.5 | Hypercare windows (2 weeks per activation, 4 weeks per release), daily metrics and exit criteria; adoption metrics with a training gate before send/approve/publish rights | Proposed |
+| RECOMMENDATION-001 | 0 §0.3.3 | Adopt WCAG 2.2 AA as the accessibility standard for Website, Portal and Admin; automated axe checks in CI plus manual screen-reader passes | Accepted (DEC-098, DEC-149) |
+| RECOMMENDATION-002 | 0 §0.4 | Initial SLOs: Website/Portal availability 99.5% (pilot) → 99.9% (scale gate); Admin 99.5%; p95 API read ≤ 500 ms, write ≤ 800 ms (excluding provider calls); RPO ≤ 15 min (PITR), RTO ≤ 4 h; outbox dispatch lag p95 ≤ 60 s (consistent with … | Accepted (DEC-018, DEC-149) |
+| RECOMMENDATION-003 | 0 §0.5 | Allow a lighter Claude tier (e.g. Haiku-class) for high-volume classification/extraction where evals show parity. Deviates from "Sonnet only", consistent with FRD OPT-10-01 | Accepted (DEC-007, DEC-149) |
+| RECOMMENDATION-004 | 0 §0.8 | Data classification scheme (Public, Internal, Confidential, Restricted). Restricted = personal data, children's data, health-adjacent, financial, credentials. Restricted data never goes to free-tier models; redact or block | Accepted (DEC-149) |
+| RECOMMENDATION-005 | 0 §0.8 | Feature flags (open-source, e.g. django-waffle or Unleash OSS) for every external channel, autonomy mode and paid adapter; flags default OFF | Accepted (DEC-149) |
+| RECOMMENDATION-006 | 0 §0.8 | OpenTelemetry traces/metrics with a correlation ID propagated from HTTP → outbox → Celery → adapter → webhook | Accepted (DEC-149) |
+| RECOMMENDATION-007 | 0 §0.8 | STRIDE threat model plus DPIAs (Data Protection Impact Assessments) for EduVerse (children) and MedMaarg (health-adjacent) flows before activation | Accepted (DEC-149) |
+| RECOMMENDATION-008 | 0 §0.8 | Define the Admin Copilot as a read-only, grounded assistant (L0/L1) that answers from scoped records and approved knowledge with citations and can draft but never execute | Accepted (DEC-035, DEC-149) |
+| RECOMMENDATION-009 | 0 §0.4 | Scoped global search (PostgreSQL full-text + trigram) across organizations, contacts, deals, documents, with RLS enforced | Accepted (DEC-149) |
+| RECOMMENDATION-010 | 0 §0.8 | Infrastructure as Code (Terraform/OpenTofu) and immutable container images; environments dev → test → staging → prod | Accepted (DEC-149) |
+| RECOMMENDATION-011 | 0 §0.8 | Consumer-driven / schema contract tests for every provider adapter and webhook, with sandbox fixtures | Accepted (DEC-149) |
+| RECOMMENDATION-012 | 0 §0.8 | A single Policy Decision Point service (deterministic) for eligibility, consent, jurisdiction, quiet hours, frequency caps, budget and approval-hash checks, called at plan time *and* at dispatch | Accepted (DEC-149) |
+| RECOMMENDATION-013 | 0 §0.5 | Merge duplicated acceptance procedures (BRD §15/§16, FRD §14/§15) into one acceptance register | Accepted (DEC-149) |
+| RECOMMENDATION-014 | 0 §0.3.1 | Create FR-W31…FR-W34 and FR-A109…FR-A113 with full acceptance, matching the SM-FR pattern | Accepted (DEC-149) |
+| RECOMMENDATION-015 | 0 §0.8 | A Reconciliation console pattern (uncertain outcomes queue) shared by email, WhatsApp, social, ads, e-sign, payments | Accepted (DEC-149) |
+| RECOMMENDATION-016 | 0 §0.8 | A Jurisdiction rule pack in the eligibility engine (India DPDP/TRAI, EU GDPR/PECR, US CAN-SPAM, Canada CASL); unknown jurisdiction = deny | Accepted (DEC-029, DEC-149) |
+| RECOMMENDATION-017 | 0 §0.8 | Seed synthetic data sets (two tenants, 26 startups, all four verticals, minors and health fixtures) as a versioned test asset | Accepted (DEC-149) |
+| RECOMMENDATION-018 | 0 §0.8 | Use the dual-ledger pattern: receivables and payables as separate append-only ledgers; deal/closure states derived, never manually set | Accepted (DEC-149) |
+| RECOMMENDATION-019 | 1 §1.4.2 | KPI-03 · Verified contact rate · contacts with verified professional channel ÷ contacts discovered · Baseline in W1; +10 pp by W5 RECOMMENDATION-019 · Monthly · Research lead · A025 | Accepted (DEC-149) |
+| RECOMMENDATION-020 | 2.3 §2.25.6 | BRL-APR-09 · Delegation · Approvers may delegate for ≤ 14 days to a user with an equal or higher role in the same scope; audited · None · SVC · Policy | Accepted (DEC-149) |
+| RECOMMENDATION-021 | 2.3 §2.26.1 | R15 · Auditor (read-only) · n/a · Admin · Tenant read-only, incl. audit · RECOMMENDATION-021 For internal audit and legal review | Accepted (DEC-149) |
+| RECOMMENDATION-022 | 2.4 §2.31.4 | Attribution models offered · First-touch, last non-direct touch (default), linear, position-based (40/20/40) · M52 "attribution caveat"; default chosen for simplicity and explainability RECOMMENDATION-022 | Accepted (DEC-149) |
+| RECOMMENDATION-023 | 2.4 §2.33.5 | User lifecycle: invite, activate, change role, expire, revoke, access review (quarterly attestation) RECOMMENDATION-023 · A002 | Accepted (DEC-149) |
+| RECOMMENDATION-024 | 2.4 §2.34.2 | prev_hash, hash · Hash chain per tenant for tamper evidence RECOMMENDATION-024 | Accepted (DEC-149) |
+| RECOMMENDATION-025 | 2.4 §2.35.2 | Application · DRF permission classes + object-level checks; scoped querysets by default (no unscoped manager in business code) · Static check: unscoped query usage fails CI RECOMMENDATION-025 | Accepted (DEC-149) |
+| RECOMMENDATION-026 | 2.4 §2.36.2 | I18N-04 · Numbers formatted per locale; en-IN uses Indian digit grouping (1,00,000) with an option for international grouping in Admin; lakh/crore labels in INR summaries RECOMMENDATION-026 | Accepted (DEC-149) |
+| RECOMMENDATION-027 | 2.5 §2.45.1 | Dark mode · Admin: supported via tokens; Website: per startup theme option RECOMMENDATION-027 | Accepted (DEC-149) |
+| RECOMMENDATION-028 | 2.5 §2.48 | Performance budgets (public): LCP ≤ 2.5 s (p75, mid-range mobile on 4G), INP ≤ 200 ms, CLS ≤ 0.1; JS ≤ 150 KB gzip per public route RECOMMENDATION-028. | Accepted (DEC-149) |
+| RECOMMENDATION-029 | 3.1 front matter | Atomic publication pointer via PostgreSQL (authoritative) mirrored to CloudFront KeyValueStore with immutable revision prefixes and prerendered pages | Accepted (DEC-149) |
+| RECOMMENDATION-030 | 3.1 §3.1.1.1 | Single-instance ECS-on-EC2 pilot behind CloudFront without ALB or NAT gateway | Accepted (DEC-149) |
+| RECOMMENDATION-031 | 3.1 §3.1.16 | Timeouts, retry policy by failure class, circuit breaker and bulkhead parameters | Accepted (DEC-149) |
+| RECOMMENDATION-032 | 3.2 §3.2.1.7 | Extended rate-limit classes (auth, chat, portal, heavy Admin, webhooks, internal) keeping Part 2.4 defaults | Accepted (DEC-149) |
+| RECOMMENDATION-033 | 3.1 ADR-020 Event schema versioning | CloudEvents-aligned event envelope with schema registry, major/minor versioning and dual publishing | Accepted (DEC-149) |
+| RECOMMENDATION-034 | 3.2 §3.2.5 | Fourteen-layer contract testing approach (CT-01…CT-14) | Accepted (DEC-149) |
+| RECOMMENDATION-035 | 3.1 §3.1.6.2 | Managed malware scanning of uploads (GuardDuty Malware Protection for S3) at pilot (defined in Part 3.2) | Accepted (DEC-149) |
+| RECOMMENDATION-036 | 3.2 §3.2.1.2 | UUIDv7 primary keys generated in the application; never expose raw IDs as capabilities; 256-bit random tokens stored as hashes for every shared link | Accepted (DEC-149) |
+| RECOMMENDATION-037 | 3.2 §3.2.8.1 | RLS with transaction-local session variables, FORCE ROW LEVEL SECURITY, a separate write-scope variable that enforces portfolio read-only in the database, no BYPASSRLS roles, and a CI guard | Accepted (DEC-149) |
+| RECOMMENDATION-038 | 3.1 §3.1.6.1 | Field-level envelope encryption with per-tenant KMS keys, HMAC blind indexes for lookup/suppression, crypto-shredding at offboarding | Accepted (DEC-149) |
+| RECOMMENDATION-039 | 3.3 §3.3.6.3 | halfvec(1024) embeddings with HNSW (m 16, ef_construction 64), iterative filtered scans, hybrid retrieval; IVFFlat rejected | Accepted (DEC-149) |
+| RECOMMENDATION-040 | 4.1 front matter | Admin SPA budgets (NFR-044), search p95 ≤ 1 s (NFR-046), chat session caps (NFR-022), AI gateway overhead and first-token targets (NFR-052) where the baseline had none | Accepted (DEC-149) |
+| RECOMMENDATION-041 | 4.1 §4.16.3 | Vulnerability remediation SLAs (Critical 7 d, High 30 d, Medium 90 d) | Accepted (DEC-149) |
+| RECOMMENDATION-042 | 4.1 §4.5.3 | Field-level envelope encryption with blind indexes for Restricted fields | Accepted (DEC-149) |
+| RECOMMENDATION-043 | 4.1 §4.3.3 | MFA required for every user holding Restricted-data clearance (ABAC-05) from W2, not only privileged roles | Accepted (DEC-149) |
+| RECOMMENDATION-044 | 4.1 §4.1.5 | Allowlisting egress proxy for workers and an SSRF-hardened fetcher pool | Accepted (DEC-149) |
+| RECOMMENDATION-045 | 4.2 §4.21 | Release strategy: weekly trains, deploy windows inside support hours, rolling → blue/green, expand/contract migrations, monthly rollback rehearsal | Accepted (DEC-149) |
+| RECOMMENDATION-046 | 4.2 §4.23.8 | Track DORA metrics with targets (NFR-083) | Accepted (DEC-149) |
+| RECOMMENDATION-047 | 4.3 §4.36.1 | Feature-flag tooling and lifecycle (classes, defaults OFF, ≤ 90-day release flags, audited changes) | Accepted (DEC-149) |
+| RECOMMENDATION-048 | 4.1 §4.5.1 | External security hygiene: MTA-STS and TLS-RPT for sending domains, security.txt, vulnerability disclosure policy; bug bounty considered at W6 | Accepted (DEC-149) |
+| RECOMMENDATION-049 | 4.1 TB-08 Model gateway | AI red-team cadence per wave gate and canary strings to detect system-prompt and cross-tenant leakage | Accepted (DEC-149) |
+| RECOMMENDATION-050 | 5.1a front matter | Split the W0 gate into W0-A (Day 15: identity, RLS, outbox, consent, PDP, gateway, cost cap, seed data, CI/IaC, flags) and W0-B (Day 30: remaining W0 stories, owner and claims sign-off) | Accepted (DEC-149) |
+| RECOMMENDATION-051 | 5.1a §5.7.3 | Scenario tag convention (@happy/@alt/@neg/@val/@perm/@edge, @sec/@a11y/@obs, rule and DM tags) | Accepted (DEC-149) |
+| RECOMMENDATION-052 | 5.1b US-0208 Import of seed catalogues and pr | One shared import engine (versioned templates, dry run, consent gating, async jobs) built in W1 and reused by EP-20 | Accepted (DEC-149) |
+| RECOMMENDATION-053 | 5.1a §5.6.2 | Table-driven RBAC test generated from Part 2.3 §2.26.3 (42 × 15 + 10 × 4 = 670 cells) | Accepted (DEC-149) |
+| RECOMMENDATION-054 | 5.2 US-0804 Amazon SES email adapter and ema | Shared provider-adapter contract-test kit: consumer-driven contract tests with recorded sandbox fixtures, normalised outcome classes and a nightly sandbox smoke run, used by SES, WhatsApp, Google Calendar, social, ads and e-sign adapters | Accepted (DEC-149) |
+| RECOMMENDATION-055 | 5.2 US-1303 Decimal pricing library with exh | Property-based tests (e.g. Hypothesis) over the Decimal pricing library asserting invariants (no float, total = Σ rounded lines + tax, deterministic recompute) plus a lint rule forbidding float in money paths | Accepted (DEC-149) |
+| RECOMMENDATION-056 | 5.2 US-0811 Quiet-hours and frequency-cap en | Eligibility "explain" API returning rule IDs and next eligible time, reused by A034 BlockedReason, A039 simulation and A058 exclusion counts | Accepted (DEC-149) |
+| RECOMMENDATION-057 | 5.3 front matter | Closure-integrity invariant job (nightly plus event-driven): any WonContracted/Paid deal without policy evidence raises a Critical alert and enters the A089 exception queue, keeping KPI-31 at 0 | Accepted (DEC-149) |
+| RECOMMENDATION-058 | 5.3 US-1902 Immutable publication snapshots, | Publication purge target: p95 ≤ 5 minutes from publish or rollback to all CDN edges, verified by a post-publish synthetic fetch | Accepted (DEC-149) |
+| RECOMMENDATION-059 | 5.3 US-2106 Production release readiness and | Error-budget release policy: when a production SLO's monthly error budget is exhausted, A090 blocks non-fix releases unless the Founder records an exception | Accepted (DEC-149) |
+| RECOMMENDATION-060 | 7.1 front matter | Haiku-first routing with per-agent eval parity and measured escalation shares | Accepted (DEC-149) |
+| RECOMMENDATION-061 | 6.4 §6.4.1.1 | Delivery-lifecycle API usage (CI review, eval judge, fixture generation) gets its own delivery AI reserve under C03 rather than consuming B02 | Accepted (DEC-149) |
+| RECOMMENDATION-062 | 7.2 §7.2.6 | Keep LLM traces in gateway tables + OpenTelemetry in pilot; adopt Langfuse self-hosted at growth gate; B22 stays ₹0 in pilot | Accepted (DEC-149) |
+| RECOMMENDATION-063 | 6.4 AU-004 Data classification & PII redacti | Presidio with Indian recognizers (PAN, Aadhaar patterns, Indian phone formats, Indic names) for AU-004 | Accepted (DEC-149) |
+| RECOMMENDATION-064 | 6.4 AU-042 Usage metering & entitlement enfo | Define "AI task" as one completed agent invocation returning a validated output (§7.5.4) | Accepted (DEC-149) |
+| RECOMMENDATION-065 | 7.3 §7.3.3 | First Tier 2 opt-in limited to Owner Portfolio, agents AG-003/004/005/017, after legal review | Accepted (DEC-149) |
+| RECOMMENDATION-066 | 7.3 §7.4.2 | Weekly 30-minute AI cost and quality review (RP-20, RP-21) owned by the FinOps lead | Accepted (DEC-149) |
+| RECOMMENDATION-067 | 7.3 §7.3.3 | W6 spike: self-hosted small open model (vLLM in ap-south-1) as Tier 2e for classifiers; evaluate cost vs Haiku | Accepted (DEC-149) |
+| RECOMMENDATION-068 | 6.4 §6.4.9.2 | AI incident severity scheme AI-S1…S3 (§7.6.10) | Accepted (DEC-149) |
+| RECOMMENDATION-069 | 6.4 AG-018 Content & Campaign Studio Drafter | Configurable AI-content labelling per jurisdiction (EU AI Act Art. 50; India IT Rules amendments if adopted) | Accepted (DEC-149) |
+| RECOMMENDATION-070 | 6.1 front matter | Test pyramid target proportions (unit 60–70%, integration 15–25%, contract 4–6%, system 5–8%, E2E 2–4%) and coverage targets per layer, including mutation score ≥ 85% for money, tax, ledger and PDP modules, ≥ 80% for scoring and ≥ 75% for … | Accepted (DEC-149) |
+| RECOMMENDATION-071 | 6.1 §6.1.6.3 | A test-only provider simulator with scriptable fault modes (timeout-after-submit, duplicate and out-of-order webhooks, signature failures, throttling) contract-tested against recorded sandbox fixtures, plus a clock control facility … | Accepted (DEC-149) |
+| RECOMMENDATION-072 | 6.1 §6.1.5.4 | Evidence record (EVR) schema implementing the BRD §12.2 fields, and the certification ladder L-S → L-T → L-C → L-P so that A090 can fail closed and no synthetic result is shown as production certification | Accepted (DEC-149) |
+| RECOMMENDATION-073 | 6.1 §6.1.3.1 | Independent external penetration test before the first real controlled pilot (W4) and before the first external tenant (W5), then annually; OWASP ASVS Level 2 and WSTG as checklists (verify current versions and cost) | Accepted (DEC-149) |
+| RECOMMENDATION-074 | 6.1 §6.1.5.3 | Defect fix SLAs by severity aligned with DEC-044 support hours, the hotfix evidence path, and the flaky-test policy (no auto-retry in gating jobs, 2% quarantine cap, P0 tests never quarantined, 10-day fix limit) | Accepted (DEC-149) |
+| RECOMMENDATION-075 | 6.2a front matter | One adapter conformance battery (checks B1–B7: outcome normalisation, idempotent submit, uncertain path, signed webhook, secret hygiene, environment guard, disabled-by-default) run as a single parameterized suite for SES, WhatsApp, Google … | Accepted (DEC-149) |
+| RECOMMENDATION-076 | 6.2a §6.2.1.7 | E2E journey register for EP-08…EP-14 (J-08-01…J-14-02), each journey one Playwright TC with axe scans; ★ journeys proposed for the wave's manual top-20 accessibility audit (Part 2.5 §2.46) | Accepted (DEC-149) |
+| RECOMMENDATION-077 | 6.3a front matter | Run a closure-integrity oracle as an after-each hook in every EP-15 integration and system test and in the AP-04 run: KPI-31 = 0, Σ receivable ledger entries = Σ allocations per invoice, Σ allocations ≤ invoice total, no deal in … | Accepted (DEC-149) |
+| RECOMMENDATION-078 | 6.3a §6.3.7.1 | Every drill (restore DR-1…DR-9, rollback rehearsal, emergency-stop latency, provider outage) emits a machine-readable drill report (JSON: drill ID, release, digest, injected-failure time, last surviving heartbeat, declared and recovered … | Accepted (DEC-149) |
+| RECOMMENDATION-079 | 6.4 front matter | Two-tier safety gate with violation classes. Classify every red-team and adversarial result as V1–V7; V1–V6 (external effect, cross-scope disclosure, Restricted to Tier 2, prohibited content to a person, prompt/canary leak, injected state … | Accepted (DEC-109, DEC-149) |
+| RECOMMENDATION-080 | 6.5 front matter | Run build_rtm.py (extended to read the pytest/Playwright tc/req markers and EVR results) as a CI artefact on G3 and G4; fail G4 when any in-scope FR, AC or P0 BRL is *Not covered* or has no passing TC, and publish the CSV to the A090 test … | Accepted (DEC-149) |
+| RECOMMENDATION-081 | 8.1 front matter | Adopt the re-baselined wave calendar (§8.1.2.2): keep errata 34 gates; Release 1 go/no-go Day 152, Release 2 build go/no-go Day 180, W5 exit ≈ Day 201; activate each capability as soon as it passes (continuous delivery, DEC-006); flag … | Accepted (DEC-149) |
+| RECOMMENDATION-082 | 8.1 §8.1.4.2 | Raise QA to 1.0 FTE from Sprint 3 to the end of Release 2 hypercare (+₹2.75–4.13 L) | Accepted (DEC-149) |
+| RECOMMENDATION-083 | 8.1 §8.1.4.2 | Front-load DevOps/SRE to 1.0 FTE in Sprints 0–1 (+₹0.6–0.9 L) | Accepted (DEC-149) |
+| RECOMMENDATION-084 | 8.1 §8.1.5.1 | Fractional UX contractor, 1 day/week in S2–S9 (≈ 16 days, ₹0.87–1.31 L) | Accepted (DEC-149) |
+| RECOMMENDATION-085 | 8.1 §8.1.4.7 | Pre-approve the tier 1 spill list (41.0 SP) as W6 backlog and the tier 2 list as the next contingency, in the order shown | Accepted (DEC-149) |
+| RECOMMENDATION-086 | 8.1 §8.1.2.1 | Option E acceleration (two contract engineers S2–S6, ₹5.5–8.3 L) only if Release 1 is needed near Day 124 | Accepted (DEC-149) |
+| RECOMMENDATION-087 | 8.1 §8.1.4.3 | Run a procurement track from Sprint 0 (SES, Anthropic terms, WABA, OAuth, merchant, e-sign, pen-test vendor, CloudFront quotas) with owners and dates (§8.1.7.3) | Accepted (DEC-149) |
+| RECOMMENDATION-088 | 8.2 §8.2.2.4 | Change control with an impact record (journey, UI, API, persistence, cost, tests), Minor/Major/Emergency classes, a weekly CCB and release scope freezes (S8, S11) | Accepted (DEC-149) |
+| RECOMMENDATION-089 | 8.2 §8.2.5 | Hypercare windows (2 weeks per activation, 4 weeks per release), daily metrics and exit criteria; adoption metrics with a training gate before send/approve/publish rights | Accepted (DEC-149) |
+| RECOMMENDATION-090 | 6.6 front matter | Recommendation (Batch 6.7) | Accepted (DEC-149) |
 
 <!-- GEN:RECOMMENDATION:END -->
 
@@ -1184,6 +1194,22 @@ One line per decision. The full text in Part 0A and Part 9.1 is binding. Part 9.
 | DEC-138 | 9.1 | AC-1206-05 title | R11 requests; R01 approves |
 | DEC-139 | 9.1 | GST rates in examples | Illustrative only; finance advisor confirms (DEC-027 verify) |
 | DEC-140 | 9.1 | Test automation effort (~100–240 pd) | Mostly inside story estimates (DoD: developers write unit/integration/contract tests; QA writes E2E and evals). Residual risk tracked as RSK-003 |
+| DEC-141 | 9.1 | Part 2.3 states 162 business rules; 161 are defined | Rule count corrected to 161 |
+| DEC-142 | 9.1 | Part 2.1 states 33 cross-cutting FRs (183 total) | 181 FRs (150 interface/operation + 31 cross-cutting) |
+| DEC-143 | 9.1 | LT-01…12 defined in Parts 4.2 and 6.1 with different meanings | Part 6.1 owns LT-xx; Part 4.2 tables are "NFR load profiles", mapped to LT-xx in Part 6.7 |
+| DEC-144 | 9.1 | Second-tenant fixture naming varies | Canonical name "T2 External-A" (GSE-SYN) |
+| DEC-145 | 9.1 | Seven stories without an FR link | They are enablers tracing to BR/NFR/DEC; acceptable |
+| DEC-146 | 9.1 | Part 6.1 risk matrix lacks a product-truth area | Add Product truth and claims gating (EP-02) at P0 depth |
+| DEC-147 | 9.1 | NFR (61), FLT (9) and BR-S coverage gaps | Closed by Part 6.7 (TC-NFR, TC-FLT, TC-BRS and VER items); RTM regenerated |
+| DEC-148 | 9.1 | ID family collisions: AD-## (3.1 drivers vs 3.2 adapters), PP-## (1 principles vs 6.2 … | IDs stay as written; cross-part references must be qualified with the part (e.g. "3.2/AD-05", "6.2/PP-03", "3.3/D-2", "3.1/B-07"). Unqualified AD-/PP-/D-/B- references mean the owning definitions in Parts 3.1, 1, 5.1a and the … |
+| DEC-149 | 9.1 | 68 RECOMMENDATIONs have no recorded accept/reject | All proposed RECOMMENDATION-001…090 are accepted into the baseline under the delegated authority, except where a DEC states otherwise (e.g. ADR-043 superseded by DEC-081). They are implemented through the stories and tests that … |
+| DEC-150 | 9.1 | ADR overlap: Part 4.3 ADR-050/051/052 vs Part 3.1 ADR-026/012/015 | Part 3.1 ADRs govern (DEC-083); Part 4.3's ADRs are operational elaborations of them |
+| DEC-151 | 9.1 | No central tag allocation log | §9.2.3 reconstruction is authoritative; future tags continue from the highest number in each register |
+| DEC-152 | 9.1 | Part 6.1 §6.1.12.1 divides rule coverage by 162 | Denominator is 161 (DEC-141) |
+| DEC-153 | 9.1 | Usability targets differ: Part 6.1 (task success ≥ 80%, SUS ≥ 68) vs NFR-090 (≥ 90%, ≥ 70) | Two levels: ≥ 80% / SUS ≥ 68 is the per-wave minimum gate; ≥ 90% / SUS ≥ 70 is the NFR-090 target by Release 2 |
+| DEC-154 | 9.1 | Load-test volumes differ between Part 6.1 and Part 4.2 (20 vs 30 req/s; 1,000 vs 5,000 … | The higher Part 4.2 design-capacity figures govern the load runs (LT-01 at 30 req/s; 5,000 due runs); the Part 6.1 figures are the expected Year-1 load |
+| DEC-155 | 9.1 | GSE-SYN still names the second tenant "Client B" | Canonical "T2 External-A" (DEC-144) |
+| DEC-156 | 9.1 | Part 4.2 §4.28 wave plan has no gate for NFR-023/024/052 | Gates: NFR-023 (accessibility) every wave from W2; NFR-024 (localization) at W5; NFR-052 at Release 2 |
 
 <!-- GEN:DEC:END -->
 
@@ -1199,6 +1225,7 @@ The script compares every ID defined (first cell of a table row) in more than on
 
 | Kind | ID | Part A | Meaning in A | Part B | Meaning in B |
 |---|---|---|---|---|---|
+| Tag | RECOMMENDATION-090 | Part 6.6 | Recommendation (Batch 6.7) | Part 6.7 | Store every VER item's evidence as an EVR of type review/inspection/analysis/demonstration and extend … |
 | Registry | AD-01…AD-12 (12 IDs) | Part 3.1 | e.g. AD-01 = Tenant and startup isolation | Part 3.2 | e.g. AD-01 = Amazon SES (EmailPort) |
 | Registry | D-1…D-4 (4 IDs) | Part 3.3 | e.g. D-1 = Automated snapshot restore Weekly + every release (NFR-012) | Part 5.1a | e.g. D-1 = Code |
 | Registry | LT-01…LT-11 (9 IDs) | Part 4.2 | e.g. LT-01 = Baseline API mix | Part 6.1 | e.g. LT-01 = Admin mixed API load |
@@ -1259,16 +1286,18 @@ Every part file, its contents (top-level sections, excluding tag registers and q
 | 6.3b | Part-06-3b_Test_Cases_EP19-EP21.md | PART 6 (Batch 6.3b), Test Scenarios and Test Cases: EP-19 to EP-21, Acceptance Procedures and Release Drills | EP-19 Public website and external portal; EP-20 SaaS client lifecycle and portability; EP-21 Release readiness, QA and observability; Acceptance procedure scripts AP-01, AP-04, AP-06, AP-09 and AP-10; Coverage and totals for EP-19 to EP-21; Batch roll-up: EP-15 to EP-21 (files a and b); Tags register (Batch 6.3, files a and b); … (+1) | 65 | 0 | 27,356 | Complete |
 | 6.4 | Part-06-4_AI_Evaluation_Test_Cases.md | PART 6 (Batch 6.4), AI Evaluation Test Cases | Purpose, scope and conventions; Evaluation datasets; Acceptance thresholds per agent; Shared oracles, harness and fault model; Agent evaluation cases; Cross-model regression across the fallback chain; Regression-gate rules (BRL-AI-09, NFR-033, DEC-061); … (+8) | 169 | 5 | 72,424 | Complete |
 | 6.5 | Part-06-5_Test_Cases_EP01-EP07.md | PART 6 (Batch 6.5), Test Scenarios and Test Cases: EP-01 to EP-07 | How to read this batch; EP-01 Platform foundation, identity reuse and tenancy; EP-02 Product truth and knowledge; EP-03 Consent, privacy, eligibility and compliance; EP-04 AI gateway, cost control and AI quality; EP-05 Market intelligence and discovery; EP-06 Opportunity scoring, contacts and research review; … (+2) | 160 | 2 | 60,859 | Complete |
-| 6.6 | Part-06-6_Requirements_Traceability_Matrix.md | PART 6 (Batch 6.6), Requirements Traceability Matrix | Method; Coverage summary (generated); (a) BR → FR → US → TC (generated); (b) FR → US → TC for all 150 interface and operation FRs (generated); (d) NFR → test (generated); (e) BRL rule → TC coverage summary (generated); (f) AG/AU → TC-AI/TC-AU (generated); … (+1) | 52 | 0 | 18,188 | Complete |
+| 6.6 | Part-06-6_Requirements_Traceability_Matrix.md | PART 6 (Batch 6.6), Requirements Traceability Matrix | Method; Coverage summary (generated); (a) BR → FR → US → TC (generated); (b) FR → US → TC for all 150 interface and operation FRs (generated); (d) NFR → test (generated); (e) BRL rule → TC coverage summary (generated); (f) AG/AU → TC-AI/TC-AU (generated); … (+1) | 59 | 0 | 21,028 | Complete |
+| 6.7 | Part-06-7_NFR_and_Coverage_Closure_Test_Cases.md | PART 6 (Batch 6.7), NFR and Coverage Closure Test Cases | Purpose, conventions and coverage rule; NFR test cases TC-NFR-001…099; NFR production verification items (VER-001…022); Parameterized filter suite TC-FLT-001…045 (FR-FLT-01…11, FR-FLT-RULES); Supplementary business requirement (BR-S) closure; Coverage closure tables; RTM generator update and regenerated coverage; … (+1) | 66 | 1 | 24,349 | Complete |
 | 7.1 | Part-07-1_AI_Discovery_and_Catalogue.md | PART 7 (Batch 7.1), AI Agents and Automations: Discovery Method and Catalogue | Discovery method (client spec 7.1, with the work shown) | 33 | 1 | 11,152 | Complete |
 | 7.2 | Part-07-2_AI_Agent_Specifications.md | PART 7 (Batch 7.2), AI Agent and Automation Specifications and Multi-Agent Orchestration | Specification table; Agent detail cards; Automation specifications (AU, deterministic, Tier 0); Tool registry (DEC-048); Multi-agent orchestration design: overview; Shared memory and state; Inter-agent protocol; … (+5) | 49 | 4 | 25,335 | Complete |
 | 7.3 | Part-07-3_AI_Model_Strategy_Cost_Governance.md | PART 7 (Batch 7.3), AI Model Strategy, Routing and Fallback, Cost Optimization, Subscriptions and TCO, AI Governance, Cross-Role Review | Model strategy, routing and fallback; Cost optimization for the paid model (quantified); Subscriptions, tooling and total cost of ownership; AI governance and safeguards; Cross-role review (client spec Section 9) and red-team of the catalogue; Registers for Part 7 | 34 | 2 | 12,612 | Complete |
 | 8.1 | Part-08-1_Roadmap_Releases_Sprints.md | PART 8 (Batch 8.1), Delivery Plan: Roadmap, Releases, Sprint Plans, Team and RACI, Estimation, Critical Path | Purpose, inputs and planning baseline; Phased roadmap; Release plan; Sprint plans; Team composition, QA gap, UAT and RACI; Estimation method and effort ranges; Critical path and external dependencies; … (+1) | 54 | 3 | 17,878 | Complete |
 | 8.2 | Part-08-2_Risks_Change_GoLive_Hypercare.md | PART 8 (Batch 8.2), Delivery Plan: Risk Register, Change Management and Training, Operational Readiness, Go-Live Checklist, Hypercare, KPI Tracking and Budget | Risk register; Change management and training; Operational readiness: DR and support model for go-live (errata 16, 17, 43); Go-live checklist; Hypercare plan ASSUMPTION-206 RECOMMENDATION-089; Post-launch KPI tracking (KPI-01…KPI-31); Budget summary (estimates); … (+1) | 44 | 1 | 14,988 | Complete |
-| 9.1 | Part-09-1_Errata_and_Consolidated_Decisions.md | PART 9 (Batch 9.1), Errata Register and Consolidated Decisions | Errata decisions; Effect on earlier decisions; Additional errata decisions (second review cycle) | 11 | 0 | 3,092 | Complete |
+| 9.1 | Part-09-1_Errata_and_Consolidated_Decisions.md | PART 9 (Batch 9.1), Errata Register and Consolidated Decisions | Errata decisions; Effect on earlier decisions; Additional errata decisions (second review cycle); Final errata decisions (third review cycle) | 13 | 0 | 3,757 | Complete |
+| 9.3 | Part-09-3_Final_Quality_Report.md | PART 9 (Batch 9.3), Final Quality Report and Cross-Role Review | Success criteria assessment (client Section 2); Traceability coverage (from the regenerated RTM); Blueprint inventory (final); Cross-role review (client Section 9): final red-team; Residual open items requiring owner action (not blockers to start); Statement of completeness | 7 | 0 | 2,111 | Complete |
 | 9.2 | Part-09-2_Glossary_and_Registers.md | PART 9 (Batch 9.2), Appendices: Glossary, ID Registry and Consolidated Registers | Generation method and controls; Glossary; ID registry; Tag numbers issued, by issuing part; Consolidated registers; Duplicate-ID check; Document map | 102 | 1 | 32,572 | Complete |
 
-**Totals:** 2,218 pages across 34 rendered PDFs; 119 Mermaid diagrams; 771,230 words.
+**Totals:** 2,300 pages across 36 rendered PDFs; 120 Mermaid diagrams; 801,195 words.
 
 <!-- GEN:DOCMAP:END -->
 

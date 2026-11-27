@@ -3,7 +3,7 @@
 
 | Field | Value |
 |---|---|
-| Document | Application Blueprint, Part 6 (Batch 6.7): closes every traceability gap that the Part 6.6 matrix flagged (errata 87). It contains (1) **NFR test cases** TC-NFR-001…099, one per NFR-001…NFR-099, each mapped to the Part 6.1 load tests LT-01…LT-12, DR drills DR-1…DR-9, the security, accessibility and localization plans and the existing epic test cases; (2) a **parameterized filter suite** TC-FLT-001…042 for FR-FLT-01…11 and FR-FLT-RULES; (3) **supplementary business requirement (BR-S) closure**: test cases TC-BRS-001…013 for the testable statements and **verification items** VER-001…048 (inspection, review, analysis or demonstration) for the statements and production-only targets that are not software behaviour; (4) the extension of `assembly/build_rtm.py` that reads these items and regenerates Part 6.6 and `final/RTM.csv` |
+| Document | Application Blueprint, Part 6 (Batch 6.7): closes every traceability gap that the Part 6.6 matrix flagged (errata 87). It contains (1) **NFR test cases** TC-NFR-001…099, one per NFR-001…NFR-099, each mapped to the Part 6.1 load tests LT-01…LT-12, DR drills DR-1…DR-9, the security, accessibility and localization plans and the existing epic test cases; (2) a **parameterized filter suite** TC-FLT-001…045 for FR-FLT-01…11 and FR-FLT-RULES; (3) **supplementary business requirement (BR-S) closure**: test cases TC-BRS-001…013 for the testable statements and **verification items** VER-001…048 (inspection, review, analysis or demonstration) for the statements and production-only targets that are not software behaviour; (4) the extension of `assembly/build_rtm.py` that reads these items and regenerates Part 6.6 and `final/RTM.csv` |
 | Version | 1.0 · 27 Nov 2026 |
 | Baseline | Part 1 §1.12.2 (BR-S001…S140), Part 2.1 §2.4.10 (FR-FLT-01…11, FR-FLT-RULES), Part 2.3 (BRL rules, roles R01–R20), Part 4.2 §4.21–§4.28 (NFR-001…099, latency budgets, NFR load profiles, wave verification plan), Part 4.3 §4.46 (FinOps governance), Part 6.1 (template §6.1.12.2, priorities §6.1.12.3, test types T01–T21, techniques §6.1.11, GSE-SYN §6.1.7, environments §6.1.6, non-functional plans §6.1.14), Batches 6.2–6.5 (existing TCs), Part 6.6 (uncovered list), Part 8.1 §8.1.2.5 (wave gates), Part 8.2 §8.2.4 (go/no-go checklist GL-*) and §8.2.7 (budget lines B01–B23); errata 81–87 (Part 9.1); DEC-005, DEC-008, DEC-009, DEC-018, DEC-020, DEC-026, DEC-031, DEC-032, DEC-040, DEC-043, DEC-065 |
 | Roles applied | QA Lead (primary), DevOps/SRE Lead (load, DR, observability), Security/Compliance/AI Governance Lead (security and privacy cases), Lead UX/UI Designer (accessibility, usability, localization), FinOps Lead (cost cases and budget verification items), Product Owner (BR-S verification owners), Business Systems Analyst (filter rules) |
@@ -26,7 +26,7 @@ The Part 6.6 build before this batch reported 70 uncovered items (errata 87): **
 | Artefact | Format | Range used | Owning epic (Part 6.1 §6.1.12.1 control families) | Counts as |
 |---|---|---|---|---|
 | NFR test case | **TC-NFR-###** where ### = the NFR number | TC-NFR-001…TC-NFR-099 (99) | The NFR's epic in Part 4.2 (EP-21 for load, DR and release; EP-01 for security and tenancy; EP-03 privacy; EP-04 AI and cost; EP-17/EP-19 UI; EP-18 workflow) | Test case |
-| Filter test case | **TC-FLT-###** | TC-FLT-001…TC-FLT-042 (42) | EP-17 (shell, list framework) with the list screen's epic | Test case |
+| Filter test case | **TC-FLT-###** | TC-FLT-001…TC-FLT-045 (45) | EP-17 (shell, list framework) with the list screen's epic | Test case |
 | BR-S test case | **TC-BRS-###** | TC-BRS-001…TC-BRS-013 (13) | Epic of the screen or control exercised | Test case |
 | Verification item | **VER-###** | VER-001…VER-048 (48) | Owner named per item | Verification item (not a test case) |
 
@@ -413,7 +413,7 @@ Values come from the FR-FLT text and the seed-startup capability profiles (DEC-0
 
 ## 6.7.5 Supplementary business requirement (BR-S) closure
 
-The Part 6.6 build flagged 34 BR-S statements with no test path. Each is classified below as **testable** (software behaviour → TC-BRS) or **not testable by execution** (budget, effort, team, phase gate, procurement, business goal → VER). Five phase-gate and budget statements that already had a test path (BR-S080, BR-S083) also receive a gate VER so that every day-phase statement is verified the same way.
+The Part 6.6 build flagged 34 BR-S statements with no test path. Each is classified below as **testable** (software behaviour → TC-BRS) or **not testable by execution** (budget, effort, team, phase gate, procurement, business goal → VER). Two phase-gate statements that already had a test path (BR-S080, BR-S083) also receive a gate VER so that every day-phase statement is verified the same way.
 
 ### 6.7.5.1 Classification
 
@@ -658,3 +658,87 @@ First wave gate from Part 4.2 §4.28 (W0–W6). "Existing TCs" are the Batch 6.2
 
 Verification items by method: Analysis 21, Demonstration 1, Inspection 6, Review 20 (total 48; combined methods counted under the first).
 
+### 6.7.6.4 BR-S closure summary
+
+| Closure route | BR-S statements | Count |
+|---|---|---|
+| Test case TC-BRS | BR-S021, 025, 028, 029, 030, 033, 048, 074, 108, 133 | 10 |
+| Verification item only (review, inspection, analysis, demonstration) | BR-S072, 076, 077, 078, 079, 081, 082, 086, 087, 088, 089, 090, 091, 094, 095, 096, 097, 098, 099, 100, 102, 103, 104, 105 | 24 |
+| Already covered by a test path and also gate-verified | BR-S080 (VER-028), BR-S083 (VER-031) | 2 |
+| **Total previously uncovered now covered** | | **34 of 34** |
+
+---
+
+## 6.7.7 RTM generator update and regenerated coverage
+
+### 6.7.7.1 Changes to `assembly/build_rtm.py`
+
+| Change | Detail |
+|---|---|
+| New identifiers | `TC-NFR-###`, `TC-FLT-###`, `TC-BRS-###` are test cases (added to the TC pattern, range expansion and sort order); `VER-###` are verification items, parsed by a separate loader and never counted as test cases |
+| Sources | Batch 6.7 added to the batch list (status read from its status line); links read from the **Linked** column of every TC and VER row of this file; method, owner and wave read from the VER columns |
+| Coverage rule | A requirement is covered by a test case (as before) or by a verification item; BR-S and NFR rows report both, with the basis *Test case*, *Verification item* or *Test case + VER* (§6.7.1.3) |
+| New generated tables in Part 6.6 | §6.6.2.1 adds the columns "Covered by verification item" and "Covered (test case or VER)" and an "All FRs (150 + 31)" row; §6.6.3.1 lists BR-S001…S140 with TC and VER; §6.6.5 adds the VER column to the NFR table; §6.6.8 flags a BR-S only when it has neither |
+| Header and counts | Part 6.6 header states **161 business rules** (errata 81) and **181 FRs = 150 + 31 cross-cutting** (errata 82); LT ownership per errata 83; findings and remediation plan show closure status |
+| NFR plan items | The "Part 6.1 plan item" column of §6.7.6.1 (LT-xx, LT variants, DR-x, T-type, §6.1.x) is added to the NFR plan items shown in Part 6.6 §6.6.5 |
+| Mention scan | `TC-NFR-###` inside a row is no longer read as a mention of `NFR-###` (negative look-behind), so only real NFR citations count |
+| CSV | `final/RTM.csv` gains `ver_count`, `ver_ids` and `coverage_basis` (rows without VER data are padded: 0, empty, basis from the TC count); existing columns unchanged so `build_xlsx.py` keeps working |
+
+### 6.7.7.2 Final coverage (from the regenerated Part 6.6)
+
+| Level | Items | Covered by test case | Covered by verification item | Covered (either) | Coverage |
+|---|---|---|---|---|---|
+| Primary BR (BR-M, BR-TENANT/WEB/AUTO/SVC/QA) | 71 | 71 | — | 71 | **100.0%** |
+| Supplementary BR (BR-S) | 140 | 116 | 26 (24 by VER only) | 140 | **100.0%** |
+| Interface and operation FRs | 150 | 150 | — | 150 | **100.0%** |
+| Cross-cutting FRs | 31 | 31 | — | 31 | **100.0%** |
+| All FRs (errata 82) | 181 | 181 | — | 181 | **100.0%** |
+| User stories | 230 | 230 | — | 230 | **100.0%** |
+| Acceptance criteria | 1,357 | 1,357 | — | 1,357 | **100.0%** |
+| Business rules (BRL; errata 81) | 161 | 161 | — | 161 | **100.0%** (146 with a DT or BVA case) |
+| NFRs | 99 | 99 | 25 (0 by VER only) | 99 | **100.0%** |
+| AI agents | 36 | 36 | — | 36 | **100.0%** |
+| Automations | 43 | 43 | — | 43 | **100.0%** |
+| Test cases parsed | 2,912 | 1,981 epic · 586 TC-AI · 188 TC-AU · 99 TC-NFR · 45 TC-FLT · 13 TC-BRS | 48 VER | — | — |
+
+**Remaining exceptions: none.** The only coverage that is not by test case is the 24 BR-S statements verified by VER only; each is a budget line, effort range, team/timeline assumption, phase-gate exit, procurement step or business goal that no software test can prove (§6.7.5.1), and each VER has a method, owner, independent reviewer, evidence and wave. Two design-level limits remain and are not coverage gaps: (1) the matrix proves a designed test or verification exists, not that it passed (execution status arrives through CI markers and EVRs, RECOMMENDATION-080/090); (2) 7 TC-NFR cases are manual by nature (pen test, AT passes, usability, tabletop, game day, DR stopwatch) and carry Auto = N with a reason.
+
+---
+
+## 6.7.8 Register of tags issued in this batch
+
+| ID | Type | Statement | Basis | Owner / validate by |
+|---|---|---|---|---|
+| ASSUMPTION-215 | Assumption | Part 4.2 NFR load profiles with no Part 6.1 equivalent run as **named variants** of Part 6.1 runs, not as new LT IDs: LT-01-AIGW (AI gateway, 4.2-LT-09), LT-01-SKEW (noisy neighbour, 4.2-LT-11), LT-08-Y2 (Year 2 profile, 4.2-LT-10), LT-12-ADM (Admin front-end budget), LT-04-STOP (CH-04) | Errata 83 (Part 6.1 owns LT-xx); Part 4.2 §4.26 | SRE Lead: confirm in the `perf/k6/` scenario list at W2 |
+| ASSUMPTION-216 | Assumption | A filter fixture pack **EDGE-FLT** (FLT-FIX-A/M/E/O) is added to GSE-SYN with the exact rows of §6.7.4; the per-vertical filter labels are fixture values (configurable per tenant), and role-specific filter fields (e.g. `margin_pct` for R02 only) follow the "permitted fields" rule of DEC-037 | FR-FLT-08…11 text; DEC-037; DEC-052; Part 6.1 §6.1.7 | QA Lead with the Business Systems Analyst: confirm allowlists per list endpoint in the OpenAPI document (W2) |
+| ASSUMPTION-217 | Assumption | A **verification item** (inspection, review, analysis, demonstration) with owner, independent reviewer, evidence and wave counts as coverage for statements that are not software behaviour; the RTM reports it separately from test-case coverage | BRD §12.1 (owner and independent reviewer for any non-test acceptance); BRD §12.2; Part 8.2 §8.2.4.2 | Product Owner: confirm at the AP-08 approval of the release RTM |
+| ASSUMPTION-218 | Assumption | NFR targets defined over a production period (availability, field Core Web Vitals, DORA, monthly FinOps, DSR completion, timeliness SLIs) are verified in two steps: a TC-NFR proves the measurement and control in `staging`/`test`; a VER records attainment from production data | Part 4.2 §4.21 measurement conventions and §4.28 wave plan | SRE Lead and FinOps Lead: first monthly VER evidence at W2 (availability) and W5 (pilot) |
+| RECOMMENDATION-090 | Recommendation | Store every VER item's evidence as an EVR of type review/inspection/analysis/demonstration and extend `build_rtm.py` to read EVR status, so VER items show Pending/Pass like TCs; a VER without an EVR by its wave gate blocks A090 | Part 6.1 §6.1.5.4; Part 8.2 §8.2.4.2; RECOMMENDATION-080 | QA Lead; Product Owner |
+
+## 6.7.9 Findings in earlier parts (reported, not fixed)
+
+| # | Where | Finding | Suggested action |
+|---|---|---|---|
+| F-1 | Part 6.1 §6.1.12.1 | Coverage formula still divides BRL coverage by 162 | Use 161 (errata 81) |
+| F-2 | Part 6.1 §6.1.3.1 T09 vs Part 4.2 NFR-090 | Usability pass criteria differ (≥ 80% task success, SUS ≥ 68 vs ≥ 90%, SUS ≥ 70) | Align T09 to NFR-090; TC-NFR-090 uses Part 4.2 |
+| F-3 | Part 6.1 §6.1.14.1 vs Part 4.2 §4.26 | Part 6.1 LT-01 runs 20 req/s Admin; Part 4.2 design load is 30 RPS total mix; LT-09 releases 1,000 due runs vs 5,000 in the Part 4.2 profile | TC-NFR-039 and TC-NFR-058 run the Part 4.2 volumes inside the Part 6.1 runs (§6.7.1.4); Part 6.1 owner to state both |
+| F-4 | Part 6.1 §6.1.7.1 | Second tenant is named "Client B" in GSE-SYN; errata 84 makes "T2 External-A" canonical | Rename in Part 6.1 |
+| F-5 | Part 4.2 §4.28 | NFR-023, NFR-024 and NFR-052 have no wave gate in the verification plan | Add W2 (023, 024 via 088/096) and W1/W3 (052, LT-09 profile dates) |
+
+---
+
+## 6.7.10 Quality gate: Batch 6.7
+
+| # | Check | Result | Notes and fixes applied |
+|---|---|---|---|
+| 1 | Every requirement traced to a source | **Pass** | Every TC-NFR cites its NFR and Part 4.2 target; every TC-FLT cites FR-FLT-xx; every TC-BRS and VER cites its BR-S or NFR with the Part 1 / Part 4.2 / Part 8 source |
+| 2 | Assumptions, gaps and conflicts tagged and logged | **Pass** | ASSUMPTION-215…218 and RECOMMENDATION-090 issued (§6.7.8); no other tags issued |
+| 3 | IDs unique and consistent with earlier parts | **Pass** | 99 TC-NFR (number = NFR number), 45 TC-FLT, 13 TC-BRS, 48 VER; no collision with existing IDs (checked by grep and by the RTM parser); LT IDs used only as Part 6.1 defines them, variants suffixed (ASSUMPTION-215); T2 External-A per errata 84 |
+| 4 | No story lacks AC and no requirement lacks a test | **Pass** | Regenerated RTM: 100% at every level (§6.7.7.2); every NFR has a test case; 24 BR-S covered by verification item by design, each justified |
+| 5 | Negative, edge, security and accessibility cases covered | **Pass** | Negatives: forbidden filter fields and operators, foreign-tenant values, tampered cursors, patient-data and minor-outreach filters, revoked sessions, unknown hosts, overdue vulnerabilities; edges: BVA on every numeric threshold (latency, 59/60/61 s, 80% budget, 7-day dedupe, coverage 0.5 pp); security group TC-NFR-H; accessibility TC-NFR-088/089, TC-FLT-044 |
+| 6 | No agent lacks guardrail, fallback, KPI and cost estimate | **N/A** | No new agents; AI NFRs (011, 030, 033, 052, 077, 092) reference Batch 6.4 |
+| 7 | Time-sensitive facts flagged "verify" with an as-of date | **Pass** | Tools, probe locations, regulator deadlines, provider pricing and model availability marked "verify (as of 27 Nov 2026)" |
+| 8 | No restricted data routed to free-tier models | **Pass** | TC-NFR-077 asserts 0 Restricted/Confidential payloads to Tier 2 and Tier 2 OFF by default |
+| 9 | Consistent with earlier parts | **Pass, with findings** | Five findings reported, not fixed (§6.7.9) |
+
+**Status: Part 6 Batch 6.7 complete. 157 test cases (99 TC-NFR, 45 TC-FLT, 13 TC-BRS; 68 P0, 69 P1, 19 P2, 1 P3; 150 automation candidates) and 48 verification items close every gap of the Part 6.6 matrix; `build_rtm.py` now reads them and the regenerated RTM reports 100% coverage at every level with no remaining exception.**

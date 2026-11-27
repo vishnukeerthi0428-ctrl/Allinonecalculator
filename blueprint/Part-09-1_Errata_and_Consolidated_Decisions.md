@@ -133,13 +133,23 @@
 | DEC-150 | E-90 | Part 9.2 | ADR overlap: Part 4.3 ADR-050/051/052 vs Part 3.1 ADR-026/012/015 | **Part 3.1 ADRs govern** (DEC-083); Part 4.3's ADRs are operational elaborations of them | 3.1, 4.3 |
 | DEC-151 | E-91 | Part 9.2 (GAP-180) | No central tag allocation log | §9.2.3 reconstruction is authoritative; future tags continue from the highest number in each register | 9.2 |
 
-**Total errata decisions: DEC-066…DEC-151. Total decisions in the blueprint: DEC-001…DEC-151.**
+**Fourth review cycle (after Part 6.7):**
+
+| DEC | Errata | Found in | Conflict | Decision (binding) | Affected parts |
+|---|---|---|---|---|---|
+| DEC-152 | E-92 | Part 6.7 | Part 6.1 §6.1.12.1 divides rule coverage by 162 | Denominator is **161** (DEC-141) | 6.1 |
+| DEC-153 | E-93 | Part 6.7 | Usability targets differ: Part 6.1 (task success ≥ 80%, SUS ≥ 68) vs NFR-090 (≥ 90%, ≥ 70) | **Two levels**: ≥ 80% / SUS ≥ 68 is the per-wave minimum gate; ≥ 90% / SUS ≥ 70 is the NFR-090 target by Release 2 | 4.2, 6.1 |
+| DEC-154 | E-94 | Part 6.7 | Load-test volumes differ between Part 6.1 and Part 4.2 (20 vs 30 req/s; 1,000 vs 5,000 due runs) | **The higher Part 4.2 design-capacity figures govern the load runs** (LT-01 at 30 req/s; 5,000 due runs); the Part 6.1 figures are the expected Year-1 load | 4.2, 6.1 |
+| DEC-155 | E-95 | Part 6.7 | GSE-SYN still names the second tenant "Client B" | Canonical **"T2 External-A"** (DEC-144) | 6.1 |
+| DEC-156 | E-96 | Part 6.7 | Part 4.2 §4.28 wave plan has no gate for NFR-023/024/052 | Gates: NFR-023 (accessibility) every wave from W2; NFR-024 (localization) at W5; NFR-052 at Release 2 | 4.2 |
+
+**Total errata decisions: DEC-066…DEC-156. Total decisions in the blueprint: DEC-001…DEC-156.**
 
 ## 9.1.3 Quality gate: Batch 9.1
 
 | Check | Result | Notes |
 |---|---|---|
-| Every inconsistency reported by contributors resolved | Pass | 91 logged items → DEC-066…151 (some items merged) |
+| Every inconsistency reported by contributors resolved | Pass | 96 logged items → DEC-066…156 (some items merged) |
 | Decisions traceable to the finding and affected parts | Pass | Columns "Found in" and "Affected parts" |
 | Time-sensitive items flagged | Pass | CERT-In/DPDP log rules, WAF and backup costs, model licence marked verify |
 | Consistency | Pass | Precedence rule stated; Part 10 assembly includes this register |
