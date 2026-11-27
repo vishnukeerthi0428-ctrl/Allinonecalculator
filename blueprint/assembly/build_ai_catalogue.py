@@ -64,7 +64,17 @@ for m in re.finditer(r"^## 2\.\d+ (WF-\d{2}) (.+)$", text22, re.M):
     seg = text22[m.end(): m.end() + 1500]
     pm = re.search(r"\*\*Purpose:\*\*\s*(.+?)(?:\*\*Actors|\*\*Screens|\n)", seg, re.S)
     sc = re.search(r"\*\*Screens:\*\*\s*([^.\n]+)", seg)
-    wf.append((m.group(1), m.group(2).strip(), esc(pm.group(1)) if pm else "", esc(sc.group(1)) if sc else ""))
+    fb = {
+        "WF-08": "AppNAI qualify RFP/requirements, eligibility checklist, deadline guard, bid/no-bid, proposal and quote, human submission with recorded evidence, award proof, contract, delivery, verified payment (BRD §4–§5; DEC-053)",
+        "WF-09": "Proposal and quote from approved templates and price versions; Decimal totals and tax; discount and legal approval thresholds; recipient review in portal; objections answered from approved facts or escalated (BRD §5; DEC-038)",
+        "WF-10": "Buy/sell/service/training orders with SKU, unit and quantity lines; stock reservation; idempotent fulfilment events; over-delivery rejection; acceptance; separate receivable and payable ledgers (BRD §5; FR-DM-03)",
+        "WF-11": "Close only on route-specific verified evidence (signed contract or verified payment); finance maker-checker; partial payments; no duplicate revenue or false Won state (BRD §5; DEC-054)",
+        "WF-12": "Offering-specific onboarding and handoff (no patient data), milestones, feedback, renewal calendar and eligible reminders, lost-deal learning (BRD §5)",
+        "WF-13": "Objective-driven plan from approved templates; simulation of recipients, cost, deadlines and conflicts; approval of the exact plan hash; execution with dispatch-time recheck; live monitoring, budget hard stops and emergency stop (BRD §5)",
+        "WF-14": "Suspend or offboard a tenant/startup: stop schedules and queued actions, revoke senders and access, reconcile uncertain outcomes, export allowed records, apply retention (BRD §5)",
+    }
+    purpose = esc(pm.group(1)) if pm else fb.get(m.group(1), "")
+    wf.append((m.group(1), m.group(2).strip(), purpose, esc(sc.group(1)) if sc else ""))
 extra_flows = [(h.group(1), h.group(2).strip()) for h in re.finditer(r"^### (2\.2[12]\.\d) (.+)$", text22, re.M)]
 
 L = []

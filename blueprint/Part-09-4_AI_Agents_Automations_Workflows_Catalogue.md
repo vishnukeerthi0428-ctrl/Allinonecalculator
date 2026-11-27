@@ -32,13 +32,13 @@ Each workflow runs on the universal execution engine (Part 2.2 §2.6): plan-time
 | WF-05 | Content and campaign | generate approved content, SEO, social, ad/landing plan, audience and budget, with claim and channel approval, cost caps and actual publication (BRD §5). | A050–A061, A107, A108 |
 | WF-06 | Outreach and replies | preview eligible contacts → approved messages → callback → classify intent; opt-out/complaint stop; a response halts the generic sequence (BRD §5). | A034, A035, A037, A045 |
 | WF-07 | Follow-up and meetings | schedule tasks by intent, preference and local time; verify calendar; caps, rejection and suppression stop (BRD §5). | A038–A041, W18 |
-| WF-08 | Project bid (AppNAI route, BRD §4 and BR-S001) |  | A104, A016, A017, A065–A068, A071, A072 |
-| WF-09 | Proposal, quote and negotiation |  | A065–A070, W23 |
-| WF-10 | Order and fulfilment (OrganicSpec route, BR-S004) |  | A105, A067, A073, A074, W14, W16, W25 |
-| WF-11 | Commercial closure (all routes) |  | A073, A074, W26 |
-| WF-12 | Retention and renewal |  | A075–A081, W27, W28 |
-| WF-13 | Autonomous plan |  | A102, A033, A109–A111, A012 |
-| WF-14 | Suspend and offboard (tenant or startup) |  | A099, A101, A103, W34 |
+| WF-08 | Project bid (AppNAI route, BRD §4 and BR-S001) | AppNAI qualify RFP/requirements, eligibility checklist, deadline guard, bid/no-bid, proposal and quote, human submission with recorded evidence, award proof, contract, delivery, verified payment (BRD §4–§5; DEC-053) | A104, A016, A017, A065–A068, A071, A072 |
+| WF-09 | Proposal, quote and negotiation | Proposal and quote from approved templates and price versions; Decimal totals and tax; discount and legal approval thresholds; recipient review in portal; objections answered from approved facts or escalated (BRD §5; DEC-038) | A065–A070, W23 |
+| WF-10 | Order and fulfilment (OrganicSpec route, BR-S004) | Buy/sell/service/training orders with SKU, unit and quantity lines; stock reservation; idempotent fulfilment events; over-delivery rejection; acceptance; separate receivable and payable ledgers (BRD §5; FR-DM-03) | A105, A067, A073, A074, W14, W16, W25 |
+| WF-11 | Commercial closure (all routes) | Close only on route-specific verified evidence (signed contract or verified payment); finance maker-checker; partial payments; no duplicate revenue or false Won state (BRD §5; DEC-054) | A073, A074, W26 |
+| WF-12 | Retention and renewal | Offering-specific onboarding and handoff (no patient data), milestones, feedback, renewal calendar and eligible reminders, lost-deal learning (BRD §5) | A075–A081, W27, W28 |
+| WF-13 | Autonomous plan | Objective-driven plan from approved templates; simulation of recipients, cost, deadlines and conflicts; approval of the exact plan hash; execution with dispatch-time recheck; live monitoring, budget hard stops and emergency stop (BRD §5) | A102, A033, A109–A111, A012 |
+| WF-14 | Suspend and offboard (tenant or startup) | Suspend or offboard a tenant/startup: stop schedules and queued actions, revoke senders and access, reconcile uncertain outcomes, export allowed records, apply retention (BRD §5) | A099, A101, A103, W34 |
 
 **Supporting flows (Part 2.2 §2.21–2.22):** 2.21.1 MedMaarg institutional partnership (BR-S002, BR-S035); 2.21.2 EduVerse education (BR-S003, BR-S036; DEC-030); 2.22.1 Opt-out and preference change (M04, W29); 2.22.2 Privacy request (M56); 2.22.3 Website publication (FR-PUB-01; A107, A108); 2.22.4 SaaS client onboarding (W31–W34; FRD §16.3); 2.22.5 Uncertain-outcome reconciliation (FR-STD-02; RECOMMENDATION-015).
 
