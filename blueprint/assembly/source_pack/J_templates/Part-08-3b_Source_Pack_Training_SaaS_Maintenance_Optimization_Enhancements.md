@@ -128,7 +128,7 @@ Document 33 gives the same operating pattern for every screen. It is formalized 
 
 ---
 
-### 8.3.5.4 Screen task cards TRN-SCR-W01…TRN-SCR-A113 (147 cards)
+### 8.3.5.4 Screen task cards TRN-SCR-W01…TRN-SCR-A113 (147 cards) [GAP-482]
 
 One card per screen. Columns: **Operators** are the roles holding C (create), E (edit), A (approve), X (execute) or S (settings) on that screen in Part 2.3 §2.26.3 (Website rows use the external-surface table); **Purpose** is the document 33 access/purpose line (or the FR text for the nine new screens); **Key actions** are the Part 2.5 actions the trainee must perform; **Practice families** point to the scripts in §8.3.5.5; **Denied / edge drill** is the negative case the trainee must show; **UAT aliases** are the SM-UAT-S and SM-UX-UAT IDs; **Blueprint TCs** are the first test-case ranges from the Part 6.6 RTM (count of further ranges in brackets). Every card is executed with SOP-STD-01…08.
 
@@ -266,7 +266,7 @@ TS-01…TS-04 are the document 33 "safe recovery" items; the rest cover every no
 | Support grant use | R13 | TM-01…03, TM-27, TM-28 |
 | Service invoices and credits (A101) | R14 | TM-01…03, TM-25 |
 
-**Data model additions (candidate; DBA approval required) [RECOMMENDATION-484].**
+**Data model additions (candidate; DBA approval required) [GAP-483] [RECOMMENDATION-484].**
 
 | ID | Entity | Table | Key columns | Retention | Notes |
 |---|---|---|---|---|---|

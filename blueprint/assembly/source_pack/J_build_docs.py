@@ -149,12 +149,26 @@ def task_text(sid):
     return acts
 
 
+GENERIC = "Open the named function within the assigned workspace"
+
+
+def purpose_of(sid):
+    """doc 33 purpose line; for the Admin entries whose doc 33 line is generic, the Part 2.1 FR text."""
+    n = nav.get(sid)
+    if n and not n["purpose"].startswith(GENERIC):
+        return n["purpose"]
+    f = fr["FR-" + sid]
+    if sid.startswith("A"):
+        return f["surface"] + (" (FR-" + sid + "; doc 33 line generic)" if n else " (FR-" + sid + ")")
+    return f["requirement"] + " (FR-" + sid + ")"
+
+
 def card_rows(ids):
     rows = []
     for sid in ids:
         s = scr[sid]
         n = nav.get(sid)
-        purpose = n["purpose"] if n else fr["FR-" + sid]["requirement"] if sid.startswith("W") else fr["FR-" + sid]["title"]
+        purpose = purpose_of(sid)
         fams = families(sid) if sid in prac else []
         op, vw = operators(sid)
         if sid in prac:
@@ -204,7 +218,7 @@ for (aid, sec, summ, st, loc, act, new) in D33_EXTRA:
 for sid in ALL:
     if sid in nav:
         n = nav[sid]
-        add("33", "Screen navigation guide", f"33-NAV-{sid}", f"{sid} {n['title']} ({n['access']}): {n['purpose']}", "Partially covered",
+        add("33", "Screen navigation guide", f"33-NAV-{sid}", f"{sid} {n['title']} ({n['access']}): {purpose_of(sid)}", "Partially covered",
             f"Part 2.5 §2.43 ({scr[sid]['group']}); FR-{sid}", "Screen exists with FR, stories and tests; no operating procedure for users. Added training task card", f"TRN-SCR-{sid}; {MOD_OF[sid]}")
         p = prac[sid]
         fams = families(sid)
@@ -273,8 +287,8 @@ def reg(doc, prefix=None, only_non_covered=False):
 P["REG_D33_EXTRA"] = reg("33", "33-0") + "\n" + "\n".join(reg("33", "33-").split("\n")[2:]) if False else table(
     ["Aspect", "Section", "Summary", "Status", "Blueprint location", "Action", "New IDs"],
     [[a[2], a[1], a[3], a[4], a[5], a[6], a[7]] for a in aspects if a[0] == "33" and re.match(r"33-\d\d$", a[2])])
-P["REG_D33_SCREENS"] = table(["Screen", "Access (doc 33)", "Purpose (doc 33)", "Navigation-procedure status", "UAT alias status", "Blueprint location", "New IDs"],
-    [[sid, nav[sid]["access"] if sid in nav else "new", (nav[sid]["purpose"] if sid in nav else scr[sid]["title"]),
+P["REG_D33_SCREENS"] = table(["Screen", "Access (doc 33)", "Purpose (doc 33, or FR text where doc 33 is generic)", "Navigation-procedure status", "UAT alias status", "Blueprint location", "New IDs"],
+    [[sid, nav[sid]["access"] if sid in nav else "new", purpose_of(sid),
       "Partially covered" if sid in nav else "Not covered", "Covered" if sid in prac else "Covered (SM-UX-UAT)",
       f"FR-{sid}; {scr[sid]['group'].split(' (')[0]}", f"TRN-SCR-{sid}"] for sid in ALL])
 P["REG_D34"] = reg("34")
@@ -395,6 +409,7 @@ P["BENCH_TABLE"] = table(["Candidate", "Compare", "Guardrail / decision"], D["d3
 P["PANEL"] = "\n".join(f"- `{l}`" for l in D["d36"]["panel"])
 P["RECON_D38"] = P["REG_D38"]
 P["N_ASPECTS"] = str(len(aspects))
+P["N_GENERIC"] = str(sum(1 for n in nav.values() if n["purpose"].startswith(GENERIC)))
 P["P_ACCESS"] = P["ACCESS_COUNTS"]
 for d in cnt:
     P[f"N_D{d}"] = str(sum(cnt[d].values()))

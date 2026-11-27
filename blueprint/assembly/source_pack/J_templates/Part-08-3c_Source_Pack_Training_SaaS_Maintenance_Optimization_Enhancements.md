@@ -104,7 +104,7 @@ stateDiagram-v2
 
 R = responsible, A = accountable, C = consulted, I = informed. The signed scope lists the managed task types, the approving client roles, monthly hour or task allowance, data classes staff may see, and excluded regulated actions. Platform staff act through DEC-056 grants whose scope equals the managed scope (FR-ENH-J-007).
 
-#### 8.3.5.13.6 SLA framework (SLA-01…SLA-12) [ASSUMPTION-482] [CONFLICT-482] [CONFLICT-484]
+#### 8.3.5.13.6 SLA framework (SLA-01…SLA-12) [GAP-484] [ASSUMPTION-482] [CONFLICT-482] [CONFLICT-484]
 
 **No SLA figure is offered to any client until it has been measured for at least three consecutive months in production and approved by the Service Owner** (DEC-044; OPT-20-03; document 34 "no guarantee until measured and contracted"). The schedule below is the template that becomes contractual per client.
 
@@ -155,7 +155,7 @@ R = responsible, A = accountable, C = consulted, I = informed. The signed scope 
 
 Worked check (document 36 OPT-TEST-20): service invoice INR 1,000.00, attributable cost INR 600.00 → contribution **INR 400.00 (40.0%)**, not counted in commercial receipts (KPI-13).
 
-**Cohort metrics added (OPT-20-03, document 35 "service economics").** Logo churn = tenants cancelled in period ÷ tenants active at period start; GRR = (start ARR − churned ARR − contraction) ÷ start ARR; NRR = (start ARR − churn − contraction + expansion) ÷ start ARR; onboarding effort = staff hours from CSO-02 to CSO-07; support burden = tickets and staff hours per tenant per month. All by plan archetype, service model and signup cohort (month); zero denominators shown as "unassessed".
+**Cohort metrics added (OPT-20-03, document 35 "service economics") [RECOMMENDATION-490].** Logo churn = tenants cancelled in period ÷ tenants active at period start; GRR = (start ARR − churned ARR − contraction) ÷ start ARR; NRR = (start ARR − churn − contraction + expansion) ÷ start ARR; onboarding effort = staff hours from CSO-02 to CSO-07; support burden = tickets and staff hours per tenant per month. All by plan archetype, service model and signup cohort (month); zero denominators shown as "unassessed".
 
 #### 8.3.5.13.8 Enhanced functional requirements (SaaS)
 
@@ -213,7 +213,7 @@ Feature: US-20-EJ03 managed scope enforcement
 
 ---
 
-### 8.3.5.14 Product maintenance and continuous-improvement lifecycle (extends Part 4.3 §4.43–4.47 and Part 8.2 §8.2.2.4)
+### 8.3.5.14 Product maintenance and continuous-improvement lifecycle (extends Part 4.3 §4.43–4.47 and Part 8.2 §8.2.2.4) [GAP-485]
 
 #### 8.3.5.14.1 Maintenance operating model
 
@@ -272,7 +272,7 @@ Fixes are ranked by business impact, security and financial integrity, **not by 
 | MNT-M07 | Monthly | Technical-debt register review (OPT-13-02) | Updated register | Engineering lead | Tracker | FR-ENH-J-011 |
 | MNT-M08 | Monthly | Estimate vs actual and rework (OPT-16-02) | Delivery note | PO + FS engineer | — | Part 8.1 |
 | MNT-M09 | Monthly | Access grants, support grants, dormant accounts | Access review | Tenant admin | A002, A099 | BRL-TEN-07/09 |
-| MNT-M10 | Monthly | Tenant profitability, usage ledger, approved business claims expiry; optimization scorecard refresh | Monthly reports | Service Owner; marketing lead | A101, A051, A090 | KPI-23/24; §8.3.5.15 |
+| MNT-M10 | Monthly | Tenant profitability, usage ledger, approved business claims expiry; optimization scorecard refresh (monthly; full review quarterly) [ASSUMPTION-488] | Monthly reports | Service Owner; marketing lead | A101, A051, A090 | KPI-23/24; §8.3.5.15 |
 | MNT-Q01 | Quarterly | Restore and rollback rehearsal; full RTO drill | Drill report | DevOps | A090 | Part 4.47 |
 | MNT-Q02 | Quarterly | Security scenario review and threat-model delta | Review note | Security champion | — | Part 4.1 |
 | MNT-Q03 | Quarterly | AI regression benchmark on frozen datasets | Eval report | AI lead | A084 | NFR-033 |
@@ -388,7 +388,7 @@ Feature: US-21-EJ09 change impact record
 
 ---
 
-### 8.3.5.15 Optimization engineering model (new; extends Part 4.2, Part 8.2 §8.2.6, Part 6, Part 9.3)
+### 8.3.5.15 Optimization engineering model (new; extends Part 4.2, Part 8.2 §8.2.6, Part 6, Part 9.3) [GAP-486]
 
 #### 8.3.5.15.1 Dimensions, weights and the blocking gate (20 weighted + G0) [CONFLICT-486]
 
@@ -550,7 +550,7 @@ Any step with an external side effect requires current authorization, policy and
 |---|---|---|---|---|
 | FR-ENH-J-013 | Optimization register and scorecard: 20 dimensions with weights, 104 controls with status, owner, EVR links and scores; weighted score and coverage computed per §8.3.5.15.2; G0 status; A090 Optimization tab and A089 summary card; read-only recommendations | doc 36 §2, §5 | W5 · EP-21 | TC-ENH-J-054, 055 |
 | FR-ENH-J-014 | OKPI registry as MetricDefinition rows with mandatory flag, numeric domain, population rule; measurements as MetricSnapshot linked to EVR; zero denominator → unassessed; mandatory OKPIs feed the A090 gate | doc 36 §4; CFG-21 | W5 · EP-17 | TC-ENH-J-056 |
-| FR-ENH-J-015 | Evidence manifest validator: loads the authoritative required-ID list from the reviewed, immutable build baseline; rejects missing, extra and duplicate IDs, mandatory N/A, blank or whitespace evidence, executor = reviewer after trim and case-folding, missing approval identity and digest mismatch; an edited register cannot define its own required scope; output = BLOCKED with every defect listed | doc 36 "fail-closed evidence inventory", "evidence integrity"; Part 6.1 EVR | W3 · EP-21 | TC-ENH-J-017 |
+| FR-ENH-J-015 | Evidence manifest validator: loads the authoritative required-ID list from the reviewed, immutable build baseline; rejects missing, extra and duplicate IDs, mandatory N/A, blank or whitespace evidence, executor = reviewer after trim and case-folding, missing approval identity and digest mismatch; an edited register cannot define its own required scope; output = BLOCKED with every defect listed; runs in the pre-release pipeline stage [RECOMMENDATION-483] | doc 36 "fail-closed evidence inventory", "evidence integrity"; Part 6.1 EVR | W3 · EP-21 | TC-ENH-J-017 |
 | FR-ENH-J-016 | Authorization-safe private cache key = hash(product, tenant, startup, principal or effective-grant fingerprint, permission revision, policy revision, model revision, prompt revision, knowledge revision, normalized query); public caches only from the approved public projection; permission or knowledge revision change invalidates dependent entries; identical revision numbers across users never share an entry [RECOMMENDATION-482] | doc 36; OPT-01-03, 08-05, 10-04 | W1 · EP-01 | TC-ENH-J-057 |
 | FR-ENH-J-017 | Operational projections (Customer 360, approval queue, A110 run monitor, A089 action counts) refresh ≤ 60 s p95 from commit; analytical dashboards RP-01…RP-21 keep ≤ 15 min (NFR-047); revocation removes access to projected rows ≤ 60 s | CONFLICT-480 | W2 · EP-17 | TC-ENH-J-037 |
 | FR-ENH-J-018 | Spend alerts per cap (M53): 70% notify owner, 90% warn owner and FinOps, 100% hard stop of optional/paid jobs; AWS Budgets keep 50/80/100% (Part 4.46.4); unexpected provider bills are routed to the budget owner | CONFLICT-481; OPT-03-08 | W1 · EP-04 | TC-ENH-J-038 |
