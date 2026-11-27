@@ -23,7 +23,7 @@ BR,BR-M18,Decision-maker role discovery,EP-06,W1,FR-A024 FR-A026,US-0603 US-0605
 BR,BR-M19,Contact verification,EP-06,W1,FR-A025 FR-A026,US-0604 US-0605,,22,"TC-01-132, TC-06-025…035, TC-06-051…056, TC-AI-AG008-006, TC-AU-AU018-001…003",Covered
 BR,BR-M20,Research review and alerts,EP-06,W1,FR-A027 FR-A028,US-0606 US-0607,,24,"TC-01-132, TC-06-036…056, TC-AU-AU019-001, TC-AU-AU019-003",Covered
 BR,BR-M21,CRM pipeline,EP-07,W2,FR-A029 FR-A030 FR-A032,US-0701 US-0702 US-0707 US-0708,,65,"TC-01-133, TC-03-015, TC-03-019…020, TC-03-025…027, TC-03-029…030, TC-03-036…050, TC-07-001…017, TC-07-046…069",Covered
-BR,BR-M22,Lead capture and forms,EP-07,W2,FR-A031 FR-W12 FR-W13 FR-W14 FR-W15 FR-W16 FR-W17 FR-W18 FR-W30,US-0306 US-0703 US-0704 US-0705 US-0706 US-0708 US-0709 US-0710 US-0903 US-1405 US-1406 US-1407,,71,"TC-01-129, TC-01-133, TC-03-059…063, TC-03-088…094, TC-07-018…045, TC-07-056…075, TC-09-017…023, TC-09-045, TC-20-004",Covered
+BR,BR-M22,Lead capture and forms,EP-07,W2,FR-A031 FR-W12 FR-W13 FR-W14 FR-W15 FR-W16 FR-W17 FR-W18 FR-W30,US-0306 US-0703 US-0704 US-0705 US-0706 US-0708 US-0709 US-0710 US-0903 US-1405 US-1406 US-1407,,90,"TC-01-129, TC-01-133, TC-03-059…063, TC-03-088…094, TC-07-018…045, TC-07-056…075, TC-09-017…023, TC-09-045, TC-14-040…057, TC-14-100, TC-20-004",Covered
 BR,BR-M23,Customer 360,EP-07,W2,FR-A032,US-0707 US-0709,,39,"TC-01-133, TC-03-015, TC-03-019…020, TC-03-025…027, TC-03-029…030, TC-03-036…050, TC-07-046…055, TC-07-065…069",Covered
 BR,BR-M24,Engagement eligibility,EP-03,W2,FR-A032 FR-A034,US-0302 US-0303 US-0304 US-0311 US-0707 US-0802 US-0811,,143,"TC-01-133, TC-03-009…050, TC-03-095…099, TC-07-046…055, TC-07-065…069, TC-08-001…025, TC-08-114…137, TC-08-155…161, TC-08-169, TC-08-171…173, TC-08-175…178, TC-08-180…182, TC-08-184…190, TC-AI-AG011-001…004, TC-AI-AG011-021, TC-AU-AU002-013",Covered
 BR,BR-M55,Workflow control center,EP-18,W2,FR-A033,US-1801 US-1802 US-1804 US-1806,,78,"TC-18-001…016, TC-18-024…058, TC-18-085, TC-18-093…101, TC-18-112…125, TC-18-133, TC-18-135, TC-19-032",Covered
@@ -46,12 +46,12 @@ BR,BR-M38,Campaign management,EP-12,W3,FR-A058 FR-A059,US-1204 US-1205,,28,"TC-1
 BR,BR-M39,Paid ads integration,EP-12,W3,FR-A060 FR-A061,US-1206 US-1207 US-1208,,20,TC-12-042…061,Covered
 BR,BR-M40,Webinars and demonstrations,EP-09,W3,FR-A062 FR-A063 FR-W19,US-0905 US-0906,,15,"TC-09-031…044, TC-09-046",Covered
 BR,BR-M42,Referral and partner lead capture,EP-12,W3,FR-A064 FR-W20,US-1209 US-1210,,12,TC-12-062…073,Covered
-BR,BR-M43,Proposal builder,EP-13,W4,FR-A065 FR-A066 FR-A104 FR-W23,US-1301 US-1302 US-1306,,36,"TC-13-001…015, TC-13-056…063, TC-13-102…112, TC-13-127, TC-AI-AG020-003",Covered
-BR,BR-M44,Quote and pricing engine,EP-13,W4,FR-A067 FR-A068 FR-A104 FR-A105 FR-W06 FR-W14 FR-W23,US-1303 US-1304 US-1305 US-1306 US-1313 US-1406 US-1408 US-1907,,97,"TC-13-016…063, TC-13-102…112, TC-13-115…127, TC-19-053…058, TC-19-078…095, TC-AI-AG023-001",Covered
+BR,BR-M43,Proposal builder,EP-13,W4,FR-A065 FR-A066 FR-A104 FR-W23,US-1301 US-1302 US-1306,,88,"TC-13-001…015, TC-13-056…063, TC-13-102…112, TC-13-127, TC-14-001…039, TC-14-086…096, TC-14-099, TC-14-101, TC-AI-AG020-003",Covered
+BR,BR-M44,Quote and pricing engine,EP-13,W4,FR-A067 FR-A068 FR-A104 FR-A105 FR-W06 FR-W14 FR-W23,US-1303 US-1304 US-1305 US-1306 US-1313 US-1406 US-1408 US-1907,,180,"TC-13-016…063, TC-13-102…112, TC-13-115…127, TC-14-001…039, TC-14-047…052, TC-14-058…079, TC-14-086…101, TC-19-053…058, TC-19-078…095, TC-AI-AG023-001",Covered
 BR,BR-M45,Negotiation and objection handling,EP-13,W4,FR-A069 FR-A070,US-1307 US-1308,,20,"TC-13-064…072, TC-13-102…110, TC-AI-AG021-001…002",Covered
-BR,BR-M46,Contract and MoU workflow,EP-13,W4,FR-A071 FR-A072 FR-A104 FR-W24,US-1309 US-1310 US-1311 US-1312 US-1313,,41,"TC-13-073…110, TC-13-113…114, TC-13-128",Covered
-BR,BR-M47,Payment and closure,EP-15,W4,FR-A073 FR-A074 FR-A105 FR-W26,US-1410 US-1501 US-1502 US-1503 US-1504 US-1505 US-1506 US-1510,,115,"TC-13-016…028, TC-13-115, TC-13-117, TC-13-119…120, TC-13-122…124, TC-15-001…028, TC-15-030…031, TC-15-033…034, TC-15-036…070, TC-15-085…109, TC-AI-AG023-001, TC-AI-AG024-001, TC-AU-AU037-001",Covered
-BR,BR-M48,Onboarding and handoff,EP-16,W4,FR-A075 FR-A076 FR-A105 FR-W27,US-1410 US-1601 US-1602 US-1603 US-1611,,62,"TC-13-016…028, TC-13-115, TC-13-117, TC-13-119…120, TC-13-122…124, TC-16-001…022, TC-16-064…079, TC-16-083, TC-AI-AG023-001, TC-AI-AG025-001, TC-AI-AG025-003",Covered
+BR,BR-M46,Contract and MoU workflow,EP-13,W4,FR-A071 FR-A072 FR-A104 FR-W24,US-1309 US-1310 US-1311 US-1312 US-1313,,93,"TC-13-073…110, TC-13-113…114, TC-13-128, TC-14-001…039, TC-14-086…096, TC-14-099, TC-14-101",Covered
+BR,BR-M47,Payment and closure,EP-15,W4,FR-A073 FR-A074 FR-A105 FR-W26,US-1410 US-1501 US-1502 US-1503 US-1504 US-1505 US-1506 US-1510,,150,"TC-13-016…028, TC-13-115, TC-13-117, TC-13-119…120, TC-13-122…124, TC-14-058…079, TC-14-086…094, TC-14-097…098, TC-14-100…101, TC-15-001…028, TC-15-030…031, TC-15-033…034, TC-15-036…070, TC-15-085…109, TC-AI-AG023-001, TC-AI-AG024-001, TC-AU-AU037-001",Covered
+BR,BR-M48,Onboarding and handoff,EP-16,W4,FR-A075 FR-A076 FR-A105 FR-W27,US-1410 US-1601 US-1602 US-1603 US-1611,,97,"TC-13-016…028, TC-13-115, TC-13-117, TC-13-119…120, TC-13-122…124, TC-14-058…079, TC-14-086…094, TC-14-097…098, TC-14-100…101, TC-16-001…022, TC-16-064…079, TC-16-083, TC-AI-AG023-001, TC-AI-AG025-001, TC-AI-AG025-003",Covered
 BR,BR-M49,Partner deployment pipeline,EP-16,W4,FR-A077 FR-A078 FR-W13,US-0705 US-1607,,24,"TC-01-133, TC-07-032…037, TC-07-070…075, TC-16-046…051, TC-16-071…075",Covered
 BR,BR-M50,Retention and renewal,EP-16,W4,FR-A079 FR-A080 FR-W28,US-1604 US-1605 US-1611 US-1612,,32,"TC-16-023…038, TC-16-064…075, TC-16-077, TC-16-083, TC-AU-AU039-001…002",Covered
 BR,BR-M51,Lost deal and feedback,EP-16,W4,FR-A081 FR-A084,US-0407 US-1606 US-1612,,41,"TC-01-130, TC-04-009…014, TC-04-045…051, TC-16-039…045, TC-16-064…075, TC-16-077, TC-16-080…084, TC-AI-AG026-001, TC-AI-AG026-003",Covered
@@ -65,15 +65,15 @@ BR,BR-M63,Insurance institutional pilot,EP-16,W6,FR-A091 FR-A092,US-1608,,16,"TC
 BR,BR-M64,Technology licensing pipeline,EP-16,W6,FR-A093 FR-A094,US-1609,,4,TC-16-060…063,Covered
 BR,BR-M65,Phygital expansion,EP-16,W6,FR-A095 FR-A096,US-1610,,3,TC-16-057…059,Covered
 BR,BR-M66,Future product commercialization,EP-02,W0 / W6,FR-A004 FR-A097 FR-A098 FR-W04,US-0201 US-0205 US-0206 US-0207 US-1906,,62,"TC-01-128, TC-02-001…018, TC-02-035…050, TC-19-046…052, TC-19-078…095, TC-AI-AG007-002, TC-AU-AU043-002",Covered
-BR,BR-TENANT,Independent tenant/startup operation,"EP-01, EP-14",W0–W5,FR-A002 FR-A099 FR-A100 FR-A104 FR-A105 FR-A107 FR-A108 FR-A112 FR-W02 FR-W03,US-0106 US-0107 US-0108 US-0109 US-0113 US-0114 US-1401 US-1408 US-1412 US-1901 US-1903 US-1905 US-2004 US-2010 US-2012,,192,"TC-01-033…066, TC-01-088…093, TC-01-098…103, TC-01-110…113, TC-01-115…119, TC-01-122…127, TC-13-016…028, TC-13-115, TC-13-117, TC-13-119…120, TC-13-122…124, TC-18-051…058, TC-19-001…052, TC-19-078…102, TC-20-025…031, TC-20-076…083, TC-20-089…098, TC-AI-AG023-001",Covered
-BR,BR-WEB,Approved public website and external portal,EP-19,W2–W3,FR-A107 FR-A108 FR-W01 FR-W02 FR-W03 FR-W04 FR-W05 FR-W06 FR-W07 FR-W08 FR-W09 FR-W10 FR-W11 FR-W12 FR-W21 FR-W22 FR-W23 FR-W24 FR-W25 FR-W26 FR-W27 FR-W28 FR-W29 FR-W30,US-0305 US-0306 US-0310 US-0704 US-0710 US-0903 US-1004 US-1103 US-1202 US-1203 US-1306 US-1312 US-1411 US-1506 US-1603 US-1604 US-1901 US-1902 US-1903 US-1904 US-1905 US-1906 US-1907 US-1908 US-1909 US-1910 US-1911 US-1912 US-1913,,329,"TC-01-001…013, TC-01-126, TC-01-129, TC-01-133, TC-03-051…063, TC-03-088…094, TC-07-023…031, TC-07-065…075, TC-09-017…023, TC-09-045, TC-10-029…044, TC-10-052…059, TC-11-019…028, TC-11-066…075, TC-12-008…022, TC-12-082, TC-13-056…063, TC-13-086…101, TC-13-111…112, TC-13-127…128, TC-15-027…028, TC-15-030…031, TC-15-034, TC-15-036…046, TC-15-063…070, TC-15-085…091, TC-15-098…109, TC-16-016…028, TC-16-064…070, TC-16-077, TC-16-083, TC-19-001…102, TC-AI-AG017-001, TC-AI-AG017-003…005, TC-AI-AG017-008…010, TC-AI-AG017-012, TC-AI-AG017-015, TC-AI-AG017-031",Covered
+BR,BR-TENANT,Independent tenant/startup operation,"EP-01, EP-14",W0–W5,FR-A002 FR-A099 FR-A100 FR-A104 FR-A105 FR-A107 FR-A108 FR-A112 FR-W02 FR-W03,US-0106 US-0107 US-0108 US-0109 US-0113 US-0114 US-1401 US-1408 US-1412 US-1901 US-1903 US-1905 US-2004 US-2010 US-2012,,269,"TC-01-033…066, TC-01-088…093, TC-01-098…103, TC-01-110…113, TC-01-115…119, TC-01-122…127, TC-13-016…028, TC-13-115, TC-13-117, TC-13-119…120, TC-13-122…124, TC-14-001…039, TC-14-058…079, TC-14-086…101, TC-18-051…058, TC-19-001…052, TC-19-078…102, TC-20-025…031, TC-20-076…083, TC-20-089…098, TC-AI-AG023-001",Covered
+BR,BR-WEB,Approved public website and external portal,EP-19,W2–W3,FR-A107 FR-A108 FR-W01 FR-W02 FR-W03 FR-W04 FR-W05 FR-W06 FR-W07 FR-W08 FR-W09 FR-W10 FR-W11 FR-W12 FR-W21 FR-W22 FR-W23 FR-W24 FR-W25 FR-W26 FR-W27 FR-W28 FR-W29 FR-W30,US-0305 US-0306 US-0310 US-0704 US-0710 US-0903 US-1004 US-1103 US-1202 US-1203 US-1306 US-1312 US-1411 US-1506 US-1603 US-1604 US-1901 US-1902 US-1903 US-1904 US-1905 US-1906 US-1907 US-1908 US-1909 US-1910 US-1911 US-1912 US-1913,,336,"TC-01-001…013, TC-01-126, TC-01-129, TC-01-133, TC-03-051…063, TC-03-088…094, TC-07-023…031, TC-07-065…075, TC-09-017…023, TC-09-045, TC-10-029…044, TC-10-052…059, TC-11-019…028, TC-11-066…075, TC-12-008…022, TC-12-082, TC-13-056…063, TC-13-086…101, TC-13-111…112, TC-13-127…128, TC-14-080…085, TC-14-100, TC-15-027…028, TC-15-030…031, TC-15-034, TC-15-036…046, TC-15-063…070, TC-15-085…091, TC-15-098…109, TC-16-016…028, TC-16-064…070, TC-16-077, TC-16-083, TC-19-001…102, TC-AI-AG017-001, TC-AI-AG017-003…005, TC-AI-AG017-008…010, TC-AI-AG017-012, TC-AI-AG017-015, TC-AI-AG017-031",Covered
 BR,BR-AUTO,Controlled autonomous operations,EP-18,W2 / W5,FR-A033 FR-A102 FR-A106 FR-A109 FR-A110 FR-A111 FR-A113,US-0303 US-0802 US-1703 US-1802 US-1803 US-1804 US-1805 US-1806 US-1807 US-1808 US-1809 US-1810 US-1811 US-1812 US-1813 US-1814,,226,"TC-03-015…035, TC-08-013…025, TC-08-045…055, TC-08-169, TC-08-171…173, TC-08-175…178, TC-08-180…182, TC-08-184…189, TC-10-003, TC-15-092…097, TC-17-019…028, TC-17-067…073, TC-18-001…138, TC-19-032, TC-AI-AG016-001",Covered
 BR,BR-SVC,Service subscriptions and client portability,EP-20,W5,FR-A101 FR-A103 FR-W31 FR-W32 FR-W33 FR-W34,US-2001 US-2002 US-2003 US-2004 US-2005 US-2006 US-2007 US-2008 US-2009 US-2011 US-2012,,124,"TC-01-115, TC-02-051…057, TC-07-056…064, TC-18-051…058, TC-20-001…075, TC-20-084…105, TC-AI-AG010-001, TC-AI-AG030-001",Covered
 BR,BR-QA,"Reliable, independently verified delivery",EP-21,W0–W5,FR-A026 FR-A084 FR-A090,US-0103 US-0113 US-0402 US-0407 US-0605 US-2101 US-2106 US-2107 US-2108 US-2109 US-2110,,105,"TC-01-020…024, TC-01-088…093, TC-01-124, TC-01-130, TC-01-132, TC-04-009…014, TC-04-045…051, TC-06-031…035, TC-21-001…012, TC-21-044…094, TC-21-098…105, TC-AI-AG033-001, TC-AI-AG036-001",Covered
-BR-S,BR-S001,AppNAI route: global RFP/project discovery → technical and eligibility review → bid/no-bid,,,FR-A104 FR-W15,US-0702 US-1401 US-1402 US-1404 US-1405 US-2107,,20,"TC-07-012…017, TC-21-054…067",Covered
+BR-S,BR-S001,AppNAI route: global RFP/project discovery → technical and eligibility review → bid/no-bid,,,FR-A104 FR-W15,US-0702 US-1401 US-1402 US-1404 US-1405 US-2107,,79,"TC-07-012…017, TC-14-001…046, TC-14-086…096, TC-14-099, TC-14-101, TC-21-054…067",Covered
 BR-S,BR-S002,MedMaarg route: institutional wellness need → approved product match → decision-maker → de,,,,US-1301 US-1607,,14,"TC-13-001…008, TC-16-046…051",Covered
 BR-S,BR-S003,EduVerse route: student/guardian/institution requirement → programme fit → approved counse,,,FR-W17,US-0706,,16,"TC-01-133, TC-07-026, TC-07-038…045, TC-07-070…075",Covered
-BR-S,BR-S004,OrganicSpec route: buyer/supplier discovery → RFQ → quote → purchase/sales order with line,,,FR-A105 FR-W14 FR-W16 FR-W25,US-0702 US-1304 US-1406 US-1407 US-1408 US-1410 US-1411,,38,"TC-07-012…017, TC-13-016…035, TC-13-115…117, TC-13-119…125, TC-13-127, TC-AI-AG023-001",Covered
+BR-S,BR-S004,OrganicSpec route: buyer/supplier discovery → RFQ → quote → purchase/sales order with line,,,FR-A105 FR-W14 FR-W16 FR-W25,US-0702 US-1304 US-1406 US-1407 US-1408 US-1410 US-1411,,90,"TC-07-012…017, TC-13-016…035, TC-13-115…117, TC-13-119…125, TC-13-127, TC-14-047…094, TC-14-097…098, TC-14-100…101, TC-AI-AG023-001",Covered
 BR-S,BR-S005,Source scoring: fit/evidence/intent/readiness/timing weighted 25/25/20/15/15; thresholds ≥,,,,US-0601,,12,TC-06-001…012,Covered
 BR-S,BR-S006,"WF-01 Startup catalogue: approve offering, price, claims, segment, customer roles, pipelin",,,,US-0201 US-0202,,18,TC-02-001…018,Covered
 BR-S,BR-S007,WF-02 Market discovery: plan query → evidence → signals/need → solution match → qualify; a,,,,US-0502,,7,TC-05-014…020,Covered
@@ -82,9 +82,9 @@ BR-S,BR-S009,WF-04 Inbound acquisition: landing/chat/email/WhatsApp/social/event
 BR-S,BR-S010,"WF-05 Content/campaign: approved content, SEO, social, ad/landing plan, audience, budget; ",,,,US-1101 US-1106 US-1204,,33,"TC-11-001…009, TC-11-040…048, TC-11-074, TC-12-023…031, TC-12-074, TC-12-077…078, TC-12-081, TC-12-083",Covered
 BR-S,BR-S011,WF-06 Outreach and replies: preview eligible contacts → approved messages → callback → cla,,,,US-0301 US-0304 US-0801 US-0807,,71,"TC-03-001…008, TC-03-015, TC-03-018…020, TC-03-022, TC-03-025…027, TC-03-029…030, TC-03-036…050, TC-08-001…012, TC-08-066…076, TC-08-188…190, TC-10-027, TC-AI-AG011-001…004, TC-AI-AG011-021, TC-AI-AG013-001…003, TC-AI-AG013-008…009, TC-AU-AU002-013",Covered
 BR-S,BR-S012,"WF-07 Follow-up & meetings: tasks by intent, preference, local time; verify calendar; caps",,,,US-0809 US-0811 US-0902,,55,"TC-08-085…103, TC-08-114…137, TC-08-189, TC-08-191, TC-09-008…016, TC-09-045",Covered
-BR-S,BR-S013,"WF-08 Project bid: AppNAI qualify RFP, deadline, bid/no-bid, proposal, authorized submissi",,,FR-A104,US-1401 US-1402 US-1403 US-1404,,0,—,Not covered
+BR-S,BR-S013,"WF-08 Project bid: AppNAI qualify RFP, deadline, bid/no-bid, proposal, authorized submissi",,,FR-A104,US-1401 US-1402 US-1403 US-1404,,52,"TC-14-001…039, TC-14-086…096, TC-14-099, TC-14-101",Covered
 BR-S,BR-S014,WF-09 Proposal/quote: approved pricing and terms; objections; controlled discount/negotiat,,,,US-1301 US-1304,,20,"TC-13-001…008, TC-13-029…035, TC-13-115…116, TC-13-121, TC-13-125, TC-13-127",Covered
-BR-S,BR-S015,"WF-10 Order/fulfilment: buy/sell/service/training/project order with lines; delivery, rece",,,FR-A105,US-1408 US-1409 US-1410 US-1412,,21,"TC-13-016…028, TC-13-115, TC-13-117, TC-13-119…120, TC-13-122…124, TC-AI-AG023-001",Covered
+BR-S,BR-S015,"WF-10 Order/fulfilment: buy/sell/service/training/project order with lines; delivery, rece",,,FR-A105,US-1408 US-1409 US-1410 US-1412,,56,"TC-13-016…028, TC-13-115, TC-13-117, TC-13-119…120, TC-13-122…124, TC-14-058…079, TC-14-086…094, TC-14-097…098, TC-14-100…101, TC-AI-AG023-001",Covered
 BR-S,BR-S016,WF-11 Commercial closure: verified signed contract/payment per route; actual receipts/obli,,,,US-1309 US-1504 US-1601,,32,"TC-13-073…079, TC-13-113…114, TC-13-128, TC-15-036, TC-15-047…055, TC-16-001…009, TC-16-076, TC-16-078…079",Covered
 BR-S,BR-S017,"WF-12 Retention & renewal: handoff, milestones, feedback, renewal, eligible re-engagement;",,,,US-1601 US-1605,,22,"TC-16-001…009, TC-16-029…038, TC-16-076, TC-16-078…079",Covered
 BR-S,BR-S018,"WF-13 Autonomous plan: simulate workload, recipients, cost, deadlines; approve hash; execu",,,FR-A102,US-0303 US-1804 US-1807 US-1812,,87,"TC-03-015…035, TC-18-024…040, TC-18-051…058, TC-18-093…125, TC-18-132…138, TC-19-032",Covered
@@ -101,20 +101,20 @@ BR-S,BR-S028,"View ""Discovery"": public sources, needs, organizations, contacts
 BR-S,BR-S029,"View ""Outreach & Marketing"": content, SEO, social, ads, landing pages, email, WhatsApp, ev",,,,,,0,—,Not covered
 BR-S,BR-S030,"View ""Follow-ups"": sequences, meetings, next action, tasks, onboarding, renewal",,,,,,0,—,Not covered
 BR-S,BR-S031,"View ""Objections"": approved factual answers, pricing/contract exceptions, escalation",,,,US-1307 US-1308,,9,TC-13-064…072,Covered
-BR-S,BR-S032,"View ""Closure"": proposal, quote, tender award, contract, purchase/sales order, fulfilment,",,,,US-1401 US-1408,,0,—,Not covered
+BR-S,BR-S032,"View ""Closure"": proposal, quote, tender award, contract, purchase/sales order, fulfilment,",,,,US-1401 US-1408,,21,"TC-14-001…011, TC-14-058…065, TC-14-097, TC-14-099",Covered
 BR-S,BR-S033,"View ""Automation"": separate permissioned workspace: permissions, approvals, workflow build",,,,,,0,—,Not covered
-BR-S,BR-S034,"AppNAI: verify tender eligibility, deadline, budget, technical requirements and authorized",,,,US-1402 US-1403 US-1404,,2,"TC-AI-AG019-003, TC-AU-AU034-002",Covered
+BR-S,BR-S034,"AppNAI: verify tender eligibility, deadline, budget, technical requirements and authorized",,,,US-1402 US-1403 US-1404,,33,"TC-14-012…039, TC-14-095…096, TC-14-099, TC-AI-AG019-003, TC-AU-AU034-002",Covered
 BR-S,BR-S035,"MedMaarg: qualify organization-level needs, approved AI Hospital claims and pilot; exclude",,,,US-0508 US-1601 US-1607,,23,"TC-05-058…062, TC-16-001…009, TC-16-046…051, TC-16-076, TC-16-078…079",Covered
 BR-S,BR-S036,EduVerse: route student/institutional training and school AI products/services with safegu,,,,US-0508 US-0706,,14,"TC-05-058…062, TC-07-026, TC-07-038…045",Covered
-BR-S,BR-S037,"OrganicSpec: verify supplier/buyer, SKU, unit, quantity, price, fulfilment, separate payab",,,,US-1303 US-1407 US-1408 US-1409 US-1410,,20,"TC-13-016…028, TC-13-115, TC-13-117, TC-13-119…120, TC-13-122…124",Covered
+BR-S,BR-S037,"OrganicSpec: verify supplier/buyer, SKU, unit, quantity, price, fulfilment, separate payab",,,,US-1303 US-1407 US-1408 US-1409 US-1410,,49,"TC-13-016…028, TC-13-115, TC-13-117, TC-13-119…120, TC-13-122…124, TC-14-053…079, TC-14-097…098",Covered
 BR-S,BR-S038,"Commercial campaigns: validate audience, claims, consent, spend and attribution before pub",,,,US-1102 US-1204 US-1205 US-1208,,46,"TC-11-010…018, TC-11-072, TC-11-074, TC-12-023…041, TC-12-055…061, TC-12-074…081, TC-12-083",Covered
 BR-S,BR-S039,"Qualified opportunity counted only with evidence, fit and accountable owner; de-duplicated",,,FR-A027,US-0606 US-0701,,28,"TC-01-132, TC-06-036…045, TC-06-051…056, TC-07-001…011",Covered
-BR-S,BR-S040,"Conversion outcome separates qualified lead, accepted agreement, fulfilled obligation and ",,,,US-0701 US-1410 US-1504 US-1507 US-1511,,34,"TC-07-001…011, TC-15-036, TC-15-047…055, TC-15-071…078, TC-15-098…102",Covered
+BR-S,BR-S040,"Conversion outcome separates qualified lead, accepted agreement, fulfilled obligation and ",,,,US-0701 US-1410 US-1504 US-1507 US-1511,,43,"TC-07-001…011, TC-14-073…079, TC-14-097…098, TC-15-036, TC-15-047…055, TC-15-071…078, TC-15-098…102",Covered
 BR-S,BR-S041,Global coverage: approved sources monitored vs registry by country/sector; show restricted,,,,US-0501 US-0512,,19,"TC-05-001…013, TC-05-081…086",Covered
 BR-S,BR-S042,Service economics: subscription revenue separate from business proceeds; unit economics in,,,,US-2006,,10,TC-20-041…050,Covered
 BR-S,BR-S043,Delivery exit: no required FR without a tested result; waivers documented with owner and i,,,,US-2110,,8,"TC-21-084…090, TC-21-105",Covered
 BR-S,BR-S044,"Qualified lead = distinct tenant/startup opportunity with verified need, offering fit and ",,,,US-0606,,10,TC-06-036…045,Covered
-BR-S,BR-S045,Won deal = approved contract/order plus route-specific verified conditions; distinguish aw,,,,US-1404 US-1504,,10,"TC-15-036, TC-15-047…055",Covered
+BR-S,BR-S045,Won deal = approved contract/order plus route-specific verified conditions; distinguish aw,,,,US-1404 US-1504,,22,"TC-14-031…039, TC-14-095…096, TC-14-099, TC-15-036, TC-15-047…055",Covered
 BR-S,BR-S046,Commercial receipts = reconciled customer receipts by issuer and currency; exclude procure,,,,US-1503 US-1505 US-1507,,36,"TC-15-028, TC-15-030…031, TC-15-033…034, TC-15-036…046, TC-15-056…062, TC-15-071…078, TC-15-104…107, TC-15-109",Covered
 BR-S,BR-S047,Acquisition conversion = source/campaign → qualified lead → approved deal → won → verified,,,,US-1203 US-1507,,17,"TC-12-015…022, TC-12-082, TC-15-071…078",Covered
 BR-S,BR-S048,Owned portfolio: staff operate only assigned startups; founder controls oversight,,,,,,0,—,Not covered
@@ -131,7 +131,7 @@ BR-S,BR-S058,"OPT-20-02 Entitlements and usage: versioned plans, quotas, pricing
 BR-S,BR-S059,"OPT-20-03 Support and renewal: track onboarding effort, tickets, renewal/churn; no unverif",,,,US-1604 US-2007,,14,"TC-16-023…028, TC-20-040, TC-20-051…057",Covered
 BR-S,BR-S060,OPT-20-04 Client scalability and portability: self-service standard onboarding; custom nee,,,FR-A103,US-2008 US-2009,,36,"TC-01-115, TC-02-051…057, TC-07-056…064, TC-20-058…075, TC-AI-AG010-001",Covered
 BR-S,BR-S061,AP-01 Onboard a synthetic 26th owned startup by template; customize offerings and commerci,,,,US-0108 US-0113 US-2003 US-2004,,35,"TC-01-054…060, TC-01-088…093, TC-20-017…031, TC-20-099…105",Covered
-BR-S,BR-S062,AP-02 Scope separation: owned routing AppNAI/EduVerse/MedMaarg/OrganicSpec; this product e,,,,US-0114 US-1401 US-1405,,12,"TC-01-110…111, TC-01-113, TC-01-115…118, TC-01-122…126",Covered
+BR-S,BR-S062,AP-02 Scope separation: owned routing AppNAI/EduVerse/MedMaarg/OrganicSpec; this product e,,,,US-0114 US-1401 US-1405,,31,"TC-01-110…111, TC-01-113, TC-01-115…118, TC-01-122…126, TC-14-001…011, TC-14-040…046, TC-14-099",Covered
 BR-S,BR-S063,AP-03 Opportunity qualification: eligible vs ineligible with score breakdown; only qualifi,,,,US-0601 US-0606,,22,"TC-06-001…012, TC-06-036…045",Covered
 BR-S,BR-S064,AP-04 Closure and receipt distinction: partial then complete verified payment; reconcile l,,,,US-1504 US-1511,,15,"TC-15-036, TC-15-047…055, TC-15-098…102",Covered
 BR-S,BR-S065,AP-05 Sensitive data exclusions: patient and school-minor fixtures never enter acquisition,,,,US-0113 US-0304 US-0706 US-1611,,47,"TC-01-088…093, TC-03-015, TC-03-019…020, TC-03-025…027, TC-03-029…030, TC-03-036…050, TC-07-026, TC-07-038…045, TC-16-064…070, TC-16-077, TC-16-083",Covered
@@ -176,7 +176,7 @@ BR-S,BR-S103,Effort: tenant and independent SaaS controls 35–60 person-days,,,
 BR-S,BR-S104,"Effort: four-vertical projects, orders and fulfilment 30–52 person-days",,,,,,0,—,Not covered
 BR-S,BR-S105,"Effort: autonomous planning, portability and independent QA 28–48 person-days",,,,,,0,—,Not covered
 BR-S,BR-S106,Website-Public: anonymous visitors see approved pages and bounded enquiry forms; no privat,,,FR-W01,US-0704 US-1905 US-1906,,41,"TC-07-023…031, TC-19-039…052, TC-19-078…095",Covered
-BR-S,BR-S107,Website-Portal: authenticated external customer/supplier sees own permitted records; ident,,,,US-1306 US-1411 US-1506 US-1603 US-1909 US-1910,,42,"TC-13-056…063, TC-13-111…112, TC-13-127, TC-15-027, TC-15-063…070, TC-16-016…022, TC-19-063…077",Covered
+BR-S,BR-S107,Website-Portal: authenticated external customer/supplier sees own permitted records; ident,,,,US-1306 US-1411 US-1506 US-1603 US-1909 US-1910,,49,"TC-13-056…063, TC-13-111…112, TC-13-127, TC-14-080…085, TC-14-100, TC-15-027, TC-15-063…070, TC-16-016…022, TC-19-063…077",Covered
 BR-S,BR-S108,"Admin: assigned employees and authorized management; confidential Command Centre, evidence",,,,,,0,—,Not covered
 BR-S,BR-S109,Internal/callback: service identities and verified providers; no browser access; signature,,,,US-0110 US-0805 US-1501,,34,"TC-01-067…072, TC-01-112, TC-01-120, TC-08-045…055, TC-08-189, TC-10-003, TC-15-001…013",Covered
 BR-S,BR-S110,"W31 SaaS introduction, plans & demo: separate from customer journey; no fundraising offers",,,FR-W31,US-2001,,6,TC-20-001…006,Covered
@@ -223,9 +223,9 @@ FR,FR-W10,Campaign landing pages,EP-12,W3,,US-1203,SM-UAT-S010 · SM-UX-UAT-W10,
 FR,FR-W11,AI website chat assistant,EP-10,W3,,US-1004 US-1005 US-1007,SM-UAT-S011 · SM-UX-UAT-W11,34,"TC-10-029…044, TC-10-052…059, TC-AI-AG017-001, TC-AI-AG017-003…005, TC-AI-AG017-008…010, TC-AI-AG017-012, TC-AI-AG017-015, TC-AI-AG017-031",Covered
 FR,FR-W12,General business enquiry,EP-07,W2,,US-0704 US-0709 US-0710,SM-UAT-S012 · SM-UX-UAT-W12,21,"TC-01-133, TC-07-023…031, TC-07-065…075",Covered
 FR,FR-W13,Demo and partnership enquiry,EP-07,W2,,US-0705 US-0710,SM-UAT-S013 · SM-UX-UAT-W13,13,"TC-01-133, TC-07-032…037, TC-07-070…075",Covered
-FR,FR-W14,Request for quotation,EP-14,W4,,US-1406,SM-UAT-S014 · SM-UX-UAT-W14,0,—,Not covered
-FR,FR-W15,Project requirement submission,EP-14,W4,,US-1405,SM-UAT-S015 · SM-UX-UAT-W15,0,—,Not covered
-FR,FR-W16,Supplier registration and supply enquiry,EP-14,W4,,US-1407,SM-UAT-S016 · SM-UX-UAT-W16,0,—,Not covered
+FR,FR-W14,Request for quotation,EP-14,W4,,US-1406,SM-UAT-S014 · SM-UX-UAT-W14,7,"TC-14-047…052, TC-14-100",Covered
+FR,FR-W15,Project requirement submission,EP-14,W4,,US-1405,SM-UAT-S015 · SM-UX-UAT-W15,7,TC-14-040…046,Covered
+FR,FR-W16,Supplier registration and supply enquiry,EP-14,W4,,US-1407,SM-UAT-S016 · SM-UX-UAT-W16,5,TC-14-053…057,Covered
 FR,FR-W17,Student training and institutional enquiry,EP-07,W3,,US-0706 US-0710,SM-UAT-S017 · SM-UX-UAT-W17,16,"TC-01-133, TC-07-026, TC-07-038…045, TC-07-070…075",Covered
 FR,FR-W18,Meeting and appointment booking,EP-09,W2,,US-0903,SM-UAT-S018 · SM-UX-UAT-W18,9,"TC-09-017…023, TC-09-045, TC-20-004",Covered
 FR,FR-W19,Webinar and event registration,EP-09,W3,,US-0906,SM-UAT-S019 · SM-UX-UAT-W19,10,"TC-09-036…044, TC-09-046",Covered
@@ -234,7 +234,7 @@ FR,FR-W21,"Customer registration, login, recovery",EP-19,W2,,US-0101 US-1909 US-
 FR,FR-W22,Customer self-service dashboard,EP-19,W2,,US-1910 US-1911 US-1912,SM-UAT-S022 · SM-UX-UAT-W22,24,TC-19-072…095,Covered
 FR,FR-W23,Proposal and quotation review,EP-13,W4,,US-1306,SM-UAT-S023 · SM-UX-UAT-W23,11,"TC-13-056…063, TC-13-111…112, TC-13-127",Covered
 FR,FR-W24,Agreement review and e-signature,EP-13,W4,,US-1311 US-1312,SM-UAT-S024 · SM-UX-UAT-W24,17,"TC-13-086…101, TC-13-128",Covered
-FR,FR-W25,"Order, project and service status",EP-14,W4,,US-1411,SM-UAT-S025 · SM-UX-UAT-W25,0,—,Not covered
+FR,FR-W25,"Order, project and service status",EP-14,W4,,US-1411,SM-UAT-S025 · SM-UX-UAT-W25,7,"TC-14-080…085, TC-14-100",Covered
 FR,FR-W26,Payment and invoice status,EP-15,W4,,US-1503 US-1506 US-1509 US-1511,SM-UAT-S026 · SM-UX-UAT-W26,43,"TC-15-027…028, TC-15-030…031, TC-15-034, TC-15-036…046, TC-15-063…070, TC-15-085…091, TC-15-098…109",Covered
 FR,FR-W27,Onboarding and document exchange,EP-16,W4,,US-1603 US-1611,SM-UAT-S027 · SM-UX-UAT-W27,16,"TC-16-016…022, TC-16-064…070, TC-16-077, TC-16-083",Covered
 FR,FR-W28,"Support, feedback and renewal requests",EP-16,W4,,US-1604 US-1611,SM-UAT-S028 · SM-UX-UAT-W28,15,"TC-16-023…028, TC-16-064…070, TC-16-077, TC-16-083",Covered
@@ -347,8 +347,8 @@ FR,FR-A100,Business profile templates and branding,EP-20,W5,,US-2004,SM-UAT-S130
 FR,FR-A101,"Service subscriptions, usage and billing",EP-20,W5,,US-2005 US-2006 US-2011,SM-UAT-S131 · SM-UX-UAT-A101,24,"TC-20-032…050, TC-20-084…088",Covered
 FR,FR-A102,Autonomous commercial planner and simulation,EP-18,W2 (simulation) / W5 (L3),,US-1805 US-1807 US-1811 US-1812 US-1813 US-1814,SM-UAT-S132 · SM-UX-UAT-A102,59,"TC-18-031…040, TC-18-051…058, TC-18-093…125, TC-18-132…138, TC-19-032",Covered
 FR,FR-A103,"Import, export and client portability",EP-20,W1 (import) / W5 (portability),,US-0208 US-0708 US-2008 US-2009,SM-UAT-S133 · SM-UX-UAT-A103,36,"TC-01-115, TC-02-051…057, TC-07-056…064, TC-20-058…075, TC-AI-AG010-001",Covered
-FR,FR-A104,Global project bid and tender desk,EP-14,W4,,US-1401 US-1402 US-1403 US-1404 US-1412,SM-UAT-S134 · SM-UX-UAT-A104,0,—,Not covered
-FR,FR-A105,"Purchase, sales order and fulfilment desk",EP-14,W4,,US-1303 US-1408 US-1409 US-1410 US-1412,SM-UAT-S135 · SM-UX-UAT-A105,21,"TC-13-016…028, TC-13-115, TC-13-117, TC-13-119…120, TC-13-122…124, TC-AI-AG023-001",Covered
+FR,FR-A104,Global project bid and tender desk,EP-14,W4,,US-1401 US-1402 US-1403 US-1404 US-1412,SM-UAT-S134 · SM-UX-UAT-A104,52,"TC-14-001…039, TC-14-086…096, TC-14-099, TC-14-101",Covered
+FR,FR-A105,"Purchase, sales order and fulfilment desk",EP-14,W4,,US-1303 US-1408 US-1409 US-1410 US-1412,SM-UAT-S135 · SM-UX-UAT-A105,56,"TC-13-016…028, TC-13-115, TC-13-117, TC-13-119…120, TC-13-122…124, TC-14-058…079, TC-14-086…094, TC-14-097…098, TC-14-100…101, TC-AI-AG023-001",Covered
 FR,FR-A106,Persistent action and notification centre,EP-17,W2,,US-1510 US-1703 US-1709,SM-UAT-S136 · SM-UX-UAT-A106,23,"TC-15-092…097, TC-17-019…028, TC-17-067…073",Covered
 FR,FR-A107,Website configuration and content management,EP-19,W2,,US-1901 US-1903,SM-UAT-S137 · SM-UX-UAT-A107,16,"TC-19-001…008, TC-19-018…024, TC-19-037",Covered
 FR,FR-A108,"Website preview, approval, publishing, analytics",EP-19,W2,,US-1902 US-1904 US-1911 US-1912 US-1913,SM-UAT-S138 · SM-UX-UAT-A108,48,"TC-19-009…017, TC-19-025…038, TC-19-078…102",Covered
@@ -377,9 +377,9 @@ FR-XC,FR-STD-02,External result uncertainty: provider timeout after submission =
 FR-XC,FR-STD-03,Review and change: stale revision → conflict; never silently overwrite approved ,,,,,,1,TC-07-006,Covered
 FR-XC,FR-STD-04,Fault and recovery: persist exception with correlation ID; scoped operator retri,,,,US-0110 US-0115 US-1809 US-2105,,42,"TC-01-067…072, TC-01-094…097, TC-01-112, TC-01-120, TC-01-122, TC-08-044, TC-18-069…084, TC-21-035…043, TC-21-095…097",Covered
 FR-XC,FR-DM-01,"Quotation: 2 units × INR 150.00, 10% discount, before tax → 270.00 INR; server r",,,,US-1303 US-1502 US-2107,,48,"TC-13-016…028, TC-13-115, TC-13-117, TC-13-119…120, TC-13-122…124, TC-15-014…026, TC-21-054…067, TC-AU-AU035-001",Covered
-FR-XC,FR-DM-02,Bid expiry: deadline 2030-06-01 09:00 UTC; submission at/after deadline rejected,,,,US-1403,,3,"TC-21-055, TC-AI-AG019-001, TC-AU-AU034-001",Covered
-FR-XC,FR-DM-03,Fulfilment: order 2 kg; deliver 1 kg twice with the same event key → accepted on,,,,US-1409,,2,"TC-21-058, TC-AU-AU038-001",Covered
-FR-XC,FR-DM-04,Routing: external AI development request → AppNAI; school AI education request →,,,,US-0508 US-1401 US-1405,,9,"TC-05-058…062, TC-07-026, TC-19-061, TC-21-054, TC-AU-AU020-003",Covered
+FR-XC,FR-DM-02,Bid expiry: deadline 2030-06-01 09:00 UTC; submission at/after deadline rejected,,,,US-1403,,16,"TC-14-019…030, TC-14-096, TC-21-055, TC-AI-AG019-001, TC-AU-AU034-001",Covered
+FR-XC,FR-DM-03,Fulfilment: order 2 kg; deliver 1 kg twice with the same event key → accepted on,,,,US-1409,,10,"TC-14-066…072, TC-14-098, TC-21-058, TC-AU-AU038-001",Covered
+FR-XC,FR-DM-04,Routing: external AI development request → AppNAI; school AI education request →,,,,US-0508 US-1401 US-1405,,28,"TC-05-058…062, TC-07-026, TC-14-001…011, TC-14-040…046, TC-14-099, TC-19-061, TC-21-054, TC-AU-AU020-003",Covered
 FR-XC,FR-UIS-01,"Scope change: cancel pending loads, clear stale cache, reauthorize server-side, ",,,,US-1701,,11,TC-17-001…011,Covered
 FR-XC,FR-UIS-02,"No evidence: display ""Unknown / Review required""; never an invented score or cla",,,,US-0507 US-0601,,21,"TC-02-033, TC-05-033, TC-05-053…057, TC-06-001…012, TC-08-167, TC-11-056",Covered
 FR-XC,FR-UIS-03,Unapproved action: show the exact approval requirement; do not execute or spend,,,,US-0304,,56,"TC-03-015, TC-03-019…020, TC-03-025…027, TC-03-029…030, TC-03-036…050, TC-AI-AG001-013, TC-AI-AG002-012, TC-AI-AG003-011, TC-AI-AG004-016, TC-AI-AG005-015, TC-AI-AG006-014, TC-AI-AG007-010, TC-AI-AG008-012, TC-AI-AG009-013, TC-AI-AG010-010, TC-AI-AG011-016, TC-AI-AG012-013, TC-AI-AG013-016, TC-AI-AG014-014, TC-AI-AG015-024, TC-AI-AG016-012, TC-AI-AG017-026, TC-AI-AG018-015, TC-AI-AG019-013, TC-AI-AG020-012, TC-AI-AG021-012, TC-AI-AG022-010, TC-AI-AG023-012, TC-AI-AG024-012, TC-AI-AG025-008, TC-AI-AG026-009, TC-AI-AG027-011, TC-AI-AG028-011, TC-AI-AG029-009, TC-AI-AG030-010, TC-AI-AG031-014, TC-AI-AG032-011, TC-AI-AG035-009",Covered
@@ -387,7 +387,7 @@ FR-XC,FR-UIS-04,Provider uncertain: mark uncertain; reconcile provider reference
 FR-XC,FR-ENG-01,Engineering contract: REST/JSON/HTTPS; typed I/O; allowlisted filters; cursor pa,,,,US-0110 US-0804 US-0805 US-1501,,45,"TC-01-027, TC-01-067…072, TC-01-111…112, TC-01-120, TC-08-036…055, TC-08-189, TC-10-003, TC-15-001…013",Covered
 FR-XC,FR-PUB-01,Publication lifecycle: Draft → Validated → Approval pending → Approved → Publish,,,,US-1103 US-1902 US-1904 US-2109,,49,"TC-11-019…028, TC-11-072…075, TC-19-009…017, TC-19-025…038, TC-19-102, TC-21-076…083, TC-21-098, TC-21-104, TC-AU-AU029-001",Covered
 FR-XC,FR-ADP-01,Provider-independent adapters: every automation calls an internal typed adapter ,,,,US-0112 US-0503 US-0804 US-1001 US-1105 US-1206 US-1311 US-1501,,73,"TC-01-081…087, TC-05-004, TC-05-021…027, TC-08-036…044, TC-08-170, TC-09-002, TC-10-001…009, TC-11-033…039, TC-12-042…049, TC-13-086…094, TC-15-001…013, TC-18-076",Covered
-FR-XC,FR-CSM-01,"Commercial state machines are configurable per opportunity type: project bid, he",,,,US-0701 US-0702 US-1401 US-1408,,18,"TC-02-005, TC-07-001…017",Covered
+FR-XC,FR-CSM-01,"Commercial state machines are configurable per opportunity type: project bid, he",,,,US-0701 US-0702 US-1401 US-1408,,39,"TC-02-005, TC-07-001…017, TC-14-001…011, TC-14-058…065, TC-14-097, TC-14-099",Covered
 FR-XC,FR-COP-01,"Admin Copilot: grounded, cited, read-only answers within the user's scope; draft",,,,US-1707 US-1709,,36,"TC-17-051…057, TC-17-059, TC-17-067…073, TC-17-080…091, TC-AI-AG015-001…004, TC-AI-AG015-008, TC-AI-AG015-011…012, TC-AI-AG015-014, TC-AI-AG015-030",Covered
 FR-XC,FR-SRCH-01,"Scoped global search across organizations, contacts, deals, bids, orders, docume",,,,US-1708,,8,"TC-01-113, TC-17-060…066",Covered
 FR-XC,FR-NEG-01,"No fundraising/investor capability, route, entity, filter or term exists in the ",,,,US-0103 US-0114 US-2001 US-2101,,38,"TC-01-020…024, TC-01-110…111, TC-01-113, TC-01-115…118, TC-01-122…126, TC-20-001…006, TC-21-001…012, TC-21-100, TC-21-102, TC-AI-AG030-003",Covered
@@ -1339,80 +1339,80 @@ AC,AC-1313-02,,EP-13,,,US-1313,,2,TC-13-105…106,Covered
 AC,AC-1313-03,,EP-13,,,US-1313,,1,TC-13-108,Covered
 AC,AC-1313-04,,EP-13,,,US-1313,,1,TC-13-109,Covered
 AC,AC-1313-05,,EP-13,,,US-1313,,1,TC-13-110,Covered
-US,US-1401,5 AC,EP-14,,FR-A104 FR-CSM-01 FR-DM-04,,,0,—,Not covered
-AC,AC-1401-01,,EP-14,,,US-1401,,0,—,Not covered
-AC,AC-1401-02,,EP-14,,,US-1401,,0,—,Not covered
-AC,AC-1401-03,,EP-14,,,US-1401,,0,—,Not covered
-AC,AC-1401-04,,EP-14,,,US-1401,,0,—,Not covered
-AC,AC-1401-05,,EP-14,,,US-1401,,0,—,Not covered
-US,US-1402,5 AC,EP-14,,FR-A104,,,0,—,Not covered
-AC,AC-1402-01,,EP-14,,,US-1402,,0,—,Not covered
-AC,AC-1402-02,,EP-14,,,US-1402,,0,—,Not covered
-AC,AC-1402-03,,EP-14,,,US-1402,,0,—,Not covered
-AC,AC-1402-04,,EP-14,,,US-1402,,0,—,Not covered
-AC,AC-1402-05,,EP-14,,,US-1402,,0,—,Not covered
-US,US-1403,6 AC,EP-14,,FR-A104 FR-DM-02,,,0,—,Not covered
-AC,AC-1403-01,,EP-14,,,US-1403,,0,—,Not covered
-AC,AC-1403-02,,EP-14,,,US-1403,,0,—,Not covered
-AC,AC-1403-03,,EP-14,,,US-1403,,0,—,Not covered
-AC,AC-1403-04,,EP-14,,,US-1403,,0,—,Not covered
-AC,AC-1403-05,,EP-14,,,US-1403,,0,—,Not covered
-AC,AC-1403-06,,EP-14,,,US-1403,,0,—,Not covered
-US,US-1404,5 AC,EP-14,,FR-A104,,,0,—,Not covered
-AC,AC-1404-01,,EP-14,,,US-1404,,0,—,Not covered
-AC,AC-1404-02,,EP-14,,,US-1404,,0,—,Not covered
-AC,AC-1404-03,,EP-14,,,US-1404,,0,—,Not covered
-AC,AC-1404-04,,EP-14,,,US-1404,,0,—,Not covered
-AC,AC-1404-05,,EP-14,,,US-1404,,0,—,Not covered
-US,US-1405,5 AC,EP-14,,FR-DM-04 FR-W15,,,0,—,Not covered
-AC,AC-1405-01,,EP-14,,,US-1405,,0,—,Not covered
-AC,AC-1405-02,,EP-14,,,US-1405,,0,—,Not covered
-AC,AC-1405-03,,EP-14,,,US-1405,,0,—,Not covered
-AC,AC-1405-04,,EP-14,,,US-1405,,0,—,Not covered
-AC,AC-1405-05,,EP-14,,,US-1405,,0,—,Not covered
-US,US-1406,5 AC,EP-14,,FR-W14,,,0,—,Not covered
-AC,AC-1406-01,,EP-14,,,US-1406,,0,—,Not covered
-AC,AC-1406-02,,EP-14,,,US-1406,,0,—,Not covered
-AC,AC-1406-03,,EP-14,,,US-1406,,0,—,Not covered
-AC,AC-1406-04,,EP-14,,,US-1406,,0,—,Not covered
-AC,AC-1406-05,,EP-14,,,US-1406,,0,—,Not covered
-US,US-1407,4 AC,EP-14,,FR-W16,,,0,—,Not covered
-AC,AC-1407-01,,EP-14,,,US-1407,,0,—,Not covered
-AC,AC-1407-02,,EP-14,,,US-1407,,0,—,Not covered
-AC,AC-1407-03,,EP-14,,,US-1407,,0,—,Not covered
-AC,AC-1407-04,,EP-14,,,US-1407,,0,—,Not covered
-US,US-1408,6 AC,EP-14,,FR-A105 FR-CSM-01,,,0,—,Not covered
-AC,AC-1408-01,,EP-14,,,US-1408,,0,—,Not covered
-AC,AC-1408-02,,EP-14,,,US-1408,,0,—,Not covered
-AC,AC-1408-03,,EP-14,,,US-1408,,0,—,Not covered
-AC,AC-1408-04,,EP-14,,,US-1408,,0,—,Not covered
-AC,AC-1408-05,,EP-14,,,US-1408,,0,—,Not covered
-AC,AC-1408-06,,EP-14,,,US-1408,,0,—,Not covered
-US,US-1409,5 AC,EP-14,,FR-A105 FR-DM-03,,,0,—,Not covered
-AC,AC-1409-01,,EP-14,,,US-1409,,0,—,Not covered
-AC,AC-1409-02,,EP-14,,,US-1409,,0,—,Not covered
-AC,AC-1409-03,,EP-14,,,US-1409,,0,—,Not covered
-AC,AC-1409-04,,EP-14,,,US-1409,,0,—,Not covered
-AC,AC-1409-05,,EP-14,,,US-1409,,0,—,Not covered
-US,US-1410,6 AC,EP-14,,FR-A105,,,0,—,Not covered
-AC,AC-1410-01,,EP-14,,,US-1410,,0,—,Not covered
-AC,AC-1410-02,,EP-14,,,US-1410,,0,—,Not covered
-AC,AC-1410-03,,EP-14,,,US-1410,,0,—,Not covered
-AC,AC-1410-04,,EP-14,,,US-1410,,0,—,Not covered
-AC,AC-1410-05,,EP-14,,,US-1410,,0,—,Not covered
-AC,AC-1410-06,,EP-14,,,US-1410,,0,—,Not covered
-US,US-1411,5 AC,EP-14,,FR-W25,,,0,—,Not covered
-AC,AC-1411-01,,EP-14,,,US-1411,,0,—,Not covered
-AC,AC-1411-02,,EP-14,,,US-1411,,0,—,Not covered
-AC,AC-1411-03,,EP-14,,,US-1411,,0,—,Not covered
-AC,AC-1411-04,,EP-14,,,US-1411,,0,—,Not covered
-AC,AC-1411-05,,EP-14,,,US-1411,,0,—,Not covered
-US,US-1412,5 AC,EP-14,,FR-A104 FR-A105,,,0,—,Not covered
-AC,AC-1412-01,,EP-14,,,US-1412,,0,—,Not covered
-AC,AC-1412-02,,EP-14,,,US-1412,,0,—,Not covered
-AC,AC-1412-03,,EP-14,,,US-1412,,0,—,Not covered
-AC,AC-1412-04,,EP-14,,,US-1412,,0,—,Not covered
-AC,AC-1412-05,,EP-14,,,US-1412,,0,—,Not covered
+US,US-1401,5 AC,EP-14,,FR-A104 FR-CSM-01 FR-DM-04,,,12,"TC-14-001…011, TC-14-099",Covered
+AC,AC-1401-01,,EP-14,,,US-1401,,1,TC-14-001,Covered
+AC,AC-1401-02,,EP-14,,,US-1401,,1,TC-14-002,Covered
+AC,AC-1401-03,,EP-14,,,US-1401,,2,TC-14-003…004,Covered
+AC,AC-1401-04,,EP-14,,,US-1401,,1,TC-14-005,Covered
+AC,AC-1401-05,,EP-14,,,US-1401,,1,TC-14-006,Covered
+US,US-1402,5 AC,EP-14,,FR-A104,,,8,"TC-14-012…018, TC-14-095",Covered
+AC,AC-1402-01,,EP-14,,,US-1402,,1,TC-14-012,Covered
+AC,AC-1402-02,,EP-14,,,US-1402,,1,TC-14-013,Covered
+AC,AC-1402-03,,EP-14,,,US-1402,,1,TC-14-014,Covered
+AC,AC-1402-04,,EP-14,,,US-1402,,1,TC-14-015,Covered
+AC,AC-1402-05,,EP-14,,,US-1402,,1,TC-14-016,Covered
+US,US-1403,6 AC,EP-14,,FR-A104 FR-DM-02,,,13,"TC-14-019…030, TC-14-096",Covered
+AC,AC-1403-01,,EP-14,,,US-1403,,1,TC-14-019,Covered
+AC,AC-1403-02,,EP-14,,,US-1403,,2,TC-14-020…021,Covered
+AC,AC-1403-03,,EP-14,,,US-1403,,3,TC-14-022…024,Covered
+AC,AC-1403-04,,EP-14,,,US-1403,,1,TC-14-025,Covered
+AC,AC-1403-05,,EP-14,,,US-1403,,1,TC-14-026,Covered
+AC,AC-1403-06,,EP-14,,,US-1403,,2,TC-14-027…028,Covered
+US,US-1404,5 AC,EP-14,,FR-A104,,,12,"TC-14-031…039, TC-14-095…096, TC-14-099",Covered
+AC,AC-1404-01,,EP-14,,,US-1404,,1,TC-14-031,Covered
+AC,AC-1404-02,,EP-14,,,US-1404,,2,TC-14-033…034,Covered
+AC,AC-1404-03,,EP-14,,,US-1404,,1,TC-14-035,Covered
+AC,AC-1404-04,,EP-14,,,US-1404,,1,TC-14-036,Covered
+AC,AC-1404-05,,EP-14,,,US-1404,,1,TC-14-037,Covered
+US,US-1405,5 AC,EP-14,,FR-DM-04 FR-W15,,,7,TC-14-040…046,Covered
+AC,AC-1405-01,,EP-14,,,US-1405,,1,TC-14-040,Covered
+AC,AC-1405-02,,EP-14,,,US-1405,,2,TC-14-041…042,Covered
+AC,AC-1405-03,,EP-14,,,US-1405,,1,TC-14-043,Covered
+AC,AC-1405-04,,EP-14,,,US-1405,,1,TC-14-044,Covered
+AC,AC-1405-05,,EP-14,,,US-1405,,1,TC-14-045,Covered
+US,US-1406,5 AC,EP-14,,FR-W14,,,7,"TC-14-047…052, TC-14-100",Covered
+AC,AC-1406-01,,EP-14,,,US-1406,,1,TC-14-047,Covered
+AC,AC-1406-02,,EP-14,,,US-1406,,1,TC-14-048,Covered
+AC,AC-1406-03,,EP-14,,,US-1406,,1,TC-14-049,Covered
+AC,AC-1406-04,,EP-14,,,US-1406,,1,TC-14-050,Covered
+AC,AC-1406-05,,EP-14,,,US-1406,,1,TC-14-051,Covered
+US,US-1407,4 AC,EP-14,,FR-W16,,,5,TC-14-053…057,Covered
+AC,AC-1407-01,,EP-14,,,US-1407,,1,TC-14-053,Covered
+AC,AC-1407-02,,EP-14,,,US-1407,,1,TC-14-054,Covered
+AC,AC-1407-03,,EP-14,,,US-1407,,1,TC-14-055,Covered
+AC,AC-1407-04,,EP-14,,,US-1407,,1,TC-14-056,Covered
+US,US-1408,6 AC,EP-14,,FR-A105 FR-CSM-01,,,9,"TC-14-058…065, TC-14-097",Covered
+AC,AC-1408-01,,EP-14,,,US-1408,,1,TC-14-058,Covered
+AC,AC-1408-02,,EP-14,,,US-1408,,1,TC-14-059,Covered
+AC,AC-1408-03,,EP-14,,,US-1408,,1,TC-14-060,Covered
+AC,AC-1408-04,,EP-14,,,US-1408,,1,TC-14-061,Covered
+AC,AC-1408-05,,EP-14,,,US-1408,,1,TC-14-062,Covered
+AC,AC-1408-06,,EP-14,,,US-1408,,2,TC-14-063…064,Covered
+US,US-1409,5 AC,EP-14,,FR-A105 FR-DM-03,,,8,"TC-14-066…072, TC-14-098",Covered
+AC,AC-1409-01,,EP-14,,,US-1409,,1,TC-14-066,Covered
+AC,AC-1409-02,,EP-14,,,US-1409,,1,TC-14-067,Covered
+AC,AC-1409-03,,EP-14,,,US-1409,,1,TC-14-069,Covered
+AC,AC-1409-04,,EP-14,,,US-1409,,1,TC-14-070,Covered
+AC,AC-1409-05,,EP-14,,,US-1409,,1,TC-14-071,Covered
+US,US-1410,6 AC,EP-14,,FR-A105,,,9,"TC-14-073…079, TC-14-097…098",Covered
+AC,AC-1410-01,,EP-14,,,US-1410,,1,TC-14-073,Covered
+AC,AC-1410-02,,EP-14,,,US-1410,,1,TC-14-074,Covered
+AC,AC-1410-03,,EP-14,,,US-1410,,1,TC-14-075,Covered
+AC,AC-1410-04,,EP-14,,,US-1410,,1,TC-14-076,Covered
+AC,AC-1410-05,,EP-14,,,US-1410,,1,TC-14-077,Covered
+AC,AC-1410-06,,EP-14,,,US-1410,,1,TC-14-078,Covered
+US,US-1411,5 AC,EP-14,,FR-W25,,,7,"TC-14-080…085, TC-14-100",Covered
+AC,AC-1411-01,,EP-14,,,US-1411,,1,TC-14-080,Covered
+AC,AC-1411-02,,EP-14,,,US-1411,,1,TC-14-081,Covered
+AC,AC-1411-03,,EP-14,,,US-1411,,1,TC-14-082,Covered
+AC,AC-1411-04,,EP-14,,,US-1411,,1,TC-14-083,Covered
+AC,AC-1411-05,,EP-14,,,US-1411,,1,TC-14-084,Covered
+US,US-1412,5 AC,EP-14,,FR-A104 FR-A105,,,10,"TC-14-086…094, TC-14-101",Covered
+AC,AC-1412-01,,EP-14,,,US-1412,,1,TC-14-086,Covered
+AC,AC-1412-02,,EP-14,,,US-1412,,1,TC-14-087,Covered
+AC,AC-1412-03,,EP-14,,,US-1412,,1,TC-14-088,Covered
+AC,AC-1412-04,,EP-14,,,US-1412,,2,TC-14-089…090,Covered
+AC,AC-1412-05,,EP-14,,,US-1412,,1,TC-14-091,Covered
 US,US-1501,6 AC,EP-15,,FR-A073 FR-A074 FR-ADP-01 FR-ENG-01 FR-STD-02,,,13,TC-15-001…013,Covered
 AC,AC-1501-01,,EP-15,,,US-1501,,3,"TC-15-001…002, TC-15-009",Covered
 AC,AC-1501-02,,EP-15,,,US-1501,,3,"TC-15-003…004, TC-15-009",Covered
@@ -1980,7 +1980,7 @@ AC,AC-2110-04,,EP-21,,,US-2110,,2,"TC-21-087, TC-21-089",Covered
 AC,AC-2110-05,,EP-21,,,US-2110,,1,TC-21-088,Covered
 BRL,BRL-TEN-01,Scope comes from membership,,,,,,8,"TC-01-008, TC-01-026, TC-01-110, TC-01-123, TC-07-028, TC-17-002, TC-17-005, TC-17-018",Covered
 BRL,BRL-TEN-02,Product audience,,,,,,6,"TC-01-001, TC-01-009, TC-01-029, TC-01-125, TC-17-008, TC-19-064",Covered
-BRL,BRL-TEN-03,Tenant isolation,,,,,,25,"TC-01-046…048, TC-01-052, TC-01-112, TC-01-119, TC-02-039, TC-03-015, TC-07-048, TC-08-011, TC-08-034, TC-08-052, TC-08-064, TC-08-153, TC-10-036, TC-11-009, TC-11-059, TC-13-008, TC-15-007, TC-15-009, TC-17-062, TC-18-068, TC-20-089…090, TC-AI-AG017-003",Covered
+BRL,BRL-TEN-03,Tenant isolation,,,,,,26,"TC-01-046…048, TC-01-052, TC-01-112, TC-01-119, TC-02-039, TC-03-015, TC-07-048, TC-08-011, TC-08-034, TC-08-052, TC-08-064, TC-08-153, TC-10-036, TC-11-009, TC-11-059, TC-13-008, TC-14-094, TC-15-007, TC-15-009, TC-17-062, TC-18-068, TC-20-089…090, TC-AI-AG017-003",Covered
 BRL,BRL-TEN-04,Unauthorized object,,,,,,15,"TC-01-049, TC-01-111, TC-03-015, TC-08-009, TC-08-073, TC-08-101, TC-13-035, TC-15-066, TC-16-007, TC-16-020, TC-17-025, TC-19-023, TC-19-056, TC-19-076, TC-20-081",Covered
 BRL,BRL-TEN-05,Portfolio read-only,,,,,,12,"TC-01-050, TC-01-058, TC-01-122, TC-02-008, TC-06-040, TC-07-009, TC-08-010, TC-08-081, TC-13-110, TC-15-052, TC-17-013, TC-AI-AG015-006",Covered
 BRL,BRL-TEN-06,Cross-tenant aggregation prohibited,,,,,,8,"TC-01-042, TC-03-098, TC-08-153, TC-08-168, TC-15-077, TC-17-014, TC-17-079, TC-20-038",Covered
@@ -1988,19 +1988,19 @@ BRL,BRL-TEN-07,Membership expiry,,,,,,7,"TC-01-007, TC-01-035, TC-01-110, TC-15-
 BRL,BRL-TEN-08,MFA for privileged roles,,,,,,6,"TC-01-006, TC-01-033, TC-01-037, TC-01-041, TC-11-011, TC-13-102",Covered
 BRL,BRL-TEN-09,Support access,,,,,,13,"TC-01-061…062, TC-01-064…066, TC-01-122, TC-08-166, TC-15-087, TC-20-052…053, TC-20-057, TC-20-091, TC-21-032",Covered
 BRL,BRL-TEN-10,Domain mapping,,,,,,10,"TC-07-027, TC-07-071, TC-10-044, TC-11-025, TC-11-058, TC-19-001, TC-19-003, TC-19-005…006, TC-19-051",Covered
-BRL,BRL-TEN-11,Template-based startup creation,,,,,,4,"TC-01-054, TC-01-057, TC-20-025, TC-20-028",Covered
+BRL,BRL-TEN-11,Template-based startup creation,,,,,,5,"TC-01-054, TC-01-057, TC-14-010, TC-20-025, TC-20-028",Covered
 BRL,BRL-TEN-12,No fundraising capability,,,,,,3,"TC-01-124, TC-20-003, TC-21-004",Covered
-BRL,BRL-ELG-01,Fail closed,,,,,,20,"TC-01-129, TC-03-021, TC-03-027, TC-03-031, TC-03-034, TC-07-058, TC-08-016, TC-08-087…093, TC-08-097…098, TC-08-108, TC-08-133, TC-09-008, TC-20-059",Covered
+BRL,BRL-ELG-01,Fail closed,,,,,,29,"TC-01-129, TC-03-021, TC-03-027, TC-03-031, TC-03-034, TC-07-058, TC-08-016, TC-08-087…093, TC-08-097…098, TC-08-108, TC-08-133, TC-09-008, TC-13-023, TC-13-030…031, TC-14-011, TC-14-048, TC-14-052, TC-14-054, TC-14-070, TC-14-086, TC-20-059",Covered
 BRL,BRL-ELG-02,Opt-out absolute,,,,,,34,"TC-03-001…004, TC-03-017…018, TC-03-027…028, TC-07-056, TC-07-064, TC-08-014, TC-08-056, TC-08-063, TC-08-067…068, TC-08-089, TC-08-094…095, TC-08-152, TC-08-172, TC-08-189, TC-09-042, TC-10-027, TC-12-023, TC-12-033, TC-12-078, TC-16-031, TC-18-019, TC-18-074, TC-21-059, TC-AI-AG013-002, TC-AU-AU008-001…002, TC-AU-AU022-002",Covered
-BRL,BRL-ELG-03,Verified ≠ consent,,,,,,9,"TC-03-022, TC-03-027, TC-06-025, TC-06-027, TC-07-057, TC-09-018, TC-10-032, TC-20-059, TC-AI-AG010-002",Covered
+BRL,BRL-ELG-03,Verified ≠ consent,,,,,,10,"TC-03-022, TC-03-027, TC-06-025, TC-06-027, TC-07-057, TC-09-018, TC-10-032, TC-14-093, TC-20-059, TC-AI-AG010-002",Covered
 BRL,BRL-ELG-04,Score ≠ permission,,,,,,3,"TC-03-027, TC-03-050, TC-06-010",Covered
-BRL,BRL-ELG-05,Jurisdiction rule pack,,,,,,19,"TC-03-013…014, TC-03-021, TC-03-027…028, TC-03-036, TC-03-039…042, TC-08-086, TC-08-176, TC-08-178, TC-08-180, TC-08-185, TC-08-187, TC-12-023, TC-16-042, TC-AI-AG011-005",Covered
+BRL,BRL-ELG-05,Jurisdiction rule pack,,,,,,21,"TC-03-013…014, TC-03-021, TC-03-027…028, TC-03-036, TC-03-039…042, TC-08-086, TC-08-176, TC-08-178, TC-08-180, TC-08-185, TC-08-187, TC-12-023, TC-13-008, TC-14-094, TC-16-042, TC-AI-AG011-005",Covered
 BRL,BRL-ELG-06,EU/UK cold email,,,,,,9,"TC-03-027, TC-03-037…038, TC-08-085, TC-08-096, TC-08-177, TC-08-183, TC-10-023, TC-12-077",Covered
 BRL,BRL-ELG-07,WhatsApp opt-in and window,,,,,,11,"TC-03-027, TC-08-105…106, TC-08-184, TC-10-010…011, TC-10-019…022, TC-12-079",Covered
 BRL,BRL-ELG-08,Quiet hours,,,,,,26,"TC-03-018, TC-03-026…027, TC-03-030, TC-03-043…045, TC-08-103, TC-08-114…121, TC-08-127…130, TC-08-158, TC-09-025, TC-09-041, TC-11-031, TC-16-032, TC-AU-AU022-003",Covered
-BRL,BRL-ELG-09,Frequency caps,,,,,,19,"TC-03-025, TC-03-027, TC-03-030, TC-03-046…047, TC-08-070, TC-08-099, TC-08-114, TC-08-122…126, TC-08-136, TC-10-042, TC-12-023, TC-16-034, TC-16-037, TC-18-087",Covered
+BRL,BRL-ELG-09,Frequency caps,,,,,,20,"TC-03-025, TC-03-027, TC-03-030, TC-03-046…047, TC-08-070, TC-08-099, TC-08-114, TC-08-122…126, TC-08-136, TC-10-042, TC-12-023, TC-13-110, TC-16-034, TC-16-037, TC-18-087",Covered
 BRL,BRL-ELG-10,Reply halts generic sequence,,,,,,5,"TC-03-049, TC-08-066, TC-08-088, TC-11-026, TC-18-089",Covered
-BRL,BRL-ELG-11,Complaint containment,,,,,,22,"TC-03-078…081, TC-03-096, TC-03-098, TC-08-011, TC-08-034, TC-08-052, TC-08-060…062, TC-08-064, TC-08-090, TC-08-153, TC-10-036, TC-11-009, TC-11-059, TC-12-034, TC-18-105, TC-AU-AU024-001, TC-AU-AU031-001",Covered
+BRL,BRL-ELG-11,Complaint containment,,,,,,23,"TC-03-078…081, TC-03-096, TC-03-098, TC-08-011, TC-08-034, TC-08-052, TC-08-060…062, TC-08-064, TC-08-090, TC-08-153, TC-10-036, TC-11-009, TC-11-059, TC-12-034, TC-13-102, TC-18-105, TC-AU-AU024-001, TC-AU-AU031-001",Covered
 BRL,BRL-ELG-12,Bounce handling,,,,,,9,"TC-03-082, TC-08-010, TC-08-041, TC-08-056…058, TC-08-081, TC-08-091, TC-AU-AU024-002",Covered
 BRL,BRL-ELG-13,No minors outreach,,,,,,13,"TC-03-019, TC-03-029, TC-03-048, TC-05-016, TC-07-038…040, TC-09-039, TC-10-025, TC-12-025, TC-12-078, TC-AI-AG011-008, TC-AI-AG017-011",Covered
 BRL,BRL-ELG-14,Health-data exclusion,,,,,,11,"TC-03-020, TC-07-025, TC-07-037, TC-11-048, TC-12-003, TC-12-017, TC-12-024, TC-AI-AG006-005, TC-AI-AG008-004, TC-AI-AG011-008, TC-AI-AG025-003",Covered
@@ -2029,27 +2029,27 @@ BRL,BRL-SCR-08,Recalculation,,,,,,1,TC-06-009,Covered
 BRL,BRL-SCR-09,Override,,,,,,1,TC-05-049,Covered
 BRL,BRL-AI-01,Gateway only,,,,,,8,"TC-04-001, TC-04-006, TC-08-001, TC-11-001, TC-11-048, TC-17-080, TC-20-021, TC-AU-AU001-005",Covered
 BRL,BRL-AI-02,Schema validation,,,,,,77,"TC-04-002, TC-04-036, TC-08-093, TC-08-190, TC-15-107, TC-16-084, TC-17-088, TC-20-103, TC-AI-AG001-010, TC-AI-AG001-015, TC-AI-AG002-009, TC-AI-AG002-014, TC-AI-AG003-007, TC-AI-AG003-013, TC-AI-AG004-012, TC-AI-AG004-018, TC-AI-AG005-011, TC-AI-AG005-017, TC-AI-AG006-010, TC-AI-AG006-016, TC-AI-AG007-006, TC-AI-AG007-012, TC-AI-AG008-009, TC-AI-AG008-014, TC-AI-AG009-010, TC-AI-AG009-015, TC-AI-AG010-007, TC-AI-AG010-012, TC-AI-AG011-013, TC-AI-AG011-018, TC-AI-AG012-010, TC-AI-AG012-015, TC-AI-AG013-013, TC-AI-AG013-018, TC-AI-AG014-011, TC-AI-AG014-016, TC-AI-AG015-021, TC-AI-AG015-027, TC-AI-AG016-009, TC-AI-AG016-014, TC-AI-AG017-022, TC-AI-AG017-028, TC-AI-AG018-011, TC-AI-AG018-017, TC-AI-AG019-010, TC-AI-AG019-015, TC-AI-AG020-009, TC-AI-AG020-014, TC-AI-AG021-009, TC-AI-AG021-014, TC-AI-AG022-007, TC-AI-AG022-012, TC-AI-AG023-009, TC-AI-AG023-014, TC-AI-AG024-009, TC-AI-AG024-014, TC-AI-AG025-005, TC-AI-AG025-010, TC-AI-AG026-006, TC-AI-AG026-011, TC-AI-AG027-007, TC-AI-AG027-013, TC-AI-AG028-008, TC-AI-AG028-013, TC-AI-AG029-006, TC-AI-AG029-011, TC-AI-AG030-007, TC-AI-AG030-012, TC-AI-AG031-011, TC-AI-AG031-016, TC-AI-AG032-008, TC-AI-AG032-013, TC-AI-AG035-006, TC-AI-AG035-011, TC-AU-AU003-001…003",Covered
-BRL,BRL-AI-03,Grounding,,,,,,37,"TC-02-028, TC-04-038…039, TC-08-001, TC-08-013…014, TC-08-097, TC-08-137, TC-08-141, TC-08-189, TC-10-029, TC-11-001, TC-16-040, TC-16-076, TC-17-051, TC-17-082, TC-20-017, TC-20-100, TC-AI-AG001-002, TC-AI-AG004-002, TC-AI-AG006-001, TC-AI-AG007-001, TC-AI-AG008-003, TC-AI-AG009-004, TC-AI-AG011-001, TC-AI-AG012-001, TC-AI-AG014-001, TC-AI-AG015-001, TC-AI-AG017-001, TC-AI-AG018-001, TC-AI-AG019-004, TC-AI-AG020-002, TC-AI-AG021-004, TC-AI-AG022-003, TC-AI-AG025-002, TC-AI-AG031-003, TC-AI-AG032-002",Covered
-BRL,BRL-AI-04,Abstain,,,,,,24,"TC-04-015, TC-04-021, TC-05-046, TC-08-002…003, TC-08-029, TC-08-071, TC-09-031…032, TC-10-038, TC-10-047, TC-11-001…002, TC-11-015, TC-13-066, TC-17-054, TC-17-084, TC-AI-AG005-004, TC-AI-AG009-004, TC-AI-AG011-002, TC-AI-AG013-008, TC-AI-AG014-006, TC-AI-AG015-003, TC-AI-AG024-004",Covered
-BRL,BRL-AI-05,Prohibited content,,,,,,23,"TC-02-022, TC-04-041, TC-08-004…006, TC-10-031, TC-10-042, TC-11-002, TC-11-008, TC-13-002, TC-15-106, TC-17-056, TC-17-087, TC-18-135, TC-19-050, TC-AI-AG001-003, TC-AI-AG011-003, TC-AI-AG011-010, TC-AI-AG017-010, TC-AI-AG017-014, TC-AI-AG018-007, TC-AI-AG027-002, TC-AI-AG027-004",Covered
+BRL,BRL-AI-03,Grounding,,,,,,41,"TC-02-028, TC-04-038…039, TC-08-001, TC-08-013…014, TC-08-097, TC-08-137, TC-08-141, TC-08-189, TC-10-029, TC-11-001, TC-12-025, TC-12-078, TC-13-001, TC-13-064, TC-16-040, TC-16-076, TC-17-051, TC-17-082, TC-20-017, TC-20-100, TC-AI-AG001-002, TC-AI-AG004-002, TC-AI-AG006-001, TC-AI-AG007-001, TC-AI-AG008-003, TC-AI-AG009-004, TC-AI-AG011-001, TC-AI-AG012-001, TC-AI-AG014-001, TC-AI-AG015-001, TC-AI-AG017-001, TC-AI-AG018-001, TC-AI-AG019-004, TC-AI-AG020-002, TC-AI-AG021-004, TC-AI-AG022-003, TC-AI-AG025-002, TC-AI-AG031-003, TC-AI-AG032-002",Covered
+BRL,BRL-AI-04,Abstain,,,,,,27,"TC-04-015, TC-04-021, TC-05-046, TC-08-002…003, TC-08-029, TC-08-071, TC-09-031…032, TC-10-038, TC-10-047, TC-11-001…002, TC-11-015, TC-12-003, TC-12-017, TC-12-024, TC-13-066, TC-17-054, TC-17-084, TC-AI-AG005-004, TC-AI-AG009-004, TC-AI-AG011-002, TC-AI-AG013-008, TC-AI-AG014-006, TC-AI-AG015-003, TC-AI-AG024-004",Covered
+BRL,BRL-AI-05,Prohibited content,,,,,,24,"TC-02-022, TC-04-041, TC-08-004…006, TC-10-031, TC-10-042, TC-11-002, TC-11-008, TC-12-029, TC-13-002, TC-15-106, TC-17-056, TC-17-087, TC-18-135, TC-19-050, TC-AI-AG001-003, TC-AI-AG011-003, TC-AI-AG011-010, TC-AI-AG017-010, TC-AI-AG017-014, TC-AI-AG018-007, TC-AI-AG027-002, TC-AI-AG027-004",Covered
 BRL,BRL-AI-06,Data classification routing,,,,,,61,"TC-01-130, TC-04-017…018, TC-07-044, TC-08-012, TC-08-076, TC-10-037, TC-11-003…004, TC-15-088, TC-15-091, TC-15-108, TC-16-066, TC-18-136, TC-20-021, TC-AI-AG001-012, TC-AI-AG002-006, TC-AI-AG002-011, TC-AI-AG003-009…010, TC-AI-AG004-005, TC-AI-AG004-014…015, TC-AI-AG005-013…014, TC-AI-AG006-012…013, TC-AI-AG007-008…009, TC-AI-AG008-011, TC-AI-AG009-012, TC-AI-AG010-003, TC-AI-AG010-009, TC-AI-AG011-015, TC-AI-AG012-012, TC-AI-AG013-015, TC-AI-AG014-013, TC-AI-AG015-023, TC-AI-AG016-003, TC-AI-AG016-011, TC-AI-AG017-024…025, TC-AI-AG018-013…014, TC-AI-AG019-012, TC-AI-AG020-011, TC-AI-AG021-011, TC-AI-AG022-009, TC-AI-AG023-011, TC-AI-AG024-011, TC-AI-AG025-007, TC-AI-AG026-002, TC-AI-AG026-008, TC-AI-AG027-009…010, TC-AI-AG028-010, TC-AI-AG029-008, TC-AI-AG030-009, TC-AI-AG031-013, TC-AI-AG032-010, TC-AI-AG035-008",Covered
-BRL,BRL-AI-07,No AI consequential action,,,,,,20,"TC-03-032, TC-04-040, TC-08-070, TC-13-067, TC-13-092, TC-17-053, TC-17-085, TC-18-032, TC-18-038, TC-18-125, TC-20-102, TC-AI-AG012-004, TC-AI-AG014-003, TC-AI-AG015-011, TC-AI-AG016-006, TC-AI-AG019-005, TC-AI-AG020-005, TC-AI-AG022-002, TC-AI-AG024-005, TC-AU-AU037-003",Covered
+BRL,BRL-AI-07,No AI consequential action,,,,,,25,"TC-03-032, TC-04-040, TC-08-070, TC-12-063, TC-12-073, TC-13-067, TC-13-092, TC-14-018, TC-14-036, TC-14-050, TC-17-053, TC-17-085, TC-18-032, TC-18-038, TC-18-125, TC-20-102, TC-AI-AG012-004, TC-AI-AG014-003, TC-AI-AG015-011, TC-AI-AG016-006, TC-AI-AG019-005, TC-AI-AG020-005, TC-AI-AG022-002, TC-AI-AG024-005, TC-AU-AU037-003",Covered
 BRL,BRL-AI-08,Budget,,,,,,88,"TC-01-121, TC-03-024, TC-04-001, TC-04-023…025, TC-04-027, TC-08-001, TC-08-007…008, TC-10-034, TC-11-031, TC-11-034, TC-12-035, TC-17-057, TC-18-101, TC-18-103…104, TC-20-024, TC-AI-AG001-016…017, TC-AI-AG002-015…016, TC-AI-AG003-014…015, TC-AI-AG004-019, TC-AI-AG004-021, TC-AI-AG005-018…019, TC-AI-AG006-017…018, TC-AI-AG007-013…014, TC-AI-AG008-015…016, TC-AI-AG009-016…017, TC-AI-AG010-013…014, TC-AI-AG011-019, TC-AI-AG011-021, TC-AI-AG012-016, TC-AI-AG012-018, TC-AI-AG013-019, TC-AI-AG013-021, TC-AI-AG014-017, TC-AI-AG014-019, TC-AI-AG015-028, TC-AI-AG015-030, TC-AI-AG016-015…016, TC-AI-AG017-029, TC-AI-AG017-031, TC-AI-AG018-018…019, TC-AI-AG019-016, TC-AI-AG019-018, TC-AI-AG020-015…016, TC-AI-AG021-015…016, TC-AI-AG022-013…014, TC-AI-AG023-015…016, TC-AI-AG024-015…016, TC-AI-AG025-011…012, TC-AI-AG026-012…013, TC-AI-AG027-014…015, TC-AI-AG028-014…015, TC-AI-AG029-012…013, TC-AI-AG030-013…014, TC-AI-AG031-017…018, TC-AI-AG032-014…015, TC-AI-AG035-012…013, TC-AU-AU002-001, TC-AU-AU002-006, TC-AU-AU002-009",Covered
 BRL,BRL-AI-09,Evaluation gate,,,,,,8,"TC-04-011, TC-04-033, TC-04-047, TC-21-003, TC-AI-AG002-001, TC-AI-AG002-005, TC-AU-AU006-001, TC-AU-AU013-002",Covered
 BRL,BRL-AI-10,Logging,,,,,,11,"TC-04-037, TC-04-054, TC-04-056, TC-08-055, TC-10-043, TC-11-055, TC-11-060, TC-17-081, TC-21-021, TC-AI-AG028-003, TC-AU-AU011-002",Covered
 BRL,BRL-AI-11,Public assistant scope,,,,,,13,"TC-08-069, TC-10-030…031, TC-10-036, TC-10-047, TC-11-020…021, TC-AI-AG013-003, TC-AI-AG014-005, TC-AI-AG017-001, TC-AI-AG017-010, TC-AI-AG017-012…013",Covered
 BRL,BRL-AI-12,Copilot scope,,,,,,6,"TC-01-114, TC-02-028, TC-02-030, TC-17-055, TC-20-096, TC-AI-AG015-012",Covered
-BRL,BRL-APR-01,Author ≠ approver,,,,,,35,"TC-01-063, TC-02-003, TC-02-013…014, TC-02-032, TC-02-047, TC-05-010, TC-05-070, TC-06-017, TC-07-021, TC-08-018, TC-08-032, TC-08-113, TC-09-005, TC-10-050, TC-11-016, TC-11-070, TC-12-012, TC-12-037, TC-12-072, TC-13-013, TC-13-049, TC-13-072, TC-13-084, TC-13-110, TC-15-082, TC-16-050, TC-17-050, TC-18-022, TC-18-028, TC-19-026, TC-19-084, TC-20-030, TC-20-083, TC-21-048",Covered
-BRL,BRL-APR-02,Hash-bound approval,,,,,,33,"TC-02-010…011, TC-02-056…057, TC-03-023, TC-06-014…015, TC-08-013, TC-08-015, TC-08-021, TC-08-026, TC-08-104, TC-08-171, TC-09-008…010, TC-09-013, TC-10-015, TC-10-017, TC-10-045…046, TC-11-010, TC-12-036, TC-13-009, TC-13-080, TC-13-112, TC-15-020, TC-16-049, TC-17-040, TC-18-026, TC-18-111, TC-19-028, TC-AU-AU009-001",Covered
-BRL,BRL-APR-03,Approval expiry,,,,,,14,"TC-02-016, TC-08-026…027, TC-09-002, TC-09-014, TC-11-010, TC-11-013, TC-11-043, TC-11-047, TC-12-013, TC-12-040, TC-13-085, TC-18-106, TC-19-037",Covered
-BRL,BRL-APR-04,Discount thresholds,,,,,,18,"TC-13-032, TC-13-037…047, TC-13-054, TC-13-116, TC-13-118, TC-13-125…126, TC-17-043",Covered
-BRL,BRL-APR-05,Legal terms,,,,,,3,"TC-13-010, TC-13-070, TC-13-074",Covered
-BRL,BRL-APR-06,High-value / cross-border,,,,,,4,"TC-13-050, TC-13-081…083",Covered
-BRL,BRL-APR-07,Finance maker-checker,,,,,,5,"TC-13-053, TC-15-015, TC-15-025, TC-15-032, TC-AU-AU037-002",Covered
-BRL,BRL-APR-08,Rejection reason,,,,,,14,"TC-02-015, TC-06-045, TC-07-003, TC-08-033, TC-08-100, TC-08-169, TC-09-002…003, TC-11-017, TC-12-071, TC-13-084, TC-15-028, TC-15-031, TC-15-045",Covered
-BRL,BRL-APR-09,Delegation,,,,,,3,TC-13-105…107,Covered
-BRL,BRL-APR-10,Approval SLA and escalation,,,,,,7,"TC-02-018, TC-13-011, TC-13-071, TC-15-094, TC-16-014, TC-17-024, TC-AU-AU027-001",Covered
-BRL,BRL-APR-11,Self-approval prohibited for loosening,,,,,,17,"TC-03-010, TC-03-076, TC-04-022, TC-04-029, TC-08-109, TC-08-111, TC-08-134, TC-09-026…027, TC-09-047, TC-12-046, TC-12-058, TC-13-055, TC-15-054, TC-16-036, TC-18-098, TC-20-077",Covered
+BRL,BRL-APR-01,Author ≠ approver,,,,,,37,"TC-01-063, TC-02-003, TC-02-013…014, TC-02-032, TC-02-047, TC-05-010, TC-05-070, TC-06-017, TC-07-021, TC-08-018, TC-08-032, TC-08-113, TC-09-005, TC-10-050, TC-11-016, TC-11-070, TC-12-012, TC-12-033, TC-12-037, TC-12-072, TC-13-013, TC-13-049, TC-13-072, TC-13-084, TC-13-110, TC-14-063, TC-15-082, TC-16-050, TC-17-050, TC-18-022, TC-18-028, TC-19-026, TC-19-084, TC-20-030, TC-20-083, TC-21-048",Covered
+BRL,BRL-APR-02,Hash-bound approval,,,,,,35,"TC-02-010…011, TC-02-056…057, TC-03-023, TC-06-014…015, TC-08-013, TC-08-015, TC-08-021, TC-08-026, TC-08-104, TC-08-171, TC-09-008…010, TC-09-013, TC-10-015, TC-10-017, TC-10-045…046, TC-11-010, TC-12-036, TC-13-009, TC-13-080, TC-13-112, TC-14-077, TC-14-098, TC-15-020, TC-16-049, TC-17-040, TC-18-026, TC-18-111, TC-19-028, TC-AU-AU009-001",Covered
+BRL,BRL-APR-03,Approval expiry,,,,,,16,"TC-02-016, TC-08-026…027, TC-09-002, TC-09-014, TC-11-010, TC-11-013, TC-11-043, TC-11-047, TC-12-008, TC-12-013, TC-12-040…041, TC-13-085, TC-18-106, TC-19-037",Covered
+BRL,BRL-APR-04,Discount thresholds,,,,,,20,"TC-12-002, TC-13-003, TC-13-032, TC-13-037…047, TC-13-054, TC-13-116, TC-13-118, TC-13-125…126, TC-17-043",Covered
+BRL,BRL-APR-05,Legal terms,,,,,,8,"TC-12-026, TC-12-032, TC-12-075…076, TC-12-081, TC-13-010, TC-13-070, TC-13-074",Covered
+BRL,BRL-APR-06,High-value / cross-border,,,,,,8,"TC-12-051…052, TC-12-056…057, TC-13-050, TC-13-081…083",Covered
+BRL,BRL-APR-07,Finance maker-checker,,,,,,8,"TC-12-003, TC-12-017, TC-12-049, TC-13-053, TC-15-015, TC-15-025, TC-15-032, TC-AU-AU037-002",Covered
+BRL,BRL-APR-08,Rejection reason,,,,,,17,"TC-02-015, TC-06-045, TC-07-003, TC-08-033, TC-08-100, TC-08-169, TC-09-002…003, TC-11-017, TC-12-027, TC-12-031, TC-12-071, TC-13-084, TC-14-015, TC-15-028, TC-15-031, TC-15-045",Covered
+BRL,BRL-APR-09,Delegation,,,,,,6,"TC-13-105…107, TC-14-058, TC-14-062, TC-14-089",Covered
+BRL,BRL-APR-10,Approval SLA and escalation,,,,,,12,"TC-02-018, TC-13-011, TC-13-071, TC-14-066…068, TC-14-072, TC-14-098, TC-15-094, TC-16-014, TC-17-024, TC-AU-AU027-001",Covered
+BRL,BRL-APR-11,Self-approval prohibited for loosening,,,,,,20,"TC-03-010, TC-03-076, TC-04-022, TC-04-029, TC-08-109, TC-08-111, TC-08-134, TC-09-026…027, TC-09-047, TC-12-046, TC-12-058, TC-13-055, TC-14-066, TC-14-069, TC-14-072, TC-15-054, TC-16-036, TC-18-098, TC-20-077",Covered
 BRL,BRL-SEQ-01,Eligible enrolment only,,,,,,3,"TC-08-085…086, TC-08-097",Covered
 BRL,BRL-SEQ-02,Stop conditions,,,,,,10,"TC-08-087…093, TC-08-098, TC-08-108, TC-09-008",Covered
 BRL,BRL-SEQ-03,Single active generic sequence,,,,,,2,TC-08-094…095,Covered
@@ -2057,11 +2057,11 @@ BRL,BRL-SEQ-04,Pinned revision,,,,,,2,"TC-08-085, TC-08-096",Covered
 BRL,BRL-SEQ-05,Interval minimum,,,,,,2,TC-08-105…106,Covered
 BRL,BRL-MTG-01,Only verified free slots offered (from calendar provider free/busy); n,,,,,,1,TC-09-005,Covered
 BRL,BRL-MTG-02,Slot hold for 15 minutes during booking; conflict on confirm → re-offe,,,,,,4,"TC-09-008…010, TC-09-013",Covered
-BRL,BRL-MTG-03,Times stored UTC; displayed in both parties' timezones,,,,,,3,"TC-09-002, TC-09-014, TC-11-047",Covered
+BRL,BRL-MTG-03,Times stored UTC; displayed in both parties' timezones,,,,,,4,"TC-09-002, TC-09-014, TC-11-047, TC-14-025",Covered
 BRL,BRL-MTG-04,Buffer between meetings (default 15 min) and work-hours window per cal,,,,,,2,TC-09-002…003,Covered
 BRL,BRL-MTG-05,"""Held"" requires owner confirmation or provider attendance evidence; bo",,,,,,3,"TC-09-026…027, TC-09-047",Covered
 BRL,BRL-MTG-06,Reminders 24 h and 1 h before (eligible channels only); stop on cancel,,,,,,4,"TC-09-024…025, TC-09-028, TC-09-040",Covered
-BRL,BRL-MKT-01,"Content may use only approved, unexpired claims; unsupported claim → c",,,,,,9,"TC-02-012, TC-08-029, TC-09-031…032, TC-11-001…002, TC-11-015, TC-19-020, TC-19-060",Covered
+BRL,BRL-MKT-01,"Content may use only approved, unexpired claims; unsupported claim → c",,,,,,11,"TC-02-012, TC-08-029, TC-09-031…032, TC-11-001…002, TC-11-015, TC-12-008, TC-12-041, TC-19-020, TC-19-060",Covered
 BRL,BRL-MKT-02,"Planned/unavailable offerings cannot appear in content, ads, pages or ",,,,,,15,"TC-02-001, TC-02-004, TC-02-036, TC-02-042…043, TC-02-052, TC-08-006, TC-11-008, TC-12-002, TC-13-003, TC-16-048, TC-19-019, TC-19-048, TC-AI-AG007-002, TC-AI-AG011-004",Covered
 BRL,BRL-MKT-03,"Management claims (e.g. traction figures) require evidence and the ""ma",,,,,,4,"TC-02-010, TC-11-003…004, TC-19-021",Covered
 BRL,BRL-MKT-04,Campaign launch requires approved campaign hash + approved budget rese,,,,,,5,"TC-12-026, TC-12-032, TC-12-075…076, TC-12-081",Covered
@@ -2071,35 +2071,35 @@ BRL,BRL-MKT-07,Social: no automated DMs; publishing only to authorized owned acc
 BRL,BRL-MKT-08,SEO metrics only from authorized sources; never fabricated or edited,,,,,,2,"TC-11-055, TC-11-060",Covered
 BRL,BRL-MKT-09,Testimonials/case studies require documented consent of the subject,,,,,,2,TC-11-020…021,Covered
 BRL,BRL-MKT-10,Experiments use approved cohorts/holdouts; stop if opt-out or complain,,,,,,2,"TC-12-027, TC-12-031",Covered
-BRL,BRL-BID-01,Deadline stored in UTC with the portal's timezone; submission blocked ,,,,,,3,"TC-21-055, TC-AI-AG019-001, TC-AU-AU034-001",Covered
-BRL,BRL-BID-02,"Mandatory eligibility checklist (capability, certifications, financial",,,,,,0,—,Not covered
-BRL,BRL-BID-03,Bid/no-bid decision by Startup Head; submission approval by Startup He,,,,,,0,—,Not covered
-BRL,BRL-BID-04,Submission is performed by a human outside the system; the system reco,,,,,,1,TC-18-035,Covered
-BRL,BRL-BID-05,"""Awarded"" requires award proof (document/portal notice) attached and v",,,,,,0,—,Not covered
-BRL,BRL-BID-06,Owned-portfolio routing: external AI/software project bids belong to A,,,,,,0,—,Not covered
-BRL,BRL-QTE-01,Unit prices come from the approved price version snapshot; manual pric,,,,,,5,"TC-13-001, TC-13-004, TC-13-007, TC-13-032, TC-19-053",Covered
+BRL,BRL-BID-01,Deadline stored in UTC with the portal's timezone; submission blocked ,,,,,,14,"TC-12-008, TC-12-010, TC-14-001, TC-14-003, TC-14-020…021, TC-14-028…030, TC-14-088, TC-14-096, TC-21-055, TC-AI-AG019-001, TC-AU-AU034-001",Covered
+BRL,BRL-BID-02,"Mandatory eligibility checklist (capability, certifications, financial",,,,,,6,"TC-12-008, TC-12-011, TC-14-012…014, TC-14-017",Covered
+BRL,BRL-BID-03,Bid/no-bid decision by Startup Head; submission approval by Startup He,,,,,,5,"TC-12-001, TC-12-004, TC-14-012, TC-14-016, TC-14-039",Covered
+BRL,BRL-BID-04,Submission is performed by a human outside the system; the system reco,,,,,,6,"TC-13-061, TC-14-031…032, TC-14-084, TC-14-096, TC-18-035",Covered
+BRL,BRL-BID-05,"""Awarded"" requires award proof (document/portal notice) attached and v",,,,,,3,"TC-12-009, TC-14-033…034",Covered
+BRL,BRL-BID-06,Owned-portfolio routing: external AI/software project bids belong to A,,,,,,7,"TC-13-001, TC-13-004, TC-13-007, TC-13-032, TC-14-007, TC-14-009, TC-14-087",Covered
+BRL,BRL-QTE-01,Unit prices come from the approved price version snapshot; manual pric,,,,,,6,"TC-13-001, TC-13-004, TC-13-007, TC-13-032, TC-14-087, TC-19-053",Covered
 BRL,BRL-QTE-02,"Line total = ROUND_HALF_UP(qty × unit price × (1 − discount%), 2); doc",,,,,,9,"TC-13-016…017, TC-13-029, TC-13-115, TC-13-117, TC-13-121…122, TC-15-014, TC-15-016",Covered
 BRL,BRL-QTE-03,"Tax: intra-state CGST+SGST, inter-state IGST, export zero-rated with L",,,,,,8,"TC-13-018…020, TC-13-115, TC-13-119, TC-13-123…124, TC-15-014",Covered
 BRL,BRL-QTE-04,Currency per quote; no mixing; FX not applied to quote totals,,,,,,8,"TC-13-021, TC-13-024, TC-13-033, TC-13-036, TC-13-048, TC-13-123, TC-15-014, TC-19-057",Covered
 BRL,BRL-QTE-05,Validity: default 30 days; expired quote cannot be accepted,,,,,,4,"TC-13-029, TC-13-058, TC-13-112, TC-19-054",Covered
 BRL,BRL-QTE-06,Any change after approval creates a new revision and voids approvals,,,,,,3,"TC-13-012, TC-13-051, TC-13-059",Covered
-BRL,BRL-QTE-07,"Quantity/unit validation per SKU (allowed units, min/max order)",,,,,,5,"TC-02-006, TC-13-023, TC-13-030…031, TC-AI-AG023-002",Covered
-BRL,BRL-CTR-01,Contracts are generated only from approved templates; deviations flagg,,,,,,2,TC-13-073…074,Covered
-BRL,BRL-CTR-02,Signed version SHA-256 hash stored; must equal the legally approved ha,,,,,,5,"TC-13-076, TC-13-086, TC-13-096, TC-15-049, TC-15-053",Covered
-BRL,BRL-CTR-03,Signer authority recorded for both parties; portal token alone is not ,,,,,,4,"TC-13-061, TC-13-079, TC-13-097, TC-13-100",Covered
-BRL,BRL-CTR-04,AI never signs; e-sign requests are dispatched only after legal approv,,,,,,3,"TC-13-075, TC-13-092, TC-13-114",Covered
-BRL,BRL-CTR-05,Contract dates drive renewal notice (default 60 days before expiry),,,,,,3,"TC-13-077, TC-13-113, TC-16-029",Covered
-BRL,BRL-ORD-01,"Order has direction (Sell/Buy) and lines (SKU/service, unit, quantity,",,,,,,0,—,Not covered
-BRL,BRL-ORD-02,Cumulative fulfilled quantity ≤ ordered quantity per line; excess reje,,,,,,1,TC-AU-AU038-002,Covered
-BRL,BRL-ORD-03,Fulfilment events idempotent by event key,,,,,,0,—,Not covered
-BRL,BRL-ORD-04,Sell orders reserve available quantity on approval; release on cancel/,,,,,,0,—,Not covered
-BRL,BRL-ORD-05,"Acceptance by counterparty (or deemed acceptance after policy period, ",,,,,,0,—,Not covered
-BRL,BRL-ORD-06,Receivables and payables are separate ledgers; never netted automatica,,,,,,0,—,Not covered
+BRL,BRL-QTE-07,"Quantity/unit validation per SKU (allowed units, min/max order)",,,,,,10,"TC-02-006, TC-13-023, TC-13-030…031, TC-14-048, TC-14-052, TC-14-054, TC-14-070, TC-14-086, TC-AI-AG023-002",Covered
+BRL,BRL-CTR-01,Contracts are generated only from approved templates; deviations flagg,,,,,,9,"TC-13-016…017, TC-13-029, TC-13-073…074, TC-13-115, TC-13-117, TC-13-121…122",Covered
+BRL,BRL-CTR-02,Signed version SHA-256 hash stored; must equal the legally approved ha,,,,,,12,"TC-13-018…020, TC-13-076, TC-13-086, TC-13-096, TC-13-115, TC-13-119, TC-13-123…124, TC-15-049, TC-15-053",Covered
+BRL,BRL-CTR-03,Signer authority recorded for both parties; portal token alone is not ,,,,,,10,"TC-13-021, TC-13-024, TC-13-033, TC-13-036, TC-13-048, TC-13-061, TC-13-079, TC-13-097, TC-13-100, TC-13-123",Covered
+BRL,BRL-CTR-04,AI never signs; e-sign requests are dispatched only after legal approv,,,,,,6,"TC-13-029, TC-13-058, TC-13-075, TC-13-092, TC-13-112, TC-13-114",Covered
+BRL,BRL-CTR-05,Contract dates drive renewal notice (default 60 days before expiry),,,,,,6,"TC-13-012, TC-13-051, TC-13-059, TC-13-077, TC-13-113, TC-16-029",Covered
+BRL,BRL-ORD-01,"Order has direction (Sell/Buy) and lines (SKU/service, unit, quantity,",,,,,,3,"TC-14-058, TC-14-062, TC-14-089",Covered
+BRL,BRL-ORD-02,Cumulative fulfilled quantity ≤ ordered quantity per line; excess reje,,,,,,6,"TC-14-066…068, TC-14-072, TC-14-098, TC-AU-AU038-002",Covered
+BRL,BRL-ORD-03,Fulfilment events idempotent by event key,,,,,,3,"TC-14-066, TC-14-069, TC-14-072",Covered
+BRL,BRL-ORD-04,Sell orders reserve available quantity on approval; release on cancel/,,,,,,3,"TC-14-058…059, TC-14-061",Covered
+BRL,BRL-ORD-05,"Acceptance by counterparty (or deemed acceptance after policy period, ",,,,,,3,"TC-14-073, TC-14-075, TC-14-081",Covered
+BRL,BRL-ORD-06,Receivables and payables are separate ledgers; never netted automatica,,,,,,2,"TC-14-062, TC-14-074",Covered
 BRL,BRL-FIN-01,Closure policy per opportunity type: contract types → Won-Contracted o,,,,,,3,"TC-07-013, TC-15-047, TC-15-049",Covered
 BRL,BRL-FIN-02,"Payment events deduplicated by (provider account, payment ID); replay ",,,,,,7,"TC-15-003…004, TC-15-009, TC-15-034, TC-15-036, TC-15-041, TC-20-050",Covered
 BRL,BRL-FIN-03,"Verification checks amount, currency, payer legal entity, invoice refe",,,,,,6,"TC-15-029…030, TC-15-037…039, TC-15-105",Covered
 BRL,BRL-FIN-04,"Partial payments allocated; deal ""Paid"" only when allocations = invoic",,,,,,7,"TC-15-036, TC-15-047…048, TC-15-051, TC-15-055, TC-15-060, TC-15-098",Covered
-BRL,BRL-FIN-05,Ledgers append-only; corrections via reversing entries with reason,,,,,,2,TC-15-058…059,Covered
+BRL,BRL-FIN-05,Ledgers append-only; corrections via reversing entries with reason,,,,,,4,"TC-14-077, TC-14-098, TC-15-058…059",Covered
 BRL,BRL-FIN-06,Revenue reports use verified ledger entries only; forecasts never mixe,,,,,,5,"TC-15-074, TC-17-045, TC-AI-AG029-001…002, TC-AU-AU041-001",Covered
 BRL,BRL-FIN-07,No storage of card data or bank credentials; payment instructions show,,,,,,3,"TC-15-008…009, TC-15-065",Covered
 BRL,BRL-FIN-08,Commercial receipts exclude SaaS fees and procurement payments,,,,,,4,"TC-12-069, TC-15-061, TC-15-074, TC-20-046",Covered
@@ -2113,25 +2113,25 @@ BRL,BRL-PUB-01,Publish only an Approved revision whose hash matches the approval
 BRL,BRL-PUB-02,Publish/unpublish/rollback is an atomic pointer swap + tenant-keyed ca,,,,,,8,"TC-11-019, TC-11-022, TC-11-072, TC-12-008, TC-12-011, TC-19-009, TC-19-029, TC-21-079",Covered
 BRL,BRL-PUB-03,Previews require Admin auth + expiring grant (default 24 h) + `noindex,,,,,,4,"TC-12-001, TC-12-004, TC-19-025, TC-19-027",Covered
 BRL,BRL-PUB-04,Public assets separately approved and malware-scanned,,,,,,1,TC-19-102,Covered
-BRL,BRL-PUB-05,Portal content never included in public snapshots or CDN caches,,,,,,7,"TC-11-075, TC-13-061, TC-19-012, TC-19-055, TC-19-058, TC-19-094, TC-20-006",Covered
+BRL,BRL-PUB-05,Portal content never included in public snapshots or CDN caches,,,,,,8,"TC-11-075, TC-13-061, TC-14-084, TC-19-012, TC-19-055, TC-19-058, TC-19-094, TC-20-006",Covered
 BRL,BRL-PUB-06,Accessibility check (automated WCAG 2.2 AA) must pass or carry an appr,,,,,,7,"TC-10-057, TC-11-066, TC-11-069, TC-12-009, TC-19-030, TC-19-081, TC-21-009",Covered
-BRL,BRL-AUT-01,"Autonomy caps (DEC-064): money movement unsupported; quotes, discounts",,,,,,12,"TC-08-017, TC-08-022, TC-08-078, TC-09-024…025, TC-09-028, TC-09-040, TC-13-069, TC-18-025, TC-18-031, TC-18-039, TC-18-133",Covered
+BRL,BRL-AUT-01,"Autonomy caps (DEC-064): money movement unsupported; quotes, discounts",,,,,,16,"TC-08-017, TC-08-022, TC-08-078, TC-09-024…025, TC-09-028, TC-09-040, TC-13-069, TC-14-050, TC-14-058…059, TC-14-061, TC-18-025, TC-18-031, TC-18-039, TC-18-133",Covered
 BRL,BRL-AUT-02,Workflows use only approved node types; no code nodes; no secrets in c,,,,,,3,"TC-18-008, TC-18-132, TC-AI-AG016-002",Covered
 BRL,BRL-AUT-03,Running executions pin workflow revision; config changes apply to new ,,,,,,8,"TC-06-016, TC-07-014, TC-08-096, TC-16-008, TC-18-003, TC-18-027, TC-20-031, TC-20-078",Covered
-BRL,BRL-AUT-04,Simulation produces zero live effects; simulated records are flagged a,,,,,,19,"TC-03-012, TC-08-019, TC-08-173, TC-08-181…182, TC-09-029, TC-10-031, TC-10-033, TC-10-043, TC-11-044, TC-12-023, TC-15-074, TC-16-009, TC-16-073, TC-17-031, TC-18-030, TC-18-053, TC-20-018, TC-AI-AG016-004",Covered
-BRL,BRL-AUT-05,"Emergency stop (tenant, startup, workflow or channel scope) blocks new",,,,,,54,"TC-03-016, TC-03-029, TC-03-079, TC-03-084, TC-08-020, TC-08-099, TC-08-145, TC-08-165, TC-11-019, TC-11-027, TC-11-040, TC-11-042, TC-11-045, TC-11-063, TC-11-072…073, TC-12-059, TC-18-041, TC-18-045, TC-AI-AG001-017, TC-AI-AG002-016, TC-AI-AG003-015, TC-AI-AG004-021, TC-AI-AG005-019, TC-AI-AG006-018, TC-AI-AG007-014, TC-AI-AG008-016, TC-AI-AG009-017, TC-AI-AG010-014, TC-AI-AG011-021, TC-AI-AG012-018, TC-AI-AG013-021, TC-AI-AG014-019, TC-AI-AG015-030, TC-AI-AG016-016, TC-AI-AG017-031, TC-AI-AG018-019, TC-AI-AG019-018, TC-AI-AG020-016, TC-AI-AG021-016, TC-AI-AG022-014, TC-AI-AG023-016, TC-AI-AG024-016, TC-AI-AG025-012, TC-AI-AG026-013, TC-AI-AG027-015, TC-AI-AG028-015, TC-AI-AG029-013, TC-AI-AG030-014, TC-AI-AG031-018, TC-AI-AG032-015, TC-AI-AG035-013, TC-AU-AU025-001, TC-AU-AU025-009",Covered
+BRL,BRL-AUT-04,Simulation produces zero live effects; simulated records are flagged a,,,,,,22,"TC-03-012, TC-08-019, TC-08-173, TC-08-181…182, TC-09-029, TC-10-031, TC-10-033, TC-10-043, TC-11-044, TC-12-023, TC-14-073, TC-14-075, TC-14-081, TC-15-074, TC-16-009, TC-16-073, TC-17-031, TC-18-030, TC-18-053, TC-20-018, TC-AI-AG016-004",Covered
+BRL,BRL-AUT-05,"Emergency stop (tenant, startup, workflow or channel scope) blocks new",,,,,,56,"TC-03-016, TC-03-029, TC-03-079, TC-03-084, TC-08-020, TC-08-099, TC-08-145, TC-08-165, TC-11-019, TC-11-027, TC-11-040, TC-11-042, TC-11-045, TC-11-063, TC-11-072…073, TC-12-059, TC-14-062, TC-14-074, TC-18-041, TC-18-045, TC-AI-AG001-017, TC-AI-AG002-016, TC-AI-AG003-015, TC-AI-AG004-021, TC-AI-AG005-019, TC-AI-AG006-018, TC-AI-AG007-014, TC-AI-AG008-016, TC-AI-AG009-017, TC-AI-AG010-014, TC-AI-AG011-021, TC-AI-AG012-018, TC-AI-AG013-021, TC-AI-AG014-019, TC-AI-AG015-030, TC-AI-AG016-016, TC-AI-AG017-031, TC-AI-AG018-019, TC-AI-AG019-018, TC-AI-AG020-016, TC-AI-AG021-016, TC-AI-AG022-014, TC-AI-AG023-016, TC-AI-AG024-016, TC-AI-AG025-012, TC-AI-AG026-013, TC-AI-AG027-015, TC-AI-AG028-015, TC-AI-AG029-013, TC-AI-AG030-014, TC-AI-AG031-018, TC-AI-AG032-015, TC-AI-AG035-013, TC-AU-AU025-001, TC-AU-AU025-009",Covered
 BRL,BRL-AUT-06,"Runaway prevention: max steps per run (default 50), max retries per st",,,,,,11,"TC-01-070, TC-08-191, TC-11-019, TC-11-022, TC-11-072, TC-18-012, TC-18-081, TC-18-093, TC-18-133, TC-AI-AG016-002, TC-AU-AU025-011",Covered
 BRL,BRL-AUT-07,Retry only for transient failures before submission; uncertain → recon,,,,,,18,"TC-01-070…071, TC-01-075, TC-08-044, TC-08-079, TC-08-140, TC-08-146, TC-08-186, TC-09-015, TC-10-009, TC-11-051, TC-11-075, TC-12-045, TC-15-010, TC-15-012, TC-21-039…040, TC-AI-AG028-002",Covered
-BRL,BRL-AUT-08,"Webhook/trigger events verified (signature), scoped, and deduplicated ",,,,,,11,"TC-01-120, TC-08-048, TC-10-002…003, TC-10-057, TC-11-066, TC-11-069, TC-13-089, TC-15-005, TC-18-060, TC-18-062",Covered
+BRL,BRL-AUT-08,"Webhook/trigger events verified (signature), scoped, and deduplicated ",,,,,,14,"TC-01-120, TC-08-048, TC-10-002…003, TC-10-057, TC-11-066, TC-11-069, TC-12-020, TC-12-064, TC-13-089, TC-14-046, TC-15-005, TC-18-060, TC-18-062",Covered
 BRL,BRL-AUT-09,Conflicting actions on the same relationship (e.g. two workflows messa,,,,,,8,"TC-08-085…086, TC-08-097, TC-08-149, TC-08-154, TC-18-086, TC-18-090, TC-AU-AU030-001",Covered
-BRL,BRL-AUT-10,Missed scheduled runs recover once; further misses alert,,,,,,7,"TC-05-018, TC-05-085…086, TC-18-064…065, TC-AU-AU028-001…002",Covered
+BRL,BRL-AUT-10,Missed scheduled runs recover once; further misses alert,,,,,,9,"TC-05-018, TC-05-085…086, TC-14-026, TC-14-101, TC-18-064…065, TC-AU-AU028-001…002",Covered
 BRL,BRL-PRV-01,Identity verification proportionate to request before access/deletion,,,,,,2,"TC-03-064, TC-03-068",Covered
 BRL,BRL-PRV-02,Legal deadline tracked (verify DPDP response timelines); escalation at,,,,,,2,TC-03-067…068,Covered
 BRL,BRL-PRV-03,Deletion keeps minimal suppression hash so outreach is never re-enable,,,,,,7,"TC-03-053, TC-03-065, TC-03-074, TC-07-056, TC-08-063, TC-20-071, TC-AU-AU011-003",Covered
 BRL,BRL-PRV-04,"Legal hold overrides deletion; data restricted, not deleted",,,,,,4,"TC-03-066, TC-03-073, TC-15-089, TC-20-071",Covered
 BRL,BRL-PRV-05,Retention schedule per data class (DEC-028) enforced by nightly purge ,,,,,,5,"TC-03-072, TC-03-075, TC-10-039, TC-20-071, TC-AU-AU011-004",Covered
-BRL,BRL-PRV-06,Data minimization at intake: only schema-allowed fields stored; free-t,,,,,,15,"TC-03-020, TC-03-062, TC-07-019, TC-07-025, TC-09-029, TC-10-031, TC-10-033, TC-10-043, TC-12-020, TC-12-064, TC-16-018, TC-16-064, TC-16-070, TC-20-062, TC-AI-AG017-005",Covered
-BRL,BRL-PRV-07,"Exports: classification-aware redaction, expiring links (default 72 h)",,,,,,5,"TC-01-115, TC-03-070, TC-15-103, TC-20-062, TC-20-069",Covered
+BRL,BRL-PRV-06,Data minimization at intake: only schema-allowed fields stored; free-t,,,,,,16,"TC-03-020, TC-03-062, TC-07-019, TC-07-025, TC-09-029, TC-10-031, TC-10-033, TC-10-043, TC-12-020, TC-12-064, TC-14-046, TC-16-018, TC-16-064, TC-16-070, TC-20-062, TC-AI-AG017-005",Covered
+BRL,BRL-PRV-07,"Exports: classification-aware redaction, expiring links (default 72 h)",,,,,,6,"TC-01-115, TC-03-070, TC-14-101, TC-15-103, TC-20-062, TC-20-069",Covered
 BRL,BRL-SVC-01,No provisioning before verified administrator authority and platform a,,,,,,2,TC-20-007…008,Covered
 BRL,BRL-SVC-02,"Applicant draft isolated, expiring (30 days), cannot mutate any active",,,,,,3,"TC-03-075, TC-20-010, TC-20-023",Covered
 BRL,BRL-SVC-03,Entitlements enforced before metered actions; over quota → block (or a,,,,,,3,"TC-03-024, TC-20-033, TC-20-085",Covered
@@ -2143,7 +2143,7 @@ NFR,NFR-001,"Two frontends with separate origins, sessions, OAuth clients, route
 NFR,NFR-002,"Server-side permission on every object, nested FK, search, vector retrieval, exp",EP-01,,,,§6.1.9.6 NFR-001…038 (and Part 4 exte,5,"TC-10-044, TC-15-085, TC-15-090, TC-15-103, TC-AI-AG015-009",Covered
 NFR,NFR-003,MFA for privileged roles; revoked or wrong-audience requests succeed 0 times,EP-01,,,,§6.1.9.6 NFR-001…038 (and Part 4 exte,7,"TC-01-004…005, TC-01-007, TC-01-035…036, TC-13-101, TC-17-006",Covered
 NFR,NFR-004,"Secrets never returned in any API response, log or prompt",EP-01,,,,§6.1.3.2 No provider call or secret f; §6.1.9.6 NFR-001…038 (and Part 4 exte,17,"TC-01-016, TC-01-025, TC-01-081…082, TC-01-087, TC-08-036, TC-09-001, TC-10-001, TC-11-033, TC-12-047, TC-13-094, TC-15-008, TC-18-009, TC-19-093, TC-21-002, TC-21-015, TC-21-021",Covered
-NFR,NFR-005,Duplicate delivery has exactly one effect,EP-18,,,,T16; §6.1.9.6 NFR-001…038 (and Part 4 exte,43,"TC-01-055, TC-01-069, TC-03-005, TC-03-008, TC-03-069, TC-03-083, TC-04-004, TC-04-028, TC-05-013, TC-06-009, TC-06-041, TC-07-029, TC-07-059, TC-08-025, TC-08-040, TC-08-047, TC-08-065, TC-08-074, TC-08-139, TC-08-149, TC-08-174, TC-09-012, TC-09-037, TC-10-008, TC-11-041, TC-11-050, TC-12-016, TC-12-048, TC-13-060, TC-13-088, TC-15-003, TC-15-056…057, TC-16-005, TC-18-002, TC-18-061, TC-20-035, TC-20-064, TC-20-074, TC-21-036, TC-AU-AU020-001, TC-AU-AU024-003, TC-AU-AU028-003",Covered
+NFR,NFR-005,Duplicate delivery has exactly one effect,EP-18,,,,T16; §6.1.9.6 NFR-001…038 (and Part 4 exte,50,"TC-01-055, TC-01-069, TC-03-005, TC-03-008, TC-03-069, TC-03-083, TC-04-004, TC-04-028, TC-05-013, TC-06-009, TC-06-041, TC-07-029, TC-07-059, TC-08-025, TC-08-040, TC-08-047, TC-08-065, TC-08-074, TC-08-139, TC-08-149, TC-08-174, TC-09-012, TC-09-037, TC-10-008, TC-11-041, TC-11-050, TC-12-016, TC-12-048, TC-13-060, TC-13-088, TC-14-004, TC-14-038, TC-14-055, TC-14-060, TC-14-069, TC-14-079, TC-14-092, TC-15-003, TC-15-056…057, TC-16-005, TC-18-002, TC-18-061, TC-20-035, TC-20-064, TC-20-074, TC-21-036, TC-AU-AU020-001, TC-AU-AU024-003, TC-AU-AU028-003",Covered
 NFR,NFR-006,Transactional outbox; authoritative state and outbox written atomically with row,EP-01,,,,§6.1.9.6 NFR-001…038 (and Part 4 exte,7,"TC-01-067…068, TC-07-002, TC-08-013, TC-08-024, TC-15-001…002",Covered
 NFR,NFR-007,Provider outage does not lose events,EP-21,,,,DR-7; T06; T12; §6.1.9.6 NFR-001…038 (and Part 4 exte,10,"TC-01-069, TC-01-072, TC-07-067…068, TC-08-045, TC-08-051, TC-18-004, TC-21-035, TC-21-042, TC-21-097",Covered
 NFR,NFR-008,Customer 360 updates visible within 60 s,EP-07,,,,LT-10; §6.1.9.6 NFR-001…038 (and Part 4 exte,8,"TC-07-023, TC-07-046…047, TC-07-049, TC-07-066, TC-08-080, TC-17-074, TC-AU-AU021-001",Covered
@@ -2159,18 +2159,18 @@ NFR,NFR-017,"UUID PKs, UTC timestamps, Decimal + ISO 4217, composite tenant/star
 NFR,NFR-018,"Approval, financial and audit records immutable",EP-01,,,,§6.1.9.6 NFR-001…038 (and Part 4 exte,8,"TC-01-012, TC-01-073…074, TC-01-077, TC-08-144, TC-13-108, TC-21-070, TC-21-089",Covered
 NFR,NFR-019,`/health` (no DB) and `/ready` without sensitive detail,EP-21,,,,T21; §6.1.9.6 NFR-001…038 (and Part 4 exte,4,"TC-08-162…163, TC-18-078, TC-21-020",Covered
 NFR,NFR-020,Unknown host → 404; atomic publish pointer swap; tenant-keyed cache invalidation,EP-19,,,,§6.1.3.2 Portal content never in publ; §6.1.9.6 NFR-001…038 (and Part 4 exte,10,"TC-01-118, TC-09-021, TC-11-024, TC-11-028, TC-11-075, TC-12-019, TC-19-002, TC-19-010, TC-19-094, TC-AU-AU029-002",Covered
-NFR,NFR-021,Uploaded files scanned before use; separate approval for public assets,"EP-02, EP-19",,,,§6.1.14.2 File uploads; §6.1.9.6 NFR-001…038 (and Part 4 exte,12,"TC-02-019…021, TC-02-026, TC-05-077, TC-13-087, TC-15-043, TC-16-016…017, TC-16-022, TC-19-102, TC-20-015",Covered
+NFR,NFR-021,Uploaded files scanned before use; separate approval for public assets,"EP-02, EP-19",,,,§6.1.14.2 File uploads; §6.1.9.6 NFR-001…038 (and Part 4 exte,14,"TC-02-019…021, TC-02-026, TC-05-077, TC-13-087, TC-14-041…042, TC-15-043, TC-16-016…017, TC-16-022, TC-19-102, TC-20-015",Covered
 NFR,NFR-022,Abuse controls and rate limits on public intake and chat,EP-19,,,,§6.1.9.6 NFR-001…038 (and Part 4 exte,15,"TC-01-011, TC-03-063, TC-05-073, TC-05-075, TC-05-078, TC-07-070…073, TC-09-022, TC-10-040, TC-19-043, TC-19-091, TC-20-016, TC-AI-AG017-008",Covered
-NFR,NFR-023,"Accessibility preferences, needs and result on page approval; WCAG 2.2 AA",EP-19,,,,§6.1.9.6 NFR-001…038 (and Part 4 exte,10,"TC-08-155, TC-10-052, TC-13-063, TC-13-099, TC-15-046, TC-15-070, TC-16-021, TC-17-067, TC-19-079, TC-20-029",Covered
+NFR,NFR-023,"Accessibility preferences, needs and result on page approval; WCAG 2.2 AA",EP-19,,,,§6.1.9.6 NFR-001…038 (and Part 4 exte,11,"TC-08-155, TC-10-052, TC-13-063, TC-13-099, TC-14-083, TC-15-046, TC-15-070, TC-16-021, TC-17-067, TC-19-079, TC-20-029",Covered
 NFR,NFR-024,"Language, locale fallback, timezone, currency per scope",EP-19,,,,§6.1.9.6 NFR-001…038 (and Part 4 exte,0,—,Plan only
 NFR,NFR-025,Stale revision → 409; never silently overwrite approved state,EP-01,,,,§6.1.9.6 NFR-001…038 (and Part 4 exte,8,"TC-02-007, TC-02-009, TC-07-006, TC-11-014, TC-13-015, TC-13-034, TC-15-083, TC-19-022",Covered
 NFR,NFR-026,Provider timeout after submission = uncertain; reconcile before replay,EP-18,,,,T18; §6.1.9.6 NFR-001…038 (and Part 4 exte,5,"TC-01-071, TC-04-003, TC-13-090, TC-15-010, TC-18-076",Covered
 NFR,NFR-027,"Scope switch cancels stale queries, clears cache and selections",EP-17,,,,§6.1.9.6 NFR-001…038 (and Part 4 exte,2,TC-17-003…004,Covered
-NFR,NFR-028,100% of actionable records have permitted provenance; missing rights quarantined,EP-05,,,,§6.1.9.6 NFR-001…038 (and Part 4 exte,5,"TC-05-001, TC-05-026, TC-05-030, TC-AI-AG004-001, TC-AI-AG004-003",Covered
+NFR,NFR-028,100% of actionable records have permitted provenance; missing rights quarantined,EP-05,,,,§6.1.9.6 NFR-001…038 (and Part 4 exte,6,"TC-05-001, TC-05-026, TC-05-030, TC-14-090, TC-AI-AG004-001, TC-AI-AG004-003",Covered
 NFR,NFR-029,Modular monolith; each runtime dependency justified by ADR; no per-startup workf,EP-01,,,,§6.1.9.6 NFR-001…038 (and Part 4 exte,1,TC-18-001,Covered
 NFR,NFR-030,"Rules-first routing; compare quality, latency and INR per task on the same datas",EP-04,,,,§6.1.9.6 NFR-001…038 (and Part 4 exte,82,"TC-04-014, TC-04-016, TC-04-048, TC-15-109, TC-16-079, TC-17-089, TC-18-138, TC-20-105, TC-AI-AG001-014, TC-AI-AG001-016, TC-AI-AG002-013, TC-AI-AG002-015, TC-AI-AG003-012, TC-AI-AG003-014, TC-AI-AG004-017, TC-AI-AG004-019…020, TC-AI-AG005-016, TC-AI-AG005-018, TC-AI-AG006-015, TC-AI-AG006-017, TC-AI-AG007-011, TC-AI-AG007-013, TC-AI-AG008-013, TC-AI-AG008-015, TC-AI-AG009-014, TC-AI-AG009-016, TC-AI-AG010-011, TC-AI-AG010-013, TC-AI-AG011-017, TC-AI-AG011-019…020, TC-AI-AG012-014, TC-AI-AG012-016…017, TC-AI-AG013-017, TC-AI-AG013-019…020, TC-AI-AG014-015, TC-AI-AG014-017…018, TC-AI-AG015-025, TC-AI-AG015-028…029, TC-AI-AG016-013, TC-AI-AG016-015, TC-AI-AG017-027, TC-AI-AG017-029…030, TC-AI-AG018-016, TC-AI-AG018-018, TC-AI-AG019-014, TC-AI-AG019-016…017, TC-AI-AG020-013, TC-AI-AG020-015, TC-AI-AG021-013, TC-AI-AG021-015, TC-AI-AG022-011, TC-AI-AG022-013, TC-AI-AG023-013, TC-AI-AG023-015, TC-AI-AG024-013, TC-AI-AG024-015, TC-AI-AG025-009, TC-AI-AG025-011, TC-AI-AG026-010, TC-AI-AG026-012, TC-AI-AG027-012, TC-AI-AG027-014, TC-AI-AG028-012, TC-AI-AG028-014, TC-AI-AG029-010, TC-AI-AG029-012, TC-AI-AG030-011, TC-AI-AG030-013, TC-AI-AG031-015, TC-AI-AG031-017, TC-AI-AG032-012, TC-AI-AG032-014, TC-AI-AG035-010, TC-AI-AG035-012",Covered
 NFR,NFR-031,"Independent DB, storage, vector index, queues, credentials, budget, billing, aud",EP-01,,,,T15; §6.1.9.6 NFR-001…038 (and Part 4 exte,3,"TC-01-054, TC-01-110, TC-20-089",Covered
-NFR,NFR-032,Two-tenant fixture: zero cross-scope disclosure or side effects,EP-01,,,,T15; §6.1.9.6 NFR-001…038 (and Part 4 exte,29,"TC-01-046, TC-01-048, TC-01-088…089, TC-01-092, TC-01-110, TC-01-116…117, TC-01-127, TC-05-079, TC-08-011, TC-08-052, TC-15-007, TC-18-056, TC-18-092, TC-19-089, TC-20-026, TC-20-089, TC-21-007, TC-AI-AG015-012…013, TC-AI-AG031-006, TC-AI-AG035-001, TC-AU-AU001-002, TC-AU-AU015-002, TC-AU-AU021-003, TC-AU-AU025-002, TC-AU-AU027-003, TC-AU-AU030-003",Covered
+NFR,NFR-032,Two-tenant fixture: zero cross-scope disclosure or side effects,EP-01,,,,T15; §6.1.9.6 NFR-001…038 (and Part 4 exte,30,"TC-01-046, TC-01-048, TC-01-088…089, TC-01-092, TC-01-110, TC-01-116…117, TC-01-127, TC-05-079, TC-08-011, TC-08-052, TC-14-005, TC-15-007, TC-18-056, TC-18-092, TC-19-089, TC-20-026, TC-20-089, TC-21-007, TC-AI-AG015-012…013, TC-AI-AG031-006, TC-AI-AG035-001, TC-AU-AU001-002, TC-AU-AU015-002, TC-AU-AU021-003, TC-AU-AU025-002, TC-AU-AU027-003, TC-AU-AU030-003",Covered
 NFR,NFR-033,AI regression failures block deployment,EP-04,,,,T14; §6.1.9.6 NFR-001…038 (and Part 4 exte,4,"TC-04-011, TC-21-003, TC-AI-AG002-001, TC-AU-AU006-002",Covered
 NFR,NFR-034,Users locate the approved operation and complete core scenarios; clicks and time,EP-17,,,,T09; §6.1.9.6 NFR-001…038 (and Part 4 exte,0,—,Plan only
 NFR,NFR-035,100% attributable usage reconciled to charges,EP-20,,,,T20; §6.1.9.6 NFR-001…038 (and Part 4 exte,4,"TC-04-028, TC-20-036, TC-AU-AU002-003, TC-AU-AU042-003",Covered

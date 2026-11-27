@@ -784,7 +784,7 @@ Re-run: `python3 assembly/build_rtm.py` from the blueprint folder (writes this f
 
 ### 6.6.2.2 Coverage % per epic
 
-FR count is the Part 2.1 epic column (FR-OP001 counts under EP-04, FR-OP002/OP003 under EP-21 per Part 5.3). "Epic TCs" counts `TC-<epic>-###` rows; TC-AI/TC-AU cases are reported in §6.6.7.
+FR count is the Part 2.1 epic column (FR-OP001 counts under EP-04, FR-OP002/OP003 under EP-21, per Part 9.1 §9.1.4 errata DEC-125…131). "Epic TCs" counts `TC-<epic>-###` rows; TC-AI/TC-AU cases are reported in §6.6.7.
 
 <!--RTM:epics-->
 

@@ -37,7 +37,7 @@ Re-run: `python3 assembly/build_rtm.py` from the blueprint folder (writes this f
 | Batch | File | Scope | Status at build time |
 |---|---|---|---|
 | 6.2a | `Part-06-2a_Test_Cases_EP08-EP11.md` | EP-08…EP-11 | Complete; 373 TC rows parsed |
-| 6.2b | `Part-06-2b_Test_Cases_EP12-EP14.md` | EP-12…EP-14 | Incomplete (no status line); 211 TC rows parsed |
+| 6.2b | `Part-06-2b_Test_Cases_EP12-EP14.md` | EP-12…EP-14 | Complete; 312 TC rows parsed |
 | 6.3a | `Part-06-3a_Test_Cases_EP15-EP18.md` | EP-15…EP-18 | Complete; 422 TC rows parsed |
 | 6.3b | `Part-06-3b_Test_Cases_EP19-EP21.md` | EP-19…EP-21 | Complete; 312 TC rows parsed |
 | 6.4 | `Part-06-4_AI_Evaluation_Test_Cases.md` | AI agents AG-001…036 and automations AU-001…043 | Complete; 774 TC rows parsed |
@@ -52,23 +52,23 @@ Re-run: `python3 assembly/build_rtm.py` from the blueprint folder (writes this f
 | Level | Items in scope | Covered (≥ 1 TC) | Coverage | Basis of the count |
 |---|---|---|---|---|
 | Primary business requirements (BR-M, BR-TENANT/WEB/AUTO/SVC/QA) | 71 | 71 | **100.0%** | TC links the BR, or covers an FR or story that traces to it |
-| Supplementary business requirements (BR-S) | 140 | 104 | 74.3% | Same rule; BR-S trace to stories and FRs |
-| Interface and operation FRs (FR-W, FR-A, FR-OP) | 150 | 145 | **96.7%** | TC links the FR, or covers a story whose links include it (145 with an explicit FR link) |
+| Supplementary business requirements (BR-S) | 140 | 106 | 75.7% | Same rule; BR-S trace to stories and FRs |
+| Interface and operation FRs (FR-W, FR-A, FR-OP) | 150 | 150 | **100.0%** | TC links the FR, or covers a story whose links include it (150 with an explicit FR link) |
 | Cross-cutting FRs (FLT, STD, DM, UIS, ENG, PUB, ADP, CSM, COP, SRCH, NEG) | 31 | 22 | 71.0% | Same rule |
-| User stories (Part 5.1–5.3) | 230 | 218 | **94.8%** | TC links the story or one of its AC |
-| Acceptance criteria (Gherkin AC) | 1357 | 1295 | **95.4%** | TC links the AC (Links column or coverage table) |
-| Business rules (BRL, Part 2.3) | 161 defined (162 stated) | 152 | **94.4%** | Rule ID in a TC row (links, data or expected) |
+| User stories (Part 5.1–5.3) | 230 | 230 | **100.0%** | TC links the story or one of its AC |
+| Acceptance criteria (Gherkin AC) | 1357 | 1357 | **100.0%** | TC links the AC (Links column or coverage table) |
+| Business rules (BRL, Part 2.3) | 161 defined (162 stated) | 161 | **100.0%** | Rule ID in a TC row (links, data or expected) |
 | NFRs with ≥ 1 test case (Part 4.2, NFR-001…099) | 99 | 38 | 38.4% | TC row cites the NFR |
 | NFRs with a test case or a Part 6.1 non-functional plan item | 99 | 42 | **42.4%** | Adds LT-, DR-, M-, T-type and §6.1.14 plan rows that cite the NFR |
 | AI agents (AG, Part 7.1) | 36 | 36 | **100.0%** | ≥ 1 TC-AI case |
 | Automations (AU, Part 7.1) | 43 | 43 | **100.0%** | ≥ 1 TC-AU case |
-| Test cases parsed | 2654 | — | — | 1880 epic TCs · 586 TC-AI · 188 TC-AU |
+| Test cases parsed | 2755 | — | — | 1981 epic TCs · 586 TC-AI · 188 TC-AU |
 
-**Headline.** Primary BR 100.0% (71 of 71) · interface/operation FR 96.7% (145 of 150) · stories 94.8% (218 of 230) · acceptance criteria 95.4% (1295 of 1357) · business rules 94.4% (152 of 161; 136 with a decision-table or BVA case) · NFR with a test case 38.4% (38 of 99), with a test case or Part 6.1 plan item 42.4% (42 of 99) · agents 36 of 36 · automations 43 of 43. 2654 test cases parsed (1880 epic TCs, 586 TC-AI, 188 TC-AU).
+**Headline.** Primary BR 100.0% (71 of 71) · interface/operation FR 100.0% (150 of 150) · stories 100.0% (230 of 230) · acceptance criteria 100.0% (1357 of 1357) · business rules 100.0% (161 of 161; 146 with a decision-table or BVA case) · NFR with a test case 38.4% (38 of 99), with a test case or Part 6.1 plan item 42.4% (42 of 99) · agents 36 of 36 · automations 43 of 43. 2755 test cases parsed (1981 epic TCs, 586 TC-AI, 188 TC-AU).
 
 ### 6.6.2.2 Coverage % per epic
 
-FR count is the Part 2.1 epic column (FR-OP001 counts under EP-04, FR-OP002/OP003 under EP-21 per Part 5.3). "Epic TCs" counts `TC-<epic>-###` rows; TC-AI/TC-AU cases are reported in §6.6.7.
+FR count is the Part 2.1 epic column (FR-OP001 counts under EP-04, FR-OP002/OP003 under EP-21, per Part 9.1 §9.1.4 errata DEC-125…131). "Epic TCs" counts `TC-<epic>-###` rows; TC-AI/TC-AU cases are reported in §6.6.7.
 
 | Epic | FRs (Part 2.1) | FRs covered | FR % | Stories | Stories covered | AC | AC covered | AC % | Epic TCs |
 |---|---|---|---|---|---|---|---|---|---|
@@ -85,7 +85,7 @@ FR count is the Part 2.1 epic column (FR-OP001 counts under EP-04, FR-OP002/OP00
 | EP-11 | 8 | 8 | 100.0% | 10 | 10 | 47 | 47 | 100.0% | 75 |
 | EP-12 | 9 | 9 | 100.0% | 10 | 10 | 49 | 49 | 100.0% | 83 |
 | EP-13 | 10 | 10 | 100.0% | 13 | 13 | 67 | 67 | 100.0% | 128 |
-| EP-14 | 6 | 1 | 16.7% | 12 | 0 | 62 | 0 | 0.0% | 0 |
+| EP-14 | 6 | 6 | 100.0% | 12 | 12 | 62 | 62 | 100.0% | 101 |
 | EP-15 | 5 | 5 | 100.0% | 11 | 11 | 66 | 66 | 100.0% | 109 |
 | EP-16 | 15 | 15 | 100.0% | 12 | 12 | 61 | 61 | 100.0% | 84 |
 | EP-17 | 7 | 7 | 100.0% | 10 | 10 | 62 | 62 | 100.0% | 91 |
@@ -126,7 +126,7 @@ One row per primary business requirement. FRs are those whose Part 2.1 traces ci
 | BR-M19 | Contact verification | Must · W1 | EP-06 | FR-A025, FR-A026 | 2 | US-0604, US-0605 | 2 | 22 | TC-01-132, TC-06-025…035, TC-06-051…056, … (+2 runs) | Covered |
 | BR-M20 | Research review and alerts | Must · W1 | EP-06 | FR-A027, FR-A028 | 2 | US-0606, US-0607 | 2 | 24 | TC-01-132, TC-06-036…056, TC-AU-AU019-001, … (+1 runs) | Covered |
 | BR-M21 | CRM pipeline | Must · W2 | EP-07 | FR-A029, FR-A030, FR-A032 | 3 | US-0701, US-0702, US-0707, US-0708 | 4 | 65 | TC-01-133, TC-03-015, TC-03-019…020, … (+5 runs) | Covered |
-| BR-M22 | Lead capture and forms | Must · W2 | EP-07 | FR-A031, FR-W12, FR-W13, FR-W14, FR-W15, FR-W16 (+3) | 9 | US-0306, US-0703, US-0704, US-0705, US-0706 (+7) | 12 | 71 | TC-01-129, TC-01-133, TC-03-059…063, … (+6 runs) | Covered |
+| BR-M22 | Lead capture and forms | Must · W2 | EP-07 | FR-A031, FR-W12, FR-W13, FR-W14, FR-W15, FR-W16 (+3) | 9 | US-0306, US-0703, US-0704, US-0705, US-0706 (+7) | 12 | 90 | TC-01-129, TC-01-133, TC-03-059…063, … (+8 runs) | Covered |
 | BR-M23 | Customer 360 | Must · W2 | EP-07 | FR-A032 | 1 | US-0707, US-0709 | 2 | 39 | TC-01-133, TC-03-015, TC-03-019…020, … (+5 runs) | Covered |
 | BR-M24 | Engagement eligibility | Must · W2 | EP-03 | FR-A032, FR-A034 | 2 | US-0302, US-0303, US-0304, US-0311, US-0707 (+2) | 7 | 143 | TC-01-133, TC-03-009…050, TC-03-095…099, … (+13 runs) | Covered |
 | BR-M55 | Workflow control center | Must · W2 | EP-18 | FR-A033 | 1 | US-1801, US-1802, US-1804, US-1806 | 4 | 78 | TC-18-001…016, TC-18-024…058, TC-18-085, … (+5 runs) | Covered |
@@ -149,12 +149,12 @@ One row per primary business requirement. FRs are those whose Part 2.1 traces ci
 | BR-M39 | Paid ads integration | Could · W3 | EP-12 | FR-A060, FR-A061 | 2 | US-1206, US-1207, US-1208 | 3 | 20 | TC-12-042…061 | Covered |
 | BR-M40 | Webinars and demonstrations | Could · W3 | EP-09 | FR-A062, FR-A063, FR-W19 | 3 | US-0905, US-0906 | 2 | 15 | TC-09-031…044, TC-09-046 | Covered |
 | BR-M42 | Referral and partner lead capture | Should · W3 | EP-12 | FR-A064, FR-W20 | 2 | US-1209, US-1210 | 2 | 12 | TC-12-062…073 | Covered |
-| BR-M43 | Proposal builder | Must · W4 | EP-13 | FR-A065, FR-A066, FR-A104, FR-W23 | 4 | US-1301, US-1302, US-1306 | 3 | 36 | TC-13-001…015, TC-13-056…063, TC-13-102…112, … (+2 runs) | Covered |
-| BR-M44 | Quote and pricing engine | Must · W4 | EP-13 | FR-A067, FR-A068, FR-A104, FR-A105, FR-W06, FR-W14 (+1) | 7 | US-1303, US-1304, US-1305, US-1306, US-1313 (+3) | 8 | 97 | TC-13-016…063, TC-13-102…112, TC-13-115…127, … (+3 runs) | Covered |
+| BR-M43 | Proposal builder | Must · W4 | EP-13 | FR-A065, FR-A066, FR-A104, FR-W23 | 4 | US-1301, US-1302, US-1306 | 3 | 88 | TC-13-001…015, TC-13-056…063, TC-13-102…112, … (+6 runs) | Covered |
+| BR-M44 | Quote and pricing engine | Must · W4 | EP-13 | FR-A067, FR-A068, FR-A104, FR-A105, FR-W06, FR-W14 (+1) | 7 | US-1303, US-1304, US-1305, US-1306, US-1313 (+3) | 8 | 180 | TC-13-016…063, TC-13-102…112, TC-13-115…127, … (+7 runs) | Covered |
 | BR-M45 | Negotiation and objection handling | Should · W4 | EP-13 | FR-A069, FR-A070 | 2 | US-1307, US-1308 | 2 | 20 | TC-13-064…072, TC-13-102…110, TC-AI-AG021-001…002 | Covered |
-| BR-M46 | Contract and MoU workflow | Must · W4 | EP-13 | FR-A071, FR-A072, FR-A104, FR-W24 | 4 | US-1309, US-1310, US-1311, US-1312, US-1313 | 5 | 41 | TC-13-073…110, TC-13-113…114, TC-13-128 | Covered |
-| BR-M47 | Payment and closure | Must · W4 | EP-15 | FR-A073, FR-A074, FR-A105, FR-W26 | 4 | US-1410, US-1501, US-1502, US-1503, US-1504 (+3) | 8 | 115 | TC-13-016…028, TC-13-115, TC-13-117, … (+10 runs) | Covered |
-| BR-M48 | Onboarding and handoff | Must · W4 | EP-16 | FR-A075, FR-A076, FR-A105, FR-W27 | 4 | US-1410, US-1601, US-1602, US-1603, US-1611 | 5 | 62 | TC-13-016…028, TC-13-115, TC-13-117, … (+8 runs) | Covered |
+| BR-M46 | Contract and MoU workflow | Must · W4 | EP-13 | FR-A071, FR-A072, FR-A104, FR-W24 | 4 | US-1309, US-1310, US-1311, US-1312, US-1313 | 5 | 93 | TC-13-073…110, TC-13-113…114, TC-13-128, … (+4 runs) | Covered |
+| BR-M47 | Payment and closure | Must · W4 | EP-15 | FR-A073, FR-A074, FR-A105, FR-W26 | 4 | US-1410, US-1501, US-1502, US-1503, US-1504 (+3) | 8 | 150 | TC-13-016…028, TC-13-115, TC-13-117, … (+14 runs) | Covered |
+| BR-M48 | Onboarding and handoff | Must · W4 | EP-16 | FR-A075, FR-A076, FR-A105, FR-W27 | 4 | US-1410, US-1601, US-1602, US-1603, US-1611 | 5 | 97 | TC-13-016…028, TC-13-115, TC-13-117, … (+12 runs) | Covered |
 | BR-M49 | Partner deployment pipeline | Should · W4 | EP-16 | FR-A077, FR-A078, FR-W13 | 3 | US-0705, US-1607 | 2 | 24 | TC-01-133, TC-07-032…037, TC-07-070…075, … (+2 runs) | Covered |
 | BR-M50 | Retention and renewal | Should · W4 | EP-16 | FR-A079, FR-A080, FR-W28 | 3 | US-1604, US-1605, US-1611, US-1612 | 4 | 32 | TC-16-023…038, TC-16-064…075, TC-16-077, … (+2 runs) | Covered |
 | BR-M51 | Lost deal and feedback | Should · W4 | EP-16 | FR-A081, FR-A084 | 2 | US-0407, US-1606, US-1612 | 3 | 41 | TC-01-130, TC-04-009…014, TC-04-045…051, … (+6 runs) | Covered |
@@ -168,13 +168,13 @@ One row per primary business requirement. FRs are those whose Part 2.1 traces ci
 | BR-M64 | Technology licensing pipeline | Could · W6 | EP-16 | FR-A093, FR-A094 | 2 | US-1609 | 1 | 4 | TC-16-060…063 | Covered |
 | BR-M65 | Phygital expansion | Could · W6 | EP-16 | FR-A095, FR-A096 | 2 | US-1610 | 1 | 3 | TC-16-057…059 | Covered |
 | BR-M66 | Future product commercialization | Must (gate W0) / launch workflow W6 · W0 / W6 | EP-02 | FR-A004, FR-A097, FR-A098, FR-W04 | 4 | US-0201, US-0205, US-0206, US-0207, US-1906 | 5 | 62 | TC-01-128, TC-02-001…018, TC-02-035…050, … (+4 runs) | Covered |
-| BR-TENANT | Independent tenant/startup operation | Must · W0–W5 | EP-01, EP-14 | FR-A002, FR-A099, FR-A100, FR-A104, FR-A105, FR-A107 (+4) | 10 | US-0106, US-0107, US-0108, US-0109, US-0113 (+10) | 15 | 192 | TC-01-033…066, TC-01-088…093, TC-01-098…103, … (+15 runs) | Covered |
-| BR-WEB | Approved public website and external portal | Must · W2–W3 | EP-19 | FR-A107, FR-A108, FR-W01, FR-W02, FR-W03, FR-W04 (+18) | 24 | US-0305, US-0306, US-0310, US-0704, US-0710 (+24) | 29 | 329 | TC-01-001…013, TC-01-126, TC-01-129, … (+35 runs) | Covered |
+| BR-TENANT | Independent tenant/startup operation | Must · W0–W5 | EP-01, EP-14 | FR-A002, FR-A099, FR-A100, FR-A104, FR-A105, FR-A107 (+4) | 10 | US-0106, US-0107, US-0108, US-0109, US-0113 (+10) | 15 | 269 | TC-01-033…066, TC-01-088…093, TC-01-098…103, … (+18 runs) | Covered |
+| BR-WEB | Approved public website and external portal | Must · W2–W3 | EP-19 | FR-A107, FR-A108, FR-W01, FR-W02, FR-W03, FR-W04 (+18) | 24 | US-0305, US-0306, US-0310, US-0704, US-0710 (+24) | 29 | 336 | TC-01-001…013, TC-01-126, TC-01-129, … (+37 runs) | Covered |
 | BR-AUTO | Controlled autonomous operations | Must (Manual→Supervised W2) / Should (Controlled Autonomous W5) · W2 / W5 | EP-18 | FR-A033, FR-A102, FR-A106, FR-A109, FR-A110, FR-A111 (+1) | 7 | US-0303, US-0802, US-1703, US-1802, US-1803 (+11) | 16 | 226 | TC-03-015…035, TC-08-013…025, TC-08-045…055, … (+12 runs) | Covered |
 | BR-SVC | Service subscriptions and client portability | Should · W5 | EP-20 | FR-A101, FR-A103, FR-W31, FR-W32, FR-W33, FR-W34 | 6 | US-2001, US-2002, US-2003, US-2004, US-2005 (+6) | 11 | 124 | TC-01-115, TC-02-051…057, TC-07-056…064, … (+5 runs) | Covered |
 | BR-QA | Reliable, independently verified delivery | Must · W0–W5 | EP-21 | FR-A026, FR-A084, FR-A090 | 3 | US-0103, US-0113, US-0402, US-0407, US-0605 (+6) | 11 | 105 | TC-01-020…024, TC-01-088…093, TC-01-124, … (+10 runs) | Covered |
 
-Supplementary business requirements (BR-S, 140): 104 of 140 reached by at least one TC through their stories and FRs (full list in the CSV; BR-S rows have no epic column in Part 1 and are traced through primary BRs, so a BR-S without a TC path is flagged for the Part 9 matrix rather than here).
+Supplementary business requirements (BR-S, 140): 106 of 140 reached by at least one TC through their stories and FRs (full list in the CSV; BR-S rows have no epic column in Part 1 and are traced through primary BRs, so a BR-S without a TC path is flagged for the Part 9 matrix rather than here).
 
 ---
 
@@ -193,22 +193,22 @@ Supplementary business requirements (BR-S, 140): 104 of 140 reached by at least 
 | FR-W07 | Industry and solution pages | W3 · EP-19 | SM-UAT-S007 · SM-UX-UAT-W07 | US-1908, US-1911, US-1912 | 1 | 22 | TC-19-059…062, TC-19-078…095 | Covered |
 | FR-W08 | Blog, articles, knowledge centre | W3 · EP-11 | SM-UAT-S008 · SM-UX-UAT-W08 | US-1103, US-1110 | 20 | 20 | TC-11-019…028, TC-11-066…075 | Covered |
 | FR-W09 | Case studies and testimonials | W3 · EP-11 | SM-UAT-S009 · SM-UX-UAT-W09 | US-1103, US-1110 | 20 | 20 | TC-11-019…028, TC-11-066…075 | Covered |
-| FR-W10 | Campaign landing pages | W3 · EP-12 | SM-UAT-S010 · SM-UX-UAT-W10 | US-1203 | 2 | 9 | TC-12-015…022, TC-12-082 | Covered |
+| FR-W10 | Campaign landing pages | W3 · EP-12 | SM-UAT-S010 · SM-UX-UAT-W10 | US-1203 | 9 | 9 | TC-12-015…022, TC-12-082 | Covered |
 | FR-W11 | AI website chat assistant | W3 · EP-10 | SM-UAT-S011 · SM-UX-UAT-W11 | US-1004, US-1005, US-1007 | 24 | 34 | TC-10-029…044, TC-10-052…059, TC-AI-AG017-001, … (+5 runs) | Covered |
 | FR-W12 | General business enquiry | W2 · EP-07 | SM-UAT-S012 · SM-UX-UAT-W12 | US-0704, US-0709, US-0710 | 14 | 21 | TC-01-133, TC-07-023…031, TC-07-065…075 | Covered |
 | FR-W13 | Demo and partnership enquiry | W2 · EP-07 | SM-UAT-S013 · SM-UX-UAT-W13 | US-0705, US-0710 | 9 | 13 | TC-01-133, TC-07-032…037, TC-07-070…075 | Covered |
-| FR-W14 | Request for quotation | W4 · EP-14 | SM-UAT-S014 · SM-UX-UAT-W14 | US-1406 | 0 | 0 | — | **Not covered** |
-| FR-W15 | Project requirement submission | W4 · EP-14 | SM-UAT-S015 · SM-UX-UAT-W15 | US-1405 | 0 | 0 | — | **Not covered** |
-| FR-W16 | Supplier registration and supply enquiry | W4 · EP-14 | SM-UAT-S016 · SM-UX-UAT-W16 | US-1407 | 0 | 0 | — | **Not covered** |
+| FR-W14 | Request for quotation | W4 · EP-14 | SM-UAT-S014 · SM-UX-UAT-W14 | US-1406 | 7 | 7 | TC-14-047…052, TC-14-100 | Covered |
+| FR-W15 | Project requirement submission | W4 · EP-14 | SM-UAT-S015 · SM-UX-UAT-W15 | US-1405 | 7 | 7 | TC-14-040…046 | Covered |
+| FR-W16 | Supplier registration and supply enquiry | W4 · EP-14 | SM-UAT-S016 · SM-UX-UAT-W16 | US-1407 | 5 | 5 | TC-14-053…057 | Covered |
 | FR-W17 | Student training and institutional enquiry | W3 · EP-07 | SM-UAT-S017 · SM-UX-UAT-W17 | US-0706, US-0710 | 6 | 16 | TC-01-133, TC-07-026, TC-07-038…045, … (+1 runs) | Covered |
 | FR-W18 | Meeting and appointment booking | W2 · EP-09 | SM-UAT-S018 · SM-UX-UAT-W18 | US-0903 | 9 | 9 | TC-09-017…023, TC-09-045, TC-20-004 | Covered |
 | FR-W19 | Webinar and event registration | W3 · EP-09 | SM-UAT-S019 · SM-UX-UAT-W19 | US-0906 | 10 | 10 | TC-09-036…044, TC-09-046 | Covered |
-| FR-W20 | Partner referral form | W3 · EP-12 | SM-UAT-S020 · SM-UX-UAT-W20 | US-1209 | 1 | 6 | TC-12-062…067 | Covered |
+| FR-W20 | Partner referral form | W3 · EP-12 | SM-UAT-S020 · SM-UX-UAT-W20 | US-1209 | 6 | 6 | TC-12-062…067 | Covered |
 | FR-W21 | Customer registration, login, recovery | W2 · EP-19 | SM-UAT-S021 · SM-UX-UAT-W21 | US-0101, US-1909, US-1911, US-1912 | 3 | 40 | TC-01-001…013, TC-19-063…071, TC-19-078…095 | Covered |
 | FR-W22 | Customer self-service dashboard | W2 · EP-19 | SM-UAT-S022 · SM-UX-UAT-W22 | US-1910, US-1911, US-1912 | 1 | 24 | TC-19-072…095 | Covered |
-| FR-W23 | Proposal and quotation review | W4 · EP-13 | SM-UAT-S023 · SM-UX-UAT-W23 | US-1306 | 2 | 11 | TC-13-056…063, TC-13-111…112, TC-13-127 | Covered |
-| FR-W24 | Agreement review and e-signature | W4 · EP-13 | SM-UAT-S024 · SM-UX-UAT-W24 | US-1311, US-1312 | 3 | 17 | TC-13-086…101, TC-13-128 | Covered |
-| FR-W25 | Order, project and service status | W4 · EP-14 | SM-UAT-S025 · SM-UX-UAT-W25 | US-1411 | 0 | 0 | — | **Not covered** |
+| FR-W23 | Proposal and quotation review | W4 · EP-13 | SM-UAT-S023 · SM-UX-UAT-W23 | US-1306 | 11 | 11 | TC-13-056…063, TC-13-111…112, TC-13-127 | Covered |
+| FR-W24 | Agreement review and e-signature | W4 · EP-13 | SM-UAT-S024 · SM-UX-UAT-W24 | US-1311, US-1312 | 17 | 17 | TC-13-086…101, TC-13-128 | Covered |
+| FR-W25 | Order, project and service status | W4 · EP-14 | SM-UAT-S025 · SM-UX-UAT-W25 | US-1411 | 7 | 7 | TC-14-080…085, TC-14-100 | Covered |
 | FR-W26 | Payment and invoice status | W4 · EP-15 | SM-UAT-S026 · SM-UX-UAT-W26 | US-1503, US-1506, US-1509, US-1511 | 2 | 43 | TC-15-027…028, TC-15-030…031, TC-15-034, … (+4 runs) | Covered |
 | FR-W27 | Onboarding and document exchange | W4 · EP-16 | SM-UAT-S027 · SM-UX-UAT-W27 | US-1603, US-1611 | 1 | 16 | TC-16-016…022, TC-16-064…070, TC-16-077, … (+1 runs) | Covered |
 | FR-W28 | Support, feedback and renewal requests | W4 · EP-16 | SM-UAT-S028 · SM-UX-UAT-W28 | US-1604, US-1611 | 1 | 15 | TC-16-023…028, TC-16-064…070, TC-16-077, … (+1 runs) | Covered |
@@ -273,23 +273,23 @@ Supplementary business requirements (BR-S, 140): 104 of 140 reached by at least 
 | FR-A053 | Social account and publishing controls | W3 · EP-11 | SM-UAT-S083 · SM-UX-UAT-A053 | US-1104, US-1105 | 11 | 11 | TC-11-029…039 | Covered |
 | FR-A054 | SEO and visibility dashboard | W3 · EP-11 | SM-UAT-S084 · SM-UX-UAT-A054 | US-1108 | 6 | 6 | TC-11-055…060 | Covered |
 | FR-A055 | SEO review backlog | W3 · EP-11 | SM-UAT-S085 · SM-UX-UAT-A055 | US-1109 | 5 | 5 | TC-11-061…065 | Covered |
-| FR-A056 | Landing page builder | W3 · EP-12 | SM-UAT-S086 · SM-UX-UAT-A056 | US-1201 | 1 | 7 | TC-12-001…007 | Covered |
-| FR-A057 | Landing page approvals | W3 · EP-12 | SM-UAT-S087 · SM-UX-UAT-A057 | US-1202 | 1 | 7 | TC-12-008…014 | Covered |
-| FR-A058 | Campaign builder and audience | W3 · EP-12 | SM-UAT-S088 · SM-UX-UAT-A058 | US-1204 | 2 | 14 | TC-12-023…031, TC-12-074, TC-12-077…078, … (+2 runs) | Covered |
-| FR-A059 | Campaign approval and budgets | W3 · EP-12 | SM-UAT-S089 · SM-UX-UAT-A059 | US-1205 | 2 | 16 | TC-12-032…041, TC-12-074…076, TC-12-079…080, … (+1 runs) | Covered |
-| FR-A060 | Paid advertising dashboard | W3 · EP-12 | SM-UAT-S090 · SM-UX-UAT-A060 | US-1206, US-1207 | 1 | 13 | TC-12-042…054 | Covered |
-| FR-A061 | Advertising spend controls | W3 · EP-12 | SM-UAT-S091 · SM-UX-UAT-A061 | US-1206, US-1208 | 1 | 15 | TC-12-042…049, TC-12-055…061 | Covered |
+| FR-A056 | Landing page builder | W3 · EP-12 | SM-UAT-S086 · SM-UX-UAT-A056 | US-1201 | 7 | 7 | TC-12-001…007 | Covered |
+| FR-A057 | Landing page approvals | W3 · EP-12 | SM-UAT-S087 · SM-UX-UAT-A057 | US-1202 | 7 | 7 | TC-12-008…014 | Covered |
+| FR-A058 | Campaign builder and audience | W3 · EP-12 | SM-UAT-S088 · SM-UX-UAT-A058 | US-1204 | 14 | 14 | TC-12-023…031, TC-12-074, TC-12-077…078, … (+2 runs) | Covered |
+| FR-A059 | Campaign approval and budgets | W3 · EP-12 | SM-UAT-S089 · SM-UX-UAT-A059 | US-1205 | 16 | 16 | TC-12-032…041, TC-12-074…076, TC-12-079…080, … (+1 runs) | Covered |
+| FR-A060 | Paid advertising dashboard | W3 · EP-12 | SM-UAT-S090 · SM-UX-UAT-A060 | US-1206, US-1207 | 13 | 13 | TC-12-042…054 | Covered |
+| FR-A061 | Advertising spend controls | W3 · EP-12 | SM-UAT-S091 · SM-UX-UAT-A061 | US-1206, US-1208 | 15 | 15 | TC-12-042…049, TC-12-055…061 | Covered |
 | FR-A062 | Webinar and demo event manager | W3 · EP-09 | SM-UAT-S092 · SM-UX-UAT-A062 | US-0905 | 5 | 5 | TC-09-031…035 | Covered |
 | FR-A063 | Event and reminder settings | W3 · EP-09 | SM-UAT-S093 · SM-UX-UAT-A063 | US-0906 | 10 | 10 | TC-09-036…044, TC-09-046 | Covered |
-| FR-A064 | Referral and partner approvals | W3 · EP-12 | SM-UAT-S094 · SM-UX-UAT-A064 | US-1210 | 1 | 6 | TC-12-068…073 | Covered |
-| FR-A065 | Proposal builder and preview | W4 · EP-13 | SM-UAT-S095 · SM-UX-UAT-A065 | US-1301 | 1 | 8 | TC-13-001…008 | Covered |
-| FR-A066 | Proposal approval queue | W4 · EP-13 | SM-UAT-S096 · SM-UX-UAT-A066 | US-1302, US-1313 | 1 | 17 | TC-13-009…015, TC-13-102…111 | Covered |
-| FR-A067 | Quotation builder | W4 · EP-13 | SM-UAT-S097 · SM-UX-UAT-A067 | US-1303, US-1304 | 2 | 31 | TC-13-016…035, TC-13-115…117, TC-13-119…125, … (+1 runs) | Covered |
-| FR-A068 | Price and discount approval | W4 · EP-13 | SM-UAT-S098 · SM-UX-UAT-A068 | US-1305, US-1313 | 1 | 34 | TC-13-036…055, TC-13-102…110, TC-13-112, … (+3 runs) | Covered |
-| FR-A069 | Negotiation and objections | W4 · EP-13 | SM-UAT-S099 · SM-UX-UAT-A069 | US-1307 | 2 | 6 | TC-13-064…068, TC-AI-AG021-001 | Covered |
-| FR-A070 | Negotiation exception queue | W4 · EP-13 | SM-UAT-S100 · SM-UX-UAT-A070 | US-1308, US-1313 | 2 | 14 | TC-13-069…072, TC-13-102…110, TC-AI-AG021-002 | Covered |
-| FR-A071 | Contracts and MoUs | W4 · EP-13 | SM-UAT-S101 · SM-UX-UAT-A071 | US-1309, US-1311 | 2 | 19 | TC-13-073…079, TC-13-086…094, TC-13-113…114, … (+1 runs) | Covered |
-| FR-A072 | Contract and legal approvals | W4 · EP-13 | SM-UAT-S102 · SM-UX-UAT-A072 | US-1310, US-1313 | 2 | 16 | TC-13-080…085, TC-13-102…110, TC-13-128 | Covered |
+| FR-A064 | Referral and partner approvals | W3 · EP-12 | SM-UAT-S094 · SM-UX-UAT-A064 | US-1210 | 6 | 6 | TC-12-068…073 | Covered |
+| FR-A065 | Proposal builder and preview | W4 · EP-13 | SM-UAT-S095 · SM-UX-UAT-A065 | US-1301 | 8 | 8 | TC-13-001…008 | Covered |
+| FR-A066 | Proposal approval queue | W4 · EP-13 | SM-UAT-S096 · SM-UX-UAT-A066 | US-1302, US-1313 | 17 | 17 | TC-13-009…015, TC-13-102…111 | Covered |
+| FR-A067 | Quotation builder | W4 · EP-13 | SM-UAT-S097 · SM-UX-UAT-A067 | US-1303, US-1304 | 31 | 31 | TC-13-016…035, TC-13-115…117, TC-13-119…125, … (+1 runs) | Covered |
+| FR-A068 | Price and discount approval | W4 · EP-13 | SM-UAT-S098 · SM-UX-UAT-A068 | US-1305, US-1313 | 34 | 34 | TC-13-036…055, TC-13-102…110, TC-13-112, … (+3 runs) | Covered |
+| FR-A069 | Negotiation and objections | W4 · EP-13 | SM-UAT-S099 · SM-UX-UAT-A069 | US-1307 | 6 | 6 | TC-13-064…068, TC-AI-AG021-001 | Covered |
+| FR-A070 | Negotiation exception queue | W4 · EP-13 | SM-UAT-S100 · SM-UX-UAT-A070 | US-1308, US-1313 | 14 | 14 | TC-13-069…072, TC-13-102…110, TC-AI-AG021-002 | Covered |
+| FR-A071 | Contracts and MoUs | W4 · EP-13 | SM-UAT-S101 · SM-UX-UAT-A071 | US-1309, US-1311 | 19 | 19 | TC-13-073…079, TC-13-086…094, TC-13-113…114, … (+1 runs) | Covered |
+| FR-A072 | Contract and legal approvals | W4 · EP-13 | SM-UAT-S102 · SM-UX-UAT-A072 | US-1310, US-1313 | 16 | 16 | TC-13-080…085, TC-13-102…110, TC-13-128 | Covered |
 | FR-A073 | Payment and deal closure | W4 · EP-15 | SM-UAT-S103 · SM-UX-UAT-A073 | US-1501, US-1502, US-1503, US-1504, US-1509 (+2) | 4 | 75 | TC-15-001…026, TC-15-028, TC-15-030…031, … (+3 runs) | Covered |
 | FR-A074 | Payment reconciliation | W4 · EP-15 | SM-UAT-S104 · SM-UX-UAT-A074 | US-1501, US-1503, US-1505, US-1509, US-1511 | 1 | 55 | TC-15-001…013, TC-15-028, TC-15-030…031, … (+5 runs) | Covered |
 | FR-A075 | Customer onboarding checklist | W4 · EP-16 | SM-UAT-S105 · SM-UX-UAT-A075 | US-1601, US-1611, US-1612 | 2 | 26 | TC-16-001…009, TC-16-064…079, TC-16-083 | Covered |
@@ -321,8 +321,8 @@ Supplementary business requirements (BR-S, 140): 104 of 140 reached by at least 
 | FR-A101 | Service subscriptions, usage and billing | W5 · EP-20 | SM-UAT-S131 · SM-UX-UAT-A101 | US-2005, US-2006, US-2011 | 2 | 24 | TC-20-032…050, TC-20-084…088 | Covered |
 | FR-A102 | Autonomous commercial planner and simulation | W2 (simulation) / W5 (L3) · EP-18 | SM-UAT-S132 · SM-UX-UAT-A102 | US-1805, US-1807, US-1811, US-1812, US-1813 (+1) | 1 | 59 | TC-18-031…040, TC-18-051…058, TC-18-093…125, … (+2 runs) | Covered |
 | FR-A103 | Import, export and client portability | W1 (import) / W5 (portability) · EP-20 | SM-UAT-S133 · SM-UX-UAT-A103 | US-0208, US-0708, US-2008, US-2009 | 11 | 36 | TC-01-115, TC-02-051…057, TC-07-056…064, … (+2 runs) | Covered |
-| FR-A104 | Global project bid and tender desk | W4 · EP-14 | SM-UAT-S134 · SM-UX-UAT-A104 | US-1401, US-1402, US-1403, US-1404, US-1412 | 0 | 0 | — | **Not covered** |
-| FR-A105 | Purchase, sales order and fulfilment desk | W4 · EP-14 | SM-UAT-S135 · SM-UX-UAT-A105 | US-1303, US-1408, US-1409, US-1410, US-1412 | 1 | 21 | TC-13-016…028, TC-13-115, TC-13-117, … (+3 runs) | Covered |
+| FR-A104 | Global project bid and tender desk | W4 · EP-14 | SM-UAT-S134 · SM-UX-UAT-A104 | US-1401, US-1402, US-1403, US-1404, US-1412 | 52 | 52 | TC-14-001…039, TC-14-086…096, TC-14-099, … (+1 runs) | Covered |
+| FR-A105 | Purchase, sales order and fulfilment desk | W4 · EP-14 | SM-UAT-S135 · SM-UX-UAT-A105 | US-1303, US-1408, US-1409, US-1410, US-1412 | 56 | 56 | TC-13-016…028, TC-13-115, TC-13-117, … (+7 runs) | Covered |
 | FR-A106 | Persistent action and notification centre | W2 · EP-17 | SM-UAT-S136 · SM-UX-UAT-A106 | US-1510, US-1703, US-1709 | 1 | 23 | TC-15-092…097, TC-17-019…028, TC-17-067…073 | Covered |
 | FR-A107 | Website configuration and content management | W2 · EP-19 | SM-UAT-S137 · SM-UX-UAT-A107 | US-1901, US-1903 | 2 | 16 | TC-19-001…008, TC-19-018…024, TC-19-037 | Covered |
 | FR-A108 | Website preview, approval, publishing, analytics | W2 · EP-19 | SM-UAT-S138 · SM-UX-UAT-A108 | US-1902, US-1904, US-1911, US-1912, US-1913 | 2 | 48 | TC-19-009…017, TC-19-025…038, TC-19-078…102 | Covered |
@@ -356,9 +356,9 @@ Supplementary business requirements (BR-S, 140): 104 of 140 reached by at least 
 | FR-STD-03 | Review and change: stale revision → conflict; never silently overwrite approved  | — | 1 | TC-07-006 | Covered |
 | FR-STD-04 | Fault and recovery: persist exception with correlation ID; scoped operator retri | US-0110, US-0115, US-1809, US-2105 | 42 | TC-01-067…072, TC-01-094…097, TC-01-112, … (+6 runs) | Covered |
 | FR-DM-01 | Quotation: 2 units × INR 150.00, 10% discount, before tax → 270.00 INR; server r | US-1303, US-1502, US-2107 | 48 | TC-13-016…028, TC-13-115, TC-13-117, … (+5 runs) | Covered |
-| FR-DM-02 | Bid expiry: deadline 2030-06-01 09:00 UTC; submission at/after deadline rejected | US-1403 | 3 | TC-21-055, TC-AI-AG019-001, TC-AU-AU034-001 | Covered |
-| FR-DM-03 | Fulfilment: order 2 kg; deliver 1 kg twice with the same event key → accepted on | US-1409 | 2 | TC-21-058, TC-AU-AU038-001 | Covered |
-| FR-DM-04 | Routing: external AI development request → AppNAI; school AI education request → | US-0508, US-1401, US-1405 | 9 | TC-05-058…062, TC-07-026, TC-19-061, … (+2 runs) | Covered |
+| FR-DM-02 | Bid expiry: deadline 2030-06-01 09:00 UTC; submission at/after deadline rejected | US-1403 | 16 | TC-14-019…030, TC-14-096, TC-21-055, … (+2 runs) | Covered |
+| FR-DM-03 | Fulfilment: order 2 kg; deliver 1 kg twice with the same event key → accepted on | US-1409 | 10 | TC-14-066…072, TC-14-098, TC-21-058, … (+1 runs) | Covered |
+| FR-DM-04 | Routing: external AI development request → AppNAI; school AI education request → | US-0508, US-1401, US-1405 | 28 | TC-05-058…062, TC-07-026, TC-14-001…011, … (+5 runs) | Covered |
 | FR-UIS-01 | Scope change: cancel pending loads, clear stale cache, reauthorize server-side,  | US-1701 | 11 | TC-17-001…011 | Covered |
 | FR-UIS-02 | No evidence: display "Unknown / Review required"; never an invented score or cla | US-0507, US-0601 | 21 | TC-02-033, TC-05-033, TC-05-053…057, … (+3 runs) | Covered |
 | FR-UIS-03 | Unapproved action: show the exact approval requirement; do not execute or spend | US-0304 | 56 | TC-03-015, TC-03-019…020, TC-03-025…027, … (+35 runs) | Covered |
@@ -366,7 +366,7 @@ Supplementary business requirements (BR-S, 140): 104 of 140 reached by at least 
 | FR-ENG-01 | Engineering contract: REST/JSON/HTTPS; typed I/O; allowlisted filters; cursor pa | US-0110, US-0804, US-0805, US-1501 | 45 | TC-01-027, TC-01-067…072, TC-01-111…112, … (+5 runs) | Covered |
 | FR-PUB-01 | Publication lifecycle: Draft → Validated → Approval pending → Approved → Publish | US-1103, US-1902, US-1904, US-2109 | 49 | TC-11-019…028, TC-11-072…075, TC-19-009…017, … (+6 runs) | Covered |
 | FR-ADP-01 | Provider-independent adapters: every automation calls an internal typed adapter  | US-0112, US-0503, US-0804, US-1001, US-1105 (+3) | 73 | TC-01-081…087, TC-05-004, TC-05-021…027, … (+9 runs) | Covered |
-| FR-CSM-01 | Commercial state machines are configurable per opportunity type: project bid, he | US-0701, US-0702, US-1401, US-1408 | 18 | TC-02-005, TC-07-001…017 | Covered |
+| FR-CSM-01 | Commercial state machines are configurable per opportunity type: project bid, he | US-0701, US-0702, US-1401, US-1408 | 39 | TC-02-005, TC-07-001…017, TC-14-001…011, … (+3 runs) | Covered |
 | FR-COP-01 | Admin Copilot: grounded, cited, read-only answers within the user's scope; draft | US-1707, US-1709 | 36 | TC-17-051…057, TC-17-059, TC-17-067…073, … (+6 runs) | Covered |
 | FR-SRCH-01 | Scoped global search across organizations, contacts, deals, bids, orders, docume | US-1708 | 8 | TC-01-113, TC-17-060…066 | Covered |
 | FR-NEG-01 | No fundraising/investor capability, route, entity, filter or term exists in the  | US-0103, US-0114, US-2001, US-2101 | 38 | TC-01-020…024, TC-01-110…111, TC-01-113, … (+7 runs) | Covered |
@@ -383,7 +383,7 @@ Columns: the Part 4.2 test method (as written there; LT IDs in Part 4.2 collide 
 | NFR-002 | Security | Server-side permission on every object, nested FK, search, vector retrieval, exp | Automated suites per PR (affected) and nightly (full) | §6.1.9.6 NFR-001…038 (and Part 4 exte | 5 | TC-10-044, TC-15-085, … (+3 runs) | Covered (TC) |
 | NFR-003 | Security | MFA for privileged roles; revoked or wrong-audience requests succeed 0 times | DEC-019 spike; CT; E2E | §6.1.9.6 NFR-001…038 (and Part 4 exte | 7 | TC-01-004…005, TC-01-007, … (+3 runs) | Covered (TC) |
 | NFR-004 | Security | Secrets never returned in any API response, log or prompt | CT; nightly log scan | §6.1.3.2 No provider call or secret f, §6.1.9.6 NFR-001…038 (and Part 4 exte | 17 | TC-01-016, TC-01-025, … (+14 runs) | Covered (TC) |
-| NFR-005 | Reliability / integrity | Duplicate delivery has exactly one effect | IT replay with duplicated events and webhooks | T16, §6.1.9.6 NFR-001…038 (and Part 4 exte | 43 | TC-01-055, TC-01-069, … (+40 runs) | Covered (TC) |
+| NFR-005 | Reliability / integrity | Duplicate delivery has exactly one effect | IT replay with duplicated events and webhooks | T16, §6.1.9.6 NFR-001…038 (and Part 4 exte | 50 | TC-01-055, TC-01-069, … (+47 runs) | Covered (TC) |
 | NFR-006 | Reliability | Transactional outbox; authoritative state and outbox written atomically with row | CHAOS: kill process between statements; DB failover in staging | §6.1.9.6 NFR-001…038 (and Part 4 exte | 7 | TC-01-067…068, TC-07-002, … (+3 runs) | Covered (TC) |
 | NFR-007 | Reliability | Provider outage does not lose events | CHAOS provider 503 | DR-7, T06, T12, §6.1.9.6 NFR-001…038 (and Part 4 exte | 10 | TC-01-069, TC-01-072, … (+7 runs) | Covered (TC) |
 | NFR-008 | Performance (freshness) | Customer 360 updates visible within 60 s | Load test LT-04 | LT-10, §6.1.9.6 NFR-001…038 (and Part 4 exte | 8 | TC-07-023, TC-07-046…047, … (+5 runs) | Covered (TC) |
@@ -399,18 +399,18 @@ Columns: the Part 4.2 test method (as written there; LT IDs in Part 4.2 collide 
 | NFR-018 | Auditability | Approval, financial and audit records immutable | CFG test; nightly job | §6.1.9.6 NFR-001…038 (and Part 4 exte | 8 | TC-01-012, TC-01-073…074, … (+5 runs) | Covered (TC) |
 | NFR-019 | Operability | `/health` (no DB) and `/ready` without sensitive detail | CT | T21, §6.1.9.6 NFR-001…038 (and Part 4 exte | 4 | TC-08-162…163, TC-18-078, … (+1 runs) | Covered (TC) |
 | NFR-020 | Security / performance | Unknown host → 404; atomic publish pointer swap; tenant-keyed cache invalidation | E2E | §6.1.3.2 Portal content never in publ, §6.1.9.6 NFR-001…038 (and Part 4 exte | 10 | TC-01-118, TC-09-021, … (+8 runs) | Covered (TC) |
-| NFR-021 | Security | Uploaded files scanned before use; separate approval for public assets | IT with EICAR fixtures | §6.1.14.2 File uploads, §6.1.9.6 NFR-001…038 (and Part 4 exte | 12 | TC-02-019…021, TC-02-026, … (+7 runs) | Covered (TC) |
+| NFR-021 | Security | Uploaded files scanned before use; separate approval for public assets | IT with EICAR fixtures | §6.1.14.2 File uploads, §6.1.9.6 NFR-001…038 (and Part 4 exte | 14 | TC-02-019…021, TC-02-026, … (+8 runs) | Covered (TC) |
 | NFR-022 | Security / availability | Abuse controls and rate limits on public intake and chat | Load test LT-07 | §6.1.9.6 NFR-001…038 (and Part 4 exte | 15 | TC-01-011, TC-03-063, … (+10 runs) | Covered (TC) |
-| NFR-023 | Accessibility | Accessibility preferences, needs and result on page approval; WCAG 2.2 AA | CI + manual | §6.1.9.6 NFR-001…038 (and Part 4 exte | 10 | TC-08-155, TC-10-052, … (+8 runs) | Covered (TC) |
+| NFR-023 | Accessibility | Accessibility preferences, needs and result on page approval; WCAG 2.2 AA | CI + manual | §6.1.9.6 NFR-001…038 (and Part 4 exte | 11 | TC-08-155, TC-10-052, … (+9 runs) | Covered (TC) |
 | NFR-024 | Localization | Language, locale fallback, timezone, currency per scope | UT/E2E | §6.1.9.6 NFR-001…038 (and Part 4 exte | 0 | — | Planned (Part 6.1), no TC |
 | NFR-025 | Integrity | Stale revision → 409; never silently overwrite approved state | Concurrency IT | §6.1.9.6 NFR-001…038 (and Part 4 exte | 8 | TC-02-007, TC-02-009, … (+6 runs) | Covered (TC) |
 | NFR-026 | Reliability | Provider timeout after submission = uncertain; reconcile before replay | CHAOS timeout injection | T18, §6.1.9.6 NFR-001…038 (and Part 4 exte | 5 | TC-01-071, TC-04-003, … (+3 runs) | Covered (TC) |
 | NFR-027 | Usability / security | Scope switch cancels stale queries, clears cache and selections | E2E | §6.1.9.6 NFR-001…038 (and Part 4 exte | 2 | TC-17-003…004 | Covered (TC) |
-| NFR-028 | Data quality / compliance | 100% of actionable records have permitted provenance; missing rights quarantined | Nightly DQ job | §6.1.9.6 NFR-001…038 (and Part 4 exte | 5 | TC-05-001, TC-05-026, … (+3 runs) | Covered (TC) |
+| NFR-028 | Data quality / compliance | 100% of actionable records have permitted provenance; missing rights quarantined | Nightly DQ job | §6.1.9.6 NFR-001…038 (and Part 4 exte | 6 | TC-05-001, TC-05-026, … (+4 runs) | Covered (TC) |
 | NFR-029 | Maintainability | Modular monolith; each runtime dependency justified by ADR; no per-startup workf | CI gate | §6.1.9.6 NFR-001…038 (and Part 4 exte | 1 | TC-18-001 | Covered (TC) |
 | NFR-030 | Cost / AI | Rules-first routing; compare quality, latency and INR per task on the same datas | Eval harness | §6.1.9.6 NFR-001…038 (and Part 4 exte | 82 | TC-04-014, TC-04-016, … (+72 runs) | Covered (TC) |
 | NFR-031 | Portability / isolation | Independent DB, storage, vector index, queues, credentials, budget, billing, aud | CFG check | T15, §6.1.9.6 NFR-001…038 (and Part 4 exte | 3 | TC-01-054, TC-01-110, … (+1 runs) | Covered (TC) |
-| NFR-032 | Security / multi-tenancy | Two-tenant fixture: zero cross-scope disclosure or side effects | Per PR and nightly; per release | T15, §6.1.9.6 NFR-001…038 (and Part 4 exte | 29 | TC-01-046, TC-01-048, … (+24 runs) | Covered (TC) |
+| NFR-032 | Security / multi-tenancy | Two-tenant fixture: zero cross-scope disclosure or side effects | Per PR and nightly; per release | T15, §6.1.9.6 NFR-001…038 (and Part 4 exte | 30 | TC-01-046, TC-01-048, … (+25 runs) | Covered (TC) |
 | NFR-033 | AI quality / release | AI regression failures block deployment | CI gate (BRL-AI-09) | T14, §6.1.9.6 NFR-001…038 (and Part 4 exte | 4 | TC-04-011, TC-21-003, … (+2 runs) | Covered (TC) |
 | NFR-034 | Usability | Users locate the approved operation and complete core scenarios; clicks and time | Moderated tests per wave | T09, §6.1.9.6 NFR-001…038 (and Part 4 exte | 0 | — | Planned (Part 6.1), no TC |
 | NFR-035 | FinOps / billing | 100% attributable usage reconciled to charges | Monthly job; IT | T20, §6.1.9.6 NFR-001…038 (and Part 4 exte | 4 | TC-04-028, TC-20-036, … (+2 runs) | Covered (TC) |
@@ -487,26 +487,26 @@ Part 2.3 states 162 rules; 161 distinct BRL IDs are defined and used as the deno
 
 | Family | Rules defined | Covered | Coverage | Rules with a DT or BVA case | Uncovered rules | TCs citing the family |
 |---|---|---|---|---|---|---|
-| BRL-TEN | 12 | 12 | 100.0% | 12 | — | 113 |
-| BRL-ELG | 18 | 18 | 100.0% | 17 | — | 199 |
+| BRL-TEN | 12 | 12 | 100.0% | 12 | — | 115 |
+| BRL-ELG | 18 | 18 | 100.0% | 17 | — | 213 |
 | BRL-SRC | 10 | 10 | 100.0% | 9 | — | 37 |
 | BRL-SCR | 9 | 9 | 100.0% | 7 | — | 31 |
-| BRL-AI | 12 | 12 | 100.0% | 12 | — | 363 |
-| BRL-APR | 11 | 11 | 100.0% | 11 | — | 149 |
+| BRL-AI | 12 | 12 | 100.0% | 12 | — | 376 |
+| BRL-APR | 11 | 11 | 100.0% | 11 | — | 180 |
 | BRL-SEQ | 5 | 5 | 100.0% | 3 | — | 18 |
-| BRL-MTG | 6 | 6 | 100.0% | 5 | — | 16 |
-| BRL-MKT | 10 | 10 | 100.0% | 8 | — | 51 |
-| BRL-BID | 6 | 2 | 33.3% | 2 | BRL-BID-02, BRL-BID-03, BRL-BID-05, BRL-BID-06 | 4 |
-| BRL-QTE | 7 | 7 | 100.0% | 5 | — | 37 |
-| BRL-CTR | 5 | 5 | 100.0% | 3 | — | 17 |
-| BRL-ORD | 6 | 1 | 16.7% | 1 | BRL-ORD-01, BRL-ORD-03, BRL-ORD-04, BRL-ORD-05, BRL-ORD-06 | 1 |
-| BRL-FIN | 8 | 8 | 100.0% | 8 | — | 33 |
+| BRL-MTG | 6 | 6 | 100.0% | 5 | — | 17 |
+| BRL-MKT | 10 | 10 | 100.0% | 8 | — | 53 |
+| BRL-BID | 6 | 6 | 100.0% | 6 | — | 38 |
+| BRL-QTE | 7 | 7 | 100.0% | 5 | — | 43 |
+| BRL-CTR | 5 | 5 | 100.0% | 5 | — | 40 |
+| BRL-ORD | 6 | 6 | 100.0% | 5 | — | 16 |
+| BRL-FIN | 8 | 8 | 100.0% | 8 | — | 35 |
 | BRL-LCY | 6 | 6 | 100.0% | 6 | — | 13 |
-| BRL-PUB | 6 | 6 | 100.0% | 6 | — | 36 |
-| BRL-AUT | 10 | 10 | 100.0% | 9 | — | 146 |
-| BRL-PRV | 7 | 7 | 100.0% | 6 | — | 36 |
+| BRL-PUB | 6 | 6 | 100.0% | 6 | — | 37 |
+| BRL-AUT | 10 | 10 | 100.0% | 9 | — | 160 |
+| BRL-PRV | 7 | 7 | 100.0% | 6 | — | 38 |
 | BRL-SVC | 7 | 7 | 100.0% | 6 | — | 15 |
-| **Total** | **161** | **152** | **94.4%** | **136** | | |
+| **Total** | **161** | **161** | **100.0%** | **146** | | |
 
 ---
 
@@ -605,107 +605,80 @@ Part 2.3 states 162 rules; 161 distinct BRL IDs are defined and used as the deno
 
 ## 6.6.8 (g) Uncovered items and remediation (generated)
 
-97 items are flagged. Each needs the remediation shown before the release that contains it can pass gate RBR-6 (missing evidence blocks A090, Part 6.1 §6.1.8.5); BRD §12.1 allows a waiver only with an owner and an independent reviewer.
+70 items are flagged. Each needs the remediation shown before the release that contains it can pass gate RBR-6 (missing evidence blocks A090, Part 6.1 §6.1.8.5); BRD §12.1 allows a waiver only with an owner and an independent reviewer.
 
 | # | Type | Item | Detail | Remediation | Owner |
 |---|---|---|---|---|---|
-| U-01 | Batch | 6.2b | EP-12…EP-14: Incomplete (no status line) | Complete the batch and re-run `build_rtm.py` | Batch author |
-| U-02 | FR | FR-W14 | Request for quotation | Add ≥ 1 TC in the EP-14 batch, or link existing TCs explicitly | EP-14 |
-| U-03 | FR | FR-W15 | Project requirement submission | Add ≥ 1 TC in the EP-14 batch, or link existing TCs explicitly | EP-14 |
-| U-04 | FR | FR-W16 | Supplier registration and supply enquiry | Add ≥ 1 TC in the EP-14 batch, or link existing TCs explicitly | EP-14 |
-| U-05 | FR | FR-W25 | Order, project and service status | Add ≥ 1 TC in the EP-14 batch, or link existing TCs explicitly | EP-14 |
-| U-06 | FR | FR-A104 | Global project bid and tender desk | Add ≥ 1 TC in the EP-14 batch, or link existing TCs explicitly | EP-14 |
-| U-07 | Cross-cutting FR | FR-FLT-02 | Geography: country, state, city, location, delivery geography, currency, languag | Link existing TCs that exercise it or add a TC | EP-17 / owning epic |
-| U-08 | Cross-cutting FR | FR-FLT-04 | Engagement: owner/team, priority, stage, channel, eligibility, response, follow- | Link existing TCs that exercise it or add a TC | EP-17 / owning epic |
-| U-09 | Cross-cutting FR | FR-FLT-05 | Operations: workflow state, approval, cost, quota, deadline, task, error, as_of | Link existing TCs that exercise it or add a TC | EP-17 / owning epic |
-| U-10 | Cross-cutting FR | FR-FLT-06 | Marketing: campaign, audience, content, channel, sender reputation, spend, sourc | Link existing TCs that exercise it or add a TC | EP-17 / owning epic |
-| U-11 | Cross-cutting FR | FR-FLT-07 | Commercial: offering, customer/supplier type, need, bid, quotation, order direct | Link existing TCs that exercise it or add a TC | EP-17 / owning epic |
-| U-12 | Cross-cutting FR | FR-FLT-08 | AppNAI: technology, RFP/portal, eligibility, project budget/deadline, remote/ons | Link existing TCs that exercise it or add a TC | EP-17 / owning epic |
-| U-13 | Cross-cutting FR | FR-FLT-09 | MedMaarg: organization type, preventive healthcare need, Scanner/Planner/Advisor | Link existing TCs that exercise it or add a TC | EP-17 / owning epic |
-| U-14 | Cross-cutting FR | FR-FLT-10 | EduVerse: GenAI/ML/DL/NLP/CV, frontend/backend/cloud, learner/grade band, instit | Link existing TCs that exercise it or add a TC | EP-17 / owning epic |
-| U-15 | Cross-cutting FR | FR-FLT-11 | OrganicSpec: buy/sell/service/training, SKU, unit, quantity, certification, buye | Link existing TCs that exercise it or add a TC | EP-17 / owning epic |
-| U-16 | Story | US-1401 | 5 AC; Part-05-2_Epics_Stories_Engagement_and_Commerce.md | Add TCs for every AC | EP-14 |
-| U-17 | Story | US-1402 | 5 AC; Part-05-2_Epics_Stories_Engagement_and_Commerce.md | Add TCs for every AC | EP-14 |
-| U-18 | Story | US-1403 | 6 AC; Part-05-2_Epics_Stories_Engagement_and_Commerce.md | Add TCs for every AC | EP-14 |
-| U-19 | Story | US-1404 | 5 AC; Part-05-2_Epics_Stories_Engagement_and_Commerce.md | Add TCs for every AC | EP-14 |
-| U-20 | Story | US-1405 | 5 AC; Part-05-2_Epics_Stories_Engagement_and_Commerce.md | Add TCs for every AC | EP-14 |
-| U-21 | Story | US-1406 | 5 AC; Part-05-2_Epics_Stories_Engagement_and_Commerce.md | Add TCs for every AC | EP-14 |
-| U-22 | Story | US-1407 | 4 AC; Part-05-2_Epics_Stories_Engagement_and_Commerce.md | Add TCs for every AC | EP-14 |
-| U-23 | Story | US-1408 | 6 AC; Part-05-2_Epics_Stories_Engagement_and_Commerce.md | Add TCs for every AC | EP-14 |
-| U-24 | Story | US-1409 | 5 AC; Part-05-2_Epics_Stories_Engagement_and_Commerce.md | Add TCs for every AC | EP-14 |
-| U-25 | Story | US-1410 | 6 AC; Part-05-2_Epics_Stories_Engagement_and_Commerce.md | Add TCs for every AC | EP-14 |
-| U-26 | Story | US-1411 | 5 AC; Part-05-2_Epics_Stories_Engagement_and_Commerce.md | Add TCs for every AC | EP-14 |
-| U-27 | Story | US-1412 | 5 AC; Part-05-2_Epics_Stories_Engagement_and_Commerce.md | Add TCs for every AC | EP-14 |
-| U-28 | BRL | BRL-BID-02 | Mandatory eligibility checklist (capability, certifications, financial | Add a decision-table or BVA TC citing the rule | Owner of the rule's epic |
-| U-29 | BRL | BRL-BID-03 | Bid/no-bid decision by Startup Head; submission approval by Startup He | Add a decision-table or BVA TC citing the rule | Owner of the rule's epic |
-| U-30 | BRL | BRL-BID-05 | "Awarded" requires award proof (document/portal notice) attached and v | Add a decision-table or BVA TC citing the rule | Owner of the rule's epic |
-| U-31 | BRL | BRL-BID-06 | Owned-portfolio routing: external AI/software project bids belong to A | Add a decision-table or BVA TC citing the rule | Owner of the rule's epic |
-| U-32 | BRL | BRL-ORD-01 | Order has direction (Sell/Buy) and lines (SKU/service, unit, quantity, | Add a decision-table or BVA TC citing the rule | Owner of the rule's epic |
-| U-33 | BRL | BRL-ORD-03 | Fulfilment events idempotent by event key | Add a decision-table or BVA TC citing the rule | Owner of the rule's epic |
-| U-34 | BRL | BRL-ORD-04 | Sell orders reserve available quantity on approval; release on cancel/ | Add a decision-table or BVA TC citing the rule | Owner of the rule's epic |
-| U-35 | BRL | BRL-ORD-05 | Acceptance by counterparty (or deemed acceptance after policy period,  | Add a decision-table or BVA TC citing the rule | Owner of the rule's epic |
-| U-36 | BRL | BRL-ORD-06 | Receivables and payables are separate ledgers; never netted automatica | Add a decision-table or BVA TC citing the rule | Owner of the rule's epic |
-| U-37 | NFR | NFR-010 | ≥ 90% of eligible steps automated with no bypass of mandatory approval (Part 6.1 plan item exists) | Add a TC that cites NFR-010 and executes: Monthly report; decision-table tests | EP-18 |
-| U-38 | NFR | NFR-015 | REST/JSON/HTTPS; typed I/O; allowlisted filters; cursor pagination; request ID;  (Part 6.1 plan item exists) | Add a TC that cites NFR-015 and executes: CT per PR | EP-01 |
-| U-39 | NFR | NFR-024 | Language, locale fallback, timezone, currency per scope (Part 6.1 plan item exists) | Add a TC that cites NFR-024 and executes: UT/E2E | EP-19 |
-| U-40 | NFR | NFR-034 | Users locate the approved operation and complete core scenarios; clicks and time (Part 6.1 plan item exists) | Add a TC that cites NFR-034 and executes: Moderated tests per wave | EP-17 |
-| U-41 | NFR | NFR-040 | API write latency (sync part, before 202) (only the Part 4.2 test method exists) | Add a TC that cites NFR-040 and executes: LT-01, LT-02 | EP-21 |
-| U-42 | NFR | NFR-041 | Public page TTFB (only the Part 4.2 test method exists) | Add a TC that cites NFR-041 and executes: LT-08; synthetic probes from India and one non-India location | EP-19 |
-| U-43 | NFR | NFR-042 | Public Core Web Vitals (only the Part 4.2 test method exists) | Add a TC that cites NFR-042 and executes: Lighthouse CI per PR (lab budget LCP ≤ 2.0 s simulated); RUM monthly | EP-19 |
-| U-44 | NFR | NFR-043 | Public JavaScript budget (only the Part 4.2 test method exists) | Add a TC that cites NFR-043 and executes: CI gate (size-limit) | EP-19 |
-| U-45 | NFR | NFR-044 | Admin SPA load and interaction (only the Part 4.2 test method exists) | Add a TC that cites NFR-044 and executes: Lighthouse CI; Playwright performance marks | EP-17 |
-| U-46 | NFR | NFR-045 | Outbox dispatch lag (only the Part 4.2 test method exists) | Add a TC that cites NFR-045 and executes: LT-04, LT-06 | EP-18 |
-| U-47 | NFR | NFR-046 | Scoped global search and list filters (only the Part 4.2 test method exists) | Add a TC that cites NFR-046 and executes: LT-03 | EP-17 |
-| U-48 | NFR | NFR-047 | Dashboard projection freshness (only the Part 4.2 test method exists) | Add a TC that cites NFR-047 and executes: LT-04; prod SLI | EP-17 |
-| U-49 | NFR | NFR-048 | Export and report generation (only the Part 4.2 test method exists) | Add a TC that cites NFR-048 and executes: IT with Year 2 data volume | EP-17 |
-| U-50 | NFR | NFR-049 | Emergency stop propagation (only the Part 4.2 test method exists) | Add a TC that cites NFR-049 and executes: CHAOS: STOP during a 1,000-message burst | EP-18 |
-| U-51 | NFR | NFR-050 | Session and membership revocation (only the Part 4.2 test method exists) | Add a TC that cites NFR-050 and executes: E2E | EP-01 |
-| U-52 | NFR | NFR-051 | Webhook acknowledgement (only the Part 4.2 test method exists) | Add a TC that cites NFR-051 and executes: LT-05 | EP-08 |
-| U-53 | NFR | NFR-052 | AI gateway overhead and interactive AI latency (only the Part 4.2 test method exists) | Add a TC that cites NFR-052 and executes: LT-09 with a stubbed model and a live sample | EP-04 |
-| U-54 | NFR | NFR-053 | Website and portal availability (only the Part 4.2 test method exists) | Add a TC that cites NFR-053 and executes: Monthly SLO report | EP-19 |
-| U-55 | NFR | NFR-054 | Admin availability (only the Part 4.2 test method exists) | Add a TC that cites NFR-054 and executes: Monthly SLO report | EP-17 |
-| U-56 | NFR | NFR-055 | Webhook ingestion availability and loss (only the Part 4.2 test method exists) | Add a TC that cites NFR-055 and executes: Monthly reconciliation | EP-08 |
-| U-57 | NFR | NFR-056 | Recovery point objective (only the Part 4.2 test method exists) | Add a TC that cites NFR-056 and executes: Quarterly restore drill | EP-21 |
-| U-58 | NFR | NFR-057 | Recovery time objective (only the Part 4.2 test method exists) | Add a TC that cites NFR-057 and executes: Quarterly restore drill; annual regional DR tabletop + cross-region re | EP-21 |
-| U-59 | NFR | NFR-058 | Transactional automation timeliness (only the Part 4.2 test method exists) | Add a TC that cites NFR-058 and executes: LT-06; prod SLI | EP-18 |
-| U-60 | NFR | NFR-059 | Scheduled batch timeliness (only the Part 4.2 test method exists) | Add a TC that cites NFR-059 and executes: Prod SLI | EP-05 |
-| U-61 | NFR | NFR-060 | Capacity for 10× pilot volume without re-architecture (only the Part 4.2 test method exists) | Add a TC that cites NFR-060 and executes: LT-02 soak | EP-21 |
-| U-62 | NFR | NFR-061 | Year 2 design point reachable by horizontal scaling and instance resizing only (only the Part 4.2 test method exists) | Add a TC that cites NFR-061 and executes: LT-10 (before W6) | EP-21 |
-| U-63 | NFR | NFR-062 | Noisy-neighbour isolation (only the Part 4.2 test method exists) | Add a TC that cites NFR-062 and executes: LT-11 (one tenant 10× burst) | EP-01 |
-| U-64 | NFR | NFR-063 | Outbox durability (only the Part 4.2 test method exists) | Add a TC that cites NFR-063 and executes: CHAOS: kill workers and Valkey during LT-06 | EP-18 |
-| U-65 | NFR | NFR-064 | Poison-message isolation and DLQ handling (only the Part 4.2 test method exists) | Add a TC that cites NFR-064 and executes: CHAOS poison injection; RB-011 | EP-21 |
-| U-66 | NFR | NFR-065 | Uncertain-outcome reconciliation (only the Part 4.2 test method exists) | Add a TC that cites NFR-065 and executes: CHAOS timeout injection; prod SLI | EP-18 |
-| U-67 | NFR | NFR-066 | Idempotency and dedupe windows (only the Part 4.2 test method exists) | Add a TC that cites NFR-066 and executes: UT/IT | EP-01 |
-| U-68 | NFR | NFR-067 | Vulnerability remediation SLAs (only the Part 4.2 test method exists) | Add a TC that cites NFR-067 and executes: Release gate | EP-21 |
-| U-69 | NFR | NFR-068 | No secrets in repository, images or logs (only the Part 4.2 test method exists) | Add a TC that cites NFR-068 and executes: CI gate; nightly | EP-21 |
-| U-70 | NFR | NFR-069 | Transport security (only the Part 4.2 test method exists) | Add a TC that cites NFR-069 and executes: Post-deploy smoke | EP-01 |
-| U-71 | NFR | NFR-070 | Encryption at rest (only the Part 4.2 test method exists) | Add a TC that cites NFR-070 and executes: CFG check; UT | EP-01 |
-| U-72 | NFR | NFR-071 | Security headers (only the Part 4.2 test method exists) | Add a TC that cites NFR-071 and executes: Post-deploy smoke | EP-19 |
-| U-73 | NFR | NFR-072 | Penetration testing (only the Part 4.2 test method exists) | Add a TC that cites NFR-072 and executes: Manual | EP-21 |
-| U-74 | NFR | NFR-073 | Audit completeness and tamper evidence (only the Part 4.2 test method exists) | Add a TC that cites NFR-073 and executes: CI; nightly | EP-01 |
-| U-75 | NFR | NFR-074 | Authentication abuse resistance (only the Part 4.2 test method exists) | Add a TC that cites NFR-074 and executes: DEC-019 spike; DAST | EP-01 |
-| U-76 | NFR | NFR-075 | Data principal request completion (only the Part 4.2 test method exists) | Add a TC that cites NFR-075 and executes: E2E; monthly report | EP-03 |
-| U-77 | NFR | NFR-076 | Retention enforcement (only the Part 4.2 test method exists) | Add a TC that cites NFR-076 and executes: IT with aged fixtures | EP-03 |
-| U-78 | NFR | NFR-094 | Breach-notification readiness (only the Part 4.2 test method exists) | Add a TC that cites NFR-094 and executes: Semi-annual tabletop | EP-03 |
-| U-79 | NFR | NFR-095 | Lawful basis coverage (only the Part 4.2 test method exists) | Add a TC that cites NFR-095 and executes: Decision-table tests; monthly audit sample | EP-03 |
-| U-80 | NFR | NFR-079 | End-to-end correlation (only the Part 4.2 test method exists) | Add a TC that cites NFR-079 and executes: E2E trace assertion | EP-21 |
-| U-81 | NFR | NFR-080 | Alert response (only the Part 4.2 test method exists) | Add a TC that cites NFR-080 and executes: Monthly review; game days | EP-21 |
-| U-82 | NFR | NFR-081 | Log retention (only the Part 4.2 test method exists) | Add a TC that cites NFR-081 and executes: CFG check | EP-21 |
-| U-83 | NFR | NFR-099 | Time synchronization (only the Part 4.2 test method exists) | Add a TC that cites NFR-099 and executes: CFG check | EP-21 |
-| U-84 | NFR | NFR-082 | Automated test coverage (only the Part 4.2 test method exists) | Add a TC that cites NFR-082 and executes: CI gate (no decrease > 0.5 pp per PR) | EP-21 |
-| U-85 | NFR | NFR-084 | Dependency freshness (only the Part 4.2 test method exists) | Add a TC that cites NFR-084 and executes: Monthly | EP-21 |
-| U-86 | NFR | NFR-085 | Module boundaries (only the Part 4.2 test method exists) | Add a TC that cites NFR-085 and executes: CI gate | EP-01 |
-| U-87 | NFR | NFR-086 | Container and data portability (only the Part 4.2 test method exists) | Add a TC that cites NFR-086 and executes: CI (compose smoke); IT | EP-20 |
-| U-88 | NFR | NFR-087 | Environment reproducibility (only the Part 4.2 test method exists) | Add a TC that cites NFR-087 and executes: Quarterly drill | EP-21 |
-| U-89 | NFR | NFR-088 | WCAG 2.2 AA automated (only the Part 4.2 test method exists) | Add a TC that cites NFR-088 and executes: CI gate | EP-19, EP-17 |
-| U-90 | NFR | NFR-089 | WCAG 2.2 AA manual (only the Part 4.2 test method exists) | Add a TC that cites NFR-089 and executes: Manual per wave | EP-19, EP-17 |
-| U-91 | NFR | NFR-090 | Task success and satisfaction (only the Part 4.2 test method exists) | Add a TC that cites NFR-090 and executes: Per wave from W2 | EP-17 |
-| U-92 | NFR | NFR-096 | Indic content and locale formatting (only the Part 4.2 test method exists) | Add a TC that cites NFR-096 and executes: CI | EP-19 |
-| U-93 | NFR | NFR-097 | Time-zone correctness (only the Part 4.2 test method exists) | Add a TC that cites NFR-097 and executes: CI | EP-08 |
-| U-94 | NFR | NFR-098 | Browsers and devices (only the Part 4.2 test method exists) | Add a TC that cites NFR-098 and executes: CI + manual | EP-19, EP-17 |
-| U-95 | NFR | NFR-091 | Run-cost envelope (only the Part 4.2 test method exists) | Add a TC that cites NFR-091 and executes: Monthly FinOps review (Batch 4.3 §4.46) | EP-04 |
-| U-96 | NFR | NFR-092 | AI unit cost (only the Part 4.2 test method exists) | Add a TC that cites NFR-092 and executes: Monthly report; budget simulation | EP-04 |
-| U-97 | NFR | NFR-093 | Cost allocation coverage (only the Part 4.2 test method exists) | Add a TC that cites NFR-093 and executes: Monthly | EP-20 |
+| U-01 | Cross-cutting FR | FR-FLT-02 | Geography: country, state, city, location, delivery geography, currency, languag | Link existing TCs that exercise it or add a TC | EP-17 / owning epic |
+| U-02 | Cross-cutting FR | FR-FLT-04 | Engagement: owner/team, priority, stage, channel, eligibility, response, follow- | Link existing TCs that exercise it or add a TC | EP-17 / owning epic |
+| U-03 | Cross-cutting FR | FR-FLT-05 | Operations: workflow state, approval, cost, quota, deadline, task, error, as_of | Link existing TCs that exercise it or add a TC | EP-17 / owning epic |
+| U-04 | Cross-cutting FR | FR-FLT-06 | Marketing: campaign, audience, content, channel, sender reputation, spend, sourc | Link existing TCs that exercise it or add a TC | EP-17 / owning epic |
+| U-05 | Cross-cutting FR | FR-FLT-07 | Commercial: offering, customer/supplier type, need, bid, quotation, order direct | Link existing TCs that exercise it or add a TC | EP-17 / owning epic |
+| U-06 | Cross-cutting FR | FR-FLT-08 | AppNAI: technology, RFP/portal, eligibility, project budget/deadline, remote/ons | Link existing TCs that exercise it or add a TC | EP-17 / owning epic |
+| U-07 | Cross-cutting FR | FR-FLT-09 | MedMaarg: organization type, preventive healthcare need, Scanner/Planner/Advisor | Link existing TCs that exercise it or add a TC | EP-17 / owning epic |
+| U-08 | Cross-cutting FR | FR-FLT-10 | EduVerse: GenAI/ML/DL/NLP/CV, frontend/backend/cloud, learner/grade band, instit | Link existing TCs that exercise it or add a TC | EP-17 / owning epic |
+| U-09 | Cross-cutting FR | FR-FLT-11 | OrganicSpec: buy/sell/service/training, SKU, unit, quantity, certification, buye | Link existing TCs that exercise it or add a TC | EP-17 / owning epic |
+| U-10 | NFR | NFR-010 | ≥ 90% of eligible steps automated with no bypass of mandatory approval (Part 6.1 plan item exists) | Add a TC that cites NFR-010 and executes: Monthly report; decision-table tests | EP-18 |
+| U-11 | NFR | NFR-015 | REST/JSON/HTTPS; typed I/O; allowlisted filters; cursor pagination; request ID;  (Part 6.1 plan item exists) | Add a TC that cites NFR-015 and executes: CT per PR | EP-01 |
+| U-12 | NFR | NFR-024 | Language, locale fallback, timezone, currency per scope (Part 6.1 plan item exists) | Add a TC that cites NFR-024 and executes: UT/E2E | EP-19 |
+| U-13 | NFR | NFR-034 | Users locate the approved operation and complete core scenarios; clicks and time (Part 6.1 plan item exists) | Add a TC that cites NFR-034 and executes: Moderated tests per wave | EP-17 |
+| U-14 | NFR | NFR-040 | API write latency (sync part, before 202) (only the Part 4.2 test method exists) | Add a TC that cites NFR-040 and executes: LT-01, LT-02 | EP-21 |
+| U-15 | NFR | NFR-041 | Public page TTFB (only the Part 4.2 test method exists) | Add a TC that cites NFR-041 and executes: LT-08; synthetic probes from India and one non-India location | EP-19 |
+| U-16 | NFR | NFR-042 | Public Core Web Vitals (only the Part 4.2 test method exists) | Add a TC that cites NFR-042 and executes: Lighthouse CI per PR (lab budget LCP ≤ 2.0 s simulated); RUM monthly | EP-19 |
+| U-17 | NFR | NFR-043 | Public JavaScript budget (only the Part 4.2 test method exists) | Add a TC that cites NFR-043 and executes: CI gate (size-limit) | EP-19 |
+| U-18 | NFR | NFR-044 | Admin SPA load and interaction (only the Part 4.2 test method exists) | Add a TC that cites NFR-044 and executes: Lighthouse CI; Playwright performance marks | EP-17 |
+| U-19 | NFR | NFR-045 | Outbox dispatch lag (only the Part 4.2 test method exists) | Add a TC that cites NFR-045 and executes: LT-04, LT-06 | EP-18 |
+| U-20 | NFR | NFR-046 | Scoped global search and list filters (only the Part 4.2 test method exists) | Add a TC that cites NFR-046 and executes: LT-03 | EP-17 |
+| U-21 | NFR | NFR-047 | Dashboard projection freshness (only the Part 4.2 test method exists) | Add a TC that cites NFR-047 and executes: LT-04; prod SLI | EP-17 |
+| U-22 | NFR | NFR-048 | Export and report generation (only the Part 4.2 test method exists) | Add a TC that cites NFR-048 and executes: IT with Year 2 data volume | EP-17 |
+| U-23 | NFR | NFR-049 | Emergency stop propagation (only the Part 4.2 test method exists) | Add a TC that cites NFR-049 and executes: CHAOS: STOP during a 1,000-message burst | EP-18 |
+| U-24 | NFR | NFR-050 | Session and membership revocation (only the Part 4.2 test method exists) | Add a TC that cites NFR-050 and executes: E2E | EP-01 |
+| U-25 | NFR | NFR-051 | Webhook acknowledgement (only the Part 4.2 test method exists) | Add a TC that cites NFR-051 and executes: LT-05 | EP-08 |
+| U-26 | NFR | NFR-052 | AI gateway overhead and interactive AI latency (only the Part 4.2 test method exists) | Add a TC that cites NFR-052 and executes: LT-09 with a stubbed model and a live sample | EP-04 |
+| U-27 | NFR | NFR-053 | Website and portal availability (only the Part 4.2 test method exists) | Add a TC that cites NFR-053 and executes: Monthly SLO report | EP-19 |
+| U-28 | NFR | NFR-054 | Admin availability (only the Part 4.2 test method exists) | Add a TC that cites NFR-054 and executes: Monthly SLO report | EP-17 |
+| U-29 | NFR | NFR-055 | Webhook ingestion availability and loss (only the Part 4.2 test method exists) | Add a TC that cites NFR-055 and executes: Monthly reconciliation | EP-08 |
+| U-30 | NFR | NFR-056 | Recovery point objective (only the Part 4.2 test method exists) | Add a TC that cites NFR-056 and executes: Quarterly restore drill | EP-21 |
+| U-31 | NFR | NFR-057 | Recovery time objective (only the Part 4.2 test method exists) | Add a TC that cites NFR-057 and executes: Quarterly restore drill; annual regional DR tabletop + cross-region re | EP-21 |
+| U-32 | NFR | NFR-058 | Transactional automation timeliness (only the Part 4.2 test method exists) | Add a TC that cites NFR-058 and executes: LT-06; prod SLI | EP-18 |
+| U-33 | NFR | NFR-059 | Scheduled batch timeliness (only the Part 4.2 test method exists) | Add a TC that cites NFR-059 and executes: Prod SLI | EP-05 |
+| U-34 | NFR | NFR-060 | Capacity for 10× pilot volume without re-architecture (only the Part 4.2 test method exists) | Add a TC that cites NFR-060 and executes: LT-02 soak | EP-21 |
+| U-35 | NFR | NFR-061 | Year 2 design point reachable by horizontal scaling and instance resizing only (only the Part 4.2 test method exists) | Add a TC that cites NFR-061 and executes: LT-10 (before W6) | EP-21 |
+| U-36 | NFR | NFR-062 | Noisy-neighbour isolation (only the Part 4.2 test method exists) | Add a TC that cites NFR-062 and executes: LT-11 (one tenant 10× burst) | EP-01 |
+| U-37 | NFR | NFR-063 | Outbox durability (only the Part 4.2 test method exists) | Add a TC that cites NFR-063 and executes: CHAOS: kill workers and Valkey during LT-06 | EP-18 |
+| U-38 | NFR | NFR-064 | Poison-message isolation and DLQ handling (only the Part 4.2 test method exists) | Add a TC that cites NFR-064 and executes: CHAOS poison injection; RB-011 | EP-21 |
+| U-39 | NFR | NFR-065 | Uncertain-outcome reconciliation (only the Part 4.2 test method exists) | Add a TC that cites NFR-065 and executes: CHAOS timeout injection; prod SLI | EP-18 |
+| U-40 | NFR | NFR-066 | Idempotency and dedupe windows (only the Part 4.2 test method exists) | Add a TC that cites NFR-066 and executes: UT/IT | EP-01 |
+| U-41 | NFR | NFR-067 | Vulnerability remediation SLAs (only the Part 4.2 test method exists) | Add a TC that cites NFR-067 and executes: Release gate | EP-21 |
+| U-42 | NFR | NFR-068 | No secrets in repository, images or logs (only the Part 4.2 test method exists) | Add a TC that cites NFR-068 and executes: CI gate; nightly | EP-21 |
+| U-43 | NFR | NFR-069 | Transport security (only the Part 4.2 test method exists) | Add a TC that cites NFR-069 and executes: Post-deploy smoke | EP-01 |
+| U-44 | NFR | NFR-070 | Encryption at rest (only the Part 4.2 test method exists) | Add a TC that cites NFR-070 and executes: CFG check; UT | EP-01 |
+| U-45 | NFR | NFR-071 | Security headers (only the Part 4.2 test method exists) | Add a TC that cites NFR-071 and executes: Post-deploy smoke | EP-19 |
+| U-46 | NFR | NFR-072 | Penetration testing (only the Part 4.2 test method exists) | Add a TC that cites NFR-072 and executes: Manual | EP-21 |
+| U-47 | NFR | NFR-073 | Audit completeness and tamper evidence (only the Part 4.2 test method exists) | Add a TC that cites NFR-073 and executes: CI; nightly | EP-01 |
+| U-48 | NFR | NFR-074 | Authentication abuse resistance (only the Part 4.2 test method exists) | Add a TC that cites NFR-074 and executes: DEC-019 spike; DAST | EP-01 |
+| U-49 | NFR | NFR-075 | Data principal request completion (only the Part 4.2 test method exists) | Add a TC that cites NFR-075 and executes: E2E; monthly report | EP-03 |
+| U-50 | NFR | NFR-076 | Retention enforcement (only the Part 4.2 test method exists) | Add a TC that cites NFR-076 and executes: IT with aged fixtures | EP-03 |
+| U-51 | NFR | NFR-094 | Breach-notification readiness (only the Part 4.2 test method exists) | Add a TC that cites NFR-094 and executes: Semi-annual tabletop | EP-03 |
+| U-52 | NFR | NFR-095 | Lawful basis coverage (only the Part 4.2 test method exists) | Add a TC that cites NFR-095 and executes: Decision-table tests; monthly audit sample | EP-03 |
+| U-53 | NFR | NFR-079 | End-to-end correlation (only the Part 4.2 test method exists) | Add a TC that cites NFR-079 and executes: E2E trace assertion | EP-21 |
+| U-54 | NFR | NFR-080 | Alert response (only the Part 4.2 test method exists) | Add a TC that cites NFR-080 and executes: Monthly review; game days | EP-21 |
+| U-55 | NFR | NFR-081 | Log retention (only the Part 4.2 test method exists) | Add a TC that cites NFR-081 and executes: CFG check | EP-21 |
+| U-56 | NFR | NFR-099 | Time synchronization (only the Part 4.2 test method exists) | Add a TC that cites NFR-099 and executes: CFG check | EP-21 |
+| U-57 | NFR | NFR-082 | Automated test coverage (only the Part 4.2 test method exists) | Add a TC that cites NFR-082 and executes: CI gate (no decrease > 0.5 pp per PR) | EP-21 |
+| U-58 | NFR | NFR-084 | Dependency freshness (only the Part 4.2 test method exists) | Add a TC that cites NFR-084 and executes: Monthly | EP-21 |
+| U-59 | NFR | NFR-085 | Module boundaries (only the Part 4.2 test method exists) | Add a TC that cites NFR-085 and executes: CI gate | EP-01 |
+| U-60 | NFR | NFR-086 | Container and data portability (only the Part 4.2 test method exists) | Add a TC that cites NFR-086 and executes: CI (compose smoke); IT | EP-20 |
+| U-61 | NFR | NFR-087 | Environment reproducibility (only the Part 4.2 test method exists) | Add a TC that cites NFR-087 and executes: Quarterly drill | EP-21 |
+| U-62 | NFR | NFR-088 | WCAG 2.2 AA automated (only the Part 4.2 test method exists) | Add a TC that cites NFR-088 and executes: CI gate | EP-19, EP-17 |
+| U-63 | NFR | NFR-089 | WCAG 2.2 AA manual (only the Part 4.2 test method exists) | Add a TC that cites NFR-089 and executes: Manual per wave | EP-19, EP-17 |
+| U-64 | NFR | NFR-090 | Task success and satisfaction (only the Part 4.2 test method exists) | Add a TC that cites NFR-090 and executes: Per wave from W2 | EP-17 |
+| U-65 | NFR | NFR-096 | Indic content and locale formatting (only the Part 4.2 test method exists) | Add a TC that cites NFR-096 and executes: CI | EP-19 |
+| U-66 | NFR | NFR-097 | Time-zone correctness (only the Part 4.2 test method exists) | Add a TC that cites NFR-097 and executes: CI | EP-08 |
+| U-67 | NFR | NFR-098 | Browsers and devices (only the Part 4.2 test method exists) | Add a TC that cites NFR-098 and executes: CI + manual | EP-19, EP-17 |
+| U-68 | NFR | NFR-091 | Run-cost envelope (only the Part 4.2 test method exists) | Add a TC that cites NFR-091 and executes: Monthly FinOps review (Batch 4.3 §4.46) | EP-04 |
+| U-69 | NFR | NFR-092 | AI unit cost (only the Part 4.2 test method exists) | Add a TC that cites NFR-092 and executes: Monthly report; budget simulation | EP-04 |
+| U-70 | NFR | NFR-093 | Cost allocation coverage (only the Part 4.2 test method exists) | Add a TC that cites NFR-093 and executes: Monthly | EP-20 |
 
 ### 6.6.8.1 Remediation plan
 
@@ -754,11 +727,11 @@ The mechanical matrix proves that a link exists, not that the test is the right 
 | 1 | Every requirement traced to a source | **Pass** | Every row of the matrix is parsed from a numbered source part; nothing is hand-entered |
 | 2 | Assumptions, gaps and conflicts tagged and logged | **Pass** | GAP-172 and RECOMMENDATION-080 issued here; ASSUMPTION-194…196 and GAP-170…171 registered in Batch 6.5; findings in §6.6.9.2 |
 | 3 | IDs unique and consistent with earlier parts | **Pass** | TC IDs parsed from all batches are unique keys (duplicates merged and reported by the script); TC-AI/TC-AU formats per Batch 6.4 |
-| 4 | No story lacks AC and no requirement lacks a test | **Pass with flagged exceptions** | Coverage: BR 100.0%, FR 96.7%, US 94.8%, AC 95.4%, BRL 94.4%, NFR (TC) 38.4%; every uncovered item is listed in §6.6.8 with remediation (BRD §12.1 requires these to be closed or waived before release) |
+| 4 | No story lacks AC and no requirement lacks a test | **Pass with flagged exceptions** | Coverage: BR 100.0%, FR 100.0%, US 100.0%, AC 100.0%, BRL 100.0%, NFR (TC) 38.4%; every uncovered item is listed in §6.6.8 with remediation (BRD §12.1 requires these to be closed or waived before release) |
 | 5 | Negative, edge, security and accessibility cases covered | **Pass (by reference)** | Assessed per batch (6.2–6.5 quality gates); this batch checks link coverage, not case content |
 | 6 | No agent lacks guardrail, fallback, KPI and cost estimate | **Pass** | AG coverage 36 of 36, AU coverage 43 of 43 (§6.6.7); guardrail, fallback and cost cases per agent are in Batch 6.4 |
 | 7 | Time-sensitive facts flagged "verify" with an as-of date | **Pass** | Design-time matrix; execution results to be added by CI (RECOMMENDATION-080) |
 | 8 | No restricted data routed to free-tier models | **N/A** | No routing content in this batch |
 | 9 | Consistent with earlier parts | **Pass, with findings** | Six findings in §6.6.9.2 |
 
-**Status: Part 6 Batch 6.6 complete. The requirement-to-test traceability matrix is generated by `assembly/build_rtm.py` (CSV `final/RTM.csv`): primary BR 100.0%, interface/operation FR 96.7%, stories 94.8%, AC 95.4%, BRL 94.4%, NFR with a TC 38.4%, agents 36 of 36, automations 43 of 43; 97 uncovered items flagged with remediation. Part 6 is complete; Part 9 consumes the CSV for the final ID registry and traceability.**
+**Status: Part 6 Batch 6.6 complete. The requirement-to-test traceability matrix is generated by `assembly/build_rtm.py` (CSV `final/RTM.csv`): primary BR 100.0%, interface/operation FR 100.0%, stories 100.0%, AC 100.0%, BRL 100.0%, NFR with a TC 38.4%, agents 36 of 36, automations 43 of 43; 70 uncovered items flagged with remediation. Part 6 is complete; Part 9 consumes the CSV for the final ID registry and traceability.**
