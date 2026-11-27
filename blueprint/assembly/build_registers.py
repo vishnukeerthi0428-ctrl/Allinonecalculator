@@ -584,7 +584,7 @@ def build_id_dups(parts):
                 continue
             jac = len(a & b) / max(1, len(a | b))
             fam = tid.rsplit("-", 1)[0]
-            if (fam, base_lab, lab) in NOT_DUPLICATE:
+            if (fam, base_lab, lab) in NOT_DUPLICATE or (fam == "EP" and lab.startswith("6.")):
                 continue
             if jac < 0.12:
                 raw.append((fam, base_lab, lab, tid, base, txt, jac))

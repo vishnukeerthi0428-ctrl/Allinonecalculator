@@ -764,3 +764,276 @@ All 62 EP-14 AC covered.
 
 ---
 
+## 6.2.12 Coverage and totals for file b (EP-12 to EP-14)
+
+### 6.2.12.1 Acceptance-criteria coverage
+
+All **178 of 178** acceptance criteria of US-1201…US-1412 have at least one TC (per-story maps in §6.2.9.3, §6.2.10.3, §6.2.11.3), checked mechanically as in file a §6.2.6.1. **Uncovered AC: none.**
+
+### 6.2.12.2 FR → test cases (FRs whose Part 2.1 epic is EP-12…EP-14)
+
+TC count = explicit FR links plus TCs of the stories mapped to the FR in Part 5.2 §5.2.10.1. **25 of 25 FRs covered (100%).** FR-A105 also counts US-1303 because Part 5.2 maps the pricing library to it.
+
+| FR | Aliases (DEC-017) | Stories | TCs (explicit + via story) | TC IDs |
+|---|---|---|---|---|
+| FR-A056 | SM-UAT-S086 · SM-UX-UAT-A056 | US-1201 | 7 | TC-12-001…007 |
+| FR-A057 | SM-UAT-S087 · SM-UX-UAT-A057 | US-1202 | 7 | TC-12-008…014 |
+| FR-A058 | SM-UAT-S088 · SM-UX-UAT-A058 | US-1204 | 14 | TC-12-023…031, TC-12-074, TC-12-077…078, TC-12-081, TC-12-083 |
+| FR-A059 | SM-UAT-S089 · SM-UX-UAT-A059 | US-1205 | 16 | TC-12-032…041, TC-12-074…076, TC-12-079…080, TC-12-083 |
+| FR-A060 | SM-UAT-S090 · SM-UX-UAT-A060 | US-1206, US-1207 | 13 | TC-12-042…054 |
+| FR-A061 | SM-UAT-S091 · SM-UX-UAT-A061 | US-1206, US-1208 | 15 | TC-12-042…049, TC-12-055…061 |
+| FR-A064 | SM-UAT-S094 · SM-UX-UAT-A064 | US-1210 | 6 | TC-12-068…073 |
+| FR-A065 | SM-UAT-S095 · SM-UX-UAT-A065 | US-1301 | 8 | TC-13-001…008 |
+| FR-A066 | SM-UAT-S096 · SM-UX-UAT-A066 | US-1302, US-1313 | 17 | TC-13-009…015, TC-13-102…111 |
+| FR-A067 | SM-UAT-S097 · SM-UX-UAT-A067 | US-1303, US-1304 | 31 | TC-13-016…035, TC-13-115…117, TC-13-119…125, TC-13-127 |
+| FR-A068 | SM-UAT-S098 · SM-UX-UAT-A068 | US-1305, US-1313 | 34 | TC-13-036…055, TC-13-102…110, TC-13-112, TC-13-116, TC-13-118, TC-13-126…127 |
+| FR-A069 | SM-UAT-S099 · SM-UX-UAT-A069 | US-1307 | 5 | TC-13-064…068 |
+| FR-A070 | SM-UAT-S100 · SM-UX-UAT-A070 | US-1308, US-1313 | 13 | TC-13-069…072, TC-13-102…110 |
+| FR-A071 | SM-UAT-S101 · SM-UX-UAT-A071 | US-1309, US-1311 | 19 | TC-13-073…079, TC-13-086…094, TC-13-113…114, TC-13-128 |
+| FR-A072 | SM-UAT-S102 · SM-UX-UAT-A072 | US-1310, US-1313 | 16 | TC-13-080…085, TC-13-102…110, TC-13-128 |
+| FR-A104 | SM-UAT-S134 · SM-UX-UAT-A104 | US-1401, US-1402, US-1403, US-1404, US-1412 | 52 | TC-14-001…039, TC-14-086…096, TC-14-099, TC-14-101 |
+| FR-A105 | SM-UAT-S135 · SM-UX-UAT-A105 | US-1303, US-1408, US-1409, US-1410, US-1412 | 55 | TC-13-016…028, TC-13-115, TC-13-117, TC-13-119…120, TC-13-122…124, TC-14-058…079, TC-14-086…094, TC-14-097…098, TC-14-100…101 |
+| FR-W10 | SM-UAT-S010 · SM-UX-UAT-W10 | US-1203 | 9 | TC-12-015…022, TC-12-082 |
+| FR-W14 | SM-UAT-S014 · SM-UX-UAT-W14 | US-1406 | 7 | TC-14-047…052, TC-14-100 |
+| FR-W15 | SM-UAT-S015 · SM-UX-UAT-W15 | US-1405 | 7 | TC-14-040…046 |
+| FR-W16 | SM-UAT-S016 · SM-UX-UAT-W16 | US-1407 | 5 | TC-14-053…057 |
+| FR-W20 | SM-UAT-S020 · SM-UX-UAT-W20 | US-1209 | 6 | TC-12-062…067 |
+| FR-W23 | SM-UAT-S023 · SM-UX-UAT-W23 | US-1306 | 11 | TC-13-056…063, TC-13-111…112, TC-13-127 |
+| FR-W24 | SM-UAT-S024 · SM-UX-UAT-W24 | US-1311, US-1312 | 17 | TC-13-086…101, TC-13-128 |
+| FR-W25 | SM-UAT-S025 · SM-UX-UAT-W25 | US-1411 | 7 | TC-14-080…085, TC-14-100 |
+
+### 6.2.12.3 Cross-cutting FRs exercised (explicit links)
+
+| Cross-cutting FR | TCs (count) | TC IDs |
+|---|---|---|
+| FR-STD-02 | 2 | TC-12-045, TC-13-090 |
+| FR-ADP-01 | 2 | TC-12-043, TC-13-093 |
+| FR-DM-01 | 2 | TC-13-016, TC-13-120 |
+| FR-DM-02 | 1 | TC-14-022 |
+| FR-DM-03 | 1 | TC-14-066 |
+| FR-DM-04 | 5 | TC-14-002, TC-14-007…008, TC-14-011, TC-14-040 |
+| FR-CSM-01 | 2 | TC-14-007, TC-14-058 |
+
+### 6.2.12.4 BRL rules cited by EP-12…EP-14 stories → test cases (explicit links)
+
+**70 of 70 cited rules have at least one TC (100%).** Ranges written in Part 5.2 as "BRL-QTE-01…BRL-QTE-07" are expanded rule by rule.
+
+| BRL rule | TCs (count) | TC IDs | BRL rule | TCs (count) | TC IDs |
+|---|---|---|---|---|---|
+| BRL-AI-03 | 2 | TC-13-001, TC-13-064 | BRL-ELG-13 | 2 | TC-12-025, TC-12-078 |
+| BRL-AI-04 | 1 | TC-13-066 | BRL-ELG-14 | 3 | TC-12-003, TC-12-017, TC-12-024 |
+| BRL-AI-05 | 1 | TC-13-002 | BRL-ELG-15 | 1 | TC-12-029 |
+| BRL-AI-07 | 5 | TC-13-067, TC-13-092, TC-14-018, TC-14-036, TC-14-050 | BRL-ELG-17 | 2 | TC-12-063, TC-12-073 |
+| BRL-APR-01 | 9 | TC-12-012, TC-12-037, TC-12-072, TC-13-013, TC-13-049, TC-13-072, TC-13-084, TC-13-110, TC-14-063 | BRL-ELG-18 | 1 | TC-12-033 |
+| BRL-APR-02 | 4 | TC-12-036, TC-13-009, TC-13-080, TC-13-112 | BRL-FIN-05 | 2 | TC-14-077, TC-14-098 |
+| BRL-APR-03 | 3 | TC-12-013, TC-12-040, TC-13-085 | BRL-MKT-01 | 2 | TC-12-008, TC-12-041 |
+| BRL-APR-04 | 17 | TC-13-032, TC-13-037…047, TC-13-054, TC-13-116, TC-13-118, TC-13-125…126 | BRL-MKT-02 | 2 | TC-12-002, TC-13-003 |
+| BRL-APR-05 | 3 | TC-13-010, TC-13-070, TC-13-074 | BRL-MKT-04 | 5 | TC-12-026, TC-12-032, TC-12-075…076, TC-12-081 |
+| BRL-APR-06 | 4 | TC-13-050, TC-13-081…083 | BRL-MKT-05 | 4 | TC-12-051…052, TC-12-056…057 |
+| BRL-APR-07 | 1 | TC-13-053 | BRL-MKT-06 | 3 | TC-12-003, TC-12-017, TC-12-049 |
+| BRL-APR-08 | 3 | TC-12-071, TC-13-084, TC-14-015 | BRL-MKT-10 | 2 | TC-12-027, TC-12-031 |
+| BRL-APR-09 | 3 | TC-13-105…107 | BRL-ORD-01 | 3 | TC-14-058, TC-14-062, TC-14-089 |
+| BRL-APR-10 | 2 | TC-13-011, TC-13-071 | BRL-ORD-02 | 5 | TC-14-066…068, TC-14-072, TC-14-098 |
+| BRL-APR-11 | 3 | TC-12-046, TC-12-058, TC-13-055 | BRL-ORD-03 | 3 | TC-14-066, TC-14-069, TC-14-072 |
+| BRL-AUT-01 | 2 | TC-13-069, TC-14-050 | BRL-ORD-04 | 3 | TC-14-058…059, TC-14-061 |
+| BRL-AUT-04 | 1 | TC-12-023 | BRL-ORD-05 | 3 | TC-14-073, TC-14-075, TC-14-081 |
+| BRL-AUT-05 | 1 | TC-12-059 | BRL-ORD-06 | 2 | TC-14-062, TC-14-074 |
+| BRL-AUT-08 | 1 | TC-13-089 | BRL-PRV-06 | 3 | TC-12-020, TC-12-064, TC-14-046 |
+| BRL-AUT-10 | 1 | TC-14-026 | BRL-PRV-07 | 1 | TC-14-101 |
+| BRL-BID-01 | 9 | TC-14-001, TC-14-003, TC-14-020…021, TC-14-028…030, TC-14-088, TC-14-096 | BRL-PUB-01 | 2 | TC-12-008, TC-12-010 |
+| BRL-BID-02 | 4 | TC-14-012…014, TC-14-017 | BRL-PUB-02 | 2 | TC-12-008, TC-12-011 |
+| BRL-BID-03 | 3 | TC-14-012, TC-14-016, TC-14-039 | BRL-PUB-03 | 2 | TC-12-001, TC-12-004 |
+| BRL-BID-04 | 3 | TC-14-031…032, TC-14-096 | BRL-PUB-05 | 2 | TC-13-061, TC-14-084 |
+| BRL-BID-05 | 2 | TC-14-033…034 | BRL-PUB-06 | 1 | TC-12-009 |
+| BRL-BID-06 | 2 | TC-14-007, TC-14-009 | BRL-QTE-01 | 5 | TC-13-001, TC-13-004, TC-13-007, TC-13-032, TC-14-087 |
+| BRL-CTR-01 | 2 | TC-13-073…074 | BRL-QTE-02 | 7 | TC-13-016…017, TC-13-029, TC-13-115, TC-13-117, TC-13-121…122 |
+| BRL-CTR-02 | 3 | TC-13-076, TC-13-086, TC-13-096 | BRL-QTE-03 | 7 | TC-13-018…020, TC-13-115, TC-13-119, TC-13-123…124 |
+| BRL-CTR-03 | 4 | TC-13-061, TC-13-079, TC-13-097, TC-13-100 | BRL-QTE-04 | 6 | TC-13-021, TC-13-024, TC-13-033, TC-13-036, TC-13-048, TC-13-123 |
+| BRL-CTR-04 | 3 | TC-13-075, TC-13-092, TC-13-114 | BRL-QTE-05 | 3 | TC-13-029, TC-13-058, TC-13-112 |
+| BRL-CTR-05 | 2 | TC-13-077, TC-13-113 | BRL-QTE-06 | 3 | TC-13-012, TC-13-051, TC-13-059 |
+| BRL-ELG-01 | 1 | TC-14-011 | BRL-QTE-07 | 8 | TC-13-023, TC-13-030…031, TC-14-048, TC-14-052, TC-14-054, TC-14-070, TC-14-086 |
+| BRL-ELG-05 | 1 | TC-12-023 | BRL-TEN-03 | 2 | TC-13-008, TC-14-094 |
+| BRL-ELG-09 | 1 | TC-12-023 | BRL-TEN-05 | 1 | TC-13-110 |
+| BRL-ELG-11 | 1 | TC-12-034 | BRL-TEN-08 | 1 | TC-13-102 |
+
+### 6.2.12.5 Totals for file b
+
+| Epic | Scenarios | TCs | P0 | P1 | P2 | P3 | Automated (Y) | Manual (N) | AC covered |
+|---|---|---|---|---|---|---|---|---|---|
+| EP-12 | 11 | 83 | 51 | 24 | 6 | 2 | 83 | 0 | 49 / 49 |
+| EP-13 | 14 | 128 | 105 | 22 | 1 | 0 | 128 | 0 | 67 / 67 |
+| EP-14 | 13 | 101 | 63 | 30 | 7 | 1 | 101 | 0 | 62 / 62 |
+| **Total** | **38** | **312** | **219** | **76** | **14** | **3** | **312** | **0** | **178 / 178** |
+
+**By type:**
+
+| Type | Name | TCs tagged |
+|---|---|---|
+| T01 | Functional | 158 |
+| T03 | Performance (load) | 1 |
+| T07 | Security | 61 |
+| T08 | Accessibility | 4 |
+| T11 | Data migration | 6 |
+| T12 | DR / resilience | 2 |
+| T13 | Localization | 5 |
+| T14 | AI (deterministic gateway/guardrail) | 4 |
+| T15 | Multi-tenant isolation | 12 |
+| T16 | Idempotency and replay | 18 |
+| T17 | Simulation zero-effect | 4 |
+| T18 | Uncertain outcome | 2 |
+| T19 | Compliance | 54 |
+| T20 | Cost control | 9 |
+
+**By technique:**
+
+| Technique | Name | TCs tagged |
+|---|---|---|
+| EP | Equivalence partitioning | 119 |
+| BVA | Boundary value analysis | 72 |
+| DT | Decision table | 31 |
+| ST | State transition | 28 |
+| PW | Pairwise | 18 |
+| EG | Error guessing | 37 |
+| PBT | Property-based | 2 |
+| UC | Use case / journey | 9 |
+
+**By level:**
+
+| Level | TCs tagged |
+|---|---|
+| UT | 33 |
+| IT | 6 |
+| CT | 3 |
+| SYS | 261 |
+| E2E | 16 |
+
+
+---
+
+## 6.2.13 Batch 6.2 totals, register and inconsistencies (files a and b)
+
+### 6.2.13.1 Batch totals
+
+| Epic | Scenarios | TCs | P0 | P1 | P2 | P3 | Automated (Y) | Manual (N) | AC covered |
+|---|---|---|---|---|---|---|---|---|---|
+| EP-08 | 18 | 191 | 110 | 66 | 15 | 0 | 189 | 2 | 78 / 78 |
+| EP-09 | 7 | 47 | 15 | 21 | 10 | 1 | 47 | 0 | 31 / 31 |
+| EP-10 | 8 | 60 | 37 | 18 | 5 | 0 | 59 | 1 | 36 / 36 |
+| EP-11 | 11 | 75 | 38 | 26 | 10 | 1 | 73 | 2 | 47 / 47 |
+| EP-12 | 11 | 83 | 51 | 24 | 6 | 2 | 83 | 0 | 49 / 49 |
+| EP-13 | 14 | 128 | 105 | 22 | 1 | 0 | 128 | 0 | 67 / 67 |
+| EP-14 | 13 | 101 | 63 | 30 | 7 | 1 | 101 | 0 | 62 / 62 |
+| **Total** | **82** | **685** | **419** | **207** | **54** | **5** | **680** | **5** | **370 / 370** |
+
+| Coverage measure | Result | Method |
+|---|---|---|
+| Stories with ≥ 1 TC | **73 / 73 (100%)** | Story ID in TC Links |
+| Acceptance criteria with ≥ 1 TC | **370 / 370 (100%)** | Every `AC-xxxx-yy` of Part 5.2 found in a TC row |
+| FRs in scope (Part 2.1 epics EP-08…EP-14) with ≥ 1 TC | **49 / 49 (100%)** | §6.2.6.2 and §6.2.12.2 |
+| Cross-cutting FRs cited by the stories (FR-ENG-01, FR-STD-02, FR-UIS-04, FR-ADP-01, FR-DM-01…04, FR-PUB-01, FR-CSM-01, FR-A109, FR-OP001) | **11 / 11 explicitly linked** | §6.2.6.3 and §6.2.12.3 |
+| Distinct BRL rules cited by the stories with ≥ 1 TC | **104 / 104 (100%)** | Union of §6.2.6.4 and §6.2.12.4 |
+| State machines exercised with a 0-switch map and sneak paths | **9** (outbound message, sequence enrolment, meeting, content/publication, campaign, proposal/quote, contract, bid, order) | Groups TC-08-I, TC-08-P, TC-09-G, TC-11-J, TC-12-K, TC-13-K, TC-14-K |
+| Uncovered items | **None** | — |
+
+**By type (both files):**
+
+| Type | Name | TCs tagged |
+|---|---|---|
+| T01 | Functional | 272 |
+| T03 | Performance (load) | 3 |
+| T07 | Security | 117 |
+| T08 | Accessibility | 27 |
+| T10 | Compatibility | 2 |
+| T11 | Data migration | 6 |
+| T12 | DR / resilience | 4 |
+| T13 | Localization | 18 |
+| T14 | AI (deterministic gateway/guardrail) | 18 |
+| T15 | Multi-tenant isolation | 32 |
+| T16 | Idempotency and replay | 41 |
+| T17 | Simulation zero-effect | 12 |
+| T18 | Uncertain outcome | 27 |
+| T19 | Compliance | 168 |
+| T20 | Cost control | 15 |
+| T21 | Operability | 5 |
+
+**By technique (both files):**
+
+| Technique | Name | TCs tagged |
+|---|---|---|
+| EP | Equivalence partitioning | 266 |
+| BVA | Boundary value analysis | 144 |
+| DT | Decision table | 78 |
+| ST | State transition | 64 |
+| PW | Pairwise | 30 |
+| EG | Error guessing | 89 |
+| PBT | Property-based | 4 |
+| UC | Use case / journey | 31 |
+| EXP | Exploratory / review | 2 |
+
+**By level (both files):**
+
+| Level | TCs tagged |
+|---|---|
+| UT | 63 |
+| IT | 32 |
+| CT | 9 |
+| SYS | 544 |
+| E2E | 44 |
+| SYS-M | 3 |
+| UAT | 2 |
+
+
+**Priority profile.** 61% of the designs are P0 because six of the seven epics sit in P0 risk areas of §6.1.4.3 (RA-03, RA-04, RA-05, RA-06, RA-07, RA-08, RA-09, RA-10, RA-14, RA-20, RA-26) and P0 includes every denial, scope, duplicate-effect and money check. P0 designs are parameterized wherever possible (one test function, many rows), so the P0 suite remains inside the G3 nightly budget (§6.1.9.5); 99% are automation candidates (the 5 manual items are assistive-technology passes and spike document reviews).
+
+**Effort check (estimate).** At 0.15–0.35 person-day per automated TC design for implementation and first green run (parameterized rows at the low end), the 680 automated designs need about **100–240 person-days** across developers and QA automation, inside the 287–483 pd delivery envelope only if developers own SYS tests for their modules (Part 6.1 §6.1.15.1 RACI; GAP-165 remains the capacity risk). Basis: the per-TC factor is a planning estimate, not a measured rate.
+
+### 6.2.13.2 Techniques: where each required technique is shown
+
+| Technique (client specification) | Representative groups with the table or matrix shown |
+|---|---|
+| Equivalence partitioning | TC-08-A (evidence partitions), TC-10-D (visitor question partitions), TC-14-E (intake partitions) |
+| Boundary value analysis | TC-08-K (quiet hours and caps), TC-08-F (bounces, complaints), TC-13-E (discount 0/10/20% and margin floor, from §6.1.11.2), TC-14-C (tender deadline), TC-14-G (fulfilment tolerance), TC-13-J (MFA freshness) |
+| Decision tables | TC-08-B (queue path), TC-08-G (inbound), TC-10-B (template usability), TC-10-C (WhatsApp send gate), TC-11-B, TC-11-F, TC-12-B, TC-12-E, TC-13-H (contract approvers), TC-14-A (routing), TC-14-B (checklist) |
+| State-transition testing | TC-08-I, TC-08-P (message machine incl. PBT 1-switch), TC-09-G, TC-11-J, TC-12-K, TC-13-K, TC-14-K |
+| Pairwise / combinatorial | TC-08-Q (dispatch, 12 rows of 108), TC-12-K (campaign, 6 of 48), TC-13-L (pricing and tax, 12 of 72) |
+| Error guessing, property-based, use case | EG-01…EG-20 applied throughout; PBT in TC-08-136, TC-08-175, TC-13-025, TC-14-072; journeys J-08-01…J-14-02 |
+
+### 6.2.13.3 Register of tags issued in Batch 6.2
+
+| Tag | Statement (short) | Defined in | Used in |
+|---|---|---|---|
+| [RECOMMENDATION-075] | Adapter conformance battery B1–B7, one parameterized suite per adapter; channel flag stays OFF until the battery row is green | File a §6.2.1.6 | Both files (SES, Calendar, WhatsApp, social, ads, e-sign TCs) |
+| [RECOMMENDATION-076] | E2E journey register J-08-01…J-14-02 with ★ candidates for the per-wave top-20 manual accessibility audit | File a §6.2.1.7 | TC-08-188, 189; TC-09-045, 046; TC-10-059, 060; TC-11-074; TC-12-082, 083; TC-13-127, 128; TC-14-099, 100 |
+| [ASSUMPTION-185] | Oracle interpretations O-1…O-11 (EP-08…EP-11) | File a §6.2.1.8 | File a |
+| [ASSUMPTION-186] | Oracle interpretations O-12…O-21 (EP-12…EP-14) | §6.2.8.2 | File b |
+| [ASSUMPTION-187] | Story fixture pack EDGE-P52 in GSE-SYN with stable keys | File a §6.2.1.4; §6.2.8.1 | Both files |
+
+Tags consumed from earlier parts (not issued here): ASSUMPTION-161…169, GAP-155…159, CONFLICT-133…135, RECOMMENDATION-054…056 (Part 5.2); ASSUMPTION-180…184, RECOMMENDATION-070…074, GAP-165…167 (Part 6.1).
+
+### 6.2.13.4 Inconsistencies observed in earlier parts (reported, not edited)
+
+Items 1–5 are listed in file a §6.2.7.3 (AC-0810-03 loosening approver; AC-0811-05 Sunday DST date; AC-0801-06 role choice; A046/W08/W09 epic mapping; TC-AI ownership after Part 7). Additional items from file b:
+
+| # | Where | Observation | Handling in the tests | Suggested owner action |
+|---|---|---|---|---|
+| 6 | Part 6.1 §6.1.12.4 worked example | Names TS-13-02 as "Quote discount approval routing" with TC-13-004…017 for BVA-D01…D14, and TC-13-008 for the 20.01% case; with that range TC-13-008 would be BVA-D05, so the example is internally inconsistent | Batch 6.2 numbers scenarios by story order: discount routing is **TS-13-05** with **TC-13-036…049**; the worked example corresponds to **TC-13-044** (BVA-D09) and its companion to TC-13-046 (BVA-D11) | Part 6.1 author / Part 9: mark the §6.1.12.4 IDs as illustrative and point to TC-13-044 |
+| 7 | Part 5.2 AC-1206-05 | Scenario title says enabling a paid adapter "needs R12 and R01", while the step and Part 2.3 BRL-APR-11 describe R11 requesting and R01 approving | TC-12-046 tests R11 request → R01 approval; R12's role is not asserted | Part 5.2 author: align the title |
+| 8 | Part 5.2 AC-1304-01 / AC-1303-03 | GST examples apply 18% (9% + 9%) to turmeric (HSN 0910) and to SAC 998314; both are illustrative per ASSUMPTION-169 and real rates differ by item | Fixtures carry the illustrative rate from a TaxProfile fixture, so a rate change edits data, not tests | Finance advisor to confirm rates before W4 (verify, as of 27 Nov 2026) |
+
+---
+
+## 6.2.14 Quality gate: Batch 6.2 (files a and b)
+
+| # | Check | Result | Notes and fixes applied |
+|---|---|---|---|
+| 1 | Every requirement traced to a source | **Pass** | Every TC row links its TS, story/AC and ≥ 1 FR, BRL, NFR, DEC or ABAC; P0 rows link a BRL, NFR or DEC; scenarios link stories and FRs |
+| 2 | Assumptions, gaps, conflicts tagged and logged | **Pass** | Only allocated tags used (RECOMMENDATION-075…076, ASSUMPTION-185…187), all registered (§6.2.13.3); 8 inconsistencies in earlier parts reported, none edited |
+| 3 | IDs unique and consistent with earlier parts | **Pass** | 82 scenarios and 685 TCs; script check: no duplicate and no gap in any epic sequence (TC-08-001…191, TC-09-001…047, TC-10-001…060, TC-11-001…075, TC-12-001…083, TC-13-001…128, TC-14-001…101); formats per §6.1.12.1; cross-file references (battery, journeys) verified after renumbering |
+| 4 | No story lacks AC and no requirement lacks a test | **Pass** | 73/73 stories, 370/370 AC, 49/49 FRs, 104/104 cited BRL rules covered. *Fixes applied in self-check:* added TC-08-190, TC-08-191, TC-11-075, TC-14-101 and explicit links for FR-A063, FR-A109, FR-W09, FR-CSM-01, BRL-AI-03, BRL-MKT-01 |
+| 5 | Negative, edge, security and accessibility cases covered | **Pass** | Each story has ≥ 1 denial; cross-tenant TCs in all seven epics; duplicate/replay, uncertain outcome, simulation and emergency stop per dispatching adapter (battery B1–B7); localization rows for hi-IN, ta-IN, or-IN; accessibility TCs plus 5 manual AT passes; money boundaries from EDGE-MONEY |
+| 6 | No agent lacks guardrail, fallback, KPI and cost estimate | **N/A** | Agents are specified in Part 7. This batch tests their deterministic guardrails (BRL-AI-02…07, -11), Tier 3 fallbacks, budget stops and tool-registry denials (R20); statistical metrics belong to TC-AI families |
+| 7 | Time-sensitive facts flagged "verify" with an as-of date | **Pass** | Provider sandboxes, error codes, windows, scopes, e-sign legal validity, GST rates and tool versions marked "verify at implementation (as of 27 Nov 2026)"; effort figure labelled estimate with basis |
+| 8 | No restricted data routed to free-tier models | **Pass** | TC-08-012, TC-08-076, TC-10-037 assert 0 Restricted data to Tier 2; health, minors and identifier redaction TCs (TC-10-031, TC-10-043, TC-12-064, TC-14-046) |
+| 9 | Consistent with earlier parts | **Pass, with 8 reported observations** | All worked numbers recomputed with Decimal HALF_UP (270.00; 318.60; 28.30; 76,790.40; 159.30; 8,638.00 vs 8,638.92) and all dates checked for weekday and zone (15:00 IST = 09:30 UTC; 02:00 PDT = 09:00 UTC; 2027-03-28 Sunday) |
+
+**Status: Part 6 Batch 6.2 complete. EP-08 to EP-14: 82 test scenarios and 685 test cases (419 P0, 207 P1, 54 P2, 5 P3; 680 automation candidates) covering 73/73 stories, 370/370 acceptance criteria, 49/49 FRs and 104/104 cited BRL rules, with decision tables, state-transition maps, pairwise sets and 13 E2E journeys. Continue with Batch 6.3 (EP-15 to EP-21 and AI evaluation cases).**

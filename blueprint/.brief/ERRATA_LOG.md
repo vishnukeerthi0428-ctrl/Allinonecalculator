@@ -94,3 +94,12 @@
 71. Story dependencies US-0113→US-0108 and US-0303→US-0301: the Part 8 sprint sequencing orders the dependency first.
 72. The 0.5 growth/compliance lead is over-allocated in W4–W5. Resolution: raise to 0.75 FTE for W4–W5, or add contract legal/compliance support (cost per Part 8).
 73. QA: 1.0 FTE from Sprint 3 (+₹2.75–4.13 L) is adopted (resolves GAP-165/DEC-095).
+
+## From Part 6.2
+74. AC-0810-03: policy loosening requires the Founder (R01) per BRL-APR-11; the AC is corrected to R01.
+75. AC-0811-05: 2027-03-28 is a Sunday. Expected behaviour: defer to Monday 09:00 recipient local time (BRL-ELG-08).
+76. AC-0801-06: expected response for a role without the permission is 403 (role), and 404 for an out-of-scope object. Tests assert per BRL-TEN-04 (uniform 404 for out-of-scope objects; 403 for role-denied actions on visible objects).
+77. Part 6.1 worked-example IDs are superseded by the Part 6.2 IDs (TC-13-036…049 for the discount/margin BVA).
+78. AC-1206-05 title: R11 requests, R01 approves.
+79. GST rates in examples are illustrative; the finance advisor confirms them (DEC-027 verify).
+80. Test automation effort (~100–240 pd for 680 designs) is mostly inside story estimates (DoD: developers write unit/integration/contract tests; QA 1.0 FTE writes E2E and evals). Residual risk tracked in Part 8 RSK-003.
