@@ -1,0 +1,80 @@
+ID,First seen,Issuing part,Statement,Status / resolution,Parts referencing,Occurrences
+GAP-001,0 §0.3.1,0,API catalogue of 302 retained + 19 candidate operations is not attached; only 105 operations are named,Closed by DEC-015,"0, 0A",4
+GAP-002,0 §0.3.1,0,"Entity catalogue of 149 + 6 is not attached; 132 named. Core entities are unnamed: Tenant, Startup, BusinessLine, Offering/SKU, PublicationSnapshot, Domain, Bid/Tender, Order, OrderLine, FulfillmentEvent, Plan, Entitlement, ServiceInvoice, UsageMeter, Trigger, NodeTemplate, ConfigRevision, ApplicationDraft, ConflictCase",Closed by DEC-016,"0, 0A, 3.3",4
+GAP-003,0 §0.3.1,0,"Test catalogue (624 + 175) is not attached. SM-UT-001…066, SM-UAT-S001…, SM-UX-UAT-* are referenced but not defined",Closed by DEC-017,"0, 0A, 6.1",5
+GAP-004,0 §0.3.3,0,"No explicit NFR targets: availability, latency, throughput, concurrency, RTO/RPO, volume growth, browser support",Closed by DEC-018,"0, 0A",4
+GAP-005,0 §0.4,0,"Identity dependencies ""H02, H03"" undefined; the existing auth technology (session vs OIDC provider, MFA method) is unknown",Closed by DEC-019,"0, 0A",2
+GAP-006,0 §0.4,0,"Budget IDs B01–B22 and engineering ID C03 are referenced, but the cost table rows carry no IDs; ""11 Budget"" section is not present",Closed by DEC-020,"0, 0A",3
+GAP-007,0 §0.1.1,0,"Referenced artefacts not attached: MedMaarg investor/business deck (slides 2–17), integration workbook (rows 4–541, 538 candidates), HTML prototypes, ""20 role perspectives"" checklist, sibling investor-application spec",Closed by DEC-021,"0, 0A",3
+GAP-008,0 §0.4,0,"Payment provider unnamed (""existing payment provider subject to API"")",Closed by DEC-022,"0, 0A",2
+GAP-009,0 §0.4,0,E-signature provider unnamed,Closed by DEC-023,"0, 0A",2
+GAP-010,0 §0.4,0,Calendar provider unnamed,Closed by DEC-024,"0, 0A",2
+GAP-011,0 §0.4,0,Email provider undecided (Resend vs Amazon SES); budget assumes SES,Closed by DEC-025,"0, 0A",2
+GAP-012,0 §0.3.3,0,Supported languages and locales not listed,Closed by DEC-026,"0, 0A",3
+GAP-013,0 §0.4,0,"Tax rules (GST, cross-border), rounding rule, FX rate source not specified",Closed by DEC-027,"0, 0A",2
+GAP-014,0 §0.3.3,0,Retention periods per data class not specified,Closed by DEC-028,"0, 0A",3
+GAP-015,0 §0.4,0,"Regulations outside India not addressed although AppNAI is worldwide (GDPR/UK GDPR/PECR, CAN-SPAM, CASL, etc.)",Closed by DEC-029,"0, 0A",3
+GAP-016,0 §0.4,0,Mechanism for verifiable guardian consent (children) not specified,Closed by DEC-030,"0, 0A",2
+GAP-017,0 §0.4,0,"Number of internal users, portal users and growth trajectory unknown",Closed by DEC-031,"0, 0A",2
+GAP-018,0 §0.3.3,0,"""Agreed window"" for the 99% workflow-completion target undefined",Closed by DEC-032,"0, 0A",3
+GAP-019,0 §0.4,0,The 9 new interfaces have SM-UX-FR rows but no SM-FR rows,Closed by DEC-033,"0, 0A",4
+GAP-020,0 §0.4,0,"Phase gates cite M-ranges (""M01–M09"", ""M10–M20"" …), but IDs are not sequential in the register (M53, M56, M58 sit in the foundation block; M55 in the CRM block; M41 in omnichannel)",Closed by DEC-034,"0, 0A",2
+GAP-021,0 §0.4,0,"""Approved Copilot"" is mentioned with no functional spec, screen or limits",Closed by DEC-035,"0, 0A",4
+GAP-022,0 §0.4,0,"Internal notification channels (in-app, email, push, chat) and digest rules unspecified",Closed by DEC-036,"0, 0A",2
+GAP-023,0 §0.4,0,Global search across records is not specified beyond filters and knowledge search,Closed by DEC-037,"0, 0A",3
+GAP-024,0 §0.4,0,"Approval thresholds not quantified (discount %, margin floor, amount bands needing finance/legal, autonomy limits)",Closed by DEC-038,"0, 0A",2
+GAP-025,0 §0.4,0,"No data migration source described (existing CRM, spreadsheets, contact lists)",Closed by DEC-039,"0, 0A",2
+GAP-026,0 §0.4,0,"Hosting region, HA tier and DR design unspecified (""validate region/HA needs"")",Closed by DEC-040,"0, 0A",2
+GAP-027,0 §0.4,0,"Monitoring stack only ""CloudWatch/Sentry candidates""; no SLOs or alert thresholds",Closed by DEC-041,"0, 0A",2
+GAP-028,0 §0.4,0,"Model names and prices quoted in the FRD (Claude Haiku 5.5 $0.10/$0.50, Sonnet 5.5 $2/$10 per MTok) are time-sensitive and unverified",Closed by DEC-042,"0, 0A, 5.1b",4
+GAP-029,0 §0.4,0,Device/channel support not stated (mobile web? native apps?),Closed by DEC-043,"0, 0A",2
+GAP-030,0 §0.4,0,"Support model and SLAs for SaaS clients undefined (""no unverified SLA promise"")",Closed by DEC-044,"0, 0A",2
+GAP-031,0 §0.4,0,"OrganicSpec inventory/stock reservation is referenced, but no inventory model or rules exist",Closed by DEC-045,"0, 0A",2
+GAP-032,0 §0.4,0,"Referral commission referenced (""Commission approval"") without commission rules",Closed by DEC-046,"0, 0A",2
+GAP-033,0 §0.4,0,"SaaS plan catalogue (plans, quotas, prices for W31/A101) not provided",Closed by DEC-047,"0, 0A",2
+GAP-034,0 §0.4,0,"Admin ""Copilot"" and agent permissions to call internal tools are not enumerated (tool registry)",Closed by DEC-048,"0, 0A",2
+GAP-101,3.1 front matter,3.1,"DEC-040 requires cross-region backup copies, but B20 (backup/DR storage) is ₹0 until approved",Request ≈ ₹200/month approval,"3.1, 3.2",6
+GAP-102,3.1 §3.1.6.2,3.1,DEC-020 does not say whether B01 covers non-production environments (staging),FinOps/PO decision,"3.1, 3.2",4
+GAP-103,3.1 §3.1.16,3.2,The original 302-operation catalogue (BRD §9) is not available; one-to-one reconciliation impossible,Mapping table when supplied (DEC-015),"3.1, 3.2",7
+GAP-104,3.1 §3.1.6.2,3.1,No WAF budget at pilot (B21 ₹0) while NFR-022 requires abuse controls on public intake,Compensating controls; revisit at W3,"3.1, 3.2",5
+GAP-105,3.2 §3.2.4.3,3.2,"Several providers lack full sandboxes (social posting, some e-sign and ads features, WhatsApp production templates)",Recorded fixtures + internal-recipient canaries,3.2,3
+GAP-107,3.1 §3.1.6.1,3.1,"Approach and limits for 25+ startup custom domains on CloudFront (certificates, alternate names, KVS) not specified",Verify quotas in Sprint 0,3.1,3
+GAP-111,3.2 §3.2.4.2,3.3,Embedding model/provider not decided in the baseline (the Claude API is not assumed to provide embeddings; verify). Interim: dimension 1024 fixed per model; provider chosen in Part 7,Open — handling per source part,"3.2, 3.3",5
+GAP-112,3.2 §3.2.8.7,3.3,"The original 149-entity catalogue was not supplied; 17 retained entities cannot be identified, so a one-to-one reconciliation is impossible",Closed by DEC-087,"3.2, 3.3, 9.1",4
+GAP-113,3.3 §3.3.3.1,3.3,"DEC-028 does not cover delivery events, eligibility/policy decisions, meetings, business records and configuration; interim periods given; Legal to confirm",Open — handling per source part,3.3,11
+GAP-114,3.3 §3.3.11.3,3.3,Archive retrieval SLA not defined; interim 5 business days,Open — handling per source part,3.3,2
+GAP-115,3.3 §3.3.16.7,3.3,DPDP verifiable parental consent mechanism to be confirmed; the consent model keeps capture_method and evidence extensible,Open — handling per source part,3.3,2
+GAP-116,3.3 §3.3.6.4,3.3,"""Global"" suppression scope in BRL-ELG-02 is undefined; interpreted as tenant-wide (cross-tenant suppression is prohibited by DEC-065)",Open — handling per source part,3.3,2
+GAP-117,3.3 §3.3.22,3.3,"2 · Assumptions, gaps and conflicts tagged and logged · Pass · RECOMMENDATION-036…039, ASSUMPTION-111…119, GAP-111…116, CONFLICT-106…109, RSK-321…329 issued, all within the allocated ranges and logged in §3.3.21. GAP-117…119 were not needed",Open — handling per source part,3.3,1
+GAP-120,4.1 front matter,4.1,No budget line for external penetration tests (B07 is ₹500/month; B11 contingency is shared). Estimated ₹1.5–4 lakh per engagement for this scope (estimate; verify quotes),Founder to approve a security testing line before end W3,"4.1, 4.2",6
+GAP-121,4.1 §4.12.1,4.1,No named Grievance Officer / DPDP contact person or CERT-In point of contact,Founder to designate before W2 public launch,4.1,3
+GAP-122,4.3 §4.43.2,4.3,No on-call compensation or out-of-hours coverage commitment in the baseline,Founder decision before W3,4.3,4
+GAP-123,4.3 §4.49.2,4.3,"Part 3 ADRs (compute platform, IaC, CI) not available while this batch was written; ADR-050…053, 058…060 may duplicate or conflict",Closed by DEC-083,"4.3, 9.1",2
+GAP-124,4.1 §4.12.10,4.1,Cyber insurance not considered,Evaluate at W4 when payments go live,4.1,2
+GAP-125,4.1 §4.12.5,4.1,GDPR Art. 27 EU representative and UK representative not addressed for EU/UK outbound under DEC-029,Counsel decision before enabling the EU/UK pack,4.1,2
+GAP-126,4.3 §4.43.4,4.3,No customer-facing status page or incident communication channel for SaaS tenants,Decide before onboarding external tenants (W5),4.3,2
+GAP-127,4.3 §4.49.2,4.3,"B22 (LLM observability/eval tooling) is ₹0; the eval harness must run on OSS (DeepEval candidate, M54) and CI minutes",Accept OSS-only at pilot; revisit at the growth gate,4.3,1
+GAP-140,7.1 front matter,7.3,No measured AI usage baseline exists,Open — handling per source part,"7.1, 7.3",3
+GAP-141,7.3 §7.3.1,7.3,"Anthropic commercial terms for this deployment (data retention, training exclusion, DPA, cross-border processing, ZDR eligibility) not yet confirmed",Open — handling per source part,7.3,4
+GAP-142,7.3 §7.6.9,7.3,"Golden eval datasets do not exist (≥ 200 labelled per vertical for qualification, DEC-001)",Open — handling per source part,7.3,3
+GAP-143,7.1 §7.1.7,7.1,No lawful meeting-recording or transcript source exists; meeting summarization is excluded until one is approved with consent,Open — handling per source part,"7.1, 7.3",4
+GAP-144,7.3 §7.3.3,7.3,"Tier 2 provider terms (Groq DPA, Gemini/OpenRouter/Mistral free terms) not legally reviewed",Open — handling per source part,7.3,2
+GAP-145,7.3 §7.5.4,7.3,"DEC-047 ""AI tasks"" quotas have no defined unit or cost basis",Open — handling per source part,7.3,2
+GAP-150,5.1a front matter,5.1c,"Import template columns for catalogues, organizations, contacts and deals are not specified",Open — handling per source part,"5.1a, 5.1b, 5.1c",7
+GAP-151,"5.1b US-0306 Contact, privacy, terms and help",5.1c,DPDP response deadline for privacy requests not given in the baseline (BRL-PRV-02 says verify),Closed by DEC-100,"5.1b, 5.1c, 9.1",6
+GAP-152,5.1c US-0506 Buying signal classification and,5.1c,Signal-type and need-category taxonomies are not enumerated; AC values are illustrative,Open — handling per source part,5.1c,3
+GAP-153,5.1c US-0710 Public intake abuse controls,5.1c,The bot-check mechanism for public intake is not specified; it must not be a cognitive test (WCAG 3.3.8),Open — handling per source part,5.1c,3
+GAP-154,5.1b §5.8.4.1,5.1c,"Labelled benchmark datasets (≥ 100 reviewed signals; ≥ 200 labelled items per vertical for qualification, DEC-001) have no owner or effort in the baseline",Open — handling per source part,"5.1b, 5.1c",4
+GAP-155,5.2 US-1108 SEO and visibility dashboard fro,5.2,No authorised rank-tracking data source; B17 SEO data is ₹0 until approved. Dashboard shows Search Console average position only,Product Owner decision on B17,5.2,3
+GAP-156,5.2 US-0802 Channel preflight and approved-m,5.2,DEC-064 does not set an autonomy cap for first-touch outbound outreach; stories default to L1 (each first touch approved),Closed by DEC-071,"5.2, 6.2a, 9.1",7
+GAP-157,5.2 §5.2.3.1,5.2,Webinar platform and attendance-evidence source not decided (Zoom is only a candidate),Product Owner; adapter story later if approved,"5.2, 6.2a",5
+GAP-158,5.2 US-1410 Acceptance and separate receivab,5.2,Amount rule for partial acceptance postings not specified; interim rule = accepted quantity × net unit price per line,Finance lead,5.2,3
+GAP-159,5.2 US-1309 Contracts and MoUs from approved,5.2,"Format of signer-authority evidence (board resolution, authorisation letter, designation) not specified",Legal,5.2,2
+GAP-160,5.3 front matter,5.3,"Treatment of tax withheld at source (TDS) on B2B receipts is not specified. Interim rule: a ""tax withheld"" allocation type with certificate evidence, approved by the Finance Checker",Finance advisor; Part 3 data model,5.3,4
+GAP-161,"5.3 US-1902 Immutable publication snapshots,",5.3,No target exists for CDN purge latency after publish or rollback (see RECOMMENDATION-058),SRE Lead (Part 4),5.3,2
+GAP-162,"5.3 US-2001 SaaS introduction, plans and dem",5.3,"SaaS plan prices and overage rates are not approved (DEC-047). Pages show ""Price on request"" until the Service Owner approves a rate revision; billing tests use test rates",Service Owner before W5 exit,5.3,2
+GAP-163,5.3 US-1706 Sales forecast (estimate) and fo,5.3,"No default forecast stage weights exist for a startup with < 30 closed deals and no configured weights. Interim rule: show ""Unknown – configure stage weights""",Startup Heads via A088,"5.3, 6.3a",5
+GAP-164,"5.3 US-1911 Public site accessibility, acces",5.3,The owner and legal wording of the per-startup accessibility statement are not defined. Interim: a platform template approved by R10 per startup,Legal/DPO (P09),5.3,2
+GAP-165,6.1 front matter,6.1,"Test capacity. QA-owned test effort is estimated at 43–97 pd against ≈ 50 pd of QA capacity (0.5 FTE, DEC-005), a shortfall of up to ≈ 47 pd at the high end; business UAT participation (60–120 participant-days over W0–W5) is not in any budget or plan",Closed by DEC-095,"6.1, 9.1",5
+GAP-166,6.1 §6.1.3.1,6.1,"Dependent catalogues not yet available: Part 7 agent catalogue (AG IDs, per-agent thresholds, eval harness choice) and the Part 5.1 dimension matrix were not published when this batch was written",Batch 6.3 takes AG IDs and thresholds from Part 7; harness choice defaults to the …,6.1,4
+GAP-167,6.1 §6.1.16.5,6.1,"Retained test catalogue and missing alias IDs. The BRD's ""624 retained product tests + 175 candidate tests"" (BRD §9, §17) were not supplied; SM-UT-037, SM-UT-049 and SM-UT-050 are absent from the FRD although the range runs to 066",Closed by DEC-094,6.1,1

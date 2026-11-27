@@ -1,0 +1,96 @@
+Prefix,Meaning,Range found,Distinct IDs,Owning part,Defined in (top),Parts referencing
+BR-M##,Business requirement derived from a BRD module line (M01–M66),01–66,66,1 (§1.12),"1, 5.2",0;0A;1;2.1;3.1;3.2;5.1b;5.1c;5.2;5.3;6.1;6.2a;6.3a;7.1;7.2;9.1
+BR-S###,Business requirement derived from a source statement,001–140,140,1 (§1.12),1,0;0A;1;2.1;2.2;2.5;3.2;5.1a;5.1b;5.1c;5.2;5.3;6.2a;6.3a;6.5;7.1;7.2;7.3
+BR-,"Group-level business requirement (tenant, website, automation, service, QA)",AUTO; QA; SVC; TENANT; WEB,5,1 (§1.12),1,0;0A;1;2.1;3.1;3.2;5.1a;5.1b;5.1c;5.2;5.3;6.1;7.2;9.1
+FR-W##,Functional requirement for Website/Portal screen W01–W34,01–34,34,2.1 (§2.4),"2.1, 5.3, 5.2, 5.1c",0;0A;2.1;3.1;3.2;4.2;5.1b;5.1c;5.2;5.3;6.1;6.2a;6.3a;6.5;7.2;9.1
+FR-A###,Functional requirement for Admin Command Centre screen A001–A113,001–113,113,2.1 (§2.4),"2.1, 5.1c, 6.5, 5.3",0;0A;2.1;3.1;3.2;3.3;4.3;5.1a;5.1b;5.1c;5.2;5.3;6.1;6.2a;6.3a;6.5;7.2;9.1
+FR-OP###,"Operational/platform functional requirement (health, readiness, config)",001–003,3,2.1 (§2.4),"2.1, 5.3, 5.1c, 6.5",0;2.1;2.3;3.1;3.2;3.3;5.1b;5.1c;5.2;5.3;6.1;6.2a;6.3a;6.5;7.2
+FR- -##,"Cross-cutting functional requirement by area (standards, data mgmt, UI states, filters, publication, adapters, …)",ADP 01; COP 01; CSM 01; DM 01–04; ENG 01; FLT 01–11; NEG 01; PUB 01; SRCH 01; STD 01–04; UIS 01–04,30,2.1 (§2.4),"2.1, 6.3a",0;2.1;2.2;2.3;2.4;2.5;3.1;3.2;3.3;4.1;4.3;5.1a;5.1b;5.1c;5.2;5.3;6.1;6.2a;6.3a;6.5;7.2;7.3;9.1
+NFR-###,Non-functional requirement,001–099,99,0 (§0.6); detailed in 4.2,"4.2, 0",0;0A;1;2.1;2.3;2.4;2.5;3.1;3.2;3.3;4.1;4.2;4.3;5.1a;5.1b;5.1c;5.2;5.3;6.1;6.2a;6.3a;6.5;7.1;7.2;7.3
+DEC-###,Binding decision (DEC-001…065 Part 0A; DEC-066… Part 9.1),001–108,108,"0A, 9.1","0A, 9.1, 5.2, 3.3",0A;1;2.1;2.2;2.3;2.4;2.5;3.1;3.2;3.3;4.1;4.2;4.3;5.1a;5.1b;5.1c;5.2;5.3;6.1;6.2a;6.3a;6.5;7.1;7.2;7.3;9.1
+BRL- -##,"Business rule, by rule domain",AI 01–12; APR 01–11; AUT 01–10; BID 01–06; CTR 01–05; ELG 01–18; FIN 01–08; LCY 01–06; MKT 01–10; MTG 01–06; ORD 01–06; PRV 01–07; PUB 01–06; QTE 01–07; SCR 01–09; SEQ 01–05; SRC 01–10; SVC 01–07; TEN 01–12,161,2.3,"2.3, 6.5, 6.3a",2.3;2.4;2.5;3.1;3.2;3.3;4.1;4.2;4.3;5.1a;5.1b;5.1c;5.2;5.3;6.1;6.2a;6.3a;6.5;7.1;7.2;7.3;9.1
+R##,RBAC role (R01–R20; L suffix = startup-scoped lead variant),01–40; L 3–5 (1 unused),42,2.3 (§2.21),"2.3, 7.3",2.3;2.4;2.5;3.1;3.2;3.3;4.1;4.3;5.1a;5.1b;5.1c;5.2;5.3;6.1;6.2a;6.3a;6.5;7.1;7.2;7.3;9.1
+P##,Persona,01–95 (77 unused),18,1 (§1.6),"1, 7.1",1;2.2;2.3;5.1a;5.1b;5.1c;5.2;5.3;6.1;6.2a;6.3a;6.5;7.1;7.2
+KPI-##,Key performance indicator,01–31,31,1 (§1.4),1,1;2.2;2.3;2.4;2.5;3.2;3.3;4.1;4.2;4.3;5.1a;5.1b;5.1c;5.2;5.3;6.1;6.2a;6.3a;6.5;7.1;7.2;7.3
+EP-##,Epic,01–21,21,0 (§0.10.2); stories in 5,"0, 5.2, 5.3, 5.1c",0;1;2.1;3.3;4.2;5.1a;5.1b;5.1c;5.2;5.3;6.1;6.2a;6.3a;6.5;7.1;7.2;7.3;9.1
+US-####,User story (first two digits = epic),0101–2110 (1780 unused),230,5,"5.3, 6.5, 5.2, 5.1b",5.1a;5.1b;5.1c;5.2;5.3;6.1;6.2a;6.3a;6.5;7.1;7.2
+AC-####-##,Acceptance criterion of a user story,101–2110 (1780 unused),1357,5,referenced only,5.1a;5.1b;5.1c;5.2;5.3;6.1;6.2a;6.3a;6.5
+TS-##-##,"Test scenario (epic-based, DEC-093)",01 01–17; 02 01–08; 03 01–11; 04 01–08; 05 01–12; 06 01–08; 07 01–10; 08 01–18; 09 01–07; 10 01–08; 11 01–11; 13 02; 15 01–14; 16 01–11; 17 01–11; 18 01–17,172,6,"6.5, 6.3a, 6.2a",6.1;6.2a;6.3a;6.5
+TC-##-###,"Test case (epic-based, DEC-093)",01 001–114; 02 001–055; 03 001–078; 04 001–055; 05 001–080; 06 001–051; 07 001–072; 08 001–191; 09 001–047; 10 001–060; 11 001–075; 12 029–059 (24 unused); 13 004–084 (70 unused); 14 076–077; 15 001–103; 16 001–075; 17 001–081; 18 001–131; 19 003,1289,6,"6.5, 6.3a, 6.2a",6.1;6.2a;6.3a;6.5
+TC-AI-AG###-##,AI agent test case (per agent),015 001–010; 016 001–007; 024 001–006; 025 001–004; 026 001–005,32,6,6.3a,6.3a
+AG-###,AI agent,001–036,36,7.1/7.2,"7.2, 7.1, 7.3",6.2a;6.3a;7.1;7.2;7.3
+AU-###,Deterministic or AI-assisted automation,001–043,43,7.1/7.2,"7.1, 7.2",7.1;7.2;7.3
+ADR-###,Architecture decision record,001–085 (14 unused),71,"3.1 (001–043), 4.1/4.3 (050–069), 7.3 (070–085)","3.1, 7.3, 4.3, 4.1",0;3.1;3.2;4.1;4.2;4.3;7.1;7.2;7.3
+RSK-###,Risk (feeds the Part 8 risk register),301–379 (8 unused),71,8 (raised in 3–7),"7.3, 3.1, 4.1, 3.3",3.1;3.2;3.3;4.1;4.2;4.3;7.1;7.3
+THR-###,STRIDE threat,001–082,82,4.1 (§4.2.2),4.1,4.1;4.3;6.1;6.2a;6.3a;7.1;7.2;7.3
+SC-##,Security control,01–50,50,4.1,4.1,4.1;4.2;4.3;6.1;7.1;7.2;7.3
+RB-###,Operational runbook,001–015,15,4.3,4.3,4.1;4.2;4.3
+SLO-##,Service level objective,01–12,12,4.2/4.3,4.3,4.3
+AL-##,Alert rule,01–49,49,4.1/4.3,4.3,4.1;4.3
+LT-##,Load/performance test (DEC-092: owned by 6.1),01–12,12,6.1,"6.1, 4.2",4.1;4.2;4.3;6.1;6.3a;9.1
+DQ-###,Data quality check,001–032,32,3.3,3.3,3.2;3.3
+API-###,"API operation in the derived catalogue (555 ops, DEC-104)",001–555,555,3.2,3.2,3.2
+NT-###,Internal notification type,001–046,46,2.4,2.4,2.4;2.5;5.1b;5.1c;5.2;5.3;6.2a;6.3a;6.5;7.1;7.2;7.3;9.1
+NX-##,External (customer-facing) notification type,01–15,15,2.4,2.4,2.4;5.1b;5.1c;5.2;5.3;6.2a;6.3a;6.5
+RP-##,Report/analytics view,01–30,30,2.4,2.4,2.4;3.3;4.1;4.2;4.3;5.3;6.1;6.3a;7.2;7.3
+SR-##,Search capability,01–08,8,2.4,2.4,2.4;2.5;3.1;3.2;5.1b;5.1c;5.3;6.5;7.2;7.3
+CFG-##,Configuration domain,01–32,32,2.4,2.4,2.4;3.1;3.2;3.3;4.1;4.3;5.1a;5.1b;5.1c;5.2;5.3;6.2a;6.3a;7.1;7.2;7.3
+WF-##,End-to-end workflow / process flow,01–14,14,2.2,2.2,0;0A;1;2.2;2.3;2.4;3.1;3.2;3.3;5.1a;5.1b;5.1c;5.2;5.3;6.1;6.2a;6.3a;7.1;7.2;9.1
+AP-##,Acceptance procedure (DEC-014),01–10,10,0A; tests in 6,6.1,0A;1;2.1;2.2;2.3;2.4;3.1;3.2;3.3;4.1;4.2;4.3;5.1a;5.1b;5.1c;5.2;5.3;6.1;6.3a;6.5;7.2
+CAP-##,Business capability (capability map),01–20,20,2.1,2.1,2.1
+CA-,"Acceptance profile applied to FRs (e.g. CA-PUB, CA-FIN)",ADMIN; AI; ALL; APPROVE; CONFIG; DISPATCH; FIN; INTAKE; PORTAL; PUB,10,2.1,2.1,2.1;2.3;2.4;2.5;3.1;3.2;3.3;4.1;4.2;5.1a;5.1b;5.1c;5.2;5.3;6.1;6.2a;6.3a;6.5;7.2;7.3;9.1
+J-##,User journey,01–49 (3 unused),46,1 (§1.11),1,1;6.2a
+SH-##,Stakeholder,01–14,14,1,1,1;5.1b;5.3
+CN-##,Constraint,01–15,15,1,1,1;3.1;4.1;4.2;5.1a;5.1b;5.1c;5.2
+DP-##,External dependency,01–15,15,1,1,1;3.1;3.2;4.1;4.3;5.1a;5.1b;5.1c;5.2;6.5
+X-##,Explicit exclusion (out of scope),01–12,12,1,1,1;5.1a;5.2;5.3;6.3a
+L-##,Later / future scope item (W6+),01–09,9,1,1,1;2.4;5.1c;5.2;5.3
+VH-##,Value hypothesis,01–06,6,1,1,1;5.1c;5.2;5.3
+PP-##,Product principle,01–12,12,1,1,1;2.5;4.1;6.2a;7.1;7.2
+PR-##,Problem statement,01–10,10,1,1,1
+G-##,Business goal,01–10,10,1,1,1;5.1b;5.2;5.3
+OQ-###,Open question (all answered in 0A),001–030,30,"0, 0A","0, 0A",0;0A;4.1
+AMB-#,Ambiguity in the source (resolved DEC-049…058),1–10,10,"0, 0A",0,0;0A;3.1
+E-##,Errata item (Part 9.1); note E-# (one digit) = engine invariant in 2.2,01–48 (1 unused),47,9.1,referenced only,9.1
+ABAC-##,Attribute-based access control rule,01–12,12,2.3,2.3,2.3;2.4;3.1;3.2;3.3;4.1;4.3;5.1a;5.1b;5.1c;5.2;5.3;6.1;6.2a;6.3a;6.5;7.2
+ENT-###,Logical data entity,001–199,199,3.3,3.3,3.1;3.2;3.3
+CK-##,Database check constraint pattern,01–24,24,3.3,3.3,3.2;3.3
+UQ- -##,Uniqueness/idempotency key or duplicate rule,DUP 01–05; IDEM 01–19,24,3.3,3.3,3.2;3.3
+AD-##,Architecture driver,01–20,20,3.1,"3.2, 3.1",3.1;3.2
+ARP-##,Architecture principle,01–15,15,3.1,3.1,3.1;3.2
+FM-##,Failure mode (resilience analysis),01–17,17,3.1,3.1,3.1;3.2
+IP-##,Integration pattern,01–10,10,3.2,3.2,3.2
+CT-##,Contract-test gate,01–14,14,3.2,referenced only,3.2;5.2
+REC-##,Reconciliation job,01–09,9,3.2,referenced only,3.2;3.3
+XR- -##,Cross-role review finding,DBA 01–07; FIN 01–06; PO 01–05; QA 01–06; SEC 01–10; UX 01–06,40,3.2,3.2,3.2
+TB-##,Trust boundary,01–12,12,4.1,4.1,4.1
+AZ-##,Authorization enforcement layer,01–15,15,4.1,4.1,4.1
+SE-##,Security event (logged/alerted),01–18,18,4.1,4.1,4.1;4.2;4.3
+SO-#,Security objective,1–8,8,4.1,4.1,4.1
+SI-#,Security incident class,1–8,8,4.1,referenced only,4.1;4.3
+AIR-##,"AI-specific risk (injection, leakage, …)",01–12,12,4.1,4.1,4.1
+DPIA-T#,DPIA trigger,1–10,10,4.1,4.1,4.1
+-R#,"Regulatory or design rule set (EU/UK GDPR, IT Act, WhatsApp, PCI, TRAI, GST, Canada, index, reporting)",CA 1; EU 1–11; GST 1–5; IT 1–5; IX 1–7; PCI 1–4; RPT 1–10; TR 1–3; WA 1–7,53,"4.1, 3.3, 2.4","4.1, 2.4, 3.3",2.4;2.5;3.2;3.3;4.1;4.3;5.3;6.3a;7.2
+CH-##,Chaos/resilience experiment,01–04,4,4.2,4.2,4.2;4.3
+PL-##,CI/CD pipeline stage,01–20,20,4.3,4.3,4.3
+DB-##,Operational dashboard,01–10,10,4.3,4.3,4.3
+DM-###,Story-dimension matrix row (Part 5.1a),001–057,57,5.1a,5.1a,5.1a;6.5
+MAS-# / RR-#,Mandatory AC scenario / required-risk scenario (story template),MAS 1–9; RR 1–8,17,5.1a,referenced only,5.1a;5.1b;5.1c;6.5
+TP-##,Test principle,01–12,12,6.1,6.1,6.1;6.2a;6.3a
+QO-#,Quality objective,1–10,10,6.1,6.1,6.1;6.2a
+RA-##,Risk area (risk-based testing),01–30,30,6.1,6.1,6.1;6.2a;6.3a;6.5
+RBR-#,Release-blocking rule,1–8,8,6.1,6.1,6.1;6.3a
+PW-##,Pairwise test combination,01–26,26,6.1,6.1,6.1;6.2a
+EG-##,Error-guessing test idea,01–20,20,6.1,6.1,6.1;6.2a;6.3a
+BVA-D##,Boundary-value analysis datum,01–14,14,6.1,6.1,6.1
+DR-#,Disaster-recovery drill,1–9,9,6.1,6.1,6.1;6.3a
+CI-###,Candidate AI idea (discovery register),001–135,135,7.1,7.1,7.1;7.2;7.3
+TL-##,Agent tool in the tool registry,01–20,20,7.2,7.2,7.1;7.2
+D0#,Delivery persona (delivery-lifecycle AI),01–09,9,7.1,7.1,6.1;7.1;7.2;7.3
+B##,"Budget line (cost table; GAP-006, DEC-020)",01–23,23,"0, 0A, 8",referenced only,0;0A;1;2.1;2.2;3.1;3.2;3.3;4.1;4.2;4.3;5.1b;5.1c;5.2;6.1;6.5;7.1;7.2;7.3;9.1
+UX-##,UX principle,01–09,9,2.5,2.5,2.5;3.2;5.3;6.3a
+I18N-##,Internationalization rule,01–11,11,2.4,2.4,2.4;4.2;5.1a;5.1b;6.1;6.2a;6.5
+OPT-##-##,"FRD optimisation item (source ID, cited)",01 01; 03 01; 04 01–08; 07 01; 10 01; 11 01; 12 01–04; 15 01; 20 01–04,22,Source (FRD),2.1,0;0A;1;2.1;2.2;2.3;2.5;3.1;4.1;4.2;4.3;5.1c;5.2;6.1;7.1;7.2
+SM-UT-###,"Source test alias (FRD; aliases only, DEC-094)",001–057 (51 unused),6,Source (FRD); 6,referenced only,0;0A;6.1;9.1
+M##,Source module M01–M66 (BRD §7),01–66,66,Source (BRD),referenced only,0;0A;1;2.1;2.2;2.3;2.4;3.1;3.2;3.3;4.1;4.2;4.3;5.1a;5.1b;5.1c;5.2;5.3;6.1;6.2a;6.3a;6.5;7.1;7.2;7.3;9.1
+W## / A###,"Screen ID: Website/Portal W01–W34, Admin A001–A113",A 001–113; W 001–034,147,Source (FRD §16.2); 2.5,2.5,0;0A;1;2.1;2.2;2.3;2.4;2.5;3.1;3.2;3.3;4.1;4.2;4.3;5.1a;5.1b;5.1c;5.2;5.3;6.1;6.2a;6.3a;6.5;7.1;7.2;7.3;9.1

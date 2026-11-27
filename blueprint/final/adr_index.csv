@@ -1,0 +1,71 @@
+ADR,Title / decision,Status,Part
+ADR-001,Modular monolith on Django,"Accepted (baseline): FRD OPT-07-01, NFR-029, CN-01",3.1
+ADR-002,Shared-schema multi-tenancy with composite keys and PostgreSQL RLS,"Accepted (baseline): FRD §5, DEC-009, DEC-065, §2.35.2",3.1
+ADR-003,Transactional outbox with Celery and Valkey,"Accepted (baseline): FRD §5, M06, NFR-005/006/007",3.1
+ADR-004,Deterministic Policy Decision Point as an in-process library,"Accepted (baseline concept): RECOMMENDATION-012, DEC-029, DEC-038, DEC-064. Placement: Proposed",3.1
+ADR-005,Backend-for-Frontend authentication with the reused IdP,"Accepted (baseline): DEC-003, DEC-019, DEC-058, NFR-001, NFR-003",3.1
+ADR-006,Two frontends with a shared component package in a monorepo,"Accepted (baseline): DEC-009, CN-03; package structure Proposed",3.1
+ADR-007,pgvector instead of an external vector database,"Accepted (baseline ""pgvector where justified"", BRD §1.2); index choice Proposed",3.1
+ADR-008,Single model gateway with tiered routing,"Accepted (baseline): DEC-007, DEC-008, DEC-042, FR-OP001",3.1
+ADR-009,Provider adapter pattern (ports and adapters) with a registry,"Accepted (baseline): FRD §9, FR-ADP-01, RECOMMENDATION-011",3.1
+ADR-010,Publication snapshots on S3 + CloudFront with an atomic pointer,"Accepted (baseline intent): BRD §9, FRD §8.1, NFR-020; mechanism Proposed RECOMMENDATION-029",3.1
+ADR-011,First-party analytics only,"Accepted (baseline): FR-W10 ""first-party attribution"", M37 ""no health events to pixels""",3.1
+ADR-012,Infrastructure as code with OpenTofu,"Proposed (refines RECOMMENDATION-010 ""Terraform/OpenTofu"")",3.1
+ADR-013,Hosting on Amazon ECS on EC2 (single instance at pilot),Proposed RECOMMENDATION-030; scale gate per DEC-040,3.1
+ADR-014,Secrets and keys,"Accepted (baseline): FRD §6 M05 ""AWS Secrets Manager"", NFR-004",3.1
+ADR-015,"Feature flags in-house, OpenFeature-compatible","Proposed (CFG-31, RECOMMENDATION-005)",3.1
+ADR-016,Email through Amazon SES,Accepted (baseline): DEC-025,3.1
+ADR-017,"Public search API: Tavily primary, Exa alternative","Accepted (baseline): BRD §6 (B03), FRD §6 M10/M11",3.1
+ADR-018,Self-hosted extraction (Firecrawl) with in-process fallback,"Accepted (baseline ""self-host first"", BRD §6 B04); licence handling Proposed",3.1
+ADR-019,"Single region now, multi-region later",Deferred (DEC-040),3.1
+ADR-020,Event schema versioning,Proposed [RECOMMENDATION-033 in Part 3.2],3.1
+ADR-021,Queue topology and priorities,"Proposed (§2.35.3 ""transactional > interactive > batch"")",3.1
+ADR-022,"REST + OpenAPI 3.1, problem+json errors, no GraphQL","Accepted (baseline): FRD §5, NFR-015",3.1
+ADR-023,Idempotency store in PostgreSQL with Valkey fast path,"Proposed (FRD §5 ""idempotency key/body hash"")",3.1
+ADR-024,Object storage layout and malware scanning,"Proposed [RECOMMENDATION-035 in Part 3.2] (NFR-021, BRL-PUB-04)",3.1
+ADR-025,"Observability: OpenTelemetry, Sentry, CloudWatch",Accepted (baseline): DEC-041,3.1
+ADR-026,CI/CD with GitHub Actions and OIDC,"Proposed (M09, M62, DEC-061, DEC-063)",3.1
+ADR-027,In-house declarative workflow interpreter on Celery,"Proposed (DEC-051, B-AUTO, CN-05)",3.1
+ADR-028,Scheduling with Celery Beat database scheduler,Proposed,3.1
+ADR-029,PostgreSQL full-text and trigram search,"Accepted (baseline): DEC-037, SR-01",3.1
+ADR-030,"Money, quantity and time representation at the API boundary","Accepted (baseline): FRD §5, NFR-017, DEC-027",3.1
+ADR-031,Caching strategy,Proposed (§3.1.11),3.1
+ADR-032,Server-side document rendering with WeasyPrint,Proposed,3.1
+ADR-033,Identity boundary with the investor product,"Accepted (baseline): DEC-003, DEC-058, DP-15",3.1
+ADR-034,"Near-real-time UI updates by polling, SSE later",Proposed,3.1
+ADR-035,Rate limiting in two layers,Proposed (§2.35.3 defaults; extended classes in Part 3.2 §3.2.1.7),3.1
+ADR-036,Container image and runtime hardening,Proposed,3.1
+ADR-037,"Calendar adapter: Google first, Microsoft Graph in W5",Accepted (baseline): DEC-024,3.1
+ADR-038,"Regulated-action adapters with a manual evidence path first (payments, e-sign)","Accepted (baseline): DEC-022, DEC-023",3.1
+ADR-039,WhatsApp through the Meta Cloud API directly,"Proposed (FRD §6 M31 ""Meta Cloud API""; BSP choice open)",3.1
+ADR-040,Social publishing and listening through platform APIs behind ports,"Proposed (FRD §6 M33, M35 ""Postiz candidate / platform APIs"")",3.1
+ADR-041,Admin Copilot on the model gateway with RLS-scoped retrieval,"Accepted (baseline): DEC-035, BRL-AI-12",3.1
+ADR-042,Environment strategy and sandbox adapters,"Proposed (§3.1.14, ABAC-12, RECOMMENDATION-017)",3.1
+ADR-043,Public intake abuse protection without paid WAF at pilot,"Proposed (NFR-022; B21 ₹0, GAP-104)",3.1
+ADR-050,GitHub Actions CI/CD with OIDC federation to environment-scoped AWS roles; no static cloud keys,Proposed; reconcile with Part 3,4.3
+ADR-051,"OpenTofu for IaC with S3 state, module/live layout, policy-as-code checks; Terraform-compatible subset",Proposed; reconcile with Part 3,4.3
+ADR-052,Feature flags via django-waffle behind an internal flags service at pilot; Unleash OSS as a scale-gate option,Proposed,4.3
+ADR-053,Rolling deploys with ECS circuit breaker at pilot; blue/green at the scale gate; expand/contract migrations mandatory; no production down-migrations,Proposed,4.3
+ADR-054,BFF confidential clients authenticate to the IdP with private_key_jwt where the IdP supports it; client secret otherwise,Proposed (confirm in Sprint 0 spike),4.1
+ADR-055,"Customer-managed KMS keys per data domain (§4.5.2), per-tenant DEKs; per-tenant CMK only as a Scale-plan option",Proposed,4.1
+ADR-056,Field-level envelope encryption (AES-256-GCM) with HMAC blind indexes for Restricted fields,Proposed,4.1
+ADR-057,"OSS-first security tooling: Semgrep, Bandit, OSV-Scanner, pip-audit, gitleaks, Trivy, Checkov, OWASP ZAP",Proposed,4.1
+ADR-058,"Observability: OTel SDKs + ADOT collector → X-Ray, CloudWatch metrics/logs; Sentry for errors; RUM via first-party web-vitals beacon; Grafana OSS optional at scale (DEC-041)",Proposed,4.3
+ADR-059,"AWS multi-account layout: management, log-archive, nonprod, prod, backup",Proposed,4.3
+ADR-060,"Monorepo (pnpm/Turborepo + uv) for both frontends, shared UI, backend, AI assets, IaC and ops",Proposed,4.3
+ADR-070,In-house model gateway module in Django (ai.gateway) with provider adapters,Accepted in part (no status column),7.3
+ADR-071,Orchestration in-house on Celery + PostgreSQL (agents as DAG steps),Accepted in part (no status column),7.3
+ADR-072,Structured outputs (output_config.format) + JSON Schema validation for every agent,Accepted in part (no status column),7.3
+ADR-073,Haiku 5.5 as Tier 1a where per-agent eval parity holds; measured escalation to Sonnet 5.5,Accepted in part (no status column),7.3
+ADR-074,Batch API for all non-interactive agents,Accepted in part (no status column),7.3
+ADR-075,Prompt layout: stable prefix first; 5-min TTL default; 1-h TTL only for RFP documents,Accepted in part (no status column),7.3
+ADR-076,"Semantic cache in pgvector (cosine ≥ 0.92), Public/Internal only, version-keyed",Accepted in part (no status column),7.3
+ADR-077,pgvector for RAG and match ranking; no separate vector database,Accepted in part (no status column),7.3
+ADR-078,LLM observability: gateway tables + OpenTelemetry in pilot; Langfuse self-hosted from growth gate,Accepted in part (no status column),7.3
+ADR-079,promptfoo + DeepEval for evals in CI,Accepted in part (no status column),7.3
+ADR-080,Presidio with Indian recognizers for PII detection and masking,Accepted in part (no status column),7.3
+ADR-081,Tier 2 chain order Groq → Gemini free → OpenRouter free → Mistral free; default OFF; Public-only except Groq Internal-non-personal after DPA review,Accepted in part (no status column),7.3
+ADR-082,No agent holds an external-side-effect tool; dispatch only by the engine through the PDP,Accepted in part (no status column),7.3
+ADR-083,"Per-agent, startup, tenant and global AI budgets with 80% alert and 100% hard stop; reserved 10% safety slice",Accepted in part (no status column),7.3
+ADR-084,Prompt registry in git + immutable DB versions with eval run links,Accepted in part (no status column),7.3
+ADR-085,Multi-scope kill switch via Valkey flags checked by gateway and engine,Accepted in part (no status column),7.3
