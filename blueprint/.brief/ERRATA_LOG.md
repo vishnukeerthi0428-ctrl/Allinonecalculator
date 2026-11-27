@@ -25,3 +25,10 @@
 18. CONFLICT-110: WAF is needed. Resolution: AWS WAF managed rules on CloudFront from W2 (public intake live); cost moves from B21 (estimate; verify) and B07 is revised.
 19. Object Lock mode: compliance mode (per Part 4).
 20. Part 4 assumptions on compute/IaC/CI must be reconciled with Part 3 ADRs (GAP-123).
+
+## From Part 3.3
+21. Six DEC-016 entities are not referenced in Part 2 (BusinessLine, CapabilityProfile, PublicationSnapshot, PreviewGrant, BidChecklistItem, PlanVersion). Resolution: Part 3.3 governs the data model; these entities back FR-A003 scope, A099/A100, A107/A108, A104 and A101.
+22. "Subscription" is overloaded. Resolution: CustomerSubscription (M50, customer renewals) vs ServiceSubscription (B-SVC SaaS billing); the Part 2.3 §2.27.18 states apply to ServiceSubscription.
+23. AI "Usage" vs SaaS "UsageMeterReading". Resolution: AI Usage → CostLedger entries (M53); UsageMeterReading = billable SaaS meters (B-SVC); a mapping job aggregates AI cost into tenant meters.
+24. Entity count is 199 vs the source's 155 (17 FRD-retained names unidentifiable, GAP-112). Accepted as a DERIVED superset.
+25. Embedding dimension of 1024 is provisional until Part 7 selects the embedding model (GAP-111).

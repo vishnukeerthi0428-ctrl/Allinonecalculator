@@ -2636,6 +2636,7 @@ Role grants: `ten_membership_grant (id, tenant_id, membership_id → ten_members
 | `evidence_ids` | uuid[] | N | '{}' | | Int | Inputs cited |
 
 ---
+
 ### 3.3.6.6 CRM
 
 **ENT-079 Lead (`crm_lead`)**: Sets: STD-S + STD-W.
@@ -3351,8 +3352,8 @@ Each row gives the standard set (§3.3.6.1), the entity-specific key columns (ty
 | ENT-010 | `ten_saved_view` | STD-S | `user_id`, `screen_code` (A0xx), `name`, `filter_spec` jsonb (allowlisted fields), `is_shared_team` | UQ (user_id, screen_code, name); filter_spec validated against FR-FLT allowlist |
 | ENT-011 | `ref_dataset` | STD-X + STD-V | `code` (COUNTRY_SUBDIVISION, INDUSTRY, ROLE_TAXONOMY, SIGNAL_CATEGORY, NEED_CATEGORY, LOSS_REASON, OBJECTION_CATEGORY, HSN_SAC, PUBLIC_HOLIDAY, ORG_TYPE, TECHNOLOGY, PROGRAMME, SKU_CATALOGUE…), `owner_role`, `is_extensible_by_tenant` | UQ (COALESCE(tenant_id), code, version_no) |
 | ENT-012 | `ref_value` | STD-X | `dataset_id`, `code`, `label`, `parent_id` (tree), `attributes` jsonb (e.g. GST rate for HSN, holiday date, region), `valid_from`, `valid_to`, `sort_order` | UQ (dataset_id, code); CHECK no cycles (trigger); tenant values may extend, never alter, platform values |
-| ENT-013 | `ref_currency` | P | `code` char(3) PK, `name`, `minor_units` smallint, `is_active` | CHECK code ~ '^[A-Z]{3}$'; seeded from ISO 4217 |
-| ENT-014 | `ref_country` | P | `code` char(2) PK, `name`, `iso3`, `jurisdiction_pack` (india, eu_eea_uk, us, consent_first, denied), `subdivisions` via ref_value | CHECK code ~ '^[A-Z]{2}$'; DEC-029 mapping |
+| ENT-013 | `ref_currency` | P | `code` char(3) PK, `name`, `minor_units` smallint, `is_active` | CHECK `code ~ '^[A-Z]{3}$'`; seeded from ISO 4217 |
+| ENT-014 | `ref_country` | P | `code` char(2) PK, `name`, `iso3`, `jurisdiction_pack` (india, eu_eea_uk, us, consent_first, denied), `subdivisions` via ref_value | CHECK `code ~ '^[A-Z]{2}$'`; DEC-029 mapping |
 | ENT-015 | `ref_unit` | X | `code` PK, `dimension` (mass, volume, count, time, data, session), `base_code`, `to_base_factor` numeric(18,8), `tenant_id` (NULL = platform) | CHECK to_base_factor > 0; conversions only within a dimension |
 | ENT-018 | `cat_capability` | STD-S | `code`, `name`, `taxonomy_ref` (TECHNOLOGY/PROGRAMME value), `description` | UQ (tenant_id, startup_id, code) |
 | ENT-019 | `cat_offering_capability` | STD-S | `offering_version_id`, `capability_id`, `fit_level` (core, supported, partner), `evidence_document_id` | UQ (offering_version_id, capability_id); frozen with version |
@@ -4072,3 +4073,339 @@ Use when one tenant (or one startup) lost or corrupted data and a full-cluster r
 8. **Close**: release the hold, publish a restore report to the tenant (visible in A009), destroy the isolated instance.
 
 ---
+
+## 3.3.16 Personal data classification, masking, encryption and children's data
+
+### 3.3.16.1 Classes (RECOMMENDATION-004)
+
+| Class | Definition | Examples | Storage controls | AI routing (DEC-007) | Export |
+|---|---|---|---|---|---|
+| **Public** | Approved for publication | Published pages, approved offering descriptions, approved claims, published snapshots | Standard | Any tier incl. Tier 2 (if opted in) | Free |
+| **Internal** | Non-personal business data not for publication | Pipelines, stage codes, workflow definitions, metric definitions, non-personal evidence metadata | Encrypted at rest (RDS/S3 KMS) | Tier 0/1; Tier 2 only if **non-personal** and tenant opted in | Scoped |
+| **Confidential** | Commercially sensitive or identifying organizations/people in a business capacity | Prices, costs, margins, deal values, contract terms, organization names, contact names and titles, message bodies | At rest KMS; role-based masking | Tier 0/1 only (Anthropic primary with contractual protections, verify terms); never Tier 2 | Approval for bulk |
+| **Restricted** | Personal data, children's data, health-adjacent data, financial evidence, credentials | Personal emails/phones, guardian/learner data, payment evidence, bank references, signer identity, IP addresses, consent evidence | KMS at rest **plus field-level encryption** where listed; access logged (ABAC-05) | Tier 1 only when strictly needed, minimized; never Tier 2 (BRL-AI-06); learner data only grade band (DEC-030) | R10 approval (BRL-PRV-07) |
+
+Classification is stored per column in a **column classification registry** (`ge_meta.column_classification`: table, column, class, personal_data_category, field_encrypted, mask_rule, retention_class) generated from model metadata and checked in CI: a new column without a classification fails the build.
+
+### 3.3.16.2 Classification of personal and financial fields
+
+| Table.column | Class | Personal data category | Field-level encrypted | Mask rule (§3.3.16.5) | Retention class |
+|---|---|---|---|---|---|
+| `ten_user.email_enc` / `email_hmac` | Restricted | Contact identifier (staff/external user) | Yes | M-EMAIL | BUS |
+| `ten_user.display_name` | Confidential | Name | No | none (internal) | BUS |
+| `ten_membership.invite_token_hash` | Restricted | Credential-like | Hash only | Never shown | AUD |
+| `intel_contact.full_name`, `job_title` | Confidential | Name, professional role | No | M-NAME for R16/R18 contexts | MKT |
+| `intel_contact.email_enc`, `phone_enc` | Restricted | Contact identifiers | **Yes** | M-EMAIL / M-PHONE | MKT |
+| `intel_contact.email_hmac`, `phone_hmac` | Restricted | Pseudonymous identifier | Hash | Never shown | MKT |
+| `intel_contact.age_band`, `guardian_contact_id`, `grade_band` | Restricted | **Children's data** (DEC-030) | grade_band no (needed for filters); guardian link no | M-HIDE except R10 + assigned EduVerse staff | MKT (minor: until guardian withdrawal or programme end + 24 m, whichever first) |
+| `intel_contact_source.source_url` | Confidential | Provenance | No | none | MKT |
+| `intel_location.address` | Confidential | Organization address | No | none | BUS |
+| `gov_consent.subject_hmac`, `evidence_ref` | Restricted | Consent proof | evidence_ref yes | M-HIDE except R10 | AUD |
+| `gov_suppression.identifier_hmac` | Restricted | Pseudonymous identifier | Hash | Never shown | SUP |
+| `gov_privacy_request.subject_hmac`, fulfilment report | Restricted | Data subject request | Report object encrypted | R10 only | AUD |
+| `crm_lead.intent_summary` | Confidential | Free text (redacted) | No | none | MKT/REJ |
+| `crm_submission.payload_min` (personal fields) | Restricted | Form answers | **Yes** (encrypted sub-document) | R03 assigned, R10 | MKT |
+| `crm_submission.ip_hmac`, `eng_delivery_event.ip_hmac`, `ops_audit_event.ip` / `ip_hmac` | Restricted | Online identifier | ip (internal staff) plain, external hashed | M-HIDE except R10, R13 (meta), R15 | AUD / OPS+ |
+| `eng_message.recipient_enc` | Restricted | Contact identifier | **Yes** | M-EMAIL / M-PHONE | MKT |
+| `eng_message.body_storage_key` (object), `eng_inbound_event.body_storage_key` | Confidential | Correspondence | S3 SSE-KMS (tenant key) | Owner, assigned, R10 | MKT |
+| `eng_chat_session.transcript_storage_key` | Confidential | Correspondence | S3 SSE-KMS | R03, R05 (assigned), R10 | CHT |
+| `eng_meeting.meeting_url_enc` | Confidential | Access link | Yes | Owner/attendees | BUS |
+| `eng_identity_link.address_hmac` | Restricted | Identifier | Hash | Never shown | MKT |
+| `mkt_attribution_event.anonymous_ref` | Restricted | Online identifier (cookie hash) | Hash | Never shown | BUS (pseudonymized) |
+| `com_signature_event.signer_name`, `evidence_storage_key` | Restricted | Signer identity | evidence yes | R10, R02 | CTR |
+| `com_payment.reference_text`, `evidence_storage_key`, `payer_legal_name` | Restricted / Confidential | Financial evidence | **Yes** (reference, evidence object) | M-FIN: R08, R09, R10 only (§2.26.5) | FIN |
+| `com_*` amounts, `cat_price_version.unit_price/unit_cost`, `com_quote.margin_pct` | Confidential | Commercial | No | M-COST for roles without price rights | FIN |
+| `cat_tax_profile.gstin`, `lut_number`, `registered_address` | Confidential | Business tax identity | No | none (internal) | FIN |
+| `ai_model_run.payload_storage_key` (object) | Restricted | May contain personal data (redacted) | S3 SSE-KMS; 90 d | R11 (redacted view), R10 | AIL |
+| `ai_cost_ledger.amount`, per-agent cost | Confidential | Cost | No | M-COST: R01, R08, R11, R14 see detail; others totals (§2.26.5) | FIN |
+| `saas_application_draft.applicant_email_enc`, `authority_evidence_key` | Restricted | Applicant identity | **Yes** | Platform reviewers only | APP |
+| `int_credential_ref.secret_arn` | Restricted | Secret reference | ARN only (value never stored) | R11, R12 see reference only (NFR-004) | CFG |
+| `lcy_feedback.body_redacted`, `com_objection.raised_text` | Confidential | Free text | No (redacted at intake) | Assigned roles | BUS |
+| `intel_need.statement` | Confidential | Organization need | No | none | BUS |
+
+**Health-adjacent data (MedMaarg).** The model contains **no column** for patient, clinical or health-condition data: `intel_need.health_data_flag` is constrained to false, audience criteria validators reject health attributes, intake scanners redact health terms from free text (BRL-PRV-06, BRL-ELG-14, AP-05). Organization-level wellness programme interest (e.g. "preventive screening programme for staff") is Confidential business data, not health data about a person.
+
+### 3.3.16.3 Encryption at rest and in transit
+
+| Layer | Control |
+|---|---|
+| Database storage | RDS encryption with a customer-managed KMS key (per environment); snapshots and replicas inherit encryption |
+| Object storage | SSE-KMS with **per-tenant** KMS keys for tenant prefixes (documents, evidence, message bodies, AI payloads, exports, archives); bucket policies deny unencrypted puts and non-TLS access |
+| In transit | TLS 1.2+ to RDS (`rds.force_ssl = 1`), S3, providers; certificate verification on |
+| Backups | Encrypted snapshots; cross-region copies re-encrypted with the destination-region key |
+| Field-level | §3.3.16.4 |
+
+### 3.3.16.4 Field-level encryption and blind indexes [RECOMMENDATION-038]
+
+| Aspect | Design |
+|---|---|
+| Candidates (encrypted) | Personal email and phone (`intel_contact`, `eng_message.recipient_enc`, `ten_user`, `saas_application_draft`), form answers with personal fields (`crm_submission.payload_min`), payment reference and evidence (`com_payment`), consent evidence references, meeting join links |
+| Not encrypted (reason) | Names and job titles (needed for search and trigram; Confidential not Restricted), organization data, amounts (needed for aggregation; protected by RLS and masking) |
+| Scheme | **Envelope encryption**: per-tenant KEK in AWS KMS (`ten_tenant.kms_key_arn`); per-tenant data keys (DEK) cached in worker memory ≤ 5 minutes; AES-256-GCM with a random 96-bit nonce; ciphertext stored as `bytea` = version ‖ key id ‖ nonce ‖ ciphertext ‖ tag; associated data = `tenant_id ‖ table ‖ column ‖ row id` to prevent ciphertext swapping |
+| Blind index | `_hmac` = HMAC-SHA256(normalized value, per-tenant HMAC key from Secrets Manager); normalization: lower-case, trimmed, E.164 for phones; used for dedupe, suppression and lookup |
+| Suppression across erasure | `gov_suppression.identifier_hmac` uses the same per-tenant HMAC key so a re-imported address is still blocked after its contact row was erased |
+| Key rotation | KEK rotation yearly (KMS automatic); DEK re-wrap job; HMAC key rotation requires a dual-write period (old + new HMAC) and re-hash job |
+| Crypto-shredding | Tenant offboarding (WF-14) after the retention horizon: schedule KEK deletion (KMS waiting period), which renders residual encrypted fields and archives unreadable; non-encrypted rows are purged by the retention jobs |
+| Performance | Decryption only in serializers for roles allowed to see the value (§3.3.16.5); list views show masked values computed from metadata (e.g. stored `email_domain`) without decrypting |
+
+### 3.3.16.5 Masking rules per role (Part 2.3 §2.26.5)
+
+| Mask rule | Applies to | Visible in clear to | Masked form for others |
+|---|---|---|---|
+| M-EMAIL | Contact/user personal email | R03 (assigned), R04, R06/R07 (assigned), R10, R01/R02 | `a***@domain.tld` (from stored `email_domain`, no decryption) |
+| M-PHONE | Contact phone/WhatsApp | Same as M-EMAIL | `+91 ******1234` (last 4 stored separately as Confidential) |
+| M-GUARDIAN | Guardian and learner details | R10, assigned EduVerse staff | Hidden (field omitted) |
+| M-FIN | Bank/payment evidence files and references | R08, R09, R10 | Hidden |
+| M-COST | Cost per agent/provider, unit cost, margin | R01, R08, R11, R14 (costs); R01, R02, R08 (margin) | Totals only |
+| M-SECRET | Credential references | R11, R12 (reference only) | Never the secret value for anyone (NFR-004) |
+| M-IP | Audit IP addresses | R10, R13 (metadata), R15 | Hidden |
+| M-NAME | Contact names in portal/public contexts | Own record only (R16) | Not exposed |
+
+Masking is enforced in **serializers** (field-level permission classes) and repeated in **database views** `v_<table>_masked` used by `ge_readonly`, analytics exports and global search (FR-SRCH-01 "permitted fields only"). Exports apply classification-aware redaction (BRL-PRV-07).
+
+### 3.3.16.6 Pseudonymization for analytics and test data
+
+| Use | Technique |
+|---|---|
+| Analytics projections | Projections and metric snapshots store **counts and amounts by scope**, not personal identifiers; where a person-level key is needed (attribution journeys), use `HMAC(contact_id, per-tenant analytics key)`; keys rotate yearly, breaking long-term linkability |
+| Post-erasure references | Immutable records referencing an erased contact keep a pseudonymous token (`erased:<hmac>`), never the name |
+| Audit events | Personal fields in `field_diff` are masked at write time; erasure pseudonymizes remaining personal fields "where legally allowed" (Part 2.4 §2.34.3) |
+| Test and staging | **Synthetic data only** (RECOMMENDATION-017: two tenants, 26 startups, all verticals, minors and health fixtures). Production copies are prohibited in lower environments; performance tests use generated data at Year 2 volumes (§3.3.10). If a production-derived dataset is ever required (incident forensics), it is created inside the production account, masked by `v_*_masked` views plus format-preserving fakes, approved by R10 and deleted within 14 days |
+| AI evaluation sets | Redacted or synthetic fixtures (`ai_eval_case.input_fixture`); no Restricted data in eval sets |
+
+### 3.3.16.7 Children's data (DEC-030, ASSUMPTION-016)
+
+| Control | Data-layer implementation |
+|---|---|
+| Representation | Learners are `intel_contact` rows with `person_type = 'learner'`; guardians `person_type = 'guardian'`; no separate learner entity [ASSUMPTION-118] |
+| Minimal fields | For `under_18` learners only `full_name`, `grade_band`, programme (via `crm_lead`/`crm_submission` purpose) and `guardian_contact_id` may be non-null; a CHECK/trigger nulls or rejects email, phone, job title, organization and free text for learners under 18 |
+| Guardian verification | `gov_consent` row with `action = 'verify_guardian'`, `capture_method = 'guardian_otp'`, `lawful_basis = 'guardian_consent'`, evidence = OTP verification ID; the mechanism must be re-validated against the DPDP Rules' verifiable-consent requirement (e.g. DigiLocker-based tokens) at implementation [GAP-115] |
+| No outreach | PDP rule BRL-ELG-13: any outbound action whose recipient has `age_band = 'under_18'` → Ineligible; DQ-020 monitors |
+| No profiling or ads | Learners excluded from `mkt_audience_member`, `mkt_attribution_event` person keys, scoring and enrichment; no embeddings of learner data |
+| AI prompts | Only `grade_band` may be included; enforced by the gateway's redaction policy keyed on `person_type` |
+| Access | M-GUARDIAN masking; access to learner rows audited (ABAC-05) |
+| Retention | Learner data deleted on guardian withdrawal (privacy request) or at programme end + 24 months, whichever first |
+| DPIA | Required before EduVerse activation (DEC-030, RECOMMENDATION-007); this data model is an input to it |
+
+---
+
+## 3.3.17 Data lineage for KPIs
+
+### 3.3.17.1 Lineage pattern
+
+```mermaid
+flowchart TD
+  A["Authoritative write<br/>business table + outbox row in one transaction"] --> B["ops_outbox<br/>dispatcher"]
+  B --> C["ops_domain_event<br/>typed, versioned event"]
+  C --> D["Projection consumers<br/>idempotent by last_event_seq"]
+  D --> E["ana_account_projection<br/>ana_pipeline_projection<br/>ana_admin_projection"]
+  A --> F["Metric SQL views<br/>numerator and denominator per MetricDefinition version"]
+  E --> F
+  F --> G["ana_metric_snapshot<br/>as_of, scope, metric version, currency, unknown count"]
+  G --> H["Dashboards RP-01 to RP-30<br/>exports with metric version header"]
+  I["ana_fx_snapshot<br/>display conversion only"] -.-> H
+```
+
+**Rules.** (1) KPIs read **authoritative tables or projections**, never AI outputs that a human has not accepted. (2) Every snapshot stores `metric_definition_id` + `metric_version`, so a number in a report can be traced to the exact formula (RPT-R1). (3) Simulated rows are excluded at the view level (RPT-R7). (4) Revenue and receipts come only from ledgers (RPT-R5, BRL-FIN-06). (5) Projections are rebuildable from authoritative tables; snapshots are immutable.
+
+### 3.3.17.2 KPI lineage table
+
+| KPI | Source tables (authoritative) | Events (ops_domain_event types) | Projection / view | Metric definition | Report |
+|---|---|---|---|---|---|
+| KPI-01 Qualification precision | `intel_review`, `ai_feedback`, `intel_opportunity` | `review.decided` | `v_kpi_qualification_precision` | MD-KPI-01 | RP-20, RP-04 |
+| KPI-02 Signal precision | `intel_signal` (review_verdict) | `signal.reviewed` | `v_kpi_signal_precision` | MD-KPI-02 | RP-04 |
+| KPI-03 Verified contact rate | `intel_contact`, `intel_contact_verification` | `contact.verified` | `v_kpi_verified_contacts` | MD-KPI-03 | RP-05 |
+| KPI-04 Eligible delivery rate | `eng_message`, `eng_delivery_event`, `gov_eligibility_decision` | `message.sent`, `delivery.recorded` | `v_kpi_delivery` | MD-KPI-04 | RP-06 |
+| KPI-05 Eligible reply rate | `eng_inbound_event`, `eng_intent`, `eng_message` | `inbound.classified` | `v_kpi_reply` | MD-KPI-05 | RP-06 |
+| KPI-06 Meetings held | `eng_meeting` (completed with attendance evidence) | `meeting.completed` | `v_kpi_meetings_held` | MD-KPI-06 | RP-10 |
+| KPI-07 Qualified accounts | `intel_opportunity` (qualified), `intel_contact`, `cat_offering` | `opportunity.qualified` | `ana_pipeline_projection` + `v_kpi_qualified_accounts` (distinct org) | MD-KPI-07 | RP-01, RP-02 |
+| KPI-08 Reviewed signals | `intel_signal` | `signal.reviewed` | `v_kpi_signals_reviewed` | MD-KPI-08 | RP-04 |
+| KPI-09 Win rate | `crm_deal`, `crm_stage_transition`, `lcy_outcome` | `deal.transitioned`, `deal.closed` | `ana_pipeline_projection` | MD-KPI-09 | RP-02 |
+| KPI-10 Acquisition spend per customer | `mkt_spend_event`, `ai_cost_ledger`, provider costs, `crm_deal` (verified closure) | `spend.recorded`, `cost.settled`, `deal.closed` | `v_kpi_acquisition_cost` | MD-KPI-10 | RP-16 |
+| KPI-11 Bid award rate | `com_bid` | `bid.submitted`, `bid.awarded` | `v_kpi_bid_award` | MD-KPI-11 | RP-13 |
+| KPI-12 Fulfilment accuracy | `com_order_line`, `com_fulfillment_event`, `com_discrepancy_case` | `fulfilment.recorded`, `order.accepted` | `v_kpi_fulfilment_accuracy` | MD-KPI-12 | RP-14 |
+| KPI-13 Actual receipts | `com_payment` (checker_verified, not SaaS fee), `com_payment_allocation`, `com_receivable_entry` | `payment.verified`, `ledger.posted` | `v_kpi_receipts` (by currency) | MD-KPI-13 | RP-15, RP-01 |
+| KPI-14 Payables | `com_payable_entry` | `ledger.posted` | `v_kpi_payables` | MD-KPI-14 | RP-14, RP-15 |
+| KPI-15 Renewal rate | `lcy_renewal`, `lcy_outcome` | `renewal.decided` | `v_kpi_renewal_rate` | MD-KPI-15 | RP-18 |
+| KPI-16 Gross margin | `com_receivable_entry` (recognized), `com_payable_entry`, direct costs (`ai_cost_ledger`, `mkt_spend_event` allocations) | `ledger.posted` | `v_kpi_gross_margin` | MD-KPI-16 | RP-16 |
+| KPI-17 Suppression breaches | `eng_message` × `gov_suppression` × `gov_eligibility_decision` at send time | `message.sent` | `v_kpi_suppression_breach` (DQ-019) | MD-KPI-17 | RP-07, RP-23 |
+| KPI-18 Complaint rate | `eng_delivery_event` (complained), `eng_message` | `delivery.recorded` | `v_kpi_complaint_rate` | MD-KPI-18 | RP-06, RP-23 |
+| KPI-19 Automation rate | `aut_step_run` (side-effect steps, actor type) | `step.completed` | `v_kpi_automation_rate` | MD-KPI-19 | RP-22 |
+| KPI-20 Workflow timeliness | `aut_run` (`due_at`, `started_at`) | `run.started` | `v_kpi_timeliness` (15 min / 24 h windows, DEC-032; quiet hours excluded) | MD-KPI-20 | RP-22, RP-10 |
+| KPI-21 AI cost per task | `ai_model_run`, `ai_cost_ledger` | `cost.settled` | `v_kpi_ai_cost_per_task` | MD-KPI-21 | RP-20, RP-21 |
+| KPI-22 Cost per qualified opportunity | `ai_cost_ledger`, `intel_query_run`, channel costs, infra allocation, `intel_opportunity` | `cost.settled`, `opportunity.qualified` | `v_kpi_cost_per_qualified` | MD-KPI-22 | RP-04, RP-21 |
+| KPI-23 SaaS contribution margin | `saas_service_invoice`, `saas_credit`, allocated costs (`ai_cost_ledger` tenant budgets, infra allocation) | `service_invoice.issued` | `v_kpi_saas_margin` | MD-KPI-23 | RP-27 |
+| KPI-24 Usage reconciliation | `saas_usage_meter_reading`, `saas_service_invoice_line` | `usage.metered`, `service_invoice.issued` | `v_kpi_usage_reconciliation` (DQ-023) | MD-KPI-24 | RP-27 |
+| KPI-25 Standard onboarding time | `saas_application_draft`, `ten_tenant`, `ten_startup` lifecycle audit events | `application.approved`, `tenant.activated` | `v_kpi_onboarding_time` | MD-KPI-25 | RP-27 |
+| KPI-26 Public enquiries / portal completion | `crm_submission`, `crm_lead`, `mkt_attribution_event`, portal task events | `lead.created`, `portal.task_completed` | `v_kpi_public_enquiries` | MD-KPI-26 | RP-08, RP-09 |
+| KPI-27 Source coverage | `intel_source`, `intel_source_policy` | `source.activated` | `v_kpi_source_coverage` | MD-KPI-27 | RP-04 |
+| KPI-28 Objection resolution | `com_objection` | `objection.resolved` | `v_kpi_objection_resolution` | MD-KPI-28 | RP-11 |
+| KPI-29 Forecast error | `ana_forecast`, verified actuals from ledgers | `forecast.published`, `ledger.posted` | `v_kpi_forecast_mape` (labelled estimate) | MD-KPI-29 | RP-17 |
+| KPI-30 Cross-scope disclosure | `gov_compliance_incident` (cross_scope_exposure) | `incident.opened` | `v_kpi_cross_scope` | MD-KPI-30 | RP-23, RP-25 |
+| KPI-31 Closure integrity | `crm_deal` × closure evidence (`com_contract`, `com_payment_allocation`, `com_fulfillment_event`) | `deal.closed` | `v_kpi_closure_integrity` (DQ-017) | MD-KPI-31 | RP-15 |
+
+---
+
+## 3.3.18 Data-layer acceptance criteria
+
+```gherkin
+Feature: Tenant isolation in the database
+  Scenario: A scoped query never returns another tenant's rows
+    Given tenant "A" and tenant "B" each have a deal
+    And the session variables are set for tenant "A" and its startup
+    When the application selects from crm_deal without any WHERE clause
+    Then only tenant "A" rows are returned
+    And when the session variables are not set at all, zero rows are returned
+
+  Scenario: Portfolio scope is read-only at the database layer
+    Given a Founder session with two startups in app.startup_ids and an empty app.write_startup_id
+    When the application attempts to insert a deal
+    Then the database rejects the insert with a row-level security violation
+    And the API returns 409 SELECT_SINGLE_STARTUP
+
+Feature: Immutable financial records
+  Scenario: A ledger entry cannot be updated
+    Given a receivable entry of 270.00 INR
+    When the application role issues an UPDATE on the entry
+    Then the statement fails with IMMUTABLE_RECORD
+    And a correction is only possible by inserting a reversal entry that references the original
+
+Feature: Idempotent provider events
+  Scenario: A duplicated payment webhook has no second effect
+    Given a verified payment event with provider account "rzp_acc_1" and payment id "pay_123"
+    When the same event is delivered twice
+    Then exactly one com_payment row exists
+    And exactly one receivable posting exists for its allocation
+
+  Scenario: Duplicate fulfilment event key
+    Given an order line of 2 kg
+    When fulfilment event key "dlv-1" for 1 kg is recorded twice and key "dlv-2" for 1 kg once
+    Then fulfilled quantity is 2 kg
+    And a further event for 2 kg is rejected by the over-delivery check
+
+Feature: Quote arithmetic
+  Scenario: Server recomputation with ROUND_HALF_UP
+    Given a quote line with quantity 2, unit price 150.00 INR and discount 10 percent
+    When the line is saved
+    Then line_total equals 270.00 and a client-supplied different total is rejected
+
+Feature: Retention and erasure
+  Scenario: Erasure keeps suppression
+    Given a contact who opted out and then requested erasure
+    When the erasure is executed
+    Then the contact's email and phone ciphertext are destroyed and personal fields are null
+    And a suppression row with the email HMAC remains
+    And re-importing the same email produces a suppressed, ineligible contact
+
+  Scenario: Legal hold blocks purge
+    Given an invoice older than 8 years under an active legal hold
+    When the financial purge job runs
+    Then the invoice is not deleted and the job reports it as held
+
+Feature: AI data routing
+  Scenario: Restricted data never reaches Tier 2
+    Given a model run classified Restricted
+    When the gateway attempts to record the run with tier t2_free
+    Then the insert is rejected by the check constraint and a compliance incident is opened
+
+Feature: Children's data
+  Scenario: Learner under 18 cannot be contacted
+    Given a learner contact with age band under_18 and a verified guardian
+    When a sequence enrolment for the learner is evaluated
+    Then the eligibility decision is ineligible with reason BRL-ELG-13
+    And only the guardian contact can be enrolled
+```
+
+Test cases implementing these scenarios are catalogued in Part 6 (TC-###) under the data-layer suite.
+
+---
+
+## 3.3.19 Risks raised by this batch
+
+| RSK | Risk | Likelihood | Impact | Mitigation | Owner |
+|---|---|---|---|---|---|
+| RSK-321 | A new table ships without RLS enabled/forced or without a policy, exposing cross-tenant rows | Medium | Critical | CI guard (§3.3.9.6); two-tenant fixture tests on every API; no BYPASSRLS roles | Data Architect |
+| RSK-322 | Filtered vector search under RLS loses recall or exceeds latency at Year 2 volumes | Medium | Medium | `halfvec`, HNSW with iterative scans, partial per-startup indexes, hybrid retrieval, retrieval eval suite with recall@k threshold | Principal Engineer |
+| RSK-323 | Partition maintenance (`pg_partman`) fails, so inserts into audit/delivery tables fail at month boundary | Low | High | 3 future partitions pre-created; alarm when < 2; default partition with alert as last resort | SRE |
+| RSK-324 | Retention purge deletes data under legal hold or in the wrong class | Low | High | Dry-run + R10 approval for new policies; hold check per batch; audit per batch; archive-before-drop for AUD/FIN | R10 / Data Architect |
+| RSK-325 | Loss or misconfiguration of KMS keys makes field-encrypted data unrecoverable | Low | Critical | KMS key deletion waiting period; key policy separation; restore drills decrypt sample rows; multi-region key for DR | Security Lead |
+| RSK-326 | Imported contacts are contacted before lawful basis is verified | Medium | High | `import_unverified` basis = PDP Ineligible; DQ-022; R10 approval of consent imports | Growth/Compliance Lead |
+| RSK-327 | A restore re-introduces personal data erased after the restore point | Medium | High | Erasure replay log re-applied in every restore (§3.3.15.3 step 6); restore checklist gate | DBA |
+| RSK-328 | Database growth outpaces the pilot instance and B01 budget (domain events and audit dominate) | Medium | Medium | Partition drops/archives at 13 months; payloads in S3; monthly growth review against §3.3.10 estimates | FinOps Lead |
+| RSK-329 | Reused AppNAI identity schema conflicts with the product-local user mirror (naming, IDs, claims) | Medium | Medium | Sprint 0 identity spike (DEC-019) includes a schema-mapping check; mirror keyed by IdP subject only | Solutions Architect |
+
+---
+
+## 3.3.20 Traceability of this batch
+
+| Section | Requirements realized |
+|---|---|
+| §3.3.2–§3.3.4 Conceptual and logical model | FRD §6.1–§6.66 entities; DEC-016; DEC-065; BRD §9 entity counts; client Section 6.5 |
+| §3.3.5 Physical conventions | FRD §5; NFR-006, NFR-017, NFR-018, NFR-025, NFR-031; DEC-027; BRL-TEN-03 |
+| §3.3.6–§3.3.7 Dictionary | All FR key fields (Part 2.1 §2.4); state machines (Part 2.3 §2.27); BRL rules cited per column |
+| §3.3.8 Indexes and constraints | NFR-005, NFR-015; FRD §5 dedupe rule; DEC-037; RECOMMENDATION-009; BRL-SCR-01; BRL-QTE-02; BRL-ORD-02 |
+| §3.3.9 RLS | BRL-TEN-01…06; ABAC-01, -06, -07, -09; NFR-002, NFR-032; DEC-055, DEC-056 |
+| §3.3.10 Partitioning and volumes | DEC-031; BRD §8 pilot volumes; DEC-028 |
+| §3.3.11 Retention | DEC-028; BRL-PRV-03…05; M56; NFR-036 |
+| §3.3.12 Migration | DEC-039; DEC-057; DEC-030; DEC-029; BRL-ELG-03, -06; BRL-SRC-05 |
+| §3.3.13 Master/reference data | Part 2.4 §2.33.4; CFG-32; BRL-SRC-08 |
+| §3.3.14 Data quality | NFR-008, NFR-028, NFR-035; KPI-01…31; DEC-001; DEC-018 |
+| §3.3.15 Backup/restore | DEC-018, DEC-040, DEC-028 (35 days); NFR-007, NFR-012, NFR-013 |
+| §3.3.16 Classification and privacy | RECOMMENDATION-004; Part 2.3 §2.26.5; ABAC-05; DEC-007; DEC-030; BRL-AI-06; BRL-PRV-06/07 |
+| §3.3.17 Lineage | Part 1 KPI-01…31; Part 2.4 §2.31 (RPT-R1…R10, RP-01…30) |
+| Epics | EP-01 (tenancy), EP-02 (catalogue), EP-03 (governance), EP-04 (AI/cost), EP-05–06 (intelligence), EP-07–12 (CRM, engagement, marketing), EP-13–15 (commerce, finance), EP-16 (lifecycle), EP-17 (analytics), EP-18 (automation), EP-20 (SaaS, import/export), EP-21 (backup/restore drills) |
+
+---
+
+## 3.3.21 Register of tags issued in this batch
+
+| Tag | Statement | Section |
+|---|---|---|
+| RECOMMENDATION-036 | UUIDv7 primary keys generated in the application; never expose raw IDs as capabilities; 256-bit random tokens stored as hashes for every shared link | §3.3.5.2 |
+| RECOMMENDATION-037 | RLS with transaction-local session variables, `FORCE ROW LEVEL SECURITY`, a separate write-scope variable that enforces portfolio read-only in the database, no BYPASSRLS roles, and a CI guard | §3.3.9 |
+| RECOMMENDATION-038 | Field-level envelope encryption with per-tenant KMS keys, HMAC blind indexes for lookup/suppression, crypto-shredding at offboarding | §3.3.16.4 |
+| RECOMMENDATION-039 | `halfvec(1024)` embeddings with HNSW (m 16, ef_construction 64), iterative filtered scans, hybrid retrieval; IVFFlat rejected | §3.3.8.4 |
+| ASSUMPTION-111 | The "6 candidate entities" are Trigger, ConflictCase, ConfigRevision, NodeTemplate, WorkflowTemplate and ApplicationDraft | §3.3.3.4 |
+| ASSUMPTION-112 | Volume drivers: active outbound share 25% (Y1) / 40% (Y2), 4 delivery events per message, 120 audited actions per user-day, 150/300 gateway calls per active startup-day, document, organization and job counts as tabulated | §3.3.10.1 |
+| ASSUMPTION-113 | PostgreSQL 17 on Amazon RDS with pgvector ≥ 0.8, pg_trgm, pg_partman, pgcrypto available (verify) | §3.3.5.1 |
+| ASSUMPTION-114 | Average row sizes and the 1.6 overhead factor used for storage estimates | §3.3.10.3 |
+| ASSUMPTION-115 | Financial retention clock starts at the end of the financial year; 35-day backups are not used to meet long retention or legal hold | §3.3.11 |
+| ASSUMPTION-116 | Seed data for the four startups exists as spreadsheets/founder snapshots (no legacy database) | §3.3.12 |
+| ASSUMPTION-117 | Full-text uses `english` for English and `simple` for Hindi, Tamil and Odia, supplemented by trigram search | §3.3.8.3 |
+| ASSUMPTION-118 | Learners and guardians are Contact rows (`person_type`), not a separate entity | §3.3.16.7 |
+| ASSUMPTION-119 | SaaS usage is metered in hourly aggregate buckets per meter and workspace | §3.3.6.12 |
+| GAP-111 | Embedding model/provider not decided in the baseline (the Claude API is not assumed to provide embeddings; verify). Interim: dimension 1024 fixed per model; provider chosen in Part 7 | §3.3.8.4 |
+| GAP-112 | The original 149-entity catalogue was not supplied; 17 retained entities cannot be identified, so a one-to-one reconciliation is impossible | §3.3.3.4 |
+| GAP-113 | DEC-028 does not cover delivery events, eligibility/policy decisions, meetings, business records and configuration; interim periods given; Legal to confirm | §3.3.11.1 |
+| GAP-114 | Archive retrieval SLA not defined; interim 5 business days | §3.3.11.3 |
+| GAP-115 | DPDP verifiable parental consent mechanism to be confirmed; the consent model keeps `capture_method` and evidence extensible | §3.3.16.7 |
+| GAP-116 | "Global" suppression scope in BRL-ELG-02 is undefined; interpreted as tenant-wide (cross-tenant suppression is prohibited by DEC-065) | §3.3.6.4 |
+| CONFLICT-106 | Homonyms in the sources: Plan, Subscription, Feedback, Event (two meanings each); Execution = Run. Resolved by distinct physical names | §3.3.3.4 |
+| CONFLICT-107 | Rejected leads purged at 6 months (DEC-028) vs rejected opportunities never contacted (BRL-ELG-15). Resolved: keep an exclusion hash in suppression | §3.3.11.1 |
+| CONFLICT-108 | Audit log 7 years vs financial 8 years / contracts term + 8 years: approvals and audit events about financial/contract objects follow the governed object's retention | §3.3.11.1 |
+| CONFLICT-109 | Marketing contact 24 months vs contract signer evidence term + 8 years. Resolved: marketing profile erased, contractual signer record retained under CTR | §3.3.11.1 |
+| RSK-321…RSK-329 | Data-layer risks | §3.3.19 |
+
+**Inconsistencies observed in earlier parts (reported, not changed):**
+
+1. Part 2.1 §2.2 "Cross-cutting (DERIVED)" row lists 22 entities; six DEC-016 entities appear nowhere in Part 2: **BusinessLine, CapabilityProfile, PublicationSnapshot, PreviewGrant, BidChecklistItem, PlanVersion**. They are included here (ENT-003, -004, -113, -114, -134, -180).
+2. Part 2.3 §2.27.18 "Subscription" states (Trial → Active → PastDue …) describe the **SaaS** subscription, while FRD M50 "Subscription" (Part 2.1 §2.2) is the customer subscription renewed by M50; resolved by CONFLICT-106.
+3. Part 2.1 §2.2 M53 lists entity "Usage" and the SaaS row lists "UsageMeterReading" without distinguishing AI/provider usage from SaaS metering; this batch separates them (ENT-050 vs ENT-183).
+
+---
+
+## 3.3.22 Quality gate: Batch 3.3
+
+| # | Check | Result | Notes and fixes applied |
+|---|---|---|---|
+| 1 | Every requirement traced to a source | **Pass** | Each entity carries an origin (FRD module, DEC-016 or DERIVED with the rule that requires it); columns cite BRL/DEC/NFR IDs; §3.3.20 maps sections to sources |
+| 2 | Assumptions, gaps and conflicts tagged and logged | **Pass** | RECOMMENDATION-036…039, ASSUMPTION-111…119, GAP-111…116, CONFLICT-106…109, RSK-321…329 issued, all within the allocated ranges and logged in §3.3.21. GAP-117…119 were not needed |
+| 3 | IDs unique and consistent with earlier parts | **Pass** | New ID families ENT-001…199, DQ-001…032, V-01…20, UQ-IDEM/UQ-DUP, CK-01…24, MD-KPI-01…31, R-REC-01…06, C-1…8, D-1…4 are local to this batch; roles, BRL, KPI, RP, CFG, FR, DEC IDs reused exactly as defined |
+| 4 | No story lacks AC and no requirement lacks a test | **Pass (N/A for stories)** | No user stories in this batch; data-layer acceptance criteria in §3.3.18 (Gherkin); RLS CI guard, restore drills, DQ checks are executable tests; Part 6 assigns TC IDs |
+| 5 | Negative, edge, security and accessibility cases covered | **Pass (accessibility N/A)** | Negative/edge: stale revision, duplicates, over-delivery, unset session variables, portfolio writes, legal hold, erasure replay, minors, Tier 2 restriction. Accessibility is a UI concern (Part 2.5) |
+| 6 | No agent lacks guardrail, fallback, KPI and cost estimate | **N/A** | No agents defined here; data structures for agent registry, model runs, budgets and evals provided for Part 7 |
+| 7 | Time-sensitive facts flagged "verify" with an as-of date | **Pass** | PostgreSQL/RDS versions and extensions, pgvector features, RDS log-shipping interval, ap-south-2 availability, S3 storage tiers, GST rules, DPDP consent mechanism, e-sign providers, Meta WhatsApp window: all marked *verify at implementation (as of 27 Nov 2026)*; no prices stated as fact |
+| 8 | No restricted data routed to free-tier models | **Pass** | CK-16 check constraint on `ai_model_run`; DQ-021 daily check; no embeddings of Restricted data; learner data limited to grade band |
+| 9 | Consistent with earlier parts | **Pass, with three reported inconsistencies** | Audit schema matches Part 2.4 §2.34.2 field for field (plus `scope_type`, `seq`, `retention_class`); states mirror Part 2.3 §2.27; retention follows DEC-028; three earlier-part inconsistencies reported in §3.3.21, not edited |
+
+**Status: Part 3 Batch 3.3 complete. 199 logical entities (131 FRD-named + 35 DEC-016 + 33 derived here) reconciled against "149 retained + 6 candidate"; 17 domain ER diagrams; 68 entities with column-level dictionary; RLS, partitioning, retention, migration, DQ, backup and privacy designs specified. Ready for Batch 3.1/3.2 cross-reference.**

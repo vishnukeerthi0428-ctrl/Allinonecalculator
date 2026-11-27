@@ -1338,3 +1338,284 @@ Batch 6.3 publishes the full alias → FR set → TC list table (generated from 
 **Coverage % formulas (reported per epic, wave and overall):** FR coverage = FRs with ≥ 1 linked passing TC ÷ FRs in scope; AC coverage = AC with ≥ 1 passing TC ÷ AC in scope; BRL coverage = rules with ≥ 1 passing DT/BVA TC ÷ 162; depth compliance = risk areas whose required depth (§6.1.4.2) is met ÷ 30.
 
 ---
+## 6.1.13 User acceptance testing (UAT) plan
+
+### 6.1.13.1 Objectives
+
+1. Business users confirm that each vertical route and cross-cutting control produces the intended business result (BRD §10, §11).
+2. Acceptance procedures AP-01…AP-10 are executed and recorded with evidence (DEC-014; BRD §15, §16).
+3. Usability is observed on real tasks (NFR-034) and issues are triaged before activation.
+4. Sign-off is recorded by authorized, independent people, and never treated as production certification (BRD §13.2; ladder level L-T).
+
+### 6.1.13.2 Participants by persona
+
+| Persona (Part 1 §1.8) | Role(s) | UAT participant (real person class) | Packs | Minimum per UAT cycle |
+|---|---|---|---|---|
+| P01 Founder / Portfolio Owner | R01 | Founder/CTO (also Product Owner; signs as accountable, **not** as independent reviewer) | All (portfolio view, approvals > 20%, high-value contracts) | 1 |
+| P02 Startup Head | R02 | Each seed startup head (AppNAI, MedMaarg, EduVerse, OrganicSpec) | Own vertical pack | 1 per vertical |
+| P03 Growth Manager | R03, R03L | Growth/sales staff | Outreach, CRM, quotes ≤ 10% | 2 |
+| P04 Research Analyst | R04 | Research lead | Discovery and review | 1 |
+| P05 Marketing Specialist | R05, R05L | Marketing staff (author and lead must be different people) | Content, campaigns, publication | 2 |
+| P06 Bid & Proposal Manager | R06 | AppNAI bid staff | UAT-PK-AN | 1 |
+| P07 Order & Fulfilment Coordinator | R07 | OrganicSpec order staff | UAT-PK-OS | 1 |
+| P08 Finance Officer | R08, R09 | Two different finance users (maker and checker) | UAT-PK-FIN and vertical closure steps | 2 |
+| P09 Legal, Compliance & DPO | R10 | Growth/compliance lead (0.5 FTE, DEC-005) or external counsel delegate | UAT-PK-GOV; claims; contracts; DPIA evidence | 1 |
+| P10 Automation Lead | R11 | Engineer or growth lead acting as automation lead | UAT-PK-AUTO | 1 |
+| P11 Tenant Administrator | R12 | Internal admin for T1; client admin for T2/T3 | UAT-PK-SC; users and templates | 1 |
+| P12 Platform Support & Billing | R13, R14 | DevOps/support engineer | UAT-PK-SC (support grants, billing) | 1 |
+| P13 SaaS Client Administrator | R17 → R12 of own tenant | Friendly pilot client representative, or an internal proxy using synthetic identity | UAT-PK-SC (W31–W34) | 1 |
+| P14 External customer/supplier/institution/guardian | R16 | Internal proxies with synthetic identities; friendly customers only at L-C | Portal steps in vertical packs | 2 |
+| P15 Anonymous visitor | R18 | Any participant using a clean browser | Public site steps | 1 |
+| Independent reviewer | n/a | A person who did not build or test the scope (e.g. another startup head, external QA reviewer) | Reviews evidence and signs EVR | 1 |
+
+Participant time is not in the engineering budget; see GAP-165.
+
+### 6.1.13.3 Scenario packs per vertical and cross-cutting
+
+| Pack | Vertical / area | Scenarios (each becomes TS in Batch 6.2) | Key rules and acceptance | AP | Waves |
+|---|---|---|---|---|---|
+| **UAT-PK-AN** | AppNAI (global AI project bids) | (1) Discover an RFP from a permitted source with evidence; (2) bid/no-bid decision by Startup Head with mandatory checklist; (3) checklist item fails → no "Bid" decision without approved waiver; (4) proposal and quote with discount approval; (5) human submits on the portal and records submission ID, timestamp, receipt hash; (6) submission blocked at deadline − 24 h (clock control); (7) award recorded only with award proof; (8) contract signed (hash match) → Won-Contracted; (9) invoice, payment in USD with FX snapshot for reporting only; (10) EU recipient outreach under LIA rules | "No submission without mandatory checks" (BRD §11); BRL-BID-01…06; DEC-053; DEC-054 | AP-02, AP-03, AP-04 | W1, W4 |
+| **UAT-PK-MM** | MedMaarg (institutional wellness partnerships) | (1) Organization-level need qualification; (2) claim "750+ users" cannot be published until approved with evidence (DEC-021); (3) outreach draft uses approved claims only and never health data; (4) website chat routes a clinical question to a human; (5) intake free text containing patient details is redacted and flagged; (6) pilot proposal → pilot running → evaluated (healthcare pilot variant); (7) partnership handoff | "Approved claims and appropriate partnership handoff" (BRD §11); BRL-ELG-14; BRL-AI-11 | AP-02, AP-03, AP-05 | W2, W3, W4 |
+| **UAT-PK-EV** | EduVerse (education; no direct outreach to minors) | (1) Institution enquiry routed to EduVerse; (2) external AI development request entered on EduVerse site is routed to AppNAI (FR-DM-04); (3) learner aged 15: guardian path, OTP to guardian, declaration, consent record; (4) attempt to message the learner is blocked; (5) learner data limited to name, grade band, programme; AI prompt contains grade band only; (6) guardian revokes consent → queued items cancelled; (7) cohort enrolment states | "Correct routing and applicable consent" (BRD §11); DEC-030; BRL-ELG-13 | AP-02, AP-05 | W2, W3, W4 |
+| **UAT-PK-OS** | OrganicSpec (agri buy/sell) | (1) Supplier registration and verification; (2) buyer RFQ with SKU, unit and quantity validation; (3) sell order reserves availability; (4) partial deliveries; duplicate delivery event no effect; over-delivery rejected (FR-DM-03); (5) receivable and payable in separate ledgers, never netted; (6) partial payment then full payment → Paid only when allocations equal total; (7) payment evidence with mismatched amount → discrepancy; (8) maker and checker are different people | "Accurate order, receipt and reconciliation" (BRD §11); BRL-ORD-01…06; BRL-FIN-01…08 | AP-04 | W4 |
+| **UAT-PK-SC** | SaaS client (external tenants T2/T3) | (1) W31 SaaS page shows only approved service terms; (2) W32 registration proves administrator authority; no provisioning before verification and approval; (3) W33 onboarding wizard: AI proposals marked unverified; simulation only, no dispatch or spend; (4) provisioning idempotent; (5) entitlements and trial limits enforced; (6) usage metered and reconciled 100% to invoice; (7) suspend T3 without affecting T2; (8) export T2 data and revoke; (9) T2 users never see T1 data anywhere; (10) support access grant approved by tenant admin, ≤ 72 h, visible to tenant | BR-SVC; BRL-SVC-01…07; DEC-056; NFR-035 | AP-09, AP-10 | W5 |
+| UAT-PK-GOV | Compliance and privacy (cross-cutting) | Opt-out across channels; jurisdiction denials; complaint containment; privacy request with legal hold; retention purge evidence; DPIA presence before activation | BRL-ELG, BRL-PRV | AP-05, AP-10 | W0, W3, W5 |
+| UAT-PK-FIN | Finance (cross-cutting) | Quote tax intra/inter-state and LUT export; invoice maker-checker; refunds; revenue reports from verified ledger only; forecasts labelled estimate | BRL-QTE, BRL-FIN; DEC-027 | AP-04 | W4, W5 |
+| UAT-PK-AUTO | Automation (cross-cutting) | Template from approved nodes only; simulation report; emergency stop ≤ 60 s; pause/resume revalidates policy; conflict resolution priority; uncertain outcome reconciliation before retry; autonomy caps | BRL-AUT-01…10; DEC-064 | AP-06, AP-07 | W2, W3, W5 |
+| UAT-PK-WEB | Website and portal (cross-cutting) | Publish/rollback by approved hash; draft never public; unknown host 404; preview grant expiry; portal object grants; accessibility statement | BRL-PUB-01…06; CA-PORTAL | AP-02, AP-10 | W2, W3 |
+| UAT-PK-PORT | Portfolio and configuration | 26th startup by template, no code change; portfolio read-only; configuration change with diff, approval and pinned revisions; requirements traceability semantic approval | BRL-TEN-05, -11; A112 | AP-01, AP-07, AP-08 | W0, W5, W6 |
+
+### 6.1.13.4 UAT readiness review (entry)
+
+| Check | Owner |
+|---|---|
+| SYS and E2E exit criteria met for the pack's scope; no open S1; S2 per RBR rules | QA Lead |
+| `staging` deployed with the release candidate digest; GSE-SYN `uat` profile at the manifest version; UAT snapshot taken | DevOps |
+| Participants named, trained (60-minute walkthrough per pack), accounts with MFA ready | QA Lead + PO |
+| Scripts approved by the vertical owner (P02) and the Product Owner | PO |
+| Evidence capture ready in A090 (EVR templates) | QA Lead |
+| Outbound allowlist guard verified; all external channel flags OFF in `staging` except sandbox adapters | Security Lead |
+
+### 6.1.13.5 Execution, sign-off and exit
+
+```mermaid
+sequenceDiagram
+  participant QA as QA Lead
+  participant BU as Business users
+  participant ENG as Engineering
+  participant IR as Independent reviewer
+  participant PO as Product Owner
+  participant A90 as A090 Release readiness
+  QA->>BU: Readiness review passed, scripts and accounts issued
+  BU->>BU: Execute pack scenarios on staging
+  BU->>QA: Results and defects with evidence
+  QA->>ENG: Triage defects by severity
+  ENG->>QA: Fixes verified in SYS
+  QA->>BU: Retest failed scenarios
+  QA->>IR: UAT summary with EVR records
+  IR->>A90: Review evidence and record decision
+  PO->>A90: Business acceptance sign-off
+  A90-->>PO: Gate status computed, Approve enabled only if all blocking gates pass
+```
+
+| Exit criterion | Rule |
+|---|---|
+| Scenario results | 100% of P0 and P1 UAT scenarios Pass; P2 ≥ 95% Pass with the rest waived per RBR-3/RBR-4 |
+| Defects | No open S1; no open S2 in P0 areas |
+| AP evidence | Each AP in scope has an EVR with decision Pass and business acceptance |
+| Usability | No critical usability issue open on P0 journeys; SUS and task success recorded (T09) |
+| Sign-off | Product Owner (accountable) + vertical owner (P02) + independent reviewer; for UAT-PK-GOV also the DPO (R10); for UAT-PK-FIN also a Finance user not involved in the build |
+| Statement | The UAT sign-off text states: "Accepted on synthetic/staging evidence (ladder L-T). Not production certification." (BRD §13.2) |
+
+### 6.1.13.6 Acceptance procedures AP-01…AP-10 (DEC-014)
+
+| AP | Procedure (BRD §15/§16) | Verification steps | Fixture | Evidence required | Accountable (BRD) | Wave |
+|---|---|---|---|---|---|---|
+| AP-01 | Configurable owned startups | Create the 26th owned startup in T1 from an approved template and capability profile; customize offerings and commercial objectives (DEC-002 wording); run one simulated workflow; verify independent scoping (users, budgets, sender identity, publication host) | GSE-SYN T1 + template v1 | Commit/digest, config revision, screenshots, no code change (diff of deployed image = none) | Capacity architect | W0 (template), W6 (re-run) |
+| AP-02 | Scope separation of business capabilities | Route: external AI project → AppNAI; education → EduVerse; healthcare partnership → MedMaarg; organic trade → OrganicSpec (DEC-052; FR-DM-04). Negative: no fundraising capability exists (DEC-002 replacement acceptance) | T1 seed startups; EDGE-NEG-FUND | Routing results; build check report | Solution architect | W2, W4 |
+| AP-03 | Opportunity qualification | Eligible and ineligible opportunities with approved fit criteria and evidence; compare score breakdown; Unknown when known weight < 0.60 | Opportunity fixtures per vertical | Score breakdowns; qualified funnel entries with reason and owner | Business conversion lead | W1 |
+| AP-04 | Closure and receipt distinction | Submit partial receipt, then complete verified payment/approval; reconcile ledger and closure state; Awarded, Signed, Delivered and Paid shown separately (DEC-054) | OrganicSpec and AppNAI deal fixtures | Ledger entries, closure states, dashboard separation | Business conversion lead | W4 |
+| AP-05 | Sensitive-data exclusions | Inspect research, contact and AI input policies; run patient and school-minor fixtures through intake, research, messaging, ads audiences and AI prompts | EDGE-HEALTH, EDGE-MINORS | Redaction logs, PDP denials, prompt captures (redacted), 0 violations | Privacy and compliance lead | W2, W3 |
+| AP-06 | Autonomy and approval | Each DEC-064 cap: L1-capped actions never execute without hash-bound human approval; L2/L3 only where allowed and gates pass (DEC-001) | Workflow templates | Run histories, approval records | Automation lead | W2, W5 |
+| AP-07 | Reusable business templates | Template versioning; clone to another startup; running runs keep pinned revisions | A113 templates | Template diff, run pins | Automation lead | W3, W5 |
+| AP-08 | Requirements traceability semantic approval | Product Owner approves the requirement → test mapping (Batch 6.3) for the release scope; spot-check of 10% of links for semantic correctness | Traceability matrix | Approval record, spot-check results | Product Owner | Each release |
+| AP-09 | Entitlement and trial controls | Trial quota; over-quota blocked; expiry → read-only + export; no billable action outside entitlement | T3 (trial), T2 (Growth) | Metering records, denial evidence | Service owner | W5 |
+| AP-10 | Boundary and acceptance conditions | In the two-tenant fixture: deny cross-scope access, reject stale grants, verify correct successful scope; revalidate permission, eligibility, budget and approved content at execution | T1 + T2 | Positive, denial and recovery evidence (BRD §16) | Solution architect + Security | W0, every release |
+
+---
+
+## 6.1.14 Non-functional test plans
+
+### 6.1.14.1 Performance test plan
+
+**Targets (binding).** API p95 ≤ 500 ms reads and ≤ 800 ms writes, excluding provider latency; public page TTFB p95 ≤ 800 ms (CDN-cached ≤ 200 ms); outbox dispatch lag p95 ≤ 60 s; availability 99.5% (pilot) → 99.9% Website/Portal at the scale gate; capacity for 10× pilot volume (DEC-018). Transactional automation ≥ 99% started within 15 min of due time; scheduled batch ≥ 99% within 24 h (DEC-032). Customer 360 visible within 60 s (NFR-008). Public pages LCP ≤ 2.5 s (p75, mid-range mobile on 4G), INP ≤ 200 ms, CLS ≤ 0.1, JS ≤ 150 KB gzip per public route (Part 2.5 §2.48, RECOMMENDATION-028).
+
+**Workload model (derived from DEC-031 design points and BRD §8 pilot volumes) [ASSUMPTION-181].**
+
+| Stream | Design input | Derivation (assumed factors shown) | Test rate (Year 2 load) | Stress (3×) |
+|---|---|---|---|---|
+| Public website | 50,000 sessions/month (Year 2) | ÷ 30 days × peak-day factor 2 = 3,333 sessions/day; peak hour 15% = 500 sessions/h; 6 page views/session = 3,000 views/h ≈ 0.8 views/s; ≈ 3 origin requests per uncached view ≈ 2.5 req/s; × 5 safety | **15 req/s origin**, cache-cold and 80% CDN-hit variants | 45 req/s |
+| Public intake | 2% of sessions submit a form | 500 sessions/h × 2% = 10 submissions/h; × 5 safety | 1 submission/min steady + abusive profile LT-07 | n/a (LT-07) |
+| Portal | 5,000 portal users/month | 10% active on peak day = 500; peak hour 20% = 100 users/h; 15 requests/visit = 1,500 req/h ≈ 0.4 req/s; × 10 safety | **5 req/s** | 15 req/s |
+| Admin | 200 internal users | 40% concurrently active = 80; 1 request/10 s each = 8 req/s; peak × 2 = 16 req/s; read:write 80:20 | **20 req/s** | 60 req/s |
+| Global search | Admin subset | 10% of Admin requests | 2 req/s on profile `l` | 6 req/s |
+| Outbound messages | 10× pilot: 20,000 emails + 10,000 WhatsApp/month | Campaign burst of 5,000 messages released in 1 h plus transactional replies | **1.4 msg/s burst** through PDP + outbox | 4.2 msg/s |
+| Provider webhooks | ≈ 2 events per message | 60,000 events/month; burst after campaign | **50 events/s for 2 min** (LT-05) | 150 events/s |
+| Scheduled runs | 100 workspaces × 50 due runs/day | 5,000 due runs/day, clustered at window opening 09:00 local | 1,000 due runs released at 09:00 IST | 3,000 |
+| Discovery fetches | 10× pilot = 5,000/month | Nightly batch | 500 fetches in a 2 h window | 1,500 |
+| AI tasks | Budget-capped (DEC-008) | Gateway overhead and queueing, simulator latency 2–20 s | 10 concurrent model calls | 30 (expect Tier 3 degrade, no thread starvation) |
+
+**Load test catalogue (aligned with Part 4.1 references LT-03, LT-05, LT-07).**
+
+| LT | Name | Profile | Duration | Environment | Pass criteria |
+|---|---|---|---|---|---|
+| LT-01 | Admin mixed API load | 20 req/s, 80/20 read/write, 80 virtual users across T1 startups and T2 | 60 min | `perf`, profile `l` | p95 read ≤ 500 ms, write ≤ 800 ms; errors < 0.5%; DB CPU < 70% |
+| LT-02 | Public website and portal | 15 req/s public (cold and warm cache) + 5 req/s portal | 60 min each variant | `perf` + CDN in front | TTFB p95 ≤ 800 ms uncached, ≤ 200 ms cached; portal p95 ≤ 500 ms |
+| LT-03 | Expensive queries | Deep cursor pagination, widest allowed filters, global search, 3 concurrent large exports, dashboard aggregates | 30 min | `perf` | Statement timeouts enforced (5 s API, 60 s reporting, Part 4.1 THR-028); page size cap 200; API p95 for other users unaffected (≤ 10% degradation) |
+| LT-04 | Outbound burst | Campaign 5,000 messages/h + transactional replies + reminders | 2 h | `perf`, simulator latencies | Outbox lag p95 ≤ 60 s; transactional runs start ≤ 15 min (DEC-032); 0 duplicates; 0 sends to suppressed fixtures |
+| LT-05 | Webhook flood | 50 events/s for 2 min incl. 10% duplicates, 5% out-of-order, oversized payloads > 256 KB | 15 min | `perf` | All valid events persisted before ack; duplicates no effect; oversized rejected by WAF/app; queue drains ≤ 10 min |
+| LT-06 | Soak | Year 1 peak mix (LT-01 at 50%, LT-02 at 30%, LT-04 at 20% rate) with clock advancing through quiet hours | 24 h (W2), 72 h (W5) | `perf` | Memory growth < 10% after warm-up; no worker restarts; outbox lag within target; ≥ 99% due runs on time |
+| LT-07 | Abusive public intake and chat | Bot profile: 100 req/min per IP, 1,000 req/min per site, chat token abuse | 20 min | `staging` with WAF rules | Per-IP 30 req/min and per-site 600 req/min limits enforced (Part 2.4 §2.35.3); 429 with retry-after; AI budget hard stop reached without overspend (BRL-AI-08); CRM not filled with junk (dedupe and abuse flags) |
+| LT-08 | Stress to break | Ramp LT-01 + LT-02 + LT-04 to 3× | until SLO breach | `perf` | Graceful degradation (429/503, Tier 3); no data loss or duplicate effects; recovery to SLO ≤ 10 min after load drops |
+| LT-09 | Due-run timeliness | 1,000 due runs released at 09:00 IST across startups with mixed quiet hours | 2 h | `perf` with clock control | ≥ 99% transactional runs start ≤ 15 min; quiet-hour deferrals not counted as late |
+| LT-10 | Customer 360 freshness | Events at LT-01 rate; probe writes and reads projection | 60 min | `perf` | 95% of updates visible ≤ 60 s; 100% ≤ 120 s (NFR-008) |
+| LT-11 | 10× pilot capacity | Combined LT-01, LT-02, LT-04 at 10× BRD §8 pilot volumes on the pilot topology (DEC-040) | 60 min | `perf` sized as pilot production | All DEC-018 targets met without architecture change |
+| LT-12 | Front-end budgets | Lighthouse CI on top 10 public routes per seed startup (mobile, throttled) | Per build | `test` | LCP ≤ 2.5 s, INP proxy (TBT) within budget, CLS ≤ 0.1, JS ≤ 150 KB gzip |
+
+**Method.** k6 scripts per LT in `perf/k6/`; data from profile `l`; virtual users authenticate through the BFF like real users (cookies, CSRF); provider simulator latencies follow recorded sandbox distributions; metrics from k6 + OpenTelemetry + CloudWatch; results stored as EVR with the run's commit and infrastructure revision. Baseline the first run in W2; regressions > 20% on p95 versus baseline fail G4 even when below the absolute target.
+
+### 6.1.14.2 Security test plan
+
+| Activity | Scope | Tool / method | Cadence | Pass criteria | Owner |
+|---|---|---|---|---|---|
+| SAST | Python, TypeScript, Django templates | Semgrep (Part 4.1 SC-11 rules), Bandit, ESLint security | G1 | 0 new high/critical; banned patterns absent | Security Lead |
+| SCA and licences | Python and npm dependencies, container base images | pip-audit/OSV-Scanner, npm audit, Trivy; licence allowlist (open-source-first, BRD §10) | G1 and daily | 0 known exploitable critical/high without risk acceptance | DevOps |
+| Secret scanning | Repository and history, CI logs, built bundles | gitleaks; bundle string scan | G0/G1/G2 | 0 findings | DevOps |
+| IaC and cloud configuration | Terraform/OpenTofu modules (RECOMMENDATION-010) | Checkov; AWS Config rules (Part 4) | G2 | 0 high findings | DevOps |
+| Authorization matrix | Role (R01–R20) × endpoint × method × scope (own startup, other startup, portfolio, other tenant) generated from Part 2.3 RBAC matrix and the OpenAPI inventory | pytest generator; schemathesis authenticated runs | G3 (full), G1 (changed endpoints) | 100% match with the expected matrix; 0 unexpected allow | QA + Security |
+| RLS and tenancy | All operational tables; two-tenant fixture | IT suite + catalogue test that every operational table has RLS enabled and forced | G1 subset, G3 full | 0 failures | Data Architect |
+| DAST | Website, Portal and Admin through BFFs; authenticated contexts per role; API scan from OpenAPI | OWASP ZAP baseline (G3), full + API scan (G4) | Nightly; per release | 0 high/critical; mediums triaged | Security Lead |
+| API fuzzing | All OpenAPI operations | schemathesis (stateless + stateful links) | G2, G3 | No 5xx; no schema violations; no auth bypass | QA |
+| Session and BFF | Cookie flags (`HttpOnly; Secure; SameSite=Strict`), CSRF, logout propagation, revocation ≤ 60 s, wrong audience, PKCE | DEC-019 12-check spike reused as automated tests | W0 then G3 | 12/12 pass | Security Lead |
+| Webhooks and callbacks | Signature verification, replay window, dedupe, size limits | IT + LT-05 | G1, G3 | Unsigned/expired/replayed rejected | Backend |
+| SSRF and fetchers | Research fetchers and URL inputs | Payload corpus (internal IPs, metadata endpoints, redirects, DNS rebinding) | G3 | 0 internal reach | Backend |
+| File uploads | All upload points | EICAR, polyglots, oversized, zip bombs, content-type spoofing | G3 | Rejected or quarantined before use (NFR-021) | Backend |
+| AI red team | Every agent and the website assistant | Prompt-injection corpus (inbound email, web page, PDF), data-exfiltration prompts, jailbreaks, tool-abuse attempts | G3; on prompt/model change | 0 policy violations; 0 tool calls outside registry (DEC-048) | AI lead + Security |
+| Threat-model coverage | Every THR-### in Part 4.1 with a verification method | Traceability THR → TC | Per release | 100% of THR rated H impact with ≥ 1 passing TC | Security Lead |
+| External penetration test | Website, Portal, Admin, APIs, webhooks, cloud configuration | Independent tester using OWASP WSTG and ASVS Level 2 as checklist (verify current versions) | Before the first real controlled pilot (W4) and before the first external tenant (W5); then annually and after major changes [RECOMMENDATION-073] | 0 critical/high open; mediums with dated plan | Security Lead (budget: B07/B10 or approved change, verify cost) |
+| Security regression | Each fixed security defect | Regression TC mandatory | Always | Never reappears | QA |
+
+### 6.1.14.3 Accessibility test plan (WCAG 2.2 AA)
+
+| Layer | What | Tool / method | Cadence | Pass criteria |
+|---|---|---|---|---|
+| Components | Every shared component: roles, names, states, focus management, contrast tokens | vitest-axe + RTL keyboard tests | G1 | 0 violations |
+| Pages | All public routes per seed startup; top 20 Admin and Portal journeys; every UI state in Part 2.5 §2.47 | @axe-core/playwright in E2E; Lighthouse accessibility | G3 | 0 critical/serious; moderate triaged |
+| Publication gate | Every page/landing page before publication | Automated WCAG check in the publish flow (BRL-PUB-06; A057) | Each publish | Pass or approved waiver |
+| Keyboard | Full keyboard operation incl. board drag alternative ("Move to stage"), no traps, skip links, visible focus ≥ 2 px 3:1 | Scripted manual checks per journey | Per wave | All P0 journeys operable |
+| WCAG 2.2 additions | 2.4.11 focus not obscured; 2.5.7 dragging alternatives; 2.5.8 target size ≥ 24×24 CSS px; 3.2.6 consistent help; 3.3.7 redundant entry; 3.3.8 accessible authentication (passkeys, password managers, no cognitive tests) | Checklist + automated target-size script | Per wave | All pass |
+| Zoom and reflow | 200% text resize; reflow at 320 CSS px (tables scroll in container) | Playwright viewport + manual | Per wave | No loss of content or function |
+| Screen readers | NVDA + Chrome (Admin, Website); VoiceOver + Safari (macOS and iOS for Website/Portal) | Manual passes on top journeys | Per release (Part 2.5 §2.46) | P0 journeys completable; live regions announce async status |
+| Time limits | Session timeouts and slot holds warn ≥ 60 s with extension (2.2.1) | Clock-controlled E2E + manual | Per release | Pass |
+| Content | Alt text, captions on public videos, accessibility statement per startup (W30) | Content review checklist | Per publication | Present |
+| Users with disabilities | At least one participant using assistive technology in usability sessions (W3, W5) | Moderated sessions | W3, W5 | Findings triaged; no critical open |
+
+Accessibility defects that block a P0 journey for keyboard or screen-reader users are S2 (§6.1.8.2) and block release in P0 areas (RBR-2).
+
+### 6.1.14.4 DR / failover drill plan (RPO ≤ 15 min, RTO ≤ 4 h)
+
+**Measurement method.** A heartbeat writer inserts a timestamped row every 10 s in `staging` during the drill. **RPO measured** = failure-injection time − timestamp of the last heartbeat present after restore. **RTO measured** = time the incident is declared → `/ready` green **and** post-restore smoke and integrity checks pass.
+
+| Drill | Scenario | Steps | Target | Cadence | Owner |
+|---|---|---|---|---|---|
+| DR-1 | PITR restore of PostgreSQL to a point before a destructive change | Inject a bad migration/data deletion; restore to T − 5 min into a new instance; repoint application | RPO ≤ 15 min; RTO ≤ 4 h | Every release (NFR-012) | SRE + DBA |
+| DR-2 | Loss of the database instance | Simulate instance failure (pilot single-AZ, DEC-040); restore from latest PITR | RPO ≤ 15 min; RTO ≤ 4 h | Quarterly; before W4 activation | SRE |
+| DR-3 | Region-level loss (pilot topology) | Restore from the cross-region backup copy into the secondary Indian region (verify ap-south-2 availability); bring up the stack from IaC | Documented actual RPO/RTO; gap vs target raised as risk if > target | Twice a year (first before W5) | SRE |
+| DR-4 | Object storage loss or corruption | Delete/overwrite objects in a tenant prefix; recover from versioning | 100% objects recovered | Quarterly | SRE |
+| DR-5 | Application or worker instance loss | Kill web and worker containers during LT-04 load | No lost events; outbox resumes; no duplicate sends | Per release | SRE |
+| DR-6 | Valkey loss (cache/broker) | Flush or kill Valkey during dispatch | Outbox remains source of truth; tasks re-enqueued from outbox; no duplicates | Per release | Backend |
+| DR-7 | Provider outage | Simulator returns 5xx/timeouts for SES/WhatsApp/payment for 30 min | No event loss (NFR-007); retries with backoff; uncertain outcomes reconciled; exception queue | Per release | QA |
+| DR-8 | Bad deployment rollback | Deploy a release with a deliberately failing health/SLO; automatic or manual rollback | Rollback ≤ 15 min; schema compatible (expand/contract) | Every release (NFR-013) | DevOps |
+| DR-9 | Multi-AZ failover (from the scale gate) | Force database failover; app instances behind load balancer | Failover within managed-service time (verify); no data loss | Quarterly after scale gate | SRE |
+
+**Post-restore integrity checklist (all must pass before declaring recovery).** (1) Audit hash chain verifies end to end (NFR-018). (2) Outbox reconciliation: every outbox row after the restore point is compared with provider records by idempotency key; rows already executed by the provider are marked reconciled, not re-sent (EG-18). (3) Uncertain outcomes queue reviewed. (4) Ledger balances equal Σ entries; no orphan allocations. (5) RLS policies present and enabled on all operational tables. (6) Search and vector indexes rebuilt or verified for row counts. (7) Caches flushed (tenant-keyed). (8) Budget reservations reconciled with provider usage. (9) Smoke and P0 subset green. (10) Incident record and EVR with measured RPO/RTO.
+
+### 6.1.14.5 Data migration test plan (DEC-039)
+
+Migration is **import through A103** using versioned CSV/JSON templates for organizations, contacts (with consent evidence and source), offerings, price lists and open deals; dry-run validation report first; **imported contacts are not eligible for outreach until consent or lawful basis is verified** (DEC-039). Part 3.3 §3.3.12 owns the conversion design for the four seed startups; this plan tests it.
+
+| # | Test | Technique | Expected |
+|---|---|---|---|
+| M-01 | Template version mismatch (old header set) | EP | Rejected with a clear report; nothing imported |
+| M-02 | Encoding: UTF-8, UTF-8 with BOM, Indic scripts, invalid bytes | EP | Valid encodings accepted; invalid rows rejected with row numbers |
+| M-03 | Required fields missing; field length overflow; invalid email/E.164 phone | EP, BVA | Row-level errors in dry-run; no partial row |
+| M-04 | Number formats: `1,00,000.00` (Indian grouping), `100000.00`, comma decimal | EP | Only the template's documented format accepted; others rejected (no silent reinterpretation) |
+| M-05 | Currency codes and minor units per ISO 4217; price lists in mixed currencies | EP | Stored as Decimal + currency; no conversion (DEC-027) |
+| M-06 | Duplicates within the file and against existing records (normalized email/domain, blind index) | EG | Duplicates reported; merge only through controlled merge rules |
+| M-07 | Referential links (contact → organization; deal → offering version) | DT | Unresolved references rejected |
+| M-08 | Consent evidence present / absent / unverifiable source | DT | All imported contacts `eligibility = Unknown` until verified; PDP denies outreach (BRL-ELG-01) |
+| M-09 | Open deals with states: only states allowed for import; no Won/Paid without route evidence | ST | Disallowed states rejected (KPI-31 protection) |
+| M-10 | CSV formula injection (`=`, `+`, `-`, `@` leading cells) | EG | Values neutralized on import and on any later export |
+| M-11 | Restricted data classification on import (children's data, health text) | EP | Children's records require guardian evidence; health text redacted/blocked (BRL-PRV-06) |
+| M-12 | Re-run the same file | Idempotency | 0 duplicates; rows reported "unchanged" |
+| M-13 | Import reversal of a batch (per the Part 3.3 design; records carry the import batch ID) | UC | Batch reversed with audit; no effect on records changed later without review (verify mechanism in Part 3.3) |
+| M-14 | Volume: 50,000 contacts and 10,000 organizations per file | Performance | Completes asynchronously; Admin p95 unaffected beyond 10%; progress visible |
+| M-15 | Tenant scoping: file for T2 cannot create rows in T1 | Isolation | 0 foreign rows |
+| M-16 | Approval: import execution requires approval per A103 (CA-APPROVE) | DT | Unapproved job cannot run |
+| M-17 | Reconciliation report | Count check | Source rows = imported + rejected + duplicates; checksums per entity; sample of 5% verified field by field |
+
+**Exit.** 100% row reconciliation; 0 contacts eligible without verified lawful basis; dry-run and real run produce identical validation results; rehearsal on a `staging` copy of each seed startup's import before the production import.
+
+### 6.1.14.6 Localization test plan (DEC-026)
+
+| Area | Test | Tool | Cadence | Pass criteria |
+|---|---|---|---|---|
+| Externalized strings | No hard-coded UI strings; ICU MessageFormat syntax valid | ESLint i18n rule; ICU lint; pseudo-locale build | G1 | 0 hard-coded strings in changed files |
+| Pseudo-localization | `en-XA`-style pseudo-locale with +40% expansion and accented characters on Website/Portal | Playwright screenshots + overflow detector | G3 | No truncation, overlap or clipped controls |
+| Plurals and grammar | ICU plural categories for en-IN, hi-IN, ta-IN, or-IN | Unit tests per message with counts 0, 1, 2, 5, 21 | G1 | Correct category per locale |
+| Numbers | Indian digit grouping (1,00,000) in en-IN; international grouping option in Admin; lakh/crore labels in INR summaries | Unit tests with `Intl` and server formatting | G1 | Exact expected strings |
+| Currency | ISO-4217 code + symbol; minor units; no silent conversion | Unit + SYS | G1 | Formats correct; totals unchanged by display |
+| Dates and time zones | UTC storage; Admin in user time zone; Website in recipient/startup time zone; both zones for cross-zone meetings and deadlines | Clock-controlled E2E | G3 | Correct display incl. DST for EU/US |
+| Scripts and fonts | Devanagari, Tamil, Odia rendering on public pages (font subsetting, line height, conjuncts) | Screenshot review by bilingual reviewers | W5 per locale | No broken glyphs or clipped matras |
+| Locale fallback | ta-IN → en-IN fallback with author-visible indicator; outdated translation blocks republication | SYS | W5 | Fallback chain per I18N-08; block per Part 2.4 §2.36.3 |
+| Templates | Email and WhatsApp templates per language; WhatsApp language codes equal provider-approved templates (verify provider list) | CT with provider fixtures | W5 | 0 mismatches |
+| Inbound language | Language detection for any language; replies only in approved languages; otherwise human handover | SYS + AI eval subset | W3, W5 | Handover in 100% of unsupported-language cases |
+| Search | Locale-aware full-text configuration (English stemming; simple config for Indic scripts) | IT | W5 | Expected hits for test corpus per script |
+| Linguistic review | Translations reviewed by bilingual startup reviewer; claims identical to approved source (no new claims) | Manual; approval workflow | Per publication | Approved per BRL-APR-01/02 |
+| STOP keywords | Opt-out words in hi/ta/or and transliterated forms | EG corpus | W5 | 100% recognized (BRL-ELG-02) |
+
+---
+
+## 6.1.15 Test organization, responsibilities and effort
+
+### 6.1.15.1 Responsibilities (RACI)
+
+R = responsible, A = accountable, C = consulted, I = informed.
+
+| Activity | QA automation (0.5 FTE) | Developers (BE, FS, FE) | DevOps/SRE (0.5 FTE) | Principal Engineer / CTO | Security/Compliance lead (0.5 growth/compliance) | UX lead (FE) | Product Owner | Business users |
+|---|---|---|---|---|---|---|---|---|
+| Test strategy and standards | R | C | C | A | C | C | I | I |
+| Unit and integration tests | C | R | I | A | I | C | I | I |
+| Contract tests | C | R | C | A | I | I | I | I |
+| System and E2E automation | R | R (own modules) | C | A | C | C | I | I |
+| Tenancy, dispatch and compliance batteries | R | R | I | A | C | I | I | I |
+| Performance and DR | C | C | R | A | I | I | I | I |
+| Security testing and pen test coordination | C | C | R | C | A | I | I | I |
+| Accessibility and usability | C | R | I | I | I | A/R | C | C |
+| AI evaluation | C | R | I | A | C (red team) | I | I | C (labelling) |
+| UAT preparation and facilitation | R | C | C | C | C | C | A | R (execution) |
+| Release readiness (A090) | R | C | C | C | C | I | A | I |
+| Independent review | n/a | n/a | n/a | n/a | n/a | n/a | n/a | R (independent reviewer) |
+
+### 6.1.15.2 Test effort range (estimate)
+
+| Item | Low | High | Basis |
+|---|---|---|---|
+| QA-owned effort (strategy, scenario/case design, framework, SYS/E2E automation, NFR testing, UAT facilitation) | 43 pd | 97 pd | 15–20% of the build estimate 287–483 pd (DEC-012); 287 × 0.15 = 43; 483 × 0.20 = 97 |
+| Developer-owned tests (unit, integration, contract) | Inside story estimates | Inside story estimates | Definition of Done (Part 5.1); typically 25–35% of each story's effort (industry norm; not a source figure) |
+| QA capacity available | ≈ 50 pd | ≈ 50 pd | 0.5 FTE × 125 working days × 0.8 focus (DEC-005 capacity formula) |
+| SRE capacity for performance and DR drills | 10 pd | 20 pd | Share of 0.5 DevOps/SRE FTE over W0–W5 (estimate) |
+| Business UAT participation | 60 participant-days | 120 participant-days | W0 1 d × 4 people; W1 2 × 3; W2 3 × 6; W3 3 × 6; W4 4 × 8; W5 5 × 8 = 118 (high); about half with smaller packs (low) |
+| **Shortfall at the high end** | 0 | ≈ 47 pd QA | 97 − 50; mitigations in GAP-165 |
+
+---
