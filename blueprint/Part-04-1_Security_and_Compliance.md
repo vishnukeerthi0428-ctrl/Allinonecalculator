@@ -581,3 +581,183 @@ DEKs rotate every 12 months or immediately on suspected compromise. New writes u
 | SC-49 | Encryption in transit and at rest | §4.5 | DevOps | CFG; TLS scan |
 | SC-50 | Route-permission linter | CI fails on views without an explicit permission policy or missing from the RBAC policy file | Backend | CI gate |
 
+---
+
+## 4.8 OWASP mappings
+
+### 4.8.1 OWASP Top 10 (2021) with the 2025 edition crosswalk
+
+The 2021 list is the stable reference for this blueprint. The **OWASP Top 10:2025** edition (released after the 2021 list; its final category names and order are to be **verified at implementation, as of 27 Nov 2026**) is shown in the crosswalk column as we understand it. It adds *Software Supply Chain Failures* and *Mishandling of Exceptional Conditions* and folds SSRF into Broken Access Control.
+
+| 2021 category | 2025 crosswalk (verify) | Where it applies here | Controls | Tests | Wave |
+|---|---|---|---|---|---|
+| **A01 Broken Access Control** | A01:2025 Broken Access Control (now includes SSRF) | Cross-tenant/startup access, portal IDOR, function-level gaps, portfolio mutation, support access | SC-17, SC-18, SC-19, SC-50; AZ-01…15; BRL-TEN-01…09 | Two-tenant RLS fixture (AP-10); generated BOLA/BFLA suites per endpoint; E2E scope switch; DAST forced browsing | W0 onward |
+| **A02 Cryptographic Failures** | A04:2025 Cryptographic Failures | Restricted fields, tokens, backups, transport | SC-24, SC-49; §4.5; ADR-055/056 | TLS scan (testssl.sh) in staging; CFG check that every data store has a CMK; UT that Restricted columns are ciphertext at rest | W0 |
+| **A03 Injection** | A05:2025 Injection | SQL, HTML/JS (XSS), email header injection, template injection, OS command (parsers), **prompt injection** (handled in §4.8.3) | SC-08, SC-10, SC-11, SC-32 | SAST (Semgrep, Bandit), DAST active scan, payload corpus UT on every text input, CRLF tests on email headers | W0 |
+| **A04 Insecure Design** | A06:2025 Insecure Design | Approval bypass, consent bypass, autonomy over-reach, uncertain-outcome retries | PDP (RECOMMENDATION-012), DEC-050, DEC-064, CA-DISPATCH; this threat model | Decision-table tests for BRL-ELG, BRL-APR, BRL-AUT; threat-model review per wave | W0 onward |
+| **A05 Security Misconfiguration** | A02:2025 Security Misconfiguration | Django settings, headers, S3, security groups, CORS, debug pages, default credentials | SC-03, SC-09, SC-38, SC-48; Django `check --deploy` | `manage.py check --deploy` gate; Checkov/tfsec on IaC; AWS Security Hub score ≥ 90%; header tests | W0 |
+| **A06 Vulnerable and Outdated Components** | A03:2025 Software Supply Chain Failures (broadened) | Python and npm dependencies, base images, Celery/Valkey/PostgreSQL versions | SC-43, SC-46; NFR-067, NFR-084 | OSV-Scanner, pip-audit, npm audit, Trivy image scan; SBOM diff per release | W0 |
+| **A07 Identification and Authentication Failures** | A07:2025 Authentication Failures | IdP reuse, BFF sessions, MFA, recovery, magic links | SC-13, SC-14, SC-15; DEC-019 checks | DEC-019 spike; E2E session tests; DAST auth scan with authenticated contexts | W0 |
+| **A08 Software and Data Integrity Failures** | A08:2025 Software or Data Integrity Failures | CI/CD pipeline, unsigned images, deserialization, webhook authenticity, approval hash integrity | SC-20, SC-22, SC-26, SC-28, SC-45, SC-46 | Image signature verification at deploy; webhook signature CT; ban `pickle` serializer for Celery (JSON only) | W0 |
+| **A09 Security Logging and Monitoring Failures** | A09:2025 Logging and Alerting Failures | Missing audit of approvals, denied access, exports; no alert on anomalies | SC-22, SC-36; §2.34; §4.10 | Audit coverage test (every state-changing endpoint emits an audit event); alert-rule unit tests; quarterly detection drill | W0 |
+| **A10 Server-Side Request Forgery** | Merged into A01:2025 | Research fetcher (M11/M12), URL previews, webhook URL configuration (W6 outbound webhooks), image fetch for content | SC-31; RECOMMENDATION-044 | SSRF corpus IT; DAST SSRF checks | W1 |
+| — | A10:2025 Mishandling of Exceptional Conditions (new, verify) | Fail-open on PDP errors, provider timeouts treated as failures, partial transactions | Fail-closed rule (PP-03); DEC-050 uncertain state; E-2 single transaction | CHAOS tests: PDP unavailable → deny; DB error mid-dispatch → no side effect; provider timeout → uncertain | W0–W3 |
+
+### 4.8.2 OWASP API Security Top 10 (2023)
+
+| Category | Product exposure | Controls | Tests |
+|---|---|---|---|
+| API1 Broken Object Level Authorization | Every `/{id}` endpoint across public, portal, admin, internal | AZ-06, AZ-10, SC-17/18 | Generated BOLA suite: for each endpoint, a second-tenant and second-startup actor gets 404 |
+| API2 Broken Authentication | BFF, token validation, webhook auth, internal service tokens | SC-13, SC-14, SC-28 | CT for wrong audience/client/expired/rotated tokens; webhook signature CT |
+| API3 Broken Object Property Level Authorization | Mass assignment, excessive data exposure, masked fields | AZ-07, SC-24; explicit read/write serializers | Semgrep `__all__` ban; property-level tests per role from the field-security table |
+| API4 Unrestricted Resource Consumption | Search, exports, chat, AI calls, uploads | SC-06, SC-37, SC-40; page size ≤ 200; statement timeouts; upload caps | Load tests LT-03, LT-07; budget simulation |
+| API5 Broken Function Level Authorization | Admin-only and approver-only functions, internal endpoints | AZ-05, SC-50; internal API not routable from the edge | BFLA suite from the RBAC policy file; edge route test for `/internal/` → 404 |
+| API6 Unrestricted Access to Sensitive Business Flows | Lead form spam, referral abuse, slot hoarding on booking, quote acceptance scripting, trial abuse (W31–W33) | SC-07; per-email/per-org trial limits (BRL-SVC-05); slot hold expiry; referral dedupe (M42) | Abuse E2E scripts; business-flow rate tests |
+| API7 Server Side Request Forgery | Fetcher, URL inputs | SC-31 | SSRF corpus |
+| API8 Security Misconfiguration | CORS, verbose errors, HTTP methods, TLS | SC-03, SC-09, SC-25 | DAST; config tests |
+| API9 Improper Inventory Management | Legacy paths retained (CN-15, BRD §9) beside `/api/v1/commercial/…`; staging and preview environments | Machine-readable API catalogue (DEC-015) is the inventory; CI fails on undeclared routes; sunset headers on legacy paths; staging behind authentication | Route inventory diff CT |
+| API10 Unsafe Consumption of APIs | Search API, WhatsApp, payment, e-sign, calendar, Anthropic responses | Treat provider data as untrusted (SC-08, SC-32); schema validation of provider responses; timeouts; TLS validation | CT with malformed provider payloads |
+
+### 4.8.3 OWASP Top 10 for LLM Applications (2025 edition; verify, 27 Nov 2026)
+
+| Category | Product exposure | Controls | Tests (M54 eval suite, AIE) |
+|---|---|---|---|
+| LLM01 Prompt Injection | Direct (website assistant W11, Copilot, onboarding wizard W33) and **indirect** (fetched pages M11/M12, uploaded documents M03, inbound email/WhatsApp M27, social posts M33) | SC-32, SC-33, SC-34; no tools on untrusted-content tasks; deterministic post-checks | ≥ 200-case injection corpus across languages (en, hi, ta, or) and encodings (HTML comments, white text, base64, Unicode tags); pass = 0 policy violations, ≥ 98% of tasks still produce valid schema output |
+| LLM02 Sensitive Information Disclosure | Restricted fields in prompts, cross-tenant retrieval, transcripts | SC-35 (DLP, minimization), AZ-12, SC-42; redacted logs (BRL-AI-10) | Leakage suite with seeded canaries and foreign-tenant documents |
+| LLM03 Supply Chain | Model provider changes, Tier 2 model provenance, open-weight model files, eval libraries | Pinned model versions in the gateway; Tier 2 allowlist with provider review (§4.14); checksum verification for any self-hosted weights | Re-run eval suite on any model version change (BRL-AI-09) |
+| LLM04 Data and Model Poisoning | Knowledge base, FAQ, feedback loop (A084), few-shot examples | Approved documents only (M03), feedback examples reviewed before entering eval/few-shot sets, no fine-tuning in scope | IT: unapproved documents not retrievable; feedback promotion requires approval |
+| LLM05 Improper Output Handling | Model output rendered in Admin/website, used in emails, used as structured data | Output treated as untrusted: schema validation, HTML sanitization, no execution, Decimal parsing for numbers, claims checker | XSS payloads in model output fixtures; schema fuzzing |
+| LLM06 Excessive Agency | Agents with tools (Part 7), Copilot | DEC-048 tool registry, DEC-064 autonomy caps, BRL-AI-07, PDP | Tool-misuse scenarios; attempt to call side-effect tools without approval → blocked |
+| LLM07 System Prompt Leakage | System prompts containing policy text | No secrets or internal URLs in prompts; prompts treated as non-confidential by design; canary strings [RECOMMENDATION-049] | Extraction attempts; canary detection |
+| LLM08 Vector and Embedding Weaknesses | pgvector retrieval across tenants, embedding inversion of personal data | Namespace filter + RLS on embeddings; Restricted fields not embedded; per-tenant tables or partitions at scale (§2.35.2) | RLS retrieval test; inspection that no Restricted column is embedded |
+| LLM09 Misinformation | Hallucinated claims, prices, capabilities, scores | Grounding with citations (BRL-AI-03), abstention (BRL-AI-04), human approval for external drafts, scores computed by rules (DEC-011) | Grounding precision ≥ 95% on the approved benchmark; zero uncited factual claims in external drafts |
+| LLM10 Unbounded Consumption | Chat abuse, loops, large documents | SC-40, BRL-AI-08, BRL-AUT-06, max input/output tokens per task | Budget-cap simulation; loop detection test |
+
+---
+
+## 4.9 Web, API and platform hardening baseline
+
+| Area | Baseline |
+|---|---|
+| Django settings | `DEBUG=False`, `SECURE_SSL_REDIRECT`, `SECURE_HSTS_*`, `SESSION_COOKIE_SECURE`, `CSRF_COOKIE_SECURE`, `SECURE_PROXY_SSL_HEADER` set only behind the load balancer, `ALLOWED_HOSTS` from the verified-domain registry, `DATA_UPLOAD_MAX_MEMORY_SIZE` 5 MB (uploads streamed to S3), `manage.py check --deploy` clean |
+| DRF | Default deny permission; throttling classes per §2.35.3; JSON renderer only in production (browsable API disabled); cursor pagination; versioning in URL |
+| Celery | JSON serializer only; `task_acks_late` with idempotent tasks; visibility timeout > longest task; result backend disabled for tasks that do not need results |
+| HTTP methods | Only methods declared per route; `TRACE` disabled at the edge |
+| Request size | Edge 10 MB for uploads (presigned S3 direct upload for larger, max 25 MB documents), 256 KB for JSON APIs and webhooks |
+| Timeouts | Edge 30 s; API 25 s (long work → 202 + job); outbound adapters 10 s connect/30 s read; AI calls per task budget (Part 7) |
+| Containers | Distroless or slim base images; non-root user; read-only root filesystem; no shell in production images where feasible; resource limits |
+| Hosts | No SSH; SSM only; IMDSv2 enforced; automatic OS patching via managed services where possible |
+| DNS and email | DNSSEC where the registrar supports it (verify); SPF, DKIM (2048-bit), DMARC `p=quarantine` → `p=reject` after 30 days of clean reports (DEC-025); MTA-STS [RECOMMENDATION-048] |
+| Public disclosure | `/.well-known/security.txt` and a vulnerability disclosure policy page [RECOMMENDATION-048] |
+
+---
+
+## 4.10 Audit and security logging
+
+Part 2.4 §2.34 defines the **business audit trail** (schema, hash chain, retention 7 years). This section adds the **security event catalogue**, the log architecture and the retention of operational logs.
+
+### 4.10.1 Security event catalogue
+
+| SE | Event | Source | Severity default | Alert rule (Batch 4.3) |
+|---|---|---|---|---|
+| SE-01 | Login success/failure, MFA success/failure, lockout | IdP export + BFF | Info / Warn on burst | AL-30 failed-login burst |
+| SE-02 | Step-up required/denied | BFF | Info | — |
+| SE-03 | Session revoked (reason) | BFF | Info | — |
+| SE-04 | Wrong audience/client token presented | API | High | AL-31 any occurrence in prod |
+| SE-05 | Authorization denial (uniform 404/403) with rule | API | Info; High on burst | AL-32 > 20 denials/5 min per actor |
+| SE-06 | **Cross-scope access attempt** detected by RLS guard or scope validator (requested scope ⊄ membership) | API, workers | Critical | AL-33 → RB-008 |
+| SE-07 | Role/grant/membership change; support grant issued/used/expired | API | Medium | AL-34 privileged grant outside business hours |
+| SE-08 | Restricted field reveal; Restricted export requested/approved/downloaded | API | Medium | AL-35 bulk export anomaly |
+| SE-09 | Policy loosening, budget increase, Tier 2 opt-in, autonomy L3 enablement | Config service | High | AL-36 notify R01 + R10 |
+| SE-10 | Emergency stop/resume | Automation | Critical | AL-37 |
+| SE-11 | Webhook signature failure | Webhook ingress | Medium; High on burst | AL-24 → RB-009 |
+| SE-12 | Upload malware detection | Scanner | High | AL-38 |
+| SE-13 | Prompt-injection detector hit / guardrail block / canary leak | Gateway | Medium; Critical for canary leak | AL-39 |
+| SE-14 | Tier 2 routing blocked due to data class | Gateway | Medium (indicates misconfiguration) | AL-40 |
+| SE-15 | Secret accessed outside the expected role | CloudTrail | High | GuardDuty / AL-41 |
+| SE-16 | KMS key disable/deletion scheduled; S3 public access change; security group 0.0.0.0/0 on non-edge port | CloudTrail / Config | Critical | AL-42 |
+| SE-17 | Break-glass activation | IAM | Critical | AL-43 |
+| SE-18 | Audit chain verification failure | Audit job | Critical | AL-44 |
+
+### 4.10.2 Log architecture and retention
+
+| Log | Store | Hot retention | Archive | Source of the period |
+|---|---|---|---|---|
+| Business audit events | PostgreSQL append-only + daily anchor in S3 Object Lock (compliance mode) | 7 years (online for 13 months, then partition archive) | 7 years | DEC-028 |
+| Security events (SE-01…18) | CloudWatch Logs (KMS) → S3 log-archive account | 90 days | **≥ 1 year**, minimum **180 days within India** for CERT-In (verify, 27 Nov 2026) | CERT-In Directions 28 Apr 2022 (180 days, India); DPDP Rules log-retention rule (one year, verify) [CONFLICT-111] |
+| Application logs (structured JSON, no business content) | CloudWatch Logs | 30 days | 1 year in S3 Glacier Instant/Flexible (verify class at implementation) | [CONFLICT-111] |
+| AI run logs (redacted bodies) | PostgreSQL + S3 | 90 days | Digests and metadata 1 year | DEC-028; [CONFLICT-111] |
+| CloudTrail (org trail, log-file validation) | S3 log-archive account | 90 days in CloudTrail Lake/console | 1 year (7 years for management events at low cost, optional) | SOC 2 CC7 alignment |
+| VPC flow logs, WAF logs | S3 | 30 days | 1 year | CERT-In (verify) |
+| Traces (OpenTelemetry) | X-Ray / collector backend | 30 days | None | Operational |
+
+**Clock synchronization:** all hosts use the Amazon Time Sync Service. CERT-In requires synchronization with NIC/NPL NTP servers or equivalent traceable sources (verify, 27 Nov 2026). Amazon Time Sync is documented as the traceable source in the compliance evidence, and counsel confirms acceptability [ASSUMPTION-128].
+
+---
+
+## 4.11 Privacy by design
+
+### 4.11.1 Privacy engineering principles applied
+
+| Principle | Implementation | Source |
+|---|---|---|
+| Purpose limitation | Each personal-data field has declared purposes (outreach, transaction, support, compliance) in the data dictionary; the PDP checks purpose against the consent/lawful-basis record | M04; BRL-ELG-03 |
+| Data minimization | Schema allowlists at intake (BRL-PRV-06); free-text scanning and redaction of health data and government IDs; learner data limited to name, grade band and programme (DEC-030); no guessed emails (PP-11); research stores organization facts, not personal profiles | BRD §5, §15 |
+| Storage limitation | Retention schedule (DEC-028) enforced by nightly purge (BRL-PRV-05) with evidence report; legal hold override | DEC-028 |
+| Accuracy | Contact verification freshness expiry (M19); correction requests (M56) | M19, M56 |
+| Integrity and confidentiality | §4.3–§4.7 | — |
+| Accountability | RoPA, DPIAs, audit trail, vendor reviews, training | §4.11.4, §4.14 |
+| Transparency | Privacy notice per startup site (W30) naming processors and cross-border processing (model providers outside India, §2.35.5); AI disclosure in chat (§4.13) | W30; EU AI Act Art. 50 |
+| Data principal rights | Access, correction, erasure, grievance, nomination (DPDP), objection to direct marketing (GDPR Art. 21) via W29 and A013 | M56 |
+| Privacy-preserving analytics | First-party analytics only; no third-party cookies; no health events to ad platforms (BRL-MKT-06, BRL-ELG-14); IP truncated before storage | M37 |
+| Pseudonymization | Suppression by HMAC; audit stores hashed IP/user agent for external users; AI eval sets use synthetic or de-identified data (FRD M54 "deidentify training examples") | FRD §6 M54 |
+
+### 4.11.2 DPIA triggers
+
+A DPIA (template in the compliance repository, owner: growth/compliance lead, approver: R10 and R01) is **required before activation** of any of the following (RECOMMENDATION-007):
+
+| # | Trigger | Known instances | Gate |
+|---|---|---|---|
+| DPIA-T1 | Processing data of **children** or guardians | EduVerse intake and guardian verification (DEC-030) | EduVerse minor journeys blocked until approved (OQ-026) |
+| DPIA-T2 | **Health-adjacent** context | MedMaarg institutional partnerships (no patient data), wellness content, insurer pilots (M63) | MedMaarg outbound and M63 activation |
+| DPIA-T3 | Large-scale **profiling** or automated scoring of individuals | Decision-maker discovery (M18), contact verification (M19), intent classification (M27) | W1 discovery activation |
+| DPIA-T4 | New **jurisdiction** enabled for outbound | Any addition to the DEC-029 rule pack | Rule pack activation (BRL-ELG-05) |
+| DPIA-T5 | New **AI use** that processes personal data, or a model/provider change for such a use | Agents in Part 7 touching Restricted data | Agent enablement |
+| DPIA-T6 | Tier 2 opt-in by a tenant | CFG-25 | Opt-in approval (R01 + R10) |
+| DPIA-T7 | New processor or cross-border transfer | New adapter in the integration registry | Adapter enablement |
+| DPIA-T8 | Systematic monitoring of public sources at scale | Social listening (M33), competitor watch (M59) | M33 activation |
+| DPIA-T9 | Combining datasets from different sources about the same person | Identity links in omnichannel routing (M41), CSV imports (DEC-039) | M41 / A103 activation |
+| DPIA-T10 | Paid ads with audience uploads (Customer Match / Custom Audiences) | M39 | Ad audience upload feature flag |
+
+### 4.11.3 Data subject / data principal request handling
+
+| Step | Rule | SLA (internal; verify legal deadlines) |
+|---|---|---|
+| Intake | W29 form, email, or portal; request typed (access, correction, erasure, objection, grievance, nomination) | Acknowledge ≤ 2 business days |
+| Verification | Proportionate (BRL-PRV-01): OTP to the channel on record; for guardians, guardian verification | ≤ 5 business days |
+| Execution | Search all stores by blind index and IDs, including documents, transcripts, exports, AI logs, backups (backups age out in 35 days; not edited) | Complete ≤ **15 days** internal target [ASSUMPTION-128]; GDPR one month; DPDP period per Rules (verify) |
+| Erasure semantics | Delete or irreversibly anonymize; keep suppression hash (BRL-PRV-03); legal hold overrides (BRL-PRV-04); audit events pseudonymized, not deleted (§2.34.3) | — |
+| Response | Through the verified channel; record evidence; escalation at 70% of deadline (BRL-PRV-02) | — |
+
+### 4.11.4 Record of processing activities (summary)
+
+| Processing activity | Data principals | Categories | Lawful basis (India / EU-UK) | Processors | Retention |
+|---|---|---|---|---|---|
+| Website enquiries and portal accounts | Prospects, customers, suppliers | Identity, contact, enquiry content | Consent (DPDP s.6) / contract or legitimate interest | AWS, SES, Anthropic (drafting, classification) | 24 months after last eligible interaction (DEC-028) |
+| B2B discovery and outreach | Professional contacts at organizations | Name, role, business email/phone, source evidence | DPDP: publicly made available data exemption or consent (verify applicability, s.3(c)(ii)) / legitimate interest with LIA (EU/UK) | AWS, search API, Anthropic | 24 months; rejected leads 6 months |
+| Guardian and learner intake (EduVerse) | Guardians, learners < 18 | Name, contact, grade band, programme | Verifiable parental consent (DPDP s.9, verify mechanism) | AWS, SES | Programme duration + 24 months (legal confirm) |
+| Commercial documents and payments | Customer representatives | Identity, signatures, payment evidence | Contract; legal obligation (tax) | AWS, payment gateway, e-sign | 8 years / term + 8 years |
+| Website assistant | Visitors | Chat content | Consent / legitimate interest | Anthropic | 90 days |
+| Staff accounts and audit | Employees, contractors | Identity, activity logs | Employment / legitimate use (DPDP s.7) | AWS, IdP | Audit 7 years |
+| SaaS tenant administration | Client administrators | Identity, billing contact | Contract | AWS, SES | Contract term + 8 years (billing) |
+
+### 4.11.5 Breach notification clocks
+
+| Regime | Who | Deadline | Source (verify, 27 Nov 2026) |
+|---|---|---|---|
+| CERT-In | CERT-In | **6 hours** from noticing a reportable incident | CERT-In Directions under s.70B IT Act, 28 Apr 2022 |
+| DPDP | Data Protection Board and each affected data principal | Without delay; detailed report to the Board within **72 hours** of becoming aware (extendable on request) | DPDP Rules 2025, Rule 7 (commencement phased; see §4.12.1) |
+| GDPR / UK GDPR | Supervisory authority; data subjects if high risk | **72 hours** to the authority; without undue delay to subjects | Art. 33, 34 |
+| Processor duty (SaaS tenants as controllers of their own data) | Tenant administrator | Without undue delay; contractual target **24 hours** | DPA template (to draft) |
+| Meta, payment gateway, other platforms | Per their terms | Per contract | Provider terms |
+
