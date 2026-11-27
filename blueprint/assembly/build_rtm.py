@@ -60,6 +60,13 @@ def expand_req_ranges(text):
     for m in re.finditer(r"(BRL-[A-Z]{2,4}-)(\d{2})((?:,\s*-\d{2})+)", text):
         out.append(m.group(1) + m.group(2))
         out += [m.group(1) + x for x in re.findall(r"-(\d{2})", m.group(3))]
+    for m in re.finditer(r"(AC-\d{4}-)(\d{2})((?:,\s*-\d{2})+)", text):
+        out.append(m.group(1) + m.group(2))
+        out += [m.group(1) + x for x in re.findall(r"-(\d{2})", m.group(3))]
+    for m in re.finditer(r"(AC-\d{4}-)(\d{2})\s*[…–]\s*(?:AC-\d{4}-|-)?(\d{2})\b", text):
+        a, b = int(m.group(2)), int(m.group(3))
+        if 0 < b - a < 15:
+            out += [f"{m.group(1)}{i:02d}" for i in range(a, b + 1)]
     for m in re.finditer(r"FR-A(\d{3})\s*[–…]\s*(?:FR-)?A(\d{3})", text):
         a, b = int(m.group(1)), int(m.group(2))
         if 0 < b - a < 30:
@@ -550,7 +557,7 @@ def render(D):
         plan = sorted(nfr_plan.get(n, ()))
         ps = ", ".join(plan[:5]) + (f" (+{len(plan) - 5})" if len(plan) > 5 else "") if plan else "—"
         t = nfr_tc[n]
-        stt = "Covered (TC)" if t else ("Plan only" if plan else "**Not covered**")
+        stt = "Covered (TC)" if t else ("Planned (Part 6.1), no TC" if plan else "**Method only (Part 4.2), no TC**")
         W(f"| {n} | {d['cat']} | {d['req']} | {d['method']} | {ps} | {len(t)} | {compress(t, 2)} | {stt} |")
     S["d"] = "\n".join(L)
     L.clear()
@@ -618,8 +625,9 @@ def render(D):
         if not brl_tc[r]:
             unc.append(("BRL", r, brl[r], "Add a decision-table or BVA TC citing the rule", "Owner of the rule's epic"))
     for n, d in nfr.items():
-        if not nfr_tc[n] and not nfr_plan.get(n):
-            unc.append(("NFR", n, d["req"], f"Add a test (Part 4.2 method: {d['method'][:60]})", d["epic"]))
+        if not nfr_tc[n]:
+            how = "Part 6.1 plan item exists" if nfr_plan.get(n) else "only the Part 4.2 test method exists"
+            unc.append(("NFR", n, f"{d['req']} ({how})", f"Add a TC that cites {n} and executes: {d['method'][:70]}", d["epic"]))
     for a in ag:
         if not ag_tc.get(a):
             unc.append(("AG", a, ag[a], "Add TC-AI cases in Batch 6.4", "Batch 6.4"))
@@ -699,10 +707,9 @@ def main():
             print("  ", u[:3])
         return
     write_csv(D)
-    tpl_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "rtm_template.md")
+    tpl = TEMPLATE
     if "--template" in sys.argv:
-        tpl_path = sys.argv[sys.argv.index("--template") + 1]
-    tpl = read(tpl_path)
+        tpl = read(sys.argv[sys.argv.index("--template") + 1])
     vals = dict(S)
     vals.update({
         "BR_PCT": pct(*sm["br"]), "BR_N": f"{sm['br'][0]} of {sm['br'][1]}",
@@ -725,6 +732,8 @@ def main():
     print(f"wrote {OUT_MD} and {OUT_CSV}")
     print({k: v for k, v in sm.items()}, "uncovered", len(D["uncovered"]))
 
+
+from rtm_template_text import TEMPLATE  # noqa: E402  (narrative kept next to the script)
 
 if __name__ == "__main__":
     main()
