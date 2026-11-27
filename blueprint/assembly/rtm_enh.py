@@ -43,6 +43,9 @@ TEST_ANY = rf"(?:{TC_ENH}|{LT_ENH}|{VER_ENH}|{TC_OLD}|{VER_OLD})"
 ENH_FAMILIES = [FR_ENH, NFR_ENH, US_E, AC_E, TC_ENH, LT_ENH, VER_ENH, OKPI, AG_N, AU_N, QC, SM_SIT, SM_UAT, SM_UT,
                 SM_OP, SM_UXAPI, TC_OLD, VER_OLD, r"(?<!TC-)(?<!-)NFR-\d{3}", r"(?<![A-Z-])KPI-\d{2}\b",
                 r"FR-(?:W\d{2}|A\d{3}|OP\d{3})", r"US-\d{4}", r"BRL-[A-Z]{2,4}-\d{2}", LT_OLD]
+CTRL_EXCLUDE = {"PL", "EP", "DEC", "ADR", "BR", "BRL", "FR", "NFR", "KPI", "OKPI", "US", "AC", "TC", "LT", "VER", "QC", "SM",
+                "API", "GAP", "ASSUMPTION", "CONFLICT", "RECOMMENDATION", "CA", "SP", "ENH", "RP", "CFG", "WF", "AG", "AU",
+                "MET", "SLO", "RA", "BLK", "GL", "DR", "CT"}
 ANY = re.compile("|".join(f"(?:{p})" for p in ENH_FAMILIES))
 
 # range / list expansion for the enhancement families with a numeric tail
@@ -228,6 +231,40 @@ def build_enh(D, bp):
             if re.fullmatch(US_E, y) and y in E.defs["US"]:
                 fr_us[f].add(y)
     fr_tc_direct = {f: E.tests_of(f, tests) for f in fr}
+    # control-ID links: the requirement cell names control IDs (RGV-01…15, SMK-01…14, AL-50…58, ACC-01…07, SEC-ROT);
+    # a test row whose cells cite one of them verifies the requirement
+    tok_tests = defaultdict(set)
+    for idx, (_, _, c, subj, _) in enumerate(E.rows):
+        tt = [x for x in subj if x in tests and x.startswith(("TC-ENH", "LT-ENH", "VER-ENH"))]
+        if tt:
+            for tok in set(re.findall(r"\b[A-Z]{2,}(?:-[A-Z]{2,})?-[A-Z]?\d{2,3}\b|\b[A-Z]{2,}-[A-Z]{2,4}\b", "|".join(c[1:]))):
+                tok_tests[tok].update(tt)
+    fr_tc_ctrl = {}
+    for f, d in fr.items():
+        req = " ".join(_cells(d["row"])[1:2]) if d["row"] else ""
+        toks = set()
+        for m in re.finditer(r"\b([A-Z]{2,}(?:-[A-Z]{2,})?)-([A-Z]?)(\d{2,3})(?:\s*(?:…|–)\s*(?:\1-)?[A-Z]?(\d{2,3}))?", req):
+            fam, l, a, b = m.group(1), m.group(2), int(m.group(3)), m.group(4)
+            if fam in CTRL_EXCLUDE:
+                continue
+            w = len(m.group(3))
+            for n in range(a, (int(b) if b and 0 < int(b) - a < 60 else a) + 1):
+                toks.add(f"{fam}-{l}{n:0{w}d}")
+            if "-" in fam:                      # SEC-ROT-01…08: a test of the whole procedure (SEC-ROT) also counts
+                toks.add(fam)
+        for m in re.finditer(r"\b([A-Z]{2,}-[A-Z]{1,4})\b(?!-\d)", req):
+            if m.group(1).split("-")[0] not in CTRL_EXCLUDE:
+                toks.add(m.group(1))
+        t = set()
+        for tok in toks:
+            t |= tok_tests.get(tok, set())
+            if re.fullmatch(r"[A-Z]{2,}-[A-Z]{1,4}", tok):         # bare family (SEC-ROT, RBK-R): any member
+                for k, v in tok_tests.items():
+                    if k == tok or (k.startswith(tok) and re.match(r"-?\d", k[len(tok):])):
+                        t |= v
+        fr_tc_ctrl[f] = t
+        fr_tc_direct[f] = fr_tc_direct[f] | t
+    X["fr_tc_ctrl"] = fr_tc_ctrl
     us_tc_direct = {}
     for s in E.defs["US"]:
         t = E.tests_of(s, tests) | {y for y in E.story_links[s] if y in tests}
@@ -352,6 +389,18 @@ def build_enh(D, bp):
         if rid in tests:
             out.add(rid)
         return out
+    # control tokens (acceptance procedures, decisions, acceptance profiles, gates, edge packs, blockers, runbooks, ABAC)
+    CTRL = r"\b(?:AP-\d{2}|DEC-\d{3}|CA-[A-Z]+|GL-[A-Z]\d{2}|EG-\d{2}|BLK-\d+|RB-\d{3}|ABAC-\d{2}|SPDEC-[A-Z0-9-]+)\b"
+    ctrl_tests = defaultdict(set)
+    for t, d in D["tcs"].items():
+        for tok in set(re.findall(CTRL, d["row"])):
+            ctrl_tests[tok].add(t)
+    for idx, (_, _, c, subj, _) in enumerate(E.rows):
+        tt = [x for x in subj if x in tests]
+        if tt:
+            for tok in set(re.findall(CTRL, "|".join(c))):
+                ctrl_tests[tok].update(tt)
+    X["ctrl_tests"] = ctrl_tests
     qc = OrderedDict()
     for r in q:
         refs = r["blueprint_verification_refs"] + " ; " + r["layer_anchor_refs"]
@@ -359,8 +408,9 @@ def build_enh(D, bp):
         ref_ids = [x for x in dict.fromkeys(B.req_ids(r["blueprint_verification_refs"]) + all_ids(r["blueprint_verification_refs"]))]
         via = set()
         via_refs = []
+        ref_ids += [x for x in dict.fromkeys(re.findall(CTRL, r["blueprint_verification_refs"])) if x not in ref_ids]
         for x in ref_ids:
-            t = req_tests(x)
+            t = req_tests(x) | ctrl_tests.get(x, set())
             if t:
                 via |= t
                 via_refs.append(x)
@@ -371,6 +421,14 @@ def build_enh(D, bp):
 
 
 # ====================================================================== render
+def _part(fname):
+    m = re.match(r"Part-(\d+)(?:-(\d+[a-z]?))?", fname)
+    if not m:
+        return fname
+    a = str(int(m.group(1)))
+    return f"{a}.{m.group(2)}" if m.group(2) else a
+
+
 def _pct(a, b):
     return f"{100.0 * a / b:.1f}%" if b else "n/a"
 
@@ -425,7 +483,8 @@ def render_enh(D, X, compress):
     n_verk = len(E.defs["VER"])
     W("| Level | Items in scope | Covered (direct) | Covered (total) | Coverage | Basis of the count |")
     W("|---|---|---|---|---|---|")
-    W(f"| (h) Source-pack FRs (FR-ENH-A…J) | {n_fr} | {c_fr_d} | {c_fr} | **{_pct(c_fr, n_fr)}** | Direct = a test row cites the FR or the FR row names a defined test; total adds tests of the FR's enhancement stories |")
+    c_fr_ctrl = sum(1 for f in fr if X["fr_tc_ctrl"][f] and not (E.tests_of(f, X["tests"])))
+    W(f"| (h) Source-pack FRs (FR-ENH-A…J) | {n_fr} | {c_fr_d} | {c_fr} | **{_pct(c_fr, n_fr)}** | Direct = a test row cites the FR, the FR row names a defined test, or a test cites a control ID named in the requirement ({c_fr_ctrl} only by control ID); total adds tests of the FR's enhancement stories |")
     W(f"| (h) Source-pack stories (US-<EP>-E<G><nn>) | {n_us} | {c_us_d} | {c_us} | **{_pct(c_us, n_us)}** | Direct = a test cites the story or one of its AC; total adds the tests of the FR-ENH the story realizes |")
     W(f"| (h) Source-pack acceptance criteria (AC-…-E…) | {len(acs)} | {sum(1 for a in acs if E.tests_of(a, X['tests']))} | {c_ac} | **{_pct(c_ac, len(acs))}** | Direct = a test cites the AC; total = AC of a covered story |")
     W(f"| (h) Source-pack NFRs (NFR-ENH) | {len(ne)} | {sum(1 for n in ne if X['nfr_e_tc'][n][0])} | {c_ne} | **{_pct(c_ne, len(ne))}** | Test or load test cites the NFR, or the NFR row names one; total adds tests of the FR-ENH it points to |")
@@ -456,6 +515,18 @@ def render_enh(D, X, compress):
         gu = [s for s in us if re.match(rf"US-\d{{2}}-E{gl}", s)]
         W(f"| {gl} (Part {grp_part.get(gl, '?')}) | {len(gf)} | {sum(1 for f in gf if fr_tc[f])} | {len(gu)} | {sum(1 for s in gu if us_tc[s])} | {sum(1 for t in tce if t[7] == gl)} |")
     S["groups_enh"] = "\n".join(L); L.clear()
+    W("| File | FR-ENH | Stories | TC-ENH | LT-ENH | NFR-ENH | OKPI rows | VER-ENH | Status line |")
+    W("|---|---|---|---|---|---|---|---|---|")
+    for f in E.files:
+        base = os.path.basename(f)
+        cnt = {k: sum(1 for d in E.defs[k].values() if d["file"] == base) for k in ("FR", "US", "TC", "LT", "NFR", "VER")}
+        nok = sum(1 for o in ok for i in E.subj_rows[o] if E.rows[i][0] == base)
+        if not any(cnt.values()) and not nok:
+            continue
+        tail = open(f, encoding="utf-8").read()[-4000:]
+        st = "Complete" if re.search(r"\*\*Status: Part [^*]*complete", tail) else "No status line"
+        W(f"| `{base}` | {cnt['FR']} | {cnt['US']} | {cnt['TC']} | {cnt['LT']} | {cnt['NFR']} | {nok} | {cnt['VER']} | {st} |")
+    S["sources_enh"] = "\n".join(L); L.clear()
 
     # -------- (h) FR-ENH -> US -> TC
     W("| FR-ENH | Requirement (condensed) | Wave · Epic | Defined in | Stories | # TC (direct) | # TC (total) | Test IDs (sample runs) | Status |")
@@ -463,7 +534,7 @@ def render_enh(D, X, compress):
     for f, d in fr.items():
         m = X["fr_meta"][f]
         t = fr_tc[f]
-        W(f"| {f} | {d['title'][:90]} | {m['wave']} · {m['epic']} | {d['file'][5:12]} | {_short(fr_us[f], 3)} | {len(X['fr_tc_direct'][f])} | {len(t)} | {compress(t, 3)} | {'Covered' if t else '**Not covered**'} |")
+        W(f"| {f} | {d['title'][:90]} | {m['wave']} · {m['epic']} | {_part(d['file'])} | {_short(fr_us[f], 3)} | {len(X['fr_tc_direct'][f])} | {len(t)} | {compress(t, 3)} | {'Covered' if t else '**Not covered**'} |")
         if not t:
             unc.append(("FR-ENH", f, d["title"][:80], "Add a TC-ENH-K test case in Part 6.10 that cites the FR", m["epic"]))
     S["h"] = "\n".join(L); L.clear()
@@ -471,7 +542,7 @@ def render_enh(D, X, compress):
     W("|---|---|---|---|---|---|---|---|---|")
     for s, d in us.items():
         t = us_tc[s]
-        W(f"| {s} | {d['title'][:70] or '—'} | {d['file'][5:12]} | {_short(X['us_fr'][s], 3)} | {len(E.story_acs.get(s, []))} | {len(X['us_tc_direct'][s])} | {len(X['us_tc_via'][s])} | {compress(t, 3)} | {'Covered' if t else '**Not covered**'} |")
+        W(f"| {s} | {d['title'][:70] or '—'} | {_part(d['file'])} | {_short(X['us_fr'][s], 3)} | {len(E.story_acs.get(s, []))} | {len(X['us_tc_direct'][s])} | {len(X['us_tc_via'][s])} | {compress(t, 3)} | {'Covered' if t else '**Not covered**'} |")
         if not t:
             unc.append(("Story", s, d["title"][:80], "Add a TC-ENH-K test case per acceptance scenario in Part 6.10 citing the story", "EP-" + s[3:5]))
     S["h2"] = "\n".join(L); L.clear()

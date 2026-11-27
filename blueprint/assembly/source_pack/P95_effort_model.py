@@ -82,7 +82,7 @@ add("B-9", "B", "Workflow execution policy and 12 activation gates (US-18-EB01, 
 add("B-10", "B", "Regression matrix: zero-tolerance scenarios S2/S3/S5/S7 (US-18-EB03 part)", "Must", "R1", b(4), "OKPI-16")
 add("B-11", "B", "Regression matrix: remaining scenarios (US-18-EB03 part)", "Should", "W6", b(4), "BR-QA")
 add("B-12", "B", "Daily and data-incident runbooks (US-21-EB03 remainder)", "Must", "R1", b(2), "operations")
-add("B-13", "B", "Critical-branch coverage gate (US-21-EB04)", "Must", "R1", b(3), "DEC-178")
+add("B-13", "B", "Critical-branch coverage gate (US-21-EB04)", "Must", "R1", b(3), "DEC-203")
 add("B-14", "B", "Product-isolation tests with investor tokens (US-01-EB04)", "Must", "R1", b(3), "OKPI-01, NFR-031")
 add("B-15", "B", "PD actual-vs-estimate tracking in tool (US-21-EB06 part)", "Should", "W6", b(1), "delivery control")
 
@@ -128,7 +128,7 @@ add("F-2", "F", "Adapter lifecycle incl. Retire (FR-ENH-F-015)", "Should", "W6",
 add("F-3", "F", "Replacement economics on A012 (FR-ENH-F-018)", "Should", "W6", (2, 4), "BR-M53")
 add("F-4", "F", "Provider invoice reconciliation AU-048 (FR-ENH-F-019)", "Should", "W6", (4, 6), "OKPI-21 (not mandatory)")
 add("F-5", "F", "Tender amendment detection AU-052 (FR-ENH-F-024)", "Should", "W6", (3, 5), "BR-M44")
-add("F-6", "F", "Event registration AU-051 (FR-ENH-F-025)", "Should", "W6", (3, 5), "BR-M40 (Could; spilled)")
+add("F-6", "F", "Event registration AU-051 (FR-ENH-F-025)", "Could", "W6", (3, 5), "BR-M40 (Could; spilled)")
 add("F-7", "F", "Meeting-notes summarizer AG-037 (FR-ENH-F-026)", "Should", "W6", (5, 8), "BR-M37")
 add("F-8", "F", "Retention next-best-action AG-038 (FR-ENH-F-027)", "Could", "W6", (4, 7), "BR-M50")
 add("F-9", "F", "A113 seed library: 100 use cases, 20 templates, 13 node types (FR-ENH-F-028)", "Should", "W6", (7, 11), "FR-A113")
@@ -177,8 +177,8 @@ add("J-14", "J", "Offboarding verification job (US-20-EJ05, half; merged with E-
 add("J-15", "J", "Tenant economics and cohorts (US-20-EJ06)", "Should", "W6", spr(3, 5), "KPI-23")
 
 # Cross-cutting packages created by the Part 9.5 decisions
-add("X-1", "X", "Absolute discounts with effective-% approval routing (DEC-180)", "Must", "R2", (1, 2), "financial integrity; DEC-038")
-add("X-2", "X", "Investor/fundraising wording scrub and negative regression strings (DEC-177)", "Must", "R1", (0.5, 1), "DEC-002")
+add("X-1", "X", "Absolute discounts with effective-% approval routing (DEC-208)", "Must", "R2", (1, 2), "financial integrity; DEC-038")
+add("X-2", "X", "Investor/fundraising wording scrub and negative regression strings (DEC-179)", "Must", "R1", (0.5, 1), "DEC-002")
 add("X-3", "X", "API path canon: mount source paths, rename derived paths, /control dispatcher, header/body compatibility (DEC-170…173)", "Must", "R1", (3, 6), "BRD §9")
 
 F_NORM = 0.7  # Part 7.4b used 1 pd = 1 SP; Part 8.1 converts 1 SP = 0.7 pd
