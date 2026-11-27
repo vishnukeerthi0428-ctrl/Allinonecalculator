@@ -102,11 +102,11 @@ def toc_html(hs, pages=None):
 
 
 EXTRA_CSS = """
-.cover{page-break-after:always;padding-top:40mm}
-.cover-band{height:8mm;background:#0b3d6b;margin-bottom:18mm}
+.cover{page-break-after:always;padding-top:12mm}
+.cover-band{height:8mm;background:#0b3d6b;margin-bottom:10mm}
 .cover-title{font-size:30pt;border:none;color:#0b3d6b;margin:0}
 .cover-sub{font-size:18pt;color:#1f5a8c;margin:6mm 0 2mm}
-.cover-meta{font-size:11pt;color:#555;margin-bottom:14mm}
+.cover-meta{font-size:11pt;color:#555;margin-bottom:8mm}
 .cover-table{width:60%;font-size:10pt}
 .toc{page-break-after:always}
 .toc-h{border:none}
