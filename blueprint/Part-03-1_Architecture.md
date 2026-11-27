@@ -7,8 +7,9 @@
 | Version | 1.0 · 27 Nov 2026 |
 | Baseline | BRD, FRD, Parts 0, 0A (DEC-001…065), 1, 2.1–2.5 |
 | Roles applied | Solutions/Technical Architect (lead), Principal Engineer, DevOps/SRE Lead, Security/Compliance/AI Governance Lead, Data Architect/DBA, FinOps Lead, QA Lead |
-| Tags issued in this batch | ADR-001…ADR-043 · RECOMMENDATION-029, -030, -035 · ASSUMPTION-101…106, -109, -110 · GAP-101, -102, -104, -107 · CONFLICT-101, -102 · RSK-301…RSK-312 (register in §3.16) |
-| Entity naming | Entities are referred to by the names in Part 2.1 §2.2 and the DERIVED entities of DEC-016. Physical tables, columns, keys, RLS policies and partitioning are **detailed in Part 3.3** |
+| Tags issued in this batch | ADR-001…ADR-043 · RECOMMENDATION-029, -030, -035 · ASSUMPTION-101…106, -109, -110 · GAP-101, -102, -104, -107 · CONFLICT-101, -102 · RSK-301…RSK-312 (register in §3.1.16) |
+| Entity naming | Entities are referred to by the names in Part 2.1 §2.2 and the DERIVED entities of DEC-016; where Batch 3.3 fixed a more precise logical name (for example ServicePlan, ServiceSubscription, WorkflowRun, AutonomyPlan, IdempotencyKey, LandingPage, ProviderEvent) that name is used. Physical tables, columns, keys, RLS policies, partitioning and retention are **detailed in Part 3.3** |
+| Section numbering | `3.1.x` (batch-scoped, matching Batch 3.3's `3.3.x`; Batch 3.2 uses `3.2.x`) |
 
 **Acronyms used in this batch.** ADR architecture decision record · ALB Application Load Balancer · AZ Availability Zone · BFF Backend-for-Frontend · C4 Context/Containers/Components/Code model · CDN content delivery network · DLQ dead-letter queue · DR disaster recovery · EC2/ECS/ECR Elastic Compute Cloud / Elastic Container Service / Elastic Container Registry · IaC infrastructure as code · IdP identity provider · KMS Key Management Service · KVS CloudFront KeyValueStore · OIDC OpenID Connect · OTel OpenTelemetry · PDP Policy Decision Point · PITR point-in-time recovery · PKCE Proof Key for Code Exchange · RDS Relational Database Service · RLS row-level security · RPO/RTO recovery point/time objective · SLO service level objective · SSR server-side rendering · VPC virtual private cloud · WAF web application firewall.
 
@@ -16,26 +17,26 @@
 
 ---
 
-## 3.1 Architecture principles and drivers
+## 3.1.1 Architecture principles and drivers
 
-### 3.1.1 Architecture drivers (quality attributes that shape the design)
+### 3.1.1.1 Architecture drivers (quality attributes that shape the design)
 
 | Driver ID | Driver | Measurable target | Source | Primary architectural response |
 |---|---|---|---|---|
 | AD-01 | **Tenant and startup isolation** | Zero cross-scope disclosure or side effect on the two-tenant fixture | NFR-031, NFR-032, BRD §2, DEC-065 | Shared schema with composite tenant/startup keys and PostgreSQL RLS (ADR-002); scope-carrying jobs; per-tenant cache keys; per-tenant storage prefixes |
-| AD-02 | **Surface separation** | No Admin route, bundle or private data reachable from the website origin | NFR-001, BRD §9, DEC-009 | Two frontends on separate origins (ADR-006); three Django ingress process groups with **different URL configurations** (§3.3.2); BFF per origin (ADR-005) |
+| AD-02 | **Surface separation** | No Admin route, bundle or private data reachable from the website origin | NFR-001, BRD §9, DEC-009 | Two frontends on separate origins (ADR-006); three Django ingress process groups with **different URL configurations** (§3.1.3.2); BFF per origin (ADR-005) |
 | AD-03 | **Safe external action** | Every external action checked at plan time and dispatch time; duplicates have one effect; uncertain outcomes reconciled before retry | NFR-005, NFR-006, NFR-026, BRD §5, FRD §5 | Transactional outbox (ADR-003); deterministic PDP (ADR-004); provider adapters with idempotency and failure classes (ADR-009) |
 | AD-04 | **AI cost and safety** | Cost cap enforced before every paid call; restricted data never sent to Tier 2 | NFR-014, NFR-030, DEC-007, DEC-008 | Single model gateway with reserve-before-call (ADR-008); classification-aware routing |
 | AD-05 | **Low run cost** | Pilot hosting within B01 ≈ ₹5,000/month; open-source first | CN-05, CN-06, DEC-020, BRD §10 | Single-instance pilot topology (ADR-013, RECOMMENDATION-030); self-hosted Valkey, extraction and analytics; managed PostgreSQL only |
 | AD-06 | **Small team, fast delivery** | 4.0 engineering FTE, W0–W5 in 180 days | DEC-005, CN-07, CN-08 | Modular monolith (ADR-001); one language per tier; managed services where they remove toil |
-| AD-07 | **Availability and recovery** | 99.5% pilot → 99.9% public at scale gate; RPO ≤ 15 min; RTO ≤ 4 h | DEC-018, DEC-040 | PITR database, immutable images, IaC rebuild, cross-region backup copies (§3.13) |
+| AD-07 | **Availability and recovery** | 99.5% pilot → 99.9% public at scale gate; RPO ≤ 15 min; RTO ≤ 4 h | DEC-018, DEC-040 | PITR database, immutable images, IaC rebuild, cross-region backup copies (§3.1.13) |
 | AD-08 | **Performance** | API p95 ≤ 500 ms reads / ≤ 800 ms writes; public TTFB p95 ≤ 800 ms (≤ 200 ms cached); outbox lag p95 ≤ 60 s; Customer 360 freshness ≤ 60 s | DEC-018, NFR-008 | CDN-served snapshots (ADR-010); projections; priority queues (ADR-021) |
 | AD-09 | **Auditability** | Immutable approval, financial and audit records; hash-chained audit | NFR-018, §2.34 | Append-only tables, per-tenant hash chain, daily anchor to object-locked storage |
 | AD-10 | **Configurability without code** | 26th synthetic startup onboarded by configuration only | AP-01, BRD §1, FRD §1.1 | Typed configuration revisions (ConfigRevision), templates, capability profiles, declarative workflows (ADR-027) |
 | AD-11 | **Provider independence** | Any provider replaceable behind a typed adapter; paid fallback only if pre-authorized | FRD §9, FR-ADP-01, NFR-037 | Ports-and-adapters with registry and contract tests (ADR-009) |
-| AD-12 | **Scalability headroom** | 10× pilot volume without re-architecture; Year 2 design point of DEC-031 | DEC-018, DEC-031 | Stateless API and workers, horizontal scale on ECS, read replica and partitioning paths (§3.12) |
+| AD-12 | **Scalability headroom** | 10× pilot volume without re-architecture; Year 2 design point of DEC-031 | DEC-018, DEC-031 | Stateless API and workers, horizontal scale on ECS, read replica and partitioning paths (§3.1.12) |
 
-### 3.1.2 Architecture principles (binding for every design and code review)
+### 3.1.1.2 Architecture principles (binding for every design and code review)
 
 | ID | Principle | Rationale | How it is checked |
 |---|---|---|---|
@@ -55,7 +56,7 @@
 | ARP-14 | **Least privilege per process.** Each container has its own IAM role, database role and secret set | NFR-004, BRD §2 | IAM policy review; database role tests |
 | ARP-15 | **Cost is a first-class signal.** Every paid call is reserved, attributed to tenant/startup/agent and reconciled | NFR-014, NFR-035 | Cost ledger reconciliation job; FinOps dashboard (A012) |
 
-### 3.1.3 Architectural constraints carried from the baseline
+### 3.1.1.3 Architectural constraints carried from the baseline
 
 | Constraint | Effect on architecture | Source |
 |---|---|---|
@@ -69,7 +70,7 @@
 
 ---
 
-## 3.2 System context (C4 level 1)
+## 3.1.2 System context (C4 level 1)
 
 ```mermaid
 flowchart TD
@@ -133,9 +134,9 @@ flowchart TD
 
 ---
 
-## 3.3 Container view (C4 level 2)
+## 3.1.3 Container view (C4 level 2)
 
-### 3.3.1 Container diagram
+### 3.1.3.1 Container diagram
 
 ```mermaid
 flowchart TD
@@ -185,7 +186,7 @@ flowchart TD
   APIA --> VK
 ```
 
-### 3.3.2 Container catalogue
+### 3.1.3.2 Container catalogue
 
 | ID | Container | Technology | Responsibilities | Exposed on | Scales by | Pilot placement | Source |
 |---|---|---|---|---|---|---|---|
@@ -207,15 +208,15 @@ flowchart TD
 | C16 | Secrets and keys | AWS Secrets Manager, KMS customer-managed keys, SSM Parameter Store (non-secret) | Provider credentials as references; envelope keys; configuration parameters | IAM only | Managed | Managed | ADR-014, FRD §6 M05 |
 | C17 | Observability | OpenTelemetry SDK, Sentry, CloudWatch Logs/Metrics/Alarms | Traces, errors, logs, SLO metrics, alarms | Internal | Managed | Managed | DEC-041, ADR-025 |
 
-**Why three API process groups from one image.** BRD §9 requires separate website and Admin ingress allowlists and says "any route not explicitly admitted to the website is denied by default". Loading a URL configuration that simply does not contain Admin routes into the website process makes that rule structural rather than a permission check that could be misconfigured. Each process group also has its own database role (Part 3.3), IAM role and secret set (ARP-14). The cost is three small gunicorn pools instead of one, which the pilot memory budget in §3.6.2 absorbs.
+**Why three API process groups from one image.** BRD §9 requires separate website and Admin ingress allowlists and says "any route not explicitly admitted to the website is denied by default". Loading a URL configuration that simply does not contain Admin routes into the website process makes that rule structural rather than a permission check that could be misconfigured. Each process group also has its own database role (Part 3.3), IAM role and secret set (ARP-14). The cost is three small gunicorn pools instead of one, which the pilot memory budget in §3.1.6.2 absorbs.
 
 ---
 
-## 3.4 Component views (C4 level 3) of the Django modular monolith
+## 3.1.4 Component views (C4 level 3) of the Django modular monolith
 
 Each diagram shows one app group from Part 2.1 §2.1.2. Arrows mean "calls the service interface of" (solid) or "consumes domain events of" (dashed). Entities named in the tables are the Part 2.1 §2.2 names and the DEC-016 DERIVED names; their physical design is **detailed in Part 3.3**. Every component inherits the shared kernel: scope middleware, RLS session context, audit writer, outbox writer, idempotency store, problem+json errors, OTel tracing.
 
-### 3.4.1 Core: tenancy, identity, events, audit (`core.tenancy`, `core.identity`, `core.events`, `core.audit`, `ops`)
+### 3.1.4.1 Core: tenancy, identity, events, audit (`core.tenancy`, `core.identity`, `core.events`, `core.audit`, `ops`)
 
 ```mermaid
 flowchart TD
@@ -224,7 +225,7 @@ flowchart TD
     BA["bff.admin<br/>OIDC client growth-admin"]
   end
   subgraph IDN["core.identity"]
-    SES["Session service<br/>server-side token store"]
+    SES["Session service<br/>server-side tokens in Valkey"]
     MEM["Membership resolver<br/>tenant, startup, roles, grants"]
     AUTHZ["Permission engine<br/>RBAC matrix plus ABAC-01 to 12"]
     SAG["Support access grants"]
@@ -261,20 +262,20 @@ flowchart TD
 | Component | Responsibility | Key entities (Part 2.1 / DEC-016) | Interfaces offered | FR / BR |
 |---|---|---|---|---|
 | bff.web / bff.admin | OIDC authorization code + PKCE with the reused IdP; token exchange and refresh **server-side**; issue `HttpOnly; Secure; SameSite=Strict` session cookie; CSRF token; logout propagation | User, Membership | `/bff/{web,admin}/login`, `/callback`, `/session`, `/logout`, `/step-up` | FR-A001, FR-W21, DEC-019 |
-| Session service | Session record (encrypted refresh token, audience, client, MFA time, expiry); revocation check ≤ 60 s | Session (DERIVED, Part 3.3) | `get_session()`, `revoke(user)` | NFR-003, DEC-019 check 6 |
+| Session service | Server-side session (encrypted refresh token, audience, client, MFA time, expiry) held in Valkey; loss of Valkey forces re-login, never data loss; revocation check ≤ 60 s | Session record in Valkey (not a database entity); User, Membership | `get_session()`, `revoke(user)` | NFR-003, DEC-019 check 6 |
 | Membership resolver | Resolves current tenant, startup grants, roles and capability profile from membership (never from the browser) | Membership, Role, CapabilityProfile | `resolve(subject, requested_scope)` | ARP-02, ABAC-01 |
 | Permission engine | DRF permission classes, object-level checks, field masks (§2.26.5), portfolio read-only (ABAC-06) | Role, Membership | `authorize(action, resource)` | NFR-002, DEC-055 |
 | Support access grants | Request, approve, scope, expire (≤ 72 h), audit visible to tenant | SupportAccessGrant | Service + Admin API | DEC-056 |
 | Tenant and startup service | Lifecycle (Provisioning → Active → Suspended → Offboarding → Closed, §2.27.16) | Tenant, Startup, Domain, CapabilityProfile | Service + Admin API | FR-A099, BR-TENANT |
 | Provisioning saga | Transactional, idempotent provisioning of tenant, startup, roles, storage prefix, vector namespace, budget ledgers, audit genesis (§2.35.4) | Tenant, Startup, ApplicationDraft | `provision(application_id)` | FR-W32, FR-A099 |
 | Configuration revisions | Versioned typed configuration with diff, validation, simulation, approval, schedule, rollback; running workflows pinned | ConfigRevision, WorkflowTemplate (binding only) | Service + Admin API | FR-A112, CA-CONFIG |
-| Scope middleware | Per request/job: `SET LOCAL app.tenant_id`, `app.startup_ids`, `app.actor_id`; cancels on scope mismatch | — | Middleware, Celery task base class | ARP-02 |
+| Scope middleware | Per request/job, first statement of the transaction: transaction-local `app.tenant_id`, `app.startup_ids`, `app.write_startup_id` (empty in portfolio mode), `app.actor_id`, `app.actor_kind` (variables defined in Part 3.3 §3.3.9.1); cancels on scope mismatch | — | Middleware, Celery task base class | ARP-02 |
 | Outbox writer / relay | Insert outbox row in the business transaction; relay publishes at least once | Outbox | `emit(event)` | NFR-006, ADR-003 |
 | Audit writer | Append-only audit with hash chain; daily anchor to S3 Object Lock | AuditEvent | `audit(action, object, outcome, reasons)` | NFR-018, §2.34 |
-| Idempotency store | Key + body hash + response replay window | IdempotencyRecord (DERIVED, Part 3.3) | Decorator on mutating views and tasks | NFR-015, Part 3.2 §3.18 |
+| Idempotency store | Key + body hash + response replay window; also used by event consumers (`scope_key = consumer:<name>`, key = `event_id`) | IdempotencyKey (Part 3.3 ENT-171) | Decorator on mutating views and tasks | NFR-015, Part 3.2 §3.2.1 |
 | JobRun tracker and DLQ | Run/attempt records, error class, DLQ, scoped retry after recheck | JobRun | Admin API (A009) | FR-A009, BR-M06 |
 
-### 3.4.2 Governance and Policy Decision Point (`governance`, `governance.eligibility`, `governance.privacy`, `governance.compliance`)
+### 3.1.4.2 Governance and Policy Decision Point (`governance`, `governance.eligibility`, `governance.privacy`, `governance.compliance`)
 
 ```mermaid
 flowchart TD
@@ -329,7 +330,7 @@ flowchart TD
 
 **PDP placement decision.** The PDP is an **in-process library with a database-backed rule store** (ADR-004), not a network service, so dispatch rechecks add no network hop and stay within the same transaction boundary. It is pure: it reads state through a narrow read interface and never writes business state other than its decision log.
 
-### 3.4.3 Intelligence (`intelligence.*`)
+### 3.1.4.3 Intelligence (`intelligence.*`)
 
 ```mermaid
 flowchart TD
@@ -385,7 +386,7 @@ flowchart TD
 | Review and alerts | Human qualification, owner assignment, alert rules with dedup | Review, Notification | FR-A027, FR-A028, BR-M20 |
 | Social listening and competitor watch | Permitted organizational posts and market events into the same evidence pipeline | SocialPost, Competitor, MarketEvent | FR-A048, FR-A085, BR-M33, BR-M59 |
 
-### 3.4.4 Engagement (`crm`, `crm.leads`, `engagement.*`)
+### 3.1.4.4 Engagement (`crm`, `crm.leads`, `engagement.*`)
 
 ```mermaid
 flowchart TD
@@ -436,7 +437,7 @@ flowchart TD
 | Meeting service | Free/busy, slot holds (15 min), booking, reminders, conflict prevention | Meeting, CalendarLink | FR-A040, FR-A041, FR-W18, BR-M29 |
 | Website assistant | Grounded public answers from approved public knowledge; handover; consented lead | ChatSession, Thread, Lead | FR-W11, FR-A046, BR-M32 |
 
-### 3.4.5 Commerce and finance (`commerce.*`, `commerce.finance`, `analytics.revenue`)
+### 3.1.4.5 Commerce and finance (`commerce.*`, `commerce.finance`, `analytics.revenue`)
 
 ```mermaid
 flowchart TD
@@ -488,19 +489,19 @@ flowchart TD
 | Revenue and attribution projector | Ledger-derived revenue; attribution models with caveat | MetricSnapshot, AttributionEvent | FR-A082, BR-M52 |
 | Document renderer | Deterministic PDF rendering of approved versions with embedded hash | — | CA-APPROVE |
 
-### 3.4.6 Automation engine (`automation`)
+### 3.1.4.6 Automation engine (`automation`)
 
 ```mermaid
 flowchart TD
   subgraph DEF["Definitions"]
-    WFD["Workflow definitions<br/>Workflow, revision, DAG"]
+    WFD["Workflow definitions<br/>Workflow, WorkflowRevision"]
     NTL["Node and template library<br/>NodeTemplate, WorkflowTemplate"]
     TRG["Trigger registry<br/>Trigger, schedules, webhooks"]
     VAL["Validator and simulator"]
   end
   subgraph RUN["Execution"]
     ROUT["Event router<br/>trigger match, dedup window"]
-    INT["DAG interpreter<br/>Execution, StepRun"]
+    INT["DAG interpreter<br/>WorkflowRun, StepRun"]
     EXPR["Sandboxed expression evaluator"]
     CONF["Conflict coordinator<br/>ConflictCase"]
     STOP["Emergency stop switch"]
@@ -526,18 +527,18 @@ flowchart TD
 
 | Component | Responsibility | Key entities | FR / BR / rule |
 |---|---|---|---|
-| Workflow definitions | Declarative DAGs from approved node types; immutable published revisions; runs pin revision | Workflow, Execution, StepRun | FR-A033, BRL-AUT-02/03, DEC-051 |
+| Workflow definitions | Declarative DAGs from approved node types; immutable published revisions; runs pin revision | Workflow, WorkflowRevision, WorkflowRun | FR-A033, BRL-AUT-02/03, DEC-051 |
 | Node and template library | Typed node schemas (input/output), risk class, permissions, cost estimate, fixtures; **no code nodes** | NodeTemplate, WorkflowTemplate | FR-A113 |
 | Trigger registry | Event, timer and webhook triggers independent of workflow design; dedup window; sandbox replay without live effects | Trigger | FR-A109, BRL-AUT-08 |
 | Validator and simulator | Static validation (types, reachability, caps), simulation with sandbox adapters producing zero live effects | — | NFR-038, BRL-AUT-04 |
 | Event router | Matches domain events and webhooks to enabled triggers within scope | Trigger | FR-A109 |
-| DAG interpreter | Executes steps as Celery tasks; step budget (≤ 50), retries (≤ 3), concurrency per startup (≤ 20); outcome certainty (DEC-050) | Execution, StepRun | FR-A110, BRL-AUT-06 |
+| DAG interpreter | Executes steps as Celery tasks; step budget (≤ 50), retries (≤ 3), concurrency per startup (≤ 20); outcome certainty (DEC-050) | WorkflowRun (FRD "Execution"), StepRun | FR-A110, BRL-AUT-06 |
 | Sandboxed expression evaluator | Conditions over typed fields; no attribute access, no imports, bounded time | — | DEC-051 |
 | Conflict coordinator | Detects competing actions on the same relationship; priority compliance > transactional > sales > marketing | ConflictCase | FR-A111, BRL-AUT-09 |
 | Emergency stop switch | Tenant/startup/workflow/channel scope; PDP denies within 60 s | — (flag in Valkey + database) | BRL-AUT-05, E-7 |
-| Plan builder and simulation | Objective → templates → budget → concurrency → stop policy → simulation report → approval → runs | Plan (CFG-27 bound) | FR-A102, WF-13 |
+| Plan builder and simulation | Objective → templates → budget → concurrency → stop policy → simulation report → approval → runs | AutonomyPlan (CFG-27 bound) | FR-A102, WF-13 |
 
-### 3.4.7 AI gateway (`ai`, `ai.cost`, `ai.quality`)
+### 3.1.4.7 AI gateway (`ai`, `ai.cost`, `ai.quality`)
 
 ```mermaid
 flowchart TD
@@ -586,7 +587,7 @@ flowchart TD
 
 Agent definitions, the tool registry, model prices and per-agent cost sizing are in **Part 7** (DEC-048, DEC-042).
 
-### 3.4.8 Web publishing (`web`, `marketing.landing`)
+### 3.1.4.8 Web publishing (`web`, `marketing.landing`)
 
 ```mermaid
 flowchart TD
@@ -622,7 +623,7 @@ flowchart TD
 | Component | Responsibility | Key entities | FR / BR / rule |
 |---|---|---|---|
 | Site configuration | Template, verified Domain (one domain → one tenant/startup), locales with fallback, brand revision | Domain, ConfigRevision | FR-A107, CFG-05, CFG-29 |
-| Page revisions | Block-based content from approved blocks; forms from Form versions; claim references | Page (Part 3.3), LandingPage | FR-A056, FR-A107 |
+| Page revisions | Block-based content from approved blocks; forms from Form versions; claim references | LandingPage (site or landing page, Part 3.3 ENT-111) | FR-A056, FR-A107 |
 | Validator | Schema, broken links, claim evidence, automated WCAG 2.2 AA check, privacy (no health events to pixels) | — | BRL-PUB-06, FR-PUB-01 |
 | Preview grants | Admin-authorized, expiring, `noindex` previews | PreviewGrant | BRL-PUB-03 |
 | Approval of hash | Approver ≠ author; binds exact content hash | Approval | CA-APPROVE, BRL-PUB-01 |
@@ -632,7 +633,7 @@ flowchart TD
 | CloudFront Function | Looks up host in KVS; unknown host → 404; rewrites URI to the revision prefix; adds security headers | — | CA-PUB, RECOMMENDATION-029 |
 | First-party analytics collector | `POST /public/events` beacon; consent-aware; no third-party pixels for health content | AttributionEvent | BR-M37, ADR-011 |
 
-### 3.4.9 SaaS service lifecycle (`saas`)
+### 3.1.4.9 SaaS service lifecycle (`saas`)
 
 ```mermaid
 flowchart TD
@@ -643,7 +644,7 @@ flowchart TD
     SIMW["Configuration simulation"]
   end
   subgraph SUB["Subscription and billing"]
-    PLN2["Plan catalogue<br/>Plan, PlanVersion"]
+    PLN2["Plan catalogue<br/>ServicePlan, PlanVersion"]
     SUBS["Subscription service<br/>Entitlement"]
     MET["Usage metering<br/>UsageMeterReading"]
     BILL["Service invoicing<br/>ServiceInvoice"]
@@ -673,14 +674,14 @@ flowchart TD
 | Administrator verification | Business email OTP, legal identifier format checks, authority declaration | ApplicationDraft | FR-W32 |
 | Onboarding wizard | AI proposes profile, offerings, objectives, channels, templates; every item "Unverified" until confirmed; no dispatch or spend | ApplicationDraft, ConfigRevision (candidate) | FR-W33, CA-AI |
 | Configuration simulation | Runs validator and simulator over candidate configuration | — | FR-W33, AP-01 |
-| Plan catalogue | Plan archetypes; no published price until Service Owner approval | Plan, PlanVersion | DEC-047, FR-A101 |
-| Subscription service | Start/change/suspend/cancel; entitlement revisions | Entitlement | FR-A101, FR-W34 |
+| Plan catalogue | Plan archetypes; no published price until Service Owner approval | ServicePlan (DEC-016 "Plan"), PlanVersion | DEC-047, FR-A101 |
+| Subscription service | Start/change/suspend/cancel; entitlement revisions | ServiceSubscription, Entitlement | FR-A101, FR-W34 |
 | Usage metering | Meter dimensions: workspaces, users, AI tasks, outbound messages, research fetches, storage GB | UsageMeterReading | DEC-047, NFR-035 |
 | Service invoicing | Service invoices for SaaS tenants (separate from startup commercial invoices) | ServiceInvoice | BR-SVC |
 | Entitlement checker | Feeds PDP check C5 (ABAC-10) | Entitlement | BRL-SVC-03 |
 | Import / export jobs | Versioned CSV/JSON templates, dry-run report, approval, consent-gated contacts (DEC-039); scoped exports with expiry and redaction | ImportJob, ExportJob | FR-A103 |
 
-### 3.4.10 Module dependency rules (enforced by `import-linter`)
+### 3.1.4.10 Module dependency rules (enforced by `import-linter`)
 
 | Layer (top may call below) | Apps | May depend on | Must not depend on |
 |---|---|---|---|
@@ -694,7 +695,7 @@ Cycles between L3 apps are resolved with domain events (for example `commerce` e
 
 ---
 
-## 3.5 Logical view
+## 3.1.5 Logical view
 
 ```mermaid
 flowchart TD
@@ -752,16 +753,16 @@ flowchart TD
 |---|---|---|
 | Presentation | Two React apps and one shared package (`@growth/ui`) | No provider SDKs or secrets; Admin code never imported by the website build (bundle check in CI, NFR-001) |
 | Edge and session | CloudFront, BFF | Tokens never reach the browser; cookies are host-only, `SameSite=Strict` |
-| API layer | Views, serializers, middleware | Allowlisted filters, cursor pagination, idempotency, problem+json (Part 3.2 §3.18) |
+| API layer | Views, serializers, middleware | Allowlisted filters, cursor pagination, idempotency, problem+json (Part 3.2 §3.2.1) |
 | Application services | Use-case services, PDP, gateway, interpreter | Transaction boundaries live here; one use case = one transaction + outbox |
 | Domain | Entities, state machines (Part 2.3 §2.27), value objects (Money, Quantity+Unit, ScopeRef) | No I/O; pure functions where possible |
 | Infrastructure | Repositories, adapters, queues, storage | RLS context required; adapters return normalized results with failure class |
 
 ---
 
-## 3.6 Deployment view (AWS ap-south-1)
+## 3.1.6 Deployment view (AWS ap-south-1)
 
-### 3.6.1 Account, network and naming baseline (both topologies)
+### 3.1.6.1 Account, network and naming baseline (both topologies)
 
 | Item | Decision | Source / tag |
 |---|---|---|
@@ -774,7 +775,7 @@ flowchart TD
 | DNS | Route 53 for the platform domain; startup custom domains point a CNAME at the website distribution after verification (FR-A107) | GAP-107 |
 | Tags | `env`, `app=growth-engine`, `component`, `cost-centre` (budget ID B01, B04, B07, B19–B22), `data-class` | DEC-020, ARP-15 |
 
-### 3.6.2 Topology A: cost-minimal pilot (fits B01 ≈ ₹5,000/month with commitments) [RECOMMENDATION-030]
+### 3.1.6.2 Topology A: cost-minimal pilot (fits B01 ≈ ₹5,000/month with commitments) [RECOMMENDATION-030]
 
 ```mermaid
 flowchart TD
@@ -870,11 +871,11 @@ flowchart TD
 
 **Pilot verdict (FinOps).** Production (committed, P-13 on B20) + staging ≈ **₹4,570–5,660/month**; fully on-demand ≈ **₹5,760–6,600/month**; all before GST [ASSUMPTION-110]. B01 (₹5,000) therefore fits at the low-to-mid end only if (a) the Savings Plan and RDS reservation are bought once usage is stable (end of W0), (b) staging is scheduled (≤ 60 h/week), and (c) the cross-region backup replication is funded from B20 rather than B01. Otherwise the overrun is ≈ ₹700–1,600/month. This is logged as **CONFLICT-102** (budget B01 vs the DEC-040 pilot topology plus a staging environment) and **RSK-301**. Proposed resolution: approve B20 at ≈ ₹200/month, state that B01 covers staging (GAP-102), and draw on contingency B11 for the first quarter until commitments apply. Non-production `dev` runs locally (Docker Compose, ₹0) and `test` runs in CI (B07).
 
-**Not in B01 at pilot (by design):** AWS WAF (B21, ₹0 — GAP-104; compensating controls in §3.11 and Part 3.2 §3.18.7), Multi-AZ, ALB, NAT, ElastiCache, customer-managed KMS keys, interface VPC endpoints.
+**Not in B01 at pilot (by design):** AWS WAF (B21, ₹0 — GAP-104; compensating controls in §3.1.11 and Part 3.2 §3.2.1.7), Multi-AZ, ALB, NAT, ElastiCache, customer-managed KMS keys, interface VPC endpoints.
 
-### 3.6.3 Topology B: scale-gate topology (DEC-040)
+### 3.1.6.3 Topology B: scale-gate topology (DEC-040)
 
-Activated when the BRD §8 scale gate passes (measured cost per qualified opportunity, consent compliance, conversion) **and** at least one trigger in §3.6.4 fires. Required elements per DEC-040: Multi-AZ database and two application instances behind a load balancer; public availability target 99.9% (DEC-018).
+Activated when the BRD §8 scale gate passes (measured cost per qualified opportunity, consent compliance, conversion) **and** at least one trigger in §3.1.6.4 fires. Required elements per DEC-040: Multi-AZ database and two application instances behind a load balancer; public availability target 99.9% (DEC-018).
 
 ```mermaid
 flowchart TD
@@ -938,7 +939,7 @@ flowchart TD
 
 **FinOps note.** The scale-gate topology exceeds B01 by design; DEC-040 and DEC-008 tie it to a passed scale gate, and from Year 2 the SaaS tenants' metered plans carry their attributable share (DEC-047, NFR-035). Increasing B01 requires Founder approval through change control (BRD §11). Logged as **RSK-302**.
 
-### 3.6.4 Triggers for moving from Topology A to Topology B
+### 3.1.6.4 Triggers for moving from Topology A to Topology B
 
 | Trigger | Threshold (sustained 7 days unless stated) | Measured by |
 |---|---|---|
@@ -954,9 +955,9 @@ Intermediate steps are allowed before the full topology: vertical resize (t4g.me
 
 ---
 
-## 3.7 Runtime views
+## 3.1.7 Runtime views
 
-### 3.7.1 External action dispatch with dispatch-time recheck (example: approved outreach email)
+### 3.1.7.1 External action dispatch with dispatch-time recheck (example: approved outreach email)
 
 ```mermaid
 sequenceDiagram
@@ -1008,7 +1009,7 @@ sequenceDiagram
 
 **Recheck guarantees.** The recheck uses the policy revision *current at dispatch*; if the approval hash no longer matches the message content hash (content edited after approval), the PDP denies with `BRL-APR-02`. An opt-out committed between plan and dispatch wins because the opt-out transaction also cancels queued messages (BR-M04) and the recheck reads the suppression table under the same RLS scope.
 
-### 3.7.2 Webhook ingestion (example: WhatsApp inbound and delivery status)
+### 3.1.7.2 Webhook ingestion (example: WhatsApp inbound and delivery status)
 
 ```mermaid
 sequenceDiagram
@@ -1050,7 +1051,7 @@ sequenceDiagram
 
 **Ingestion rules.** Persist minimal event first, acknowledge fast, process asynchronously (FRD §5). Ordering is not assumed: status updates apply only if they move the state machine forward (§2.27.9). Raw bodies are stored for 30 days for dispute and replay in sandbox only (BRL-AUT-08), then reduced to digests.
 
-### 3.7.3 Publication (website page or landing page)
+### 3.1.7.3 Publication (website page or landing page)
 
 ```mermaid
 sequenceDiagram
@@ -1085,7 +1086,7 @@ sequenceDiagram
 
 **Why this is atomic for visitors.** Every snapshot lives under its own immutable prefix, so a visitor either resolves the old revision or the new one; there is never a half-written site. The KVS update is a single key write (propagation in seconds; verify). If the KVS write fails after the database swap, a reconciler compares PostgreSQL (authoritative) with KVS every minute and repairs, and the publication shows "Propagating" in A108 until consistent. Rollback is the same flow pointing at a prior approved revision (BRL-PUB-02).
 
-### 3.7.4 AI gateway call (example: evidence extraction, Tier 1a)
+### 3.1.7.4 AI gateway call (example: evidence extraction, Tier 1a)
 
 ```mermaid
 sequenceDiagram
@@ -1134,7 +1135,7 @@ sequenceDiagram
 
 **Tier 2 path.** Only reached when the task policy allows it, the tenant has opted in (CFG-25, default OFF) and the classifier returned Public or Internal-non-personal (DEC-007). Restricted or Confidential payloads can never take this branch; a unit test asserts the router has no code path from those classes to Tier 2 adapters.
 
-### 3.7.5 BFF authentication flow (DEC-019)
+### 3.1.7.5 BFF authentication flow (DEC-019)
 
 ```mermaid
 sequenceDiagram
@@ -1142,7 +1143,7 @@ sequenceDiagram
   participant BR as Browser on admin origin
   participant BFF as BFF-admin in api-admin
   participant IDP as Reused IdP
-  participant DB as PostgreSQL sessions
+  participant DB as Valkey session store
   participant API as Admin API views
   BR->>BFF: GET bff admin login with return path
   BFF->>BFF: Create state, nonce, PKCE verifier, store in short-lived pre-session
@@ -1166,7 +1167,7 @@ sequenceDiagram
 
 ---
 
-## 3.8 Technology stack
+## 3.1.8 Technology stack
 
 All versions are **targets to verify at time of implementation (as of 27 Nov 2026)**: pick the latest patch of the named line that is supported for the whole of W0–W6, and pin it in lock files. "Mandated" means fixed by CN-01 / BRD §1.2.
 
@@ -1209,7 +1210,7 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 
 ---
 
-## 3.9 Architecture decision records (ADR-001 … ADR-043)
+## 3.1.9 Architecture decision records (ADR-001 … ADR-043)
 
 **Status legend.** *Accepted (baseline)* = the decision is already fixed by a DEC or the source documents; the ADR records the reasoning and consequences. *Proposed* = an architect decision in this blueprint, to be confirmed by the Product Owner/architect in Sprint 0 (ADR review is a W0 exit criterion). *Deferred* = recorded now, decided at a named trigger. Every ADR is revisited if its listed review trigger fires.
 
@@ -1219,7 +1220,7 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 |---|---|
 | Status | Accepted (baseline): FRD OPT-07-01, NFR-029, CN-01 |
 | Context | 66 modules, 147 screens, 4.0 engineering FTE (DEC-005), 180 days to W5. Strong transactional coupling (state + outbox + audit + budget in one transaction, FRD §5) |
-| Decision | One Django codebase and one container image, organized into the apps of Part 2.1 §2.1.2 with layered dependency rules (§3.4.10) enforced by import-linter. Separate **process groups** (api-web, api-admin, api-hooks, relay, workers, beat) from the same image |
+| Decision | One Django codebase and one container image, organized into the apps of Part 2.1 §2.1.2 with layered dependency rules (§3.1.4.10) enforced by import-linter. Separate **process groups** (api-web, api-admin, api-hooks, relay, workers, beat) from the same image |
 | Alternatives | (a) Microservices per capability: rejected, distributed transactions and operational load exceed team capacity. (b) Separate monoliths for website and admin: rejected, duplicates domain logic and PDP |
 | Consequences | + One transaction boundary, simple local development, one deploy. − Risk of a "big ball of mud" (mitigated by import-linter contracts and code ownership per app). − Whole backend deploys together (mitigated by feature flags, ADR-015) |
 | Review trigger | A module needs an independent scaling or release cadence that process groups cannot provide (for example extraction at 100× volume) |
@@ -1230,7 +1231,7 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 |---|---|
 | Status | Accepted (baseline): FRD §5, DEC-009, DEC-065, §2.35.2 |
 | Context | Owner Portfolio tenant with 25+ startups plus 2–30 external tenants (DEC-031). Cross-tenant disclosure is the top security risk |
-| Decision | One PostgreSQL cluster for this product; every operational table carries `tenant_id` and (where applicable) `startup_id` with composite foreign keys; RLS policies use session settings (`app.tenant_id`, `app.startup_ids`) set by middleware and the Celery task base; application roles have no `BYPASSRLS`; a separate migration role owns tables. Default scoped managers in code (RECOMMENDATION-025). Physical policies **detailed in Part 3.3** |
+| Decision | One PostgreSQL cluster for this product; every operational table carries `tenant_id` and (where applicable) `startup_id` with composite foreign keys; RLS policies use transaction-local settings (`app.tenant_id`, `app.startup_ids`, `app.write_startup_id`, `app.actor_kind`; Part 3.3 §3.3.9) set by middleware and the Celery task base; application roles have no `BYPASSRLS`; a separate migration role owns tables. Default scoped managers in code (RECOMMENDATION-025). Physical policies **detailed in Part 3.3** |
 | Alternatives | (a) Schema per tenant: rejected, migration fan-out with 30+ schemas and cross-startup aggregates within a tenant become hard. (b) Database per tenant: rejected on cost (B01). (c) Application-only filtering: rejected, single bug = breach |
 | Consequences | + Defence in depth; cheap tenants. − Every query path must set context (enforced by a connection-checkout hook that refuses queries without context in business roles). − Connection pooling must use transaction-scoped `SET LOCAL` (no session-level leakage) |
 | Review trigger | A tenant contract requires physical isolation → dedicated cluster offered as a priced plan option (Scale archetype, DEC-047) |
@@ -1243,7 +1244,7 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 | Context | External effects must follow committed state exactly once in effect; provider outages must not lose events |
 | Decision | Business transactions insert an `Outbox` row. `outbox-relay` polls with `FOR UPDATE SKIP LOCKED` (batch 100, poll 250 ms when busy, 2 s idle; LISTEN/NOTIFY as a wake-up hint), publishes Celery tasks carrying `event_id`, marks `relayed_at`. Consumers are idempotent by `event_id` (processed-event table). Valkey is broker only; it is not the source of truth. Celery `acks_late=True`, `task_reject_on_worker_lost=True`, visibility timeout > longest task |
 | Alternatives | (a) Publish to broker inside the request: rejected, dual-write problem. (b) Debezium/CDC + Kafka: rejected, cost and ops. (c) Amazon SQS as broker: viable later; Valkey is mandated and cheaper at pilot |
-| Consequences | + At-least-once delivery with idempotent effect; replayable. − Relay is a single active process (leader lock + ECS restart, lag alarm at 60 s, DEC-018). − Outbox table growth (partition by month and purge relayed rows after 7 days; Part 3.3) |
+| Consequences | + At-least-once delivery with idempotent effect; replayable. − Relay is a single active process (leader lock + ECS restart, lag alarm at 60 s, DEC-018). − Outbox table growth (weekly partitions, dropped 30 days after dispatch, per Part 3.3) |
 | Review trigger | Sustained > 200 events/s or relay lag SLO breach after tuning |
 
 ### ADR-004 Deterministic Policy Decision Point as an in-process library
@@ -1252,7 +1253,7 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 |---|---|
 | Status | Accepted (baseline concept): RECOMMENDATION-012, DEC-029, DEC-038, DEC-064. Placement: Proposed |
 | Context | Scope, consent, jurisdiction, quiet hours, caps, entitlement, budget, approval hash and autonomy must be checked at plan time and dispatch time, identically, by API views, workers and the AI tool registry |
-| Decision | `governance.pdp` Python library: typed `DecisionRequest` → `Decision(allow, reasons[rule_id], policy_revision, obligations)`. Rules are code (fixed rules) plus versioned data (PolicyVersion, JurisdictionRule, ApprovalPolicy). Evaluation order fixed (§3.4.2), first deny wins, all reasons reported. Every external-action decision logged. 100% branch coverage required; property tests over generated requests |
+| Decision | `governance.pdp` Python library: typed `DecisionRequest` → `Decision(allow, reasons[rule_id], policy_revision, obligations)`. Rules are code (fixed rules) plus versioned data (PolicyVersion, JurisdictionRule, ApprovalPolicy). Evaluation order fixed (§3.1.4.2), first deny wins, all reasons reported. Every external-action decision logged. 100% branch coverage required; property tests over generated requests |
 | Alternatives | (a) OPA/Rego sidecar: rejected for pilot memory and an extra language; reconsider if policies must be shared across products. (b) Cedar: same. (c) Checks scattered in views: rejected, drift between plan and dispatch |
 | Consequences | + No network hop; same code at plan and dispatch. + Explainable denials with rule IDs (FR-UIS-03). − Policy changes to fixed rules need a deploy (intended: fixed rules are non-negotiable) |
 | Review trigger | A second product needs the same policies, or non-engineers must author rules beyond the data-driven parameters |
@@ -1265,7 +1266,7 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 | Context | Browser token storage exposes tokens to XSS; two frontends on separate origins with separate OAuth clients; product audience `growth-engine` |
 | Decision | A Django BFF per origin (`bff.web` client `growth-website`, `bff.admin` client `growth-admin`) runs OIDC authorization code + PKCE, keeps tokens server-side (encrypted at rest), issues host-only `HttpOnly; Secure; SameSite=Strict` cookies, double-submit CSRF token on mutating calls, refresh rotation, revocation check per request (≤ 60 s propagation) |
 | Alternatives | (a) SPA with tokens in memory/local storage: rejected (XSS exposure, BRD §2). (b) Django-native auth instead of the IdP: fallback only if the spike fails (DP-01) |
-| Consequences | + Tokens never reach JavaScript. + CORS not needed (same-origin `/bff`, `/api` via CloudFront path behaviours). − CloudFront must forward cookies only on API behaviours and never cache them (cache policy per behaviour). − Session store load on PostgreSQL (small; cached in Valkey) |
+| Consequences | + Tokens never reach JavaScript. + CORS not needed (same-origin `/bff`, `/api` via CloudFront path behaviours). − CloudFront must forward cookies only on API behaviours and never cache them (cache policy per behaviour). − Sessions live in Valkey (encrypted); a Valkey loss signs everyone out but loses no business data |
 | Review trigger | Spike check fails, or a native mobile client is added (then add a token-based client with its own audience) |
 
 ### ADR-006 Two frontends with a shared component package in a monorepo
@@ -1284,7 +1285,7 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 | Field | Content |
 |---|---|
 | Status | Accepted (baseline "pgvector where justified", BRD §1.2); index choice Proposed |
-| Context | Approved knowledge retrieval (SR-04), solution matching (M16), semantic cache; corpus Year 1 ≈ 50k–200k chunks, Year 2 ≈ 1–2 M [ASSUMPTION-103] |
+| Context | Approved knowledge retrieval (SR-04), solution matching (M16), semantic cache; corpus Year 1 ≈ 320k chunks, Year 2 ≈ 1.6 M (Part 3.3 §3.3.10) [ASSUMPTION-103] |
 | Decision | pgvector in the same cluster, HNSW indexes, mandatory `tenant_id`/`startup_id` filter predicates under RLS, embeddings dimension per chosen model (Part 7). Iterative index scans (pgvector 0.8) to keep filtered recall |
 | Alternatives | (a) OpenSearch/Elastic: rejected, ≈ $100+/month floor and a second ACL model. (b) Pinecone/Qdrant Cloud: rejected, data leaves the RLS boundary and adds cost (B19 ₹0) |
 | Consequences | + RLS applies to vectors (NFR-002 "vector retrieval"). − Memory pressure on small instances (mitigate with partial indexes per tenant at scale, B19 for overage) |
@@ -1296,7 +1297,7 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 |---|---|
 | Status | Accepted (baseline): DEC-007, DEC-008, DEC-042, FR-OP001 |
 | Context | Many AI tasks, strict ceilings (₹3,000/₹12,000/₹40,000), data-classification constraints, eval gates |
-| Decision | In-process `ai` app is the only code allowed to import model SDKs. Task registry, classifier/redactor, Tier 0 cache, budget reservation, router, validator, run logger (§3.4.7). `POST /internal/ai/run` exposes the same path to internal callers (FR-OP001) |
+| Decision | In-process `ai` app is the only code allowed to import model SDKs. Task registry, classifier/redactor, Tier 0 cache, budget reservation, router, validator, run logger (§3.1.4.7). `POST /internal/ai/run` exposes the same path to internal callers (FR-OP001) |
 | Alternatives | (a) Third-party LLM proxy (LiteLLM, hosted gateways): rejected for pilot (extra service, data path); revisit for multi-provider at scale. (b) Direct SDK calls per feature: rejected (NFR-014) |
 | Consequences | + One place for cost, safety and evals. − Gateway is critical path: Tier 3 degradation keeps business flows alive |
 | Review trigger | More than two paid model providers approved |
@@ -1307,7 +1308,7 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 |---|---|
 | Status | Accepted (baseline): FRD §9, FR-ADP-01, RECOMMENDATION-011 |
 | Context | 13 provider families, sandbox vs production, replaceable vendors, paid fallbacks only when pre-authorized |
-| Decision | `integrations` defines ports (`EmailPort`, `MessagingPort`, `CalendarPort`, `SearchPort`, `ExtractionPort`, `SocialPort`, `AdsPort`, `ESignPort`, `PaymentPort`, `SecretsPort`, `LLMPort`, `SEOPort`, `EnrichmentPort`). Each adapter returns `AdapterResult(status, provider_ref, normalized, cost, failure_class ∈ {transient, rate_limited, auth, permanent, uncertain, unsupported})`. Registry resolves adapter by (tenant, startup, capability, environment); production credentials are only resolvable by production service identities (ABAC-12). Adapter catalogue in Part 3.2 §3.21 |
+| Decision | `integrations` defines ports (`EmailPort`, `MessagingPort`, `CalendarPort`, `SearchPort`, `ExtractionPort`, `SocialPort`, `AdsPort`, `ESignPort`, `PaymentPort`, `SecretsPort`, `LLMPort`, `SEOPort`, `EnrichmentPort`). Each adapter returns `AdapterResult(status, provider_ref, normalized, cost, failure_class ∈ {transient, rate_limited, auth, permanent, uncertain, unsupported})`. Registry resolves adapter by (tenant, startup, capability, environment); production credentials are only resolvable by production service identities (ABAC-12). Adapter catalogue in Part 3.2 §3.2.4 |
 | Alternatives | Direct SDK use; iPaaS (Zapier/Make, excluded by CN-05) |
 | Consequences | + Swappable, testable with contract fixtures. − Some provider features need port extensions (versioned) |
 | Review trigger | New provider category |
@@ -1354,7 +1355,7 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 | Decision | ECS on EC2 with one t4g.medium container instance (Graviton) at pilot, Caddy for origin TLS, no ALB/NAT. At scale gate: Auto Scaling group across two AZs behind an ALB; batch capacity provider on spot |
 | Alternatives | (a) Fargate: ≈ 3–4× the pilot compute cost for 8 always-on tasks (verify). (b) EKS: control-plane fee alone ≈ B01 share. (c) Lightsail / single VM with docker compose: cheapest but weak path to scale gate and IAM task roles. (d) Elastic Beanstalk: less control |
 | Consequences | + Same task definitions from pilot to scale. − Single instance is a single point of failure at pilot (accepted: 99.5% target, RTO ≤ 4 h, rebuild by IaC in < 30 min) |
-| Review trigger | §3.6.4 triggers |
+| Review trigger | §3.1.6.4 triggers |
 
 ### ADR-014 Secrets and keys
 
@@ -1371,7 +1372,7 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 | Field | Content |
 |---|---|
 | Status | Proposed (CFG-31, RECOMMENDATION-005) |
-| Decision | `FeatureFlag` rows with targeting by platform/tenant/startup/role/environment, evaluated server-side, cached in Valkey 30 s, exposed to frontends through `/bff/*/session` as a boolean map. An OpenFeature provider wraps it so a hosted service could replace it. Every flag has an owner and expiry date; flags never bypass PDP checks |
+| Decision | Feature flags stored as ConfigRevision items of kind `feature_flag` (CFG-31; Part 3.3 ENT-168) with targeting by platform/tenant/startup/role/environment, evaluated server-side, cached in Valkey 30 s, exposed to frontends through `/bff/*/session` as a boolean map. An OpenFeature provider wraps it so a hosted service could replace it. Every flag has an owner and expiry date; flags never bypass PDP checks |
 | Alternatives | Unleash/Flagsmith self-hosted (extra service, memory), LaunchDarkly (cost) |
 | Consequences | + Zero cost; audited changes (CFG-31). − Limited experimentation features (not required) |
 
@@ -1407,7 +1408,7 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 | Field | Content |
 |---|---|
 | Status | Deferred (DEC-040) |
-| Decision | All workloads in ap-south-1. Data protection across regions from day one: RDS cross-Region automated backups (snapshots **and** transaction logs) replicated to ap-south-2, so point-in-time restore is possible in the second region (verify the region pair is supported); critical S3 buckets replicated at scale gate. Regional disaster = rebuild the stack in ap-south-2 by IaC and restore; target RTO 4 h is rehearsed but not guaranteed at pilot (CONFLICT-101, §3.13). Active-passive warm standby in ap-south-2 is considered at Year 2 or when a SaaS contract requires it |
+| Decision | All workloads in ap-south-1. Data protection across regions from day one: RDS cross-Region automated backups (snapshots **and** transaction logs) replicated to ap-south-2, so point-in-time restore is possible in the second region (verify the region pair is supported); critical S3 buckets replicated at scale gate. Regional disaster = rebuild the stack in ap-south-2 by IaC and restore; target RTO 4 h is rehearsed but not guaranteed at pilot (CONFLICT-101, §3.1.13). Active-passive warm standby in ap-south-2 is considered at Year 2 or when a SaaS contract requires it |
 | Consequences | + Cost. − Regional outage → extended downtime (RSK-304) |
 
 ### ADR-020 Event schema versioning
@@ -1431,7 +1432,7 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 | Field | Content |
 |---|---|
 | Status | Accepted (baseline): FRD §5, NFR-015 |
-| Decision | Resource-oriented REST with action sub-resources for state transitions (`POST …/{id}/approve`), OpenAPI 3.1 generated by drf-spectacular, RFC 9457 problem details with rule IDs, cursor pagination, idempotency keys. Standards in Part 3.2 §3.18 |
+| Decision | Resource-oriented REST with action sub-resources for state transitions (`POST …/{id}/approve`), OpenAPI 3.1 generated by drf-spectacular, RFC 9457 problem details with rule IDs, cursor pagination, idempotency keys. Standards in Part 3.2 §3.2.1 |
 | Alternatives | GraphQL (field-level authorization complexity, caching), gRPC (browser support) |
 
 ### ADR-023 Idempotency store in PostgreSQL with Valkey fast path
@@ -1439,7 +1440,7 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 | Field | Content |
 |---|---|
 | Status | Proposed (FRD §5 "idempotency key/body hash") |
-| Decision | `IdempotencyRecord(scope, key, method, path, body_sha256, status, response_digest, response_body ≤ 64 KB, created_at, expires_at)`; unique on (tenant, actor, key). Same key + same hash → replay stored response; same key + different hash → 409 `IDEMPOTENCY_KEY_REUSED`; in-flight → 409 `REQUEST_IN_PROGRESS` with `Retry-After`. Retention 24 h for interactive calls, 7 days for intake and webhooks (Part 3.3) |
+| Decision | IdempotencyKey (Part 3.3 ENT-171, `ops_idempotency_key`): unique on (tenant, startup, `scope_key` = operation + actor, `key_value`) with `body_hash` and a response reference. Same key + same hash → replay stored response; same key + different hash → 409 `IDEMPOTENCY_KEY_REUSED`; in-flight → 409 `REQUEST_IN_PROGRESS` with `Retry-After`. Replay window 24 h for interactive calls and 7 days for intake and webhooks; rows retained 35 days (Part 3.3) so a late reuse still returns 409 instead of acting twice. Event consumers reuse the same table with `scope_key = consumer:<name>` |
 | Consequences | + Durable across Valkey loss. − Table churn (daily partition drop) |
 
 ### ADR-024 Object storage layout and malware scanning
@@ -1490,7 +1491,7 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 | Field | Content |
 |---|---|
 | Status | Accepted (baseline): DEC-037, SR-01 |
-| Decision | Generated `tsvector` columns per searchable entity (language config per locale), `pg_trgm` GIN indexes for names/domains, a `search_document` projection for global search (Part 3.3) |
+| Decision | Generated `tsvector` columns per searchable entity (language config per locale), `pg_trgm` GIN indexes for names/domains, and global search as a `UNION ALL` over per-entity search views exposing only permitted fields under RLS (Part 3.3 §3.3.8.3) |
 | Review trigger | p95 global search > 700 ms at ≤ 1 M records per tenant |
 
 ### ADR-030 Money, quantity and time representation at the API boundary
@@ -1504,7 +1505,7 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 
 | Field | Content |
 |---|---|
-| Status | Proposed (§3.11) |
+| Status | Proposed (§3.1.11) |
 | Decision | Three tiers: CDN for snapshots and static assets; Valkey for derived, scope-keyed data; in-process LRU for immutable reference data. Every Valkey key starts with `t:{tenant}:s:{startup}:` (or `p:` for platform); portal data never cached in shared layers |
 
 ### ADR-032 Server-side document rendering with WeasyPrint
@@ -1535,7 +1536,7 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 
 | Field | Content |
 |---|---|
-| Status | Proposed (§2.35.3 defaults; extended classes in Part 3.2 §3.18.7) |
+| Status | Proposed (§2.35.3 defaults; extended classes in Part 3.2 §3.2.1.7) |
 | Decision | Application token buckets in Valkey keyed by class and principal (IP hash, user, tenant, site, provider connection), returning 429 with `Retry-After` and `RateLimit-*` headers; CloudFront/WAF rate rules added at scale gate (B21) |
 
 ### ADR-036 Container image and runtime hardening
@@ -1584,7 +1585,7 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 
 | Field | Content |
 |---|---|
-| Status | Proposed (§3.14, ABAC-12, RECOMMENDATION-017) |
+| Status | Proposed (§3.1.14, ABAC-12, RECOMMENDATION-017) |
 | Decision | Environments `local`, `test` (ephemeral CI), `staging`, `prod`; the adapter registry refuses live adapters outside `prod` and refuses sandbox adapters in `prod` for live tenants; synthetic data sets in non-prod only |
 
 ### ADR-043 Public intake abuse protection without paid WAF at pilot
@@ -1597,7 +1598,7 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 
 ---
 
-## 3.10 Batch versus real-time processing
+## 3.1.10 Batch versus real-time processing
 
 | Class | Latency target | Mechanism | Examples (module / FR) | Source |
 |---|---|---|---|---|
@@ -1614,7 +1615,7 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 
 ---
 
-## 3.11 Caching strategy
+## 3.1.11 Caching strategy
 
 | Layer | What is cached | Key structure | TTL / invalidation | Never cached | Source |
 |---|---|---|---|---|---|
@@ -1629,9 +1630,9 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 
 ---
 
-## 3.12 Scalability and capacity model
+## 3.1.12 Scalability and capacity model
 
-### 3.12.1 Design points and workload assumptions
+### 3.1.12.1 Design points and workload assumptions
 
 Design points from DEC-031; per-user behaviour is an assumption to be replaced by W2 measurements [ASSUMPTION-102].
 
@@ -1650,11 +1651,12 @@ Design points from DEC-031; per-user behaviour is an assumption to be replaced b
 | Peak-to-average factor (public) | f | 5 | 5 | ASSUMPTION-102 |
 | Mean / p95 API service time | t | 0.15 s / 0.5 s | 0.15 s / 0.5 s | DEC-018 target |
 | Target thread utilization | ρ | 0.6 | 0.6 | Queueing headroom |
-| Outbound email per month | E | 2,000 (pilot) → 20,000 (10×) | 50,000 | BRD §6 B05 basis |
-| WhatsApp templates per month | WA | 1,000 → 10,000 | 25,000 | BRD §6 B06 basis |
-| Research fetches per month | R | 500 → 5,000 | 15,000 | BRD §6 B03 basis |
+| Outbound messages per month, all channels | E | 30,000 | 120,000 | Part 3.3 §3.3.10.2 (`eng_message`) |
+| Domain events per month | Ev | ≈ 300,000 | ≈ 1.5 M | Part 3.3 §3.3.10.2 (`ops_domain_event`) |
+| AI model runs per month | G | ≈ 45,000 (budget-capped) | ≈ 360,000 | Part 3.3 §3.3.10.2; DEC-008 caps apply |
+| Research fetches per month | R | 5,000 | 40,000 | Part 3.3 §3.3.10.2 (`intel_fetch_log`) |
 
-### 3.12.2 Capacity formulas and results
+### 3.1.12.2 Capacity formulas and results
 
 | Quantity | Formula | Year 1 | Year 2 | Implication |
 |---|---|---|---|---|
@@ -1664,25 +1666,25 @@ Design points from DEC-031; per-user behaviour is an assumption to be replaced b
 | Public origin peak requests/s | λW = PS × o / (30 × 86,400) × f | 5,000 × 3 / 2,592,000 × 5 ≈ **0.03 rps** | ≈ **0.3 rps** | Pages are CDN-served; origin load is negligible |
 | Gunicorn threads needed (admin) | N = λA × t̄ / ρ (+ p95 headroom ×2) | 10 × 0.15 / 0.6 × 2 = **5** | 33 × 0.15 / 0.6 × 2 = **16.5** | Pilot api-admin has 6 threads; Year 2 needs ≥ 3 × 6 threads across 2–3 instances |
 | Gunicorn threads needed (web + portal) | N = (λP + λW) × t̄ / ρ × 2 | ≈ **0.3** → 4 provided | ≈ **3.4** → 8 provided | |
-| Domain/outbox events per day | Ev = U × 50 + 3 × (E + WA)/30 + R/30 + AI calls/day | 3,000 + 3,000 + 170 + 400 ≈ **6,600/day** (10× pilot messaging) | 10,000 + 7,500 + 500 + 1,300 ≈ **19,300/day** | 50 events per active user per day; 3 events per message (queued, sent, delivered) |
-| Peak outbox throughput | Ev × 10 / 86,400 (10× peak factor) | ≈ **0.8 events/s** | ≈ **2.2 events/s** | Relay capacity ≈ 400 events/s (batch 100 × 4/s); not a bottleneck |
-| Celery task throughput | ≈ 2 × Ev | ≈ 13,000 tasks/day | ≈ 39,000 tasks/day | worker-tx concurrency 2 handles ≈ 10 tasks/s at 0.2 s mean |
+| Domain/outbox events per day | Ev / 30 | ≈ **10,000/day** | ≈ **50,000/day** | Part 3.3 volume model |
+| Peak outbox throughput | Ev/30 × 10 / 86,400 (10× peak factor) | ≈ **1.2 events/s** | ≈ **5.8 events/s** | Relay capacity ≈ 400 events/s (batch 100 × 4/s); not a bottleneck |
+| Celery task throughput | ≈ 2 × Ev / 30 | ≈ 20,000 tasks/day | ≈ 100,000 tasks/day | worker-tx concurrency 2 handles ≈ 10 tasks/s at 0.2 s mean; Year 2 adds worker containers |
 | Database connections | Σ process pool sizes | ≈ 25 (pilot) | ≈ 60–80 | db.t4g.micro max_connections ≈ 100 (verify); Year 2 consider RDS Proxy or PgBouncer sidecar |
-| Database size (incl. indexes) | Σ entity rows × row size × 1.6 index factor (row counts in Part 3.3) | ≈ **10–30 GB** | ≈ **80–200 GB** | ASSUMPTION-103; storage autoscaling enabled with max 100 GB (pilot), 500 GB (scale) |
-| Vector storage | chunks × dims × 4 B × 2.5 (HNSW overhead) | 200k × 1,024 × 4 × 2.5 ≈ **2 GB** | 2 M × 1,024 × 4 × 2.5 ≈ **20 GB** | Dimension depends on embedding model (Part 7); review trigger ADR-007 |
-| Audit log growth | U × 200 events/day × 1 KB × 365 | ≈ **4.4 GB/year** | ≈ **15 GB/year** | Monthly partitions; 7-year retention (DEC-028) moves partitions > 13 months to compressed archive (Part 3.3) |
-| Attribution events | PS × 10 events × 0.5 KB × 12 | ≈ **0.3 GB/year** | ≈ **3 GB/year** | Partitioned; aggregated |
+| Database size (hot, incl. indexes) | rows × avg row bytes × 1.6 (Part 3.3 §3.3.10.3) | ≈ **20–30 GB** end of Year 1 | ≈ **110–150 GB** end of Year 2 | RDS storage autoscaling: pilot starts at 20 GB with max 100 GB; scale gate max 500 GB |
+| Vector storage | chunks × 2.2 KB × 2.0 (halfvec + HNSW; Part 3.3) | 320k → ≈ **1.4 GB** | 1.6 M → ≈ **7 GB** | Review trigger ADR-007 |
+| Audit log growth | Part 3.3 formula (user actions + 3 × messages + 2 × model runs + jobs) | ≈ **4.7 M rows ≈ 6 GB/year** | ≈ **21.7 M rows ≈ 28 GB/year** | Monthly partitions; 13 months hot, then archived to S3 with Object Lock (Part 3.3 §3.3.10.4) |
+| Attribution events | PS × 10 events × 0.5 KB × 12 | ≈ **0.3 GB/year** | ≈ **3 GB/year** | Not partitioned in Year 1 (Part 3.3) |
 | Object storage | documents + snapshots + exports | ≈ 20–50 GB | ≈ 200–500 GB | Lifecycle rules per bucket |
-| AI calls per month | Budget ÷ mean cost per call (Part 7) | ₹3,000 ÷ ₹0.10–0.50 ≈ 6k–30k | ₹40,000 ÷ ₹0.10–0.50 ≈ 80k–400k | Budget, not compute, is the limit (DEC-008) |
+| AI calls per month (affordability check) | Budget ÷ mean cost per call (Part 7) | ₹3,000 ÷ ₹0.10–0.50 ≈ 6k–30k paid calls; the rest of the ≈ 45,000 runs must be Tier 0 cache/rules or Tier 1a | ₹40,000 ÷ ₹0.10–0.50 ≈ 80k–400k | Budget, not compute, is the limit (DEC-008); Part 7 reconciles |
 
 **10× pilot volume without re-architecture (DEC-018).** Every component in the table scales by adding container instances, adding threads, resizing RDS/Valkey or adding a read replica — the same architecture. The first structural change point is beyond Year 2: > 5 M vectors (ADR-007 review), > 200 events/s (ADR-003 review), or a tenant requiring physical isolation (ADR-002 review).
 
-### 3.12.3 Scaling levers in order of use
+### 3.1.12.3 Scaling levers in order of use
 
 | Order | Lever | Cost impact (verify) | Trigger |
 |---|---|---|---|
 | 1 | Tune gunicorn/Celery concurrency, add indexes, fix N+1 queries | None | p95 regressions in CI performance tests |
-| 2 | Vertical resize: t4g.medium → t4g.large; db.t4g.micro → db.t4g.small | ≈ +₹1,500–2,500/month | §3.6.4 T-3/T-4 |
+| 2 | Vertical resize: t4g.medium → t4g.large; db.t4g.micro → db.t4g.small | ≈ +₹1,500–2,500/month | §3.1.6.4 T-3/T-4 |
 | 3 | Topology B (ALB, 2 instances, Multi-AZ, ElastiCache) | ≈ ₹21,000/month total | T-1 + any other trigger |
 | 4 | Separate batch capacity on spot | ≈ +₹900–2,300/month | Batch queue lag affects transactional SLO |
 | 5 | Read replica for reports, exports, analytics | ≈ +₹5,000/month | Report/export load > 30% of DB CPU |
@@ -1691,9 +1693,9 @@ Design points from DEC-031; per-user behaviour is an assumption to be replaced b
 
 ---
 
-## 3.13 High availability and disaster recovery
+## 3.1.13 High availability and disaster recovery
 
-### 3.13.1 Objectives
+### 3.1.13.1 Objectives
 
 | Objective | Pilot (Topology A) | Scale gate (Topology B) | Source |
 |---|---|---|---|
@@ -1705,7 +1707,7 @@ Design points from DEC-031; per-user behaviour is an assumption to be replaced b
 
 **CONFLICT-101 (DEC-018 RTO ≤ 4 h vs DEC-040 single-region pilot).** DEC-018 sets RTO ≤ 4 h without distinguishing failure scope, while DEC-040 places the pilot in one region with backup copies only. A regional rebuild (network, ECS, RDS restore from replicated backups, DNS/CloudFront origin switch) is estimated at 3–8 h depending on database size and rehearsal. **Resolution proposed:** the 4-hour RTO is binding for instance, AZ, data-corruption and deployment failures; for a full regional loss the pilot commits to "best effort ≤ 8 h, RPO ≤ 15 min", becoming binding ≤ 4 h at the scale gate after two successful rehearsals. Product Owner acceptance required (RSK-304).
 
-### 3.13.2 Backup design
+### 3.1.13.2 Backup design
 
 | Asset | Mechanism | Frequency / RPO | Retention | Location | Restore test |
 |---|---|---|---|---|---|
@@ -1718,7 +1720,7 @@ Design points from DEC-031; per-user behaviour is an assumption to be replaced b
 | Configuration, IaC, schemas, prompts, workflows | Git (GitHub) + releases | Per commit | Indefinite | GitHub + mirror in shared-account S3 | IaC rebuild of staging from scratch quarterly |
 | Secrets | Secrets Manager (replicated secret to ap-south-2 at scale gate) | — | Versioned | ap-south-1 | Rotation drill quarterly |
 
-### 3.13.3 Failure-mode table
+### 3.1.13.3 Failure-mode table
 
 | # | Failure | Detection | Impact (pilot) | Automatic response | Manual runbook | RTO / RPO achieved |
 |---|---|---|---|---|---|---|
@@ -1728,7 +1730,7 @@ Design points from DEC-031; per-user behaviour is an assumption to be replaced b
 | FM-04 | Region failure | AWS Health | Total outage except CloudFront-cached snapshots (static) | None at pilot | Regional runbook: IaC apply in ap-south-2, restore from cross-Region backups, update CloudFront origins and KVS | ≤ 8 h pilot (CONFLICT-101) / ≤ 15 min |
 | FM-05 | Database corruption by application bug or bad migration | Integrity checks, error spikes, user reports | Wrong or missing data | Migrations are expand/contract and reversible; release halted by smoke tests | PITR to a new instance at T−1 min, compare and repair or switch | ≤ 4 h / ≤ 15 min |
 | FM-06 | Accidental deletion of S3 objects | Object-level logging, user report | Missing documents/snapshots | Versioning retains noncurrent versions | Restore versions | ≤ 1 h / 0 |
-| FM-07 | Valkey loss or eviction | Celery connection errors, alarm | Queued tasks lost, caches cold | Relay re-publishes outbox rows not marked `consumed` after 10 min; beat reloads from DB | None normally | ≤ 15 min / 0 (outbox is authoritative) |
+| FM-07 | Valkey loss or eviction | Celery connection errors, alarm | Queued tasks lost, caches cold, all users signed out (sessions) | Relay re-publishes outbox rows not marked `consumed` after 10 min; beat reloads from DB | None normally | ≤ 15 min / 0 (outbox is authoritative) |
 | FM-08 | Outbox relay crash or stall | Lag metric > 60 s p95 | Delayed side effects | ECS restarts the task; standby acquires leader lock | Investigate poison row (moved to DLQ after 5 failures) | ≤ 5 min / 0 |
 | FM-09 | Duplicate beat instances | Lock contention metric | Duplicate scheduling | Lock prevents dual activity; tasks idempotent | — | — |
 | FM-10 | Bad deployment | Smoke tests, error budget burn | Errors | Rolling deploy halts; automatic rollback to previous task definition | Feature flag off | ≤ 15 min / 0 |
@@ -1742,13 +1744,13 @@ Design points from DEC-031; per-user behaviour is an assumption to be replaced b
 
 ---
 
-## 3.14 Environment strategy
+## 3.1.14 Environment strategy
 
 | Environment | Purpose | Hosting | Data | Adapters | Deploy | Access | Cost basis |
 |---|---|---|---|---|---|---|---|
 | `local` | Developer work | Docker Compose (PostgreSQL+pgvector, Valkey, MinIO or LocalStack S3, Mailpit, stub IdP) | Synthetic seed (two tenants, 26 startups, RECOMMENDATION-017) | All **fake** adapters (in-memory, deterministic) | Developer | Developer | ₹0 |
 | `test` | CI: unit, integration, contract, E2E, eval regression, accessibility, performance smoke | Ephemeral containers in GitHub Actions | Synthetic, created per run | Fake + recorded fixtures; nightly **sandbox** contract run against provider sandboxes | Every PR / nightly | CI only | B07 (GitHub minutes, verify) |
-| `staging` | Pre-production verification, UAT, synthetic journeys, release gates (A090) | `growth-nonprod` account, scheduled ≤ 60 h/week (§3.6.2) | Synthetic only; never production copies | **Sandbox** adapters (SES mailbox simulator, WhatsApp test number, Google test calendar, payment gateway test mode, e-sign sandbox where available, Anthropic with a capped evaluation key, Tavily dev key) | Auto from `main` after CI | Team; external UAT users via invite | ≈ ₹950–1,000/month (B01) |
+| `staging` | Pre-production verification, UAT, synthetic journeys, release gates (A090) | `growth-nonprod` account, scheduled ≤ 60 h/week (§3.1.6.2) | Synthetic only; never production copies | **Sandbox** adapters (SES mailbox simulator, WhatsApp test number, Google test calendar, payment gateway test mode, e-sign sandbox where available, Anthropic with a capped evaluation key, Tavily dev key) | Auto from `main` after CI | Team; external UAT users via invite | ≈ ₹950–1,000/month (B01) |
 | `prod` | Live operation | `growth-prod` account | Real | **Live** adapters only for tenants/startups whose integrations are configured and approved; simulation mode uses sandbox adapters even in prod | Manual approval in A090 after gates | Least privilege; break-glass role with MFA and alerting | B01 and provider budgets |
 | `sandbox mode` (logical, inside prod) | Simulation and sandbox replay (A102, A109) without live effects | Same prod deployment | Real configuration, simulated outcomes flagged `simulated` | Sandbox adapters selected by the registry when `mode=simulation` | — | Roles per CFG-27 | Within prod |
 
@@ -1764,7 +1766,7 @@ Design points from DEC-031; per-user behaviour is an assumption to be replaced b
 
 ---
 
-## 3.15 Risks raised in this batch
+## 3.1.15 Risks raised in this batch
 
 | RSK | Risk | Likelihood | Impact | Mitigation | Owner |
 |---|---|---|---|---|---|
@@ -1778,51 +1780,51 @@ Design points from DEC-031; per-user behaviour is an assumption to be replaced b
 | RSK-308 | CloudFront limits (alternate domain names, certificates, KVS size/propagation) block onboarding many startup domains (GAP-107) | Medium | Medium | Verify quotas in Sprint 0; request increases; platform subdomains as default; CloudFront multi-tenant distribution features if available (verify) | SRE Lead |
 | RSK-309 | db.t4g.micro under-sized (memory for pgvector HNSW, CPU credits) | Medium | Medium | Alarms T-4; resize to db.t4g.small (≈ +₹1,100/month) | DBA |
 | RSK-310 | Outbox relay is a single active process; stalls delay all side effects | Low | High | Leader lock with standby; lag alarm; poison-row DLQ; runbook FM-08 | SRE Lead |
-| RSK-311 | Provider sandboxes missing or limited (e-sign, ads, WhatsApp) reduce test fidelity | Medium | Medium | Recorded fixtures, contract tests (Part 3.2 §3.22), controlled live pilot with internal recipients | QA Lead |
+| RSK-311 | Provider sandboxes missing or limited (e-sign, ads, WhatsApp) reduce test fidelity | Medium | Medium | Recorded fixtures, contract tests (Part 3.2 §3.2.5), controlled live pilot with internal recipients | QA Lead |
 | RSK-312 | Prerendered snapshot HTML diverges from the hydrated SPA (hydration mismatch, stale components) | Medium | Low | Renderer uses the same component package version pinned per snapshot; visual regression tests on publish | Frontend lead |
 
 ---
 
-## 3.16 Tag register (Batch 3.1)
+## 3.1.16 Tag register (Batch 3.1)
 
 | Tag | Statement | Where used | Status |
 |---|---|---|---|
-| ASSUMPTION-101 | Currency conversion at ₹90 per USD for all cost estimates (as BRD §6 does for seats) | §3.6, §3.12 | Open; FinOps updates monthly |
-| ASSUMPTION-102 | Workload profile for the capacity model (peak active share 0.5, 20 Admin requests/min, portal 4 sessions × 10 min, 3 origin calls per public session, peak factor 5, 50 events per active user per day) | §3.12 | Replace with W2 measurements |
-| ASSUMPTION-103 | Data volumes: Year 1 ≈ 10–30 GB database, 200k vector chunks; Year 2 ≈ 80–200 GB, 2 M chunks | §3.12, ADR-007 | Validate against Part 3.3 row estimates |
-| ASSUMPTION-104 | The reused IdP supports OIDC authorization code + PKCE, JWKS, refresh-token rotation, revocation and `max_age`/`acr_values` step-up | §3.7.5, ADR-005 | Verified by Sprint 0 spike (DEC-019) |
-| ASSUMPTION-105 | Pilot processes fit a 4 GiB t4g.medium (≈ 3.0 GiB peak) | §3.6.2 | Validate by load test in W0 |
-| ASSUMPTION-106 | Staging runs ≤ 60 h/week | §3.6.2, §3.14 | PO/QA to confirm UAT hours |
-| ASSUMPTION-109 | Publication latency ≤ 5 minutes from approval to live (≤ 50 pages) is acceptable to marketing | §3.10, ADR-010 | Marketing lead to confirm |
-| ASSUMPTION-110 | AWS figures exclude GST, consistent with BRD §6 "taxes excluded" | §3.6 | Finance to confirm treatment |
-| GAP-101 | DEC-040 requires cross-region backup copies, but B20 (backup/DR storage) is ₹0 until approved | §3.6.2, §3.13 | Request ≈ ₹200/month approval |
-| GAP-102 | DEC-020 does not say whether B01 covers non-production environments (staging) | §3.6.2 | FinOps/PO decision |
-| GAP-104 | No WAF budget at pilot (B21 ₹0) while NFR-022 requires abuse controls on public intake | §3.6.2, ADR-043 | Compensating controls; revisit at W3 |
-| GAP-107 | Approach and limits for 25+ startup custom domains on CloudFront (certificates, alternate names, KVS) not specified | §3.6.1, RSK-308 | Verify quotas in Sprint 0 |
-| CONFLICT-101 | DEC-018 RTO ≤ 4 h (all failures) vs DEC-040 single-region pilot | §3.13.1 | Proposed resolution; PO acceptance |
-| CONFLICT-102 | B01 ₹5,000 vs DEC-040 pilot topology plus staging | §3.6.2 | Proposed resolution; FinOps |
-| RECOMMENDATION-029 | Atomic publication pointer via PostgreSQL (authoritative) mirrored to CloudFront KeyValueStore with immutable revision prefixes and prerendered pages | ADR-010, §3.4.8, §3.7.3 | Proposed |
-| RECOMMENDATION-030 | Single-instance ECS-on-EC2 pilot behind CloudFront without ALB or NAT gateway | ADR-013, §3.6.2 | Proposed |
+| ASSUMPTION-101 | Currency conversion at ₹90 per USD for all cost estimates (as BRD §6 does for seats) | §3.1.6, §3.1.12 | Open; FinOps updates monthly |
+| ASSUMPTION-102 | Workload profile for the capacity model (peak active share 0.5, 20 Admin requests/min, portal 4 sessions × 10 min, 3 origin calls per public session, peak factor 5) | §3.1.12 | Replace with W2 measurements |
+| ASSUMPTION-103 | The capacity model adopts the Part 3.3 §3.3.10 volume drivers (messages, domain events, model runs, fetches, vector chunks) without independent re-derivation | §3.1.12, ADR-007 | Re-check when Part 3.3 estimates change |
+| ASSUMPTION-104 | The reused IdP supports OIDC authorization code + PKCE, JWKS, refresh-token rotation, revocation and `max_age`/`acr_values` step-up | §3.1.7.5, ADR-005 | Verified by Sprint 0 spike (DEC-019) |
+| ASSUMPTION-105 | Pilot processes fit a 4 GiB t4g.medium (≈ 3.0 GiB peak) | §3.1.6.2 | Validate by load test in W0 |
+| ASSUMPTION-106 | Staging runs ≤ 60 h/week | §3.1.6.2, §3.1.14 | PO/QA to confirm UAT hours |
+| ASSUMPTION-109 | Publication latency ≤ 5 minutes from approval to live (≤ 50 pages) is acceptable to marketing | §3.1.10, ADR-010 | Marketing lead to confirm |
+| ASSUMPTION-110 | AWS figures exclude GST, consistent with BRD §6 "taxes excluded" | §3.1.6 | Finance to confirm treatment |
+| GAP-101 | DEC-040 requires cross-region backup copies, but B20 (backup/DR storage) is ₹0 until approved | §3.1.6.2, §3.1.13 | Request ≈ ₹200/month approval |
+| GAP-102 | DEC-020 does not say whether B01 covers non-production environments (staging) | §3.1.6.2 | FinOps/PO decision |
+| GAP-104 | No WAF budget at pilot (B21 ₹0) while NFR-022 requires abuse controls on public intake | §3.1.6.2, ADR-043 | Compensating controls; revisit at W3 |
+| GAP-107 | Approach and limits for 25+ startup custom domains on CloudFront (certificates, alternate names, KVS) not specified | §3.1.6.1, RSK-308 | Verify quotas in Sprint 0 |
+| CONFLICT-101 | DEC-018 RTO ≤ 4 h (all failures) vs DEC-040 single-region pilot | §3.1.13.1 | Proposed resolution; PO acceptance |
+| CONFLICT-102 | B01 ₹5,000 vs DEC-040 pilot topology plus staging | §3.1.6.2 | Proposed resolution; FinOps |
+| RECOMMENDATION-029 | Atomic publication pointer via PostgreSQL (authoritative) mirrored to CloudFront KeyValueStore with immutable revision prefixes and prerendered pages | ADR-010, §3.1.4.8, §3.1.7.3 | Proposed |
+| RECOMMENDATION-030 | Single-instance ECS-on-EC2 pilot behind CloudFront without ALB or NAT gateway | ADR-013, §3.1.6.2 | Proposed |
 | RECOMMENDATION-035 | Managed malware scanning of uploads (GuardDuty Malware Protection for S3) at pilot (defined in Part 3.2) | ADR-024, P-12 | Proposed |
-| ADR-001…ADR-043 | Architecture decisions | §3.9 | 23 accepted (baseline; 4 with proposed mechanisms), 19 proposed, 1 deferred |
-| RSK-301…RSK-312 | Risks | §3.15 | Open |
+| ADR-001…ADR-043 | Architecture decisions | §3.1.9 | 23 accepted (baseline; 4 with proposed mechanisms), 19 proposed, 1 deferred |
+| RSK-301…RSK-312 | Risks | §3.1.15 | Open |
 
 ASSUMPTION-107 and -108, GAP-103, -105, -106, CONFLICT-103 and RECOMMENDATION-031…034 are issued in Batch 3.2.
 
 ---
 
-## 3.17 Quality gate: Batch 3.1
+## 3.1.17 Quality gate: Batch 3.1
 
 | # | Check | Result | Notes and fixes applied |
 |---|---|---|---|
 | 1 | Every requirement traced to a source | Pass | Drivers, containers, components, ADRs and objectives cite NFR/DEC/BR/FR/BRL; derived design choices carry ADR or tag IDs |
-| 2 | Assumptions/gaps/conflicts tagged and logged | Pass | §3.16 register; only allocated ranges used (ASSUMPTION-101…110, GAP-101…107, CONFLICT-101…102, RECOMMENDATION-029/030/035) |
+| 2 | Assumptions/gaps/conflicts tagged and logged | Pass | §3.1.16 register; only allocated ranges used (ASSUMPTION-101…110, GAP-101…107, CONFLICT-101…102, RECOMMENDATION-029/030/035) |
 | 3 | IDs unique and consistent with earlier parts | Pass | ADR-001…043 new; entity names from Part 2.1 §2.2 and DEC-016; roles R01–R20; queues and containers newly identified (C01–C17, FM-01…17, P-/S-/B- cost lines) |
 | 4 | No story lacks AC; no requirement lacks a test | N/A (architecture) | Testable architecture assertions listed per ADR/principle (ARP "How it is checked"); test cases in Part 6 |
 | 5 | Negative, edge, security and accessibility cases covered | Pass | Failure-mode table (17 modes); dispatch denial, uncertain and simulation branches; webhook signature failure; KVS/DB divergence; cache poisoning; accessibility check in publication pipeline |
 | 6 | Agents: guardrail, fallback, KPI, cost | N/A | Gateway architecture only; agents sized in Part 7 |
 | 7 | Time-sensitive facts flagged "verify" with as-of date | Pass | All prices, quotas, versions and service capabilities marked "verify (as of 27 Nov 2026)"; FX assumption tagged |
-| 8 | No restricted data routed to free-tier models | Pass | Router has no path from Confidential/Restricted to Tier 2 (§3.7.4, ADR-008, DEC-007) |
+| 8 | No restricted data routed to free-tier models | Pass | Router has no path from Confidential/Restricted to Tier 2 (§3.1.7.4, ADR-008, DEC-007) |
 | 9 | Consistent with earlier parts | Pass with notes | Matches DEC-007/009/018/019/040, §2.35 isolation layers, §2.6 engine; conflicts raised rather than silently changed: CONFLICT-101 (RTO scope), CONFLICT-102 (B01 fit) |
 
 **Status: Part 3 Batch 3.1 complete. Architecture principles, 14 C4, logical and deployment diagrams plus 5 runtime sequences, 2 costed topologies, 43 ADRs, capacity model, HA/DR and environment strategy defined. Next: Batch 3.2 (API and integration design); Batch 3.3 (data model) in parallel.**
