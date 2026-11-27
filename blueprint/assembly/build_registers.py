@@ -382,7 +382,7 @@ def context_statement(line, tag):
     return s
 
 
-NOT_ISSUED_RX = re.compile(r"not used|unused|not issued|reserved,? not|left unissued|not needed|were not required", re.I)
+NOT_ISSUED_RX = re.compile(r"not used|never used|unused|not issued|reserved,? not|left unissued|not needed|were not required", re.I)
 
 
 def scan_tags(parts):
@@ -416,7 +416,7 @@ def scan_tags(parts):
 
 
 DEC_LOGS = ("0A", "9.1", "9.5")       # decision logs: DEC-001…065, DEC-066…156, DEC-157…227
-REJECT_RX = re.compile(r"\b(?:reject(?:ed|s)?|not (?:accepted|adopted)|declined|withdrawn)\b", re.I)
+REJECT_RX = re.compile(r"(?<!/)\b(?:rejected|is not (?:accepted|adopted)|are not (?:accepted|adopted)|declined|withdrawn)\b", re.I)
 
 
 def dec_log(dec):
@@ -449,7 +449,7 @@ def status_rules(parts):
                     for mm in re.finditer(r"RECOMMENDATION-(\d{3})\s*(?:…|\.\.\.|–)\s*(?:RECOMMENDATION-)?(\d{3})", rowtxt):
                         status_rules.blanket.append((int(mm.group(1)), int(mm.group(2)), first))
                 for mm in re.finditer(r"RECOMMENDATION-\d{3}", rowtxt):
-                    window = rowtxt[max(0, mm.start() - 60): mm.end() + 60]
+                    window = rowtxt[mm.end(): mm.end() + 60].split(";")[0]   # the clause after the ID
                     if REJECT_RX.search(window):
                         status_rules.rejected[mm.group(0)] = first
                 for mm in re.finditer(r"GAP-\d{3}", rowtxt):
@@ -786,6 +786,10 @@ GLOSS_SEARCH = {  # term key -> regex when the bold key itself is not the search
     "rights request": r"(?i)rights request|data principal rights|privacy request", "EU AI Act risk class": r"EU AI Act",
     "Meta WhatsApp Business policy": r"WhatsApp Business", "story point": r"(?i)story points?\b",
     "receipt": r"(?i)\breceipts?\b", "reservation": r"(?i)\breservations?\b", "claim": r"(?i)\bclaims?\b",
+    "RC-1…RC-3": r"\bRC-[1-3]\b", "SLA-01…12": r"\bSLA-\d{2}\b", "PC-01…18": r"\bPC-\d{2}\b", "PG-01…10": r"\bPG-\d{2}\b",
+    "WP-01…03": r"\bWP-0\d\b", "RBK-T / RBK-R": r"\bRBK-[TR]", "HO-T / HO-B / HO-A": r"\bHO-[TBA]\d", "MNT": r"\bMNT-[A-Z]\d",
+    "CSO": r"\bCSO-\d", "QC": r"\bQC-\d", "VER": r"\bVER-\d", "SIT alias": r"\bSM-SIT-A\d", "coding standard": r"\bCS-[A-Z]+-\d{2}",
+    "source pack": r"(?i)source pack", "SDEC-08": r"\bSDEC-08", "SRC07-DEC": r"\bSRC07-DEC", "TRN-SCR": r"\bTRN-SCR", "TRN-EX": r"\bTRN-EX",
     "signal": r"(?i)\bsignals?\b", "sequence": r"(?i)\bsequences?\b", "tenant": r"(?i)\btenants?\b", "INVEST": r"\bINVEST\b", "p95": r"\bp95\b",
 }
 
@@ -818,7 +822,7 @@ def glossary_first_use(parts, md_text):
                     else:
                         rx = r"\b" + re.escape(key) + r"(?![A-Za-z0-9])"
                 r = re.compile(rx)
-                fu = "not found in Parts 0–9.1"
+                fu = "not found in Parts 0–9.5"
                 for lab, sec, l2 in order_lines:
                     if r.search(l2):
                         fu = f"Part {lab} {sec}".strip()

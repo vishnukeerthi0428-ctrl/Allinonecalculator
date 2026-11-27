@@ -1,5 +1,5 @@
 ID,First seen,Issuing part,Statement,Status / resolution,Parts referencing,Occurrences
-RECOMMENDATION-001,0 §0.3.3,0,"Adopt WCAG 2.2 AA as the accessibility standard for Website, Portal and Admin; automated axe checks in CI plus manual screen-reader passes",Rejected (DEC-149),"0, 0A, 2.1, 2.3, 2.5, 4.1, 4.2, 5.1a, 5.1b, 5.1c, 5.2, 5.3, 6.1, 6.2a, 9.1",27
+RECOMMENDATION-001,0 §0.3.3,0,"Adopt WCAG 2.2 AA as the accessibility standard for Website, Portal and Admin; automated axe checks in CI plus manual screen-reader passes","Accepted (DEC-098, DEC-149)","0, 0A, 2.1, 2.3, 2.5, 4.1, 4.2, 5.1a, 5.1b, 5.1c, 5.2, 5.3, 6.1, 6.2a, 9.1",27
 RECOMMENDATION-002,0 §0.4,0,"Initial SLOs: Website/Portal availability 99.5% (pilot) → 99.9% (scale gate); Admin 99.5%; p95 API read ≤ 500 ms, write ≤ 800 ms (excluding provider calls); RPO ≤ 15 min (PITR), RTO ≤ 4 h; outbox dispatch lag p95 ≤ 60 s (consistent with NFR-008)","Accepted (DEC-018, DEC-149)","0, 0A, 2.4",5
 RECOMMENDATION-003,0 §0.5,0,"Allow a lighter Claude tier (e.g. Haiku-class) for high-volume classification/extraction where evals show parity. Deviates from ""Sonnet only"", consistent with FRD OPT-10-01","Accepted (DEC-007, DEC-149)","0, 0A, 5.1b, 6.5, 7.3",9
 RECOMMENDATION-004,0 §0.8,0,"Data classification scheme (Public, Internal, Confidential, Restricted). Restricted = personal data, children's data, health-adjacent, financial, credentials. Restricted data never goes to free-tier models; redact or block",Accepted (DEC-149),"0, 3.3, 3.6a, 3.6b, 4.1, 5.1a, 5.1b",13
@@ -15,7 +15,7 @@ RECOMMENDATION-013,0 §0.5,0,"Merge duplicated acceptance procedures (BRD §15/�
 RECOMMENDATION-014,0 §0.3.1,0,"Create FR-W31…FR-W34 and FR-A109…FR-A113 with full acceptance, matching the SM-FR pattern",Accepted (DEC-149),0,3
 RECOMMENDATION-015,0 §0.8,0,"A Reconciliation console pattern (uncertain outcomes queue) shared by email, WhatsApp, social, ads, e-sign, payments",Accepted (DEC-149),"0, 2.2, 3.2, 3.3, 4.2, 6.4, 7.2, 9.4",9
 RECOMMENDATION-016,0 §0.8,0,"A Jurisdiction rule pack in the eligibility engine (India DPDP/TRAI, EU GDPR/PECR, US CAN-SPAM, Canada CASL); unknown jurisdiction = deny","Accepted (DEC-029, DEC-149)","0, 0A, 5.1b",3
-RECOMMENDATION-017,0 §0.8,0,"Seed synthetic data sets (two tenants, 26 startups, all four verticals, minors and health fixtures) as a versioned test asset",Accepted (DEC-149),"0, 3.1, 3.2, 3.3, 4.1, 4.2, 4.3, 4.4a, 5.1a, 5.1b, 5.1c, 6.1, 6.4, 6.5, 7.1, 7.2, 7.3, 7.4a, 7.4b, 9.4",38
+RECOMMENDATION-017,0 §0.8,0,"Seed synthetic data sets (two tenants, 26 startups, all four verticals, minors and health fixtures) as a versioned test asset",Accepted (DEC-149),"0, 3.1, 3.2, 3.3, 4.1, 4.2, 4.3, 4.4a, 5.1a, 5.1b, 5.1c, 6.1, 6.4, 6.5, 7.1, 7.2, 7.3, 7.4a, 7.4b, 9.4",37
 RECOMMENDATION-018,0 §0.8,0,"Use the dual-ledger pattern: receivables and payables as separate append-only ledgers; deal/closure states derived, never manually set",Accepted (DEC-149),"0, 1, 3.1, 3.2, 3.3, 3.6a, 6.1, 6.6",12
 RECOMMENDATION-019,1 §1.4.2,1,KPI-03 · Verified contact rate · contacts with verified professional channel ÷ contacts discovered · Baseline in W1; +10 pp by W5 RECOMMENDATION-019 · Monthly · Research lead · A025,Accepted (DEC-149),"1, 8.2",9
 RECOMMENDATION-020,2.3 §2.25.6,2.3,BRL-APR-09 · Delegation · Approvers may delegate for ≤ 14 days to a user with an equal or higher role in the same scope; audited · None · SVC · Policy,Accepted (DEC-149),2.3,3
@@ -164,7 +164,7 @@ RECOMMENDATION-421,6.8c §6.8.5.1.6,6.8c,Adopt UAT-PK-MKT and UAT-PK-CS,Accepted
 RECOMMENDATION-422,6.8a §6.8.3.2,6.8c,Add execution_status to the EVR,Accepted (DEC-221),"6.8a, 6.8c",4
 RECOMMENDATION-423,6.8a front matter,6.8c,Extend DEC-017 aliases to all SM-* source families,Accepted (DEC-221),"6.8a, 6.8c",4
 RECOMMENDATION-424,6.8a §6.8.3.1,6.8c,Import the source's 164 candidate request and 165 response examples as OpenAPI examples once DTOs are approved (CT-04),Accepted (DEC-221),"6.8a, 6.8c",3
-RECOMMENDATION-425,6.8c §6.8.5.1.1,6.8c,build_rtm.py reads final/coverage/G_test_mapping.csv into the Aliases column,Accepted (DEC-221),6.8c,3
+RECOMMENDATION-425,6.8c §6.8.5.1.5,6.8c,build_rtm.py reads final/coverage/G_test_mapping.csv into the Aliases column,Accepted (DEC-221),6.8c,2
 RECOMMENDATION-440,6.9b front matter,6.9b,Adopt the QC register and layer sign-off as A090 inputs,Accepted (DEC-221),6.9b,3
 RECOMMENDATION-441,6.9b §6.9.5.2,6.9b,Use the SPDEC alias and decision queue,Accepted (DEC-221),6.9b,2
 RECOMMENDATION-442,6.9b §6.9.5.1.4,6.9b,Run the fail-closed validator in PL-17 / G4 with exit-code contract 0/1/2,Accepted (DEC-221),6.9b,3

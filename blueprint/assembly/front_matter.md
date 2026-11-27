@@ -12,7 +12,7 @@
 |---|---|
 | Inputs | The complete 38-document engineering package (01 BRD, 02 FRD, 03–36 domain specifications, 37 illustrative workflow, 38 all numbers). Coverage of every document is reported in Part 0B |
 | Classification | Confidential: internal and authorized delivery partners |
-| Decision authority | Product Owner delegated decision-making to the blueprint team (27 Nov 2026). Every decision is listed (DEC-001…228) and can be overridden through change control (BRD §11) |
+| Decision authority | Product Owner delegated decision-making to the blueprint team (27 Nov 2026). Every decision is listed (DEC-001…229) and can be overridden through change control (BRD §11) |
 | Precedence | Later decisions override earlier text: Part 9.5 (DEC-157…228) > Part 9.1 (DEC-066…156) > Part 0A (DEC-001…065) > earlier part text > source documents, where a decision resolves a conflict or gap |
 | Time-sensitive facts | Prices, model names, free tiers, provider terms and regulatory dates are marked "verify at time of implementation (as of 27 Nov 2026)" |
 
@@ -70,8 +70,16 @@ AI never signs, pays, submits bids or sets prices.
 - **Team (approved, DEC-228):** 4 engineers + **2 contract engineers from Sprint 3 to the Release 2 build gate** + QA (1.0 FTE from Sprint 3) + a growth/compliance lead (0.5–0.75), with the founder as Product Owner.
 - **Effort:** **532 / 722 / 921 person-days** (low/central/high). That is the original plan (314 / 416 / 518) plus the net source-pack enhancements (218 / 306 / 403). Must items go into Releases 1–2; about 100 pd of Should/Could items go to W6. The central figure is about 49% above the BRD's 483 pd, mainly because of the engineering controls that documents 18–36 require.
 - **Timeline (plan of record):** foundation gates at **Day 15** and **Day 30**; **Release 1 go/no-go Fri 4 Jun 2027 (Day 180)**; **Release 2 built Fri 2 Jul 2027 (Day 208)**; W5 exit after the 30-day monitored pilot **Fri 23 Jul 2027 (Day 229)**; selective expansion thereafter.
-- **Programme cash to the Release 2 gate:** **₹53.6–85.1 lakh** (estimate, including the contract engineers at ₹10.9–16.4 L).
-- **Run cost:** **₹19,665–22,885 per month** including contingency at pilot scale (plus ₹230–3,450 from the enhancements). AI inference is about **₹1,150 per month** at base against a **₹3,000** hard ceiling, with gated ceilings of ₹12,000 and ₹40,000 for growth.
+- **Costs are kept in two separate ledgers (DEC-229, Part 8.4):**
+
+  | Ledger | What it covers | Estimate |
+  |---|---|---|
+  | **A. Development cost (one-time)** | Core team, 2 contract engineers, QA, DevOps, UX, growth/compliance lead, penetration tests, training content, to the Release 2 gate (Day 208) | **₹52.7–84.1 lakh** |
+  | A2. Phase-2 development (W6, optional, approved separately) | Deferred Should/Could scope and expansion, Day 209–365 | ₹25.8–38.7 lakh |
+  | **B. Subscriptions and running cost (recurring)** | AWS hosting, backups, CDN/WAF, AI usage (hard-capped), search/extraction/email/WhatsApp providers, monitoring/CI tools | **₹19,895–26,335 per month** (≈ ₹2.4–3.2 lakh per year); ₹24,035–30,475 with developer seats |
+  | B during the build | Running cost paid while building (Day 1–208) | ₹1.5–1.9 lakh |
+
+  At pilot scale about 97% of the money to reach Release 2 is development. AI inference is expected at about ₹1,150 per month against a ₹3,000 hard cap, with gated ceilings of ₹12,000 and ₹40,000 for growth. Running costs rise only after the scale gates: ≈ ₹50–70 thousand/month at the Year-1 design point and ≈ ₹1.3–1.7 lakh/month at Year 2.
 
 **Top risks and mitigations.**
 
@@ -86,7 +94,7 @@ AI never signs, pays, submits bids or sets prices.
 **Decisions needed from the owner (confirm or override).**
 1. ~~Choose the staffing option~~: **done; Option 2b approved (DEC-228).** Start procuring the two contract engineers in Sprint 0.
 2. Confirm the QA uplift and the 0.75 growth/compliance allocation in W4–W5 (DEC-132/133).
-3. Confirm the revised monthly run budget (DEC-128 and Part 9.5 §9.5.2.6).
+3. Approve the two budgets separately: Ledger A development ₹52.7–84.1 L and Ledger B monthly running cost ₹19,895–26,335 (Part 8.4, DEC-229).
 4. Confirm the reading of the source pack's "+5 business requirements" as expansion statements XBR-01…05 (Part 9.5, ASSUMPTION-506).
 5. Obtain the legal confirmations listed in Part 8.
 
@@ -104,7 +112,7 @@ All other decisions are recorded and can proceed as defaulted.
 | 5 | Epics and user stories with Gherkin acceptance criteria | Scrum team, PO |
 | 6 (6.1–6.10) | Test strategy, test cases, AI evaluations, traceability, source-pack test/QC/RTM reconciliation | QA, engineers, PO |
 | 7 (7.1–7.4) | AI agents and automations: catalogue, specs, model strategy, cost, governance, prompts/RAG/plugins | AI lead, engineers, FinOps, compliance |
-| 8 (8.1–8.3) | Delivery plan: roadmap, releases, sprints, team, risks, go-live, hypercare, budget; training manual, SaaS service, maintenance, optimization | Founder, PO, delivery lead |
+| 8 (8.1–8.4) | Delivery plan: roadmap, releases, sprints, team, risks, go-live, hypercare, budget; training manual, SaaS service, maintenance, optimization; **cost model with development and subscription costs separated** | Founder, PO, delivery lead |
 | 9 (9.1–9.5) | Errata decisions, glossary, registers, final quality report, AI/workflow catalogue, source-pack decisions and re-plan | Everyone |
 
 **Conventions.**
