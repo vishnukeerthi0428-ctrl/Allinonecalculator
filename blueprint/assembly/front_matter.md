@@ -5,13 +5,13 @@
 | 0.1 | 27 Nov 2026 | Blueprint team (virtual enterprise team) | Part 0: ingestion and validation of BRD and FRD |
 | 0.2 | 27 Nov 2026 | Delegated Product Owner authority | Part 0A: 65 decisions resolving all conflicts, gaps and open questions |
 | 0.3–0.9 | 27 Nov 2026 | Blueprint team | Parts 1–8 drafted, reviewed and rendered |
-| 1.0 | 27 Nov 2026 | Blueprint team | Part 9 errata (DEC-066…140), registers, final quality report; Part 10 assembly (this document) |
+| 1.0 | 27 Nov 2026 | Blueprint team | Part 9 errata (DEC-066…151), registers, final quality report; Part 10 assembly (this document) |
 
 | Item | Value |
 |---|---|
 | Inputs | 01 Business Requirements (BRD), 02 Functional Specification (FRD) |
 | Classification | Confidential: internal and authorized delivery partners |
-| Decision authority | Product Owner delegated decision-making to the blueprint team (27 Nov 2026). Every decision is listed (DEC-001…140) and can be overridden through change control (BRD §11) |
+| Decision authority | Product Owner delegated decision-making to the blueprint team (27 Nov 2026). Every decision is listed (DEC-001…151) and can be overridden through change control (BRD §11) |
 | Precedence | Part 9.1 errata decisions override conflicting text in earlier parts; Part 0A decisions override the source documents where they resolve conflicts or gaps |
 | Time-sensitive facts | Prices, model names, free tiers, provider terms and regulatory dates are marked "verify at time of implementation (as of 27 Nov 2026)" |
 
@@ -61,7 +61,7 @@ AI never signs, pays, submits bids or sets prices.
 | User stories | 230, with about 1,357 Gherkin scenarios |
 | Test cases | ≈ 2,900+ functional plus 774 AI/automation evaluation cases |
 | AI agents and automations | 79, each with guardrails, fallbacks, KPIs and costs |
-| Decisions | 140 |
+| Decisions | 151 |
 
 **Delivery.**
 - **Team:** 4 engineers + QA (1.0 FTE from Sprint 3) + a growth/compliance lead (0.5–0.75), with the founder as Product Owner.
