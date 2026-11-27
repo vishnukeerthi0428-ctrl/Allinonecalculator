@@ -103,3 +103,12 @@
 78. AC-1206-05 title: R11 requests, R01 approves.
 79. GST rates in examples are illustrative; the finance advisor confirms them (DEC-027 verify).
 80. Test automation effort (~100–240 pd for 680 designs) is mostly inside story estimates (DoD: developers write unit/integration/contract tests; QA 1.0 FTE writes E2E and evals). Residual risk tracked in Part 8 RSK-003.
+
+## From Part 6.5/6.6
+81. GAP-170: Part 2.3 states 162 business rules but defines 161. Resolution: the count is corrected to **161**.
+82. Part 2.1 states 33 cross-cutting FRs (183 total); 31 exist. Resolution: **181 FRs** (150 interface/operation + 31 cross-cutting).
+83. GAP-171: LT-01…LT-12 are defined in both Part 4.2 and Part 6.1 with different meanings. Resolution: **Part 6.1 owns LT-xx** (DEC-116); Part 4.2's load profiles are read as "NFR load profiles" and map to LT-xx via Part 6.7.
+84. Second-tenant fixture naming varies (External-A / Client B / Client Alpha). Resolution: canonical name **"T2 External-A"** (GSE-SYN).
+85. Stories without an FR link (US-0303, 0304, 0110, 0113, 0114, 0115, 0117) are enablers; they trace to BR/NFR/DEC (acceptable).
+86. Part 6.1 risk matrix lacks a product-truth area (EP-02). Resolution: add an area with P0 depth for claims/readiness gating.
+87. Coverage gaps closed in Part 6.7: 61 NFRs, 9 FLT FRs and the uncovered BR-S statements.

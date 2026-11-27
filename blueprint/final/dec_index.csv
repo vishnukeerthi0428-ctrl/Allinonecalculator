@@ -107,3 +107,35 @@ DEC-105,9.1,Hosting budget scope,"B01 = ₹5,000–7,000/month estimate (prod + 
 DEC-106,9.1,Rate limits incomplete in Part 2.4,"Part 3.2 rate-limit classes govern (login, chat, portal, webhooks, heavy operations added)"
 DEC-107,9.1,Entity names differ between Parts 2.1 and 3.3,Part 3.3 names govern (e.g. Product → Offering)
 DEC-108,9.1,AI run volume vs the pilot cap,"Gateway runs include Tier 0 cache/rules hits. The ₹3,000 cap applies to pilot volume only. Year 1 volume falls under the ₹12,000 growth ceiling (Part 7.3 estimate ≈ ₹4,600 at 4× pilot)"
+DEC-109,9.1,"Prompt-injection pass rule: Part 7 ""≥98% clean"" vs Part 4.1 ""0 violations""","Two-tier safety gate (RECOMMENDATION-079): violation classes V1–V6 (data leak, unauthorized action, restricted data to Tier 2, cross-scope access, prohibited content, binding commitment) are zero tolerance; V7 (minor quality) …"
+DEC-110,9.1,AG-026/AG-032 marked Tier 2 eligible with no Tier 2 provider listed,Tier 2 not enabled for these agents until a provider is listed and evaluated; fallback goes to Tier 3
+DEC-111,9.1,Copilot model tier (US-1707 vs Part 7),"Part 7 routing governs: Tier 1a for cited retrieval answers, Tier 1b for synthesis/drafting"
+DEC-112,9.1,Chat FAQ confidence gate 0.75 vs default 0.7,Per-agent threshold table governs; the customer-facing chat gate is 0.75
+DEC-113,9.1,TC-AI ID format,TC-AI-AG###-### and TC-AU-AU###-### govern
+DEC-114,9.1,AU-006 gate tooling,The pytest harness is the CI gate; promptfoo/DeepEval are optional dataset runners invoked by it
+DEC-115,9.1,No approved crisis/self-harm response in the public assistant,"Fixed, Legal-approved safe-response template with helpline references (verify India helplines) plus immediate human handover; never AI-generated"
+DEC-116,9.1,No bilingual labelling resource,Budget part-time bilingual reviewers per locale (hi/ta/or) from W5
+DEC-117,9.1,NT-034 severity mismatch,Part 2.4 governs: Critical
+DEC-118,9.1,Unachievable 89.9% on 240 items,Gate evaluated as ≥ 90% (≥ 216/240)
+DEC-119,9.1,Business-day definition,Mon–Sat excluding configured public holidays (DEC-044) unless a contract states otherwise
+DEC-120,9.1,Bid submission recording at the deadline (AC-2107-02),Per DEC-068: evidence of a submission made before the deadline can be recorded at any time; a claimed submission time at/after the deadline is rejected
+DEC-121,9.1,Restore-drill canary interval,10 s (Part 6.1)
+DEC-122,9.1,"""Subscription"" in Part 5.3",Means ServiceSubscription (DEC-085)
+DEC-123,9.1,W22 card label,"Renamed ""Outstanding balance (verified invoices)"""
+DEC-124,9.1,Release 1 scope (~307 pd) vs Day-90 capacity (~169 pd),"Plan of record = re-baselined schedule (Part 8): Release 1 go/no-go about Day 152, Release 2 built by Day 180, W5 exit after the 30-day monitored pilot at about Day 201. Optional acceleration lever (two contract engineers, …"
+DEC-125,9.1,W0 scope vs W0-A/W0-B dates,Part 8 sprint allocation and minimum gate scope govern
+DEC-126,9.1,Pen-test timing,"External pen test before Release 1 go-live, retest before Release 2, then annually and after major changes"
+DEC-127,9.1,"ADR-043 ""no paid WAF at pilot""",Superseded by DEC-081. B07 stays ₹500; the WAF cost is in B21
+DEC-128,9.1,Budget lines,"B01 ₹5,000–7,000; B20 ₹300–600; B21 ₹1,300–1,800; B23 ₹1,000 (estimates). Monthly base with 15% contingency ₹19,665–22,885; with optional Apollo and seats ₹34,155–37,375"
+DEC-129,9.1,Duplicate risks across parts,The Part 8 consolidated register governs; duplicates are merged there
+DEC-130,9.1,FR-OP001–003 lack an epic,FR-OP001 → EP-04; FR-OP002/003 → EP-21
+DEC-131,9.1,Story dependencies split by the W0 cut,Part 8 sprint sequencing orders dependencies first (US-0108 before US-0113; US-0301 before US-0303)
+DEC-132,9.1,Growth/compliance lead over-allocated in W4–W5,"Raise to 0.75 FTE in W4–W5, or contract legal/compliance support (cost per Part 8)"
+DEC-133,9.1,QA capacity,QA 1.0 FTE from Sprint 3 (+₹2.75–4.13 L); resolves GAP-165 and DEC-095
+DEC-134,9.1,Policy loosening approver in AC-0810-03,R01 Founder (BRL-APR-11)
+DEC-135,9.1,AC-0811-05 falls on a Sunday,Defer to Monday 09:00 recipient local time (BRL-ELG-08)
+DEC-136,9.1,Expected status for an unassigned user,403 for role-denied actions on visible objects; uniform 404 for out-of-scope objects (BRL-TEN-04)
+DEC-137,9.1,Worked-example IDs in Part 6.1,Superseded by Part 6.2 IDs (TC-13-036…049)
+DEC-138,9.1,AC-1206-05 title,R11 requests; R01 approves
+DEC-139,9.1,GST rates in examples,Illustrative only; finance advisor confirms (DEC-027 verify)
+DEC-140,9.1,Test automation effort (~100–240 pd),Mostly inside story estimates (DoD: developers write unit/integration/contract tests; QA writes E2E and evals). Residual risk tracked as RSK-003
