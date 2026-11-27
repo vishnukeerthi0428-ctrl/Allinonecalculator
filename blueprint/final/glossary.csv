@@ -355,5 +355,5 @@ coding standard,"Binding rules CS- -## (186 rules) with review checks CR-CHK-01�
 contract state,Lifecycle of an API operation contract: a route is mounted only from Implemented and enabled in production only from Verified (FR-ENH-D-001),Part 3.5b §3.5.5.9.1
 freshness class,"F-1 operational (≤ 60 s p95), F-2 analytical (≤ 15 min), F-3 scheduled; stale data is labelled (DEC-160)",Part 4.4b §4.4.5.4.4
 Unassessed,Verdict for a metric with no denominator or insufficient probe coverage; never shown as Pass or as zero (FR-ENH-I-050),Part 2.7a §2.7.3.1
-Option 2b,"Plan of record after the enhancements: two contract engineers from Sprint 3 to the Release 2 build gate; Release 1 go/no-go Fri 4 Jun 2027 (DEC-227, approved by DEC-228)",Part 9.5 §9.5.0
+Option 2b,"Plan of record after the enhancements: two contract engineers from Sprint 3 to the Release 2 build gate; Release 1 go/no-go Fri 4 Jun 2027 (DEC-227, approved by DEC-228)",Part 8.4 front matter
 management reserve,"10% of the central enhancement estimate plus the UX-TASK-FIELDS residual, drawn only through the change control board (DEC-225)",Part 3.4 §D

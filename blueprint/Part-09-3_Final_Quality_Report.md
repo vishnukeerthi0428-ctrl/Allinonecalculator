@@ -127,3 +127,71 @@ All ten parts specified by the client (Section 5) are complete:
 The blueprint does not claim that any implementation or production certification exists. All figures are planning estimates, and all evidence records are templates to be filled during delivery (BRD §12.2, §13).
 
 **Status: Part 9 complete.**
+
+## 9.3.8 Source-pack update (v1.1): full 38-document review
+
+After the blueprint above was completed, the client supplied the complete 38-document engineering package. This section records the final position after the line-by-line review, the enhancements and the decisions. **Where figures differ from §9.3.3–§9.3.4, this section governs.**
+
+### 9.3.8.1 Coverage of the 38 documents (Part 0B)
+
+| Measure | Result |
+|---|---|
+| Documents reviewed | 38 of 38 (01/02 identical to the original BRD/FRD; 03–38 reviewed by ten expert groups A–J) |
+| Atomic aspects recorded | 11,269 |
+| Status at review | Covered 7,288 · Partially covered 2,625 · Not covered 1,008 · Conflict 141 · Not applicable 202 (with reasons) · Common core 5 |
+| Gaps and conflicts addressed by enhancements or decisions | **100%** (0 residual items without an action) |
+| Catalogues reconciled row by row | 147 screens · 321 API/adapter operations · 155 tables / 799 columns · 538 integration candidates · 799 source tests · 245 QCs · 288 FRs · 162 work items · 352 source decisions · 104 optimization controls · 35 OKPIs |
+| Enhancement parts | 2.6, 2.7a/b, 3.4, 3.5a/b, 3.6a/b, 4.4a/b, 6.8a/b/c, 6.9a/b, 6.10, 7.4a/b, 8.3a/b/c |
+| Conflicts | 101 source-pack conflicts closed by DEC-157…215; all 144 conflicts in the blueprint resolved |
+
+### 9.3.8.2 Final traceability (regenerated Part 6.6 v1.2)
+
+| Level | Coverage |
+|---|---|
+| Primary BRs, FRs (181), stories (230), AC (1,357), BRL (161), NFRs (99), AG (36), AU (43) | 100% each |
+| BR-S | 140 / 140 (116 by test case, 24 by verification item) |
+| FR-ENH (enhancement requirements) | 180 / 180 |
+| Enhancement stories / AC | 135 / 135 and 114 / 114 |
+| NFR-ENH / LT-ENH | 8 / 8 and 11 / 11 |
+| TC-ENH traced to a requirement | 952 / 952 |
+| OKPI-01…35 | 35 / 35 (all 21 mandatory) |
+| New agents/automations AG-037/038, AU-044…052 | 11 / 11 |
+| Source tests (unit 75, SIT 422, UAT 302) | 799 / 799 |
+| SIT aliases / source API operations / QCs | 302 / 302 · 321 / 321 · 245 / 245 |
+
+### 9.3.8.3 Updated inventory
+
+| Artefact | Final count |
+|---|---|
+| Decisions | **229** (DEC-001…229) |
+| Requirements | 71 BRs + 140 BR-S (+5 expansion statements XBR, DEC-180) · 181 FRs + 180 FR-ENH · 99 NFRs + 8 NFR-ENH |
+| Stories | 230 + 135 enhancement stories |
+| Test cases | ≈ 2,912 (Parts 6.2–6.7) + 952 TC-ENH + 64 closure cases (Part 6.10) + verification items; RTM rows 5,431 |
+| AI agents / automations | 38 / 52 (Part 9.4) + a 100-use-case automation library |
+| API operations | 579 (555 + 24), with field contracts for every source operation |
+| Optimization model | 21 dimensions, 104 controls, 24 scenarios, OKPI-01…35 |
+| Registers (Part 9.2 v1.1) | 358 glossary terms · 154 ID families · 200 assumptions · 205 gaps (57 closed/narrowed) · 144 conflicts (all resolved) · 211 recommendations (all accepted) · 80 ADRs · 229 decisions |
+
+### 9.3.8.4 Delivery and cost after the review
+
+| Item | Position |
+|---|---|
+| Effort | **532 / 722 / 921 person-days** (low / central / high) |
+| Staffing | **Option 2b approved by the Founder (DEC-228):** 4 engineers + 2 contract engineers (Sprint 3 → Release 2 gate) + QA 1.0 + growth/compliance 0.5–0.75 |
+| Dates | Release 1 go/no-go **4 Jun 2027 (Day 180)** · Release 2 build **2 Jul 2027 (Day 208)** · W5 exit **23 Jul 2027 (Day 229)** |
+| Development cost (one-time, Ledger A) | **₹52.7–84.1 lakh** to the Release 2 gate; Phase 2 (W6) ₹25.8–38.7 lakh if approved (Part 8.4, DEC-229) |
+| Subscription and running cost (recurring, Ledger B) | **₹19,895–26,335 per month** base (≈ ₹2.4–3.2 lakh/year); ₹24,035–30,475 with developer seats |
+
+### 9.3.8.5 Remaining owner actions (supersedes §9.3.6 items 1–3)
+
+| # | Item | Status |
+|---|---|---|
+| 1 | Staffing option | **Done: Option 2b (DEC-228).** Start contracting the two engineers in Sprint 0 |
+| 2 | Approve Ledger A and Ledger B budgets | Pending (Part 8.4) |
+| 3 | Confirm the QA uplift and the 0.75 growth/compliance allocation in W4–W5 | Pending (DEC-132/133) |
+| 4 | Confirm the reading of the "+5 BRs" as XBR-01…05 | Pending (ASSUMPTION-506) |
+| 5 | Legal confirmations; identity spike; provider onboarding; price verification | As in §9.3.6 items 4–7 |
+| 6 | Effort estimates by analogy for groups C, E and G; field-standardization residual | Review at Sprint 3 and Sprint 7 |
+
+**Status: Part 9 Batch 9.3 updated (v1.1).**
+

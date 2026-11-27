@@ -415,7 +415,7 @@ def scan_tags(parts):
     return occ, regdefs
 
 
-DEC_LOGS = ("0A", "9.1", "9.5")       # decision logs: DEC-001…065, DEC-066…156, DEC-157…227
+DEC_LOGS = ("0A", "9.1", "9.5", "8.4")       # decision logs: DEC-001…065, DEC-066…156, DEC-157…228, DEC-229
 REJECT_RX = re.compile(r"(?<!/)\b(?:rejected|is not (?:accepted|adopted)|are not (?:accepted|adopted)|declined|withdrawn)\b", re.I)
 
 

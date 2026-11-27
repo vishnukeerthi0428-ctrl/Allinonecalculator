@@ -59,9 +59,9 @@ def add_sheet(wb, title, header, rows, widths=None):
 
 def parse_stories():
     out = []
-    for f in sorted(BP.glob("Part-05-*.md")):
+    for f in sorted(list(BP.glob("Part-05-*.md")) + [q for q in BP.glob("Part-*.md") if not q.name.startswith("Part-05")]):
         text = f.read_text(encoding="utf-8")
-        heads = list(re.finditer(r"^#{3,6} (US-\d{4})\s+(.*)$", text, re.M))
+        heads = list(re.finditer(r"^#{3,6} (US-\d{4}|US-\d{2}-E[A-Z]\d{2})\s*[:—–-]?\s*(.*)$", text, re.M))
         for k, m in enumerate(heads):
             seg = text[m.end(): heads[k + 1].start() if k + 1 < len(heads) else len(text)]
             kv = {}
@@ -118,7 +118,7 @@ def main():
     wb = Workbook(); ws = wb.active; ws.title = "README"
     ws.append(["AI Growth Engine – Application Blueprint workbook (v1.0, 27 Nov 2026)"])
     ws.append(["Generated from the blueprint Markdown by assembly/build_xlsx.py. The Markdown/PDF/DOCX remain authoritative."])
-    ws.append(["Sheets: Traceability, User Stories, Test Cases, AI Agents & Automations, Business Requirements, Functional Requirements, Decisions, Tags Register"])
+    ws.append(["Sheets: Traceability, User Stories, Test Cases, AI Agents & Automations, Business Requirements, Functional Requirements, Decisions, Cost Ledgers, Source Pack Coverage, Tags Register"])
     ws.column_dimensions["A"].width = 140
     ws["A1"].font = Font(bold=True, size=14)
 
@@ -130,14 +130,24 @@ def main():
             add_sheet(wb, "Traceability", rd[0], rd[1:])
 
     stories = parse_stories()
+    have = {r[0] for r in stories}
+    for hdr, r, fn in parse_table_rows("Part-*.md", r"^US-\d{2}-E[A-Z]\d{2}$"):
+        sid = clean(r[0])
+        if sid in have:
+            continue
+        have.add(sid)
+        d = {h.lower(): clean(v) for h, v in zip(hdr, r)}
+        g = lambda *ks: next((v for k, v in d.items() for kk in ks if kk in k), "")
+        stories.append([sid, "EP-" + sid[3:5], g("title", "story"), "Enhancement", "", g("story", "statement", "as the"),
+                        g("fr", "link", "trace"), g("prior", "moscow"), g("wave"), g("point", "sp"), g("depend"), "", fn])
     add_sheet(wb, "User Stories", ["Story ID", "Epic", "Title", "Type", "Persona", "Story statement", "Links",
                                    "Priority", "Wave", "Points", "Dependencies", "Gherkin scenarios", "Source file"],
               stories, {3: 40, 6: 70, 7: 50, 11: 40})
 
-    tcs = parse_by_prefix("Part-06-*.md", r"^(TC-|VER-)")
+    tcs = parse_by_prefix("Part-*.md", r"^(TC-|VER-)")
     add_sheet(wb, "Test Cases", ["Test case / verification ID", "Details (column: value)", "Source file"], tcs, {2: 160})
 
-    ags = parse_by_prefix("Part-07-*.md", r"^(AG|AU)-\d{3}$")
+    ags = parse_by_prefix("Part-09-4_*.md", r"^(AG|AU|WF)-\d{2,3}$") or parse_by_prefix("Part-07-*.md", r"^(AG|AU)-\d{3}$")
     add_sheet(wb, "AI Agents & Automations", ["ID", "Details (column: value)", "Source file"], ags, {2: 160})
 
     brs = parse_by_prefix("Part-01_*.md", r"^BR-(M\d{2}|TENANT|WEB|AUTO|SVC|QA|S\d{3})$")
@@ -146,8 +156,21 @@ def main():
     frs = parse_by_prefix("Part-02-1_*.md", r"^FR-")
     add_sheet(wb, "Functional Requirements", ["FR ID", "Details (column: value)", "Source file"], frs, {2: 160})
 
-    decs = parse_by_prefix("Part-00A_*.md", r"^DEC-\d{3}$") + parse_by_prefix("Part-09-1_*.md", r"^DEC-\d{3}$")
+    decs = sum((parse_by_prefix(g, r"^DEC-\d{3}$") for g in ("Part-00A_*.md", "Part-09-1_*.md", "Part-09-5_*.md", "Part-08-4_*.md")), [])
+    decs = sorted({r[0]: r for r in decs}.values())
     add_sheet(wb, "Decisions", ["DEC ID", "Details (column: value)", "Source file"], decs, {2: 160})
+
+    costs = parse_table_rows("Part-08-4_*.md", r"^(A\d|B\d|[A-Z]\d\.\d|Total|\*\*)")
+    add_sheet(wb, "Cost Ledgers", ["Item", "Details (column: value)", "Source file"],
+              [[clean(r[0])] + [" | ".join(f"{h}: {v}" for h, v in zip(h_[1:], r[1:]))] + [fn] for h_, r, fn in costs], {2: 160})
+
+    cov = []
+    for f in sorted((BP / "final" / "coverage").glob("?_coverage.csv")):
+        with f.open(encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                cov.append([f.stem[0]] + [r.get(k, "") for k in ("doc", "section", "aspect_id", "aspect_summary", "status", "blueprint_location", "action", "new_ids")])
+    add_sheet(wb, "Source Pack Coverage", ["Group", "Doc", "Section", "Aspect ID", "Aspect", "Status", "Blueprint location", "Action", "New IDs"],
+              cov, {5: 70, 7: 40, 8: 60})
 
     tags = []
     pat = re.compile(r"\[(ASSUMPTION|GAP|CONFLICT|RECOMMENDATION)-(\d{3})\]")

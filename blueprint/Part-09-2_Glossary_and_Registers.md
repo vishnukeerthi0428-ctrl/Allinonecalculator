@@ -441,7 +441,7 @@ Columns: **Term** (bold = the searchable key), **Definition** (with the governin
 | **contract state** | Lifecycle of an API operation contract: a route is mounted only from Implemented and enabled in production only from Verified (FR-ENH-D-001) | Part 3.5b §3.5.5.9.1 |
 | **freshness class** | F-1 operational (≤ 60 s p95), F-2 analytical (≤ 15 min), F-3 scheduled; stale data is labelled (DEC-160) | Part 4.4b §4.4.5.4.4 |
 | **Unassessed** | Verdict for a metric with no denominator or insufficient probe coverage; never shown as Pass or as zero (FR-ENH-I-050) | Part 2.7a §2.7.3.1 |
-| **Option 2b** | Plan of record after the enhancements: two contract engineers from Sprint 3 to the Release 2 build gate; Release 1 go/no-go Fri 4 Jun 2027 (DEC-227, approved by DEC-228) | Part 9.5 §9.5.0 |
+| **Option 2b** | Plan of record after the enhancements: two contract engineers from Sprint 3 to the Release 2 build gate; Release 1 go/no-go Fri 4 Jun 2027 (DEC-227, approved by DEC-228) | Part 8.4 front matter |
 | **management reserve** | 10% of the central enhancement estimate plus the UX-TASK-FIELDS residual, drawn only through the change control board (DEC-225) | Part 3.4 §D |
 
 <!-- GLOSSARY:END -->
@@ -463,8 +463,8 @@ Every ID family used across the parts. **Actual range found** and **Distinct IDs
 | FR-A### | Functional requirement for Admin Command Centre screen A001–A113 | 001–113 | 113 | 2.1 (§2.4) | 2.1, 6.6, 5.1c, 6.5 | 43 |
 | FR-OP### | Operational/platform functional requirement (health, readiness, config) | 001–003 | 3 | 2.1 (§2.4) | 2.1, 6.6, 5.3, 6.3b | 25 |
 | FR-{area}-## | Cross-cutting functional requirement by area (standards, data mgmt, UI states, filters, publication, adapters, …) | ADP 01; COP 01; CSM 01; DM 01–04; ENG 01; FLT 01–11; NEG 01; PUB 01; SRCH 01; STD 01–04; UIS 01–04 | 30 | 2.1 (§2.4) | 2.1, 6.6, 6.3a, 6.7 | 42 |
-| NFR-### | Non-functional requirement | 001–099 | 99 | 0 (§0.6); detailed in 4.2 | 4.2, 6.6, 6.7, 0 | 56 |
-| DEC-### | Binding decision (DEC-001…065 Part 0A; DEC-066…140 Part 9.1) | 001–228 | 228 | 0A, 9.1 | 9.1, 9.5, 0A, 5.2 | 57 |
+| NFR-### | Non-functional requirement | 001–099 | 99 | 0 (§0.6); detailed in 4.2 | 4.2, 6.6, 6.7, 0 | 57 |
+| DEC-### | Binding decision (DEC-001…065 Part 0A; DEC-066…140 Part 9.1) | 001–229 | 229 | 0A, 9.1 | 9.1, 9.5, 0A, 5.2 | 58 |
 | BRL-{domain}-## | Business rule, by rule domain | AI 01–12; APR 01–11; AUT 01–10; BID 01–06; CTR 01–05; ELG 01–18; FIN 01–08; LCY 01–06; MKT 01–10; MTG 01–06; ORD 01–06; PRV 01–07; PUB 01–06; QTE 01–07; SCR 01–09; SEQ 01–05; SRC 01–10; SVC 01–07; TEN 01–12 | 161 | 2.3 | 2.3, 6.5, 6.3a, 6.3b | 48 |
 | R## | RBAC role (R01–R20; L suffix = startup-scoped lead variant) | 01–21; L 03–05 (1 unused) | 23 | 2.3 (§2.21) | 2.3, 8.3b, 7.3, 2.6 | 47 |
 | P## | Persona | 01–90 (68 unused) | 22 | 1 (§1.6) | 1, 7.1, 2.6, 8.1 | 32 |
@@ -477,7 +477,7 @@ Every ID family used across the parts. **Actual range found** and **Distinct IDs
 | TC-AI-AG###-### | AI agent test case (per agent; format per DEC-113) | 001 001–017; 002 001–024; 003 001–015; 004 001–021; 005 001–019; 006 001–018; 007 001–014; 008 001–016; 009 001–017; 010 001–014; 011 001–021; 012 001–018; 013 001–021; 014 001–019; 015 001–030; 016 001–016; 017 001–031; 018 001–019; 019 001–018; … (36 families) | 586 | 6 | 6.4 | 7 |
 | TC-AU-AU###-### | Automation test case (per automation; DEC-113) | 001 001–005; 002 001–015 (1 unused); 003 001–004; 004 001–005; 005 001–005; 006 001–015; 007 001–004; 008 001–004; 009 001–003; 010 001–009; 011 001–004; 012 001–008; 013 001–003; 014 001–004; 015 001–004; 016 001–004; 017 001–004; 018 001–003; … (43 families) | 187 | 6 | 6.4 | 4 |
 | AG-### | AI agent | 001–038 | 38 | 7.1/7.2 | 7.2, 6.4, 7.1, 6.6 | 20 |
-| AU-### | Deterministic or AI-assisted automation | 001–052 | 52 | 7.1/7.2 | 6.6, 9.4, 7.1, 6.4 | 13 |
+| AU-### | Deterministic or AI-assisted automation | 001–052 | 52 | 7.1/7.2 | 6.6, 9.4, 7.1, 6.4 | 14 |
 | ADR-### | Architecture decision record | 001–109 (29 unused) | 80 | 3.1 (001–043), 4.1/4.3 (050–069), 7.3 (070–085) | 3.1, 7.3, 3.4, 4.3 | 20 |
 | RSK-### | Risk (feeds the Part 8 risk register) | 001–379 (217 unused) | 162 | 8 (raised in 3–7) | 8.2, 7.3, 3.1, 4.1 | 18 |
 | THR-### | STRIDE threat | 001–082 | 82 | 4.1 (§4.2.2) | 4.1, 6.4 | 13 |
@@ -508,7 +508,7 @@ Every ID family used across the parts. **Actual range found** and **Distinct IDs
 | PR-## | Problem statement | 01–10 | 10 | 1 | 1 | 1 |
 | G-## | Business goal | 01–10 | 10 | 1 | 1 | 4 |
 | OQ-### | Open question (all answered in 0A) | 001–030 | 30 | 0, 0A | 0, 0A | 3 |
-| AMB-# | Ambiguity in the source (resolved DEC-049…058) | 01–10 | 10 | 0, 0A | 0 | 3 |
+| AMB-# | Ambiguity in the source (resolved DEC-049…058) | 1–10 | 10 | 0, 0A | 0 | 3 |
 | E-## | Errata item (Part 9.1, E-01…); note E-# (one digit) = engine invariant in 2.2 | 01–96 (2 unused) | 94 | 9.1 | referenced only | 3 |
 | ABAC-## | Attribute-based access control rule | 01–12 | 12 | 2.3 | 2.3 | 32 |
 | ENT-### | Logical data entity | 001–200 | 200 | 3.3 | 3.3, 3.6a | 14 |
@@ -545,12 +545,12 @@ Every ID family used across the parts. **Actual range found** and **Distinct IDs
 | CI-### | Candidate AI idea (discovery register) | 001–135 | 135 | 7.1 | 7.1 | 6 |
 | TL-## | Agent tool in the tool registry | 01–20 | 20 | 7.2 | 7.2 | 5 |
 | D0# | Delivery persona (delivery-lifecycle AI) | 01–06 | 6 | 7.1 | 7.1 | 7 |
-| B## | Budget line (cost table; GAP-006, DEC-020) | 01–23 | 23 | 0, 0A, 8 | 8.2, 7.4a | 42 |
+| B## | Budget line (cost table; GAP-006, DEC-020) | 01–23 | 23 | 0, 0A, 8 | 8.2, 7.4a | 43 |
 | UX-## | UX principle | 01–09 | 9 | 2.5 | 2.5 | 6 |
 | I18N-## | Internationalization rule | 01–11 | 11 | 2.4 | 2.4 | 9 |
 | OPT-##-## | FRD optimisation item (source ID, cited) | 01 01–08; 02 01–07; 03 01–08; 04 01–08; 05 01–07; 06 01–05; 07 01–05; 08 01–06; 09 01–05; 10 01–06; 11 01–05; 12 01–04; 13 01–04; 14 01–03; 15 01–04; 16 01–03; 17 01–04; 18 01–04; 19 01–04; 20 01–04 | 104 | Source (FRD) | 8.3c, 3.4, 4.4a, 2.6 | 38 |
 | SM-UT-### | Source test alias (FRD; aliases only, DEC-094) | 001–066 | 66 | Source (FRD); 6 | 6.8b, 6.8a | 10 |
-| M## | Source module M01–M66 (BRD §7) | 01–66 | 66 | Source (BRD) | 6.9a | 46 |
+| M## | Source module M01–M66 (BRD §7) | 01–66 | 66 | Source (BRD) | 6.9a | 47 |
 | W## / A### | Screen ID: Website/Portal W01–W34, Admin A001–A113 | A 001–302 (169 unused); W 001–034 | 167 | Source (FRD §16.2); 2.5 | 8.3a, 2.5, 2.7a, 6.4 | 57 |
 | FR-ENH-{G}-### | Source-pack enhanced functional requirement; group letter = enhancement part (A 2.6, B 3.4, C 2.7, D 3.5, E 3.6, F 7.4, H 6.9, I 4.4, J 8.3) | A 001–020; B 001–027; C 001–017; D 001–020; E 001–008; F 001–031; H 001–010; I 001–083 (58 unused); J 001–022 | 180 | 2.6, 2.7, 3.4–3.6, 4.4, 6.9, 7.4, 8.3 | 6.6, 8.3c, 7.4b, 4.4b | 20 |
 | NFR-ENH-{G}-## | Source-pack non-functional requirement (growth scale, recovery by class, unit cost) | B 01–08 | 8 | 3.4 | 3.4, 6.6 | 4 |
@@ -686,7 +686,7 @@ The programme allocates a tag number range to each batch. The table below is **g
 | Conflict | 144 | 144 | 0 |
 | Recommendation | 211 | 211 | 0 |
 
-ADR index: **80** ADRs. DEC index: **228** decisions. Parts scanned: **59** (0–9.5).
+ADR index: **80** ADRs. DEC index: **229** decisions. Parts scanned: **60** (0–9.5).
 
 <!-- GEN:TAGSUMMARY:END -->
 
@@ -1583,7 +1583,7 @@ Status is taken from the ADR's own "Status" row (Part 3.1) or the status column 
 
 <!-- GEN:ADR:END -->
 
-### 9.2.4(f) DEC index (DEC-001…228)
+### 9.2.4(f) DEC index (DEC-001…229)
 
 One line per decision. The full text in Part 0A, Part 9.1 and Part 9.5 is binding. Part 9.1 decisions (§9.1.1 first cycle DEC-066…108, §9.1.4 second cycle DEC-109…156) override Part 0A where they amend it (Part 9.1 §9.1.2). Part 9.5 decisions DEC-157…215 resolve the 101 source-pack conflicts, DEC-216…227 close the earlier-part inconsistencies and set the re-plan, and DEC-228 records the Founder's approval of Option 2b (Part 9.5 §9.5.1.12 lists the earlier decisions they extend or supersede). Source-pack decision families SPDEC, SRC07-DEC and SDEC-08 are never part of this series (DEC-178).
 
@@ -1656,6 +1656,7 @@ One line per decision. The full text in Part 0A, Part 9.1 and Part 9.5 is bindin
 | DEC-063 | 0A | M62 "End-to-end production release" is listed as a module, but release gating applies to … | Release pipeline and gates in W0 (with M09); the full synthetic E2E journey suite is completed in W5 |
 | DEC-064 | 0A | Workflow register text "No AI direct finance or binding terms" and actor rule "no … | Autonomy cap matrix: money movement = not supported (record/verify only); contracts, quotes, discounts, bid submission, legal terms = L1 maximum; publishing and campaigns = L1 (approved hash) then L2 dispatch of the approved … |
 | DEC-065 | 0A | "Startup" vs "tenant" for owned portfolio is not stated | Owned portfolio = one tenant ("Owner Portfolio Tenant") containing 25+ startup workspaces. Each external SaaS client = its own tenant with one or more startup workspaces. Cross-tenant aggregation is never permitted; … |
+| DEC-229 | 8.4 | Budget is presented and governed as two ledgers: (A) development cost, one-time, to the … | Ledger A ₹52.7–84.1 L to Day 208; Ledger B ₹19,895–26,335/month base (₹24,035–30,475 with seats); TCO to 12 months after launch ₹57.1–89.7 L excluding Phase 2 |
 | DEC-066 | 9.1 | Part 0 §0.10.2 maps A046 to EP-08; Part 2.1 maps it to EP-10 | Part 2.1 governs for all screen-to-epic mappings. Part 0 §0.10.2 was preliminary |
 | DEC-067 | 9.1 | Part 0 places W08–W10 in EP-19 | W08/W09 → EP-11; W10 → EP-12 (Part 2.1) |
 | DEC-068 | 9.1 | The bid buffer (BRL-BID-01) blocks recording a human submission made before the real … | BRL-BID-01 amended: the buffer is a warning and an internal readiness gate (status turns red; Startup Head override with reason). The hard block is the true deadline (FR-DM-02). Recording evidence of a submission made before the … |
@@ -1946,7 +1947,7 @@ Every part file, its contents (top-level sections, excluding tag registers and q
 | 6.3b | Part-06-3b_Test_Cases_EP19-EP21.md | PART 6 (Batch 6.3b), Test Scenarios and Test Cases: EP-19 to EP-21, Acceptance Procedures and Release Drills | EP-19 Public website and external portal; EP-20 SaaS client lifecycle and portability; EP-21 Release readiness, QA and observability; Acceptance procedure scripts AP-01, AP-04, AP-06, AP-09 and AP-10; Coverage and totals for EP-19 to EP-21; Batch roll-up: EP-15 to EP-21 (files a and b); Tags register (Batch 6.3, files a and b); … (+1) | 65 | 0 | 27,356 | Complete |
 | 6.4 | Part-06-4_AI_Evaluation_Test_Cases.md | PART 6 (Batch 6.4), AI Evaluation Test Cases | Purpose, scope and conventions; Evaluation datasets; Acceptance thresholds per agent; Shared oracles, harness and fault model; Agent evaluation cases; Cross-model regression across the fallback chain; Regression-gate rules (BRL-AI-09, NFR-033, DEC-061); … (+8) | 169 | 5 | 72,424 | Complete |
 | 6.5 | Part-06-5_Test_Cases_EP01-EP07.md | PART 6 (Batch 6.5), Test Scenarios and Test Cases: EP-01 to EP-07 | How to read this batch; EP-01 Platform foundation, identity reuse and tenancy; EP-02 Product truth and knowledge; EP-03 Consent, privacy, eligibility and compliance; EP-04 AI gateway, cost control and AI quality; EP-05 Market intelligence and discovery; EP-06 Opportunity scoring, contacts and research review; … (+2) | 160 | 2 | 60,859 | Complete |
-| 6.6 | Part-06-6_Requirements_Traceability_Matrix.md | PART 6 (Batch 6.6), Requirements Traceability Matrix | Method; Coverage summary (generated); (a) BR → FR → US → TC (generated); (b) FR → US → TC for all 150 interface and operation FRs (generated); (d) NFR → test (generated); (e) BRL rule → TC coverage summary (generated); (f) AG/AU → TC-AI/TC-AU (generated); … (+5) | 130 | 0 | 45,838 | Complete |
+| 6.6 | Part-06-6_Requirements_Traceability_Matrix.md | PART 6 (Batch 6.6), Requirements Traceability Matrix | Method; Coverage summary (generated); (a) BR → FR → US → TC (generated); (b) FR → US → TC for all 150 interface and operation FRs (generated); (d) NFR → test (generated); (e) BRL rule → TC coverage summary (generated); (f) AG/AU → TC-AI/TC-AU (generated); … (+5) | 131 | 0 | 45,838 | Complete |
 | 6.7 | Part-06-7_NFR_and_Coverage_Closure_Test_Cases.md | PART 6 (Batch 6.7), NFR and Coverage Closure Test Cases | Purpose, conventions and coverage rule; NFR test cases TC-NFR-001…099; NFR production verification items (VER-001…022); Parameterized filter suite TC-FLT-001…045 (FR-FLT-01…11, FR-FLT-RULES); Supplementary business requirement (BR-S) closure; Coverage closure tables; RTM generator update and regenerated coverage; … (+1) | 66 | 1 | 24,349 | Complete |
 | 6.8a | Part-06-8a_Source_Pack_Test_Specification_Reconciliation.md | PART 6 (Batch 6.8a), Source Pack Test Specification Reconciliation: Documents, Coverage Summary and Detailed Register | Documents reviewed; Coverage register summary; Detailed coverage register | 23 | 0 | 7,689 | Complete |
 | 6.8b | Part-06-8b_Source_Pack_Test_Specification_Reconciliation.md | PART 6 (Batch 6.8b), Source Pack Test Specification Reconciliation: Catalogue Reconciliation (799 Source Tests → Blueprint TCs) | Catalogue reconciliation | 68 | 1 | 20,179 | Complete |
@@ -1964,13 +1965,14 @@ Every part file, its contents (top-level sections, excluding tag registers and q
 | 8.3a | Part-08-3a_Source_Pack_Training_SaaS_Maintenance_Optimization_Enhancements.md | PART 8 (Batch 8.3a), Source Pack Review: Training, SaaS Service Operations, Maintenance and Optimization (Documents 33–36, 38): Documents Reviewed, Coverage Register and Catalogue Reconciliation | Documents reviewed; Coverage register summary; Detailed coverage register; Catalogue reconciliation | 52 | 0 | 16,605 | Complete |
 | 8.3b | Part-08-3b_Source_Pack_Training_SaaS_Maintenance_Optimization_Enhancements.md | PART 8 (Batch 8.3b), Source Pack Enhancements I: Operational Training Manual by Persona and Screen | Enhancements (organized by blueprint part) | 59 | 2 | 18,500 | Complete |
 | 8.3c | Part-08-3c_Source_Pack_Training_SaaS_Maintenance_Optimization_Enhancements.md | PART 8 (Batch 8.3c), Source Pack Enhancements II: SaaS Service Operations and SLA, Maintenance Lifecycle, Optimization Model; Conflicts, Persona Review, Tags and Quality Gate | Conflicts and proposed resolutions; Expert persona review; Tags register | 67 | 3 | 22,173 | Complete |
+| 8.4 | Part-08-4_Cost_Model_Development_vs_Subscriptions.md | PART 8 (Batch 8.4), Cost Model: Development Cost Separated from Subscription and Running Costs | The two ledgers at a glance; Ledger A: development cost (one-time); Ledger B: subscription and running cost (recurring); Combined view and scale; Decision | 10 | 0 | 3,125 | Complete |
 | 9.1 | Part-09-1_Errata_and_Consolidated_Decisions.md | PART 9 (Batch 9.1), Errata Register and Consolidated Decisions | Errata decisions; Effect on earlier decisions; Additional errata decisions (second review cycle); Final errata decisions (third review cycle) | 13 | 0 | 3,757 | Complete |
 | 9.3 | Part-09-3_Final_Quality_Report.md | PART 9 (Batch 9.3), Final Quality Report and Cross-Role Review | Success criteria assessment (client Section 2); Traceability coverage (from the regenerated RTM); Blueprint inventory (final); Cross-role review (client Section 9): final red-team; Residual open items requiring owner action (not blockers to start); Statement of completeness | 7 | 0 | 2,111 | Complete |
 | 9.4 | Part-09-4_AI_Agents_Automations_Workflows_Catalogue.md | PART 9 (Batch 9.4), Catalogue of Workflows, AI Agents and Automations | Summary; Business workflows (WF-01…WF-14); AI agents (AG) and their functionality; Automations (AU) and their functionality; How they fit together | 22 | 1 | 7,627 | Complete |
 | 9.5 | Part-09-5_Source_Pack_Decisions_and_Replan.md | PART 9 (Batch 9.5), Source Pack Decisions and Re-plan after Enhancements | Decision summary for the Founder; Binding decisions DEC-157 onwards; Re-plan after enhancements; Tags register (allocated ranges ASSUMPTION-500…509, RECOMMENDATION-500…509); Inconsistencies found while writing this part (reported, not changed) | 63 | 1 | 18,746 | Complete |
-| 9.2 | Part-09-2_Glossary_and_Registers.md | PART 9 (Batch 9.2), Appendices: Glossary, ID Registry and Consolidated Registers | Generation method and controls; Glossary; ID registry; Tag numbers issued, by issuing part; Consolidated registers; Duplicate-ID check; Document map | 162 | 1 | 52,771 | Complete |
+| 9.2 | Part-09-2_Glossary_and_Registers.md | PART 9 (Batch 9.2), Appendices: Glossary, ID Registry and Consolidated Registers | Generation method and controls; Glossary; ID registry; Tag numbers issued, by issuing part; Consolidated registers; Duplicate-ID check; Document map | 162 | 1 | 52,824 | Complete |
 
-**Totals:** 4,028 pages across 60 rendered PDFs; 164 Mermaid diagrams; 1,376,508 words.
+**Totals:** 4,039 pages across 61 rendered PDFs; 164 Mermaid diagrams; 1,379,686 words.
 
 <!-- GEN:DOCMAP:END -->
 
@@ -2003,6 +2005,6 @@ Every part file, its contents (top-level sections, excluding tag registers and q
 | 6 | No agent lacks guardrail, fallback, KPI and cost estimate | N/A | No agents defined |
 | 7 | Time-sensitive facts flagged "verify" with an as-of date | Pass | Regulatory entries (DPDP, CERT-In, TCCCPR, EU AI Act, ZDR) carry "verify, as of 27 Nov 2026"; no prices stated |
 | 8 | No restricted data routed to free-tier models | Pass | Glossary restates DEC-007 and BRL-AI-06; no routing defined here |
-| 9 | Consistent with earlier parts | Pass | Statements copied from the issuing parts; Part 9.1 and Part 9.5 overrides recorded in the DEC index (DEC-001…228) and ADR note; v1.1 adds the source-pack ID families, 36 source-pack glossary terms, the Part 9.5 conflict index (all 144 conflicts resolved) and the recommendation rule of DEC-149/DEC-221 (211 accepted, 0 rejected). Mermaid diagram renders; `pdftotext … \| grep -ci "diagram error"` = 0 |
+| 9 | Consistent with earlier parts | Pass | Statements copied from the issuing parts; Part 9.1 and Part 9.5 overrides recorded in the DEC index (DEC-001…229) and ADR note; v1.1 adds the source-pack ID families, 36 source-pack glossary terms, the Part 9.5 conflict index (all 144 conflicts resolved) and the recommendation rule of DEC-149/DEC-221 (211 accepted, 0 rejected). Mermaid diagram renders; `pdftotext … \| grep -ci "diagram error"` = 0 |
 
-**Status: Part 9 Batch 9.2 complete (v1.1, regenerated after the source-pack enhancement parts and Part 9.5). Glossary (358 terms, 36 of them source-pack terms), ID registry (154 families, incl. FR-ENH, NFR-ENH, US-##-E##, TC-ENH, LT-ENH, VER, OKPI, QC/QCL, SPDEC, SRC07-DEC, SDEC-08, SM-* aliases, RC, WP, PC, PG, SLA, CSO, MNT, TRN-SCR/TRN-EX), registers ASSUMPTION 200 · GAP 205 · CONFLICT 144 (all resolved) · RECOMMENDATION 211 (all accepted, none rejected), ADR index 80, DEC index 228 (DEC-001…228), duplicate-ID check and document map generated from all 59 part files (Parts 0–9.5). Next: Part 10 assembly.**
+**Status: Part 9 Batch 9.2 complete (v1.1, regenerated after the source-pack enhancement parts and Part 9.5). Glossary (358 terms, 36 of them source-pack terms), ID registry (154 families, incl. FR-ENH, NFR-ENH, US-##-E##, TC-ENH, LT-ENH, VER, OKPI, QC/QCL, SPDEC, SRC07-DEC, SDEC-08, SM-* aliases, RC, WP, PC, PG, SLA, CSO, MNT, TRN-SCR/TRN-EX), registers ASSUMPTION 200 · GAP 205 · CONFLICT 144 (all resolved) · RECOMMENDATION 211 (all accepted, none rejected), ADR index 80, DEC index 228 (DEC-001…229), duplicate-ID check and document map generated from all 59 part files (Parts 0–9.5). Next: Part 10 assembly.**

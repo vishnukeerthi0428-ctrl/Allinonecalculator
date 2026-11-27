@@ -18,7 +18,7 @@ TITLE = "AI Growth Engine: Employee Sales & Marketing Automation"
 SUBTITLE = "End-to-End Application Blueprint"
 HEADER = "AI Growth Engine — Application Blueprint"
 
-PART_RE = re.compile(r"Part-(\d+)(A?)(?:-(\d+)([a-z]?))?_")
+PART_RE = re.compile(r"Part-(\d+)([A-Z]?)(?:-(\d+)([a-z]?))?_")
 
 
 def part_key(p: Path):
