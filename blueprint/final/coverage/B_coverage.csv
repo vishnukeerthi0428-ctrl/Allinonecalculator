@@ -62,7 +62,7 @@ doc,section,aspect_id,aspect_summary,status,blueprint_location,action,new_ids
 04,Dependency-ordered implementation and operations,B-04-002,"PR requires schema, scoped permission, idempotency, tests, observability",Covered,"Part 4.3 §4.32.2, §4.33.2 PL gates",Mapped,
 04,Dependency-ordered implementation and operations,B-04-003,Expand/backfill/validate/switch/contract migrations; verify counts; no blind production migration,Covered,Part 4.3 §4.37.2,Mapped,
 04,Commercial module delivery backlog,B-04-004,"66-module backlog: name, dependency and acceptance (66 rows parsed)",Covered,Part 1 BR-M01…M66 (66/66 names; 66/66 dependency sets; 52 exact + 13 spelling/DEC-suffix acceptance matches),Programmatic reconciliation §3.4.4.1,
-04,Commercial module delivery backlog,B-04-005,"M01 acceptance worded as existing capability with predecessors H02,H03",Partially covered,BR-M01 acceptance 'Cross-role access denied; session revoked'; DEC-003,Reuse validation acceptance appended,TC-ENH-B-021
+04,Commercial module delivery backlog,B-04-005,"M01 acceptance worded as existing capability with predecessors H02,H03",Partially covered,BR-M01 acceptance 'Cross-role access denied; session revoked'; DEC-003,Reuse validation acceptance appended,TC-ENH-B-037
 04,Commercial module delivery backlog,B-04-006,Backlog dependency DAG (acyclic; 27-level longest chain),Partially covered,Part 8.1 §8.1.7 critical path (story level),DAG analysis published,§3.4.4.1
 04,Production runbook,B-04-RB1,Runbook: Predeployment,Covered,Part 4.3 §4.48 readiness checklist; §4.37,Mapped,
 04,Production runbook,B-04-RB2,Runbook: Release,Covered,"Part 4.3 §4.37.1, §4.38",Mapped,
@@ -117,7 +117,7 @@ doc,section,aspect_id,aspect_summary,status,blueprint_location,action,new_ids
 04,Implementation acceptance and final decision controls,B-04-AP4,Acceptance procedure: Architecture decision rationale,Covered,"Part 3.1 §3.1.9 ADR template (alternatives, consequences, review trigger)",Mapped,
 04,Implementation acceptance and final decision controls,B-04-AP5,Acceptance procedure: Repository and modular boundaries,Covered,ARP-01; import-linter; ADR-060,Mapped,
 04,Implementation acceptance and final decision controls,B-04-AP6,Acceptance procedure: Existing identity reuse,Covered,ADR-005; US-0101 identity spike,Mapped,
-04,Implementation acceptance and final decision controls,B-04-AP7,"Acceptance procedure: Development dependencies (DAG, low ≤ base ≤ high)",Partially covered,Part 8.1 (story dependencies),Added,FR-ENH-B-025; TC-ENH-B-030
+04,Implementation acceptance and final decision controls,B-04-AP7,"Acceptance procedure: Development dependencies (DAG, low ≤ base ≤ high)",Partially covered,Part 8.1 (story dependencies),Added,FR-ENH-B-025; TC-ENH-B-040
 04,Implementation acceptance and final decision controls,B-04-AP8,Acceptance procedure: Resource and deployment approval,Covered,Part 8.1 §8.1.3.4; Part 8.2 go-live,Mapped,
 04,Implementation acceptance and final decision controls,B-04-AP9,Acceptance procedure: Approval review effort 32.55 / 62.85 / 123.70 PD,Not covered,Not in Part 8,Added,FR-ENH-B-024; GAP-330
 04,Architecture and delivery (expansion),B-04-023,UX-TASK DAG for 9 expansion interfaces: 62/114/196 PD; critical path 36/64/110 PD,Not covered,"Part 8.1 (stories US-20xx/US-18xx for W31–W34, A109–A113)",Reconciliation added,FR-ENH-B-026
@@ -284,7 +284,7 @@ doc,section,aspect_id,aspect_summary,status,blueprint_location,action,new_ids
 10,Detailed design contracts,B-10-DC14,Scoring model 25/25/20/15/15 with thresholds; calibration,Covered,DEC-011; AU-017,Mapped,
 10,Detailed design contracts,B-10-DC15,"Security testing: CSRF, CORS, HTTPS, rate limits, object permissions, rotation, SAST, restore",Covered,Part 4.1; §3.2.1.12,Mapped,
 10,Detailed design contracts,B-10-DC16,Performance: non-AI API p95 < 500 ms; webhook ack < 2 s; 99% job success excluding vendor outages,Covered,NFR-039; SLO-08; NFR-009,Mapped,
-10,Detailed design contracts,B-10-DC17,"Agent decomposition: six runtime responsibilities; scoring, consent, sending, closure outside AI",Conflict,Part 7.1 (28 product agents + 43 automations),Mapping,CONFLICT-327
+10,Detailed design contracts,B-10-DC17,"Agent decomposition: six runtime responsibilities; scoring, consent, sending, closure outside AI",Conflict,"Part 7.1 (36 agents, 32 product-scope, + 43 automations)",Mapping,CONFLICT-327
 10,Detailed design contracts,B-10-DC18,"Commercial metrics: precision, cost per qualified, CAC, win rate; zero denominator unavailable",Covered,Part 1 KPI definitions; Part 2.4 RP-xx,Mapped,
 10,Detailed design contracts,B-10-DC19,Clinical escalation: approved nonclinical info only; medical → clinician; emergency text → urgent care,Covered,AG-013 urgent/clinical; AG-017 guardrails; errata 55,Mapped,
 10,Detailed design contracts,B-10-DC20,Development vs runtime: Claude Code helps author; production uses licensed APIs; smoke test without Claude Code,Covered,ASSUMPTION-020; Part 7.1 delivery agents,Mapped,

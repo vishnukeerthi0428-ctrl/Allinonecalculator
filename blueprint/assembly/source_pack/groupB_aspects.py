@@ -110,7 +110,7 @@ a(S, "Dependency-ordered implementation and operations", "B-04-001", "Vertical s
 a(S, "Dependency-ordered implementation and operations", "B-04-002", "PR requires schema, scoped permission, idempotency, tests, observability", C, "Part 4.3 §4.32.2, §4.33.2 PL gates", "Mapped")
 a(S, "Dependency-ordered implementation and operations", "B-04-003", "Expand/backfill/validate/switch/contract migrations; verify counts; no blind production migration", C, "Part 4.3 §4.37.2", "Mapped")
 a(S, "Commercial module delivery backlog", "B-04-004", "66-module backlog: name, dependency and acceptance (66 rows parsed)", C, "Part 1 BR-M01…M66 (66/66 names; 66/66 dependency sets; 52 exact + 13 spelling/DEC-suffix acceptance matches)", "Programmatic reconciliation §3.4.4.1")
-a(S, "Commercial module delivery backlog", "B-04-005", "M01 acceptance worded as existing capability with predecessors H02,H03", P, "BR-M01 acceptance 'Cross-role access denied; session revoked'; DEC-003", "Reuse validation acceptance appended", "TC-ENH-B-021")
+a(S, "Commercial module delivery backlog", "B-04-005", "M01 acceptance worded as existing capability with predecessors H02,H03", P, "BR-M01 acceptance 'Cross-role access denied; session revoked'; DEC-003", "Reuse validation acceptance appended", "TC-ENH-B-037")
 a(S, "Commercial module delivery backlog", "B-04-006", "Backlog dependency DAG (acyclic; 27-level longest chain)", P, "Part 8.1 §8.1.7 critical path (story level)", "DAG analysis published", "§3.4.4.1")
 rb = [("Predeployment", C, "Part 4.3 §4.48 readiness checklist; §4.37"), ("Release", C, "Part 4.3 §4.37.1, §4.38"),
       ("Daily operations", N, "No daily checklist runbook"), ("Provider outage", C, "RB-001"), ("Budget cap", C, "RB-005"),
@@ -175,7 +175,7 @@ proc = [("Task and operating cost estimates", P, "Part 8.1 §8.1.6", "FR-ENH-B-0
         ("Architecture decision rationale", C, "Part 3.1 §3.1.9 ADR template (alternatives, consequences, review trigger)", ""),
         ("Repository and modular boundaries", C, "ARP-01; import-linter; ADR-060", ""),
         ("Existing identity reuse", C, "ADR-005; US-0101 identity spike", ""),
-        ("Development dependencies (DAG, low ≤ base ≤ high)", P, "Part 8.1 (story dependencies)", "FR-ENH-B-025; TC-ENH-B-030"),
+        ("Development dependencies (DAG, low ≤ base ≤ high)", P, "Part 8.1 (story dependencies)", "FR-ENH-B-025; TC-ENH-B-040"),
         ("Resource and deployment approval", C, "Part 8.1 §8.1.3.4; Part 8.2 go-live", ""),
         ("Approval review effort 32.55 / 62.85 / 123.70 PD", N, "Not in Part 8", "FR-ENH-B-024; GAP-330")]
 for i, (t, st, loc, new) in enumerate(proc, 1):
@@ -317,7 +317,7 @@ dc = [("REST contract: /api/v1, JSON, cursor, 400/401/403/409/429, request_id, O
       ("Scoring model 25/25/20/15/15 with thresholds; calibration", C, "DEC-011; AU-017", "", ""),
       ("Security testing: CSRF, CORS, HTTPS, rate limits, object permissions, rotation, SAST, restore", C, "Part 4.1; §3.2.1.12", "", ""),
       ("Performance: non-AI API p95 < 500 ms; webhook ack < 2 s; 99% job success excluding vendor outages", C, "NFR-039; SLO-08; NFR-009", "", ""),
-      ("Agent decomposition: six runtime responsibilities; scoring, consent, sending, closure outside AI", X, "Part 7.1 (28 product agents + 43 automations)", "Mapping", "CONFLICT-327"),
+      ("Agent decomposition: six runtime responsibilities; scoring, consent, sending, closure outside AI", X, "Part 7.1 (36 agents, 32 product-scope, + 43 automations)", "Mapping", "CONFLICT-327"),
       ("Commercial metrics: precision, cost per qualified, CAC, win rate; zero denominator unavailable", C, "Part 1 KPI definitions; Part 2.4 RP-xx", "", ""),
       ("Clinical escalation: approved nonclinical info only; medical → clinician; emergency text → urgent care", C, "AG-013 urgent/clinical; AG-017 guardrails; errata 55", "", ""),
       ("Development vs runtime: Claude Code helps author; production uses licensed APIs; smoke test without Claude Code", C, "ASSUMPTION-020; Part 7.1 delivery agents", "", "")]

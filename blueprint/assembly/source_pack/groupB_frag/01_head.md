@@ -8,8 +8,8 @@
 | Baseline | BRD, FRD, Parts 0, 0A (DEC-001…065), 1, 2.1–2.5, 3.1–3.3, 4.1–4.3, 5.x, 6.x, 7.1–7.3, 8.1–8.2, 9.1–9.4; errata log items 1–87 |
 | Compared chiefly against | Part 2.2 (process flows), Part 2.3 (rules and state machines), Part 3.1 (architecture), Part 3.2 (API and integration), Part 7 (AI), Part 8 (delivery) |
 | Roles applied | Solutions Architect (lead), Technical Architect, Principal Engineer, Automation Architect; consulted: DevOps/SRE Lead, Data Architect/DBA, FinOps Lead, QA Lead, Security/Compliance/AI Governance Lead |
-| Group | **B** (Source Pack Brief). Enhanced IDs: FR-ENH-B-001…027, US-<EP>-EB<nn>, TC-ENH-B-001…036, NFR-ENH-B-01…08, LT-ENH-B-01…04, RB-ENH-B-01…03, WQG-01…12, ADR-100…109 |
-| Tags issued | ASSUMPTION-320…325 · GAP-320…335 · CONFLICT-320…330 · RECOMMENDATION-320…331 (register in §3.4.8) |
+| Group | **B** (Source Pack Brief). Enhanced IDs: FR-ENH-B-001…027, US-<EP>-EB<nn>, TC-ENH-B-001…040, NFR-ENH-B-01…08, LT-ENH-B-01…04, RB-ENH-B-01…03, WQG-01…12, ADR-100…109 |
+| Tags issued | ASSUMPTION-320…325 · GAP-320…335 · CONFLICT-320…330 · RECOMMENDATION-320…331 · ADR-100…109 (register in §3.4.8) |
 | Coverage CSV | `final/coverage/B_coverage.csv` (394 atomic aspects) |
 | Scripts | `assembly/source_pack/groupB_parse.py` (parses every table row of the four documents and reconciles catalogues), `assembly/source_pack/groupB_aspects.py` (aspect register, CSV and register tables) |
 
@@ -48,8 +48,16 @@ Counts by status per document group (from `B_coverage.csv`). A "Conflict" is cou
 
 **Interpretation.** 81% of the atomic aspects are already covered by the blueprint, usually at greater depth than the source (the blueprint's Part 3 alone holds 43 ADRs, 555 catalogued operations and 199 entities against the pack's retained 302 operations and 149 entities). The 75 aspects that are partial, missing or in conflict cluster in six areas, each written up in §3.4.5:
 
-| Cluster | Aspects | Where the enhancement is written |
+| Cluster | Main aspect IDs (non-covered) | Where the enhancement is written |
 |---|---|---|
+| Growth-scale capacity, recovery classes, availability and budget thresholds | B-CAP-01…05, -08, -09; B-09-PB3, PB4; B-09-AD5; B-09-AP2, AP3; B-04-AP2; OPT-03-04, -03-08, -05-07, -06-01…03 | §3.4.5.1 (A, B), §3.4.5.6 (C) |
+| Deployment technology and naming differences (Fargate, Redis, ALB, app and repository names) | B-TC-03, -04, -08, -11; B-09-PB6 | §3.4.5.1 (C), ADR-100, ADR-101 |
+| Integration contracts: adapter port operations, permission classes, route map, inbound/outbound contracts, product-event ingress | B-AR-03; B-TC-06, -10; B-10-006…008, -011, -DC02, -DC03, -DC12; B-05-006; B-04-015, B-04-WB4 | §3.4.5.1 (D), §3.4.5.2 |
+| Workflow engine contracts: execution-policy block, activation gates, reply taxonomy, regression matrix, recording rule, journey view | B-05-004, -014, -016, -020; B-05-CH4; B-TC-09; OPT-05-04 | §3.4.5.1 (E), §3.4.5.4 |
+| AI contracts: typed envelope, responsibility mapping, need schema, agent decomposition | B-10-002, -AI10, -DC06, -DC17 | §3.4.5.5 |
+| Delivery and operations: discipline effort, expansion DAG, approval-gate register, runbooks, coverage rule, technical debt, fail-fast configuration, isolation tests, investor wording | B-04-001, -005, -006, -019…021, -023, -AP1, -AP7, -AP9, -RB3, -RB6, -RB8, -WB6; B-10-013, -014, -AP11, -AP15; B-09-AP1, -AP5; B-05-AP7, -AP9; OPT-05-06, -09-01, -13-02, -13-03, -16-02 | §3.4.5.6, §3.4.5.7 |
+
+---|---|---|
 | Growth-scale capacity, recovery classes, availability and budget thresholds | 14 | §3.4.5.1 (A, B), §3.4.5.6 (C) |
 | Deployment technology and naming differences (Fargate, Redis, ALB, app and repository names) | 5 | §3.4.5.1 (C), ADR-100, ADR-101 |
 | Integration contracts: adapter port operations, permission classes, route map, inbound/outbound contracts, product-event ingress | 10 | §3.4.5.1 (D), §3.4.5.2 |
@@ -78,7 +86,7 @@ Method: `groupB_parse.py` parses the 66 backlog rows (sequence, module, dependen
 | Module names matched to BR-M | **66 / 66** | Exact name match |
 | Dependency sets equal to Part 1 | **66 / 66** | After mapping the pack's dependency-ordered sequence numbers to BR-M numbers |
 | Acceptance text identical | **52 / 66** | 13 differ only by British spelling or by the DEC suffix Part 1 added (e.g. "(DEC-023)"); 1 real difference (BR-M01) |
-| BR-M01 acceptance | Pack: "Existing capability; validate growth/admin access before launch (not new build)"; predecessors **H02, H03** (pre-existing hardening items of the reused identity service) | Blueprint: "Cross-role access denied; session revoked" plus DEC-003/DEC-019 reuse. Both apply; TC-ENH-B-021 adds the reuse-validation acceptance. H02/H03 are not defined anywhere in the pack's 38 documents [GAP-320 note: treated as the identity spike US-0101 inputs] |
+| BR-M01 acceptance | Pack: "Existing capability; validate growth/admin access before launch (not new build)"; predecessors **H02, H03** (pre-existing hardening items of the reused identity service) | Blueprint: "Cross-role access denied; session revoked" plus DEC-003/DEC-019 reuse. Both apply; TC-ENH-B-021 adds the reuse-validation acceptance. H02/H03 are not defined anywhere in the pack's 38 documents [ASSUMPTION-325: treated as inputs to the identity spike US-0101] |
 | Cycles in the dependency graph | **0** | Acyclic |
 | Forward references (dependency on a later sequence) | **0** | The pack's sequence is a valid topological order |
 | Dependency depth | **27 levels** | Level sizes 1,3,3,2,4,4,1,2,1,2,1,1,1,1,2,3,2,3,5,7,3,3,2,4,3,1,1 |

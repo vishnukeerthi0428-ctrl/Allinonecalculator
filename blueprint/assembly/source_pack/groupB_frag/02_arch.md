@@ -30,10 +30,10 @@ This section writes the missing content. Each item states its source aspect(s), 
 | FR-ENH-B-019 | Fail-fast mandatory configuration at process start | OPT-05-06 | Part 4.3 §4.35 | Must | W0-A | EP-01 | US-01-EB03 | TC-ENH-B-035 |
 | FR-ENH-B-020 | Technical-debt register and documentation-sync check | OPT-13-02, OPT-13-03 | Part 4.3 §4.32 | Could | W2 | EP-21 | US-21-EB05 | TC-ENH-B-036 |
 | FR-ENH-B-021 | Cross-product audience isolation and shared-library boundary tests | B-09-AP1, B-09-AP5, B-05-AP9 | NFR-031; ADR-033; ADR-060 | Must | W0-A | EP-01 | US-01-EB04 | TC-ENH-B-020, -022 |
-| FR-ENH-B-022 | Budget threshold ladder 70/80/90/100% | OPT-03-08 | BRL-AI-08; NT-025 | Should | W0-B | EP-04 | US-04-EB02 | TC-ENH-B-012 note, TC-ENH-B-021 |
-| FR-ENH-B-023 | Provider candidate register and replacement-first benchmark gate | B-04-015, B-04-WB4, B-05-006 | CN-05; DEC-020 | Should | W1 | EP-01 | US-01-EB05 | TC-ENH-B-021 |
-| FR-ENH-B-024 | Approval-gate register (API definitions, DB confirmations, UI mappings) and review effort | B-04-AP9, B-10-AP11, B-10-AP15, OPT-09-01 | Part 3.2 DERIVED; Part 8.1 | Must | W0-A onward | EP-21 | US-21-EB06 | TC-ENH-B-030 note |
-| FR-ENH-B-025 | Discipline effort reconciliation, PD actual-vs-estimate tracking, vertical-slice checklist | B-04-001, B-04-019, B-04-020, OPT-16-02 | Part 8.1 §8.1.6 | Should | W0-A onward | EP-21 | US-21-EB06 | — (management control) |
+| FR-ENH-B-022 | Budget threshold ladder 70/80/90/100% | OPT-03-08 | BRL-AI-08; NT-025 | Should | W0-B | EP-04 | US-04-EB02 | TC-ENH-B-021 |
+| FR-ENH-B-023 | Provider candidate register and replacement-first benchmark gate | B-04-015, B-04-WB4, B-05-006 | CN-05; DEC-020 | Should | W1 | EP-01 | US-01-EB05 | TC-ENH-B-038 |
+| FR-ENH-B-024 | Approval-gate register (API definitions, DB confirmations, UI mappings) and review effort | B-04-AP9, B-10-AP11, B-10-AP15, OPT-09-01 | Part 3.2 DERIVED; Part 8.1 | Must | W0-A onward | EP-21 | US-21-EB06 | TC-ENH-B-039 |
+| FR-ENH-B-025 | Discipline effort reconciliation, PD actual-vs-estimate tracking, vertical-slice checklist | B-04-001, B-04-019, B-04-020, OPT-16-02 | Part 8.1 §8.1.6 | Should | W0-A onward | EP-21 | US-21-EB06 | TC-ENH-B-040 |
 | FR-ENH-B-026 | Expansion-interface task DAG reconciliation | B-04-023 | Part 8.1 | Should | W5 | EP-20, EP-18 | — | — (planning control) |
 | FR-ENH-B-027 | Service contract card and atomic transaction reference implementation | B-10-014, B-10-016 | ARP-03; Part 3.3 | Must | W0-A | EP-01 | US-01-EB01 | TC-ENH-B-018 |
 
@@ -82,7 +82,7 @@ This section writes the missing content. Each item states its source aspect(s), 
 | NFR-ENH-B-02 | Concurrent staff sessions | Sessions issuing the LT-01 request mix concurrently, all SLO-03/04 met | 50 / 250 | LT-ENH-B-01 | OPT-06-02 |
 | NFR-ENH-B-03 | Data volume | Scoped opportunity rows with RLS enabled; NFR-039 met on list and filter endpoints | 100 k / 1 M | LT-ENH-B-02 | OPT-06-03 |
 | NFR-ENH-B-04 | Job and schedule volume | Concurrent executing jobs and scheduled external actions per day with SLO-05/06 met | 50 & 10 k / 250 & 100 k | LT-ENH-B-03 | OPT-06-03 |
-| NFR-ENH-B-05 | Composite dashboard load | Time from navigation to the last widget's data on an Admin dashboard (A042, A087–A089, A106) at p95; server reads only projections; statement timeout 5 s | ≤ 2.0 s / ≤ 2.5 s | RUM span "dashboard.ready"; LT-ENH-B-02 | Doc 04/09/10 CAP-05 |
+| NFR-ENH-B-05 | Composite dashboard load | Time from navigation to the last widget's data on an Admin dashboard (A042, A043, A087–A089) at p95; server reads only projections; statement timeout 5 s | ≤ 2.0 s / ≤ 2.5 s | RUM span "dashboard.ready"; LT-ENH-B-02 | Doc 04/09/10 CAP-05 |
 | NFR-ENH-B-06 | Recovery by class | RC-1 RPO ≤ 15 min, RTO ≤ 4 h (pilot) / ≤ 2 h (scale gate, non-regional failures); RC-2 RPO ≤ 24 h, RTO ≤ 8 h; RC-3 rebuilt from RC-1 within 2 h of RC-1 recovery | As stated | TC-ENH-B-015, -016; §4.47 drills | Doc 04/09 CAP-08/09; ADR-102 |
 | NFR-ENH-B-07 | Unit cost of execution | Cost per 1,000 completed tasks (compute + metered provider + AI) and p95 queue age per queue, per tenant | Reported weekly; no SLO breach during right-sizing | DB-09 panel; FinOps cadence §4.46.6 | OPT-03-04 |
 | NFR-ENH-B-08 | Branch coverage of critical decision code | See FR-ENH-B-018 | 100% enumerated critical branches; ≥ 80% domain-service branches | CI PL-04 | Doc 10 test harness |
@@ -199,7 +199,7 @@ stateDiagram-v2
   Verified --> NeedReviewed : need accepted in A020
   NeedReviewed --> Qualified : opportunity Qualified
   Qualified --> Eligible : at least one contact eligible at plan time
-  Eligible --> Contacted : first outbound message Delivered or inbound first contact
+  Eligible --> Contacted : first outbound message delivered or inbound first contact
   Contacted --> Replied : substantive inbound reply
   Replied --> Meeting : meeting Held
   Meeting --> Proposal : proposal or quote Sent
@@ -217,7 +217,7 @@ stateDiagram-v2
 
 | Rule | Specification |
 |---|---|
-| Stage source | Each stage maps to one authoritative event: `intelligence.organization.verified`, `intelligence.need.accepted`, `intelligence.opportunity.qualified`, `governance.eligibility.contact_eligible`, `engagement.message.delivered` (not `queued` or `accepted`), `engagement.inbound.classified` (substantive classes only), `engagement.meeting.held`, `commerce.proposal.sent` / `commerce.quote.sent`, `commerce.negotiation.opened`, `commerce.deal.won` (only after closure evidence, KPI-31), `commerce.deal.lost`, `lifecycle.onboarding.opened`, `lifecycle.renewal.window_opened` |
+| Stage source | Each stage maps to one authoritative event from the Part 3.2 §3.2.3.3 catalogue: `intelligence.organization.upserted` (canonical, source permitted), `intelligence.need.verified`, `intelligence.opportunity.qualified`, `engagement.message.delivered` (not `queued` or `sent`), `commerce.objection.recorded`, `crm.deal.won` (only after closure evidence, KPI-31), `crm.deal.lost`, `lifecycle.onboarding.started`, `lifecycle.renewal.due`. Four events are **new** and must be added to the catalogue: `governance.eligibility.contact_eligible`, `engagement.inbound.classified` (substantive classes only), `engagement.meeting.held` (today only `engagement.meeting.booked` exists), `commerce.proposal.sent` (today `commerce.proposal.approved`; sent = delivered to the customer portal or channel) |
 | Stored fields | `journey_id`, `tenant_id`, `startup_id`, `organization_id`, `offering_id` (nullable), `stage`, `furthest_stage`, `entered_at`, `previous_stage`, `cycle_no`, `source_event_id`, `as_of` |
 | Skips | Inbound-first journeys may enter at Contacted or Replied; skipped stages are recorded as `skipped`, not back-filled |
 | Simulation | Events with `simulated = true` are ignored (BRL-AUT-04) |

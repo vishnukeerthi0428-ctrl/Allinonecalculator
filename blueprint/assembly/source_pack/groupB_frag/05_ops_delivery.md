@@ -5,17 +5,17 @@
 
 **Source.** Doc 04 production runbook (8 routines). Predeployment, release, provider outage, budget cap and recovery map to §4.48, §4.37, RB-001, RB-005 and RB-007. Daily operations has no runbook [GAP-327]; client offboard exists as a process (WF-14) without an operator runbook; data incident is split across RB-008 and RB-013 without a containment-to-restart sequence.
 
-**RB-ENH-B-01 Daily operations checklist** (owner: on-duty engineer R11; 15–30 minutes per working day, Mon–Sat per DEC-044; results logged in A014 as a daily operations record)
+**RB-ENH-B-01 Daily operations checklist** (owner: on-duty engineer acting for R11 Automation Lead; 15–30 minutes per working day, Mon–Sat per DEC-044; results logged in A014 as a daily operations record)
 
 | # | Check | Where | Threshold / action |
 |---|---|---|---|
 | 1 | Failed jobs and DLQ | A009 | Any new DLQ item → triage; > 10/hour alarm already pages (§3.2.7.4) |
 | 2 | Uncertain outcomes older than 24 h | A110 / AU-026 queue | SLO-10; each item gets an owner |
-| 3 | Pending approvals near SLA | Approvals inbox (A043) | Escalate per AU-027 |
+| 3 | Pending approvals near SLA | Action and notification centre (A106) and the approval queues (A035, A051, A059, A066, A068, A072) | Escalate per AU-027 |
 | 4 | Budget status | A012 | Lines ≥ 70% reviewed (§C ladder); forecast to month end |
 | 5 | Receipts and reconciliation exceptions | A073/A074 | Unmatched receipts, payment discrepancies; > ₹1 lakh discrepancy is S1 (errata 17) |
 | 6 | Source freshness and expiring permissions | A010 | Sources expiring in ≤ 7 days renewed or disabled |
-| 7 | Suppression health | A047 | Suppression sync lag, complaint rate per campaign vs AU-031 threshold |
+| 7 | Suppression health | A007 consent and policies; A047 compliance incidents | Suppression sync lag, complaint rate per campaign vs AU-031 threshold |
 | 8 | Backup and drill status | §4.47 evidence | Last automated restore check passed; drill not overdue |
 | 9 | Provider health and breakers | AU-010 panel | Any breaker open > 15 min has an incident |
 | 10 | Security signals | GuardDuty/Sentry summary | New High finding → RB-013 assessment |
@@ -191,7 +191,7 @@ The mapping follows Part 8.1 §8.1.2 (re-baselined calendar, CONFLICT-142). WP7 
 | US-01-EB05 | EP-01 | As the Founder I want no paid provider activated without a benchmark record so that replacement-first is enforced | FR-ENH-B-023 | 2 | W1 |
 | US-21-EB06 | EP-21 | As the product owner I want an approval-gate register and discipline effort tracking so that open contracts and capacity risks are visible at each gate | FR-ENH-B-024, -025 | 3 | W0-A |
 
-Estimates total **90 SP (≈ 63 pd at 0.7 pd/SP, Part 8.1 §8.1.6.1)**; most items extend existing stories and will partly merge into them during refinement; they are candidates for the Part 8 backlog, not automatically added scope.
+Estimates total **88 SP (≈ 62 pd at 0.7 pd/SP, Part 8.1 §8.1.6.1)**; most items extend existing stories and will partly merge into them during refinement; they are candidates for the Part 8 backlog, not automatically added scope.
 
 ```gherkin
 Feature: US-01-EB01 Adapter port contract v2
@@ -229,7 +229,7 @@ Feature: US-18-EB01 Workflow execution policy
     And the validation report lists the correction
   Scenario: AC-18EB01-02 Loosening requires the Founder
     Given a startup policy with max_attempts 2
-    When a startup head (R05) sets max_attempts to 3
+    When a startup head (R02) sets max_attempts to 3
     Then the change is rejected with rule BRL-APR-11
   Scenario: AC-18EB01-03 Expired lease cannot commit
     Given worker A holds the lease for step S with fencing token 7
