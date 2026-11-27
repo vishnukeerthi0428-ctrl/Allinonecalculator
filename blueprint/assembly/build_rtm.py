@@ -126,8 +126,14 @@ def tc_sort_key(t):
         return (3, t)
     if re.match(r"TC-(?:NFR|FLT|BRS)-", t):
         return (4, t)
+    if t.startswith("VER-ENH"):
+        return (8, t)
     if t.startswith("VER-"):
         return (5, t)
+    if t.startswith("TC-ENH-"):         # source-pack enhancement tests (Parts 2.6…8.3, closure 6.10)
+        return (6, t)
+    if t.startswith("LT-"):
+        return (7, t)
     return (1, t)
 
 
@@ -138,11 +144,16 @@ def compress(tcs, limit=None):
     runs = []
     for t in tcs:
         pref, n = t.rsplit("-", 1)
-        if runs and runs[-1][0] == pref and int(n) == runs[-1][2] + 1:
-            runs[-1][2] = int(n)
+        m = re.match(r"([A-Z]*)(\d+)$", n)
+        if not m:
+            runs.append([t, None, None, 0])
+            continue
+        p2, num, w = pref + "-" + m.group(1), int(m.group(2)), len(m.group(2))
+        if runs and runs[-1][0] == p2 and runs[-1][3] == w and num == runs[-1][2] + 1:
+            runs[-1][2] = num
         else:
-            runs.append([pref, int(n), int(n)])
-    parts = [f"{p}-{a:03d}" if a == b else f"{p}-{a:03d}…{b:03d}" for p, a, b in runs]
+            runs.append([p2, num, num, w])
+    parts = [p if a is None else (f"{p}{a:0{w}d}" if a == b else f"{p}{a:0{w}d}…{b:0{w}d}") for p, a, b, w in runs]
     if limit and len(parts) > limit:
         return ", ".join(parts[:limit]) + f", … (+{len(parts) - limit} runs)"
     return ", ".join(parts)
