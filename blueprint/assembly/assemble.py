@@ -137,7 +137,7 @@ def md_to_html(md_text, html_path, extra_css_path):
     for i, ch in enumerate(chunks):
         src = Path(html_path).with_name(f"chunk{i:03d}.md")
         src.write_text(ch, encoding="utf-8")
-        r = subprocess.run(["pandoc", str(src), "-f", "markdown+raw_html", "-t", "html5", "--section-divs=false",
+        r = subprocess.run(["pandoc", str(src), "-f", "markdown+raw_html", "-t", "html5",
                             "--id-prefix", f"c{i}-"], check=True, env=env, capture_output=True, text=True)
         frags.append(r.stdout)
     css = Path(CSS).read_text(encoding="utf-8") + "\n" + Path(extra_css_path).read_text(encoding="utf-8")
