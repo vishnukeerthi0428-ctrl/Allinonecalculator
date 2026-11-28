@@ -1,0 +1,109 @@
+# key	class	reference	note
+h:414d7bd4dc24	C	?non-normative	Part 11.12 treats the historical annex as non-normative; semantic mappings approved there
+h:8b3871290ebf	C	?Load compliant example	Prototype demonstration gap; production seeds and negative cases in Part 11.10a §11.10.3.10
+h:14dbf192b65e	S	DEC-771; DEC-787	Recovery-objective approval contradiction resolved by Founder decisions RTO <= 120 min and RPO <= 15 min
+h:8dceaff56a89	C	?77/77	Prototype evidence breadth; Part 11.10a §11.10.3.10 prototype verification evidence
+h:7feeb089408d	N	FR-V12-V-001	Version-label defect recorded in the artifact lineage register
+h:b2d529af6e36	N	FR-V12-V-001	Version labels and SHA-256 of delivered HTML: artifact integrity register
+h:a05f2283026b	C	?DTO schema registry	DTO typing corrections adopted in Part 11.4b DTO registry (156 schemas)
+h:812ee87cfc34	C	?AGT-	Foundation register, AGT registry and 156-row traceability register in Parts 11.6a/11.11a
+h:008525809632	C	?id_registry	Blueprint ID index: final/id_registry.csv and Part 9.2 registers
+h:61a060af93a3	C	?requester	Separation of duties (requester != reviewer) and Reconciling state: BRL-APR rules, Part 11.5a run states
+h:6174495286b3	N	FR-V12-V-006	Production rule "one implementation per behaviour" not stated in coding standards
+h:f99087b36706	N	FR-V12-V-001	Merge lineage of the two V7 lines into V8 recorded in the lineage register
+h:0d9eac337f6f	N	FR-V12-V-005	FX rate input must accept decimals below 1; UI validation rule not specified
+h:4ad5a8769bf2	C	?#536676	Contrast tokens adopted in Part 11.7b accessibility contract
+h:df2b5ffe53e4	C	?233	Requirement status register and evidence scoring: Part 11.10a scorecards
+h:90a9a63c4062	C	?517	517 step contracts: Part 11.10b/11.10c step tests
+h:4cb0c8ebb6c8	N	FR-V12-V-004	ICP attribute set (MT-04) only partly specified (A-07-0339 partial)
+h:c2a508ec3786	C	?verified receipt	Subscriber value chain to verified receipt: Parts 1/2.2
+h:d6baae663eb2	C	?BR-V12-04	Data ownership: BR-V12-04 (Part 11.1a) and offboarding with legal hold (Part 11.5a/b)
+h:61624258e5e3	C	?operator ledger	Operator ledger separate from subscriber data: Part 11.7b A187/A188 and Part 11.5a tenant lifecycle
+h:1cfd659893d3	C	?Digital acquisition and commerce	Service sector: Part 11.2c
+h:f42538374f18	C	?Retail, wholesale	Service sector: Part 11.2c
+h:46a5ffa4b9dd	C	?Defer / exclude	Plugin economics classes: Part 11.8a/b plugin register
+h:409fc45ebb3f	C	?Defer / exclude	Plugin economics classes: Part 11.8a/b plugin register
+h:dc0981e1b382	C	?Defer / exclude	Plugin economics classes: Part 11.8a/b plugin register
+h:176e49f12653	C	?CS-14	Billing disputes, value reports, renewal and portability policies: OPT CS-14/CS-15, Part 11.10a/c and Part 11.5b
+h:d7a5b96b155f	C	?Offboard with legal hold	Exit: export, revoke, delete subject to legal hold: Part 11.5a/b TC-V12-E-061
+h:f1597c7e4a73	C	?8.6	V12 readiness score recorded in Part 11.10a scorecards
+h:14233b6c4122	C	?1,029	Reconciliation inventory counts: Parts 11.10a/11.12
+h:46e08dea0c8a	C	?321	API disposition count 321: Part 11.12
+h:b00087747808	C	?1,029	Test disposition count 1,029: Part 11.10a
+h:cd9fa4cc471e	C	?245	QC disposition count 245: Part 11.12
+h:8d76c75dc6b1	C	?25+ compan	Production verification scope: Part 11.1b
+h:d3f2b96976a2	C	?RACI	Responsibility categories: RACI in Parts 0/8.1
+h:d3100af2649b	N	FR-V12-V-001	RCTCFE V8 stage-gate register restored
+h:a4bcc37b2cc5	N	FR-V12-V-001	RCTCFE V8 stage-gate register restored
+h:7c952eedf300	N	FR-V12-V-001	RCTCFE V8 stage-gate register restored
+h:27d3c39e5cd4	N	FR-V12-V-001	RCTCFE V8 stage-gate register restored
+h:ab543509d7b6	N	FR-V12-V-001	RCTCFE V8 stage-gate register restored
+h:aa63267a18a6	N	FR-V12-V-001	RCTCFE V8 stage-gate register restored
+h:f2563755d135	N	FR-V12-V-001	RCTCFE V8 stage-gate register restored
+h:1747fda6e339	N	FR-V12-V-001	RCTCFE V8 stage-gate register restored
+h:79b20992a21e	C	?14 X	Route and screen counts: Part 11.7a
+h:011b3de67753	C	?fail closed	Policy engine in-process, fail closed: Part 11.19b / Part 3.1 PDP
+h:aaa2f4e6433e	C	?egion-pinned	AI gateway region pinning: Parts 11.14 (DEC-772) and 11.19
+h:a1e40fdcb87f	C	?modular monolith	Modular monolith: Part 3.1
+h:0760b4709da2	C	?outbox	Transactional outbox and reconciliation: Part 3.1
+h:3b0dce550866	C	?auditor	Authorization matrix: roles R01–R20 and ABAC (Part 2.3), custom roles (Part 11.19a)
+h:8bda2a06c7a3	C	?only resources this saga created	Provisioning saga compensation: Part 11.5a
+h:b85619d21a83	C	?REC-08	Historical use-case groups: REC-08 in Parts 11.3a/11.11a
+h:76781a36de1b	C	?V4	Prototype workflow guard: Part 11.3a
+h:14502df18d3d	C	?requester	Role separation: BRL-APR, Part 2.3
+h:507ff55ae7e0	C	?aggregate	Portfolio aggregates only; capability checks: Part 11.5a
+h:137bafdacfa5	C	?TC-DUP	Duplicate and failure holds: workflow scenario classes DUP/BUDGET/RECOVERY (Part 11.10c)
+h:1991688931b0	C	?AIX-09	Reader/actor separation: AIX-09 in Parts 11.10a/11.13a
+h:d3a7214f0265	C	?AIX-09	Reader/actor separation: AIX-09
+h:85c25b19a40e	C	?AIX-11	Claims and citation control: AIX-11
+h:4e2df5501cc0	C	?MT-30	Scoped budgets: MT-30 in Part 11.5a
+h:758833a8c1f9	C	?configuration_revision	Prototype-only browser memory; production stores configuration revisions server-side (Part 11.9a/b)
+h:13f386870ffc	C	?requester	Demo identity -> production SoD rule (BRL-APR)
+h:9e974df0f432	C	?A017	A017 data mapping: Part 2.7b card and Part 11.7a
+h:e7dce4decb29	C	?A058	A058 purpose: Part 2.5/2.7b
+h:38b9ad12331a	C	?A065	A065 purpose: Part 2.5/2.7b
+h:60e529952b04	C	?avoid duplicate	API contract authority: Part 11.8a
+h:46948762eeb4	C	?/api/v1/commercial/applications	Part 11.8a
+h:8504563ad43a	C	?/api/v1/commercial/applications	Part 11.8a
+h:f8a21e0510d0	C	?ChannelAccount	Part 11.5a/11.8a
+h:6cc65a695b4f	C	?opt_model_evaluation	Part 11.9a
+h:08eda9ff7053	C	?opt_scoped_cache	Part 11.9a
+h:6cd36cefc9a4	C	?growth_model_run	Part 3.6a/b
+h:d8ee56f3ae83	C	?growth_budget	Part 3.6a/b
+h:92bccc124344	C	?growth_message	Part 3.6a/b
+h:63fc7b57669b	C	?growth_enrollment	Part 3.6a/b
+h:755f3d47649a	C	?sales_usage_charge	Part 3.6a/b
+h:348f0e1799fe	C	?sales_data_transfer	Part 3.6a/b
+h:2f5ce9bc8405	C	?sales_action_plan	Part 3.6a/b
+h:a3e027348d4d	C	?sales_bid	Part 3.6a/b; automatic submission now under DEC-781
+h:68599c65a83c	C	?sales_order_line	Part 3.6a/b
+h:ed54bebf1561	C	?commercial/applications	Application intake persistence: Part 11.8a/11.9a
+h:0acc196cff1c	C	?approval_decision	Part 11.9a
+h:cb85fa255f2b	C	?workflow_step_event	Part 11.9a
+h:60272a355da3	C	?Playwright	Prototype evidence tooling: Part 11.10a
+h:c295d255831a	C	?penetration test	Not-run production tests are scheduled in Parts 6.1/11.10
+h:5e9d9a0ee51b	C	?8.2	Score history: Part 11.10a
+h:c582c11735ec	C	?AIX-04	AIX-04 status row
+h:9cefe2b55c40	C	?AIX-07	AIX-07 status row
+h:21bd1eb4d46b	C	?AIX-15	AIX-15 status row
+h:85f84e91a958	C	?AIX-16	AIX-16 status row
+h:8558c9bded14	C	?AIX-19	AIX-19 status row
+h:36984df1c6ec	C	?Eight-stage wizard	Prototype check; production wizard Part 11.1a/11.5b
+h:aece64dd2412	C	?Playwright	Prototype regression evidence metadata
+h:475984530360	C	?TC-RECOVERY	Uncertain write hold: RECOVERY class tests
+h:050969830733	C	?aggregate	Portfolio operator analytics absent: aggregate-only rule
+h:e9750dcb3d5f	C	?postmortem	After-incident review: Parts 8.3c/11.11
+h:ad482d3126ff	C	?call_ref	A113 template X26: input/output refs present in Part 11.4a DTO registry; screen via A113 contract
+h:55baea6d42ab	C	?brief_ref	A113 template X27: input/output refs present in Part 11.4a DTO registry; screen via A113 contract
+h:36315aaaa472	C	?agent_ref	A113 template X28: input/output refs present in Part 11.4a DTO registry; screen via A113 contract
+h:2f4af05f80d9	C	?account_ref	A113 template X29: input/output refs present in Part 11.4a DTO registry; screen via A113 contract
+h:a82b7a728d46	C	?hypothesis_ref	A113 template X30: input/output refs present in Part 11.4a DTO registry; screen via A113 contract
+h:b876a096f5ff	C	?marketplace_ref	A113 template X31: input/output refs present in Part 11.4a DTO registry; screen via A113 contract
+h:cb131764656b	C	?partner_ref	A113 template X32: input/output refs present in Part 11.4a DTO registry; screen via A113 contract
+h:52bfb88c213e	C	?customer_ref	A113 template X33: input/output refs present in Part 11.4a DTO registry; screen via A113 contract
+h:2b8fd685fc69	C	?account_ref	A113 template X34: input/output refs present in Part 11.4a DTO registry; screen via A113 contract
+h:ac2f7fe726fd	C	?brand_ref	A113 template X35: input/output refs present in Part 11.4a DTO registry; screen via A113 contract
+h:53e8a00e9e00	C	?learner_ref	A113 template X36: input/output refs present in Part 11.4a DTO registry; screen via A113 contract
+h:aece2c3ffeba	C	?offer_ref	A113 template X37: input/output refs present in Part 11.4a DTO registry; screen via A113 contract
+h:f679650012f9	C	?sender_ref	A113 template X38: input/output refs present in Part 11.4a DTO registry; screen via A113 contract
+h:2ddeef2f98f0	C	?requirement_ref	A113 template X39: input/output refs present in Part 11.4a DTO registry; screen via A113 contract

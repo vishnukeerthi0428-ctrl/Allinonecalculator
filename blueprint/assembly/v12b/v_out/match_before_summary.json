@@ -1,0 +1,22 @@
+{
+ "mode": "before",
+ "files": 121,
+ "lines": 163614,
+ "statements": 19274,
+ "levels": {
+  "weak": 1110,
+  "exact": 5123,
+  "strong": 10552,
+  "moderate": 2454,
+  "none": 35
+ },
+ "matched_pct": 94.06,
+ "id_literal_pct": 90.26,
+ "distinct_ids": 6795,
+ "distinct_ids_missing": 11,
+ "statements_with_thresholds": 1074,
+ "id_presence_pct": 99.92,
+ "ngram6_mean": 0.4906,
+ "token_mean": 0.849,
+ "number_presence_pct": 97.02
+}

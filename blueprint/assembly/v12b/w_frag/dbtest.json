@@ -1,0 +1,257 @@
+{
+ "apply": {
+  "IN": {
+   "rc": 0,
+   "seconds": 3.1,
+   "err": "\npsql:/home/user/Allinonecalculator/blueprint/final/build/schema.sql:17105: NOTICE:  identifier \"uq_com_fulfillment_milestone__tenant_id_startup_id_order_id_milestone_\" will be truncated to \"uq_com_fulfillment_milestone__tenant_id_startup_id_order_id_mil\"\npsql:/home/user/Allinonecalculator/blueprint/final/build/schema.sql:26950: NOTICE:  relation \"platform_table_allowlist\" already exists, skipping"
+  },
+  "EU": {
+   "rc": 0,
+   "seconds": 3.2,
+   "err": "\npsql:/home/user/Allinonecalculator/blueprint/final/build/schema.sql:17105: NOTICE:  identifier \"uq_com_fulfillment_milestone__tenant_id_startup_id_order_id_milestone_\" will be truncated to \"uq_com_fulfillment_milestone__tenant_id_startup_id_order_id_mil\"\npsql:/home/user/Allinonecalculator/blueprint/final/build/schema.sql:26950: NOTICE:  relation \"platform_table_allowlist\" already exists, skipping"
+  }
+ },
+ "tests": [
+  {
+   "id": "TC-W-DB-01",
+   "title": "schema.sql applies in one transaction with ON_ERROR_STOP on a clean IN database",
+   "result": "PASS",
+   "detail": "com_fulfillment_milestone__tenant_id_startup_id_order_id_milestone_\" will be truncated to \"uq_com_fulfillment_milestone__tenant_id_startup_id_order_id_mil\"\npsql:/home/user/Allinonecalculator/blueprint/final/build/schema.sql:26950: NOTICE:  relation \"platform_table_allowlist\" already exists, skipping"
+  },
+  {
+   "id": "TC-W-DB-02",
+   "title": "schema.sql applies in one transaction with ON_ERROR_STOP on a clean EU database",
+   "result": "PASS",
+   "detail": "com_fulfillment_milestone__tenant_id_startup_id_order_id_milestone_\" will be truncated to \"uq_com_fulfillment_milestone__tenant_id_startup_id_order_id_mil\"\npsql:/home/user/Allinonecalculator/blueprint/final/build/schema.sql:26950: NOTICE:  relation \"platform_table_allowlist\" already exists, skipping"
+  },
+  {
+   "id": "TC-W-DB-03",
+   "title": "No application role has BYPASSRLS or SUPERUSER (DEC-778)",
+   "result": "PASS",
+   "detail": "[]"
+  },
+  {
+   "id": "TC-W-DB-04",
+   "title": "Every tenant table has ENABLE + FORCE row-level security",
+   "result": "PASS",
+   "detail": "[]"
+  },
+  {
+   "id": "TC-W-DB-05",
+   "title": "Every tenant table has a SELECT policy",
+   "result": "PASS",
+   "detail": "[]"
+  },
+  {
+   "id": "TC-W-DB-06",
+   "title": "Data API roles (anon, authenticated) and service_role hold no grant on schema ge (SA-01, SA-02)",
+   "result": "PASS",
+   "detail": "[]"
+  },
+  {
+   "id": "TC-W-DB-07",
+   "title": "No FOR ALL policy applies to PUBLIC (command-split policies only; Part 11.9b F2)",
+   "result": "PASS",
+   "detail": "0"
+  },
+  {
+   "id": "TC-W-DB-08",
+   "title": "Every foreign key has a supporting index (Part 11.9b F4)",
+   "result": "PASS",
+   "detail": "[]"
+  },
+  {
+   "id": "TC-W-DB-09",
+   "title": "app_rw and app_worker hold no DELETE or TRUNCATE grant (archive, never delete; SA-08)",
+   "result": "PASS",
+   "detail": "[]"
+  },
+  {
+   "id": "TC-W-DB-10",
+   "title": "Missing tenant context fails closed (42501) on a company-scoped table",
+   "result": "PASS",
+   "detail": "42501 tenant context missing"
+  },
+  {
+   "id": "TC-W-DB-11",
+   "title": "app_rw inserts and reads its own company row through set_ctx (P-CO)",
+   "result": "PASS",
+   "detail": "1"
+  },
+  {
+   "id": "TC-W-DB-12",
+   "title": "Company isolation inside one tenant: company A2 session sees 0 rows of A1 (Part 11.9b F1, MT-09)",
+   "result": "PASS",
+   "detail": "0"
+  },
+  {
+   "id": "TC-W-DB-13",
+   "title": "Tenant isolation: tenant B session sees 0 rows of tenant A",
+   "result": "PASS",
+   "detail": "0"
+  },
+  {
+   "id": "TC-W-DB-14",
+   "title": "Write into a company outside the write scope is rejected by WITH CHECK",
+   "result": "PASS",
+   "detail": "42501 new row violates row-level security policy for table \"ten_saved_view\""
+  },
+  {
+   "id": "TC-W-DB-15",
+   "title": "Write into another tenant is rejected by WITH CHECK",
+   "result": "PASS",
+   "detail": "42501 new row violates row-level security policy for table \"ten_saved_view\""
+  },
+  {
+   "id": "TC-W-DB-16",
+   "title": "set_ctx rejects a write company outside the session company list",
+   "result": "PASS",
+   "detail": "42501 WRITE_COMPANY_NOT_IN_SCOPE"
+  },
+  {
+   "id": "TC-W-DB-17",
+   "title": "app_rw cannot DELETE business rows (no grant)",
+   "result": "PASS",
+   "detail": "42501 permission denied for table ten_saved_view"
+  },
+  {
+   "id": "TC-W-DB-18",
+   "title": "Portfolio read (two companies, no write company) sees the union and cannot write",
+   "result": "PASS",
+   "detail": "1"
+  },
+  {
+   "id": "TC-W-DB-19",
+   "title": "Portfolio session (no write company) cannot insert",
+   "result": "PASS",
+   "detail": "42501 new row violates row-level security policy for table \"ten_saved_view\""
+  },
+  {
+   "id": "TC-W-DB-20",
+   "title": "V12 compatibility view growth_deal is security_invoker (RLS of crm_deal applies)",
+   "result": "PASS",
+   "detail": "[(['security_invoker=true'],)]"
+  },
+  {
+   "id": "TC-W-DB-21",
+   "title": "IN database rejects an EU tenant (CJ-TC-09 IN→EU direction)",
+   "result": "PASS",
+   "detail": "23514 cross-region write rejected: tenant region EU in IN database"
+  },
+  {
+   "id": "TC-W-DB-22",
+   "title": "Tenant data_region is immutable after onboarding (CJ-R09)",
+   "result": "PASS",
+   "detail": "23514 data_region is fixed at onboarding (CJ-R09)"
+  },
+  {
+   "id": "TC-W-DB-23",
+   "title": "set_ctx rejects a request routed to the wrong zone (RESIDENCY_ZONE_MISMATCH)",
+   "result": "PASS",
+   "detail": "42501 RESIDENCY_ZONE_MISMATCH: request zone EU reached IN database"
+  },
+  {
+   "id": "TC-W-DB-24",
+   "title": "Row-level residency guard rejects region EU on agent_credential in the IN database",
+   "result": "PASS",
+   "detail": "23514 RESIDENCY_VIOLATION: row for zone EU written to IN database (DEC-772, CJ-TC-09)"
+  },
+  {
+   "id": "TC-W-DB-25",
+   "title": "EU database rejects an IN tenant (CJ-TC-09 EU→IN direction)",
+   "result": "PASS",
+   "detail": "cross-region write rejected: tenant region IN in EU database"
+  },
+  {
+   "id": "TC-W-DB-26",
+   "title": "EU database accepts an EU tenant",
+   "result": "PASS",
+   "detail": ""
+  },
+  {
+   "id": "TC-W-DB-27",
+   "title": "Append-only table cat_launch_approval rejects UPDATE (IMMUTABLE_RECORD, NFR-018)",
+   "result": "PASS",
+   "detail": "IMMUTABLE_RECORD: UPDATE on cat_launch_approval is not allowed"
+  },
+  {
+   "id": "TC-W-DB-28",
+   "title": "UPDATE without revision + 1 is rejected (STALE_REVISION, NFR-025)",
+   "result": "PASS",
+   "detail": "STALE_REVISION: expected revision 2"
+  },
+  {
+   "id": "TC-W-DB-29",
+   "title": "UPDATE with revision + 1 succeeds and bumps updated_at",
+   "result": "PASS",
+   "detail": ""
+  },
+  {
+   "id": "TC-W-DB-30",
+   "title": "Audit events are appended only through fn_append_audit and the per-tenant hash chain verifies",
+   "result": "PASS",
+   "detail": "(True, 3)"
+  },
+  {
+   "id": "TC-W-DB-31",
+   "title": "Direct INSERT into audit_event by app_rw is refused",
+   "result": "PASS",
+   "detail": "permission denied for table audit_event"
+  },
+  {
+   "id": "TC-W-DB-32",
+   "title": "Typed domain table intel_signal_type rejects a payload without schema_ref (DEC-661)",
+   "result": "PASS",
+   "detail": "23514 SCHEMA_REF_REQUIRED: payload needs schema_ref (DEC-661)"
+  },
+  {
+   "id": "TC-W-DB-33",
+   "title": "SSO cannot be enforced without a verified domain and a break-glass account (Part 11.19a)",
+   "result": "PASS",
+   "detail": "23514 SSO_ENFORCEMENT_REQUIRES_VERIFIED_DOMAIN"
+  },
+  {
+   "id": "TC-W-DB-34",
+   "title": "app_rw cannot read benchmark_contribution (only app_bench; DEC-789)",
+   "result": "PASS",
+   "detail": "42501 permission denied for table benchmark_contribution"
+  },
+  {
+   "id": "TC-W-DB-35",
+   "title": "Supabase anon role cannot read business tables (Data API closed, SA-01)",
+   "result": "PASS",
+   "detail": "42501 permission denied for schema ge"
+  },
+  {
+   "id": "TC-W-DB-36",
+   "title": "Approved version of cat_offering_capability is frozen (fn_freeze_versioned, BRL-APR-02)",
+   "result": "PASS",
+   "detail": "IMMUTABLE_RECORD: approved version is frozen"
+  },
+  {
+   "id": "TC-W-DB-37",
+   "title": "Portal object-grant policy present on the eight portal-visible tables (CA-PORTAL, ABAC-09)",
+   "result": "PASS",
+   "detail": "['deal_id', 'quote_no', 'currency', 'tax_regime', 'valid_until', 'payload']"
+  },
+  {
+   "id": "TC-W-DB-38",
+   "title": "Context does not leak across transactions on a pooled connection (SB-03)",
+   "result": "PASS",
+   "detail": ""
+  }
+ ],
+ "passed": 38,
+ "failed": 0,
+ "counts": {
+  "tables": 468,
+  "views": 128,
+  "policies": 1606,
+  "indexes": 1892,
+  "triggers": 680,
+  "foreign_keys": 614,
+  "rls_forced": 429,
+  "platform": 39,
+  "server": "PostgreSQL 16.15 (Ubuntu 16.15-0ubuntu0.24.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, 64-bit"
+ }
+}

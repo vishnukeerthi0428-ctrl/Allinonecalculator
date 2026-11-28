@@ -1,0 +1,1123 @@
+operationId,method,path,namespace,tag,source_part,side_effect,pdp,rate_limit,baseline,also_defined_as,summary
+API-001,POST,/api/v1/auth/login,bff,"Identity, session and BFF",3.2,S,—,RL-AUTH,yes,,Legacy login entry; delegated to BFF OIDC start (no password handled by this product)
+API-002,GET,/api/v1/me,admin+portal,"Identity, session and BFF",3.2,R,—,RL-ADM,yes,,"Current user, permitted navigation, active scope, capability flags"
+API-003,GET,/bff/admin/login,bff-admin,"Identity, session and BFF",3.2,S,—,RL-AUTH,yes,,Start OIDC code + PKCE for client growth-admin
+API-004,GET,/bff/admin/callback,bff-admin,"Identity, session and BFF",3.2,S,—,RL-AUTH,yes,,"Exchange code, validate tokens, create server-side session, set cookies"
+API-005,GET,/bff/admin/session,bff-admin,"Identity, session and BFF",3.2,R,—,RL-ADM,yes,,"Session status, CSRF token, feature-flag map, MFA age"
+API-006,POST,/bff/admin/step-up,bff-admin,"Identity, session and BFF",3.2,S,—,RL-AUTH,yes,,Start MFA step-up (max_age/acr) before approvals (ABAC-11)
+API-007,POST,/bff/admin/logout,bff-admin,"Identity, session and BFF",3.2,S,—,RL-AUTH,yes,,"End session, revoke refresh token, IdP end-session"
+API-008,GET,/bff/web/login,bff-web,"Identity, session and BFF",3.2,S,—,RL-AUTH,yes,,"Start OIDC for client growth-website (portal, SaaS client)"
+API-009,GET,/bff/web/callback,bff-web,"Identity, session and BFF",3.2,S,—,RL-AUTH,yes,,Code exchange; portal session cookie
+API-010,GET,/bff/web/session,bff-web,"Identity, session and BFF",3.2,R,—,RL-PORTAL,yes,,Portal session status and CSRF token
+API-011,POST,/bff/web/step-up,bff-web,"Identity, session and BFF",3.2,S,—,RL-AUTH,yes,,Identity re-verification before signing (FR-W24)
+API-012,POST,/bff/web/logout,bff-web,"Identity, session and BFF",3.2,S,—,RL-AUTH,yes,,End portal session
+API-013,POST,/api/v1/commercial/portal/registrations,portal,"Identity, session and BFF",3.2,W,—,RL-AUTH,yes,,External registration (invite or self) delegated to IdP with product audience; terms revision recorded
+API-014,GET,/api/v1/commercial/admin/me/scopes,admin,"Identity, session and BFF",3.2,R,—,RL-ADM,yes,,Authorized tenant → startup → business line directory for scope selector
+API-015,PUT,/api/v1/commercial/admin/me/scope,admin,"Identity, session and BFF",3.2,W,—,RL-ADM,yes,,Switch active scope; server re-authorizes; returns cleared-cache instruction
+API-016,GET,/api/v1/commercial/admin/saved-views,admin,"Identity, session and BFF",3.2,R,—,RL-ADM,yes,,List saved views scoped to user/product/tenant/startup
+API-017,POST,/api/v1/commercial/admin/saved-views,admin,"Identity, session and BFF",3.2,W,—,RL-ADM,yes,,Create or update a saved view (re-evaluated under viewer permissions)
+API-018,DELETE,/api/v1/commercial/admin/saved-views/{id},admin,"Identity, session and BFF",3.2,W,—,RL-ADM,yes,,Delete own saved view
+API-019,GET,/api/v1/commercial/admin/users,admin,"Identity, session and BFF",3.2,R,—,RL-ADM,yes,,"List users with roles, grants, MFA status, expiry"
+API-020,POST,/api/v1/commercial/admin/users/invitations,admin,"Identity, session and BFF",3.2,Q,—,RL-ADM,yes,,"Invite user with role, team, startup grants, expiry"
+API-021,PATCH,/api/v1/commercial/admin/users/{id}/grants,admin,"Identity, session and BFF",3.2,W,—,RL-ADM,yes,,Change role/startup grants; invalidates permission cache
+API-022,POST,/api/v1/commercial/admin/users/{id}/revoke,admin,"Identity, session and BFF",3.2,W,—,RL-ADM,yes,,Revoke membership and all sessions (≤ 60 s)
+API-023,POST,/api/v1/commercial/admin/access-reviews,admin,"Identity, session and BFF",3.2,Q,—,RL-ADM-H,yes,,Start quarterly access review attestation
+API-024,POST,/api/v1/commercial/admin/support-grants,admin,"Identity, session and BFF",3.2,W,—,RL-ADM,yes,,"Request SupportAccessGrant (scope, read-only default, ≤ 72 h)"
+API-025,POST,/api/v1/commercial/admin/support-grants/{id}/revoke,admin,"Identity, session and BFF",3.2,W,—,RL-ADM,yes,,Revoke grant early
+API-026,GET,/api/v1/commercial/admin/tenants,admin,"Tenancy, configuration and business templates",3.2,R,—,RL-ADM,yes,,List authorized tenants with lifecycle state
+API-027,POST,/api/v1/commercial/admin/tenants,admin,"Tenancy, configuration and business templates",3.2,Q,—,RL-ADM-H,yes,,Provision tenant (idempotent by application or request ID)
+API-028,POST,/api/v1/commercial/admin/tenants/{id}/lifecycle,admin,"Tenancy, configuration and business templates",3.2,A,P,RL-ADM,yes,,"Activate, suspend, start offboarding (WF-14)"
+API-029,GET,/api/v1/commercial/admin/startups,admin,"Tenancy, configuration and business templates",3.2,R,—,RL-ADM,yes,,List startups and capability profiles
+API-030,POST,/api/v1/commercial/admin/startups,admin,"Tenancy, configuration and business templates",3.2,Q,—,RL-ADM,yes,,Create startup from template with capability profile
+API-031,PATCH,/api/v1/commercial/admin/startups/{id}/capabilities,admin,"Tenancy, configuration and business templates",3.2,W,—,RL-ADM,yes,,"Change capability profile (bid_desk, order_desk, whatsapp, ads…) as candidate revision"
+API-032,POST,/api/v1/commercial/admin/startups/{id}/lifecycle,admin,"Tenancy, configuration and business templates",3.2,A,P,RL-ADM,yes,,Suspend or offboard one startup
+API-033,GET,/api/v1/commercial/admin/business-templates,admin,"Tenancy, configuration and business templates",3.2,R,—,RL-ADM,yes,,List business profile templates
+API-034,POST,/api/v1/commercial/admin/business-templates,admin,"Tenancy, configuration and business templates",3.2,W,—,RL-ADM,yes,,Create draft template
+API-035,POST,/api/v1/commercial/admin/business-templates/{id}/validate,admin,"Tenancy, configuration and business templates",3.2,R,—,RL-ADM,yes,,Validate template schema and bindings
+API-036,POST,/api/v1/commercial/admin/business-templates/{id}/apply,admin,"Tenancy, configuration and business templates",3.2,Q,—,RL-ADM,yes,,Apply approved template to a startup (creates candidate ConfigRevision)
+API-037,POST,/api/v1/commercial/admin/business-templates/{id}/retire,admin,"Tenancy, configuration and business templates",3.2,W,—,RL-ADM,yes,,Retire template (existing startups unaffected)
+API-038,GET,/api/v1/commercial/admin/config-revisions,admin,"Tenancy, configuration and business templates",3.2,R,—,RL-ADM,yes,,List active and candidate configuration revisions
+API-039,POST,/api/v1/commercial/admin/config-revisions,admin,"Tenancy, configuration and business templates",3.2,W,—,RL-ADM,yes,,Create candidate revision from a change set
+API-040,GET,/api/v1/commercial/admin/config-revisions/{id}/diff,admin,"Tenancy, configuration and business templates",3.2,R,—,RL-ADM,yes,,Field/capability diff and affected screens/workflows
+API-041,POST,/api/v1/commercial/admin/config-revisions/{id}/simulate,admin,"Tenancy, configuration and business templates",3.2,Q,—,RL-ADM-H,yes,,Validate and simulate candidate revision (no live effect)
+API-042,POST,/api/v1/commercial/admin/config-revisions/{id}/schedule,admin,"Tenancy, configuration and business templates",3.2,W,—,RL-ADM,yes,,Schedule effective date; running workflows stay pinned
+API-043,POST,/api/v1/commercial/admin/config-revisions/{id}/rollback,admin,"Tenancy, configuration and business templates",3.2,A,—,RL-ADM,yes,,Revert future configuration to a prior approved revision
+API-044,GET,/api/v1/commercial/admin/domains,admin,"Tenancy, configuration and business templates",3.2,R,—,RL-ADM,yes,,List startup domains and verification status
+API-045,POST,/api/v1/commercial/admin/domains,admin,"Tenancy, configuration and business templates",3.2,W,—,RL-ADM,yes,,Request verified brand domain (DNS TXT challenge)
+API-046,POST,/api/v1/commercial/admin/domains/{id}/verify,admin,"Tenancy, configuration and business templates",3.2,Q,—,RL-ADM,yes,,Check DNS challenge; on success map host to exactly one tenant/startup
+API-047,GET,/api/v1/commercial/admin/reference-data/{list},admin,"Tenancy, configuration and business templates",3.2,R,—,RL-ADM,yes,,"Countries, currencies, units, HSN/SAC, taxonomies (CFG-32)"
+API-048,GET,/api/v1/products,admin,Catalogue and knowledge,3.2,R,—,RL-ADM,yes,,List offerings/products with readiness and versions
+API-049,POST,/api/v1/admin/claims/approve,admin,Catalogue and knowledge,3.2,A,—,RL-ADM,yes,,Approve a claim with evidence (hash-bound)
+API-050,POST,/api/v1/admin/products/{id}/launch,admin,Catalogue and knowledge,3.2,A,P,RL-ADM,yes,,Approve launch of planned offering after readiness validation
+API-051,POST,/api/v1/knowledge/uploads,admin,Catalogue and knowledge,3.2,Q,—,RL-ADM-H,yes,,Request upload slot; file goes to quarantine and is scanned before indexing
+API-052,GET,/api/v1/knowledge/search,admin,Catalogue and knowledge,3.2,R,—,RL-ADM,yes,,Search approved knowledge chunks with citations (RLS + namespace)
+API-053,POST,/api/v1/commercial/admin/offerings,admin,Catalogue and knowledge,3.2,W,—,RL-ADM,yes,,Create offering draft
+API-054,GET,/api/v1/commercial/admin/offerings/{id},admin,Catalogue and knowledge,3.2,R,—,RL-ADM,yes,,"Offering detail with versions, capabilities, readiness, prices"
+API-055,PATCH,/api/v1/commercial/admin/offerings/{id},admin,Catalogue and knowledge,3.2,W,—,RL-ADM,yes,,Edit offering draft
+API-056,POST,/api/v1/commercial/admin/offerings/{id}/versions,admin,Catalogue and knowledge,3.2,W,—,RL-ADM,yes,,Create OfferingVersion from current draft
+API-057,POST,/api/v1/commercial/admin/price-versions,admin,Catalogue and knowledge,3.2,W,—,RL-ADM,yes,,"Create price version for an offering (Decimal, currency)"
+API-058,GET,/api/v1/commercial/admin/claims,admin,Catalogue and knowledge,3.2,R,—,RL-ADM,yes,,"List claims with evidence, expiry, risk class"
+API-059,POST,/api/v1/commercial/admin/claims,admin,Catalogue and knowledge,3.2,W,—,RL-ADM,yes,,Draft a claim with evidence references
+API-060,PUT,/api/v1/commercial/admin/startups/{id}/tax-profile,admin,Catalogue and knowledge,3.2,W,—,RL-ADM,yes,,"Set TaxProfile (GSTIN, state, LUT) as a versioned revision"
+API-061,GET,/api/v1/commercial/admin/knowledge/documents,admin,Catalogue and knowledge,3.2,R,—,RL-ADM,yes,,List documents with scan/ingestion state
+API-062,GET,/api/v1/commercial/admin/knowledge/documents/{id},admin,Catalogue and knowledge,3.2,R,—,RL-ADM,yes,,Document detail with extracted-text preview
+API-063,POST,/api/v1/commercial/admin/knowledge/documents/{id}/reindex,admin,Catalogue and knowledge,3.2,Q,—,RL-ADM-H,yes,,Re-index approved version (new embedding revision)
+API-064,GET,/api/v1/commercial/admin/products/planned,admin,Catalogue and knowledge,3.2,R,—,RL-ADM,yes,,Planned offerings with readiness checklist (internal only)
+API-065,POST,/api/v1/commercial/admin/products/{id}/launch-requests,admin,Catalogue and knowledge,3.2,W,—,RL-ADM,yes,,Request launch approval for a planned offering
+API-066,POST,/api/v1/consents,admin+internal,"Governance: consent, eligibility, privacy, compliance",3.2,F,—,RL-ADM,yes,,Record consent evidence (append-only)
+API-067,POST,/api/v1/opt-out,portal,"Governance: consent, eligibility, privacy, compliance",3.2,W,—,RL-PUB-W,yes,,Signed-token or authenticated opt-out; immediate suppression and cancellation of queued messages
+API-068,POST,/api/v1/engagement/check,admin+internal,"Governance: consent, eligibility, privacy, compliance",3.2,R,P,RL-ADM,yes,,Eligibility decision with rule IDs (no send)
+API-069,POST,/api/v1/privacy/requests,public+portal,"Governance: consent, eligibility, privacy, compliance",3.2,Q,—,RL-PUB-W,yes,,"Submit privacy request (access, correction, erasure, withdrawal)"
+API-070,GET,/api/v1/admin/compliance,admin,"Governance: consent, eligibility, privacy, compliance",3.2,R,—,RL-ADM,yes,,Compliance incident list and metrics
+API-071,GET,/api/v1/commercial/admin/policies,admin,"Governance: consent, eligibility, privacy, compliance",3.2,R,—,RL-ADM,yes,,List consent/communication policy versions
+API-072,POST,/api/v1/commercial/admin/policies,admin,"Governance: consent, eligibility, privacy, compliance",3.2,W,—,RL-ADM,yes,,"Draft new PolicyVersion (quiet hours, caps, channel permissions)"
+API-073,POST,/api/v1/commercial/admin/policies/{id}/publish,admin,"Governance: consent, eligibility, privacy, compliance",3.2,A,—,RL-ADM,yes,,Publish approved policy version (loosening needs R01)
+API-074,GET,/api/v1/commercial/admin/suppressions,admin,"Governance: consent, eligibility, privacy, compliance",3.2,R,—,RL-ADM,yes,,Search suppression list by hashed identifier
+API-075,POST,/api/v1/commercial/admin/suppressions,admin,"Governance: consent, eligibility, privacy, compliance",3.2,W,—,RL-ADM,yes,,Add manual suppression (immediate)
+API-076,GET,/api/v1/commercial/admin/consents/{subject},admin,"Governance: consent, eligibility, privacy, compliance",3.2,R,—,RL-ADM,yes,,Consent history for a subject (Restricted field rules)
+API-077,GET,/api/v1/commercial/admin/jurisdiction-rules,admin,"Governance: consent, eligibility, privacy, compliance",3.2,R,—,RL-ADM,yes,,List jurisdiction rule packs and versions
+API-078,POST,/api/v1/commercial/admin/jurisdiction-rules/{id}/versions,admin,"Governance: consent, eligibility, privacy, compliance",3.2,W,—,RL-ADM,yes,,Draft jurisdiction pack revision
+API-079,POST,/api/v1/commercial/admin/jurisdiction-rules/{id}/versions/{v}/activate,admin,"Governance: consent, eligibility, privacy, compliance",3.2,A,—,RL-ADM,yes,,Activate after counsel verification
+API-080,GET,/api/v1/commercial/admin/policy-decisions,admin,"Governance: consent, eligibility, privacy, compliance",3.2,R,—,RL-ADM,yes,,Search PDP decision log (allow/deny with rule IDs)
+API-081,GET,/api/v1/commercial/portal/preferences,portal,"Governance: consent, eligibility, privacy, compliance",3.2,R,—,RL-PORTAL,yes,,Read own channel × purpose preferences
+API-082,PUT,/api/v1/commercial/portal/preferences,portal,"Governance: consent, eligibility, privacy, compliance",3.2,W,—,RL-PORTAL,yes,,Update own preferences (tightening immediate)
+API-083,GET,/api/v1/commercial/public/preferences/{token},public,"Governance: consent, eligibility, privacy, compliance",3.2,R,—,RL-PUB-W,yes,,Show preferences for a signed opt-out token (no contact lookup)
+API-084,GET,/api/v1/commercial/admin/privacy-requests,admin,"Governance: consent, eligibility, privacy, compliance",3.2,R,—,RL-ADM,yes,,Privacy queue with deadlines and verification state
+API-085,POST,/api/v1/commercial/admin/privacy-requests/{id}/verify,admin,"Governance: consent, eligibility, privacy, compliance",3.2,W,—,RL-ADM,yes,,Record identity verification outcome
+API-086,POST,/api/v1/commercial/admin/privacy-requests/{id}/fulfil,admin,"Governance: consent, eligibility, privacy, compliance",3.2,Q,—,RL-ADM-H,yes,,"Execute fulfilment (export, correction, erasure respecting legal hold and suppression)"
+API-087,POST,/api/v1/commercial/admin/privacy-requests/{id}/restrict,admin,"Governance: consent, eligibility, privacy, compliance",3.2,W,—,RL-ADM,yes,,Restrict processing for subject
+API-088,POST,/api/v1/commercial/admin/legal-holds,admin,"Governance: consent, eligibility, privacy, compliance",3.2,W,—,RL-ADM,yes,,Place legal hold on records/subject
+API-089,POST,/api/v1/commercial/admin/legal-holds/{id}/release,admin,"Governance: consent, eligibility, privacy, compliance",3.2,A,—,RL-ADM,yes,,Release legal hold (audited)
+API-090,GET,/api/v1/commercial/admin/retention-policies,admin,"Governance: consent, eligibility, privacy, compliance",3.2,R,—,RL-ADM,yes,,Retention schedule (stricter overrides only)
+API-091,PUT,/api/v1/commercial/admin/retention-policies/{id},admin,"Governance: consent, eligibility, privacy, compliance",3.2,W,—,RL-ADM,yes,,Tighten retention override
+API-092,GET,/api/v1/commercial/admin/compliance/incidents/{id},admin,"Governance: consent, eligibility, privacy, compliance",3.2,R,—,RL-ADM,yes,,"Incident detail, affected runs, evidence"
+API-093,POST,/api/v1/commercial/admin/compliance/incidents/{id}/contain,admin,"Governance: consent, eligibility, privacy, compliance",3.2,W,—,RL-ADM,yes,,Containment: pause channel/workflow scope
+API-094,POST,/api/v1/commercial/admin/compliance/incidents/{id}/resolve,admin,"Governance: consent, eligibility, privacy, compliance",3.2,A,—,RL-ADM,yes,,Resolve after review with evidence
+API-095,GET,/api/v1/integrations,admin,Integrations and channel configuration,3.2,R,—,RL-ADM,yes,,List connector metadata (never secrets)
+API-096,POST,/api/v1/admin/integrations/test,admin,Integrations and channel configuration,3.2,Q,—,RL-ADM,yes,,Test a connection via adapter health probe (no business side effect)
+API-097,POST,/api/v1/commercial/admin/integrations,admin,Integrations and channel configuration,3.2,W,—,RL-ADM,yes,,"Create connection with credential reference, scopes, quota"
+API-098,PATCH,/api/v1/commercial/admin/integrations/{id},admin,Integrations and channel configuration,3.2,W,—,RL-ADM,yes,,"Change scopes, quotas, fallback settings"
+API-099,POST,/api/v1/commercial/admin/integrations/{id}/disable,admin,Integrations and channel configuration,3.2,W,—,RL-ADM,yes,,Disable connection (dispatch then denied by PDP)
+API-100,POST,/api/v1/commercial/admin/integrations/{id}/oauth/start,admin,Integrations and channel configuration,3.2,S,—,RL-ADM,yes,,"Begin provider OAuth consent (calendar, social, ads)"
+API-101,GET,/api/v1/commercial/admin/integrations/oauth/callback,admin,Integrations and channel configuration,3.2,S,—,RL-AUTH,yes,,Store encrypted tokens; never returned
+API-102,GET,/api/v1/commercial/admin/integrations/{id}/health,admin,Integrations and channel configuration,3.2,R,—,RL-ADM,yes,,"Health, quota remaining, auth expiry, webhook health"
+API-103,GET,/api/v1/commercial/admin/channels/email/senders,admin,Integrations and channel configuration,3.2,R,—,RL-ADM,yes,,Sender identities with SPF/DKIM/DMARC and bounce rate
+API-104,POST,/api/v1/commercial/admin/channels/email/senders,admin,Integrations and channel configuration,3.2,Q,—,RL-ADM,yes,,Add sender identity and configuration set per startup
+API-105,POST,/api/v1/commercial/admin/channels/email/senders/{id}/verify,admin,Integrations and channel configuration,3.2,Q,—,RL-ADM,yes,,Verify domain DNS records
+API-106,POST,/api/v1/commercial/admin/channels/email/senders/{id}/test,admin,Integrations and channel configuration,3.2,X,P+D,RL-ADM,yes,,Send test to SES mailbox simulator or internal address
+API-107,POST,/api/v1/commercial/admin/channels/whatsapp/accounts,admin,Integrations and channel configuration,3.2,Q,—,RL-ADM,yes,,Connect WABA and phone number
+API-108,POST,/api/v1/commercial/admin/channels/whatsapp/templates/sync,admin,Integrations and channel configuration,3.2,Q,—,RL-ADM,yes,,Sync approved templates and statuses from provider
+API-109,GET,/api/v1/commercial/admin/channels/whatsapp/templates,admin,Integrations and channel configuration,3.2,R,—,RL-ADM,yes,,"List provider templates with category, language, status"
+API-110,POST,/api/v1/commercial/admin/calendars,admin,Integrations and channel configuration,3.2,Q,—,RL-ADM,yes,,Connect authorized calendar (free/busy scope)
+API-111,POST,/api/v1/commercial/admin/calendars/{id}/test-sync,admin,Integrations and channel configuration,3.2,Q,—,RL-ADM,yes,,Test free/busy sync
+API-112,PUT,/api/v1/commercial/admin/calendars/{id}/settings,admin,Integrations and channel configuration,3.2,W,—,RL-ADM,yes,,"Work hours, buffers, conflict policy"
+API-113,POST,/api/v1/commercial/admin/social/accounts,admin,Integrations and channel configuration,3.2,Q,—,RL-ADM,yes,,Connect social account with capability grant
+API-114,POST,/api/v1/commercial/admin/social/accounts/{id}/revoke,admin,Integrations and channel configuration,3.2,W,—,RL-ADM,yes,,Revoke account; cancel scheduled posts
+API-115,GET,/api/v1/events,admin,"Events, audit, jobs, health and release",3.2,R,—,RL-ADM,yes,,Redacted domain/audit event stream for scope
+API-116,POST,/api/v1/admin/jobs/{id}/retry,admin,"Events, audit, jobs, health and release",3.2,Q,P,RL-ADM,yes,,Idempotent retry of a failed job after policy recheck (never for uncertain)
+API-117,GET,/api/v1/health,internal,"Events, audit, jobs, health and release",3.2,R,—,RL-HEALTH,yes,,Liveness without database (also /health)
+API-118,GET,/api/v1/ready,internal,"Events, audit, jobs, health and release",3.2,R,—,RL-HEALTH,yes,,"Readiness with dependency summary, no secrets (also /ready)"
+API-119,GET,/api/v1/admin/health,admin,"Events, audit, jobs, health and release",3.2,R,—,RL-ADM,yes,,"Operational health, SLOs, queues, error budgets"
+API-120,GET,/api/v1/admin/releases,admin,"Events, audit, jobs, health and release",3.2,R,—,RL-ADM,yes,,Release readiness list with gate evidence
+API-121,GET,/api/v1/commercial/admin/audit-events,admin,"Events, audit, jobs, health and release",3.2,R,—,RL-ADM,yes,,"Search audit log (actor, action, object, outcome, period)"
+API-122,POST,/api/v1/commercial/admin/audit-events/exports,admin,"Events, audit, jobs, health and release",3.2,Q,—,RL-ADM-H,yes,,"Export audit extract (audited, async)"
+API-123,GET,/api/v1/commercial/admin/audit/chain-verification,admin,"Events, audit, jobs, health and release",3.2,R,—,RL-ADM,yes,,Hash-chain verification status per tenant
+API-124,GET,/api/v1/commercial/admin/jobs,admin,"Events, audit, jobs, health and release",3.2,R,—,RL-ADM,yes,,"List JobRuns with status, error class, attempts"
+API-125,GET,/api/v1/commercial/admin/jobs/{id},admin,"Events, audit, jobs, health and release",3.2,R,—,RL-ADM,yes,,JobRun detail with correlation and step trace
+API-126,GET,/api/v1/commercial/admin/dlq,admin,"Events, audit, jobs, health and release",3.2,R,—,RL-ADM,yes,,Dead-letter queue entries
+API-127,POST,/api/v1/commercial/admin/dlq/{id}/requeue,admin,"Events, audit, jobs, health and release",3.2,Q,P,RL-ADM,yes,,Requeue after fix with policy recheck
+API-128,GET,/api/v1/commercial/admin/incidents,admin,"Events, audit, jobs, health and release",3.2,R,—,RL-ADM,yes,,Incidents by severity and state
+API-129,POST,/api/v1/commercial/admin/incidents/{id}/acknowledge,admin,"Events, audit, jobs, health and release",3.2,W,—,RL-ADM,yes,,Acknowledge incident
+API-130,POST,/api/v1/commercial/admin/incidents/{id}/resolve,admin,"Events, audit, jobs, health and release",3.2,W,—,RL-ADM,yes,,Resolve incident with cause and evidence
+API-131,GET,/api/v1/commercial/admin/releases/{id},admin,"Events, audit, jobs, health and release",3.2,R,—,RL-ADM,yes,,"Release detail: gates, evidence digests, defects"
+API-132,POST,/api/v1/commercial/admin/releases/{id}/approve,admin,"Events, audit, jobs, health and release",3.2,A,—,RL-ADM,yes,,Approve release only when all blocking gates pass (independent reviewer)
+API-133,POST,/api/v1/commercial/internal/releases/{id}/evidence,internal,"Events, audit, jobs, health and release",3.2,W,—,RL-INT,yes,,CI posts gate evidence (signed workload identity)
+API-134,POST,/api/v1/internal/ai/run,internal,"AI gateway, cost, quality and Copilot",3.2,Q,P,RL-INT,yes,,"Internal model call with schema, data class and atomic cost reservation (also /internal/ai/run)"
+API-135,GET,/api/v1/admin/ai/runs,admin,"AI gateway, cost, quality and Copilot",3.2,R,—,RL-ADM,yes,,"Redacted model runs with cost, latency, versions"
+API-136,GET,/api/v1/admin/costs,admin,"AI gateway, cost, quality and Copilot",3.2,R,—,RL-ADM,yes,,Reserved vs actual cost by provider/agent/startup
+API-137,POST,/api/v1/admin/budgets,admin,"AI gateway, cost, quality and Copilot",3.2,A,—,RL-ADM,yes,,Set daily/monthly caps (increase needs R01)
+API-138,POST,/api/v1/admin/evals/run,admin,"AI gateway, cost, quality and Copilot",3.2,Q,P,RL-ADM-H,yes,,Queue evaluation run on a dataset revision
+API-139,GET,/api/v1/commercial/admin/ai/runs/{id},admin,"AI gateway, cost, quality and Copilot",3.2,R,—,RL-ADM,yes,,"Run detail with digests, citations, guardrail results"
+API-140,GET,/api/v1/commercial/admin/ai/routes,admin,"AI gateway, cost, quality and Copilot",3.2,R,—,RL-ADM,yes,,"Task routes, tiers, thresholds, model revisions"
+API-141,POST,/api/v1/commercial/admin/ai/routes/{id}/versions,admin,"AI gateway, cost, quality and Copilot",3.2,W,—,RL-ADM,yes,,Propose route change (lower tier only if evals pass)
+API-142,POST,/api/v1/commercial/admin/ai/prompts,admin,"AI gateway, cost, quality and Copilot",3.2,W,—,RL-ADM,yes,,Create PromptVersion draft
+API-143,PUT,/api/v1/commercial/admin/ai/tier2-optin,admin,"AI gateway, cost, quality and Copilot",3.2,A,—,RL-ADM,yes,,Tenant Tier 2 opt-in (default OFF; Public/Internal-non-personal only)
+API-144,POST,/api/v1/commercial/admin/costs/emergency-pause,admin,"AI gateway, cost, quality and Copilot",3.2,W,—,RL-ADM,yes,,Emergency pause of controlled spend in scope
+API-145,POST,/api/v1/commercial/admin/costs/emergency-resume,admin,"AI gateway, cost, quality and Copilot",3.2,A,P,RL-ADM,yes,,Resume spend after policy recheck
+API-146,GET,/api/v1/commercial/admin/budgets,admin,"AI gateway, cost, quality and Copilot",3.2,R,—,RL-ADM,yes,,"Budgets, periods, thresholds, forecast (estimate)"
+API-147,GET,/api/v1/commercial/admin/evals/runs,admin,"AI gateway, cost, quality and Copilot",3.2,R,—,RL-ADM,yes,,Evaluation runs with gate results
+API-148,GET,/api/v1/commercial/admin/evals/runs/{id},admin,"AI gateway, cost, quality and Copilot",3.2,R,—,RL-ADM,yes,,"Eval run detail: precision, recall, latency, cost"
+API-149,POST,/api/v1/commercial/admin/ai/feedback,admin,"AI gateway, cost, quality and Copilot",3.2,W,—,RL-ADM,yes,,Capture human correction on an AI output
+API-150,GET,/api/v1/commercial/admin/ai/feedback,admin,"AI gateway, cost, quality and Copilot",3.2,R,—,RL-ADM,yes,,Feedback history
+API-151,POST,/api/v1/commercial/admin/ai/feedback/{id}/accept,admin,"AI gateway, cost, quality and Copilot",3.2,W,—,RL-ADM,yes,,Accept feedback into eval dataset
+API-152,POST,/api/v1/commercial/internal/ai/embed,internal,"AI gateway, cost, quality and Copilot",3.2,Q,P,RL-INT,yes,,Embedding generation for approved chunks (budgeted)
+API-153,POST,/api/v1/commercial/internal/budgets/reserve,internal,"AI gateway, cost, quality and Copilot",3.2,F,—,RL-INT,yes,,"Reserve provider budget for non-AI paid actions (ads, enrichment, search)"
+API-154,POST,/api/v1/commercial/internal/budgets/reconcile,internal,"AI gateway, cost, quality and Copilot",3.2,F,—,RL-INT,yes,,Reconcile actual cost and release remainder
+API-155,POST,/api/v1/commercial/admin/copilot/sessions,admin,"AI gateway, cost, quality and Copilot",3.2,W,—,RL-ADM,yes,,Start Copilot session in current scope
+API-156,POST,/api/v1/commercial/admin/copilot/sessions/{id}/turns,admin,"AI gateway, cost, quality and Copilot",3.2,Q,P,RL-ADM-H,yes,,"Ask a question; grounded, cited answer or refusal"
+API-157,POST,/api/v1/commercial/admin/copilot/sessions/{id}/drafts,admin,"AI gateway, cost, quality and Copilot",3.2,W,—,RL-ADM,yes,,"Create an L1 draft (message, task, note, filter) from a turn"
+API-158,GET,/api/v1/sources,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,R,—,RL-ADM,yes,,List eligible sources with permission state
+API-159,POST,/api/v1/admin/sources,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,W,—,RL-ADM,yes,,"Register source with licence, purpose, scope"
+API-160,POST,/api/v1/research/plans,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,W,—,RL-ADM,yes,,Create scoped research plan
+API-161,POST,/api/v1/research/run,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,X,P+D,RL-ADM-H,yes,,Enqueue research run within source and cost bounds
+API-162,GET,/api/v1/research/results,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,R,—,RL-ADM,yes,,Discovered records with freshness and stage
+API-163,GET,/api/v1/evidence/{id},admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,R,—,RL-ADM,yes,,Evidence detail with provenance and excerpt
+API-164,GET,/api/v1/organizations,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,R,—,RL-ADM,yes,,List/filter organizations
+API-165,POST,/api/v1/organizations,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,W,—,RL-ADM,yes,,Create or upsert canonical organization
+API-166,GET,/api/v1/signals,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,R,—,RL-ADM,yes,,Signals board
+API-167,POST,/api/v1/signals/{id}/review,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,W,—,RL-ADM,yes,,Confirm/reject signal with reason; priority override
+API-168,GET,/api/v1/needs,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,R,—,RL-ADM,yes,,Needs with verification state
+API-169,POST,/api/v1/needs/{id}/verify,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,W,—,RL-ADM,yes,,Confirm or reject need with evidence selection
+API-170,POST,/api/v1/matches/recompute,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,Q,—,RL-ADM-H,yes,,Recompute readiness-gated matches
+API-171,GET,/api/v1/opportunities,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,R,—,RL-ADM,yes,,Prioritized opportunities with score breakdown
+API-172,POST,/api/v1/opportunities/{id}/score,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,Q,—,RL-ADM,yes,,Recalculate score (DEC-011)
+API-173,GET,/api/v1/organizations/{id}/contacts,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,R,—,RL-ADM,yes,,Professional contacts with sources and masks
+API-174,POST,/api/v1/contacts/{id}/verify,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,Q,P,RL-ADM,yes,,Verify provenance and channel
+API-175,POST,/api/v1/opportunities/{id}/review,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,W,—,RL-ADM,yes,,Accept (assign owner) or reject with reason
+API-176,GET,/api/v1/alerts,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,R,—,RL-ADM,yes,,Research alerts for current user
+API-177,GET,/api/v1/social/signals,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,R,—,RL-ADM,yes,,Permitted social mentions feed
+API-178,GET,/api/v1/market/competitors,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,R,—,RL-ADM,yes,,Competitor and market events
+API-179,POST,/api/v1/commercial/admin/sources/{id}/expire,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,W,—,RL-ADM,yes,,Expire approval; stops collection
+API-180,GET,/api/v1/commercial/admin/research/plans,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,R,—,RL-ADM,yes,,"List plans with schedule, budget, last run"
+API-181,PATCH,/api/v1/commercial/admin/research/plans/{id},admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,W,—,RL-ADM,yes,,Update schedule and approved query scope
+API-182,POST,/api/v1/commercial/admin/research/plans/{id}/pause,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,W,—,RL-ADM,yes,,Pause plan
+API-183,GET,/api/v1/commercial/admin/research/runs/{id},admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,R,—,RL-ADM,yes,,"Run progress, partial-run banner, cost"
+API-184,POST,/api/v1/commercial/admin/research/results/{id}/dismiss,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,W,—,RL-ADM,yes,,Dismiss result
+API-185,POST,/api/v1/commercial/admin/research/results/{id}/send-to-review,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,W,—,RL-ADM,yes,,Send result to qualification review
+API-186,GET,/api/v1/commercial/admin/evidence,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,R,—,RL-ADM,yes,,"Filter evidence (source, date, confidence)"
+API-187,POST,/api/v1/commercial/admin/evidence/{id}/refresh,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,X,P+D,RL-ADM-H,yes,,Re-fetch evidence; invalidate stale derived scores
+API-188,POST,/api/v1/commercial/admin/evidence/{id}/mark-irrelevant,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,W,—,RL-ADM,yes,,Mark evidence irrelevant
+API-189,GET,/api/v1/commercial/admin/organizations/{id},admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,R,—,RL-ADM,yes,,"Organization profile with aliases, locations, sources"
+API-190,POST,/api/v1/commercial/admin/organizations/merge-previews,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,R,—,RL-ADM,yes,,Preview merge with referential impact
+API-191,POST,/api/v1/commercial/admin/organizations/merges,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,W,—,RL-ADM,yes,,Execute controlled merge (reversible record)
+API-192,GET,/api/v1/commercial/admin/matches,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,R,—,RL-ADM,yes,,Matches with explanation and exclusions
+API-193,GET,/api/v1/commercial/admin/scoring-versions,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,R,—,RL-ADM,yes,,Scoring versions and thresholds
+API-194,POST,/api/v1/commercial/admin/scoring-versions,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,W,—,RL-ADM,yes,,Draft scoring version (weights must sum to 100%)
+API-195,POST,/api/v1/commercial/admin/scoring-versions/{id}/simulate,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,Q,—,RL-ADM-H,yes,,Simulate band changes on validation dataset
+API-196,POST,/api/v1/commercial/admin/contacts/discovery-requests,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,X,P+D,RL-ADM-H,yes,,Queue permitted contact discovery for an organization
+API-197,PATCH,/api/v1/commercial/admin/contacts/{id},admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,W,—,RL-ADM,yes,,Correct contact record
+API-198,POST,/api/v1/commercial/admin/contacts/merges,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,W,—,RL-ADM,yes,,Merge duplicate contacts
+API-199,POST,/api/v1/commercial/admin/contacts/{id}/role-mapping,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,W,—,RL-ADM,yes,,Update role hypothesis mapping
+API-200,GET,/api/v1/commercial/admin/contact-verifications,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,R,—,RL-ADM,yes,,Verification queue
+API-201,GET,/api/v1/commercial/admin/alert-rules,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,R,—,RL-ADM,yes,,Alert rules
+API-202,POST,/api/v1/commercial/admin/alert-rules,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,W,—,RL-ADM,yes,,Create/revise alert rule (simulated volume shown)
+API-203,POST,/api/v1/commercial/admin/social/mentions/{id}/promote,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,W,—,RL-ADM,yes,,Promote mention to evidence
+API-204,POST,/api/v1/commercial/admin/social/mentions/{id}/dismiss,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,W,—,RL-ADM,yes,,Dismiss mention
+API-205,GET,/api/v1/commercial/admin/social/sources,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,R,—,RL-ADM,yes,,Social source permissions
+API-206,POST,/api/v1/commercial/admin/social/sources,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,W,—,RL-ADM,yes,,Propose social source permission
+API-207,POST,/api/v1/commercial/admin/market/events/{id}/review,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,W,—,RL-ADM,yes,,Review competitor event and alert
+API-208,POST,/api/v1/commercial/admin/market/monitors,admin,"Intelligence: sources, research, evidence, organizations, signals, matching, qualification",3.2,W,—,RL-ADM,yes,,Register competitor monitor
+API-209,GET,/api/v1/deals,admin,"CRM, leads and Customer 360",3.2,R,—,RL-ADM,yes,,Pipeline list/board
+API-210,POST,/api/v1/deals,admin,"CRM, leads and Customer 360",3.2,W,—,RL-ADM,yes,,Create qualified deal
+API-211,POST,/api/v1/deals/{id}/transition,admin,"CRM, leads and Customer 360",3.2,W,P,RL-ADM,yes,,Controlled stage transition (409 INVALID_TRANSITION)
+API-212,POST,/api/v1/public/leads,public,"CRM, leads and Customer 360",3.2,I,—,RL-PUB-W,yes,,Submit general enquiry; one lead per duplicate; outbox only
+API-213,GET,/api/v1/organizations/{id}/360,admin,"CRM, leads and Customer 360",3.2,R,—,RL-ADM,yes,,Customer 360 projection (freshness ≤ 60 s)
+API-214,GET,/api/v1/commercial/admin/deals/{id},admin,"CRM, leads and Customer 360",3.2,R,—,RL-ADM,yes,,Deal detail
+API-215,PATCH,/api/v1/commercial/admin/deals/{id},admin,"CRM, leads and Customer 360",3.2,W,—,RL-ADM,yes,,"Edit deal fields (amount + currency, next action)"
+API-216,POST,/api/v1/commercial/admin/deals/{id}/assign,admin,"CRM, leads and Customer 360",3.2,W,—,RL-ADM,yes,,Assign owner (audited)
+API-217,GET,/api/v1/commercial/admin/deals/{id}/timeline,admin,"CRM, leads and Customer 360",3.2,R,—,RL-ADM,yes,,Deal timeline
+API-218,GET,/api/v1/commercial/admin/pipeline-configs,admin,"CRM, leads and Customer 360",3.2,R,—,RL-ADM,yes,,Stage and assignment configurations
+API-219,POST,/api/v1/commercial/admin/pipeline-configs,admin,"CRM, leads and Customer 360",3.2,W,—,RL-ADM,yes,,Draft pipeline/assignment revision
+API-220,POST,/api/v1/commercial/admin/pipeline-configs/{id}/simulate,admin,"CRM, leads and Customer 360",3.2,Q,—,RL-ADM-H,yes,,Validate and simulate against fixtures
+API-221,GET,/api/v1/commercial/admin/forms,admin,"CRM, leads and Customer 360",3.2,R,—,RL-ADM,yes,,Form versions
+API-222,POST,/api/v1/commercial/admin/forms,admin,"CRM, leads and Customer 360",3.2,W,—,RL-ADM,yes,,Draft form version (allowlisted field types)
+API-223,POST,/api/v1/commercial/admin/forms/{id}/publish,admin,"CRM, leads and Customer 360",3.2,A,—,RL-ADM,yes,,Approve and publish form and routing rules
+API-224,GET,/api/v1/commercial/admin/leads,admin,"CRM, leads and Customer 360",3.2,R,—,RL-ADM,yes,,Lead inbox with dedupe and routing state
+API-225,POST,/api/v1/commercial/admin/leads/{id}/qualify,admin,"CRM, leads and Customer 360",3.2,W,—,RL-ADM,yes,,Qualify lead into opportunity or deal
+API-226,POST,/api/v1/commercial/admin/leads/{id}/reject,admin,"CRM, leads and Customer 360",3.2,W,—,RL-ADM,yes,,Reject lead with reason (6-month retention)
+API-227,POST,/api/v1/commercial/admin/organizations/{id}/portal-invitations,admin,"CRM, leads and Customer 360",3.2,X,P+D,RL-ADM,yes,,Invite verified contact to portal with object grants
+API-228,GET,/api/v1/commercial/public/forms/{id},public,"CRM, leads and Customer 360",3.2,R,—,RL-PUB-R,yes,,"Published form schema, consent text revision"
+API-229,POST,/api/v1/commercial/public/rfqs,public+portal,"CRM, leads and Customer 360",3.2,I,—,RL-PUB-W,yes,,Request for quotation (line items); creates scoped quotation draft
+API-230,POST,/api/v1/commercial/public/project-requirements,public+portal,"CRM, leads and Customer 360",3.2,I,—,RL-PUB-W,yes,,Project requirement submission; routed to AppNAI by capability
+API-231,POST,/api/v1/commercial/public/supplier-registrations,public+portal,"CRM, leads and Customer 360",3.2,I,—,RL-PUB-W,yes,,Supplier registration and supply enquiry
+API-232,POST,/api/v1/commercial/public/education-enquiries,public,"CRM, leads and Customer 360",3.2,I,—,RL-PUB-W,yes,,Education enquiry; age band first; under-18 needs guardian
+API-233,POST,/api/v1/commercial/public/guardian-verifications,public,"CRM, leads and Customer 360",3.2,X,P+D,RL-PUB-W,yes,,Start guardian OTP verification to guardian's own channel
+API-234,POST,/api/v1/commercial/public/guardian-verifications/{id}/confirm,public,"CRM, leads and Customer 360",3.2,F,—,RL-PUB-W,yes,,Confirm OTP and declaration; record consent
+API-235,POST,/api/v1/commercial/portal/uploads,portal,"CRM, leads and Customer 360",3.2,Q,—,RL-PORTAL,yes,,Presigned upload to quarantine (authenticated only)
+API-236,GET,/api/v1/commercial/portal/uploads/{id},portal,"CRM, leads and Customer 360",3.2,R,—,RL-PORTAL,yes,,Upload scan status
+API-237,POST,/api/v1/messages/draft,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,Q,P,RL-ADM-H,yes,,Generate evidence-cited draft via gateway
+API-238,POST,/api/v1/messages/send,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,X,P+D,RL-ADM,yes,,Queue approved eligible message (email or WhatsApp); recheck at dispatch
+API-239,POST,/api/v1/webhooks/email,hooks,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,I,—,RL-HOOK,yes,,"SES events via SNS (delivery, bounce, complaint); signature verified"
+API-240,POST,/api/v1/webhooks/inbound,hooks,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,I,—,RL-HOOK,yes,,"Generic inbound channel events (email receiving, chat relay)"
+API-241,GET,/api/v1/threads,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,R,—,RL-ADM,yes,,Threads list with intent and SLA
+API-242,POST,/api/v1/sequences/{id}/enroll,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,X,P+D,RL-ADM,yes,,Enrol eligible contact in sequence
+API-243,POST,/api/v1/meetings/book,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,X,P+D,RL-ADM,yes,,Book approved slot with conflict prevention
+API-244,POST,/api/v1/webhooks/calendar,hooks,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,I,—,RL-HOOK,yes,,Calendar push notifications
+API-245,POST,/api/v1/webhooks/whatsapp,hooks,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,I,—,RL-HOOK,yes,,WhatsApp messages and statuses; X-Hub-Signature-256
+API-246,POST,/api/v1/public/chat,public,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,Q,P,RL-CHAT,yes,,"Website assistant turn: grounded answer, abstention or handover"
+API-247,GET,/api/v1/inbox,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,R,—,RL-ADM,yes,,"Unified inbox/outbox (queued, uncertain badges)"
+API-248,POST,/api/v1/threads/{id}/assign,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,W,—,RL-ADM,yes,,Assign thread
+API-249,GET,/api/v1/webhooks/whatsapp,hooks,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,R,—,RL-HOOK,yes,,Meta verification challenge (hub.challenge) with verify token
+API-250,GET,/api/v1/commercial/admin/messages/drafts/{id},admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,R,—,RL-ADM,yes,,"Draft with checks (eligibility, claims, quiet hours, cost, autonomy)"
+API-251,PATCH,/api/v1/commercial/admin/messages/drafts/{id},admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,W,—,RL-ADM,yes,,Edit draft (voids prior approval)
+API-252,GET,/api/v1/commercial/admin/outbox,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,R,—,RL-ADM,yes,,"Queued, sending, uncertain, failed messages"
+API-253,POST,/api/v1/commercial/admin/messages/{id}/cancel,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,W,—,RL-ADM,yes,,Cancel queued message
+API-254,POST,/api/v1/commercial/admin/messages/{id}/reconcile,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,Q,—,RL-ADM,yes,,Reconcile uncertain outcome by provider reference
+API-255,GET,/api/v1/commercial/admin/templates,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,R,—,RL-ADM,yes,,Template inventory
+API-256,POST,/api/v1/commercial/admin/templates,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,W,—,RL-ADM,yes,,"Draft template version (variables, claims, locale)"
+API-257,GET,/api/v1/commercial/admin/threads/{id},admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,R,—,RL-ADM,yes,,Thread conversation with context panel
+API-258,POST,/api/v1/commercial/admin/threads/{id}/replies,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,X,P+D,RL-ADM,yes,,Reply using approved draft/template; WhatsApp window enforced
+API-259,POST,/api/v1/commercial/admin/threads/{id}/takeover,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,W,—,RL-ADM,yes,,Human takeover (stops automated replies)
+API-260,POST,/api/v1/commercial/admin/threads/{id}/release,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,W,—,RL-ADM,yes,,Release thread back to routing
+API-261,GET,/api/v1/commercial/admin/sequences,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,R,—,RL-ADM,yes,,Sequence definitions
+API-262,POST,/api/v1/commercial/admin/sequences,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,W,—,RL-ADM,yes,,Draft sequence/follow-up policy revision
+API-263,GET,/api/v1/commercial/admin/enrollments,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,R,—,RL-ADM,yes,,"Enrolments with step, wait and stop reasons"
+API-264,POST,/api/v1/commercial/admin/enrollments/{id}/stop,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,W,—,RL-ADM,yes,,Stop enrolment (reason mandatory)
+API-265,GET,/api/v1/commercial/admin/tasks,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,R,—,RL-ADM,yes,,Outstanding tasks
+API-266,PATCH,/api/v1/commercial/admin/tasks/{id},admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,W,—,RL-ADM,yes,,"Update task (due, owner, outcome)"
+API-267,POST,/api/v1/commercial/admin/tasks/{id}/complete,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,W,—,RL-ADM,yes,,Complete task with outcome
+API-268,GET,/api/v1/commercial/admin/meetings,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,R,—,RL-ADM,yes,,Meetings calendar
+API-269,POST,/api/v1/commercial/admin/meetings/{id}/reschedule,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,X,P+D,RL-ADM,yes,,Reschedule booking
+API-270,POST,/api/v1/commercial/admin/meetings/{id}/cancel,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,X,P+D,RL-ADM,yes,,Cancel booking and reminders
+API-271,POST,/api/v1/commercial/admin/meetings/{id}/outcome,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,W,—,RL-ADM,yes,,Record outcome and approved notes (within 24 h)
+API-272,GET,/api/v1/commercial/public/slots,public+portal,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,R,—,RL-PUB-R,yes,,Available slots for a startup/purpose (no private calendar data)
+API-273,POST,/api/v1/commercial/public/slot-holds,public+portal,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,W,—,RL-PUB-W,yes,,Hold a slot for 15 minutes
+API-274,POST,/api/v1/commercial/public/bookings,public+portal,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,X,P+D,RL-PUB-W,yes,,Confirm booking from a hold; confirmation and reminders
+API-275,POST,/api/v1/commercial/public/bookings/{token}/reschedule,public+portal,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,X,P+D,RL-PUB-W,yes,,Token-bound reschedule or cancel
+API-276,POST,/api/v1/commercial/public/chat/sessions,public,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,W,—,RL-CHAT,yes,,Start chat session; consent notice and retention
+API-277,POST,/api/v1/commercial/public/chat/sessions/{id}/handover,public,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,Q,—,RL-CHAT,yes,,Request a human
+API-278,POST,/api/v1/commercial/public/chat/sessions/{id}/lead,public,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,I,—,RL-PUB-W,yes,,Share details with consent; creates lead
+API-279,GET,/api/v1/commercial/admin/faqs,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,R,—,RL-ADM,yes,,FAQ entries (approved revisions)
+API-280,POST,/api/v1/commercial/admin/faqs,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,W,—,RL-ADM,yes,,Draft FAQ entry
+API-281,POST,/api/v1/commercial/admin/faqs/test,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,Q,P,RL-ADM-H,yes,,Test console: grounded answer or abstention
+API-282,GET,/api/v1/commercial/admin/routing-rules,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,R,—,RL-ADM,yes,,Omnichannel and lead routing rules
+API-283,POST,/api/v1/commercial/admin/routing-rules,admin,"Engagement: drafting, messaging, inbox, sequences, meetings, chat",3.2,W,—,RL-ADM,yes,,Draft routing rule revision
+API-284,POST,/api/v1/content/draft,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,Q,P,RL-ADM-H,yes,,Generate content draft from approved knowledge
+API-285,POST,/api/v1/content/{id}/approve,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,A,—,RL-ADM,yes,,Approve exact content version hash
+API-286,POST,/api/v1/social/posts,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,X,P+D,RL-ADM,yes,,Schedule approved post (idempotent publish)
+API-287,GET,/api/v1/social/status,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,R,—,RL-ADM,yes,,Publish status per platform
+API-288,GET,/api/v1/seo/audit,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,R,—,RL-ADM,yes,,SEO issues and sourced metrics
+API-289,POST,/api/v1/seo/tasks,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,Q,P,RL-ADM,yes,,Queue permitted SEO audit or task
+API-290,GET,/api/v1/public/pages/{slug},public,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,R,—,RL-PUB-R,yes,,Published snapshot JSON for a page (CDN-first; origin fallback)
+API-291,POST,/api/v1/public/events,public,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,I,—,RL-PUB-W,yes,,First-party attribution beacon (consent-aware)
+API-292,POST,/api/v1/campaigns,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,W,—,RL-ADM,yes,,Create campaign draft
+API-293,POST,/api/v1/campaigns/{id}/approve,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,A,P,RL-ADM,yes,,Approve campaign hash and spend reservation
+API-294,POST,/api/v1/ads/drafts,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,W,—,RL-ADM,yes,,Create ad draft
+API-295,GET,/api/v1/ads/metrics,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,R,—,RL-ADM,yes,,Spend and measured conversions (read-only)
+API-296,POST,/api/v1/events/register,public,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,I,—,RL-PUB-W,yes,,Register for webinar/event with consent
+API-297,POST,/api/v1/webhooks/events,hooks,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,I,—,RL-HOOK,yes,,Webinar/meeting platform events (attendance)
+API-298,POST,/api/v1/public/referrals,public,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,I,—,RL-PUB-W,yes,,Partner referral with consent attestation
+API-299,GET,/api/v1/commercial/admin/content,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,R,—,RL-ADM,yes,,Content list with versions
+API-300,GET,/api/v1/commercial/admin/content/{id},admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,R,—,RL-ADM,yes,,Content detail and checks
+API-301,POST,/api/v1/commercial/admin/content/{id}/versions,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,W,—,RL-ADM,yes,,Create revised version
+API-302,GET,/api/v1/commercial/admin/social/posts,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,R,—,RL-ADM,yes,,Publishing calendar
+API-303,POST,/api/v1/commercial/admin/social/posts/{id}/cancel,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,W,—,RL-ADM,yes,,Cancel pending post
+API-304,POST,/api/v1/commercial/admin/social/posts/{id}/reconcile,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,Q,—,RL-ADM,yes,,Reconcile uncertain publish
+API-305,GET,/api/v1/commercial/admin/seo/issues,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,R,—,RL-ADM,yes,,SEO backlog
+API-306,POST,/api/v1/commercial/admin/seo/issues/{id}/assign,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,W,—,RL-ADM,yes,,Assign approved SEO action
+API-307,POST,/api/v1/commercial/admin/seo/issues/{id}/verify,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,Q,—,RL-ADM,yes,,Verify fix after change
+API-308,GET,/api/v1/commercial/admin/landing-pages,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,R,—,RL-ADM,yes,,Landing pages
+API-309,POST,/api/v1/commercial/admin/landing-pages,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,W,—,RL-ADM,yes,,Create landing page draft
+API-310,PATCH,/api/v1/commercial/admin/landing-pages/{id},admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,W,—,RL-ADM,yes,,Edit draft blocks and form embed
+API-311,GET,/api/v1/commercial/admin/campaigns,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,R,—,RL-ADM,yes,,Campaign list
+API-312,GET,/api/v1/commercial/admin/campaigns/{id},admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,R,—,RL-ADM,yes,,Campaign detail with versions
+API-313,PATCH,/api/v1/commercial/admin/campaigns/{id},admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,W,—,RL-ADM,yes,,"Edit campaign draft (audience, schedule, spend cap)"
+API-314,POST,/api/v1/commercial/admin/campaigns/{id}/simulate,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,Q,P,RL-ADM-H,yes,,Simulate eligible audience and cost; excluded counts by rule
+API-315,POST,/api/v1/commercial/admin/campaigns/{id}/launch,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,X,P+D,RL-ADM,yes,,Execute approved campaign: eligible audience → queue (L2 dispatch)
+API-316,POST,/api/v1/commercial/admin/campaigns/{id}/suspend,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,W,—,RL-ADM,yes,,Suspend campaign; cancel queued sends
+API-317,GET,/api/v1/commercial/admin/ads/campaigns,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,R,—,RL-ADM,yes,,Ad campaigns with caps
+API-318,POST,/api/v1/commercial/admin/ads/campaigns/{id}/launch,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,X,P+D,RL-ADM,yes,,Launch within approved cap (two-step confirm)
+API-319,POST,/api/v1/commercial/admin/ads/campaigns/{id}/pause,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,X,D,RL-ADM,yes,,Pause via provider
+API-320,PUT,/api/v1/commercial/admin/ads/caps,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,A,—,RL-ADM,yes,,Daily/monthly ad caps (increase needs R01)
+API-321,POST,/api/v1/commercial/admin/ads/emergency-stop,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,X,D,RL-ADM,yes,,Stop all ad spend in scope
+API-322,GET,/api/v1/commercial/admin/events,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,R,—,RL-ADM,yes,,Webinar/demo events
+API-323,POST,/api/v1/commercial/admin/events,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,W,—,RL-ADM,yes,,Create event
+API-324,POST,/api/v1/commercial/admin/events/{id}/attendance,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,W,—,RL-ADM,yes,,Verify attendance
+API-325,PUT,/api/v1/commercial/admin/reminder-policies/{id},admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,W,—,RL-ADM,yes,,Event reminder policy revision
+API-326,GET,/api/v1/commercial/public/events/{id},public,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,R,—,RL-PUB-R,yes,,Approved event details and capacity
+API-327,GET,/api/v1/commercial/admin/referrals,admin,"Marketing: content, social, SEO, landing pages, campaigns, ads, events, referrals",3.2,R,—,RL-ADM,yes,,Referrals queue
+API-328,POST,/api/v1/deals/{id}/proposals,admin,"Commerce: proposals, quotes, negotiation, contracts",3.2,Q,P,RL-ADM-H,yes,,Generate proposal draft from approved templates and price snapshot
+API-329,POST,/api/v1/quotes,admin,"Commerce: proposals, quotes, negotiation, contracts",3.2,W,—,RL-ADM,yes,API-V12-W-0039,Create quote with price snapshot (server recomputes totals)
+API-330,POST,/api/v1/quotes/{id}/approve,admin,"Commerce: proposals, quotes, negotiation, contracts",3.2,A,P,RL-ADM,yes,,Approve quote and discount (threshold per DEC-038)
+API-331,POST,/api/v1/deals/{id}/objections,admin,"Commerce: proposals, quotes, negotiation, contracts",3.2,W,—,RL-ADM,yes,,Record objection or proposed terms
+API-332,POST,/api/v1/contracts,admin,"Commerce: proposals, quotes, negotiation, contracts",3.2,Q,—,RL-ADM,yes,,Generate contract/MoU draft
+API-333,POST,/api/v1/webhooks/esign,hooks,"Commerce: proposals, quotes, negotiation, contracts",3.2,I,—,RL-HOOK,yes,,E-sign provider callbacks (signed)
+API-334,GET,/api/v1/commercial/admin/proposals,admin,"Commerce: proposals, quotes, negotiation, contracts",3.2,R,—,RL-ADM,yes,,Proposal list
+API-335,GET,/api/v1/commercial/admin/proposals/{id},admin,"Commerce: proposals, quotes, negotiation, contracts",3.2,R,—,RL-ADM,yes,,Proposal versions and preview
+API-336,POST,/api/v1/commercial/admin/proposals/{id}/versions,admin,"Commerce: proposals, quotes, negotiation, contracts",3.2,W,—,RL-ADM,yes,,New version from edits (amount computed)
+API-337,POST,/api/v1/commercial/admin/proposals/{id}/deliver,admin,"Commerce: proposals, quotes, negotiation, contracts",3.2,X,P+D,RL-ADM,yes,,Deliver approved proposal to portal and notify recipient
+API-338,GET,/api/v1/commercial/admin/quotes,admin,"Commerce: proposals, quotes, negotiation, contracts",3.2,R,—,RL-ADM,yes,,Quotes list
+API-339,GET,/api/v1/commercial/admin/quotes/{id},admin,"Commerce: proposals, quotes, negotiation, contracts",3.2,R,—,RL-ADM,yes,,"Quote with lines, tax, totals, required approver"
+API-340,PATCH,/api/v1/commercial/admin/quotes/{id},admin,"Commerce: proposals, quotes, negotiation, contracts",3.2,W,—,RL-ADM,yes,,Edit draft lines (Decimal recompute)
+API-341,POST,/api/v1/commercial/admin/quotes/{id}/deliver,admin,"Commerce: proposals, quotes, negotiation, contracts",3.2,X,P+D,RL-ADM,yes,,Deliver approved quote to portal
+API-342,GET,/api/v1/commercial/admin/quotes/{id}/pdf,admin,"Commerce: proposals, quotes, negotiation, contracts",3.2,R,—,RL-ADM,yes,,Rendered PDF with hash
+API-343,GET,/api/v1/commercial/admin/negotiations/{id},admin,"Commerce: proposals, quotes, negotiation, contracts",3.2,R,—,RL-ADM,yes,,Negotiation state with objections
+API-344,POST,/api/v1/commercial/admin/objections/{id}/answer,admin,"Commerce: proposals, quotes, negotiation, contracts",3.2,W,—,RL-ADM,yes,,Use approved answer (draft until approved)
+API-345,POST,/api/v1/commercial/admin/objections/{id}/escalate,admin,"Commerce: proposals, quotes, negotiation, contracts",3.2,W,—,RL-ADM,yes,,Escalate concession beyond limit to A070
+API-346,GET,/api/v1/commercial/admin/negotiation-exceptions,admin,"Commerce: proposals, quotes, negotiation, contracts",3.2,R,—,RL-ADM,yes,,Exception queue
+API-347,POST,/api/v1/commercial/admin/negotiation-exceptions/{id}/decide,admin,"Commerce: proposals, quotes, negotiation, contracts",3.2,A,—,RL-ADM,yes,,"Approve, reject or counter-propose"
+API-348,GET,/api/v1/commercial/admin/contracts,admin,"Commerce: proposals, quotes, negotiation, contracts",3.2,R,—,RL-ADM,yes,,Contracts list
+API-349,GET,/api/v1/commercial/admin/contracts/{id},admin,"Commerce: proposals, quotes, negotiation, contracts",3.2,R,—,RL-ADM,yes,,"Contract versions, signatories, hashes, evidence"
+API-350,POST,/api/v1/commercial/admin/contracts/{id}/versions,admin,"Commerce: proposals, quotes, negotiation, contracts",3.2,W,—,RL-ADM,yes,,New contract version
+API-351,POST,/api/v1/commercial/admin/contracts/{id}/signature-requests,admin,"Commerce: proposals, quotes, negotiation, contracts",3.2,X,P+D,RL-ADM,yes,,Send for signature after legal approval
+API-352,POST,/api/v1/commercial/admin/contracts/{id}/signed-uploads,admin,"Commerce: proposals, quotes, negotiation, contracts",3.2,F,—,RL-ADM,yes,,Record signed PDF upload with SHA-256
+API-353,POST,/api/v1/commercial/admin/contracts/{id}/verify-signature,admin,"Commerce: proposals, quotes, negotiation, contracts",3.2,A,—,RL-ADM,yes,,Verify signature evidence; hash mismatch blocks Executed
+API-354,GET,/api/v1/commercial/portal/proposals/{id},portal,"Commerce: proposals, quotes, negotiation, contracts",3.2,R,—,RL-PORTAL,yes,,Recipient-specific approved proposal
+API-355,GET,/api/v1/commercial/portal/quotes/{id},portal,"Commerce: proposals, quotes, negotiation, contracts",3.2,R,—,RL-PORTAL,yes,,Approved quote revision (expired/stale states)
+API-356,POST,/api/v1/commercial/portal/quotes/{id}/accept,portal,"Commerce: proposals, quotes, negotiation, contracts",3.2,W,—,RL-PORTAL,yes,,Accept current quote revision (409 if stale/expired)
+API-357,POST,/api/v1/commercial/portal/quotes/{id}/change-requests,portal,"Commerce: proposals, quotes, negotiation, contracts",3.2,W,—,RL-PORTAL,yes,,Request changes without modifying terms
+API-358,GET,/api/v1/commercial/portal/agreements/{id},portal,"Commerce: proposals, quotes, negotiation, contracts",3.2,R,—,RL-PORTAL,yes,,Agreement with terms hash and signature status
+API-359,POST,/api/v1/commercial/portal/agreements/{id}/sign,portal,"Commerce: proposals, quotes, negotiation, contracts",3.2,X,P+D,RL-PORTAL,yes,,Sign via provider redirect or signed upload after step-up
+API-360,POST,/api/v1/commercial/portal/agreements/{id}/decline,portal,"Commerce: proposals, quotes, negotiation, contracts",3.2,W,—,RL-PORTAL,yes,,Decline with reason
+API-361,GET,/api/v1/commercial/portal/documents/{id}/download,portal,"Commerce: proposals, quotes, negotiation, contracts",3.2,R,—,RL-PORTAL,yes,,Short-lived presigned download of a permitted document
+API-362,GET,/api/v1/commercial/admin/bids,admin,"Vertical desks: bids, orders, fulfilment, inventory",3.2,R,—,RL-ADM,yes,,Bids with deadline countdown
+API-363,POST,/api/v1/commercial/admin/bids,admin,"Vertical desks: bids, orders, fulfilment, inventory",3.2,W,—,RL-ADM,yes,,Create bid (capability-gated)
+API-364,GET,/api/v1/commercial/admin/bids/{id},admin,"Vertical desks: bids, orders, fulfilment, inventory",3.2,R,—,RL-ADM,yes,,"Bid detail: checklist, documents, approvals, evidence"
+API-365,PATCH,/api/v1/commercial/admin/bids/{id}/checklist/{item},admin,"Vertical desks: bids, orders, fulfilment, inventory",3.2,W,—,RL-ADM,yes,,Update checklist item with evidence
+API-366,POST,/api/v1/commercial/admin/bids/{id}/decision,admin,"Vertical desks: bids, orders, fulfilment, inventory",3.2,A,—,RL-ADM,yes,,Record bid/no-bid decision
+API-367,POST,/api/v1/commercial/admin/bids/{id}/submission-evidence,admin,"Vertical desks: bids, orders, fulfilment, inventory",3.2,F,P,RL-ADM,yes,,"Record human portal submission (ID, timestamp, receipt hash)"
+API-368,POST,/api/v1/commercial/admin/bids/{id}/withdraw,admin,"Vertical desks: bids, orders, fulfilment, inventory",3.2,W,—,RL-ADM,yes,,Withdraw bid
+API-369,POST,/api/v1/commercial/admin/bids/{id}/award,admin,"Vertical desks: bids, orders, fulfilment, inventory",3.2,W,—,RL-ADM,yes,,Record award (separate from contract and payment)
+API-370,GET,/api/v1/commercial/admin/orders,admin,"Vertical desks: bids, orders, fulfilment, inventory",3.2,R,—,RL-ADM,yes,,Orders (direction badge)
+API-371,POST,/api/v1/commercial/admin/orders,admin,"Vertical desks: bids, orders, fulfilment, inventory",3.2,W,—,RL-ADM,yes,,Create order (buy or sell)
+API-372,GET,/api/v1/commercial/admin/orders/{id},admin,"Vertical desks: bids, orders, fulfilment, inventory",3.2,R,—,RL-ADM,yes,,"Order with lines, reservations, fulfilment timeline, ledger"
+API-373,PATCH,/api/v1/commercial/admin/orders/{id},admin,"Vertical desks: bids, orders, fulfilment, inventory",3.2,W,—,RL-ADM,yes,,Edit draft order
+API-374,POST,/api/v1/commercial/admin/orders/{id}/approve,admin,"Vertical desks: bids, orders, fulfilment, inventory",3.2,A,P,RL-ADM,yes,,Approve order; reserve inventory
+API-375,POST,/api/v1/commercial/admin/orders/{id}/issue,admin,"Vertical desks: bids, orders, fulfilment, inventory",3.2,X,P+D,RL-ADM,yes,,Issue order to counter-party (portal and notice)
+API-376,POST,/api/v1/commercial/admin/orders/{id}/cancel,admin,"Vertical desks: bids, orders, fulfilment, inventory",3.2,W,—,RL-ADM,yes,,Cancel; release reservation
+API-377,POST,/api/v1/commercial/admin/orders/{id}/fulfilment-events,admin,"Vertical desks: bids, orders, fulfilment, inventory",3.2,F,—,RL-ADM,yes,,Record fulfilment event (idempotent by event key; over-delivery rejected)
+API-378,POST,/api/v1/commercial/admin/orders/{id}/complete,admin,"Vertical desks: bids, orders, fulfilment, inventory",3.2,W,—,RL-ADM,yes,,Complete after acceptance per terms
+API-379,GET,/api/v1/commercial/admin/inventory,admin,"Vertical desks: bids, orders, fulfilment, inventory",3.2,R,—,RL-ADM,yes,,Per-SKU availability and reservations
+API-380,PATCH,/api/v1/commercial/admin/inventory/{sku},admin,"Vertical desks: bids, orders, fulfilment, inventory",3.2,W,—,RL-ADM,yes,,Adjust available quantity/status (audited)
+API-381,GET,/api/v1/commercial/portal/orders,portal,"Vertical desks: bids, orders, fulfilment, inventory",3.2,R,—,RL-PORTAL,yes,,Own orders/projects
+API-382,GET,/api/v1/commercial/portal/orders/{id},portal,"Vertical desks: bids, orders, fulfilment, inventory",3.2,R,—,RL-PORTAL,yes,,Order detail with milestones and fulfilment events
+API-383,POST,/api/v1/commercial/portal/orders/{id}/acceptance,portal,"Vertical desks: bids, orders, fulfilment, inventory",3.2,W,—,RL-PORTAL,yes,,Accept delivery
+API-384,POST,/api/v1/commercial/portal/orders/{id}/discrepancies,portal,"Vertical desks: bids, orders, fulfilment, inventory",3.2,W,—,RL-PORTAL,yes,,Raise delivery discrepancy
+API-385,POST,/api/v1/webhooks/payment,hooks,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,I,—,RL-HOOK,yes,,Payment gateway webhook (signed); minimal event; dedupe
+API-386,POST,/api/v1/deals/{id}/close,admin,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,A,P,RL-ADM,yes,,Close deal only when ClosurePolicy evidence passes
+API-387,POST,/api/v1/deals/{id}/lost,admin,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,W,—,RL-ADM,yes,,Record loss; stop sequences
+API-388,GET,/api/v1/metrics/revenue,admin,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,R,—,RL-ADM,yes,,Ledger-derived revenue and attribution
+API-389,GET,/api/v1/metrics/forecast,admin,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,R,—,RL-ADM,yes,,Forecast (labelled estimate)
+API-390,POST,/api/v1/commercial/admin/invoices,admin,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,W,—,RL-ADM,yes,,Create invoice draft (proforma/commercial; no IRN)
+API-391,GET,/api/v1/commercial/admin/invoices,admin,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,R,—,RL-ADM,yes,,Invoices list
+API-392,POST,/api/v1/commercial/admin/invoices/{id}/issue,admin,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,X,P+D,RL-ADM,yes,,Issue approved invoice; receivable entry; notify customer
+API-393,GET,/api/v1/commercial/admin/payments,admin,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,R,—,RL-ADM,yes,,Payments and receipts
+API-394,POST,/api/v1/commercial/admin/payments/{id}/verify-maker,admin,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,A,—,RL-ADM,yes,,"First verification (amount, currency, evidence)"
+API-395,POST,/api/v1/commercial/admin/payments/{id}/verify-checker,admin,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,F,—,RL-ADM,yes,,Second verification by different person; ledger entry
+API-396,POST,/api/v1/commercial/admin/payments/{id}/match,admin,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,F,—,RL-ADM,yes,,Allocate receipt to invoice (no double allocation)
+API-397,POST,/api/v1/commercial/admin/payments/{id}/discrepancies,admin,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,W,—,RL-ADM,yes,,Raise discrepancy
+API-398,POST,/api/v1/commercial/admin/payment-links,admin,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,X,P+D,RL-ADM,yes,,Create gateway payment link for an issued invoice
+API-399,GET,/api/v1/commercial/admin/ledgers/receivables,admin,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,R,—,RL-ADM,yes,,Receivable ledger
+API-400,GET,/api/v1/commercial/admin/ledgers/payables,admin,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,R,—,RL-ADM,yes,,Payable ledger (OrganicSpec buy orders)
+API-401,POST,/api/v1/commercial/admin/ledgers/{type}/adjustments,admin,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,F,—,RL-ADM,yes,,Append adjustment entry (maker-checker)
+API-402,GET,/api/v1/commercial/admin/fx-snapshots,admin,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,R,—,RL-ADM,yes,,FX snapshots used for reporting
+API-403,POST,/api/v1/commercial/admin/fx-snapshots,admin,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,F,—,RL-ADM,yes,,"Record FX snapshot (source, rate, date)"
+API-404,GET,/api/v1/commercial/admin/metric-definitions,admin,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,R,—,RL-ADM,yes,,KPI definitions and versions
+API-405,POST,/api/v1/commercial/admin/metric-definitions,admin,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,W,—,RL-ADM,yes,,Draft metric definition revision
+API-406,PUT,/api/v1/commercial/admin/attribution-model,admin,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,W,—,RL-ADM,yes,,Select attribution model (revision)
+API-407,POST,/api/v1/commercial/admin/forecast-models/{id}/backtests,admin,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,Q,—,RL-ADM-H,yes,,Run backtest
+API-408,GET,/api/v1/commercial/portal/invoices,portal,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,R,—,RL-PORTAL,yes,,Own invoices
+API-409,GET,/api/v1/commercial/portal/invoices/{id},portal,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,R,—,RL-PORTAL,yes,,Invoice detail and status
+API-410,GET,/api/v1/commercial/portal/invoices/{id}/instructions,portal,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,R,—,RL-PORTAL,yes,,Verified payment instructions with expiry (no raw secrets)
+API-411,POST,/api/v1/commercial/portal/invoices/{id}/payment-proofs,portal,"Finance: invoices, payments, ledgers, closure, revenue, forecast",3.2,I,—,RL-PORTAL,yes,,Upload payment proof (bank/UPI) for verification
+API-412,GET,/api/v1/onboarding,admin,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,R,—,RL-ADM,yes,,Onboarding cases
+API-413,POST,/api/v1/onboarding/{id}/complete,admin,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,W,—,RL-ADM,yes,,Complete onboarding (mandatory steps done)
+API-414,POST,/api/v1/partners,admin,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,W,—,RL-ADM,yes,,Create partner
+API-415,POST,/api/v1/pilots/{id}/status,admin,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,W,P,RL-ADM,yes,,Approved pilot stage transition
+API-416,GET,/api/v1/renewals,admin,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,R,—,RL-ADM,yes,,Renewal calendar
+API-417,POST,/api/v1/renewals/{id}/review,admin,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,W,—,RL-ADM,yes,,Review renewal opportunity
+API-418,POST,/api/v1/feedback,admin+portal,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,W,—,RL-ADM,yes,,Record customer feedback (with permission)
+API-419,POST,/api/v1/pilots,admin,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,W,—,RL-ADM,yes,,Create insurance/institutional pilot
+API-420,POST,/api/v1/integration-enquiries,admin,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,W,—,RL-ADM,yes,,Record technology licensing enquiry
+API-421,GET,/api/v1/deployments,admin,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,R,—,RL-ADM,yes,,Deployment/rollout tracker
+API-422,GET,/api/v1/commercial/admin/onboarding/{id},admin,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,R,—,RL-ADM,yes,,Onboarding checklist with dependencies
+API-423,POST,/api/v1/commercial/admin/onboarding/{id}/steps/{step}/complete,admin,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,W,—,RL-ADM,yes,,Complete authorized step
+API-424,POST,/api/v1/commercial/admin/onboarding/{id}/document-requests,admin,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,X,P+D,RL-ADM,yes,,Request document from customer (portal task + notice)
+API-425,POST,/api/v1/commercial/admin/onboarding/tasks/{id}/assign,admin,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,W,—,RL-ADM,yes,,Assign handoff owner and SLA
+API-426,POST,/api/v1/commercial/admin/onboarding/tasks/{id}/escalate,admin,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,W,—,RL-ADM,yes,,Escalate overdue task
+API-427,GET,/api/v1/commercial/admin/partners,admin,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,R,—,RL-ADM,yes,,Partner pipeline
+API-428,POST,/api/v1/commercial/admin/renewals/{id}/start,admin,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,X,P+D,RL-ADM,yes,,Start renewal workflow (eligible reminders only)
+API-429,PUT,/api/v1/commercial/admin/renewal-policies/{id},admin,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,W,—,RL-ADM,yes,,Renewal policy revision
+API-430,POST,/api/v1/commercial/admin/deals/{id}/reopen,admin,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,W,—,RL-ADM,yes,,Authorized correction: reopen lost deal
+API-431,GET,/api/v1/commercial/admin/feedback,admin,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,R,—,RL-ADM,yes,,Feedback history and aggregation
+API-432,POST,/api/v1/commercial/admin/feedback/{id}/learning-actions,admin,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,W,—,RL-ADM,yes,,Record recommended learning action
+API-433,GET,/api/v1/commercial/admin/integration-enquiries,admin,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,R,—,RL-ADM,yes,,Licensing enquiries
+API-434,POST,/api/v1/commercial/admin/integration-enquiries/{id}/route-legal,admin,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,W,—,RL-ADM,yes,,Route to legal review
+API-435,PATCH,/api/v1/commercial/admin/deployments/{id}/progress,admin,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,W,—,RL-ADM,yes,,Update rollout progress and milestones
+API-436,GET,/api/v1/commercial/portal/dashboard,portal,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,R,—,RL-PORTAL,yes,,"Own summary: offering, tasks, milestone, unpaid verified invoices"
+API-437,GET,/api/v1/commercial/portal/onboarding,portal,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,R,—,RL-PORTAL,yes,,Own onboarding checklist
+API-438,POST,/api/v1/commercial/portal/onboarding/tasks/{id}/done,portal,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,W,—,RL-PORTAL,yes,,Mark own task done
+API-439,GET,/api/v1/commercial/portal/cases,portal,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,R,—,RL-PORTAL,yes,,Own support/feedback/renewal cases
+API-440,POST,/api/v1/commercial/portal/cases,portal,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,W,—,RL-PORTAL,yes,,Create support case or renewal interest
+API-441,POST,/api/v1/commercial/portal/cases/{id}/replies,portal,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,W,—,RL-PORTAL,yes,,Reply to own case
+API-442,GET,/api/v1/commercial/admin/support-cases,admin,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,R,—,RL-ADM,yes,,Support case queue (internal)
+API-443,POST,/api/v1/commercial/admin/support-cases/{id}/replies,admin,"Lifecycle: onboarding, partners, renewals, feedback, pilots, licensing, expansion, support",3.2,X,P+D,RL-ADM,yes,,Reply to case (customer notice)
+API-444,GET,/api/v1/workflows,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,R,—,RL-ADM,yes,,List workflows and executions
+API-445,POST,/api/v1/admin/workflows/pause,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,W,—,RL-ADM,yes,,Pause workflows/executions in scope
+API-446,POST,/api/v1/commercial/admin/workflows,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,W,—,RL-ADM,yes,,Create workflow draft (approved nodes only)
+API-447,GET,/api/v1/commercial/admin/workflows/{id},admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,R,—,RL-ADM,yes,,"Workflow graph, revisions, mode"
+API-448,POST,/api/v1/commercial/admin/workflows/{id}/revisions,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,W,—,RL-ADM,yes,,Save new revision
+API-449,POST,/api/v1/commercial/admin/workflows/{id}/simulate,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,Q,P,RL-ADM-H,yes,,Validate and simulate (zero live effects)
+API-450,POST,/api/v1/commercial/admin/workflows/{id}/enable,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,W,P,RL-ADM,yes,,Enable approved revision
+API-451,POST,/api/v1/commercial/admin/emergency-stop,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,W,—,RL-ADM,yes,,STOP: block new external calls in scope within 60 s
+API-452,POST,/api/v1/commercial/admin/emergency-stop/release,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,A,P,RL-ADM,yes,,Release stop after role and policy recheck
+API-453,GET,/api/v1/commercial/admin/plans,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,R,—,RL-ADM,yes,,Autonomous plans
+API-454,POST,/api/v1/commercial/admin/plans,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,Q,P,RL-ADM-H,yes,,Generate plan from objective and templates
+API-455,POST,/api/v1/commercial/admin/plans/{id}/simulate,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,Q,P,RL-ADM-H,yes,,"Simulation report (recipients, cost, deadlines, conflicts)"
+API-456,POST,/api/v1/commercial/admin/plans/{id}/start,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,X,P+D,RL-ADM,yes,,Start approved plan runs
+API-457,POST,/api/v1/commercial/admin/plans/{id}/pause,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,W,—,RL-ADM,yes,,Pause plan
+API-458,POST,/api/v1/commercial/admin/plans/{id}/stop,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,W,—,RL-ADM,yes,,Stop plan; cancel pending actions
+API-459,GET,/api/v1/commercial/admin/triggers,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,R,—,RL-ADM,yes,,Triggers with last/next fire
+API-460,POST,/api/v1/commercial/admin/triggers,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,W,—,RL-ADM,yes,,"Create trigger (event, timer, webhook)"
+API-461,PATCH,/api/v1/commercial/admin/triggers/{id},admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,W,—,RL-ADM,yes,,"Edit trigger (schema version, dedup window)"
+API-462,POST,/api/v1/commercial/admin/triggers/{id}/test,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,Q,—,RL-ADM,yes,,Fire synthetic test event
+API-463,POST,/api/v1/commercial/admin/triggers/{id}/sandbox-replay,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,Q,—,RL-ADM-H,yes,,Replay recorded events in sandbox (never live)
+API-464,POST,/api/v1/commercial/admin/triggers/{id}/enable,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,W,P,RL-ADM,yes,,Enable trigger (R02/R01 per CFG-26)
+API-465,POST,/api/v1/commercial/admin/triggers/{id}/pause,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,W,—,RL-ADM,yes,,Pause trigger
+API-466,GET,/api/v1/commercial/admin/runs,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,R,—,RL-ADM,yes,,"Live runs with certainty, cost, wait reason"
+API-467,GET,/api/v1/commercial/admin/runs/{id},admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,R,—,RL-ADM,yes,,Run step timeline and evidence
+API-468,POST,/api/v1/commercial/admin/runs/{id}/pause,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,W,—,RL-ADM,yes,,Pause run
+API-469,POST,/api/v1/commercial/admin/runs/{id}/resume,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,W,P,RL-ADM,yes,,Resume with policy revalidation
+API-470,POST,/api/v1/commercial/admin/runs/{id}/retry-requests,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,Q,P,RL-ADM,yes,,Request retry (refused while uncertain)
+API-471,POST,/api/v1/commercial/admin/runs/{id}/cancel,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,W,—,RL-ADM,yes,,Cancel run and pending actions
+API-472,POST,/api/v1/commercial/admin/runs/{id}/evidence-exports,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,Q,—,RL-ADM-H,yes,,Export run evidence
+API-473,GET,/api/v1/commercial/admin/conflicts,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,R,—,RL-ADM,yes,,Conflict cases
+API-474,GET,/api/v1/commercial/admin/conflicts/{id},admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,R,—,RL-ADM,yes,,Conflict detail with candidate runs
+API-475,POST,/api/v1/commercial/admin/conflicts/{id}/resolve,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,W,P,RL-ADM,yes,,"Hold, merge or choose eligible action"
+API-476,POST,/api/v1/commercial/admin/conflicts/{id}/escalate,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,W,—,RL-ADM,yes,,Escalate conflict
+API-477,GET,/api/v1/commercial/admin/workflow-templates,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,R,—,RL-ADM,yes,,Templates and node types
+API-478,GET,/api/v1/commercial/admin/node-types,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,R,—,RL-ADM,yes,,Approved node type schemas
+API-479,POST,/api/v1/commercial/admin/workflow-templates/{id}/clone,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,W,—,RL-ADM,yes,,Clone template
+API-480,PATCH,/api/v1/commercial/admin/workflow-templates/{id},admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,W,—,RL-ADM,yes,,Configure template draft
+API-481,POST,/api/v1/commercial/admin/workflow-templates/{id}/test,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,Q,—,RL-ADM-H,yes,,Run template fixtures
+API-482,POST,/api/v1/commercial/admin/workflow-templates/{id}/deprecate,admin,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,W,—,RL-ADM,yes,,Deprecate template version
+API-483,POST,/api/v1/commercial/internal/webhooks/triggers/{trigger_id},hooks,"Automation: workflows, plans, triggers, runs, conflicts, templates",3.2,I,—,RL-HOOK,yes,,Generic signed inbound webhook trigger
+API-484,GET,/api/v1/commercial/admin/sites,admin,Website publishing,3.2,R,—,RL-ADM,yes,,Sites per startup with domain and locale status
+API-485,PATCH,/api/v1/commercial/admin/sites/{id},admin,Website publishing,3.2,W,—,RL-ADM,yes,,"Site settings revision (template, locales, brand)"
+API-486,GET,/api/v1/commercial/admin/sites/{id}/pages,admin,Website publishing,3.2,R,—,RL-ADM,yes,,Page tree
+API-487,POST,/api/v1/commercial/admin/sites/{id}/pages,admin,Website publishing,3.2,W,—,RL-ADM,yes,,Create page draft
+API-488,PATCH,/api/v1/commercial/admin/pages/{id},admin,Website publishing,3.2,W,—,RL-ADM,yes,,"Edit page draft revision (blocks, forms, claims)"
+API-489,POST,/api/v1/commercial/admin/pages/{id}/validate,admin,Website publishing,3.2,Q,—,RL-ADM,yes,,"Validate schema, links, claims, a11y, privacy"
+API-490,POST,/api/v1/commercial/admin/pages/{id}/preview-grants,admin,Website publishing,3.2,W,—,RL-ADM,yes,,Create expiring noindex preview grant
+API-491,GET,/api/v1/commercial/admin/previews/{grant},admin,Website publishing,3.2,R,—,RL-ADM,yes,,Render preview (Admin auth + grant)
+API-492,POST,/api/v1/commercial/admin/publications,admin,Website publishing,3.2,X,P+D,RL-ADM,yes,,"Publish approved revision: render, atomic pointer swap, cache update"
+API-493,POST,/api/v1/commercial/admin/publications/{id}/schedule,admin,Website publishing,3.2,W,P,RL-ADM,yes,,Schedule publication
+API-494,POST,/api/v1/commercial/admin/publications/{id}/rollback,admin,Website publishing,3.2,X,P+D,RL-ADM,yes,,Roll back to prior approved revision
+API-495,POST,/api/v1/commercial/admin/publications/{id}/retire,admin,Website publishing,3.2,X,P+D,RL-ADM,yes,,Retire/unpublish (pointer to 404 or replacement)
+API-496,GET,/api/v1/commercial/admin/sites/{id}/analytics,admin,Website publishing,3.2,R,—,RL-ADM,yes,,Scoped first-party site analytics
+API-497,GET,/api/v1/commercial/public/directory,public,Website publishing,3.2,R,—,RL-PUB-R,yes,,Published startup directory facets (snapshot index)
+API-498,GET,/api/v1/commercial/public/offerings,public,Website publishing,3.2,R,—,RL-PUB-R,yes,,Published catalogue with facets for a host
+API-499,GET,/api/v1/commercial/public/search,public,Website publishing,3.2,R,—,RL-PUB-R,yes,,Site search over the publication index only
+API-500,GET,/api/v1/commercial/portal/pricing/{offering},portal,Website publishing,3.2,R,—,RL-PORTAL,yes,,Private/negotiated pricing requiring identity and grant
+API-501,GET,/api/v1/commercial/public/plans,public,SaaS service lifecycle and portability,3.2,R,—,RL-PUB-R,yes,,Plan archetypes (prices only if approved)
+API-502,POST,/api/v1/commercial/public/demo-requests,public,SaaS service lifecycle and portability,3.2,I,—,RL-PUB-W,yes,,Request SaaS demo
+API-503,POST,/api/v1/commercial/public/applications,public,SaaS service lifecycle and portability,3.2,I,—,RL-PUB-W,yes,,Start client application (isolated expiring draft)
+API-504,PATCH,/api/v1/commercial/public/applications/{ref},public,SaaS service lifecycle and portability,3.2,W,—,RL-PUB-W,yes,,Save/resume application with expiring reference
+API-505,POST,/api/v1/commercial/public/applications/{ref}/verify-email,public,SaaS service lifecycle and portability,3.2,X,P+D,RL-PUB-W,yes,,Send/confirm administrator email OTP
+API-506,POST,/api/v1/commercial/public/applications/{ref}/submit,public,SaaS service lifecycle and portability,3.2,W,—,RL-PUB-W,yes,,Submit application for review
+API-507,GET,/api/v1/commercial/public/applications/{ref}/status,public,SaaS service lifecycle and portability,3.2,R,—,RL-PUB-W,yes,,Verification and review status
+API-508,POST,/api/v1/commercial/portal/onboarding-wizard/{app}/proposals,portal,SaaS service lifecycle and portability,3.2,Q,P,RL-ADM-H,yes,,AI-proposed profile (unverified; no dispatch or spend)
+API-509,PATCH,/api/v1/commercial/portal/onboarding-wizard/{app}/items/{id},portal,SaaS service lifecycle and portability,3.2,W,—,RL-PORTAL,yes,,Accept/edit a proposed item
+API-510,POST,/api/v1/commercial/portal/onboarding-wizard/{app}/simulate,portal,SaaS service lifecycle and portability,3.2,Q,—,RL-ADM-H,yes,,Simulate candidate configuration and budgets
+API-511,POST,/api/v1/commercial/portal/onboarding-wizard/{app}/submit,portal,SaaS service lifecycle and portability,3.2,W,—,RL-PORTAL,yes,,Submit configuration for approval
+API-512,GET,/api/v1/commercial/admin/applications,admin,SaaS service lifecycle and portability,3.2,R,—,RL-ADM,yes,,Client applications queue
+API-513,GET,/api/v1/commercial/portal/service/summary,portal,SaaS service lifecycle and portability,3.2,R,—,RL-PORTAL,yes,,"Plan, entitlements, onboarding progress, renewal"
+API-514,GET,/api/v1/commercial/portal/service/usage,portal,SaaS service lifecycle and portability,3.2,R,—,RL-PORTAL,yes,,Usage meters with limits
+API-515,GET,/api/v1/commercial/portal/service/invoices,portal,SaaS service lifecycle and portability,3.2,R,—,RL-PORTAL,yes,,Service invoices (client-only)
+API-516,POST,/api/v1/commercial/portal/service/plan-change-requests,portal,SaaS service lifecycle and portability,3.2,W,—,RL-PORTAL,yes,,Request plan change
+API-517,POST,/api/v1/commercial/portal/service/export-requests,portal,SaaS service lifecycle and portability,3.2,W,—,RL-PORTAL,yes,,Request tenant export (portability)
+API-518,GET,/api/v1/commercial/portal/service/admin-link,portal,SaaS service lifecycle and portability,3.2,R,—,RL-PORTAL,yes,,Authorized link into own Admin workspace
+API-519,GET,/api/v1/commercial/admin/plans-catalogue,admin,SaaS service lifecycle and portability,3.2,R,—,RL-ADM,yes,,Plans and plan versions
+API-520,POST,/api/v1/commercial/admin/plans-catalogue/{id}/versions,admin,SaaS service lifecycle and portability,3.2,W,—,RL-ADM,yes,,Draft rate/entitlement revision
+API-521,GET,/api/v1/commercial/admin/subscriptions,admin,SaaS service lifecycle and portability,3.2,R,—,RL-ADM,yes,,Subscriptions
+API-522,POST,/api/v1/commercial/admin/subscriptions,admin,SaaS service lifecycle and portability,3.2,W,—,RL-ADM,yes,,Start subscription
+API-523,POST,/api/v1/commercial/admin/subscriptions/{id}/change,admin,SaaS service lifecycle and portability,3.2,A,P,RL-ADM,yes,,Change plan (entitlement revision)
+API-524,POST,/api/v1/commercial/admin/subscriptions/{id}/suspend,admin,SaaS service lifecycle and portability,3.2,W,—,RL-ADM,yes,,Suspend (entitlement expiry or non-payment)
+API-525,POST,/api/v1/commercial/admin/subscriptions/{id}/cancel,admin,SaaS service lifecycle and portability,3.2,W,—,RL-ADM,yes,,Cancel subscription (WF-14 offboarding)
+API-526,GET,/api/v1/commercial/admin/service-invoices,admin,SaaS service lifecycle and portability,3.2,R,—,RL-ADM,yes,,Service invoices
+API-527,POST,/api/v1/commercial/admin/service-invoices/{id}/issue,admin,SaaS service lifecycle and portability,3.2,X,P+D,RL-ADM,yes,,Issue service invoice
+API-528,GET,/api/v1/commercial/admin/usage-meters,admin,SaaS service lifecycle and portability,3.2,R,—,RL-ADM,yes,,Usage meters per tenant
+API-529,POST,/api/v1/commercial/internal/usage-readings,internal,SaaS service lifecycle and portability,3.2,F,—,RL-INT,yes,,Record UsageMeterReading (idempotent by period and dimension)
+API-530,GET,/api/v1/commercial/admin/data-jobs,admin,SaaS service lifecycle and portability,3.2,R,—,RL-ADM,yes,,Import/export jobs
+API-531,POST,/api/v1/commercial/admin/imports,admin,SaaS service lifecycle and portability,3.2,Q,—,RL-ADM-H,yes,,Create import intent and upload artefact
+API-532,POST,/api/v1/commercial/admin/imports/{id}/validate,admin,SaaS service lifecycle and portability,3.2,Q,—,RL-ADM-H,yes,,Dry-run validation report
+API-533,POST,/api/v1/commercial/admin/imports/{id}/run,admin,SaaS service lifecycle and portability,3.2,Q,—,RL-ADM-H,yes,,Run approved import (contacts not eligible until consent verified)
+API-534,POST,/api/v1/commercial/admin/exports,admin,SaaS service lifecycle and portability,3.2,Q,—,RL-ADM-H,yes,,Create scoped export intent
+API-535,GET,/api/v1/commercial/admin/exports/{id}/download-link,admin,SaaS service lifecycle and portability,3.2,R,—,RL-ADM,yes,,Expiring download link (audited)
+API-536,POST,/api/v1/commercial/admin/data-jobs/{id}/cancel,admin,SaaS service lifecycle and portability,3.2,W,—,RL-ADM,yes,,Cancel or expire job
+API-537,GET,/api/v1/metrics/funnel,admin,"Command Centre, approvals, notifications, search, reports",3.2,R,—,RL-ADM,yes,,Funnel KPIs with numerator/denominator/as-of
+API-538,GET,/api/v1/admin/dashboard,admin,"Command Centre, approvals, notifications, search, reports",3.2,R,—,RL-ADM,yes,,"Seven-view summary tiles, exceptions, budget, runs"
+API-539,POST,/api/v1/admin/approvals/{id}/decide,admin,"Command Centre, approvals, notifications, search, reports",3.2,A,P,RL-ADM,yes,,Record scoped approval decision (single startup only)
+API-540,GET,/api/v1/commercial/admin/approvals,admin,"Command Centre, approvals, notifications, search, reports",3.2,R,—,RL-ADM,yes,,Approval queue across types
+API-541,POST,/api/v1/commercial/admin/approvals,admin,"Command Centre, approvals, notifications, search, reports",3.2,A,P,RL-ADM,yes,,"Submit an object revision for approval: computes content/price/terms hash, resolves required approver(s) from ApprovalPolicy (DEC-038), routes to queue; replace"
+API-542,GET,/api/v1/commercial/admin/approvals/{id},admin,"Command Centre, approvals, notifications, search, reports",3.2,R,—,RL-ADM,yes,,"Approval detail: object, revision, hash, diff vs last approved, required approvers, expiry"
+API-543,POST,/api/v1/commercial/admin/approvals/{id}/withdraw,admin,"Command Centre, approvals, notifications, search, reports",3.2,W,—,RL-ADM,yes,,Author withdraws a pending approval request
+API-544,POST,/api/v1/commercial/admin/approval-delegations,admin,"Command Centre, approvals, notifications, search, reports",3.2,W,—,RL-ADM,yes,,Delegate approval authority ≤ 14 days to equal/higher role (BRL-APR-09)
+API-545,GET,/api/v1/commercial/admin/approval-policies,admin,"Command Centre, approvals, notifications, search, reports",3.2,R,—,RL-ADM,yes,,"Effective approval thresholds for current startup (DEC-038, CFG-17)"
+API-546,GET,/api/v1/commercial/admin/dashboards/management,admin,"Command Centre, approvals, notifications, search, reports",3.2,R,—,RL-ADM,yes,,"Team capacity, SLA, conversion, budget variance"
+API-547,GET,/api/v1/commercial/admin/exceptions,admin,"Command Centre, approvals, notifications, search, reports",3.2,R,—,RL-ADM,yes,,"Exception queue (uncertain outcomes, held conflicts, compliance)"
+API-548,GET,/api/v1/commercial/admin/search,admin,"Command Centre, approvals, notifications, search, reports",3.2,R,—,RL-ADM,yes,,"Global scoped search (RLS, permitted fields)"
+API-549,GET,/api/v1/commercial/admin/notifications,admin,"Command Centre, approvals, notifications, search, reports",3.2,R,—,RL-ADM,yes,,Own notifications
+API-550,POST,/api/v1/commercial/admin/notifications/{id}/acknowledge,admin,"Command Centre, approvals, notifications, search, reports",3.2,W,—,RL-ADM,yes,,Acknowledge
+API-551,POST,/api/v1/commercial/admin/notifications/{id}/snooze,admin,"Command Centre, approvals, notifications, search, reports",3.2,W,—,RL-ADM,yes,,Snooze (not Critical)
+API-552,POST,/api/v1/commercial/admin/notifications/{id}/archive,admin,"Command Centre, approvals, notifications, search, reports",3.2,W,—,RL-ADM,yes,,Archive
+API-553,PUT,/api/v1/commercial/admin/notification-preferences,admin,"Command Centre, approvals, notifications, search, reports",3.2,W,—,RL-ADM,yes,,Digest and channel preferences (CFG-30)
+API-554,POST,/api/v1/commercial/admin/report-exports,admin,"Command Centre, approvals, notifications, search, reports",3.2,Q,—,RL-ADM-H,yes,,Generate report export (CSV/XLSX/PDF) with permission recheck
+API-555,GET,/api/v1/commercial/admin/report-exports/{id},admin,"Command Centre, approvals, notifications, search, reports",3.2,R,—,RL-ADM,yes,,Export status and expiring link
+API-ENH-D-001,PATCH,/api/v1/commercial/admin/sources/{id},admin,3.5.5.2 New operations,3.5b,W,—,RL-ADM,yes,,"Revise source approval (licence, purpose, scope, expiry) as a new SourcePolicy revision; voids prior approval"
+API-ENH-D-002,GET,/api/v1/commercial/admin/evals/cases,admin,3.5.5.2 New operations,3.5b,R,—,RL-ADM,yes,,"List evaluation cases (task, dataset revision, label provenance, tags); cursor"
+API-ENH-D-003,POST,/api/v1/commercial/admin/signal-types,admin,3.5.5.2 New operations,3.5b,W,—,RL-ADM,yes,,"Draft signal taxonomy revision (code, label, vertical, evidence rule)"
+API-ENH-D-004,POST,/api/v1/commercial/admin/role-mappings,admin,3.5.5.2 New operations,3.5b,W,—,RL-ADM,yes,,"Draft role-mapping rule-set revision (title pattern to decision role hypothesis, confidence)"
+API-ENH-D-005,POST,/api/v1/commercial/admin/alerts/{id}/read,admin,3.5.5.2 New operations,3.5b,W,—,RL-ADM,yes,,Mark own research alert read
+API-ENH-D-006,POST,/api/v1/commercial/admin/workflows/{id}/resume,admin,3.5.5.2 New operations,3.5b,W,P,RL-ADM,yes,,"Resume a paused workflow scope after PDP recheck (budget, consent, approval validity, stop state)"
+API-ENH-D-007,GET,/api/v1/commercial/admin/messages/{id},admin,3.5.5.2 New operations,3.5b,R,—,RL-ADM,yes,,Single message with delivery state and provider event timeline (provider ref masked)
+API-ENH-D-008,GET,/api/v1/commercial/admin/channels/whatsapp/accounts,admin,3.5.5.2 New operations,3.5b,R,—,RL-ADM,yes,,"WABA accounts, numbers, quality rating, messaging tier, template counts (never tokens)"
+API-ENH-D-009,PUT,/api/v1/commercial/admin/chat/settings,admin,3.5.5.2 New operations,3.5b,W,P,RL-ADM,yes,,"Website assistant settings per startup: enabled, languages, handover hours, transcript retention, daily AI budget"
+API-ENH-D-010,POST,/api/v1/commercial/admin/forecast-models/{id}/versions,admin,3.5.5.2 New operations,3.5b,W,—,RL-ADM,yes,,"Draft forecast assumption revision (stage probabilities, horizon, seasonality); approval type forecast_model"
+API-ENH-D-011,GET,/api/v1/commercial/admin/pilots,admin,3.5.5.2 New operations,3.5b,R,—,RL-ADM,yes,,"List pilots by type (insurance, partner, institutional), stage, approvals, data-agreement state"
+API-ENH-D-012,POST,/api/v1/commercial/admin/domains/{id}/disable,admin,3.5.5.2 New operations,3.5b,W,—,RL-ADM,yes,,"Disable brand-domain mapping: host returns 404 UNKNOWN_HOST, tenant-keyed cache purge"
+API-ENH-D-013,POST,/api/v1/commercial/admin/service-invoices/{id}/receipts,admin,3.5.5.2 New operations,3.5b,F,—,RL-ADM,yes,,Record service receipt and reconcile (maker); checker via API-ENH-D-013 action=verify
+API-ENH-D-014,GET,/api/v1/commercial/admin/usage-charges,admin,3.5.5.2 New operations,3.5b,R,—,RL-ADM,yes,,"Usage charge ledger: period, dimension, quantity, rate version, amount, adjustments"
+API-ENH-D-015,POST,/api/v1/commercial/admin/usage-charges/{id}/credits,admin,3.5.5.2 New operations,3.5b,F,—,RL-ADM,yes,,Append approved credit adjustment (original charge immutable)
+API-ENH-D-016,POST,/api/v1/commercial/admin/orders/{id}/acceptances,admin,3.5.5.2 New operations,3.5b,F,—,RL-ADM,yes,,Record acceptance or dispute of received goods/services (buy direction) with evidence
+API-ENH-D-017,POST,/api/v1/commercial/admin/external-grants/{id}/revoke,admin,3.5.5.2 New operations,3.5b,W,—,RL-ADM,yes,,Revoke external portal grant (PortalGrant) immediately; sessions using it re-authorize
+API-ENH-D-018,POST,/api/v1/commercial/portal/uploads/{id}/complete,portal,3.5.5.2 New operations,3.5b,Q,—,RL-PORTAL,yes,,"Complete own quarantined upload: checksum match, enqueue malware scan"
+API-ENH-D-019,GET,/api/v1/commercial/portal/onboarding-wizard/{app},portal,3.5.5.2 New operations,3.5b,R,—,RL-PORTAL,yes,,"Read own applicant configuration draft (JSON, revision, validation state)"
+API-ENH-D-020,POST,/api/v1/commercial/portal/service/offboarding-requests,portal,3.5.5.2 New operations,3.5b,W,—,RL-PORTAL,yes,,Request offboarding (WF-14) with export preference; no automatic action
+API-ENH-D-021,POST,/api/v1/commercial/admin/workflow-templates,admin,3.5.5.2 New operations,3.5b,W,—,RL-ADM,yes,,"Create workflow template draft (allowlisted nodes, bounded graph, input/output schemas)"
+API-ENH-D-022,POST,/api/v1/commercial/admin/external-grants/{id}/rotate,admin,3.5.5.2 New operations,3.5b,X,P+D,RL-ADM,yes,,"Rotate invitation secret (previous invite invalid), keep grant scope"
+API-ENH-D-023,GET,/api/v1/commercial/admin/external-grants,admin,3.5.5.2 New operations,3.5b,R,—,RL-ADM,yes,,List external grants by counterparty/object with expiry and state
+API-ENH-D-024,POST,/api/v1/commercial/admin/privacy-requests,admin,3.5.5.2 New operations,3.5b,Q,—,RL-ADM,yes,,Record privacy request received offline on behalf of a subject (identity verification pending)
+API-V12-H-001,GET,/api/v1/commercial/admin/developer/api-keys,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,"List API keys of the tenant (prefix, last4, scopes, expiry, last used); never the secret"
+API-V12-H-002,POST,/api/v1/commercial/admin/developer/api-keys,admin,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,"Create scoped, expiring API key; plaintext returned exactly once"
+API-V12-H-003,POST,/api/v1/commercial/admin/developer/api-keys/{id}/revoke,admin,11.8.5.5 New operations,11.8b,W,—,RL-ADM,no,,Revoke API key immediately
+API-V12-H-004,POST,/api/v1/commercial/admin/developer/api-keys/{id}/rotate,admin,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,Rotate key: issue successor with the same scopes; old key valid for an overlap window
+API-V12-H-005,POST,/oauth/token,dev,11.8.5.5 New operations,11.8b,R,—,RL-AUTH,no,API-V12-R-023,OAuth 2.0 client-credentials token for server integrations
+API-V12-H-006,GET,/api/v1/commercial/admin/developer/oauth-clients,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,"List OAuth clients (client ID, scopes, key thumbprints, state)"
+API-V12-H-007,POST,/api/v1/commercial/admin/developer/oauth-clients,admin,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,"Register OAuth client (JWKS URL or uploaded public key, scopes)"
+API-V12-H-008,POST,/api/v1/commercial/admin/developer/oauth-clients/{id}/revoke,admin,11.8.5.5 New operations,11.8b,W,—,RL-ADM,no,,Revoke OAuth client and its issued tokens
+API-V12-H-009,GET,/api/v1/commercial/admin/developer/webhooks,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,List outbound webhook endpoints of the tenant
+API-V12-H-010,POST,/api/v1/commercial/admin/developer/webhooks,admin,11.8.5.5 New operations,11.8b,W,P,RL-ADM,no,,"Add outbound webhook endpoint (HTTPS URL, subscribed event types)"
+API-V12-H-011,PATCH,/api/v1/commercial/admin/developer/webhooks/{id},admin,11.8.5.5 New operations,11.8b,W,P,RL-ADM,no,,"Change events, disable/enable, or rotate signing secret with overlap"
+API-V12-H-012,POST,/api/v1/commercial/admin/developer/webhooks/{id}/test,admin,11.8.5.5 New operations,11.8b,X,P+D,RL-ADM,no,,Send signed test event to the endpoint
+API-V12-H-013,GET,/api/v1/commercial/admin/developer/webhook-deliveries,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,"Delivery log: attempts, status codes, latency, next retry"
+API-V12-H-014,POST,/api/v1/commercial/admin/developer/webhook-deliveries/{id}/replay,admin,11.8.5.5 New operations,11.8b,X,P+D,RL-ADM,no,,"Re-send an earlier event payload (same event_id, new delivery)"
+API-V12-H-015,GET,/api/v1/commercial/admin/identity/sso,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,Read tenant SSO configuration
+API-V12-H-016,PUT,/api/v1/commercial/admin/identity/sso,admin,11.8.5.5 New operations,11.8b,W,P,RL-ADM,no,,Update SSO configuration (draft until tested; enforcement guarded)
+API-V12-H-017,POST,/api/v1/commercial/admin/identity/sso/test,admin,11.8.5.5 New operations,11.8b,Q,—,RL-AUTH,no,,Test IdP connection with a real login round-trip of the administrator
+API-V12-H-018,POST,/api/v1/commercial/admin/identity/domains,admin,11.8.5.5 New operations,11.8b,W,—,RL-ADM,no,,Add email domain for SSO verification (DNS TXT challenge)
+API-V12-H-019,POST,/api/v1/commercial/admin/identity/domains/{id}/verify,admin,11.8.5.5 New operations,11.8b,Q,—,RL-ADM,no,,Verify domain DNS TXT record
+API-V12-H-020,PUT,/api/v1/commercial/admin/identity/policies,admin,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,Set tenant MFA and session policy
+API-V12-H-021,GET,/scim/v2/Users,scim,11.8.5.5 New operations,11.8b,R,—,RL-SCIM,no,API-V12-R-011,SCIM list/filter users (RFC 7644 filter userName eq)
+API-V12-H-022,POST,/scim/v2/Users,scim,11.8.5.5 New operations,11.8b,W,—,RL-SCIM,no,API-V12-R-011,SCIM create user (membership without business grants)
+API-V12-H-023,GET,/scim/v2/Users/{id},scim,11.8.5.5 New operations,11.8b,R,—,RL-SCIM,no,API-V12-R-011,SCIM read user
+API-V12-H-024,PATCH,/scim/v2/Users/{id},scim,11.8.5.5 New operations,11.8b,W,—,RL-SCIM,no,API-V12-R-011,"SCIM update user (PatchOp), including active=false"
+API-V12-H-025,DELETE,/scim/v2/Users/{id},scim,11.8.5.5 New operations,11.8b,W,—,RL-SCIM,no,API-V12-R-011,SCIM de-provision user
+API-V12-H-026,GET,/scim/v2/Groups,scim,11.8.5.5 New operations,11.8b,R,—,RL-SCIM,no,API-V12-R-012,SCIM list groups
+API-V12-H-027,POST,/scim/v2/Groups,scim,11.8.5.5 New operations,11.8b,W,—,RL-SCIM,no,API-V12-R-012,SCIM create group
+API-V12-H-028,POST,/api/v1/commercial/admin/identity/scim-tokens,admin,11.8.5.5 New operations,11.8b,W,—,RL-ADM,no,,Issue or revoke the tenant SCIM bearer token
+API-V12-H-029,GET,/api/v1/commercial/admin/roles,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,List built-in (R01–R20) and custom roles with permissions
+API-V12-H-030,POST,/api/v1/commercial/admin/roles,admin,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,Create custom role (resource × action permissions); SoD checked
+API-V12-H-031,PATCH,/api/v1/commercial/admin/roles/{id},admin,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,Update custom role (new revision; re-approval)
+API-V12-H-032,DELETE,/api/v1/commercial/admin/roles/{id},admin,11.8.5.5 New operations,11.8b,W,—,RL-ADM,no,,Retire custom role
+API-V12-H-033,GET,/api/v1/commercial/admin/siem-sinks,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,List SIEM destinations with delivery health
+API-V12-H-034,POST,/api/v1/commercial/admin/siem-sinks,admin,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,"Add SIEM destination (HTTPS, syslog over TLS, object storage)"
+API-V12-H-035,POST,/api/v1/commercial/admin/billing/invoices/preview,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,"Preview next service invoice with usage, credits and tax lines"
+API-V12-H-036,POST,/api/v1/commercial/admin/tax/quote,admin+internal,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,Tax determination for a line (rule table; provider for US sales tax later)
+API-V12-H-037,GET,/api/v1/commercial/admin/connectors,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,Connector catalogue (INT-01…11 kinds) with activation-gate status per tenant
+API-V12-H-038,POST,/api/v1/commercial/admin/connectors/{id}/installations,admin,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,Install connector in sandbox or production behind the activation gate
+API-V12-H-039,GET,/api/v1/commercial/admin/encryption-keys,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,Read tenant key configuration (platform or customer-managed)
+API-V12-H-040,PUT,/api/v1/commercial/admin/encryption-keys,admin,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,"Set platform or customer-managed key (AWS KMS, Azure Key Vault, GCP KMS)"
+API-V12-H-041,GET,/api/v1/commercial/admin/sandboxes,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,List tenant sandbox environments
+API-V12-H-042,POST,/api/v1/commercial/admin/sandboxes,admin,11.8.5.5 New operations,11.8b,Q,—,RL-ADM-H,no,,Create sandbox with synthetic data only
+API-V12-H-043,POST,/api/v1/commercial/admin/sandboxes/{id}/promotions,admin,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,Request configuration promotion sandbox → production as a reviewed revision
+API-V12-H-044,GET,/api/v1/commercial/public/locales,public,11.8.5.5 New operations,11.8b,R,—,RL-PUB-R,no,,Supported locales with coverage and direction
+API-V12-H-045,POST,/api/v1/commercial/admin/ops/incidents,admin,11.8.5.5 New operations,11.8b,W,—,RL-ADM,no,,Declare operational incident (SEV1–SEV4) with commander
+API-V12-H-046,GET,/status/v1/summary,status,11.8.5.5 New operations,11.8b,R,—,RL-PUB-R,no,,"Public status summary (components, incidents, maintenance)"
+API-V12-H-047,GET,/api/v1/commercial/admin/security/findings,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,Vulnerability findings with SLA due dates (operator)
+API-V12-H-048,POST,/api/v1/commercial/admin/security/findings,admin,11.8.5.5 New operations,11.8b,W,—,RL-ADM,no,,"Log finding (pen test, scanner, bug report)"
+API-V12-H-049,GET,/api/v1/commercial/admin/ai/models,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,"Model registry entries (provider, model ID, tier, data-class ceiling, status, eval evidence)"
+API-V12-H-050,POST,/api/v1/commercial/admin/ai/models/{id}/promotion-requests,admin,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,Request model promotion; requires passing eval suites
+API-V12-H-051,GET,/api/v1/commercial/admin/ai/prompts,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,List prompt versions with status and eval evidence
+API-V12-H-052,GET,/api/v1/commercial/admin/ai/eval-suites,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,"List evaluation suites (cases, metrics, thresholds)"
+API-V12-H-053,GET,/api/v1/commercial/admin/ai/red-team/results,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,AI-INJ prompt-injection suite results
+API-V12-H-054,POST,/api/v1/commercial/internal/ai/content-screen,internal,11.8.5.5 New operations,11.8b,R,—,RL-INT,no,,"Screen untrusted content (evidence, inbound, uploads) and return flags only"
+API-V12-H-055,GET,/api/v1/commercial/admin/ai/usage,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,Token usage and cost per accepted result
+API-V12-H-056,POST,/api/v1/commercial/admin/ai/kill-switch,admin,11.8.5.5 New operations,11.8b,W,—,RL-ADM,no,,"Stop a model, prompt, agent or workflow immediately"
+API-V12-H-057,GET,/api/v1/commercial/admin/jurisdiction-rules/{id}/rules,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,Rules of a jurisdiction pack with legal source and approval status
+API-V12-H-058,GET,/api/v1/commercial/admin/consents,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,"Search consent ledger (hashed identifier, channel, purpose, notice version)"
+API-V12-H-059,POST,/api/v1/commercial/admin/consents/{id}/withdraw,admin,11.8.5.5 New operations,11.8b,W,—,RL-ADM,no,,Record a withdrawal received by staff; suppress and cancel queued sends
+API-V12-H-060,POST,/api/v1/commercial/admin/compliance/incidents,admin,11.8.5.5 New operations,11.8b,W,—,RL-ADM,no,,Open privacy/compliance incident; regulatory clocks start
+API-V12-H-061,POST,/api/v1/commercial/admin/compliance/incidents/{id}/notifications,admin,11.8.5.5 New operations,11.8b,F,—,RL-ADM,no,,Record authority or data-principal notification
+API-V12-H-062,POST,/api/v1/commercial/public/cookie-consents,public,11.8.5.5 New operations,11.8b,W,—,RL-PUB-W,no,,Record cookie choice with notice version
+API-V12-H-063,POST,/api/v1/commercial/admin/portfolio/grants,admin,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,Grant or revoke explicit aggregate (portfolio) read scope
+API-V12-H-064,GET,/api/v1/commercial/admin/metrics/business,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,"Attributed counts, native totals, converted totals with approved rate version and missing-rate list"
+API-V12-H-065,GET,/api/v1/commercial/admin/optimization/cost-summary,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,"Meter categories, allocated and unallocated cost, accepted-output denominator"
+API-V12-H-066,GET,/api/v1/commercial/portal/service/value,portal,11.8.5.5 New operations,11.8b,R,—,RL-PORTAL,no,,"Customer value view: accepted output, usage, value assumption, renewal state"
+API-V12-H-067,GET,/api/v1/commercial/admin/operator/conversion-metrics,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,"Platform-operator SaaS funnel, attribution quality and acquisition cost (aggregate only)"
+API-V12-H-068,POST,/api/v2/workflow-runs,v2,11.8.5.5 New operations,11.8b,Q,P,RL-ADM,no,,Common run gateway: start (or dry-run) any SM-SVC-##-WF# workflow with a validated DTO
+API-V12-H-069,GET,/api/v2/workflow-runs/{id},v2,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,"Run result: state, step states, result reference, error, usage"
+API-V12-H-070,POST,/api/v2/workflow-runs/{id}/approvals,v2,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,Approve or reject the exact action digest of a held run
+API-V12-H-071,POST,/api/v2/workflow-runs/{id}/cancel,v2,11.8.5.5 New operations,11.8b,W,—,RL-ADM,no,,Cancel run and reconcile pending effects
+API-V12-H-072,GET,/api/v2/workflow-runs/{id}/steps,v2,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,Step trace with artifact references and redacted failure evidence
+API-V12-H-073,POST,/api/v2/connectors/{kind}/events,hooks,11.8.5.5 New operations,11.8b,I,—,RL-HOOK,no,,"Generic signed provider event intake for new connector kinds (CRM, SMS-DLT, voice, warehouse)"
+API-V12-H-074,GET,/api/v1/commercial/admin/connectors/health-summary,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,"Connector health, sync lag and error-rate dashboard data with alert state"
+API-V12-H-075,POST,/api/v1/commercial/admin/integrations/{id}/diagnostics,admin,11.8.5.5 New operations,11.8b,Q,—,RL-ADM-H,no,,Self-service setup checklist and diagnostics with escalation to support
+API-V12-H-076,POST,/api/v1/commercial/admin/finops/provider-tier-scenarios,admin,11.8.5.5 New operations,11.8b,Q,—,RL-ADM-H,no,,"Compare provider contractual tiers, commitments and overages from forecast usage"
+API-ADV-X1-01,POST,/api/v1/commercial/admin/ai/plans,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,Submit objective; returns plan revision
+API-ADV-X1-02,GET,/api/v1/commercial/admin/ai/plans/{id},admin,Advanced AI agents (Part 9.7b),9.7b,R,,RL-ADM-H,no,,"Plan with steps, validation, cost"
+API-ADV-X1-03,POST,/api/v1/commercial/admin/ai/plans/{id}/validate,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,Run AU-053
+API-ADV-X1-04,POST,/api/v1/commercial/admin/ai/plans/{id}/approve,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,Approve exact plan hash
+API-ADV-X1-05,POST,/api/v1/commercial/admin/ai/plans/{id}/cancel,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,Stop run
+API-ADV-X1-06,GET,/api/v1/commercial/admin/ai/agents/{agent_id}/versions,admin,Advanced AI agents (Part 9.7b),9.7b,R,,RL-ADM-H,no,,Registry v2 versions and status
+API-ADV-X1-07,POST,/api/v1/commercial/admin/ai/agents/{agent_id}/versions/{v}/rollout,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,Start or advance canary
+API-ADV-X1-08,POST,/api/v1/commercial/admin/ai/agents/{agent_id}/versions/{v}/rollback,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,Manual rollback
+API-ADV-X1-09,GET,/api/v1/commercial/admin/accounts/{id}/brief,admin,Advanced AI agents (Part 9.7b),9.7b,R,,RL-ADM-H,no,,Latest account brief
+API-ADV-X1-10,POST,/api/v1/commercial/admin/accounts/{id}/brief/refresh,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,Queue brief refresh
+API-ADV-X1-11,GET,/api/v1/commercial/admin/accounts/{id}/intent,admin,Advanced AI agents (Part 9.7b),9.7b,R,,RL-ADM-H,no,,Intent snapshot and timeline
+API-ADV-X1-12,GET,/api/v1/commercial/admin/ml/models,admin,Advanced AI agents (Part 9.7b),9.7b,R,,RL-ADM-H,no,,Models and versions with metrics
+API-ADV-X1-13,POST,/api/v1/commercial/admin/ml/models/{id}/versions/{v}/stage,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,"Change stage (shadow, visible, retired)"
+API-ADV-X1-14,GET,/api/v1/commercial/admin/opportunities/{id}/predictions,admin,Advanced AI agents (Part 9.7b),9.7b,R,,RL-ADM-H,no,,Advisory propensity with explanation
+API-ADV-X1-15,GET,/api/v1/commercial/admin/nba,admin,Advanced AI agents (Part 9.7b),9.7b,R,,RL-ADM-H,no,,NBA inbox (cursor)
+API-ADV-X1-16,POST,/api/v1/commercial/admin/nba/{id}/decision,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,"Accept, edit or dismiss"
+API-ADV-X1-17,GET,/api/v1/commercial/admin/risk-alerts,admin,Advanced AI agents (Part 9.7b),9.7b,R,,RL-ADM-H,no,,Deal and churn risk radar
+API-ADV-X1-18,POST,/api/v1/commercial/admin/risk-alerts/{id}/ack,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,Acknowledge with task
+API-ADV-X1-19,GET,/api/v1/commercial/admin/insights/conversations,admin,Advanced AI agents (Part 9.7b),9.7b,R,,RL-ADM-H,no,,Team-level insights
+API-ADV-X1-20,POST,/api/v1/commercial/admin/coaching/sessions,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,Start practice session
+API-ADV-X1-21,POST,/api/v1/commercial/admin/coaching/sessions/{id}/turns,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,Practice turn
+API-ADV-X1-22,GET,/api/v1/commercial/admin/rfp-answers,admin,Advanced AI agents (Part 9.7b),9.7b,R,,RL-ADM-H,no,,Search answer library
+API-ADV-X1-23,POST,/api/v1/commercial/admin/rfp-answers,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,Create answer draft
+API-ADV-X1-24,POST,/api/v1/commercial/admin/rfp-answers/{id}/approve,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,Approve answer (owner ≠ author; R10 for legal)
+API-ADV-X1-25,POST,/api/v1/commercial/admin/bids/{id}/response-drafts,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,Run AG-047 for a bid
+API-ADV-X1-26,POST,/api/v1/commercial/admin/quotes/{id}/pricebook-guidance,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,Ask price-book question
+API-ADV-X1-27,POST,/api/v1/commercial/admin/campaigns/{id}/variants,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,Generate variants
+API-ADV-X1-28,POST,/api/v1/commercial/admin/localization/jobs,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,Localize approved items
+API-ADV-X1-29,GET,/api/v1/commercial/admin/localization/glossary,admin,Advanced AI agents (Part 9.7b),9.7b,R,,RL-ADM-H,no,,Glossary read / propose term
+API-ADV-X1-29.2,POST,/api/v1/commercial/admin/localization/glossary,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,Glossary read / propose term
+API-ADV-X1-30,POST,/api/v1/commercial/admin/campaigns/{id}/plan-draft,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,AG-051 plan draft
+API-ADV-X1-31,POST,/api/v1/commercial/admin/experiments,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,Create design
+API-ADV-X1-32,POST,/api/v1/commercial/admin/experiments/{id}/approve,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,Approve design hash
+API-ADV-X1-33,GET,/api/v1/commercial/admin/experiments/{id}/results,admin,Advanced AI agents (Part 9.7b),9.7b,R,,RL-ADM-H,no,,Results and readout
+API-ADV-X1-34,GET,/api/v1/commercial/admin/kb/health,admin,Advanced AI agents (Part 9.7b),9.7b,R,,RL-ADM-H,no,,Knowledge findings
+API-ADV-X1-35,GET,/api/v1/commercial/admin/ai/memory,admin,Advanced AI agents (Part 9.7b),9.7b,R,,RL-ADM-H,no,,List / delete memory items in scope
+API-ADV-X1-35.2,DELETE,/api/v1/commercial/admin/ai/memory,admin,Advanced AI agents (Part 9.7b),9.7b,R,,RL-ADM-H,no,,List / delete memory items in scope
+API-ADV-X1-36,PUT,/api/v1/commercial/admin/ai/memory-policy,admin,Advanced AI agents (Part 9.7b),9.7b,R,,RL-ADM-H,no,,Enable / configure memory per tenant
+API-ADV-X1-37,POST,/api/v1/commercial/admin/commands/resolve,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,Command bar resolution
+API-ADV-X1-38,GET,/api/v1/commercial/admin/ai/observatory,admin,Advanced AI agents (Part 9.7b),9.7b,R,,RL-ADM-H,no,,"Eval, red-team, drift, SLO summary"
+API-ADV-X1-39,GET,/api/v1/commercial/admin/ai/inventory,admin,Advanced AI agents (Part 9.7b),9.7b,R,,RL-ADM-H,no,,AI inventory and model cards (export)
+API-ADV-X1-40,GET,/api/v1/commercial/admin/ai/cost-proposals,admin,Advanced AI agents (Part 9.7b),9.7b,R,,RL-ADM-H,no,,List / decide cost proposals
+API-ADV-X1-40.2,POST,/api/v1/commercial/admin/ai/cost-proposals,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,List / decide cost proposals
+API-V12-M-01,POST,/api/v1/research/swarm-runs,tenant-api,AI improvement (Part 11.13b),11.13b,W,,RL-ADM,no,,Start a swarm run (plan for review)
+API-V12-M-02,GET,/api/v1/research/swarm-runs/{id},tenant-api,AI improvement (Part 11.13b),11.13b,R,,RL-ADM,no,,"Run, workers, claims, verdicts"
+API-V12-M-03,GET,/api/v1/sdr/worklists/{seller_id}/{date},tenant-api,AI improvement (Part 11.13b),11.13b,R,,RL-ADM,no,,Daily worklist
+API-V12-M-04,PATCH,/api/v1/sdr/settings/{seller_id},tenant-api,AI improvement (Part 11.13b),11.13b,W,,RL-ADM,no,,"Enable, disable, caps"
+API-V12-M-05,GET,/api/v1/approvals/packets/{id},tenant-api,AI improvement (Part 11.13b),11.13b,R,,RL-ADM,no,,"Packet with items, hashes, outliers, note"
+API-V12-M-06,POST,/api/v1/approvals/packets/{id}/decisions,tenant-api,AI improvement (Part 11.13b),11.13b,W,,RL-ADM,no,,Per-item decisions (hash required)
+API-V12-M-07,GET,/api/v1/services/{svc}/outcome-slo,tenant-api,AI improvement (Part 11.13b),11.13b,R,,RL-ADM,no,,SLO status
+API-V12-M-08,GET,/api/v1/tuning/changes,tenant-api,AI improvement (Part 11.13b),11.13b,R,,RL-ADM,no,,List; approve out-of-band
+API-V12-M-08.2,POST,/api/v1/tuning/changes,tenant-api,AI improvement (Part 11.13b),11.13b,W,,RL-ADM,no,,List; approve out-of-band
+API-V12-M-09,GET,/api/v1/compliance/rulepacks,tenant-api,AI improvement (Part 11.13b),11.13b,R,,RL-ADM,no,,List; publish version (signed off)
+API-V12-M-09.2,POST,/api/v1/compliance/rulepacks,tenant-api,AI improvement (Part 11.13b),11.13b,W,,RL-ADM,no,,List; publish version (signed off)
+API-V12-M-10,GET,/api/v1/compliance/findings,tenant-api,AI improvement (Part 11.13b),11.13b,R,,RL-ADM,no,,Findings per draft
+API-V12-M-11,GET,/api/v1/finance/leakage-findings,tenant-api,AI improvement (Part 11.13b),11.13b,R,,RL-ADM,no,,Findings list
+API-V12-M-12,POST,/api/v1/finance/leakage-findings/{id}/status,tenant-api,AI improvement (Part 11.13b),11.13b,W,,RL-ADM,no,,"Confirm, dismiss, recovered"
+API-V12-M-13,GET,/api/v1/integrations/{id}/health,tenant-api,AI improvement (Part 11.13b),11.13b,R,,RL-ADM,no,,Health and incidents
+API-V12-M-14,POST,/api/v1/integrations/incidents/{id}/patches/{pid}/approve,tenant-api,AI improvement (Part 11.13b),11.13b,W,,RL-ADM,no,,Approve mapping patch
+API-V12-M-15,POST,/api/v1/campaigns/{id}/preflight,tenant-api,AI improvement (Part 11.13b),11.13b,W,,RL-ADM,no,,Run simulation
+API-V12-M-16,GET,/api/v1/procurement/rfqs/{id}/negotiation-pack,tenant-api,AI improvement (Part 11.13b),11.13b,R,,RL-ADM,no,,Pack
+API-V12-M-17,GET,/api/v1/graph/paths,tenant-api,AI improvement (Part 11.13b),11.13b,R,,RL-ADM,no,,Warm path query
+API-V12-M-18,GET,/api/v1/briefs/latest,tenant-api,AI improvement (Part 11.13b),11.13b,R,,RL-ADM,no,,Reader's brief
+API-V12-M-19,GET,/api/v1/tenants/{id}/golive,tenant-api,AI improvement (Part 11.13b),11.13b,R,,RL-ADM,no,,Checklist and TTFV
+API-V12-M-20,POST,/api/v1/marketplace/templates,tenant-api,AI improvement (Part 11.13b),11.13b,W,,RL-ADM,no,,Submit template
+API-V12-M-21,POST,/api/v1/marketplace/templates/{id}/install,tenant-api,AI improvement (Part 11.13b),11.13b,W,,RL-ADM,no,,Install as draft
+API-V12-M-22,GET,/api/v1/ai/prompt-candidates/{id}/replay,tenant-api,AI improvement (Part 11.13b),11.13b,R,,RL-ADM,no,,Replay report
+API-V12-M-23,GET,/api/v1/ai/firewall/events,tenant-api,AI improvement (Part 11.13b),11.13b,R,,RL-ADM,no,,Firewall events
+API-V12-M-24,GET,/api/v1/benchmarks,tenant-api,AI improvement (Part 11.13b),11.13b,R,,RL-ADM,no,API-V12-R-051,Benchmarks (disabled until DEC-747)
+API-V12-R-001,GET,/api/v1/tenants/{tid}/idp-connections,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,R,,RL-ADM,no,API-V12-W-0001,R12 browser (BFF)
+API-V12-R-002,POST,/api/v1/tenants/{tid}/idp-connections,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,API-V12-W-0002,R12 + step-up
+API-V12-R-003,PATCH,/api/v1/tenants/{tid}/idp-connections/{cid},tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,R12 + step-up
+API-V12-R-004,POST,/api/v1/tenants/{tid}/idp-connections/{cid}/test-login,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,API-V12-W-0004,R12
+API-V12-R-005,POST,/api/v1/tenants/{tid}/idp-connections/{cid}/activate,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,API-V12-W-0005,R12 + step-up; enforce needs second approver R12 or R10
+API-V12-R-005.2,POST,/api/v1/tenants/{tid}/idp-connections/{cid}/enforce,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,R12 + step-up; enforce needs second approver R12 or R10
+API-V12-R-005.3,POST,/api/v1/tenants/{tid}/idp-connections/{cid}/unenforce,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,R12 + step-up; enforce needs second approver R12 or R10
+API-V12-R-006,POST,/api/v1/tenants/{tid}/verified-domains,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,API-V12-W-0006,R12
+API-V12-R-006.2,POST,/api/v1/tenants/{tid}/verified-domains/{did}/verify,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,API-V12-W-0007,R12
+API-V12-R-007,GET,/api/v1/tenants/{tid}/security-policy,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,R,,RL-ADM,no,API-V12-W-0008,R12 + step-up; loosening idle/max needs second approver
+API-V12-R-007.2,PATCH,/api/v1/tenants/{tid}/security-policy,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,API-V12-W-0009,R12 + step-up; loosening idle/max needs second approver
+API-V12-R-008,POST,/api/v1/sessions/{sid}/revoke,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,API-V12-W-0010,"R12, user (own)"
+API-V12-R-008.2,POST,/api/v1/users/{uid}/sessions/revoke-all,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,API-V12-W-0011,"R12, user (own)"
+API-V12-R-009,POST,/api/v1/tenants/{tid}/breakglass-accounts,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,R12 + R10 approval
+API-V12-R-010,GET,/api/v1/tenants/{tid}/scim-tokens,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,R,,RL-ADM,no,,R12 + step-up
+API-V12-R-010.2,POST,/api/v1/tenants/{tid}/scim-tokens,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,R12 + step-up
+API-V12-R-010.3,DELETE,/api/v1/tenants/{tid}/scim-tokens,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,R12 + step-up
+API-V12-R-011,PUT,/scim/v2/Users/{id},tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,"Tenant IdP, SCIM bearer"
+API-V12-R-012,GET,/scim/v2/Groups/{id},tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,R,,RL-ADM,no,,Tenant IdP
+API-V12-R-012.2,PUT,/scim/v2/Groups/{id},tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,Tenant IdP
+API-V12-R-012.3,PATCH,/scim/v2/Groups/{id},tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,Tenant IdP
+API-V12-R-012.4,DELETE,/scim/v2/Groups/{id},tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,Tenant IdP
+API-V12-R-012.5,POST,/scim/v2/Bulk,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,Tenant IdP
+API-V12-R-012.6,GET,/scim/v2/ServiceProviderConfig,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,R,,RL-ADM,no,,Tenant IdP
+API-V12-R-012.7,GET,/scim/v2/Schemas,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,R,,RL-ADM,no,,Tenant IdP
+API-V12-R-012.8,GET,/scim/v2/ResourceTypes,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,R,,RL-ADM,no,,Tenant IdP
+API-V12-R-013,GET,/api/v1/tenants/{tid}/scim-group-mappings,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,R,,RL-ADM,no,,"R12 (request), another R12 or R10 (approve)"
+API-V12-R-013.2,POST,/api/v1/tenants/{tid}/scim-group-mappings,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,"R12 (request), another R12 or R10 (approve)"
+API-V12-R-013.3,POST,/api/v1/tenants/{tid}/scim-group-mappings/{mid}/approve,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,"R12 (request), another R12 or R10 (approve)"
+API-V12-R-014,GET,/api/v1/permissions,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,R,,RL-ADM,no,API-V12-W-0012,R12
+API-V12-R-015,GET,/api/v1/roles,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,R,,RL-ADM,no,API-V12-W-0013,R12 + step-up
+API-V12-R-015.2,POST,/api/v1/roles,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,API-V12-W-0014,R12 + step-up
+API-V12-R-015.3,PATCH,/api/v1/roles,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,API-V12-W-0015,R12 + step-up
+API-V12-R-015.4,POST,/api/v1/roles/{rid}/retire,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,R12 + step-up
+API-V12-R-016,POST,/api/v1/memberships/{mid}/roles,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,R12 + step-up
+API-V12-R-017,GET,/api/v1/access-reviews,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,R,,RL-ADM,no,,R12
+API-V12-R-017.2,POST,/api/v1/access-reviews/{cid}/items/{iid}/decide,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,R12
+API-V12-R-018,GET,/api/v1/siem-sinks,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,R,,RL-ADM,no,API-V12-W-0020,R12 + R10
+API-V12-R-018.2,POST,/api/v1/siem-sinks,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,API-V12-W-0021,R12 + R10
+API-V12-R-018.3,POST,/api/v1/siem-sinks/{sid}/test,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,API-V12-W-0024,R12 + R10
+API-V12-R-019,POST,/api/v1/api-keys,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,R12 browser + step-up
+API-V12-R-020,POST,/api/v1/api-keys/{kid}/rotate,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,R12
+API-V12-R-021,DELETE,/api/v1/api-keys/{kid},tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,"R12, owner"
+API-V12-R-022,POST,/api/v1/oauth-clients,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,R12 + step-up
+API-V12-R-024,POST,/oauth/revoke,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,Client or R12
+API-V12-R-025,POST,/api/v1/webhook-endpoints,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,R12
+API-V12-R-026,POST,/api/v1/webhook-endpoints/{eid}/verify,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,R12
+API-V12-R-027,POST,/api/v1/webhook-endpoints/{eid}/rotate-secret,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,R12
+API-V12-R-028,GET,/api/v1/webhook-deliveries,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,R,,RL-ADM,no,,"R12, webhooks:read"
+API-V12-R-029,POST,/api/v1/webhook-deliveries/{did}/replay,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,R12
+API-V12-R-030,POST,/api/v1/sandboxes,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,R12
+API-V12-R-030.2,DELETE,/api/v1/sandboxes/{sid},tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,R12
+API-V12-R-031,POST,/api/v1/sandboxes/{sid}/promotions,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,"R12 (request), another R12 (approve)"
+API-V12-R-031.2,POST,/api/v1/promotions/{pid}/approve,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,"R12 (request), another R12 (approve)"
+API-V12-R-032,GET,/api/v1/changelog,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,R,,RL-ADM,no,,Any credential
+API-V12-R-032.2,GET,/api/v1/deprecations,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,R,,RL-ADM,no,,Any credential
+API-V12-R-033,GET,/api/v1/connectors,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,R,,RL-ADM,no,,R12
+API-V12-R-034,POST,/api/v1/connector-installations,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,R12
+API-V12-R-035,GET,/api/v1/connector-installations/{iid}/oauth/start,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,R,,RL-ADM,no,,R12 browser
+API-V12-R-035.2,GET,/oauth/callback/{provider},tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,R,,RL-ADM,no,,R12 browser
+API-V12-R-036,POST,/api/v1/connector-installations/{iid}/activation-requests,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,"R12 (request), R10 (approve)"
+API-V12-R-036.2,POST,/api/v1/connector-installations/{iid}/activation-requests/approve,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,"R12 (request), R10 (approve)"
+API-V12-R-037,GET,/api/v1/connector-installations/{iid}/mappings,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,R,,RL-ADM,no,,R12
+API-V12-R-037.2,PUT,/api/v1/connector-installations/{iid}/mappings,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,R12
+API-V12-R-038,GET,/api/v1/sync-conflicts,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,R,,RL-ADM,no,,"R12, R03L"
+API-V12-R-038.2,POST,/api/v1/sync-conflicts/{cid}/resolve,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,"R12, R03L"
+API-V12-R-039,GET,/api/v1/channel-accounts/{aid}/dlt-registrations,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,R,,RL-ADM,no,,"R10, R12"
+API-V12-R-039.2,POST,/api/v1/channel-accounts/{aid}/dlt-registrations,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,"R10, R12"
+API-V12-R-039.3,GET,/api/v1/channel-accounts/{aid}/dlt-templates,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,R,,RL-ADM,no,,"R10, R12"
+API-V12-R-039.4,POST,/api/v1/channel-accounts/{aid}/dlt-templates,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,"R10, R12"
+API-V12-R-040,GET,/api/v1/channel-accounts/{aid}/voice-numbers,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,R,,RL-ADM,no,,R12
+API-V12-R-040.2,POST,/api/v1/channel-accounts/{aid}/voice-numbers,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,R12
+API-V12-R-041,GET,/api/v1/connector-installations/{iid}/health,tenant-api,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,R,,RL-ADM,no,,"R12, ops"
+API-V12-R-042,POST,/hooks/{provider}/{installation},hooks,"Platform decisions: identity, developer platform, connectors (Part 11.19a)",11.19a,W,,RL-ADM,no,,Provider
+API-V12-R-043,GET,/api/v1/ai/models,tenant-api,"Platform decisions: RPO, model registry, benchmarks (Part 11.19b)",11.19b,R,,RL-ADM,no,,"R10, R12 (read)"
+API-V12-R-044,POST,/api/v1/ai/models,tenant-api,"Platform decisions: RPO, model registry, benchmarks (Part 11.19b)",11.19b,W,,RL-ADM,no,,R10 or AI platform engineer
+API-V12-R-045,POST,/api/v1/ai/models/{mid}/approvals,tenant-api,"Platform decisions: RPO, model registry, benchmarks (Part 11.19b)",11.19b,W,,RL-ADM,no,,"R10, then R01/delegate"
+API-V12-R-046,POST,/api/v1/ai/models/{mid}/suspend,tenant-api,"Platform decisions: RPO, model registry, benchmarks (Part 11.19b)",11.19b,W,,RL-ADM,no,,"R10, AU-298"
+API-V12-R-046.2,POST,/api/v1/ai/models/{mid}/retire,tenant-api,"Platform decisions: RPO, model registry, benchmarks (Part 11.19b)",11.19b,W,,RL-ADM,no,,"R10, AU-298"
+API-V12-R-047,PUT,/api/v1/ai/pins/{workflow}/{task}/{locale}/{zone},tenant-api,"Platform decisions: RPO, model registry, benchmarks (Part 11.19b)",11.19b,W,,RL-ADM,no,,R10
+API-V12-R-048,POST,/api/v1/ai/kill-switch,tenant-api,"Platform decisions: RPO, model registry, benchmarks (Part 11.19b)",11.19b,W,,RL-ADM,no,,"R10, R01"
+API-V12-R-049,GET,/api/v1/ai/route-decisions,tenant-api,"Platform decisions: RPO, model registry, benchmarks (Part 11.19b)",11.19b,R,,RL-ADM,no,,"R10, R15"
+API-V12-R-050,GET,/api/v1/benchmarks/enrolment,tenant-api,"Platform decisions: RPO, model registry, benchmarks (Part 11.19b)",11.19b,R,,RL-ADM,no,,R12 + step-up
+API-V12-R-050.2,POST,/api/v1/benchmarks/enrolment,tenant-api,"Platform decisions: RPO, model registry, benchmarks (Part 11.19b)",11.19b,W,,RL-ADM,no,,R12 + step-up
+API-V12-R-050.3,POST,/api/v1/benchmarks/enrolment/withdraw,tenant-api,"Platform decisions: RPO, model registry, benchmarks (Part 11.19b)",11.19b,W,,RL-ADM,no,,R12 + step-up
+API-V12-R-052,GET,/api/v1/admin/benchmarks/ledger,admin,"Platform decisions: RPO, model registry, benchmarks (Part 11.19b)",11.19b,R,,RL-ADM,no,,"R10, privacy officer"
+API-V12-W-0003,PATCH,/api/v1/tenants/{tid}/idp-connections,tenant-api,V12 platform architecture (Part 11.5b),11.5b,W,,RL-ADM,no,,Tenant SSO
+API-V12-W-0016,DELETE,/api/v1/roles,tenant-api,V12 platform architecture (Part 11.5b),11.5b,W,,RL-ADM,no,,Custom roles
+API-V12-W-0017,POST,/api/v1/audit/exports,tenant-api,V12 platform architecture (Part 11.5b),11.5b,W,,RL-ADM,no,,Audit export
+API-V12-W-0018,GET,/api/v1/audit/exports/{id},tenant-api,V12 platform architecture (Part 11.5b),11.5b,R,,RL-ADM,no,,Audit export
+API-V12-W-0019,POST,/api/v1/audit/verify,tenant-api,V12 platform architecture (Part 11.5b),11.5b,W,,RL-ADM,no,,Audit export
+API-V12-W-0022,PATCH,/api/v1/siem-sinks,tenant-api,V12 platform architecture (Part 11.5b),11.5b,W,,RL-ADM,no,,SIEM
+API-V12-W-0023,DELETE,/api/v1/siem-sinks,tenant-api,V12 platform architecture (Part 11.5b),11.5b,W,,RL-ADM,no,,SIEM
+API-V12-W-0025,GET,/api/v1/portfolio-grants,tenant-api,V12 platform architecture (Part 11.5b),11.5b,R,,RL-ADM,no,,MT-07
+API-V12-W-0026,POST,/api/v1/portfolio-grants,tenant-api,V12 platform architecture (Part 11.5b),11.5b,W,,RL-ADM,no,,MT-07
+API-V12-W-0027,DELETE,/api/v1/portfolio-grants,tenant-api,V12 platform architecture (Part 11.5b),11.5b,W,,RL-ADM,no,,MT-07
+API-V12-W-0028,POST,/api/v1/applications,tenant-api,V12 platform architecture (Part 11.5b),11.5b,W,,RL-ADM,no,,Application
+API-V12-W-0029,PUT,/api/v1/applications/{aid}/revisions/{n},tenant-api,V12 platform architecture (Part 11.5b),11.5b,W,,RL-ADM,no,,Application
+API-V12-W-0030,POST,/api/v1/applications/{aid}/revisions/{n}/submit,tenant-api,V12 platform architecture (Part 11.5b),11.5b,W,,RL-ADM,no,,Application
+API-V12-W-0031,GET,/api/v1/admin/provisioning-sagas,admin,V12 platform architecture (Part 11.5b),11.5b,R,,RL-ADM,no,,Saga
+API-V12-W-0032,POST,/api/v1/admin/provisioning-sagas/{id}/retry,admin,V12 platform architecture (Part 11.5b),11.5b,W,,RL-ADM,no,,Saga
+API-V12-W-0033,POST,/api/v1/admin/provisioning-sagas/{id}/compensate,admin,V12 platform architecture (Part 11.5b),11.5b,W,,RL-ADM,no,,Saga
+API-V12-W-0034,POST,/api/v1/admin/provisioning-sagas/{id}/activate,admin,V12 platform architecture (Part 11.5b),11.5b,W,,RL-ADM,no,,Saga
+API-V12-W-0035,GET,/api/v1/catalogue/skus,tenant-api,V12 platform architecture (Part 11.5b),11.5b,R,,RL-ADM,no,,Catalogue and projection
+API-V12-W-0036,GET,/api/v1/catalogue/skus/{sku}/versions,tenant-api,V12 platform architecture (Part 11.5b),11.5b,R,,RL-ADM,no,,Catalogue and projection
+API-V12-W-0037,GET,/api/v1/public/catalogue,tenant-api,V12 platform architecture (Part 11.5b),11.5b,R,,RL-ADM,no,,Catalogue and projection
+API-V12-W-0038,POST,/api/v1/admin/catalogue/sku-versions/{id}/transition,admin,V12 platform architecture (Part 11.5b),11.5b,W,,RL-ADM,no,,SKU lifecycle
+API-V12-W-0040,POST,/api/v1/quotes/{qid}/issue,tenant-api,V12 platform architecture (Part 11.5b),11.5b,W,,RL-ADM,no,,Quote and agreement
+API-V12-W-0041,POST,/api/v1/quotes/{qid}/accept,tenant-api,V12 platform architecture (Part 11.5b),11.5b,W,,RL-ADM,no,,Quote and agreement
+API-V12-W-0042,POST,/api/v1/subscriptions/{sid}/change-preview,tenant-api,V12 platform architecture (Part 11.5b),11.5b,W,,RL-ADM,no,,Plan change
+API-V12-W-0043,POST,/api/v1/subscriptions/{sid}/change-preview/changes,tenant-api,V12 platform architecture (Part 11.5b),11.5b,W,,RL-ADM,no,,Plan change
+API-V12-W-0044,GET,/api/v1/subscriptions/{sid}/usage,tenant-api,V12 platform architecture (Part 11.5b),11.5b,R,,RL-ADM,no,,Usage and forecast
+API-V12-W-0045,GET,/api/v1/subscriptions/{sid}/usage/forecast,tenant-api,V12 platform architecture (Part 11.5b),11.5b,R,,RL-ADM,no,,Usage and forecast
+API-V12-W-0046,GET,/api/v1/invoices,tenant-api,V12 platform architecture (Part 11.5b),11.5b,R,,RL-ADM,no,,"Invoices, credits"
+API-V12-W-0047,GET,/api/v1/invoices/{iid},tenant-api,V12 platform architecture (Part 11.5b),11.5b,R,,RL-ADM,no,,"Invoices, credits"
+API-V12-W-0048,POST,/api/v1/invoices/{iid}/credit-notes,tenant-api,V12 platform architecture (Part 11.5b),11.5b,W,,RL-ADM,no,,"Invoices, credits"
+API-V12-W-0049,POST,/api/v1/billing/webhooks/{provider},tenant-api,V12 platform architecture (Part 11.5b),11.5b,W,,RL-ADM,no,,Payment events
+API-V12-W-0050,POST,/api/v1/billing-disputes,tenant-api,V12 platform architecture (Part 11.5b),11.5b,W,,RL-ADM,no,,Disputes
+API-V12-W-0051,PATCH,/api/v1/billing-disputes/{id},tenant-api,V12 platform architecture (Part 11.5b),11.5b,W,,RL-ADM,no,,Disputes
+API-V12-W-0052,GET,/api/v1/admin/dead-letters,admin,V12 platform architecture (Part 11.5b),11.5b,R,,RL-ADM,no,,DLQ replay
+API-V12-W-0053,POST,/api/v1/admin/dead-letters/replay,admin,V12 platform architecture (Part 11.5b),11.5b,W,,RL-ADM,no,,DLQ replay
+API-V12-W-0054,GET,/api/v1/admin/reconciliation-cases,admin,V12 platform architecture (Part 11.5b),11.5b,R,,RL-ADM,no,,RJ exceptions
+API-V12-N-001,GET,/api/v1/growth/signals,admin,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-002,POST,/api/v1/growth/signals/monitor,admin,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-003,POST,/api/v1/growth/signals/{id}/review,admin,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-004,GET,/api/v1/investment/workspace/admin/conflicts,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-005,POST,/api/v1/investment/workspace/admin/conflicts/{id}/resolve,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-006,POST,/api/v1/investor/access-grants,investor,Investment Automation I (Part 11.16a),11.16a,X,P+D,RL-ADM,no,,Effect (gate)
+API-V12-N-007,POST,/api/v1/investor/access-grants/{id}/revoke,investor,Investment Automation I (Part 11.16a),11.16a,X,P+D,RL-ADM,no,,Effect (gate)
+API-V12-N-008,POST,/api/v1/investor/adviser-referrals,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-009,POST,/api/v1/investor/agreements,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-010,GET,/api/v1/investor/agreements/{id},investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-011,POST,/api/v1/investor/agreements/{id}/send,investor,Investment Automation I (Part 11.16a),11.16a,X,P+D,RL-ADM,no,,Effect (gate)
+API-V12-N-012,GET,/api/v1/investor/approvals,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-013,POST,/api/v1/investor/approvals/{id}/decide,investor,Investment Automation I (Part 11.16a),11.16a,X,P+D,RL-ADM,no,,Effect (gate)
+API-V12-N-014,POST,/api/v1/investor/bank-accounts,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-015,POST,/api/v1/investor/bank-accounts/{id}/verify,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-016,GET,/api/v1/investor/campaigns,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-017,POST,/api/v1/investor/campaigns,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-018,POST,/api/v1/investor/campaigns/{id}/approve,investor,Investment Automation I (Part 11.16a),11.16a,X,P+D,RL-ADM,no,,Effect (gate)
+API-V12-N-019,POST,/api/v1/investor/campaigns/{id}/control,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-020,POST,/api/v1/investor/claims,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-021,POST,/api/v1/investor/claims/{id}/approve,investor,Investment Automation I (Part 11.16a),11.16a,X,P+D,RL-ADM,no,,Effect (gate)
+API-V12-N-022,POST,/api/v1/investor/commitments,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-023,POST,/api/v1/investor/contacts/{id}/verify,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-024,POST,/api/v1/investor/copilot/actions/{id}/execute,investor,Investment Automation I (Part 11.16a),11.16a,X,P+D,RL-ADM,no,,Effect (gate)
+API-V12-N-025,POST,/api/v1/investor/copilot/sessions,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-026,POST,/api/v1/investor/copilot/sessions/{id}/query,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-027,POST,/api/v1/investor/crossborder-cases,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-028,POST,/api/v1/investor/crossborder-cases/{id}/review,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-029,GET,/api/v1/investor/dashboard/investors/{id},investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-030,POST,/api/v1/investor/dashboard/query,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-031,POST,/api/v1/investor/diligence-requests,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-032,POST,/api/v1/investor/diligence-requests/{id}/answer,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-033,POST,/api/v1/investor/disclosures,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-034,POST,/api/v1/investor/disclosures/{id}/approve,investor,Investment Automation I (Part 11.16a),11.16a,X,P+D,RL-ADM,no,API-V12-W-0074,Effect (gate)
+API-V12-N-035,POST,/api/v1/investor/documents,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-036,POST,/api/v1/investor/documents/{id}/complete,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-037,POST,/api/v1/investor/enrollments/{id}/control,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-038,POST,/api/v1/investor/events,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-039,POST,/api/v1/investor/expansion-plans,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-040,GET,/api/v1/investor/funding-routes,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-041,POST,/api/v1/investor/funding-routes,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-042,POST,/api/v1/investor/funding-routes/{id}/approve,investor,Investment Automation I (Part 11.16a),11.16a,X,P+D,RL-ADM,no,,Effect (gate)
+API-V12-N-043,POST,/api/v1/investor/guarantee-evidence,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-044,POST,/api/v1/investor/impact-metrics,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-045,POST,/api/v1/investor/impact-metrics/{id}/approve,investor,Investment Automation I (Part 11.16a),11.16a,X,P+D,RL-ADM,no,,Effect (gate)
+API-V12-N-046,GET,/api/v1/investor/integrations,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-047,POST,/api/v1/investor/integrations,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-048,PATCH,/api/v1/investor/integrations/{id},investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-049,POST,/api/v1/investor/integrations/{id}/test,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-050,GET,/api/v1/investor/investors,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-051,POST,/api/v1/investor/investors,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-052,POST,/api/v1/investor/investors/merge,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-053,GET,/api/v1/investor/investors/{id},investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-054,PATCH,/api/v1/investor/investors/{id},investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-055,POST,/api/v1/investor/investors/{id}/contacts/discover,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-056,POST,/api/v1/investor/jurisdictions,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-057,GET,/api/v1/investor/locale-templates,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-058,POST,/api/v1/investor/locale-templates,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-059,POST,/api/v1/investor/locale-templates/{id}/approve,investor,Investment Automation I (Part 11.16a),11.16a,X,P+D,RL-ADM,no,,Effect (gate)
+API-V12-N-060,PATCH,/api/v1/investor/mandates/{id},investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-061,GET,/api/v1/investor/matches,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-062,POST,/api/v1/investor/matches/evaluate,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-063,POST,/api/v1/investor/materials/draft,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-064,GET,/api/v1/investor/meetings/availability,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-065,POST,/api/v1/investor/meetings/book,investor,Investment Automation I (Part 11.16a),11.16a,X,P+D,RL-ADM,no,,Effect (gate)
+API-V12-N-066,PATCH,/api/v1/investor/meetings/{id},investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-067,POST,/api/v1/investor/messages/draft,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-068,POST,/api/v1/investor/messages/{id}/queue,investor,Investment Automation I (Part 11.16a),11.16a,X,P+D,RL-ADM,no,,Effect (gate)
+API-V12-N-069,GET,/api/v1/investor/objection-rules,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-070,POST,/api/v1/investor/objection-rules,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-071,POST,/api/v1/investor/objection-rules/{id}/approve,investor,Investment Automation I (Part 11.16a),11.16a,X,P+D,RL-ADM,no,,Effect (gate)
+API-V12-N-072,GET,/api/v1/investor/objections,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-073,POST,/api/v1/investor/objections,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-074,POST,/api/v1/investor/objections/{id}/resolve,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-075,POST,/api/v1/investor/objections/{id}/respond,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-076,POST,/api/v1/investor/offer-batches,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-077,POST,/api/v1/investor/offer-batches/{id}/approve,investor,Investment Automation I (Part 11.16a),11.16a,X,P+D,RL-ADM,no,,Effect (gate)
+API-V12-N-078,POST,/api/v1/investor/offer-batches/{id}/dispatch,investor,Investment Automation I (Part 11.16a),11.16a,X,P+D,RL-ADM,no,,Effect (gate)
+API-V12-N-079,POST,/api/v1/investor/offers,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-080,POST,/api/v1/investor/offers/{id}/approve,investor,Investment Automation I (Part 11.16a),11.16a,X,P+D,RL-ADM,no,,Effect (gate)
+API-V12-N-081,POST,/api/v1/investor/offers/{id}/issue,investor,Investment Automation I (Part 11.16a),11.16a,X,P+D,RL-ADM,no,,Effect (gate)
+API-V12-N-082,POST,/api/v1/investor/offers/{id}/withdraw,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-083,GET,/api/v1/investor/opportunities,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-084,POST,/api/v1/investor/opportunities,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-085,POST,/api/v1/investor/opportunities/score,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-086,PATCH,/api/v1/investor/opportunities/{id},investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-087,GET,/api/v1/investor/opportunities/{id}/fit,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-088,POST,/api/v1/investor/opportunities/{id}/transition,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-089,POST,/api/v1/investor/permissions/review,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-090,POST,/api/v1/investor/preferences,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-091,POST,/api/v1/investor/privacy-requests,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-092,PATCH,/api/v1/investor/privacy-requests/{id},investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-093,GET,/api/v1/investor/receipts,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-094,POST,/api/v1/investor/receipts/import,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-095,POST,/api/v1/investor/receipts/reconcile,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-096,GET,/api/v1/investor/receipts/{id},investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-097,POST,/api/v1/investor/referrals,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-098,POST,/api/v1/investor/refunds,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-099,GET,/api/v1/investor/regions,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-100,GET,/api/v1/investor/relationships,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-101,POST,/api/v1/investor/relationships,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-102,GET,/api/v1/investor/room-items/{id}/download,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-103,POST,/api/v1/investor/rooms,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-104,GET,/api/v1/investor/rooms/{id}/items,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-105,POST,/api/v1/investor/rooms/{id}/items,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-106,GET,/api/v1/investor/rounds,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-107,POST,/api/v1/investor/rounds,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-108,PATCH,/api/v1/investor/rounds/{id},investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-109,POST,/api/v1/investor/scenarios,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-110,POST,/api/v1/investor/scenarios/calculate,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-111,GET,/api/v1/investor/scenarios/{id},investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-112,POST,/api/v1/investor/search-plans,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-113,PATCH,/api/v1/investor/search-plans/{id},investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-114,POST,/api/v1/investor/search-runs,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-115,POST,/api/v1/investor/sequences,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-116,POST,/api/v1/investor/sequences/enroll,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-117,PATCH,/api/v1/investor/sequences/{id},investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-118,GET,/api/v1/investor/sources,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-119,POST,/api/v1/investor/sources,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-120,PATCH,/api/v1/investor/sources/{id},investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-121,POST,/api/v1/investor/subscriptions,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-122,GET,/api/v1/investor/subscriptions/{id},investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-123,POST,/api/v1/investor/subscriptions/{id}/payment-instructions,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-124,GET,/api/v1/investor/tasks,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-125,PATCH,/api/v1/investor/tasks/{id},investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-126,POST,/api/v1/investor/terms,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-127,GET,/api/v1/investor/threads,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-128,GET,/api/v1/investor/threads/{id}/messages,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read/Write
+API-V12-N-129,POST,/api/v1/investor/verification-cases,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-130,POST,/api/v1/investor/verification-cases/{id}/review,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Read/Write
+API-V12-N-131,POST,/api/v1/investor/webhooks/calendar,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Webhook (signed)
+API-V12-N-132,POST,/api/v1/investor/webhooks/email,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Webhook (signed)
+API-V12-N-133,POST,/api/v1/investor/webhooks/esign,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Webhook (signed)
+API-V12-N-134,POST,/api/v1/investor/webhooks/payment,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Webhook (signed)
+API-V12-N-135,POST,/api/v1/investor/webhooks/social,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Webhook (signed)
+API-V12-N-136,POST,/api/v1/investor/webhooks/verification,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Webhook (signed)
+API-V12-N-137,POST,/api/v1/investor/webhooks/whatsapp,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Webhook (signed)
+API-V12-N-138,POST,/api/v1/investor/offerings,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,"Create offering registration (route, jurisdictions, caps, solicitation mode) · role R02 · inv_offering"
+API-V12-N-139,POST,/api/v1/investor/offerings/{id}/counsel-signoffs,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Record counsel sign-off per jurisdiction (R10C) with doc-set hash · role R10C · inv_counsel_signoff
+API-V12-N-140,POST,/api/v1/investor/offerings/{id}/approve,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,R10 approval of a signed offering → approved_for_offer · role R10 · inv_offering
+API-V12-N-141,POST,/api/v1/investor/offerings/{id}/kill,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Kill switch for an offering (SEC-CTL-N-15) · role R01/R10 · inv_offering
+API-V12-N-142,POST,/api/v1/investor/eligibility-checks,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Submit evidence / provider result for AU-202 · role R04/R21 · inv_eligibility_check
+API-V12-N-143,GET,/api/v1/investor/eligibility-checks/{id},investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read decision with reason codes · role R04/R10 · inv_eligibility_check
+API-V12-N-144,POST,/api/v1/investor/relationship-provenance,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Record pre-existing relationship evidence · role R03 · inv_relationship_provenance
+API-V12-N-145,POST,/api/v1/investor/guard/evaluate,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Run AG-166 + AU-203 on a draft (dry-run) · role R03 · inv_guard_finding
+API-V12-N-146,GET,/api/v1/investor/offerings/{id}/counters,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read route cap counters · role R10 · inv_offer_counter
+API-V12-N-147,GET,/api/v1/investor-portal/me/rooms,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Invited investor: own granted rooms (W75) · role R21 · inv_access_grant
+API-V12-N-148,POST,/api/v1/investor-portal/me/eligibility,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Invited investor: self-certification and evidence upload (W76) · role R21 · inv_eligibility_check
+API-V12-N-149,POST,/api/v1/investor-portal/me/questions,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Invited investor: diligence question (W75) · role R21 · inv_diligence_request
+API-V12-N-150,POST,/api/v1/investor-portal/me/applications,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Invited investor: submit application (W75) · role R21 · inv_subscription
+API-V12-N-151,GET,/api/v1/public/investment/catalog,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Public neutral service catalogue for W55–W58 (no issuer data) · role R18 · catalog
+API-V12-N-152,POST,/api/v1/public/investment/quote-requests,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Public quote/demo request (W66/W70) · role R18 · saas quote request
+API-V12-W-0055,POST,/api/v1/investor/{id}/ledger/reserve,investor,Investment Automation II (Part 11.16c),11.16c,W,,RL-ADM,no,,Reserve an offeree slot (AU-230)
+API-V12-W-0056,GET,/api/v1/investor/{id}/ledger,investor,Investment Automation II (Part 11.16c),11.16c,R,,RL-ADM,no,,Headroom per jurisdiction
+API-V12-W-0057,POST,/api/v1/investor/{id}/offer-letters,investor,Investment Automation II (Part 11.16c),11.16c,W,,RL-ADM,no,,Generate PAS-4 / subscription docs for a named offeree
+API-V12-W-0058,POST,/api/v1/investor/{id}/approve,investor,Investment Automation II (Part 11.16c),11.16c,W,,RL-ADM,no,,R10 approval of reviewed draft (hash)
+API-V12-W-0059,GET,/api/v1/investor/{id}/readiness,investor,Investment Automation II (Part 11.16c),11.16c,R,,RL-ADM,no,,Readiness evaluation (V12 closing-checklist)
+API-V12-W-0060,POST,/api/v1/investor/{id}/approvals,investor,Investment Automation II (Part 11.16c),11.16c,W,,RL-ADM,no,,Record approval slot
+API-V12-W-0061,POST,/api/v1/investor/{id}/transition,investor,Investment Automation II (Part 11.16c),11.16c,W,,RL-ADM,no,API-V12-W-0065,Close (idempotent)
+API-V12-W-0062,POST,/api/v1/investor/{id}/acknowledgement,investor,Investment Automation II (Part 11.16c),11.16c,W,,RL-ADM,no,,Upload SRN / accession / SH01 receipt
+API-V12-W-0063,POST,/api/v1/investor/{id}/tieout,investor,Investment Automation II (Part 11.16c),11.16c,W,,RL-ADM,no,,Run figure tie-out
+API-V12-W-0064,POST,/api/v1/investor/{id}/publish,investor,Investment Automation II (Part 11.16c),11.16c,W,P+D,RL-ADM,no,,Dispatch approved update (V12)
+API-V12-W-0066,POST,/api/v1/investor/{id}/package/approve,investor,Investment Automation II (Part 11.16c),11.16c,W,,RL-ADM,no,,Approve package hash
+API-V12-W-0067,POST,/api/v1/investor/{id}/scenarios,investor,Investment Automation II (Part 11.16c),11.16c,W,,RL-ADM,no,,Compute repayment scenarios (dual engine)
+API-V12-W-0068,POST,/api/v1/investor/{id}/imports,investor,Investment Automation II (Part 11.16c),11.16c,W,,RL-ADM,no,,Authorised import
+API-V12-W-0069,GET,/api/v1/investor/{id}/revisions,investor,Investment Automation II (Part 11.16c),11.16c,R,,RL-ADM,no,,Revisions
+API-V12-W-0070,POST,/api/v1/investor/{id}/changes,investor,Investment Automation II (Part 11.16c),11.16c,W,,RL-ADM,no,,Propose change with authority
+API-V12-W-0071,POST,/api/v1/investor/changes/{id}/approve,investor,Investment Automation II (Part 11.16c),11.16c,W,,RL-ADM,no,,Approval slot
+API-V12-W-0072,POST,/api/v1/investor/changes/{id}/calculate,investor,Investment Automation II (Part 11.16c),11.16c,W,,RL-ADM,no,,Dilution/conversion (V12)
+API-V12-W-0073,POST,/api/v1/investor/changes/{id}/observations,investor,Investment Automation II (Part 11.16c),11.16c,W,,RL-ADM,no,,Submit observations
+API-V12-W-0075,POST,/api/v1/investor/{id}/review,investor,Investment Automation II (Part 11.16c),11.16c,W,,RL-ADM,no,API-V12-W-0079,Reviewer decision (V12)
+API-V12-W-0076,POST,/api/v1/investor/{id}/votes,investor,Investment Automation II (Part 11.16c),11.16c,W,,RL-ADM,no,,Cast vote (portal W87)
+API-V12-W-0077,POST,/api/v1/investor/{id}/certify,investor,Investment Automation II (Part 11.16c),11.16c,W,,RL-ADM,no,,Certify tally
+API-V12-W-0078,POST,/api/v1/investor/{id}/verification,investor,Investment Automation II (Part 11.16c),11.16c,W,,RL-ADM,no,,Provider callback (V12)
+API-V12-W-0080,GET,/api/v1/investor/{id}/activation,investor,Investment Automation II (Part 11.16c),11.16c,R,,RL-ADM,no,,Jurisdiction activation matrix
+API-V12-W-0081,POST,/api/v1/investor/{pack}/versions/{v}/signoff,investor,Investment Automation II (Part 11.16c),11.16c,W,,RL-ADM,no,,Record counsel sign-off
+API-V12-W-0082,GET,/api/v1/investor/{pack}/versions/{v}/events,investor,Investment Automation II (Part 11.16c),11.16c,R,,RL-ADM,no,,Withheld outputs
+API-V12-W-0083,GET,/api/v1/investor/{offer_id},investor,Investment Automation II (Part 11.16c),11.16c,R,,RL-ADM,no,,Export evidence bundle
+API-V12-W-0084,GET,/api/v1/investor/holdings,investor,Investment Automation II (Part 11.16c),11.16c,R,,RL-ADM,no,,Investor holding statement (W84)
+API-V12-W-0085,POST,/api/v2/mandates,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,W,P+D,RL-ADM,no,,Create draft
+API-V12-W-0086,PATCH,/api/v2/mandates/{id},admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,W,P+D,RL-ADM,no,,Edit draft (new version if pending: approvals void)
+API-V12-W-0087,POST,/api/v2/mandates/{id}/simulate,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,W,P+D,RL-ADM,no,,Run simulation
+API-V12-W-0088,POST,/api/v2/mandates/{id}/submit,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,W,P+D,RL-ADM,no,,Freeze digest; route approvals
+API-V12-W-0089,POST,/api/v2/mandates/{id}/approvals,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,A,P+D,RL-ADM,no,,"Approve/reject {digest, decision, reason}"
+API-V12-W-0090,POST,/api/v2/mandates/{id}/restrictions,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,W,P+D,RL-ADM,no,,Tighten overlay
+API-V12-W-0091,POST,/api/v2/mandates/{id}/suspend,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,W,P+D,RL-ADM,no,,Suspend (one) / resume (two-person request)
+API-V12-W-0092,POST,/api/v2/mandates/{id}/resume,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,W,P+D,RL-ADM,no,,Suspend (one) / resume (two-person request)
+API-V12-W-0093,POST,/api/v2/mandates/{id}/revoke,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,W,P+D,RL-ADM,no,,Revoke with reason code
+API-V12-W-0094,GET,/api/v2/mandates/{id}/mandates,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,R,,RL-ADM,no,,Read
+API-V12-W-0095,GET,/api/v2/mandates/{id},admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,R,,RL-ADM,no,,Read
+API-V12-W-0096,GET,/api/v2/mandates/{id}/versions/{v},admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,R,,RL-ADM,no,,Read
+API-V12-W-0097,GET,/api/v2/mandates/{id}/decisions,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,R,,RL-ADM,no,,Monitor
+API-V12-W-0098,GET,/api/v2/mandates/{id}/ledger,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,R,,RL-ADM,no,,Monitor
+API-V12-W-0099,GET,/api/v2/mandates/{id}/alerts,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,R,,RL-ADM,no,,Monitor
+API-V12-W-0100,POST,/api/v2/mandates/{id}/evidence-packs,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,W,P+D,RL-ADM,no,,Export (async)
+API-V12-W-0101,POST,/api/v2/internal/mandates/decide,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,W,P+D,RL-ADM,no,,PDP decision for an intent (service identity R19 only)
+API-V12-W-0102,POST,/api/v2/internal/mandates/kill-switches,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,X,P+D,RL-ADM,no,,Engage / request release
+API-V12-W-0103,POST,/api/v2/kill-switches/{id}/release-requests,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,X,P+D,RL-ADM,no,,Engage / request release
+API-V12-W-0104,GET,/api/v2/commerce/counterparties,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,R,,RL-ADM,no,,"Registry, tier changes"
+API-V12-W-0105,POST,/api/v2/commerce/counterparties,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,W,P+D,RL-ADM,no,,"Registry, tier changes"
+API-V12-W-0106,GET,/api/v2/commerce/counterparties/{id}/tier,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,R,,RL-ADM,no,,"Registry, tier changes"
+API-V12-W-0107,POST,/api/v2/commerce/counterparties/{id}/tier,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,W,P+D,RL-ADM,no,,"Registry, tier changes"
+API-V12-W-0108,POST,/api/v2/agent-gateway/{protocol}/inbound,public,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,W,P+D,RL-ADM,no,,"Counterparty message intake (public, mTLS optional, JWS mandatory)"
+API-V12-W-0109,GET,/.well-known/did.json,public,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,R,,RL-ADM,no,,"DID document, keys, published catalog"
+API-V12-W-0110,GET,/.well-known/jwks.json,public,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,R,,RL-ADM,no,,"DID document, keys, published catalog"
+API-V12-W-0111,GET,/agent/catalog,public,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,R,,RL-ADM,no,,"DID document, keys, published catalog"
+API-V12-W-0112,GET,/api/v2/commerce/sessions,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,R,,RL-ADM,no,,Negotiation desk
+API-V12-W-0113,POST,/api/v2/commerce/sessions,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,W,P+D,RL-ADM,no,,Negotiation desk
+API-V12-W-0114,GET,/api/v2/commerce/sessions/{id}/escalations/{eid}/decision,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,R,,RL-ADM,no,,Negotiation desk
+API-V12-W-0115,POST,/api/v2/commerce/sessions/{id}/escalations/{eid}/decision,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,W,P+D,RL-ADM,no,,Negotiation desk
+API-V12-W-0116,GET,/api/v2/payments/mandates,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,R,,RL-ADM,no,,Payments
+API-V12-W-0117,POST,/api/v2/payments/mandates,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,X,P+D,RL-ADM,no,,Payments
+API-V12-W-0118,GET,/api/v2/payments/transactions,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,R,,RL-ADM,no,,Payments
+API-V12-W-0119,POST,/api/v2/payments/transactions,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,X,P+D,RL-ADM,no,,Payments
+API-V12-W-0120,GET,/api/v2/payments/refunds,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,R,,RL-ADM,no,,Payments
+API-V12-W-0121,POST,/api/v2/payments/refunds,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,X,P+D,RL-ADM,no,,Payments
+API-V12-W-0122,GET,/api/v2/payments/disputes/{id}/responses,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,R,,RL-ADM,no,,Payments
+API-V12-W-0123,POST,/api/v2/payments/disputes/{id}/responses,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,X,P+D,RL-ADM,no,,Payments
+API-V12-W-0124,POST,/api/v2/webhooks/psp/{psp},hooks,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,W,P+D,RL-ADM,no,,PSP webhooks
+API-V12-W-0125,POST,/api/v2/bids/{id}/packages,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,W,P+D,RL-ADM,no,,Package and seal
+API-V12-W-0126,POST,/api/v2/packages/{pid}/seal,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,W,P+D,RL-ADM,no,,Package and seal
+API-V12-W-0127,POST,/api/v2/bids/{id}/submissions,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,X,P+D,RL-ADM,no,,Request submission (mode decided server-side)
+API-V12-W-0128,POST,/api/v2/bids/{id}/submissions/{sid}/manual-evidence,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,X,P+D,RL-ADM,no,,Record human submission evidence
+API-V12-W-0129,GET,/api/v2/bids/{id}/submissions/{sid}/portals,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,R,,RL-ADM,no,,Registry
+API-V12-W-0130,POST,/api/v2/bids/{id}/submissions/{sid}/portals,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,X,P+D,RL-ADM,no,,Registry
+API-V12-W-0131,GET,/api/v2/portals/{id}/capability-changes,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,R,,RL-ADM,no,,Registry
+API-V12-W-0132,POST,/api/v2/portals/{id}/capability-changes,admin,"Bounded mandates, agentic commerce, payments, bids (Part 11.17)",11.17b,W,P+D,RL-ADM,no,,Registry
+API-V12-Q-001,GET,/api/v2/admin/voice/campaigns,admin,AI voice and recordings (Part 11.18),11.18b,R,,RL-ADM,no,,List campaigns with state and counts
+API-V12-Q-002,POST,/api/v2/admin/voice/campaigns,admin,AI voice and recordings (Part 11.18),11.18b,W,P+D,RL-ADM,no,,Create draft campaign
+API-V12-Q-003,PATCH,/api/v2/admin/voice/campaigns/{id},admin,AI voice and recordings (Part 11.18),11.18b,W,,RL-ADM,no,,Edit draft (invalidates approvals)
+API-V12-Q-004,POST,/api/v2/admin/voice/campaigns/{id}/submit,admin,AI voice and recordings (Part 11.18),11.18b,W,P+D,RL-ADM,no,,Submit for review; runs AG-219 and preflight dry run
+API-V12-Q-005,POST,/api/v2/admin/voice/campaigns/{id}/approve,admin,AI voice and recordings (Part 11.18),11.18b,W,P+D,RL-ADM,no,,Approve exact digest (L1)
+API-V12-Q-006,POST,/api/v2/admin/voice/campaigns/{id}/pause,admin,AI voice and recordings (Part 11.18),11.18b,W,P+D,RL-ADM,no,,Lifecycle
+API-V12-Q-006.2,POST,/api/v2/admin/voice/campaigns/{id}/revoke,admin,AI voice and recordings (Part 11.18),11.18b,W,P+D,RL-ADM,no,,Lifecycle
+API-V12-Q-006.3,POST,/api/v2/admin/voice/campaigns/{id}/resume,admin,AI voice and recordings (Part 11.18),11.18b,W,P+D,RL-ADM,no,,Lifecycle
+API-V12-Q-007,GET,/api/v2/admin/voice/campaigns/{id}/scripts,admin,AI voice and recordings (Part 11.18),11.18b,R,,RL-ADM,no,,List scripts and templates
+API-V12-Q-008,POST,/api/v2/admin/voice/scripts/{id}/versions,admin,AI voice and recordings (Part 11.18),11.18b,W,P+D,RL-ADM,no,,New version (text per language)
+API-V12-Q-009,POST,/api/v2/admin/voice/scripts/{id}/versions/{v}/approve,admin,AI voice and recordings (Part 11.18),11.18b,W,P+D,RL-ADM,no,,Approve template version
+API-V12-Q-010,GET,/api/v2/admin/voice/scripts/{id}/versions/{v}/sessions,admin,AI voice and recordings (Part 11.18),11.18b,R,,RL-ADM,no,,Live calls
+API-V12-Q-011,POST,/api/v2/admin/voice/sessions/{id}/takeover,admin,AI voice and recordings (Part 11.18),11.18b,X,P+D,RL-ADM,no,,Warm transfer to the requesting human
+API-V12-Q-012,GET,/api/v2/admin/voice/sessions/{id},admin,AI voice and recordings (Part 11.18),11.18b,R,,RL-ADM,no,,"Call detail (timeline, evidence, summary)"
+API-V12-Q-013,GET,/api/v2/admin/voice/sessions/{id}/recording,admin,AI voice and recordings (Part 11.18),11.18b,R,,RL-ADM,no,,Signed playback URL (5 min)
+API-V12-Q-014,GET,/api/v2/admin/voice/sessions/{id}/transcript,admin,AI voice and recordings (Part 11.18),11.18b,R,,RL-ADM,no,,Redacted transcript
+API-V12-Q-015,POST,/api/v2/admin/voice/sessions/{id}/summary/approve,admin,AI voice and recordings (Part 11.18),11.18b,W,P+D,RL-ADM,no,,Approve/edit summary; triggers CRM sync
+API-V12-Q-016,POST,/api/v2/admin/voice/sessions/{id}/legal-hold,admin,AI voice and recordings (Part 11.18),11.18b,W,P+D,RL-ADM,no,,Place/release legal hold
+API-V12-Q-017,GET,/api/v2/admin/voice/sessions/{id}/handoffs,admin,AI voice and recordings (Part 11.18),11.18b,R,,RL-ADM,no,,Handoff queue and callbacks
+API-V12-Q-018,POST,/api/v2/admin/voice/handoffs/{id}/accept,admin,AI voice and recordings (Part 11.18),11.18b,W,P+D,RL-ADM,no,,Accept transfer / close callback
+API-V12-Q-018.2,POST,/api/v2/admin/voice/handoffs/{id}/complete,admin,AI voice and recordings (Part 11.18),11.18b,W,P+D,RL-ADM,no,,Accept transfer / close callback
+API-V12-Q-019,POST,/api/v2/admin/voice/handoffs/{id}/callback-requests,public,AI voice and recordings (Part 11.18),11.18b,W,,RL-ADM,no,,Callback request with consents (CMP-Q-01)
+API-V12-Q-020,POST,/api/v2/admin/voice/sessions/{id}/tasks,admin,AI voice and recordings (Part 11.18),11.18b,W,P+D,RL-ADM,no,,Create follow-up task from call
+API-V12-Q-021,GET,/api/v2/admin/voice/sessions/{id}/recording-policy,admin,AI voice and recordings (Part 11.18),11.18b,R,,RL-ADM,no,,Tenant recording mode per jurisdiction (stricter only)
+API-V12-Q-021.2,PUT,/api/v2/admin/voice/sessions/{id}/recording-policy,admin,AI voice and recordings (Part 11.18),11.18b,W,,RL-ADM,no,,Tenant recording mode per jurisdiction (stricter only)
+API-V12-Q-022,GET,/api/v2/admin/voice/retention/receipts,admin,AI voice and recordings (Part 11.18),11.18b,R,,RL-ADM,no,,Deletion receipts
+API-V12-Q-023,POST,/api/v2/admin/voice/dsar/{request_id}/voice-export,admin,AI voice and recordings (Part 11.18),11.18b,W,P+D,RL-ADM,no,,Export a data subject's recordings/transcripts
+API-V12-Q-024,POST,/api/v2/admin/voice/dsar/{request_id}/kill-switch,admin,AI voice and recordings (Part 11.18),11.18b,X,P+D,RL-ADM,no,,Kill switch at line/campaign/tenant/region/global
+API-V12-Q-025,GET,/api/v2/admin/voice/dsar/{request_id}/access-reviews,admin,AI voice and recordings (Part 11.18),11.18b,R,,RL-ADM,no,,Monthly access review report
+API-V12-Q-026,GET,/api/v2/admin/voice/dsar/{request_id}/numbers,admin,AI voice and recordings (Part 11.18),11.18b,R,,RL-ADM,no,,Number inventory
+API-V12-Q-027,POST,/api/v2/admin/voice/numbers/requests,admin,AI voice and recordings (Part 11.18),11.18b,W,P+D,RL-ADM,no,,Request number with documents
+API-V12-Q-028,POST,/api/v2/admin/voice/numbers/{id}/verify,admin,AI voice and recordings (Part 11.18),11.18b,W,P+D,RL-ADM,no,,Lifecycle
+API-V12-Q-028.2,POST,/api/v2/admin/voice/numbers/{id}/quarantine,admin,AI voice and recordings (Part 11.18),11.18b,W,P+D,RL-ADM,no,,Lifecycle
+API-V12-Q-028.3,POST,/api/v2/admin/voice/numbers/{id}/release,admin,AI voice and recordings (Part 11.18),11.18b,W,P+D,RL-ADM,no,,Lifecycle
+API-V12-Q-029,PUT,/api/v2/admin/voice/numbers/{id}/routing,admin,AI voice and recordings (Part 11.18),11.18b,W,,RL-ADM,no,,Inbound routing configuration
+API-V12-Q-030,POST,/hooks/voice/{provider}/inbound,hooks,AI voice and recordings (Part 11.18),11.18b,W,,RL-HOOK,no,,Incoming call notification
+API-V12-Q-031,POST,/hooks/voice/{provider}/status,hooks,AI voice and recordings (Part 11.18),11.18b,W,,RL-HOOK,no,,Call status and CDR
+API-V12-Q-032,POST,/hooks/voice/{provider}/amd,hooks,AI voice and recordings (Part 11.18),11.18b,W,,RL-HOOK,no,,AMD result
+API-V12-Q-033,POST,/hooks/voice/{provider}/dtmf,hooks,AI voice and recordings (Part 11.18),11.18b,W,,RL-HOOK,no,,DTMF events
+API-V12-Q-034,POST,/hooks/voice/{provider}/recording,hooks,AI voice and recordings (Part 11.18),11.18b,W,,RL-HOOK,no,,Provider-side recording ready (fallback only)
+API-V12-Q-035,POST,/hooks/voice/{provider}/number,hooks,AI voice and recordings (Part 11.18),11.18b,W,,RL-HOOK,no,,Number provisioning status
+API-V12-Q-037,GET,/hooks/voice/{provider}/providers,admin,AI voice and recordings (Part 11.18),11.18b,R,,RL-ADM,no,,Registry view of voice providers per port/region
+API-V12-Q-038,POST,/api/v2/admin/voice/providers/{port}/switch,admin,AI voice and recordings (Part 11.18),11.18b,X,P+D,RL-ADM,no,,Switch to the approved secondary
+API-V12-Q-039,GET,/api/v2/admin/voice/coaching/feedback,admin,AI voice and recordings (Part 11.18),11.18b,R,,RL-ADM,no,,"Learner feedback, share/revoke"
+API-V12-Q-039.2,POST,/api/v2/admin/voice/coaching/feedback,admin,AI voice and recordings (Part 11.18),11.18b,W,P+D,RL-ADM,no,,"Learner feedback, share/revoke"
+API-V12-Q-039.3,GET,/api/v2/admin/voice/coaching/feedback/{id}/share,admin,AI voice and recordings (Part 11.18),11.18b,R,,RL-ADM,no,,"Learner feedback, share/revoke"
+API-V12-Q-039.4,POST,/api/v2/admin/voice/coaching/feedback/{id}/share,admin,AI voice and recordings (Part 11.18),11.18b,W,P+D,RL-ADM,no,,"Learner feedback, share/revoke"
+API-V12-Q-040,GET,/api/v2/admin/voice/coaching/rubrics,admin,AI voice and recordings (Part 11.18),11.18b,R,,RL-ADM,no,,Rubric versions and approval
+API-V12-Q-040.2,POST,/api/v2/admin/voice/coaching/rubrics,admin,AI voice and recordings (Part 11.18),11.18b,W,P+D,RL-ADM,no,,Rubric versions and approval

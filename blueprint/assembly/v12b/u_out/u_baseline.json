@@ -1,0 +1,3232 @@
+{
+ "stories": {
+  "US-05-EA01": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "Research coverage ledger",
+   "priority": "Must",
+   "wave": "W1",
+   "points": "5\u20138"
+  },
+  "US-05-EA02": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "Source and segment playbook registry with launch checklist",
+   "priority": "Must",
+   "wave": "W1",
+   "points": "3\u20135"
+  },
+  "US-05-EA03": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "Discovery and provider benchmark",
+   "priority": "Must",
+   "wave": "W1",
+   "points": "5\u20138"
+  },
+  "US-05-EA04": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "Coverage planner",
+   "priority": "Should",
+   "wave": "W1",
+   "points": "3\u20135"
+  },
+  "US-06-EA01": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "Optional partnership-fit scoring version",
+   "priority": "Could",
+   "wave": "W3",
+   "points": "3\u20135"
+  },
+  "US-08-EA01": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "Reply taxonomy with deterministic effects",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "3\u20135"
+  },
+  "US-08-EA02": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "Deliverability stop thresholds and opt-out race",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "3\u20135"
+  },
+  "US-09-EA01": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "Recording consent for meetings and webinars",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-11-EA01": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "Social publication proof",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "2\u20133"
+  },
+  "US-12-EA01": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "Experiment registry with stop triggers",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "5\u20138"
+  },
+  "US-12-EA02": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "Acquisition operating plan",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "5\u20138"
+  },
+  "US-12-EA03": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "Weekly acquisition review",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "3\u20135"
+  },
+  "US-15-EA01": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "Outcome economics",
+   "priority": "Should",
+   "wave": "W5",
+   "points": "3\u20135"
+  },
+  "US-03-EA01": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "Jurisdiction activation decision record",
+   "priority": "Must",
+   "wave": "W3",
+   "points": "3\u20135"
+  },
+  "US-19-EA01": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "Legal disclosure block",
+   "priority": "Must",
+   "wave": "W3",
+   "points": "2\u20133"
+  },
+  "US-19-EA02": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "Website publisher segregation of duties",
+   "priority": "Must",
+   "wave": "W3",
+   "points": "1\u20132"
+  },
+  "US-20-EA01": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "Service arrangement selection",
+   "priority": "Should",
+   "wave": "W5",
+   "points": "2\u20133"
+  },
+  "US-20-EA02": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "Managed-service delegation grant",
+   "priority": "Should",
+   "wave": "W5",
+   "points": "5\u20138"
+  },
+  "US-20-EA03": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "External tenant founder workspace",
+   "priority": "Should",
+   "wave": "W5",
+   "points": "3\u20135"
+  },
+  "US-21-EA01": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "Training and competence record",
+   "priority": "Should",
+   "wave": "W0",
+   "points": "2\u20133"
+  },
+  "US-21-EA02": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "User-productivity study",
+   "priority": "Should",
+   "wave": "W2 and W5",
+   "points": "3\u20135"
+  },
+  "US-18-EA01": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "Template reviewer segregation of duties",
+   "priority": "Must",
+   "wave": "W3",
+   "points": "2\u20133"
+  },
+  "US-18-EA02": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "Hold record visibility",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-01-EA01": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "Integration administrator",
+   "priority": "Should",
+   "wave": "W1",
+   "points": "3\u20135"
+  },
+  "US-15-EA02": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "No cross-entity allocation",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "1\u20132"
+  },
+  "US-16-EA01": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "No renewal after cancellation or suppression",
+   "priority": "Must",
+   "wave": "W5",
+   "points": "1\u20132"
+  },
+  "US-14-EA01": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "Buy-side segregation of duties",
+   "priority": "Should",
+   "wave": "W4",
+   "points": "1\u20132"
+  },
+  "US-17-EA01": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "Relationship timeline",
+   "priority": "Should",
+   "wave": "W2",
+   "points": "3\u20135"
+  },
+  "US-17-EA02": {
+   "file": "Part-02-6_Source_Pack_Business_Domain_Enhancements.md",
+   "title": "Bulk action preview",
+   "priority": "Should",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-21-EB01": {
+   "file": "Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md",
+   "title": "EP-21",
+   "points": "5",
+   "wave": "W5"
+  },
+  "US-21-EB02": {
+   "file": "Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md",
+   "title": "EP-21",
+   "points": "5",
+   "wave": "W0-B (labels), W5 (drill)"
+  },
+  "US-17-EB01": {
+   "file": "Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md",
+   "title": "EP-17",
+   "points": "3",
+   "wave": "W2"
+  },
+  "US-01-EB01": {
+   "file": "Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md",
+   "title": "EP-01",
+   "points": "5",
+   "wave": "W0-A"
+  },
+  "US-01-EB02": {
+   "file": "Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md",
+   "title": "EP-01",
+   "points": "3",
+   "wave": "W0-A"
+  },
+  "US-19-EB01": {
+   "file": "Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md",
+   "title": "EP-19",
+   "points": "3",
+   "wave": "W2"
+  },
+  "US-08-EB01": {
+   "file": "Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md",
+   "title": "EP-08",
+   "points": "5",
+   "wave": "W2"
+  },
+  "US-08-EB02": {
+   "file": "Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md",
+   "title": "EP-08",
+   "points": "3",
+   "wave": "W2"
+  },
+  "US-04-EB01": {
+   "file": "Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md",
+   "title": "EP-04",
+   "points": "5",
+   "wave": "W0-B"
+  },
+  "US-04-EB02": {
+   "file": "Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md",
+   "title": "EP-04",
+   "points": "2",
+   "wave": "W0-B"
+  },
+  "US-03-EB01": {
+   "file": "Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md",
+   "title": "EP-03",
+   "points": "5",
+   "wave": "W4"
+  },
+  "US-17-EB02": {
+   "file": "Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md",
+   "title": "EP-17",
+   "points": "5",
+   "wave": "W3"
+  },
+  "US-18-EB01": {
+   "file": "Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md",
+   "title": "EP-18",
+   "points": "5",
+   "wave": "W0-B"
+  },
+  "US-18-EB02": {
+   "file": "Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md",
+   "title": "EP-18",
+   "points": "5",
+   "wave": "W2"
+  },
+  "US-18-EB03": {
+   "file": "Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md",
+   "title": "EP-18",
+   "points": "8",
+   "wave": "W2\u2013W5"
+  },
+  "US-09-EB01": {
+   "file": "Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md",
+   "title": "EP-09",
+   "points": "3",
+   "wave": "W3"
+  },
+  "US-21-EB03": {
+   "file": "Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md",
+   "title": "EP-21",
+   "points": "3",
+   "wave": "W2, W5"
+  },
+  "US-21-EB04": {
+   "file": "Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md",
+   "title": "EP-21",
+   "points": "3",
+   "wave": "W0-B"
+  },
+  "US-01-EB03": {
+   "file": "Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md",
+   "title": "EP-01",
+   "points": "2",
+   "wave": "W0-A"
+  },
+  "US-21-EB05": {
+   "file": "Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md",
+   "title": "EP-21",
+   "points": "2",
+   "wave": "W2"
+  },
+  "US-01-EB04": {
+   "file": "Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md",
+   "title": "EP-01",
+   "points": "3",
+   "wave": "W0-A"
+  },
+  "US-01-EB05": {
+   "file": "Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md",
+   "title": "EP-01",
+   "points": "2",
+   "wave": "W1"
+  },
+  "US-21-EB06": {
+   "file": "Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md",
+   "title": "EP-21",
+   "points": "3",
+   "wave": "W0-A"
+  },
+  "US-21-ED01": {
+   "file": "Part-03-5b_Source_Pack_API_Catalog_Reconciliation.md",
+   "title": "Contract approval gate and evidence record",
+   "points": "5\u20138",
+   "wave": "W0"
+  },
+  "US-21-ED02": {
+   "file": "Part-03-5b_Source_Pack_API_Catalog_Reconciliation.md",
+   "title": "Catalogue integrity and source traceability",
+   "points": "3\u20135",
+   "wave": "W0"
+  },
+  "US-01-ED01": {
+   "file": "Part-03-5b_Source_Pack_API_Catalog_Reconciliation.md",
+   "title": "Idempotent replay audit and new error codes",
+   "points": "2\u20133",
+   "wave": "W0"
+  },
+  "US-21-ED03": {
+   "file": "Part-03-5b_Source_Pack_API_Catalog_Reconciliation.md",
+   "title": "Per-operation performance budgets",
+   "points": "3\u20135",
+   "wave": "W1"
+  },
+  "US-01-ED02": {
+   "file": "Part-03-5b_Source_Pack_API_Catalog_Reconciliation.md",
+   "title": "Adapter command/result envelope",
+   "points": "5",
+   "wave": "W0"
+  },
+  "US-19-ED01": {
+   "file": "Part-03-5b_Source_Pack_API_Catalog_Reconciliation.md",
+   "title": "Manage external portal grants",
+   "points": "3",
+   "wave": "W2"
+  },
+  "US-19-ED02": {
+   "file": "Part-03-5b_Source_Pack_API_Catalog_Reconciliation.md",
+   "title": "Complete portal upload with checksum",
+   "points": "2",
+   "wave": "W2"
+  },
+  "US-19-ED03": {
+   "file": "Part-03-5b_Source_Pack_API_Catalog_Reconciliation.md",
+   "title": "Website ingress allowlist and domain disable",
+   "points": "3",
+   "wave": "W2"
+  },
+  "US-20-ED01": {
+   "file": "Part-03-5b_Source_Pack_API_Catalog_Reconciliation.md",
+   "title": "Service finance completeness",
+   "points": "5",
+   "wave": "W5"
+  },
+  "US-20-ED02": {
+   "file": "Part-03-5b_Source_Pack_API_Catalog_Reconciliation.md",
+   "title": "Applicant draft read and offboarding request",
+   "points": "2",
+   "wave": "W5"
+  },
+  "US-05-ED01": {
+   "file": "Part-03-5b_Source_Pack_API_Catalog_Reconciliation.md",
+   "title": "Intelligence configuration revisions",
+   "points": "3\u20135",
+   "wave": "W1"
+  },
+  "US-08-ED01": {
+   "file": "Part-03-5b_Source_Pack_API_Catalog_Reconciliation.md",
+   "title": "Message status, WABA list and assistant settings",
+   "points": "3",
+   "wave": "W2\u2013W3"
+  },
+  "US-18-ED01": {
+   "file": "Part-03-5b_Source_Pack_API_Catalog_Reconciliation.md",
+   "title": "Resume workflow and create template",
+   "points": "3",
+   "wave": "W2/W5"
+  },
+  "US-16-ED01": {
+   "file": "Part-03-5b_Source_Pack_API_Catalog_Reconciliation.md",
+   "title": "Pilot list and buy-order acceptance",
+   "points": "3",
+   "wave": "W4"
+  },
+  "US-03-ED01": {
+   "file": "Part-03-5b_Source_Pack_API_Catalog_Reconciliation.md",
+   "title": "Offline privacy request and eval cases",
+   "points": "2\u20133",
+   "wave": "W0\u2013W1"
+  },
+  "US-17-ED01": {
+   "file": "Part-03-5b_Source_Pack_API_Catalog_Reconciliation.md",
+   "title": "Forecast assumption revision",
+   "points": "2",
+   "wave": "W5"
+  },
+  "US-01-EE01": {
+   "file": "Part-03-6b_Source_Pack_Data_Catalog_Reconciliation.md",
+   "title": "As a platform admin (R01) I provision a startup from an approved business template so that new startups need configurati"
+  },
+  "US-20-EE01": {
+   "file": "Part-03-6b_Source_Pack_Data_Catalog_Reconciliation.md",
+   "title": "As a client admin (R12) I raise a service request from the portal and see its status"
+  },
+  "US-14-EE01": {
+   "file": "Part-03-6b_Source_Pack_Data_Catalog_Reconciliation.md",
+   "title": "As an order desk user I plan delivery milestones and record acceptance with evidence"
+  },
+  "US-21-EE01": {
+   "file": "Part-03-6b_Source_Pack_Data_Catalog_Reconciliation.md",
+   "title": "As the DevOps lead I run a restore drill that cannot send anything and proves recovery"
+  },
+  "US-21-EE02": {
+   "file": "Part-03-6b_Source_Pack_Data_Catalog_Reconciliation.md",
+   "title": "As the database lead I cannot run a production migration with open schema decisions"
+  },
+  "US-20-EE02": {
+   "file": "Part-03-6b_Source_Pack_Data_Catalog_Reconciliation.md",
+   "title": "As a client admin I offboard my tenant and receive a complete export without affecting other tenants"
+  },
+  "US-21-EI01": {
+   "file": "Part-04-4b_Source_Pack_Security_DevOps_Operations_Enhancements.md",
+   "title": "As the principal engineer, I want CI to enforce the coding standard so that scope, money and idempotency defects are cau",
+   "wave": "W0"
+  },
+  "US-21-EI02": {
+   "file": "Part-04-4b_Source_Pack_Security_DevOps_Operations_Enhancements.md",
+   "title": "As a reviewer, I want a risk-classed PR template and checklist so that security, money and migration changes always get ",
+   "wave": "W0"
+  },
+  "US-01-EI01": {
+   "file": "Part-04-4b_Source_Pack_Security_DevOps_Operations_Enhancements.md",
+   "title": "As the DevOps lead, I want services to refuse to start on invalid or conflicting configuration so that no environment ru",
+   "wave": "W0"
+  },
+  "US-01-EI02": {
+   "file": "Part-04-4b_Source_Pack_Security_DevOps_Operations_Enhancements.md",
+   "title": "As the security lead, I want configuration drift detected within 15 minutes so that unapproved flag or audience changes ",
+   "wave": "W1"
+  },
+  "US-18-EI01": {
+   "file": "Part-04-4b_Source_Pack_Security_DevOps_Operations_Enhancements.md",
+   "title": "As the on-call engineer, I want emergency stop and revocation to run on a reserved control queue so that they meet 60 s ",
+   "wave": "W2"
+  },
+  "US-21-EI03": {
+   "file": "Part-04-4b_Source_Pack_Security_DevOps_Operations_Enhancements.md",
+   "title": "As the release owner, I want a fail-closed release-gate validator so that no release proceeds with missing, duplicate or",
+   "wave": "W3"
+  },
+  "US-21-EI04": {
+   "file": "Part-04-4b_Source_Pack_Security_DevOps_Operations_Enhancements.md",
+   "title": "As the performance engineer, I want reproducible workload profiles and load-test records so that capacity claims are mea",
+   "wave": "W3"
+  },
+  "US-21-EI05": {
+   "file": "Part-04-4b_Source_Pack_Security_DevOps_Operations_Enhancements.md",
+   "title": "As the finance user (R08), I want financial mismatches to alert and quarantine automatically so that no wrong posting re",
+   "wave": "W4"
+  },
+  "US-04-EI01": {
+   "file": "Part-04-4b_Source_Pack_Security_DevOps_Operations_Enhancements.md",
+   "title": "As the FinOps lead, I want to pause one budget line without changing its cap so that I can stop runaway spend in one are",
+   "wave": "W2"
+  },
+  "US-21-EI06": {
+   "file": "Part-04-4b_Source_Pack_Security_DevOps_Operations_Enhancements.md",
+   "title": "As the Founder, I want a signed delivery package with access handover so that the operator can run the product without t",
+   "wave": "W3"
+  },
+  "US-0101": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Identity compatibility spike (12 checks)",
+   "priority": "Must",
+   "wave": "W0 (Sprint 0, Gate W0-A)",
+   "points": "3\u20135 (time-box 2\u20133 pd, DEC-019)"
+  },
+  "US-0102": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "AWS and IaC baseline",
+   "priority": "Must",
+   "wave": "W0 (Sprint 0, Gate W0-A)",
+   "points": "3\u20135"
+  },
+  "US-0103": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "CI pipeline skeleton",
+   "priority": "Must",
+   "wave": "W0 (Sprint 0, Gate W0-A)",
+   "points": "2\u20133"
+  },
+  "US-0104": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Admin sign-in through the BFF with the product audience",
+   "priority": "Must",
+   "wave": "W0 (Gate W0-A)",
+   "points": "3\u20135"
+  },
+  "US-0105": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "MFA step-up and session revocation for privileged roles",
+   "priority": "Must",
+   "wave": "W0 (Gate W0-B)",
+   "points": "2\u20133"
+  },
+  "US-0106": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "User, role and grant administration",
+   "priority": "Must",
+   "wave": "W0 (Gate W0-B)",
+   "points": "3\u20135"
+  },
+  "US-0107": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "RLS framework and scoped data access",
+   "priority": "Must",
+   "wave": "W0 (Sprint 0, Gate W0-A)",
+   "points": "3\u20135"
+  },
+  "US-0108": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Tenant and startup provisioning and lifecycle",
+   "priority": "Must",
+   "wave": "W0 (Gate W0-B)",
+   "points": "3\u20135"
+  },
+  "US-0109": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Support access grants",
+   "priority": "Must",
+   "wave": "W0 (Gate W0-B)",
+   "points": "2\u20133"
+  },
+  "US-0110": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Transactional outbox and idempotent consumers",
+   "priority": "Must",
+   "wave": "W0 (Sprint 0, Gate W0-A)",
+   "points": "3\u20135"
+  },
+  "US-0111": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Audit log and job activity",
+   "priority": "Must",
+   "wave": "W0 (Gate W0-B)",
+   "points": "2\u20133"
+  },
+  "US-0112": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Integration registry with secret references",
+   "priority": "Must",
+   "wave": "W0 (Gate W0-B)",
+   "points": "3\u20135"
+  },
+  "US-0113": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Seed synthetic data sets",
+   "priority": "Must",
+   "wave": "W0 (Sprint 0, Gate W0-A)",
+   "points": "2\u20133"
+  },
+  "US-0114": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Isolation and no-fundraising regression suites",
+   "priority": "Must",
+   "wave": "W0 (Gate W0-B); extended by every later epic",
+   "points": "2\u20133"
+  },
+  "US-0115": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Correlation IDs and distributed tracing foundation",
+   "priority": "Must",
+   "wave": "W0 (Gate W0-B)",
+   "points": "1\u20132"
+  },
+  "US-0116": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Accessible authentication and identity administration screens",
+   "priority": "Must",
+   "wave": "W0 (Gate W0-B)",
+   "points": "1\u20132"
+  },
+  "US-0117": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Feature-flag framework",
+   "priority": "Must",
+   "wave": "W0 (Sprint 0, Gate W0-A)",
+   "points": "1\u20132"
+  },
+  "US-0201": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Offering and capability editor with readiness lifecycle",
+   "priority": "Must",
+   "wave": "W0 (Gate W0-B)",
+   "points": "3\u20135"
+  },
+  "US-0202": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Claim and price-version approval on the hash-bound approval service",
+   "priority": "Must",
+   "wave": "W0 (Gate W0-B)",
+   "points": "3\u20135"
+  },
+  "US-0203": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Knowledge document upload, scanning, extraction and indexing",
+   "priority": "Must",
+   "wave": "W0 (Gate W0-B)",
+   "points": "3\u20135"
+  },
+  "US-0204": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Document approval and approved-knowledge search with citations",
+   "priority": "Must",
+   "wave": "W0 (Gate W0-B)",
+   "points": "3\u20135"
+  },
+  "US-0205": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Readiness gate enforcement across consumers",
+   "priority": "Must",
+   "wave": "W0 (Gate W0-B)",
+   "points": "2\u20133"
+  },
+  "US-0206": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Future product catalogue view",
+   "priority": "Should (BR-M66 is Must; launch workflow is W6 and may slip by MoSCoW, DEC-005)",
+   "wave": "W6",
+   "points": "1\u20132"
+  },
+  "US-0207": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Future product launch approval",
+   "priority": "Should",
+   "wave": "W6",
+   "points": "1\u20132"
+  },
+  "US-0208": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Import of seed catalogues and price lists",
+   "priority": "Must",
+   "wave": "W1 (FR-A103 import wave)",
+   "points": "2\u20133"
+  },
+  "US-0301": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Consent ledger and suppression service",
+   "priority": "Must",
+   "wave": "W0 (Sprint 0/1, Gate W0-A)",
+   "points": "3\u20135"
+  },
+  "US-0302": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Consent and communication policy versions",
+   "priority": "Must",
+   "wave": "W0 (Gate W0-B)",
+   "points": "2\u20133"
+  },
+  "US-0303": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Policy Decision Point skeleton",
+   "priority": "Must",
+   "wave": "W0 (Sprint 0/1, Gate W0-A)",
+   "points": "3\u20135"
+  },
+  "US-0304": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Engagement eligibility rule set in the PDP",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "5\u20138"
+  },
+  "US-0305": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Public opt-out and communication preferences",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "3\u20135"
+  },
+  "US-0306": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Contact, privacy, terms and help-centre intake",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "1\u20132"
+  },
+  "US-0307": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Privacy request queue and execution",
+   "priority": "Must",
+   "wave": "W0 (Gate W0-B)",
+   "points": "3\u20135"
+  },
+  "US-0308": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Retention schedule enforcement",
+   "priority": "Must",
+   "wave": "W0 (Gate W0-B)",
+   "points": "2\u20133"
+  },
+  "US-0309": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Compliance incident dashboard and containment",
+   "priority": "Must",
+   "wave": "W3",
+   "points": "3\u20135"
+  },
+  "US-0310": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Accessible opt-out, preference and privacy pages",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "1\u20132"
+  },
+  "US-0311": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Compliance metrics and alerting",
+   "priority": "Must",
+   "wave": "W3",
+   "points": "1\u20132"
+  },
+  "US-0401": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Model gateway skeleton and internal run API",
+   "priority": "Must",
+   "wave": "W0 (Sprint 0, Gate W0-A)",
+   "points": "3\u20135"
+  },
+  "US-0402": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Evaluation harness and CI regression gate",
+   "priority": "Must",
+   "wave": "W0 (Sprint 0, Gate W0-A)",
+   "points": "3\u20135"
+  },
+  "US-0403": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Tier routing with data-classification guard",
+   "priority": "Must",
+   "wave": "W0 (Gate W0-B)",
+   "points": "3\u20135"
+  },
+  "US-0404": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Cost reservation, budgets, alerts and emergency pause",
+   "priority": "Must",
+   "wave": "W0 (Sprint 0/1, Gate W0-A)",
+   "points": "3\u20135"
+  },
+  "US-0405": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "AI configuration and evaluation screen",
+   "priority": "Must",
+   "wave": "W0 (Gate W0-B)",
+   "points": "2\u20133"
+  },
+  "US-0406": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "Prompt-injection isolation and output guardrails",
+   "priority": "Must",
+   "wave": "W0 (Gate W0-B)",
+   "points": "2\u20133"
+  },
+  "US-0407": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "AI quality and feedback review",
+   "priority": "Must",
+   "wave": "W5",
+   "points": "2\u20133"
+  },
+  "US-0408": {
+   "file": "Part-05-1b_Epics_Stories_Foundation.md",
+   "title": "AI run logging and cost-per-task metrics",
+   "priority": "Must",
+   "wave": "W0 (Gate W0-B)",
+   "points": "1\u20132"
+  },
+  "US-0501": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Source permissions registry and approval",
+   "priority": "Must",
+   "wave": "W0 (Gate W0-B)",
+   "points": "3\u20135"
+  },
+  "US-0502": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Research planner and query safety",
+   "priority": "Must",
+   "wave": "W1",
+   "points": "3\u20135"
+  },
+  "US-0503": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Public web discovery adapter",
+   "priority": "Must",
+   "wave": "W1",
+   "points": "3\u20135"
+  },
+  "US-0504": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Evidence extraction and evidence detail panel",
+   "priority": "Must",
+   "wave": "W1",
+   "points": "3\u20135"
+  },
+  "US-0505": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Organization directory and safe merge",
+   "priority": "Must",
+   "wave": "W1",
+   "points": "3\u20135"
+  },
+  "US-0506": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Buying signal classification and signals board",
+   "priority": "Must",
+   "wave": "W1",
+   "points": "3\u20135"
+  },
+  "US-0507": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Business need review",
+   "priority": "Must",
+   "wave": "W1",
+   "points": "2\u20133"
+  },
+  "US-0508": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Readiness-gated solution matching",
+   "priority": "Must",
+   "wave": "W1",
+   "points": "2\u20133"
+  },
+  "US-0509": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Social listening and social source permissions",
+   "priority": "Could",
+   "wave": "W3",
+   "points": "2\u20133"
+  },
+  "US-0510": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Competitor and market watch",
+   "priority": "Could",
+   "wave": "W5",
+   "points": "2\u20133"
+  },
+  "US-0511": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Discovery fetcher sandbox (SSRF and egress controls)",
+   "priority": "Must",
+   "wave": "W1",
+   "points": "2\u20133"
+  },
+  "US-0512": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Research run observability and source coverage",
+   "priority": "Must",
+   "wave": "W1",
+   "points": "1\u20132"
+  },
+  "US-0601": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Opportunity scoring engine and shortlist",
+   "priority": "Must",
+   "wave": "W1",
+   "points": "3\u20135"
+  },
+  "US-0602": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Research rules and scoring settings with simulation",
+   "priority": "Must",
+   "wave": "W1",
+   "points": "2\u20133"
+  },
+  "US-0603": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Decision-maker and contact discovery",
+   "priority": "Must",
+   "wave": "W1",
+   "points": "2\u20133"
+  },
+  "US-0604": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Contact verification queue",
+   "priority": "Must",
+   "wave": "W1",
+   "points": "2\u20133"
+  },
+  "US-0605": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Contact quality and role mapping",
+   "priority": "Must",
+   "wave": "W1",
+   "points": "1\u20132"
+  },
+  "US-0606": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Qualified opportunity review and owner assignment",
+   "priority": "Must",
+   "wave": "W1",
+   "points": "3\u20135"
+  },
+  "US-0607": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Research approval and alert rules",
+   "priority": "Must",
+   "wave": "W1",
+   "points": "1\u20132"
+  },
+  "US-0608": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Accessible review queues and score visualizations",
+   "priority": "Must",
+   "wave": "W1",
+   "points": "1\u20132"
+  },
+  "US-0701": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "CRM pipeline with controlled stage transitions",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "3\u20135"
+  },
+  "US-0702": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Pipeline, assignment and closure-policy configuration",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-0703": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Lead form and routing configuration",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-0704": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "General business enquiry intake",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "3\u20135"
+  },
+  "US-0705": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Demo and partnership enquiry",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "1\u20132"
+  },
+  "US-0706": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "EduVerse student and institutional enquiry with guardian verification",
+   "priority": "Must",
+   "wave": "W3",
+   "points": "3\u20135"
+  },
+  "US-0707": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Customer 360 projection",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "3\u20135"
+  },
+  "US-0708": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Import of organizations, contacts and open deals",
+   "priority": "Must",
+   "wave": "W1 (FR-A103 import wave)",
+   "points": "2\u20133"
+  },
+  "US-0709": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Customer 360 freshness and intake funnel observability",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "1\u20132"
+  },
+  "US-0710": {
+   "file": "Part-05-1c_Epics_Stories_Foundation.md",
+   "title": "Public intake abuse controls",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "1\u20132"
+  },
+  "US-0801": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Evidence-based outreach draft",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "3\u20135"
+  },
+  "US-0802": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Channel preflight and approved-message queue with dispatch recheck",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-0803": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Message templates and approval queue",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-0804": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Amazon SES email adapter and email channel configuration (sandbox and contract tests)",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "3\u20135"
+  },
+  "US-0805": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Webhook ingestion framework (shared by all providers)",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "3\u20135"
+  },
+  "US-0806": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Bounce and complaint processing into suppression and containment",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "1\u20132"
+  },
+  "US-0807": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Unified inbound processing: normalisation, STOP and intent classification",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "3\u20135"
+  },
+  "US-0808": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Unified inbox and outbox",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-0809": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Follow-up sequences: eligible enrolment and stop conditions",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-0810": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Follow-up policies",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "1\u20132"
+  },
+  "US-0811": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Quiet-hours and frequency-cap engine",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-0812": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Uncertain-outcome reconciliation for messages",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-0813": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Omnichannel identity links and no duplicate replies",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "2\u20133"
+  },
+  "US-0814": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Accessibility of outreach editor and inbox",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "1\u20132"
+  },
+  "US-0815": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Messaging observability and alerts",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "1\u20132"
+  },
+  "US-0901": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Google Calendar adapter and calendar configuration",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-0902": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Slot offer and booking with hold and conflict prevention",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-0903": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Public and portal meeting booking page (W18) with accessible time limits",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "1\u20132"
+  },
+  "US-0904": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Meeting outcome, reminders and held-versus-booked integrity",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "1\u20132"
+  },
+  "US-0905": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Webinar and demo event manager with attendance verification",
+   "priority": "Could",
+   "wave": "W3",
+   "points": "1\u20132"
+  },
+  "US-0906": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Event registration (W19) and reminder settings (A063)",
+   "priority": "Could",
+   "wave": "W3",
+   "points": "2\u20133"
+  },
+  "US-1001": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "WhatsApp Cloud API adapter and WABA connection (sandbox and contract tests)",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "2\u20133"
+  },
+  "US-1002": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "WhatsApp template sync",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "2\u20133"
+  },
+  "US-1003": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "WhatsApp conversations on the unified engine",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "2\u20133"
+  },
+  "US-1004": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Website chat assistant with grounded answers and consented lead capture",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "3\u20135"
+  },
+  "US-1005": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Chat abuse controls, injection defence and transcript minimisation",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "2\u20133"
+  },
+  "US-1006": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Chat FAQ, intent taxonomy and omnichannel routing rules",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "2\u20133"
+  },
+  "US-1007": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Accessible chat widget",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "1\u20132"
+  },
+  "US-1101": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Content studio: brief to evidence-checked draft",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "3\u20135"
+  },
+  "US-1102": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Content and claims approval bound to the exact version",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "2\u20133"
+  },
+  "US-1103": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Public knowledge centre and consented case studies (W08, W09)",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "2\u20133"
+  },
+  "US-1104": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Spike: social platform API access and publishing tool choice",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "1\u20132"
+  },
+  "US-1105": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Social publishing adapter and account controls (sandbox and contract tests)",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "2\u20133"
+  },
+  "US-1106": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Social publishing calendar with exactly-once publishing",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "2\u20133"
+  },
+  "US-1107": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Uncertain-outcome reconciliation for social publishing",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "1\u20132"
+  },
+  "US-1108": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "SEO and visibility dashboard from authorised sources",
+   "priority": "Could",
+   "wave": "W3",
+   "points": "2\u20133"
+  },
+  "US-1109": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "SEO review backlog with verify-after-change",
+   "priority": "Could",
+   "wave": "W3",
+   "points": "1\u20132"
+  },
+  "US-1110": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Content accessibility gate",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "1\u20132"
+  },
+  "US-1201": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Landing page builder",
+   "priority": "Must",
+   "wave": "W3",
+   "points": "2\u20133"
+  },
+  "US-1202": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Landing page approval and publication",
+   "priority": "Must",
+   "wave": "W3",
+   "points": "2\u20133"
+  },
+  "US-1203": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Public campaign landing page with consented first-party attribution (W10)",
+   "priority": "Must",
+   "wave": "W3",
+   "points": "2\u20133"
+  },
+  "US-1204": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Campaign builder, permitted audience and simulation",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "3\u20135"
+  },
+  "US-1205": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Campaign approval, budget reservation and execution-time suppression",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "2\u20133"
+  },
+  "US-1206": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Ads provider adapter (sandbox and contract tests) behind the B12 gate",
+   "priority": "Could",
+   "wave": "W3",
+   "points": "2\u20133"
+  },
+  "US-1207": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Paid advertising dashboard and spend anomaly detection",
+   "priority": "Could",
+   "wave": "W3",
+   "points": "1\u20132"
+  },
+  "US-1208": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Advertising spend caps, launch and pause",
+   "priority": "Could",
+   "wave": "W3",
+   "points": "2\u20133"
+  },
+  "US-1209": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Partner referral form (W20)",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "1\u20132"
+  },
+  "US-1210": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Referral and partner approvals with commission recorded only",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "1\u20132"
+  },
+  "US-1301": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Proposal builder from approved templates and price snapshot",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "3\u20135"
+  },
+  "US-1302": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Proposal approval queue bound to exact revision",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "2\u20133"
+  },
+  "US-1303": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Decimal pricing library with exhaustive tests",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "2\u20133"
+  },
+  "US-1304": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Quotation builder with policy-bounded discounts and GST",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "3\u20135"
+  },
+  "US-1305": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Price and discount approval by threshold and margin floor",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "2\u20133"
+  },
+  "US-1306": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Portal proposal and quotation review (W23)",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "2\u20133"
+  },
+  "US-1307": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Negotiation and objection handling with approved answers",
+   "priority": "Should",
+   "wave": "W4",
+   "points": "2\u20133"
+  },
+  "US-1308": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Negotiation exception queue",
+   "priority": "Should",
+   "wave": "W4",
+   "points": "1\u20132"
+  },
+  "US-1309": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Contracts and MoUs from approved templates with signature evidence",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "2\u20133"
+  },
+  "US-1310": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Contract and legal approvals",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "1\u20132"
+  },
+  "US-1311": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "E-sign adapter interface: signed-PDF path (W4) and provider integration (W5)",
+   "priority": "Must",
+   "wave": "W4 (signed PDF) / W5 (provider)",
+   "points": "2\u20133"
+  },
+  "US-1312": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Portal agreement review and e-signature (W24)",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "2\u20133"
+  },
+  "US-1313": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Step-up MFA and separation of duties for commercial approvals",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "1\u20132"
+  },
+  "US-1401": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Bid desk with capability-based routing",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "2\u20133"
+  },
+  "US-1402": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Eligibility checklist and bid/no-bid decision",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "2\u20133"
+  },
+  "US-1403": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Tender deadline guard",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "2\u20133"
+  },
+  "US-1404": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Human submission evidence, award and withdrawal",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "2\u20133"
+  },
+  "US-1405": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Project requirement submission and routing (W15)",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "1\u20132"
+  },
+  "US-1406": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Request for quotation intake (W14) to quotation draft",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "1\u20132"
+  },
+  "US-1407": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Supplier registration and supply enquiry (W16)",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "1\u20132"
+  },
+  "US-1408": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Purchase and sales order desk with reservation",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "3\u20135"
+  },
+  "US-1409": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Fulfilment idempotency and over-delivery guard",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "2\u20133"
+  },
+  "US-1410": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Acceptance and separate receivable and payable postings",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "2\u20133"
+  },
+  "US-1411": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Portal order, project and service status (W25)",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "1\u20132"
+  },
+  "US-1412": {
+   "file": "Part-05-2_Epics_Stories_Engagement_and_Commerce.md",
+   "title": "Data migration: price lists, availability and open bid/order deals import",
+   "priority": "Should",
+   "wave": "W4",
+   "points": "1\u20132"
+  },
+  "US-1501": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Payment adapter interface, signed webhook intake and de-duplication",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "3\u20135"
+  },
+  "US-1502": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Invoice draft and Finance maker-checker approval",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "2\u20133"
+  },
+  "US-1503": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Payment evidence capture and maker/checker verification with discrepancy cases",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "3\u20135"
+  },
+  "US-1504": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Allocation, partial payment and ClosurePolicy gate",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "3\u20135"
+  },
+  "US-1505": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Payment reconciliation queue, double-allocation prevention and reversals",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "2\u20133"
+  },
+  "US-1506": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Customer portal invoice and payment status",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "2\u20133"
+  },
+  "US-1507": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Ledger-derived revenue and attribution dashboard",
+   "priority": "Must",
+   "wave": "W5",
+   "points": "2\u20133"
+  },
+  "US-1508": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "KPI definitions, attribution model and revenue reconciliation settings",
+   "priority": "Must",
+   "wave": "W5",
+   "points": "1\u20132"
+  },
+  "US-1509": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Payment data protection and finance evidence access",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "1\u20132"
+  },
+  "US-1510": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Closure integrity monitor and finance notifications",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "1\u20132"
+  },
+  "US-1511": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "AP-04 Closure and receipt distinction acceptance run",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "1\u20132"
+  },
+  "US-1601": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Offering-specific onboarding instantiation and checklist",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "2\u20133"
+  },
+  "US-1602": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Onboarding assignment, SLA reminders and escalation",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "1\u20132"
+  },
+  "US-1603": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Portal onboarding and document exchange",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "2\u20133"
+  },
+  "US-1604": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Portal support, feedback and renewal requests",
+   "priority": "Should",
+   "wave": "W4",
+   "points": "2\u20133"
+  },
+  "US-1605": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Renewal calendar, policies and eligible reminders",
+   "priority": "Should",
+   "wave": "W4",
+   "points": "3\u20135"
+  },
+  "US-1606": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Lost deal capture, follow-up stop and feedback learning",
+   "priority": "Should",
+   "wave": "W4",
+   "points": "2\u20133"
+  },
+  "US-1607": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Partner deployment pipeline and readiness approval",
+   "priority": "Should",
+   "wave": "W4",
+   "points": "2\u20133"
+  },
+  "US-1608": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Insurance institutional pilot and approval",
+   "priority": "Could",
+   "wave": "W6",
+   "points": "1\u20132"
+  },
+  "US-1609": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Technology licensing enquiries and API scope approval",
+   "priority": "Could",
+   "wave": "W6",
+   "points": "1\u20132"
+  },
+  "US-1610": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Phygital expansion tracker and readiness approval",
+   "priority": "Could",
+   "wave": "W6",
+   "points": "1\u20132"
+  },
+  "US-1611": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Sensitive-data exclusion in lifecycle records",
+   "priority": "Must",
+   "wave": "W4",
+   "points": "1\u20132"
+  },
+  "US-1612": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Onboarding, renewal, loss and pilot reporting",
+   "priority": "Should",
+   "wave": "W4",
+   "points": "1\u20132"
+  },
+  "US-1701": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Command Centre shell, seven-view navigation and scope selector",
+   "priority": "Must",
+   "wave": "W0",
+   "points": "3\u20135"
+  },
+  "US-1702": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Portfolio read-only enforcement and cross-tenant aggregation denial",
+   "priority": "Must",
+   "wave": "W0",
+   "points": "1\u20132"
+  },
+  "US-1703": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Persistent action and notification centre with email digest",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-1704": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Growth and management dashboards",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "3\u20135"
+  },
+  "US-1705": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Unified Command Centre home with approval and exception queues",
+   "priority": "Must",
+   "wave": "W2 (frame) / W5 (complete)",
+   "points": "2\u20133"
+  },
+  "US-1706": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Sales forecast (estimate) and forecast model settings",
+   "priority": "Could",
+   "wave": "W5",
+   "points": "2\u20133"
+  },
+  "US-1707": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Admin Copilot: grounded, cited, read-only side panel",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "3\u20135"
+  },
+  "US-1708": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Scoped global search (Ctrl/Cmd+K)",
+   "priority": "Should",
+   "wave": "W2",
+   "points": "1\u20132"
+  },
+  "US-1709": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Accessibility of the shell, dashboards and charts",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "1\u20132"
+  },
+  "US-1710": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Dashboard projection freshness and totals reconciliation monitor",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "1\u20132"
+  },
+  "US-1801": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Spike: DAG executor on Celery with pinned revisions",
+   "priority": "Must",
+   "wave": "W1",
+   "points": "1\u20132"
+  },
+  "US-1802": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Workflow definition model and declarative DAG validation",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "3\u20135"
+  },
+  "US-1803": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Automation template and node library",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-1804": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Workflow control centre: edit, simulate, version, enable",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "3\u20135"
+  },
+  "US-1805": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Autonomy cap matrix enforced in the Policy Decision Point",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-1806": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Emergency stop and pause by scope",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-1807": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Simulation mode with zero live effects",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-1808": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Event and trigger management centre",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-1809": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Live execution monitor and uncertain-outcome reconciliation",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "3\u20135"
+  },
+  "US-1810": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Automation coordination and conflict resolution",
+   "priority": "Must",
+   "wave": "W3",
+   "points": "2\u20133"
+  },
+  "US-1811": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Runaway prevention limits",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-1812": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Autonomous commercial planner: generate, simulate, approve, start",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "3\u20135"
+  },
+  "US-1813": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Controlled Autonomous (L3) activation gate",
+   "priority": "Should",
+   "wave": "W5",
+   "points": "1\u20132"
+  },
+  "US-1814": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "AP-06 Autonomy and approval acceptance run",
+   "priority": "Must",
+   "wave": "W5",
+   "points": "1\u20132"
+  },
+  "US-1815": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Automation operations metrics and timeliness",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "1\u20132"
+  },
+  "US-1901": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Host-to-tenant resolution and verified domain mapping",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-1902": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Immutable publication snapshots, atomic pointer and CDN cache keying",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "3\u20135"
+  },
+  "US-1903": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Website configuration and content management",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "3\u20135"
+  },
+  "US-1904": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Website preview, approval, publishing, rollback and analytics",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "3\u20135"
+  },
+  "US-1905": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Platform homepage and startup directory",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-1906": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Startup website, offering catalogue and offering details",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-1907": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Approved pricing and packages (public and private)",
+   "priority": "Must",
+   "wave": "W3",
+   "points": "1\u20132"
+  },
+  "US-1908": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Industry and solution pages",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "1\u20132"
+  },
+  "US-1909": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Portal registration, login and recovery with the external audience",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-1910": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Customer self-service dashboard",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-1911": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Public site accessibility, accessibility statement and performance budgets",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-1912": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Surface separation, abuse controls and cross-boundary tests",
+   "priority": "Must",
+   "wave": "W2",
+   "points": "2\u20133"
+  },
+  "US-1913": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Publication and public-site monitoring",
+   "priority": "Should",
+   "wave": "W2",
+   "points": "1\u20132"
+  },
+  "US-2001": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "SaaS introduction, plans and demo",
+   "priority": "Should",
+   "wave": "W5",
+   "points": "1\u20132"
+  },
+  "US-2002": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Client registration with administrator verification and isolated draft",
+   "priority": "Should",
+   "wave": "W5",
+   "points": "2\u20133"
+  },
+  "US-2003": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "AI business onboarding and configuration wizard",
+   "priority": "Should",
+   "wave": "W5",
+   "points": "3\u20135"
+  },
+  "US-2004": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Business profile templates and branding (AP-01, AP-07)",
+   "priority": "Must",
+   "wave": "W5",
+   "points": "2\u20133"
+  },
+  "US-2005": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Plans, entitlements, metering and usage reconciliation",
+   "priority": "Should",
+   "wave": "W5",
+   "points": "2\u20133"
+  },
+  "US-2006": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Service invoicing, trial, suspension and credits",
+   "priority": "Should",
+   "wave": "W5",
+   "points": "2\u20133"
+  },
+  "US-2007": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "SaaS client service portal with support-access visibility",
+   "priority": "Should",
+   "wave": "W5",
+   "points": "2\u20133"
+  },
+  "US-2008": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Import with dry-run validation and consent gating",
+   "priority": "Should",
+   "wave": "W1",
+   "points": "2\u20133"
+  },
+  "US-2009": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Export, portability and offboarding",
+   "priority": "Should",
+   "wave": "W5",
+   "points": "2\u20133"
+  },
+  "US-2010": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Business configuration change centre",
+   "priority": "Must",
+   "wave": "W5",
+   "points": "2\u20133"
+  },
+  "US-2011": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "AP-09 Entitlement and trial controls acceptance run",
+   "priority": "Should",
+   "wave": "W5",
+   "points": "1\u20132"
+  },
+  "US-2012": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "AP-10 two-tenant boundary acceptance for the SaaS lifecycle",
+   "priority": "Must",
+   "wave": "W5",
+   "points": "1\u20132"
+  },
+  "US-2101": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "CI/CD release pipeline with blocking gates from W0",
+   "priority": "Must",
+   "wave": "W0",
+   "points": "3\u20135"
+  },
+  "US-2102": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Health and readiness endpoints",
+   "priority": "Must",
+   "wave": "W0",
+   "points": "1\u20132"
+  },
+  "US-2103": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Observability instrumentation baseline",
+   "priority": "Must",
+   "wave": "W0",
+   "points": "2\u20133"
+  },
+  "US-2104": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "System health, SLO dashboards and incident management",
+   "priority": "Must",
+   "wave": "W0",
+   "points": "2\u20133"
+  },
+  "US-2105": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Provider outage resilience and dead-letter handling",
+   "priority": "Must",
+   "wave": "W0",
+   "points": "2\u20133"
+  },
+  "US-2106": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Production release readiness and evidence gate",
+   "priority": "Must",
+   "wave": "W0 (basic) / W5 (complete)",
+   "points": "2\u20133"
+  },
+  "US-2107": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Synthetic end-to-end journey suite",
+   "priority": "Must",
+   "wave": "W5",
+   "points": "3\u20135"
+  },
+  "US-2108": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Backup restore drill",
+   "priority": "Must",
+   "wave": "W0",
+   "points": "1\u20132"
+  },
+  "US-2109": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Rollback rehearsal",
+   "priority": "Must",
+   "wave": "W0",
+   "points": "1\u20132"
+  },
+  "US-2110": {
+   "file": "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md",
+   "title": "Requirements traceability and delivery evidence records",
+   "priority": "Must",
+   "wave": "W0",
+   "points": "1\u20132"
+  },
+  "US-17-EC01": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Optimization Intelligence panel"
+  },
+  "US-01-EC01": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Legacy operation aliases"
+  },
+  "US-17-EC02": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Related screens keep scope"
+  },
+  "US-17-EC03": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Status footer and focus"
+  },
+  "US-04-EC01": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Honest adapter display"
+  },
+  "US-19-EC01": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Website calls only allowlisted operations"
+  },
+  "US-21-EC01": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Design evidence per wave"
+  },
+  "US-17-EC04": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Responsive and accessible shell"
+  },
+  "US-21-EH01": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Provider benchmark and activation record",
+   "priority": "Must",
+   "wave": "W0 (framework) / each activation",
+   "points": "2\u20133"
+  },
+  "US-21-EH02": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Go-live handover, access inventory and training completion",
+   "priority": "Must",
+   "wave": "W4 (R1 go-live) and W5 (R2)",
+   "points": "2\u20133"
+  },
+  "US-21-EH03": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Engineering decision queue (SPDEC)",
+   "priority": "Must",
+   "wave": "W0",
+   "points": "3\u20135"
+  },
+  "US-21-EH04": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "QC register, evidence manifest validator and layer sign-off",
+   "priority": "Must",
+   "wave": "W0 (register, validator) / W4 (sign-off in A090)",
+   "points": "3\u20135"
+  },
+  "US-17-EH01": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Field standardization of the 138 retained screens",
+   "priority": "Should",
+   "wave": "W2\u2013W5 (with each screen's story)",
+   "points": "5\u20138 (shared components)"
+  },
+  "US-20-EH01": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "SaaS client service request",
+   "priority": "Should",
+   "wave": "W5",
+   "points": "2\u20133"
+  },
+  "US-04-EF01": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "AI result envelope v2 and prompt-contract registry",
+   "priority": "Must",
+   "wave": "W0",
+   "points": "3\u20135"
+  },
+  "US-04-EF02": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Two-sided RAG ACL and validity window",
+   "priority": "Must",
+   "wave": "W0",
+   "points": "3\u20135"
+  },
+  "US-04-EF03": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Authorization-safe cache key and numeric validation",
+   "priority": "Must",
+   "wave": "W0",
+   "points": "2\u20133"
+  },
+  "US-04-EF04": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Paid-fallback control and procurement gate for AI and providers",
+   "priority": "Must",
+   "wave": "W0",
+   "points": "3\u20135"
+  },
+  "US-04-EF05": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Budget per surface and early-warning notice",
+   "priority": "Must (surface) / Could (70%)",
+   "wave": "W3 / W0",
+   "points": "2\u20133"
+  },
+  "US-01-EF01": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Integration candidate register and adapter lifecycle"
+  },
+  "US-02-EF01": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Knowledge revocation propagation",
+   "priority": "Must",
+   "wave": "W1",
+   "points": "3\u20135"
+  },
+  "US-05-EF01": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Native-first search and extraction benchmark",
+   "priority": "Should",
+   "wave": "W1",
+   "points": "5\u20138"
+  },
+  "US-09-EF01": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Meeting notes summarizer (AG-037)",
+   "priority": "Should",
+   "wave": "W4",
+   "points": "3\u20135"
+  },
+  "US-09-EF02": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Event registration automation (AU-051)",
+   "priority": "Should",
+   "wave": "W3",
+   "points": "3\u20135"
+  },
+  "US-14-EF01": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Tender amendment detection (AU-052)",
+   "priority": "Should",
+   "wave": "W4",
+   "points": "3\u20135"
+  },
+  "US-16-EF01": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Retention next-best action (AG-038)",
+   "priority": "Could",
+   "wave": "W5",
+   "points": "3\u20135"
+  },
+  "US-18-EF01": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Automation library seed",
+   "priority": "Should",
+   "wave": "W2",
+   "points": "5\u20138"
+  },
+  "US-20-EF01": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Invoice reconciliation and contribution margin",
+   "priority": "Should",
+   "wave": "W5",
+   "points": "5\u20138"
+  },
+  "US-21-EF01": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Licence register gate",
+   "priority": "Must",
+   "wave": "W0",
+   "points": "2\u20133"
+  },
+  "US-01-EJ01": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Gate privileged permissions on training completion"
+  },
+  "US-01-EJ02": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Record training outcomes with independent review"
+  },
+  "US-21-EJ01": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Training tenant with simulated adapters and reset"
+  },
+  "US-17-EJ01": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Contextual help and training banner"
+  },
+  "US-21-EJ02": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Technical-debt register and monthly maintenance log"
+  },
+  "US-21-EJ03": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Feature lifecycle and retirement checks"
+  },
+  "US-21-EJ09": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Change impact record checked in CI"
+  },
+  "US-21-EJ04": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Optimization register and scorecard"
+  },
+  "US-17-EJ02": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "OKPI registry and measurements"
+  },
+  "US-21-EJ05": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Evidence manifest validator"
+  },
+  "US-01-EJ03": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Authorization-safe cache keys"
+  },
+  "US-17-EJ03": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Operational projection freshness"
+  },
+  "US-04-EJ01": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Spend early-warning thresholds"
+  },
+  "US-21-EJ06": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Recovery tiers and growth RTO"
+  },
+  "US-21-EJ07": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Benchmark record"
+  },
+  "US-21-EJ08": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Fail-fast mandatory configuration"
+  },
+  "US-20-EJ01": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "SLA schedule"
+  },
+  "US-20-EJ02": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Monthly service report"
+  },
+  "US-20-EJ03": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Managed-service scope"
+  },
+  "US-20-EJ04": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Onboarding checklist and timer"
+  },
+  "US-20-EJ05": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Renewal and offboarding verification"
+  },
+  "US-20-EJ06": {
+   "file": "Part-06-6_Requirements_Traceability_Matrix.md",
+   "title": "Tenant economics and cohorts"
+  },
+  "US-18-V101": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Supervisor plan for an objective",
+   "priority": "Should",
+   "release": "A1",
+   "points": "8"
+  },
+  "US-18-V102": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Re-plan limits and kill switch",
+   "priority": "Must",
+   "release": "A1",
+   "points": "5"
+  },
+  "US-04-V101": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Canary rollout with automatic rollback",
+   "priority": "Must",
+   "release": "A1",
+   "points": "8"
+  },
+  "US-04-V102": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Continuous red-team",
+   "priority": "Must",
+   "release": "A1",
+   "points": "5"
+  },
+  "US-04-V103": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Drift monitoring",
+   "priority": "Must",
+   "release": "A1",
+   "points": "5"
+  },
+  "US-04-V104": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "AI SLOs per agent version",
+   "priority": "Must",
+   "release": "A1",
+   "points": "5"
+  },
+  "US-04-V105": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Cost optimization proposals",
+   "priority": "Should",
+   "release": "A1",
+   "points": "3"
+  },
+  "US-04-V106": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Separate advanced AI budget line",
+   "priority": "Must",
+   "release": "A1",
+   "points": "3"
+  },
+  "US-04-V107": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "AI inventory and model cards",
+   "priority": "Must",
+   "release": "A1",
+   "points": "3"
+  },
+  "US-04-V108": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Feedback to labelled data",
+   "priority": "Must",
+   "release": "A1",
+   "points": "3"
+  },
+  "US-04-V109": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Governed long-term memory",
+   "priority": "Must",
+   "release": "A1",
+   "points": "8"
+  },
+  "US-05-V101": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Account research brief",
+   "priority": "Should",
+   "release": "A1",
+   "points": "8"
+  },
+  "US-05-V102": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Intent fusion timeline",
+   "priority": "Should",
+   "release": "A2",
+   "points": "5"
+  },
+  "US-06-V101": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Advisory propensity",
+   "priority": "Should",
+   "release": "A1 (shadow) / A2",
+   "points": "13"
+  },
+  "US-06-V102": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Duplicate organization proposals",
+   "priority": "Should",
+   "release": "A1",
+   "points": "5"
+  },
+  "US-17-V101": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Next best action",
+   "priority": "Should",
+   "release": "A2",
+   "points": "8"
+  },
+  "US-17-V102": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Deal-risk radar",
+   "priority": "Should",
+   "release": "A2",
+   "points": "5"
+  },
+  "US-17-V103": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Forecast variance and hygiene",
+   "priority": "Should",
+   "release": "A2",
+   "points": "5"
+  },
+  "US-17-V104": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Command bar",
+   "priority": "Could",
+   "release": "A2",
+   "points": "5"
+  },
+  "US-16-V101": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Churn-risk advisory",
+   "priority": "Could",
+   "release": "A3",
+   "points": "8"
+  },
+  "US-13-V101": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Objection practice",
+   "priority": "Could",
+   "release": "A2",
+   "points": "5"
+  },
+  "US-13-V102": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Price-book guidance",
+   "priority": "Could",
+   "release": "A2",
+   "points": "3"
+  },
+  "US-14-V101": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "RFP response co-pilot",
+   "priority": "Should",
+   "release": "A1",
+   "points": "13"
+  },
+  "US-08-V101": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Conversation insights",
+   "priority": "Could",
+   "release": "A3",
+   "points": "8"
+  },
+  "US-08-V102": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Statistical send windows",
+   "priority": "Could",
+   "release": "A3",
+   "points": "3"
+  },
+  "US-12-V101": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Segment variants",
+   "priority": "Should",
+   "release": "A2",
+   "points": "8"
+  },
+  "US-12-V102": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Campaign plan and pacing",
+   "priority": "Could",
+   "release": "A2",
+   "points": "5"
+  },
+  "US-12-V103": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Experiments",
+   "priority": "Should",
+   "release": "A2",
+   "points": "8"
+  },
+  "US-12-V104": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Attribution and marketing mix",
+   "priority": "Could",
+   "release": "A3",
+   "points": "8"
+  },
+  "US-11-V101": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Indic localization",
+   "priority": "Should",
+   "release": "A2",
+   "points": "8"
+  },
+  "US-02-V101": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Knowledge freshness",
+   "priority": "Must",
+   "release": "A1",
+   "points": "8"
+  },
+  "US-10-V101": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "WhatsApp concierge",
+   "priority": "Should",
+   "release": "A2",
+   "points": "13"
+  },
+  "US-09-V101": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Meeting-prep brief",
+   "priority": "Could",
+   "release": "A2",
+   "points": "3"
+  },
+  "US-03-V101": {
+   "file": "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md",
+   "title": "Compliance pre-check",
+   "priority": "Should",
+   "release": "A1",
+   "points": "5"
+  },
+  "US-06-V201": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "Target account list with tiers",
+   "priority": "Must",
+   "release": "A1",
+   "points": "5"
+  },
+  "US-06-V202": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "Buying-committee map",
+   "priority": "Must",
+   "release": "A1",
+   "points": "5"
+  },
+  "US-07-V203": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "Account plan",
+   "priority": "Should",
+   "release": "A2",
+   "points": "5"
+  },
+  "US-05-V204": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "Intent and signal hub",
+   "priority": "Must",
+   "release": "A1",
+   "points": "8"
+  },
+  "US-07-V205": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "Lead-to-account matching",
+   "priority": "Must",
+   "release": "A1",
+   "points": "5"
+  },
+  "US-07-V206": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "Routing with speed-to-lead SLA",
+   "priority": "Must",
+   "release": "A1",
+   "points": "8"
+  },
+  "US-07-V207": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "Territory planning",
+   "priority": "Should",
+   "release": "A2",
+   "points": "5"
+  },
+  "US-17-V208": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "Capacity and quota",
+   "priority": "Should",
+   "release": "A2",
+   "points": "3"
+  },
+  "US-08-V209": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "Multichannel cadence under consent",
+   "priority": "Must",
+   "release": "A1",
+   "points": "13"
+  },
+  "US-19-V210": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "Deal room",
+   "priority": "Should",
+   "release": "A2",
+   "points": "8"
+  },
+  "US-13-V211": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "Mutual action plan",
+   "priority": "Should",
+   "release": "A2",
+   "points": "5"
+  },
+  "US-13-V212": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "CPQ guardrails",
+   "priority": "Must",
+   "release": "A1",
+   "points": "8"
+  },
+  "US-12-V213": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "Partner programme",
+   "priority": "Should",
+   "release": "A2",
+   "points": "5"
+  },
+  "US-19-V214": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "Partner portal and deal registration",
+   "priority": "Should",
+   "release": "A2",
+   "points": "8"
+  },
+  "US-16-V215": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "Customer health v2",
+   "priority": "Must",
+   "release": "A1",
+   "points": "5"
+  },
+  "US-16-V216": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "QBR pack",
+   "priority": "Should",
+   "release": "A2",
+   "points": "5"
+  },
+  "US-16-V217": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "Renewal and expansion playbooks",
+   "priority": "Should",
+   "release": "A2",
+   "points": "8"
+  },
+  "US-16-V218": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "NPS and CSAT",
+   "priority": "Should",
+   "release": "A2",
+   "points": "5"
+  },
+  "US-16-V219": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "Win/loss analysis",
+   "priority": "Should",
+   "release": "A2",
+   "points": "5"
+  },
+  "US-17-V220": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "Pipeline inspection",
+   "priority": "Must",
+   "release": "A1",
+   "points": "5"
+  },
+  "US-17-V221": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "Forecast with commit categories",
+   "priority": "Must",
+   "release": "A1",
+   "points": "8"
+  },
+  "US-15-V222": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "Multi-touch attribution",
+   "priority": "Should",
+   "release": "A2",
+   "points": "5"
+  },
+  "US-12-V223": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "Campaign ROI",
+   "priority": "Should",
+   "release": "A2",
+   "points": "3"
+  },
+  "US-12-V224": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "Page and form builder with experiments",
+   "priority": "Should",
+   "release": "A3",
+   "points": "13"
+  },
+  "US-11-V225": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "SEO and content calendar",
+   "priority": "Could",
+   "release": "A3",
+   "points": "3"
+  },
+  "US-09-V226": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "Event and webinar programmes",
+   "priority": "Could",
+   "release": "A3",
+   "points": "5"
+  },
+  "US-17-V227": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "Healthy recognition",
+   "priority": "Could",
+   "release": "A3",
+   "points": "5"
+  },
+  "US-11-V228": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "Enablement content hub",
+   "priority": "Should",
+   "release": "A2",
+   "points": "5"
+  },
+  "US-14-V229": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "AppNAI bid playbook",
+   "priority": "Must",
+   "release": "A1",
+   "points": "5"
+  },
+  "US-16-V230": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "MedMaarg institutional playbook",
+   "priority": "Should",
+   "release": "A2",
+   "points": "3"
+  },
+  "US-16-V231": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "EduVerse institutional playbook",
+   "priority": "Should",
+   "release": "A2",
+   "points": "3"
+  },
+  "US-14-V232": {
+   "file": "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md",
+   "title": "OrganicSpec buy/sell playbook",
+   "priority": "Should",
+   "release": "A2",
+   "points": "5"
+  },
+  "US-07-V301": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-07",
+   "points": "8"
+  },
+  "US-17-V302": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-17",
+   "points": "8"
+  },
+  "US-12-V303": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-12",
+   "points": "5"
+  },
+  "US-17-V304": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-17",
+   "points": "8"
+  },
+  "US-17-V305": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-17",
+   "points": "8"
+  },
+  "US-06-V306": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-06",
+   "points": "5"
+  },
+  "US-20-V307": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-20",
+   "points": "8"
+  },
+  "US-04-V308": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-04",
+   "points": "8"
+  },
+  "US-21-V309": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-21",
+   "points": "8"
+  },
+  "US-21-V310": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-21",
+   "points": "5"
+  },
+  "US-21-V311": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-21",
+   "points": "8"
+  },
+  "US-20-V312": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-20",
+   "points": "5"
+  },
+  "US-01-V313": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-01",
+   "points": "8"
+  },
+  "US-01-V314": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-01",
+   "points": "3"
+  },
+  "US-20-V315": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-20",
+   "points": "8"
+  },
+  "US-03-V316": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-03",
+   "points": "8"
+  },
+  "US-03-V317": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-03",
+   "points": "8"
+  },
+  "US-21-V318": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-21",
+   "points": "5"
+  },
+  "US-21-V319": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-21",
+   "points": "5"
+  },
+  "US-19-V320": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-19",
+   "points": "8"
+  },
+  "US-04-V321": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-04",
+   "points": "5"
+  },
+  "US-20-V322": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-20",
+   "points": "5"
+  },
+  "US-20-V323": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-20",
+   "points": "13"
+  },
+  "US-20-V324": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-20",
+   "points": "5"
+  },
+  "US-18-V325": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-18",
+   "points": "13"
+  },
+  "US-19-V326": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-19",
+   "points": "8"
+  },
+  "US-19-V327": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-19",
+   "points": "8"
+  },
+  "US-11-V328": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-11",
+   "points": "5"
+  },
+  "US-17-V329": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-17",
+   "points": "5"
+  },
+  "US-17-V330": {
+   "file": "Part-09-9b_Advanced_Platform_Data_Security_Experience.md",
+   "title": "EP-17",
+   "points": "3"
+  }
+ },
+ "by_epic": {
+  "EP-05": {
+   "stories": 21,
+   "with_points": 21,
+   "sp_low": 74,
+   "sp_high": 107,
+   "families": {
+    "source-pack enhancement": 6,
+    "Part 5": 12,
+    "advanced (Part 9.7-9.9)": 3
+   }
+  },
+  "EP-06": {
+   "stories": 14,
+   "with_points": 14,
+   "sp_low": 51,
+   "sp_high": 63,
+   "families": {
+    "source-pack enhancement": 1,
+    "Part 5": 8,
+    "advanced (Part 9.7-9.9)": 5
+   }
+  },
+  "EP-08": {
+   "stories": 23,
+   "with_points": 23,
+   "sp_low": 71,
+   "sp_high": 94,
+   "families": {
+    "source-pack enhancement": 5,
+    "Part 5": 15,
+    "advanced (Part 9.7-9.9)": 3
+   }
+  },
+  "EP-09": {
+   "stories": 12,
+   "with_points": 12,
+   "sp_low": 28,
+   "sp_high": 39,
+   "families": {
+    "source-pack enhancement": 4,
+    "Part 5": 6,
+    "advanced (Part 9.7-9.9)": 2
+   }
+  },
+  "EP-11": {
+   "stories": 15,
+   "with_points": 15,
+   "sp_low": 40,
+   "sp_high": 52,
+   "families": {
+    "source-pack enhancement": 1,
+    "Part 5": 10,
+    "advanced (Part 9.7-9.9)": 4
+   }
+  },
+  "EP-12": {
+   "stories": 21,
+   "with_points": 21,
+   "sp_low": 86,
+   "sp_high": 105,
+   "families": {
+    "source-pack enhancement": 3,
+    "Part 5": 10,
+    "advanced (Part 9.7-9.9)": 8
+   }
+  },
+  "EP-15": {
+   "stories": 14,
+   "with_points": 14,
+   "sp_low": 30,
+   "sp_high": 47,
+   "families": {
+    "source-pack enhancement": 2,
+    "Part 5": 11,
+    "advanced (Part 9.7-9.9)": 1
+   }
+  },
+  "EP-03": {
+   "stories": 17,
+   "with_points": 17,
+   "sp_low": 58,
+   "sp_high": 79,
+   "families": {
+    "source-pack enhancement": 3,
+    "Part 5": 11,
+    "advanced (Part 9.7-9.9)": 3
+   }
+  },
+  "EP-19": {
+   "stories": 25,
+   "with_points": 24,
+   "sp_low": 80,
+   "sp_high": 98,
+   "families": {
+    "source-pack enhancement": 7,
+    "Part 5": 13,
+    "advanced (Part 9.7-9.9)": 5
+   }
+  },
+  "EP-20": {
+   "stories": 33,
+   "with_points": 25,
+   "sp_low": 90,
+   "sp_high": 113,
+   "families": {
+    "source-pack enhancement": 15,
+    "Part 5": 12,
+    "advanced (Part 9.7-9.9)": 6
+   }
+  },
+  "EP-21": {
+   "stories": 49,
+   "with_points": 31,
+   "sp_low": 98,
+   "sp_high": 127,
+   "families": {
+    "source-pack enhancement": 34,
+    "Part 5": 10,
+    "advanced (Part 9.7-9.9)": 5
+   }
+  },
+  "EP-18": {
+   "stories": 26,
+   "with_points": 25,
+   "sp_low": 86,
+   "sp_high": 110,
+   "families": {
+    "source-pack enhancement": 8,
+    "Part 5": 15,
+    "advanced (Part 9.7-9.9)": 3
+   }
+  },
+  "EP-01": {
+   "stories": 35,
+   "with_points": 27,
+   "sp_low": 75,
+   "sp_high": 103,
+   "families": {
+    "source-pack enhancement": 16,
+    "Part 5": 17,
+    "advanced (Part 9.7-9.9)": 2
+   }
+  },
+  "EP-16": {
+   "stories": 23,
+   "with_points": 23,
+   "sp_low": 68,
+   "sp_high": 84,
+   "families": {
+    "source-pack enhancement": 3,
+    "Part 5": 12,
+    "advanced (Part 9.7-9.9)": 8
+   }
+  },
+  "EP-14": {
+   "stories": 18,
+   "with_points": 17,
+   "sp_low": 47,
+   "sp_high": 63,
+   "families": {
+    "source-pack enhancement": 3,
+    "Part 5": 12,
+    "advanced (Part 9.7-9.9)": 3
+   }
+  },
+  "EP-17": {
+   "stories": 36,
+   "with_points": 29,
+   "sp_low": 115,
+   "sp_high": 134,
+   "families": {
+    "source-pack enhancement": 13,
+    "Part 5": 10,
+    "advanced (Part 9.7-9.9)": 13
+   }
+  },
+  "EP-04": {
+   "stories": 29,
+   "with_points": 26,
+   "sp_low": 95,
+   "sp_high": 115,
+   "families": {
+    "source-pack enhancement": 10,
+    "Part 5": 8,
+    "advanced (Part 9.7-9.9)": 11
+   }
+  },
+  "EP-02": {
+   "stories": 10,
+   "with_points": 10,
+   "sp_low": 29,
+   "sp_high": 43,
+   "families": {
+    "Part 5": 8,
+    "source-pack enhancement": 1,
+    "advanced (Part 9.7-9.9)": 1
+   }
+  },
+  "EP-07": {
+   "stories": 15,
+   "with_points": 15,
+   "sp_low": 52,
+   "sp_high": 66,
+   "families": {
+    "Part 5": 10,
+    "advanced (Part 9.7-9.9)": 5
+   }
+  },
+  "EP-10": {
+   "stories": 8,
+   "with_points": 8,
+   "sp_low": 27,
+   "sp_high": 35,
+   "families": {
+    "Part 5": 7,
+    "advanced (Part 9.7-9.9)": 1
+   }
+  },
+  "EP-13": {
+   "stories": 17,
+   "with_points": 17,
+   "sp_low": 46,
+   "sp_high": 61,
+   "families": {
+    "Part 5": 13,
+    "advanced (Part 9.7-9.9)": 4
+   }
+  }
+ },
+ "total": 461
+}

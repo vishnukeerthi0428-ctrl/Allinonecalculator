@@ -1,0 +1,137 @@
+[
+ {
+  "mig": "V0006",
+  "reason": "role rename not needed: roles are created with canonical names in V0001 (DEC-778, DEC-894)",
+  "stmt": "DO $$ BEGIN\n  IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'ge_app') AND NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'app_rw') THEN\n    ALTER ROLE ge_app RENAME TO app_rw; END IF;\n  IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'ge_worker') AND NOT EXISTS (SELECT 1 FROM pg_roles WHER"
+ },
+ {
+  "mig": "V0006",
+  "reason": "assertion moved to V0015 (runs after all tables and policies exist)",
+  "stmt": "DO $$ BEGIN\n  IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname IN ('app_rw','app_worker','app_readonly','app_retention','app_bench','app_registry','app_migrator') AND (rolbypassrls OR rolsuper)) THEN\n    RAISE EXCEPTION 'APP_ROLE_CAN_BYPASS_RLS'; END IF;\n  IF EXISTS (SELECT 1 FROM pg_class c JOIN pg_"
+ },
+ {
+  "mig": "V0009",
+  "reason": "unique key names a column the dictionary does not define (received_month)",
+  "stmt": "UNIQUE int_provider_event (provider_account, provider_event_id, received_month) "
+ },
+ {
+  "mig": "V0009",
+  "reason": "unique key names a column the dictionary does not define (case_key)",
+  "stmt": "UNIQUE ai_eval_case (suite_code, case_key, version_no) "
+ },
+ {
+  "mig": "V0009",
+  "reason": "unique key names a column the dictionary does not define (code)",
+  "stmt": "UNIQUE eng_message_template (tenant_id, startup_id, code, locale, version_no) "
+ },
+ {
+  "mig": "V0009",
+  "reason": "unique key names a column the dictionary does not define (channel_account_id)",
+  "stmt": "UNIQUE eng_message (channel_account_id, idempotency_key) "
+ },
+ {
+  "mig": "V0009",
+  "reason": "unique key names a column the dictionary does not define (channel_account_id)",
+  "stmt": "UNIQUE eng_message (channel_account_id, provider_message_id) "
+ },
+ {
+  "mig": "V0009",
+  "reason": "unique key names a column the dictionary does not define (outbox_id)",
+  "stmt": "UNIQUE ops_domain_event (outbox_id) "
+ },
+ {
+  "mig": "V0009",
+  "reason": "unique key names a column the dictionary does not define (startup_scope_hash)",
+  "stmt": "UNIQUE ana_admin_projection (tenant_id, panel_code, startup_scope_hash) "
+ },
+ {
+  "mig": "V0009",
+  "reason": "unique key names a column the dictionary does not define ()",
+  "stmt": "UNIQUE ten_business_template (COALESCE(tenant_id, zero-uuid), template_key, version_no) "
+ },
+ {
+  "mig": "V0009",
+  "reason": "ref_value is keyed by (dataset_id, code): code columns are validated by fn/app against the dataset (Part 3.3 ENT-012)",
+  "stmt": "FK cat_offering_version(hsn_sac_code) -> ref_value"
+ },
+ {
+  "mig": "V0009",
+  "reason": "type mismatch ['uuid'] -> ai_budget['text']: reference kept as a soft reference (validated in the service layer)",
+  "stmt": "FK ai_cost_ledger(budget_id) -> ai_budget(period)"
+ },
+ {
+  "mig": "V0009",
+  "reason": "ref_value is keyed by (dataset_id, code): code columns are validated by fn/app against the dataset (Part 3.3 ENT-012)",
+  "stmt": "FK intel_organization(org_type) -> ref_value"
+ },
+ {
+  "mig": "V0009",
+  "reason": "ref_value is keyed by (dataset_id, code): code columns are validated by fn/app against the dataset (Part 3.3 ENT-012)",
+  "stmt": "FK intel_organization(industry_code) -> ref_value"
+ },
+ {
+  "mig": "V0009",
+  "reason": "ref_value is keyed by (dataset_id, code): code columns are validated by fn/app against the dataset (Part 3.3 ENT-012)",
+  "stmt": "FK intel_need(need_category) -> ref_value"
+ },
+ {
+  "mig": "V0009",
+  "reason": "ref_value is keyed by (dataset_id, code): code columns are validated by fn/app against the dataset (Part 3.3 ENT-012)",
+  "stmt": "FK intel_contact(role_code) -> ref_value"
+ },
+ {
+  "mig": "V0009",
+  "reason": "ref_value is keyed by (dataset_id, code): code columns are validated by fn/app against the dataset (Part 3.3 ENT-012)",
+  "stmt": "FK crm_deal(lost_reason_code) -> ref_value"
+ },
+ {
+  "mig": "V0009",
+  "reason": "type mismatch ['uuid'] -> ai_budget['text']: reference kept as a soft reference (validated in the service layer)",
+  "stmt": "FK mkt_campaign(budget_id) -> ai_budget(period)"
+ },
+ {
+  "mig": "V0009",
+  "reason": "type mismatch ['text'] -> com_sku_availability['uuid']: reference kept as a soft reference (validated in the service layer)",
+  "stmt": "FK com_order_line(sku_code) -> com_sku_availability(id)"
+ },
+ {
+  "mig": "V0009",
+  "reason": "type mismatch ['text'] -> aut_workflow_template['uuid']: reference kept as a soft reference (validated in the service layer)",
+  "stmt": "FK aut_workflow_revision(template_id) -> aut_workflow_template(id)"
+ },
+ {
+  "mig": "V0009",
+  "reason": "type mismatch ['text'] -> aut_workflow_template['uuid']: reference kept as a soft reference (validated in the service layer)",
+  "stmt": "FK aut_workflow_revision(template_version) -> aut_workflow_template(id)"
+ },
+ {
+  "mig": "V0009",
+  "reason": "ref_value is keyed by (dataset_id, code): code columns are validated by fn/app against the dataset (Part 3.3 ENT-012)",
+  "stmt": "FK ten_business_template(industry_code) -> ref_value"
+ },
+ {
+  "mig": "V0009",
+  "reason": "type mismatch ['uuid[]'] -> aut_workflow_template['uuid']: reference kept as a soft reference (validated in the service layer)",
+  "stmt": "FK ten_business_template(workflow_template_ids) -> aut_workflow_template(id)"
+ },
+ {
+  "mig": "V0009",
+  "reason": "type mismatch ['uuid'] -> tax_rule['text']: reference kept as a soft reference (validated in the service layer)",
+  "stmt": "FK company(tax_profile_id) -> tax_rule(rule_id)"
+ },
+ {
+  "mig": "V0009",
+  "reason": "type mismatch ['uuid'] -> suppression['text']: reference kept as a soft reference (validated in the service layer)",
+  "stmt": "FK suppression(lifted_by_id) -> suppression(purpose)"
+ },
+ {
+  "mig": "V0009",
+  "reason": "type mismatch ['uuid'] -> ai_usage_event['bigint']: reference kept as a soft reference (validated in the service layer)",
+  "stmt": "FK ai_cost_ledger(usage_id) -> ai_usage_event(usage_id)"
+ },
+ {
+  "mig": "V0012",
+  "reason": "index names columns not defined on ai_budget: status",
+  "stmt": "CREATE UNIQUE INDEX uq_ai_budget__scope_period ON ai_budget (COALESCE(tenant_id, '00000000-0000-0000-0000-000000000000'::uuid), scope_level, scope_ref, period) WHERE status = 'active';"
+ }
+]

@@ -18,7 +18,7 @@ ID_RE = re.compile(r'(?<![A-Za-z0-9_\-])([A-Z][A-Z0-9]{0,11}(?:-[A-Za-z0-9]{1,12
 SCREEN_RE = re.compile(r'(?<![A-Za-z0-9_\-])([AW]\d{3}|W\d{2})(?![A-Za-z0-9_\-])')
 NUM_RE = re.compile(r'(?<![A-Za-z0-9\-])(?:₹\s?|\$|€|£)?(\d{1,3}(?:,\d{2,3})+|\d+(?:\.\d+)?)\s*(%|ms|s\b|sec|min|minutes|hours?|h\b|days?|d\b|weeks?|months?|years?|MB|GB|KB|TB|lakh|L\b|k\b|x\b|×)?')
 TOK_RE = re.compile(r"[a-z0-9][a-z0-9_]*")
-BAD_ID = re.compile(r'^(UTF|ISO|RFC|SHA|AES|TLS|HTTP|HTTPS|PG|JSON|UUID|ID|WCAG|OWASP|OAUTH|SOC|EU|UK|US|NIST|PCI|GDPR|DPDP|COVID|AI|API)-?')
+BAD_ID = re.compile(r'^(UTF|ISO|RFC|SHA|AES|TLS|HTTP|HTTPS|PG|JSON|UUID|WCAG|OWASP|OAUTH|NIST|PCI|GDPR|DPDP|COVID|IEC|ECMA|ES|IPV)-')
 
 def norm_id(s):
     return s.strip().upper()
@@ -31,7 +31,7 @@ def ids_in(text):
             continue
         if re.match(r'^[A-Z]+-\d{4}(-\d{2})?(-\d{2})?$', t) and t.split('-')[0] in ('ISO', 'RFC', 'NIST', 'UTF', 'SHA', 'AES', 'IEC'):
             continue
-        if BAD_ID.match(t) and not re.match(r'^(AI|API|SOC|EU)-[A-Z]', t):
+        if BAD_ID.match(t):
             continue
         out.append(t.upper())
     for m in SCREEN_RE.finditer(text):
@@ -48,7 +48,37 @@ def strip_ids(text):
 UNIT = {'minutes': 'min', 'minute': 'min', 'hour': 'h', 'hours': 'h', 'day': 'd', 'days': 'd', 'week': 'w', 'weeks': 'w',
         'month': 'mo', 'months': 'mo', 'year': 'y', 'years': 'y', 'sec': 's'}
 
-def numbers_in(text):
+THR_RE = re.compile(r'(?<![A-Za-z0-9\-_@])(≤|≥|<=|>=|<|>|=|±|\bmax(?:imum)?\s|\bmin(?:imum)?\s|\bat least\s|\bat most\s|\bwithin\s|\bup to\s|\bunder\s|\bover\s)?\s*(₹\s?|INR\s?|USD\s?|\$|€|£)?(\d{1,3}(?:,\d{2,3})+|\d+(?:\.\d+)?)\s*(%|ms\b|s\b|sec\b|seconds?\b|min\b|minutes?\b|hours?\b|h\b|days?\b|d\b|weeks?\b|months?\b|years?\b|MB\b|GB\b|KB\b|TB\b|lakh\b|L\b|k\b|×|x\b|/month|/min|/day|/hour|pd\b|tenants?\b|calls?\b|tokens?\b|requests?\b|attempts?\b|retries\b|characters?\b|chars?\b|items?\b|rows?\b|per\b)?', re.I)
+
+def numbers_in(text, thresholds_only=True):
+    """Threshold-bearing numbers: carry a unit, a comparator, a currency, or a decimal point.
+    Bare integers (chapter numbers, ordinals, row numbers) are ignored when thresholds_only."""
+    t = strip_ids(text)
+    t = re.sub(r'(?i)\b(chapter|ch|row|table|section|§|sm_op_|op_|part|wave|release|R|V|step|appendix|D|T)\s?\d+', ' ', t)
+    t = re.sub(r'@\d+', ' ', t)
+    t = re.sub(r'\b[0-9a-f]{12,}\b', ' ', t)
+    out = []
+    for m in THR_RE.finditer(t):
+        cmp_, cur, n, u = m.group(1), m.group(2), m.group(3), m.group(4)
+        n = n.replace(',', '')
+        try:
+            v = float(n)
+        except ValueError:
+            continue
+        u = (u or '').strip().lower()
+        u = UNIT.get(u, u)
+        if u in ('second', 'seconds'):
+            u = 's'
+        if u in ('minute',):
+            u = 'min'
+        if thresholds_only and not (cmp_ or cur or u or '.' in n):
+            continue
+        key = ('%g' % v) + (u if u not in ('per', 'tenant', 'tenants', 'call', 'calls', 'item', 'items', 'row', 'rows', 'request', 'requests', 'token', 'tokens', 'attempt', 'attempts', 'retries', 'character', 'characters', 'char', 'chars') else '')
+        if key not in out:
+            out.append(key)
+    return out
+
+def numbers_in_old(text):
     t = strip_ids(text)
     out = []
     for m in NUM_RE.finditer(t):
@@ -70,7 +100,7 @@ def numbers_in(text):
 def num_keys_loose(text):
     """Numbers in a passage (unit-insensitive set plus unit-qualified set)."""
     ks = set()
-    for k in numbers_in(text):
+    for k in numbers_in(text, thresholds_only=False):
         ks.add(k)
         ks.add(re.match(r'[\d.e+\-]+', k).group(0))
     return ks

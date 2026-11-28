@@ -1,0 +1,477 @@
+{
+ "tc_unique": 11498,
+ "ts_unique": 340,
+ "families": {
+  "TC-<epic>": 1981,
+  "TC-ADV-X1": 92,
+  "TC-ADV-X2": 104,
+  "TC-ADV-X3": 62,
+  "TC-AI": 693,
+  "TC-ALN-A": 54,
+  "TC-ALN-B": 37,
+  "TC-AU": 188,
+  "TC-BRS": 14,
+  "TC-ENH": 1,
+  "TC-ENH-A": 50,
+  "TC-ENH-B": 30,
+  "TC-ENH-C": 57,
+  "TC-ENH-D": 348,
+  "TC-ENH-E": 36,
+  "TC-ENH-F": 40,
+  "TC-ENH-G": 45,
+  "TC-ENH-H": 36,
+  "TC-ENH-I": 41,
+  "TC-ENH-J": 66,
+  "TC-ENH-K": 64,
+  "TC-FLT": 46,
+  "TC-NFR": 100,
+  "TC-RP": 174,
+  "TC-V12-A": 114,
+  "TC-V12-B": 264,
+  "TC-V12-C": 712,
+  "TC-V12-D": 58,
+  "TC-V12-E": 120,
+  "TC-V12-F": 275,
+  "TC-V12-G": 234,
+  "TC-V12-H": 97,
+  "TC-V12-I": 61,
+  "TC-V12-J": 60,
+  "TC-V12-K": 42,
+  "TC-V12-L": 48,
+  "TC-V12-M": 104,
+  "TC-V12-N": 1220,
+  "TC-V12-O": 1070,
+  "TC-V12-P": 826,
+  "TC-V12-Q": 676,
+  "TC-V12-R": 1158,
+  "TS": 340
+ },
+ "per_part": {
+  "Part 2.6": {
+   "TC-ENH-A": 50
+  },
+  "Part 2.7": {
+   "TC-ENH-C": 57
+  },
+  "Part 3.4": {
+   "TC-ENH-B": 30
+  },
+  "Part 3.5": {
+   "TC-ENH-D": 345
+  },
+  "Part 3.6": {
+   "TC-ENH-E": 36
+  },
+  "Part 4.4": {
+   "TC-ENH-I": 41
+  },
+  "Part 6.10": {
+   "TC-ENH-K": 64,
+   "TC-ENH-D": 3
+  },
+  "Part 6.2": {
+   "TS": 82,
+   "TC-<epic>": 685
+  },
+  "Part 6.3": {
+   "TS": 91,
+   "TC-<epic>": 734
+  },
+  "Part 6.4": {
+   "TC-AI": 586,
+   "TC-AU": 188
+  },
+  "Part 6.5": {
+   "TS": 77,
+   "TC-<epic>": 562
+  },
+  "Part 6.7": {
+   "TC-NFR": 100,
+   "TC-FLT": 46,
+   "TC-BRS": 14
+  },
+  "Part 6.8": {
+   "TC-ENH-G": 45
+  },
+  "Part 6.9": {
+   "TC-ENH-H": 36
+  },
+  "Part 7.4": {
+   "TC-ENH-F": 40
+  },
+  "Part 8.3": {
+   "TC-ENH-J": 66
+  },
+  "Part 9.2": {
+   "TC-ENH": 1
+  },
+  "Part 9.6": {
+   "TC-ALN-A": 54,
+   "TC-ALN-B": 37
+  },
+  "Part 9.7": {
+   "TC-ADV-X1": 92
+  },
+  "Part 9.8": {
+   "TC-ADV-X2": 104
+  },
+  "Part 9.9": {
+   "TC-ADV-X3": 62
+  },
+  "Part 11.10": {
+   "TC-V12-J": 60
+  },
+  "Part 11.11": {
+   "TC-V12-K": 42
+  },
+  "Part 11.12": {
+   "TC-V12-L": 48
+  },
+  "Part 11.13": {
+   "TC-V12-M": 104
+  },
+  "Part 11.15": {
+   "TC-RP": 133
+  },
+  "Part 11.16": {
+   "TC-V12-N": 1220,
+   "TC-V12-O": 1070,
+   "TC-AI": 60,
+   "TC-RP": 41,
+   "TS": 54
+  },
+  "Part 11.17": {
+   "TS": 11,
+   "TC-V12-P": 826,
+   "TC-AI": 47
+  },
+  "Part 11.18": {
+   "TS": 17,
+   "TC-V12-Q": 676
+  },
+  "Part 11.19": {
+   "TS": 8,
+   "TC-V12-R": 1158
+  },
+  "Part 11.1": {
+   "TC-V12-A": 114
+  },
+  "Part 11.2": {
+   "TC-V12-B": 264
+  },
+  "Part 11.3": {
+   "TC-V12-C": 712
+  },
+  "Part 11.4": {
+   "TC-V12-D": 58
+  },
+  "Part 11.5": {
+   "TC-V12-E": 120
+  },
+  "Part 11.6": {
+   "TC-V12-F": 275
+  },
+  "Part 11.7": {
+   "TC-V12-G": 234
+  },
+  "Part 11.8": {
+   "TC-V12-H": 97
+  },
+  "Part 11.9": {
+   "TC-V12-I": 61
+  }
+ },
+ "per_file": {
+  "Part-00A_Issue_Resolution_Decisions.md": {},
+  "Part-00B_Source_Pack_Coverage_Report.md": {},
+  "Part-00_Document_Ingestion_and_Validation.md": {},
+  "Part-01_Product_and_Business_Foundation.md": {},
+  "Part-02-1_Functional_Design_Modules_and_FR_Register.md": {},
+  "Part-02-2_Functional_Design_Process_Flows.md": {},
+  "Part-02-3_Business_Rules_RBAC_State_Machines.md": {},
+  "Part-02-4_Cross_Cutting_Functions.md": {},
+  "Part-02-5_UX_UI_Design.md": {},
+  "Part-02-6_Source_Pack_Business_Domain_Enhancements.md": {
+   "TC-ENH-A": 50
+  },
+  "Part-02-7a_Source_Pack_UI_Catalog_and_UX_Enhancements.md": {
+   "TC-ENH-C": 20
+  },
+  "Part-02-7b_Source_Pack_UI_Catalog_and_UX_Enhancements.md": {
+   "TC-ENH-C": 37
+  },
+  "Part-03-1_Architecture.md": {},
+  "Part-03-2_API_and_Integration.md": {},
+  "Part-03-3_Data_Architecture.md": {},
+  "Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md": {
+   "TC-ENH-B": 30
+  },
+  "Part-03-5a_Source_Pack_API_Catalog_Reconciliation.md": {},
+  "Part-03-5b_Source_Pack_API_Catalog_Reconciliation.md": {
+   "TC-ENH-D": 345
+  },
+  "Part-03-6a_Source_Pack_Data_Catalog_Reconciliation.md": {},
+  "Part-03-6b_Source_Pack_Data_Catalog_Reconciliation.md": {
+   "TC-ENH-E": 36
+  },
+  "Part-04-1_Security_and_Compliance.md": {},
+  "Part-04-2_Non_Functional_Requirements.md": {},
+  "Part-04-3_DevOps_and_Operations.md": {},
+  "Part-04-4a_Source_Pack_Security_DevOps_Operations_Enhancements.md": {},
+  "Part-04-4b_Source_Pack_Security_DevOps_Operations_Enhancements.md": {
+   "TC-ENH-I": 41
+  },
+  "Part-05-1a_Epics_Stories_Foundation.md": {},
+  "Part-05-1b_Epics_Stories_Foundation.md": {},
+  "Part-05-1c_Epics_Stories_Foundation.md": {},
+  "Part-05-2_Epics_Stories_Engagement_and_Commerce.md": {},
+  "Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md": {},
+  "Part-06-10_Source_Pack_Coverage_Closure.md": {
+   "TC-ENH-K": 64,
+   "TC-ENH-D": 3
+  },
+  "Part-06-1_Test_Strategy.md": {},
+  "Part-06-2a_Test_Cases_EP08-EP11.md": {
+   "TS": 44,
+   "TC-<epic>": 373
+  },
+  "Part-06-2b_Test_Cases_EP12-EP14.md": {
+   "TS": 38,
+   "TC-<epic>": 312
+  },
+  "Part-06-3a_Test_Cases_EP15-EP18.md": {
+   "TS": 53,
+   "TC-<epic>": 422
+  },
+  "Part-06-3b_Test_Cases_EP19-EP21.md": {
+   "TS": 38,
+   "TC-<epic>": 312
+  },
+  "Part-06-4_AI_Evaluation_Test_Cases.md": {
+   "TC-AI": 586,
+   "TC-AU": 188
+  },
+  "Part-06-5_Test_Cases_EP01-EP07.md": {
+   "TS": 77,
+   "TC-<epic>": 562
+  },
+  "Part-06-6_Requirements_Traceability_Matrix.md": {},
+  "Part-06-7_NFR_and_Coverage_Closure_Test_Cases.md": {
+   "TC-NFR": 100,
+   "TC-FLT": 46,
+   "TC-BRS": 14
+  },
+  "Part-06-8a_Source_Pack_Test_Specification_Reconciliation.md": {},
+  "Part-06-8b_Source_Pack_Test_Specification_Reconciliation.md": {},
+  "Part-06-8c_Source_Pack_Test_Specification_Reconciliation.md": {
+   "TC-ENH-G": 45
+  },
+  "Part-06-9a_Source_Pack_QC_RTM_and_Backlog_Reconciliation.md": {},
+  "Part-06-9b_Source_Pack_QC_RTM_and_Backlog_Reconciliation.md": {
+   "TC-ENH-H": 36
+  },
+  "Part-07-1_AI_Discovery_and_Catalogue.md": {},
+  "Part-07-2_AI_Agent_Specifications.md": {},
+  "Part-07-3_AI_Model_Strategy_Cost_Governance.md": {},
+  "Part-07-4a_Source_Pack_AI_Plugin_and_Cost_Enhancements.md": {},
+  "Part-07-4b_Source_Pack_AI_Plugin_and_Cost_Enhancements.md": {
+   "TC-ENH-F": 40
+  },
+  "Part-08-1_Roadmap_Releases_Sprints.md": {},
+  "Part-08-2_Risks_Change_GoLive_Hypercare.md": {},
+  "Part-08-3a_Source_Pack_Training_SaaS_Maintenance_Optimization_Enhancements.md": {},
+  "Part-08-3b_Source_Pack_Training_SaaS_Maintenance_Optimization_Enhancements.md": {},
+  "Part-08-3c_Source_Pack_Training_SaaS_Maintenance_Optimization_Enhancements.md": {
+   "TC-ENH-J": 66
+  },
+  "Part-08-4_Cost_Model_Development_vs_Subscriptions.md": {},
+  "Part-09-10_Revision_v1.1_Consolidation.md": {},
+  "Part-09-1_Errata_and_Consolidated_Decisions.md": {},
+  "Part-09-2_Glossary_and_Registers.md": {
+   "TC-ENH": 1
+  },
+  "Part-09-3_Final_Quality_Report.md": {},
+  "Part-09-4_AI_Agents_Automations_Workflows_Catalogue.md": {},
+  "Part-09-5_Source_Pack_Decisions_and_Replan.md": {},
+  "Part-09-6a_Source_Pack_Literal_Alignment.md": {
+   "TC-ALN-A": 54
+  },
+  "Part-09-6b_Source_Pack_Literal_Alignment.md": {
+   "TC-ALN-B": 37
+  },
+  "Part-09-7a_Advanced_AI_Agents_and_Intelligence.md": {},
+  "Part-09-7b_Advanced_AI_Agents_and_Intelligence.md": {
+   "TC-ADV-X1": 92
+  },
+  "Part-09-8a_Advanced_Revenue_Growth_Capabilities.md": {},
+  "Part-09-8b_Advanced_Revenue_Growth_Capabilities.md": {
+   "TC-ADV-X2": 104
+  },
+  "Part-09-9a_Advanced_Platform_Data_Security_Experience.md": {},
+  "Part-09-9b_Advanced_Platform_Data_Security_Experience.md": {
+   "TC-ADV-X3": 62
+  },
+  "Part-11-0_V12_Coverage_Report.md": {},
+  "Part-11-10a_V12_Tests_QC_Coding_Backlog.md": {},
+  "Part-11-10b_V12_Tests_QC_Coding_Backlog.md": {},
+  "Part-11-10c_V12_Tests_QC_Coding_Backlog.md": {
+   "TC-V12-J": 60
+  },
+  "Part-11-11a_V12_Observability_Traceability_Decision_Register.md": {},
+  "Part-11-11b_V12_Observability_Traceability_Decision_Register.md": {
+   "TC-V12-K": 42
+  },
+  "Part-11-12_Historical_Annex_V1_Baseline_and_Source_Archive_Audit.md": {
+   "TC-V12-L": 48
+  },
+  "Part-11-13a_AI_Improvement_Agents_Automations_Workflows.md": {},
+  "Part-11-13b_AI_Improvement_Agents_Automations_Workflows.md": {
+   "TC-V12-M": 104
+  },
+  "Part-11-14_V12_Consolidation_and_Founder_Decisions.md": {},
+  "Part-11-15a_Regulatory_Rule_Packs_Draft_Legal_Wording.md": {
+   "TC-RP": 53
+  },
+  "Part-11-15b_Regulatory_Rule_Packs_Draft_Legal_Wording.md": {
+   "TC-RP": 44
+  },
+  "Part-11-15c_Regulatory_Rule_Packs_Draft_Legal_Wording.md": {
+   "TC-RP": 36
+  },
+  "Part-11-16a_Investment_Automation_I_Investor_Mode_and_INV-SVC-01-12.md": {},
+  "Part-11-16b_Investment_Automation_I_Workflow_Specifications.md": {
+   "TC-V12-N": 460
+  },
+  "Part-11-16c_Investment_Automation_II_Services_Workflows_Agents_Screens.md": {
+   "TC-V12-O": 384,
+   "TC-AI": 60
+  },
+  "Part-11-16d_Investment_Automation_II_Securities_Rule_Packs_Stories_Tests_Cost.md": {
+   "TC-RP": 41,
+   "TS": 25,
+   "TC-V12-O": 686
+  },
+  "Part-11-16e_Investment_Automation_I_Stories_Tests_Cost_Decisions.md": {
+   "TS": 29,
+   "TC-V12-N": 760
+  },
+  "Part-11-17a_Bounded_Mandates_Agentic_Commerce_and_Payments.md": {},
+  "Part-11-17b_Automatic_Bid_Submission_Agents_Tests_Stories_and_Costs.md": {
+   "TS": 11,
+   "TC-V12-P": 826,
+   "TC-AI": 47
+  },
+  "Part-11-18a_AI_Voice_Telephony_and_Call_Recordings.md": {},
+  "Part-11-18b_AI_Voice_Telephony_and_Call_Recordings.md": {},
+  "Part-11-18c_AI_Voice_Telephony_and_Call_Recordings.md": {
+   "TS": 17,
+   "TC-V12-Q": 206
+  },
+  "Part-11-18d_AI_Voice_Telephony_and_Call_Recordings.md": {
+   "TC-V12-Q": 470
+  },
+  "Part-11-19a_Platform_Decisions_Identity_Developer_Platform_Connectors_Vercel.md": {},
+  "Part-11-19b_Platform_Decisions_RPO_Model_Registry_Benchmarks_Supabase_Access.md": {},
+  "Part-11-19c_Platform_Decisions_Stories_Combinatorial_Tests_Decisions.md": {
+   "TS": 8,
+   "TC-V12-R": 1158
+  },
+  "Part-11-1a_V12_Business_Requirements.md": {},
+  "Part-11-1b_V12_Business_Requirements.md": {
+   "TC-V12-A": 114
+  },
+  "Part-11-2a_V12_Master_Automation_Service_Catalogue_39_Services.md": {
+   "TC-V12-B": 264
+  },
+  "Part-11-2b_V12_Master_Automation_Service_Catalogue_39_Services.md": {},
+  "Part-11-2c_V12_Master_Automation_Service_Catalogue_39_Services.md": {},
+  "Part-11-3a_V12_Executable_Workflows_SVC01-20.md": {
+   "TC-V12-C": 30
+  },
+  "Part-11-3b_V12_Executable_Workflows_SVC01-20.md": {
+   "TC-V12-C": 334
+  },
+  "Part-11-3c_V12_Executable_Workflows_SVC01-20.md": {
+   "TC-V12-C": 348
+  },
+  "Part-11-4a_V12_Executable_Workflows_SVC21-39_Registry_and_DTOs.md": {},
+  "Part-11-4b_V12_Executable_Workflows_SVC21-39_Registry_and_DTOs.md": {},
+  "Part-11-4c_V12_Executable_Workflows_SVC21-39_Registry_and_DTOs.md": {},
+  "Part-11-4d_V12_Executable_Workflows_SVC21-39_Registry_and_DTOs.md": {
+   "TC-V12-D": 58
+  },
+  "Part-11-5a_V12_Platform_Architecture.md": {},
+  "Part-11-5b_V12_Platform_Architecture.md": {
+   "TC-V12-E": 120
+  },
+  "Part-11-6a_V12_AI_Engines_Agents_Models_Evaluation_RAG_Policy_Cost.md": {},
+  "Part-11-6b_V12_AI_Engines_Agents_Models_Evaluation_RAG_Policy_Cost.md": {
+   "TC-V12-F": 275
+  },
+  "Part-11-7a_V12_Website_Portal_Operator_Portfolio_UIUX_Prototypes.md": {},
+  "Part-11-7b_V12_Website_Portal_Operator_Portfolio_UIUX_Prototypes.md": {},
+  "Part-11-7c_V12_Website_Portal_Operator_Portfolio_UIUX_Prototypes.md": {
+   "TC-V12-G": 234
+  },
+  "Part-11-8a_V12_REST_API_Event_Contracts_Integrations_Plugins.md": {},
+  "Part-11-8b_V12_REST_API_Event_Contracts_Integrations_Plugins.md": {
+   "TC-V12-H": 97
+  },
+  "Part-11-9a_V12_Database_Schema_Reconciliation.md": {},
+  "Part-11-9b_V12_DDL_RLS_Supabase.md": {
+   "TC-V12-I": 52
+  },
+  "Part-11-9c_V12_Security_Privacy_Analytics_KPI.md": {
+   "TC-V12-I": 9
+  }
+ },
+ "LT": [
+  "LT-01",
+  "LT-02",
+  "LT-03",
+  "LT-04",
+  "LT-05",
+  "LT-06",
+  "LT-07",
+  "LT-08",
+  "LT-09",
+  "LT-10",
+  "LT-11",
+  "LT-12",
+  "LT-ENH",
+  "LT-ENH-B-01",
+  "LT-ENH-B-02",
+  "LT-ENH-B-03",
+  "LT-ENH-B-04",
+  "LT-ENH-C-01",
+  "LT-ENH-I-01",
+  "LT-ENH-I-02",
+  "LT-ENH-I-03",
+  "LT-ENH-I-04",
+  "LT-ENH-I-05",
+  "LT-ENH-I-06",
+  "LT-SAFE-01",
+  "LT-SAFE-02",
+  "LT-SAFE-03",
+  "LT-SAFE-04",
+  "LT-SAFE-05"
+ ],
+ "DR": [
+  "DR-1",
+  "DR-2",
+  "DR-3",
+  "DR-4",
+  "DR-5",
+  "DR-6",
+  "DR-7",
+  "DR-8",
+  "DR-9"
+ ],
+ "v12_alias": {
+  "workflow scenarios SM-SVC-##-WF##-TC-*": 1342,
+  "step tests": 517,
+  "workflow AT01": 156,
+  "SKU ENT-AT01": 39,
+  "EVAL-SM-SVC suites (gates, not counted)": 111
+ }
+}

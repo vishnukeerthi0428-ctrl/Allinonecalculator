@@ -1,0 +1,90 @@
+{
+ "status": {
+  "retained unchanged": 10399,
+  "amended": 157,
+  "superseded": 13
+ },
+ "by_family": {
+  "AC": {
+   "retained unchanged": 1687
+  },
+  "ADR": {
+   "retained unchanged": 103,
+   "amended": 4
+  },
+  "AG": {
+   "retained unchanged": 80,
+   "amended": 3
+  },
+  "API": {
+   "retained unchanged": 621,
+   "amended": 3
+  },
+  "AU": {
+   "amended": 4,
+   "retained unchanged": 116
+  },
+  "BR": {
+   "retained unchanged": 208,
+   "amended": 1
+  },
+  "BRL": {
+   "retained unchanged": 347,
+   "amended": 9,
+   "superseded": 2
+  },
+  "CFG": {
+   "retained unchanged": 53
+  },
+  "DEC": {
+   "amended": 53,
+   "superseded": 7,
+   "retained unchanged": 288
+  },
+  "ENT": {
+   "retained unchanged": 207,
+   "amended": 7
+  },
+  "FR": {
+   "retained unchanged": 796,
+   "amended": 5
+  },
+  "KPI": {
+   "amended": 4,
+   "retained unchanged": 57
+  },
+  "NFR": {
+   "retained unchanged": 129,
+   "amended": 1
+  },
+  "OKPI": {
+   "amended": 1,
+   "retained unchanged": 34
+  },
+  "RP": {
+   "retained unchanged": 52
+  },
+  "RSK": {
+   "retained unchanged": 218
+  },
+  "SCREEN": {
+   "amended": 59,
+   "retained unchanged": 170,
+   "superseded": 4
+  },
+  "TC": {
+   "retained unchanged": 4653
+  },
+  "US": {
+   "retained unchanged": 474,
+   "amended": 1
+  },
+  "VER": {
+   "retained unchanged": 68
+  },
+  "WF": {
+   "amended": 2,
+   "retained unchanged": 38
+  }
+ }
+}

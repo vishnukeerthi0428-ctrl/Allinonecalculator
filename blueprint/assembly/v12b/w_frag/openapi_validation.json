@@ -1,0 +1,23 @@
+{
+ "validator": "openapi-spec-validator 0.9.0 (OpenAPI 3.1 schema + semantic checks)",
+ "validator_errors": [],
+ "lint": {
+  "operations": 1122,
+  "paths": 1002,
+  "duplicate_operationIds": 0,
+  "equivalent_templated_paths": 0,
+  "post_with_documented_idempotency_alternative": 9,
+  "post_without_idempotency_key": 1
+ },
+ "by_version_prefix": {
+  "v1": 988,
+  "bff": 10,
+  "oauth": 3,
+  "scim": 16,
+  "status": 1,
+  "v2": 93,
+  "hooks": 8,
+  ".well-known": 2,
+  "agent": 1
+ }
+}

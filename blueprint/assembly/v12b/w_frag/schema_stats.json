@@ -1,0 +1,185 @@
+{
+ "tables": 468,
+ "views": 128,
+ "columns": 9273,
+ "policies": 1606,
+ "rls_forced": 429,
+ "platform_tables": 39,
+ "indexes": 1892,
+ "triggers": 680,
+ "functions": 29,
+ "foreign_keys": 614,
+ "checks": 1677,
+ "statements": 9227,
+ "deferred": 0,
+ "skipped": 27,
+ "skipped_by_reason": {
+  "role rename not needed": 1,
+  "assertion moved to V0015 ": 1,
+  "unique key names a column the dictionary does not define ": 8,
+  "ref_value is keyed by ": 7,
+  "type mismatch ['uuid'] -> ai_budget['text']": 2,
+  "type mismatch ['text'] -> com_sku_availability['uuid']": 1,
+  "type mismatch ['text'] -> aut_workflow_template['uuid']": 2,
+  "type mismatch ['uuid[]'] -> aut_workflow_template['uuid']": 1,
+  "type mismatch ['uuid'] -> tax_rule['text']": 1,
+  "type mismatch ['uuid'] -> suppression['text']": 1,
+  "type mismatch ['uuid'] -> ai_usage_event['bigint']": 1,
+  "index names columns not defined on ai_budget": 1
+ },
+ "templates": {
+  "P-TEN": 18,
+  "P-CO": 330,
+  "P-CO-NULLABLE": 31,
+  "Part 11.9b C3 (verified, kept)": 49,
+  "platform (grants only)": 37,
+  "benchmark (published-only read)": 1,
+  "platform (app_bench only)": 2,
+  "portal object-grant predicate (additional)": 8
+ },
+ "triggers_by_kind": {
+  "revision": 304,
+  "residency": 179,
+  "versioned_freeze": 36,
+  "append_only": 61,
+  "domain_registry": 82
+ },
+ "fk_support_indexes": 152,
+ "migrations": [
+  [
+   1,
+   "V0001__extensions_schema_roles.sql",
+   42,
+   0,
+   0
+  ],
+  [
+   2,
+   "V0002__context_functions.sql",
+   15,
+   0,
+   0
+  ],
+  [
+   3,
+   "V0003__v12_core_and_enterprise_spine.sql",
+   116,
+   48,
+   0
+  ],
+  [
+   4,
+   "V0004__ddl_v12_i_appendix_c3_controls.sql",
+   648,
+   18,
+   0
+  ],
+  [
+   5,
+   "V0005__reconcile_v12_lineage_for_ddl_v12_r.sql",
+   12,
+   1,
+   0
+  ],
+  [
+   6,
+   "V0006__ddl_v12_r_platform_decisions.sql",
+   110,
+   37,
+   0
+  ],
+  [
+   7,
+   "V0007__typed_tables_blueprint_and_v12b.sql",
+   758,
+   365,
+   0
+  ],
+  [
+   8,
+   "V0008__blueprint_columns_and_part_3_6_deltas.sql",
+   324,
+   0,
+   0
+  ],
+  [
+   9,
+   "V0009__constraints_and_foreign_keys.sql",
+   2053,
+   0,
+   0
+  ],
+  [
+   10,
+   "V0010__triggers.sql",
+   669,
+   0,
+   0
+  ],
+  [
+   11,
+   "V0011__rls_policies_and_grants.sql",
+   3713,
+   1,
+   0
+  ],
+  [
+   12,
+   "V0012__indexes.sql",
+   486,
+   0,
+   0
+  ],
+  [
+   13,
+   "V0013__compatibility_views.sql",
+   257,
+   0,
+   0
+  ],
+  [
+   14,
+   "V0014__seed_reference_data.sql",
+   20,
+   0,
+   0
+  ],
+  [
+   15,
+   "V0015__ci_assertions.sql",
+   4,
+   0,
+   0
+  ]
+ ],
+ "log": {
+  "V0001__extensions_schema_roles:ok": 42,
+  "V0002__context_functions:ok": 15,
+  "dropped_growth_stmt": 1344,
+  "V0003__v12_core_and_enterprise_spine:ok": 116,
+  "V0004__ddl_v12_i_appendix_c3_controls:ok": 648,
+  "V0005__reconcile_v12_lineage_for_ddl_v12_r:ok": 12,
+  "V0006__ddl_v12_r_platform_decisions:ok": 110,
+  "V0006__ddl_v12_r_platform_decisions:deferred": 0,
+  "V0007__typed_tables_blueprint_and_v12b:ok": 758,
+  "V0008__blueprint_columns_and_part_3_6_deltas:ok": 324,
+  "unique_where_not_parsed": 4,
+  "fk_skipped_missing_table": 2,
+  "V0009__constraints_and_foreign_keys:ok": 2053,
+  "V0010__triggers:ok": 669,
+  "V0011__rls_policies_and_grants:ok": 3713,
+  "V0012__indexes:ok": 486,
+  "V0013__compatibility_views:ok": 257,
+  "V0014__seed_reference_data:ok": 20,
+  "V0015__ci_assertions:ok": 4
+ },
+ "vector_columns": 1,
+ "deferred_by_mig": {},
+ "by_origin": {
+  "V0006": 37,
+  "V0007": 365,
+  "V0003": 47,
+  "V0005": 1,
+  "V0004": 18
+ }
+}
