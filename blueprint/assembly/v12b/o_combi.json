@@ -46,7 +46,7 @@
   "full": 3456,
   "valid": 3456,
   "method": "3-way greedy covering array",
-  "n": 81,
+  "n": 95,
   "cases": [
    {
     "id": "TC-V12-O-O1-001",
@@ -1181,9 +1181,207 @@
     },
     "expected": "BLOCK NO_FPO_EXEMPTION",
     "rules": "RP-UK-FINPROM-001"
+   },
+   {
+    "id": "TC-V12-O-O1-082",
+    "row": {
+     "jurisdiction": "IN",
+     "route": "private_named",
+     "investor": "retail",
+     "pack_state": "active",
+     "kyc": "clear",
+     "headroom": "at_limit",
+     "status_evidence": "verified"
+    },
+    "expected": "BLOCK OFFEREE_LIMIT_200",
+    "rules": "RP-IN-SEC-002; AU-230"
+   },
+   {
+    "id": "TC-V12-O-O1-083",
+    "row": {
+     "jurisdiction": "IN",
+     "route": "private_named",
+     "investor": "qualified",
+     "pack_state": "active",
+     "kyc": "clear",
+     "headroom": "below",
+     "status_evidence": "verified"
+    },
+    "expected": "ALLOW NOT_COUNTED",
+    "rules": "RP-IN-SEC-002/003"
+   },
+   {
+    "id": "TC-V12-O-O1-084",
+    "row": {
+     "jurisdiction": "US",
+     "route": "private_named",
+     "investor": "retail",
+     "pack_state": "active",
+     "kyc": "clear",
+     "headroom": "at_limit",
+     "status_evidence": "verified"
+    },
+    "expected": "BLOCK NON_ACCREDITED_LIMIT_35",
+    "rules": "RP-US-REGD-004; AU-230"
+   },
+   {
+    "id": "TC-V12-O-O1-085",
+    "row": {
+     "jurisdiction": "US",
+     "route": "general_solicitation",
+     "investor": "retail",
+     "pack_state": "active",
+     "kyc": "clear",
+     "headroom": "below",
+     "status_evidence": "verified"
+    },
+    "expected": "BLOCK 506C_VERIFICATION_REQUIRED",
+    "rules": "RP-US-REGD-002/006"
+   },
+   {
+    "id": "TC-V12-O-O1-086",
+    "row": {
+     "jurisdiction": "US",
+     "route": "general_solicitation",
+     "investor": "qualified",
+     "pack_state": "active",
+     "kyc": "clear",
+     "headroom": "below",
+     "status_evidence": "verified"
+    },
+    "expected": "ALLOW 506C_VERIFIED",
+    "rules": "RP-US-REGD-005/006"
+   },
+   {
+    "id": "TC-V12-O-O1-087",
+    "row": {
+     "jurisdiction": "US",
+     "route": "portal_crowdfunding",
+     "investor": "retail",
+     "pack_state": "active",
+     "kyc": "clear",
+     "headroom": "below",
+     "status_evidence": "verified"
+    },
+    "expected": "HANDOFF REGCF_INTERMEDIARY",
+    "rules": "RP-US-REGCF-001/002"
+   },
+   {
+    "id": "TC-V12-O-O1-088",
+    "row": {
+     "jurisdiction": "EU",
+     "route": "private_named",
+     "investor": "retail",
+     "pack_state": "active",
+     "kyc": "clear",
+     "headroom": "below",
+     "status_evidence": "verified"
+    },
+    "expected": "ALLOW UNDER_150_EXEMPTION",
+    "rules": "RP-EU-PROSP-003"
+   },
+   {
+    "id": "TC-V12-O-O1-089",
+    "row": {
+     "jurisdiction": "EU",
+     "route": "private_named",
+     "investor": "retail",
+     "pack_state": "active",
+     "kyc": "clear",
+     "headroom": "at_limit",
+     "status_evidence": "verified"
+    },
+    "expected": "BLOCK 150_PERSON_LIMIT",
+    "rules": "RP-EU-PROSP-003; AU-230"
+   },
+   {
+    "id": "TC-V12-O-O1-090",
+    "row": {
+     "jurisdiction": "EU",
+     "route": "private_named",
+     "investor": "qualified",
+     "pack_state": "active",
+     "kyc": "clear",
+     "headroom": "below",
+     "status_evidence": "verified"
+    },
+    "expected": "ALLOW QUALIFIED_INVESTOR_EXEMPTION",
+    "rules": "RP-EU-PROSP-002"
+   },
+   {
+    "id": "TC-V12-O-O1-091",
+    "row": {
+     "jurisdiction": "UK",
+     "route": "private_named",
+     "investor": "qualified",
+     "pack_state": "active",
+     "kyc": "clear",
+     "headroom": "below",
+     "status_evidence": "verified"
+    },
+    "expected": "ALLOW FPO_ART19_PROFESSIONAL",
+    "rules": "RP-UK-FINPROM-003"
+   },
+   {
+    "id": "TC-V12-O-O1-092",
+    "row": {
+     "jurisdiction": "UK",
+     "route": "private_named",
+     "investor": "hnw_or_sophisticated",
+     "pack_state": "active",
+     "kyc": "clear",
+     "headroom": "below",
+     "status_evidence": "verified"
+    },
+    "expected": "ALLOW FPO_ART48_50A_STATEMENT",
+    "rules": "RP-UK-FINPROM-004/005"
+   },
+   {
+    "id": "TC-V12-O-O1-093",
+    "row": {
+     "jurisdiction": "UK",
+     "route": "private_named",
+     "investor": "hnw_or_sophisticated",
+     "pack_state": "active",
+     "kyc": "clear",
+     "headroom": "below",
+     "status_evidence": "none"
+    },
+    "expected": "HOLD INVESTOR_STATEMENT_MISSING",
+    "rules": "RP-UK-FINPROM-004/005"
+   },
+   {
+    "id": "TC-V12-O-O1-094",
+    "row": {
+     "jurisdiction": "UK",
+     "route": "private_named",
+     "investor": "employee_esop",
+     "pack_state": "active",
+     "kyc": "clear",
+     "headroom": "below",
+     "status_evidence": "verified"
+    },
+    "expected": "ALLOW FPO_ART60_EMPLOYEE_SCHEME",
+    "rules": "RP-UK-FINPROM-006"
+   },
+   {
+    "id": "TC-V12-O-O1-095",
+    "row": {
+     "jurisdiction": "UK",
+     "route": "portal_crowdfunding",
+     "investor": "retail",
+     "pack_state": "active",
+     "kyc": "clear",
+     "headroom": "below",
+     "status_evidence": "verified"
+    },
+    "expected": "HANDOFF FCA_AUTHORISED_PLATFORM",
+    "rules": "RP-UK-FINPROM-012"
    }
   ],
-  "story": "US-33-ZO13"
+  "story": "US-33-ZO13",
+  "added": 14,
+  "outcomes": 26
  },
  {
   "id": "M-O2",
@@ -1228,7 +1426,7 @@
   "full": 864,
   "valid": 432,
   "method": "3-way greedy covering array",
-  "n": 52,
+  "n": 53,
   "cases": [
    {
     "id": "TC-V12-O-O2-001",
@@ -1957,9 +2155,25 @@
     },
     "expected": "HOLD AMOUNT_MISMATCH",
     "rules": "AU-238; BRL-V12-O-01"
+   },
+   {
+    "id": "TC-V12-O-O2-053",
+    "row": {
+     "jurisdiction": "IN",
+     "receipt": "reconciled",
+     "approvals": "legal_and_finance",
+     "clock": "beyond_75",
+     "kyc": "clear",
+     "event": "first",
+     "pack_state": "active"
+    },
+    "expected": "ESCALATE REFUND_OVERDUE",
+    "rules": "AU-236; RP-IN-SEC-011"
    }
   ],
-  "story": "US-32-ZO01"
+  "story": "US-32-ZO01",
+  "added": 1,
+  "outcomes": 9
  },
  {
   "id": "M-O3",
@@ -2627,7 +2841,9 @@
     "rules": "BRL-V12-O-07; AU-250"
    }
   ],
-  "story": "US-33-ZO05"
+  "story": "US-33-ZO05",
+  "added": 0,
+  "outcomes": 8
  },
  {
   "id": "M-O4",
@@ -3033,7 +3249,9 @@
     "rules": "AU-254; BRL-V12-O-08"
    }
   ],
-  "story": "US-33-ZO09"
+  "story": "US-33-ZO09",
+  "added": 0,
+  "outcomes": 6
  },
  {
   "id": "M-O5",
@@ -3073,7 +3291,7 @@
   "full": 288,
   "valid": 240,
   "method": "3-way greedy covering array",
-  "n": 37,
+  "n": 40,
   "cases": [
    {
     "id": "TC-V12-O-O5-001",
@@ -3555,9 +3773,50 @@
     },
     "expected": "HOLD RETRY_RECONCILE STORE_IN_IN",
     "rules": "AU-255"
+   },
+   {
+    "id": "TC-V12-O-O5-038",
+    "row": {
+     "investor": "individual",
+     "result": "clear",
+     "age": "fresh",
+     "legal_basis": "present",
+     "residency": "EU",
+     "beneficial_owner": "resolved"
+    },
+    "expected": "CLEAR STORE_IN_EU",
+    "rules": "AU-255; AU-259"
+   },
+   {
+    "id": "TC-V12-O-O5-039",
+    "row": {
+     "investor": "individual",
+     "result": "clear",
+     "age": "expired",
+     "legal_basis": "present",
+     "residency": "IN",
+     "beneficial_owner": "resolved"
+    },
+    "expected": "HOLD RECHECK_REQUIRED STORE_IN_IN",
+    "rules": "AU-255; RP-AML-KYC-007"
+   },
+   {
+    "id": "TC-V12-O-O5-040",
+    "row": {
+     "investor": "entity",
+     "result": "clear",
+     "age": "fresh",
+     "legal_basis": "present",
+     "residency": "EU",
+     "beneficial_owner": "unresolved"
+    },
+    "expected": "HOLD BO_UNRESOLVED STORE_IN_EU",
+    "rules": "RP-AML-KYC-004"
    }
   ],
-  "story": "US-33-ZO11"
+  "story": "US-33-ZO11",
+  "added": 3,
+  "outcomes": 15
  },
  {
   "id": "M-O6",
@@ -3596,7 +3855,7 @@
   "full": 432,
   "valid": 351,
   "method": "3-way greedy covering array",
-  "n": 53,
+  "n": 54,
   "cases": [
    {
     "id": "TC-V12-O-O6-001",
@@ -4233,9 +4492,23 @@
     },
     "expected": "PROCEED",
     "rules": "AU-253"
+   },
+   {
+    "id": "TC-V12-O-O6-054",
+    "row": {
+     "issuer": "IN",
+     "investor": "nonresident_other",
+     "instrument": "debt",
+     "reviewer": "pending",
+     "deadline": "ok"
+    },
+    "expected": "HOLD ECB_ROUTE_REVIEW",
+    "rules": "RP-IN-SEC-018; AU-253"
    }
   ],
-  "story": "US-33-ZO07"
+  "story": "US-33-ZO07",
+  "added": 1,
+  "outcomes": 8
  },
  {
   "id": "M-O7",
@@ -4706,7 +4979,9 @@
     "rules": "RP-INV-ADVICE-005/006"
    }
   ],
-  "story": "US-33-ZO15"
+  "story": "US-33-ZO15",
+  "added": 0,
+  "outcomes": 6
  },
  {
   "id": "M-O8",
@@ -4747,7 +5022,7 @@
   "full": 192,
   "valid": 192,
   "method": "2-way greedy covering array",
-  "n": 9,
+  "n": 11,
   "cases": [
    {
     "id": "TC-V12-O-O8-001",
@@ -4874,9 +5149,39 @@
     },
     "expected": "DISPATCH",
     "rules": "PDP recheck"
+   },
+   {
+    "id": "TC-V12-O-O8-010",
+    "row": {
+     "figures": "tied",
+     "recipients": "rights_holders",
+     "mentions_offer": "no",
+     "approval": "owner_approved",
+     "consent": "no",
+     "locale": "en",
+     "channel": "email"
+    },
+    "expected": "DELIVER PORTAL_ONLY",
+    "rules": "BRL-ELG-01"
+   },
+   {
+    "id": "TC-V12-O-O8-011",
+    "row": {
+     "figures": "tied",
+     "recipients": "rights_holders",
+     "mentions_offer": "yes",
+     "approval": "owner_approved",
+     "consent": "yes",
+     "locale": "en",
+     "channel": "portal"
+    },
+    "expected": "ROUTE AG-198_SECURITIES_REVIEW",
+    "rules": "AU-232; AG-198"
    }
   ],
-  "story": "US-32-ZO03"
+  "story": "US-32-ZO03",
+  "added": 2,
+  "outcomes": 6
  },
  {
   "id": "M-O9",
@@ -5021,7 +5326,9 @@
     "rules": "AU-242"
    }
   ],
-  "story": "US-32-ZO05"
+  "story": "US-32-ZO05",
+  "added": 0,
+  "outcomes": 4
  },
  {
   "id": "M-O10",
@@ -5062,7 +5369,7 @@
   "full": 192,
   "valid": 192,
   "method": "2-way greedy covering array",
-  "n": 8,
+  "n": 11,
   "cases": [
    {
     "id": "TC-V12-O-O10-001",
@@ -5175,9 +5482,53 @@
     },
     "expected": "REJECT STALE",
     "rules": "AU-244"
+   },
+   {
+    "id": "TC-V12-O-O10-009",
+    "row": {
+     "signature": "valid",
+     "timestamp": "fresh",
+     "nonce": "new",
+     "consent": "present",
+     "source": "issuer_form",
+     "mandate": "active",
+     "pack": "inactive"
+    },
+    "expected": "STORE ENQUIRY_ONLY_NO_OFFER_MATERIAL",
+    "rules": "AU-231"
+   },
+   {
+    "id": "TC-V12-O-O10-010",
+    "row": {
+     "signature": "valid",
+     "timestamp": "fresh",
+     "nonce": "new",
+     "consent": "present",
+     "source": "external_agent",
+     "mandate": "none",
+     "pack": "active"
+    },
+    "expected": "REJECT AGENT_MANDATE",
+    "rules": "AU-245"
+   },
+   {
+    "id": "TC-V12-O-O10-011",
+    "row": {
+     "signature": "valid",
+     "timestamp": "fresh",
+     "nonce": "new",
+     "consent": "absent",
+     "source": "issuer_form",
+     "mandate": "active",
+     "pack": "active"
+    },
+    "expected": "HOLD CONSENT",
+    "rules": "BRL-ELG-01"
    }
   ],
-  "story": "US-32-ZO07"
+  "story": "US-32-ZO07",
+  "added": 3,
+  "outcomes": 7
  },
  {
   "id": "M-O11",
@@ -5211,7 +5562,7 @@
   "full": 72,
   "valid": 72,
   "method": "2-way greedy covering array",
-  "n": 9,
+  "n": 11,
   "cases": [
    {
     "id": "TC-V12-O-O11-001",
@@ -5320,9 +5671,35 @@
     },
     "expected": "BLOCK_READY BUDGET",
     "rules": "AU-246"
+   },
+   {
+    "id": "TC-V12-O-O11-010",
+    "row": {
+     "criterion": "met",
+     "citation": "present",
+     "budget": "eligible",
+     "attachments": "complete",
+     "approval": "none"
+    },
+    "expected": "READY_NOT_SUBMITTABLE",
+    "rules": "INV-SVC-17 WF03"
+   },
+   {
+    "id": "TC-V12-O-O11-011",
+    "row": {
+     "criterion": "met",
+     "citation": "present",
+     "budget": "eligible",
+     "attachments": "missing",
+     "approval": "hash_approved"
+    },
+    "expected": "BLOCK_READY ATTACHMENTS",
+    "rules": "AU-246"
    }
   ],
-  "story": "US-33-ZO01"
+  "story": "US-33-ZO01",
+  "added": 2,
+  "outcomes": 7
  },
  {
   "id": "M-O12",
@@ -5934,7 +6311,9 @@
     "rules": "AU-247"
    }
   ],
-  "story": "US-33-ZO03"
+  "story": "US-33-ZO03",
+  "added": 0,
+  "outcomes": 7
  },
  {
   "id": "M-O13",
@@ -6141,7 +6520,9 @@
     "rules": "AU-248"
    }
   ],
-  "story": "US-33-ZO04"
+  "story": "US-33-ZO04",
+  "added": 0,
+  "outcomes": 5
  },
  {
   "id": "M-O14",
@@ -6560,7 +6941,9 @@
     "rules": "AU-252"
    }
   ],
-  "story": "US-33-ZO06"
+  "story": "US-33-ZO06",
+  "added": 0,
+  "outcomes": 5
  },
  {
   "id": "M-O15",
@@ -7123,7 +7506,9 @@
     "rules": "CP-01"
    }
   ],
-  "story": "US-33-ZO12"
+  "story": "US-33-ZO12",
+  "added": 0,
+  "outcomes": 5
  },
  {
   "id": "M-O16",
@@ -7695,6 +8080,8 @@
     "rules": "entitlement check"
    }
   ],
-  "story": "US-32-ZO09"
+  "story": "US-32-ZO09",
+  "added": 0,
+  "outcomes": 3
  }
 ]
