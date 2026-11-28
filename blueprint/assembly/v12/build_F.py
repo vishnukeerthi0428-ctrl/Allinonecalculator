@@ -23,7 +23,7 @@ for wf, tr in trace.items():
     ai = re.search(r"AI (\d+)", tr[2]).group(1)
     sa = PF if "CONFLICT-854" in new else M
     if sb == "Covered":
-        act = "Bind V12 workflow to AGT role and blueprint implementers (§11.6.4.2)"
+        act = "Bind V12 workflow to AGT role and blueprint implementers (§11.6.4.4)"
     elif "GAP-858" in new:
         act = "Adopt V12 step class (0 AI steps); re-bind blueprint agent; GAP-858 to confirm"
     elif ai == "0":

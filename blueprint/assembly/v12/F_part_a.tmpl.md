@@ -62,7 +62,7 @@ Observations from the parse that matter for design:
 
 ### 11.6.3.1 Partially covered, not covered and conflict aspects (chapters 14–18, 30, 40, 01, Appendix D and the 20 AGT roles)
 
-Every aspect below is listed individually. The 156 workflow-binding aspects are listed individually in §11.6.4.2 and the 111 EVAL-suite aspects in Part 11.6b §11.6.5.5 (same columns, generated from the same data).
+Every aspect below is listed individually. The 156 workflow-binding aspects are listed individually in §11.6.4.4 and the 111 EVAL-suite aspects in Part 11.6b §11.6.5.5 (same columns, generated from the same data).
 
 <!--INC:t_register.md-->
 

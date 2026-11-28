@@ -48,7 +48,7 @@ a(ch, "V8", "F15-001", "One registered role per agent; prompts reference the rol
 a(ch, "V8", "F15-002", "Agents never hold effect tools in steps that read untrusted content (AIX-09)", C,
   "Part 7.2 §7.2.4 registry rule 1; Part 7.3 §7.6.3 capability layer; TL-13 not granted", "Map AIX-09 → registry rule 1; AU-179 checks AGT 'never allowed' list against TL grants", "AU-179; TC-V12-F-009")
 a(ch, "V8 table", "F15-003", "AGT registry columns: Agent ID, Role, Workflows (count + IDs), Allowed tools, Never allowed", N,
-  "Part 9.4 §9.4.3 (AG columns differ)", "Registry table §11.6.4.1 with AGT columns plus AG mapping; ai_agent_definition.agt_role_id", "DEC-600")
+  "Part 9.4 §9.4.3 (AG columns differ)", "Registry table §11.6.4.2 with AGT columns plus AG mapping; ai_agent_definition.agt_role_id", "DEC-600")
 a(ch, "V8 table", "F15-004", "Uniform allowed tools for all 20 roles: scoped read, retrieval (own tenant), draft/score output", P,
   "Part 7.2 §7.2.4 TL-01/02/03/06/08/09 (per agent, finer)", "Adopt as role ceiling; per-AG TL grants must be a subset (AU-179) [GAP-865]", "AU-179; GAP-865")
 a(ch, "V8 table", "F15-005", "Uniform never-allowed list: send, publish, spend, change live state, read other tenants", C,
@@ -214,7 +214,7 @@ ch = "17 RAG, Knowledge & Evidence Engineering"
 a(ch, "V8", "F17-001", "Indexes per tenant and region; retrieval filters by tenant and company before similarity ranking (CTRL-AI-07)", P,
   "TL-01 namespace (tenant, startup); single region ap-south-1", "AU-166 pre-filter assertion; region dimension pending CONFLICT-852", "AU-166; CONFLICT-852", PF)
 a(ch, "V8", "F17-002", "Each chunk stores source, rights, provenance hash, ingestion time; poisoned/unlicensed sources quarantined (AI-INJ-07)", P,
-  "knowledge chunk + AU-007 source rights; AU-046 revocation", "Add rights, provenance_hash, quarantine_state (§11.6.5.8)", "FR-V12-F-031; AU-165")
+  "knowledge chunk + AU-007 source rights; AU-046 revocation", "Add rights, provenance_hash, quarantine_state (§11.6.5.6)", "FR-V12-F-031; AU-165")
 a(ch, "V8", "F17-003", "Erasure (CJ-R07) deletes source documents, chunks and embeddings with deletion evidence", C, "AU-011 locator; AU-046; AU-112", "Map", "—")
 a(ch, "V6 MT-12", "F17-004", "MT-12 (P0): versioned approved claims and knowledge references by offering; revoke stale evidence and scoped cache; MT-TC-MT-12 revoked claim excluded, wrong-offering retrieval denied", P,
   "claims registry (M03), AU-029 expiry, AU-046 purge", "AU-164 offering-scoped invalidation + TC", "AU-164; TC-V12-F-068")
@@ -227,7 +227,7 @@ a(ch, "V5 AI-08", "F17-008", "AI-08 (P1) adaptive RAG: tune top-k and rerank aga
 a(ch, "V5 AI-09", "F17-009", "AI-09 (P1) incremental embedding: hash chunks, re-embed changed only, tombstone removed; OPT-TC-AI-09: one changed chunk triggers one update; deleted evidence no longer retrievable", P, "AU-046 deletes embeddings on revoke", "AU-165", "AU-165; TC-V12-F-072")
 a(ch, "V5 CS-02", "F17-010", "CS-02 (P1) searchable help and grounded AI support; cite version; route uncertainty to human; OPT-TC-CS-02: unsupported question escalates; no fabricated claims", C, "AG-031; AG-017; abstention BRL-AI-04", "Map", "TC-V12-F-073")
 a(ch, "V5 CS-07", "F17-011", "CS-07 (P1) scoped correction memory with provenance, expiry, revocation; never crosses tenants; OPT-TC-CS-07: correction improves evaluated same-scope fixture; never crosses tenants", P, "AU-078 feedback; ADR-112 memory", "Correction items as procedural memory with expiry (AU-164 invalidation)", "TC-V12-F-074")
-a(ch, "V5", "F17-012", "Evidence schema: source_ref, source policy/right, object version, observed_at, fetched_at, hash, quotation/location, confidence, freshness limit", P, "evidence entity (Part 3.3; AG-004 quotes)", "Field mapping §11.6.5.8; add observed_at, freshness_limit", "FR-V12-F-031")
+a(ch, "V5", "F17-012", "Evidence schema: source_ref, source policy/right, object version, observed_at, fetched_at, hash, quotation/location, confidence, freshness limit", P, "evidence entity (Part 3.3; AG-004 quotes)", "Field mapping §11.6.5.6; add observed_at, freshness_limit", "FR-V12-F-031")
 a(ch, "V5", "F17-013", "Ingest only authorised docs; scan, classify, redact restricted content; index scoped by tenant/company/document permission; stale/conflicting claims held; deletion revokes chunks and caches; citations with answers; no cross-tenant embedding retrieval", C,
   "AU-004; AU-007; AU-069; AU-046; TL-01", "Map", "—")
 
@@ -255,7 +255,7 @@ for i,(j,d) in enumerate(jp):
 a(ch, "V10 REC-03", "F18-019", "REC-03 (P0): group competing actions by relationship and purpose; hold duplicates; reviewer disposition; opt-out and budget override", P, "AU-030 conflict resolution by priority", "AU-176", "AU-176; TC-V12-F-075")
 a(ch, "V10 REC-10", "F18-020", "REC-10 (P0): consent withdrawal matched by contact, channel, purpose, market; unrelated purposes unaffected; missing scope fails closed", P, "AU-008 STOP scope; consent model Part 2.4", "AU-172 scoped suppression", "AU-172; TC-V12-F-076")
 a(ch, "V10 REC-11", "F18-021", "REC-11 (P0): all dispatch invokes canonical effect preflight (scope, consent, configuration, entitlement, cap, approval, duplicates); missing evidence/stale approval/withdrawn consent/unknown jurisdiction/paused tenant holds", C, "AU-009 PDP dispatch guard", "Map; AU-171 decision table", "AU-171")
-a(ch, "V10", "F18-022", "Canonical effect contract: immutable intent (tenant, company, recipient, relationship, purpose, market, channel, config version, payload digest, consent version, reviewer, expiry, budget, idempotency key); atomic re-read; missing → HOLD; unknown write → reconcile", P, "outbox intent + approved hash (CA-APPROVE); AU-026", "Add consent_version, config_version, relationship, expiry fields (§11.6.5.10)", "AU-175; FR-V12-F-034")
+a(ch, "V10", "F18-022", "Canonical effect contract: immutable intent (tenant, company, recipient, relationship, purpose, market, channel, config version, payload digest, consent version, reviewer, expiry, budget, idempotency key); atomic re-read; missing → HOLD; unknown write → reconcile", P, "outbox intent + approved hash (CA-APPROVE); AU-026", "Add consent_version, config_version, relationship, expiry fields (§11.6.5.6)", "AU-175; FR-V12-F-034")
 gl = [("CJ-GL-01","legitimate published professional channels only; no guessed/pattern emails","X-05; AU-018; BR-M18",C),
       ("CJ-GL-02","verified contact is not consent","BRL (score ≠ permission); AU-009",C),
       ("CJ-GL-03","deletion/correction never re-enables outreach; hashed suppression survives erasure","DEC-028 suppression indefinite hashed",C),
@@ -357,9 +357,9 @@ for i,(x,p,d,s,l,au) in enumerate(aiq):
 a(ch, "V5", "F30-013", "Per-run budget reserve before execution; meter model input/output/reasoning, embeddings, tool calls, retries, storage, provider fees, labour; cache only scoped permitted inputs; batch low-risk; cheapest evaluated model; cap context/tool calls; no quality regression for cost; record cost per accepted result", P, "AU-002 reservation; AU-012", "AU-158/159; reasoning tokens metered as output (§7.3.2 rule 2)", "AU-158; AU-159")
 
 # ---------------- other chapters referencing AGT / EVAL ----------------
-a("01 Specification Control Reading Guide", "ID families", "F01-001", "ID index: 20 agents (AGT-01…AGT-20), ch15", N, "—", "Adopted (§11.6.4.1)", "DEC-600")
-a("AP Appendix D ID index", "ID index", "FAD-001", "AGT-01…20 listed in Appendix D ID index", N, "—", "Adopted (§11.6.4.1)", "DEC-600")
-a("40 Master Traceability", "V8 register", "F40-001", "Master traceability register columns Workflow, SKU, Steps (AI n), Engine, Agent, UI, API, DB, Policy (POL-V6-PRECHECK; CJ preflight on 15 rows), Tests (TC-*; EVAL-*) — 156 rows", N, "Part 6.6 RTM (blueprint IDs)", "F-scope columns (engine, agent, steps, EVAL) reconciled per row in §11.6.4.2; UI/API/DB columns owned by Groups G/H/I", "DEC-600")
+a("01 Specification Control Reading Guide", "ID families", "F01-001", "ID index: 20 agents (AGT-01…AGT-20), ch15", N, "—", "Adopted (§11.6.4.2)", "DEC-600")
+a("AP Appendix D ID index", "ID index", "FAD-001", "AGT-01…20 listed in Appendix D ID index", N, "—", "Adopted (§11.6.4.2)", "DEC-600")
+a("40 Master Traceability", "V8 register", "F40-001", "Master traceability register columns Workflow, SKU, Steps (AI n), Engine, Agent, UI, API, DB, Policy (POL-V6-PRECHECK; CJ preflight on 15 rows), Tests (TC-*; EVAL-*) — 156 rows", N, "Part 6.6 RTM (blueprint IDs)", "F-scope columns (engine, agent, steps, EVAL) reconciled per row in §11.6.4.4; UI/API/DB columns owned by Groups G/H/I", "DEC-600")
 a("40 Master Traceability", "V7 decisions", "F40-002", "DEC-V7-02 AI providers and models per tier — Open", X, "DEC-418", "Answered by DEC-418, pending Founder confirmation (CONFLICT-850)", "CONFLICT-850", PF)
 a("40 Master Traceability", "V7 decisions", "F40-003", "DEC-V7-06 Evaluation thresholds need owner approval per workflow — Open", P, "§7.6.9", "DEC-602 adopts V12 gates as defaults; per-workflow owner sign-off recorded in AU-154", "DEC-602")
 a("40 Master Traceability", "V7 decisions", "F40-004", "DEC-V7-07 Tenant AI budget defaults: soft 80%, hard per plan, units in tokens until prices approved — Open", P, "DEC-008; DEC-047 AI tasks", "DEC-607", "DEC-607")

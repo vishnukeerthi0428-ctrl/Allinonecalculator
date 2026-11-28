@@ -69,11 +69,11 @@ Appendix C2 (enterprise schema, owned by Group I) was read for the field shapes 
 |---|---|---|---|
 | Developer platform | ENT-API-01…07; A2 Developer (7) | Partially covered (Part 9.9a CAP-X3-23 is an unapproved A3 proposal; Part 3.2 says outbound webhooks are not offered) | API-V12-H-001…014; RL-KEY; ADR-205/206; DEC-643…646 |
 | Enterprise identity and access | A2 Identity (6), SCIM (7), Access (4) | Not covered | API-V12-H-015…032; ADR-207; DEC-648 |
-| Audit, billing, data, ops, security | A2 Audit (4), Billing (3), Data (8), Global (1), Operations (3), Security (2) | 8 covered, 13 partial/not covered | API-V12-H-033…048 |
-| AI governance and compliance routes | V8 (26) | 13 covered, 13 partial/not covered | API-V12-H-049…062; DEC-659 |
+| Audit, billing, data, ops, security | A2 Audit (4), Billing (3), Data (8), Global (1), Operations (3), Security (2) | 7 covered, 14 partial or not covered | API-V12-H-033…036, 039…048 |
+| AI governance and compliance routes | V8 (26) | 12 covered, 14 partial or not covered | API-V12-H-049…062; DEC-659 |
 | MT / OPT / run gateway / V4 | 32 candidates | 17 covered, 15 partial/not covered | API-V12-H-063…073; ADR-208; DEC-647 |
 | Wire conventions | Appendix A components (18) | Partially covered / conflict | DEC-640…642 |
-| Connectors and adapters | ENT-INT-01…05, INT-01…11, families, MT-22/23, GC-08/10/13 | Partially covered | CF-01…12; AD-V12-H-01…11; API-V12-H-037/038/074/075 |
+| Connectors and adapters | ENT-INT-01…05, INT-01…11, families, MT-22/23, GC-08/10/13; A2 Integrations (3) | Partially covered | CF-01…12; AD-V12-H-01…11; API-V12-H-037/038/074/075 |
 | Plugins and FinOps | VND-01…97; GC-09/11/15 | Covered (decisions identical) | VND IDs adopted; contact-data conditions; API-V12-H-076; DEC-651 |
 | Events | 12 derived | Partially covered / not covered | 49 new event types (24 catalogue rows) + 24-type outbound projection |
 | Hosting | DEC-421 (not in V12 text) | — | API ingress per host, ADR-209, CONFLICT-889 |
@@ -238,8 +238,11 @@ Every aspect whose status before was not "Covered" is listed individually (143 r
 | Group | Aspects | Blueprint location | Note |
 |---|---|---|---|
 | Historical registry rows SM-SIT-A001…A302 (FSD 25 V5) | 302 | Part 3.2 §3.2.2.4; Part 3.5a §3.5.4.3; Part 3.5b §3.5.5.2–3.5.5.6 | Same 302 operations as `api_catalog.json`; the 24 that Part 3.5a found partial or missing were closed by API-ENH-D-001…024 and adapter ports AD-D01…D03 |
-| Appendix A operations drawn from the historical registry and SM-UX-API | 256 | As above | Same path or the 5 `/api/v1`-prefixed identity spellings (§11.8.4.2) |
-| V8, MT, OPT, V2 and V4 candidates with an existing equivalent | 30 | Part 3.2 operations listed in §11.8.4.4 | Alias, approval or split relation |
+| Appendix A operations already represented | 268 | As above and §11.8.4.4.1 | 256 from the historical registry and SM-UX-API (same path or one of the 5 `/api/v1`-prefixed identity spellings) + 12 V8 routes with an existing equivalent |
+| FSD 25 V8, MT, OPT, V2 and V4 candidate rows with an existing equivalent | 29 | Part 3.2 operations listed in §11.8.4.4 | Alias, approval or split relation |
+| FSD 25 statements already reflected (V6 authority, V5 conventions, historical-registry retirement rule, V4 note) | 4 | Part 3.2 §3.2.1; Part 3.5a | — |
+| Appendix A2 operations already served | 8 | API-121, API-122, API-526/515, API-102, API-530, API-534, Approval API-541/539, API-128 | — |
+| Derived event item already in the catalogue (ESP webhooks) | 1 | Part 3.2 §3.2.3.3 | — |
 | Engineering archive files and field proposals | 293 | Part 3.5a/3.5b | 0 operations outside the reconciled 302 + 19 set in any file |
 | Plugin register VND-01…97, decision vocabulary and counts, 538 statement | 110 | Part 7.4a §7.4.4.2; `F_integration_candidates.csv` | All 97 V12 decisions equal the blueprint's document-21 decisions |
 | Connector catalogue rows already served by adapters (INT-02, 03, 06, 08) and controls ENT-INT-02/03, MT-23, SEC-04, shortlist | 13 | Part 3.2 §3.2.4 | — |
@@ -254,15 +257,15 @@ Every aspect whose status before was not "Covered" is listed individually (143 r
 | Quantity | V12 statement | Parsed | Blueprint before | Blueprint after this part |
 |---|---|---|---|---|
 | Appendix A operations | 282 on 251 paths | 282 on 251 | 268 represented (Covered), 14 partial or new | 282 represented; 14 additions among API-V12-H-049…062 |
-| Appendix A2 operations | 48 on 33 paths | 48 on 33 | 8 represented, 40 partial or new | 48 represented; 40 map to 37 new operations (`/scim/v2/Users` GET/POST etc. one-to-one; export approval uses the Approval resource) |
+| Appendix A2 operations | 48 on 33 paths | 48 on 33 | 8 represented, 40 partial or new | 48 represented; the 40 map one-to-one to 40 new operations (export approval, already covered, uses the Approval resource) |
 | Historical registry (FSD 25 V5) | 302 (288 + 14 website) | 302 (285 HTTP + 17 adapters) | 302 mapped (Part 3.5a) | Unchanged; 30 historical HTTP operations are **not** carried into Appendix A (§11.8.4.2.3) and stay in the blueprint |
-| Other FSD 25 candidates | V8 26 · MT 10 · OPT 8 · V2 7 · V4 7 | 58 | 30 equivalent | 58 represented; 13 new + 2 route aliases |
+| Other FSD 25 candidates | V8 26 · MT 10 · OPT 8 · V2 7 · V4 7 | 58 | 29 equivalent | 58 represented; 25 new operations (API-V12-H-049…073), 2 served route aliases, 1 semantic amendment (API-043) |
 | Engineering OpenAPI candidates | — | 285 + 285 + 19 | Same set as Part 3.5 | Unchanged |
 | Blueprint operations | — | — | **579** (555 + 24) + 40 API-ADV-X1 (Part 9.7b) | **655** (579 + 76 API-V12-H) + 40 API-ADV-X1; inline X2/X3 routes in Parts 9.8a/9.9a remain proposals without IDs |
 | New operations by namespace | — | — | — | admin 56, admin+internal 1, dev 1, hooks 1, internal 1, portal 1, public 2, scim 7, status 1, v2 5 |
 | New operations by V12 phase | — | — | — | R1 44, R2 29, R3 3 |
 
-**Why 76 new operations for 103 V12 operations not already represented.** Several V12 operations collapse onto one blueprint operation (the three run-gateway spellings `/api/v1/workflow-runs`, `/api/v1/commercial/workflow-runs` and `/api/v2/workflow-runs` → API-V12-H-068; preflight → `dry_run` on the same operation), and 13 operations are added that V12 implies but does not list (key rotation, OAuth client management, webhook update and replay, SCIM token issue, connector health summary, diagnostics, tier scenarios).
+**How the 76 new operations arise.** 69 V12 operations were not already represented (40 in A2, 14 in the V8 register, 15 MT/OPT/V2/V4 candidates). They need 65 new operations: the three run-gateway spellings `/api/v1/workflow-runs`, `/api/v1/commercial/workflow-runs` and `/api/v2/workflow-runs` and the OPT preflight collapse onto API-V12-H-068 (preflight = `dry_run`), and MT-API-06 is a semantic amendment of API-043. A further 11 operations are added because V12 requires the capability without listing a route: key rotation (004), OAuth token endpoint and client management (005…008), webhook update and replay (011, 014), SCIM token issue (028), connector health summary (074), diagnostics (075) and tier scenarios (076).
 
 ### 11.8.4.2 Appendix A (OpenAPI 3.1, 282 operations)
 

@@ -375,7 +375,7 @@ for tb in tD:
         mapping, sb = hit
         sa = 'Matched'
         idf_rows.append((fam, rng, where, mapping, sb))
-        add('FSD', 'Appendix D ID index', tb['h2'] or 'V12 ID families (second table)', f'IDX-{fam}', f'{fam}: {rng} ({where})', sb, mapping,
+        add('FSD', 'Appendix D ID index', tb['h2'] or 'V12 ID families (second table)', f'IDX-{fam} ({rng.split()[0]})', f'{fam}: {rng} ({where})', sb, mapping,
             'Family registered in the V12 ID-family register (sec 11.11.4.10) with alias and collision rule', 'FR-V12-K-026; DEC-700', sa)
 
 # ================================================================== write CSV
