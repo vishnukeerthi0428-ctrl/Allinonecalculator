@@ -223,10 +223,10 @@ a(ch, "V5", "F17-005", "Cache contract: key by tenant/company, purpose, versione
 a(ch, "V5 AI-05", "F17-006", "AI-05 (P1) tenant-scoped semantic caching with similarity + exact business constraints; OPT-TC-AI-05 different tenant/revoked source → miss", P, "ADR-076 cosine ≥ 0.92 Public/Internal", "AU-164", "AU-164; TC-V12-F-069")
 a(ch, "V5 AI-07", "F17-007", "AI-07 (P1) scoped fact/decision summaries with evidence and corrections; preserve unresolved tasks and consent; OPT-TC-AI-07 bounded prompt, approval and opt-out facts retained", P,
   "conversation memory last 6 turns + summary (ADR-112)", "Pinned-fact rule: approval, opt-out, consent facts never summarized away (AU-163)", "AU-163; TC-V12-F-070")
-a(ch, "V5 AI-08", "F17-008", "AI-08 (P1) adaptive RAG: tune top-k and rerank against evaluated relevance; scope before ranking; cite; OPT-TC-AI-08", P, "TL-01 top-k ≤ 8 fixed", "AU-166 tuner within token cap", "AU-166; TC-V12-F-071")
-a(ch, "V5 AI-09", "F17-009", "AI-09 (P1) incremental embedding: hash chunks, re-embed changed only, tombstone removed; OPT-TC-AI-09", P, "AU-046 deletes embeddings on revoke", "AU-165", "AU-165; TC-V12-F-072")
-a(ch, "V5 CS-02", "F17-010", "CS-02 (P1) searchable help and grounded AI support; cite version; route uncertainty to human; OPT-TC-CS-02", C, "AG-031; AG-017; abstention BRL-AI-04", "Map", "TC-V12-F-073")
-a(ch, "V5 CS-07", "F17-011", "CS-07 (P1) scoped correction memory with provenance, expiry, revocation; never crosses tenants; OPT-TC-CS-07", P, "AU-078 feedback; ADR-112 memory", "Correction items as procedural memory with expiry (AU-164 invalidation)", "TC-V12-F-074")
+a(ch, "V5 AI-08", "F17-008", "AI-08 (P1) adaptive RAG: tune top-k and rerank against evaluated relevance; scope before ranking; cite; OPT-TC-AI-08: relevant fixture retrieved within token cap; unrelated or forbidden chunks excluded", P, "TL-01 top-k ≤ 8 fixed", "AU-166 tuner within token cap", "AU-166; TC-V12-F-071")
+a(ch, "V5 AI-09", "F17-009", "AI-09 (P1) incremental embedding: hash chunks, re-embed changed only, tombstone removed; OPT-TC-AI-09: one changed chunk triggers one update; deleted evidence no longer retrievable", P, "AU-046 deletes embeddings on revoke", "AU-165", "AU-165; TC-V12-F-072")
+a(ch, "V5 CS-02", "F17-010", "CS-02 (P1) searchable help and grounded AI support; cite version; route uncertainty to human; OPT-TC-CS-02: unsupported question escalates; no fabricated claims", C, "AG-031; AG-017; abstention BRL-AI-04", "Map", "TC-V12-F-073")
+a(ch, "V5 CS-07", "F17-011", "CS-07 (P1) scoped correction memory with provenance, expiry, revocation; never crosses tenants; OPT-TC-CS-07: correction improves evaluated same-scope fixture; never crosses tenants", P, "AU-078 feedback; ADR-112 memory", "Correction items as procedural memory with expiry (AU-164 invalidation)", "TC-V12-F-074")
 a(ch, "V5", "F17-012", "Evidence schema: source_ref, source policy/right, object version, observed_at, fetched_at, hash, quotation/location, confidence, freshness limit", P, "evidence entity (Part 3.3; AG-004 quotes)", "Field mapping §11.6.5.8; add observed_at, freshness_limit", "FR-V12-F-031")
 a(ch, "V5", "F17-013", "Ingest only authorised docs; scan, classify, redact restricted content; index scoped by tenant/company/document permission; stale/conflicting claims held; deletion revokes chunks and caches; citations with answers; no cross-tenant embedding retrieval", C,
   "AU-004; AU-007; AU-069; AU-046; TL-01", "Map", "—")
@@ -349,7 +349,11 @@ aiq = [("AI-01","P0","Deterministic-first execution; golden fixtures zero model 
        ("AI-11","P1","Shared research artifact reuse via authorized references",P,"AU-014 content-hash dedupe; AG-040 brief","AU-167"),
        ("AI-13","P1","Multimodal cost tiers: thumbnail/text/transcript first",N,"not in baseline","AU-168")]
 for i,(x,p,d,s,l,au) in enumerate(aiq):
-    a(ch, "V5", f"F30-{5+i:03d}", f"{x} ({p}) {d}; OPT-TC-{x}", s, l, f"Adopt; {au}", f"{au}; TC-V12-F-{123+i:03d}")
+    acc = {"AI-01":"golden deterministic fixtures yield exact results with zero model calls","AI-02":"given two eligible models select lowest accepted-result cost; reject model below quality floor",
+           "AI-03":"low-quality draft escalates once if budget permits; otherwise hold without external effect","AI-04":"repeated identical approved prefix records measured cache hit or explicit unsupported state",
+           "AI-06":"oversized context reduced or held; mandatory evidence retained and cap respected","AI-10":"batch results correlate to each job; expired or incompatible jobs stay separate",
+           "AI-11":"two entitled workflows reuse current permitted evidence; stale evidence refreshed or held","AI-13":"preview meets acceptance without full rendering; failure escalates within cap only"}[x]
+    a(ch, "V5", f"F30-{5+i:03d}", f"{x} ({p}) {d}; OPT-TC-{x}: {acc}", s, l, f"Adopt; {au}", f"{au}; TC-V12-F-{123+i:03d}")
 a(ch, "V5", "F30-013", "Per-run budget reserve before execution; meter model input/output/reasoning, embeddings, tool calls, retries, storage, provider fees, labour; cache only scoped permitted inputs; batch low-risk; cheapest evaluated model; cap context/tool calls; no quality regression for cost; record cost per accepted result", P, "AU-002 reservation; AU-012", "AU-158/159; reasoning tokens metered as output (§7.3.2 rule 2)", "AU-158; AU-159")
 
 # ---------------- other chapters referencing AGT / EVAL ----------------
