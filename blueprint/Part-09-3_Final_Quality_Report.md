@@ -229,5 +229,8 @@ After the blueprint above was completed, the client supplied the complete 38-doc
 | DEC-416: Release 1 alignment work funded (DEC-412 approved) | CR-ALN-01 ₹2.79–11.64 L one-time; recurring up to ₹1,495–10,120/month. Release dates unchanged |
 | DEC-417: advanced release A1 approved (DEC-414) | ≈ ₹28.0–55.4 L one-time; recurring added as items go live. A2 and A3 are decided at gates G-A1 and G-A2 |
 | DEC-418: **Claude Sonnet stays the primary model** (DEC-413 resolved; DEC-301 superseded) | Literal match **99.98% (11,129 / 11,131)**; F15-052 and F21-015 are Founder-approved deviations. AI cost stays within the DEC-008 ceilings. A zero-allowance degraded mode and an optional outage-only local fallback are retained |
+| DEC-419: build-time tooling approved | ≈ $821–857 per month during the build, separate from Ledger B |
+| DEC-420: AI-built delivery with a Sprint 2 calibration gate | AI tooling ≈ $1,336–1,527 per month; build-agent API cap $1,500 per month; team and dates unchanged until ≈ Day 45 |
+| DEC-421: hosting on **Vercel + Supabase + AWS Mumbai** | Pilot hosting ≈ ₹1,800–4,250 per month more. B-TC-08 becomes a Founder-approved deviation, so the literal match is now **99.97% (11,128 / 11,131)** |
 
 **Status: Part 9 Batch 9.3 updated (v1.1, with Founder decisions of 28 Nov 2026).**

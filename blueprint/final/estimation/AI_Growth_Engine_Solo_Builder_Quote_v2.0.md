@@ -8,7 +8,7 @@
 | Prepared by | [Your name / company] |
 | Version and date | Final quotation v2.0 · 28 Nov 2026 (supersedes the solo quotation v1.0) |
 | Validity | 30 days |
-| Basis | Application Blueprint v1.1 (Parts 0–9.10, 344 decisions); Cost Estimates v1.0 (traditional) and v1.1 (AI-built) |
+| Basis | Application Blueprint v1.1 (Parts 0–9.10, 345 decisions incl. DEC-421 hosting stack); Cost Estimates v1.0 (traditional) and v1.1 (AI-built) |
 | Currency | INR. GST at 18% is added to every fee. USD-billed subscriptions converted at ₹90 = $1 (verify at payment) |
 
 # 1. The quotation at a glance
@@ -39,7 +39,7 @@
 - Business workflows WF-01 to WF-14: product catalogue, discovery, outreach under consent, inbound handling, qualification, meetings, bids, proposals and quotes, orders, verified close, onboarding, plans and offboarding.
 - Policy Decision Point with dispatch-time recheck of scope, consent, jurisdiction, budget and approval; transactional outbox; audit trail; emergency stop.
 - Model gateway with Claude Sonnet as the primary model (DEC-418): rules and cache first, then Haiku-class, then Sonnet-class, then non-personal free fallbacks (off by default), then graceful degradation; hard monthly caps.
-- 100% literal alignment work with the 38-document specification (99.98% literal match; the two remaining items follow the approved Claude-primary decision).
+- 100% literal alignment work with the 38-document specification (99.97% literal match; the three remaining items follow the approved Claude-primary and Vercel + Supabase decisions, DEC-418 and DEC-421).
 
 ## 2.2 Advanced release A1
 
@@ -341,7 +341,7 @@ Activities include user-story drafting, test strategy and test-case drafting. Th
 | DevOps | GitHub + Actions CI/CD, infrastructure as code, Sentry, Langfuse, Prometheus/Grafana, status page | Repeatable releases and observability |
 | Building with AI | **Claude Code** (Claude Max 20x) as pair-programmer and coding agents; Claude API for headless agents in CI; sandboxed branches | The reason the price is low |
 
-**Hosting choice.** The blueprint's baseline runs entirely on AWS. This quotation recommends **Vercel + Supabase + AWS (Mumbai)**, which reduces the operational work one person must carry. Both keep data in India and support every blueprint control. The client may choose either; the fee is the same. Running costs for both are in §6.2. Adopting Vercel + Supabase would be recorded as a blueprint decision when the contract is signed.
+**Hosting choice.** The blueprint's baseline runs entirely on AWS. This quotation recommends **Vercel + Supabase + AWS (Mumbai)**, which reduces the operational work one person must carry. Both keep data in India and support every blueprint control. **This stack is approved and recorded in the blueprint as DEC-421 (28 Nov 2026).** Both stacks keep data in India and support every blueprint control. The AWS-only running cost is shown in §6.2 for comparison.
 
 ## 5.2 Skill set the builder applies
 

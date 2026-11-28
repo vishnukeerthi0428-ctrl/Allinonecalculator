@@ -168,7 +168,7 @@ if align:
         final[st] += 1
     appl = sum(final.values()) - final["Not applicable"]
     A("## 0B.7 Final position after enhancement and literal alignment (Part 9.6a/b)\n")
-    A("Partially covered and not-covered aspects were completed by the enhancement parts. The 141 conflict aspects were then aligned to the literal source text by the amendment decisions in Part 9.6a (DEC-234…299) and Part 9.6b (DEC-300…379), and every not-applicable reason was re-checked. On 28 Nov 2026 the Founder kept Claude Sonnet as the primary model (DEC-418), which supersedes DEC-301; the two aspects DEC-301 aligned (F15-052, F21-015) are recorded as Founder-approved deviations.\n")
+    A("Partially covered and not-covered aspects were completed by the enhancement parts. The 141 conflict aspects were then aligned to the literal source text by the amendment decisions in Part 9.6a (DEC-234…299) and Part 9.6b (DEC-300…379), and every not-applicable reason was re-checked. On 28 Nov 2026 the Founder kept Claude Sonnet as the primary model (DEC-418), which supersedes DEC-301; the two aspects DEC-301 aligned (F15-052, F21-015) are recorded as Founder-approved deviations. The Founder also approved the Vercel + Supabase + AWS Mumbai hosting stack (DEC-421), which makes the deployment-contract aspect B-TC-08 a third Founder-approved deviation.\n")
     A("| Final status | Aspects |\n|---|---|")
     for k in ("Matched", "Founder-approved deviation", "Cannot match", "Not applicable"):
         A(f"| {k} | {final[k]:,} |")

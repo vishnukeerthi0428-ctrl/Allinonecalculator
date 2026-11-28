@@ -122,16 +122,16 @@ None. Every partial, not-covered and conflict aspect has a recorded action.
 
 ## 0B.7 Final position after enhancement and literal alignment (Part 9.6a/b)
 
-Partially covered and not-covered aspects were completed by the enhancement parts. The 141 conflict aspects were then aligned to the literal source text by the amendment decisions in Part 9.6a (DEC-234…299) and Part 9.6b (DEC-300…379), and every not-applicable reason was re-checked. On 28 Nov 2026 the Founder kept Claude Sonnet as the primary model (DEC-418), which supersedes DEC-301; the two aspects DEC-301 aligned (F15-052, F21-015) are recorded as Founder-approved deviations.
+Partially covered and not-covered aspects were completed by the enhancement parts. The 141 conflict aspects were then aligned to the literal source text by the amendment decisions in Part 9.6a (DEC-234…299) and Part 9.6b (DEC-300…379), and every not-applicable reason was re-checked. On 28 Nov 2026 the Founder kept Claude Sonnet as the primary model (DEC-418), which supersedes DEC-301; the two aspects DEC-301 aligned (F15-052, F21-015) are recorded as Founder-approved deviations. The Founder also approved the Vercel + Supabase + AWS Mumbai hosting stack (DEC-421), which makes the deployment-contract aspect B-TC-08 a third Founder-approved deviation.
 
 | Final status | Aspects |
 |---|---|
-| Matched | 11,129 |
-| Founder-approved deviation | 2 |
+| Matched | 11,128 |
+| Founder-approved deviation | 3 |
 | Cannot match | 0 |
 | Not applicable | 138 |
 | **Applicable aspects** | **11,131** |
-| **Literal match** | **99.98%** (11,129 / 11,131) |
+| **Literal match** | **99.97%** (11,128 / 11,131) |
 | Match including Founder-approved deviations | 100% of applicable aspects have a recorded, approved disposition |
 
 | Alignment type (conflict and re-checked rows) | Rows |
