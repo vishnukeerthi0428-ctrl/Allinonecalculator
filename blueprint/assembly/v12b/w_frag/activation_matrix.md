@@ -1,4 +1,4 @@
-| Capability flag `activation.<capability>.<J>` | IN | EU | UK | US | AE |
+| Capability (flag activation.capability.J) | IN | EU | UK | US | AE |
 |---|---|---|---|---|---|
 | ads.campaigns | RP-PLAT-ADS + RP-IN-ADV | RP-PLAT-ADS + RP-EU-MKT + RP-EU-AI | — | RP-PLAT-ADS + RP-US-EMAIL | — |
 | bids.auto_submission | RP-IN-PROC + RP-COMMIT | RP-EU-PROC + RP-COMMIT | — | RP-US-PROC + RP-COMMIT | — |

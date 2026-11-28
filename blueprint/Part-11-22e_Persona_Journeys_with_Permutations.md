@@ -40,10 +40,10 @@
 | 1 | Set up the portfolio | A197, A203 | Chooses the residency zone of each owned tenant and connects the corporate IdP | Residency fixed at onboarding (DEC-772); SSO with break-glass before enforcement | US-01-YA01, US-01-ZR28, US-01-ZU14, US-01-ZR01 | FR-V12-A-070, FR-V12-A-071, FR-V12-E-010, FR-V12-E-011 |
 | 2 | Choose services | W06, A184, A192 | Selects full suite for AppNAI and selective SKUs for MedMaarg | Bundles expand to released SKU IDs only; foundations always included | US-29-YB02, US-20-YA01, US-20-ZU01 | FR-V12-A-001, FR-V12-A-002, FR-V12-A-005, FR-V12-B-001 |
 | 3 | Set budgets and AI ceilings | A012, A198 | Sets tenant, company and workflow AI budgets | Soft cap alerts at 80%, hard cap holds AI steps with no provider call | US-04-ZU07, US-04-YM37, US-04-ZR23 | FR-V12-F-002, FR-V12-F-003, FR-V12-F-013, FR-V12-M-099 |
-| 4 | Approve a bounded mandate | A106, A109 | Co-approves an L3 follow-up mandate with the startup head | Two distinct approvers; scope, caps, window, jurisdiction; instant revocation (DEC-779) | US-18-ZP01, US-18-ZP02, US-18-ZP05 | FR-V12-P-001, FR-V12-P-002, FR-V12-P-006, FR-V12-P-007 |
+| 4 | Approve a bounded mandate | A106, A109 | Co-approves an L3 follow-up mandate with the startup head | Two distinct approvers; scope, caps, window, jurisdiction; instant revocation (DEC-779) | US-18-ZP01, US-18-ZP02, US-18-ZP05 | FR-V12-P-001, FR-V12-P-002, FR-V12-P-006, FR-V12-P-008 |
 | 5 | Read the decision flash | A089, A106 | Reviews the daily decision-first flash and the 9 optimisation perspectives | Only data the owner may see; numbers defined once in the metric registry | US-17-YM21, US-17-YG02, US-17-ZU02, US-21-ZU03 | FR-V12-A-121, FR-V12-A-150, FR-V12-G-091, FR-V12-M-065 |
 | 6 | Grant portfolio aggregates | A191 | Grants the group CFO aggregate-only access across companies | Owner authority and explicit aggregate scope; revocable; no record access | US-01-YE02, US-01-ZU04 | FR-V12-E-003, FR-V12-H-016 |
-| 7 | Stop an anomaly | A110, A113 | Engages the kill switch for one workflow after an anomaly alert | Kill switch by scope; tighten-only suspension; reconciliation | US-18-ZP06, US-18-ZP07, US-04-ZU09 | FR-V12-F-020, FR-V12-P-037, FR-V12-P-053, FR-V12-P-054 |
+| 7 | Stop an anomaly | A110, A113 | Engages the kill switch for one workflow after an anomaly alert | Kill switch by scope; tighten-only suspension; reconciliation | US-18-ZP06, US-18-ZP07, US-04-ZU09 | FR-V12-F-020, FR-V12-P-037, FR-V12-P-053, FR-V12-P-058 |
 | 8 | Open a market | A200, A090 | Approves the UAE market after counsel and tax sign-off | Market opens only with an Approved pack and tax configuration (DEC-776) | US-03-YA01, US-03-ZU07, US-34-ZU03, US-34-ZU04 | FR-V12-A-053, FR-V12-A-130, FR-V12-K-144, FR-V12-K-149 |
 | 9 | Start fundraising | A205, W55 | Subscribes AppNAI to Investment Automation and registers "Seed 2027" | Separate product code; securities pack and counsel sign-off per jurisdiction (DEC-783) | US-30-ZN01, US-01-ZU01, US-31-ZN01 | FR-V12-A-006, FR-V12-N-001, FR-V12-N-002, FR-V12-N-025 |
 | 10 | Decide go / no-go | A090, A190 | Signs the Release 2 go/no-go from the evidence register | Gate cannot pass with missing evidence; P0 controls block affected SKUs | US-21-YJ03, US-21-ZU04 | FR-V12-A-190, FR-V12-A-191, FR-V12-J-001, FR-V12-J-002 |
@@ -401,7 +401,7 @@ Feature: JN-04 Marketer end-to-end journey
 | 2 | Review a group | A106 | Reviews similar items as one group with outliers highlighted | Neutral note with risks and diffs | US-18-YM05, US-18-YM06 | FR-V12-M-014, FR-V12-M-015 |
 | 3 | Approve the exact item | A106 | Approves a payload | Approval bound to payload, amount, policy and hash | US-18-YD03, US-18-ZU04 | FR-V12-D-009, FR-V12-D-026, FR-V12-F-034 |
 | 4 | Refuse a conflict | A106 | Is blocked from approving own request | SoD at build and at run time | US-01-ZR04, US-01-ZU06, US-01-ZU12 | FR-V12-E-016, FR-V12-E-017, FR-V12-I-008, FR-V12-K-108 |
-| 5 | Co-approve a mandate | A109 | Gives the second approval of a bounded mandate | Two distinct people; caps and window visible | US-18-ZP02 | FR-V12-P-006, FR-V12-P-007 |
+| 5 | Co-approve a mandate | A109 | Gives the second approval of a bounded mandate | Two distinct people; caps and window visible | US-18-ZP02 | FR-V12-P-006, FR-V12-P-008 |
 | 6 | Approve price and discount | A066 | Approves a discount within authority | Over-limit routes to a higher approver | US-13-YC17 | FR-V12-C-077, FR-V12-C-078 |
 | 7 | Seal a bid | A104 | Approves the sealed bid package | Hash, price, terms and portal fixed before the mandate | US-14-ZP01 | FR-V12-P-001, FR-V12-P-002 |
 | 8 | Resolve competing actions | A106 | Chooses one of two competing actions to the same account | Only the selected eligible action proceeds | US-18-ZU05 | FR-V12-F-048 |
@@ -516,7 +516,7 @@ Feature: JN-05 Approver end-to-end journey
 | 2 | Invoice and collect | A187 | Issues invoices and runs dunning | Integer minor units; suspension only after grace | US-20-YE11, US-20-ZU35 | FR-V12-E-063, FR-V12-E-076, FR-V12-K-153 |
 | 3 | Handle a dispute | A187, W26 | Resolves a billing dispute with a credit note | Private case; refund only under policy with maker-checker | US-20-ZU04, US-20-YE12 | FR-V12-A-034, FR-V12-E-064, FR-V12-E-078 |
 | 4 | Pay under mandate | A073 | Lets an approved payment mandate pay a supplier through the PSP | Per-transaction and period caps; counterparty allowlist (DEC-780) | US-15-ZP01 | FR-V12-P-001, FR-V12-P-002 |
-| 5 | Reconcile | A074 | Reconciles settlements and posts journals | Unmatched items held; nothing posted twice | US-15-ZP02, US-15-ZP03 | FR-V12-P-062, FR-V12-P-063, FR-V12-P-083, FR-V12-P-084 |
+| 5 | Reconcile | A074 | Reconciles settlements and posts journals | Unmatched items held; nothing posted twice | US-15-ZP02, US-15-ZP03 | FR-V12-P-062, FR-V12-P-064, FR-V12-P-083, FR-V12-P-084 |
 | 6 | Recognise revenue | A187 | Runs daily revenue recognition and month close | Schedule reconciles to ledger | US-20-YE13, US-20-ZU22 | FR-V12-E-077, FR-V12-E-086 |
 | 7 | Know unit cost | A012, A101 | Reviews per-SKU cost and TCO | Cost per accepted output; price floor formula | US-20-ZU05, US-20-ZU04, US-04-ZU07 | FR-V12-A-031, FR-V12-A-032, FR-V12-F-014 |
 | 8 | Check AI spend | A012 | Reconciles AI usage with provider invoices | Every model call metered; tolerance check | US-04-ZU06, US-04-ZU12 | FR-V12-F-012, FR-V12-F-030 |
@@ -1165,7 +1165,7 @@ Feature: JN-11 External customer end-to-end journey
 | 7 | Supply | A183 | Acts as a supplier in an RFQ | Qualification rules; approved PO; three-way match | US-26-YB01, US-26-YB03 | FR-V12-B-102, FR-V12-B-103 |
 | 8 | Integrate | A008 | Syncs CRM records | Field ownership; protected consent | US-07-ZR12 | FR-V12-R-063, FR-V12-R-066 |
 | 9 | Run managed service | A099 | Works inside a client tenant under delegation | Delegation grant; one client per session | US-20-YE16, US-16-ZU06 | FR-V12-E-085, FR-V12-E-087, FR-V12-K-157 |
-| 10 | Get settled | A074 | Receives commission settlement | Reconciled settlement | US-15-ZP02 | FR-V12-P-062, FR-V12-P-063 |
+| 10 | Get settled | A074 | Receives commission settlement | Reconciled settlement | US-15-ZP02 | FR-V12-P-062, FR-V12-P-064 |
 
 ```mermaid
 flowchart TD
@@ -1252,7 +1252,7 @@ Feature: JN-12 Partner end-to-end journey
 |---|---|---|---|
 | 1 | Every requirement traced to a source | **Pass** | Every journey step names its stories; every story ID and every FR reference is resolved and checked by the build |
 | 2 | Assumptions, gaps and conflicts tagged and logged | **Pass** | Tags from 1140–1159 only; register in §11.22.9 (last file of Batch 11.22) |
-| 3 | IDs unique and consistent with earlier parts | **Pass** | US-<EP>-ZU<nn> unique per epic; AC and EX IDs derived; epics EP-01…EP-33 as defined; EP-34 new |
+| 3 | IDs unique and consistent with earlier parts | **Pass** | US-&lt;EP&gt;-ZU&lt;nn&gt; unique per epic; AC and EX IDs derived; epics EP-01…EP-33 as defined; EP-34 new |
 | 4 | No story lacks AC; no requirement lacks a test | **Pass** | Every journey has an end-to-end Scenario Outline with generated pairwise Examples; every referenced story has AC |
 | 5 | Negative, edge, security and accessibility cases covered | **Pass** | Journeys include denial, hold and accessibility variants (assistive technology, 360 px) |
 | 6 | No agent lacks guardrail, fallback, KPI and cost estimate | **N/A** | N/A – no new agents; AI stories reuse the registry, gateway and eval gates |

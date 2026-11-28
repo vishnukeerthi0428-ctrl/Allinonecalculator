@@ -125,9 +125,11 @@ flowchart TD
 
 **Reading the summary.** Before this part, 1087 FR-V12 requirements (74.1%) had a story with acceptance criteria. 264 had no story at all — mainly the ENT trace requirements of Part 11.11b (FR-V12-K-101…158), the AI controls of Part 11.6b (AIX-01…20, CTRL-AI-01…09), the securities controls and INV-SVC-13…24 workflow requirements of Parts 11.16a/c, and the H and I registers of Parts 11.8b and 11.9b/c. 116 were traced only to statement-only stories (Parts 11.1b, 11.5b, 11.12 and two rows of 11.8b/11.13b) that carry no Gherkin. After this part all 1467 are covered by a story with Gherkin acceptance criteria and a generated Scenario Outline.
 
+**Verification by re-inventory (ADR-275).** `U_MAXPART=22 python3 -I u_01_inventory.py` re-reads Parts 11.1–11.19 together with this part: **1467 FR-V12 requirements, 721 stories, 0 FRs without a story, 0 FRs whose stories lack AC** (stories with AC: 672; the 49 statement-only source stories keep their statements and are bound by ZU stories).
+
 | Measure | Value |
 |---|---|
-| New stories (US-<EP>-ZU<nn>) | 166 |
+| New stories (US-&lt;EP&gt;-ZU&lt;nn&gt;) | 166 |
 | New story points (Fibonacci ranges summed) | 735–1195 SP |
 | Gherkin scenarios in new stories (incl. one Scenario Outline each) | 1241 |
 | Generated Examples rows (EX-…) | 6,604 |
@@ -276,7 +278,7 @@ One row per FR that had no story or no story with AC. "Status after" is Matched 
 | FR-V12-E-134 | Part 11.5b | R-phase tracking in A090 | Covered without AC (US-21-YE03) | EP-21 | Release 1 | US-21-ZU10 | Matched |
 | FR-V12-E-135 | Part 11.5b | Optimization release process | Covered without AC (US-21-YE03) | EP-21 | Release 2 | US-21-ZU11 | Matched |
 | FR-V12-F-001 | Part 11.6b | Step classification; only AI-inference steps may call a model | Not covered | EP-04 | Release 2 | US-04-ZU04 | Matched |
-| FR-V12-F-004 | Part 11.6b | Prompt registry PRM-<AGT>-<task>-vN with schema, policy inputs, locales, approval; no tenant data | Not covered | EP-04 | Release 2 | US-04-ZU04 | Matched |
+| FR-V12-F-004 | Part 11.6b | Prompt registry PRM-&lt;AGT&gt;-&lt;task&gt;-vN with schema, policy inputs, locales, approval; no tenant data | Not covered | EP-04 | Release 2 | US-04-ZU04 | Matched |
 | FR-V12-F-006 | Part 11.6b | Regression on any model/prompt/retrieval/policy/tool change; promotion blocked on regression | Not covered | EP-04 | Release 2 | US-04-ZU04 | Matched |
 | FR-V12-F-007 | Part 11.6b | Judge only after κ ≥ 0.8 calibration | Not covered | EP-04 | Release 2 | US-04-ZU05 | Matched |
 | FR-V12-F-008 | Part 11.6b | Untrusted content isolation | Not covered | EP-04 | Release 2 | US-04-ZU05 | Matched |
@@ -1035,7 +1037,7 @@ One row per FR that had no story or no story with AC. "Status after" is Matched 
 |---|---|---|---|
 | 1 | Every requirement traced to a source | **Pass** | Every story traces its FR-V12 IDs, the V12 source cell and the defining Part 11 section; decisions cited by ID |
 | 2 | Assumptions, gaps and conflicts tagged and logged | **Pass** | Tags from 1140–1159 only; register in §11.22.9 (last file of Batch 11.22) |
-| 3 | IDs unique and consistent with earlier parts | **Pass** | US-<EP>-ZU<nn> unique per epic; AC and EX IDs derived; epics EP-01…EP-33 as defined; EP-34 new |
+| 3 | IDs unique and consistent with earlier parts | **Pass** | US-&lt;EP&gt;-ZU&lt;nn&gt; unique per epic; AC and EX IDs derived; epics EP-01…EP-33 as defined; EP-34 new |
 | 4 | No story lacks AC; no requirement lacks a test | **N/A** | N/A for the front matter; the MAS rule and the model rules here bind files b–d |
 | 5 | Negative, edge, security and accessibility cases covered | **Pass** | MAS-1…MAS-9 applied; @sec/@obs outlines; @a11y in website and UI stories |
 | 6 | No agent lacks guardrail, fallback, KPI and cost estimate | **N/A** | N/A – no new agents; AI stories reuse the registry, gateway and eval gates |

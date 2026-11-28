@@ -1,0 +1,1 @@
+VS-011702	h:8ba89d08c7db	weak	27_External_Integratio	rovider Adapters > V5 optimization requirements and controls	Paid ads / social | Account grant, approved spend/publish payload, provider policies, metrics and reconciliation

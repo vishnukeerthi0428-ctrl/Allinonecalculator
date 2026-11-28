@@ -112,7 +112,7 @@ for r in ti:
 F['tables_by_origin'] = md_table(['Created in / source', 'Tables'], sorted(([k, v] for k, v in byorig.items()), key=lambda x: (-x[1])))
 F['db_tests'] = md_table(['Test', 'Check', 'Result'], [[t['id'], t['title'], t['result']] for t in db['tests']])
 F['db_apply'] = md_table(['Zone database', 'Exit code', 'Seconds', 'Mode'], [[z, v['rc'], v['seconds'], 'psql -1 -v ON_ERROR_STOP=1 (single transaction)'] for z, v in db['apply'].items()])
-F['skipped'] = md_table(['#', 'Migration', 'Reason', 'Statement / reference (truncated)'], [[k, s['mig'], s['reason'][:150], s['stmt'][:140].replace('\n', ' ')] for k, s in enumerate(skipped, 1)])
+F['skipped'] = md_table(['#', 'Migration', 'Reason', 'Statement / reference (truncated)'], [[k, s['mig'], s['reason'][:150], '`' + re.sub(r'\s+', ' ', s['stmt'][:140]).replace('`', "'") + '`'] for k, s in enumerate(skipped, 1)])
 
 # ---------------------------------------------------------------- config
 def csvrows(n):
@@ -129,7 +129,7 @@ am = csvrows('activation_matrix.csv')
 caps = sorted({r[0] for r in am[1:]})
 jur = ['IN', 'EU', 'UK', 'US', 'AE']
 cell = {(r[0], r[1]): r[3] for r in am[1:]}
-F['activation_matrix'] = md_table(['Capability flag `activation.<capability>.<J>`'] + jur,
+F['activation_matrix'] = md_table(['Capability (flag activation.capability.J)'] + jur,
                                   [[c] + [('—' if cell.get((c, j), '—') == '—' else cell[(c, j)].replace(';', ' + ')) for j in jur] for c in caps])
 
 # ---------------------------------------------------------------- CI / IaC

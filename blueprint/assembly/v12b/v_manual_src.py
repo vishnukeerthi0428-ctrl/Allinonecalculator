@@ -98,6 +98,7 @@ D = {
 'Uncertain write hold | PASS | Local fixture; not production acceptance': ('C', '?TC-RECOVERY', 'Uncertain write hold: RECOVERY class tests'),
 'Portfolio operator analytics absent | PASS | Local fixture; not production acceptance': ('C', '?aggregate', 'Portfolio operator analytics absent: aggregate-only rule'),
 'After incident | Root cause, fix, regression test, review control gaps and notify stakehol': ('C', '?postmortem', 'After-incident review: Parts 8.3c/11.11'),
+    'Paid ads / social | Account grant, approved spend/publish payload, provider policies, metrics and': ('C', '?H27-INT-07', 'Advertising adapter (Google Ads / Meta / LinkedIn) in Part 11.8a H27-INT-07; spend cap gate TC-ENH-D-172 (Part 3.5b)'),
 }
 def main():
     S = {x['sid']: x for x in json.load(open(os.path.join(OUT, 'statements.json')))}

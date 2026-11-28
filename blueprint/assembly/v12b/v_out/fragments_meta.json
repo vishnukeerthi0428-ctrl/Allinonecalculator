@@ -1,4 +1,13 @@
 {
+ "fr": {
+  "FR-V12-V-001": 48,
+  "FR-V12-V-006": 2,
+  "FR-V12-V-005": 2,
+  "FR-V12-V-002": 14,
+  "FR-V12-V-004": 1,
+  "FR-V12-V-003": 7,
+  "FR-V12-V-007": 93
+ },
  "final": {
   "C": 1011,
   "M": 18090,
@@ -8,28 +17,16 @@
  "c_groups": {
   "Manual decisions (read in context)": 91,
   "Threshold located in another line of the same section": 14,
-  "ID-bearing rows (status/evidence wording only) \u2014 06_Multi_Tenant_Multi_Company_Business_A": 1,
-  "ID-bearing rows (status/evidence wording only) \u2014 07_Universal_Business_Configuration_Onbo": 1,
-  "ID-bearing rows (status/evidence wording only) \u2014 20_Business_Security_Privacy_Compliance": 1,
-  "ID-bearing rows (status/evidence wording only) \u2014 24_Business_Acceptance_Requirement_Trace": 4,
-  "ID-bearing rows (status/evidence wording only) \u2014 01_Specification_Control_Reading_Guide": 2,
-  "ID-bearing rows (status/evidence wording only) \u2014 07_Tenant_Provisioning_Business_Configur": 1,
-  "ID-bearing rows (status/evidence wording only) \u2014 18_Policy_Approval_Human_in_the_Loop_Eng": 2,
-  "ID-bearing rows (status/evidence wording only) \u2014 24_UI_UX_Components_Screens_Interaction_": 1,
+  "ID-bearing rows (status/evidence wording only)": 36,
   "A113 template rows X26\u2013X39": 14,
-  "ID-bearing rows (status/evidence wording only) \u2014 33_Unit_SIT_UAT_AI_Test_Specifications": 3,
-  "ID-bearing rows (status/evidence wording only) \u2014 34_Quality_Control_Acceptance_Evidence": 9,
-  "ID-bearing rows (status/evidence wording only) \u2014 37_Observability_Incidents_Support": 4,
   "FSD 40 source disposition candidates \u2014 API": 157,
   "FSD 40 source disposition candidates \u2014 Entity": 155,
   "FSD 40 source disposition candidates \u2014 Test": 216,
   "FSD 40 source disposition candidates \u2014 QC": 77,
   "FSD 40 source disposition candidates \u2014 Task": 102,
-  "ID-bearing rows (status/evidence wording only) \u2014 40_Master_Traceability_Decision_Register": 6,
   "Customer decision rows (CDEC)": 7,
   "Appendix C/C2 DDL (table)": 24,
-  "Appendix C/C2 DDL (RLS policy)": 118,
-  "ID-bearing rows (status/evidence wording only) \u2014 AP_Appendix_C_PostgreSQL_DDL_with_row_le": 1
+  "Appendix C/C2 DDL (RLS policy)": 118
  },
  "n_manual": 100,
  "n_n": 167,

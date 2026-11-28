@@ -59,9 +59,9 @@
   "Part-11-9b_V12_DDL_RLS_Supabase.md",
   "Part-11-9c_V12_Security_Privacy_Analytics_KPI.md"
  ],
- "fr_total": 1470,
+ "fr_total": 1467,
  "fr_defined": 1436,
- "fr_reference_only_in_range": 34,
+ "fr_reference_only_in_range": 31,
  "fr_by_letter": {
   "A": 123,
   "B": 105,
@@ -78,7 +78,7 @@
   "M": 100,
   "N": 110,
   "O": 91,
-  "P": 98,
+  "P": 95,
   "Q": 55,
   "R": 155
  },
@@ -119,7 +119,7 @@
   "EP-28": 5,
   "EP-29": 12
  },
- "fr_covered": 1470,
+ "fr_covered": 1467,
  "fr_uncovered": 0,
  "fr_covered_without_ac": 0,
  "no_ac": [],
@@ -9491,7 +9491,7 @@
   "FR-V12-D-007": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 228,
+    "line": 230,
     "text": "Run the nine-check preflight in fixed order; `dry_run` returns plan, estimate and would-be holds with zero provider calls and no\u2026",
     "cells": [
      "FR-V12-D-007",
@@ -9525,7 +9525,7 @@
   "FR-V12-D-008": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 229,
+    "line": 231,
     "text": "Route any AI step below its confidence floor or failing schema/claims checks to human review; never to an effect",
     "cells": [
      "FR-V12-D-008",
@@ -9646,7 +9646,7 @@
   "FR-V12-D-012": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 230,
+    "line": 232,
     "text": "Cancel runs with release of unused reservations; compensate only reversible effects through approved compensation actions",
     "cells": [
      "FR-V12-D-012",
@@ -10424,7 +10424,7 @@
   "FR-V12-E-004": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 231,
+    "line": 233,
     "text": "Region code on tenant and on every key; request region check",
     "cells": [
      "FR-V12-E-004",
@@ -10458,7 +10458,7 @@
   "FR-V12-E-005": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 232,
+    "line": 234,
     "text": "Isolation invariants incl. pooled-connection context reset",
     "cells": [
      "FR-V12-E-005",
@@ -10843,7 +10843,7 @@
   "FR-V12-E-021": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 233,
+    "line": 235,
     "text": "Central authorization incl. SKU dimension; service-principal grants",
     "cells": [
      "FR-V12-E-021",
@@ -10877,7 +10877,7 @@
   "FR-V12-E-022": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 234,
+    "line": 236,
     "text": "Deny-reason precedence per V12 order",
     "cells": [
      "FR-V12-E-022",
@@ -10969,7 +10969,7 @@
   "FR-V12-E-032": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 235,
+    "line": 237,
     "text": "Part 11.5b",
     "cells": [
      "FR-V12-E-032",
@@ -11003,7 +11003,7 @@
   "FR-V12-E-033": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 236,
+    "line": 238,
     "text": "Server-backed drafts; stale revision rejected",
     "cells": [
      "FR-V12-E-033",
@@ -11037,7 +11037,7 @@
   "FR-V12-E-034": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 237,
+    "line": 239,
     "text": "14 configurable customer types; individual workspace",
     "cells": [
      "FR-V12-E-034",
@@ -11101,7 +11101,7 @@
   "FR-V12-E-036": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 238,
+    "line": 240,
     "text": "Registration, operating and target countries separate",
     "cells": [
      "FR-V12-E-036",
@@ -11135,7 +11135,7 @@
   "FR-V12-E-037": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 239,
+    "line": 241,
     "text": "Region, language, IANA timezone per market; DST",
     "cells": [
      "FR-V12-E-037",
@@ -11199,7 +11199,7 @@
   "FR-V12-E-039": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 240,
+    "line": 242,
     "text": "Configuration diff, rollback-as-new-draft, snapshot protection",
     "cells": [
      "FR-V12-E-039",
@@ -11261,7 +11261,7 @@
   "FR-V12-E-045": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 241,
+    "line": 243,
     "text": "SKU registry and lifecycle",
     "cells": [
      "FR-V12-E-045",
@@ -11296,7 +11296,7 @@
   "FR-V12-E-046": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 242,
+    "line": 244,
     "text": "Workflow version registry; immutable run snapshot",
     "cells": [
      "FR-V12-E-046",
@@ -11330,7 +11330,7 @@
   "FR-V12-E-047": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 243,
+    "line": 245,
     "text": "Part 11.5b",
     "cells": [
      "FR-V12-E-047",
@@ -11364,7 +11364,7 @@
   "FR-V12-E-048": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 244,
+    "line": 246,
     "text": "Part 11.5b",
     "cells": [
      "FR-V12-E-048",
@@ -11398,7 +11398,7 @@
   "FR-V12-E-049": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 245,
+    "line": 247,
     "text": "Engines register (15) and engine_code on cost",
     "cells": [
      "FR-V12-E-049",
@@ -11432,7 +11432,7 @@
   "FR-V12-E-050": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 246,
+    "line": 248,
     "text": "Part 11.5b",
     "cells": [
      "FR-V12-E-050",
@@ -11466,7 +11466,7 @@
   "FR-V12-E-051": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 247,
+    "line": 249,
     "text": "Public catalogue projection allowlist",
     "cells": [
      "FR-V12-E-051",
@@ -11589,7 +11589,7 @@
   "FR-V12-E-058": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 248,
+    "line": 250,
     "text": "Tenant lifecycle states and offboarding",
     "cells": [
      "FR-V12-E-058",
@@ -11710,7 +11710,7 @@
   "FR-V12-E-062": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 249,
+    "line": 251,
     "text": "Plan change preview, effective date, proration",
     "cells": [
      "FR-V12-E-062",
@@ -11774,7 +11774,7 @@
   "FR-V12-E-064": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 250,
+    "line": 252,
     "text": "Refund and cancellation by credit/reversal",
     "cells": [
      "FR-V12-E-064",
@@ -12046,7 +12046,7 @@
   "FR-V12-E-077": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 251,
+    "line": 253,
     "text": "Revenue recognition schedule and export",
     "cells": [
      "FR-V12-E-077",
@@ -12080,7 +12080,7 @@
   "FR-V12-E-078": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 252,
+    "line": 254,
     "text": "Part 11.5b",
     "cells": [
      "FR-V12-E-078",
@@ -12115,7 +12115,7 @@
   "FR-V12-E-079": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 253,
+    "line": 255,
     "text": "Part 11.5b",
     "cells": [
      "FR-V12-E-079",
@@ -12149,7 +12149,7 @@
   "FR-V12-E-080": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 254,
+    "line": 256,
     "text": "FX and native-currency reporting",
     "cells": [
      "FR-V12-E-080",
@@ -12183,7 +12183,7 @@
   "FR-V12-E-081": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 255,
+    "line": 257,
     "text": "Offering price independent of SaaS fee",
     "cells": [
      "FR-V12-E-081",
@@ -12217,7 +12217,7 @@
   "FR-V12-E-082": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 256,
+    "line": 258,
     "text": "Part 11.5b",
     "cells": [
      "FR-V12-E-082",
@@ -12251,7 +12251,7 @@
   "FR-V12-E-083": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 257,
+    "line": 259,
     "text": "Part 11.5b",
     "cells": [
      "FR-V12-E-083",
@@ -12285,7 +12285,7 @@
   "FR-V12-E-084": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 258,
+    "line": 260,
     "text": "Part 11.5b",
     "cells": [
      "FR-V12-E-084",
@@ -12319,7 +12319,7 @@
   "FR-V12-E-085": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 259,
+    "line": 261,
     "text": "Part 11.5b",
     "cells": [
      "FR-V12-E-085",
@@ -12353,7 +12353,7 @@
   "FR-V12-E-086": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 260,
+    "line": 262,
     "text": "Reconciliation jobs RJ-01\u202606",
     "cells": [
      "FR-V12-E-086",
@@ -12387,7 +12387,7 @@
   "FR-V12-E-087": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 261,
+    "line": 263,
     "text": "Partner/reseller model reserved; no data without grant",
     "cells": [
      "FR-V12-E-087",
@@ -12421,7 +12421,7 @@
   "FR-V12-E-088": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 262,
+    "line": 264,
     "text": "Part 11.5b",
     "cells": [
      "FR-V12-E-088",
@@ -12455,7 +12455,7 @@
   "FR-V12-E-089": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 263,
+    "line": 265,
     "text": "Onboarding playbooks and TTFV",
     "cells": [
      "FR-V12-E-089",
@@ -12518,7 +12518,7 @@
   "FR-V12-E-096": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 264,
+    "line": 266,
     "text": "Part 11.5b",
     "cells": [
      "FR-V12-E-096",
@@ -12639,7 +12639,7 @@
   "FR-V12-E-100": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 265,
+    "line": 267,
     "text": "Part 11.5b",
     "cells": [
      "FR-V12-E-100",
@@ -12673,7 +12673,7 @@
   "FR-V12-E-101": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 266,
+    "line": 268,
     "text": "Dependency-aware degradation",
     "cells": [
      "FR-V12-E-101",
@@ -12707,7 +12707,7 @@
   "FR-V12-E-102": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 267,
+    "line": 269,
     "text": "Part 11.5b",
     "cells": [
      "FR-V12-E-102",
@@ -12741,7 +12741,7 @@
   "FR-V12-E-103": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 268,
+    "line": 270,
     "text": "Part 11.5b",
     "cells": [
      "FR-V12-E-103",
@@ -12978,7 +12978,7 @@
   "FR-V12-E-112": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 269,
+    "line": 271,
     "text": "Provisioning and scalability tests",
     "cells": [
      "FR-V12-E-112",
@@ -13012,7 +13012,7 @@
   "FR-V12-E-113": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 270,
+    "line": 272,
     "text": "Worker autoscaling with no lost jobs",
     "cells": [
      "FR-V12-E-113",
@@ -13046,7 +13046,7 @@
   "FR-V12-E-114": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 271,
+    "line": 273,
     "text": "Part 11.5b",
     "cells": [
      "FR-V12-E-114",
@@ -13349,7 +13349,7 @@
   "FR-V12-E-127": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 272,
+    "line": 274,
     "text": "Portability and offboarding",
     "cells": [
      "FR-V12-E-127",
@@ -13383,7 +13383,7 @@
   "FR-V12-E-130": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 273,
+    "line": 275,
     "text": "Part 11.5b",
     "cells": [
      "FR-V12-E-130",
@@ -13446,7 +13446,7 @@
   "FR-V12-E-132": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 274,
+    "line": 276,
     "text": "Per-SKU release gate and progressive activation",
     "cells": [
      "FR-V12-E-132",
@@ -13480,7 +13480,7 @@
   "FR-V12-E-133": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 275,
+    "line": 277,
     "text": "Maintenance cadence with escalation",
     "cells": [
      "FR-V12-E-133",
@@ -13514,7 +13514,7 @@
   "FR-V12-E-134": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 276,
+    "line": 278,
     "text": "Part 11.5b",
     "cells": [
      "FR-V12-E-134",
@@ -13548,7 +13548,7 @@
   "FR-V12-E-135": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 277,
+    "line": 279,
     "text": "Optimization release process",
     "cells": [
      "FR-V12-E-135",
@@ -13582,7 +13582,7 @@
   "FR-V12-F-001": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 278,
+    "line": 280,
     "text": "Step classification; only AI-inference steps may call a model",
     "cells": [
      "FR-V12-F-001",
@@ -13750,12 +13750,12 @@
   "FR-V12-F-004": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 279,
-    "text": "Prompt registry PRM-<AGT>-<task>-vN with schema, policy inputs, locales, approval; no tenant data",
+    "line": 281,
+    "text": "Prompt registry PRM-&lt;AGT&gt;-&lt;task&gt;-vN with schema, policy inputs, locales, approval; no tenant data",
     "cells": [
      "FR-V12-F-004",
      "Part 11.6b",
-     "Prompt registry PRM-<AGT>-<task>-vN with schema, policy inputs, locales, approval; no tenant data",
+     "Prompt registry PRM-&lt;AGT&gt;-&lt;task&gt;-vN with schema, policy inputs, locales, approval; no tenant data",
      "Not covered",
      "EP-04",
      "Release 2",
@@ -13861,7 +13861,7 @@
   "FR-V12-F-006": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 280,
+    "line": 282,
     "text": "Regression on any model/prompt/retrieval/policy/tool change; promotion blocked on regression",
     "cells": [
      "FR-V12-F-006",
@@ -13918,7 +13918,7 @@
   "FR-V12-F-007": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 281,
+    "line": 283,
     "text": "Judge only after \u03ba \u2265 0.8 calibration",
     "cells": [
      "FR-V12-F-007",
@@ -13973,7 +13973,7 @@
   "FR-V12-F-008": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 282,
+    "line": 284,
     "text": "Untrusted content isolation",
     "cells": [
      "FR-V12-F-008",
@@ -14028,7 +14028,7 @@
   "FR-V12-F-009": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 283,
+    "line": 285,
     "text": "Part 11.6b",
     "cells": [
      "FR-V12-F-009",
@@ -14083,7 +14083,7 @@
   "FR-V12-F-010": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 284,
+    "line": 286,
     "text": "Output handling: schema, URL/egress allowlist, sanitised rendering, no secrets",
     "cells": [
      "FR-V12-F-010",
@@ -14139,7 +14139,7 @@
   "FR-V12-F-011": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 285,
+    "line": 287,
     "text": "Part 11.6b",
     "cells": [
      "FR-V12-F-011",
@@ -14195,7 +14195,7 @@
   "FR-V12-F-012": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 286,
+    "line": 288,
     "text": "AI usage metering per call",
     "cells": [
      "FR-V12-F-012",
@@ -14251,7 +14251,7 @@
   "FR-V12-F-013": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 287,
+    "line": 289,
     "text": "Tenant AI budgets soft/hard per tenant, company, workflow",
     "cells": [
      "FR-V12-F-013",
@@ -14306,7 +14306,7 @@
   "FR-V12-F-014": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 288,
+    "line": 290,
     "text": "Part 11.6b",
     "cells": [
      "FR-V12-F-014",
@@ -14364,7 +14364,7 @@
   "FR-V12-F-015": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 289,
+    "line": 291,
     "text": "Prefix caching, batch API, tenant-scoped semantic cache for non-personal",
     "cells": [
      "FR-V12-F-015",
@@ -14473,7 +14473,7 @@
   "FR-V12-F-017": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 290,
+    "line": 292,
     "text": "Provider data handling: no training, DPA retention/region, minimise/mask for Tier S",
     "cells": [
      "FR-V12-F-017",
@@ -14529,7 +14529,7 @@
   "FR-V12-F-018": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 291,
+    "line": 293,
     "text": "Drift monitoring nightly sample",
     "cells": [
      "FR-V12-F-018",
@@ -14585,7 +14585,7 @@
   "FR-V12-F-019": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 292,
+    "line": 294,
     "text": "Multilingual coverage en+hi IN; de+fr EU; locale prompts",
     "cells": [
      "FR-V12-F-019",
@@ -14641,7 +14641,7 @@
   "FR-V12-F-020": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 293,
+    "line": 295,
     "text": "AI incident response; kill switch per model/prompt/workflow",
     "cells": [
      "FR-V12-F-020",
@@ -14698,7 +14698,7 @@
   "FR-V12-F-021": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 294,
+    "line": 296,
     "text": "Part 11.6b",
     "cells": [
      "FR-V12-F-021",
@@ -14753,7 +14753,7 @@
   "FR-V12-F-022": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 295,
+    "line": 297,
     "text": "CTRL-AI-02 Normalisation (NFKC, zero-width, bidi, hidden text)",
     "cells": [
      "FR-V12-F-022",
@@ -14808,7 +14808,7 @@
   "FR-V12-F-023": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 296,
+    "line": 298,
     "text": "CTRL-AI-03 Classifier MDL-G1 screens in/out; flags to reviewer",
     "cells": [
      "FR-V12-F-023",
@@ -14863,7 +14863,7 @@
   "FR-V12-F-024": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 297,
+    "line": 299,
     "text": "Part 11.6b",
     "cells": [
      "FR-V12-F-024",
@@ -14918,7 +14918,7 @@
   "FR-V12-F-025": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 298,
+    "line": 300,
     "text": "CTRL-AI-05 Output validation, URL/domain allowlist, sanitised rendering, no auto-fetch",
     "cells": [
      "FR-V12-F-025",
@@ -14973,7 +14973,7 @@
   "FR-V12-F-026": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 299,
+    "line": 301,
     "text": "CTRL-AI-06 Secrets never in context; refusal template",
     "cells": [
      "FR-V12-F-026",
@@ -15029,7 +15029,7 @@
   "FR-V12-F-027": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 300,
+    "line": 302,
     "text": "CTRL-AI-07 Retrieval filtered by tenant/company before ranking; tenant-scoped vector keys",
     "cells": [
      "FR-V12-F-027",
@@ -15085,7 +15085,7 @@
   "FR-V12-F-028": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 301,
+    "line": 303,
     "text": "CTRL-AI-08 Agent-to-agent mandates signed with limits; counterparty messages untrusted",
     "cells": [
      "FR-V12-F-028",
@@ -15141,7 +15141,7 @@
   "FR-V12-F-029": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 302,
+    "line": 304,
     "text": "CTRL-AI-09 Logging flags, model, prompt version, decision (PII-redacted)",
     "cells": [
      "FR-V12-F-029",
@@ -15196,7 +15196,7 @@
   "FR-V12-F-030": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 303,
+    "line": 305,
     "text": "Meter every model call as ai_usage_event: tenant, company, workflow, step, run, model, PRM version",
     "cells": [
      "FR-V12-F-030",
@@ -15251,7 +15251,7 @@
   "FR-V12-F-031": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 304,
+    "line": 306,
     "text": "Store per chunk source_ref, rights, provenance_hash, ingested_at, observed_at, freshness_limit, quarantine_state",
     "cells": [
      "FR-V12-F-031",
@@ -15306,7 +15306,7 @@
   "FR-V12-F-032": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 305,
+    "line": 307,
     "text": "Key every eval run by candidate/version, workflow, PRM version, language, data class, dataset version",
     "cells": [
      "FR-V12-F-032",
@@ -15361,7 +15361,7 @@
   "FR-V12-F-033": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 306,
+    "line": 308,
     "text": "Replay affected suites on model, prompt, retrieval, policy or tool change; nightly drift sample; denominator stored",
     "cells": [
      "FR-V12-F-033",
@@ -15416,7 +15416,7 @@
   "FR-V12-F-034": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 307,
+    "line": 309,
     "text": "Effect intent immutable: tenant, company, recipient, relationship, purpose, market, channel, config version, payload digest",
     "cells": [
      "FR-V12-F-034",
@@ -15527,7 +15527,7 @@
   "FR-V12-F-036": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 308,
+    "line": 310,
     "text": "Per-run record: AGT role, agent, PRM, model, allowed tool-set digest, max tokens/cost, deadline, input/output refs",
     "cells": [
      "FR-V12-F-036",
@@ -15692,7 +15692,7 @@
   "FR-V12-F-039": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 309,
+    "line": 311,
     "text": "Two-level registry AGT role \u2192 AG/AU implementer; every workflow bound to one AGT",
     "cells": [
      "FR-V12-F-039",
@@ -15747,7 +15747,7 @@
   "FR-V12-F-040": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 310,
+    "line": 312,
     "text": "One definition per stable workflow version; per-customer configuration only",
     "cells": [
      "FR-V12-F-040",
@@ -15804,7 +15804,7 @@
   "FR-V12-F-041": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 311,
+    "line": 313,
     "text": "Reusable child workflows with versioned interfaces; metering by run lineage",
     "cells": [
      "FR-V12-F-041",
@@ -15861,7 +15861,7 @@
   "FR-V12-F-042": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 312,
+    "line": 314,
     "text": "Jurisdiction packs versioned with states; only Approved enforced; unreviewed \u2192 stricter outcome",
     "cells": [
      "FR-V12-F-042",
@@ -15970,7 +15970,7 @@
   "FR-V12-F-044": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 313,
+    "line": 315,
     "text": "Scoped consent ledger and withdrawal suppression; queued runs held",
     "cells": [
      "FR-V12-F-044",
@@ -16026,7 +16026,7 @@
   "FR-V12-F-045": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 314,
+    "line": 316,
     "text": "DLT and preference-registry scrub for promotional SMS/voice; number pool by purpose",
     "cells": [
      "FR-V12-F-045",
@@ -16082,7 +16082,7 @@
   "FR-V12-F-046": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 315,
+    "line": 317,
     "text": "Regulatory clocks for DSAR and breach per pack",
     "cells": [
      "FR-V12-F-046",
@@ -16138,7 +16138,7 @@
   "FR-V12-F-047": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 316,
+    "line": 318,
     "text": "AI disclosure and machine-readable marking on AI content and agents",
     "cells": [
      "FR-V12-F-047",
@@ -16194,7 +16194,7 @@
   "FR-V12-F-048": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 317,
+    "line": 319,
     "text": "Group competing actions by relationship and purpose; reviewer disposition",
     "cells": [
      "FR-V12-F-048",
@@ -16251,7 +16251,7 @@
   "FR-V12-F-049": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 318,
+    "line": 320,
     "text": "Scoped cache key and invalidation contract",
     "cells": [
      "FR-V12-F-049",
@@ -21249,7 +21249,7 @@
   "FR-V12-H-008": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 319,
+    "line": 321,
     "text": "Enterprise operations of Appendix A2 (48, OpenAPI 3.1) are part of the contract",
     "cells": [
      "FR-V12-H-008",
@@ -21282,7 +21282,7 @@
   "FR-V12-H-009": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 320,
+    "line": 322,
     "text": "Appendix A component conventions (Error, Page, Record, Command, RunRequest, BusinessContext, PreflightRequest/Result",
     "cells": [
      "FR-V12-H-009",
@@ -21315,7 +21315,7 @@
   "FR-V12-H-010": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 321,
+    "line": 323,
     "text": "One authoritative registry with alias and migration map; row-level source disposition index",
     "cells": [
      "FR-V12-H-010",
@@ -21406,7 +21406,7 @@
   "FR-V12-H-013": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 322,
+    "line": 324,
     "text": "Compliance routes: jurisdiction packs and rules, send preflight, consent ledger search, record and withdraw, suppressions",
     "cells": [
      "FR-V12-H-013",
@@ -21440,7 +21440,7 @@
   "FR-V12-H-014": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 323,
+    "line": 325,
     "text": "Tenant/company configuration contracts: applications (202 pending, no entitlement), company creation, scoped configuration graph",
     "cells": [
      "FR-V12-H-014",
@@ -21473,7 +21473,7 @@
   "FR-V12-H-015": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 324,
+    "line": 326,
     "text": "Business metrics with scoped dimensions, period, currency and approved rate version; native and converted totals",
     "cells": [
      "FR-V12-H-015",
@@ -21506,7 +21506,7 @@
   "FR-V12-H-016": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 325,
+    "line": 327,
     "text": "Portfolio grants require owner authority and explicit aggregate scope; independent clients excluded by default",
     "cells": [
      "FR-V12-H-016",
@@ -21540,7 +21540,7 @@
   "FR-V12-H-017": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 326,
+    "line": 328,
     "text": "Optimization routes: preflight, cost summary, health, feedback, customer value, private application drafts, model evaluations",
     "cells": [
      "FR-V12-H-017",
@@ -21602,7 +21602,7 @@
   "FR-V12-H-019": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 327,
+    "line": 329,
     "text": "OAuth tokens and API secrets only in a vault, rotated, never in database rows or logs; short-lived scoped credentials",
     "cells": [
      "FR-V12-H-019",
@@ -21636,7 +21636,7 @@
   "FR-V12-H-020": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 328,
+    "line": 330,
     "text": "Per-connector rate limits, backoff and circuit breaker; uncertain writes reconcile before retry",
     "cells": [
      "FR-V12-H-020",
@@ -21670,7 +21670,7 @@
   "FR-V12-H-021": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 329,
+    "line": 331,
     "text": "Connector health, sync lag and error dashboards with alerts",
     "cells": [
      "FR-V12-H-021",
@@ -21762,7 +21762,7 @@
   "FR-V12-H-024": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 330,
+    "line": 332,
     "text": "A company may have multiple independent channel accounts; offering-market mapping and independent eligibility",
     "cells": [
      "FR-V12-H-024",
@@ -21795,7 +21795,7 @@
   "FR-V12-H-025": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 331,
+    "line": 333,
     "text": "Scoped provider identity, credential reference and sender aliases; no secrets in HTML or public artifacts",
     "cells": [
      "FR-V12-H-025",
@@ -21828,7 +21828,7 @@
   "FR-V12-H-026": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 332,
+    "line": 334,
     "text": "Incremental provider sync with webhooks, cursors, ETags and change windows; reconcile gaps and provider reset",
     "cells": [
      "FR-V12-H-026",
@@ -21862,7 +21862,7 @@
   "FR-V12-H-027": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 333,
+    "line": 335,
     "text": "Provider shortlist rationalization: capabilities, licence, privacy, support, TCO and fallback; evidence retained",
     "cells": [
      "FR-V12-H-027",
@@ -21895,7 +21895,7 @@
   "FR-V12-H-028": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 334,
+    "line": 336,
     "text": "Bring-your-own-provider accounts with isolated credential references and clearly allocated fees, permissions",
     "cells": [
      "FR-V12-H-028",
@@ -21928,7 +21928,7 @@
   "FR-V12-H-029": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 335,
+    "line": 337,
     "text": "Provider volume and tier planning; compare tiers, commitments and overages",
     "cells": [
      "FR-V12-H-029",
@@ -21961,7 +21961,7 @@
   "FR-V12-H-030": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 336,
+    "line": 338,
     "text": "Self-service operations: setup checklist, connector diagnostics, knowledge-based troubleshooting with human escalation",
     "cells": [
      "FR-V12-H-030",
@@ -21994,7 +21994,7 @@
   "FR-V12-H-031": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 337,
+    "line": 339,
     "text": "Idle resource detection with safe cleanup and ownership review",
     "cells": [
      "FR-V12-H-031",
@@ -22027,7 +22027,7 @@
   "FR-V12-H-032": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 338,
+    "line": 340,
     "text": "Paid plugin replacement register VND-01\u202697 with decisions Replace / Retain OSS / Conditional external service / Defer-exclude",
     "cells": [
      "FR-V12-H-032",
@@ -22060,7 +22060,7 @@
   "FR-V12-H-033": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 339,
+    "line": 341,
     "text": "Contact-data vendors need a transfer-register entry (CJ-R15), a DPA and CJ-GL-01 compliance before activation (DEC-V9-04)",
     "cells": [
      "FR-V12-H-033",
@@ -22093,7 +22093,7 @@
   "FR-V12-H-034": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 340,
+    "line": 342,
     "text": "Cross-device application handoff preserves identity, hierarchy, services and revision",
     "cells": [
      "FR-V12-H-034",
@@ -22219,7 +22219,7 @@
   "FR-V12-H-038": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 341,
+    "line": 343,
     "text": "SIEM streaming to HTTPS, syslog over TLS or object storage with retention 1/3/7 years",
     "cells": [
      "FR-V12-H-038",
@@ -22253,7 +22253,7 @@
   "FR-V12-H-039": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 342,
+    "line": 344,
     "text": "Billing invoice preview with tax; tax determination per line from approved rules",
     "cells": [
      "FR-V12-H-039",
@@ -22287,7 +22287,7 @@
   "FR-V12-H-040": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 343,
+    "line": 345,
     "text": "Customer-managed keys; synthetic-data sandboxes; reviewed configuration promotion",
     "cells": [
      "FR-V12-H-040",
@@ -22320,7 +22320,7 @@
   "FR-V12-H-041": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 344,
+    "line": 346,
     "text": "Locales list, operational incident declaration, public status summary, vulnerability findings",
     "cells": [
      "FR-V12-H-041",
@@ -22354,7 +22354,7 @@
   "FR-V12-I-001": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 345,
+    "line": 347,
     "text": "Adopt Appendix C/C2 table names as canonical logical names; implement them through the physical mapping of Part 11.9a \u00a711.9.4\u2026",
     "cells": [
      "FR-V12-I-001",
@@ -22441,7 +22441,7 @@
   "FR-V12-I-004": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 346,
+    "line": 348,
     "text": "Missing tenant context raises `42501`; missing company scope returns zero rows",
     "cells": [
      "FR-V12-I-004",
@@ -22474,7 +22474,7 @@
   "FR-V12-I-005": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 347,
+    "line": 349,
     "text": "Tenant-pinned composite keys for all tenant-scoped parent/child pairs; no global uniqueness on tenant data except opaque random\u2026",
     "cells": [
      "FR-V12-I-005",
@@ -22562,7 +22562,7 @@
   "FR-V12-I-008": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 348,
+    "line": 350,
     "text": "SoD enforced on role build (insert/update) and on role assignment per user; no self-granted roles",
     "cells": [
      "FR-V12-I-008",
@@ -22596,7 +22596,7 @@
   "FR-V12-I-009": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 349,
+    "line": 351,
     "text": "Append-only audit with per-tenant hash chain, insert only through `fn_append_audit()`",
     "cells": [
      "FR-V12-I-009",
@@ -22657,7 +22657,7 @@
   "FR-V12-I-011": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 350,
+    "line": 352,
     "text": "Domain schema registry and write-time validation of `schema_ref`, status, required payload keys",
     "cells": [
      "FR-V12-I-011",
@@ -22717,7 +22717,7 @@
   "FR-V12-I-013": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 351,
+    "line": 353,
     "text": "Region-pinned database; tenant region immutable; cross-region write rejected",
     "cells": [
      "FR-V12-I-013",
@@ -22806,7 +22806,7 @@
   "FR-V12-I-016": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 352,
+    "line": 354,
     "text": "Vector column and HNSW index for retrieval once the embedding model is approved",
     "cells": [
      "FR-V12-I-016",
@@ -22839,7 +22839,7 @@
   "FR-V12-I-017": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 353,
+    "line": 355,
     "text": "Money stored as integer minor units with currency; unit prices, quantities, rates as exact numeric",
     "cells": [
      "FR-V12-I-017",
@@ -22872,7 +22872,7 @@
   "FR-V12-I-018": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 354,
+    "line": 356,
     "text": "FX rates: ISO codes, base \u2260 quote, positive rate, unique approved version",
     "cells": [
      "FR-V12-I-018",
@@ -22989,7 +22989,7 @@
   "FR-V12-I-022": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 355,
+    "line": 357,
     "text": "Sandbox environments with synthetic data only; promotion as a reviewed, immutable configuration revision",
     "cells": [
      "FR-V12-I-022",
@@ -23049,7 +23049,7 @@
   "FR-V12-I-024": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 356,
+    "line": 358,
     "text": "Webhook endpoints verified before activation; deliveries unique per endpoint/event/attempt (1\u20136)",
     "cells": [
      "FR-V12-I-024",
@@ -23082,7 +23082,7 @@
   "FR-V12-I-025": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 357,
+    "line": 359,
     "text": "Audit sinks (HTTPS, syslog-TLS, object storage; JSON or CEF; 1/3/7-year retention) fed from the audit chain with redacted payloads",
     "cells": [
      "FR-V12-I-025",
@@ -23115,7 +23115,7 @@
   "FR-V12-I-026": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 358,
+    "line": 360,
     "text": "Reference-data governance for `locale_bundle`, `tax_rule`, `jurisdiction_pack/rule`, `ai_model`",
     "cells": [
      "FR-V12-I-026",
@@ -23148,7 +23148,7 @@
   "FR-V12-I-030": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 359,
+    "line": 361,
     "text": "Analytics and usage tables of \u00a711.9.5.6 (`sli_sample`, `customer_value`, `feedback_case`, `journey_event`, `metric_definition`",
     "cells": [
      "FR-V12-I-030",
@@ -23181,7 +23181,7 @@
   "FR-V12-I-031": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 360,
+    "line": 362,
     "text": "`domain_record_version` immutable snapshots and `usage_reservation` atomic reservation",
     "cells": [
      "FR-V12-I-031",
@@ -23241,7 +23241,7 @@
   "FR-V12-I-041": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 361,
+    "line": 363,
     "text": "PERF-01\u202607 load profiles executed before each release gate; V12 KPI-05/26/27/28 measured",
     "cells": [
      "FR-V12-I-041",
@@ -23301,7 +23301,7 @@
   "FR-V12-I-043": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 362,
+    "line": 364,
     "text": "Fourteen management views implemented with MET-V12-I-10\u202665 production metrics",
     "cells": [
      "FR-V12-I-043",
@@ -23361,7 +23361,7 @@
   "FR-V12-I-045": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 363,
+    "line": 365,
     "text": "Part 11.9c",
     "cells": [
      "FR-V12-I-045",
@@ -23533,7 +23533,7 @@
   "FR-V12-I-053": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 364,
+    "line": 366,
     "text": "Independent pen test per major release and annually, scope PEN-01\u202608",
     "cells": [
      "FR-V12-I-053",
@@ -23566,7 +23566,7 @@
   "FR-V12-I-054": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 365,
+    "line": 367,
     "text": "Public bug-bounty programme",
     "cells": [
      "FR-V12-I-054",
@@ -23599,7 +23599,7 @@
   "FR-V12-I-055": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 366,
+    "line": 368,
     "text": "Encryption in transit/at rest and key rotation",
     "cells": [
      "FR-V12-I-055",
@@ -23632,7 +23632,7 @@
   "FR-V12-I-056": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 367,
+    "line": 369,
     "text": "Secrets rotation and break-glass",
     "cells": [
      "FR-V12-I-056",
@@ -23693,7 +23693,7 @@
   "FR-V12-I-058": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 368,
+    "line": 370,
     "text": "SEC-08\u202613 controls (prompt injection, DLP, file ingestion, browser, SSRF, behaviour monitoring) evidenced per release",
     "cells": [
      "FR-V12-I-058",
@@ -23726,7 +23726,7 @@
   "FR-V12-I-059": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-    "line": 369,
+    "line": 371,
     "text": "Part 11.9c",
     "cells": [
      "FR-V12-I-059",
@@ -35156,17 +35156,6 @@
     "US-24-ZP01"
    ]
   },
-  "FR-V12-P-007": {
-   "def": null,
-   "stories": [
-    "US-14-ZP01",
-    "US-15-ZP01",
-    "US-18-ZP01",
-    "US-18-ZP02",
-    "US-18-ZP05",
-    "US-24-ZP01"
-   ]
-  },
   "FR-V12-P-008": {
    "def": null,
    "stories": [
@@ -35654,18 +35643,6 @@
     "US-24-ZP01"
    ]
   },
-  "FR-V12-P-054": {
-   "def": null,
-   "stories": [
-    "US-14-ZP01",
-    "US-15-ZP01",
-    "US-18-ZP01",
-    "US-18-ZP05",
-    "US-18-ZP06",
-    "US-18-ZP07",
-    "US-24-ZP01"
-   ]
-  },
   "FR-V12-P-058": {
    "def": null,
    "stories": [
@@ -35674,6 +35651,7 @@
     "US-18-ZP01",
     "US-18-ZP05",
     "US-18-ZP06",
+    "US-18-ZP07",
     "US-24-ZP01"
    ]
   },
@@ -35715,26 +35693,13 @@
     "US-24-ZP01"
    ]
   },
-  "FR-V12-P-063": {
-   "def": null,
-   "stories": [
-    "US-14-ZP01",
-    "US-15-ZP01",
-    "US-15-ZP02",
-    "US-15-ZP03",
-    "US-18-ZP01",
-    "US-18-ZP07",
-    "US-18-ZP08",
-    "US-18-ZP09",
-    "US-24-ZP01"
-   ]
-  },
   "FR-V12-P-064": {
    "def": null,
    "stories": [
     "US-14-ZP01",
     "US-15-ZP01",
     "US-15-ZP02",
+    "US-15-ZP03",
     "US-18-ZP01",
     "US-18-ZP07",
     "US-18-ZP08",
@@ -46067,7 +46032,7 @@
   },
   "US-01-YE09": {
    "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-   "line": 557,
+   "line": 559,
    "title": "",
    "format": "table",
    "frs": [
@@ -46078,7 +46043,7 @@
   },
   "US-01-YE10": {
    "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-   "line": 558,
+   "line": 560,
    "title": "",
    "format": "table",
    "frs": [
@@ -46176,7 +46141,7 @@
   },
   "US-01-YH02": {
    "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-   "line": 559,
+   "line": 561,
    "title": "Its FRs are also traced by a story with AC (no binding needed)",
    "format": "table",
    "frs": [
@@ -46200,7 +46165,7 @@
   },
   "US-01-YH04": {
    "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-   "line": 560,
+   "line": 562,
    "title": "Its FRs are also traced by a story with AC (no binding needed)",
    "format": "table",
    "frs": [
@@ -46624,7 +46589,7 @@
   },
   "US-01-ZU01": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 820,
+   "line": 822,
    "title": "Product separation between Sales & Marketing and Investment Automation",
    "format": "block",
    "priority": "Must",
@@ -46641,7 +46606,7 @@
   },
   "US-01-ZU02": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 821,
+   "line": 823,
    "title": "Region code on every tenant key and request-region check",
    "format": "block",
    "priority": "Should",
@@ -46660,7 +46625,7 @@
   },
   "US-01-ZU03": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 822,
+   "line": 824,
    "title": "Central authorisation with SKU dimension and job-scoped service principals",
    "format": "block",
    "priority": "Should",
@@ -46677,7 +46642,7 @@
   },
   "US-01-ZU04": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 823,
+   "line": 825,
    "title": "Portfolio aggregate grants and SIEM audit streaming",
    "format": "block",
    "priority": "Should",
@@ -46696,7 +46661,7 @@
   },
   "US-01-ZU05": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 824,
+   "line": 826,
    "title": "Canonical table names, tenant-context enforcement and tenant-pinned keys",
    "format": "block",
    "priority": "Must",
@@ -46712,7 +46677,7 @@
   },
   "US-01-ZU06": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 825,
+   "line": 827,
    "title": "SoD on role build and assignment, hash-chained audit and domain schema validation",
    "format": "block",
    "priority": "Must",
@@ -46731,7 +46696,7 @@
   },
   "US-01-ZU07": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 826,
+   "line": 828,
    "title": "Region-pinned database, exact money and approved FX rates",
    "format": "block",
    "priority": "Must",
@@ -46750,7 +46715,7 @@
   },
   "US-01-ZU08": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 827,
+   "line": 829,
    "title": "Audit sinks, reference-data governance and analytics tables",
    "format": "block",
    "priority": "Must",
@@ -46766,7 +46731,7 @@
   },
   "US-01-ZU09": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 828,
+   "line": 830,
    "title": "Immutable record versions and atomic usage reservation",
    "format": "block",
    "priority": "Must",
@@ -46781,7 +46746,7 @@
   },
   "US-01-ZU10": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 829,
+   "line": 831,
    "title": "ENT-IDN-01\u202603 acceptance: SSO per tenant, verified domains and SCIM",
    "format": "block",
    "priority": "Must",
@@ -46802,7 +46767,7 @@
   },
   "US-01-ZU11": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 830,
+   "line": 832,
    "title": "ENT-IDN-04\u202606 acceptance: MFA policy, session policy and break-glass",
    "format": "block",
    "priority": "Must",
@@ -46823,7 +46788,7 @@
   },
   "US-01-ZU12": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 831,
+   "line": 833,
    "title": "ENT-ACC-01\u202603 acceptance: custom roles, SoD matrix and tamper-evident audit",
    "format": "block",
    "priority": "Must",
@@ -46844,7 +46809,7 @@
   },
   "US-01-ZU13": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 832,
+   "line": 834,
    "title": "ENT-ACC-04\u202605 acceptance: SIEM streaming and just-in-time support access",
    "format": "block",
    "priority": "Must",
@@ -46865,7 +46830,7 @@
   },
   "US-01-ZU14": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 833,
+   "line": 835,
    "title": "ENT-DAT-02\u202603 acceptance: customer-managed keys and residency at onboarding",
    "format": "block",
    "priority": "Must",
@@ -46967,7 +46932,7 @@
   },
   "US-02-ZU01": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 834,
+   "line": 836,
    "title": "Divisions, brands, markets, channel accounts and offering lifecycle",
    "format": "block",
    "priority": "Must",
@@ -46993,7 +46958,7 @@
   },
   "US-02-ZU02": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 835,
+   "line": 837,
    "title": "Knowledge-chunk provenance, rights, freshness and quarantine",
    "format": "block",
    "priority": "Must",
@@ -47122,7 +47087,7 @@
   },
   "US-03-YE01": {
    "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-   "line": 563,
+   "line": 565,
    "title": "",
    "format": "table",
    "frs": [
@@ -47236,7 +47201,7 @@
   },
   "US-03-YH01": {
    "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-   "line": 564,
+   "line": 566,
    "title": "",
    "format": "table",
    "frs": [
@@ -47406,7 +47371,7 @@
   },
   "US-03-ZU01": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 836,
+   "line": 838,
    "title": "Deny-reason precedence in the V12 order",
    "format": "block",
    "priority": "Should",
@@ -47421,7 +47386,7 @@
   },
   "US-03-ZU02": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 837,
+   "line": 839,
    "title": "Versioned jurisdiction packs, scoped consent ledger and regulatory clocks",
    "format": "block",
    "priority": "Must",
@@ -47512,7 +47477,7 @@
   },
   "US-03-ZU03": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 838,
+   "line": 840,
    "title": "AI disclosure and machine-readable marking",
    "format": "block",
    "priority": "Must",
@@ -47603,7 +47568,7 @@
   },
   "US-03-ZU04": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 839,
+   "line": 841,
    "title": "Compliance API routes: packs, preflight, consent, DSAR, incidents and cookies",
    "format": "block",
    "priority": "Should",
@@ -47620,7 +47585,7 @@
   },
   "US-03-ZU05": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 840,
+   "line": 842,
    "title": "Contact-data vendor activation gate: transfer register, DPA and CJ-GL-01",
    "format": "block",
    "priority": "Should",
@@ -47637,7 +47602,7 @@
   },
   "US-03-ZU06": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 841,
+   "line": 843,
    "title": "ENT-CMP-04\u202606 acceptance: DPA and sub-processors, DPIA and EU AI Act, accessibility report",
    "format": "block",
    "priority": "Must",
@@ -47658,7 +47623,7 @@
   },
   "US-03-ZU07": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 842,
+   "line": 844,
    "title": "ENT-CMP-07\u202608 acceptance: approved legal set and counsel-reviewed market packs",
    "format": "block",
    "priority": "Must",
@@ -47678,7 +47643,7 @@
   },
   "US-03-ZU08": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 843,
+   "line": 845,
    "title": "AI-assisted labelling of every Part 11.13 AI output",
    "format": "block",
    "priority": "Must",
@@ -48254,7 +48219,7 @@
   },
   "US-04-ZU01": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 844,
+   "line": 846,
    "title": "AI transparency page, AI labels, region pinning and private customer data",
    "format": "block",
    "priority": "Must",
@@ -48338,7 +48303,7 @@
   },
   "US-04-ZU02": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 845,
+   "line": 847,
    "title": "Context budgeting, multimodal cost tiers and the AI step inventory",
    "format": "block",
    "priority": "Should",
@@ -48420,7 +48385,7 @@
   },
   "US-04-ZU03": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 846,
+   "line": 848,
    "title": "Launch-language evaluation slices gate a locale",
    "format": "block",
    "priority": "Should",
@@ -48502,7 +48467,7 @@
   },
   "US-04-ZU04": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 847,
+   "line": 849,
    "title": "AIX-01, 04, 06: step classification, prompt registry and regression gate",
    "format": "block",
    "priority": "Must",
@@ -48658,7 +48623,7 @@
   },
   "US-04-ZU05": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 848,
+   "line": 850,
    "title": "AIX-07\u202609: calibrated judges, untrusted-content isolation and reader/actor separation",
    "format": "block",
    "priority": "Must",
@@ -48814,7 +48779,7 @@
   },
   "US-04-ZU06": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 849,
+   "line": 851,
    "title": "AIX-10\u202612: output handling, claims and citations, per-call AI metering",
    "format": "block",
    "priority": "Must",
@@ -48970,7 +48935,7 @@
   },
   "US-04-ZU07": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 850,
+   "line": 852,
    "title": "AIX-13\u202615: tenant AI budgets, cost per accepted result and scoped caching",
    "format": "block",
    "priority": "Must",
@@ -49127,7 +49092,7 @@
   },
   "US-04-ZU08": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 851,
+   "line": 853,
    "title": "AIX-17\u202619: provider data handling, drift monitoring and multilingual gates",
    "format": "block",
    "priority": "Must",
@@ -49283,7 +49248,7 @@
   },
   "US-04-ZU09": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 852,
+   "line": 854,
    "title": "AIX-20 kill switch and CTRL-AI-01\u202602 delimiting and normalisation",
    "format": "block",
    "priority": "Must",
@@ -49439,7 +49404,7 @@
   },
   "US-04-ZU10": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 853,
+   "line": 855,
    "title": "CTRL-AI-03\u202605: injection classifier, tool isolation and output validation",
    "format": "block",
    "priority": "Must",
@@ -49595,7 +49560,7 @@
   },
   "US-04-ZU11": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 854,
+   "line": 856,
    "title": "CTRL-AI-06\u202608: no secrets in context, tenant-filtered retrieval and signed agent mandates",
    "format": "block",
    "priority": "Must",
@@ -49751,7 +49716,7 @@
   },
   "US-04-ZU12": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 855,
+   "line": 857,
    "title": "CTRL-AI-09 logging, ai_usage_event metering and keyed evaluation runs",
    "format": "block",
    "priority": "Must",
@@ -49906,7 +49871,7 @@
   },
   "US-04-ZU13": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 856,
+   "line": 858,
    "title": "Suite replay on change, per-run agent record and two-level AGT registry",
    "format": "block",
    "priority": "Must",
@@ -50059,7 +50024,7 @@
   },
   "US-04-ZU14": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 857,
+   "line": 859,
    "title": "Scoped AI cache key and invalidation contract",
    "format": "block",
    "priority": "Must",
@@ -50213,7 +50178,7 @@
   },
   "US-04-ZU15": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 858,
+   "line": 860,
    "title": "Optimisation API routes: preflight, cost, health, feedback and model evaluations",
    "format": "block",
    "priority": "Should",
@@ -50295,7 +50260,7 @@
   },
   "US-04-ZU16": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 859,
+   "line": 861,
    "title": "Vector column and HNSW index behind the embedding-model gate",
    "format": "block",
    "priority": "Must",
@@ -50377,7 +50342,7 @@
   },
   "US-04-ZU17": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 860,
+   "line": 862,
    "title": "Metering of Part 11.13 agents to Ledger B line B25 with a hard cap",
    "format": "block",
    "priority": "Must",
@@ -50599,7 +50564,7 @@
   },
   "US-05-ZU01": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 861,
+   "line": 863,
    "title": "Offering-specific audiences with market eligibility and source rights",
    "format": "block",
    "priority": "Should",
@@ -51169,7 +51134,7 @@
   },
   "US-08-ZU01": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 862,
+   "line": 864,
    "title": "DLT and preference-registry scrub for promotional SMS and voice",
    "format": "block",
    "priority": "Must",
@@ -51258,7 +51223,7 @@
   },
   "US-08-ZU02": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 863,
+   "line": 865,
    "title": "Multiple channel accounts per company with scoped sender identities",
    "format": "block",
    "priority": "Should",
@@ -51875,7 +51840,7 @@
   },
   "US-12-ZU01": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 864,
+   "line": 866,
    "title": "Consent-aware acquisition analytics",
    "format": "block",
    "priority": "Must",
@@ -52628,7 +52593,7 @@
   },
   "US-15-YE01": {
    "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-   "line": 568,
+   "line": 570,
    "title": "",
    "format": "table",
    "frs": [
@@ -52931,7 +52896,7 @@
    "points": "5\u20138",
    "frs": [
     "FR-V12-P-062",
-    "FR-V12-P-063",
+    "FR-V12-P-064",
     "FR-V12-P-083",
     "FR-V12-P-084",
     "FR-V12-P-085",
@@ -52948,7 +52913,7 @@
   },
   "US-15-ZU01": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 865,
+   "line": 867,
    "title": "Distinct ledgers, native-currency reporting and cost allocation",
    "format": "block",
    "priority": "Should",
@@ -53236,7 +53201,7 @@
   },
   "US-16-ZU01": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 866,
+   "line": 868,
    "title": "CSAT, CES and NPS at defined milestones",
    "format": "block",
    "priority": "Should",
@@ -53254,7 +53219,7 @@
   },
   "US-16-ZU02": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 867,
+   "line": 869,
    "title": "First-value milestone, activation checklist and success plan per SKU",
    "format": "block",
    "priority": "Must",
@@ -53273,7 +53238,7 @@
   },
   "US-16-ZU03": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 868,
+   "line": 870,
    "title": "Customer health score and underused-service detection",
    "format": "block",
    "priority": "Should",
@@ -53291,7 +53256,7 @@
   },
   "US-16-ZU04": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 869,
+   "line": 871,
    "title": "Connector expiry alerts, customer value report and customer-controlled schedules",
    "format": "block",
    "priority": "Should",
@@ -53314,7 +53279,7 @@
   },
   "US-16-ZU05": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 870,
+   "line": 872,
    "title": "Complementary-service recommendations, grounded help and enterprise success reviews",
    "format": "block",
    "priority": "Should",
@@ -53338,7 +53303,7 @@
   },
   "US-16-ZU06": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 871,
+   "line": 873,
    "title": "ENT-BIZ-04\u202605 acceptance: success playbooks and partner/reseller programme",
    "format": "block",
    "priority": "Should",
@@ -53651,7 +53616,7 @@
   },
   "US-17-ZU01": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 872,
+   "line": 874,
    "title": "Native-currency integrity and reconciled drill-down",
    "format": "block",
    "priority": "Must",
@@ -53670,7 +53635,7 @@
   },
   "US-17-ZU02": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 873,
+   "line": 875,
    "title": "Nine optimisation perspectives with role visibility",
    "format": "block",
    "priority": "Should",
@@ -53685,7 +53650,7 @@
   },
   "US-17-ZU03": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 874,
+   "line": 876,
    "title": "Context filters and cascading filter semantics",
    "format": "block",
    "priority": "Must",
@@ -53704,7 +53669,7 @@
   },
   "US-17-ZU04": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 875,
+   "line": 877,
    "title": "Business metrics API with scoped dimensions and approved rates",
    "format": "block",
    "priority": "Should",
@@ -53721,7 +53686,7 @@
   },
   "US-17-ZU05": {
    "file": "Part-11-22b_Master_User_Stories_EP01_to_EP17.md",
-   "line": 876,
+   "line": 878,
    "title": "Fourteen management views with production metrics",
    "format": "block",
    "priority": "Must",
@@ -54182,7 +54147,7 @@
   },
   "US-18-YE02": {
    "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-   "line": 574,
+   "line": 576,
    "title": "",
    "format": "table",
    "frs": [
@@ -54777,7 +54742,7 @@
     "FR-V12-F-020",
     "FR-V12-P-037",
     "FR-V12-P-053",
-    "FR-V12-P-054",
+    "FR-V12-P-058",
     "FR-V12-P-059",
     "FR-V12-P-060",
     "FR-V12-P-061",
@@ -54912,7 +54877,7 @@
   },
   "US-18-ZU01": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 877,
+   "line": 879,
    "title": "Nine-check preflight, confidence-floor routing and safe cancellation",
    "format": "block",
    "priority": "Must",
@@ -54933,7 +54898,7 @@
   },
   "US-18-ZU02": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 878,
+   "line": 880,
    "title": "Configuration diff, rollback as a new draft and snapshot protection",
    "format": "block",
    "priority": "Should",
@@ -54951,7 +54916,7 @@
   },
   "US-18-ZU03": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 879,
+   "line": 881,
    "title": "Circuit breakers, backpressure and dependency-aware degradation",
    "format": "block",
    "priority": "Should",
@@ -54969,7 +54934,7 @@
   },
   "US-18-ZU04": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 880,
+   "line": 882,
    "title": "Immutable effect intent, one definition per workflow version and reusable child workflows",
    "format": "block",
    "priority": "Must",
@@ -55060,7 +55025,7 @@
   },
   "US-18-ZU05": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 881,
+   "line": 883,
    "title": "Competing actions grouped for reviewer disposition",
    "format": "block",
    "priority": "Must",
@@ -55150,7 +55115,7 @@
   },
   "US-18-ZU06": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 882,
+   "line": 884,
    "title": "Vault-only connector secrets, per-connector rate limits and health dashboards",
    "format": "block",
    "priority": "Should",
@@ -55171,7 +55136,7 @@
   },
   "US-18-ZU07": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 883,
+   "line": 885,
    "title": "Incremental provider sync and provider shortlist rationalisation",
    "format": "block",
    "priority": "Should",
@@ -55189,7 +55154,7 @@
   },
   "US-18-ZU08": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 884,
+   "line": 886,
    "title": "ENT-INT-01\u202603 acceptance: adapter contract, vault secrets and resilient writes",
    "format": "block",
    "priority": "Must",
@@ -55209,7 +55174,7 @@
   },
   "US-18-ZU09": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 885,
+   "line": 887,
    "title": "ENT-INT-04 acceptance: connector health, sync lag and alerts",
    "format": "block",
    "priority": "Should",
@@ -55226,7 +55191,7 @@
   },
   "US-18-ZU10": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 886,
+   "line": 888,
    "title": "UX rules G01\u2013G04: workspace and portal scope, contextual and capability filters",
    "format": "block",
    "priority": "Should",
@@ -55246,7 +55211,7 @@
   },
   "US-18-ZU11": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 887,
+   "line": 889,
    "title": "UX rules G05\u2013G08: omnichannel policy, workflow operations, record linkage and AI evidence",
    "format": "block",
    "priority": "Should",
@@ -55263,7 +55228,7 @@
   },
   "US-18-ZU12": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 888,
+   "line": 890,
    "title": "UX rules G09\u2013G12: financial controls, approval and audit, data lifecycle and navigation",
    "format": "block",
    "priority": "Should",
@@ -55280,7 +55245,7 @@
   },
   "US-18-ZU13": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 889,
+   "line": 891,
    "title": "UX rules G13\u2013G15: UI states, simulation safeguards and service lifecycle",
    "format": "block",
    "priority": "Should",
@@ -55296,7 +55261,7 @@
   },
   "US-18-ZU14": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 890,
+   "line": 892,
    "title": "UX business requirements UX-BR-02\u202605 on the 36-tenant fixture",
    "format": "block",
    "priority": "Should",
@@ -55850,7 +55815,7 @@
   },
   "US-19-ZU01": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 891,
+   "line": 893,
    "title": "Workflow output previews, maturity assessment and controlled sandbox",
    "format": "block",
    "priority": "Should",
@@ -55876,7 +55841,7 @@
   },
   "US-19-ZU02": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 892,
+   "line": 894,
    "title": "TCO estimator and ROI sensitivity",
    "format": "block",
    "priority": "Should",
@@ -55894,7 +55859,7 @@
   },
   "US-19-ZU03": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 893,
+   "line": 895,
    "title": "Localised help centre and in-product guides",
    "format": "block",
    "priority": "Should",
@@ -55912,7 +55877,7 @@
   },
   "US-19-ZU04": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 894,
+   "line": 896,
    "title": "Positioning and segment evidence without superiority claims",
    "format": "block",
    "priority": "Should",
@@ -55930,7 +55895,7 @@
   },
   "US-19-ZU05": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 895,
+   "line": 897,
    "title": "PWA offline boundary",
    "format": "block",
    "priority": "Must",
@@ -56215,7 +56180,7 @@
   },
   "US-20-YE02": {
    "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-   "line": 588,
+   "line": 590,
    "title": "E: 032\u2013034, 036\u2013037",
    "format": "table",
    "frs": [
@@ -56248,7 +56213,7 @@
   },
   "US-20-YE04": {
    "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-   "line": 589,
+   "line": 591,
    "title": "US-20-ZU17, US-20-ZU18",
    "format": "table",
    "frs": [
@@ -56312,7 +56277,7 @@
   },
   "US-20-YE08": {
    "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-   "line": 590,
+   "line": 592,
    "title": "",
    "format": "table",
    "frs": [
@@ -56365,7 +56330,7 @@
   },
   "US-20-YE12": {
    "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-   "line": 591,
+   "line": 593,
    "title": "E: 064, 078, 084",
    "format": "table",
    "frs": [
@@ -56378,7 +56343,7 @@
   },
   "US-20-YE13": {
    "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-   "line": 592,
+   "line": 594,
    "title": "",
    "format": "table",
    "frs": [
@@ -56390,7 +56355,7 @@
   },
   "US-20-YE14": {
    "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-   "line": 593,
+   "line": 595,
    "title": "",
    "format": "table",
    "frs": [
@@ -56404,7 +56369,7 @@
   },
   "US-20-YE15": {
    "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-   "line": 594,
+   "line": 596,
    "title": "",
    "format": "table",
    "frs": [
@@ -56416,7 +56381,7 @@
   },
   "US-20-YE16": {
    "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-   "line": 595,
+   "line": 597,
    "title": "",
    "format": "table",
    "frs": [
@@ -56684,7 +56649,7 @@
   },
   "US-20-YH01": {
    "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-   "line": 596,
+   "line": 598,
    "title": "",
    "format": "table",
    "frs": [
@@ -57099,7 +57064,7 @@
   },
   "US-20-ZU01": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 896,
+   "line": 898,
    "title": "Catalogue versioning, alias map and bundle expansion",
    "format": "block",
    "priority": "Must",
@@ -57197,7 +57162,7 @@
   },
   "US-20-ZU02": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 897,
+   "line": 899,
    "title": "Signed SKU expansion, tenant lifecycle and consumption forecast",
    "format": "block",
    "priority": "Must",
@@ -57296,7 +57261,7 @@
   },
   "US-20-ZU03": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 898,
+   "line": 900,
    "title": "Bring-your-own provider and delivery models",
    "format": "block",
    "priority": "Should",
@@ -57396,7 +57361,7 @@
   },
   "US-20-ZU04": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 899,
+   "line": 901,
    "title": "Transparent pricing, TCO and contribution, and billing disputes",
    "format": "block",
    "priority": "Must",
@@ -57503,7 +57468,7 @@
   },
   "US-20-ZU05": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 900,
+   "line": 902,
    "title": "Per-SKU cost model, price floor and SKU meter registry",
    "format": "block",
    "priority": "Must",
@@ -57602,7 +57567,7 @@
   },
   "US-20-ZU06": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 901,
+   "line": 903,
    "title": "Operator acquisition tenant and the 14 customer types",
    "format": "block",
    "priority": "Should",
@@ -57700,7 +57665,7 @@
   },
   "US-20-ZU07": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 902,
+   "line": 904,
    "title": "Progressive onboarding with session and draft recovery",
    "format": "block",
    "priority": "Must",
@@ -57801,7 +57766,7 @@
   },
   "US-20-ZU08": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 903,
+   "line": 905,
    "title": "Business & Organization Management Centre, templates and cross-device handoff",
    "format": "block",
    "priority": "Must",
@@ -57901,7 +57866,7 @@
   },
   "US-20-ZU09": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 904,
+   "line": 906,
    "title": "Per-SKU workflow SLA matrix and customer responsibilities schedule",
    "format": "block",
    "priority": "Must",
@@ -57997,7 +57962,7 @@
   },
   "US-20-ZU10": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 905,
+   "line": 907,
    "title": "Ethical cancellation and win-back",
    "format": "block",
    "priority": "Must",
@@ -58094,7 +58059,7 @@
   },
   "US-20-ZU11": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 906,
+   "line": 908,
    "title": "BR-V12 capability register (1/3): identity, access, developer platform, data ownership",
    "format": "block",
    "priority": "Should",
@@ -58196,7 +58161,7 @@
   },
   "US-20-ZU12": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 907,
+   "line": 909,
    "title": "BR-V12 capability register (2/3): ecosystem, security, legal readiness, global reach",
    "format": "block",
    "priority": "Should",
@@ -58299,7 +58264,7 @@
   },
   "US-20-ZU13": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 908,
+   "line": 910,
    "title": "BR-V12 capability register (3/3): dependable service and commercial operations",
    "format": "block",
    "priority": "Should",
@@ -58396,7 +58361,7 @@
   },
   "US-20-ZU14": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 909,
+   "line": 911,
    "title": "SKU release groups mapped to waves",
    "format": "block",
    "priority": "Must",
@@ -58490,7 +58455,7 @@
   },
   "US-20-ZU15": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 910,
+   "line": 912,
    "title": "Eight-stage wizard, server-backed drafts, customer types and country model",
    "format": "block",
    "priority": "Should",
@@ -58594,7 +58559,7 @@
   },
   "US-20-ZU16": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 911,
+   "line": 913,
    "title": "Region, language and IANA timezone per market with DST",
    "format": "block",
    "priority": "Should",
@@ -58691,7 +58656,7 @@
   },
   "US-20-ZU17": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 912,
+   "line": 914,
    "title": "SKU, workflow-version, bundle and foundation registries",
    "format": "block",
    "priority": "Should",
@@ -58789,7 +58754,7 @@
   },
   "US-20-ZU18": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 913,
+   "line": 915,
    "title": "Engines register, legacy capability map and public projection allowlist",
    "format": "block",
    "priority": "Should",
@@ -58886,7 +58851,7 @@
   },
   "US-20-ZU19": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 914,
+   "line": 916,
    "title": "Tenant lifecycle, portability and offboarding",
    "format": "block",
    "priority": "Should",
@@ -58985,7 +58950,7 @@
   },
   "US-20-ZU20": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 915,
+   "line": 917,
    "title": "Plan-change preview, effective date and proration",
    "format": "block",
    "priority": "Should",
@@ -59082,7 +59047,7 @@
   },
   "US-20-ZU21": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 916,
+   "line": 918,
    "title": "Refunds, credit notes and billing disputes",
    "format": "block",
    "priority": "Should",
@@ -59181,7 +59146,7 @@
   },
   "US-20-ZU22": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 917,
+   "line": 919,
    "title": "Revenue recognition schedule and reconciliation jobs RJ-01\u202606",
    "format": "block",
    "priority": "Should",
@@ -59278,7 +59243,7 @@
   },
   "US-20-ZU23": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 918,
+   "line": 920,
    "title": "Consumption forecast, quota alerts and TTFV playbooks",
    "format": "block",
    "priority": "Should",
@@ -59376,7 +59341,7 @@
   },
   "US-20-ZU24": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 919,
+   "line": 921,
    "title": "Per-SKU service sheet, partner model and procurement pack",
    "format": "block",
    "priority": "Should",
@@ -59476,7 +59441,7 @@
   },
   "US-20-ZU25": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 920,
+   "line": 922,
    "title": "Appendix A/A2 API contract conventions and one authoritative registry",
    "format": "block",
    "priority": "Should",
@@ -59574,7 +59539,7 @@
   },
   "US-20-ZU26": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 921,
+   "line": 923,
    "title": "Tenant and company configuration contracts, BYO provider accounts and tier planning",
    "format": "block",
    "priority": "Should",
@@ -59673,7 +59638,7 @@
   },
   "US-20-ZU27": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 922,
+   "line": 924,
    "title": "Self-service operations, cross-device handoff contract and customer-managed keys",
    "format": "block",
    "priority": "Should",
@@ -59772,7 +59737,7 @@
   },
   "US-20-ZU28": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 923,
+   "line": 925,
    "title": "Invoice preview with per-line tax determination",
    "format": "block",
    "priority": "Should",
@@ -59869,7 +59834,7 @@
   },
   "US-20-ZU29": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 924,
+   "line": 926,
    "title": "Synthetic-data sandboxes and verified webhook endpoints",
    "format": "block",
    "priority": "Must",
@@ -59965,7 +59930,7 @@
   },
   "US-20-ZU30": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 925,
+   "line": 927,
    "title": "Per-SKU service schedule",
    "format": "block",
    "priority": "Should",
@@ -60062,7 +60027,7 @@
   },
   "US-20-ZU31": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 926,
+   "line": 928,
    "title": "ENT-API-01\u202603 acceptance: scoped keys, client credentials and rate limits",
    "format": "block",
    "priority": "Must",
@@ -60161,7 +60126,7 @@
   },
   "US-20-ZU32": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 927,
+   "line": 929,
    "title": "ENT-API-04\u202606 acceptance: versioning, signed webhooks and SDKs",
    "format": "block",
    "priority": "Must",
@@ -60260,7 +60225,7 @@
   },
   "US-20-ZU33": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 928,
+   "line": 930,
    "title": "ENT-API-07 acceptance: developer portal and sandbox access",
    "format": "block",
    "priority": "Should",
@@ -60356,7 +60321,7 @@
   },
   "US-20-ZU34": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 929,
+   "line": 931,
    "title": "ENT-DAT-01, 04, 05 acceptance: tenant export, synthetic sandboxes and promotion",
    "format": "block",
    "priority": "Must",
@@ -60455,7 +60420,7 @@
   },
   "US-20-ZU35": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 930,
+   "line": 932,
    "title": "ENT-BIZ-01\u202603 acceptance: billing chain, approved price book and signed order forms",
    "format": "block",
    "priority": "Must",
@@ -60555,7 +60520,7 @@
   },
   "US-20-ZU36": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 931,
+   "line": 933,
    "title": "ENT-BIZ-06 acceptance: enterprise procurement pack",
    "format": "block",
    "priority": "Should",
@@ -60652,7 +60617,7 @@
   },
   "US-20-ZU37": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 932,
+   "line": 934,
    "title": "UX-BR-01 configuration-driven onboarding on the non-production fixture",
    "format": "block",
    "priority": "Should",
@@ -60844,7 +60809,7 @@
   },
   "US-21-YE03": {
    "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-   "line": 601,
+   "line": 603,
    "title": "US-21-ZU10, US-21-ZU11",
    "format": "table",
    "frs": [
@@ -60860,7 +60825,7 @@
   },
   "US-21-YE04": {
    "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-   "line": 602,
+   "line": 604,
    "title": "E: 102\u2013103, 112\u2013114",
    "format": "table",
    "frs": [
@@ -60959,7 +60924,7 @@
   },
   "US-21-YH01": {
    "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
-   "line": 603,
+   "line": 605,
    "title": "",
    "format": "table",
    "frs": [
@@ -61371,7 +61336,7 @@
   },
   "US-21-ZU01": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 933,
+   "line": 935,
    "title": "SLA tier templates, severity model and tiered support desk",
    "format": "block",
    "priority": "Must",
@@ -61391,7 +61356,7 @@
   },
   "US-21-ZU02": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 934,
+   "line": 936,
    "title": "Independent status page and recovery objectives per data class",
    "format": "block",
    "priority": "Must",
@@ -61409,7 +61374,7 @@
   },
   "US-21-ZU03": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 935,
+   "line": 937,
    "title": "KPI register, metric registry, zero-denominator rules and business objectives",
    "format": "block",
    "priority": "Must",
@@ -61426,7 +61391,7 @@
   },
   "US-21-ZU04": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 936,
+   "line": 938,
    "title": "V12 phase map and P0/P1/P2 priority gating",
    "format": "block",
    "priority": "Must",
@@ -61441,7 +61406,7 @@
   },
   "US-21-ZU05": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 937,
+   "line": 939,
    "title": "Readiness register, acceptance-ID aliases and per-SKU acceptance record",
    "format": "block",
    "priority": "Must",
@@ -61457,7 +61422,7 @@
   },
   "US-21-ZU06": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 938,
+   "line": 940,
    "title": "Decision ownership register",
    "format": "block",
    "priority": "Must",
@@ -61472,7 +61437,7 @@
   },
   "US-21-ZU07": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 939,
+   "line": 941,
    "title": "Pilot outcome hypotheses",
    "format": "block",
    "priority": "Should",
@@ -61487,7 +61452,7 @@
   },
   "US-21-ZU08": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 940,
+   "line": 942,
    "title": "Synthetic probes, chaos tests, scalability tests and safe autoscaling",
    "format": "block",
    "priority": "Should",
@@ -61507,7 +61472,7 @@
   },
   "US-21-ZU09": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 941,
+   "line": 943,
    "title": "Compute benchmark BM-01",
    "format": "block",
    "priority": "Should",
@@ -61524,7 +61489,7 @@
   },
   "US-21-ZU10": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 942,
+   "line": 944,
    "title": "GO-01\u202608 sequence, per-SKU release gates and maintenance cadence",
    "format": "block",
    "priority": "Should",
@@ -61543,7 +61508,7 @@
   },
   "US-21-ZU11": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 943,
+   "line": 945,
    "title": "Optimisation release process",
    "format": "block",
    "priority": "Should",
@@ -61558,7 +61523,7 @@
   },
   "US-21-ZU12": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 944,
+   "line": 946,
    "title": "Idle-resource detection and paid-plugin replacement register",
    "format": "block",
    "priority": "Should",
@@ -61575,7 +61540,7 @@
   },
   "US-21-ZU13": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 945,
+   "line": 947,
    "title": "Locales list and operational incident declaration contracts",
    "format": "block",
    "priority": "Should",
@@ -61593,7 +61558,7 @@
   },
   "US-21-ZU14": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 946,
+   "line": 948,
    "title": "Load profiles, penetration tests and bug-bounty programme",
    "format": "block",
    "priority": "Must",
@@ -61614,7 +61579,7 @@
   },
   "US-21-ZU15": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 947,
+   "line": 949,
    "title": "Encryption and key rotation, secrets rotation and SEC-08\u202613 evidence",
    "format": "block",
    "priority": "Must",
@@ -61634,7 +61599,7 @@
   },
   "US-21-ZU16": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 948,
+   "line": 950,
    "title": "Release evidence matrix: SKU \u2192 workflow \u2192 step \u2192 test \u2192 task \u2192 release",
    "format": "block",
    "priority": "Should",
@@ -61649,7 +61614,7 @@
   },
   "US-21-ZU17": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 949,
+   "line": 951,
    "title": "24\u00d77 human on-call for SEV1 and SEV2",
    "format": "block",
    "priority": "Should",
@@ -61666,7 +61631,7 @@
   },
   "US-21-ZU18": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 950,
+   "line": 952,
    "title": "Alert set, training-card aliases and source-archive register",
    "format": "block",
    "priority": "Should",
@@ -61684,7 +61649,7 @@
   },
   "US-21-ZU19": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 951,
+   "line": 953,
    "title": "ENT-INT-05 acceptance: connector activation gate",
    "format": "block",
    "priority": "Must",
@@ -61702,7 +61667,7 @@
   },
   "US-21-ZU20": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 952,
+   "line": 954,
    "title": "ENT-SEC-01\u202603 acceptance: secure SDLC, SBOM and remediation SLAs",
    "format": "block",
    "priority": "Must",
@@ -61723,7 +61688,7 @@
   },
   "US-21-ZU21": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 953,
+   "line": 955,
    "title": "ENT-SEC-04\u202606 acceptance: penetration tests, bug bounty and encryption",
    "format": "block",
    "priority": "Must",
@@ -61745,7 +61710,7 @@
   },
   "US-21-ZU22": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 954,
+   "line": 956,
    "title": "ENT-SEC-07\u202608 acceptance: secrets management and 24\u00d77 security monitoring",
    "format": "block",
    "priority": "Must",
@@ -65254,7 +65219,7 @@
   },
   "US-30-ZU01": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 955,
+   "line": 957,
    "title": "Solicitation guard and no AI investment advice (SEC-CTL-N-03, N-05)",
    "format": "block",
    "priority": "Must",
@@ -65583,7 +65548,7 @@
   },
   "US-31-ZU01": {
    "file": "Part-11-22c_Master_User_Stories_EP18_to_EP31.md",
-   "line": 956,
+   "line": 958,
    "title": "Route caps, no custody and cross-border hold (SEC-CTL-N-09, N-11, N-14)",
    "format": "block",
    "priority": "Must",
@@ -65978,7 +65943,7 @@
   },
   "US-32-ZU01": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 957,
+   "line": 959,
    "title": "INV action envelope and per-action entitlement for INV-SVC-13\u202624",
    "format": "block",
    "priority": "Must",
@@ -65996,7 +65961,7 @@
   },
   "US-32-ZU02": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 958,
+   "line": 960,
    "title": "Allotment clock and refund task from each receipt",
    "format": "block",
    "priority": "Must",
@@ -66013,7 +65978,7 @@
   },
   "US-32-ZU03": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 959,
+   "line": 961,
    "title": "Rights-scoped personalisation of investor updates",
    "format": "block",
    "priority": "Must",
@@ -66030,7 +65995,7 @@
   },
   "US-32-ZU04": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 960,
+   "line": 962,
    "title": "Next actions that respect the round's solicitation mode",
    "format": "block",
    "priority": "Must",
@@ -66047,7 +66012,7 @@
   },
   "US-32-ZU05": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 961,
+   "line": 963,
    "title": "Enquiries from markets without an active pack stay enquiries",
    "format": "block",
    "priority": "Must",
@@ -66064,7 +66029,7 @@
   },
   "US-32-ZU06": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 962,
+   "line": 964,
    "title": "INV-SVC-13 Legal Investment Closing & Statutory Task Automation: workflow contracts WF01\u2013WF04",
    "format": "block",
    "priority": "Must",
@@ -66087,7 +66052,7 @@
   },
   "US-32-ZU07": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 963,
+   "line": 965,
    "title": "INV-SVC-14 Investor Reporting & Capital Lifecycle Automation: workflow contracts WF01\u2013WF04",
    "format": "block",
    "priority": "Must",
@@ -66111,7 +66076,7 @@
   },
   "US-32-ZU08": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 964,
+   "line": 966,
    "title": "INV-SVC-15 Fundraising CRM, Pipeline & Analytics Automation: workflow contracts WF01\u2013WF04",
    "format": "block",
    "priority": "Must",
@@ -66135,7 +66100,7 @@
   },
   "US-32-ZU09": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 965,
+   "line": 967,
    "title": "INV-SVC-16 Private Website Enquiry & Integration Automation: workflow contracts WF01\u2013WF04",
    "format": "block",
    "priority": "Must",
@@ -66421,7 +66386,7 @@
   },
   "US-33-ZU01": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 966,
+   "line": 968,
    "title": "Grant submission readiness with a human-approved package hash",
    "format": "block",
    "priority": "Must",
@@ -66503,7 +66468,7 @@
   },
   "US-33-ZU02": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 967,
+   "line": 969,
    "title": "Covenant alerts and checklist-scoped dossier sharing",
    "format": "block",
    "priority": "Must",
@@ -66585,7 +66550,7 @@
   },
   "US-33-ZU03": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 968,
+   "line": 970,
    "title": "Reproducible readiness scores labelled as internal",
    "format": "block",
    "priority": "Must",
@@ -66667,7 +66632,7 @@
   },
   "US-33-ZU04": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 969,
+   "line": 971,
    "title": "Golden-fixture scenario and conversion calculations",
    "format": "block",
    "priority": "Must",
@@ -66749,7 +66714,7 @@
   },
   "US-33-ZU05": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 970,
+   "line": 972,
    "title": "Commitment deviations create corrective actions",
    "format": "block",
    "priority": "Must",
@@ -66831,7 +66796,7 @@
   },
   "US-33-ZU06": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 971,
+   "line": 973,
    "title": "Deterministic cross-border restriction holds",
    "format": "block",
    "priority": "Must",
@@ -66913,7 +66878,7 @@
   },
   "US-33-ZU07": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 972,
+   "line": 974,
    "title": "Rights-scoped governance packs with redaction",
    "format": "block",
    "priority": "Must",
@@ -66995,7 +66960,7 @@
   },
   "US-33-ZU08": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 973,
+   "line": 975,
    "title": "Sanctions possible matches held, true matches blocked, no tip-off",
    "format": "block",
    "priority": "Must",
@@ -67077,7 +67042,7 @@
   },
   "US-33-ZU09": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 974,
+   "line": 976,
    "title": "INV-SVC-17 Grant & Non-Dilutive Funding Application Automation: workflow contracts WF01\u2013WF04",
    "format": "block",
    "priority": "Must",
@@ -67166,7 +67131,7 @@
   },
   "US-33-ZU10": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 975,
+   "line": 977,
    "title": "INV-SVC-18 Debt Financing & Credit Readiness Automation: workflow contracts WF01\u2013WF04",
    "format": "block",
    "priority": "Must",
@@ -67255,7 +67220,7 @@
   },
   "US-33-ZU11": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 976,
+   "line": 978,
    "title": "INV-SVC-19 Continuous Fundraising Readiness & Financial Intelligence Automation: workflow contracts WF01\u2013WF04",
    "format": "block",
    "priority": "Must",
@@ -67344,7 +67309,7 @@
   },
   "US-33-ZU12": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 977,
+   "line": 979,
    "title": "INV-SVC-20 Cap Table & Ownership Intelligence Automation: workflow contracts WF01\u2013WF04",
    "format": "block",
    "priority": "Must",
@@ -67433,7 +67398,7 @@
   },
   "US-33-ZU13": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 978,
+   "line": 980,
    "title": "INV-SVC-21 ESG, Climate & Impact Funding Intelligence Automation: workflow contracts WF01\u2013WF04",
    "format": "block",
    "priority": "Must",
@@ -67522,7 +67487,7 @@
   },
   "US-33-ZU14": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 979,
+   "line": 981,
    "title": "INV-SVC-22 Cross-Border Funding Compliance Coordination Automation: workflow contracts WF01\u2013WF04",
    "format": "block",
    "priority": "Must",
@@ -67611,7 +67576,7 @@
   },
   "US-33-ZU15": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 980,
+   "line": 982,
    "title": "INV-SVC-23 Board & Shareholder Governance Automation: workflow contracts WF01\u2013WF04",
    "format": "block",
    "priority": "Must",
@@ -67700,7 +67665,7 @@
   },
   "US-33-ZU16": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 981,
+   "line": 983,
    "title": "INV-SVC-24 Investor Identity, Ownership & Risk Evidence Automation: workflow contracts WF01\u2013WF04",
    "format": "block",
    "priority": "Must",
@@ -67789,7 +67754,7 @@
   },
   "US-34-ZU01": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 982,
+   "line": 984,
    "title": "ENT-CMP-01\u202603: SOC 2, ISO/IEC 27001, 27701 and 42001 in the decided sequence",
    "format": "block",
    "priority": "Must",
@@ -67812,7 +67777,7 @@
   },
   "US-34-ZU02": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 983,
+   "line": 985,
    "title": "ENT-GLB-01\u202603: internationalisation framework, staged locales and right-to-left",
    "format": "block",
    "priority": "Must",
@@ -67832,7 +67797,7 @@
   },
   "US-34-ZU03": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 984,
+   "line": 986,
    "title": "ENT-GLB-04\u202606: locale formats, tax-engine abstraction and multi-currency billing",
    "format": "block",
    "priority": "Must",
@@ -67855,7 +67820,7 @@
   },
   "US-34-ZU04": {
    "file": "Part-11-22d_Master_User_Stories_EP32_to_EP34.md",
-   "line": 985,
+   "line": 987,
    "title": "ENT-GLB-07\u202608: regional messaging providers and region expansion plan",
    "format": "block",
    "priority": "Should",

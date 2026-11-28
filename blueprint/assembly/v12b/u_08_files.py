@@ -87,8 +87,13 @@ for l, sb in sum_by_letter.items():
 a.append('| **Total** | | **%d** | **%d (%.1f%%)** | **%d** | **%d** | **%d** | **%d (100%%)** |\n' % (tot['total'], tot['ac'], 100 * tot['ac'] / tot['total'], tot['noac'], tot['none'], len(stories), tot['total']))
 a.append('''**Reading the summary.** Before this part, %d FR-V12 requirements (%.1f%%) had a story with acceptance criteria. %d had no story at all — mainly the ENT trace requirements of Part 11.11b (FR-V12-K-101…158), the AI controls of Part 11.6b (AIX-01…20, CTRL-AI-01…09), the securities controls and INV-SVC-13…24 workflow requirements of Parts 11.16a/c, and the H and I registers of Parts 11.8b and 11.9b/c. %d were traced only to statement-only stories (Parts 11.1b, 11.5b, 11.12 and two rows of 11.8b/11.13b) that carry no Gherkin. After this part all %d are covered by a story with Gherkin acceptance criteria and a generated Scenario Outline.
 ''' % (tot['ac'], 100 * tot['ac'] / tot['total'], tot['none'], tot['noac'], tot['total']))
+_rv = os.path.join(OUTD, 'u_reinventory.json')
+if os.path.exists(_rv):
+    _r = json.load(open(_rv))
+    a.append('**Verification by re-inventory (ADR-275).** `U_MAXPART=22 python3 -I u_01_inventory.py` re-reads Parts 11.1–11.19 together with this part: **%d FR-V12 requirements, %d stories, %d FRs without a story, %d FRs whose stories lack AC** (stories with AC: %d; the %d statement-only source stories keep their statements and are bound by ZU stories).\n' % (
+        _r['fr_total'], _r['stories_total'], _r['fr_uncovered'], _r['fr_covered_without_ac'], _r['stories_with_ac'], _r['stories_total'] - _r['stories_with_ac']))
 a.append('| Measure | Value |\n|---|---|')
-for k2, v in [('New stories (US-<EP>-ZU<nn>)', len(stories)), ('New story points (Fibonacci ranges summed)', '%d–%d SP' % (summary['new_sp_low'], summary['new_sp_high'])),
+for k2, v in [('New stories (US-&lt;EP&gt;-ZU&lt;nn&gt;)', len(stories)), ('New story points (Fibonacci ranges summed)', '%d–%d SP' % (summary['new_sp_low'], summary['new_sp_high'])),
               ('Gherkin scenarios in new stories (incl. one Scenario Outline each)', summary['scenarios']), ('Generated Examples rows (EX-…)', '{:,}'.format(summary['examples_rows'])),
               ('Stories that are acceptance bindings (anchor or ENT trace; DEC-941)', sum(1 for s in stories if s['type'].startswith('Compliance (acceptance'))),
               ('Persona journeys (JN-01…JN-12) and journey steps', '12 journeys · %d steps' % sum(len(j['steps']) for j in JR.J))]:
@@ -103,7 +108,7 @@ for f in sorted(recs, key=lambda x: (x.split('-')[2], int(x.split('-')[3]))):
     r = recs[f]
     part = re.match(r'Part-(\d+-\d+[a-e]?)', r['file']).group(1).replace('-', '.') if r['file'] else '?'
     sb = r['status_before'] + ((' (' + r['anchor'] + ')') if r.get('anchor') else '')
-    a.append('| %s | Part %s | %s | %s | %s | %s | %s | Matched |' % (f, part, S.short(r.get('req') or r['label'], 130), sb, r['epic'], r['rel'], r['story']))
+    a.append('| %s | Part %s | %s | %s | %s | %s | %s | Matched |' % (f, part, esc(S.short(r.get('req') or r['label'], 130)), sb, r['epic'], r['rel'], r['story']))
 a.append('')
 
 # 11.22.4
@@ -124,7 +129,7 @@ for f, r in recs.items():
 for u, s in sorted(inv['stories'].items()):
     if not s['has_ac']:
         fr = s['frs']
-        a.append('| %s | %s | %s | %s |' % (u, s['file'].split('_')[0], fr_ranges(fr) or '—', ', '.join(sorted(anchors.get(u, []))) or 'Its FRs are also traced by a story with AC (no binding needed)'))
+        a.append('| %s | %s | %s | %s |' % (u, s['file'].split('_')[0], fr_ranges([x for x in fr if x in inv['fr']]) or '—', ', '.join(sorted(anchors.get(u, []))) or 'Its FRs are also traced by a story with AC (no binding needed)'))
 a.append('')
 a.append('''### 11.22.4.3 Trace anomalies found (reported, not edited)
 
@@ -186,7 +191,7 @@ for mid, m in M.MODELS.items():
     a.append('| Parameter | Values | Value effects (PDP precedence → result) |\n|---|---|---|')
     for n, vm in m['params']:
         effs = '; '.join('%s → [%d] %s' % (v, e[0], e[1]) for v, e in vm.items() if e) or 'all values pass (no effect)'
-        a.append('| %s | %s | %s |' % (n, ', '.join(vm.keys()), effs.replace('|', '/')))
+        a.append('| %s | %s | %s |' % (n, esc(', '.join(vm.keys())), esc(effs.replace('|', '/'))))
     use = [s for s in stories if s['model'] == mid]
     if use:
         a.append('| *Use* | %d stories | rows %d–%d per story (total %s); space per story %s–%s; every t-tuple covered |' % (
@@ -299,7 +304,7 @@ for jn in JR.J:
             sid, fr = resolve(ref)
             if sid not in ids: ids.append(sid)
             if fr: frl.append(fr)
-            else: frl += [f for f in inv['stories'].get(sid, {}).get('frs', [])[:2]]
+            else: frl += [f for f in inv['stories'].get(sid, {}).get('frs', []) if f in inv['fr']][:2]
         stories_in += ids; frs_in += frl
         rows.append('| %d | %s | %s | %s | %s | %s | %s |' % (i, stage, tp, act, ctl, ', '.join(ids), ', '.join(sorted(set(frl))[:4]) or '(trace in story)'))
     journey_totals.append((jn['id'], len(jn['steps']), len(set(stories_in)), len(set(frs_in))))
@@ -399,10 +404,10 @@ f6.append('#### 11.22.5.6.1 Story-level map (V12 and new stories)\n')
 f6.append('| Story | Epic | Title / statement (abridged) | FR-V12 traced | AC | Release | SP | Source |\n|---|---|---|---|---|---|---|---|')
 for u in sorted(inv['stories']):
     s = inv['stories'][u]
-    f6.append('| %s | EP-%s | %s | %s | %s | %s | %s | %s |' % (u, u.split('-')[1], S.short(s.get('title') or '', 90), S.short(fr_ranges(s['frs']), 90) or '—',
+    f6.append('| %s | EP-%s | %s | %s | %s | %s | %s | %s |' % (u, u.split('-')[1], esc(S.short(s.get('title') or '', 90)), S.short(fr_ranges([x for x in s['frs'] if x in inv['fr']]), 90) or '—',
               'Yes' if s['has_ac'] else 'No → ' + ', '.join(sorted(anchors.get(u, []))) if not s['has_ac'] else 'Yes', rel_bucket(s.get('wave') or s.get('release')), s.get('points') or 'not stated', s['file'].split('_')[0]))
 for s in stories:
-    f6.append('| %s | %s | %s | %s | Yes | %s | %d–%d | Part-11-22 |' % (s['id'], s['epic'], S.short(s['title'], 90), fr_ranges(s['frs']), s['release'], s['sp'][0], s['sp'][1]))
+    f6.append('| %s | %s | %s | %s | Yes | %s | %d–%d | Part-11-22 |' % (s['id'], s['epic'], esc(S.short(s['title'], 90)), fr_ranges(s['frs']), s['release'], s['sp'][0], s['sp'][1]))
 f6.append('')
 # totals per epic
 f6.append('### 11.22.5.7 Story counts and story points per epic and per release\n')
@@ -518,9 +523,9 @@ f6.append('''## 11.22.10 Quality gate and status
 ''')
 f6.append(qgate(FLET, {1: 'Epic map rows computed from the inventory; every FR maps to an epic; every count printed by the scripts',
                       4: '%d / %d FR-V12 have a story with AC; every new story has Gherkin and a generated outline; journeys have E2E outlines' % (inv['fr_total'], inv['fr_total'])}))
-f6.append('''**Self-review corrections.** (1) The first inventory pass expanded declared ranges ("FR-V12-A-001…222") into 222 IDs and reported 140 phantom gaps; the rule now keeps defined and explicitly written IDs only (123 in family A). (2) Paragraph-form stories and `**Requirement FR-…**` workflow definitions were missed at first; both are now parsed. (3) Combined `Priority · Wave · Points` rows were not read; baseline stories with points rose from 143 to %d of 461. (4) Keyword routing put "Delivery models" and "Severity model" under AI; family A now uses an explicit domain table.
+f6.append('''**Self-review corrections.** (1) The first inventory pass expanded declared ranges ("FR-V12-A-001…222") into 222 IDs and reported 140 phantom gaps; the rule now keeps defined and explicitly written IDs only (123 in family A). (2) Paragraph-form stories and `**Requirement FR-…**` workflow definitions were missed at first; both are now parsed. (3) Combined `Priority · Wave · Points` rows were not read; baseline stories with points rose from 143 to %d of 461. (4) A list such as FR-V12-A-006, FR-V12-N-001 was read as two A-family IDs; the parser now continues a list only within the same family. (5) Keyword routing put "Delivery models" and "Severity model" under AI; family A now uses an explicit domain table.
 
-**Status: Part 11 Batch 11.22 complete (files a–f): %d FR-V12 requirements inventoried; %d new stories (US-<EP>-ZU<nn>, %d–%d SP) close %d uncovered and %d AC-less requirements, so 100%% of FR-V12 have a story with acceptance criteria; %s generated Examples rows; 12 persona journeys; epic map EP-01…EP-34 with totals per epic and release.**
+**Status: Part 11 Batch 11.22 complete (files a–f): %d FR-V12 requirements inventoried; %d new stories (US-&lt;EP&gt;-ZU&lt;nn&gt;, %d–%d SP) close %d uncovered and %d AC-less requirements, so 100%% of FR-V12 have a story with acceptance criteria; %s generated Examples rows; 12 persona journeys; epic map EP-01…EP-34 with totals per epic and release.**
 ''' % (sum(1 for s in base['stories'].values() if s.get('points')), inv['fr_total'], len(stories), summary['new_sp_low'], summary['new_sp_high'], len(inv['uncovered']), len(inv['no_ac']), '{:,}'.format(summary['examples_rows'])))
 write('Part-11-22%s_Epic_Map' % FLET + '_Totals_Conflicts_Decisions_and_Quality_Gate.md', '\n'.join(f6))
 json.dump(summary, open(os.path.join(OUTD, 'u_summary.json'), 'w'), indent=1)

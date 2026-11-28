@@ -4716,7 +4716,7 @@ Feature: ENT-GLB-07…08: regional messaging providers and region expansion plan
 |---|---|---|---|
 | 1 | Every requirement traced to a source | **Pass** | Every story traces its FR-V12 IDs, the V12 source cell and the defining Part 11 section; decisions cited by ID |
 | 2 | Assumptions, gaps and conflicts tagged and logged | **Pass** | Tags from 1140–1159 only; register in §11.22.9 (last file of Batch 11.22) |
-| 3 | IDs unique and consistent with earlier parts | **Pass** | US-<EP>-ZU<nn> unique per epic; AC and EX IDs derived; epics EP-01…EP-33 as defined; EP-34 new |
+| 3 | IDs unique and consistent with earlier parts | **Pass** | US-&lt;EP&gt;-ZU&lt;nn&gt; unique per epic; AC and EX IDs derived; epics EP-01…EP-33 as defined; EP-34 new |
 | 4 | No story lacks AC; no requirement lacks a test | **Pass** | Every new story has Gherkin with happy, alternate, negative, validation, permission and edge scenarios plus a generated Scenario Outline |
 | 5 | Negative, edge, security and accessibility cases covered | **Pass** | MAS-1…MAS-9 applied; @sec/@obs outlines; @a11y in website and UI stories |
 | 6 | No agent lacks guardrail, fallback, KPI and cost estimate | **N/A** | N/A – no new agents; AI stories reuse the registry, gateway and eval gates |

@@ -511,6 +511,10 @@ def o03(r):
     if e == 'E15 formal securities offer issue':
         extra = '; recipient verified eligible; no public offer'
     at = ' (cap inclusive)' if val == 'exactly at cap' and e != 'E12 automatic bid submission' else ''
+    if not personal and con != 'valid basis':
+        extra += '; consent state "%s" not evaluated: the effect has no personal recipient' % con
+    if dat == 'Restricted':
+        extra += '; Restricted bank details travel only as PSP tokens, never in the instruction body'
     return 'ALLOW: %s%s; %s%s; idempotency key prevents a second effect; audit and evidence in the %s zone' % (allow, at, how, extra, zone), 'ALLOW'
 
 

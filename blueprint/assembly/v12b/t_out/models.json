@@ -22029,7 +22029,7 @@
 "consent": "withdrawn",
 "data": "Public/Internal"
 },
-"exp": "ALLOW: Order accepted from a verified counterparty agent within negotiation bounds; signed acceptance; commerce sub-ledger posting; human action dispatches after the full PDP recheck; idempotency key prevents a second effect; audit and evidence in the IN zone",
+"exp": "ALLOW: Order accepted from a verified counterparty agent within negotiation bounds; signed acceptance; commerce sub-ledger posting; human action dispatches after the full PDP recheck; consent state \"withdrawn\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the IN zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -22587,7 +22587,7 @@
 "consent": "withdrawn",
 "data": "Personal"
 },
-"exp": "ALLOW: Quote issued at the approved price-book revision; discount ≤ band; dispatch under the Active MT-COM mandate: reserve → commit; caps, counterparty and window rechecked; idempotency key prevents a second effect; audit and evidence in the EU zone",
+"exp": "ALLOW: Quote issued at the approved price-book revision; discount ≤ band; dispatch under the Active MT-COM mandate: reserve → commit; caps, counterparty and window rechecked; consent state \"withdrawn\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the EU zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -49578,7 +49578,7 @@
 "consent",
 "withdrawn"
 ],
-"exp": "ALLOW: Approved content version published (atomic pointer swap, hash-bound); system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the IN zone",
+"exp": "ALLOW: Approved content version published (atomic pointer swap, hash-bound); system dispatches the exact approved hash once; consent state \"withdrawn\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the IN zone",
 "P": "P0",
 "type": "T19, T07",
 "lvl": "SYS",
@@ -49600,7 +49600,7 @@
 "consent",
 "withdrawn"
 ],
-"exp": "ALLOW: Budget change applied once on the ad account; spend ledger updated (cap inclusive); system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the IN zone",
+"exp": "ALLOW: Budget change applied once on the ad account; spend ledger updated (cap inclusive); system dispatches the exact approved hash once; consent state \"withdrawn\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the IN zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -49622,7 +49622,7 @@
 "consent",
 "withdrawn"
 ],
-"exp": "ALLOW: Quote issued at the approved price-book revision; discount ≤ band; system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the EU zone",
+"exp": "ALLOW: Quote issued at the approved price-book revision; discount ≤ band; system dispatches the exact approved hash once; consent state \"withdrawn\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the EU zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -49644,7 +49644,7 @@
 "consent",
 "withdrawn"
 ],
-"exp": "ALLOW: PO committed to the approved supplier; payable commitment posted (cap inclusive); system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the EU zone",
+"exp": "ALLOW: PO committed to the approved supplier; payable commitment posted (cap inclusive); system dispatches the exact approved hash once; consent state \"withdrawn\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the EU zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -49666,7 +49666,7 @@
 "consent",
 "withdrawn"
 ],
-"exp": "ALLOW: Pay-out instruction to the licensed PSP with idempotency key; Dr Payable / Cr PSP clearing; daily reconciliation match; system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the IN zone",
+"exp": "ALLOW: Pay-out instruction to the licensed PSP with idempotency key; Dr Payable / Cr PSP clearing; daily reconciliation match; system dispatches the exact approved hash once; consent state \"withdrawn\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the IN zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -49688,7 +49688,7 @@
 "consent",
 "withdrawn"
 ],
-"exp": "ALLOW: Collection through the registered PSP mandate after pre-debit notice; receivable ledger updated; reconciliation match (cap inclusive); system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the IN zone",
+"exp": "ALLOW: Collection through the registered PSP mandate after pre-debit notice; receivable ledger updated; reconciliation match (cap inclusive); system dispatches the exact approved hash once; consent state \"withdrawn\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the IN zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -49710,7 +49710,7 @@
 "consent",
 "withdrawn"
 ],
-"exp": "ALLOW: Order accepted from a verified counterparty agent within negotiation bounds; signed acceptance; commerce sub-ledger posting; system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the EU zone",
+"exp": "ALLOW: Order accepted from a verified counterparty agent within negotiation bounds; signed acceptance; commerce sub-ledger posting; system dispatches the exact approved hash once; consent state \"withdrawn\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the EU zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -49732,7 +49732,7 @@
 "consent",
 "withdrawn"
 ],
-"exp": "ALLOW: Exact approved package hash submitted to the portal; submission receipt stored; mandate count 1 → Exhausted; system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the EU zone",
+"exp": "ALLOW: Exact approved package hash submitted to the portal; submission receipt stored; mandate count 1 → Exhausted; system dispatches the exact approved hash once; consent state \"withdrawn\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the EU zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -49754,7 +49754,7 @@
 "consent",
 "withdrawn"
 ],
-"exp": "ALLOW: Exposure switched between the two approved price-book revisions within the exposure cap; system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the IN zone",
+"exp": "ALLOW: Exposure switched between the two approved price-book revisions within the exposure cap; system dispatches the exact approved hash once; consent state \"withdrawn\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the IN zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -49908,7 +49908,7 @@
 "consent",
 "unknown"
 ],
-"exp": "ALLOW: Approved content version published (atomic pointer swap, hash-bound) (cap inclusive); system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the EU zone",
+"exp": "ALLOW: Approved content version published (atomic pointer swap, hash-bound) (cap inclusive); system dispatches the exact approved hash once; consent state \"unknown\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the EU zone",
 "P": "P0",
 "type": "T19, T07",
 "lvl": "SYS",
@@ -49930,7 +49930,7 @@
 "consent",
 "unknown"
 ],
-"exp": "ALLOW: Budget change applied once on the ad account; spend ledger updated; system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the IN zone",
+"exp": "ALLOW: Budget change applied once on the ad account; spend ledger updated; system dispatches the exact approved hash once; consent state \"unknown\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the IN zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -49952,7 +49952,7 @@
 "consent",
 "unknown"
 ],
-"exp": "ALLOW: Quote issued at the approved price-book revision; discount ≤ band (cap inclusive); system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the IN zone",
+"exp": "ALLOW: Quote issued at the approved price-book revision; discount ≤ band (cap inclusive); system dispatches the exact approved hash once; consent state \"unknown\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the IN zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -49974,7 +49974,7 @@
 "consent",
 "unknown"
 ],
-"exp": "ALLOW: PO committed to the approved supplier; payable commitment posted; system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the EU zone",
+"exp": "ALLOW: PO committed to the approved supplier; payable commitment posted; system dispatches the exact approved hash once; consent state \"unknown\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the EU zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -49996,7 +49996,7 @@
 "consent",
 "unknown"
 ],
-"exp": "ALLOW: Pay-out instruction to the licensed PSP with idempotency key; Dr Payable / Cr PSP clearing; daily reconciliation match (cap inclusive); system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the EU zone",
+"exp": "ALLOW: Pay-out instruction to the licensed PSP with idempotency key; Dr Payable / Cr PSP clearing; daily reconciliation match (cap inclusive); system dispatches the exact approved hash once; consent state \"unknown\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the EU zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -50018,7 +50018,7 @@
 "consent",
 "unknown"
 ],
-"exp": "ALLOW: Collection through the registered PSP mandate after pre-debit notice; receivable ledger updated; reconciliation match; system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the IN zone",
+"exp": "ALLOW: Collection through the registered PSP mandate after pre-debit notice; receivable ledger updated; reconciliation match; system dispatches the exact approved hash once; consent state \"unknown\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the IN zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -50040,7 +50040,7 @@
 "consent",
 "unknown"
 ],
-"exp": "ALLOW: Order accepted from a verified counterparty agent within negotiation bounds; signed acceptance; commerce sub-ledger posting (cap inclusive); system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the IN zone",
+"exp": "ALLOW: Order accepted from a verified counterparty agent within negotiation bounds; signed acceptance; commerce sub-ledger posting (cap inclusive); system dispatches the exact approved hash once; consent state \"unknown\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the IN zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -50062,7 +50062,7 @@
 "consent",
 "unknown"
 ],
-"exp": "ALLOW: Exact approved package hash submitted to the portal; submission receipt stored; mandate count 1 → Exhausted; system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the EU zone",
+"exp": "ALLOW: Exact approved package hash submitted to the portal; submission receipt stored; mandate count 1 → Exhausted; system dispatches the exact approved hash once; consent state \"unknown\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the EU zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -50084,7 +50084,7 @@
 "consent",
 "unknown"
 ],
-"exp": "ALLOW: Exposure switched between the two approved price-book revisions within the exposure cap (cap inclusive); system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the EU zone",
+"exp": "ALLOW: Exposure switched between the two approved price-book revisions within the exposure cap (cap inclusive); system dispatches the exact approved hash once; consent state \"unknown\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the EU zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -50238,7 +50238,7 @@
 "consent",
 "registry/DND-listed"
 ],
-"exp": "ALLOW: Approved content version published (atomic pointer swap, hash-bound); system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the EU zone",
+"exp": "ALLOW: Approved content version published (atomic pointer swap, hash-bound); system dispatches the exact approved hash once; consent state \"registry/DND-listed\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the EU zone",
 "P": "P0",
 "type": "T19, T07",
 "lvl": "SYS",
@@ -50260,7 +50260,7 @@
 "consent",
 "registry/DND-listed"
 ],
-"exp": "ALLOW: Budget change applied once on the ad account; spend ledger updated (cap inclusive); system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the EU zone",
+"exp": "ALLOW: Budget change applied once on the ad account; spend ledger updated (cap inclusive); system dispatches the exact approved hash once; consent state \"registry/DND-listed\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the EU zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -50282,7 +50282,7 @@
 "consent",
 "registry/DND-listed"
 ],
-"exp": "ALLOW: Quote issued at the approved price-book revision; discount ≤ band; system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the IN zone",
+"exp": "ALLOW: Quote issued at the approved price-book revision; discount ≤ band; system dispatches the exact approved hash once; consent state \"registry/DND-listed\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the IN zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -50304,7 +50304,7 @@
 "consent",
 "registry/DND-listed"
 ],
-"exp": "ALLOW: PO committed to the approved supplier; payable commitment posted (cap inclusive); system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the IN zone",
+"exp": "ALLOW: PO committed to the approved supplier; payable commitment posted (cap inclusive); system dispatches the exact approved hash once; consent state \"registry/DND-listed\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the IN zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -50326,7 +50326,7 @@
 "consent",
 "registry/DND-listed"
 ],
-"exp": "ALLOW: Pay-out instruction to the licensed PSP with idempotency key; Dr Payable / Cr PSP clearing; daily reconciliation match; system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the EU zone",
+"exp": "ALLOW: Pay-out instruction to the licensed PSP with idempotency key; Dr Payable / Cr PSP clearing; daily reconciliation match; system dispatches the exact approved hash once; consent state \"registry/DND-listed\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the EU zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -50348,7 +50348,7 @@
 "consent",
 "registry/DND-listed"
 ],
-"exp": "ALLOW: Collection through the registered PSP mandate after pre-debit notice; receivable ledger updated; reconciliation match (cap inclusive); system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the EU zone",
+"exp": "ALLOW: Collection through the registered PSP mandate after pre-debit notice; receivable ledger updated; reconciliation match (cap inclusive); system dispatches the exact approved hash once; consent state \"registry/DND-listed\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the EU zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -50370,7 +50370,7 @@
 "consent",
 "registry/DND-listed"
 ],
-"exp": "ALLOW: Order accepted from a verified counterparty agent within negotiation bounds; signed acceptance; commerce sub-ledger posting; system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the IN zone",
+"exp": "ALLOW: Order accepted from a verified counterparty agent within negotiation bounds; signed acceptance; commerce sub-ledger posting; system dispatches the exact approved hash once; consent state \"registry/DND-listed\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the IN zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -50392,7 +50392,7 @@
 "consent",
 "registry/DND-listed"
 ],
-"exp": "ALLOW: Exact approved package hash submitted to the portal; submission receipt stored; mandate count 1 → Exhausted; system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the IN zone",
+"exp": "ALLOW: Exact approved package hash submitted to the portal; submission receipt stored; mandate count 1 → Exhausted; system dispatches the exact approved hash once; consent state \"registry/DND-listed\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the IN zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -50414,7 +50414,7 @@
 "consent",
 "registry/DND-listed"
 ],
-"exp": "ALLOW: Exposure switched between the two approved price-book revisions within the exposure cap; system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the EU zone",
+"exp": "ALLOW: Exposure switched between the two approved price-book revisions within the exposure cap; system dispatches the exact approved hash once; consent state \"registry/DND-listed\" not evaluated: the effect has no personal recipient; idempotency key prevents a second effect; audit and evidence in the EU zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -50656,7 +50656,7 @@
 "data",
 "Restricted"
 ],
-"exp": "ALLOW: Pay-out instruction to the licensed PSP with idempotency key; Dr Payable / Cr PSP clearing; daily reconciliation match (cap inclusive); system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the IN zone",
+"exp": "ALLOW: Pay-out instruction to the licensed PSP with idempotency key; Dr Payable / Cr PSP clearing; daily reconciliation match (cap inclusive); system dispatches the exact approved hash once; Restricted bank details travel only as PSP tokens, never in the instruction body; idempotency key prevents a second effect; audit and evidence in the IN zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",
@@ -50678,7 +50678,7 @@
 "data",
 "Restricted"
 ],
-"exp": "ALLOW: Collection through the registered PSP mandate after pre-debit notice; receivable ledger updated; reconciliation match; system dispatches the exact approved hash once; idempotency key prevents a second effect; audit and evidence in the EU zone",
+"exp": "ALLOW: Collection through the registered PSP mandate after pre-debit notice; receivable ledger updated; reconciliation match; system dispatches the exact approved hash once; Restricted bank details travel only as PSP tokens, never in the instruction body; idempotency key prevents a second effect; audit and evidence in the EU zone",
 "P": "P0",
 "type": "T19, T20",
 "lvl": "SYS",

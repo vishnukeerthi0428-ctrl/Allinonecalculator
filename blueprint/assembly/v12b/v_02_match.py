@@ -92,7 +92,7 @@ def main():
                 cand[i] += wt
         best = 0.0; bi = None; bnum = 0.0
         nums = s['nums']
-        for i, _ in cand.most_common(40):
+        for i, _ in cand.most_common(150):
             fi = meta[i][0]
             pas = set()
             for j in range(max(0, i - 2), min(N, i + 3)):

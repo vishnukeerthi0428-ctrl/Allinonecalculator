@@ -172,7 +172,7 @@
 | US-08-YG02 | EP-08 | As a permitted user, I want A182 SMS, RCS & Business Messaging workspace (V12 X38 | G: 052 | Yes | Not stated | not stated | Part-11-7c |
 | US-08-YM03 | EP-08 | As a seller I want a daily worklist of eligible prospects with drafts so that I spend my… | M: 007–013 | Yes | Release 3+ | not stated | Part-11-13b |
 | US-08-YM04 | EP-08 | As a Sales Lead I want SDR assistance to stop automatically when complaints rise so that… | M: 007–013 | Yes | Release 3+ | not stated | Part-11-13b |
-| US-08-ZQ01 | EP-08 | Coaching from permitted recordings | Q: 020–027, 040–046, 048, 672 | Yes | Release 2 | 8–13 | Part-11-18c |
+| US-08-ZQ01 | EP-08 | Coaching from permitted recordings | Q: 020–027, 040–046, 048 | Yes | Release 2 | 8–13 | Part-11-18c |
 | US-08-ZQ02 | EP-08 | Rubric governance and calibration | Q: 020–027, 040–046, 048 | Yes | Release 2 | 3–5 | Part-11-18c |
 | US-08-ZQ03 | EP-08 | Team aggregates and coaching retention | Q: 020–027, 040–046, 048 | Yes | Release 2 | 3–5 | Part-11-18c |
 | US-09-YB01 | EP-09 | SM-SVC-10 Meeting, Demo & Appointment Automation: V12 SKU deltas | B: 042 | Yes | Release 3+ | not stated | Part-11-2a |
@@ -240,7 +240,7 @@
 | US-14-YG03 | EP-14 | As a permitted user, I want A183 Procurement & Supplier Management workspace (V12 X39 | G: 053 | Yes | Not stated | not stated | Part-11-7c |
 | US-14-YM17 | EP-14 | As a buyer I want a normalised quote comparison and should-cost range so that I negotiate… | M: 054–058 | Yes | Release 3+ | not stated | Part-11-13b |
 | US-14-YM18 | EP-14 | As a buyer I want a negotiation pack and draft that I control so that I negotiate… | M: 054–058 | Yes | Release 3+ | not stated | Part-11-13b |
-| US-14-ZP01 | EP-14 | Seal and cross-check the bid package | P: 001–150 | Yes | Release 2 | 5–8 | Part-11-17b |
+| US-14-ZP01 | EP-14 | Seal and cross-check the bid package | P: 001–006, 008, 012–015, 019–023, 027–029, 031–033, 036–040, 052–053, 058–059, 061–062 | Yes | Release 2 | 5–8 | Part-11-17b |
 | US-14-ZP02 | EP-14 | Decide the submission mode and submit under a per-tender mandate | P: 110–135 | Yes | Release 2 | 8–13 | Part-11-17b |
 | US-14-ZP03 | EP-14 | Verify receipts and reconcile unknown outcomes | P: 110–135 | Yes | Release 2 | 5–8 | Part-11-17b |
 | US-14-ZP04 | EP-14 | Maintain the portal capability registry and assisted sessions | P: 110–135 | Yes | Release 2 | 5–8 | Part-11-17b |
@@ -254,8 +254,8 @@
 | US-15-YI01 | EP-15 | As a revenue lead I want attributed revenue only from verified events with evidenced… | I: 042 | Yes | Not stated | not stated | Part-11-9c |
 | US-15-YM11 | EP-15 | As Finance maker I want leakage findings with amounts and evidence so that I recover… | M: 034–040 | Yes | Release 3+ | not stated | Part-11-13b |
 | US-15-YM12 | EP-15 | As Finance checker I want corrective documents to go through maker-checker so that… | M: 034–040 | Yes | Release 3+ | not stated | Part-11-13b |
-| US-15-ZP01 | EP-15 | Register payment mandates and execute payments via a licensed PSP | P: 001–150 | Yes | Release 2 | 8–13 | Part-11-17b |
-| US-15-ZP02 | EP-15 | Reconcile settlements and post journals | P: 062–064, 083–092 | Yes | Release 2 | 8–13 | Part-11-17b |
+| US-15-ZP01 | EP-15 | Register payment mandates and execute payments via a licensed PSP | P: 001–006, 008, 012–015, 019–023, 027–029, 031–033, 036–040, 052–053, 058–059, 061–062 | Yes | Release 2 | 8–13 | Part-11-17b |
+| US-15-ZP02 | EP-15 | Reconcile settlements and post journals | P: 062, 064, 083–092 | Yes | Release 2 | 8–13 | Part-11-17b |
 | US-15-ZP03 | EP-15 | Handle refunds, disputes and chargebacks | P: 083–092 | Yes | Release 2 | 5–8 | Part-11-17b |
 | US-16-YA01 | EP-16 | As a customer success manager, I want a first-value milestone and success plan for each… | A: 160–161 | No → US-16-ZU02 | Release 2 | 8 | Part-11-1b |
 | US-16-YA02 | EP-16 | As a customer success manager, I want health scores that show unknown inputs and never… | A: 162–163 | No → US-16-ZU03 | Release 3+ | 5 | Part-11-1b |
@@ -326,15 +326,15 @@
 | US-18-YM06 | EP-18 | As an approver I want a neutral note with risks and diffs so that I know what to check | M: 014–019 | Yes | Release 3+ | not stated | Part-11-13b |
 | US-18-YM07 | EP-18 | As an Automation Lead I want weekly service improvement proposals so that services meet… | M: 020–026 | Yes | Release 3+ | not stated | Part-11-13b |
 | US-18-YM26 | EP-18 | As a tenant I want to install a certified template as a draft so that I adopt proven… | M: 079–080 | No →  | Release 3+ | not stated | Part-11-13b |
-| US-18-ZP01 | EP-18 | Draft and simulate a bounded mandate | P: 001–150 | Yes | Release 2 | 5–8 | Part-11-17b |
-| US-18-ZP02 | EP-18 | Approve a mandate with two distinct people | P: 006–022, 032 | Yes | Release 2 | 8–13 | Part-11-17b |
-| US-18-ZP03 | EP-18 | Recheck every mandated dispatch in the PDP | P: 040–052 | Yes | Release 2 | 8–13 | Part-11-17b |
-| US-18-ZP04 | EP-18 | Reserve and commit consumption exactly once | P: 023–036 | Yes | Release 2 | 5–8 | Part-11-17b |
-| US-18-ZP05 | EP-18 | Revoke and tighten a mandate instantly | P: 006–022, 032, 053–058, 095 | Yes | Release 2 | 5–8 | Part-11-17b |
-| US-18-ZP06 | EP-18 | Engage and release the kill switch by scope | P: 053–058 | Yes | Release 2 | 5–8 | Part-11-17b |
-| US-18-ZP07 | EP-18 | Detect anomalies and suspend tighten-only | P: 037, 059–067 | Yes | Release 2 | 5–8 | Part-11-17b |
-| US-18-ZP08 | EP-18 | Reconcile mandates and export evidence packs | P: 037, 059–067 | Yes | Release 2 | 5–8 | Part-11-17b |
-| US-18-ZP09 | EP-18 | Run new mandate types in shadow first | P: 037, 059–067 | Yes | Release 2 | 3–5 | Part-11-17b |
+| US-18-ZP01 | EP-18 | Draft and simulate a bounded mandate | P: 001–006, 008, 012–015, 019–023, 027–029, 031–033, 036–040, 052–053, 058–059, 061–062 | Yes | Release 2 | 5–8 | Part-11-17b |
+| US-18-ZP02 | EP-18 | Approve a mandate with two distinct people | P: 006, 008, 012–015, 019–022, 032 | Yes | Release 2 | 8–13 | Part-11-17b |
+| US-18-ZP03 | EP-18 | Recheck every mandated dispatch in the PDP | P: 040, 052 | Yes | Release 2 | 8–13 | Part-11-17b |
+| US-18-ZP04 | EP-18 | Reserve and commit consumption exactly once | P: 023, 027–029, 031–033, 036 | Yes | Release 2 | 5–8 | Part-11-17b |
+| US-18-ZP05 | EP-18 | Revoke and tighten a mandate instantly | P: 006, 008, 012–015, 019–022, 032, 053, 058, 095 | Yes | Release 2 | 5–8 | Part-11-17b |
+| US-18-ZP06 | EP-18 | Engage and release the kill switch by scope | P: 053, 058 | Yes | Release 2 | 5–8 | Part-11-17b |
+| US-18-ZP07 | EP-18 | Detect anomalies and suspend tighten-only | P: 037, 059, 061–062, 064–065, 067 | Yes | Release 2 | 5–8 | Part-11-17b |
+| US-18-ZP08 | EP-18 | Reconcile mandates and export evidence packs | P: 037, 059, 061–062, 064–065, 067 | Yes | Release 2 | 5–8 | Part-11-17b |
+| US-18-ZP09 | EP-18 | Run new mandate types in shadow first | P: 037, 059, 061–062, 064–065, 067 | Yes | Release 2 | 3–5 | Part-11-17b |
 | US-18-ZP10 | EP-18 | Bind L4 plans to L3 mandates | P: 004–005, 098 | Yes | Release 2 | 5–8 | Part-11-17b |
 | US-18-ZR11 | EP-18 | Connector framework and activation gate | R: 056–080 | Yes | Release 1 | 5–8 | Part-11-19c |
 | US-19-YA01 | EP-19 | As a visitor, I want a neutral catalogue of 39 automation services with no customer data | A: 050–052, 055 | Yes | Release 1 | 8 | Part-11-1b |
@@ -490,9 +490,9 @@
 | US-22-YB04 | EP-22 | WF04 call intelligence: transcribe only calls with recorded consent, redact… | B: 060–065 | Yes | Release 3+ | not stated | Part-11-2a |
 | US-22-YB05 | EP-22 | The AI voice agent never quotes a non-approved price, accepts an order, agrees… | B: 060–065 | Yes | Release 3+ | not stated | Part-11-2a |
 | US-22-YB06 | EP-22 | Call minutes are metered per SKU with a hard budget | B: 060–065 | Yes | Release 3+ | not stated | Part-11-2a |
-| US-22-ZQ01 | EP-22 | Inbound AI answering with self-identification and routing | B: 060, 064; Q: 001–055, 134, 273, 400 | Yes | Release 2 | 8–13 | Part-11-18c |
+| US-22-ZQ01 | EP-22 | Inbound AI answering with self-identification and routing | B: 060, 064; Q: 001–055 | Yes | Release 2 | 8–13 | Part-11-18c |
 | US-22-ZQ02 | EP-22 | Human handoff on every call | B: 060, 064; Q: 001–055 | Yes | Release 2 | 8–13 | Part-11-18c |
-| US-22-ZQ03 | EP-22 | Outbound AI call dispatch preflight | Q: 001–055, 134, 273, 400 | Yes | Release 2 | 13–21 | Part-11-18c |
+| US-22-ZQ03 | EP-22 | Outbound AI call dispatch preflight | Q: 001–055 | Yes | Release 2 | 13–21 | Part-11-18c |
 | US-22-ZQ04 | EP-22 | Calling consent capture and opt-out | Q: 001–055 | Yes | Release 2 | 8–13 | Part-11-18c |
 | US-22-ZQ05 | EP-22 | Recording notice and consent per jurisdiction | Q: 001–055 | Yes | Release 2 | 8–13 | Part-11-18c |
 | US-22-ZQ06 | EP-22 | Voicemail and answering-machine rules | Q: 001–055 | Yes | Release 2 | 5–8 | Part-11-18c |
@@ -518,7 +518,7 @@
 | US-24-YB05 | EP-24 | WF04 executes an approved transaction only through the approved provider after… | B: 071–077 | Yes | Release 3+ | not stated | Part-11-2a |
 | US-24-YB06 | EP-24 | Interaction logs with external agents are append-only, signed and linked to the… | B: 071–077 | Yes | Release 3+ | not stated | Part-11-2a |
 | US-24-YB07 | EP-24 | Untrusted content from external agents is sanitized and never treated as… | B: 071–077 | Yes | Release 3+ | not stated | Part-11-2a |
-| US-24-ZP01 | EP-24 | Publish our agent identity and catalog | P: 001–150 | Yes | Release 2 | 5–8 | Part-11-17b |
+| US-24-ZP01 | EP-24 | Publish our agent identity and catalog | P: 001–006, 008, 012–015, 019–023, 027–029, 031–033, 036–040, 052–053, 058–059, 061–062 | Yes | Release 2 | 5–8 | Part-11-17b |
 | US-24-ZP02 | EP-24 | Verify counterparties and manage trust tiers | P: 070–079, 094, 097 | Yes | Release 2 | 8–13 | Part-11-17b |
 | US-24-ZP03 | EP-24 | Negotiate within approved bounds | P: 078–087 | Yes | Release 2 | 8–13 | Part-11-17b |
 | US-24-ZP04 | EP-24 | Decide commerce payments under mandates | P: 070–098 | Yes | Release 2 | 8–13 | Part-11-17b |
@@ -918,7 +918,7 @@
 |---|---|---|---|
 | 1 | Every requirement traced to a source | **Pass** | Epic map rows computed from the inventory; every FR maps to an epic; every count printed by the scripts |
 | 2 | Assumptions, gaps and conflicts tagged and logged | **Pass** | Tags from 1140–1159 only; register in §11.22.9 (last file of Batch 11.22) |
-| 3 | IDs unique and consistent with earlier parts | **Pass** | US-<EP>-ZU<nn> unique per epic; AC and EX IDs derived; epics EP-01…EP-33 as defined; EP-34 new |
+| 3 | IDs unique and consistent with earlier parts | **Pass** | US-&lt;EP&gt;-ZU&lt;nn&gt; unique per epic; AC and EX IDs derived; epics EP-01…EP-33 as defined; EP-34 new |
 | 4 | No story lacks AC; no requirement lacks a test | **Pass** | 1467 / 1467 FR-V12 have a story with AC; every new story has Gherkin and a generated outline; journeys have E2E outlines |
 | 5 | Negative, edge, security and accessibility cases covered | **Pass** | MAS-1…MAS-9 applied; @sec/@obs outlines; @a11y in website and UI stories |
 | 6 | No agent lacks guardrail, fallback, KPI and cost estimate | **N/A** | N/A – no new agents; AI stories reuse the registry, gateway and eval gates |
@@ -926,6 +926,6 @@
 | 8 | No restricted data routed to free-tier models | **Pass** | Restricted personal data appears only as a blocking value in MU05 (DEC-007, DEC-788) |
 | 9 | Consistent with earlier parts | **Pass** | Template of Part 5.1a copied; V12-B decisions DEC-770…791 applied; inconsistencies reported, not edited |
 
-**Self-review corrections.** (1) The first inventory pass expanded declared ranges ("FR-V12-A-001…222") into 222 IDs and reported 140 phantom gaps; the rule now keeps defined and explicitly written IDs only (123 in family A). (2) Paragraph-form stories and `**Requirement FR-…**` workflow definitions were missed at first; both are now parsed. (3) Combined `Priority · Wave · Points` rows were not read; baseline stories with points rose from 143 to 414 of 461. (4) Keyword routing put "Delivery models" and "Severity model" under AI; family A now uses an explicit domain table.
+**Self-review corrections.** (1) The first inventory pass expanded declared ranges ("FR-V12-A-001…222") into 222 IDs and reported 140 phantom gaps; the rule now keeps defined and explicitly written IDs only (123 in family A). (2) Paragraph-form stories and `**Requirement FR-…**` workflow definitions were missed at first; both are now parsed. (3) Combined `Priority · Wave · Points` rows were not read; baseline stories with points rose from 143 to 414 of 461. (4) A list such as FR-V12-A-006, FR-V12-N-001 was read as two A-family IDs; the parser now continues a list only within the same family. (5) Keyword routing put "Delivery models" and "Severity model" under AI; family A now uses an explicit domain table.
 
-**Status: Part 11 Batch 11.22 complete (files a–f): 1467 FR-V12 requirements inventoried; 166 new stories (US-<EP>-ZU<nn>, 735–1195 SP) close 264 uncovered and 116 AC-less requirements, so 100% of FR-V12 have a story with acceptance criteria; 6,604 generated Examples rows; 12 persona journeys; epic map EP-01…EP-34 with totals per epic and release.**
+**Status: Part 11 Batch 11.22 complete (files a–f): 1467 FR-V12 requirements inventoried; 166 new stories (US-&lt;EP&gt;-ZU&lt;nn&gt;, 735–1195 SP) close 264 uncovered and 116 AC-less requirements, so 100% of FR-V12 have a story with acceptance criteria; 6,604 generated Examples rows; 12 persona journeys; epic map EP-01…EP-34 with totals per epic and release.**

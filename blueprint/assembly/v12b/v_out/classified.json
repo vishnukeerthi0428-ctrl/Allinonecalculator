@@ -462,12 +462,6 @@
 "note": "ID present; residual words are status/evidence metadata (e.g. \"Production pending\", \"PASS\")"
 },
 {
-"sid": "VS-002301",
-"cls": "C",
-"ref": "Part 11.1b \u00a7ADR-180 Tenant per customer contract; company as scope; portfolio as a (L195)",
-"note": "Production verification scope: Part 11.1b"
-},
-{
 "sid": "VS-002399",
 "cls": "C",
 "ref": "Part 11.1a \u00a711.1.3.25 Chapter 25: Decision Register Migration Source Appe (L866)",
@@ -828,6 +822,12 @@
 "note": "Threshold present in a different line of the same section"
 },
 {
+"sid": "VS-003333",
+"cls": "C",
+"ref": "Part 11.16c L744 (INV-SVC-13-WF01 Closing readiness review) (threshold located by phrase search)",
+"note": "Threshold present in a different line of the same section"
+},
+{
 "sid": "VS-003422",
 "cls": "C",
 "ref": "Part 11.11a \u00a711.11.4.4 Reconciliation actions REC-01\u202630 (V11) (L605)",
@@ -960,19 +960,7 @@
 "note": "V2 Admin screen rule stated per screen in V12; blueprint carried it only implicitly (Part 11.7a \u00a711.7.1.2 note 4); restored as one binding rule"
 },
 {
-"sid": "VS-009792",
-"cls": "N",
-"ref": "FR-V12-V-007; TC-V12-V-019\u2026026; US-01-ZV01",
-"note": "V2 Admin screen rule stated per screen in V12; blueprint carried it only implicitly (Part 11.7a \u00a711.7.1.2 note 4); restored as one binding rule"
-},
-{
 "sid": "VS-009800",
-"cls": "N",
-"ref": "FR-V12-V-007; TC-V12-V-019\u2026026; US-01-ZV01",
-"note": "V2 Admin screen rule stated per screen in V12; blueprint carried it only implicitly (Part 11.7a \u00a711.7.1.2 note 4); restored as one binding rule"
-},
-{
-"sid": "VS-009808",
 "cls": "N",
 "ref": "FR-V12-V-007; TC-V12-V-019\u2026026; US-01-ZV01",
 "note": "V2 Admin screen rule stated per screen in V12; blueprint carried it only implicitly (Part 11.7a \u00a711.7.1.2 note 4); restored as one binding rule"
@@ -985,12 +973,6 @@
 },
 {
 "sid": "VS-009824",
-"cls": "N",
-"ref": "FR-V12-V-007; TC-V12-V-019\u2026026; US-01-ZV01",
-"note": "V2 Admin screen rule stated per screen in V12; blueprint carried it only implicitly (Part 11.7a \u00a711.7.1.2 note 4); restored as one binding rule"
-},
-{
-"sid": "VS-009832",
 "cls": "N",
 "ref": "FR-V12-V-007; TC-V12-V-019\u2026026; US-01-ZV01",
 "note": "V2 Admin screen rule stated per screen in V12; blueprint carried it only implicitly (Part 11.7a \u00a711.7.1.2 note 4); restored as one binding rule"
@@ -1722,6 +1704,12 @@
 "note": "Part 11.9a"
 },
 {
+"sid": "VS-011702",
+"cls": null,
+"ref": "",
+"note": ""
+},
+{
 "sid": "VS-011708",
 "cls": "C",
 "ref": "?Defer / exclude",
@@ -1780,12 +1768,6 @@
 "cls": "C",
 "ref": "Part 11.10a \u00a711.10.3.7 Scorecards, weights and gates (RCTCFE, artifact scores, 20 d (L520)",
 "note": "Score history: Part 11.10a"
-},
-{
-"sid": "VS-014670",
-"cls": "C",
-"ref": "Part 11.10a \u00a711.10.3.2 V12 acceptance register: multi-tenant architecture (MT-01\u202640 (L188) (MT-11)",
-"note": "ID present; residual words are status/evidence metadata (e.g. \"Production pending\", \"PASS\")"
 },
 {
 "sid": "VS-014671",
@@ -1848,12 +1830,6 @@
 "note": "Prototype regression evidence metadata"
 },
 {
-"sid": "VS-015279",
-"cls": "C",
-"ref": "Part 11.10c \u00a711.10.5.2 Workflow scenario classes TC-V12-J-001\u2026010 and approval-bind (L57)",
-"note": "Uncertain write hold: RECOVERY class tests"
-},
-{
 "sid": "VS-015281",
 "cls": "C",
 "ref": "Part 11.10a \u00a711.10.3.4 V12 acceptance register: V5 optimization requirements (135 O (L381)",
@@ -1863,6 +1839,12 @@
 "sid": "VS-015491",
 "cls": "C",
 "ref": "Part 11.11a \u00a711.11.4.2 Operational training register TRN-001\u2026138 \u2192 Part 8.3b screen (L309) (TRN-068)",
+"note": "ID present; residual words are status/evidence metadata (e.g. \"Production pending\", \"PASS\")"
+},
+{
+"sid": "VS-015492",
+"cls": "C",
+"ref": "Part 11.11a \u00a711.11.4.2 Operational training register TRN-001\u2026138 \u2192 Part 8.3b screen (L310) (TRN-069)",
 "note": "ID present; residual words are status/evidence metadata (e.g. \"Production pending\", \"PASS\")"
 },
 {
@@ -2718,7 +2700,7 @@
 "note": "Source-pack object /api/v1/sales/usage-charges present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
-"sid": "VS-016009",
+"sid": "VS-016010",
 "cls": "C",
 "ref": "Part 3.5a \u00a73.5.4.3 Full operation mapping: source operation \u2192 blueprint operation (L548); Part 11.12 \u00a711.12 residual register R-API (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object /api/v1/sales/action-plans present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
@@ -4632,6 +4614,12 @@
 "note": "Source-pack object SM-SIT-A106 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
+"sid": "VS-016896",
+"cls": "C",
+"ref": "Part 3.5a \u00a73.5.4.3 Full operation mapping: source operation \u2192 blueprint operation (L387); Part 11.12 \u00a711.12 residual register R-TEST (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"note": "Source-pack object SM-SIT-A108 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
+},
+{
 "sid": "VS-016898",
 "cls": "C",
 "ref": "Part 3.5a \u00a73.5.4.3 Full operation mapping: source operation \u2192 blueprint operation (L389); Part 11.12 \u00a711.12 residual register R-TEST (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
@@ -4708,12 +4696,6 @@
 "cls": "C",
 "ref": "Part 3.5a \u00a73.5.4.3 Full operation mapping: source operation \u2192 blueprint operation (L440); Part 11.12 \u00a711.12 residual register R-TEST (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object SM-SIT-A161 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
-},
-{
-"sid": "VS-016950",
-"cls": "C",
-"ref": "Part 3.5a \u00a73.5.4.3 Full operation mapping: source operation \u2192 blueprint operation (L441); Part 11.12 \u00a711.12 residual register R-TEST (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
-"note": "Source-pack object SM-SIT-A162 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016955",
@@ -4932,12 +4914,6 @@
 "note": "Source-pack object SM-UAT-F017 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
-"sid": "VS-017117",
-"cls": "C",
-"ref": "Part 6.8b \u00a76.8.4.9 UAT screen acceptance SM-UAT-S (138) (L662); Part 11.12 \u00a711.12 residual register R-TEST (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
-"note": "Source-pack object SM-UAT-S010 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
-},
-{
 "sid": "VS-017118",
 "cls": "C",
 "ref": "Part 6.8b \u00a76.8.4.9 UAT screen acceptance SM-UAT-S (138) (L663); Part 11.12 \u00a711.12 residual register R-TEST (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
@@ -5052,16 +5028,16 @@
 "note": "Source-pack object SM-UAT-S111 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
-"sid": "VS-017222",
-"cls": "C",
-"ref": "Part 6.8b \u00a76.8.4.9 UAT screen acceptance SM-UAT-S (138) (L767); Part 11.12 \u00a711.12 residual register R-TEST (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
-"note": "Source-pack object SM-UAT-S115 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
-},
-{
 "sid": "VS-017228",
 "cls": "C",
 "ref": "Part 6.8b \u00a76.8.4.9 UAT screen acceptance SM-UAT-S (138) (L773); Part 11.12 \u00a711.12 residual register R-TEST (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object SM-UAT-S121 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
+},
+{
+"sid": "VS-017230",
+"cls": "C",
+"ref": "Part 6.8b \u00a76.8.4.9 UAT screen acceptance SM-UAT-S (138) (L775); Part 11.12 \u00a711.12 residual register R-TEST (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"note": "Source-pack object SM-UAT-S123 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017239",
@@ -5110,6 +5086,12 @@
 "cls": "C",
 "ref": "Part 6.9b \u00a76.9.5.1.8 QC register (245 checks) (L256); Part 11.12 \u00a711.12 residual register R-QC (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object QC-048 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
+},
+{
+"sid": "VS-017269",
+"cls": "C",
+"ref": "Part 6.9b \u00a76.9.5.1.8 QC register (245 checks) (L259); Part 11.12 \u00a711.12 residual register R-QC (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"note": "Source-pack object QC-051 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017272",
@@ -5874,12 +5856,6 @@
 "note": "Source-pack object TASK-A043 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
-"sid": "VS-017564",
-"cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L644); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
-"note": "Source-pack object TASK-A044 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
-},
-{
 "sid": "VS-017565",
 "cls": "C",
 "ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L645); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
@@ -6168,12 +6144,6 @@
 "note": "ID present; residual words are status/evidence metadata (e.g. \"Production pending\", \"PASS\")"
 },
 {
-"sid": "VS-017755",
-"cls": "C",
-"ref": "Part 11.11a \u00a711.11.4.6 Original optimization control index (104 historical OPT IDs) (L666) (OPT-20-01)",
-"note": "ID present; residual words are status/evidence metadata (e.g. \"Production pending\", \"PASS\")"
-},
-{
 "sid": "VS-017756",
 "cls": "C",
 "ref": "Part 11.11a \u00a711.11.4.6 Original optimization control index (104 historical OPT IDs) (L666) (OPT-20-02)",
@@ -6272,7 +6242,7 @@
 {
 "sid": "VS-018743",
 "cls": "C",
-"ref": "Part 11.22a \u00a711.22.3 Detailed register (every target FR) (L341); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"ref": "Part 11.22a \u00a711.22.3 Detailed register (every target FR) (L360); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "table definition for tax_rule; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
@@ -6284,7 +6254,7 @@
 {
 "sid": "VS-018745",
 "cls": "C",
-"ref": "Part 11.22a \u00a711.22.3 Detailed register (every target FR) (L341); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"ref": "Part 11.22a \u00a711.22.3 Detailed register (every target FR) (L360); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "table definition for locale_bundle; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
@@ -6452,19 +6422,19 @@
 {
 "sid": "VS-018822",
 "cls": "C",
-"ref": "Part 11.22b \u00a7US-01-ZU08 Audit sinks (HTTPS, syslog-TLS, object storage, reference-d (L958); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"ref": "Part 11.22b \u00a7US-01-ZU08 Audit sinks, reference-data governance and analytics tables (L1040); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "table definition for eval_suite; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
 "sid": "VS-018823",
 "cls": "C",
-"ref": "Part 11.22c \u00a7US-04-ZU12 CTRL-AI-09 Logging flags, model, meter every model call as  (L1612); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"ref": "Part 11.22b \u00a7US-04-ZU12 CTRL-AI-09 logging, ai_usage_event metering and keyed evalu (L5240); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "table definition for eval_run; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
 "sid": "VS-018824",
 "cls": "C",
-"ref": "Part 11.22a \u00a711.22.3 Detailed register (every target FR) (L286); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"ref": "Part 11.22a \u00a711.22.3 Detailed register (every target FR) (L305); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "table definition for ai_usage_event; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
@@ -6548,14 +6518,20 @@
 {
 "sid": "VS-018874",
 "cls": "C",
-"ref": "Part 11.22a \u00a711.22.3 Detailed register (every target FR) (L286); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"ref": "Part 11.22a \u00a711.22.3 Detailed register (every target FR) (L305); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for ai_usage_event; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
 "sid": "VS-018877",
 "cls": "C",
-"ref": "Part 11.22c \u00a7US-04-ZU07 Tenant AI budgets soft/hard per tenant, cost per accepted r (L889); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"ref": "Part 11.22b \u00a7US-04-ZU07 AIX-13\u202615: tenant AI budgets, cost per accepted result and  (L4451); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for ai_budget; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
+"sid": "VS-018880",
+"cls": "C",
+"ref": "Part 11.11a \u00a711.11.4.8.2a The 156 chains (one row per workflow) (L770); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_source; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
 "sid": "VS-018883",
@@ -6564,16 +6540,34 @@
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_source; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
+"sid": "VS-018884",
+"cls": "C",
+"ref": "Part 11.2b \u00a711.2.5.11 SM-SVC-01 Market & Competitive Intelligence Automation (L42); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_source_policy; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
 "sid": "VS-018887",
 "cls": "C",
 "ref": "Part 11.2b \u00a711.2.5.11 SM-SVC-01 Market & Competitive Intelligence Automation (L42); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_source_policy; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
+"sid": "VS-018888",
+"cls": "C",
+"ref": "Part 11.2b \u00a711.2.5.11 SM-SVC-01 Market & Competitive Intelligence Automation (L42); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_source_record; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
 "sid": "VS-018891",
 "cls": "C",
 "ref": "Part 11.2b \u00a711.2.5.11 SM-SVC-01 Market & Competitive Intelligence Automation (L42); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_source_record; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
+"sid": "VS-018892",
+"cls": "C",
+"ref": "Part 11.2b \u00a711.2.5.11 SM-SVC-01 Market & Competitive Intelligence Automation (L42); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_evidence; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
 "sid": "VS-018895",
@@ -6618,6 +6612,12 @@
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_signal_type; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
+"sid": "VS-018920",
+"cls": "C",
+"ref": "Part 11.2b \u00a711.2.5.12 SM-SVC-02 Global Business Opportunity Discovery Automation (L79); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_need_evidence; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
 "sid": "VS-018923",
 "cls": "C",
 "ref": "Part 11.2b \u00a711.2.5.12 SM-SVC-02 Global Business Opportunity Discovery Automation (L79); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
@@ -6630,10 +6630,22 @@
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_referral; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
+"sid": "VS-018928",
+"cls": "C",
+"ref": "Part 11.11a \u00a711.11.4.8.2a The 156 chains (one row per workflow) (L778); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_contact; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
 "sid": "VS-018931",
 "cls": "C",
 "ref": "Part 11.11a \u00a711.11.4.8.2a The 156 chains (one row per workflow) (L778); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_contact; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
+"sid": "VS-018932",
+"cls": "C",
+"ref": "Part 11.2b \u00a711.2.5.13 SM-SVC-03 B2B Contact & Decision-Maker Intelligence Automati (L116); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_contact_source; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
 "sid": "VS-018935",
@@ -6642,16 +6654,34 @@
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_contact_source; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
+"sid": "VS-018936",
+"cls": "C",
+"ref": "Part 11.2b \u00a711.2.5.13 SM-SVC-03 B2B Contact & Decision-Maker Intelligence Automati (L116); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_contact_verification; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
 "sid": "VS-018939",
 "cls": "C",
 "ref": "Part 11.2b \u00a711.2.5.13 SM-SVC-03 B2B Contact & Decision-Maker Intelligence Automati (L116); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_contact_verification; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
+"sid": "VS-018940",
+"cls": "C",
+"ref": "Part 11.11a \u00a711.11.4.8.2a The 156 chains (one row per workflow) (L790); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_consent; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
 "sid": "VS-018943",
 "cls": "C",
 "ref": "Part 11.11a \u00a711.11.4.8.2a The 156 chains (one row per workflow) (L790); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_consent; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
+"sid": "VS-018944",
+"cls": "C",
+"ref": "Part 11.2b \u00a711.2.5.13 SM-SVC-03 B2B Contact & Decision-Maker Intelligence Automati (L116); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_suppression; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
 "sid": "VS-018947",
@@ -6666,10 +6696,22 @@
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_need; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
+"sid": "VS-018952",
+"cls": "C",
+"ref": "Part 11.2b \u00a711.2.5.14 SM-SVC-04 Lead Qualification & Intelligent Matching Automati (L152); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_product; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
 "sid": "VS-018955",
 "cls": "C",
 "ref": "Part 11.2b \u00a711.2.5.14 SM-SVC-04 Lead Qualification & Intelligent Matching Automati (L152); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_product; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
+"sid": "VS-018956",
+"cls": "C",
+"ref": "Part 11.2b \u00a711.2.5.14 SM-SVC-04 Lead Qualification & Intelligent Matching Automati (L152); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_opportunity; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
 "sid": "VS-018959",
@@ -6690,10 +6732,22 @@
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_activity; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
+"sid": "VS-018968",
+"cls": "C",
+"ref": "Part 11.11a \u00a711.11.4.8.2a The 156 chains (one row per workflow) (L838); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_deal; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
 "sid": "VS-018971",
 "cls": "C",
 "ref": "Part 11.11a \u00a711.11.4.8.2a The 156 chains (one row per workflow) (L838); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_deal; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
+"sid": "VS-018972",
+"cls": "C",
+"ref": "Part 11.2b \u00a711.2.5.15 SM-SVC-05 CRM & Sales Pipeline Automation (L188); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_stage; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
 "sid": "VS-018975",
@@ -6706,6 +6760,12 @@
 "cls": "C",
 "ref": "Part 11.2b \u00a711.2.5.15 SM-SVC-05 CRM & Sales Pipeline Automation (L188); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_task; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
+"sid": "VS-018980",
+"cls": "C",
+"ref": "Part 11.2b \u00a711.2.5.16 SM-SVC-06 Email Marketing & Outreach Automation (L224); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_budget; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
 "sid": "VS-018983",
@@ -6744,6 +6804,12 @@
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_delivery_event; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
+"sid": "VS-019004",
+"cls": "C",
+"ref": "Part 11.2b \u00a711.2.5.17 SM-SVC-07 WhatsApp Business Marketing Automation (L260); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_thread; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
 "sid": "VS-019007",
 "cls": "C",
 "ref": "Part 11.2b \u00a711.2.5.17 SM-SVC-07 WhatsApp Business Marketing Automation (L260); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
@@ -6762,16 +6828,34 @@
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_inbound_event; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
+"sid": "VS-019016",
+"cls": "C",
+"ref": "Part 11.11a \u00a711.11.4.8.2a The 156 chains (one row per workflow) (L798); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_enrollment; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
 "sid": "VS-019019",
 "cls": "C",
 "ref": "Part 11.11a \u00a711.11.4.8.2a The 156 chains (one row per workflow) (L798); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_enrollment; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
+"sid": "VS-019020",
+"cls": "C",
+"ref": "Part 11.2b \u00a711.2.5.18 SM-SVC-08 Omnichannel Follow-up & Lead Nurturing Automation (L296); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_sequence; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
 "sid": "VS-019023",
 "cls": "C",
 "ref": "Part 11.2b \u00a711.2.5.18 SM-SVC-08 Omnichannel Follow-up & Lead Nurturing Automation (L296); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_sequence; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
+"sid": "VS-019024",
+"cls": "C",
+"ref": "Part 11.2b \u00a711.2.5.18 SM-SVC-08 Omnichannel Follow-up & Lead Nurturing Automation (L296); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_sequence_step; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
 "sid": "VS-019027",
@@ -6796,6 +6880,12 @@
 "cls": "C",
 "ref": "Part 11.11a \u00a711.11.4.8.2a The 156 chains (one row per workflow) (L870); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_identity_link; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
+"sid": "VS-019040",
+"cls": "C",
+"ref": "Part 11.2b \u00a711.2.5.19 SM-SVC-09 AI Chat, Unified Inbox & Objection Automation (L332); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_objection; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
 "sid": "VS-019043",
@@ -6834,6 +6924,12 @@
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_event_registration; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
+"sid": "VS-019064",
+"cls": "C",
+"ref": "Part 11.11a \u00a711.11.4.8.2a The 156 chains (one row per workflow) (L810); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_claim; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
 "sid": "VS-019067",
 "cls": "C",
 "ref": "Part 11.11a \u00a711.11.4.8.2a The 156 chains (one row per workflow) (L810); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
@@ -6850,6 +6946,12 @@
 "cls": "C",
 "ref": "Part 11.2b \u00a711.2.5.21 SM-SVC-11 Content Marketing Automation (L404); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_content_version; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
+"sid": "VS-019076",
+"cls": "C",
+"ref": "Part 11.11a \u00a711.11.4.8.2a The 156 chains (one row per workflow) (L842); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_approval; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
 "sid": "VS-019079",
@@ -6894,16 +6996,34 @@
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_landing_page; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
+"sid": "VS-019104",
+"cls": "C",
+"ref": "Part 11.11a \u00a711.11.4.8.2a The 156 chains (one row per workflow) (L822); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_audience; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
 "sid": "VS-019107",
 "cls": "C",
 "ref": "Part 11.11a \u00a711.11.4.8.2a The 156 chains (one row per workflow) (L822); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_audience; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
+"sid": "VS-019108",
+"cls": "C",
+"ref": "Part 11.2b \u00a711.2.5.24 SM-SVC-14 Paid Digital Advertising Automation (L512); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_campaign; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
 "sid": "VS-019111",
 "cls": "C",
 "ref": "Part 11.2b \u00a711.2.5.24 SM-SVC-14 Paid Digital Advertising Automation (L512); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_campaign; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
+"sid": "VS-019112",
+"cls": "C",
+"ref": "Part 11.2b \u00a711.2.5.24 SM-SVC-14 Paid Digital Advertising Automation (L512); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_campaign_version; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
 "sid": "VS-019115",
@@ -6922,6 +7042,12 @@
 "cls": "C",
 "ref": "Part 11.2b \u00a711.2.5.24 SM-SVC-14 Paid Digital Advertising Automation (L512); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_ad_spend_event; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
+"sid": "VS-019124",
+"cls": "C",
+"ref": "Part 11.2b \u00a711.2.5.24 SM-SVC-14 Paid Digital Advertising Automation (L512); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_attribution_event; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
 "sid": "VS-019127",
@@ -7026,10 +7152,22 @@
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_onboarding; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
+"sid": "VS-019192",
+"cls": "C",
+"ref": "Part 11.2c \u00a711.2.5.32 SM-SVC-22 Customer, Partner & Institutional Onboarding Autom (L74); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_deployment; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
 "sid": "VS-019195",
 "cls": "C",
 "ref": "Part 11.2c \u00a711.2.5.32 SM-SVC-22 Customer, Partner & Institutional Onboarding Autom (L74); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_deployment; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
+"sid": "VS-019196",
+"cls": "C",
+"ref": "Part 11.2c \u00a711.2.5.32 SM-SVC-22 Customer, Partner & Institutional Onboarding Autom (L74); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_partner; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
 "sid": "VS-019199",
@@ -7038,10 +7176,22 @@
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_partner; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
+"sid": "VS-019200",
+"cls": "C",
+"ref": "Part 11.2c \u00a711.2.5.32 SM-SVC-22 Customer, Partner & Institutional Onboarding Autom (L74); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_pilot; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
 "sid": "VS-019203",
 "cls": "C",
 "ref": "Part 11.2c \u00a711.2.5.32 SM-SVC-22 Customer, Partner & Institutional Onboarding Autom (L74); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_pilot; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
+"sid": "VS-019204",
+"cls": "C",
+"ref": "Part 11.11a \u00a711.11.4.8.2a The 156 chains (one row per workflow) (L858); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_renewal; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
 "sid": "VS-019207",
@@ -7050,10 +7200,22 @@
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_renewal; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
+"sid": "VS-019208",
+"cls": "C",
+"ref": "Part 11.2c \u00a711.2.5.33 SM-SVC-23 Customer Retention, Renewal & Feedback Automation (L110); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_feedback; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
 "sid": "VS-019211",
 "cls": "C",
 "ref": "Part 11.2c \u00a711.2.5.33 SM-SVC-23 Customer Retention, Renewal & Feedback Automation (L110); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_feedback; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
+"sid": "VS-019212",
+"cls": "C",
+"ref": "Part 11.2c \u00a711.2.5.34 SM-SVC-24 Revenue, Attribution & Sales Forecast Automation (L146); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_metric_snapshot; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
 "sid": "VS-019215",
@@ -7062,10 +7224,22 @@
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_metric_snapshot; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
+"sid": "VS-019216",
+"cls": "C",
+"ref": "Part 11.2c \u00a711.2.5.34 SM-SVC-24 Revenue, Attribution & Sales Forecast Automation (L146); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_forecast; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
 "sid": "VS-019219",
 "cls": "C",
 "ref": "Part 11.2c \u00a711.2.5.34 SM-SVC-24 Revenue, Attribution & Sales Forecast Automation (L146); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for growth_forecast; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
+},
+{
+"sid": "VS-019220",
+"cls": "C",
+"ref": "Part 11.2c \u00a711.2.5.34 SM-SVC-24 Revenue, Attribution & Sales Forecast Automation (L146); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"note": "table definition for growth_stage_metric; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
 "sid": "VS-019223",

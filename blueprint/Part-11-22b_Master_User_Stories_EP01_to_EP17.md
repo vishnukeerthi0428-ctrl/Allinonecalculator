@@ -3972,7 +3972,7 @@ Feature: Launch-language evaluation slices gate a locale
 | ID | US-04-ZU04 |
 | Title | AIX-01, 04, 06: step classification, prompt registry and regression gate |
 | Type | Feature |
-| Story | As an AI lead (P10, R11), I want step classification; only AI-inference steps may call a model; prompt registry PRM-<AGT>-<task>-vN with schema, policy inputs, locales, approval; no tenant data; regression on any model/prompt/retrieval/policy/tool change; promotion blocked on regression, so that every AI step is approved, evaluated, metered and safe, and can be stopped at once |
+| Story | As an AI lead (P10, R11), I want step classification; only AI-inference steps may call a model; prompt registry PRM-&lt;AGT&gt;-&lt;task&gt;-vN with schema, policy inputs, locales, approval; no tenant data; regression on any model/prompt/retrieval/policy/tool change; promotion blocked on regression, so that every AI step is approved, evaluated, metered and safe, and can be stopped at once |
 | Persona / roles | AI lead (P10, R11) |
 | Traces | FR-V12-F-001 (AIX-01); FR-V12-F-004 (AIX-04); FR-V12-F-006 (AIX-06); DEC-770, DEC-790; tests TC-V12-F-001, TC-V12-F-004, TC-V12-F-006 |
 | Priority | Must |
@@ -7707,7 +7707,7 @@ Feature: Fourteen management views with production metrics
 |---|---|---|---|
 | 1 | Every requirement traced to a source | **Pass** | Every story traces its FR-V12 IDs, the V12 source cell and the defining Part 11 section; decisions cited by ID |
 | 2 | Assumptions, gaps and conflicts tagged and logged | **Pass** | Tags from 1140–1159 only; register in §11.22.9 (last file of Batch 11.22) |
-| 3 | IDs unique and consistent with earlier parts | **Pass** | US-<EP>-ZU<nn> unique per epic; AC and EX IDs derived; epics EP-01…EP-33 as defined; EP-34 new |
+| 3 | IDs unique and consistent with earlier parts | **Pass** | US-&lt;EP&gt;-ZU&lt;nn&gt; unique per epic; AC and EX IDs derived; epics EP-01…EP-33 as defined; EP-34 new |
 | 4 | No story lacks AC; no requirement lacks a test | **Pass** | Every new story has Gherkin with happy, alternate, negative, validation, permission and edge scenarios plus a generated Scenario Outline |
 | 5 | Negative, edge, security and accessibility cases covered | **Pass** | MAS-1…MAS-9 applied; @sec/@obs outlines; @a11y in website and UI stories |
 | 6 | No agent lacks guardrail, fallback, KPI and cost estimate | **N/A** | N/A – no new agents; AI stories reuse the registry, gateway and eval gates |

@@ -39,6 +39,9 @@ FR2NEW = {f: r['story'] for f, r in recs.items()}
 def cl(s):
     return S.clean(s)
 
+def esc(x):
+    return x.replace('<', '&lt;').replace('>', '&gt;')
+
 def check_refs(ids):
     bad = [i for i in ids if not (i in EXIST or i in NEW)]
     if bad:
@@ -244,7 +247,7 @@ def render_story(st, seed):
     if dom in ('LEGAL', 'INV', 'INVWF', 'GLB'):
         notes.append('DoR R-12: activates per jurisdiction only when the counsel-signed rule pack is Approved (Part 11.15; DEC-779…783)')
     out = []
-    out.append('##### %s %s\n' % (sid, st['title']))
+    out.append('##### %s %s\n' % (sid, esc(st['title'])))
     out.append('| Field | Value |\n|---|---|')
     rows = [('ID', sid), ('Title', st['title']), ('Type', typ), ('Story', stmt),
             ('Persona / roles', D['actor'][0].upper() + D['actor'][1:] + ('; approvers and reviewers per the Background' if dom in ('RUN', 'INV', 'INVWF', 'COM') else '')),
@@ -252,7 +255,7 @@ def render_story(st, seed):
             ('Points', '%d–%d' % (lo, hi)), ('Dependencies', dep_txt), ('Dimension profile', profile + ' · model ' + st['model']),
             ('Notes', ' · '.join(notes))]
     for k, v in rows:
-        out.append('| %s | %s |' % (k, cl(v)))
+        out.append('| %s | %s |' % (k, esc(cl(v))))
     out.append('')
     g = ['```gherkin', 'Feature: %s' % st['title'], '  Background:']
     g.extend(fmt_step('Given %s' % D['fixtures'][0], '    '))
@@ -396,7 +399,7 @@ def qgate(name, notes):
     rows = [
         ('Every requirement traced to a source', notes.get(1, 'Every story traces its FR-V12 IDs, the V12 source cell and the defining Part 11 section; decisions cited by ID')),
         ('Assumptions, gaps and conflicts tagged and logged', notes.get(2, 'Tags from 1140–1159 only; register in §11.22.9 (last file of Batch 11.22)')),
-        ('IDs unique and consistent with earlier parts', notes.get(3, 'US-<EP>-ZU<nn> unique per epic; AC and EX IDs derived; epics EP-01…EP-33 as defined; EP-34 new')),
+        ('IDs unique and consistent with earlier parts', notes.get(3, 'US-&lt;EP&gt;-ZU&lt;nn&gt; unique per epic; AC and EX IDs derived; epics EP-01…EP-33 as defined; EP-34 new')),
         ('No story lacks AC; no requirement lacks a test', notes.get(4, 'Every new story has Gherkin with happy, alternate, negative, validation, permission and edge scenarios plus a generated Scenario Outline')),
         ('Negative, edge, security and accessibility cases covered', notes.get(5, 'MAS-1…MAS-9 applied; @sec/@obs outlines; @a11y in website and UI stories')),
         ('No agent lacks guardrail, fallback, KPI and cost estimate', notes.get(6, 'N/A – no new agents; AI stories reuse the registry, gateway and eval gates')),
