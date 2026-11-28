@@ -6,7 +6,7 @@ Capability C1 · stories US-01-ZR01, US-01-ZR02 · traces FR-V12-R-001…010; EN
 |---|---|---|
 | `idp` | Okta · Microsoft Entra ID · Google Workspace · Generic SAML IdP · Generic OIDC IdP | 5 |
 | `protocol` | SAML 2.0 · OIDC | 2 |
-| `role` | R12 tenant admin · R02 startup head · R03 executive · R15 auditor · Custom privileged role | 5 |
+| `role` | R12 tenant admin · R02 startup head · R03 growth manager · R15 auditor · Custom privileged role | 5 |
 | `region` | IN · EU | 2 |
 | `domain` | verified · unverified · verification lost (TXT missing twice) | 3 |
 | `enforcement` | off · on | 2 |

@@ -412,7 +412,7 @@ table(['One-time external item (estimate, verify)', 'Low', 'High', 'Note'], [
  ['Counsel UAT of offering templates and flows per jurisdiction', '₹1.5 L', '₹4.0 L', 'per jurisdiction'],
  ['DPIA for investor data (EU) and DPDP assessment', '₹2.0 L', '₹5.0 L', 'DEC-776'],
  ['Data-room penetration test', '₹3.0 L', '₹6.0 L', 'RECOMMENDATION-1015'],
- ['**Total external one-time (all four jurisdictions)**', '**₹27.5 L**', '**₹72.0 L**', 'RP-SEC pack drafting costs are in Group O'],
+ ['**Total external one-time (all four jurisdictions)**', '**₹27.5 L**', '**₹72.0 L**', 'securities pack drafting costs are in Group O'],
 ])
 w('### 11.16.5.16.2 Running (recurring) cost per month')
 w('')
@@ -491,7 +491,7 @@ table(['DEC', 'Decision', 'Authority', 'Effect'], [
  ['DEC-816', 'Investment SKUs are priced by service meters only; no success fee or capital-raised-based charge', F, 'Reduces broker characterisation risk; RECOMMENDATION-1005'],
  ['DEC-817', 'Every V12 INV acceptance test maps to TC-V12-N with the full negative class set', A, '§11.16.4.3'],
  ['DEC-818', 'Combinatorial standard: 3-way for dispatch, data room, offers, receipts; pairwise others; exhaustive ≤ 64', 'V12B brief / Founder instruction', '§11.16.5.15'],
- ['DEC-819', 'Interface with Group O: RP-SEC pack content, INV-SVC-13…24 (incl. 24 identity evidence, 13 closing filings) consume the N controls and entities', F, 'ASSUMPTION-1001'],
+ ['DEC-819', 'Interface with Group O: securities pack content (RP-IN-SEC, RP-US-REGD, RP-US-REGCF, RP-EU-PROSP, RP-UK-FINPROM, RP-AML-KYC, RP-INV-ADVICE; offer reviewer AG-198, advice enforcer AG-199), CP-O-01…05, INV-SVC-13…24 (incl. 24 identity evidence, 13 closing filings) consume the N controls and entities', F, 'ASSUMPTION-1001'],
 ])
 w('### ADRs')
 w('')

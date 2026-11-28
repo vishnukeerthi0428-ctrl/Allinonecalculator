@@ -266,8 +266,8 @@ w('')
 table(['Control', 'Name', 'Specification', 'Legal basis / decision (verify)', 'Implemented by', 'Override'], SP.CONTROLS)
 w('#### 11.16.5.2.1 Rule packs consumed (content owned by Group O)')
 w('')
-table(['Pack', 'Scope', 'Jurisdiction', 'Offering route value in PM-N-01/03', 'Activation order (DEC-803)'],
-      [[p[0], p[1], p[2], p[3], {'IN': '1 (owner portfolio issuers are Indian)', 'US': '2', 'EU': '3 (with EU stack, DEC-772)', 'UK': '4'}[p[2]]] for p in SP.PACKS])
+table(['Group O pack (rules)', 'Scope', 'Jurisdiction', 'Route value in PM-N-01/03', 'Activation order (DEC-803)'],
+      [[p[0], p[1], p[2], p[3], {'IN': '1 (owner portfolio issuers are Indian)', 'US': '2', 'EU': '3 (with EU stack, DEC-772)', 'UK': '4', 'all': 'with the first jurisdiction'}[p[2]]] for p in SP.PACKS])
 w('Panel reading of the route rules the packs must encode (verify with counsel, as of 27 Nov 2026) [ASSUMPTION-1000]:')
 w('')
 table(['Route', 'Who may be approached', 'Solicitation', 'Caps and documents', 'Money and filings (platform role)'], [

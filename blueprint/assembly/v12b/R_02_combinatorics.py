@@ -86,7 +86,7 @@ model('M01', 'Tenant SSO sign-in: IdP × protocol × role × region × domain ×
       collections.OrderedDict([
         ('idp', ['Okta', 'Microsoft Entra ID', 'Google Workspace', 'Generic SAML IdP', 'Generic OIDC IdP']),
         ('protocol', ['SAML 2.0', 'OIDC']),
-        ('role', ['R12 tenant admin', 'R02 startup head', 'R03 executive', 'R15 auditor', 'Custom privileged role']),
+        ('role', ['R12 tenant admin', 'R02 startup head', 'R03 growth manager', 'R15 auditor', 'Custom privileged role']),
         ('region', ['IN', 'EU']),
         ('domain', ['verified', 'unverified', 'verification lost (TXT missing twice)']),
         ('enforcement', ['off', 'on']),
