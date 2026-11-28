@@ -373,7 +373,385 @@ stateDiagram-v2
 
 ### 11.15.4.10 Machine-readable YAML (AU-128)
 
-<!--YAML:RP-IN-ADV-->
+```yaml
+# AU-128 load file. Generated from the rule table above; the table is the source of truth.
+pack:
+  id: RP-IN-ADV
+  title: "India advertising standards: truthful, substantiated, fair and identifiable advertising; dark patterns"
+  version: "0.1-draft"
+  state: draft
+  jurisdictions: "IN (recipient or targeted market in India, or sender established in India: J7)"
+  channels: "EM, WA, SMS, VO, SO, AD, LP, FM, MD, DOC"
+  audiences: "ALL"
+  startups: "ALL; Tenant (adoptable)"
+  effective_dates: "CPA 2019 in force (s.18/s.21 since 2020, verify); 2022 Guidelines from 9/10 Jun 2022; Dark-pattern Guidelines from 30 Nov 2023; SGI Rules from 20 Feb 2026; ASCI AI guidelines: draft (rule 017 effective on platform policy now, citation updated when final)"
+  owner: R10
+  review_cadence: quarterly
+  expires_after_days: 120
+  on_expiry: suspend_and_hold
+  on_registry_unavailable: block
+  on_unknown_jurisdiction: block
+  sign_off: {counsel_reviewer: null, firm: null, date: null, r10_approver: null, conditions: null}
+rules:
+  - id: RP-IN-ADV-001
+    obligation: "The content shall not contain any representation, express or implied, by statement, omission, image or overall impression, that is false or likely to mislead a reasonable consumer about the nature, quality, quantity, characteristics, standard, price, availability or benefit of the offering"
+    citation: "CPA 2019 s.2(28), s.2(47); CCPA 2022 Guidelines (general conditions, verify no.); ASCI Code Ch. I"
+    applies_to: "ALL channels · ALL audiences · ALL startups"
+    check: "ai_review"
+    detection: "AG-086 assesses net impression of text, image captions and small print against approved claims and the offering record"
+    severity: "Block"
+    override: r10_with_reason
+    evidence: "Approved claim IDs cited; offering record version"
+    remediation_message: "\"This statement could mislead. Use only approved claims and describe the offering exactly as recorded.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-ADV-002
+    obligation: "Every objective claim shall be substantiated by an approved, unexpired claim whose scope covers the offering, audience and market of the draft"
+    citation: "CCPA 2022 Guidelines (substantiation); ASCI Code Ch. I; BRL-MKT-01; BRL-AI-03"
+    applies_to: "ALL"
+    check: "deterministic_then_ai_review"
+    detection: "DET: any number, percentage, ranking word, certification name or \"proven\"/\"clinically\" token (PL-IN-ADV-06) without a linked claim_id → finding; AI: semantic claims without numbers"
+    severity: "Block"
+    override: r10_with_reason
+    evidence: "claim_id, evidence link, expiry date"
+    remediation_message: "\"Link this claim to an approved claim in the claims library or remove it.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-ADV-003
+    obligation: "A superlative or claim of leadership or uniqueness shall be used only where an approved claim of type superlative exists with independent, dated, verifiable evidence that names the source and the period"
+    citation: "ASCI Code Ch. I (substantiation) and Ch. IV; CCPA 2022 Guidelines"
+    applies_to: "ALL"
+    check: "deterministic"
+    detection: "PL-IN-ADV-01 (en and hi) word/phrase match; pass only if a claim_id of type superlative is linked to the span"
+    severity: "Block"
+    override: none
+    evidence: "Superlative claim record with source and date"
+    remediation_message: "\"Remove 'best', 'No. 1', 'leading' or similar, or link independent dated evidence approved for this claim.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-ADV-004
+    obligation: "Comparative advertising shall compare like with like on verifiable facts, shall not denigrate, discredit or ridicule a competitor, and shall not use a competitor's name or mark unfairly; competitor information obtained by research is internal only unless an approved comparative claim exists"
+    citation: "ASCI Code Ch. IV; BRL-SRC-10; CJ-GL-13"
+    applies_to: "ALL"
+    check: "deterministic_then_ai_review"
+    detection: "DET: competitor names from the competitor registry or PL-IN-ADV-07 phrases (\"unlike others\", \"competitors fail\"); AI: denigration and fairness"
+    severity: "Block"
+    override: r10_with_reason
+    evidence: "Approved comparative claim"
+    remediation_message: "\"Comparisons need an approved comparative claim and must not disparage competitors.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-ADV-005
+    obligation: "Content that is paid for, sponsored, gifted, affiliate, partner or otherwise involves a material connection shall carry a clear, prominent disclosure label at the start of the content (first two lines of text or overlaid on the first frame), in the language of the content; a disclosure only in a profile bio, hashtags cluster or \"see more\" area is insufficient"
+    citation: "ASCI Influencer Guidelines (VR-06); Dark-pattern Guidelines (disguised advertisement); CCPA 2022 Guidelines (endorsements)"
+    applies_to: "SO, MD, LP, EM, DOC · ALL"
+    check: "deterministic"
+    detection: "If content.sponsored = true OR partner_id OR endorser_id set: one of TPL-IN-ADV-01…03 tokens must appear within the first 200 characters (text) or overlay_label on frame 0 (media)"
+    severity: "Block"
+    override: none
+    evidence: "Placement record"
+    remediation_message: "\"Add 'Advertisement', '#ad' or 'Paid partnership with {Brand}' at the top of the content.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-ADV-006
+    obligation: "An endorsement shall reflect the genuine, reasonably current opinion of an endorser who has actually used the offering; the endorser and the advertiser shall disclose any material connection; the advertiser shall keep proof of use and due diligence"
+    citation: "CCPA 2022 Guidelines (endorsements, due diligence); ASCI Influencer Guidelines"
+    applies_to: "SO, MD, LP, EM, AD · ALL"
+    check: "deterministic"
+    detection: "endorser_id present → require endorsement_record with usage evidence, connection disclosure text and date ≤ 12 months"
+    severity: "Block"
+    override: none
+    evidence: "Endorsement record"
+    remediation_message: "\"Endorsements need proof the endorser used the offering and a visible disclosure of the connection.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-ADV-007
+    obligation: "A testimonial, case study or customer quote shall be used only with the documented consent of the person or organization quoted, shall be genuine and representative, and shall not be edited so as to change its meaning"
+    citation: "BRL-MKT-09; CPA s.2(28); FTC-style good practice adopted"
+    applies_to: "ALL"
+    check: "deterministic"
+    detection: "Quote marks or testimonial block → consent_record_id for the subject and source document hash"
+    severity: "Block"
+    override: none
+    evidence: "Consent record; original quote hash"
+    remediation_message: "\"Attach the subject's consent and the original quote, or remove the testimonial.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-ADV-008
+    obligation: "Management claims (claims by the startup about itself that are not independently verified, such as user counts or locations) shall carry the management-claim label adjacent to the claim"
+    citation: "DEC-021; BRL-MKT-03"
+    applies_to: "ALL · MedMaarg and ALL"
+    check: "deterministic"
+    detection: "Linked claim_id with type = management → TPL-IN-ADV-05 within the same sentence or as footnote marker"
+    severity: "Block"
+    override: none
+    evidence: "Claim record"
+    remediation_message: "\"Add 'Management claim; not independently audited' next to this figure.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-ADV-009
+    obligation: "The word \"free\" or an equivalent shall be used only where the offering is genuinely free of any charge and conditions; any condition, minimum purchase, time limit or subsequent charge shall be stated clearly next to the claim"
+    citation: "CCPA 2022 Guidelines (free claims)"
+    applies_to: "ALL"
+    check: "deterministic_then_ai_review"
+    detection: "PL-IN-ADV-05 match → requires offer_term_id with charge = 0 and conditions text present in the same block"
+    severity: "Warn (Block if offer_term_id missing)"
+    override: r10_with_reason
+    evidence: "Offer term"
+    remediation_message: "\"State every condition next to 'free', or remove the word.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-ADV-010
+    obligation: "Content shall not advertise an offer the advertiser cannot supply in reasonable quantity or within the stated period (bait advertising); any limit on quantity, eligibility or period shall be disclosed"
+    citation: "CCPA 2022 Guidelines (bait advertisements)"
+    applies_to: "AD, LP, EM, WA, SO · B2C, B2B"
+    check: "ai_review"
+    detection: "AG-086 compares offer statements with availability fields of the offering and RP-COMMIT terms"
+    severity: "Warn"
+    override: r10_with_reason
+    evidence: "Availability record"
+    remediation_message: "\"State the limits of this offer or confirm it is available as described.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-ADV-011
+    obligation: "A disclaimer shall not contradict or materially limit the main claim, shall be in the same language as the claim, legible (not smaller than the body text minus 2 points in visual media) and, for audio-visual media, displayed or spoken long enough to be read or understood"
+    citation: "CCPA 2022 Guidelines (disclaimers); ASCI Code Ch. I"
+    applies_to: "ALL"
+    check: "deterministic_then_ai_review"
+    detection: "DET: disclaimer language = claim language; font-size metadata; on-screen duration ≥ 1 s per 3 words; AI: contradiction"
+    severity: "Warn"
+    override: r10_with_reason
+    evidence: "Rendering metadata"
+    remediation_message: "\"Make the disclaimer clear, in the same language, and consistent with the headline.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-ADV-012
+    obligation: "Content and interfaces shall not create false urgency or scarcity (e.g. stock, seat or time limits, live-viewer counts) unless the statement is true at the time of display and backed by live data"
+    citation: "Dark-pattern Guidelines Annexure 1 \"false urgency\" (VR-03)"
+    applies_to: "AD, LP, FM, EM, WA, SMS, SO · ALL"
+    check: "deterministic"
+    detection: "PL-IN-ADV-03 match → requires data-bound token ({{inventory.remaining}}, {{offer.ends_at}}) bound to a live source; static scarcity text → finding"
+    severity: "Block"
+    override: none
+    evidence: "Data binding"
+    remediation_message: "\"Remove the urgency claim or bind it to live, accurate data.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-ADV-013
+    obligation: "Choices to decline, unsubscribe or opt out shall be worded neutrally and shall not shame, guilt or ridicule the user"
+    citation: "Dark-pattern Guidelines Annexure 1 \"confirm shaming\""
+    applies_to: "LP, FM, EM, WA · ALL"
+    check: "deterministic_then_ai_review"
+    detection: "PL-IN-ADV-04 match on decline/unsubscribe controls; AI on other negative choice wording"
+    severity: "Block"
+    override: r10_with_reason
+    evidence: "—"
+    remediation_message: "\"Use neutral wording such as 'No, thanks' for the decline option.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-ADV-014
+    obligation: "Any price shown shall be the total price payable or shall disclose all mandatory charges at the same time and with equal prominence; no charge shall be added later in the flow that was not disclosed; prices shall come only from the approved pricebook"
+    citation: "Dark-pattern Guidelines Annexure 1 \"drip pricing\", \"basket sneaking\"; DEC-064; RP-COMMIT-002"
+    applies_to: "ALL"
+    check: "deterministic"
+    detection: "Currency or price token (₹, Rs, INR, $, €, \"per month\") → must equal a pricebook entry for offering, market and date; mandatory-charge flags shown"
+    severity: "Block"
+    override: none
+    evidence: "Pricebook entry ID"
+    remediation_message: "\"Show the total price from the approved pricebook, including all mandatory charges.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-ADV-015
+    obligation: "Sign-up, subscription and cancellation flows shall not force an unrelated action, shall not make cancellation harder than sign-up, and shall disclose recurring billing and how to cancel before commitment"
+    citation: "Dark-pattern Guidelines Annexure 1 \"forced action\", \"subscription trap\", \"SaaS billing\", \"interface interference\", \"trick question\", \"nagging\""
+    applies_to: "LP, FM · ALL"
+    check: "deterministic_then_ai_review"
+    detection: "DET: subscription form must render TPL-IN-ADV-07 recurring-billing notice and a cancellation link; AI: interface review of form copy and screenshots"
+    severity: "Block"
+    override: r10_with_reason
+    evidence: "Flow screenshots per release"
+    remediation_message: "\"Disclose recurring billing and an equally easy cancellation path; remove forced steps.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-ADV-016
+    obligation: "Advertising shall not be disguised as editorial, news, user review or organic content, and shall not use a bait-and-switch between what is advertised and what is offered"
+    citation: "Dark-pattern Guidelines Annexure 1 \"disguised advertisement\", \"bait and switch\"; ASCI Code Ch. I"
+    applies_to: "SO, LP, EM, DOC · ALL"
+    check: "ai_review"
+    detection: "AG-086 checks \"news\", \"report\", \"review\", \"independent\" framing on sponsored content"
+    severity: "Block"
+    override: r10_with_reason
+    evidence: "—"
+    remediation_message: "\"Label this content as advertising and offer exactly what is advertised.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-ADV-017
+    obligation: "AI-generated or AI-altered images, audio and video shall carry a visible label from TPL-IN-ADV-04 and a provenance manifest; AI shall not depict a real, identifiable person without that person's written consent"
+    citation: "BR-V7-AI-01; IT Amendment Rules 2026 SGI (VR-09); ASCI draft AI-labelling guidelines (VR-07); DEC-751; AU-142"
+    applies_to: "MD, AD, SO, LP · ALL"
+    check: "deterministic"
+    detection: "asset.ai_generated or asset.ai_altered = true → visible_label from TPL-IN-ADV-04 and C2PA manifest verified; depicts_real_person = true → likeness_consent_id"
+    severity: "Block"
+    override: none
+    evidence: "C2PA verification record; consent"
+    remediation_message: "\"Add the AI label and provenance manifest; real people need written consent.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-ADV-018
+    obligation: "AI shall not be used to fabricate or simulate an endorsement, testimonial, review, expert opinion, customer or result; a label does not cure a fabricated endorsement"
+    citation: "ASCI draft AI-labelling guidelines (VR-07); CPA s.2(28); RP-IN-ADV-006/007"
+    applies_to: "ALL"
+    check: "deterministic_then_ai_review"
+    detection: "DET: testimonial/endorsement blocks must reference real consent_record_id; AI: synthetic persona quotes, \"customers say\" without source"
+    severity: "Block"
+    override: r10_with_reason
+    evidence: "Consent and source records"
+    remediation_message: "\"Remove synthetic endorsements; use only genuine, consented testimonials.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-ADV-019
+    obligation: "Content shall not state or imply approval, endorsement or certification by any government, ministry, regulator or public body, and shall not use the State Emblem or protected names, unless an approved claim records the approval with document evidence"
+    citation: "State Emblem Act 2005; Emblems and Names Act 1950 (VR-18); CPA s.2(28)"
+    applies_to: "ALL"
+    check: "deterministic"
+    detection: "PL-IN-ADV-02 match; image classifier flag state_emblem → require claim_id of type government_approval"
+    severity: "Block"
+    override: none
+    evidence: "Approval document"
+    remediation_message: "\"Remove references to government approval or emblems unless documented and approved.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-ADV-020
+    obligation: "Forecasts, projections and estimates shall be labelled as estimates and shall not be presented as facts; rankings shall not be fabricated"
+    citation: "CJ-GL-13; BRL-MKT-03"
+    applies_to: "ALL"
+    check: "deterministic_then_ai_review"
+    detection: "Future-tense outcome with number (\"will grow by 30%\") → TPL-IN-ADV-06 required; AI for implicit forecasts"
+    severity: "Block"
+    override: r10_with_reason
+    evidence: "Estimate method note"
+    remediation_message: "\"Label this figure as an estimate, not a guarantee.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-ADV-021
+    obligation: "Planned, unavailable or unlicensed offerings shall not be promoted, matched for sale or quoted"
+    citation: "CJ-GL-04; BRL-LCY-06"
+    applies_to: "ALL"
+    check: "deterministic"
+    detection: "Offering referenced has status ≠ available or market not licensed → finding"
+    severity: "Block"
+    override: none
+    evidence: "Offering status"
+    remediation_message: "\"This offering is not available in this market; remove it from the content.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-ADV-022
+    obligation: "Advertising directed at or likely to appeal mainly to children is not permitted on the platform; health and education content shall also satisfy RP-HEALTH and RP-EDU-MINORS"
+    citation: "DEC-030; ASCI Code Ch. III; CJ-IN-03"
+    applies_to: "ALL"
+    check: "deterministic"
+    detection: "Routing check: MedMaarg or health offering → RP-HEALTH in applicable set; EduVerse/education → RP-EDU-MINORS; missing → Block"
+    severity: "Block"
+    override: none
+    evidence: "Applicable set log"
+    remediation_message: "\"This content needs the health or education rule pack; resubmit after selecting the startup and offering.\""
+    effective_from: null  # set at sign-off
+phrase_lists:
+  - id: PL-IN-ADV-01
+    name: "Superlatives and leadership"
+    match: "word/phrase, case-insensitive, Devanagari normalised"
+    severity: "Block unless superlative claim linked"
+    used_by: "003"
+    terms:
+      - "best"
+      - "the best"
+      - "No. 1"
+      - "number one"
+      - "#1"
+      - "India's leading"
+      - "market leader"
+      - "unbeatable"
+      - "unmatched"
+      - "best-in-class"
+      - "world's first"
+      - "only provider"
+      - "top-rated"
+      - "most trusted"
+      - "सर्वश्रेष्ठ"
+      - "सबसे अच्छा"
+      - "नंबर 1"
+      - "नंबर वन"
+      - "भारत का अग्रणी"
+      - "सबसे भरोसेमंद"
+  - id: PL-IN-ADV-02
+    name: "Government approval"
+    match: "phrase"
+    severity: "Block unless approval claim linked"
+    used_by: "019"
+    terms:
+      - "govt approved"
+      - "government approved"
+      - "government certified"
+      - "approved by the Ministry"
+      - "recognised by Government of India"
+      - "Ashoka emblem"
+      - "Satyamev Jayate"
+      - "सरकार द्वारा अनुमोदित"
+      - "सरकार से मान्यता प्राप्त"
+      - "भारत सरकार द्वारा प्रमाणित"
+  - id: PL-IN-ADV-03
+    name: "False urgency"
+    match: "regex with number capture"
+    severity: "Block unless data-bound"
+    used_by: "012"
+    terms:
+      - "only {n} left"
+      - "selling fast"
+      - "offer ends in"
+      - "ends tonight"
+      - "last chance"
+      - "hurry"
+      - "{n} people are viewing"
+      - "limited seats"
+      - "today only"
+      - "जल्दी करें"
+      - "सिर्फ {n} बचे"
+      - "आखिरी मौका"
+      - "आज ही"
+  - id: PL-IN-ADV-04
+    name: "Confirm shaming"
+    match: "phrase + AI"
+    severity: "Block"
+    used_by: "013"
+    terms:
+      - "no thanks, I don't want to grow"
+      - "I prefer to lose money"
+      - "I'll stay behind"
+      - "I don't care about my business"
+      - "नहीं, मुझे नुकसान पसंद है"
+      - "मुझे आगे नहीं बढ़ना"
+  - id: PL-IN-ADV-05
+    name: "Free claims"
+    match: "word"
+    severity: "Warn / Block without term"
+    used_by: "009"
+    terms:
+      - "free"
+      - "free of cost"
+      - "complimentary"
+      - "at no cost"
+      - "zero cost"
+      - "मुफ़्त"
+      - "मुफ्त"
+      - "निःशुल्क"
+      - "बिल्कुल फ्री"
+  - id: PL-IN-ADV-06
+    name: "Proof words"
+    match: "phrase"
+    severity: "Block without claim"
+    used_by: "002"
+    terms:
+      - "proven"
+      - "clinically proven"
+      - "scientifically proven"
+      - "certified"
+      - "guaranteed results"
+      - "100%"
+      - "zero risk"
+      - "सिद्ध"
+      - "प्रमाणित"
+      - "100% गारंटी"
+  - id: PL-IN-ADV-07
+    name: "Denigration"
+    match: "phrase + AI"
+    severity: "Block"
+    used_by: "004"
+    terms:
+      - "unlike other providers"
+      - "competitors fail"
+      - "others cheat"
+      - "fake competitors"
+      - "बाकी सब धोखा देते हैं"
+```
 
 ### 11.15.4.11 Counsel sign-off block
 
@@ -518,7 +896,297 @@ stateDiagram-v2
 
 ### 11.15.5.10 Machine-readable YAML (AU-128)
 
-<!--YAML:RP-IN-SMS-->
+```yaml
+# AU-128 load file. Generated from the rule table above; the table is the source of truth.
+pack:
+  id: RP-IN-SMS
+  title: "India commercial communications over telecom networks: SMS, RCS fallback and voice (DLT registration, preferences, consent, number series)"
+  version: "0.1-draft"
+  state: draft
+  jurisdictions: "IN (any +91 number, J3)"
+  channels: "SMS, VO (RCS: apply this pack until counsel confirms otherwise)"
+  audiences: "ALL (B2B and B2C mobile subscribers)"
+  startups: "ALL; Tenant"
+  effective_dates: "TCCCPR in force since 2018 (verify); Second Amendment Feb 2025 with phased timelines (verify each); variable pre-tagging Nov 2025 direction (verify date); draft Third Amendment 2026: not effective until notified (VR-11)"
+  owner: R10
+  review_cadence: quarterly
+  expires_after_days: 120
+  on_expiry: suspend_and_hold
+  on_registry_unavailable: block
+  on_unknown_jurisdiction: block
+  sign_off: {counsel_reviewer: null, firm: null, date: null, r10_approver: null, conditions: null}
+rules:
+  - id: RP-IN-SMS-001
+    obligation: "No SMS or voice commercial communication shall be sent until the startup's channel activation gate is complete: PE registration, telemarketer chain binding, headers, content templates and consent templates registered; this pack active; DPIA reference recorded"
+    citation: "TCCCPR (registration); Part 4.1 TR-R1; FR-V12-A-133; ADR-184"
+    applies_to: "SMS, VO · ALL"
+    check: "deterministic"
+    detection: "channel_activation.sms.status = active AND pe_id AND tm_chain_id present; else finding"
+    severity: "Block"
+    override: none
+    evidence: "Activation record with DLT IDs"
+    remediation_message: "\"SMS/voice is not activated for this startup. Complete DLT registration and the activation checklist.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-SMS-002
+    obligation: "The sender header shall be registered on DLT to the same PE as the startup and shall be of the category matching the message"
+    citation: "TCCCPR (header registration)"
+    applies_to: "SMS · ALL"
+    check: "deterministic"
+    detection: "header ∈ dlt_headers[pe_id] AND header.category = template.category; header suffix matches category where the suffix scheme applies (verify)"
+    severity: "Block"
+    override: none
+    evidence: "DLT header record"
+    remediation_message: "\"Use a header registered to this startup for this message category.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-SMS-003
+    obligation: "The message shall match a registered content template exactly; only the registered variable positions may vary; each variable value shall conform to its registered type tag"
+    citation: "TCCCPR (content templates); TRAI variable pre-tagging direction (VR-11)"
+    applies_to: "SMS · ALL"
+    check: "deterministic"
+    detection: "Compile template to an anchored regex with typed variable groups (#numeric#, #alphanumeric#, #url#, #cbn#, verify tag names); rendered message must fully match; variable length ≤ registered max"
+    severity: "Block"
+    override: none
+    evidence: "Template ID and match log"
+    remediation_message: "\"The text does not match the registered template {template_id}. Edit only the variable fields.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-SMS-004
+    obligation: "A message whose content contains any promotional element shall be treated as promotional, whatever template category it was submitted under"
+    citation: "TCCCPR Second Amendment 2025 (mixed content) (VR-10)"
+    applies_to: "SMS, VO · ALL"
+    check: "deterministic_then_ai_review"
+    detection: "DET: PL-IN-SMS-01 promo terms in service/transactional templates; AI: offers, cross-sell, discounts"
+    severity: "Block"
+    override: r10_with_reason
+    evidence: "—"
+    remediation_message: "\"This service message contains promotion. Use a promotional template and the promotional controls.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-SMS-005
+    obligation: "Transactional and OTP messages shall contain only the information necessary for the transaction and no promotional content, link or call to action other than the transaction's own"
+    citation: "TCCCPR (transactional category, verify)"
+    applies_to: "SMS · ALL"
+    check: "deterministic"
+    detection: "template.category = transactional → PL-IN-SMS-01 and non-transaction URLs prohibited"
+    severity: "Block"
+    override: none
+    evidence: "—"
+    remediation_message: "\"Remove promotional content from this transactional message.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-SMS-006
+    obligation: "A promotional communication shall not be sent to a number whose preference register entry blocks the category, unless valid digital consent for that PE and purpose exists and has not been revoked"
+    citation: "TCCCPR (preferences and consent); CJ-IN-06"
+    applies_to: "SMS, VO · B2C, B2B"
+    check: "deterministic"
+    detection: "Scrub result for number and category, timestamp ≤ 24 h before dispatch (verify required freshness); if blocked → require dlt_consent_id active"
+    severity: "Block"
+    override: none
+    evidence: "Scrub log; consent ID"
+    remediation_message: "\"This number has blocked promotional messages and no valid consent exists.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-SMS-007
+    obligation: "Consent for promotional communication shall be acquired only through the registered consent template and DLT verification flow, shall be specific to the PE and purpose, and its validity period (verify; the 2025 amendment reportedly shortened validity) shall be respected"
+    citation: "TCCCPR (consent acquisition); DPDP s.6; VR-10"
+    applies_to: "SMS, VO · ALL"
+    check: "deterministic"
+    detection: "dlt_consent_id status verified, PE match, purpose match, expires_at > dispatch time"
+    severity: "Block"
+    override: none
+    evidence: "DLT consent record"
+    remediation_message: "\"Collect consent through the registered DLT consent flow for this purpose.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-SMS-008
+    obligation: "Every promotional message shall contain a clear opt-out instruction from TPL-IN-SMS-01, and the opt-out channel shall work free of charge"
+    citation: "TCCCPR Second Amendment 2025 (opt-out in promotional messages, verify); DPDP s.6(4); BRL-ELG-02"
+    applies_to: "SMS, VO · ALL"
+    check: "deterministic"
+    detection: "Promotional template must contain TPL-IN-SMS-01 token; VO script must contain TPL-IN-SMS-03"
+    severity: "Block"
+    override: none
+    evidence: "Template record"
+    remediation_message: "\"Add the opt-out line to this promotional message.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-SMS-009
+    obligation: "Promotional communication shall be dispatched only within the platform window 09:00–19:00, Monday–Saturday, recipient local time, excluding configured public holidays, and in any case within the legal window prescribed by TRAI (verify)"
+    citation: "BRL-ELG-08; TCCCPR time-band provisions (VR-13, verify); CP-03"
+    applies_to: "SMS, VO · ALL"
+    check: "deterministic"
+    detection: "Effective window = intersection(platform window, legal window parameter) → dispatch scheduled to next open slot"
+    severity: "Block (defer)"
+    override: none
+    evidence: "Schedule log"
+    remediation_message: "\"Promotional messages can only be sent 09:00–19:00, Monday to Saturday. It has been rescheduled.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-SMS-010
+    obligation: "Every URL, APK link, OTT link and call-back number in a message shall be whitelisted for the PE on DLT; URL shorteners are permitted only if the shortener domain and resolved destination are whitelisted"
+    citation: "TRAI whitelisting direction (VR-12, verify)"
+    applies_to: "SMS · ALL"
+    check: "deterministic"
+    detection: "Extract URLs and numbers; each ∈ dlt_whitelist[pe_id]; resolve shortener to final domain ∈ whitelist"
+    severity: "Block"
+    override: none
+    evidence: "Whitelist record"
+    remediation_message: "\"Use only links and call-back numbers whitelisted on DLT for this startup.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-SMS-011
+    obligation: "Promotional voice calls shall originate only from numbers in the series designated for promotional calls (140) and service or transactional calls only from the designated series (1600); no commercial call from a 10-digit mobile or landline number"
+    citation: "TCCCPR Second Amendment 2025; DoT directions (VR-10); CJ-IN-07; FR-V12-A-133"
+    applies_to: "VO · ALL"
+    check: "deterministic"
+    detection: "caller_id prefix check against category: promotional → 140; service/transactional → 1600"
+    severity: "Block"
+    override: none
+    evidence: "Number allocation record"
+    remediation_message: "\"Promotional calls must use the 140 series; service calls the 1600 series.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-SMS-012
+    obligation: "Voice calls using pre-recorded, synthetic or AI-generated voice shall be made only where permitted for the category, shall disclose at the start that the voice is automated or AI-generated, and shall offer a human or an opt-out key"
+    citation: "TCCCPR (auto-dialler/robocall provisions, verify); draft Third Amendment 2026 (VR-11, not yet law); BR-V7-AI-01"
+    applies_to: "VO · ALL"
+    check: "deterministic"
+    detection: "voice.synthetic = true → script starts with TPL-IN-SMS-04 and has opt-out DTMF option"
+    severity: "Block"
+    override: none
+    evidence: "Script record"
+    remediation_message: "\"Start automated calls with the AI disclosure and offer an opt-out.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-SMS-013
+    obligation: "The message shall identify the startup by its registered brand name"
+    citation: "TCCCPR (sender identity); RP-EU-MKT parity"
+    applies_to: "SMS · ALL"
+    check: "deterministic"
+    detection: "Template contains {brand} resolved to the PE's registered brand"
+    severity: "Warn"
+    override: none
+    evidence: "—"
+    remediation_message: "\"Include the startup's brand name in the message.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-SMS-014
+    obligation: "Opt-out and consent revocation received by any channel shall be recorded and honoured immediately on the platform, and propagated to DLT within the period required by the regulations (verify; platform target ≤ 1 hour)"
+    citation: "TCCCPR (revocation); BRL-ELG-02; CJ-GL-05"
+    applies_to: "SMS, VO · ALL"
+    check: "deterministic"
+    detection: "Suppression check at dispatch; revocation sync job status"
+    severity: "Block"
+    override: none
+    evidence: "Suppression record; DLT sync log"
+    remediation_message: "\"This recipient has opted out; the message was cancelled.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-SMS-015
+    obligation: "Complaints of unsolicited commercial communication shall suppress the complainant, open a compliance incident and count towards the campaign pause threshold"
+    citation: "TCCCPR (UCC complaints); BRL-ELG-11; CJ-GL-09"
+    applies_to: "SMS, VO · ALL"
+    check: "deterministic"
+    detection: "Inbound complaint flag → suppression + incident; rate > 0.1% or 3 per 24 h → pause"
+    severity: "Block (campaign)"
+    override: none
+    evidence: "Incident record"
+    remediation_message: "\"Campaign paused after complaints. Review with R10 before restarting.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-SMS-016
+    obligation: "Hindi and other Indian-language SMS shall use separately registered Unicode templates; transliterated or machine-translated text shall not be sent under an English template"
+    citation: "TCCCPR (template registration); DEC-026"
+    applies_to: "SMS · ALL"
+    check: "deterministic"
+    detection: "Script detection of rendered text = template script; template locale = message locale"
+    severity: "Block"
+    override: none
+    evidence: "Locale template ID"
+    remediation_message: "\"Use the registered template for this language.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-SMS-017
+    obligation: "No SMS or voice cold outreach to EU/EEA/UK numbers and none to US numbers without prior express written consent"
+    citation: "BRL-ELG-06; RP-US-EMAIL-016 (TCPA); DEC-029"
+    applies_to: "SMS, VO · ALL"
+    check: "deterministic"
+    detection: "E.164 prefix of EEA/UK/US → require opt-in consent of the required standard"
+    severity: "Block"
+    override: none
+    evidence: "Consent record"
+    remediation_message: "\"Telecom outreach to this country needs explicit opt-in consent.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-SMS-018
+    obligation: "Content shall also comply with RP-IN-ADV, RP-COMMIT and, where relevant, RP-HEALTH and RP-EDU-MINORS; SMS shall never be sent to a learner under 18"
+    citation: "CP-01; DEC-030"
+    applies_to: "SMS · ALL"
+    check: "deterministic"
+    detection: "Applicable-set check; age band check"
+    severity: "Block"
+    override: none
+    evidence: "Applicable set log"
+    remediation_message: "\"This message also needs the content packs for its startup and audience.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-SMS-019
+    obligation: "Frequency caps of BRL-ELG-09 apply per recipient across all workflows"
+    citation: "BRL-ELG-09"
+    applies_to: "SMS, VO · ALL"
+    check: "deterministic"
+    detection: "Counter check at dispatch"
+    severity: "Block (defer)"
+    override: none
+    evidence: "Counter log"
+    remediation_message: "\"Frequency cap reached for this recipient.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-SMS-020
+    obligation: "Message content shall not request OTPs, passwords, card numbers, bank account numbers or Aadhaar numbers, and shall not impersonate a bank, government or telecom operator"
+    citation: "IT Act s.66C/66D (verify); TCCCPR (fraud prevention, verify)"
+    applies_to: "SMS, VO · ALL"
+    check: "deterministic"
+    detection: "PL-IN-SMS-02 regex"
+    severity: "Block"
+    override: none
+    evidence: "—"
+    remediation_message: "\"Never ask for OTPs, passwords or identity numbers by SMS.\""
+    effective_from: null  # set at sign-off
+phrase_lists:
+  - id: PL-IN-SMS-01
+    name: "Promotional markers"
+    match: "word/phrase"
+    severity: "Block in service/transactional templates"
+    used_by: "004, 005"
+    terms:
+      - "offer"
+      - "discount"
+      - "% off"
+      - "sale"
+      - "buy now"
+      - "deal"
+      - "cashback"
+      - "upgrade now"
+      - "limited period"
+      - "register now for"
+      - "ऑफ़र"
+      - "छूट"
+      - "सेल"
+      - "अभी खरीदें"
+      - "कैशबैक"
+  - id: PL-IN-SMS-02
+    name: "Credential and identity requests"
+    match: "phrase + regex (12-digit sequences)"
+    severity: "Block"
+    used_by: "020"
+    terms:
+      - "share your OTP"
+      - "send OTP"
+      - "password"
+      - "PIN"
+      - "CVV"
+      - "card number"
+      - "account number"
+      - "Aadhaar number"
+      - "KYC update click"
+      - "ओटीपी बताएं"
+      - "पासवर्ड"
+      - "आधार नंबर भेजें"
+  - id: PL-IN-SMS-03
+    name: "Unwhitelisted shorteners"
+    match: "domain"
+    severity: "Block"
+    used_by: "010"
+    terms:
+      - "bit.ly"
+      - "tinyurl"
+      - "t.co"
+      - "goo.gl (unless whitelisted and resolved)"
+```
 
 ### 11.15.5.11 Counsel sign-off block
 
@@ -681,7 +1349,303 @@ stateDiagram-v2
 
 ### 11.15.6.10 Machine-readable YAML (AU-128)
 
-<!--YAML:RP-IN-DPDP-->
+```yaml
+# AU-128 load file. Generated from the rule table above; the table is the source of truth.
+pack:
+  id: RP-IN-DPDP
+  title: "India DPDP Act 2023 and DPDP Rules 2025: notice, consent, withdrawal, purpose, children, rights and processor obligations as they bear on marketing content, forms and outreach"
+  version: "0.1-draft"
+  state: draft
+  jurisdictions: "IN (data principals in India; processing in India; or offering to data principals in India from outside, DPDP s.3)"
+  channels: "FM, LP, EM, WA, SMS, VO, CH, AD (audiences), DOC"
+  audiences: "ALL"
+  startups: "ALL; Tenant (tenant is data fiduciary; platform is processor, BR-V7-CJ-11)"
+  effective_dates: "Act provisions commence with the Rules (VR-01): Rules 1, 2, 17–21 from 13 Nov 2025; Rule 4 from ≈ 13 Nov 2026; Rules 3, 5–16, 22, 23 from ≈ 13 May 2027. The platform applies all rules from activation (Part 4.1 §4.12.1: built to full compliance from W0); effective_from per rule records the legal date for evidence purposes"
+  owner: R10
+  review_cadence: quarterly
+  expires_after_days: 120
+  on_expiry: suspend_and_hold
+  on_registry_unavailable: block
+  on_unknown_jurisdiction: block
+  sign_off: {counsel_reviewer: null, firm: null, date: null, r10_approver: null, conditions: null}
+rules:
+  - id: RP-IN-DPDP-001
+    obligation: "Personal data of a data principal in India shall be processed for marketing or outreach only where a lawful basis is recorded for that principal, purpose and startup: (a) consent under s.6, or (b) a legitimate use under s.7, or (c) a documented determination by R10 that the data is outside the Act under s.3(c)(ii)"
+    citation: "DPDP s.4, s.6, s.7, s.3(c)(ii); BRL-ELG-03; CJ-IN-01"
+    applies_to: "ALL outbound · ALL"
+    check: "deterministic"
+    detection: "lawful_basis ∈ {consent, legitimate_use, s3cii_public} for (contact, purpose, startup); null → finding"
+    severity: "Block"
+    override: none
+    evidence: "Basis record"
+    remediation_message: "\"No lawful basis is recorded for this contact and purpose.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-DPDP-002
+    obligation: "Reliance on s.3(c)(ii) shall be permitted only where evidence shows the data principal herself made the specific data publicly available (e.g. own professional profile or company page listing the person's business contact) and the outreach is consistent with the context of publication; data published by a third party (directories, scraped lists) does not qualify"
+    citation: "DPDP s.3(c)(ii); CJ-GL-01; BRL-SRC-03"
+    applies_to: "EM, WA, VO · B2B"
+    check: "deterministic_then_ai_review"
+    detection: "DET: source.published_by = data_principal, URL, retrieval date, content hash; AI: context consistency"
+    severity: "Block (DET) / Warn + needs_counsel (AI)"
+    override: r10_with_reason
+    evidence: "Provenance record"
+    remediation_message: "\"Evidence must show the person published this contact detail themselves. Otherwise collect consent.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-DPDP-003
+    obligation: "Every request for consent shall be accompanied or preceded by a notice that is presented independently of other information, uses clear and plain language, and itemises: the personal data; the specified purposes and the goods or services enabled; the means to withdraw consent with ease comparable to giving it; the means to exercise rights; and the means to complain to the Data Protection Board"
+    citation: "DPDP s.5(1); Rule 3 (VR-01); DP-R2"
+    applies_to: "FM, LP, CH, WA (opt-in) · ALL"
+    check: "deterministic"
+    detection: "Form or opt-in component must embed ConsentNotice with notice_version containing required sections (TPL-IN-DPDP-01 headings)"
+    severity: "Block"
+    override: none
+    evidence: "Notice version ID"
+    remediation_message: "\"Show the DPDP notice with all required items before asking for consent.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-DPDP-004
+    obligation: "The notice and consent request shall be available in English and, at the principal's option, in any language in the Eighth Schedule to the Constitution that the startup supports for that market"
+    citation: "DPDP s.5(3), s.6(3)"
+    applies_to: "FM, LP · ALL"
+    check: "deterministic"
+    detection: "notice.locales ⊇ {en, startup's content locales (DEC-026)}; language switch present"
+    severity: "Warn (Block if form is in a language without a notice)"
+    override: none
+    evidence: "Locale list"
+    remediation_message: "\"Provide the notice in the language of the form.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-DPDP-005
+    obligation: "Consent shall be obtained by a clear affirmative action, separately for each purpose, without pre-ticked boxes, and shall not be made a condition of a service that does not require the data"
+    citation: "DPDP s.6(1); DP-R3"
+    applies_to: "FM · ALL"
+    check: "deterministic"
+    detection: "Each purpose checkbox default = unchecked; one checkbox per purpose; submit not disabled when marketing unchecked"
+    severity: "Block"
+    override: none
+    evidence: "Form schema"
+    remediation_message: "\"Use one unticked checkbox per purpose and do not make marketing consent compulsory.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-DPDP-006
+    obligation: "The personal data requested shall be limited to what is necessary for the specified purpose; any part of a consent that infringes the Act is invalid to that extent"
+    citation: "DPDP s.6(1) proviso and s.6(2)"
+    applies_to: "FM · ALL"
+    check: "deterministic_then_ai_review"
+    detection: "DET: forbidden fields (health, religion, caste, biometrics, Aadhaar, financial account, PL-IN-DPDP-01) → Block; AI: fields unrelated to purpose → Warn"
+    severity: "Block / Warn"
+    override: r10_with_reason
+    evidence: "Field-purpose map"
+    remediation_message: "\"Remove fields not needed for this purpose.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-DPDP-007
+    obligation: "Every marketing communication shall contain a means to withdraw consent that is as easy as giving it (one click, one reply word, or one tap), and withdrawal shall take effect on the platform immediately, cancelling queued and scheduled items"
+    citation: "DPDP s.6(4), s.6(6); CJ-IN-02; BRL-ELG-02"
+    applies_to: "EM, WA, SMS, VO, CH · ALL"
+    check: "deterministic"
+    detection: "Footer token TPL-IN-DPDP-04 (EM), STOP option (WA, SMS), DTMF (VO); suppression latency SLO ≤ 60 s"
+    severity: "Block"
+    override: none
+    evidence: "Template record; latency metric"
+    remediation_message: "\"Add the one-step withdrawal option to this message.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-DPDP-008
+    obligation: "The purpose of each communication shall fall within the purpose for which the lawful basis was recorded; a new purpose requires new consent"
+    citation: "DPDP s.4(1), s.5, s.6(1) (specific)"
+    applies_to: "ALL outbound · ALL"
+    check: "deterministic"
+    detection: "draft.purpose_code ∈ basis.purposes"
+    severity: "Block"
+    override: none
+    evidence: "Basis purposes"
+    remediation_message: "\"This message's purpose is not covered by the contact's consent.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-DPDP-009
+    obligation: "The startup shall be able to prove the notice shown and the consent given (version, timestamp, channel, IP or number, text) for every principal contacted"
+    citation: "DPDP s.6(10)"
+    applies_to: "ALL · ALL"
+    check: "deterministic"
+    detection: "consent_record with notice_version, hash, timestamp; missing → Block"
+    severity: "Block"
+    override: none
+    evidence: "Consent ledger"
+    remediation_message: "\"Consent proof is incomplete for this contact.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-DPDP-010
+    obligation: "Personal data of a child shall not be processed without verifiable consent of the parent or lawful guardian; no tracking, behavioural monitoring or targeted advertising directed at children shall be undertaken; detailed rules are in RP-EDU-MINORS"
+    citation: "DPDP s.9(1)–(3); Rule 10 (verify no.); CJ-IN-03; DEC-030"
+    applies_to: "ALL · ALL"
+    check: "deterministic"
+    detection: "Age band < 18 or unknown on any education audience → route to RP-EDU-MINORS; pixels disabled on child-directed pages"
+    severity: "Block"
+    override: none
+    evidence: "Age band; VPC record"
+    remediation_message: "\"Children's data needs verified guardian consent; outreach to minors is not permitted.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-DPDP-011
+    obligation: "Where the data principal is a person with a disability who has a lawful guardian, consent shall be obtained from the lawful guardian after verification"
+    citation: "DPDP s.9(1) (person with disability); Rule 11 (verify)"
+    applies_to: "FM · ALL"
+    check: "deterministic"
+    detection: "Form option \"acting as lawful guardian\" → guardian verification workflow"
+    severity: "Warn"
+    override: none
+    evidence: "Guardian record"
+    remediation_message: "\"Verify the lawful guardian before relying on this consent.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-DPDP-012
+    obligation: "Every notice and every marketing message shall state the business contact information of the person who can answer questions about processing (or the DPO where the startup is a Significant Data Fiduciary)"
+    citation: "DPDP s.8(9); Rule 9 (verify); DP-R8"
+    applies_to: "FM, LP, EM, WA · ALL"
+    check: "deterministic"
+    detection: "privacy_contact token resolved in notice and footer"
+    severity: "Block"
+    override: none
+    evidence: "Contact record"
+    remediation_message: "\"Add the privacy contact to the notice or footer.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-DPDP-013
+    obligation: "The notice shall describe how to exercise the rights to access a summary, correction, completion, erasure, nomination and grievance redressal, and the startup's grievance timeline; the right to complain to the Board shall be stated"
+    citation: "DPDP s.11–s.14, s.5(1)(iii); Rules 13–14 (verify); CJ-IN-05"
+    applies_to: "FM, LP · ALL"
+    check: "deterministic"
+    detection: "Notice section rights and board_complaint present"
+    severity: "Block"
+    override: none
+    evidence: "Notice version"
+    remediation_message: "\"Add the rights and grievance section to the notice.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-DPDP-014
+    obligation: "Consent interfaces shall not use dark patterns (pre-selection, confirm shaming, trick questions, nagging, interface interference)"
+    citation: "DPDP s.6(1); Dark-pattern Guidelines 2023 (VR-03); RP-IN-ADV-013/015"
+    applies_to: "FM, LP, CH · ALL"
+    check: "ai_review"
+    detection: "AG-086 reviews consent UI copy and screenshot"
+    severity: "Block"
+    override: r10_with_reason
+    evidence: "Screenshot"
+    remediation_message: "\"Remove manipulative design from the consent request.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-DPDP-015
+    obligation: "Personal data shall not be included in AI prompts beyond what the task needs; health data, children's data beyond grade band, and Restricted data shall never be sent to any model; no personal data to Tier 2"
+    citation: "DPDP s.8(5) (safeguards); DEC-030; DEC-418; BRL-AI-06; AU-004"
+    applies_to: "ALL AI drafting · ALL"
+    check: "deterministic"
+    detection: "AU-004 redaction log present for the draft; Tier 2 call with personal field → Block"
+    severity: "Block"
+    override: none
+    evidence: "Redaction log"
+    remediation_message: "\"Personal data was found in an AI request; the request was blocked.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-DPDP-016
+    obligation: "Outbound on behalf of a SaaS tenant shall be processed only under an accepted data processing agreement that instructs the processing, and only where the tenant attests a lawful basis"
+    citation: "DPDP s.8(1)–(2); BR-V7-CJ-11"
+    applies_to: "ALL · Tenant"
+    check: "deterministic"
+    detection: "tenant.dpa_status = accepted and basis attestation per list"
+    severity: "Block"
+    override: none
+    evidence: "DPA record"
+    remediation_message: "\"Accept the data processing agreement before sending on behalf of this tenant.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-DPDP-017
+    obligation: "Personal data used for marketing shall be erased when consent is withdrawn or the purpose is no longer served, except a minimal hashed suppression token needed to honour the opt-out; the retention period shall be stated in the notice"
+    citation: "DPDP s.8(7); Rule 8 (verify); BRL-PRV-03; CJ-GL-03"
+    applies_to: "ALL · ALL"
+    check: "deterministic"
+    detection: "Retention schedule exists for purpose; erasure job; suppression hash retained"
+    severity: "Warn"
+    override: none
+    evidence: "Retention config"
+    remediation_message: "\"State the retention period and make sure erasure keeps the suppression token.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-DPDP-018
+    obligation: "Where consent is obtained or managed through a registered consent manager, the consent manager identifier and artefact shall be recorded and withdrawals received through it honoured"
+    citation: "DPDP s.6(7)–(9); Rule 4 (from ≈ 13 Nov 2026)"
+    applies_to: "FM · ALL"
+    check: "deterministic"
+    detection: "If consent.source = consent_manager → cm_id, artefact ID"
+    severity: "Warn"
+    override: none
+    evidence: "CM artefact"
+    remediation_message: "\"Record the consent manager artefact.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-DPDP-019
+    obligation: "The notice shall disclose that personal data may be processed outside India by named categories of processors (e.g. AI model provider) and the countries, unless a Government notification restricts transfer to that country"
+    citation: "DPDP s.16; CJ-IN-11; DP-R12"
+    applies_to: "FM, LP · ALL"
+    check: "deterministic"
+    detection: "Notice section transfers present; country not on restricted list (config)"
+    severity: "Block"
+    override: none
+    evidence: "Transfer register"
+    remediation_message: "\"Add the cross-border processing disclosure to the notice.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-DPDP-020
+    obligation: "Referred persons and third-party contacts provided by a referrer shall not be contacted until their own lawful basis is recorded"
+    citation: "BRL-ELG-17; CJ-GL-11; DPDP s.6"
+    applies_to: "ALL · ALL"
+    check: "deterministic"
+    detection: "contact.source = referral → own basis required"
+    severity: "Block"
+    override: none
+    evidence: "Basis record"
+    remediation_message: "\"Referred contacts need their own consent before outreach.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-DPDP-021
+    obligation: "Notices for data processed before the commencement of Rule 3 shall be given as soon as reasonably practicable"
+    citation: "DPDP s.5(2)"
+    applies_to: "EM · ALL"
+    check: "deterministic"
+    detection: "Contacts with basis_date < notice_effective → re-notice campaign scheduled"
+    severity: "Warn"
+    override: none
+    evidence: "Re-notice log"
+    remediation_message: "\"Send the updated notice to existing contacts.\""
+    effective_from: null  # set at sign-off
+phrase_lists:
+  - id: PL-IN-DPDP-01
+    name: "Prohibited form fields (marketing forms)"
+    match: "field name + label text"
+    severity: "Block"
+    used_by: "006"
+    terms:
+      - "health condition"
+      - "diagnosis"
+      - "medication"
+      - "disability (except guardian flag)"
+      - "religion"
+      - "caste"
+      - "sexual orientation"
+      - "biometrics"
+      - "Aadhaar"
+      - "PAN (unless invoicing)"
+      - "bank account"
+      - "card number"
+      - "password"
+      - "date of birth of a child"
+      - "रोग"
+      - "बीमारी"
+      - "धर्म"
+      - "जाति"
+      - "आधार"
+  - id: PL-IN-DPDP-02
+    name: "Bundled-consent wording"
+    match: "phrase"
+    severity: "Block"
+    used_by: "005"
+    terms:
+      - "\"by continuing you agree to receive marketing\""
+      - "\"I agree to all\""
+      - "\"consent to all purposes\""
+      - "\"जारी रखकर आप सभी पर सहमत हैं\""
+  - id: PL-IN-DPDP-03
+    name: "Withdrawal friction"
+    match: "phrase + AI"
+    severity: "Block"
+    used_by: "007"
+    terms:
+      - "\"call us to unsubscribe\""
+      - "\"write to us to stop\""
+      - "\"log in to unsubscribe\" (as only option)"
+```
 
 ### 11.15.6.11 Counsel sign-off block
 
@@ -822,7 +1786,300 @@ stateDiagram-v2
 
 ### 11.15.7.10 Machine-readable YAML (AU-128)
 
-<!--YAML:RP-IN-WA-->
+```yaml
+# AU-128 load file. Generated from the rule table above; the table is the source of truth.
+pack:
+  id: RP-IN-WA
+  title: "WhatsApp Business Messaging Policy, Commerce Policy and template rules, with Indian consent law overlay"
+  version: "0.1-draft"
+  state: draft
+  jurisdictions: "Platform policy: all jurisdictions where WA is enabled (CP-01); legal overlay: IN (DPDP), plus the recipient's own jurisdiction packs"
+  channels: "WA (including WA conversational/automated replies: CH)"
+  audiences: "ALL (never minors)"
+  startups: "ALL; Tenant"
+  effective_dates: "Platform policies change without notice: per-message pricing from 1 Jul 2025 (VR-19); opt-in update Nov 2024 (VR-20); AI chatbot terms (VR-21, verify). Monthly horizon scan of Meta changelog"
+  owner: R10
+  review_cadence: quarterly
+  expires_after_days: 120
+  on_expiry: suspend_and_hold
+  on_registry_unavailable: block
+  on_unknown_jurisdiction: block
+  sign_off: {counsel_reviewer: null, firm: null, date: null, r10_approver: null, conditions: null}
+rules:
+  - id: RP-IN-WA-001
+    obligation: "No business-initiated WhatsApp message shall be sent unless the recipient has opted in to receive messages from this startup on WhatsApp; the opt-in shall name the business and state that messages will arrive on WhatsApp"
+    citation: "WhatsApp Business Messaging Policy (opt-in) (VR-20); BRL-ELG-07; CJ-IN-08; WA-R1"
+    applies_to: "WA · ALL"
+    check: "deterministic"
+    detection: "consent.channel = whatsapp (or a general messaging consent meeting VR-20 conditions, counsel to confirm) for (contact, startup), opt-in text version stored"
+    severity: "Block"
+    override: none
+    evidence: "Opt-in record"
+    remediation_message: "\"This contact has not opted in to WhatsApp messages from this startup.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-WA-002
+    obligation: "Outside an open customer-service window, only an approved template in status APPROVED shall be sent"
+    citation: "WhatsApp Business Platform rules (VR-19); WA-R2"
+    applies_to: "WA · ALL"
+    check: "deterministic"
+    detection: "now − last_inbound_at > 24 h → template_id with live status APPROVED"
+    severity: "Block"
+    override: none
+    evidence: "Template status snapshot"
+    remediation_message: "\"The 24-hour window is closed. Use an approved template.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-WA-003
+    obligation: "Free-form (non-template) messages shall be sent only within the open customer-service window"
+    citation: "VR-19; BRL-ELG-07"
+    applies_to: "WA · ALL"
+    check: "deterministic"
+    detection: "Free-form AND window closed → Block"
+    severity: "Block"
+    override: none
+    evidence: "Window timestamp"
+    remediation_message: "\"Free-form messages are only possible within 24 hours of the customer's last message.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-WA-004
+    obligation: "The content shall match the template category: promotional or upsell content shall use only marketing templates; utility templates shall relate to a specific transaction or account the user agreed to; authentication templates shall contain only one-time-code content"
+    citation: "WhatsApp template category guidelines (verify)"
+    applies_to: "WA · ALL"
+    check: "deterministic_then_ai_review"
+    detection: "DET: PL-IN-SMS-01 promotional markers in utility/authentication; AI: upsell disguised as update"
+    severity: "Block"
+    override: r10_with_reason
+    evidence: "Template category"
+    remediation_message: "\"Marketing content must use a marketing template.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-WA-005
+    obligation: "Every marketing template shall include an opt-out option (quick-reply \"Stop promotions\" or equivalent), and STOP or any clear natural-language request to stop shall suppress the contact for that startup immediately; ambiguous replies go to human review"
+    citation: "WhatsApp Business Messaging Policy (opt-out); WA-R3; BRL-ELG-02; CJ-GL-05"
+    applies_to: "WA · ALL"
+    check: "deterministic"
+    detection: "Marketing template has TPL-IN-WA-02 button; inbound intent STOP → suppression ≤ 60 s"
+    severity: "Block"
+    override: none
+    evidence: "Template; suppression log"
+    remediation_message: "\"Add a 'Stop promotions' option and honour stop requests.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-WA-006
+    obligation: "Messages shall not request, and automated flows shall not collect, full payment card numbers, financial account numbers, national identity numbers (e.g. Aadhaar), passwords or other sensitive identifiers"
+    citation: "WhatsApp Business Messaging Policy (sensitive identifiers, verify); PL-IN-SMS-02"
+    applies_to: "WA, CH · ALL"
+    check: "deterministic"
+    detection: "PL-IN-SMS-02 + PL-IN-WA-01 regex on outbound and on bot form fields"
+    severity: "Block"
+    override: none
+    evidence: "—"
+    remediation_message: "\"Do not ask for card, bank, ID numbers or passwords on WhatsApp.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-WA-007
+    obligation: "Messages shall not offer, sell or promote goods or services prohibited or restricted by the WhatsApp Commerce Policy (including drugs and prescription medicines, medical and healthcare products, tobacco, alcohol, weapons, adult content, gambling, real money games, and others in PL-IN-WA-02)"
+    citation: "WhatsApp Commerce Policy (VR-20); WA-R4"
+    applies_to: "WA · ALL"
+    check: "deterministic_then_ai_review"
+    detection: "Offering category ∈ PL-IN-WA-02 → Block; AI for implicit references"
+    severity: "Block"
+    override: r10_with_reason
+    evidence: "Offering category"
+    remediation_message: "\"This product or service cannot be promoted on WhatsApp.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-WA-008
+    obligation: "Messages shall not reference or infer a recipient's health condition, and MedMaarg messages shall be limited to institutional partnership topics"
+    citation: "BRL-ELG-14; CJ-GL-07; RP-HEALTH"
+    applies_to: "WA · ALL · MedMaarg"
+    check: "deterministic_then_ai_review"
+    detection: "PL-HEALTH-01/02 match; audience must be INST/B2B"
+    severity: "Block"
+    override: r10_with_reason
+    evidence: "—"
+    remediation_message: "\"Remove health-condition content; MedMaarg messages are for institutions only.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-WA-009
+    obligation: "No WhatsApp message shall be sent to a person known or likely to be under 18"
+    citation: "DEC-030; BRL-ELG-13"
+    applies_to: "WA · ALL"
+    check: "deterministic"
+    detection: "Age band < 18 or unknown on EduVerse learner records → Block"
+    severity: "Block"
+    override: none
+    evidence: "Age band"
+    remediation_message: "\"WhatsApp outreach to minors is not permitted.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-WA-010
+    obligation: "Contacts shall not be sourced by scraping groups, communities or private profiles, and no unsolicited automated direct messages shall be sent"
+    citation: "CJ-GL-08; WhatsApp Business Messaging Policy"
+    applies_to: "WA · ALL"
+    check: "deterministic"
+    detection: "contact.source ∈ {wa_group, scraped} → Block"
+    severity: "Block"
+    override: none
+    evidence: "Source provenance"
+    remediation_message: "\"Contacts from WhatsApp groups or scraping cannot be messaged.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-WA-011
+    obligation: "No WhatsApp cold outreach to recipients in the EU/EEA/UK; business-initiated messages to them require prior opt-in"
+    citation: "BRL-ELG-06; DEC-029; RP-EU-MKT-009"
+    applies_to: "WA · EU/UK"
+    check: "deterministic"
+    detection: "+EEA/+44 numbers without opt-in → Block"
+    severity: "Block"
+    override: none
+    evidence: "Opt-in record"
+    remediation_message: "\"WhatsApp outreach to EU/UK contacts needs prior opt-in.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-WA-012
+    obligation: "An automated or AI-powered experience shall disclose at the start of the conversation that the user is talking to an automated assistant, shall be confined to the business's own products and services, and shall offer escalation to a human on request"
+    citation: "WhatsApp Business Messaging Policy (automated experiences, verify); Business Solution Terms on AI providers (VR-21); BR-V7-AI-01; RP-EU-AI-001"
+    applies_to: "CH · ALL"
+    check: "deterministic_then_ai_review"
+    detection: "First bot turn contains TPL-IN-WA-03; handoff intent route configured; AI: off-topic general assistance"
+    severity: "Block"
+    override: r10_with_reason
+    evidence: "Bot config"
+    remediation_message: "\"Tell users they are talking to an automated assistant and offer a person.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-WA-013
+    obligation: "The business shall use a verified business account with an approved display name that matches the startup's brand"
+    citation: "WA-R7; WhatsApp Business Platform requirements"
+    applies_to: "WA · ALL"
+    check: "deterministic"
+    detection: "waba.verified = true, display_name_status = approved, name = startup brand"
+    severity: "Block"
+    override: none
+    evidence: "WABA record"
+    remediation_message: "\"Verify the WhatsApp business account and display name first.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-WA-014
+    obligation: "Marketing campaigns shall pause automatically when the number's quality rating is Low or the number is flagged, and shall respect the current messaging limit tier"
+    citation: "WA-R5; BRL-ELG-11"
+    applies_to: "WA · ALL"
+    check: "deterministic"
+    detection: "Quality API: LOW or FLAGGED → pause; send count ≤ tier limit"
+    severity: "Block"
+    override: none
+    evidence: "Quality snapshot"
+    remediation_message: "\"Campaign paused because WhatsApp quality is low.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-WA-015
+    obligation: "Each language shall use its own approved template; machine-translated templates require human approval before submission to Meta"
+    citation: "DEC-026; template rules"
+    applies_to: "WA · ALL"
+    check: "deterministic"
+    detection: "Template language = message language; translation.approved_by present"
+    severity: "Block"
+    override: none
+    evidence: "Template locale"
+    remediation_message: "\"Use the approved template for this language.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-WA-016
+    obligation: "Quiet hours (BRL-ELG-08) and frequency caps (BRL-ELG-09) apply to business-initiated messages"
+    citation: "BRL-ELG-08/09"
+    applies_to: "WA · ALL"
+    check: "deterministic"
+    detection: "Window and counter check"
+    severity: "Block (defer)"
+    override: none
+    evidence: "Schedule log"
+    remediation_message: "\"Outside allowed hours or frequency cap reached; rescheduled.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-WA-017
+    obligation: "Images, audio and video in templates that are AI-generated shall carry the AI label"
+    citation: "BR-V7-AI-01; RP-IN-ADV-017"
+    applies_to: "WA · ALL"
+    check: "deterministic"
+    detection: "media.ai_generated → TPL-IN-ADV-04 overlay"
+    severity: "Block"
+    override: none
+    evidence: "C2PA record"
+    remediation_message: "\"Label AI-generated media.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-WA-018
+    obligation: "Links in templates shall point only to the startup's verified domains or approved partners; URL shorteners are not permitted"
+    citation: "WhatsApp template guidelines (verify); RP-IN-SMS-010 parity"
+    applies_to: "WA · ALL"
+    check: "deterministic"
+    detection: "URL domain ∈ startup verified domains"
+    severity: "Warn"
+    override: none
+    evidence: "Domain list"
+    remediation_message: "\"Use a full link to the startup's own domain.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-WA-019
+    obligation: "Payment requests or links shall be sent only for approved invoices or orders and only through the approved payment provider; AI shall not initiate them"
+    citation: "DEC-064; BRL-AUT-01; WhatsApp payments terms (verify)"
+    applies_to: "WA · ALL"
+    check: "deterministic"
+    detection: "Payment link present → invoice_id approved and template category utility"
+    severity: "Block"
+    override: none
+    evidence: "Invoice record"
+    remediation_message: "\"Payment messages must reference an approved invoice.\""
+    effective_from: null  # set at sign-off
+  - id: RP-IN-WA-020
+    obligation: "Content shall comply with RP-IN-ADV and RP-COMMIT"
+    citation: "CP-01"
+    applies_to: "WA · ALL"
+    check: "deterministic"
+    detection: "Applicable-set check"
+    severity: "Block"
+    override: none
+    evidence: "Applicable set"
+    remediation_message: "\"This message also needs the advertising and commitment packs.\""
+    effective_from: null  # set at sign-off
+phrase_lists:
+  - id: PL-IN-WA-01
+    name: "Sensitive identifier requests"
+    match: "phrase + regex (card 13–19 digits with Luhn; 12-digit Aadhaar pattern)"
+    severity: "Block"
+    used_by: "006"
+    terms:
+      - "send your card number"
+      - "CVV"
+      - "bank account number"
+      - "IFSC with account"
+      - "Aadhaar"
+      - "PAN number"
+      - "passport number"
+      - "password"
+      - "UPI PIN"
+      - "कार्ड नंबर"
+      - "खाता संख्या"
+      - "आधार"
+      - "यूपीआई पिन"
+  - id: PL-IN-WA-02
+    name: "Commerce Policy prohibited categories (verify current list)"
+    match: "category + phrase"
+    severity: "Block"
+    used_by: "007"
+    terms:
+      - "prescription drugs"
+      - "medicines"
+      - "medical devices"
+      - "supplements with health claims"
+      - "tobacco"
+      - "e-cigarettes"
+      - "alcohol"
+      - "weapons and ammunition"
+      - "adult products"
+      - "gambling"
+      - "real-money games"
+      - "dating"
+      - "live animals"
+      - "body parts and fluids"
+      - "digital and subscription services with misleading terms"
+      - "multilevel marketing"
+  - id: PL-IN-WA-03
+    name: "Utility-template misuse"
+    match: "phrase"
+    severity: "Block in utility/authentication"
+    used_by: "004"
+    terms:
+      - "\"special offer\""
+      - "\"don't miss\""
+      - "\"exclusive deal\""
+      - "\"upgrade today\""
+      - "\"new arrivals\""
+```
 
 ### 11.15.7.11 Counsel sign-off block
 

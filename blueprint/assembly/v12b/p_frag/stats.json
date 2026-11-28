@@ -1,0 +1,72 @@
+{
+ "M": {
+  "params": 8,
+  "total": 179200,
+  "triples": 5435,
+  "rows": 231,
+  "ids": [
+   "TC-V12-P-001",
+   "TC-V12-P-231"
+  ],
+  "verdicts": {
+   "RECORD_ONLY": 53,
+   "DENY": 30,
+   "BLOCKED": 116,
+   "HOLD": 31,
+   "ROUTE": 1
+  },
+  "pairwise_rows": 39,
+  "pairs": 595
+ },
+ "C": {
+  "params": 8,
+  "total": 28800,
+  "triples": 2868,
+  "rows": 137,
+  "verdicts": {
+   "RECONCILING": 1,
+   "DENY": 87,
+   "HOLD": 40,
+   "AWAIT": 1,
+   "ESCALATE": 5,
+   "FAILED": 1,
+   "COUNTER": 2
+  },
+  "ids": [
+   "TC-V12-P-232",
+   "TC-V12-P-368"
+  ],
+  "pairwise_rows": 30,
+  "pairs": 390
+ },
+ "B": {
+  "params": 9,
+  "total": 15552,
+  "triples": 2226,
+  "rows": 75,
+  "verdicts": {
+   "DENY": 1,
+   "BLOCKED": 18,
+   "MANUAL": 9,
+   "EXPIRED": 20,
+   "HOLD": 19,
+   "ASSISTED": 8
+  },
+  "ids": [
+   "TC-V12-P-369",
+   "TC-V12-P-443"
+  ],
+  "pairwise_rows": 20,
+  "pairs": 322
+ },
+ "K": {
+  "params": 3,
+  "total": 64,
+  "rows": 64,
+  "ids": [
+   "TC-V12-P-444",
+   "TC-V12-P-507"
+  ]
+ },
+ "last_tc": 507
+}

@@ -1,0 +1,1912 @@
+[
+{
+"aspect_id": "R-DBA-0001",
+"doc": "BRD V12",
+"chapter": "01",
+"section": "Enterprise readiness by area",
+"aspect_summary": "Yes (DDL + RLS tested)",
+"status_before": "Partially covered",
+"core": true,
+"topic": "DBA"
+},
+{
+"aspect_id": "R-IDN-0001",
+"doc": "BRD V12",
+"chapter": "01",
+"section": "Enterprise readiness by area",
+"aspect_summary": "Identity: SSO, SCIM, MFA, sessions",
+"status_before": "Conflict",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-API-0001",
+"doc": "BRD V12",
+"chapter": "01",
+"section": "Enterprise readiness by area",
+"aspect_summary": "API platform, webhooks, SDKs, developer portal",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-CON-0001",
+"doc": "BRD V12",
+"chapter": "01",
+"section": "Enterprise readiness by area",
+"aspect_summary": "Integrations / connectors",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0002",
+"doc": "BRD V12",
+"chapter": "01",
+"section": "Enterprise readiness by area",
+"aspect_summary": "Yes (INT-01…11)",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-DR-0003",
+"doc": "BRD V12",
+"chapter": "01",
+"section": "V9 | Release baseline — promotion of retained specifications",
+"aspect_summary": "Recovery objectives DEC-V9-01 (critical RPO ≤15 min)",
+"status_before": "Conflict",
+"core": true,
+"topic": "DR"
+},
+{
+"aspect_id": "R-DBA-0002",
+"doc": "BRD V12",
+"chapter": "01",
+"section": "V8 | Executive change summary",
+"aspect_summary": "Appendices A–C: OpenAPI 3.1, JSON Schemas for 156 workflow DTOs, PostgreSQL DDL with RLS.",
+"status_before": "Partially covered",
+"core": true,
+"topic": "DBA"
+},
+{
+"aspect_id": "R-MDL-0001",
+"doc": "BRD V12",
+"chapter": "01",
+"section": "V8 | Executive change summary",
+"aspect_summary": "Model registry and routing, prompt registry, 156 evaluation suites, injection threat model, cost per tenant; A114–A117, W36.",
+"status_before": "Conflict",
+"core": true,
+"topic": "MDL"
+},
+{
+"aspect_id": "R-BEN-0001",
+"doc": "BRD V12",
+"chapter": "01",
+"section": "Governing business changes — stable inherited requirement IDs",
+"aspect_summary": "Revocation and cross-tenant negative tests",
+"status_before": "Partially covered",
+"core": true,
+"topic": "BEN"
+},
+{
+"aspect_id": "R-IDN-0004",
+"doc": "BRD V12",
+"chapter": "05",
+"section": "V12 | Enterprise business requirements",
+"aspect_summary": "ENT-IDN-01…06",
+"status_before": "Partially covered",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0005",
+"doc": "BRD V12",
+"chapter": "05",
+"section": "V12 | Enterprise business requirements",
+"aspect_summary": "ENT-ACC-01…05",
+"status_before": "Conflict",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-API-0002",
+"doc": "BRD V12",
+"chapter": "05",
+"section": "V12 | Enterprise business requirements",
+"aspect_summary": "Customers integrate through a documented, versioned API, signed webhooks and SDKs, testing first in a sandbox.",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-API-0003",
+"doc": "BRD V12",
+"chapter": "05",
+"section": "V12 | Enterprise business requirements",
+"aspect_summary": "ENT-API-01…07",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-CON-0005",
+"doc": "BRD V12",
+"chapter": "05",
+"section": "V12 | Enterprise business requirements",
+"aspect_summary": "Customers connect their CRM, messaging, calendar, advertising, payment and warehouse tools through reviewed connectors.",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0006",
+"doc": "BRD V12",
+"chapter": "05",
+"section": "V12 | Enterprise business requirements",
+"aspect_summary": "ENT-INT-01…05",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0007",
+"doc": "BRD V12",
+"chapter": "06",
+"section": "V5 optimization requirements and controls",
+"aspect_summary": "Tenant is the contractual customer organization; company is a scoped operating business within the tenant. Default one independently subscribed customer per tenant; multi-company enterprise arrangement explicitly contracted. Portfolio grant is a separate administrative relationship, not tenant membership. Operator and subscriber metrics, receivables, CRM, support, orders and invoices must be separ",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-BEN-0003",
+"doc": "BRD V12",
+"chapter": "18",
+"section": "V5 optimization requirements and controls",
+"aspect_summary": "Acceptance OPT-TC-FL-10: Unsubscribed child held; authorized event uses scoped input without cross-tenant leakage.",
+"status_before": "Partially covered",
+"core": true,
+"topic": "BEN"
+},
+{
+"aspect_id": "R-CON-0054",
+"doc": "BRD V12",
+"chapter": "20",
+"section": "V8 | Compliance & jurisdiction — business requirements",
+"aspect_summary": "SMS and voice use registered DLT entities, headers and templates, scrub preference registries and correct number series.",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0055",
+"doc": "BRD V12",
+"chapter": "20",
+"section": "Obligations by jurisdiction (summary)",
+"aspect_summary": "Commercial communication needs registered entity, header and content template on DLT; promotional sends scrubbed against the customer preference registry; promotional time window.",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-DBA-0003",
+"doc": "BRD V12",
+"chapter": "20",
+"section": "V5 optimization requirements and controls",
+"aspect_summary": "Requirement: Use non-owner app role, RLS, scoped keys and transaction-local context; deny missing scope.",
+"status_before": "Partially covered",
+"core": true,
+"topic": "DBA"
+},
+{
+"aspect_id": "R-DR-0004",
+"doc": "BRD V12",
+"chapter": "21",
+"section": "V9 | Recovery objectives (DEC-V9-01)",
+"aspect_summary": "RPO",
+"status_before": "Conflict",
+"core": true,
+"topic": "DR"
+},
+{
+"aspect_id": "R-DR-0007",
+"doc": "BRD V12",
+"chapter": "21",
+"section": "V5 optimization requirements and controls",
+"aspect_summary": "Requirement: Encrypt backups, test restore with integrity and scope checks; approve RPO/RTO.",
+"status_before": "Conflict",
+"core": true,
+"topic": "DR"
+},
+{
+"aspect_id": "R-DR-0008",
+"doc": "BRD V12",
+"chapter": "21",
+"section": "V5 optimization requirements and controls",
+"aspect_summary": "Acceptance OPT-TC-ST-14: Restore drill meets agreed RPO/RTO or raises release blocker.",
+"status_before": "Conflict",
+"core": true,
+"topic": "DR"
+},
+{
+"aspect_id": "R-CON-0057",
+"doc": "BRD V12",
+"chapter": "21",
+"section": "V5 optimization requirements and controls",
+"aspect_summary": "Authorized source, usable inputs, configuration, consent, connector grants, approvals, lawful use and timely issue reporting.",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-BEN-0004",
+"doc": "BRD V12",
+"chapter": "22",
+"section": "V9 | Release KPIs (KPI-01…35)",
+"aspect_summary": "Successful unauthorized cross-tenant access",
+"status_before": "Partially covered",
+"core": true,
+"topic": "BEN"
+},
+{
+"aspect_id": "R-DR-0009",
+"doc": "BRD V12",
+"chapter": "22",
+"section": "V9 | Release KPIs (KPI-01…35)",
+"aspect_summary": "Critical RPO",
+"status_before": "Conflict",
+"core": true,
+"topic": "DR"
+},
+{
+"aspect_id": "R-DR-0012",
+"doc": "BRD V12",
+"chapter": "22",
+"section": "V9 | Release KPIs (KPI-01…35)",
+"aspect_summary": "Regenerable data RPO",
+"status_before": "Conflict",
+"core": true,
+"topic": "DR"
+},
+{
+"aspect_id": "R-CON-0058",
+"doc": "BRD V12",
+"chapter": "22",
+"section": "V5 optimization requirements and controls",
+"aspect_summary": "Qualified opportunity count / eligible lead cohort; CRM monthly",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0059",
+"doc": "BRD V12",
+"chapter": "22",
+"section": "V5 optimization requirements and controls",
+"aspect_summary": "Won / closed eligible deals; CRM monthly",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-IDN-0008",
+"doc": "BRD V12",
+"chapter": "23",
+"section": "V12 | Enterprise-readiness roadmap",
+"aspect_summary": "SIT green (1,342 workflow + 517 step tests); RLS and SoD suites pass; SBOM per build.",
+"status_before": "Partially covered",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0009",
+"doc": "BRD V12",
+"chapter": "23",
+"section": "V12 | Enterprise-readiness roadmap",
+"aspect_summary": "SSO/MFA, audit, API keys, webhooks, exports, connectors for email/WhatsApp/SMS-DLT/CRM; India jurisdiction pack legally approved.",
+"status_before": "Partially covered",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-CON-0060",
+"doc": "BRD V12",
+"chapter": "23",
+"section": "V12 | Enterprise-readiness roadmap",
+"aspect_summary": "UAT-E2E-01 and XS-01…10 pass; pen test #1 no open critical/high; DLT live; DPIA (India) done.",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-IDN-0010",
+"doc": "BRD V12",
+"chapter": "23",
+"section": "V12 | Enterprise-readiness roadmap",
+"aspect_summary": "Billing and tax live, status page, support desk, SLA tiers, custom roles, SCIM, sandbox; WCAG 2.2 AA manual audit.",
+"status_before": "Conflict",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-API-0005",
+"doc": "BRD V12",
+"chapter": "23",
+"section": "V12 | Enterprise-readiness roadmap",
+"aspect_summary": "EU region, GDPR/ePrivacy/AI Act assessments, German/French locales, BYOK, SDKs, bug bounty.",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-IDN-0011",
+"doc": "BRD V12",
+"chapter": "25",
+"section": "V12 | Decisions",
+"aspect_summary": "Identity providers and SCIM scope for R1/R2",
+"status_before": "Conflict",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0012",
+"doc": "BRD V12",
+"chapter": "25",
+"section": "V12 | Decisions",
+"aspect_summary": "Okta, Entra ID and Google first; SCIM at R2",
+"status_before": "Conflict",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-DR-0019",
+"doc": "BRD V12",
+"chapter": "25",
+"section": "V9 | Decisions",
+"aspect_summary": "Adopt the stricter retained targets (table above); supersedes RPO 1 h proposal",
+"status_before": "Conflict",
+"core": true,
+"topic": "DR"
+},
+{
+"aspect_id": "R-MDL-0003",
+"doc": "BRD V12",
+"chapter": "25",
+"section": "V8 | Decisions required",
+"aspect_summary": "DEC-V7-02",
+"status_before": "Conflict",
+"core": true,
+"topic": "MDL"
+},
+{
+"aspect_id": "R-REG-0006",
+"doc": "BRD V12",
+"chapter": "25",
+"section": "V8 | Decisions required",
+"aspect_summary": "One provider with an India region and an EU region; managed PostgreSQL with PITR; container platform (managed Kubernetes or equivalent).",
+"status_before": "Conflict",
+"core": true,
+"topic": "REG"
+},
+{
+"aspect_id": "R-CON-0061",
+"doc": "BRD V12",
+"chapter": "25",
+"section": "V8 | Decisions required",
+"aspect_summary": "DLT operator and preference-registry integration",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0062",
+"doc": "BRD V12",
+"chapter": "25",
+"section": "V8 | Decisions required",
+"aspect_summary": "Select telecom/DLT partner; define scrubbing API.",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-DBA-0004",
+"doc": "BRD V12",
+"chapter": "25",
+"section": "Outstanding production decisions and ownership",
+"aspect_summary": "Review proposed OpenAPI/DTO and physical schema, migration, scoped RLS, atomic usage and outbox/effect ledger.",
+"status_before": "Partially covered",
+"core": true,
+"topic": "DBA"
+},
+{
+"aspect_id": "R-DBA-0005",
+"doc": "FSD V12",
+"chapter": "01",
+"section": "V8 | Change control, verified inventory and artifact integrity",
+"aspect_summary": "29 core + V7/V8 tables and 89 domain tables with RLS; applied to PostgreSQL 16.15 and constraint-tested",
+"status_before": "Partially covered",
+"core": true,
+"topic": "DBA"
+},
+{
+"aspect_id": "R-CON-0063",
+"doc": "FSD V12",
+"chapter": "02",
+"section": "V8 | Deployment topology and runtime architecture",
+"aspect_summary": "Email, SMS (DLT), voice (140/160 series), WhatsApp, social, CRM, payments",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-DBA-0006",
+"doc": "FSD V12",
+"chapter": "02",
+"section": "V8 | Deployment topology and runtime architecture",
+"aspect_summary": "System of record with RLS",
+"status_before": "Partially covered",
+"core": true,
+"topic": "DBA"
+},
+{
+"aspect_id": "R-DR-0021",
+"doc": "FSD V12",
+"chapter": "02",
+"section": "V8 | Deployment topology and runtime architecture",
+"aspect_summary": "Per-region cluster; PITR; non-owner app role",
+"status_before": "Conflict",
+"core": true,
+"topic": "DR"
+},
+{
+"aspect_id": "R-CON-0065",
+"doc": "FSD V12",
+"chapter": "05",
+"section": "V6 | Universal architecture and controlled requirements",
+"aspect_summary": "Isolation contract: All canonical entities carry trusted tenant_id; company-scoped objects carry company_id with composite foreign keys and authorization. Distinguish tenant membership from authorized company membership and portfolio grant. Use server-derived session context, RLS non-owner role, cache/storage/vector keys and worker scope. Portfolio grant is scoped to approved aggregate dimensions;",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-DBA-0007",
+"doc": "FSD V12",
+"chapter": "05",
+"section": "V5 optimization requirements and controls",
+"aspect_summary": "Scope all records by tenant_id/company_id; validate company belongs to tenant; composite scoped FK and unique constraints where required. RLS with transaction-local trusted context and non-owner application role; deny absent context; background workers same restrictions; isolate object paths, vector filters and cache keys; support grant audited. Test pooling and context reset. No global search of ",
+"status_before": "Partially covered",
+"core": true,
+"topic": "DBA"
+},
+{
+"aspect_id": "R-IDN-0013",
+"doc": "FSD V12",
+"chapter": "06",
+"section": "V12 | Enterprise identity and governed access",
+"aspect_summary": "ENT-IDN-01",
+"status_before": "Partially covered",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0014",
+"doc": "FSD V12",
+"chapter": "06",
+"section": "V12 | Enterprise identity and governed access",
+"aspect_summary": "SAML 2.0 and OpenID Connect SSO per tenant, configured by the tenant administrator.",
+"status_before": "Partially covered",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0015",
+"doc": "FSD V12",
+"chapter": "06",
+"section": "V12 | Enterprise identity and governed access",
+"aspect_summary": "ENT-IDN-02",
+"status_before": "Partially covered",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0016",
+"doc": "FSD V12",
+"chapter": "06",
+"section": "V12 | Enterprise identity and governed access",
+"aspect_summary": "Verified email domains (DNS TXT) before SSO can be enforced for that domain.",
+"status_before": "Partially covered",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0017",
+"doc": "FSD V12",
+"chapter": "06",
+"section": "V12 | Enterprise identity and governed access",
+"aspect_summary": "ENT-IDN-03",
+"status_before": "Conflict",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0018",
+"doc": "FSD V12",
+"chapter": "06",
+"section": "V12 | Enterprise identity and governed access",
+"aspect_summary": "SCIM 2.0 user and group provisioning and de-provisioning; de-provisioned users lose sessions and API access.",
+"status_before": "Conflict",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0019",
+"doc": "FSD V12",
+"chapter": "06",
+"section": "V12 | Enterprise identity and governed access",
+"aspect_summary": "IdP removal revokes access within 15 minutes (proposed); SCIM conformance suite passes.",
+"status_before": "Conflict",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0020",
+"doc": "FSD V12",
+"chapter": "06",
+"section": "V12 | Enterprise identity and governed access",
+"aspect_summary": "ENT-IDN-04",
+"status_before": "Partially covered",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0022",
+"doc": "FSD V12",
+"chapter": "06",
+"section": "V12 | Enterprise identity and governed access",
+"aspect_summary": "ENT-IDN-05",
+"status_before": "Partially covered",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0023",
+"doc": "FSD V12",
+"chapter": "06",
+"section": "V12 | Enterprise identity and governed access",
+"aspect_summary": "ENT-IDN-06",
+"status_before": "Partially covered",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0024",
+"doc": "FSD V12",
+"chapter": "06",
+"section": "V12 | Enterprise identity and governed access",
+"aspect_summary": "Break-glass administrator required before SSO enforcement; every use alerts and is audited.",
+"status_before": "Partially covered",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0026",
+"doc": "FSD V12",
+"chapter": "06",
+"section": "V12 | Enterprise identity and governed access",
+"aspect_summary": "ENT-ACC-01",
+"status_before": "Conflict",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-MDL-0005",
+"doc": "FSD V12",
+"chapter": "16",
+"section": "V8 | AI engineering specification",
+"aspect_summary": "This section is the controlling AI specification. It turns the V5 optimization intent (AI-01…AI-15) into implementable contracts. No provider or model is approved; candidates are evaluated under DEC-V7-02.",
+"status_before": "Conflict",
+"core": true,
+"topic": "MDL"
+},
+{
+"aspect_id": "R-MDL-0006",
+"doc": "FSD V12",
+"chapter": "16",
+"section": "16.2 Model registry and routing",
+"aspect_summary": "MDL-R0",
+"status_before": "Conflict",
+"core": true,
+"topic": "MDL"
+},
+{
+"aspect_id": "R-MDL-0007",
+"doc": "FSD V12",
+"chapter": "16",
+"section": "16.2 Model registry and routing",
+"aspect_summary": "MDL-S1",
+"status_before": "Conflict",
+"core": true,
+"topic": "MDL"
+},
+{
+"aspect_id": "R-MDL-0008",
+"doc": "FSD V12",
+"chapter": "16",
+"section": "16.2 Model registry and routing",
+"aspect_summary": "Candidate — not approved",
+"status_before": "Conflict",
+"core": true,
+"topic": "MDL"
+},
+{
+"aspect_id": "R-MDL-0009",
+"doc": "FSD V12",
+"chapter": "16",
+"section": "16.2 Model registry and routing",
+"aspect_summary": "MDL-M1",
+"status_before": "Conflict",
+"core": true,
+"topic": "MDL"
+},
+{
+"aspect_id": "R-MDL-0010",
+"doc": "FSD V12",
+"chapter": "16",
+"section": "16.2 Model registry and routing",
+"aspect_summary": "MDL-L1",
+"status_before": "Conflict",
+"core": true,
+"topic": "MDL"
+},
+{
+"aspect_id": "R-MDL-0011",
+"doc": "FSD V12",
+"chapter": "16",
+"section": "16.2 Model registry and routing",
+"aspect_summary": "MDL-E1",
+"status_before": "Conflict",
+"core": true,
+"topic": "MDL"
+},
+{
+"aspect_id": "R-MDL-0012",
+"doc": "FSD V12",
+"chapter": "16",
+"section": "16.2 Model registry and routing",
+"aspect_summary": "MDL-G1",
+"status_before": "Conflict",
+"core": true,
+"topic": "MDL"
+},
+{
+"aspect_id": "R-MDL-0014",
+"doc": "FSD V12",
+"chapter": "16",
+"section": "16.2 Model registry and routing",
+"aspect_summary": "Approval evidence: passing suites (16.4), red-team pass (16.5), signed DPA with no-training clause, retention and region, cost per accepted result, latency p95, security review.",
+"status_before": "Conflict",
+"core": true,
+"topic": "MDL"
+},
+{
+"aspect_id": "R-CON-0103",
+"doc": "FSD V12",
+"chapter": "16",
+"section": "16.5 Prompt-injection and AI security threat model",
+"aspect_summary": "CRM free-text field",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-MDL-0016",
+"doc": "FSD V12",
+"chapter": "16",
+"section": "16.5 Prompt-injection and AI security threat model",
+"aspect_summary": "MDL-G1 screens inbound content and outputs; flags go to reviewer, not silently dropped.",
+"status_before": "Conflict",
+"core": true,
+"topic": "MDL"
+},
+{
+"aspect_id": "R-MDL-0019",
+"doc": "FSD V12",
+"chapter": "16",
+"section": "16.8 AI requirements register",
+"aspect_summary": "Model registry",
+"status_before": "Conflict",
+"core": true,
+"topic": "MDL"
+},
+{
+"aspect_id": "R-CON-0104",
+"doc": "FSD V12",
+"chapter": "16",
+"section": "16.8 AI requirements register",
+"aspect_summary": "Web, email, messages, documents, CRM free text, tool outputs and counterparty agents are delimited as data, never instructions.",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-BEN-0006",
+"doc": "FSD V12",
+"chapter": "16",
+"section": "16.8 AI requirements register",
+"aspect_summary": "Cache key includes tenant and policy version; no cross-tenant hit.",
+"status_before": "Partially covered",
+"core": true,
+"topic": "BEN"
+},
+{
+"aspect_id": "R-MDL-0021",
+"doc": "FSD V12",
+"chapter": "16",
+"section": "16.8 AI requirements register",
+"aspect_summary": "UI mapping. Admin: A114 model registry, A115 evaluation, A116 injection defence, A117 cost per tenant. Website: W36 AI transparency; AI-generated sample outputs labelled.",
+"status_before": "Conflict",
+"core": true,
+"topic": "MDL"
+},
+{
+"aspect_id": "R-REG-0010",
+"doc": "FSD V12",
+"chapter": "16",
+"section": "V5 optimization requirements and controls",
+"aspect_summary": "Routing and evaluation: Version model capability, model price, locale, data residency, context limit, output schema, evaluated quality, latency, provider and allowed data classes. Choose eligible cheapest quality-adjusted cost using fixed benchmark; when validation fails, escalate once under approved policy and remaining cap or hold. No actual provider/model selection is approved by illustrative s",
+"status_before": "Partially covered",
+"core": true,
+"topic": "REG"
+},
+{
+"aspect_id": "R-CON-0105",
+"doc": "FSD V12",
+"chapter": "18",
+"section": "18.1 Rule register (Admin A118)",
+"aspect_summary": "HOLD if DLT unregistered, unscrubbed, or outside window",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0106",
+"doc": "FSD V12",
+"chapter": "18",
+"section": "18.2 Send preflight decision table",
+"aspect_summary": "SMS/Voice, DLT entity/header/template not registered",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0108",
+"doc": "FSD V12",
+"chapter": "18",
+"section": "18.4 Compliance requirements register",
+"aspect_summary": "Every external-effect step calls preflight with market, channel, purpose, consent, age signal, local time, DLT/registry status and AI disclosure; HOLD/REVIEW blocks dispatch.",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0109",
+"doc": "FSD V12",
+"chapter": "18",
+"section": "18.4 Compliance requirements register",
+"aspect_summary": "DLT and registry integration (IN)",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0110",
+"doc": "FSD V12",
+"chapter": "18",
+"section": "18.4 Compliance requirements register",
+"aspect_summary": "Store DLT entity/header/template IDs per channel account; scrub promotional SMS/voice against the preference registry before dispatch.",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-IDN-0035",
+"doc": "FSD V12",
+"chapter": "22",
+"section": "V12 | Enterprise screens and routes",
+"aspect_summary": "Identity, SSO, SCIM & MFA",
+"status_before": "Conflict",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0037",
+"doc": "FSD V12",
+"chapter": "22",
+"section": "V12 | Enterprise screens and routes",
+"aspect_summary": "ENT-ACC-01, 02",
+"status_before": "Conflict",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-API-0006",
+"doc": "FSD V12",
+"chapter": "22",
+"section": "V12 | Enterprise screens and routes",
+"aspect_summary": "API keys & webhooks",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-API-0007",
+"doc": "FSD V12",
+"chapter": "22",
+"section": "V12 | Enterprise screens and routes",
+"aspect_summary": "ENT-API-01, 05",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-API-0010",
+"doc": "FSD V12",
+"chapter": "22",
+"section": "V12 | Enterprise screens and routes",
+"aspect_summary": "ENT-API-04, 06, 07",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-IDN-0039",
+"doc": "FSD V12",
+"chapter": "22",
+"section": "V5 optimization requirements and controls",
+"aspect_summary": "Operator manages neutral catalogue, plan versions, account verification, billing, provider health, support tickets, incidents and release gates. No default ability to read tenant CRM or data. Access by scoped ticket grant; break-glass reason, expiry, audit and review.",
+"status_before": "Conflict",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-CON-0135",
+"doc": "FSD V12",
+"chapter": "23",
+"section": "V6 | Universal architecture and controlled requirements",
+"aspect_summary": "Command Centre alignment: A089 prominent business context, explicit demo company switch and business/market filters. ORG dynamic private manager accessible from navigation and authorized configuration screens. Portfolio selector uses granted companies only; operator sees configuration but not raw customer CRM. All 14 views and nine V5 optimization laboratories retained. The 17 new context filter c",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-BEN-0008",
+"doc": "FSD V12",
+"chapter": "23",
+"section": "Command Centre view and filter contract",
+"aspect_summary": "Portfolio filter restricts company list to explicit grants; aggregated metrics query on permission-approved company set, never cross-tenant raw join without grant. Show scope/time/currency; revocation invalidates caches; drilldown separate authorization; export audited.",
+"status_before": "Partially covered",
+"core": true,
+"topic": "BEN"
+},
+{
+"aspect_id": "R-API-0011",
+"doc": "FSD V12",
+"chapter": "25",
+"section": "V12 | Developer platform",
+"aspect_summary": "ENT-API-01",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-API-0012",
+"doc": "FSD V12",
+"chapter": "25",
+"section": "V12 | Developer platform",
+"aspect_summary": "Scoped, expiring API keys; stored as hash, shown once; optional IPv4/IPv6 allowlist; rotation and revocation.",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-API-0013",
+"doc": "FSD V12",
+"chapter": "25",
+"section": "V12 | Developer platform",
+"aspect_summary": "ENT-API-02",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-API-0015",
+"doc": "FSD V12",
+"chapter": "25",
+"section": "V12 | Developer platform",
+"aspect_summary": "ENT-API-03",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-API-0017",
+"doc": "FSD V12",
+"chapter": "25",
+"section": "V12 | Developer platform",
+"aspect_summary": "ENT-API-04",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-API-0019",
+"doc": "FSD V12",
+"chapter": "25",
+"section": "V12 | Developer platform",
+"aspect_summary": "ENT-API-05",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-API-0020",
+"doc": "FSD V12",
+"chapter": "25",
+"section": "V12 | Developer platform",
+"aspect_summary": "ENT-API-06",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-API-0021",
+"doc": "FSD V12",
+"chapter": "25",
+"section": "V12 | Developer platform",
+"aspect_summary": "SDKs for TypeScript, Python and Java generated from the OpenAPI contract.",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-API-0022",
+"doc": "FSD V12",
+"chapter": "25",
+"section": "V12 | Developer platform",
+"aspect_summary": "SDK contract tests pass against sandbox.",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-API-0023",
+"doc": "FSD V12",
+"chapter": "25",
+"section": "V12 | Developer platform",
+"aspect_summary": "ENT-API-07",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-API-0024",
+"doc": "FSD V12",
+"chapter": "25",
+"section": "V12 | Developer platform",
+"aspect_summary": "Developer portal with API reference, guides and sandbox access.",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-MDL-0024",
+"doc": "FSD V12",
+"chapter": "25",
+"section": "V8 | API convention and new operations",
+"aspect_summary": "List model registry entries (AIX-02)",
+"status_before": "Conflict",
+"core": true,
+"topic": "MDL"
+},
+{
+"aspect_id": "R-CON-0140",
+"doc": "FSD V12",
+"chapter": "25",
+"section": "MT-36 — Canonical API and DB contracts",
+"aspect_summary": "Versioned scoped graph; no CRM payload",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0141",
+"doc": "FSD V12",
+"chapter": "25",
+"section": "V5 optimization requirements and controls",
+"aspect_summary": "API-V2-WEBHOOK POST /api/v2/connectors/{kind}/events",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-API-0025",
+"doc": "FSD V12",
+"chapter": "25",
+"section": "V5 optimization requirements and controls",
+"aspect_summary": "Internal adapter; Upload, fetch and parse approved knowledge; storage SDK and local parser",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-CON-0142",
+"doc": "FSD V12",
+"chapter": "25",
+"section": "V5 optimization requirements and controls",
+"aspect_summary": "Admin; List safe connector metadata",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0143",
+"doc": "FSD V12",
+"chapter": "25",
+"section": "V5 optimization requirements and controls",
+"aspect_summary": "Admin; Test authorized connector",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0144",
+"doc": "FSD V12",
+"chapter": "25",
+"section": "V5 optimization requirements and controls",
+"aspect_summary": "Admin; Disable connector",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-DBA-0008",
+"doc": "FSD V12",
+"chapter": "26",
+"section": "V12 | Data control and enterprise schema",
+"aspect_summary": "Appendix C2 adds 19 tables with 14 row-level security policies, applied on top of Appendix C in PostgreSQL 16 (137 tables, 120 policies). Tests:",
+"status_before": "Partially covered",
+"core": true,
+"topic": "DBA"
+},
+{
+"aspect_id": "R-IDN-0048",
+"doc": "FSD V12",
+"chapter": "26",
+"section": "V12 | Data control and enterprise schema",
+"aspect_summary": "SSO enforced without verified domain / break-glass",
+"status_before": "Partially covered",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-CON-0145",
+"doc": "FSD V12",
+"chapter": "26",
+"section": "V12 | Data control and enterprise schema",
+"aspect_summary": "Production connector without legal and security review",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-API-0029",
+"doc": "FSD V12",
+"chapter": "26",
+"section": "V12 | Data control and enterprise schema",
+"aspect_summary": "Tenant B reads tenant A API keys; query without context",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-DBA-0009",
+"doc": "FSD V12",
+"chapter": "26",
+"section": "V8 | Schema additions and verification",
+"aspect_summary": "Rejected (RLS WITH CHECK)",
+"status_before": "Partially covered",
+"core": true,
+"topic": "DBA"
+},
+{
+"aspect_id": "R-BEN-0009",
+"doc": "FSD V12",
+"chapter": "26",
+"section": "MT-33 — Canonical master data",
+"aspect_summary": "Composite FK organization; no cross-tenant parents",
+"status_before": "Partially covered",
+"core": true,
+"topic": "BEN"
+},
+{
+"aspect_id": "R-DBA-0010",
+"doc": "FSD V12",
+"chapter": "26",
+"section": "V5 optimization requirements and controls",
+"aspect_summary": "Proposed physical schema additions: Do not execute these design proposals as DDL. Reconcile with existing 149 historical entities and actual schema. Use scoped UUID/FKs, RLS with trusted transaction context, uniqueness and retention policies. Currency amounts in integer minor units with currency; units and rates use exact decimal. Encrypt sensitive references, store no raw credentials.",
+"status_before": "Partially covered",
+"core": true,
+"topic": "DBA"
+},
+{
+"aspect_id": "R-DBA-0011",
+"doc": "FSD V12",
+"chapter": "26",
+"section": "V5 optimization requirements and controls",
+"aspect_summary": "Proposed common physical design (review before migrations): uuid IDs, scoped FK, UTC timestamps, optimistic version, immutable posted audit/ledger, no secrets in payload. For every table, indexes (tenant_id, company_id, state, updated_at) as query requires; uniqueness tenant/company + source identity; RLS deny missing context; retention by category and legal hold.",
+"status_before": "Partially covered",
+"core": true,
+"topic": "DBA"
+},
+{
+"aspect_id": "R-DBA-0012",
+"doc": "FSD V12",
+"chapter": "26",
+"section": "Domain schema procurement — SM-SVC-39",
+"aspect_summary": "Candidate review schema only; actual nullability, FK, RLS, index, retention and identity approval pending",
+"status_before": "Partially covered",
+"core": true,
+"topic": "DBA"
+},
+{
+"aspect_id": "R-BEN-0010",
+"doc": "FSD V12",
+"chapter": "26",
+"section": "Domain schema procurement — SM-SVC-39",
+"aspect_summary": "legal_name text; kind owned/client; state trial/active/suspended/offboarding/closed; region; policy jsonb; Unique tenant slug; no default cross-tenant access",
+"status_before": "Partially covered",
+"core": true,
+"topic": "BEN"
+},
+{
+"aspect_id": "R-DBA-0013",
+"doc": "FSD V12",
+"chapter": "26",
+"section": "Proposed V4 persistence additions",
+"aspect_summary": "Extend the existing schema after migration review; do not execute draft DDL. All private keys include tenant/company scope and appropriate RLS, indexes, retention and audit.",
+"status_before": "Partially covered",
+"core": true,
+"topic": "DBA"
+},
+{
+"aspect_id": "R-CON-0146",
+"doc": "FSD V12",
+"chapter": "27",
+"section": "V12 | Connector catalogue and adapter contract",
+"aspect_summary": "ENT-INT-01",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0148",
+"doc": "FSD V12",
+"chapter": "27",
+"section": "V12 | Connector catalogue and adapter contract",
+"aspect_summary": "Every connector passes contract tests in sandbox.",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0149",
+"doc": "FSD V12",
+"chapter": "27",
+"section": "V12 | Connector catalogue and adapter contract",
+"aspect_summary": "ENT-INT-02",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0150",
+"doc": "FSD V12",
+"chapter": "27",
+"section": "V12 | Connector catalogue and adapter contract",
+"aspect_summary": "ENT-INT-03",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0151",
+"doc": "FSD V12",
+"chapter": "27",
+"section": "V12 | Connector catalogue and adapter contract",
+"aspect_summary": "Per-connector rate limits, backoff and circuit breaker; uncertain writes reconcile before retry.",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0152",
+"doc": "FSD V12",
+"chapter": "27",
+"section": "V12 | Connector catalogue and adapter contract",
+"aspect_summary": "ENT-INT-04",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0154",
+"doc": "FSD V12",
+"chapter": "27",
+"section": "V12 | Connector catalogue and adapter contract",
+"aspect_summary": "ENT-INT-05",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0155",
+"doc": "FSD V12",
+"chapter": "27",
+"section": "V12 | Connector catalogue and adapter contract",
+"aspect_summary": "Activation gate: security review, DPA, transfer basis (CJ-R15) and channel registration (DLT, WhatsApp templates).",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0156",
+"doc": "FSD V12",
+"chapter": "27",
+"section": "V12 | Connector catalogue and adapter contract",
+"aspect_summary": "Contact-data connectors stay blocked until DEC-V9-04 closes.",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0157",
+"doc": "FSD V12",
+"chapter": "27",
+"section": "V12 | Connector catalogue and adapter contract",
+"aspect_summary": "INT-01",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-API-0030",
+"doc": "FSD V12",
+"chapter": "27",
+"section": "V12 | Connector catalogue and adapter contract",
+"aspect_summary": "API key in vault",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-CON-0159",
+"doc": "FSD V12",
+"chapter": "27",
+"section": "V12 | Connector catalogue and adapter contract",
+"aspect_summary": "INT-03",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0160",
+"doc": "FSD V12",
+"chapter": "27",
+"section": "V12 | Connector catalogue and adapter contract",
+"aspect_summary": "INT-04",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0161",
+"doc": "FSD V12",
+"chapter": "27",
+"section": "V12 | Connector catalogue and adapter contract",
+"aspect_summary": "DLT-registered telecom aggregator",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-API-0031",
+"doc": "FSD V12",
+"chapter": "27",
+"section": "V12 | Connector catalogue and adapter contract",
+"aspect_summary": "API key",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-CON-0162",
+"doc": "FSD V12",
+"chapter": "27",
+"section": "V12 | Connector catalogue and adapter contract",
+"aspect_summary": "INT-05",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-IDN-0050",
+"doc": "FSD V12",
+"chapter": "27",
+"section": "V12 | Connector catalogue and adapter contract",
+"aspect_summary": "SAML / OIDC / SCIM",
+"status_before": "Conflict",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0051",
+"doc": "FSD V12",
+"chapter": "27",
+"section": "V12 | Connector catalogue and adapter contract",
+"aspect_summary": "SSO and provisioning (A122)",
+"status_before": "Partially covered",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-CON-0170",
+"doc": "FSD V12",
+"chapter": "28",
+"section": "V9 | Paid plugin replacement register",
+"aspect_summary": "CRM / relationship pipeline — Use capability-level native/OSS implementation; benchmark exact functionality and leave disabled until needed.",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0171",
+"doc": "FSD V12",
+"chapter": "28",
+"section": "V9 | Paid plugin replacement register",
+"aspect_summary": "monday CRM",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-API-0032",
+"doc": "FSD V12",
+"chapter": "28",
+"section": "V9 | Paid plugin replacement register",
+"aspect_summary": "Agent SDK Dev",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-CON-0172",
+"doc": "FSD V12",
+"chapter": "28",
+"section": "V5 optimization requirements and controls",
+"aspect_summary": "538 historical plugin candidates are research, not a procurement order. Prefer native policy/billing/CRM/orchestration; established open-source infrastructure where licence and TCO approved; paid APIs where authorized data or provider access cannot be replaced. Matched benchmark compares coverage, accuracy, p95, reliability, licence, hosting/maintenance and fees; blocked until evidence. Full origi",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-DBA-0014",
+"doc": "FSD V12",
+"chapter": "31",
+"section": "V5 optimization requirements and controls",
+"aspect_summary": "Security release rule: SEC-01–15 refine inherited BR-C05/06/09/11/13. Server-side authorization, non-owner RLS, secret vault, approved outbound gateway, malicious file quarantine, prompt/tool separation and redacted audit are mandatory. A089 policy checklist demonstrates denial on unchecked fixture gates; it does not enforce real identity or detect malicious content. Production penetration, depend",
+"status_before": "Partially covered",
+"core": true,
+"topic": "DBA"
+},
+{
+"aspect_id": "R-IDN-0053",
+"doc": "FSD V12",
+"chapter": "31",
+"section": "V5 optimization requirements and controls",
+"aspect_summary": "Threats: cross-tenant object leakage, privilege escalation, prompt injection, malicious uploads, SSRF, webhook spoof/replay, credential theft, duplicate financial effects, billing abuse, unsafe external actions. Controls: object permissions/RLS, scoped vector/storage/cache, MFA, secret rotation, egress allowlists, malware scanning, signed callbacks, rate limits, policy rechecks and redacted audit.",
+"status_before": "Partially covered",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-DR-0022",
+"doc": "FSD V12",
+"chapter": "32",
+"section": "V5 optimization requirements and controls",
+"aspect_summary": "Reliability release rule: Use error-specific recovery: invalid input hold; read retry bounded; uncertain external write reconcile before retry; circuit-open defer until approved probe; crash after checkpoint resume incomplete safe step; saturation backpressure. Candidate core SLO 99.9% monthly, lightweight p95 500 ms, critical RPO ≤15 min/RTO ≤4 h (DEC-V9-01) subject to and measured drills. A089 l",
+"status_before": "Conflict",
+"core": true,
+"topic": "DR"
+},
+{
+"aspect_id": "R-DR-0028",
+"doc": "FSD V12",
+"chapter": "36",
+"section": "V10 | Source environment configuration controls",
+"aspect_summary": "Approved RPO/RTO",
+"status_before": "Conflict",
+"core": true,
+"topic": "DR"
+},
+{
+"aspect_id": "R-DBA-0016",
+"doc": "FSD V12",
+"chapter": "36",
+"section": "V8 | CI/CD pipeline and infrastructure",
+"aspect_summary": "Security: SAST, DAST on SIT, RLS negative suite (DB-T1…T9 extended), AI-INJ suite.",
+"status_before": "Partially covered",
+"core": true,
+"topic": "DBA"
+},
+{
+"aspect_id": "R-DR-0029",
+"doc": "FSD V12",
+"chapter": "36",
+"section": "V8 | CI/CD pipeline and infrastructure",
+"aspect_summary": "Critical RPO ≤15 min / RTO ≤4 h; growth RTO ≤2 h; regenerable 24 h / 8 h (DEC-V9-01)",
+"status_before": "Conflict",
+"core": true,
+"topic": "DR"
+},
+{
+"aspect_id": "R-DR-0030",
+"doc": "FSD V12",
+"chapter": "38",
+"section": "V10 | Source migration and recovery implementation gates",
+"aspect_summary": "Encrypted automated backup plus point-in-time recovery; verify archive checksum, retention and restore credentials.",
+"status_before": "Conflict",
+"core": true,
+"topic": "DR"
+},
+{
+"aspect_id": "R-REG-0018",
+"doc": "FSD V12",
+"chapter": "38",
+"section": "V8 | Backup and disaster-recovery runbook",
+"aspect_summary": "PostgreSQL: continuous WAL archiving + daily base backup, PITR 35 days, encrypted, stored in the same jurisdiction (CJ-R09).",
+"status_before": "Conflict",
+"core": true,
+"topic": "REG"
+},
+{
+"aspect_id": "R-DR-0033",
+"doc": "FSD V12",
+"chapter": "38",
+"section": "V5 optimization requirements and controls",
+"aspect_summary": "Migration: map legacy capability IDs to stable SKU/workflow versions, preserve approved rights, dry-run and compare scope/counts, backup before changes, reversible expand/contract schema; active run version snapshot and current safety recheck. Critical RPO ≤15 min/RTO ≤4 h core baseline (DEC-V9-01, KPI-18/19), verified by measured drills; encrypted backups, restore drill, scoped export/delete and ",
+"status_before": "Conflict",
+"core": true,
+"topic": "DR"
+},
+{
+"aspect_id": "R-CON-0184",
+"doc": "FSD V12",
+"chapter": "40",
+"section": "Source disposition candidates — Test",
+"aspect_summary": "D22/T23/R025 / SM-SIT-M024 CRM pipeline",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0185",
+"doc": "FSD V12",
+"chapter": "40",
+"section": "Source disposition candidates — Test",
+"aspect_summary": "D22/T33/R030 / SM-UAT-S059 A029 — CRM sales pipeline Workspace",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-API-0034",
+"doc": "FSD V12",
+"chapter": "40",
+"section": "Source disposition candidates — Test",
+"aspect_summary": "D22/T36/R017 / SM-SIT-A016 ADAPTER Object storage / document extraction Upload, fetch and parse approved knowledge; storage SDK and local parser",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-CON-0186",
+"doc": "FSD V12",
+"chapter": "40",
+"section": "Source disposition candidates — Test",
+"aspect_summary": "D22/T36/R024 / SM-SIT-A023 GET /api/v1/integrations List safe connector metadata",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0187",
+"doc": "FSD V12",
+"chapter": "40",
+"section": "Source disposition candidates — Test",
+"aspect_summary": "D22/T36/R026 / SM-SIT-A025 POST /api/v1/admin/integrations/test Test authorized connector",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0188",
+"doc": "FSD V12",
+"chapter": "40",
+"section": "Source disposition candidates — Test",
+"aspect_summary": "D22/T36/R027 / SM-SIT-A026 POST /api/v1/admin/integrations/{id}/disable Disable connector",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0189",
+"doc": "FSD V12",
+"chapter": "40",
+"section": "Source disposition candidates — Test",
+"aspect_summary": "D22/T37/R077 / SM-UAT-S059 — CRM sales pipeline",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0190",
+"doc": "FSD V12",
+"chapter": "40",
+"section": "Source disposition candidates — Task",
+"aspect_summary": "D20/T12/R060 / TASK-A029 CRM sales pipeline",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0191",
+"doc": "FSD V12",
+"chapter": "40",
+"section": "Remaining engineering work / explicit design decisions",
+"aspect_summary": "growth_form; growth_approval; client-scoped connector/publication entities to confirm",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-API-0035",
+"doc": "FSD V12",
+"chapter": "40",
+"section": "Remaining engineering work / explicit design decisions",
+"aspect_summary": "DEC-078 | Traceability approval | A006 / Knowledge documents and approval | Knowledge document ingestion: Extract deck, brochure, FAQ evidence | Implement Knowledge documents and approval. Validate upload and enqueue indexing; List documents and ingestion state; Approve or reject version; Search approved knowledge only; Upload, fetch and parse approved knowledge; storage SDK and local parser. Enfo",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-CON-0192",
+"doc": "FSD V12",
+"chapter": "40",
+"section": "Remaining engineering work / explicit design decisions",
+"aspect_summary": "DEC-080 | Traceability approval | A008 / Integration connections | Integration registry: Control external access and spend | Implement Integration connections. List safe connector metadata; Configure connection via secret reference; Test authorized connector; Disable connector. Enforce product audience, startup scope and assigned role before each action. | Integration connections (Admin): Implemen",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0193",
+"doc": "FSD V12",
+"chapter": "40",
+"section": "Remaining engineering work / explicit design decisions",
+"aspect_summary": "DEC-101 | Traceability approval | A029 / CRM sales pipeline | CRM pipeline: Track opportunities end-to-end | Implement CRM sales pipeline. List pipeline; Create qualified deal; Read deal and timeline; Enforce stage transition; manual verified closure MVP; Assign authorized owner and audit assignment. Enforce product audience, startup scope and assigned role before each action. | CRM sales pipeline",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0194",
+"doc": "FSD V12",
+"chapter": "40",
+"section": "Remaining engineering work / explicit design decisions",
+"aspect_summary": "DEC-102 | Traceability approval | A030 / Sales pipeline and assignment rules | CRM pipeline: Track opportunities end-to-end | Implement Sales pipeline and assignment rules. Read stage configuration; Version stage and assignment policies; Assign authorized owner and audit assignment. Enforce product audience, startup scope and assigned role before each action. | Sales pipeline and assignment rules ",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0195",
+"doc": "FSD V12",
+"chapter": "40",
+"section": "Remaining engineering work / explicit design decisions",
+"aspect_summary": "DEC-104 | Traceability approval | A032 / Customer 360 profile | CRM pipeline: Track opportunities end-to-end | Customer 360: One account record | Engagement eligibility: Prevent unwanted contact | Implement Customer 360 profile. Read deal and timeline; Read account summary and timeline; Check channel eligibility; no send; Issue scoped external invitation for verified counterparty; no staff members",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0196",
+"doc": "FSD V12",
+"chapter": "40",
+"section": "Remaining engineering work / explicit design decisions",
+"aspect_summary": "DEC-108 | Traceability approval | A036 / Email channel configuration | Integration registry: Control external access and spend | Email integration: Allowed email delivery and status | Implement Email channel configuration. Configure connection via secret reference; Test authorized connector; Amazon SES or approved equivalent; authorized send and receipt. Enforce product audience, startup scope and",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-BEN-0014",
+"doc": "FSD V12",
+"chapter": "40",
+"section": "Remaining engineering work / explicit design decisions",
+"aspect_summary": "DEC-179 | Traceability approval | A107 / Website configuration and content management | Approved public website and external portal | Independent tenant/startup operation | Implement Website configuration and content management. Configure tenant/startup website template, verified domain, locales, page blocks, claims, forms and draft revisions.. Enforce product audience, startup scope and assigned ",
+"status_before": "Partially covered",
+"core": true,
+"topic": "BEN"
+},
+{
+"aspect_id": "R-IDN-0071",
+"doc": "FSD V12",
+"chapter": "40",
+"section": "Remaining engineering work / explicit design decisions",
+"aspect_summary": "DEC-180 | Traceability approval | A108 / Website preview, approval, publishing and analytics | Approved public website and external portal | Independent tenant/startup operation | Implement Website preview, approval, publishing and analytics. Private preview, separation of duties, approve immutable hash, atomic publication pointer, rollback and scoped aggregate analytics; existing campaign/event d",
+"status_before": "Partially covered",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0072",
+"doc": "FSD V12",
+"chapter": "AP",
+"section": "Appendix A2 — Enterprise API additions (OpenAPI 3.1, proposed)",
+"aspect_summary": "48 operations on 33 paths; validated with openapi-spec-validator. SCIM endpoints follow RFC 7643/7644 resource shapes.",
+"status_before": "Conflict",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0073",
+"doc": "FSD V12",
+"chapter": "AP",
+"section": "Appendix A2 — Enterprise API additions (OpenAPI 3.1, proposed)",
+"aspect_summary": "tags: [\"SCIM\"]",
+"status_before": "Conflict",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0074",
+"doc": "FSD V12",
+"chapter": "AP",
+"section": "Appendix A2 — Enterprise API additions (OpenAPI 3.1, proposed)",
+"aspect_summary": "summary: \"SCIM list groups\"",
+"status_before": "Conflict",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0075",
+"doc": "FSD V12",
+"chapter": "AP",
+"section": "Appendix A2 — Enterprise API additions (OpenAPI 3.1, proposed)",
+"aspect_summary": "summary: \"SCIM create group\"",
+"status_before": "Conflict",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0076",
+"doc": "FSD V12",
+"chapter": "AP",
+"section": "Appendix A2 — Enterprise API additions (OpenAPI 3.1, proposed)",
+"aspect_summary": "summary: \"SCIM list users\"",
+"status_before": "Conflict",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0077",
+"doc": "FSD V12",
+"chapter": "AP",
+"section": "Appendix A2 — Enterprise API additions (OpenAPI 3.1, proposed)",
+"aspect_summary": "summary: \"SCIM create user\"",
+"status_before": "Conflict",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0078",
+"doc": "FSD V12",
+"chapter": "AP",
+"section": "Appendix A2 — Enterprise API additions (OpenAPI 3.1, proposed)",
+"aspect_summary": "summary: \"SCIM de-provision user\"",
+"status_before": "Conflict",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0079",
+"doc": "FSD V12",
+"chapter": "AP",
+"section": "Appendix A2 — Enterprise API additions (OpenAPI 3.1, proposed)",
+"aspect_summary": "summary: \"SCIM read user\"",
+"status_before": "Conflict",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0080",
+"doc": "FSD V12",
+"chapter": "AP",
+"section": "Appendix A2 — Enterprise API additions (OpenAPI 3.1, proposed)",
+"aspect_summary": "summary: \"SCIM update user\"",
+"status_before": "Conflict",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-API-0036",
+"doc": "FSD V12",
+"chapter": "AP",
+"section": "Appendix A2 — Enterprise API additions (OpenAPI 3.1, proposed)",
+"aspect_summary": "summary: \"List API keys (prefix only)\"",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-API-0037",
+"doc": "FSD V12",
+"chapter": "AP",
+"section": "Appendix A2 — Enterprise API additions (OpenAPI 3.1, proposed)",
+"aspect_summary": "summary: \"Create API key (value returned once)\"",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-API-0038",
+"doc": "FSD V12",
+"chapter": "AP",
+"section": "Appendix A2 — Enterprise API additions (OpenAPI 3.1, proposed)",
+"aspect_summary": "summary: \"Revoke API key\"",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-CON-0197",
+"doc": "FSD V12",
+"chapter": "AP",
+"section": "Appendix A2 — Enterprise API additions (OpenAPI 3.1, proposed)",
+"aspect_summary": "/api/v1/connectors:",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0198",
+"doc": "FSD V12",
+"chapter": "AP",
+"section": "Appendix A2 — Enterprise API additions (OpenAPI 3.1, proposed)",
+"aspect_summary": "operationId: get_connectors",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0200",
+"doc": "FSD V12",
+"chapter": "AP",
+"section": "Appendix A2 — Enterprise API additions (OpenAPI 3.1, proposed)",
+"aspect_summary": "/api/v1/connectors/{id}/health:",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0202",
+"doc": "FSD V12",
+"chapter": "AP",
+"section": "Appendix A2 — Enterprise API additions (OpenAPI 3.1, proposed)",
+"aspect_summary": "/api/v1/connectors/{id}/installations:",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-CON-0203",
+"doc": "FSD V12",
+"chapter": "AP",
+"section": "Appendix A2 — Enterprise API additions (OpenAPI 3.1, proposed)",
+"aspect_summary": "summary: \"Install connector\"",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-IDN-0082",
+"doc": "FSD V12",
+"chapter": "AP",
+"section": "Appendix A2 — Enterprise API additions (OpenAPI 3.1, proposed)",
+"aspect_summary": "summary: \"Read tenant SSO configuration\"",
+"status_before": "Partially covered",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0083",
+"doc": "FSD V12",
+"chapter": "AP",
+"section": "Appendix A2 — Enterprise API additions (OpenAPI 3.1, proposed)",
+"aspect_summary": "summary: \"Update SSO configuration\"",
+"status_before": "Partially covered",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-IDN-0084",
+"doc": "FSD V12",
+"chapter": "AP",
+"section": "Appendix A2 — Enterprise API additions (OpenAPI 3.1, proposed)",
+"aspect_summary": "summary: \"Create custom role (SoD checked)\"",
+"status_before": "Conflict",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-MDL-0027",
+"doc": "FSD V12",
+"chapter": "AP",
+"section": "Appendix A — OpenAPI 3.1 contract (proposed)",
+"aspect_summary": "summary: \"List model registry entries (AIX-02)\"",
+"status_before": "Conflict",
+"core": true,
+"topic": "MDL"
+},
+{
+"aspect_id": "R-IDN-0086",
+"doc": "FSD V12",
+"chapter": "AP",
+"section": "Appendix C2 — Enterprise schema additions (PostgreSQL, proposed)",
+"aspect_summary": "CHECK (NOT enforced OR (domain_verified AND breakglass_email IS NOT NULL)));            -- ENT-IDN-02/06",
+"status_before": "Partially covered",
+"core": true,
+"topic": "IDN"
+},
+{
+"aspect_id": "R-API-0039",
+"doc": "FSD V12",
+"chapter": "AP",
+"section": "Appendix C2 — Enterprise schema additions (PostgreSQL, proposed)",
+"aspect_summary": "prefix text NOT NULL, last4 char(4) NOT NULL, key_hash bytea NOT NULL,                  -- ENT-API-01: hash only, never plaintext",
+"status_before": "Partially covered",
+"core": true,
+"topic": "API"
+},
+{
+"aspect_id": "R-CON-0204",
+"doc": "FSD V12",
+"chapter": "AP",
+"section": "Appendix C2 — Enterprise schema additions (PostgreSQL, proposed)",
+"aspect_summary": "CHECK (environment = 'sandbox' OR (legal_review_ref IS NOT NULL AND security_review_ref IS NOT NULL)));   -- ENT-INT-05",
+"status_before": "Conflict",
+"core": true,
+"topic": "CON"
+},
+{
+"aspect_id": "R-MDL-0029",
+"doc": "FSD V12",
+"chapter": "AP",
+"section": "V9 | Additional ID families",
+"aspect_summary": "MDL-R0, S1, M1, L1, E1, G1",
+"status_before": "Conflict",
+"core": true,
+"topic": "MDL"
+}
+]

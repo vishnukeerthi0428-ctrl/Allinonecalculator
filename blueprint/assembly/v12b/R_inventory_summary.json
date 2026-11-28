@@ -1,0 +1,86 @@
+{
+ "lines_read": 84642,
+ "aspects": 662,
+ "duplicates_merged": 502,
+ "by_topic": {
+  "IDN": {
+   "total": 88,
+   "core": 73,
+   "before": {
+    "Conflict": 23,
+    "Covered": 47,
+    "Partially covered": 18
+   }
+  },
+  "API": {
+   "total": 41,
+   "core": 40,
+   "before": {
+    "Partially covered": 29,
+    "Covered": 12
+   }
+  },
+  "WHK": {
+   "total": 214,
+   "core": 89,
+   "before": {
+    "Covered": 214
+   }
+  },
+  "CON": {
+   "total": 204,
+   "core": 80,
+   "before": {
+    "Conflict": 65,
+    "Covered": 139
+   }
+  },
+  "REG": {
+   "total": 20,
+   "core": 18,
+   "before": {
+    "Covered": 17,
+    "Conflict": 2,
+    "Partially covered": 1
+   }
+  },
+  "DR": {
+   "total": 36,
+   "core": 32,
+   "before": {
+    "Covered": 23,
+    "Conflict": 13
+   }
+  },
+  "MDL": {
+   "total": 29,
+   "core": 28,
+   "before": {
+    "Conflict": 17,
+    "Covered": 12
+   }
+  },
+  "BEN": {
+   "total": 14,
+   "core": 9,
+   "before": {
+    "Partially covered": 8,
+    "Covered": 6
+   }
+  },
+  "DBA": {
+   "total": 16,
+   "core": 15,
+   "before": {
+    "Partially covered": 15,
+    "Covered": 1
+   }
+  }
+ },
+ "before": {
+  "Partially covered": 71,
+  "Conflict": 120,
+  "Covered": 471
+ },
+ "files": 59
+}

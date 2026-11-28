@@ -1,0 +1,196 @@
+{
+ "M": {
+  "params": 8,
+  "domain": [
+   5,
+   7,
+   4,
+   4,
+   4,
+   5,
+   4,
+   4
+  ],
+  "total": 179200,
+  "triples": 5435,
+  "L1_3way": {
+   "rows": 231,
+   "ids": [
+    "TC-V12-P-001",
+    "TC-V12-P-231"
+   ],
+   "verdicts": {
+    "RECORD_ONLY": 53,
+    "DENY": 30,
+    "BLOCKED": 116,
+    "HOLD": 31,
+    "ROUTE": 1
+   }
+  },
+  "L2_positive_exhaustive": {
+   "rows": 28,
+   "ids": [
+    "TC-V12-P-232",
+    "TC-V12-P-259"
+   ],
+   "verdicts": {
+    "ALLOW": 28
+   }
+  },
+  "L3_single_fault": {
+   "rows": 41,
+   "ids": [
+    "TC-V12-P-260",
+    "TC-V12-P-300"
+   ],
+   "verdicts": {
+    "RECORD_ONLY": 1,
+    "HOLD": 15,
+    "ROUTE": 5,
+    "DENY": 12,
+    "DEFER": 2,
+    "BLOCKED": 6
+   }
+  },
+  "pairwise_rows": 39,
+  "pairs": 595
+ },
+ "C": {
+  "params": 8,
+  "domain": [
+   5,
+   4,
+   2,
+   4,
+   5,
+   3,
+   4,
+   3
+  ],
+  "total": 28800,
+  "triples": 2868,
+  "L1_3way": {
+   "rows": 137,
+   "ids": [
+    "TC-V12-P-301",
+    "TC-V12-P-437"
+   ],
+   "verdicts": {
+    "RECONCILING": 1,
+    "DENY": 87,
+    "HOLD": 40,
+    "AWAIT": 1,
+    "ESCALATE": 5,
+    "FAILED": 1,
+    "COUNTER": 2
+   }
+  },
+  "positive_space": 448,
+  "L2_positive_3way": {
+   "rows": 46,
+   "ids": [
+    "TC-V12-P-438",
+    "TC-V12-P-483"
+   ],
+   "verdicts": {
+    "CAPTURED": 14,
+    "AWAIT": 11,
+    "FAILED": 10,
+    "RECONCILING": 11
+   }
+  },
+  "L3_single_fault": {
+   "rows": 40,
+   "ids": [
+    "TC-V12-P-484",
+    "TC-V12-P-523"
+   ],
+   "verdicts": {
+    "DENY": 16,
+    "COUNTER": 1,
+    "ESCALATE": 11,
+    "HOLD": 12
+   }
+  },
+  "pairwise_rows": 30,
+  "pairs": 390
+ },
+ "B": {
+  "params": 9,
+  "domain": [
+   3,
+   4,
+   3,
+   4,
+   3,
+   3,
+   3,
+   2,
+   2
+  ],
+  "total": 15552,
+  "triples": 2226,
+  "L1_3way": {
+   "rows": 75,
+   "ids": [
+    "TC-V12-P-524",
+    "TC-V12-P-598"
+   ],
+   "verdicts": {
+    "DENY": 1,
+    "BLOCKED": 18,
+    "MANUAL": 9,
+    "EXPIRED": 20,
+    "HOLD": 19,
+    "ASSISTED": 8
+   }
+  },
+  "L2_positive_exhaustive": {
+   "rows": 12,
+   "ids": [
+    "TC-V12-P-599",
+    "TC-V12-P-610"
+   ],
+   "verdicts": {
+    "SUBMITTED": 4,
+    "RECONCILING": 4,
+    "FAILED": 4
+   }
+  },
+  "L3_single_fault": {
+   "rows": 42,
+   "ids": [
+    "TC-V12-P-611",
+    "TC-V12-P-652"
+   ],
+   "verdicts": {
+    "MANUAL": 6,
+    "ASSISTED": 12,
+    "HOLD": 9,
+    "DENY": 6,
+    "ESCALATE": 3,
+    "EXPIRED": 3,
+    "BLOCKED": 3
+   }
+  },
+  "pairwise_rows": 20,
+  "pairs": 322
+ },
+ "K": {
+  "params": 3,
+  "total": 64,
+  "exhaustive": {
+   "rows": 64,
+   "ids": [
+    "TC-V12-P-653",
+    "TC-V12-P-716"
+   ],
+   "verdicts": {
+    "BLOCKED": 32,
+    "RECONCILING": 16,
+    "RECONCILE": 16
+   }
+  }
+ },
+ "last_tc": 716
+}
