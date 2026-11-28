@@ -249,7 +249,7 @@ def build(D, BE, path):
     rr = [("Pilot running after launch (approved Ledger B with contingency and seats)", BE.runs_lo, BE.runs_hi),
           ("Literal-alignment additions (CR-ALN-02, upper bound)", *BE.aln_run),
           ("Advanced capabilities at full rollout (X1 + X2 + X3)", BE.adv_lo, BE.adv_hi),
-          ("Growth gate design point", 50_000, 70_000), ("Scale design point", 130_000, 170_000),
+          ("Growth gate design point", *M.SCALE_STAGES[1][3]), ("Scale design point", *M.SCALE_STAGES[2][3]),
           ("AI-built tooling after the build (maintenance team, per month)", D["ai_tools_after"][0] * M.FX, D["ai_tools_after"][1] * M.FX)]
     for i, (lab, lo, hi) in enumerate(rr, 4):
         for j, v in enumerate([lab, lo, hi, f"=B{i}/FX", f"=C{i}/FX"], 1):

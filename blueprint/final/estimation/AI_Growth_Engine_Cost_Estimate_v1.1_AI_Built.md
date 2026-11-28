@@ -5,7 +5,8 @@
 |---|---|
 | Document | Cost Estimate v1.1 (AI-built variant). Companion to Cost Estimate v1.0 (traditional build) |
 | Date | 28 Nov 2026 |
-| Basis | Application Blueprint v1.1; approved budgets DEC-230/231; Founder decisions DEC-416…419 (DEC-419: build-time tooling approved) |
+| Basis | Application Blueprint v1.1; approved budgets DEC-230/231; Founder decisions DEC-416…421 (DEC-419 tooling, DEC-420 AI-built delivery, DEC-421 Vercel + Supabase hosting) |
+| Revision | Rev. A (28 Nov 2026): running costs re-based for the Vercel + Supabase + AWS Mumbai hosting stack (DEC-421) |
 | Currency | INR and USD at ₹90 = $1 (verify). Amounts exclude GST |
 | What changes | **Only how the software is built.** AI models and AI agents draft, code, test and document under human supervision. **The application itself, its features, its 80 production AI agents and its running costs do not change** |
 | Status | **Approved approach (DEC-420, 28 Nov 2026):** AI-built delivery from Sprint 0, with a **Sprint 2 calibration gate (≈ Day 45)**. Team, dates and Ledger A stay as approved until the gate (§12) |
@@ -44,16 +45,16 @@ Each one is shown for the **traditional build** and the **AI-built** approach.
 
 | (3) Recurring running cost of the application | Traditional | AI-built |
 |---|---|---|
-| Pilot running per month after launch (approved Ledger B with contingency and seats) | ₹24,035 – ₹30,475 | Same: **unchanged** |
-| All-in after the full advanced roadmap | ₹36,581 – ₹76,693 | Same: **unchanged** |
+| Pilot running per month after launch (approved Ledger B with contingency and seats) | ₹26,105 – ₹35,362 | Same: **unchanged** |
+| All-in after the full advanced roadmap | ₹38,651 – ₹81,580 | Same: **unchanged** |
 | Production AI inference by the application's 80 agents (Claude Sonnet primary) | ≈ ₹4,391/month base, capped | Same: **unchanged** |
 
 | (4) Three-year total cost of ownership (build + 3 years) | Traditional | AI-built | Saving |
 |---|---|---|---|
-| Approved path | ₹192.21 L – ₹355.04 L | ₹150.54 L – ₹365.09 L | ₹41.67 L at the low end; ₹-10.06 L at the high end |
-| Full roadmap | ₹295.98 L – ₹545.16 L | ₹208.03 L – ₹545.95 L | ₹87.95 L at the low end; ₹-0.80 L at the high end |
-| (USD) Approved path | $213,563 – $394,484 | $167,266 – $405,661 |  |
-| (USD) Full roadmap | $328,869 – $605,728 | $231,143 – $606,616 |  |
+| Approved path | ₹194.82 L – ₹358.22 L | ₹153.15 L – ₹368.28 L | ₹41.67 L at the low end; ₹-10.06 L at the high end |
+| Full roadmap | ₹298.59 L – ₹548.34 L | ₹210.64 L – ₹549.14 L | ₹87.95 L at the low end; ₹-0.80 L at the high end |
+| (USD) Approved path | $216,461 – $398,019 | $170,164 – $409,196 |  |
+| (USD) Full roadmap | $331,767 – $609,263 | $234,041 – $610,151 |  |
 
 A negative saving means the AI-built approach costs more. That happens only in the conservative case: the AI tooling continues for three years while the productivity gain stays small. This is why a calibration gate is recommended before the team is changed.
 
@@ -267,10 +268,10 @@ Building with AI agents does not change what the application runs on, so the run
 
 | Item | Per month (INR) | Per month (USD) |
 |---|---|---|
-| Pilot running after launch (Ledger B, contingency, seats) | ₹24,035 – ₹30,475 | $267 – $339 |
+| Pilot running after launch (Ledger B, contingency, seats) | ₹26,105 – ₹35,362 | $290 – $393 |
 | Literal-alignment additions (CR-ALN-02) | ₹1,495 – ₹10,120 | $17 – $112 |
 | Advanced capabilities at full rollout | ₹11,051 – ₹36,098 | $123 – $401 |
-| Growth gate / scale design points | ₹50–70 thousand / ₹1.3–1.7 lakh | $556–778 / $1,444–1,889 |
+| Growth gate / scale design points | ₹59,000 – ₹79,000 / ₹1,39,000 – ₹1,79,000 | $656 – $878 / $1,544 – $1,989 |
 
 **After the build**, the AI tooling continues for the maintenance team at about **$636 – $817 per month**. That covers 2 Claude Max 20x seats, 2 Pro seats, CI sandboxes and agent observability, plus the remaining DEC-419 tools.
 
@@ -282,21 +283,21 @@ With AI agents, maintenance is assumed at **12–17%** of cumulative development
 
 | Year | Development traditional | Development AI-built | Running (same) | Tooling + tokens (AI-built) | Maintenance (AI-built) | Future-proofing (AI-built) | Total traditional | Total AI-built |
 |---|---|---|---|---|---|---|---|---|
-| Year 0 (build): Dec 2026 – Jul 2027 | ₹55.46 L – ₹95.72 L | ₹33.31 L – ₹90.16 L | ₹1.74 L – ₹2.26 L | ₹10.49 L – ₹20.59 L | ₹0.00 L – ₹0.00 L | ₹0.00 L – ₹0.00 L | ₹63.12 L – ₹104.15 L | **₹45.54 L – ₹113.01 L** |
-| Year 1: Aug 2027 – Jul 2028 | ₹28.00 L – ₹55.40 L | ₹15.78 L – ₹51.72 L | ₹3.53 L – ₹6.39 L | ₹14.98 L – ₹23.43 L | ₹4.00 L – ₹15.33 L | ₹5.19 L – ₹15.13 L | ₹55.19 L – ₹105.47 L | **₹43.48 L – ₹112.00 L** |
-| Year 2: Aug 2028 – Jul 2029 (growth gate) | ₹0.00 L – ₹0.00 L | ₹0.00 L – ₹0.00 L | ₹6.64 L – ₹11.13 L | ₹6.87 L – ₹8.82 L | ₹6.36 L – ₹26.05 L | ₹5.61 L – ₹16.35 L | ₹31.33 L – ₹64.74 L | **₹25.48 L – ₹62.35 L** |
-| Year 3: Aug 2029 – Jul 2030 (scale design point) | ₹0.00 L – ₹0.00 L | ₹0.00 L – ₹0.00 L | ₹16.24 L – ₹23.13 L | ₹6.87 L – ₹8.82 L | ₹6.87 L – ₹28.13 L | ₹6.06 L – ₹17.65 L | ₹42.57 L – ₹80.67 L | **₹36.04 L – ₹77.74 L** |
-| **Total (build + 3 years)** |  |  |  |  |  |  | **₹192.21 L – ₹355.04 L** | **₹150.54 L – ₹365.09 L** |
+| Year 0 (build): Dec 2026 – Jul 2027 | ₹55.46 L – ₹95.72 L | ₹33.31 L – ₹90.16 L | ₹1.94 L – ₹2.69 L | ₹10.49 L – ₹20.59 L | ₹0.00 L – ₹0.00 L | ₹0.00 L – ₹0.00 L | ₹63.32 L – ₹104.58 L | **₹45.74 L – ₹113.44 L** |
+| Year 1: Aug 2027 – Jul 2028 | ₹28.00 L – ₹55.40 L | ₹15.78 L – ₹51.72 L | ₹3.78 L – ₹6.97 L | ₹14.98 L – ₹23.43 L | ₹4.00 L – ₹15.33 L | ₹5.19 L – ₹15.13 L | ₹55.43 L – ₹106.06 L | **₹43.72 L – ₹112.58 L** |
+| Year 2: Aug 2028 – Jul 2029 (growth gate) | ₹0.00 L – ₹0.00 L | ₹0.00 L – ₹0.00 L | ₹7.72 L – ₹12.21 L | ₹6.87 L – ₹8.82 L | ₹6.36 L – ₹26.05 L | ₹5.61 L – ₹16.35 L | ₹32.41 L – ₹65.82 L | **₹26.56 L – ₹63.43 L** |
+| Year 3: Aug 2029 – Jul 2030 (scale design point) | ₹0.00 L – ₹0.00 L | ₹0.00 L – ₹0.00 L | ₹17.32 L – ₹24.21 L | ₹6.87 L – ₹8.82 L | ₹6.87 L – ₹28.13 L | ₹6.06 L – ₹17.65 L | ₹43.65 L – ₹81.75 L | **₹37.12 L – ₹78.82 L** |
+| **Total (build + 3 years)** |  |  |  |  |  |  | **₹194.82 L – ₹358.22 L** | **₹153.15 L – ₹368.28 L** |
 
 ## Full roadmap
 
 | Year | Development traditional | Development AI-built | Running (same) | Tooling + tokens (AI-built) | Maintenance (AI-built) | Future-proofing (AI-built) | Total traditional | Total AI-built |
 |---|---|---|---|---|---|---|---|---|
-| Year 0 (build): Dec 2026 – Jul 2027 | ₹55.46 L – ₹95.72 L | ₹33.31 L – ₹90.16 L | ₹1.74 L – ₹2.26 L | ₹10.49 L – ₹20.59 L | ₹0.00 L – ₹0.00 L | ₹0.00 L – ₹0.00 L | ₹63.12 L – ₹104.15 L | **₹45.54 L – ₹113.01 L** |
-| Year 1: Aug 2027 – Jul 2028 | ₹104.00 L – ₹181.70 L | ₹58.60 L – ₹169.62 L | ₹3.97 L – ₹7.83 L | ₹15.93 L – ₹34.29 L | ₹4.00 L – ₹15.33 L | ₹5.19 L – ₹15.13 L | ₹131.63 L – ₹233.21 L | **₹87.70 L – ₹242.20 L** |
-| Year 2: Aug 2028 – Jul 2029 (growth gate) | ₹0.00 L – ₹0.00 L | ₹0.00 L – ₹0.00 L | ₹7.51 L – ₹13.95 L | ₹6.87 L – ₹8.82 L | ₹11.91 L – ₹47.70 L | ₹5.61 L – ₹16.35 L | ₹44.51 L – ₹94.84 L | **₹31.90 L – ₹86.81 L** |
-| Year 3: Aug 2029 – Jul 2030 (scale design point) | ₹0.00 L – ₹0.00 L | ₹0.00 L – ₹0.00 L | ₹17.11 L – ₹25.95 L | ₹6.87 L – ₹8.82 L | ₹12.87 L – ₹51.51 L | ₹6.06 L – ₹17.65 L | ₹56.73 L – ₹112.95 L | **₹42.90 L – ₹103.93 L** |
-| **Total (build + 3 years)** |  |  |  |  |  |  | **₹295.98 L – ₹545.16 L** | **₹208.03 L – ₹545.95 L** |
+| Year 0 (build): Dec 2026 – Jul 2027 | ₹55.46 L – ₹95.72 L | ₹33.31 L – ₹90.16 L | ₹1.94 L – ₹2.69 L | ₹10.49 L – ₹20.59 L | ₹0.00 L – ₹0.00 L | ₹0.00 L – ₹0.00 L | ₹63.32 L – ₹104.58 L | **₹45.74 L – ₹113.44 L** |
+| Year 1: Aug 2027 – Jul 2028 | ₹104.00 L – ₹181.70 L | ₹58.60 L – ₹169.62 L | ₹4.22 L – ₹8.42 L | ₹15.93 L – ₹34.29 L | ₹4.00 L – ₹15.33 L | ₹5.19 L – ₹15.13 L | ₹131.88 L – ₹233.80 L | **₹87.95 L – ₹242.79 L** |
+| Year 2: Aug 2028 – Jul 2029 (growth gate) | ₹0.00 L – ₹0.00 L | ₹0.00 L – ₹0.00 L | ₹8.59 L – ₹15.03 L | ₹6.87 L – ₹8.82 L | ₹11.91 L – ₹47.70 L | ₹5.61 L – ₹16.35 L | ₹45.59 L – ₹95.92 L | **₹32.98 L – ₹87.89 L** |
+| Year 3: Aug 2029 – Jul 2030 (scale design point) | ₹0.00 L – ₹0.00 L | ₹0.00 L – ₹0.00 L | ₹18.19 L – ₹27.03 L | ₹6.87 L – ₹8.82 L | ₹12.87 L – ₹51.51 L | ₹6.06 L – ₹17.65 L | ₹57.81 L – ₹114.03 L | **₹43.98 L – ₹105.01 L** |
+| **Total (build + 3 years)** |  |  |  |  |  |  | **₹298.59 L – ₹548.34 L** | **₹210.64 L – ₹549.14 L** |
 
 # 12. Risks, calibration gate and recommendation
 

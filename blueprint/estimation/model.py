@@ -31,10 +31,10 @@ def usd(x):
 # Role differentiation sits inside the band; vendor/onshore alternatives are in SCENARIOS.
 RATE_CARD = [
     # role, skills, technology, monthly low, monthly high, used in
-    ("Engineering lead / solutions architect (hands-on)", "Architecture, Django/DRF, PostgreSQL RLS, security design, code review", "Python, Django, PostgreSQL, AWS, Terraform", 125_000, 150_000, "Core team (1 of 4)"),
+    ("Engineering lead / solutions architect (hands-on)", "Architecture, Django/DRF, PostgreSQL RLS, security design, code review", "Python, Django, PostgreSQL (Supabase), Vercel, AWS, Terraform", 125_000, 150_000, "Core team (1 of 4)"),
     ("Senior full-stack engineer", "Django/DRF APIs, React/TypeScript, testing", "Python, Django, React, TypeScript, Playwright", 100_000, 150_000, "Core team (1 of 4), contract engineer"),
     ("AI/LLM engineer", "Prompt contracts, RAG, model gateway, evals, guardrails", "Claude API, pgvector, Pydantic, eval harness", 110_000, 150_000, "Core team (1 of 4), advanced A1–A3"),
-    ("Backend / DevOps engineer", "Celery, Valkey, outbox, CI/CD, IaC, observability", "Celery, Valkey, AWS ECS/RDS/S3, GitHub Actions, Terraform, Prometheus/Grafana", 100_000, 150_000, "Core team (1 of 4), contract engineer"),
+    ("Backend / DevOps engineer", "Celery, Valkey, outbox, CI/CD, IaC, observability", "Celery, Valkey, Vercel, Supabase, AWS EC2/S3/SES, GitHub Actions, Terraform, Prometheus/Grafana", 100_000, 150_000, "Core team (1 of 4), contract engineer"),
     ("Frontend engineer", "React/TypeScript, design system, WCAG 2.2 AA", "React, TypeScript, Vite, axe-core", 100_000, 140_000, "Contract engineer"),
     ("QA lead / test engineer", "Test strategy, SIT/UAT, automation, AI evaluation", "Playwright, pytest, k6, OWASP ZAP, promptfoo-style evals", 90_000, 135_000, "QA 1.0 FTE from Sprint 3"),
     ("UX/UI designer (contract)", "IA, interaction design, accessibility", "Figma", 90_000, 135_000, "UX contractor"),
@@ -95,9 +95,10 @@ PACKAGES = [
 # ---------------------------------------------------------------- Ledger B (approved, DEC-231): monthly running, pilot scale
 # (line, category, item, billing, low ₹/month, high ₹/month, active from, nature)
 LEDGER_B = [
-    ("B01", "Cloud", "AWS hosting: production + scheduled staging (ECS on EC2, RDS PostgreSQL, Valkey, S3)", "Usage / 1-year commitment", 5_000, 7_000, "Dec 2026 (Day 1)", "Infrastructure"),
+    ("B01a", "Cloud", "Vercel Pro: Website and Admin frontends, CDN, firewall, preview builds (DEC-421)", "Subscription + usage", 1_800, 3_600, "Dec 2026 (Day 1)", "Subscription"),
+    ("B01b", "Cloud", "Supabase Pro + production compute, Mumbai: PostgreSQL with RLS and pgvector, storage, daily backups (DEC-421)", "Subscription + compute", 3_600, 5_400, "Dec 2026 (Day 1)", "Subscription"),
+    ("B01c", "Cloud", "AWS ap-south-1: Django API, Celery workers, Valkey, S3 files (EC2/ECS on EC2) (DEC-421)", "Usage", 2_700, 4_050, "Dec 2026 (Day 1)", "Infrastructure"),
     ("B20", "Cloud", "Cross-region backup and DR storage", "Usage", 300, 600, "Dec 2026", "Infrastructure"),
-    ("B21", "Cloud", "CloudFront CDN + AWS WAF", "Fixed per rule + usage", 1_300, 1_800, "Feb 2027 (Day 68)", "Subscription"),
     ("B01+", "Cloud", "Source-pack additions: restore-check sandbox, control/finance worker, drift job, training tenant", "Usage", 200, 1_700, "Release 1", "Infrastructure"),
     ("B02", "AI", "Production AI inference: Claude Haiku-class and Sonnet-class (primary, DEC-418) via the gateway; hard cap", "Pay-as-you-go, hard cap", 3_000, 3_000, "Dec 2026 (Day 15)", "Usage (capped)"),
     ("B23", "AI", "Delivery-team AI: CI review, evaluation judge, fixture generation (Claude API)", "Pay-as-you-go, capped", 1_000, 1_000, "Dec 2026 (Day 15)", "Usage (capped)"),
@@ -110,10 +111,15 @@ LEDGER_B = [
     ("B07+", "Tools", "Synthetic availability probes, extra CI gates", "Subscription / usage", 0, 1_300, "Release 1", "Subscription"),
 ]
 CONTINGENCY = 0.15
+# month index (0 = Dec 2026) from which each Ledger B line is active, for the build-period ramp
+B_START = {"B01a": 0, "B01b": 0, "B01c": 0, "B20": 0, "B02": 0, "B23": 0, "B07": 0, "B03": 1, "B04": 1, "B05": 2, "B10": 3, "B06": 4, "B01+": 5, "B07+": 5}
+APPROVED_B = (19_895, 26_335)        # DEC-231 approved base (with contingency), AWS-only design
+AWS_ONLY_HOSTING = (6_600, 9_400)    # B01 + B20 + B21 before DEC-421
 SEATS_B09 = 4_140    # 2 × $20 Claude seats × 1.15 (approved baseline)
 
 # Conditional / optional running lines
 LEDGER_B_OPTIONAL = [
+    ("B22b", "Supabase point-in-time recovery add-on (from the growth gate, DEC-421)", 9_000, 9_000, "Growth gate"),
     ("B08", "Apollo paid enrichment (OFF until the scale gate) × 1.15", 10_350, 10_350, "Scale gate only"),
     ("B22", "LLM observability, self-hosted Langfuse, at growth", 2_250, 2_700, "Growth gate"),
     ("B13", "E-signature provider (pilot uses signed-PDF path)", 0, 0, "W5/W6, per envelope"),
@@ -131,9 +137,9 @@ RUN_ADDITIONS = [
 ]
 
 SCALE_STAGES = [
-    ("Pilot (after Release 2)", "₹5,000–7,000", "₹3,000 cap", (20_000, 26_000), "—"),
-    ("Year-1 design point (growth gate)", "≈ ₹21,000", "₹12,000 cap", (50_000, 70_000), "BRD §8 scale gate: cost per qualified opportunity, consent compliance, conversion"),
-    ("Year-2 design point (scale)", "≈ ₹66,600", "₹40,000 cap", (130_000, 170_000), "Tenant plans carry attributable cost (NFR-035)"),
+    ("Pilot (after Release 2)", "₹8,100–13,050 (Vercel + Supabase + AWS, DEC-421)", "₹3,000 cap", (22_000, 31_000), "—"),
+    ("Year-1 design point (growth gate)", "≈ ₹21,000–26,000 incl. Supabase compute upgrade", "₹12,000 cap", (59_000, 79_000), "BRD §8 scale gate: cost per qualified opportunity, consent compliance, conversion"),
+    ("Year-2 design point (scale)", "≈ ₹66,600–75,000 incl. Supabase and Vercel usage", "₹40,000 cap", (139_000, 179_000), "Tenant plans carry attributable cost (NFR-035)"),
 ]
 
 # ---------------------------------------------------------------- build-time tooling subscriptions (USD list prices, verify)

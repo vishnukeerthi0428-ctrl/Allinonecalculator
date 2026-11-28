@@ -5,7 +5,8 @@
 |---|---|
 | Document | Cost Estimate v1.0 for the AI Growth Engine (Employee Sales & Marketing Automation) |
 | Date | 28 Nov 2026 |
-| Basis | Application Blueprint v1.1 (Parts 0–9.10, 342 decisions), approved budgets DEC-230/231, Founder decisions DEC-416…419 |
+| Basis | Application Blueprint v1.1 (Parts 0–9.10, 345 decisions), approved budgets DEC-230/231, Founder decisions DEC-416…421 |
+| Revision | Rev. A (28 Nov 2026): running costs re-based for the Vercel + Supabase + AWS Mumbai hosting stack (DEC-421) |
 | Currency | INR and USD at **₹90 = $1** (blueprint rate, Part 8.4; verify at time of payment). Sensitivity at ₹85 and ₹95 in §13 |
 | Prepared by | FinOps Lead with Product Owner, Delivery Lead, Solutions Architect, QA Lead and AI Governance Lead (blueprint team) |
 | Classification | Confidential: Founder and authorized delivery partners |
@@ -32,16 +33,16 @@
 
 | Recurring item | Per month (INR) | Per month (USD) | Per year (INR) | Per year (USD) |
 |---|---|---|---|---|
-| Running cost paid **during the build** (Day 1–208, ramping up), approved Ledger B | ₹1.47 L – ₹1.75 L for the whole build | $1,633 – $1,944 total | — | — |
+| Running cost paid **during the build** (Day 1–208, ramping up), approved Ledger B | ₹1.65 L – ₹2.14 L for the whole build | $1,832 – $2,373 total | — | — |
 | Approved **build-time tooling** (DEC-419: Claude for all engineers, GitHub, Figma, Workspace, Bitwarden, BrowserStack), in addition to Ledger B | ₹73,890 – ₹77,094 | $821 – $857 | ₹8.87 L – ₹9.25 L | $9,852 – $10,279 |
-| Pilot running cost **after launch** (approved Ledger B base + 15% contingency + 2 Claude seats) | ₹24,035 – ₹30,475 | $267 – $339 | ₹2.88 L – ₹3.66 L | $3,205 – $4,063 |
+| Pilot running cost **after launch** (approved Ledger B base + 15% contingency + 2 Claude seats) | ₹26,105 – ₹35,362 | $290 – $393 | ₹3.13 L – ₹4.24 L | $3,481 – $4,715 |
 | Plus literal-alignment running additions (CR-ALN-02, upper bound) | ₹1,495 – ₹10,120 | $17 – $112 | ₹0.18 L – ₹1.21 L | $199 – $1,349 |
 | Plus advanced capabilities at full rollout (X1 + X2 + X3, after A3) | ₹11,051 – ₹36,098 | $123 – $401 | ₹1.33 L – ₹4.33 L | $1,473 – $4,813 |
-| **All-in pilot running after the full advanced roadmap** | **₹36,581 – ₹76,693** | **$406 – $852** | **₹4.39 L – ₹9.20 L** | **$4,877 – $10,226** |
-| At the growth gate (Year-1 design point) | ₹50,000 – ₹70,000 + advanced lines | $556 – $778 + advanced | — | — |
-| At scale (Year-2 design point) | ₹1.3 – 1.7 lakh + advanced lines | $1,444 – $1,889 + advanced | — | — |
+| **All-in pilot running after the full advanced roadmap** | **₹38,651 – ₹81,580** | **$429 – $906** | **₹4.64 L – ₹9.79 L** | **$5,153 – $10,877** |
+| At the growth gate (Year-1 design point) | ₹59,000 – ₹79,000 + advanced lines | $656 – $878 + advanced | — | — |
+| At scale (Year-2 design point) | ₹1,39,000 – ₹1,79,000 + advanced lines | $1,544 – $1,989 + advanced | — | — |
 
-**Three-year total cost of ownership (build + 3 years of operation, maintenance and future-proofing):** approved path **₹192.21 L – ₹355.04 L** ($213,563 – $394,484); full roadmap **₹295.98 L – ₹545.16 L** ($328,869 – $605,728). See §12.
+**Three-year total cost of ownership (build + 3 years of operation, maintenance and future-proofing):** approved path **₹194.82 L – ₹358.22 L** ($216,461 – $398,019); full roadmap **₹298.59 L – ₹548.34 L** ($331,767 – $609,263). See §12.
 
 ![One-time development cost by package](img/packages.png)
 
@@ -59,10 +60,12 @@
 | Item | Status | Reference |
 |---|---|---|
 | Core build budget (Ledger A) ₹52.68–84.08 L | Approved | DEC-230 |
-| Pilot running budget (Ledger B) ₹19,895–26,335/month | Approved | DEC-231 |
+| Pilot running budget (Ledger B) ₹19,895–26,335/month (AWS-only design) | Approved; re-based for DEC-421 in §8 | DEC-231 |
 | Literal-alignment work CR-ALN-01 | Approved (funded) | DEC-416 |
 | Advanced release A1 ≈ ₹28.0–55.4 L | Approved | DEC-417 |
 | Claude Sonnet as primary model | Approved | DEC-418 |
+| AI-built delivery with a Sprint 2 calibration gate | Approved | DEC-420; Cost Estimate v1.1 |
+| Hosting on Vercel + Supabase + AWS Mumbai | Approved; running cost re-based in §8 | DEC-421 |
 | Phase-2 core continuation (W6) ₹25.8–38.7 L | Open: decide at the Release 2 go/no-go | Part 8.4 |
 | Advanced A2 and A3 | Open: decide at gates G-A1 and G-A2 | DEC-411 |
 | Build-time tooling (Claude for all engineers, GitHub, Figma, Workspace, Bitwarden, BrowserStack, domains) | Approved 28 Nov 2026 | DEC-419; §7 |
@@ -105,10 +108,10 @@ Salary or contract fee, statutory benefits, paid leave, equipment allowance and 
 
 | Role | Skill set | Technology | Per hour (INR) | Per hour (USD) | Per day (INR) | Per month (INR, USD) | Used in |
 |---|---|---|---|---|---|---|---|
-| Engineering lead / solutions architect (hands-on) | Architecture, Django/DRF, PostgreSQL RLS, security design, code review | Python, Django, PostgreSQL, AWS, Terraform | ₹710 – ₹852 | $7.89 – $9.47 | ₹5,682 – ₹6,818 | ₹1.25 L – ₹1.50 L ($1,389 – $1,667) | Core team (1 of 4) |
+| Engineering lead / solutions architect (hands-on) | Architecture, Django/DRF, PostgreSQL RLS, security design, code review | Python, Django, PostgreSQL (Supabase), Vercel, AWS, Terraform | ₹710 – ₹852 | $7.89 – $9.47 | ₹5,682 – ₹6,818 | ₹1.25 L – ₹1.50 L ($1,389 – $1,667) | Core team (1 of 4) |
 | Senior full-stack engineer | Django/DRF APIs, React/TypeScript, testing | Python, Django, React, TypeScript, Playwright | ₹568 – ₹852 | $6.31 – $9.47 | ₹4,545 – ₹6,818 | ₹1.00 L – ₹1.50 L ($1,111 – $1,667) | Core team (1 of 4), contract engineer |
 | AI/LLM engineer | Prompt contracts, RAG, model gateway, evals, guardrails | Claude API, pgvector, Pydantic, eval harness | ₹625 – ₹852 | $6.94 – $9.47 | ₹5,000 – ₹6,818 | ₹1.10 L – ₹1.50 L ($1,222 – $1,667) | Core team (1 of 4), advanced A1–A3 |
-| Backend / DevOps engineer | Celery, Valkey, outbox, CI/CD, IaC, observability | Celery, Valkey, AWS ECS/RDS/S3, GitHub Actions, Terraform, Prometheus/Grafana | ₹568 – ₹852 | $6.31 – $9.47 | ₹4,545 – ₹6,818 | ₹1.00 L – ₹1.50 L ($1,111 – $1,667) | Core team (1 of 4), contract engineer |
+| Backend / DevOps engineer | Celery, Valkey, outbox, CI/CD, IaC, observability | Celery, Valkey, Vercel, Supabase, AWS EC2/S3/SES, GitHub Actions, Terraform, Prometheus/Grafana | ₹568 – ₹852 | $6.31 – $9.47 | ₹4,545 – ₹6,818 | ₹1.00 L – ₹1.50 L ($1,111 – $1,667) | Core team (1 of 4), contract engineer |
 | Frontend engineer | React/TypeScript, design system, WCAG 2.2 AA | React, TypeScript, Vite, axe-core | ₹568 – ₹795 | $6.31 – $8.84 | ₹4,545 – ₹6,364 | ₹1.00 L – ₹1.40 L ($1,111 – $1,556) | Contract engineer |
 | QA lead / test engineer | Test strategy, SIT/UAT, automation, AI evaluation | Playwright, pytest, k6, OWASP ZAP, promptfoo-style evals | ₹511 – ₹767 | $5.68 – $8.52 | ₹4,091 – ₹6,136 | ₹0.90 L – ₹1.35 L ($1,000 – $1,500) | QA 1.0 FTE from Sprint 3 |
 | UX/UI designer (contract) | IA, interaction design, accessibility | Figma | ₹511 – ₹767 | $5.68 – $8.52 | ₹4,091 – ₹6,136 | ₹0.90 L – ₹1.35 L ($1,000 – $1,500) | UX contractor |
@@ -595,23 +598,34 @@ The production application uses the **Claude API** (pay as you go, metered by th
 
 | Month | Lines active | Per month incl. 15% and seats (INR) | Per month (USD) |
 |---|---|---|---|
-| Dec 2026 | B01, B02 cap, B07, B20, B23 | ₹15,410 – ₹18,055 | $171 – $201 |
-| Jan 2027 | + B03, B04 | ₹18,285 – ₹20,930 | $203 – $233 |
-| Feb 2027 | + B05, B21 | ₹20,355 – ₹23,575 | $226 – $262 |
-| Mar 2027 | + B10 | ₹21,505 – ₹24,725 | $239 – $275 |
-| Apr 2027 | + B06 | ₹23,805 – ₹27,025 | $264 – $300 |
-| May – Jul 2027 | All lines | ₹24,035 – ₹30,475 | $267 – $339 |
-| **Total Day 1–208** |  | **₹1.47 L – ₹1.75 L** | **$1,633 – $1,944** |
+| Dec 2026 | B01a–c (Vercel, Supabase, AWS), B02 cap, B07, B20, B23 | ₹18,975 – ₹25,012 | $211 – $278 |
+| Jan 2027 | + B03, B04 | ₹21,850 – ₹27,887 | $243 – $310 |
+| Feb 2027 | + B05 | ₹22,425 – ₹28,462 | $249 – $316 |
+| Mar 2027 | + B10 | ₹23,575 – ₹29,612 | $262 – $329 |
+| Apr 2027 | + B06 | ₹25,875 – ₹31,912 | $288 – $355 |
+| May 2027 | + B01+, B07+ (all lines) | ₹26,105 – ₹35,362 | $290 – $393 |
+| Jun 2027 | All lines | ₹26,105 – ₹35,362 | $290 – $393 |
+| **Total Day 1–208** |  | **₹1.65 L – ₹2.14 L** | **$1,832 – $2,373** |
 
 # 8. Subscriptions and running costs after the build (recurring)
+
+**Re-based for the approved hosting stack (DEC-421, 28 Nov 2026).** The application runs on Vercel Pro (frontends) and Supabase Pro in Mumbai (PostgreSQL with RLS and pgvector), with AWS ap-south-1 for the Django API, workers, Valkey, SES, S3 and DR copies.
+
+| Hosting lines | Before (AWS only: B01, B20, B21) | After DEC-421 (B01a–c, B20) | Change per month |
+|---|---|---|---|
+| Pilot hosting per month | ₹6,600 – ₹9,400 | ₹8,400 – ₹13,650 | + ₹1,800 – ₹4,250 |
+| Total pilot running incl. 15% contingency and seats | ₹24,035 – ₹30,475 (approved, DEC-231) | ₹26,105 – ₹35,362 | ₹2,070 – ₹4,888 |
+
+The increase is absorbed first by the 15% contingency (B11); any remainder goes through change control on Ledger B (DEC-421). Vercel and Supabase pass the procurement gate (vendor record, DPA, data-residency review) before production use.
 
 ## 8.1 Pilot running cost by line (approved Ledger B, DEC-231)
 
 | Line | Category | Item | Billing | Per month (INR) | Per month (USD) | Per year (INR) | Active from | Nature |
 |---|---|---|---|---|---|---|---|---|
-| B01 | Cloud | AWS hosting: production + scheduled staging (ECS on EC2, RDS PostgreSQL, Valkey, S3) | Usage / 1-year commitment | ₹5,000 – ₹7,000 | $56 – $78 | ₹60,000 – ₹84,000 | Dec 2026 (Day 1) | Infrastructure |
+| B01a | Cloud | Vercel Pro: Website and Admin frontends, CDN, firewall, preview builds (DEC-421) | Subscription + usage | ₹1,800 – ₹3,600 | $20 – $40 | ₹21,600 – ₹43,200 | Dec 2026 (Day 1) | Subscription |
+| B01b | Cloud | Supabase Pro + production compute, Mumbai: PostgreSQL with RLS and pgvector, storage, daily backups (DEC-421) | Subscription + compute | ₹3,600 – ₹5,400 | $40 – $60 | ₹43,200 – ₹64,800 | Dec 2026 (Day 1) | Subscription |
+| B01c | Cloud | AWS ap-south-1: Django API, Celery workers, Valkey, S3 files (EC2/ECS on EC2) (DEC-421) | Usage | ₹2,700 – ₹4,050 | $30 – $45 | ₹32,400 – ₹48,600 | Dec 2026 (Day 1) | Infrastructure |
 | B20 | Cloud | Cross-region backup and DR storage | Usage | ₹300 – ₹600 | $3 – $7 | ₹3,600 – ₹7,200 | Dec 2026 | Infrastructure |
-| B21 | Cloud | CloudFront CDN + AWS WAF | Fixed per rule + usage | ₹1,300 – ₹1,800 | $14 – $20 | ₹15,600 – ₹21,600 | Feb 2027 (Day 68) | Subscription |
 | B01+ | Cloud | Source-pack additions: restore-check sandbox, control/finance worker, drift job, training tenant | Usage | ₹200 – ₹1,700 | $2 – $19 | ₹2,400 – ₹20,400 | Release 1 | Infrastructure |
 | B02 | AI | Production AI inference: Claude Haiku-class and Sonnet-class (primary, DEC-418) via the gateway; hard cap | Pay-as-you-go, hard cap | ₹3,000 | $33 | ₹36,000 – ₹36,000 | Dec 2026 (Day 15) | Usage (capped) |
 | B23 | AI | Delivery-team AI: CI review, evaluation judge, fixture generation (Claude API) | Pay-as-you-go, capped | ₹1,000 | $11 | ₹12,000 – ₹12,000 | Dec 2026 (Day 15) | Usage (capped) |
@@ -622,15 +636,16 @@ The production application uses the **Claude API** (pay as you go, metered by th
 | B10 | Providers | Optional integration reserve (calendar/social/validation pilots) | Per approval | ₹1,000 | $11 | ₹12,000 – ₹12,000 | Feb 2027 (Day 82) | Reserve |
 | B07 | Tools | Monitoring, security and CI (error tracking, CI minutes, paging) | Subscription / usage | ₹500 | $6 | ₹6,000 – ₹6,000 | Dec 2026 | Subscription |
 | B07+ | Tools | Synthetic availability probes, extra CI gates | Subscription / usage | ₹0 – ₹1,300 | $0 – $14 | ₹0 – ₹15,600 | Release 1 | Subscription |
-|  |  | **Base subtotal** |  | **₹17,300 – ₹22,900** | **$192 – $254** | **₹2,07,600 – ₹2,74,800** |  |  |
-| B11 | Contingency | 15% on the base |  | ₹2,595 – ₹3,435 | $29 – $38 |  |  |  |
+|  |  | **Base subtotal** |  | **₹19,100 – ₹27,150** | **$212 – $302** | **₹2,29,200 – ₹3,25,800** |  |  |
+| B11 | Contingency | 15% on the base |  | ₹2,865 – ₹4,072 | $32 – $45 |  |  |  |
 | B09 | Seats | Claude seats (2 × $20, × 1.15) | Fixed subscription | ₹4,140 | $46 | ₹49,680 | Dec 2026 | Subscription |
-|  |  | **Total pilot running (with contingency and seats)** |  | **₹24,035 – ₹30,475** | **$267 – $339** | **₹2,88,420 – ₹3,65,700** |  |  |
+|  |  | **Total pilot running (with contingency and seats)** |  | **₹26,105 – ₹35,362** | **$290 – $393** | **₹3,13,260 – ₹4,24,350** |  |  |
 
 ## 8.2 Optional and conditional lines
 
 | Line | Item | Per month (INR) | Per month (USD) | When |
 |---|---|---|---|---|
+| B22b | Supabase point-in-time recovery add-on (from the growth gate, DEC-421) | ₹9,000 – ₹9,000 | $100 – $100 | Growth gate |
 | B08 | Apollo paid enrichment (OFF until the scale gate) × 1.15 | ₹10,350 – ₹10,350 | $115 – $115 | Scale gate only |
 | B22 | LLM observability, self-hosted Langfuse, at growth | ₹2,250 – ₹2,700 | $25 – $30 | Growth gate |
 | B13 | E-signature provider (pilot uses signed-PDF path) | Per use / pass-through | — | W5/W6, per envelope |
@@ -651,9 +666,9 @@ The production application uses the **Claude API** (pay as you go, metered by th
 
 | Stage | Hosting | AI ceiling | Typical total per month (INR) | Per month (USD) | Gate |
 |---|---|---|---|---|---|
-| Pilot (after Release 2) | ₹5,000–7,000 | ₹3,000 cap | ₹20,000 – ₹26,000 | $222 – $289 | — |
-| Year-1 design point (growth gate) | ≈ ₹21,000 | ₹12,000 cap | ₹50,000 – ₹70,000 | $556 – $778 | BRD §8 scale gate: cost per qualified opportunity, consent compliance, conversion |
-| Year-2 design point (scale) | ≈ ₹66,600 | ₹40,000 cap | ₹1,30,000 – ₹1,70,000 | $1,444 – $1,889 | Tenant plans carry attributable cost (NFR-035) |
+| Pilot (after Release 2) | ₹8,100–13,050 (Vercel + Supabase + AWS, DEC-421) | ₹3,000 cap | ₹22,000 – ₹31,000 | $244 – $344 | — |
+| Year-1 design point (growth gate) | ≈ ₹21,000–26,000 incl. Supabase compute upgrade | ₹12,000 cap | ₹59,000 – ₹79,000 | $656 – $878 | BRD §8 scale gate: cost per qualified opportunity, consent compliance, conversion |
+| Year-2 design point (scale) | ≈ ₹66,600–75,000 incl. Supabase and Vercel usage | ₹40,000 cap | ₹1,39,000 – ₹1,79,000 | $1,544 – $1,989 | Tenant plans carry attributable cost (NFR-035) |
 
 External SaaS tenants pay for their own AI, messaging and storage use through their plan and metered overage (DEC-008, DEC-047). Their usage is never charged to the platform's B02 line.
 
@@ -676,26 +691,26 @@ After the build the tooling seats fall to the maintenance team: about 2 engineer
 
 | Month | Development (central) | Running (central) | Approved tools (central) | Month total | Cumulative (central) | Cumulative range | Cumulative (USD) |
 |---|---|---|---|---|---|---|---|
-| Dec 2026 | ₹6.80 L | ₹16,732 | ₹75,492 | ₹7.72 L | ₹7.72 L | ₹6.29 L – ₹9.15 L | $8,580 |
-| Jan 2027 | ₹10.65 L | ₹19,608 | ₹75,492 | ₹11.60 L | ₹19.32 L | ₹15.14 L – ₹23.87 L | $21,465 |
-| Feb 2027 | ₹10.65 L | ₹21,965 | ₹75,492 | ₹11.62 L | ₹30.94 L | ₹24.01 L – ₹38.62 L | $34,376 |
-| Mar 2027 | ₹10.65 L | ₹23,115 | ₹75,492 | ₹11.63 L | ₹42.57 L | ₹32.88 L – ₹53.38 L | $47,299 |
-| Apr 2027 | ₹10.65 L | ₹25,415 | ₹75,492 | ₹11.65 L | ₹54.22 L | ₹41.78 L – ₹68.16 L | $60,248 |
-| May 2027 | ₹10.65 L | ₹27,255 | ₹75,492 | ₹11.67 L | ₹65.90 L | ₹50.69 L – ₹82.98 L | $73,218 |
-| Jun 2027 | ₹9.09 L | ₹33,062 | ₹75,492 | ₹10.17 L | ₹76.07 L | ₹58.15 L – ₹96.24 L | $84,519 |
-| Jul 2027 | ₹5.38 L | ₹33,062 | ₹75,492 | ₹6.47 L | ₹82.53 L | ₹63.14 L – ₹104.17 L | $91,703 |
-| Aug 2027 | ₹8.34 L | ₹41,314 | ₹75,492 | ₹9.51 L | ₹92.04 L | ₹69.77 L – ₹116.56 L | $102,267 |
-| Sep 2027 | ₹8.34 L | ₹41,314 | ₹75,492 | ₹9.51 L | ₹101.55 L | ₹76.41 L – ₹128.94 L | $112,832 |
-| Oct 2027 | ₹8.34 L | ₹41,314 | ₹75,492 | ₹9.51 L | ₹111.06 L | ₹83.04 L – ₹141.32 L | $123,396 |
-| Nov 2027 | ₹8.34 L | ₹41,314 | ₹75,492 | ₹9.51 L | ₹120.56 L | ₹89.67 L – ₹153.71 L | $133,961 |
-| Dec 2027 | ₹8.34 L | ₹41,314 | ₹75,492 | ₹9.51 L | ₹130.07 L | ₹96.30 L – ₹166.09 L | $144,525 |
-| Jan 2028 | ₹0.00 L | ₹41,314 | ₹75,492 | ₹1.17 L | ₹131.24 L | ₹97.34 L – ₹167.39 L | $145,823 |
-| Feb 2028 | ₹0.00 L | ₹41,314 | ₹75,492 | ₹1.17 L | ₹132.41 L | ₹98.37 L – ₹168.69 L | $147,121 |
-| Mar 2028 | ₹0.00 L | ₹41,314 | ₹75,492 | ₹1.17 L | ₹133.58 L | ₹99.40 L – ₹170.00 L | $148,419 |
-| Apr 2028 | ₹0.00 L | ₹41,314 | ₹75,492 | ₹1.17 L | ₹134.75 L | ₹100.44 L – ₹171.30 L | $149,717 |
-| May 2028 | ₹0.00 L | ₹41,314 | ₹75,492 | ₹1.17 L | ₹135.91 L | ₹101.47 L – ₹172.60 L | $151,015 |
-| Jun 2028 | ₹0.00 L | ₹41,314 | ₹75,492 | ₹1.17 L | ₹137.08 L | ₹102.50 L – ₹173.91 L | $152,312 |
-| Jul 2028 | ₹0.00 L | ₹41,314 | ₹75,492 | ₹1.17 L | ₹138.25 L | ₹103.53 L – ₹175.21 L | $153,610 |
+| Dec 2026 | ₹6.80 L | ₹21,994 | ₹75,492 | ₹7.77 L | ₹7.77 L | ₹6.33 L – ₹9.22 L | $8,639 |
+| Jan 2027 | ₹10.65 L | ₹24,869 | ₹75,492 | ₹11.65 L | ₹19.42 L | ₹15.21 L – ₹24.01 L | $21,582 |
+| Feb 2027 | ₹10.65 L | ₹25,444 | ₹75,492 | ₹11.65 L | ₹31.08 L | ₹24.10 L – ₹38.81 L | $34,531 |
+| Mar 2027 | ₹10.65 L | ₹26,594 | ₹75,492 | ₹11.67 L | ₹42.74 L | ₹33.00 L – ₹53.62 L | $47,494 |
+| Apr 2027 | ₹10.65 L | ₹28,894 | ₹75,492 | ₹11.69 L | ₹54.43 L | ₹41.92 L – ₹68.45 L | $60,481 |
+| May 2027 | ₹10.65 L | ₹30,734 | ₹75,492 | ₹11.71 L | ₹66.14 L | ₹50.84 L – ₹83.31 L | $73,490 |
+| Jun 2027 | ₹9.09 L | ₹36,541 | ₹75,492 | ₹10.21 L | ₹76.35 L | ₹58.32 L – ₹96.62 L | $84,829 |
+| Jul 2027 | ₹5.38 L | ₹36,541 | ₹75,492 | ₹6.50 L | ₹82.85 L | ₹63.34 L – ₹104.60 L | $92,052 |
+| Aug 2027 | ₹8.34 L | ₹44,792 | ₹75,492 | ₹9.54 L | ₹92.39 L | ₹69.99 L – ₹117.04 L | $102,655 |
+| Sep 2027 | ₹8.34 L | ₹44,792 | ₹75,492 | ₹9.54 L | ₹101.93 L | ₹76.64 L – ₹129.47 L | $113,258 |
+| Oct 2027 | ₹8.34 L | ₹44,792 | ₹75,492 | ₹9.54 L | ₹111.47 L | ₹83.30 L – ₹141.90 L | $123,861 |
+| Nov 2027 | ₹8.34 L | ₹44,792 | ₹75,492 | ₹9.54 L | ₹121.02 L | ₹89.95 L – ₹154.33 L | $134,464 |
+| Dec 2027 | ₹8.34 L | ₹44,792 | ₹75,492 | ₹9.54 L | ₹130.56 L | ₹96.60 L – ₹166.77 L | $145,067 |
+| Jan 2028 | ₹0.00 L | ₹44,792 | ₹75,492 | ₹1.20 L | ₹131.76 L | ₹97.66 L – ₹168.12 L | $146,404 |
+| Feb 2028 | ₹0.00 L | ₹44,792 | ₹75,492 | ₹1.20 L | ₹132.97 L | ₹98.71 L – ₹169.47 L | $147,740 |
+| Mar 2028 | ₹0.00 L | ₹44,792 | ₹75,492 | ₹1.20 L | ₹134.17 L | ₹99.76 L – ₹170.82 L | $149,077 |
+| Apr 2028 | ₹0.00 L | ₹44,792 | ₹75,492 | ₹1.20 L | ₹135.37 L | ₹100.82 L – ₹172.17 L | $150,413 |
+| May 2028 | ₹0.00 L | ₹44,792 | ₹75,492 | ₹1.20 L | ₹136.57 L | ₹101.87 L – ₹173.53 L | $151,750 |
+| Jun 2028 | ₹0.00 L | ₹44,792 | ₹75,492 | ₹1.20 L | ₹137.78 L | ₹102.92 L – ₹174.88 L | $153,086 |
+| Jul 2028 | ₹0.00 L | ₹44,792 | ₹75,492 | ₹1.20 L | ₹138.98 L | ₹103.98 L – ₹176.23 L | $154,423 |
 
 ![Cumulative cash flow](img/cashflow.png)
 
@@ -751,7 +766,7 @@ Budgeting these items each year keeps the platform supportable and avoids a cost
 | Item | Excluding GST | GST 18% | Including GST |
 |---|---|---|---|
 | Approved one-time development (central) | ₹116.17 L | ₹20.91 L | ₹137.08 L |
-| Pilot running per month (high) | ₹30,475 | ₹5,485 | ₹35,960 |
+| Pilot running per month (high) | ₹35,362 | ₹6,365 | ₹41,728 |
 | Approved tooling per month (high) | ₹77,094 | ₹13,877 | ₹90,971 |
 
 GST on salaries does not apply. GST on contractor, vendor and SaaS invoices is usually recoverable as input tax credit for a GST-registered company. Confirm with the finance advisor.
@@ -762,21 +777,21 @@ GST on salaries does not apply. GST on contractor, vendor and SaaS invoices is u
 
 | Year | Development (one-time) | Running and subscriptions | Tooling seats | Maintenance | Future-proofing | Total (INR) | Total (USD) |
 |---|---|---|---|---|---|---|---|
-| Year 0 (build): Dec 2026 – Jul 2027 | ₹55.46 L – ₹95.72 L | ₹1.74 L – ₹2.26 L | ₹5.91 L – ₹6.17 L | ₹0.00 L – ₹0.00 L | ₹0.00 L – ₹0.00 L | **₹63.12 L – ₹104.15 L** | $70,128 – $115,722 |
-| Year 1: Aug 2027 – Jul 2028 | ₹28.00 L – ₹55.40 L | ₹3.53 L – ₹6.39 L | ₹8.87 L – ₹9.25 L | ₹8.32 L – ₹19.14 L | ₹6.47 L – ₹15.29 L | **₹55.19 L – ₹105.47 L** | $61,317 – $117,188 |
-| Year 2: Aug 2028 – Jul 2029 (growth gate) | ₹0.00 L – ₹0.00 L | ₹6.64 L – ₹11.13 L | ₹4.18 L – ₹4.46 L | ₹13.52 L – ₹32.64 L | ₹6.99 L – ₹16.51 L | **₹31.33 L – ₹64.74 L** | $34,814 – $71,936 |
-| Year 3: Aug 2029 – Jul 2030 (scale design point) | ₹0.00 L – ₹0.00 L | ₹16.24 L – ₹23.13 L | ₹4.18 L – ₹4.46 L | ₹14.60 L – ₹35.25 L | ₹7.55 L – ₹17.83 L | **₹42.57 L – ₹80.67 L** | $47,304 – $89,638 |
-| **Total (build + 3 years)** |  |  |  |  |  | **₹192.21 L – ₹355.04 L** | **$213,563 – $394,484** |
+| Year 0 (build): Dec 2026 – Jul 2027 | ₹55.46 L – ₹95.72 L | ₹1.94 L – ₹2.69 L | ₹5.91 L – ₹6.17 L | ₹0.00 L – ₹0.00 L | ₹0.00 L – ₹0.00 L | **₹63.32 L – ₹104.58 L** | $70,350 – $116,205 |
+| Year 1: Aug 2027 – Jul 2028 | ₹28.00 L – ₹55.40 L | ₹3.78 L – ₹6.97 L | ₹8.87 L – ₹9.25 L | ₹8.32 L – ₹19.14 L | ₹6.47 L – ₹15.29 L | **₹55.43 L – ₹106.06 L** | $61,593 – $117,840 |
+| Year 2: Aug 2028 – Jul 2029 (growth gate) | ₹0.00 L – ₹0.00 L | ₹7.72 L – ₹12.21 L | ₹4.18 L – ₹4.46 L | ₹13.52 L – ₹32.64 L | ₹6.99 L – ₹16.51 L | **₹32.41 L – ₹65.82 L** | $36,014 – $73,136 |
+| Year 3: Aug 2029 – Jul 2030 (scale design point) | ₹0.00 L – ₹0.00 L | ₹17.32 L – ₹24.21 L | ₹4.18 L – ₹4.46 L | ₹14.60 L – ₹35.25 L | ₹7.55 L – ₹17.83 L | **₹43.65 L – ₹81.75 L** | $48,504 – $90,838 |
+| **Total (build + 3 years)** |  |  |  |  |  | **₹194.82 L – ₹358.22 L** | **$216,461 – $398,019** |
 
 ## 12.2 Full roadmap: core + alignment + A1 + A2 + A3 + Phase 2
 
 | Year | Development (one-time) | Running and subscriptions | Tooling seats | Maintenance | Future-proofing | Total (INR) | Total (USD) |
 |---|---|---|---|---|---|---|---|
-| Year 0 (build): Dec 2026 – Jul 2027 | ₹55.46 L – ₹95.72 L | ₹1.74 L – ₹2.26 L | ₹5.91 L – ₹6.17 L | ₹0.00 L – ₹0.00 L | ₹0.00 L – ₹0.00 L | **₹63.12 L – ₹104.15 L** | $70,128 – $115,722 |
-| Year 1: Aug 2027 – Jul 2028 | ₹104.00 L – ₹181.70 L | ₹3.97 L – ₹7.83 L | ₹8.87 L – ₹9.25 L | ₹8.32 L – ₹19.14 L | ₹6.47 L – ₹15.29 L | **₹131.63 L – ₹233.21 L** | $146,252 – $259,126 |
-| Year 2: Aug 2028 – Jul 2029 (growth gate) | ₹0.00 L – ₹0.00 L | ₹7.51 L – ₹13.95 L | ₹4.18 L – ₹4.46 L | ₹25.83 L – ₹59.92 L | ₹6.99 L – ₹16.51 L | **₹44.51 L – ₹94.84 L** | $49,452 – $105,376 |
-| Year 3: Aug 2029 – Jul 2030 (scale design point) | ₹0.00 L – ₹0.00 L | ₹17.11 L – ₹25.95 L | ₹4.18 L – ₹4.46 L | ₹27.90 L – ₹64.72 L | ₹7.55 L – ₹17.83 L | **₹56.73 L – ₹112.95 L** | $63,036 – $125,504 |
-| **Total (build + 3 years)** |  |  |  |  |  | **₹295.98 L – ₹545.16 L** | **$328,869 – $605,728** |
+| Year 0 (build): Dec 2026 – Jul 2027 | ₹55.46 L – ₹95.72 L | ₹1.94 L – ₹2.69 L | ₹5.91 L – ₹6.17 L | ₹0.00 L – ₹0.00 L | ₹0.00 L – ₹0.00 L | **₹63.32 L – ₹104.58 L** | $70,350 – $116,205 |
+| Year 1: Aug 2027 – Jul 2028 | ₹104.00 L – ₹181.70 L | ₹4.22 L – ₹8.42 L | ₹8.87 L – ₹9.25 L | ₹8.32 L – ₹19.14 L | ₹6.47 L – ₹15.29 L | **₹131.88 L – ₹233.80 L** | $146,528 – $259,778 |
+| Year 2: Aug 2028 – Jul 2029 (growth gate) | ₹0.00 L – ₹0.00 L | ₹8.59 L – ₹15.03 L | ₹4.18 L – ₹4.46 L | ₹25.83 L – ₹59.92 L | ₹6.99 L – ₹16.51 L | **₹45.59 L – ₹95.92 L** | $50,652 – $106,576 |
+| Year 3: Aug 2029 – Jul 2030 (scale design point) | ₹0.00 L – ₹0.00 L | ₹18.19 L – ₹27.03 L | ₹4.18 L – ₹4.46 L | ₹27.90 L – ₹64.72 L | ₹7.55 L – ₹17.83 L | **₹57.81 L – ₹114.03 L** | $64,236 – $126,704 |
+| **Total (build + 3 years)** |  |  |  |  |  | **₹298.59 L – ₹548.34 L** | **$331,767 – $609,263** |
 
 Year 2 and Year 3 assume the growth and scale gates pass, because the running costs step up only then. Maintenance is 15% (low) or 20% (high) of cumulative development, with 8% annual escalation. If the gates do not pass, running costs stay at pilot level and these years cost less.
 

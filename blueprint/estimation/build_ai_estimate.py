@@ -166,10 +166,10 @@ def tco_ai(path):
     cum = [cum[0] + y1_dev[0], cum[1] + y1_dev[1]]
     share = 1.0 if "A3" in path else 0.35
     esc = 1.08
-    y2_run = [(50_000 + share * BE.adv_lo + BE.aln_run[0]) * 12, (70_000 + share * BE.adv_hi + BE.aln_run[1]) * 12]
+    y2_run = [(M.SCALE_STAGES[1][3][0] + share * BE.adv_lo + BE.aln_run[0]) * 12, (M.SCALE_STAGES[1][3][1] + share * BE.adv_hi + BE.aln_run[1]) * 12]
     maint_tools = [(ai_tools_after[0]) * 12 * M.FX, (ai_tools_after[1]) * 12 * M.FX]
     years.append(("Year 2: Aug 2028 – Jul 2029 (growth gate)", [0, 0], y2_run, maint_tools, [X.MAINT_PCT_AI[0] * cum[0] * esc, X.MAINT_PCT_AI[1] * cum[1] * esc], [FP_AI[0] * esc, FP_AI[1] * esc]))
-    y3_run = [(130_000 + share * BE.adv_lo + BE.aln_run[0]) * 12, (170_000 + share * BE.adv_hi + BE.aln_run[1]) * 12]
+    y3_run = [(M.SCALE_STAGES[2][3][0] + share * BE.adv_lo + BE.aln_run[0]) * 12, (M.SCALE_STAGES[2][3][1] + share * BE.adv_hi + BE.aln_run[1]) * 12]
     years.append(("Year 3: Aug 2029 – Jul 2030 (scale design point)", [0, 0], y3_run, maint_tools, [X.MAINT_PCT_AI[0] * cum[0] * esc ** 2, X.MAINT_PCT_AI[1] * cum[1] * esc ** 2], [FP_AI[0] * esc ** 2, FP_AI[1] * esc ** 2]))
     return years
 
@@ -229,7 +229,8 @@ A("")
 table(["Field", "Value"], [
     ["Document", "Cost Estimate v1.1 (AI-built variant). Companion to Cost Estimate v1.0 (traditional build)"],
     ["Date", "28 Nov 2026"],
-    ["Basis", "Application Blueprint v1.1; approved budgets DEC-230/231; Founder decisions DEC-416…419 (DEC-419: build-time tooling approved)"],
+    ["Basis", "Application Blueprint v1.1; approved budgets DEC-230/231; Founder decisions DEC-416…421 (DEC-419 tooling, DEC-420 AI-built delivery, DEC-421 Vercel + Supabase hosting)"],
+    ["Revision", "Rev. A (28 Nov 2026): running costs re-based for the Vercel + Supabase + AWS Mumbai hosting stack (DEC-421)"],
     ["Currency", f"INR and USD at ₹{M.FX:.0f} = $1 (verify). Amounts exclude GST"],
     ["What changes", "**Only how the software is built.** AI models and AI agents draft, code, test and document under human supervision. **The application itself, its features, its 80 production AI agents and its running costs do not change**"],
     ["Status", "**Approved approach (DEC-420, 28 Nov 2026):** AI-built delivery from Sprint 0, with a **Sprint 2 calibration gate (≈ Day 45)**. Team, dates and Ledger A stay as approved until the gate (§12)"],
@@ -410,7 +411,7 @@ table(["Item", "Per month (INR)", "Per month (USD)"], [
     ["Pilot running after launch (Ledger B, contingency, seats)", rng(BE.runs_lo, BE.runs_hi, inr), rng(BE.runs_lo, BE.runs_hi, usd)],
     ["Literal-alignment additions (CR-ALN-02)", rng(*BE.aln_run, inr), rng(*BE.aln_run, usd)],
     ["Advanced capabilities at full rollout", rng(BE.adv_lo, BE.adv_hi, inr), rng(BE.adv_lo, BE.adv_hi, usd)],
-    ["Growth gate / scale design points", "₹50–70 thousand / ₹1.3–1.7 lakh", "$556–778 / $1,444–1,889"],
+    ["Growth gate / scale design points", rng(*M.SCALE_STAGES[1][3], inr) + " / " + rng(*M.SCALE_STAGES[2][3], inr), rng(*M.SCALE_STAGES[1][3], usd) + " / " + rng(*M.SCALE_STAGES[2][3], usd)],
 ])
 A(f"**After the build**, the AI tooling continues for the maintenance team at about **{rng(*ai_tools_after, usdv)} per month**. That covers 2 Claude Max 20x seats, 2 Pro seats, CI sandboxes and agent observability, plus the remaining DEC-419 tools.\n")
 

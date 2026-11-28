@@ -98,7 +98,14 @@ add_hi = sum(r[3] for r in M.RUN_ADDITIONS)
 adv_lo = sum(r[2] for r in M.RUN_ADDITIONS[1:])
 adv_hi = sum(r[3] for r in M.RUN_ADDITIONS[1:])
 aln_run = M.RUN_ADDITIONS[0][2:4]
-B_DURING_BUILD = (147_000, 175_000)
+def _ramp(i):
+    lo = sum(r[4] for r in M.LEDGER_B if M.B_START.get(r[0], 0) <= i)
+    hi = sum(r[5] for r in M.LEDGER_B if M.B_START.get(r[0], 0) <= i)
+    return lo * 1.15 + M.SEATS_B09, hi * 1.15 + M.SEATS_B09
+
+
+RAMP = [_ramp(i) for i in range(7)]          # Dec 2026 … Jun 2027 (Day 1–208)
+B_DURING_BUILD = (sum(r[0] for r in RAMP), sum(r[1] for r in RAMP))
 
 # tooling (USD)
 tool_rows = []
@@ -158,7 +165,7 @@ for name, basis, lo, hi, kind in M.FUTURE:
 months = ["Dec 2026", "Jan 2027", "Feb 2027", "Mar 2027", "Apr 2027", "May 2027", "Jun 2027", "Jul 2027",
           "Aug 2027", "Sep 2027", "Oct 2027", "Nov 2027", "Dec 2027", "Jan 2028", "Feb 2028", "Mar 2028",
           "Apr 2028", "May 2028", "Jun 2028", "Jul 2028"]
-ramp_b = {"Dec 2026": (15_410, 18_055), "Jan 2027": (18_285, 20_930), "Feb 2027": (20_355, 23_575), "Mar 2027": (21_505, 24_725), "Apr 2027": (23_805, 27_025)}
+ramp_b = {m: RAMP[k] for k, m in enumerate(["Dec 2026", "Jan 2027", "Feb 2027", "Mar 2027", "Apr 2027"])}
 
 
 def dev_month(m, key):
@@ -246,11 +253,11 @@ def tco(path_keys):
     cum_dev = [cum_dev[0] + y1_dev[0], cum_dev[1] + y1_dev[1]]
     adv_share = 1.0 if "A3" in path_keys else 0.35
     # Year 2: growth design point
-    y2_run = [(50_000 + adv_share * adv_lo + aln_run[0]) * 12, (70_000 + adv_share * adv_hi + aln_run[1]) * 12]
+    y2_run = [(M.SCALE_STAGES[1][3][0] + adv_share * adv_lo + aln_run[0]) * 12, (M.SCALE_STAGES[1][3][1] + adv_share * adv_hi + aln_run[1]) * 12]
     y2_tools = [after_lo * 12 * M.FX + M.SEATS_B09 * 12, after_hi * 12 * M.FX + M.SEATS_B09 * 12]
     esc = 1.08
     years.append(("Year 2: Aug 2028 – Jul 2029 (growth gate)", [0, 0], y2_run, y2_tools, [0.15 * cum_dev[0] * esc, 0.20 * cum_dev[1] * esc], [fp_lo * esc, fp_hi * esc]))
-    y3_run = [(130_000 + adv_share * adv_lo + aln_run[0]) * 12, (170_000 + adv_share * adv_hi + aln_run[1]) * 12]
+    y3_run = [(M.SCALE_STAGES[2][3][0] + adv_share * adv_lo + aln_run[0]) * 12, (M.SCALE_STAGES[2][3][1] + adv_share * adv_hi + aln_run[1]) * 12]
     years.append(("Year 3: Aug 2029 – Jul 2030 (scale design point)", [0, 0], y3_run, y2_tools, [0.15 * cum_dev[0] * esc ** 2, 0.20 * cum_dev[1] * esc ** 2], [fp_lo * esc ** 2, fp_hi * esc ** 2]))
     return years
 
@@ -343,7 +350,8 @@ A("")
 table(["Field", "Value"], [
     ["Document", "Cost Estimate v1.0 for the AI Growth Engine (Employee Sales & Marketing Automation)"],
     ["Date", f"{M.AS_OF}"],
-    ["Basis", "Application Blueprint v1.1 (Parts 0–9.10, 342 decisions), approved budgets DEC-230/231, Founder decisions DEC-416…419"],
+    ["Basis", "Application Blueprint v1.1 (Parts 0–9.10, 345 decisions), approved budgets DEC-230/231, Founder decisions DEC-416…421"],
+    ["Revision", "Rev. A (28 Nov 2026): running costs re-based for the Vercel + Supabase + AWS Mumbai hosting stack (DEC-421)"],
     ["Currency", f"INR and USD at **₹{M.FX:.0f} = $1** (blueprint rate, Part 8.4; verify at time of payment). Sensitivity at ₹85 and ₹95 in §13"],
     ["Prepared by", "FinOps Lead with Product Owner, Delivery Lead, Solutions Architect, QA Lead and AI Governance Lead (blueprint team)"],
     ["Classification", "Confidential: Founder and authorized delivery partners"],
@@ -370,8 +378,8 @@ table(["Recurring item", "Per month (INR)", "Per month (USD)", "Per year (INR)",
     ["Plus literal-alignment running additions (CR-ALN-02, upper bound)", rng(*aln_run, inr), rng(*aln_run, usd), rng(aln_run[0] * 12, aln_run[1] * 12), rng(aln_run[0] * 12, aln_run[1] * 12, usd)],
     ["Plus advanced capabilities at full rollout (X1 + X2 + X3, after A3)", rng(adv_lo, adv_hi, inr), rng(adv_lo, adv_hi, usd), rng(adv_lo * 12, adv_hi * 12), rng(adv_lo * 12, adv_hi * 12, usd)],
     ["**All-in pilot running after the full advanced roadmap**", f"**{rng(runs_lo + add_lo, runs_hi + add_hi, inr)}**", f"**{rng(runs_lo + add_lo, runs_hi + add_hi, usd)}**", f"**{rng((runs_lo + add_lo) * 12, (runs_hi + add_hi) * 12)}**", f"**{rng((runs_lo + add_lo) * 12, (runs_hi + add_hi) * 12, usd)}**"],
-    ["At the growth gate (Year-1 design point)", "₹50,000 – ₹70,000 + advanced lines", "$556 – $778 + advanced", "—", "—"],
-    ["At scale (Year-2 design point)", "₹1.3 – 1.7 lakh + advanced lines", "$1,444 – $1,889 + advanced", "—", "—"],
+    ["At the growth gate (Year-1 design point)", rng(*M.SCALE_STAGES[1][3], inr) + " + advanced lines", rng(*M.SCALE_STAGES[1][3], usd) + " + advanced", "—", "—"],
+    ["At scale (Year-2 design point)", rng(*M.SCALE_STAGES[2][3], inr) + " + advanced lines", rng(*M.SCALE_STAGES[2][3], usd) + " + advanced", "—", "—"],
 ])
 t_ap, t_full = tco_total(tco_ap), tco_total(tco_full)
 A(f"**Three-year total cost of ownership (build + 3 years of operation, maintenance and future-proofing):** approved path **{rng(*t_ap)}** ({rng(*t_ap, usd)}); full roadmap **{rng(*t_full)}** ({rng(*t_full, usd)}). See §12.\n")
@@ -385,10 +393,12 @@ A("![Where the money goes](img/share.png)\n")
 A("## 1.3 Decisions already taken and still open\n")
 table(["Item", "Status", "Reference"], [
     ["Core build budget (Ledger A) ₹52.68–84.08 L", "Approved", "DEC-230"],
-    ["Pilot running budget (Ledger B) ₹19,895–26,335/month", "Approved", "DEC-231"],
+    ["Pilot running budget (Ledger B) ₹19,895–26,335/month (AWS-only design)", "Approved; re-based for DEC-421 in §8", "DEC-231"],
     ["Literal-alignment work CR-ALN-01", "Approved (funded)", "DEC-416"],
     ["Advanced release A1 ≈ ₹28.0–55.4 L", "Approved", "DEC-417"],
     ["Claude Sonnet as primary model", "Approved", "DEC-418"],
+    ["AI-built delivery with a Sprint 2 calibration gate", "Approved", "DEC-420; Cost Estimate v1.1"],
+    ["Hosting on Vercel + Supabase + AWS Mumbai", "Approved; running cost re-based in §8", "DEC-421"],
     ["Phase-2 core continuation (W6) ₹25.8–38.7 L", "Open: decide at the Release 2 go/no-go", "Part 8.4"],
     ["Advanced A2 and A3", "Open: decide at gates G-A1 and G-A2", "DEC-411"],
     ["Build-time tooling (Claude for all engineers, GitHub, Figma, Workspace, Bitwarden, BrowserStack, domains)", "Approved 28 Nov 2026", "DEC-419; §7"],
@@ -595,18 +605,19 @@ table(["Option", "Seats", "Per month (USD)", "Per month (INR)", "When to choose"
 ])
 A("The production application uses the **Claude API** (pay as you go, metered by the model gateway). It does not use the chat subscriptions above. API usage is in Ledger B lines B02 (production, hard cap ₹3,000) and B23 (delivery team, ≈ ₹1,000).\n")
 A("## 7.3 Cloud and providers during the build (approved Ledger B ramp)\n")
-table(["Month", "Lines active", "Per month incl. 15% and seats (INR)", "Per month (USD)"], [
-    ["Dec 2026", "B01, B02 cap, B07, B20, B23", rng(15_410, 18_055, inr), rng(15_410, 18_055, usd)],
-    ["Jan 2027", "+ B03, B04", rng(18_285, 20_930, inr), rng(18_285, 20_930, usd)],
-    ["Feb 2027", "+ B05, B21", rng(20_355, 23_575, inr), rng(20_355, 23_575, usd)],
-    ["Mar 2027", "+ B10", rng(21_505, 24_725, inr), rng(21_505, 24_725, usd)],
-    ["Apr 2027", "+ B06", rng(23_805, 27_025, inr), rng(23_805, 27_025, usd)],
-    ["May – Jul 2027", "All lines", rng(runs_lo, runs_hi, inr), rng(runs_lo, runs_hi, usd)],
-    ["**Total Day 1–208**", "", f"**{rng(*B_DURING_BUILD)}**", f"**{rng(*B_DURING_BUILD, usd)}**"],
-])
+_lab = ["B01a–c (Vercel, Supabase, AWS), B02 cap, B07, B20, B23", "+ B03, B04", "+ B05", "+ B10", "+ B06", "+ B01+, B07+ (all lines)", "All lines"]
+table(["Month", "Lines active", "Per month incl. 15% and seats (INR)", "Per month (USD)"],
+      [[m, _lab[k], rng(*RAMP[k], inr), rng(*RAMP[k], usd)] for k, m in enumerate(["Dec 2026", "Jan 2027", "Feb 2027", "Mar 2027", "Apr 2027", "May 2027", "Jun 2027"])]
+      + [["**Total Day 1–208**", "", f"**{rng(*B_DURING_BUILD)}**", f"**{rng(*B_DURING_BUILD, usd)}**"]])
 
 # 8 Subscriptions after build
 A("# 8. Subscriptions and running costs after the build (recurring)\n")
+A("**Re-based for the approved hosting stack (DEC-421, 28 Nov 2026).** The application runs on Vercel Pro (frontends) and Supabase Pro in Mumbai (PostgreSQL with RLS and pgvector), with AWS ap-south-1 for the Django API, workers, Valkey, SES, S3 and DR copies.\n")
+table(["Hosting lines", "Before (AWS only: B01, B20, B21)", "After DEC-421 (B01a–c, B20)", "Change per month"], [
+    ["Pilot hosting per month", rng(*M.AWS_ONLY_HOSTING, inr), rng(sum(r[4] for r in M.LEDGER_B if r[0] in ("B01a", "B01b", "B01c", "B20")), sum(r[5] for r in M.LEDGER_B if r[0] in ("B01a", "B01b", "B01c", "B20")), inr), "+ ₹1,800 – ₹4,250"],
+    ["Total pilot running incl. 15% contingency and seats", f"{rng(M.APPROVED_B[0] + M.SEATS_B09, M.APPROVED_B[1] + M.SEATS_B09, inr)} (approved, DEC-231)", rng(runs_lo, runs_hi, inr), rng(runs_lo - M.APPROVED_B[0] - M.SEATS_B09, runs_hi - M.APPROVED_B[1] - M.SEATS_B09, inr)],
+])
+A("The increase is absorbed first by the 15% contingency (B11); any remainder goes through change control on Ledger B (DEC-421). Vercel and Supabase pass the procurement gate (vendor record, DPA, data-residency review) before production use.\n")
 A("## 8.1 Pilot running cost by line (approved Ledger B, DEC-231)\n")
 rows = []
 for line, catg, item, billing, lo, hi, start, nature in M.LEDGER_B:
