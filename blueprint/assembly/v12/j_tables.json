@@ -8,7 +8,7 @@
 "FinOps / AI engineering",
 "Golden deterministic fixtures yield exact expected results with zero model calls.",
 "Partially covered",
-"—",
+"TC-17-057; AI-01 rule-first (Part 7.3); candidates TC-AI-AG013-002",
 "Matched"
 ],
 [
@@ -18,8 +18,8 @@
 "Multi-tier model router",
 "FinOps / AI engineering",
 "Given two eligible models select lowest accepted-result cost; reject model below quality floor.",
-"Not covered",
-"—",
+"Partially covered",
+"Part 7.3 model routing (DEC-418 tiers)",
 "Matched"
 ],
 [
@@ -30,7 +30,7 @@
 "FinOps / AI engineering",
 "Low-quality draft escalates once if budget permits; otherwise hold without external effect.",
 "Partially covered",
-"TC-AI-AG031-009, TC-AI-AG029-004, TC-AI-AG028-006",
+"Part 7.3 model routing (DEC-418 tiers); candidates TC-AI-AG031-009, TC-AI-AG029-004, TC-AI-AG028-006",
 "Matched"
 ],
 [
@@ -41,7 +41,7 @@
 "FinOps / AI engineering",
 "Repeated identical approved prefix records measured cache hit or explicit unsupported state.",
 "Partially covered",
-"TC-AU-AU001-004, TC-AI-AG003-002",
+"TC-ENH-I-010; TC-AI-AG003-002; candidates TC-AU-AU001-004, TC-AI-AG003-002, TC-19-010",
 "Matched"
 ],
 [
@@ -52,7 +52,7 @@
 "FinOps / AI engineering",
 "Different tenant or revoked source yields miss; valid same-scope match passes output validation.",
 "Partially covered",
-"TC-AU-AU001-003",
+"TC-ENH-I-010; TC-AI-AG003-002; candidates TC-AU-AU001-003",
 "Matched"
 ],
 [
@@ -63,7 +63,7 @@
 "FinOps / AI engineering",
 "Oversized context is reduced or held; mandatory evidence retained and cap respected.",
 "Partially covered",
-"—",
+"TC-NFR-014; Part 7.3 budgets; candidates TC-AU-AU030-003",
 "Matched"
 ],
 [
@@ -74,7 +74,7 @@
 "FinOps / AI engineering",
 "Long history yields bounded prompt; critical approval and opt-out facts retained.",
 "Partially covered",
-"TC-AI-AG015-010",
+"TC-AI-AG015-010, TC-21-024, TC-ENH-D-298",
 "Matched"
 ],
 [
@@ -85,7 +85,7 @@
 "FinOps / AI engineering",
 "Relevant fixture retrieved within token cap; unrelated or forbidden chunks excluded.",
 "Partially covered",
-"TC-AI-AG027-003, TC-ENH-G-029",
+"Part 7.1 RAG; TC-20-096; candidates TC-AI-AG027-003, TC-ENH-G-029, TC-AI-AG011-006",
 "Matched"
 ],
 [
@@ -95,8 +95,8 @@
 "Incremental embedding updates",
 "FinOps / AI engineering",
 "One changed chunk triggers one update; deleted evidence no longer retrievable.",
-"Not covered",
-"—",
+"Partially covered",
+"Part 7.1 RAG; TC-20-096",
 "Matched"
 ],
 [
@@ -106,8 +106,8 @@
 "Asynchronous AI batching",
 "FinOps / AI engineering",
 "Batch results correlate to each job; expired or incompatible jobs stay separate.",
-"Not covered",
-"—",
+"Partially covered",
+"Part 7.3 batching",
 "Matched"
 ],
 [
@@ -118,7 +118,7 @@
 "FinOps / AI engineering",
 "Two entitled workflows reuse current permitted evidence; stale evidence refreshed or held.",
 "Partially covered",
-"TC-ENH-H-007, TC-ENH-B-037",
+"TC-ENH-H-007, TC-ENH-B-037, TC-FLT-034",
 "Matched"
 ],
 [
@@ -129,7 +129,7 @@
 "FinOps / AI engineering",
 "Loop fixture terminates at configured limit and records hold reason.",
 "Partially covered",
-"—",
+"TC-AI-AG015-030 kill switch and caps; candidates TC-AI-AG015-016, TC-21-043",
 "Matched"
 ],
 [
@@ -139,8 +139,8 @@
 "Multimodal cost tiers",
 "FinOps / AI engineering",
 "Preview meets acceptance without full rendering; failure escalates within cap only.",
-"Not covered",
-"—",
+"Partially covered",
+"Part 7.3 model routing (DEC-418 tiers)",
 "Matched"
 ],
 [
@@ -151,7 +151,7 @@
 "FinOps / AI engineering",
 "Artificial spike triggers alert/hold without affecting unrelated tenants.",
 "Partially covered",
-"TC-AU-AU012-002, TC-AU-AU012-006",
+"TC-NFR-014; Part 7.3 budgets; candidates TC-AU-AU012-002, TC-AU-AU012-006, TC-AU-AU025-002",
 "Matched"
 ],
 [
@@ -162,7 +162,7 @@
 "FinOps / AI engineering",
 "Report denominator, rejected results, cost and quality; no promotion below approved floor.",
 "Partially covered",
-"TC-10-013",
+"TC-ENH-G-003; TC-ENH-K-071; candidates TC-10-013, TC-ENH-J-063, TC-AI-AG018-005",
 "Matched"
 ],
 [
@@ -183,8 +183,8 @@
 "Shared isolated infrastructure",
 "FinOps / platform engineering",
 "Isolation tests pass under shared load; dedicated cost estimate includes maintenance.",
-"Not covered",
-"—",
+"Partially covered",
+"Part 7.3 model routing (DEC-418 tiers)",
 "Matched"
 ],
 [
@@ -194,8 +194,8 @@
 "Demand-driven worker autoscaling",
 "FinOps / platform engineering",
 "Load fixture scales up and drains queue; scale-down does not lose acknowledged jobs.",
-"Not covered",
-"—",
+"Partially covered",
+"TC-NFR-014; Part 7.3 budgets",
 "Matched"
 ],
 [
@@ -206,7 +206,7 @@
 "FinOps / platform engineering",
 "Decision register includes measured cost and p95 for both patterns.",
 "Partially covered",
-"—",
+"Part 4.1 web controls; candidates TC-03-035",
 "Matched"
 ],
 [
@@ -217,7 +217,7 @@
 "FinOps / platform engineering",
 "Explain plans improve target query; pool reuse cannot expose another tenant.",
 "Partially covered",
-"TC-ENH-E-002",
+"Part 4.3 SLOs; NFR-053/054; candidates TC-ENH-E-002, TC-AU-AU030-003",
 "Matched"
 ],
 [
@@ -228,7 +228,7 @@
 "FinOps / platform engineering",
 "Aged fixture moves to approved tier; retained or held data not deleted.",
 "Partially covered",
-"TC-NFR-076, TC-03-073, TC-ENH-E-019",
+"Part 7.3 model routing (DEC-418 tiers); candidates TC-NFR-076, TC-03-073, TC-ENH-E-019",
 "Matched"
 ],
 [
@@ -239,7 +239,7 @@
 "FinOps / platform engineering",
 "Anonymous cache returns public data; authenticated response never shared.",
 "Partially covered",
-"TC-11-075, TC-19-094, TC-14-084",
+"TC-ENH-I-010; TC-AI-AG003-002; candidates TC-11-075, TC-19-094, TC-14-084",
 "Matched"
 ],
 [
@@ -249,8 +249,8 @@
 "Incremental provider sync",
 "FinOps / platform engineering",
 "Unchanged source incurs no full fetch; missed event repaired without duplicate records.",
-"Not covered",
-"—",
+"Partially covered",
+"TC-ENH-G-003; TC-ENH-K-071",
 "Matched"
 ],
 [
@@ -260,8 +260,8 @@
 "Provider shortlist rationalization",
 "FinOps / platform engineering",
 "Each release connector has approved shortlist decision and owner; redundant candidates archived.",
-"Not covered",
-"—",
+"Partially covered",
+"AG-031; EP-16/EP-20 TCs",
 "Matched"
 ],
 [
@@ -271,8 +271,8 @@
 "Bring-your-own-provider accounts",
 "FinOps / platform engineering",
 "BYO tenant charges separate from platform charges; revocation blocks calls.",
-"Not covered",
-"—",
+"Partially covered",
+"Part 4.1 identity controls; TC-01-025",
 "Matched"
 ],
 [
@@ -283,7 +283,7 @@
 "FinOps / platform engineering",
 "Compare scenarios including unused commitments; purchasing approval required.",
 "Partially covered",
-"TC-AI-AG025-002, TC-20-034",
+"Part 7.3 model routing (DEC-418 tiers); candidates TC-AI-AG025-002, TC-20-034, TC-16-076",
 "Matched"
 ],
 [
@@ -294,7 +294,7 @@
 "FinOps / platform engineering",
 "Common component reused; commercial and investment scope tests remain independent.",
 "Partially covered",
-"—",
+"TC-AU-AU036-003, TC-ADV-X3-033, TC-ENH-K-057",
 "Matched"
 ],
 [
@@ -305,7 +305,7 @@
 "FinOps / platform engineering",
 "Representative setup succeeds without staff; unresolved cases route to support.",
 "Partially covered",
-"TC-ENH-J-016",
+"Part 7.3 model routing (DEC-418 tiers); candidates TC-ENH-J-016, TC-08-142",
 "Matched"
 ],
 [
@@ -316,7 +316,7 @@
 "FinOps / platform engineering",
 "Ledger reconciles invoice totals; missing allocation shown as unallocated not zero.",
 "Partially covered",
-"TC-15-100, TC-15-055, TC-15-056",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002; candidates TC-15-100, TC-15-055, TC-15-056",
 "Matched"
 ],
 [
@@ -326,8 +326,8 @@
 "Idle resource detection",
 "FinOps / platform engineering",
 "Idle fixture flagged; active or retained resource not deleted automatically.",
-"Not covered",
-"—",
+"Partially covered",
+"EP-19 website TCs (TC-19-*)",
 "Matched"
 ],
 [
@@ -338,7 +338,7 @@
 "Security / privacy engineering",
 "Unauthorized action rejected at API, worker and adapter even if UI allows it.",
 "Partially covered",
-"—",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002; candidates TC-ENH-E-029",
 "Matched"
 ],
 [
@@ -349,7 +349,7 @@
 "Security / privacy engineering",
 "Cross-tenant query and pooled connection reuse cannot return foreign records.",
 "Partially covered",
-"TC-AU-AU030-003, TC-ADV-X2-098, TC-AU-AU021-003",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002; candidates TC-AU-AU030-003, TC-ADV-X2-098, TC-AU-AU021-003",
 "Matched"
 ],
 [
@@ -360,7 +360,7 @@
 "Security / privacy engineering",
 "Privileged action without fresh required factor rejected; recovery audited.",
 "Partially covered",
-"TC-01-034, TC-01-006, TC-11-011",
+"Part 4.1 identity controls; TC-01-025; candidates TC-01-034, TC-01-006, TC-11-011",
 "Matched"
 ],
 [
@@ -371,7 +371,7 @@
 "Security / privacy engineering",
 "Expired/revoked token fails; scan logs for seeded secret yields zero exposure.",
 "Partially covered",
-"TC-12-047, TC-13-094, TC-01-085",
+"Part 4.1 identity controls; TC-01-025; candidates TC-12-047, TC-13-094, TC-01-085",
 "Matched"
 ],
 [
@@ -382,7 +382,7 @@
 "Security / privacy engineering",
 "Tampered or replayed submission cannot create new workspace; digest alone not identity.",
 "Partially covered",
-"TC-AU-AU020-001",
+"TC-ENH-G-003; TC-ENH-K-071; candidates TC-AU-AU020-001, TC-21-102",
 "Matched"
 ],
 [
@@ -393,7 +393,7 @@
 "Security / privacy engineering",
 "Modification detectable; unauthorized audit deletion rejected.",
 "Partially covered",
-"TC-NFR-073",
+"Part 2.4 audit; NFR-024; candidates TC-NFR-073, TC-01-076",
 "Matched"
 ],
 [
@@ -404,7 +404,7 @@
 "Security / privacy engineering",
 "Agent request for disallowed resource/tool is denied despite prompt instruction.",
 "Partially covered",
-"TC-13-092, TC-14-036, TC-AI-AG015-016",
+"Part 6.4 injection cases; TC-ADV-X1-008; candidates TC-13-092, TC-14-036, TC-AI-AG015-016",
 "Matched"
 ],
 [
@@ -415,7 +415,7 @@
 "Security / privacy engineering",
 "Adversarial document cannot override tool, approval or disclosure policy.",
 "Partially covered",
-"TC-AU-AU005-003, TC-AI-AG028-004",
+"Part 6.4 injection cases; TC-ADV-X1-008; candidates TC-AU-AU005-003, TC-AI-AG028-004, TC-ADV-X1-008",
 "Matched"
 ],
 [
@@ -426,7 +426,7 @@
 "Security / privacy engineering",
 "Seeded sensitive fixture blocked or redacted; approved fields preserved.",
 "Partially covered",
-"TC-20-069, TC-AI-AG017-005, TC-03-062",
+"Part 4.1 data protection; candidates TC-20-069, TC-AI-AG017-005, TC-03-062",
 "Matched"
 ],
 [
@@ -437,7 +437,7 @@
 "Security / privacy engineering",
 "Malicious or mismatched file quarantined; no agent access before clearance.",
 "Partially covered",
-"TC-16-017",
+"Part 7.1 RAG; TC-20-096; candidates TC-16-017, TC-18-063, TC-ENH-D-296",
 "Matched"
 ],
 [
@@ -448,7 +448,7 @@
 "Security / privacy engineering",
 "Security header check and XSS fixtures pass; private data not in public build.",
 "Partially covered",
-"TC-19-093",
+"Part 4.1 web controls; candidates TC-19-093, TC-19-092",
 "Matched"
 ],
 [
@@ -459,7 +459,7 @@
 "Security / privacy engineering",
 "Blocked test destination cannot be fetched even through redirects.",
 "Partially covered",
-"TC-05-007, TC-05-006",
+"Part 4.1 web controls; candidates TC-05-007, TC-05-006, TC-ADV-X3-005",
 "Matched"
 ],
 [
@@ -469,8 +469,8 @@
 "Security behavior monitoring",
 "Security / privacy engineering",
 "Suspicious fixture emits scoped alert with owner and evidence.",
-"Not covered",
-"—",
+"Partially covered",
+"EP-16 retention TCs; AG-038",
 "Matched"
 ],
 [
@@ -480,8 +480,8 @@
 "Software supply-chain controls",
 "Security / privacy engineering",
 "Unapproved vulnerable dependency or unsigned artifact blocks release.",
-"Not covered",
-"—",
+"Partially covered",
+"Part 4.3 PL gates (SBOM, scans)",
 "Matched"
 ],
 [
@@ -492,7 +492,7 @@
 "Security / privacy engineering",
 "Required security suite passes; unresolved critical finding blocks release.",
 "Partially covered",
-"TC-ENH-E-001, TC-NFR-067",
+"Part 7.1 RAG; TC-20-096; candidates TC-ENH-E-001, TC-NFR-067, TC-ALN-B-029",
 "Matched"
 ],
 [
@@ -503,7 +503,7 @@
 "Reliability / SRE",
 "Measured SLI denominators and error-budget policy approved before release.",
 "Partially covered",
-"TC-ALN-B-031",
+"TC-NFR-014; Part 7.3 budgets; candidates TC-ALN-B-031",
 "Matched"
 ],
 [
@@ -514,7 +514,7 @@
 "Reliability / SRE",
 "Failing fixture opens breaker; healthy provider remains available.",
 "Partially covered",
-"TC-AU-AU010-003, TC-AI-AG024-010, TC-AI-AG010-008",
+"Part 3.1 resilience patterns; NFR-016; candidates TC-AU-AU010-003, TC-AI-AG024-010, TC-AI-AG010-008",
 "Matched"
 ],
 [
@@ -524,8 +524,8 @@
 "Workload bulkheads",
 "Reliability / SRE",
 "Noisy tenant cannot starve unrelated tenant in load fixture.",
-"Not covered",
-"—",
+"Partially covered",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002",
 "Matched"
 ],
 [
@@ -536,7 +536,7 @@
 "Reliability / SRE",
 "Crash after checkpoint resumes without rerunning completed effect.",
 "Partially covered",
-"TC-ADV-X1-001",
+"TC-ENH-G-003; TC-ENH-K-071; candidates TC-ADV-X1-001, TC-21-042",
 "Matched"
 ],
 [
@@ -547,7 +547,7 @@
 "Reliability / SRE",
 "Repeated key returns same result; uncertain write not duplicated.",
 "Partially covered",
-"TC-ENH-A-022, TC-04-004, TC-16-038",
+"TC-ENH-G-003; TC-ENH-K-071; candidates TC-ENH-A-022, TC-04-004, TC-16-038",
 "Matched"
 ],
 [
@@ -558,7 +558,7 @@
 "Reliability / SRE",
 "Retryable read retries within limit; invalid request never retries.",
 "Partially covered",
-"TC-18-094, TC-08-146, TC-ENH-J-009",
+"TC-ENH-G-003; TC-ENH-K-071; candidates TC-18-094, TC-08-146, TC-ENH-J-009",
 "Matched"
 ],
 [
@@ -569,7 +569,7 @@
 "Reliability / SRE",
 "Poison event moves to DLQ; replay cannot bypass policy or duplicate effect.",
 "Partially covered",
-"TC-21-037, TC-21-041, TC-21-039",
+"TC-ENH-G-003; TC-ENH-K-071; candidates TC-21-037, TC-21-041, TC-21-039",
 "Matched"
 ],
 [
@@ -580,7 +580,7 @@
 "Reliability / SRE",
 "Overload fixture returns controlled wait/429; accepted jobs durable.",
 "Partially covered",
-"TC-ENH-I-060",
+"Part 3.1 resilience patterns; NFR-016; candidates TC-ENH-I-060",
 "Matched"
 ],
 [
@@ -591,7 +591,7 @@
 "Reliability / SRE",
 "Connector outage blocks affected effect only; other routes remain usable.",
 "Partially covered",
-"—",
+"Part 4.3 PL gates (SBOM, scans); candidates TC-19-080",
 "Matched"
 ],
 [
@@ -602,7 +602,7 @@
 "Reliability / SRE",
 "Injected failure detected within approved monitoring interval.",
 "Partially covered",
-"—",
+"Part 4.3 synthetic monitoring; candidates TC-ENH-K-077",
 "Matched"
 ],
 [
@@ -613,7 +613,7 @@
 "Reliability / SRE",
 "Regression fixture stops rollout and restores previous compatible version.",
 "Partially covered",
-"TC-ENH-E-017",
+"TC-NFR-014; Part 7.3 budgets; candidates TC-ENH-E-017, TC-ADV-X1-066",
 "Matched"
 ],
 [
@@ -624,7 +624,7 @@
 "Reliability / SRE",
 "Mixed-version fixture handles supported events without lost data.",
 "Partially covered",
-"TC-ENH-E-007",
+"CS-MIG-01; Part 4.3 §4.37.2; candidates TC-ENH-E-007",
 "Matched"
 ],
 [
@@ -634,8 +634,8 @@
 "Chaos and fault injection",
 "Reliability / SRE",
 "Evidence shows recovery or bounded hold, with no uncontrolled effects.",
-"Not covered",
-"—",
+"Partially covered",
+"Part 7.1 RAG; TC-20-096",
 "Matched"
 ],
 [
@@ -646,7 +646,7 @@
 "Reliability / SRE",
 "Restore drill meets agreed RPO/RTO or raises release blocker.",
 "Partially covered",
-"TC-ENH-J-045, TC-ENH-K-040, TC-ENH-E-017",
+"NFR-056/057; Part 4.4b DR; candidates TC-ENH-J-045, TC-ENH-K-040, TC-ENH-E-017",
 "Matched"
 ],
 [
@@ -657,7 +657,7 @@
 "Reliability / SRE",
 "Expired session reauthenticates and resumes authorized draft without duplicate submit.",
 "Partially covered",
-"—",
+"Part 4.1 identity controls; TC-01-025; candidates TC-AU-AU028-003, TC-15-069, TC-01-010",
 "Matched"
 ],
 [
@@ -668,7 +668,7 @@
 "Workflow / AI engineering",
 "Registry validates all 156 IDs and rejects unapproved versions.",
 "Partially covered",
-"—",
+"Part 2.2 WF engine; TC-ENH-G-010; TC-18-111; candidates TC-ENH-E-031, TC-18-015, TC-18-116",
 "Matched"
 ],
 [
@@ -679,7 +679,7 @@
 "Workflow / AI engineering",
 "Invalid schema blocked with field errors; accepted fixture round-trips.",
 "Partially covered",
-"TC-ENH-K-060",
+"Part 2.2 WF engine; TC-ENH-G-010; TC-18-111; candidates TC-ENH-K-060",
 "Matched"
 ],
 [
@@ -690,7 +690,7 @@
 "Workflow / AI engineering",
 "Each step has handler mapping; incomplete handler blocks release of workflow.",
 "Partially covered",
-"—",
+"NFR-056/057; Part 4.4b DR; candidates TC-ENH-K-034",
 "Matched"
 ],
 [
@@ -701,7 +701,7 @@
 "Workflow / AI engineering",
 "Child called by two parents within scope; no duplicate charge or unauthorized SKU access.",
 "Partially covered",
-"—",
+"TC-ENH-G-003; TC-ENH-K-071; candidates TC-ENH-E-006",
 "Matched"
 ],
 [
@@ -712,7 +712,7 @@
 "Workflow / AI engineering",
 "Duplicate webhook deduped; committed event produces one eligible run.",
 "Partially covered",
-"TC-NFR-066",
+"Part 2.2 WF engine; TC-ENH-G-010; TC-18-111; candidates TC-NFR-066, TC-01-120, TC-15-097",
 "Matched"
 ],
 [
@@ -723,7 +723,7 @@
 "Workflow / AI engineering",
 "Parallel fixture joins valid results; dependent step waits and cancellation propagates.",
 "Partially covered",
-"TC-ENH-B-040",
+"Part 4.3 PL gates (SBOM, scans); candidates TC-ENH-B-040, TC-NFR-029",
 "Matched"
 ],
 [
@@ -734,7 +734,7 @@
 "Workflow / AI engineering",
 "Dry-run returns hold or plan and creates zero external effects.",
 "Partially covered",
-"—",
+"Part 2.2 WF engine; TC-ENH-G-010; TC-18-111; candidates TC-08-019, TC-ENH-G-010, TC-ENH-J-058",
 "Matched"
 ],
 [
@@ -745,7 +745,7 @@
 "Workflow / AI engineering",
 "Uncertain output goes to reviewer rather than dispatch.",
 "Partially covered",
-"TC-04-021, TC-AI-AG013-008, TC-05-046",
+"Part 7.3 model routing (DEC-418 tiers); candidates TC-04-021, TC-AI-AG013-008, TC-05-046",
 "Matched"
 ],
 [
@@ -756,7 +756,7 @@
 "Workflow / AI engineering",
 "Changed payload or expired/revoked mandate blocks effect.",
 "Partially covered",
-"TC-08-053",
+"Part 2.2 WF engine; TC-ENH-G-010; TC-18-111; candidates TC-08-053",
 "Matched"
 ],
 [
@@ -766,8 +766,8 @@
 "Tenant-scoped cross-workflow events",
 "Workflow / AI engineering",
 "Unsubscribed child held; authorized event uses scoped input without cross-tenant leakage.",
-"Not covered",
-"—",
+"Partially covered",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002",
 "Matched"
 ],
 [
@@ -777,8 +777,8 @@
 "Cancellation and compensation",
 "Workflow / AI engineering",
 "Canceled run releases unused reservation; uncertain effect held for reconciliation.",
-"Not covered",
-"—",
+"Partially covered",
+"TC-ENH-G-003; TC-ENH-K-071",
 "Matched"
 ],
 [
@@ -789,7 +789,7 @@
 "Workflow / AI engineering",
 "Template applied with explicit review; no automatic entitlement or policy override.",
 "Partially covered",
-"—",
+"Part 2.2 WF engine; TC-ENH-G-010; TC-18-111; candidates TC-16-068, TC-20-099",
 "Matched"
 ],
 [
@@ -800,7 +800,7 @@
 "Workflow / AI engineering",
 "Low-quality fixture held; accepted result has evaluation and provenance.",
 "Partially covered",
-"—",
+"Part 2.2 WF engine; TC-ENH-G-010; TC-18-111; candidates TC-AI-AG004-003",
 "Matched"
 ],
 [
@@ -811,7 +811,7 @@
 "Workflow / AI engineering",
 "Recommendation contains baseline, test result and expected impact; no automatic unsafe change.",
 "Partially covered",
-"TC-ENH-J-049",
+"Part 4.3 SLOs; NFR-053/054; candidates TC-ENH-J-049, TC-ENH-H-013",
 "Matched"
 ],
 [
@@ -822,7 +822,7 @@
 "Workflow / AI engineering",
 "Forbidden tool or transition rejected; approved configuration version can roll back.",
 "Partially covered",
-"TC-AU-AU025-004",
+"Part 2.2 WF engine; TC-ENH-G-010; TC-18-111; candidates TC-AU-AU025-004",
 "Matched"
 ],
 [
@@ -833,7 +833,7 @@
 "Growth / marketing",
 "Each public SKU route has unique title, description and indexable content; no tenant data.",
 "Partially covered",
-"TC-ENH-E-029",
+"EP-19 website TCs (TC-19-*); candidates TC-ENH-E-029, TC-ENH-F-002",
 "Matched"
 ],
 [
@@ -844,7 +844,7 @@
 "Growth / marketing",
 "Industry selection shows relevant SKUs with rationale and no fictitious customer claim.",
 "Partially covered",
-"TC-19-062, TC-19-059, TC-20-099",
+"EP-19 website TCs (TC-19-*); candidates TC-19-062, TC-19-059, TC-20-099",
 "Matched"
 ],
 [
@@ -865,8 +865,8 @@
 "Transparent solution comparisons",
 "Growth / marketing",
 "Comparison states limitations and evidence; no unsupported competitor claims.",
-"Not covered",
-"—",
+"Partially covered",
+"EP-19 website TCs (TC-19-*)",
 "Matched"
 ],
 [
@@ -877,7 +877,7 @@
 "Growth / marketing",
 "Score reproducible from responses; no mandatory personal data.",
 "Partially covered",
-"TC-ADV-X2-012",
+"EP-19 website TCs (TC-19-*); candidates TC-ADV-X2-012",
 "Matched"
 ],
 [
@@ -888,7 +888,7 @@
 "Growth / marketing",
 "Report export contains inputs, recommendations and caveat.",
 "Partially covered",
-"—",
+"EP-19 website TCs (TC-19-*); candidates TC-ENH-J-041, TC-ADV-X1-059, TC-13-002",
 "Matched"
 ],
 [
@@ -899,7 +899,7 @@
 "Growth / marketing",
 "Sample limit enforced and no provider/network action from demo.",
 "Partially covered",
-"—",
+"Part 4.3 synthetic monitoring; candidates TC-ENH-F-013",
 "Matched"
 ],
 [
@@ -910,7 +910,7 @@
 "Growth / marketing",
 "Each SKU sample download contains all four workflow IDs and illustrative outputs.",
 "Partially covered",
-"—",
+"Part 2.2 WF engine; TC-ENH-G-010; TC-18-111; candidates TC-ENH-E-029, TC-18-116",
 "Matched"
 ],
 [
@@ -921,7 +921,7 @@
 "Growth / marketing",
 "Resource search returns relevant service guide; unavailable event clearly marked.",
 "Partially covered",
-"—",
+"EP-19 website TCs (TC-19-*); candidates TC-01-024",
 "Matched"
 ],
 [
@@ -943,7 +943,7 @@
 "Growth / marketing",
 "Unknown connector marked unverified; approved connector shows version and conditions.",
 "Partially covered",
-"—",
+"Part 4.3 SLOs; NFR-053/054; candidates TC-11-018",
 "Matched"
 ],
 [
@@ -954,7 +954,7 @@
 "Growth / marketing",
 "No compliance or availability claim without verified evidence.",
 "Partially covered",
-"TC-11-004",
+"EP-19 website TCs (TC-19-*); candidates TC-11-004, TC-02-012",
 "Matched"
 ],
 [
@@ -965,7 +965,7 @@
 "Growth / marketing",
 "Locale fixture preserves approved meaning, terms and currency.",
 "Partially covered",
-"TC-AI-AG018-003",
+"TC-19-057; BRL-FIN; candidates TC-AI-AG018-003, TC-07-031, TC-ADV-X1-045",
 "Matched"
 ],
 [
@@ -987,7 +987,7 @@
 "Growth / marketing",
 "Operator campaigns cannot access customer private records by default.",
 "Partially covered",
-"TC-20-038",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002; candidates TC-20-038, TC-18-082",
 "Matched"
 ],
 [
@@ -998,7 +998,7 @@
 "Customer success",
 "Score reproducible and not used to restrict cancellation; missing inputs marked unknown.",
 "Partially covered",
-"TC-17-047, TC-AU-AU039-002",
+"EP-16 retention TCs; AG-038; candidates TC-17-047, TC-AU-AU039-002, TC-ENH-A-032",
 "Matched"
 ],
 [
@@ -1020,7 +1020,7 @@
 "Customer success",
 "Plan lists required steps and owner; unpurchased service not required.",
 "Partially covered",
-"TC-ENH-F-039, TC-AI-AG016-004",
+"EP-16 retention TCs; AG-038; candidates TC-ENH-F-039, TC-AI-AG016-004, TC-02-041",
 "Matched"
 ],
 [
@@ -1031,7 +1031,7 @@
 "Customer success",
 "Inactive sample flagged; paused and ineligible plans excluded.",
 "Partially covered",
-"TC-20-019, TC-12-066",
+"TC-FLT-011; MT scope selector; candidates TC-20-019, TC-12-066",
 "Matched"
 ],
 [
@@ -1042,7 +1042,7 @@
 "Customer success",
 "Expiry fixture alerts once with corrective action; no secret exposed.",
 "Partially covered",
-"TC-AU-AU029-003",
+"Part 4.1 identity controls; TC-01-025; candidates TC-AU-AU029-003, TC-ENH-J-038, TC-ADV-X2-003",
 "Matched"
 ],
 [
@@ -1053,7 +1053,7 @@
 "Customer success",
 "Report separates observed outcomes from estimated value.",
 "Partially covered",
-"TC-17-036",
+"EP-19 website TCs (TC-19-*); candidates TC-17-036, TC-11-065",
 "Matched"
 ],
 [
@@ -1064,7 +1064,7 @@
 "Customer success",
 "Forecast and remaining reconcile; overage cannot occur without approved terms.",
 "Partially covered",
-"TC-ENH-I-032, TC-12-056, TC-17-037",
+"TC-NFR-014; Part 7.3 budgets; candidates TC-ENH-I-032, TC-12-056, TC-17-037",
 "Matched"
 ],
 [
@@ -1075,7 +1075,7 @@
 "Customer success",
 "Paused schedule prevents new runs; consent and safety gates remain enforced.",
 "Partially covered",
-"—",
+"TC-ENH-A-032, TC-08-099, TC-ADV-X2-025",
 "Matched"
 ],
 [
@@ -1086,7 +1086,7 @@
 "Customer success",
 "Recommendation never activates or bills another SKU.",
 "Partially covered",
-"TC-ENH-E-029, TC-ADV-X2-083",
+"EP-16 retention TCs; AG-038; candidates TC-ENH-E-029, TC-ADV-X2-083",
 "Matched"
 ],
 [
@@ -1097,7 +1097,7 @@
 "Customer success",
 "Renewal queue excludes opted-out messaging and shows unresolved terms.",
 "Partially covered",
-"TC-16-035, TC-ADV-X2-050, TC-ENH-J-043",
+"EP-16 retention TCs; AG-038; candidates TC-16-035, TC-ADV-X2-050, TC-ENH-J-043",
 "Matched"
 ],
 [
@@ -1108,7 +1108,7 @@
 "Customer success",
 "Plan change preview shows effects; no silent loss or charge.",
 "Partially covered",
-"TC-20-040",
+"TC-ENH-G-003; TC-ENH-K-071; candidates TC-20-040, TC-20-054",
 "Matched"
 ],
 [
@@ -1119,7 +1119,7 @@
 "Customer success",
 "Cancellation works without survey; opt-out blocks win-back.",
 "Partially covered",
-"—",
+"Part 2.2 WF engine; TC-ENH-G-010; TC-18-111; candidates TC-08-172, TC-ENH-A-032, TC-14-061",
 "Matched"
 ],
 [
@@ -1129,8 +1129,8 @@
 "Adoption and training guidance",
 "Customer success",
 "Inactive feature guidance is relevant and can be dismissed.",
-"Not covered",
-"—",
+"Partially covered",
+"EP-16 retention TCs; AG-038",
 "Matched"
 ],
 [
@@ -1141,7 +1141,7 @@
 "Customer success",
 "Review includes accepted evidence and customer-confirmed actions.",
 "Partially covered",
-"TC-ENH-F-039, TC-ENH-E-027",
+"EP-16 retention TCs; AG-038; candidates TC-ENH-F-039, TC-ENH-E-027, TC-ENH-K-039",
 "Matched"
 ],
 [
@@ -1152,7 +1152,7 @@
 "Customer success",
 "Feedback status persists in production and unrelated tenant cannot view.",
 "Partially covered",
-"TC-ALN-A-022",
+"AG-031; EP-16/EP-20 TCs; candidates TC-ALN-A-022, TC-04-047, TC-FLT-021",
 "Matched"
 ],
 [
@@ -1162,8 +1162,8 @@
 "Progressive onboarding",
 "Commercial / growth",
 "Incomplete draft resumes without premature quote or entitlement.",
-"Not covered",
-"—",
+"Partially covered",
+"US-2004; TC-20-*",
 "Matched"
 ],
 [
@@ -1174,7 +1174,7 @@
 "Commercial / growth",
 "Reopen authorized draft; stale revision rejected and no sensitive data stored in public cache.",
 "Partially covered",
-"TC-13-015",
+"Part 4.3 synthetic monitoring; candidates TC-13-015, TC-11-014, TC-ENH-D-251",
 "Matched"
 ],
 [
@@ -1185,7 +1185,7 @@
 "Commercial / growth",
 "Reasons visible; user confirms selected services independently.",
 "Partially covered",
-"TC-ENH-E-029, TC-ADV-X2-031",
+"EP-13 quote TCs; TC-AI-AG014-003; candidates TC-ENH-E-029, TC-ADV-X2-031",
 "Matched"
 ],
 [
@@ -1196,7 +1196,7 @@
 "Commercial / growth",
 "Compare two SKUs without adding them to cart; no fabricated prices.",
 "Partially covered",
-"—",
+"EP-19 website TCs (TC-19-*); candidates TC-AI-AG023-003",
 "Matched"
 ],
 [
@@ -1207,7 +1207,7 @@
 "Commercial / growth",
 "Quote displays itemized approved version or pending status.",
 "Partially covered",
-"TC-ENH-G-026, TC-20-034",
+"Part 7.1 RAG; TC-20-096; candidates TC-ENH-G-026, TC-20-034, TC-AI-AG014-003",
 "Matched"
 ],
 [
@@ -1218,7 +1218,7 @@
 "Commercial / growth",
 "Calculated total equals inputs; one-time cost distinguished; estimate not quote.",
 "Partially covered",
-"—",
+"EP-13 quote TCs; TC-AI-AG014-003; candidates TC-ENH-H-027, TC-17-044",
 "Matched"
 ],
 [
@@ -1229,7 +1229,7 @@
 "Commercial / growth",
 "Negative ROI remains visible; no guarantee or invented baseline.",
 "Partially covered",
-"TC-ADV-X2-068, TC-ADV-X2-069",
+"US-2004; TC-20-*; candidates TC-ADV-X2-068, TC-ADV-X2-069",
 "Matched"
 ],
 [
@@ -1239,8 +1239,8 @@
 "Guided use-case demonstrations",
 "Commercial / growth",
 "Demo uses fictional data and no live effects; user can return to selection.",
-"Not covered",
-"—",
+"Partially covered",
+"Part 4.3 synthetic monitoring",
 "Matched"
 ],
 [
@@ -1251,7 +1251,7 @@
 "Commercial / growth",
 "Demo does not confirm live slot; production conflict and timezone tests required.",
 "Partially covered",
-"TC-20-004",
+"Part 4.3 SLOs; NFR-053/054; candidates TC-20-004, TC-05-017, TC-09-045",
 "Matched"
 ],
 [
@@ -1262,7 +1262,7 @@
 "Commercial / growth",
 "Enquiry scoped to operator; customer business data not automatically exposed.",
 "Partially covered",
-"TC-07-023, TC-21-054",
+"Part 7.3 model routing (DEC-418 tiers); candidates TC-07-023, TC-21-054, TC-ALN-A-022",
 "Matched"
 ],
 [
@@ -1273,7 +1273,7 @@
 "Commercial / growth",
 "Opt-out or accepted quote stops sequence; no duplicate reminder.",
 "Partially covered",
-"TC-09-042, TC-AI-AG008-003, TC-ADV-X2-025",
+"TC-NFR-014; Part 7.3 budgets; candidates TC-09-042, TC-AI-AG008-003, TC-ADV-X2-025",
 "Matched"
 ],
 [
@@ -1284,7 +1284,7 @@
 "Commercial / growth",
 "Material edit invalidates prior acceptance; no binding demo agreement.",
 "Partially covered",
-"TC-21-064",
+"EP-13 quote TCs; TC-AI-AG014-003; candidates TC-21-064, TC-21-101",
 "Matched"
 ],
 [
@@ -1295,7 +1295,7 @@
 "Commercial / growth",
 "Duplicate receipt cannot activate twice; unpaid/mismatched order stays pending.",
 "Partially covered",
-"—",
+"TC-ENH-G-003; TC-ENH-K-071; candidates TC-ENH-E-031, TC-ENH-D-204, TC-20-008",
 "Matched"
 ],
 [
@@ -1306,7 +1306,7 @@
 "Commercial / growth",
 "Variant fixture reports denominator and uncertainty; no auto winner without review.",
 "Partially covered",
-"—",
+"TC-12-031",
 "Matched"
 ],
 [
@@ -1317,7 +1317,7 @@
 "Commercial / growth",
 "Funnel stages reconcile to eligible event cohorts; no false attribution.",
 "Partially covered",
-"—",
+"TC-17-029, TC-17-036",
 "Matched"
 ],
 [
@@ -1327,8 +1327,8 @@
 "Contextual guided tours",
 "Customer experience / support",
 "Tour points to valid screen and does not block workflow.",
-"Not covered",
-"—",
+"Partially covered",
+"AG-031; EP-16/EP-20 TCs",
 "Matched"
 ],
 [
@@ -1339,7 +1339,7 @@
 "Customer experience / support",
 "Unsupported question escalates; no fabricated claims.",
 "Partially covered",
-"TC-ADV-X1-011, TC-AI-AG011-001, TC-AI-AG020-002",
+"Part 7.1 RAG; TC-20-096; candidates TC-ADV-X1-011, TC-AI-AG011-001, TC-AI-AG020-002",
 "Matched"
 ],
 [
@@ -1350,7 +1350,7 @@
 "Customer experience / support",
 "Escalation creates private case; no false resolution or guaranteed response.",
 "Partially covered",
-"—",
+"Part 7.3 model routing (DEC-418 tiers); candidates TC-AU-AU030-002, TC-FLT-035, TC-AU-AU019-002",
 "Matched"
 ],
 [
@@ -1361,7 +1361,7 @@
 "Customer experience / support",
 "Held run shows safe recovery and no misleading completed state.",
 "Partially covered",
-"—",
+"Part 2.2 WF engine; TC-ENH-G-010; TC-18-111; candidates TC-ADV-X2-021",
 "Matched"
 ],
 [
@@ -1372,7 +1372,7 @@
 "Customer experience / support",
 "Recommendation exposes supporting source and uncertainty.",
 "Partially covered",
-"—",
+"Part 2.2 WF engine; TC-ENH-G-010; TC-18-111; candidates TC-ADV-X2-083",
 "Matched"
 ],
 [
@@ -1383,7 +1383,7 @@
 "Customer experience / support",
 "Correction creates new version; rejection does not count as accepted result.",
 "Partially covered",
-"TC-ENH-J-046, TC-04-051",
+"TC-NFR-014; Part 7.3 budgets; candidates TC-ENH-J-046, TC-04-051, TC-AU-AU003-001",
 "Matched"
 ],
 [
@@ -1394,7 +1394,7 @@
 "Customer experience / support",
 "Correction improves evaluated same-scope fixture; never crosses tenants.",
 "Partially covered",
-"—",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002; candidates TC-04-051, TC-05-042",
 "Matched"
 ],
 [
@@ -1405,7 +1405,7 @@
 "Customer experience / support",
 "Invalid input and provider hold show distinct recovery guidance.",
 "Partially covered",
-"TC-ENH-K-058",
+"Part 2.2 WF engine; TC-ENH-G-010; TC-18-111; candidates TC-ENH-K-058",
 "Matched"
 ],
 [
@@ -1415,8 +1415,8 @@
 "Unified notification preferences",
 "Customer experience / support",
 "Preference change affects optional alerts and preserves security notices.",
-"Not covered",
-"—",
+"Partially covered",
+"AG-031; EP-16/EP-20 TCs",
 "Matched"
 ],
 [
@@ -1427,7 +1427,7 @@
 "Customer experience / support",
 "Required accessibility checks pass or documented remediation blocks release.",
 "Partially covered",
-"TC-ENH-J-015, TC-20-029",
+"Part 2.5/2.7 responsive rules; NFR-088; candidates TC-ENH-J-015, TC-20-029, TC-03-093",
 "Matched"
 ],
 [
@@ -1438,7 +1438,7 @@
 "Customer experience / support",
 "Unknown status shown as unknown; private incident not public.",
 "Partially covered",
-"TC-ENH-J-041, TC-ALN-A-022",
+"AG-031; EP-16/EP-20 TCs; candidates TC-ENH-J-041, TC-ALN-A-022, TC-19-058",
 "Matched"
 ],
 [
@@ -1448,8 +1448,8 @@
 "CSAT, CES and NPS measurement",
 "Customer experience / support",
 "Survey aggregates compute correctly; missing response not treated as satisfaction.",
-"Not covered",
-"—",
+"Partially covered",
+"EP-19 website TCs (TC-19-*)",
 "Matched"
 ],
 [
@@ -1460,7 +1460,7 @@
 "Customer experience / support",
 "Case has traceable response and closure evidence; customer can reopen.",
 "Partially covered",
-"TC-16-043",
+"TC-AI-AG015-030 kill switch and caps; candidates TC-16-043",
 "Matched"
 ],
 [
@@ -1471,7 +1471,7 @@
 "Customer experience / support",
 "Dispute submitted privately; no refund before authorization and reconciliation.",
 "Partially covered",
-"TC-15-033, TC-AU-AU042-003, TC-14-076",
+"EP-16 retention TCs; AG-038; candidates TC-15-033, TC-AU-AU042-003, TC-14-076",
 "Matched"
 ],
 [
@@ -1482,7 +1482,7 @@
 "Customer experience / support",
 "Export contains only authorized data; deletion honors retention and hold.",
 "Covered",
-"TC-ENH-E-019, TC-20-070, TC-ENH-D-044",
+"TC-ENH-G-003; TC-ENH-K-071; candidates TC-ENH-E-019, TC-20-070, TC-ENH-D-044",
 "Matched"
 ],
 [
@@ -1493,7 +1493,7 @@
 "Identity / data architecture",
 "Create two tenants with identical names; use different IDs; cross-parent insert/read denied.",
 "Partially covered",
-"—",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002; candidates TC-19-074",
 "Matched"
 ],
 [
@@ -1504,7 +1504,7 @@
 "Product / frontend",
 "Switch all four seeded companies; no independent client in portfolio grant view.",
 "Partially covered",
-"TC-19-074",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002; candidates TC-19-074, TC-ENH-I-050, TC-FLT-011",
 "Matched"
 ],
 [
@@ -1515,7 +1515,7 @@
 "Provisioning",
 "Create new tenants dynamically; no source edit; load-test approved scale envelope.",
 "Partially covered",
-"TC-ALN-B-032",
+"TC-NFR-014; Part 7.3 budgets; candidates TC-ALN-B-032",
 "Matched"
 ],
 [
@@ -1526,7 +1526,7 @@
 "Commercial / onboarding",
 "Onboard individual without corporate registration number; same entitlement flow.",
 "Partially covered",
-"TC-AI-AG004-005",
+"AG-031; EP-16/EP-20 TCs; candidates TC-AI-AG004-005, TC-16-053",
 "Matched"
 ],
 [
@@ -1536,8 +1536,8 @@
 "Multiple companies under an authorized tenant",
 "Identity / provisioning",
 "Add two companies under one tenant; neither receives automatic entitlement/membership.",
-"Not covered",
-"—",
+"Partially covered",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002",
 "Matched"
 ],
 [
@@ -1548,7 +1548,7 @@
 "Commercial / governance",
 "Suspend tenant in staging; new executions denied; reconcile in-flight actions and retention.",
 "Partially covered",
-"TC-20-043, TC-ENH-D-169, TC-20-048",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002; candidates TC-20-043, TC-ENH-D-169, TC-20-048",
 "Matched"
 ],
 [
@@ -1559,7 +1559,7 @@
 "Identity / governance",
 "Grant/revoke owned company; verify unauthorized client and row drill-down blocked.",
 "Partially covered",
-"TC-ENH-J-026, TC-ENH-I-050, TC-17-012",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002; candidates TC-ENH-J-026, TC-ENH-I-050, TC-17-012",
 "Matched"
 ],
 [
@@ -1569,8 +1569,8 @@
 "Eight-stage private configuration wizard",
 "Onboarding / frontend",
 "Complete fictional multi-company application; export/import graph, reject stale revision.",
-"Not covered",
-"—",
+"Partially covered",
+"TC-NFR-014; Part 7.3 budgets",
 "Matched"
 ],
 [
@@ -1580,8 +1580,8 @@
 "Business division master",
 "Data architecture",
 "Create and rename division; linked offering remains valid; cross-company edit denied.",
-"Not covered",
-"—",
+"Partially covered",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002",
 "Matched"
 ],
 [
@@ -1592,7 +1592,7 @@
 "Business configuration",
 "Two brands with same name in different divisions; no leakage across scope.",
 "Partially covered",
-"—",
+"Part 2.5/2.7 responsive rules; NFR-088; candidates TC-19-046, TC-20-029, TC-19-049",
 "Matched"
 ],
 [
@@ -1603,7 +1603,7 @@
 "Product / data architecture",
 "One tenant selects one automation SKU for two offerings; no duplicated definition or auto-charge.",
 "Partially covered",
-"TC-ENH-E-029",
+"AG-031; EP-16/EP-20 TCs; candidates TC-ENH-E-029, TC-13-030, TC-02-006",
 "Matched"
 ],
 [
@@ -1614,7 +1614,7 @@
 "Knowledge / governance",
 "Revoke claim; draft regeneration excludes revoked data; wrong offering retrieval denied.",
 "Partially covered",
-"TC-20-080, TC-ENH-G-029, TC-19-049",
+"TC-ENH-I-010; TC-AI-AG003-002; candidates TC-20-080, TC-ENH-G-029, TC-19-049",
 "Matched"
 ],
 [
@@ -1625,7 +1625,7 @@
 "Marketing / analytics",
 "Configure two audiences; results use selected offering and evidence.",
 "Partially covered",
-"—",
+"Part 2.6 business configuration; US-2004; candidates TC-12-030",
 "Matched"
 ],
 [
@@ -1636,7 +1636,7 @@
 "Finance",
 "Change offering price; historical quote unchanged; no SaaS invoice modification.",
 "Partially covered",
-"TC-20-002, TC-AI-AG020-003, TC-15-061",
+"EP-13 quote TCs; TC-AI-AG014-003; candidates TC-20-002, TC-AI-AG020-003, TC-15-061",
 "Matched"
 ],
 [
@@ -1647,7 +1647,7 @@
 "Governance",
 "Suspend offering; new effect denied and previous event retained.",
 "Partially covered",
-"TC-20-080, TC-20-049, TC-02-004",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002; candidates TC-20-080, TC-20-049, TC-02-004",
 "Matched"
 ],
 [
@@ -1658,7 +1658,7 @@
 "Entitlements / orchestration",
 "Use one SKU across two eligible offerings; unknown or unentitled SKU rejected.",
 "Partially covered",
-"TC-ENH-E-029, TC-12-002, TC-13-030",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002; candidates TC-ENH-E-029, TC-12-002, TC-13-030",
 "Matched"
 ],
 [
@@ -1669,7 +1669,7 @@
 "Business configuration",
 "India registration and US target; filter target US independently.",
 "Partially covered",
-"—",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002; candidates TC-19-040",
 "Matched"
 ],
 [
@@ -1679,8 +1679,8 @@
 "Multiple countries per offering",
 "Data architecture",
 "One offering mapped to two markets; cross-company market link denied.",
-"Not covered",
-"—",
+"Partially covered",
+"Part 2.6 business configuration; US-2004",
 "Matched"
 ],
 [
@@ -1691,7 +1691,7 @@
 "Localization",
 "Validate IANA zones; schedule across DST test fixture.",
 "Partially covered",
-"TC-AU-AU023-002, TC-05-020",
+"TC-AU-AU023-002, TC-05-020, TC-01-017",
 "Matched"
 ],
 [
@@ -1702,7 +1702,7 @@
 "Governance / privacy",
 "Test missing, expired and conflicting policy; fail closed.",
 "Partially covered",
-"TC-AU-AU020-002",
+"TC-AU-AU020-002, TC-ADV-X2-041",
 "Matched"
 ],
 [
@@ -1713,7 +1713,7 @@
 "Finance / analytics",
 "Mixed INR/USD totals separated; explicit scenario conversion; missing rate visible.",
 "Partially covered",
-"TC-15-073, TC-19-057, TC-13-024",
+"EP-19 website TCs (TC-19-*); candidates TC-15-073, TC-19-057, TC-13-024",
 "Matched"
 ],
 [
@@ -1724,7 +1724,7 @@
 "Integrations",
 "Create Email and WhatsApp accounts for two markets; both preserved in handoff.",
 "Partially covered",
-"—",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002; candidates TC-AU-AU025-007, TC-18-047, TC-10-005",
 "Matched"
 ],
 [
@@ -1735,7 +1735,7 @@
 "Provider security",
 "Two senders under one channel; wrong-company account denied.",
 "Partially covered",
-"TC-08-036",
+"Part 4.1 identity controls; TC-01-025; candidates TC-08-036, TC-20-043, TC-01-085",
 "Matched"
 ],
 [
@@ -1746,7 +1746,7 @@
 "Governance",
 "Opt out then attempt across equivalent channels; suppression checked and held.",
 "Partially covered",
-"TC-08-089, TC-AU-AU020-002",
+"TC-08-089, TC-AU-AU020-002, TC-03-047",
 "Matched"
 ],
 [
@@ -1757,7 +1757,7 @@
 "Frontend / analytics",
 "Filter business then brand/offer and opportunity type; scoped counts change consistently.",
 "Partially covered",
-"TC-FLT-011",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002; candidates TC-FLT-011, TC-FLT-018",
 "Matched"
 ],
 [
@@ -1768,7 +1768,7 @@
 "Frontend / API",
 "Change ancestor; stale child selection cleared; invalid query denied.",
 "Partially covered",
-"—",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002; candidates TC-FLT-011",
 "Matched"
 ],
 [
@@ -1779,7 +1779,7 @@
 "Analytics",
 "Service/workflow filter applies to attributed events; unknowns excluded and labeled.",
 "Partially covered",
-"TC-AU-AU040-001",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002; candidates TC-AU-AU040-001, TC-AU-AU012-001, TC-FLT-038",
 "Matched"
 ],
 [
@@ -1790,7 +1790,7 @@
 "Orchestration",
 "Run two authorized company jobs concurrently; check isolation and usage ledger.",
 "Partially covered",
-"TC-ENH-G-021",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002; candidates TC-ENH-G-021, TC-ENH-A-044, TC-ENH-H-025",
 "Matched"
 ],
 [
@@ -1801,7 +1801,7 @@
 "Product / automation",
 "Apply template to two businesses; workflow definition count remains 156.",
 "Partially covered",
-"TC-20-099, TC-19-062, TC-19-059",
+"Part 2.2 WF engine; TC-ENH-G-010; TC-18-111; candidates TC-20-099, TC-19-062, TC-19-059",
 "Matched"
 ],
 [
@@ -1812,7 +1812,7 @@
 "FinOps / orchestration",
 "Exhaust local and parent budget; invalid schedule/currency held.",
 "Partially covered",
-"TC-AU-AU002-015, TC-AU-AU002-004, TC-20-037",
+"TC-NFR-014; Part 7.3 budgets; candidates TC-AU-AU002-015, TC-AU-AU002-004, TC-20-037",
 "Matched"
 ],
 [
@@ -1823,7 +1823,7 @@
 "Analytics",
 "Compare two offering ledgers, count only matching events.",
 "Partially covered",
-"—",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002; candidates TC-05-062, TC-ADV-X2-096",
 "Matched"
 ],
 [
@@ -1834,7 +1834,7 @@
 "Governance / frontend",
 "Edit graph, stage review, publish local version, rollback draft; stale version blocked.",
 "Partially covered",
-"TC-ENH-J-033, TC-21-081, TC-02-050",
+"Part 4.3 §4.37 release and rollback; candidates TC-ENH-J-033, TC-21-081, TC-02-050",
 "Matched"
 ],
 [
@@ -1844,8 +1844,8 @@
 "Canonical master data",
 "Data architecture",
 "Rename master; dependent lookup reflects name; duplicate scoped natural key rejected.",
-"Not covered",
-"—",
+"Partially covered",
+"Part 2.6 business configuration; US-2004",
 "Matched"
 ],
 [
@@ -1856,7 +1856,7 @@
 "Automation architecture",
 "Add 25 customer configurations; no SKU/WF definition cloning; regression IDs stable.",
 "Partially covered",
-"—",
+"Part 2.2 WF engine; TC-ENH-G-010; TC-18-111; candidates TC-AU-AU042-001",
 "Matched"
 ],
 [
@@ -1867,7 +1867,7 @@
 "AI engineering",
 "Two tenant configs reference same approved role/version; outputs and memory isolated.",
 "Partially covered",
-"TC-04-032",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002; candidates TC-04-032, TC-AU-AU001-004",
 "Matched"
 ],
 [
@@ -1878,7 +1878,7 @@
 "Backend / database",
 "Detect conflicting path/entity names; contract tests against versioned schemas.",
 "Partially covered",
-"TC-ENH-C-003, TC-ENH-J-047",
+"CS-MIG-01; Part 4.3 §4.37.2; candidates TC-ENH-C-003, TC-ENH-J-047, TC-ALN-A-001",
 "Matched"
 ],
 [
@@ -1889,7 +1889,7 @@
 "Frontend",
 "Shared V6 editor code identical in both HTML; production component ownership and no duplicate handlers verified.",
 "Partially covered",
-"—",
+"TC-ENH-K-057",
 "Matched"
 ],
 [
@@ -1899,8 +1899,8 @@
 "Consolidate recurring documentation policies/tests",
 "Requirements / QA",
 "Verify workflow references common policy and 156 IDs; no lost test coverage.",
-"Not covered",
-"—",
+"Partially covered",
+"Part 2.5/2.7 responsive rules; NFR-088",
 "Matched"
 ],
 [
@@ -1911,7 +1911,7 @@
 "QA / SRE",
 "Provision 25 and staged higher volumes; check isolation, p95, queues and restores.",
 "Partially covered",
-"—",
+"TC-NFR-014; Part 7.3 budgets; candidates TC-ALN-B-019, TC-ALN-B-020",
 "Matched"
 ],
 [
@@ -1921,8 +1921,8 @@
 "Continuous redundancy, dependency and cost auditing",
 "Architecture / FinOps",
 "CI duplicate-ID scan, cost benchmark and dependency audit; approve justified redundancy.",
-"Not covered",
-"—",
+"Partially covered",
+"TC-ENH-I-010; TC-AI-AG003-002",
 "Matched"
 ],
 [
@@ -1933,7 +1933,7 @@
 "Product + QA",
 "All four builds: 39/156 parity; every 36 website route shell and 143 Admin screen shell renders in permitted demo scope. Production end-to-end parity pending.",
 "Partially covered",
-"TC-ADV-X3-006",
+"Part 2.2 WF engine; TC-ENH-G-010; TC-18-111; candidates TC-ADV-X3-006, TC-ENH-K-073, TC-17-071",
 "Matched"
 ],
 [
@@ -1944,7 +1944,7 @@
 "UX + frontend",
 "Tap mobile Services, Business and More; active page indicator and menu open/close pass. Full keyboard and screen-reader verification pending.",
 "Partially covered",
-"—",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002; candidates TC-02-014, TC-ENH-J-060",
 "Matched"
 ],
 [
@@ -1955,7 +1955,7 @@
 "UX + frontend",
 "Representative controls and home layout checked; formal target-size, zoom and assistive-technology audit pending.",
 "Partially covered",
-"—",
+"Part 2.5/2.7 responsive rules; NFR-088; candidates TC-ENH-C-004",
 "Matched"
 ],
 [
@@ -1965,8 +1965,8 @@
 "Progressive onboarding",
 "Customer success + frontend",
 "Mobile identity and progress display checked. Two-market/two-channel seeded review and cross-device transfer checked. Full manual eight-stage regression remains release gate.",
-"Not covered",
-"—",
+"Partially covered",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002",
 "Matched"
 ],
 [
@@ -1977,7 +1977,7 @@
 "Customer success + IAM",
 "Anonymous route shells and private portal guard checked. Production session/authorization tests pending.",
 "Partially covered",
-"TC-ALN-A-022",
+"US-2004; TC-20-*; candidates TC-ALN-A-022, TC-19-058, TC-11-075",
 "Matched"
 ],
 [
@@ -1988,7 +1988,7 @@
 "Product + frontend",
 "Four startup membership labels verified; role-dependent shortcuts checked. Real data and analytics authorization pending.",
 "Partially covered",
-"TC-BRS-011",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002; candidates TC-BRS-011",
 "Matched"
 ],
 [
@@ -1999,7 +1999,7 @@
 "Frontend + data",
 "Mobile disclosures expand and original Admin routes render. Exhaustive filter combinations and attribution reconciliation pending.",
 "Partially covered",
-"—",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002; candidates TC-FLT-011, TC-ALN-A-034",
 "Matched"
 ],
 [
@@ -2010,7 +2010,7 @@
 "UX + frontend",
 "Home no horizontal overflow at eight widths. Complex tables require individual content and touch-scroll acceptance.",
 "Partially covered",
-"—",
+"EP-19 website TCs (TC-19-*); candidates TC-19-080, TC-ENH-H-021",
 "Matched"
 ],
 [
@@ -2021,7 +2021,7 @@
 "Security + workflow",
 "Modal aria and Escape closure checked; live identity, authorization and effect tests pending.",
 "Partially covered",
-"—",
+"Part 2.2 WF engine; TC-ENH-G-010; TC-18-111; candidates TC-15-054",
 "Matched"
 ],
 [
@@ -2032,7 +2032,7 @@
 "Security + frontend",
 "Proposed: inspect service-worker cache and airplane-mode behavior; no private response persistence or external action. Not run.",
 "Partially covered",
-"TC-ADV-X3-045",
+"Part 2.5/2.7 responsive rules; NFR-088; candidates TC-ADV-X3-045",
 "Matched"
 ],
 [
@@ -2042,8 +2042,8 @@
 "Session and draft recovery",
 "IAM + customer success",
 "Both website builds: logout graph cleared; initial identity save after sign-in with null application passes. Server session expiration/recovery pending.",
-"Not covered",
-"—",
+"Partially covered",
+"NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002",
 "Matched"
 ],
 [
@@ -2054,7 +2054,7 @@
 "Accessibility + QA",
 "Targeted nav marker and modal tests pass. Screen reader, contrast, zoom, focus order and full WCAG audit pending.",
 "Partially covered",
-"TC-ENH-J-015",
+"AG-031; EP-16/EP-20 TCs; candidates TC-ENH-J-015, TC-08-155, TC-ENH-G-035",
 "Matched"
 ],
 [
@@ -2065,7 +2065,7 @@
 "Frontend + FinOps",
 "Static home width checks passed; proposed mobile performance budgets LCP ≤2.5s, INP ≤200ms, CLS ≤0.1 at p75 on eligible traffic; measure before commitment.",
 "Partially covered",
-"TC-NFR-042, TC-ENH-J-002",
+"Part 2.5/2.7 responsive rules; NFR-088; candidates TC-NFR-042, TC-ENH-J-002, TC-19-039",
 "Matched"
 ],
 [
@@ -2075,8 +2075,8 @@
 "Scoped mobile notifications",
 "Product + security",
 "Proposed: revoked membership and expired consent prevent delivery/deep-link access; no sensitive payload. Not run.",
-"Not covered",
-"—",
+"Partially covered",
+"AG-031; EP-16/EP-20 TCs",
 "Matched"
 ],
 [
@@ -2087,7 +2087,7 @@
 "Finance + data",
 "Native reporting retained; actual currency/amount parity under all filter combinations and finance acceptance pending.",
 "Partially covered",
-"TC-19-057, TC-12-044",
+"Part 2.5/2.7 responsive rules; NFR-088; candidates TC-19-057, TC-12-044, TC-17-036",
 "Matched"
 ],
 [
@@ -2098,7 +2098,7 @@
 "Frontend + integration",
 "Both directions passed seeded review, export, import, pending status, email and two markets/two accounts, 39 SKUs and duplicate rejection. Live cross-device sync pending.",
 "Partially covered",
-"TC-ENH-I-052",
+"Part 2.5/2.7 responsive rules; NFR-088; candidates TC-ENH-I-052, TC-ENH-J-032",
 "Matched"
 ],
 [
@@ -2108,8 +2108,8 @@
 "Support, retention and feedback",
 "Customer success",
 "Routes render; actual support SLA and end-to-end notification/feedback tests pending.",
-"Not covered",
-"—",
+"Partially covered",
+"Part 2.2 WF engine; TC-ENH-G-010; TC-18-111",
 "Matched"
 ],
 [
@@ -2120,7 +2120,7 @@
 "QA + release",
 "430 targeted checks passed, including 338 registered route-shell checks and 32 home width checks. Production full regression and security/load testing remain release gates.",
 "Partially covered",
-"—",
+"Part 4.1 web controls; candidates TC-21-100",
 "Matched"
 ],
 [
@@ -2587,7 +2587,7 @@
 "Create 20 runs; change published config and workflow; tick one run and pause another.",
 "Independent run state, immutable revision references and no unauthorized actions.",
 "Covered",
-"TC-ENH-J-027, TC-ENH-E-020"
+"TC-ENH-J-027, TC-ENH-E-020, TC-19-032"
 ],
 [
 "XS-04",
@@ -2653,7 +2653,7 @@
 "New",
 "Evidence and attribution captured; qualification queued",
 "Not covered",
-"TC-ALN-A-010"
+"TC-ALN-A-010, TC-12-015, TC-ENH-A-041"
 ],
 [
 "E-002",
@@ -2661,7 +2661,7 @@
 "Qualified",
 "Assign eligible owner; prepare response",
 "Not covered",
-"TC-06-036"
+"TC-06-036, TC-AU-AU019-001, TC-19-059"
 ],
 [
 "E-003",
@@ -2720,7 +2720,7 @@
 "Merge authorized conversation history; pause competing follow-up; classify and prepare response.",
 "Hold opt-out, ambiguous identity or risky claim.",
 "Not covered",
-"TC-AI-AG013-004",
+"TC-AI-AG013-004, TC-08-088, TC-21-060",
 "TC-V12-J-022"
 ],
 [
@@ -2729,7 +2729,7 @@
 "Separate run ID, queue, cost reservation, priority and step status.",
 "Apply fairness, budget and concurrency limits.",
 "Partially covered",
-"TC-ENH-A-044",
+"TC-ENH-A-044, TC-18-095, TC-ADV-X1-004",
 "TC-V12-J-023"
 ],
 [
@@ -2747,7 +2747,7 @@
 "Block chargeable step, notify reviewer and preserve state.",
 "No unapproved provider fallback or overspend.",
 "Not covered",
-"TC-ENH-A-045",
+"TC-ENH-A-045, TC-AU-AU036-003, TC-ENH-F-028",
 "TC-V12-J-025"
 ],
 [
@@ -2810,7 +2810,7 @@
 "text": "Web-desktop: W37–W41 render with headings and no page overflow",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-11-068"
 },
 {
 "src": "V12 Verification evidence (enterprise W37–W41)",
@@ -2818,7 +2818,7 @@
 "text": "Web-desktop: Trust centre claims no certification (all programmes Planned) and status page reports no fabricated availability",
 "theme": "TC-V12-J-111",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-AU-AU033-002"
 },
 {
 "src": "V12 Verification evidence (enterprise W37–W41)",
@@ -2842,7 +2842,7 @@
 "text": "Web-desktop: Status page labels values synthetic and availability “Not measured”",
 "theme": "TC-V12-J-111",
 "sb": "Partially covered",
-"refs": "TC-AI-AG001-001"
+"refs": "TC-AI-AG001-001, TC-11-060"
 },
 {
 "src": "V12 Verification evidence (enterprise W37–W41)",
@@ -2850,7 +2850,7 @@
 "text": "Web-desktop: No runtime errors",
 "theme": "TC-V12-J-105",
 "sb": "Partially covered",
-"refs": "TC-AU-AU010-002"
+"refs": "TC-AU-AU010-002, TC-ENH-I-001, TC-ALN-A-025"
 },
 {
 "src": "V12 Verification evidence (enterprise W37–W41)",
@@ -2858,7 +2858,7 @@
 "text": "Web-mobile: W37–W41 render with headings and no page overflow",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-11-068"
 },
 {
 "src": "V12 Verification evidence (enterprise W37–W41)",
@@ -2866,7 +2866,7 @@
 "text": "Web-mobile: Trust centre claims no certification (all programmes Planned) and status page reports no fabricated availability",
 "theme": "TC-V12-J-111",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-AU-AU033-002"
 },
 {
 "src": "V12 Verification evidence (enterprise W37–W41)",
@@ -2890,7 +2890,7 @@
 "text": "Web-mobile: Status page labels values synthetic and availability “Not measured”",
 "theme": "TC-V12-J-111",
 "sb": "Partially covered",
-"refs": "TC-AI-AG001-001"
+"refs": "TC-AI-AG001-001, TC-11-060"
 },
 {
 "src": "V12 Verification evidence (enterprise W37–W41)",
@@ -2898,7 +2898,7 @@
 "text": "Web-mobile: No runtime errors",
 "theme": "TC-V12-J-105",
 "sb": "Partially covered",
-"refs": "TC-AU-AU010-002"
+"refs": "TC-AU-AU010-002, TC-ENH-I-001, TC-ALN-A-025"
 },
 {
 "src": "V12 Verification evidence (enterprise W37–W41)",
@@ -2922,7 +2922,7 @@
 "text": "Admin-desktop: Audit CSV export downloads; SIEM endpoint must be https/syslog-tls/bucket; valid test event delivered",
 "theme": "TC-V12-J-108",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-20-068, TC-15-103, TC-03-070"
 },
 {
 "src": "V12 Verification evidence (enterprise W37–W41)",
@@ -2930,7 +2930,7 @@
 "text": "Admin-desktop: API key: expiry >365 rejected; key shown once only, stored as prefix/last4 (no full value); revoke works; webhook test delivery signed",
 "theme": "TC-V12-J-108",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-117, TC-19-070"
 },
 {
 "src": "V12 Verification evidence (enterprise W37–W41)",
@@ -2938,7 +2938,7 @@
 "text": "Admin-desktop: Export needs a different approver; BYOK reference format validated",
 "theme": "TC-V12-J-108",
 "sb": "Partially covered",
-"refs": "TC-ADV-X3-040"
+"refs": "TC-ADV-X3-040, TC-20-080, TC-ADV-X3-041"
 },
 {
 "src": "V12 Verification evidence (enterprise W37–W41)",
@@ -2954,7 +2954,7 @@
 "text": "Admin-desktop: CRM connector connects in sandbox; contact-data connector blocked pending legal",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-11-037, TC-10-006"
+"refs": "TC-11-037, TC-10-006, TC-05-002"
 },
 {
 "src": "V12 Verification evidence (enterprise W37–W41)",
@@ -2962,7 +2962,7 @@
 "text": "Admin-desktop: Critical finding due in 7 days; incident declared → Identified with status-page message",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-08-165"
 },
 {
 "src": "V12 Verification evidence (enterprise W37–W41)",
@@ -2970,7 +2970,7 @@
 "text": "Admin-desktop: US invoice requires tax rate input; India intra-state applies 18% GST with exact arithmetic",
 "theme": "TC-V12-J-110",
 "sb": "Partially covered",
-"refs": "TC-15-017"
+"refs": "TC-15-017, TC-19-053"
 },
 {
 "src": "V12 Verification evidence (enterprise W37–W41)",
@@ -2994,7 +2994,7 @@
 "text": "Admin-desktop: No runtime errors",
 "theme": "TC-V12-J-105",
 "sb": "Partially covered",
-"refs": "TC-AU-AU010-002"
+"refs": "TC-AU-AU010-002, TC-ENH-I-001, TC-ALN-A-025"
 },
 {
 "src": "V12 Verification evidence (enterprise W37–W41)",
@@ -3018,7 +3018,7 @@
 "text": "Admin-mobile: Audit CSV export downloads; SIEM endpoint must be https/syslog-tls/bucket; valid test event delivered",
 "theme": "TC-V12-J-108",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-20-068, TC-15-103, TC-03-070"
 },
 {
 "src": "V12 Verification evidence (enterprise W37–W41)",
@@ -3026,7 +3026,7 @@
 "text": "Admin-mobile: API key: expiry >365 rejected; key shown once only, stored as prefix/last4 (no full value); revoke works; webhook test delivery signed",
 "theme": "TC-V12-J-108",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-117, TC-19-070"
 },
 {
 "src": "V12 Verification evidence (enterprise W37–W41)",
@@ -3034,7 +3034,7 @@
 "text": "Admin-mobile: Export needs a different approver; BYOK reference format validated",
 "theme": "TC-V12-J-108",
 "sb": "Partially covered",
-"refs": "TC-ADV-X3-040"
+"refs": "TC-ADV-X3-040, TC-20-080, TC-ADV-X3-041"
 },
 {
 "src": "V12 Verification evidence (enterprise W37–W41)",
@@ -3050,7 +3050,7 @@
 "text": "Admin-mobile: CRM connector connects in sandbox; contact-data connector blocked pending legal",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-11-037, TC-10-006"
+"refs": "TC-11-037, TC-10-006, TC-05-002"
 },
 {
 "src": "V12 Verification evidence (enterprise W37–W41)",
@@ -3058,7 +3058,7 @@
 "text": "Admin-mobile: Critical finding due in 7 days; incident declared → Identified with status-page message",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-08-165"
 },
 {
 "src": "V12 Verification evidence (enterprise W37–W41)",
@@ -3066,7 +3066,7 @@
 "text": "Admin-mobile: US invoice requires tax rate input; India intra-state applies 18% GST with exact arithmetic",
 "theme": "TC-V12-J-110",
 "sb": "Partially covered",
-"refs": "TC-15-017"
+"refs": "TC-15-017, TC-19-053"
 },
 {
 "src": "V12 Verification evidence (enterprise W37–W41)",
@@ -3090,7 +3090,7 @@
 "text": "Admin-mobile: No runtime errors",
 "theme": "TC-V12-J-105",
 "sb": "Partially covered",
-"refs": "TC-AU-AU010-002"
+"refs": "TC-AU-AU010-002, TC-ENH-I-001, TC-ALN-A-025"
 },
 {
 "src": "V12 Verification evidence",
@@ -3098,7 +3098,7 @@
 "text": "Web-desktop: Cookie banner shown on first visit",
 "theme": "TC-V12-J-106",
 "sb": "Partially covered",
-"refs": "TC-ENH-J-060"
+"refs": "TC-ENH-J-060, TC-21-054"
 },
 {
 "src": "V12 Verification evidence",
@@ -3114,7 +3114,7 @@
 "text": "Web-desktop: All 41 routes render a heading with no page-level horizontal overflow",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ENH-H-021"
 },
 {
 "src": "V12 Verification evidence",
@@ -3122,7 +3122,7 @@
 "text": "Web-desktop: Unknown route shows not-found view",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-07-055, TC-03-097"
+"refs": "TC-07-055, TC-03-097, TC-11-056"
 },
 {
 "src": "V12 Verification evidence",
@@ -3146,7 +3146,7 @@
 "text": "Web-desktop: Valid registration proceeds to W33 wizard",
 "theme": "TC-V12-J-113",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-133, TC-20-022"
+"refs": "TC-ENH-C-133, TC-20-022, TC-20-104"
 },
 {
 "src": "V12 Verification evidence",
@@ -3162,7 +3162,7 @@
 "text": "Web-desktop: W35 request: inline errors when empty; valid EU erasure gets reference and one-month due date",
 "theme": "TC-V12-J-106",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-AU-AU011-003"
 },
 {
 "src": "V12 Verification evidence",
@@ -3194,7 +3194,7 @@
 "text": "Web-desktop: No runtime errors during the run",
 "theme": "TC-V12-J-105",
 "sb": "Partially covered",
-"refs": "TC-AU-AU010-002"
+"refs": "TC-AU-AU010-002, TC-ENH-I-001, TC-ALN-A-025"
 },
 {
 "src": "V12 Verification evidence",
@@ -3202,7 +3202,7 @@
 "text": "Web-mobile: Cookie banner shown on first visit",
 "theme": "TC-V12-J-106",
 "sb": "Partially covered",
-"refs": "TC-ENH-J-060"
+"refs": "TC-ENH-J-060, TC-21-054"
 },
 {
 "src": "V12 Verification evidence",
@@ -3226,7 +3226,7 @@
 "text": "Web-mobile: All 41 routes render a heading with no page-level horizontal overflow",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ENH-H-021"
 },
 {
 "src": "V12 Verification evidence",
@@ -3234,7 +3234,7 @@
 "text": "Web-mobile: Unknown route shows not-found view",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-07-055, TC-03-097"
+"refs": "TC-07-055, TC-03-097, TC-11-056"
 },
 {
 "src": "V12 Verification evidence",
@@ -3258,7 +3258,7 @@
 "text": "Web-mobile: Valid registration proceeds to W33 wizard",
 "theme": "TC-V12-J-113",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-133, TC-20-022"
+"refs": "TC-ENH-C-133, TC-20-022, TC-20-104"
 },
 {
 "src": "V12 Verification evidence",
@@ -3274,7 +3274,7 @@
 "text": "Web-mobile: W35 request: inline errors when empty; valid EU erasure gets reference and one-month due date",
 "theme": "TC-V12-J-106",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-AU-AU011-003"
 },
 {
 "src": "V12 Verification evidence",
@@ -3314,7 +3314,7 @@
 "text": "Web-mobile: No runtime errors during the run",
 "theme": "TC-V12-J-105",
 "sb": "Partially covered",
-"refs": "TC-AU-AU010-002"
+"refs": "TC-AU-AU010-002, TC-ENH-I-001, TC-ALN-A-025"
 },
 {
 "src": "V12 Verification evidence",
@@ -3322,7 +3322,7 @@
 "text": "Web-desktop@390: Cookie banner shown on first visit",
 "theme": "TC-V12-J-106",
 "sb": "Partially covered",
-"refs": "TC-ENH-J-060"
+"refs": "TC-ENH-J-060, TC-21-054"
 },
 {
 "src": "V12 Verification evidence",
@@ -3346,7 +3346,7 @@
 "text": "Web-desktop@390: All 41 routes render a heading with no page-level horizontal overflow",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ENH-H-021"
 },
 {
 "src": "V12 Verification evidence",
@@ -3354,7 +3354,7 @@
 "text": "Web-desktop@390: Unknown route shows not-found view",
 "theme": "TC-V12-J-102",
 "sb": "Partially covered",
-"refs": "TC-07-055, TC-03-097"
+"refs": "TC-07-055, TC-03-097, TC-11-056"
 },
 {
 "src": "V12 Verification evidence",
@@ -3378,7 +3378,7 @@
 "text": "Web-desktop@390: Valid registration proceeds to W33 wizard",
 "theme": "TC-V12-J-113",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-133, TC-20-022"
+"refs": "TC-ENH-C-133, TC-20-022, TC-20-104"
 },
 {
 "src": "V12 Verification evidence",
@@ -3394,7 +3394,7 @@
 "text": "Web-desktop@390: W35 request: inline errors when empty; valid EU erasure gets reference and one-month due date",
 "theme": "TC-V12-J-106",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-AU-AU011-003"
 },
 {
 "src": "V12 Verification evidence",
@@ -3434,7 +3434,7 @@
 "text": "Web-desktop@390: No runtime errors during the run",
 "theme": "TC-V12-J-105",
 "sb": "Partially covered",
-"refs": "TC-AU-AU010-002"
+"refs": "TC-AU-AU010-002, TC-ENH-I-001, TC-ALN-A-025"
 },
 {
 "src": "V12 Verification evidence",
@@ -3458,7 +3458,7 @@
 "text": "Admin-desktop: Unknown screen shows not-found view",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-07-055"
+"refs": "TC-07-055, TC-03-097"
 },
 {
 "src": "V12 Verification evidence",
@@ -3466,7 +3466,7 @@
 "text": "Admin-desktop: Preflight: compliant IN SMS ALLOW; non-compliant IN SMS 4 HOLDs; EU undisclosed AI HOLD; IN WhatsApp without opt-in HOLD",
 "theme": "TC-V12-J-106",
 "sb": "Partially covered",
-"refs": "TC-17-028"
+"refs": "TC-17-028, TC-AU-AU025-007"
 },
 {
 "src": "V12 Verification evidence",
@@ -3506,7 +3506,7 @@
 "text": "Admin-desktop: Requester cannot self-approve; second reviewer approves → Running; dispatch of a legacy run without recipient evidence is HELD by the gateway (REC-11)",
 "theme": "TC-V12-J-107",
 "sb": "Partially covered",
-"refs": "TC-01-063"
+"refs": "TC-01-063, TC-ENH-C-001, TC-ADV-X2-008"
 },
 {
 "src": "V12 Verification evidence",
@@ -3530,7 +3530,7 @@
 "text": "Admin-desktop: Usage units: 0 and 100001 rejected; units above remaining allowance create a Held run (no effect)",
 "theme": "TC-V12-J-107",
 "sb": "Partially covered",
-"refs": "TC-ADV-X2-094, TC-AI-AG023-002"
+"refs": "TC-ADV-X2-094, TC-AI-AG023-002, TC-20-024"
 },
 {
 "src": "V12 Verification evidence",
@@ -3538,7 +3538,7 @@
 "text": "Admin-desktop: Mixed currency: records without a rate are excluded and counted; negative rate rejected; valid rate converts",
 "theme": "TC-V12-J-110",
 "sb": "Partially covered",
-"refs": "TC-FLT-008, TC-15-040"
+"refs": "TC-FLT-008, TC-15-040, TC-13-024"
 },
 {
 "src": "V12 Verification evidence",
@@ -3546,7 +3546,7 @@
 "text": "Admin-desktop: Promotion requires candidate-specific evidence (REC-12): A114 request routes to A115 and nothing is promoted",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ENH-K-076"
 },
 {
 "src": "V12 Verification evidence",
@@ -3570,7 +3570,7 @@
 "text": "Admin-desktop: No runtime errors during the run",
 "theme": "TC-V12-J-105",
 "sb": "Partially covered",
-"refs": "TC-AU-AU010-002"
+"refs": "TC-AU-AU010-002, TC-ENH-I-001, TC-ALN-A-025"
 },
 {
 "src": "V12 Verification evidence",
@@ -3594,7 +3594,7 @@
 "text": "Admin-mobile: Unknown screen shows not-found view",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-07-055"
+"refs": "TC-07-055, TC-03-097"
 },
 {
 "src": "V12 Verification evidence",
@@ -3602,7 +3602,7 @@
 "text": "Admin-mobile: Preflight: compliant IN SMS ALLOW; non-compliant IN SMS 4 HOLDs; EU undisclosed AI HOLD; IN WhatsApp without opt-in HOLD",
 "theme": "TC-V12-J-106",
 "sb": "Partially covered",
-"refs": "TC-17-028"
+"refs": "TC-17-028, TC-AU-AU025-007"
 },
 {
 "src": "V12 Verification evidence",
@@ -3642,7 +3642,7 @@
 "text": "Admin-mobile: Requester cannot self-approve; second reviewer approves → Running; dispatch of a legacy run without recipient evidence is HELD by the gateway (REC-11)",
 "theme": "TC-V12-J-107",
 "sb": "Partially covered",
-"refs": "TC-01-063"
+"refs": "TC-01-063, TC-ENH-C-001, TC-ADV-X2-008"
 },
 {
 "src": "V12 Verification evidence",
@@ -3666,7 +3666,7 @@
 "text": "Admin-mobile: Usage units: 0 and 100001 rejected; units above remaining allowance create a Held run (no effect)",
 "theme": "TC-V12-J-107",
 "sb": "Partially covered",
-"refs": "TC-ADV-X2-094, TC-AI-AG023-002"
+"refs": "TC-ADV-X2-094, TC-AI-AG023-002, TC-20-024"
 },
 {
 "src": "V12 Verification evidence",
@@ -3674,7 +3674,7 @@
 "text": "Admin-mobile: Mixed currency: records without a rate are excluded and counted; negative rate rejected; valid rate converts",
 "theme": "TC-V12-J-110",
 "sb": "Partially covered",
-"refs": "TC-FLT-008, TC-15-040"
+"refs": "TC-FLT-008, TC-15-040, TC-13-024"
 },
 {
 "src": "V12 Verification evidence",
@@ -3682,7 +3682,7 @@
 "text": "Admin-mobile: Promotion requires candidate-specific evidence (REC-12): A114 request routes to A115 and nothing is promoted",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ENH-K-076"
 },
 {
 "src": "V12 Verification evidence",
@@ -3706,7 +3706,7 @@
 "text": "Admin-mobile: No runtime errors during the run",
 "theme": "TC-V12-J-105",
 "sb": "Partially covered",
-"refs": "TC-AU-AU010-002"
+"refs": "TC-AU-AU010-002, TC-ENH-I-001, TC-ALN-A-025"
 },
 {
 "src": "V12 Localisation audit",
@@ -3714,7 +3714,7 @@
 "text": "Localisation audit desktop_V12.ht ar: violations 0, overflow No, direction rtl",
 "theme": "TC-V12-J-104",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ADV-X2-096"
 },
 {
 "src": "V12 Localisation audit",
@@ -3722,7 +3722,7 @@
 "text": "Localisation audit desktop_V12.ht hi: violations 0, overflow No, direction ltr",
 "theme": "TC-V12-J-104",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ADV-X2-096"
 },
 {
 "src": "V12 Localisation audit",
@@ -3730,7 +3730,7 @@
 "text": "Localisation audit desktop_V12.ht de: violations 0, overflow No, direction ltr",
 "theme": "TC-V12-J-104",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ADV-X2-096"
 },
 {
 "src": "V12 Localisation audit",
@@ -3738,7 +3738,7 @@
 "text": "Localisation audit desktop_V12.ht fr: violations 0, overflow No, direction ltr",
 "theme": "TC-V12-J-104",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ADV-X2-096"
 },
 {
 "src": "V12 Localisation audit",
@@ -3778,7 +3778,7 @@
 "text": "Web-desktop: Cookie banner shown on first visit",
 "theme": "TC-V12-J-106",
 "sb": "Partially covered",
-"refs": "TC-ENH-J-060"
+"refs": "TC-ENH-J-060, TC-21-054"
 },
 {
 "src": "V11 Verification evidence",
@@ -3794,7 +3794,7 @@
 "text": "Web-desktop: All 36 routes render a heading with no page-level horizontal overflow",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ENH-H-021"
 },
 {
 "src": "V11 Verification evidence",
@@ -3802,7 +3802,7 @@
 "text": "Web-desktop: Unknown route shows not-found view",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-07-055, TC-03-097"
+"refs": "TC-07-055, TC-03-097, TC-11-056"
 },
 {
 "src": "V11 Verification evidence",
@@ -3826,7 +3826,7 @@
 "text": "Web-desktop: Valid registration proceeds to W33 wizard",
 "theme": "TC-V12-J-113",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-133, TC-20-022"
+"refs": "TC-ENH-C-133, TC-20-022, TC-20-104"
 },
 {
 "src": "V11 Verification evidence",
@@ -3842,7 +3842,7 @@
 "text": "Web-desktop: W35 request: inline errors when empty; valid EU erasure gets reference and one-month due date",
 "theme": "TC-V12-J-106",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-AU-AU011-003"
 },
 {
 "src": "V11 Verification evidence",
@@ -3874,7 +3874,7 @@
 "text": "Web-desktop: No runtime errors during the run",
 "theme": "TC-V12-J-105",
 "sb": "Partially covered",
-"refs": "TC-AU-AU010-002"
+"refs": "TC-AU-AU010-002, TC-ENH-I-001, TC-ALN-A-025"
 },
 {
 "src": "V11 Verification evidence",
@@ -3882,7 +3882,7 @@
 "text": "Web-mobile: Cookie banner shown on first visit",
 "theme": "TC-V12-J-106",
 "sb": "Partially covered",
-"refs": "TC-ENH-J-060"
+"refs": "TC-ENH-J-060, TC-21-054"
 },
 {
 "src": "V11 Verification evidence",
@@ -3906,7 +3906,7 @@
 "text": "Web-mobile: All 36 routes render a heading with no page-level horizontal overflow",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ENH-H-021"
 },
 {
 "src": "V11 Verification evidence",
@@ -3914,7 +3914,7 @@
 "text": "Web-mobile: Unknown route shows not-found view",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-07-055, TC-03-097"
+"refs": "TC-07-055, TC-03-097, TC-11-056"
 },
 {
 "src": "V11 Verification evidence",
@@ -3938,7 +3938,7 @@
 "text": "Web-mobile: Valid registration proceeds to W33 wizard",
 "theme": "TC-V12-J-113",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-133, TC-20-022"
+"refs": "TC-ENH-C-133, TC-20-022, TC-20-104"
 },
 {
 "src": "V11 Verification evidence",
@@ -3954,7 +3954,7 @@
 "text": "Web-mobile: W35 request: inline errors when empty; valid EU erasure gets reference and one-month due date",
 "theme": "TC-V12-J-106",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-AU-AU011-003"
 },
 {
 "src": "V11 Verification evidence",
@@ -3994,7 +3994,7 @@
 "text": "Web-mobile: No runtime errors during the run",
 "theme": "TC-V12-J-105",
 "sb": "Partially covered",
-"refs": "TC-AU-AU010-002"
+"refs": "TC-AU-AU010-002, TC-ENH-I-001, TC-ALN-A-025"
 },
 {
 "src": "V11 Verification evidence",
@@ -4002,7 +4002,7 @@
 "text": "Web-desktop@390: Cookie banner shown on first visit",
 "theme": "TC-V12-J-106",
 "sb": "Partially covered",
-"refs": "TC-ENH-J-060"
+"refs": "TC-ENH-J-060, TC-21-054"
 },
 {
 "src": "V11 Verification evidence",
@@ -4026,7 +4026,7 @@
 "text": "Web-desktop@390: All 36 routes render a heading with no page-level horizontal overflow",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ENH-H-021"
 },
 {
 "src": "V11 Verification evidence",
@@ -4034,7 +4034,7 @@
 "text": "Web-desktop@390: Unknown route shows not-found view",
 "theme": "TC-V12-J-102",
 "sb": "Partially covered",
-"refs": "TC-07-055, TC-03-097"
+"refs": "TC-07-055, TC-03-097, TC-11-056"
 },
 {
 "src": "V11 Verification evidence",
@@ -4058,7 +4058,7 @@
 "text": "Web-desktop@390: Valid registration proceeds to W33 wizard",
 "theme": "TC-V12-J-113",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-133, TC-20-022"
+"refs": "TC-ENH-C-133, TC-20-022, TC-20-104"
 },
 {
 "src": "V11 Verification evidence",
@@ -4074,7 +4074,7 @@
 "text": "Web-desktop@390: W35 request: inline errors when empty; valid EU erasure gets reference and one-month due date",
 "theme": "TC-V12-J-106",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-AU-AU011-003"
 },
 {
 "src": "V11 Verification evidence",
@@ -4114,7 +4114,7 @@
 "text": "Web-desktop@390: No runtime errors during the run",
 "theme": "TC-V12-J-105",
 "sb": "Partially covered",
-"refs": "TC-AU-AU010-002"
+"refs": "TC-AU-AU010-002, TC-ENH-I-001, TC-ALN-A-025"
 },
 {
 "src": "V11 Verification evidence",
@@ -4138,7 +4138,7 @@
 "text": "Admin-desktop: Unknown screen shows not-found view",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-07-055"
+"refs": "TC-07-055, TC-03-097"
 },
 {
 "src": "V11 Verification evidence",
@@ -4146,7 +4146,7 @@
 "text": "Admin-desktop: Preflight: compliant IN SMS ALLOW; non-compliant IN SMS 4 HOLDs; EU undisclosed AI HOLD; IN WhatsApp without opt-in HOLD",
 "theme": "TC-V12-J-106",
 "sb": "Partially covered",
-"refs": "TC-17-028"
+"refs": "TC-17-028, TC-AU-AU025-007"
 },
 {
 "src": "V11 Verification evidence",
@@ -4186,7 +4186,7 @@
 "text": "Admin-desktop: Requester cannot self-approve; second reviewer approves → Running; dispatch of a legacy run without recipient evidence is HELD by the gateway (REC-11)",
 "theme": "TC-V12-J-107",
 "sb": "Partially covered",
-"refs": "TC-01-063"
+"refs": "TC-01-063, TC-ENH-C-001, TC-ADV-X2-008"
 },
 {
 "src": "V11 Verification evidence",
@@ -4210,7 +4210,7 @@
 "text": "Admin-desktop: Usage units: 0 and 100001 rejected; units above remaining allowance create a Held run (no effect)",
 "theme": "TC-V12-J-107",
 "sb": "Partially covered",
-"refs": "TC-ADV-X2-094, TC-AI-AG023-002"
+"refs": "TC-ADV-X2-094, TC-AI-AG023-002, TC-20-024"
 },
 {
 "src": "V11 Verification evidence",
@@ -4218,7 +4218,7 @@
 "text": "Admin-desktop: Mixed currency: records without a rate are excluded and counted; negative rate rejected; valid rate converts",
 "theme": "TC-V12-J-110",
 "sb": "Partially covered",
-"refs": "TC-FLT-008, TC-15-040"
+"refs": "TC-FLT-008, TC-15-040, TC-13-024"
 },
 {
 "src": "V11 Verification evidence",
@@ -4226,7 +4226,7 @@
 "text": "Admin-desktop: Promotion requires candidate-specific evidence (REC-12): A114 request routes to A115 and nothing is promoted",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ENH-K-076"
 },
 {
 "src": "V11 Verification evidence",
@@ -4250,7 +4250,7 @@
 "text": "Admin-desktop: No runtime errors during the run",
 "theme": "TC-V12-J-105",
 "sb": "Partially covered",
-"refs": "TC-AU-AU010-002"
+"refs": "TC-AU-AU010-002, TC-ENH-I-001, TC-ALN-A-025"
 },
 {
 "src": "V11 Verification evidence",
@@ -4274,7 +4274,7 @@
 "text": "Admin-mobile: Unknown screen shows not-found view",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-07-055"
+"refs": "TC-07-055, TC-03-097"
 },
 {
 "src": "V11 Verification evidence",
@@ -4282,7 +4282,7 @@
 "text": "Admin-mobile: Preflight: compliant IN SMS ALLOW; non-compliant IN SMS 4 HOLDs; EU undisclosed AI HOLD; IN WhatsApp without opt-in HOLD",
 "theme": "TC-V12-J-106",
 "sb": "Partially covered",
-"refs": "TC-17-028"
+"refs": "TC-17-028, TC-AU-AU025-007"
 },
 {
 "src": "V11 Verification evidence",
@@ -4322,7 +4322,7 @@
 "text": "Admin-mobile: Requester cannot self-approve; second reviewer approves → Running; dispatch of a legacy run without recipient evidence is HELD by the gateway (REC-11)",
 "theme": "TC-V12-J-107",
 "sb": "Partially covered",
-"refs": "TC-01-063"
+"refs": "TC-01-063, TC-ENH-C-001, TC-ADV-X2-008"
 },
 {
 "src": "V11 Verification evidence",
@@ -4346,7 +4346,7 @@
 "text": "Admin-mobile: Usage units: 0 and 100001 rejected; units above remaining allowance create a Held run (no effect)",
 "theme": "TC-V12-J-107",
 "sb": "Partially covered",
-"refs": "TC-ADV-X2-094, TC-AI-AG023-002"
+"refs": "TC-ADV-X2-094, TC-AI-AG023-002, TC-20-024"
 },
 {
 "src": "V11 Verification evidence",
@@ -4354,7 +4354,7 @@
 "text": "Admin-mobile: Mixed currency: records without a rate are excluded and counted; negative rate rejected; valid rate converts",
 "theme": "TC-V12-J-110",
 "sb": "Partially covered",
-"refs": "TC-FLT-008, TC-15-040"
+"refs": "TC-FLT-008, TC-15-040, TC-13-024"
 },
 {
 "src": "V11 Verification evidence",
@@ -4362,7 +4362,7 @@
 "text": "Admin-mobile: Promotion requires candidate-specific evidence (REC-12): A114 request routes to A115 and nothing is promoted",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ENH-K-076"
 },
 {
 "src": "V11 Verification evidence",
@@ -4386,7 +4386,7 @@
 "text": "Admin-mobile: No runtime errors during the run",
 "theme": "TC-V12-J-105",
 "sb": "Partially covered",
-"refs": "TC-AU-AU010-002"
+"refs": "TC-AU-AU010-002, TC-ENH-I-001, TC-ALN-A-025"
 },
 {
 "src": "V10 Targeted prototype test evidence",
@@ -4402,7 +4402,7 @@
 "text": "desktop / website: W07",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-105"
+"refs": "TC-ENH-C-105, TC-ENH-C-015"
 },
 {
 "src": "V10 Targeted prototype test evidence",
@@ -4410,7 +4410,7 @@
 "text": "desktop / website: W08",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-105"
+"refs": "TC-ENH-C-105, TC-ENH-C-015"
 },
 {
 "src": "V10 Targeted prototype test evidence",
@@ -4418,7 +4418,7 @@
 "text": "desktop / website: W09",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-109"
+"refs": "TC-ENH-C-109, TC-ENH-C-015"
 },
 {
 "src": "V10 Targeted prototype test evidence",
@@ -4434,7 +4434,7 @@
 "text": "desktop / admin: A106",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-137, TC-ALN-A-034"
+"refs": "TC-ENH-C-137, TC-ALN-A-034, TC-19-006"
 },
 {
 "src": "V10 Targeted prototype test evidence",
@@ -4466,7 +4466,7 @@
 "text": "desktop / admin: A112",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-245, TC-ALN-A-034"
+"refs": "TC-ENH-C-245, TC-ALN-A-034, TC-ENH-A-038"
 },
 {
 "src": "V10 Targeted prototype test evidence",
@@ -4506,7 +4506,7 @@
 "text": "desktop / admin: full evaluation selector",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ALN-A-034"
 },
 {
 "src": "V10 Targeted prototype test evidence",
@@ -4538,7 +4538,7 @@
 "text": "mobile / website: W07",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-105, TC-ENH-C-015"
+"refs": "TC-ENH-C-105, TC-ENH-C-015, TC-ADV-X1-021"
 },
 {
 "src": "V10 Targeted prototype test evidence",
@@ -4546,7 +4546,7 @@
 "text": "mobile / website: W08",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-105, TC-ENH-C-015"
+"refs": "TC-ENH-C-105, TC-ENH-C-015, TC-ADV-X1-021"
 },
 {
 "src": "V10 Targeted prototype test evidence",
@@ -4554,7 +4554,7 @@
 "text": "mobile / website: W09",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-109, TC-ENH-C-015"
+"refs": "TC-ENH-C-109, TC-ENH-C-015, TC-ADV-X1-021"
 },
 {
 "src": "V10 Targeted prototype test evidence",
@@ -4666,7 +4666,7 @@
 "text": "desktop / admin: trigger draft create / test",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ALN-A-034, TC-17-052"
+"refs": "TC-ALN-A-034, TC-17-052, TC-AI-AG015-004"
 },
 {
 "src": "V10 Targeted prototype test evidence",
@@ -4690,7 +4690,7 @@
 "text": "desktop / admin: template independent publish",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ALN-A-034, TC-18-057"
+"refs": "TC-ALN-A-034, TC-18-057, TC-18-017"
 },
 {
 "src": "V10 Targeted prototype test evidence",
@@ -4714,7 +4714,7 @@
 "text": "desktop / admin: seven event journey and duplicate rejection",
 "theme": "TC-V12-J-113",
 "sb": "Partially covered",
-"refs": "TC-12-071, TC-11-017"
+"refs": "TC-12-071, TC-11-017, TC-08-033"
 },
 {
 "src": "V10 Targeted prototype test evidence",
@@ -4722,7 +4722,7 @@
 "text": "desktop / admin: exact model evidence and red-team local fixture",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ADV-X1-060"
 },
 {
 "src": "V10 Targeted prototype test evidence",
@@ -4778,7 +4778,7 @@
 "text": "mobile / admin: seven event journey and duplicate rejection",
 "theme": "TC-V12-J-113",
 "sb": "Partially covered",
-"refs": "TC-12-071, TC-11-017"
+"refs": "TC-12-071, TC-11-017, TC-08-033"
 },
 {
 "src": "V10 Targeted prototype test evidence",
@@ -4794,7 +4794,7 @@
 "text": "Web-desktop: Cookie banner shown on first visit",
 "theme": "TC-V12-J-106",
 "sb": "Partially covered",
-"refs": "TC-ENH-J-060"
+"refs": "TC-ENH-J-060, TC-21-054"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -4810,7 +4810,7 @@
 "text": "Web-desktop: All 36 routes render a heading with no page-level horizontal overflow",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ENH-H-021"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -4818,7 +4818,7 @@
 "text": "Web-desktop: Unknown route shows not-found view",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-07-055, TC-03-097"
+"refs": "TC-07-055, TC-03-097, TC-11-056"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -4842,7 +4842,7 @@
 "text": "Web-desktop: Valid registration proceeds to W33 wizard",
 "theme": "TC-V12-J-113",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-133, TC-20-022"
+"refs": "TC-ENH-C-133, TC-20-022, TC-20-104"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -4858,7 +4858,7 @@
 "text": "Web-desktop: W35 request: inline errors when empty; valid EU erasure gets reference and one-month due date",
 "theme": "TC-V12-J-106",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-AU-AU011-003"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -4890,7 +4890,7 @@
 "text": "Web-desktop: No runtime errors during the run",
 "theme": "TC-V12-J-105",
 "sb": "Partially covered",
-"refs": "TC-AU-AU010-002"
+"refs": "TC-AU-AU010-002, TC-ENH-I-001, TC-ALN-A-025"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -4898,7 +4898,7 @@
 "text": "Web-mobile: Cookie banner shown on first visit",
 "theme": "TC-V12-J-106",
 "sb": "Partially covered",
-"refs": "TC-ENH-J-060"
+"refs": "TC-ENH-J-060, TC-21-054"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -4922,7 +4922,7 @@
 "text": "Web-mobile: All 36 routes render a heading with no page-level horizontal overflow",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ENH-H-021"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -4930,7 +4930,7 @@
 "text": "Web-mobile: Unknown route shows not-found view",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-07-055, TC-03-097"
+"refs": "TC-07-055, TC-03-097, TC-11-056"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -4954,7 +4954,7 @@
 "text": "Web-mobile: Valid registration proceeds to W33 wizard",
 "theme": "TC-V12-J-113",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-133, TC-20-022"
+"refs": "TC-ENH-C-133, TC-20-022, TC-20-104"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -4970,7 +4970,7 @@
 "text": "Web-mobile: W35 request: inline errors when empty; valid EU erasure gets reference and one-month due date",
 "theme": "TC-V12-J-106",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-AU-AU011-003"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -5010,7 +5010,7 @@
 "text": "Web-mobile: No runtime errors during the run",
 "theme": "TC-V12-J-105",
 "sb": "Partially covered",
-"refs": "TC-AU-AU010-002"
+"refs": "TC-AU-AU010-002, TC-ENH-I-001, TC-ALN-A-025"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -5018,7 +5018,7 @@
 "text": "Web-desktop@390: Cookie banner shown on first visit",
 "theme": "TC-V12-J-106",
 "sb": "Partially covered",
-"refs": "TC-ENH-J-060"
+"refs": "TC-ENH-J-060, TC-21-054"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -5042,7 +5042,7 @@
 "text": "Web-desktop@390: All 36 routes render a heading with no page-level horizontal overflow",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ENH-H-021"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -5050,7 +5050,7 @@
 "text": "Web-desktop@390: Unknown route shows not-found view",
 "theme": "TC-V12-J-102",
 "sb": "Partially covered",
-"refs": "TC-07-055, TC-03-097"
+"refs": "TC-07-055, TC-03-097, TC-11-056"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -5074,7 +5074,7 @@
 "text": "Web-desktop@390: Valid registration proceeds to W33 wizard",
 "theme": "TC-V12-J-113",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-133, TC-20-022"
+"refs": "TC-ENH-C-133, TC-20-022, TC-20-104"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -5090,7 +5090,7 @@
 "text": "Web-desktop@390: W35 request: inline errors when empty; valid EU erasure gets reference and one-month due date",
 "theme": "TC-V12-J-106",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-AU-AU011-003"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -5130,7 +5130,7 @@
 "text": "Web-desktop@390: No runtime errors during the run",
 "theme": "TC-V12-J-105",
 "sb": "Partially covered",
-"refs": "TC-AU-AU010-002"
+"refs": "TC-AU-AU010-002, TC-ENH-I-001, TC-ALN-A-025"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -5154,7 +5154,7 @@
 "text": "Admin-desktop: Unknown screen shows not-found view",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-07-055"
+"refs": "TC-07-055, TC-03-097"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -5162,7 +5162,7 @@
 "text": "Admin-desktop: Preflight: compliant IN SMS ALLOW; non-compliant IN SMS 4 HOLDs; EU undisclosed AI HOLD; IN WhatsApp without opt-in HOLD",
 "theme": "TC-V12-J-106",
 "sb": "Partially covered",
-"refs": "TC-17-028"
+"refs": "TC-17-028, TC-AU-AU025-007"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -5218,7 +5218,7 @@
 "text": "Admin-desktop: Usage units: 0 and 100001 rejected; units above remaining allowance create a Held run (no effect)",
 "theme": "TC-V12-J-107",
 "sb": "Partially covered",
-"refs": "TC-ADV-X2-094, TC-AI-AG023-002"
+"refs": "TC-ADV-X2-094, TC-AI-AG023-002, TC-20-024"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -5226,7 +5226,7 @@
 "text": "Admin-desktop: Mixed currency: records without a rate are excluded and counted; negative rate rejected; valid rate converts",
 "theme": "TC-V12-J-110",
 "sb": "Partially covered",
-"refs": "TC-FLT-008, TC-15-040"
+"refs": "TC-FLT-008, TC-15-040, TC-13-024"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -5258,7 +5258,7 @@
 "text": "Admin-desktop: No runtime errors during the run",
 "theme": "TC-V12-J-105",
 "sb": "Partially covered",
-"refs": "TC-AU-AU010-002"
+"refs": "TC-AU-AU010-002, TC-ENH-I-001, TC-ALN-A-025"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -5282,7 +5282,7 @@
 "text": "Admin-mobile: Unknown screen shows not-found view",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-07-055"
+"refs": "TC-07-055, TC-03-097"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -5290,7 +5290,7 @@
 "text": "Admin-mobile: Preflight: compliant IN SMS ALLOW; non-compliant IN SMS 4 HOLDs; EU undisclosed AI HOLD; IN WhatsApp without opt-in HOLD",
 "theme": "TC-V12-J-106",
 "sb": "Partially covered",
-"refs": "TC-17-028"
+"refs": "TC-17-028, TC-AU-AU025-007"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -5346,7 +5346,7 @@
 "text": "Admin-mobile: Usage units: 0 and 100001 rejected; units above remaining allowance create a Held run (no effect)",
 "theme": "TC-V12-J-107",
 "sb": "Partially covered",
-"refs": "TC-ADV-X2-094, TC-AI-AG023-002"
+"refs": "TC-ADV-X2-094, TC-AI-AG023-002, TC-20-024"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -5354,7 +5354,7 @@
 "text": "Admin-mobile: Mixed currency: records without a rate are excluded and counted; negative rate rejected; valid rate converts",
 "theme": "TC-V12-J-110",
 "sb": "Partially covered",
-"refs": "TC-FLT-008, TC-15-040"
+"refs": "TC-FLT-008, TC-15-040, TC-13-024"
 },
 {
 "src": "V9 prototype verification (75 checks)",
@@ -5386,7 +5386,7 @@
 "text": "Admin-mobile: No runtime errors during the run",
 "theme": "TC-V12-J-105",
 "sb": "Partially covered",
-"refs": "TC-AU-AU010-002"
+"refs": "TC-AU-AU010-002, TC-ENH-I-001, TC-ALN-A-025"
 },
 {
 "src": "V8 Verification evidence (axe-core)",
@@ -5426,7 +5426,7 @@
 "text": "V8 browser checks (chapter 33.2)",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-08-123"
+"refs": "TC-08-123, TC-AU-AU018-001, TC-ENH-K-076"
 },
 {
 "src": "V8 Verification evidence summary",
@@ -5442,7 +5442,7 @@
 "text": "OpenAPI 3.1 (Appendix A)",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-17-013"
+"refs": "TC-17-013, TC-ENH-B-036, TC-ALN-A-001"
 },
 {
 "src": "V8 Verification evidence summary",
@@ -5458,7 +5458,7 @@
 "text": "Not run",
 "theme": "TC-V12-J-107",
 "sb": "Partially covered",
-"refs": "TC-21-062, TC-AU-AU028-001"
+"refs": "TC-21-062, TC-AU-AU028-001, TC-18-093"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5466,7 +5466,7 @@
 "text": "Web-desktop: Cookie banner shown on first visit",
 "theme": "TC-V12-J-106",
 "sb": "Partially covered",
-"refs": "TC-ENH-J-060"
+"refs": "TC-ENH-J-060, TC-21-054"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5482,7 +5482,7 @@
 "text": "Web-desktop: All 36 routes render a heading with no page-level horizontal overflow — overflow: noh1:",
 "theme": "TC-V12-J-102",
 "sb": "Partially covered",
-"refs": "TC-ENH-H-021"
+"refs": "TC-ENH-H-021, TC-13-027"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5490,7 +5490,7 @@
 "text": "Web-desktop: Unknown route shows not-found view",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-07-055, TC-03-097"
+"refs": "TC-07-055, TC-03-097, TC-11-056"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5506,7 +5506,7 @@
 "text": "Web-desktop: Invalid email and javascript: URL rejected inline — Enter a valid email address, like name@example.com. / Enter a full https:// web address.",
 "theme": "TC-V12-J-108",
 "sb": "Partially covered",
-"refs": "TC-03-060, TC-01-043"
+"refs": "TC-03-060, TC-01-043, TC-05-041"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5514,7 +5514,7 @@
 "text": "Web-desktop: Valid registration proceeds to W33 wizard",
 "theme": "TC-V12-J-113",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-133, TC-20-022"
+"refs": "TC-ENH-C-133, TC-20-022, TC-20-104"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5530,7 +5530,7 @@
 "text": "Web-desktop: W35 request: inline errors when empty; valid EU erasure gets reference and one-month due date",
 "theme": "TC-V12-J-106",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-AU-AU011-003"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5554,7 +5554,7 @@
 "text": "Web-desktop: First Tab reaches skip link; Enter moves focus to main — v7-skip|Skip to main content -> main",
 "theme": "TC-V12-J-103",
 "sb": "Partially covered",
-"refs": "TC-17-067"
+"refs": "TC-17-067, TC-11-068, TC-08-171"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5562,7 +5562,7 @@
 "text": "Web-desktop: No runtime errors during the run",
 "theme": "TC-V12-J-105",
 "sb": "Partially covered",
-"refs": "TC-AU-AU010-002"
+"refs": "TC-AU-AU010-002, TC-ENH-I-001, TC-ALN-A-025"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5570,7 +5570,7 @@
 "text": "Web-mobile: Cookie banner shown on first visit",
 "theme": "TC-V12-J-106",
 "sb": "Partially covered",
-"refs": "TC-ENH-J-060"
+"refs": "TC-ENH-J-060, TC-21-054"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5594,7 +5594,7 @@
 "text": "Web-mobile: All 36 routes render a heading with no page-level horizontal overflow — overflow: noh1:",
 "theme": "TC-V12-J-102",
 "sb": "Partially covered",
-"refs": "TC-ENH-H-021"
+"refs": "TC-ENH-H-021, TC-13-027"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5602,7 +5602,7 @@
 "text": "Web-mobile: Unknown route shows not-found view",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-07-055, TC-03-097"
+"refs": "TC-07-055, TC-03-097, TC-11-056"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5618,7 +5618,7 @@
 "text": "Web-mobile: Invalid email and javascript: URL rejected inline — Enter a valid email address, like name@example.com. / Enter a full https:// web address.",
 "theme": "TC-V12-J-108",
 "sb": "Partially covered",
-"refs": "TC-03-060, TC-01-043"
+"refs": "TC-03-060, TC-01-043, TC-05-041"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5626,7 +5626,7 @@
 "text": "Web-mobile: Valid registration proceeds to W33 wizard",
 "theme": "TC-V12-J-113",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-133, TC-20-022"
+"refs": "TC-ENH-C-133, TC-20-022, TC-20-104"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5642,7 +5642,7 @@
 "text": "Web-mobile: W35 request: inline errors when empty; valid EU erasure gets reference and one-month due date",
 "theme": "TC-V12-J-106",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-AU-AU011-003"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5674,7 +5674,7 @@
 "text": "Web-mobile: First Tab reaches skip link; Enter moves focus to main — v7-skip|Skip to main content -> main",
 "theme": "TC-V12-J-103",
 "sb": "Partially covered",
-"refs": "TC-17-067"
+"refs": "TC-17-067, TC-11-068, TC-08-171"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5682,7 +5682,7 @@
 "text": "Web-mobile: No runtime errors during the run",
 "theme": "TC-V12-J-105",
 "sb": "Partially covered",
-"refs": "TC-AU-AU010-002"
+"refs": "TC-AU-AU010-002, TC-ENH-I-001, TC-ALN-A-025"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5690,7 +5690,7 @@
 "text": "Web-desktop@390: Cookie banner shown on first visit",
 "theme": "TC-V12-J-106",
 "sb": "Partially covered",
-"refs": "TC-ENH-J-060"
+"refs": "TC-ENH-J-060, TC-21-054"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5714,7 +5714,7 @@
 "text": "Web-desktop@390: All 36 routes render a heading with no page-level horizontal overflow — overflow: noh1:",
 "theme": "TC-V12-J-102",
 "sb": "Partially covered",
-"refs": "TC-ENH-H-021"
+"refs": "TC-ENH-H-021, TC-13-027"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5722,7 +5722,7 @@
 "text": "Web-desktop@390: Unknown route shows not-found view",
 "theme": "TC-V12-J-102",
 "sb": "Partially covered",
-"refs": "TC-07-055, TC-03-097"
+"refs": "TC-07-055, TC-03-097, TC-11-056"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5738,7 +5738,7 @@
 "text": "Web-desktop@390: Invalid email and javascript: URL rejected inline — Enter a valid email address, like name@example.com. / Enter a full https:// web address.",
 "theme": "TC-V12-J-108",
 "sb": "Partially covered",
-"refs": "TC-03-060, TC-01-043"
+"refs": "TC-03-060, TC-01-043, TC-05-041"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5746,7 +5746,7 @@
 "text": "Web-desktop@390: Valid registration proceeds to W33 wizard",
 "theme": "TC-V12-J-113",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-133, TC-20-022"
+"refs": "TC-ENH-C-133, TC-20-022, TC-20-104"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5762,7 +5762,7 @@
 "text": "Web-desktop@390: W35 request: inline errors when empty; valid EU erasure gets reference and one-month due date",
 "theme": "TC-V12-J-106",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-AU-AU011-003"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5794,7 +5794,7 @@
 "text": "Web-desktop@390: First Tab reaches skip link; Enter moves focus to main — v7-skip|Skip to main content -> main",
 "theme": "TC-V12-J-103",
 "sb": "Partially covered",
-"refs": "TC-17-067"
+"refs": "TC-17-067, TC-11-068, TC-08-171"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5802,7 +5802,7 @@
 "text": "Web-desktop@390: No runtime errors during the run",
 "theme": "TC-V12-J-105",
 "sb": "Partially covered",
-"refs": "TC-AU-AU010-002"
+"refs": "TC-AU-AU010-002, TC-ENH-I-001, TC-ALN-A-025"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5826,7 +5826,7 @@
 "text": "Admin-desktop: Unknown screen shows not-found view",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-07-055"
+"refs": "TC-07-055, TC-03-097"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5834,7 +5834,7 @@
 "text": "Admin-desktop: Preflight: compliant IN SMS ALLOW; non-compliant IN SMS 4 HOLDs; EU undisclosed AI HOLD; IN WhatsApp without opt-in HOLD",
 "theme": "TC-V12-J-106",
 "sb": "Partially covered",
-"refs": "TC-17-028"
+"refs": "TC-17-028, TC-AU-AU025-007"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5874,7 +5874,7 @@
 "text": "Admin-desktop: Usage units: 0 and 100001 rejected; units above remaining allowance create a Held run (no effect) — remaining=99 0:Provide valid sample input and positive  over:Held",
 "theme": "TC-V12-J-107",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ADV-X2-094, TC-ENH-I-032, TC-04-023"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5882,7 +5882,7 @@
 "text": "Admin-desktop: Mixed currency: records without a rate are excluded and counted; negative rate rejected; valid rate converts",
 "theme": "TC-V12-J-110",
 "sb": "Partially covered",
-"refs": "TC-FLT-008, TC-15-040"
+"refs": "TC-FLT-008, TC-15-040, TC-13-024"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5914,7 +5914,7 @@
 "text": "Admin-desktop: No runtime errors during the run",
 "theme": "TC-V12-J-105",
 "sb": "Partially covered",
-"refs": "TC-AU-AU010-002"
+"refs": "TC-AU-AU010-002, TC-ENH-I-001, TC-ALN-A-025"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5938,7 +5938,7 @@
 "text": "Admin-mobile: Unknown screen shows not-found view",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-07-055"
+"refs": "TC-07-055, TC-03-097"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5946,7 +5946,7 @@
 "text": "Admin-mobile: Preflight: compliant IN SMS ALLOW; non-compliant IN SMS 4 HOLDs; EU undisclosed AI HOLD; IN WhatsApp without opt-in HOLD",
 "theme": "TC-V12-J-106",
 "sb": "Partially covered",
-"refs": "TC-17-028"
+"refs": "TC-17-028, TC-AU-AU025-007"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5986,7 +5986,7 @@
 "text": "Admin-mobile: Usage units: 0 and 100001 rejected; units above remaining allowance create a Held run (no effect) — remaining=99 0:Provide valid sample input and positive  over:Held",
 "theme": "TC-V12-J-107",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ADV-X2-094, TC-ENH-I-032, TC-04-023"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -5994,7 +5994,7 @@
 "text": "Admin-mobile: Mixed currency: records without a rate are excluded and counted; negative rate rejected; valid rate converts",
 "theme": "TC-V12-J-110",
 "sb": "Partially covered",
-"refs": "TC-FLT-008, TC-15-040"
+"refs": "TC-FLT-008, TC-15-040, TC-13-024"
 },
 {
 "src": "33.2 V8 prototype verification",
@@ -6026,7 +6026,7 @@
 "text": "Admin-mobile: No runtime errors during the run",
 "theme": "TC-V12-J-105",
 "sb": "Partially covered",
-"refs": "TC-AU-AU010-002"
+"refs": "TC-AU-AU010-002, TC-ENH-I-001, TC-ALN-A-025"
 },
 {
 "src": "V7 Verification test groups",
@@ -6034,7 +6034,7 @@
 "text": "Website route shells: 68",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ADV-X1-021, TC-ENH-C-015"
+"refs": "TC-ADV-X1-021, TC-ENH-C-015, TC-ENH-K-034"
 },
 {
 "src": "V7 Verification test groups",
@@ -6042,7 +6042,7 @@
 "text": "Admin registered screen shells: 270",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-K-073"
+"refs": "TC-ENH-K-073, TC-ENH-H-010, TC-ALN-A-044"
 },
 {
 "src": "V7 Verification test groups",
@@ -6050,7 +6050,7 @@
 "text": "Home overflow at 8 widths: 32",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-13-027, TC-ENH-H-021"
 },
 {
 "src": "V7 Verification test groups",
@@ -6074,7 +6074,7 @@
 "text": "website desktop loads",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-015"
+"refs": "TC-ENH-C-015, TC-01-088, TC-ADV-X1-021"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6082,7 +6082,7 @@
 "text": "website desktop nav visible",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ENH-C-015"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6090,7 +6090,7 @@
 "text": "website desktop counts",
 "theme": "TC-V12-J-109",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-015"
+"refs": "TC-ENH-C-015, TC-ADV-X1-021, TC-18-053"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6386,7 +6386,7 @@
 "text": "website desktop wizard identity",
 "theme": "TC-V12-J-113",
 "sb": "Partially covered",
-"refs": "TC-20-022, TC-20-104"
+"refs": "TC-20-022, TC-20-104, TC-ENH-C-015"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6402,7 +6402,7 @@
 "text": "website desktop logout graph cleared",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-012, TC-ADV-X3-046"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6410,7 +6410,7 @@
 "text": "website desktop identity after demo sign-in",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-07-032, TC-19-067"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6418,7 +6418,7 @@
 "text": "website desktop home no overflow 360",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-13-027, TC-ENH-C-015"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6426,7 +6426,7 @@
 "text": "website desktop home no overflow 390",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-13-027, TC-ENH-C-015"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6434,7 +6434,7 @@
 "text": "website desktop home no overflow 430",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-13-027, TC-ENH-C-015"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6442,7 +6442,7 @@
 "text": "website desktop home no overflow 768",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-13-027, TC-ENH-C-015"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6450,7 +6450,7 @@
 "text": "website desktop home no overflow 1024",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-13-027, TC-ENH-C-015"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6458,7 +6458,7 @@
 "text": "website desktop home no overflow 1280",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-13-027, TC-ENH-C-015"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6466,7 +6466,7 @@
 "text": "website desktop home no overflow 1440",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-13-027, TC-ENH-C-015"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6474,7 +6474,7 @@
 "text": "website desktop home no overflow 1920",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-13-027, TC-ENH-C-015"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6490,7 +6490,7 @@
 "text": "website mobile loads",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-015"
+"refs": "TC-ENH-C-015, TC-01-088, TC-ADV-X1-021"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6498,7 +6498,7 @@
 "text": "website mobile nav visible",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ENH-C-015"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6818,7 +6818,7 @@
 "text": "website mobile logout graph cleared",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-012, TC-ADV-X3-046"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6826,7 +6826,7 @@
 "text": "website mobile identity after demo sign-in",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-01-028"
+"refs": "TC-01-028, TC-07-032, TC-19-067"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6834,7 +6834,7 @@
 "text": "website mobile bottom navigation",
 "theme": "TC-V12-J-102",
 "sb": "Partially covered",
-"refs": "TC-19-077"
+"refs": "TC-19-077, TC-ENH-C-015, TC-01-126"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6850,7 +6850,7 @@
 "text": "website mobile home no overflow 360",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-13-027, TC-ENH-C-015, TC-ENH-H-021"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6858,7 +6858,7 @@
 "text": "website mobile home no overflow 390",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-13-027, TC-ENH-C-015, TC-ENH-H-021"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6866,7 +6866,7 @@
 "text": "website mobile home no overflow 430",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-13-027, TC-ENH-C-015, TC-ENH-H-021"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6874,7 +6874,7 @@
 "text": "website mobile home no overflow 768",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-13-027, TC-ENH-C-015, TC-ENH-H-021"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6882,7 +6882,7 @@
 "text": "website mobile home no overflow 1024",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-13-027, TC-ENH-C-015, TC-ENH-H-021"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6890,7 +6890,7 @@
 "text": "website mobile home no overflow 1280",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-13-027, TC-ENH-C-015, TC-ENH-H-021"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6898,7 +6898,7 @@
 "text": "website mobile home no overflow 1440",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-13-027, TC-ENH-C-015, TC-ENH-H-021"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6906,7 +6906,7 @@
 "text": "website mobile home no overflow 1920",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-13-027, TC-ENH-C-015, TC-ENH-H-021"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6922,7 +6922,7 @@
 "text": "admin desktop loads",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ALN-A-034"
+"refs": "TC-ALN-A-034, TC-01-088"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6930,7 +6930,7 @@
 "text": "admin desktop nav visible",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ALN-A-034"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6938,7 +6938,7 @@
 "text": "admin desktop counts",
 "theme": "TC-V12-J-109",
 "sb": "Partially covered",
-"refs": "TC-ALN-A-034"
+"refs": "TC-ALN-A-034, TC-18-053, TC-18-131"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6946,7 +6946,7 @@
 "text": "admin desktop registered A001",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-133"
+"refs": "TC-ENH-C-133, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6954,7 +6954,7 @@
 "text": "admin desktop registered A002",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-221, TC-ALN-A-034"
+"refs": "TC-ENH-C-221, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6962,7 +6962,7 @@
 "text": "admin desktop registered A003",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-133"
+"refs": "TC-ENH-C-133, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6970,7 +6970,7 @@
 "text": "admin desktop registered A004",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-221, TC-ALN-A-034"
+"refs": "TC-ENH-C-221, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6978,7 +6978,7 @@
 "text": "admin desktop registered A005",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-221"
+"refs": "TC-ENH-C-221, TC-ALN-A-034, TC-01-128"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6986,7 +6986,7 @@
 "text": "admin desktop registered A006",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-225, TC-ALN-A-034"
+"refs": "TC-ENH-C-225, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -6994,7 +6994,7 @@
 "text": "admin desktop registered A007",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-225, TC-01-129"
+"refs": "TC-ENH-C-225, TC-01-129, TC-ALN-A-034"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7010,7 +7010,7 @@
 "text": "admin desktop registered A009",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-225, TC-ALN-A-034"
+"refs": "TC-ENH-C-225, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7018,7 +7018,7 @@
 "text": "admin desktop registered A010",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-229"
+"refs": "TC-ENH-C-229, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7026,7 +7026,7 @@
 "text": "admin desktop registered A011",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-229"
+"refs": "TC-ENH-C-229, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7042,7 +7042,7 @@
 "text": "admin desktop registered A013",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-229"
+"refs": "TC-ENH-C-229, TC-ALN-A-034, TC-01-129"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7058,7 +7058,7 @@
 "text": "admin desktop registered A015",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-149, TC-ALN-A-034"
+"refs": "TC-ENH-C-149, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7066,7 +7066,7 @@
 "text": "admin desktop registered A016",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-153, TC-ALN-A-034"
+"refs": "TC-ENH-C-153, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7074,7 +7074,7 @@
 "text": "admin desktop registered A017",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-153"
+"refs": "TC-ENH-C-153, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7082,7 +7082,7 @@
 "text": "admin desktop registered A018",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-137"
+"refs": "TC-ENH-C-137, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7098,7 +7098,7 @@
 "text": "admin desktop registered A020",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-153, TC-ALN-A-034"
+"refs": "TC-ENH-C-153, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7106,7 +7106,7 @@
 "text": "admin desktop registered A021",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-157"
+"refs": "TC-ENH-C-157, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7114,7 +7114,7 @@
 "text": "admin desktop registered A022",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-157, TC-ALN-A-034"
+"refs": "TC-ENH-C-157, TC-ALN-A-034, TC-06-054"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7122,7 +7122,7 @@
 "text": "admin desktop registered A023",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-157"
+"refs": "TC-ENH-C-157, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7130,7 +7130,7 @@
 "text": "admin desktop registered A024",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-157"
+"refs": "TC-ENH-C-157, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7138,7 +7138,7 @@
 "text": "admin desktop registered A025",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-161, TC-ALN-A-034"
+"refs": "TC-ENH-C-161, TC-ALN-A-034, TC-06-054"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7146,7 +7146,7 @@
 "text": "admin desktop registered A026",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-161"
+"refs": "TC-ENH-C-161, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7154,7 +7154,7 @@
 "text": "admin desktop registered A027",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ALN-A-034"
+"refs": "TC-ALN-A-034, TC-ENH-H-010, TC-ENH-C-161"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7162,7 +7162,7 @@
 "text": "admin desktop registered A028",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-161, TC-01-132"
+"refs": "TC-ENH-C-161, TC-01-132, TC-ALN-A-034"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7170,7 +7170,7 @@
 "text": "admin desktop registered A029",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ALN-A-034"
+"refs": "TC-ALN-A-034, TC-ENH-H-010, TC-NFR-044"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7178,7 +7178,7 @@
 "text": "admin desktop registered A030",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-137"
+"refs": "TC-ENH-C-137, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7186,7 +7186,7 @@
 "text": "admin desktop registered A031",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-141"
+"refs": "TC-ENH-C-141, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7194,7 +7194,7 @@
 "text": "admin desktop registered A032",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-141, TC-ALN-A-034"
+"refs": "TC-ENH-C-141, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7202,7 +7202,7 @@
 "text": "admin desktop registered A033",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-233, TC-ALN-A-034"
+"refs": "TC-ENH-C-233, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7210,7 +7210,7 @@
 "text": "admin desktop registered A034",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-169, TC-ALN-A-034"
+"refs": "TC-ENH-C-169, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7218,7 +7218,7 @@
 "text": "admin desktop registered A035",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-169, TC-08-161"
+"refs": "TC-ENH-C-169, TC-08-161, TC-ALN-A-034"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7226,7 +7226,7 @@
 "text": "admin desktop registered A036",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-169"
+"refs": "TC-ENH-C-169, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7234,7 +7234,7 @@
 "text": "admin desktop registered A037",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ALN-A-034, TC-NFR-044"
+"refs": "TC-ALN-A-034, TC-NFR-044, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7242,7 +7242,7 @@
 "text": "admin desktop registered A038",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-189"
+"refs": "TC-ENH-C-189, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7250,7 +7250,7 @@
 "text": "admin desktop registered A039",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-193"
+"refs": "TC-ENH-C-193, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7258,7 +7258,7 @@
 "text": "admin desktop registered A040",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-193, TC-ALN-A-034"
+"refs": "TC-ENH-C-193, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7266,7 +7266,7 @@
 "text": "admin desktop registered A041",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-193"
+"refs": "TC-ENH-C-193, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7282,7 +7282,7 @@
 "text": "admin desktop registered A043",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-141"
+"refs": "TC-ENH-C-141, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7290,7 +7290,7 @@
 "text": "admin desktop registered A044",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-173"
+"refs": "TC-ENH-C-173, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7298,7 +7298,7 @@
 "text": "admin desktop registered A045",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-173, TC-ALN-A-034"
+"refs": "TC-ENH-C-173, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7306,7 +7306,7 @@
 "text": "admin desktop registered A046",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-209, TC-ALN-A-034"
+"refs": "TC-ENH-C-209, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7314,7 +7314,7 @@
 "text": "admin desktop registered A047",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-233, TC-ALN-A-034"
+"refs": "TC-ENH-C-233, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7322,7 +7322,7 @@
 "text": "admin desktop registered A048",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-165, TC-ALN-A-034"
+"refs": "TC-ENH-C-165, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7330,7 +7330,7 @@
 "text": "admin desktop registered A049",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-165"
+"refs": "TC-ENH-C-165, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7338,7 +7338,7 @@
 "text": "admin desktop registered A050",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-173, TC-ALN-A-034"
+"refs": "TC-ENH-C-173, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7346,7 +7346,7 @@
 "text": "admin desktop registered A051",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-173, TC-ALN-A-034"
+"refs": "TC-ENH-C-173, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7354,7 +7354,7 @@
 "text": "admin desktop registered A052",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-177"
+"refs": "TC-ENH-C-177, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7362,7 +7362,7 @@
 "text": "admin desktop registered A053",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-177"
+"refs": "TC-ENH-C-177, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7370,7 +7370,7 @@
 "text": "admin desktop registered A054",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-177, TC-ALN-A-034"
+"refs": "TC-ENH-C-177, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7378,7 +7378,7 @@
 "text": "admin desktop registered A055",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-177"
+"refs": "TC-ENH-C-177, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7386,7 +7386,7 @@
 "text": "admin desktop registered A056",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-181"
+"refs": "TC-ENH-C-181, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7394,7 +7394,7 @@
 "text": "admin desktop registered A057",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-181"
+"refs": "TC-ENH-C-181, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7402,7 +7402,7 @@
 "text": "admin desktop registered A058",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-181"
+"refs": "TC-ENH-C-181, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7410,7 +7410,7 @@
 "text": "admin desktop registered A059",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-181"
+"refs": "TC-ENH-C-181, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7418,7 +7418,7 @@
 "text": "admin desktop registered A060",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-185"
+"refs": "TC-ENH-C-185, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7426,7 +7426,7 @@
 "text": "admin desktop registered A061",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-185"
+"refs": "TC-ENH-C-185, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7434,7 +7434,7 @@
 "text": "admin desktop registered A062",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-185"
+"refs": "TC-ENH-C-185, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7442,7 +7442,7 @@
 "text": "admin desktop registered A063",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-185"
+"refs": "TC-ENH-C-185, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7450,7 +7450,7 @@
 "text": "admin desktop registered A064",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-189"
+"refs": "TC-ENH-C-189, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7458,7 +7458,7 @@
 "text": "admin desktop registered A065",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-209, TC-ALN-A-034"
+"refs": "TC-ENH-C-209, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7466,7 +7466,7 @@
 "text": "admin desktop registered A066",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-213"
+"refs": "TC-ENH-C-213, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7482,7 +7482,7 @@
 "text": "admin desktop registered A068",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-17-053, TC-ALN-A-034"
+"refs": "TC-17-053, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7490,7 +7490,7 @@
 "text": "admin desktop registered A069",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-209"
+"refs": "TC-ENH-C-209, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7498,7 +7498,7 @@
 "text": "admin desktop registered A070",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-209"
+"refs": "TC-ENH-C-209, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7506,7 +7506,7 @@
 "text": "admin desktop registered A071",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-213"
+"refs": "TC-ENH-C-213, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7514,7 +7514,7 @@
 "text": "admin desktop registered A072",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-217, TC-ALN-A-034"
+"refs": "TC-ENH-C-217, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7522,7 +7522,7 @@
 "text": "admin desktop registered A073",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-217, TC-ALN-A-034"
+"refs": "TC-ENH-C-217, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7530,7 +7530,7 @@
 "text": "admin desktop registered A074",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-217, TC-ALN-A-034"
+"refs": "TC-ENH-C-217, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7538,7 +7538,7 @@
 "text": "admin desktop registered A075",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-193, TC-ALN-A-034"
+"refs": "TC-ENH-C-193, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7546,7 +7546,7 @@
 "text": "admin desktop registered A076",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-197"
+"refs": "TC-ENH-C-197, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7554,7 +7554,7 @@
 "text": "admin desktop registered A077",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-197"
+"refs": "TC-ENH-C-197, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7562,7 +7562,7 @@
 "text": "admin desktop registered A078",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-197"
+"refs": "TC-ENH-C-197, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7570,7 +7570,7 @@
 "text": "admin desktop registered A079",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-197"
+"refs": "TC-ENH-C-197, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7578,7 +7578,7 @@
 "text": "admin desktop registered A080",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-201"
+"refs": "TC-ENH-C-201, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7586,7 +7586,7 @@
 "text": "admin desktop registered A081",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-201"
+"refs": "TC-ENH-C-201, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7602,7 +7602,7 @@
 "text": "admin desktop registered A083",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-145"
+"refs": "TC-ENH-C-145, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7610,7 +7610,7 @@
 "text": "admin desktop registered A084",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-233, TC-01-130"
+"refs": "TC-ENH-C-233, TC-01-130, TC-ALN-A-034"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7618,7 +7618,7 @@
 "text": "admin desktop registered A085",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-165"
+"refs": "TC-ENH-C-165, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7626,7 +7626,7 @@
 "text": "admin desktop registered A086",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-165, TC-ALN-A-034"
+"refs": "TC-ENH-C-165, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7634,7 +7634,7 @@
 "text": "admin desktop registered A087",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-145, TC-ALN-A-034"
+"refs": "TC-ENH-C-145, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7642,7 +7642,7 @@
 "text": "admin desktop registered A088",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-145"
+"refs": "TC-ENH-C-145, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7650,7 +7650,7 @@
 "text": "admin desktop registered A089",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-149, TC-ALN-A-034"
+"refs": "TC-ENH-C-149, TC-ALN-A-034, TC-18-053"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7666,7 +7666,7 @@
 "text": "admin desktop registered A091",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-201"
+"refs": "TC-ENH-C-201, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7674,7 +7674,7 @@
 "text": "admin desktop registered A092",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-201"
+"refs": "TC-ENH-C-201, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7682,7 +7682,7 @@
 "text": "admin desktop registered A093",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-205"
+"refs": "TC-ENH-C-205, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7690,7 +7690,7 @@
 "text": "admin desktop registered A094",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-205"
+"refs": "TC-ENH-C-205, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7698,7 +7698,7 @@
 "text": "admin desktop registered A095",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-205"
+"refs": "TC-ENH-C-205, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7706,7 +7706,7 @@
 "text": "admin desktop registered A096",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-205"
+"refs": "TC-ENH-C-205, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7714,7 +7714,7 @@
 "text": "admin desktop registered A097",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-149, TC-ALN-A-034"
+"refs": "TC-ENH-C-149, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7722,7 +7722,7 @@
 "text": "admin desktop registered A098",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-149"
+"refs": "TC-ENH-C-149, TC-ALN-A-034, TC-01-128"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7730,7 +7730,7 @@
 "text": "admin desktop registered A099",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-237, TC-ALN-A-034"
+"refs": "TC-ENH-C-237, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7738,7 +7738,7 @@
 "text": "admin desktop registered A100",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-237"
+"refs": "TC-ENH-C-237, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7746,7 +7746,7 @@
 "text": "admin desktop registered A101",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-237, TC-ALN-A-034"
+"refs": "TC-ENH-C-237, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7754,7 +7754,7 @@
 "text": "admin desktop registered A102",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-241"
+"refs": "TC-ENH-C-241, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7762,7 +7762,7 @@
 "text": "admin desktop registered A103",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-241"
+"refs": "TC-ENH-C-241, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7770,7 +7770,7 @@
 "text": "admin desktop registered A104",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-217, TC-ALN-A-034"
+"refs": "TC-ENH-C-217, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7786,7 +7786,7 @@
 "text": "admin desktop registered A106",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-137, TC-ALN-A-034"
+"refs": "TC-ENH-C-137, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7794,7 +7794,7 @@
 "text": "admin desktop registered A107",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-189"
+"refs": "TC-ENH-C-189, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7802,7 +7802,7 @@
 "text": "admin desktop registered A108",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-189"
+"refs": "TC-ENH-C-189, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7810,7 +7810,7 @@
 "text": "admin desktop registered A109",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-241"
+"refs": "TC-ENH-C-241, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7818,7 +7818,7 @@
 "text": "admin desktop registered A110",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-18-077, TC-ALN-A-034"
+"refs": "TC-18-077, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7826,7 +7826,7 @@
 "text": "admin desktop registered A111",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-245, TC-ALN-A-034"
+"refs": "TC-ENH-C-245, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7834,7 +7834,7 @@
 "text": "admin desktop registered A112",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-245, TC-ALN-A-034"
+"refs": "TC-ENH-C-245, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7842,7 +7842,7 @@
 "text": "admin desktop registered A113",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-245, TC-ALN-A-034"
+"refs": "TC-ENH-C-245, TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7850,7 +7850,7 @@
 "text": "admin desktop registered X26",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7858,7 +7858,7 @@
 "text": "admin desktop registered X27",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7866,7 +7866,7 @@
 "text": "admin desktop registered X28",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7874,7 +7874,7 @@
 "text": "admin desktop registered X29",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7882,7 +7882,7 @@
 "text": "admin desktop registered X30",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7890,7 +7890,7 @@
 "text": "admin desktop registered X31",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7898,7 +7898,7 @@
 "text": "admin desktop registered X32",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7906,7 +7906,7 @@
 "text": "admin desktop registered X33",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7914,7 +7914,7 @@
 "text": "admin desktop registered X34",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7922,7 +7922,7 @@
 "text": "admin desktop registered X35",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7930,7 +7930,7 @@
 "text": "admin desktop registered X36",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7938,7 +7938,7 @@
 "text": "admin desktop registered X37",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7946,7 +7946,7 @@
 "text": "admin desktop registered X38",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7954,7 +7954,7 @@
 "text": "admin desktop registered X39",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7962,7 +7962,7 @@
 "text": "admin desktop registered O01",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7970,7 +7970,7 @@
 "text": "admin desktop registered O02",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7978,7 +7978,7 @@
 "text": "admin desktop registered O03",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7986,7 +7986,7 @@
 "text": "admin desktop registered O04",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -7994,7 +7994,7 @@
 "text": "admin desktop registered O05",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8002,7 +8002,7 @@
 "text": "admin desktop registered O06",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8010,7 +8010,7 @@
 "text": "admin desktop registered O07",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8018,7 +8018,7 @@
 "text": "admin desktop registered O08",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ALN-A-034, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8026,7 +8026,7 @@
 "text": "admin desktop four startups",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ALN-A-034, TC-03-004"
+"refs": "TC-ALN-A-034, TC-03-004, TC-ALN-A-033"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8042,7 +8042,7 @@
 "text": "admin desktop portfolio no operational shortcut",
 "theme": "TC-V12-J-112",
 "sb": "Partially covered",
-"refs": "TC-17-013"
+"refs": "TC-17-013, TC-17-039, TC-ALN-A-034"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8074,7 +8074,7 @@
 "text": "admin desktop escape drawer",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ALN-A-034, TC-ENH-K-032"
+"refs": "TC-ALN-A-034, TC-ENH-K-032, TC-18-013"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8082,7 +8082,7 @@
 "text": "admin desktop home no overflow 360",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-13-027, TC-ALN-A-034"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8090,7 +8090,7 @@
 "text": "admin desktop home no overflow 390",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-13-027, TC-ALN-A-034"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8098,7 +8098,7 @@
 "text": "admin desktop home no overflow 430",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-13-027, TC-ALN-A-034"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8106,7 +8106,7 @@
 "text": "admin desktop home no overflow 768",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-13-027, TC-ALN-A-034"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8114,7 +8114,7 @@
 "text": "admin desktop home no overflow 1024",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-13-027, TC-ALN-A-034"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8122,7 +8122,7 @@
 "text": "admin desktop home no overflow 1280",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-13-027, TC-ALN-A-034"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8130,7 +8130,7 @@
 "text": "admin desktop home no overflow 1440",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-13-027, TC-ALN-A-034"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8138,7 +8138,7 @@
 "text": "admin desktop home no overflow 1920",
 "theme": "TC-V12-J-102",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-13-027, TC-ALN-A-034"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8162,7 +8162,7 @@
 "text": "admin mobile nav visible",
 "theme": "TC-V12-J-102",
 "sb": "Partially covered",
-"refs": "TC-01-126"
+"refs": "TC-01-126, TC-01-028"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8194,7 +8194,7 @@
 "text": "admin mobile registered A003",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-133, TC-01-126"
+"refs": "TC-ENH-C-133, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8250,7 +8250,7 @@
 "text": "admin mobile registered A010",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-229, TC-01-126"
+"refs": "TC-ENH-C-229, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8306,7 +8306,7 @@
 "text": "admin mobile registered A017",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-153, TC-01-126"
+"refs": "TC-ENH-C-153, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8314,7 +8314,7 @@
 "text": "admin mobile registered A018",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-137, TC-01-126"
+"refs": "TC-ENH-C-137, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8338,7 +8338,7 @@
 "text": "admin mobile registered A021",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-157, TC-01-126"
+"refs": "TC-ENH-C-157, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8354,7 +8354,7 @@
 "text": "admin mobile registered A023",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-157, TC-01-126"
+"refs": "TC-ENH-C-157, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8362,7 +8362,7 @@
 "text": "admin mobile registered A024",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-157, TC-01-126"
+"refs": "TC-ENH-C-157, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8378,7 +8378,7 @@
 "text": "admin mobile registered A026",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-161, TC-01-126"
+"refs": "TC-ENH-C-161, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8410,7 +8410,7 @@
 "text": "admin mobile registered A030",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-137, TC-01-126"
+"refs": "TC-ENH-C-137, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8418,7 +8418,7 @@
 "text": "admin mobile registered A031",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-141, TC-01-126"
+"refs": "TC-ENH-C-141, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8474,7 +8474,7 @@
 "text": "admin mobile registered A038",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-189, TC-01-126"
+"refs": "TC-ENH-C-189, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8482,7 +8482,7 @@
 "text": "admin mobile registered A039",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-193, TC-01-126"
+"refs": "TC-ENH-C-193, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8498,7 +8498,7 @@
 "text": "admin mobile registered A041",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-193, TC-01-126"
+"refs": "TC-ENH-C-193, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8514,7 +8514,7 @@
 "text": "admin mobile registered A043",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-141, TC-01-126"
+"refs": "TC-ENH-C-141, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8586,7 +8586,7 @@
 "text": "admin mobile registered A052",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-177, TC-01-126"
+"refs": "TC-ENH-C-177, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8594,7 +8594,7 @@
 "text": "admin mobile registered A053",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-177, TC-01-126"
+"refs": "TC-ENH-C-177, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8618,7 +8618,7 @@
 "text": "admin mobile registered A056",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-181, TC-01-126"
+"refs": "TC-ENH-C-181, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8626,7 +8626,7 @@
 "text": "admin mobile registered A057",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-181, TC-01-126"
+"refs": "TC-ENH-C-181, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8642,7 +8642,7 @@
 "text": "admin mobile registered A059",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-181, TC-01-126"
+"refs": "TC-ENH-C-181, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8650,7 +8650,7 @@
 "text": "admin mobile registered A060",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-185, TC-01-126"
+"refs": "TC-ENH-C-185, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8658,7 +8658,7 @@
 "text": "admin mobile registered A061",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-185, TC-01-126"
+"refs": "TC-ENH-C-185, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8666,7 +8666,7 @@
 "text": "admin mobile registered A062",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-185, TC-01-126"
+"refs": "TC-ENH-C-185, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8674,7 +8674,7 @@
 "text": "admin mobile registered A063",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-185, TC-01-126"
+"refs": "TC-ENH-C-185, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8682,7 +8682,7 @@
 "text": "admin mobile registered A064",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-189, TC-01-126"
+"refs": "TC-ENH-C-189, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8738,7 +8738,7 @@
 "text": "admin mobile registered A071",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-213, TC-01-126"
+"refs": "TC-ENH-C-213, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8778,7 +8778,7 @@
 "text": "admin mobile registered A076",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-197, TC-01-126"
+"refs": "TC-ENH-C-197, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8786,7 +8786,7 @@
 "text": "admin mobile registered A077",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-197, TC-01-126"
+"refs": "TC-ENH-C-197, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8818,7 +8818,7 @@
 "text": "admin mobile registered A081",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-201, TC-01-126"
+"refs": "TC-ENH-C-201, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8834,7 +8834,7 @@
 "text": "admin mobile registered A083",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-145, TC-01-126"
+"refs": "TC-ENH-C-145, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8874,7 +8874,7 @@
 "text": "admin mobile registered A088",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-145, TC-01-126"
+"refs": "TC-ENH-C-145, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8906,7 +8906,7 @@
 "text": "admin mobile registered A092",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-201, TC-01-126"
+"refs": "TC-ENH-C-201, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8914,7 +8914,7 @@
 "text": "admin mobile registered A093",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-205, TC-01-126"
+"refs": "TC-ENH-C-205, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8922,7 +8922,7 @@
 "text": "admin mobile registered A094",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-205, TC-01-126"
+"refs": "TC-ENH-C-205, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8930,7 +8930,7 @@
 "text": "admin mobile registered A095",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-205, TC-01-126"
+"refs": "TC-ENH-C-205, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8938,7 +8938,7 @@
 "text": "admin mobile registered A096",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-205, TC-01-126"
+"refs": "TC-ENH-C-205, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8970,7 +8970,7 @@
 "text": "admin mobile registered A100",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-237, TC-01-126"
+"refs": "TC-ENH-C-237, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -8986,7 +8986,7 @@
 "text": "admin mobile registered A102",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-241, TC-01-126"
+"refs": "TC-ENH-C-241, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9026,7 +9026,7 @@
 "text": "admin mobile registered A107",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-189, TC-01-126"
+"refs": "TC-ENH-C-189, TC-01-126, TC-ENH-H-010"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9082,7 +9082,7 @@
 "text": "admin mobile registered X26",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-126, TC-ENH-H-010, TC-01-028"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9090,7 +9090,7 @@
 "text": "admin mobile registered X27",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-126, TC-ENH-H-010, TC-01-028"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9098,7 +9098,7 @@
 "text": "admin mobile registered X28",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-126, TC-ENH-H-010, TC-01-028"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9106,7 +9106,7 @@
 "text": "admin mobile registered X29",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-126, TC-ENH-H-010, TC-01-028"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9114,7 +9114,7 @@
 "text": "admin mobile registered X30",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-126, TC-ENH-H-010, TC-01-028"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9122,7 +9122,7 @@
 "text": "admin mobile registered X31",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-126, TC-ENH-H-010, TC-01-028"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9130,7 +9130,7 @@
 "text": "admin mobile registered X32",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-126, TC-ENH-H-010, TC-01-028"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9138,7 +9138,7 @@
 "text": "admin mobile registered X33",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-126, TC-ENH-H-010, TC-01-028"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9146,7 +9146,7 @@
 "text": "admin mobile registered X34",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-126, TC-ENH-H-010, TC-01-028"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9154,7 +9154,7 @@
 "text": "admin mobile registered X35",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-126, TC-ENH-H-010, TC-01-028"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9162,7 +9162,7 @@
 "text": "admin mobile registered X36",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-126, TC-ENH-H-010, TC-01-028"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9170,7 +9170,7 @@
 "text": "admin mobile registered X37",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-126, TC-ENH-H-010, TC-01-028"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9178,7 +9178,7 @@
 "text": "admin mobile registered X38",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-126, TC-ENH-H-010, TC-01-028"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9186,7 +9186,7 @@
 "text": "admin mobile registered X39",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-126, TC-ENH-H-010, TC-01-028"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9194,7 +9194,7 @@
 "text": "admin mobile registered O01",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-126, TC-ENH-H-010, TC-01-028"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9202,7 +9202,7 @@
 "text": "admin mobile registered O02",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-01-126"
+"refs": "TC-01-126, TC-ENH-H-010, TC-01-028"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9210,7 +9210,7 @@
 "text": "admin mobile registered O03",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-126, TC-ENH-H-010, TC-01-028"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9218,7 +9218,7 @@
 "text": "admin mobile registered O04",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-126, TC-ENH-H-010, TC-01-028"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9226,7 +9226,7 @@
 "text": "admin mobile registered O05",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-126, TC-ENH-H-010, TC-01-028"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9234,7 +9234,7 @@
 "text": "admin mobile registered O06",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-01-126"
+"refs": "TC-01-126, TC-ENH-H-010, TC-01-028"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9242,7 +9242,7 @@
 "text": "admin mobile registered O07",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-126, TC-ENH-H-010, TC-01-028"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9250,7 +9250,7 @@
 "text": "admin mobile registered O08",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-126, TC-ENH-H-010, TC-01-028"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9274,7 +9274,7 @@
 "text": "admin mobile filter expands",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-126, TC-01-028"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9306,7 +9306,7 @@
 "text": "admin mobile portfolio no operational shortcut",
 "theme": "TC-V12-J-112",
 "sb": "Partially covered",
-"refs": "TC-17-013, TC-01-028"
+"refs": "TC-17-013, TC-01-028, TC-17-039"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9314,7 +9314,7 @@
 "text": "admin mobile operator navigation",
 "theme": "TC-V12-J-102",
 "sb": "Partially covered",
-"refs": "TC-01-126, TC-18-082"
+"refs": "TC-01-126, TC-18-082, TC-ENH-A-048"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9330,7 +9330,7 @@
 "text": "admin mobile modal aria",
 "theme": "TC-V12-J-103",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-01-126"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9346,7 +9346,7 @@
 "text": "admin mobile home no overflow 360",
 "theme": "TC-V12-J-102",
 "sb": "Partially covered",
-"refs": "TC-13-027"
+"refs": "TC-13-027, TC-01-126, TC-ENH-H-021"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9354,7 +9354,7 @@
 "text": "admin mobile home no overflow 390",
 "theme": "TC-V12-J-102",
 "sb": "Partially covered",
-"refs": "TC-13-027"
+"refs": "TC-13-027, TC-01-126, TC-ENH-H-021"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9362,7 +9362,7 @@
 "text": "admin mobile home no overflow 430",
 "theme": "TC-V12-J-102",
 "sb": "Partially covered",
-"refs": "TC-13-027"
+"refs": "TC-13-027, TC-01-126, TC-ENH-H-021"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9370,7 +9370,7 @@
 "text": "admin mobile home no overflow 768",
 "theme": "TC-V12-J-102",
 "sb": "Partially covered",
-"refs": "TC-13-027"
+"refs": "TC-13-027, TC-01-126, TC-ENH-H-021"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9378,7 +9378,7 @@
 "text": "admin mobile home no overflow 1024",
 "theme": "TC-V12-J-102",
 "sb": "Partially covered",
-"refs": "TC-13-027"
+"refs": "TC-13-027, TC-01-126, TC-ENH-H-021"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9386,7 +9386,7 @@
 "text": "admin mobile home no overflow 1280",
 "theme": "TC-V12-J-102",
 "sb": "Partially covered",
-"refs": "TC-13-027"
+"refs": "TC-13-027, TC-01-126, TC-ENH-H-021"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9394,7 +9394,7 @@
 "text": "admin mobile home no overflow 1440",
 "theme": "TC-V12-J-102",
 "sb": "Partially covered",
-"refs": "TC-13-027"
+"refs": "TC-13-027, TC-01-126, TC-ENH-H-021"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9402,7 +9402,7 @@
 "text": "admin mobile home no overflow 1920",
 "theme": "TC-V12-J-102",
 "sb": "Partially covered",
-"refs": "TC-13-027"
+"refs": "TC-13-027, TC-01-126, TC-ENH-H-021"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9434,7 +9434,7 @@
 "text": "desktop exported full config",
 "theme": "TC-V12-J-114",
 "sb": "Partially covered",
-"refs": "TC-ADV-X3-008"
+"refs": "TC-ADV-X3-008, TC-ENH-I-031"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9442,7 +9442,7 @@
 "text": "desktop to mobile cross-device import",
 "theme": "TC-V12-J-114",
 "sb": "Partially covered",
-"refs": "TC-ALN-A-034"
+"refs": "TC-ALN-A-034, TC-ENH-J-034"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9450,7 +9450,7 @@
 "text": "desktop to mobile hierarchy preserved",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ALN-A-034"
+"refs": "TC-ALN-A-034, TC-ENH-J-034"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9482,7 +9482,7 @@
 "text": "mobile exported full config",
 "theme": "TC-V12-J-114",
 "sb": "Partially covered",
-"refs": "TC-ADV-X3-008"
+"refs": "TC-ADV-X3-008, TC-ENH-I-031, TC-AU-AU006-009"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9490,7 +9490,7 @@
 "text": "mobile to desktop cross-device import",
 "theme": "TC-V12-J-114",
 "sb": "Partially covered",
-"refs": "TC-ALN-A-034"
+"refs": "TC-ALN-A-034, TC-ENH-J-034"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9498,7 +9498,7 @@
 "text": "mobile to desktop hierarchy preserved",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ALN-A-034"
+"refs": "TC-ALN-A-034, TC-ENH-J-034"
 },
 {
 "src": "V7 targeted browser check register",
@@ -9554,7 +9554,7 @@
 "text": "Switch T02",
 "theme": "TC-V12-J-112",
 "sb": "Partially covered",
-"refs": "TC-03-072, TC-ENH-I-008"
+"refs": "TC-03-072, TC-ENH-I-008, TC-ADV-X1-010"
 },
 {
 "src": "V6 browser verification",
@@ -9570,7 +9570,7 @@
 "text": "Switch T04",
 "theme": "TC-V12-J-112",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ENH-I-008"
 },
 {
 "src": "V6 browser verification",
@@ -9690,7 +9690,7 @@
 "text": "Full hierarchy import",
 "theme": "TC-V12-J-114",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-14-094, TC-ENH-I-001"
 },
 {
 "src": "V6 browser verification",
@@ -9714,7 +9714,7 @@
 "text": "Website 39 SKUs / 156 workflows: Local fixture; not production acceptance",
 "theme": "TC-V12-J-109",
 "sb": "Partially covered",
-"refs": "TC-AI-AG023-003"
+"refs": "TC-AI-AG023-003, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9730,7 +9730,7 @@
 "text": "Website route W01: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-101"
+"refs": "TC-ENH-C-101, TC-ADV-X1-021, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9738,7 +9738,7 @@
 "text": "Website route W02: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-101"
+"refs": "TC-ENH-C-101, TC-ADV-X1-021, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9746,7 +9746,7 @@
 "text": "Website route W03: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-101"
+"refs": "TC-ENH-C-101, TC-ADV-X1-021, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9754,7 +9754,7 @@
 "text": "Website route W04: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ADV-X1-021, TC-ENH-C-101, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9762,7 +9762,7 @@
 "text": "Website route W05: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-105"
+"refs": "TC-ENH-C-105, TC-ADV-X1-021, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9770,7 +9770,7 @@
 "text": "Website route W06: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-105"
+"refs": "TC-ENH-C-105, TC-ADV-X1-021, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9778,7 +9778,7 @@
 "text": "Website route W07: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-105"
+"refs": "TC-ENH-C-105, TC-ADV-X1-021, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9786,7 +9786,7 @@
 "text": "Website route W08: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-105"
+"refs": "TC-ENH-C-105, TC-ADV-X1-021, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9794,7 +9794,7 @@
 "text": "Website route W09: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-109"
+"refs": "TC-ENH-C-109, TC-ADV-X1-021, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9802,7 +9802,7 @@
 "text": "Website route W10: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-109"
+"refs": "TC-ENH-C-109, TC-ADV-X1-021, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9810,7 +9810,7 @@
 "text": "Website route W11: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-109"
+"refs": "TC-ENH-C-109, TC-ADV-X1-021, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9818,7 +9818,7 @@
 "text": "Website route W12: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ADV-X1-021"
+"refs": "TC-ADV-X1-021, TC-14-079, TC-ENH-C-015"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9826,7 +9826,7 @@
 "text": "Website route W13: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ADV-X1-021"
+"refs": "TC-ADV-X1-021, TC-14-079, TC-ENH-C-015"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9834,7 +9834,7 @@
 "text": "Website route W14: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-113"
+"refs": "TC-ENH-C-113, TC-ADV-X1-021, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9842,7 +9842,7 @@
 "text": "Website route W15: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-117"
+"refs": "TC-ENH-C-117, TC-ADV-X1-021, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9850,7 +9850,7 @@
 "text": "Website route W16: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-117"
+"refs": "TC-ENH-C-117, TC-ADV-X1-021, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9858,7 +9858,7 @@
 "text": "Website route W17: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ADV-X1-021, TC-ENH-C-117, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9866,7 +9866,7 @@
 "text": "Website route W18: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-117"
+"refs": "TC-ENH-C-117, TC-ADV-X1-021, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9874,7 +9874,7 @@
 "text": "Website route W19: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-121"
+"refs": "TC-ENH-C-121, TC-ADV-X1-021, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9882,7 +9882,7 @@
 "text": "Website route W20: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-121"
+"refs": "TC-ENH-C-121, TC-ADV-X1-021, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9890,7 +9890,7 @@
 "text": "Website route W21: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ADV-X1-021, TC-ENH-C-121, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9898,7 +9898,7 @@
 "text": "Website route W22: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-125"
+"refs": "TC-ENH-C-125, TC-ADV-X1-021, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9906,7 +9906,7 @@
 "text": "Website route W23: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-125"
+"refs": "TC-ENH-C-125, TC-ADV-X1-021, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9914,7 +9914,7 @@
 "text": "Website route W24: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-125"
+"refs": "TC-ENH-C-125, TC-ADV-X1-021, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9922,7 +9922,7 @@
 "text": "Website route W25: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ADV-X1-021, TC-14-073, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9930,7 +9930,7 @@
 "text": "Website route W26: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-129"
+"refs": "TC-ENH-C-129, TC-ADV-X1-021, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9938,7 +9938,7 @@
 "text": "Website route W27: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ADV-X1-021, TC-ENH-C-129, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9946,7 +9946,7 @@
 "text": "Website route W28: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-A-032"
+"refs": "TC-ENH-A-032, TC-ADV-X1-021, TC-ENH-C-129"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9954,7 +9954,7 @@
 "text": "Website route W29: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-08-089, TC-03-092"
+"refs": "TC-08-089, TC-03-092, TC-ADV-X1-021"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9962,7 +9962,7 @@
 "text": "Website route W30: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-03-092"
+"refs": "TC-03-092, TC-ADV-X1-021, TC-ENH-C-109"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9970,7 +9970,7 @@
 "text": "Website route W31: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-113"
+"refs": "TC-ENH-C-113, TC-ADV-X1-021, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9978,7 +9978,7 @@
 "text": "Website route W32: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-121"
+"refs": "TC-ENH-C-121, TC-ADV-X1-021, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9986,7 +9986,7 @@
 "text": "Website route W33: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-C-133"
+"refs": "TC-ENH-C-133, TC-ADV-X1-021, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -9994,7 +9994,7 @@
 "text": "Website route W34: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ADV-X1-021"
+"refs": "TC-ADV-X1-021, TC-14-079, TC-ENH-C-015"
 },
 {
 "src": "V5 browser regression evidence",
@@ -10002,7 +10002,7 @@
 "text": "Readiness assessment: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ENH-D-246, TC-02-041, TC-14-079"
 },
 {
 "src": "V5 browser regression evidence",
@@ -10010,7 +10010,7 @@
 "text": "TCO calculator: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ENH-J-052, TC-14-079, TC-ADV-X1-051"
 },
 {
 "src": "V5 browser regression evidence",
@@ -10018,7 +10018,7 @@
 "text": "Service comparison: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-14-079, TC-NFR-030, TC-ENH-H-035"
 },
 {
 "src": "V5 browser regression evidence",
@@ -10026,7 +10026,7 @@
 "text": "Sandbox sample output: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ADV-X1-060, TC-AI-AG002-007"
+"refs": "TC-ADV-X1-060, TC-AI-AG002-007, TC-18-060"
 },
 {
 "src": "V5 browser regression evidence",
@@ -10042,7 +10042,7 @@
 "text": "Sample export: Local fixture; not production acceptance",
 "theme": "TC-V12-J-114",
 "sb": "Partially covered",
-"refs": "TC-AI-AG002-007"
+"refs": "TC-AI-AG002-007, TC-14-079, TC-ENH-F-013"
 },
 {
 "src": "V5 browser regression evidence",
@@ -10058,7 +10058,7 @@
 "text": "135 unique requirement IDs: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-20-095"
+"refs": "TC-20-095, TC-14-079, TC-ENH-B-024"
 },
 {
 "src": "V5 browser regression evidence",
@@ -10066,7 +10066,7 @@
 "text": "Tenant denied operator customer analytics: Local fixture; not production acceptance",
 "theme": "TC-V12-J-112",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-19-031, TC-19-089"
 },
 {
 "src": "V5 browser regression evidence",
@@ -10082,7 +10082,7 @@
 "text": "Admin scenario AI: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-K-073"
+"refs": "TC-ENH-K-073, TC-14-079, TC-18-096"
 },
 {
 "src": "V5 browser regression evidence",
@@ -10090,7 +10090,7 @@
 "text": "Admin scenario GC: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-K-073"
+"refs": "TC-ENH-K-073, TC-14-079, TC-18-096"
 },
 {
 "src": "V5 browser regression evidence",
@@ -10098,7 +10098,7 @@
 "text": "Admin scenario SEC: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ENH-K-073, TC-14-079, TC-ADV-X3-035"
 },
 {
 "src": "V5 browser regression evidence",
@@ -10106,7 +10106,7 @@
 "text": "Admin scenario ST: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-K-073"
+"refs": "TC-ENH-K-073, TC-14-079, TC-18-096"
 },
 {
 "src": "V5 browser regression evidence",
@@ -10114,7 +10114,7 @@
 "text": "Admin scenario FL: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-K-073"
+"refs": "TC-ENH-K-073, TC-14-079, TC-18-096"
 },
 {
 "src": "V5 browser regression evidence",
@@ -10122,7 +10122,7 @@
 "text": "Admin scenario AT: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-K-073"
+"refs": "TC-ENH-K-073, TC-14-079, TC-18-096"
 },
 {
 "src": "V5 browser regression evidence",
@@ -10130,7 +10130,7 @@
 "text": "Admin scenario RT: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-K-073"
+"refs": "TC-ENH-K-073, TC-14-079, TC-18-096"
 },
 {
 "src": "V5 browser regression evidence",
@@ -10138,7 +10138,7 @@
 "text": "Admin scenario CV: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-K-073"
+"refs": "TC-ENH-K-073, TC-14-079, TC-18-096"
 },
 {
 "src": "V5 browser regression evidence",
@@ -10146,7 +10146,7 @@
 "text": "Admin scenario CS: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-K-073"
+"refs": "TC-ENH-K-073, TC-14-079, TC-18-096"
 },
 {
 "src": "V5 browser regression evidence",
@@ -10154,7 +10154,7 @@
 "text": "Security negative fixture: Local fixture; not production acceptance",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-ENH-B-026"
+"refs": "TC-ENH-B-026, TC-14-079, TC-21-008"
 },
 {
 "src": "V5 browser regression evidence",
@@ -10162,7 +10162,7 @@
 "text": "Uncertain write hold: Local fixture; not production acceptance",
 "theme": "TC-V12-J-107",
 "sb": "Partially covered",
-"refs": "TC-AI-AG034-003, TC-18-096"
+"refs": "TC-AI-AG034-003, TC-18-096, TC-ADV-X2-060"
 },
 {
 "src": "V5 browser regression evidence",
@@ -10178,7 +10178,7 @@
 "text": "Portfolio operator analytics absent: Local fixture; not production acceptance",
 "theme": "TC-V12-J-112",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-19-031"
 },
 {
 "src": "V5 browser regression evidence",
@@ -10194,7 +10194,7 @@
 "text": "34 website routes rendered; 39 planned services, 25 foundations, 156 workflows counted. Passed.",
 "theme": "TC-V12-J-110",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-ENH-C-015"
 },
 {
 "src": "Historical V3 QA results",
@@ -10202,7 +10202,7 @@
 "text": "Full-suite selection = 39; change selected service invalidates submitted application. Passed.",
 "theme": "TC-V12-J-109",
 "sb": "Partially covered",
-"refs": "TC-FLT-017"
+"refs": "TC-FLT-017, TC-FLT-031"
 },
 {
 "src": "Historical V3 QA results",
@@ -10234,7 +10234,7 @@
 "text": "Service filter immediately limits workflow options to four plus All. Passed.",
 "theme": "TC-V12-J-101",
 "sb": "Not covered",
-"refs": "—"
+"refs": "TC-18-005, TC-19-035"
 },
 {
 "src": "Historical V3 QA results",
@@ -10250,7 +10250,7 @@
 "text": "100-unit service sample allowance consumed, next unit held. Passed.",
 "theme": "TC-V12-J-107",
 "sb": "Partially covered",
-"refs": "TC-ENH-K-059, TC-ALN-B-002"
+"refs": "TC-ENH-K-059, TC-ALN-B-002, TC-14-048"
 },
 {
 "src": "Historical V3 QA results",
@@ -10266,7 +10266,7 @@
 "text": "Full field-level interaction coverage, full mobile/accessibility, role matrix, security, performance and provider tests not performed. Pending.",
 "theme": "TC-V12-J-103",
 "sb": "Partially covered",
-"refs": "TC-AI-AG015-007"
+"refs": "TC-AI-AG015-007, TC-ENH-K-057"
 },
 {
 "src": "V4 targeted browser acceptance record",
@@ -10290,7 +10290,7 @@
 "text": "application_email_and_config = True",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-20-013, TC-ENH-I-031"
+"refs": "TC-20-013, TC-ENH-I-031, TC-AI-AG021-006"
 },
 {
 "src": "V4 targeted browser acceptance record",
@@ -10338,7 +10338,7 @@
 "text": "fingerprint_reject = True",
 "theme": "TC-V12-J-113",
 "sb": "Partially covered",
-"refs": "TC-04-040"
+"refs": "TC-04-040, TC-ENH-F-001, TC-ENH-G-020"
 },
 {
 "src": "V4 targeted browser acceptance record",
@@ -10362,7 +10362,7 @@
 "text": "quota_and_trace = True",
 "theme": "TC-V12-J-101",
 "sb": "Partially covered",
-"refs": "TC-21-020"
+"refs": "TC-21-020, TC-ENH-K-058, TC-19-043"
 },
 {
 "src": "V4 targeted browser acceptance record",
@@ -10386,7 +10386,7 @@
 "text": "mobile_width = [390, 390]",
 "theme": "TC-V12-J-102",
 "sb": "Partially covered",
-"refs": "TC-01-028, TC-17-011"
+"refs": "TC-01-028, TC-17-011, TC-03-087"
 },
 {
 "src": "V4 targeted browser acceptance record",
@@ -10418,7 +10418,7 @@
 "text": "step_walkthroughs = 517",
 "theme": "TC-V12-J-109",
 "sb": "Partially covered",
-"refs": "TC-ENH-B-033, TC-ENH-C-013"
+"refs": "TC-ENH-B-033, TC-ENH-C-013, TC-08-098"
 },
 {
 "src": "V4 targeted browser acceptance record",

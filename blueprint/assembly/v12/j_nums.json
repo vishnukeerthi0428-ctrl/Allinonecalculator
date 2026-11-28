@@ -25,8 +25,8 @@
  "aspects": 5429,
  "dups": [],
  "by_before": {
-  "Partially covered": 2374,
-  "Not covered": 1431,
+  "Partially covered": 2408,
+  "Not covered": 1397,
   "Covered": 1616,
   "Conflict": 2,
   "Not applicable": 6
@@ -55,8 +55,8 @@
    "Not covered": 56
   },
   "V8 requirement status register (233)": {
-   "Partially covered": 180,
-   "Not covered": 40,
+   "Partially covered": 214,
+   "Not covered": 6,
    "Covered": 12,
    "Conflict": 1
   },

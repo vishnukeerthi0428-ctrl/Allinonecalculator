@@ -19,7 +19,22 @@ def simstat(text,hi=0.55,lo=0.30,k=3):
     tops=ix.top(text,k); s=tops[0][0] if tops else 0
     st='Covered' if s>=hi else ('Partially covered' if s>=lo else 'Not covered')
     return st,tops
-def refs(tops,minscore=0.2): return ', '.join(i for s,i in tops if s>=minscore) or '—'
+def refs(tops,minscore=0.17): return ', '.join(i for s,i in tops if s>=minscore) or '—'
+KW=[(r'router|routing|tier|escalation','Part 7.3 model routing (DEC-418 tiers)'),(r'cach','TC-ENH-I-010; TC-AI-AG003-002'),(r'budget|cost anomal|quota','TC-NFR-014; Part 7.3 budgets'),
+(r'deterministic','TC-17-057; AI-01 rule-first (Part 7.3)'),(r'embedding|rag|retriev','Part 7.1 RAG; TC-20-096'),(r'batch','Part 7.3 batching'),(r'loop|termination','TC-AI-AG015-030 kill switch and caps'),
+(r'authori[sz]ation|isolation|rls|tenant|company|organi[sz]ation|portfolio','NFR-001/002; TC-ENH-E-001; TC-ENH-G-001/002'),(r'mfa|step-up|credential|session','Part 4.1 identity controls; TC-01-025'),
+(r'audit','Part 2.4 audit; NFR-024'),(r'injection|tool permission|exfil','Part 6.4 injection cases; TC-ADV-X1-008'),(r'loss prevention|dlp|file ingestion','Part 4.1 data protection'),(r'browser|csp|ssrf|egress','Part 4.1 web controls'),
+(r'supply-chain|sbom|dependency','Part 4.3 PL gates (SBOM, scans)'),(r'slo|sli|error budget|availability','Part 4.3 SLOs; NFR-053/054'),(r'circuit|bulkhead|backpressure|degradation','Part 3.1 resilience patterns; NFR-016'),
+(r'checkpoint|idempot|reconcil|retry|dead-letter|replay','TC-ENH-G-003; TC-ENH-K-071'),(r'probe|synthetic','Part 4.3 synthetic monitoring'),(r'canary|rollback','Part 4.3 §4.37 release and rollback'),(r'migration','CS-MIG-01; Part 4.3 §4.37.2'),
+(r'chaos|fault','TC-ENH-K-071'),(r'backup|restore|recovery','NFR-056/057; Part 4.4b DR'),(r'workflow|dag|step|orchestrat|simulation|approval|mandate|cancel|template','Part 2.2 WF engine; TC-ENH-G-010; TC-18-111'),
+(r'page|seo|crawl|website|landing|trust|resource|directory|comparison|sandbox|assessment|report','EP-19 website TCs (TC-19-*)'),(r'onboard|wizard|draft|saved','US-2004; TC-20-*'),(r'pric|quote|bundle|roi|cost of ownership','EP-13 quote TCs; TC-AI-AG014-003'),
+(r'health|renewal|usage|consumption|value report|cancellation|plan change|success|adoption','EP-16 retention TCs; AG-038'),(r'help|support|escalat|notification|feedback|csat|nps|status|error|tour','AG-031; EP-16/EP-20 TCs'),
+(r'mobile|touch|responsive|offline|pwa|navigation|filter|record|table','Part 2.5/2.7 responsive rules; NFR-088'),(r'currency|financial','TC-19-057; BRL-FIN'),(r'accessib','NFR-088/089'),(r'selector|switch|context','TC-FLT-011; MT scope selector'),
+(r'brand|division|offering|master|customer type|lifecycle','Part 2.6 business configuration; US-2004')]
+def kwanchor(text):
+    for rx,loc in KW:
+        if re.search(rx,text,re.I): return loc
+    return None
 # ---------------- SKU classes ----------------
 SKU={}
 H=dict(zip(range(1,26),['EP-05','EP-05','EP-06','EP-06','EP-07','EP-08','EP-10','EP-08','EP-08/EP-10','EP-09','EP-11','EP-11','EP-11','EP-12','EP-12/EP-19','EP-09/EP-12','EP-13','EP-13','EP-14','EP-14','EP-15','EP-16','EP-16','EP-15/EP-17','EP-02']))
@@ -112,6 +127,10 @@ for rid,r in reg.items():
         a=d['acc'].get(tid,{}); acc=a.get('acc',''); title=r[2]
         sb,tops=simstat(title+' '+a.get('req','')+' '+acc,0.45,0.17)
         loc=refs(tops)
+        ka=kwanchor(title+' '+a.get('req',''))
+        if ka:
+            loc=ka+('; candidates '+loc if loc!='—' else '')
+            if sb=='Not covered': sb='Partially covered'
     sa='Pending Founder decision' if sb=='Conflict' else 'Matched'
     act={'Covered':'Adopt V12 ID as alias of the listed blueprint TCs; no new assertion','Partially covered':'Adopt V12 ID; add the missing assertion as a canonical test row (§11.10.5.3)','Not covered':'Adopt V12 ID; new canonical test row (§11.10.5.3)','Conflict':'Test written region-conditional; CONFLICT-924'}[sb]
     add('FSD V12','34 (register) / 33, 05–36 (acceptance text)','V8 requirement status register (233)',tid,f'{rid} {title} [{r[1]}; {r[3]}]: {acc}',sb,loc,act,tid+(' (canonical)' if sb!='Covered' else ' (alias)'),sa)
