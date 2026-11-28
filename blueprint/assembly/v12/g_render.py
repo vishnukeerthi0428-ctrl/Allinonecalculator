@@ -317,6 +317,7 @@ for i, (v, d) in enumerate(SVC_WS.items()):
 | FR · tests | {FRN[sid]} · {TC_BASE}{fidn * 2 - 1:03d}, {TC_BASE}{fidn * 2:03d} |
 
 {field_table(x['fields'], SHELL)}""")
+write("cards_admnew.md", "".join(na)); na = []
 for i, (v, d) in enumerate(OPS.items()):
     sid = f"A{184 + i}"; x = adm_view(v); m = SMETA[v]
     fidn = int(FRN[sid].split("-")[-1])
@@ -370,7 +371,7 @@ for sid, d in list(UTIL.items()) + list(V12NEW.items()):
 
 {tbl(['Action', 'Gate / permission', 'Result'], d['actions'])}
 {field_table(x['fields'], SHELL) if x else ''}{extra}""")
-write("cards_admnew.md", "".join(na))
+write("cards_admops.md", "".join(na))
 
 # ====================================================================== alias deltas
 al = []
