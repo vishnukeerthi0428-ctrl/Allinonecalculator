@@ -120,7 +120,26 @@ Fractional attributions (aspects shared by several documents) are rounded.
 
 None. Every partial, not-covered and conflict aspect has a recorded action.
 
-## 0B.7 Detailed registers
+## 0B.7 Final position after enhancement and literal alignment (Part 9.6a/b)
+
+Partially covered and not-covered aspects were completed by the enhancement parts. The 141 conflict aspects were then aligned to the literal source text by the amendment decisions in Part 9.6a (DEC-234…299) and Part 9.6b (DEC-300…379), and every not-applicable reason was re-checked.
+
+| Final status | Aspects |
+|---|---|
+| Matched | 11,131 |
+| Cannot match | 0 |
+| Not applicable | 138 |
+| **Applicable aspects** | **11,131** |
+| **Literal match** | **100.0%** (11,131 / 11,131) |
+
+| Alignment type (conflict and re-checked rows) | Rows |
+|---|---|
+| ? | 117 |
+| (a) Source adopted literally | 123 |
+| (b) Both satisfied (source met, stricter control kept) | 54 |
+| (c) Source internally inconsistent: all statements satisfied, or pack precedence applied | 49 |
+
+## 0B.8 Detailed registers
 
 The full aspect-level registers (one row per aspect, with blueprint location and action) are in `final/coverage/<group>_coverage.csv` and in the detailed register sections of each enhancement part. Catalogue mappings:
 - `D_api_mapping.csv`: 321 source API/adapter operations → blueprint API IDs.
@@ -128,5 +147,6 @@ The full aspect-level registers (one row per aspect, with blueprint location and
 - `F_integration_candidates.csv`: 538 integration candidates with decisions.
 - `G_test_mapping.csv`: 799 source tests → blueprint test cases.
 - `H_*_map.csv`: BRs, FRs, QCs, decisions, work items, SIT aliases and runbooks.
+- `alignment_a.csv`, `alignment_b.csv`: literal alignment of every conflict aspect (Part 9.6a/b).
 
 **Status: Part 0B complete.**
