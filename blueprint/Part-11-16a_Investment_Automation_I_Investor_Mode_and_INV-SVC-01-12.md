@@ -3,7 +3,7 @@
 
 | Field | Value |
 |---|---|
-| Document | Part 11, Batch 11.16, file **a of c**. This file holds §11.16.1 material reviewed, §11.16.2 coverage summary, §11.16.3 register summary, §11.16.4 catalogue reconciliation and §11.16.5.1–§11.16.5.11 (product boundary, securities controls, privacy, roles, investor-mode website, 12 service specifications, agents, automations, screens, data and API). Files: `Part-11-16a_…` (§11.16.1–§11.16.5.11), `Part-11-16b_…` (§11.16.5.12 workflow specifications), `Part-11-16c_…` (§11.16.5.13–§11.16.10 and Appendix A) |
+| Document | Part 11, Batch 11.16, file **a** of Group N files a, b, e. This file holds §11.16.1 material reviewed, §11.16.2 coverage summary, §11.16.3 register summary, §11.16.4 catalogue reconciliation and §11.16.5.1–§11.16.5.11 (product boundary, securities controls, privacy, roles, investor-mode website, 12 service specifications, agents, automations, screens, data and API). Files: `Part-11-16a_…` (§11.16.1–§11.16.5.11), `Part-11-16b_…` (§11.16.5.12 workflow specifications), `Part-11-16e_…` (§11.16.5.13–§11.16.10 and Appendix A) |
 | Version | 1.0 · 28 Nov 2026 |
 | Baseline | Parts 0–9.10, 11.1–11.15 (DEC-001…422, DEC-500…791); Part 11.14 DEC-783 (investor/fundraising adopted), DEC-779 (bounded mandates), DEC-772 (EU/IN residency), DEC-777 (messaging window), DEC-788 (model registry), DEC-790 (funding); Part 11.15 rule-pack framework (AU-128, AG-086, CP-01…07); Part 11.2b/11.3b formats; Part 5.1a/5.1b story template; Part 6.2a test template; V12B brief |
 | Source material | Investment Automation Master Automation Service Catalog 2031 (24 services / 96 workflows; 12 sheets, CSV export); Investment_Automation_19_Neutral_SaaS_Website (README, layout catalogue, route reconciliation, verification report, HTML); `investment_website(1).html`; investor/fundraising mode (`CFG.inv`) of `commercial_website_desktop_V12.html`; Investment lines of BRD/FSD `ZZ_Historical_annex.txt`; the CONFLICT-958 rows of `final/coverage_v12/L_coverage.csv` |
@@ -38,7 +38,7 @@
 | BRD/FSD `ZZ_Historical_annex.txt` Investment lines | 169 + 251 lines containing "invest" | via L rows | Investment comparator mirror of the catalogue sheets; REC-10 | text |
 | `L_coverage.csv` rows with CONFLICT-958 | 1,176 | see §11.16.2 | Classified residual units (Group L) | CSV |
 
-**Scope split with Group O (P1b).** Group N owns INV-SVC-01…12 (48 workflows), the investor-mode website, the common investment platform (product boundary, foundation capabilities INV-01/11/12/13/14, engines, entitlement, securities control framework consumer side). Group O owns INV-SVC-13…24 and the content of the securities rule packs RP-SEC-* (Part 11.16c/d of Group O, published as Parts 11.16c/d in its own numbering) [ASSUMPTION-1001]. Rows of `L_coverage.csv` whose primary service is INV-SVC-13…24 are left to Group O; rows without a primary service are reconciled here.
+**Scope split with Group O (P1b).** Group N owns INV-SVC-01…12 (48 workflows), the investor-mode website, the common investment platform (product boundary, foundation capabilities INV-01/11/12/13/14, engines, entitlement, securities control framework consumer side). Group O (P1b) owns INV-SVC-13…24 and the content of the securities rule packs RP-IN-SEC, RP-US-REGD, RP-US-REGCF, RP-EU-PROSP, RP-UK-FINPROM, RP-AML-KYC and RP-INV-ADVICE (Group N uses the Group O pack IDs and route values) [ASSUMPTION-1001]. Rows of `L_coverage.csv` whose primary service is INV-SVC-13…24 are left to Group O; rows without a primary service are reconciled here.
 
 **Parsing scripts (saved).** `assembly/v12b/n_extract_inv_mode.py` (investor-mode branches and website CFG), `n_common.py` (loaders, covering-array generator, coverage verifier), `n_ctx.py` (ID allocation), `n_spec.py` (hand-authored mapping), `n_comb.py` (parameter models and oracles), `n_build_a.py`, `n_build_b.py`, `n_build_c.py`, `n_build_cov.py`. Every source row is read programmatically; nothing is sampled.
 
@@ -69,7 +69,7 @@
 
 Before this part the blueprint excluded investors and fundraising (DEC-002, CC-01, DEC-517), so every Investment aspect was Not covered or Conflict (CONFLICT-958, CONFLICT-868). DEC-783 adopted the product; this part specifies it, and every Group N aspect ends **Matched**. No aspect is left "Pending Founder decision".
 
-## 11.16.3 Detailed register (summary; the individual list is Appendix A of Part 11.16c and `N_coverage.csv`)
+## 11.16.3 Detailed register (summary; the individual list is Appendix A of Part 11.16e and `N_coverage.csv`)
 
 | Doc | Chapter / sheet | Aspects | Status before | Main blueprint location | After |
 |---|---|---|---|---|---|
@@ -134,7 +134,7 @@ Before this part the blueprint excluded investors and fundraising (DEC-002, CC-0
 | WEB-SMA | commercial_website.html | 1 | Not covered | Part 11.16a §11.16.5.5, §11.16.4.8–§11.16.4.9 | Matched |
 | ANX | Commercial | 1 | Not covered | Part 11.16a §11.16.5.1 (common investment platform) | Matched |
 
-Conflicts raised and resolved in this part: CONFLICT-1008 (neutral storefront vs "investor website"), CONFLICT-1009 (V12 BR-C03/BR-C14/REC-10 separation vs DEC-783), CONFLICT-1019 (V12 side-effect labels weaker than the actual effect). See §11.16.6 (Part 11.16c).
+Conflicts raised and resolved in this part: CONFLICT-1008 (neutral storefront vs "investor website"), CONFLICT-1009 (V12 BR-C03/BR-C14/REC-10 separation vs DEC-783), CONFLICT-1019 (V12 side-effect labels weaker than the actual effect). See §11.16.6 (Part 11.16e).
 
 ## 11.16.4 Catalogue reconciliation
 
@@ -275,7 +275,7 @@ Bundles reconciled: **Discovery & Qualification** (01, 02, 03 here; 19 in Group 
 | INV-SVC-12-WF03-AT01 | Discrepancy report and escalation | Exception report and audit | Repeat event; attempt wrong tenant, revoked entitlement, invalid input or exhaus | UAT-A029; UAT-A033 | Not run | TC-V12-N-608 |
 | INV-SVC-12-WF04-AT01 | Financial anomaly and unmatched transaction detection | Exception register and reconciliation evidence; no unapproved external side effects | Reject wrong tenant, revoked grant, invalid input, duplicate event, stale eviden | A029; A033 | Not run | TC-V12-N-622 |
 
-All V12 scenarios are "Not run"; they become executable TCs with the full negative set (INPUT, SCOPE, ENT, DUP, QUALITY, BUDGET, RECOVERY, SEC and, for R2/R3, APPROVAL and EFFECT) in Part 11.16b, plus the combinatorial suites of Part 11.16c. The source UAT IDs INV-UX-UAT-A0nn map to screen acceptance of A205–A232 (§11.16.5.9).
+All V12 scenarios are "Not run"; they become executable TCs with the full negative set (INPUT, SCOPE, ENT, DUP, QUALITY, BUDGET, RECOVERY, SEC and, for R2/R3, APPROVAL and EFFECT) in Part 11.16b, plus the combinatorial suites of Part 11.16e. The source UAT IDs INV-UX-UAT-A0nn map to screen acceptance of A205–A232 (§11.16.5.9).
 
 ### 11.16.4.4 Cost model (48 rows)
 
@@ -563,7 +563,7 @@ All 25 foundation entries (INV-01, -11, -12, -13, -14 families) are implemented 
 | Transactional outbox | outbox row in the same transaction; idempotent consumers; uncertain → reconcile | `inv_outbox`; idempotency key = scoped event + workflow revision + action target (V12 field 44) | NFR-005/006; M06 |
 | Workflow engine | Universal engine of Part 11.3a (StepRun, states, retries, simulation zero-effect) | INV workflows registered with event envelope `event_id, tenant_id, startup_id, service_id, workflow_revision, input_ref, occurred_at, correlation_id` (V12 field 42) | Part 11.3a; FR-V12-N-006 |
 | Model gateway and registry | Tiers 0/1a/1b/2/3; provider-neutral registry; Claude Sonnet primary (DEC-788) | Investor data class Confidential-Financial: never Tier 2; masked where task allows; registry entries must pass the no-advice evaluation suite EVAL-N-ADV before use by any investor-facing agent | DEC-788; SEC-CTL-N-05/16 |
-| Rule-pack registry | AU-128, AG-086, CP-01…07 (Part 11.15) | Securities packs RP-SEC-* (content by Group O) loaded through the same schema; investment channel packs reuse RP-IN-WA, RP-IN-DPDP, RP-EU-MKT, RP-US-EMAIL | DEC-803 |
+| Rule-pack registry | AU-128, AG-086, CP-01…07 (Part 11.15) | Securities packs Group O securities packs (RP-IN-SEC, RP-US-REGD, RP-US-REGCF, RP-EU-PROSP, RP-UK-FINPROM, RP-AML-KYC, RP-INV-ADVICE) (content by Group O) loaded through the same schema; investment channel packs reuse RP-IN-WA, RP-IN-DPDP, RP-EU-MKT, RP-US-EMAIL | DEC-803 |
 | Mandates and kill switch | Part 11.17 mandate engine (two approvers, scope, caps, revocation) | Offer re-send mandate type `inv_offer_resend`; per-offering kill switch | DEC-779; SEC-CTL-N-10/15 |
 | Residency | IN (Mumbai) and EU stacks (DEC-772) | Data room objects pinned to tenant region; investors from other regions read from the tenant region (data never copied) | SEC-CTL-N-16 |
 | Audit and evidence | append-only audit, evidence store | Offer register and data-room access log retained 8–10 years (verify) | SEC-CTL-N-12 |
@@ -586,7 +586,7 @@ flowchart TD
   BFF --> API["Django API<br/>investment app"]
   API --> ENT["AU-200 entitlement"]
   API --> PDP["PDP + securities gate<br/>AU-201 to AU-207"]
-  PDP --> RP["AU-128 rule packs<br/>RP-SEC counsel-signed"]
+  PDP --> RP["AU-128 rule packs<br/>securities packs counsel-signed"]
   API --> WF["Workflow engine<br/>Celery workers"]
   WF --> GW["Model gateway<br/>registry DEC-788"]
   GW --> GUARD["AG-166 securities guard"]
@@ -617,18 +617,18 @@ The panel reads DEC-783 as: the capability is built in full, and **activates per
 
 | Control | Name | Specification | Legal basis / decision (verify) | Implemented by | Override |
 |---|---|---|---|---|---|
-| SEC-CTL-N-01 | Jurisdiction rule-pack activation gate | An external effect (message, offer, data-room grant, application acceptance) in a jurisdiction is allowed only if every applicable securities pack (RP-SEC-*) and channel/privacy pack is in state `active`, not past `expires_at`, and counsel-signed (AU-128 CP-01…CP-05; AU-201). Unknown jurisdiction or inactive pack → Block `PACK_NOT_ACTIVE` (fail closed). | DEC-783; DEC-776; Part 11.15 §11.15.3.3; ADR-184 | AU-201, AU-128 | Deterministic; never overridable |
+| SEC-CTL-N-01 | Jurisdiction rule-pack activation gate | An external effect (message, offer, data-room grant, application acceptance) in a jurisdiction is allowed only if every applicable securities pack (Group O securities packs (RP-IN-SEC, RP-US-REGD, RP-US-REGCF, RP-EU-PROSP, RP-UK-FINPROM, RP-AML-KYC, RP-INV-ADVICE)) and channel/privacy pack is in state `active`, not past `expires_at`, and counsel-signed (AU-128 CP-01…CP-05; AU-201). Unknown jurisdiction or inactive pack → Block `PACK_NOT_ACTIVE` (fail closed). | DEC-783; DEC-776; Part 11.15 §11.15.3.3; ADR-184 | AU-201, AU-128 | Deterministic; never overridable |
 | SEC-CTL-N-02 | Investor eligibility and accreditation verification | Each investor record carries `investor_class` (retail, HNI/sophisticated, accredited, QIB/qualified investor, institutional, unknown) and `eligibility_status` per jurisdiction and offering route, resolved only from evidence: a licensed verification provider result, a counsel-approved self-certification where the route permits it, or a regulated intermediary attestation (AU-202; INV-SVC-24 / Group O). AI may extract evidence fields; it never decides eligibility. `unknown` or `expired` → Hold. | DEC-783; Reg D Rule 506(c) "reasonable steps"; EU PR Art. 2(e) qualified investors; Companies Act s.42 identified persons (verify) | AU-202, AG-163 | Deterministic decision; AI extraction only |
 | SEC-CTL-N-03 | No general solicitation where prohibited | Outbound investor communication about a specific offering is allowed only to recipients with (a) a recorded pre-existing substantive relationship or (b) verified eligibility under a route that permits it (Reg D 506(c) with all purchasers verified accredited). Under s.42 private placement and 506(b): no public advertisement, no public website/social/ad promotion of the offering, no mass mailing to unvetted lists. The public website (W55–W76) never names an issuer, offering, terms or investor (README; AU-228). Bulk campaigns about an offering are blocked; awareness content about the issuer that is not an offer goes through RP-IN-ADV/RP-EU-MKT and counsel classification. | DEC-783; s.42(8) Companies Act 2013 (verify no.); Rule 502(c) Reg D; EU PR Art. 1(4) (verify) | AU-203, AU-228, AG-166 | Deterministic relationship check + AI classifier; Block not overridable for 506(b)/s.42 |
 | SEC-CTL-N-04 | Offering-document gating | Offering documents (private placement offer letter PAS-4, PPM, term sheet, subscription agreement, financial model) are stored only in the data room (INV-SVC-10) and released only when: eligibility verified (CTL-02), NDA signed and unexpired, access grant active and scoped to the named investor, offering registration counsel-signed (CTL-08), and the jurisdiction pack active (CTL-01). India PAS-4 letters are serially numbered and addressed to the named person (AU-223). Every view/download is watermarked and logged (AU-222). | DEC-783; Rule 14 Companies (Prospectus and Allotment of Securities) Rules 2014 (verify) | AU-204, AU-221, AU-222, AU-223 | Deterministic |
-| SEC-CTL-N-05 | No AI investment advice | No agent recommends buying, selling or holding a security, assesses suitability, predicts or guarantees returns, values the company as an opinion, or gives tax/legal advice to an investor. Agents draft issuer-approved factual content only, with forward-looking statements labelled and sourced. AG-166 classifies every investor-facing draft and every inbound answer; categories ADVICE, RETURN_PROMISE, SUITABILITY, TAX_LEGAL_ADVICE → Block and route to human; investor questions of that kind receive the approved refusal template TPL-N-01 and a human handover. | DEC-783 ("no investment advice by AI"); SEBI Investment Advisers Regulations 2013; MiFID II Art. 4(1)(4); US Advisers Act (verify) | AG-166, AU-217 | Deterministic phrase lists first, AI second; uncertain → human |
+| SEC-CTL-N-05 | No AI investment advice | No agent recommends buying, selling or holding a security, assesses suitability, predicts or guarantees returns, values the company as an opinion, or gives tax/legal advice to an investor. Agents draft issuer-approved factual content only, with forward-looking statements labelled and sourced. AG-166 classifies every investor-facing draft and every inbound answer; categories ADVICE, RETURN_PROMISE, SUITABILITY, TAX_LEGAL_ADVICE → Block and route to human; investor questions of that kind receive the approved refusal template TPL-N-01 and a human handover. | DEC-783 ("no investment advice by AI"); SEBI Investment Advisers Regulations 2013; MiFID II Art. 4(1)(4); US Advisers Act (verify) | AG-166, AU-217 | Deterministic phrase lists first, AI second; uncertain → human; AG-166 evaluates against Group O pack RP-INV-ADVICE, whose enforcer is AG-199 (Group O); offer content is also reviewed by AG-198 |
 | SEC-CTL-N-06 | Consent, lawful basis and contact rules | Per channel and region: email requires lawful basis (DPDP consent or GDPR legitimate interest with LIA for B2B professional contacts) and one-click opt-out; WhatsApp requires recorded opt-in and approved template outside the 24-hour window (RP-IN-WA); messaging window 09:00–21:00 recipient local time unless a pack is stricter (DEC-777). Withdrawal stops all automation within 1 minute (AU-208). | DEC-777; RP-IN-DPDP; RP-IN-WA; RP-US-EMAIL; RP-EU-MKT | AU-208, AU-214, PDP | Deterministic |
 | SEC-CTL-N-07 | KYC/AML hand-off | The platform does not perform the AML determination. It hands the investor to the issuer's licensed KYC/AML provider or regulated intermediary (bank, registrar, broker-dealer, funding portal), stores only the result reference, status, expiry and screening outcome (sanctions/PEP hit = Hold and R10 review), and blocks application acceptance (INV-SVC-11-WF03) and receipt allocation (INV-SVC-12-WF02) without a `cleared` result. | DEC-783; PMLA 2002 (India); FATF R.10 (verify) | AU-202, AU-224, AU-225 | Deterministic |
 | SEC-CTL-N-08 | Counsel sign-off per jurisdiction and offering | An `inv_offering` cannot move to `approved_for_offer` until counsel admitted in each target jurisdiction signs the offering registration (route, caps, document set hashes, investor classes, solicitation mode) and R10 approves it; the sign-off carries an expiry and a document-set hash; any document change voids it (AU-206). | DEC-783; DEC-776; Part 11.15 sign-off block | AU-206 | Deterministic; two signatures (counsel + R10) |
 | SEC-CTL-N-09 | Offer count and investor caps | AU-205 counts offerees and purchasers per route: India s.42 ≤ 200 persons per financial year excluding QIBs and ESOP (verify); Reg D 506(b) ≤ 35 non-accredited purchasers who must be sophisticated (verify); EU PR exemption < 150 non-qualified natural or legal persons per member state (verify); Reg CF only through a registered funding portal or broker-dealer, never this platform (verify). Reservation is atomic; at cap → Block. | DEC-783 (panel reading, verify with counsel) | AU-205 | Deterministic, atomic counter |
-| SEC-CTL-N-10 | Two-person approval and bounded mandate | Formal offer issue, recipient batch dispatch and application acceptance require two distinct authorized approvers (R02 issuer authority + R10 legal) bound to the content hash; an L3 bounded mandate (DEC-779, Part 11.17) may only automate re-sends of an already approved offer revision to already approved recipients within its caps, window and jurisdictions, and is revocable instantly. | DEC-779; DEC-783; BRL-APR-* | AU-207, PDP | Deterministic |
+| SEC-CTL-N-10 | Two-person approval; no mandate for securities-governed actions | Formal offer issue, offering-tagged (promotion) dispatch, recipient batch dispatch and application acceptance require two distinct authorized approvers (R02 issuer authority + R10 legal) bound to the content hash for each action. Aligned with Group O rule CP-O-04 (DEC-822): **no DEC-779 mandate can authorise an action governed by the securities packs** (offer issue, promotion dispatch, allotment, filing, KYC decision). A bounded mandate (DEC-779, Part 11.17) may automate only non-offering investor-relations communications (route `none`: relationship updates, meeting logistics) within its caps, window and jurisdictions, revocable instantly. | DEC-779; DEC-783; BRL-APR-* | AU-207, PDP | Deterministic |
 | SEC-CTL-N-11 | No custody of investor money | The platform never holds, moves or instructs investor money. Payment instructions show only the issuer's verified designated bank account; receipts are evidence only; refunds and allocation corrections are human-approved finance actions executed outside the platform. India s.42: subscription money from the subscriber's own bank account, separate bank account, allotment within 60 days or refund within 15 days (verify) → AU-227 timers. | DEC-783; DEC-780 (payments only through licensed provider); s.42(6) (verify) | AU-225, AU-226, AU-227 | Deterministic |
-| SEC-CTL-N-12 | Offering records and regulator filings register | Every offer letter, recipient, view, application, receipt and allotment event is recorded immutably (append-only audit, 8 years for India company records, verify) so counsel can prepare PAS-5 record / PAS-3 return / FC-GPR / Form D / EU notifications; the platform prepares checklists only and never files (filings are INV-SVC-13, Group O). | DEC-783; Group O Part 11.16c/d | AU-223, audit | Deterministic |
+| SEC-CTL-N-12 | Offering records and regulator filings register | Every offer letter, recipient, view, application, receipt and allotment event is recorded immutably (append-only audit, 8 years for India company records, verify) so counsel can prepare PAS-5 record / PAS-3 return / FC-GPR / Form D / EU notifications; the platform prepares checklists only and never files (filings are INV-SVC-13, Group O). | DEC-783; Group O Group O (P1b) | AU-223, audit | Deterministic |
 | SEC-CTL-N-13 | Material-claim grounding and fair presentation | Every financial or factual claim in investor-facing material cites an approved `inv_claim` with evidence; projections carry the approved forward-looking-statement label; contradictions between pitch, data room and offer documents block release (AG-179, AU-220). | BRL-AI-03; BRL-SRC-10; DEC-783 | AG-179, AU-220 | Deterministic first; AI consistency check second |
 | SEC-CTL-N-14 | Cross-border and foreign-investment flags | If issuer jurisdiction ≠ investor jurisdiction, the case is held for counsel review (cross-border case INV-SVC-22, Group O): India inbound FDI pricing and reporting (FEMA NDI Rules, verify), US person offers outside the US route, EU marketing passports. No auto-dispatch for cross-border cases. | DEC-783; DEC-776 | AU-201, AU-203 | Deterministic Hold |
 | SEC-CTL-N-15 | Kill switch, revocation and incident | Per tenant, per offering and per jurisdiction kill switches stop all queued investor communications, grants and mandates within 60 s; revocation of a counsel sign-off or pack immediately holds all dependent work. | DEC-779; Part 11.17 | AU-201, AU-207 | Deterministic |
@@ -636,16 +636,18 @@ The panel reads DEC-783 as: the capability is built in full, and **activates per
 
 #### 11.16.5.2.1 Rule packs consumed (content owned by Group O)
 
-| Pack | Scope | Jurisdiction | Offering route value in PM-N-01/03 | Activation order (DEC-803) |
+| Group O pack (rules) | Scope | Jurisdiction | Route value in PM-N-01/03 | Activation order (DEC-803) |
 |---|---|---|---|---|
-| RP-SEC-IN-PP | India private placement (Companies Act 2013 s.42, PAS rules) | IN | private placement s.42 | 1 (owner portfolio issuers are Indian) |
-| RP-SEC-IN-ICDR | India SEBI ICDR preferential issue / QIP (listed issuers only) | IN | preferential / QIP (listed) | 1 (owner portfolio issuers are Indian) |
-| RP-SEC-IN-FEMA | India inbound foreign investment (FEMA NDI) flags | IN | cross-border flag | 1 (owner portfolio issuers are Indian) |
-| RP-SEC-US-506B | US Regulation D Rule 506(b) | US | 506(b) | 2 |
-| RP-SEC-US-506C | US Regulation D Rule 506(c) | US | 506(c) | 2 |
-| RP-SEC-US-CF | US Regulation Crowdfunding (portal hand-off only) | US | Reg CF via portal | 2 |
-| RP-SEC-EU-PR | EU Prospectus Regulation exemptions (Art. 1(4) / 3(2)) | EU | PR exemption | 3 (with EU stack, DEC-772) |
-| RP-SEC-UK-FP | UK FSMA s.21 financial promotion exemptions | UK | FPO exemption | 4 |
+| RP-IN-SEC (rules 001…015, 019, 021, 022) | India private placement (Companies Act 2013 s.42, PAS rules) | IN | s42_PP | 1 (owner portfolio issuers are Indian) |
+| RP-IN-SEC (rule 020) | India SEBI ICDR preferential issue / QIP (listed issuers; Block until a dedicated pack is approved) | IN | ICDR_pref_listed | 1 (owner portfolio issuers are Indian) |
+| RP-IN-SEC (rules 016…018) | India inbound foreign investment (FEMA NDI) flags | IN | cross-border flag | 1 (owner portfolio issuers are Indian) |
+| RP-US-REGD (route 506b) | US Regulation D Rule 506(b) | US | 506b | 2 |
+| RP-US-REGD (route 506c) | US Regulation D Rule 506(c) | US | 506c | 2 |
+| RP-US-REGCF | US Regulation Crowdfunding (hand-off only, CP-O-05) | US | RegCF | 2 |
+| RP-EU-PROSP | EU Prospectus Regulation exemptions; ECSP hand-off | EU | PR_QI_only, PR_lt150 | 3 (with EU stack, DEC-772) |
+| RP-UK-FINPROM | UK FSMA s.21 financial promotion exemptions | UK | FPO_exempt | 4 |
+| RP-AML-KYC | KYC/AML hand-off rules (all jurisdictions) | all | all routes | with the first jurisdiction |
+| RP-INV-ADVICE | No investment advice (all jurisdictions) | all | all investor-facing content | with the first jurisdiction |
 
 Panel reading of the route rules the packs must encode (verify with counsel, as of 27 Nov 2026) [ASSUMPTION-1000]:
 
@@ -748,7 +750,7 @@ Expiry: evidence valid 12 months unless the pack sets less (BRL-V12-N-02). KYC `
 | Data-room documents and access logs | Confidential-Financial | Contract / contract | Offering + 8 years (verify) | Grant-filtered retrieval only | Tenant region; S3 SSE-KMS |
 | Receipts, commitments, bank references | Confidential-Financial | Contract + legal obligation | 10 years (verify) | Masked; AG-178 explanation only | Tenant region |
 
-Rules: (1) no investor data in public payloads (AU-228); (2) DSR access/erasure/objection handled in A208 within 30 days (GDPR) / DPDP timelines (verify), erasure leaves a hashed suppression entry; (3) legal hold overrides erasure for offer records with R10 reason; (4) cross-tenant benchmarks exclude investor data entirely (DEC-789 carve-out, DEC-808); (5) DPIA required before first EU tenant (DEC-776). Combinatorial suite PM-N-07 (Part 11.16c).
+Rules: (1) no investor data in public payloads (AU-228); (2) DSR access/erasure/objection handled in A208 within 30 days (GDPR) / DPDP timelines (verify), erasure leaves a hashed suppression entry; (3) legal hold overrides erasure for offer records with R10 reason; (4) cross-tenant benchmarks exclude investor data entirely (DEC-789 carve-out, DEC-808); (5) DPIA required before first EU tenant (DEC-776). Combinatorial suite PM-N-07 (Part 11.16e).
 
 ### 11.16.5.4 Roles, personas and RBAC for the investment product
 
@@ -974,7 +976,7 @@ Each specification follows Part 11.2b: all 50 workbook fields, the blueprint map
 | Triggers and events | Manual; scheduled or scoped business event where applicable; authorized webhook for provider events. Event envelope (V12): Proposed event envelope: event_id, tenant_id, startup_id, service_id, workflow_revision, input_ref, occurred_at, correlation_id; validate schema and reject mismatched scope. Idempotency: Idempotency key = scoped event + workflow revision + action target; check duplicate side effects, conflicts, active reply/suppression and budget reservation |
 | Functional requirements | Framework FR-V12-N-001…018; securities controls FR-V12-N-019…030; service: FR-V12-N-038, FR-V12-N-039, FR-V12-N-040; workflows: FR-V12-N-113, FR-V12-N-114, FR-V12-N-115, FR-V12-N-116 |
 | Business rules | Approval gate (V12): Approve facts and template; formal offers and restricted recipients routed separately; recheck before send. Baseline: BRL-ELG-01…12, BRL-ELG-18, BRL-MKT-01. New: BRL-V12-N-04, BRL-V12-N-05 |
-| Agents and automations | V12 AI responsibilities: Outreach; localization; policy review. Operating mode: AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. New agents: AG-165, AG-166, AG-167; reused: AG-011, AG-012. New automations: AU-212, AU-213, AU-203, AU-208; reused: AU-008, AU-009, AU-024. Autonomy cap: Template and content L1 (hash-bound approval) then L2 dispatch; offer-related content needs R02 + R10 (two-person); L3 only under a bounded mandate for re-sends (DEC-779). Side-effect class (V12): Potential external write/communication; controlled only after applicable permission and policy approval. Agent identity: Scoped service principal or authorized delegated user; deny privilege escalation; short-lived grants; no shared credentials. External agents: Optional authorized connector; external agent access disabled unless explicitly granted |
+| Agents and automations | V12 AI responsibilities: Outreach; localization; policy review. Operating mode: AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. New agents: AG-165, AG-166, AG-167; reused: AG-011, AG-012. New automations: AU-212, AU-213, AU-203, AU-208; reused: AU-008, AU-009, AU-024. Autonomy cap: Template and content L1 (hash-bound approval) then L2 dispatch; offering-tagged content needs R02 + R10 per message (two-person); a DEC-779 mandate may automate only non-offering IR messages (CP-O-04). Side-effect class (V12): Potential external write/communication; controlled only after applicable permission and policy approval. Agent identity: Scoped service principal or authorized delegated user; deny privilege escalation; short-lived grants; no shared credentials. External agents: Optional authorized connector; external agent access disabled unless explicitly granted |
 | Model tier and data class | Personal + Confidential (issuer facts); no Tier 2. Tier 1b drafting; Tier 1a classification; Tier 0 phrase lists. Model portability (V12): Provider-neutral model adapter; rules-first; quality/cost gate; no vendor lock-in assumed; registry gate incl. EVAL-N-ADV for investor-facing agents (DEC-808) |
 | Securities and privacy controls | SEC-CTL-N-01, SEC-CTL-N-02, SEC-CTL-N-03, SEC-CTL-N-05, SEC-CTL-N-06, SEC-CTL-N-13, SEC-CTL-N-15 (definitions §11.16.5.2; step placement Part 11.16b) |
 | Integrations | Providers (V12): Authorized mail provider; verified sender; permitted outreach; opt-out handling (verify terms and prices at implementation, as of 27 Nov 2026). Open-source: Python; Django REST Framework; PostgreSQL; Celery / Beat; Valkey. Shared engines: Communication; Workflow orchestration; Governance. API operations: 9 V12 candidates adopted under /api/v1/investor/* (§11.16.5.11) |
@@ -1244,7 +1246,7 @@ Each specification follows Part 11.2b: all 50 workbook fields, the blueprint map
 | Triggers and events | Manual; scheduled or scoped business event where applicable; authorized webhook for provider events. Event envelope (V12): Proposed event envelope: event_id, tenant_id, startup_id, service_id, workflow_revision, input_ref, occurred_at, correlation_id; validate schema and reject mismatched scope. Idempotency: Idempotency key = scoped event + workflow revision + action target; check duplicate side effects, conflicts, active reply/suppression and budget reservation |
 | Functional requirements | Framework FR-V12-N-001…018; securities controls FR-V12-N-019…030; service: FR-V12-N-056, FR-V12-N-057, FR-V12-N-058, FR-V12-N-059; workflows: FR-V12-N-141, FR-V12-N-142, FR-V12-N-143, FR-V12-N-144 |
 | Business rules | Approval gate (V12): Explicit legal and issuer approval for offer, recipient batch, agreement and application acceptance. Baseline: BRL-CTR-01…05, BRL-APR-05, BRL-V12-N-15…19. New: BRL-V12-N-15…19 |
-| Agents and automations | V12 AI responsibilities: Document intelligence; conversion; policy review. Operating mode: AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. New agents: AG-177, AG-166, AG-179; reused: AG-022. New automations: AU-205, AU-206, AU-207, AU-223, AU-224, AU-201, AU-202; reused: AU-036. Autonomy cap: L1 maximum for offers, batches, agreements and acceptance (two-person, hash-bound); AI never signs, issues or accepts; L3 only for a bounded re-send mandate (DEC-779). Side-effect class (V12): Internal analysis/draft; no external action without separate authorization. Agent identity: Scoped service principal or authorized delegated user; deny privilege escalation; short-lived grants; no shared credentials. External agents: Optional authorized connector; external agent access disabled unless explicitly granted |
+| Agents and automations | V12 AI responsibilities: Document intelligence; conversion; policy review. Operating mode: AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. New agents: AG-177, AG-166, AG-179; reused: AG-022. New automations: AU-205, AU-206, AU-207, AU-223, AU-224, AU-201, AU-202; reused: AU-036. Autonomy cap: L1 maximum for offers, batches, agreements and acceptance (two-person, hash-bound, per action); AI never signs, issues or accepts; no mandate may authorise these actions (Group O CP-O-04, DEC-822). Side-effect class (V12): Internal analysis/draft; no external action without separate authorization. Agent identity: Scoped service principal or authorized delegated user; deny privilege escalation; short-lived grants; no shared credentials. External agents: Optional authorized connector; external agent access disabled unless explicitly granted |
 | Model tier and data class | Confidential-Financial / Legal; identity evidence references only; no Tier 2. Tier 1b drafting assist; deterministic everything else. Model portability (V12): Provider-neutral model adapter; rules-first; quality/cost gate; no vendor lock-in assumed; registry gate incl. EVAL-N-ADV for investor-facing agents (DEC-808) |
 | Securities and privacy controls | SEC-CTL-N-01, SEC-CTL-N-02, SEC-CTL-N-03, SEC-CTL-N-04, SEC-CTL-N-07, SEC-CTL-N-08, SEC-CTL-N-09, SEC-CTL-N-10, SEC-CTL-N-12, SEC-CTL-N-14, SEC-CTL-N-15 (definitions §11.16.5.2; step placement Part 11.16b) |
 | Integrations | Providers (V12): Authorized identity/e-sign provider; legal adviser; no public securities listing (verify terms and prices at implementation, as of 27 Nov 2026). Open-source: Python; Django REST Framework; PostgreSQL; Celery / Beat; Valkey; pgvector if needed; approved extraction libraries. Shared engines: Document generation; Workflow orchestration; Governance. API operations: 9 V12 candidates adopted under /api/v1/investor/* (§11.16.5.11) |
@@ -1333,7 +1335,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 |---|---|
 | Type | Agent · Researcher (planner + extractor) · scope: Investment product |
 | Purpose and business outcome | Plans searches over approved funding sources and extracts routes, mandates and deadlines with evidence |
-| Linked BR / FR / US | DEC-783; INV-SVC-01-WF01/WF02; EP-30/EP-31 stories (Part 11.16c) |
+| Linked BR / FR / US | DEC-783; INV-SVC-01-WF01/WF02; EP-30/EP-31 stories (Part 11.16e) |
 | Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
 | Trigger | R04 requests a discovery run in A209 |
 | Inputs and data sources | AG-003/AG-004 patterns; source registry; inv_source_policy |
@@ -1357,7 +1359,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 |---|---|
 | Type | Agent · Classifier · scope: Investment product |
 | Purpose and business outcome | Decides whether a changed source signal is new and material for the issuer thesis |
-| Linked BR / FR / US | DEC-783; INV-SVC-01-WF04; EP-30/EP-31 stories (Part 11.16c) |
+| Linked BR / FR / US | DEC-783; INV-SVC-01-WF04; EP-30/EP-31 stories (Part 11.16e) |
 | Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
 | Trigger | AU-210 change event |
 | Inputs and data sources | versioned signals, issuer thesis |
@@ -1381,7 +1383,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 |---|---|
 | Type | Agent · Scorer · scope: Investment product |
 | Purpose and business outcome | Explains deterministic rubric scores and extracts mandate attributes for transparent propensity features |
-| Linked BR / FR / US | DEC-783; INV-SVC-02-WF01/WF04; EP-30/EP-31 stories (Part 11.16c) |
+| Linked BR / FR / US | DEC-783; INV-SVC-02-WF01/WF04; EP-30/EP-31 stories (Part 11.16e) |
 | Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
 | Trigger | Batch scoring or analyst request in A211 |
 | Inputs and data sources | mandates, issuer round, reviewed outcomes |
@@ -1405,7 +1407,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 |---|---|
 | Type | Agent · Extractor · scope: Investment product |
 | Purpose and business outcome | Reads investor-provided documents (accreditation letters, QIB status, net-worth certificates) and extracts fields for the deterministic eligibility resolver |
-| Linked BR / FR / US | DEC-783; INV-SVC-02-WF02; INV-SVC-11-WF03; EP-30/EP-31 stories (Part 11.16c) |
+| Linked BR / FR / US | DEC-783; INV-SVC-02-WF02; INV-SVC-11-WF03; EP-30/EP-31 stories (Part 11.16e) |
 | Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
 | Trigger | Upload in W76 or A230 |
 | Inputs and data sources | evidence documents (Confidential-Financial) |
@@ -1429,7 +1431,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 |---|---|
 | Type | Agent · Extractor/matcher · scope: Investment product |
 | Purpose and business outcome | Finds and verifies investor-organisation representatives from permitted sources and proposes alias matches |
-| Linked BR / FR / US | DEC-783; INV-SVC-03-WF01/02/04; EP-30/EP-31 stories (Part 11.16c) |
+| Linked BR / FR / US | DEC-783; INV-SVC-03-WF01/02/04; EP-30/EP-31 stories (Part 11.16e) |
 | Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
 | Trigger | R04 action in A212 |
 | Inputs and data sources | approved sources, client lists |
@@ -1453,7 +1455,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 |---|---|
 | Type | Agent · Generator · scope: Investment product |
 | Purpose and business outcome | Drafts individual investor emails/WhatsApp messages from approved issuer facts and templates |
-| Linked BR / FR / US | DEC-783; INV-SVC-04-WF01; INV-SVC-05-WF02; EP-30/EP-31 stories (Part 11.16c) |
+| Linked BR / FR / US | DEC-783; INV-SVC-04-WF01; INV-SVC-05-WF02; EP-30/EP-31 stories (Part 11.16e) |
 | Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
 | Trigger | R03 composes in A217 |
 | Inputs and data sources | approved claims, template, contact role, relationship history |
@@ -1477,10 +1479,10 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 |---|---|
 | Type | Agent · Classifier/guard · scope: Investment product (cross-service) |
 | Purpose and business outcome | Classifies investor-facing content and inbound questions for ADVICE, RETURN_PROMISE, SUITABILITY, TAX_LEGAL_ADVICE, GENERAL_SOLICITATION, OFFER_TERMS, MNPI risk |
-| Linked BR / FR / US | DEC-783; INV-SVC-04/05/07/09/10/11; W74; EP-30/EP-31 stories (Part 11.16c) |
+| Linked BR / FR / US | DEC-783; INV-SVC-04/05/07/09/10/11; W74; EP-30/EP-31 stories (Part 11.16e) |
 | Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
 | Trigger | Every investor-facing draft and every inbound question |
-| Inputs and data sources | draft text, recipient eligibility, offering tag, applicable RP-SEC packs |
+| Inputs and data sources | draft text, recipient eligibility, offering tag, applicable Group O securities packs |
 | Tools / APIs (registry §7.2.4) | TL-02, TL-12 rulepack.evaluate (AU-128) |
 | Outputs | `{labels[], spans[], verdict block/fix/pass, rule_ids[], pack_versions[]}` |
 | Autonomy and HITL | Guard only; cannot approve; uncertain → fix/needs_counsel |
@@ -1501,7 +1503,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 |---|---|
 | Type | Agent · Analyst · scope: Investment product |
 | Purpose and business outcome | Explains deliverability deterioration and recommends remediation |
-| Linked BR / FR / US | DEC-783; INV-SVC-04-WF04; EP-30/EP-31 stories (Part 11.16c) |
+| Linked BR / FR / US | DEC-783; INV-SVC-04-WF04; EP-30/EP-31 stories (Part 11.16e) |
 | Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
 | Trigger | AU-213 threshold breach |
 | Inputs and data sources | bounce/complaint metrics, DNS auth results |
@@ -1525,7 +1527,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 |---|---|
 | Type | Agent · Orchestrator · scope: Investment product |
 | Purpose and business outcome | Proposes the next consent-aware WhatsApp step and coordinates with active sequences |
-| Linked BR / FR / US | DEC-783; INV-SVC-05-WF04; EP-30/EP-31 stories (Part 11.16c) |
+| Linked BR / FR / US | DEC-783; INV-SVC-05-WF04; EP-30/EP-31 stories (Part 11.16e) |
 | Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
 | Trigger | Inbound message or window change |
 | Inputs and data sources | conversation, template status, opt-in |
@@ -1549,7 +1551,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 |---|---|
 | Type | Agent · Recommender · scope: Investment product |
 | Purpose and business outcome | Classifies replies and ranks eligible next actions without conflicts |
-| Linked BR / FR / US | DEC-783; INV-SVC-06-WF02/WF04; EP-30/EP-31 stories (Part 11.16c) |
+| Linked BR / FR / US | DEC-783; INV-SVC-06-WF02/WF04; EP-30/EP-31 stories (Part 11.16e) |
 | Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
 | Trigger | Reply or schedule tick |
 | Inputs and data sources | timeline, sequences, consent, budget |
@@ -1573,7 +1575,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 |---|---|
 | Type | Agent · Classifier · scope: Investment product |
 | Purpose and business outcome | Labels purpose, sentiment, objection type and advice requests in inbound messages |
-| Linked BR / FR / US | DEC-783; INV-SVC-07-WF01; EP-30/EP-31 stories (Part 11.16c) |
+| Linked BR / FR / US | DEC-783; INV-SVC-07-WF01; EP-30/EP-31 stories (Part 11.16e) |
 | Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
 | Trigger | Inbound message |
 | Inputs and data sources | message, relationship |
@@ -1597,7 +1599,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 |---|---|
 | Type | Agent · RAG generator · scope: Investment product |
 | Purpose and business outcome | Drafts answers to investor/diligence questions only from documents the investor may see |
-| Linked BR / FR / US | DEC-783; INV-SVC-07-WF02; INV-SVC-10-WF03; EP-30/EP-31 stories (Part 11.16c) |
+| Linked BR / FR / US | DEC-783; INV-SVC-07-WF02; INV-SVC-10-WF03; EP-30/EP-31 stories (Part 11.16e) |
 | Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
 | Trigger | Question in A222/A224 or W75 |
 | Inputs and data sources | granted documents, approved knowledge |
@@ -1621,7 +1623,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 |---|---|
 | Type | Agent · Interpreter · scope: Investment product |
 | Purpose and business outcome | Transcribes/extracts consented audio, image or document enquiries and detects language and intent |
-| Linked BR / FR / US | DEC-783; INV-SVC-07-WF04; EP-30/EP-31 stories (Part 11.16c) |
+| Linked BR / FR / US | DEC-783; INV-SVC-07-WF04; EP-30/EP-31 stories (Part 11.16e) |
 | Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
 | Trigger | Consented enquiry |
 | Inputs and data sources | audio/doc, consent |
@@ -1645,7 +1647,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 |---|---|
 | Type | Agent · Summarizer · scope: Investment product |
 | Purpose and business outcome | Prepares internal briefs and extracts actions from consented notes |
-| Linked BR / FR / US | DEC-783; INV-SVC-08-WF02/WF03; EP-30/EP-31 stories (Part 11.16c) |
+| Linked BR / FR / US | DEC-783; INV-SVC-08-WF02/WF03; EP-30/EP-31 stories (Part 11.16e) |
 | Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
 | Trigger | Meeting scheduled/ended |
 | Inputs and data sources | relationship, approved facts, notes |
@@ -1669,7 +1671,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 |---|---|
 | Type | Agent · Simulator · scope: Investment product |
 | Purpose and business outcome | Simulates investor questions and checks factual answers in rehearsal |
-| Linked BR / FR / US | DEC-783; INV-SVC-08-WF04; EP-30/EP-31 stories (Part 11.16c) |
+| Linked BR / FR / US | DEC-783; INV-SVC-08-WF04; EP-30/EP-31 stories (Part 11.16e) |
 | Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
 | Trigger | R02 starts rehearsal |
 | Inputs and data sources | approved pitch, recording with consent |
@@ -1693,7 +1695,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 |---|---|
 | Type | Agent · Generator · scope: Investment product |
 | Purpose and business outcome | Drafts investor-specific pitch narrative from approved claims and deterministic scenarios |
-| Linked BR / FR / US | DEC-783; INV-SVC-09-WF02/WF04; EP-30/EP-31 stories (Part 11.16c) |
+| Linked BR / FR / US | DEC-783; INV-SVC-09-WF02/WF04; EP-30/EP-31 stories (Part 11.16e) |
 | Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
 | Trigger | R02 request in A227 |
 | Inputs and data sources | claims, scenarios, mandate |
@@ -1717,7 +1719,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 |---|---|
 | Type | Agent · Classifier · scope: Investment product |
 | Purpose and business outcome | Classifies documents, extracts metadata and detects readiness gaps |
-| Linked BR / FR / US | DEC-783; INV-SVC-10-WF01/WF04; EP-30/EP-31 stories (Part 11.16c) |
+| Linked BR / FR / US | DEC-783; INV-SVC-10-WF01/WF04; EP-30/EP-31 stories (Part 11.16e) |
 | Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
 | Trigger | Upload or daily check |
 | Inputs and data sources | documents (scanned), checklist |
@@ -1741,7 +1743,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 |---|---|
 | Type | Agent · Analyst · scope: Investment product |
 | Purpose and business outcome | Normalises term sheets and flags deviations from approved templates for legal review |
-| Linked BR / FR / US | DEC-783; INV-SVC-11-WF01/WF04; EP-30/EP-31 stories (Part 11.16c) |
+| Linked BR / FR / US | DEC-783; INV-SVC-11-WF01/WF04; EP-30/EP-31 stories (Part 11.16e) |
 | Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
 | Trigger | R02 request in A228 |
 | Inputs and data sources | term sheets, templates |
@@ -1765,7 +1767,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 |---|---|
 | Type | Agent · Explainer · scope: Investment product |
 | Purpose and business outcome | Explains why a receipt did not match (amount, reference, payer, FX) for finance reviewers |
-| Linked BR / FR / US | DEC-783; INV-SVC-12-WF03/WF04; EP-30/EP-31 stories (Part 11.16c) |
+| Linked BR / FR / US | DEC-783; INV-SVC-12-WF03/WF04; EP-30/EP-31 stories (Part 11.16e) |
 | Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
 | Trigger | Exception created |
 | Inputs and data sources | masked receipt + commitment |
@@ -1789,7 +1791,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 |---|---|
 | Type | Agent · Verifier · scope: Investment product |
 | Purpose and business outcome | Cross-checks figures and statements across pitch, data room and offer documents before release |
-| Linked BR / FR / US | DEC-783; INV-SVC-09-WF04; INV-SVC-11-WF01/WF02; EP-30/EP-31 stories (Part 11.16c) |
+| Linked BR / FR / US | DEC-783; INV-SVC-09-WF04; INV-SVC-11-WF01/WF02; EP-30/EP-31 stories (Part 11.16e) |
 | Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
 | Trigger | Release request |
 | Inputs and data sources | document set, claims registry |
@@ -1812,13 +1814,13 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 | ID | Name | Wave / Release | Linked BR / FR / rule | Trigger | Deterministic logic | Outputs | Autonomy | Guardrail | Failure / fallback | KPI | Cost |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | AU-200 | Investment product entitlement and SKU gate | W4 / R2 | INV Entitlement Rules; FR-V12-N-005 | Every action | Check tenant product = Investment Automation, SKU active (INV-SVC-nn), foundation, role, budget; revoked → no new execution | allow/deny + reason | L3 | Fail closed | Deny with 403 ENTITLEMENT_REQUIRED | denied actions logged 100% | ₹0 (compute only) |
-| AU-201 | Securities rule-pack activation gate | W4 / R2 | SEC-CTL-N-01; DEC-783; Part 11.15 CP-01…05 | Any external effect | Resolve jurisdictions (issuer + investor); require every RP-SEC/channel pack active and signed; else Block PACK_NOT_ACTIVE | verdict + pack versions | L3 | Not overridable | Registry unavailable → Block | external effects without active pack = 0 | ₹0 |
+| AU-201 | Securities rule-pack activation gate | W4 / R2 | SEC-CTL-N-01; DEC-783; Part 11.15 CP-01…05 | Any external effect | Resolve jurisdictions (issuer + investor); apply Group O CP-O-01…03 (issuer + every investor jurisdiction + RP-AML-KYC + RP-INV-ADVICE); require every applicable pack active and signed; else Block PACK_NOT_ACTIVE | verdict + pack versions | L3 | Not overridable | Registry unavailable → Block | external effects without active pack = 0 | ₹0 |
 | AU-202 | Investor eligibility status resolver | W5 / R2 | SEC-CTL-N-02/07 | Evidence or provider result received | Decision table (investor_class × route × evidence type × expiry × KYC) → eligible/held/ineligible | eligibility record | L3 deterministic | AI output never decisive | Unknown → held | ineligible dispatched = 0 | ₹0 + provider fees |
 | AU-203 | General-solicitation guard | W4 / R2 | SEC-CTL-N-03 | Draft approval and dispatch | For offering-tagged content: recipient must have relationship provenance (pre-existing, substantive) or verified eligibility under a route that allows solicitation; bulk/unvetted lists blocked | allow/block | L3 | Not overridable for s.42/506(b) | Block | solicitation violations = 0 | ₹0 |
 | AU-204 | Offering-document access gate | W5 / R2 | SEC-CTL-N-04 | Room item request | eligibility verified ∧ NDA valid ∧ grant active ∧ offering signed ∧ pack active | signed URL (5 min) or 404 | L3 | Uniform 404 on deny | Deny | unauthorized access = 0 | ₹0 |
 | AU-205 | Offer count and investor cap counter | W5 / R2 | SEC-CTL-N-09 | Offer issue | Atomic per-route counters (FY / member state / non-accredited) with reservation and release | reservation id | L3 | Cap → Block | Lock timeout → Block | cap breaches = 0 | ₹0 |
 | AU-206 | Counsel sign-off validator | W5 / R2 | SEC-CTL-N-08 | Offering state change; document change | Sign-off exists per jurisdiction, unexpired, document-set hash matches; change voids it | valid/void | L3 | — | Void → hold offering | offers without valid sign-off = 0 | ₹0 |
-| AU-207 | Two-person approval and mandate binder | W5 / R2 | SEC-CTL-N-10; DEC-779 | Approval decision | Two distinct approvers with required roles, MFA ≤ 1 h, bound to content hash; mandate scope check for L3 re-sends | approval set | L3 | Same person twice rejected | Reject | single-approver offers = 0 | ₹0 |
+| AU-207 | Two-person approval and mandate binder | W5 / R2 | SEC-CTL-N-10; DEC-779 | Approval decision | Two distinct approvers with required roles, MFA ≤ 1 h, bound to content hash; mandates rejected for securities-governed actions (CP-O-04); mandate scope check only for non-offering IR messages | approval set | L3 | Same person twice rejected | Reject | single-approver offers = 0 | ₹0 |
 | AU-208 | Investor consent and suppression ledger | W4 / R2 | SEC-CTL-N-06 | Consent change, STOP, privacy request | Append-only consent ledger per purpose/channel; withdrawal propagates to sequences within 60 s | ledger rows | L3 | — | Queue pause | withdrawal honoured ≤ 60 s 100% | ₹0 |
 | AU-209 | Funding deadline and freshness alerter | W4 / R2 | INV-SVC-01-WF03 | Schedule tick | Deadline windows (30/14/7/1 days), duplicate suppression by key | internal alerts | L3 | Internal only | Retry | duplicates = 0 | ₹0 |
 | AU-210 | Evidence change detector | W4 / R2 | INV-SVC-01-WF02; 03-WF04 | Schedule/source event | Field-level diff of versioned snapshots; freshness windows | change events | L3 | — | Retry with backoff | freshness SLA ≥ 95% | ₹0 |
@@ -1904,7 +1906,7 @@ Common screen behaviour (Part 2.5 design system): startup selector (BRL-TEN-05 4
 | inv_round | Issuer fundraising round | id, startup_id, instrument, target_minor, currency, state | Confidential-Financial | 10 y | 02, 09 | V12 |
 | inv_fit_score | Fit score | id, mandate_id, round_id, score, reasons[], rubric_version | Confidential | 3 y | 02 | V12 |
 | inv_match_candidate | Match candidate | id, round_id, investor_id, status | Confidential | 3 y | 02 | V12 |
-| inv_jurisdiction_policy | Jurisdiction policy binding to RP-SEC packs | id, jurisdiction, pack_ids[], state | Internal | life | 02, 11 | V12 |
+| inv_jurisdiction_policy | Jurisdiction policy binding to Group O securities packs | id, jurisdiction, pack_ids[], state | Internal | life | 02, 11 | V12 |
 | inv_crossborder_case | Cross-border review case | id, investor_id, round_id, jurisdictions[], state | Confidential | 8 y | 02, 11 | V12 |
 | inv_contact | Investor representative | id, investor_id, name, role, email, phone, verification_state | Personal | relationship + 2 y or withdrawal | 03 | V12 |
 | inv_contact_evidence | Contact provenance | id, contact_id, source_id, observed_at, permitted_use | Personal | as contact | 03 | V12 |
@@ -2150,12 +2152,12 @@ V12 operations are adopted literally under `/api/v1/investor/*` (DEC-814); each 
 
 ### Decisions, tags and quality gate for this file
 
-Decisions DEC-800…819, ADRs ADR-230…234 and the full tags register 1000–1019 are in Part 11.16c (§11.16.7, §11.16.9). Used in this file: DEC-800, 801, 802, 803, 804, 805, 806, 807, 808, 809, 811, 812, 813, 814, 816; ADR-230, 231, 233; ASSUMPTION-1000, 1001, 1003, 1004; GAP-1002, 1010, 1016; CONFLICT-1008, 1009, 1019; RECOMMENDATION-1005.
+Decisions DEC-800…819, ADRs ADR-230…234 and the full tags register 1000–1019 are in Part 11.16e (§11.16.7, §11.16.9). Used in this file: DEC-800, 801, 802, 803, 804, 805, 806, 807, 808, 809, 811, 812, 813, 814, 816; ADR-230, 231, 233; ASSUMPTION-1000, 1001, 1003, 1004; GAP-1002, 1010, 1016; CONFLICT-1008, 1009, 1019; RECOMMENDATION-1005.
 
 | # | Quality gate item | Result | Notes |
 |---|---|---|---|
 | 1 | Every requirement traced to a source | Pass | Workbook row, website file or DEC cited per field |
-| 2 | Assumptions/gaps/conflicts tagged and logged | Pass | Register in Part 11.16c §11.16.9 |
+| 2 | Assumptions/gaps/conflicts tagged and logged | Pass | Register in Part 11.16e §11.16.9 |
 | 3 | IDs unique and consistent | Pass | Only N ranges used; screen aliases per DEC-801 |
 | 4 | No story lacks AC; no requirement lacks a test | Pass | Stories and TCs in Parts 11.16b/c |
 | 5 | Negative, edge, security, accessibility cases | Pass | PM-N models and workflow test classes |
@@ -2164,4 +2166,4 @@ Decisions DEC-800…819, ADRs ADR-230…234 and the full tags register 1000–10
 | 8 | No restricted data to free tier | Pass | Investor data never Tier 2 |
 | 9 | Consistent with earlier parts | Pass | DEC-783/779/772/777/788 applied |
 
-**Status: Part 11 Batch 11.16a complete. Product boundary, 16 securities controls, privacy, website W55–W76, 12 service specifications, 20 agents, 30 automations, 28 admin screens, entities and the API catalogue specified; workflows in 11.16b, stories/tests/cost/decisions in 11.16c.**
+**Status: Part 11 Batch 11.16a complete. Product boundary, 16 securities controls, privacy, website W55–W76, 12 service specifications, 20 agents, 30 automations, 28 admin screens, entities and the API catalogue specified; workflows in 11.16b, stories/tests/cost/decisions in 11.16e.**

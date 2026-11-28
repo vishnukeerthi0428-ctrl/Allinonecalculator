@@ -27,7 +27,7 @@ w('# AI Growth Engine: Employee Sales & Marketing Automation')
 w(f'## Application Blueprint: PART 11 (Batch 11.16b), {TITLE}')
 w('')
 table(['Field', 'Value'], [
- ['Document', 'Part 11, Batch 11.16, file **b** of Group N's files a, b, e: §11.16.5.12 executable workflow specifications for the 48 workflows INV-SVC-01-WF01…INV-SVC-12-WF04. Files a (framework, services) and c (stories, combinatorial tests, cost, decisions)'],
+ ['Document', 'Part 11, Batch 11.16, file **b** of Group N files a, b, e: §11.16.5.12 executable workflow specifications for the 48 workflows INV-SVC-01-WF01…INV-SVC-12-WF04. Files a (framework, services) and c (stories, combinatorial tests, cost, decisions)'],
  ['Version', '1.0 · 28 Nov 2026'],
  ['Baseline', 'Part 11.16a; Part 11.3a universal engine contract (StepRun, states, retries, simulation); Part 11.3b workflow format; Part 11.15 rule-pack framework; DEC-779/783'],
  ['Roles applied', 'Expert panel of Part 11.16a (private-markets operating partner, securities-law specialist, CPO, Principal Solutions Architect, Principal BSA) plus QA Lead and Security/AI Governance Lead'],

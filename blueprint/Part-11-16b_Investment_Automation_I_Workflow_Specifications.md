@@ -3,7 +3,7 @@
 
 | Field | Value |
 |---|---|
-| Document | Part 11, Batch 11.16, file **b of c**: §11.16.5.12 executable workflow specifications for the 48 workflows INV-SVC-01-WF01…INV-SVC-12-WF04. Files a (framework, services) and c (stories, combinatorial tests, cost, decisions) |
+| Document | Part 11, Batch 11.16, file **b** of Group N files a, b, e: §11.16.5.12 executable workflow specifications for the 48 workflows INV-SVC-01-WF01…INV-SVC-12-WF04. Files a (framework, services) and c (stories, combinatorial tests, cost, decisions) |
 | Version | 1.0 · 28 Nov 2026 |
 | Baseline | Part 11.16a; Part 11.3a universal engine contract (StepRun, states, retries, simulation); Part 11.3b workflow format; Part 11.15 rule-pack framework; DEC-779/783 |
 | Roles applied | Expert panel of Part 11.16a (private-markets operating partner, securities-law specialist, CPO, Principal Solutions Architect, Principal BSA) plus QA Lead and Security/AI Governance Lead |
@@ -19,7 +19,7 @@
 
 #### INV-SVC-01 Global Funding & Investor Discovery Automation
 
-**Purpose:** Find eligible funding routes, angels, VC, PE, family offices, grants, CSR and debt opportunities (workbook Service Catalog row 5). **Epic:** EP-30. **Service spec:** Part 11.16a §11.16.5.6.1. **Stories:** Part 11.16c.
+**Purpose:** Find eligible funding routes, angels, VC, PE, family offices, grants, CSR and debt opportunities (workbook Service Catalog row 5). **Epic:** EP-30. **Service spec:** Part 11.16a §11.16.5.6.1. **Stories:** Part 11.16e.
 
 | Field | Specification |
 |---|---|
@@ -288,7 +288,7 @@ flowchart TD
 
 #### INV-SVC-02 Investor Intelligence & Qualification Automation
 
-**Purpose:** Match investors to issuer thesis, stage, ticket size and permitted jurisdiction (workbook Service Catalog row 6). **Epic:** EP-30. **Service spec:** Part 11.16a §11.16.5.6.2. **Stories:** Part 11.16c.
+**Purpose:** Match investors to issuer thesis, stage, ticket size and permitted jurisdiction (workbook Service Catalog row 6). **Epic:** EP-30. **Service spec:** Part 11.16a §11.16.5.6.2. **Stories:** Part 11.16e.
 
 | Field | Specification |
 |---|---|
@@ -547,7 +547,7 @@ flowchart TD
 
 #### INV-SVC-03 Investor Contact Intelligence Automation
 
-**Purpose:** Identify and verify appropriate investor representatives using permitted information (workbook Service Catalog row 7). **Epic:** EP-30. **Service spec:** Part 11.16a §11.16.5.6.3. **Stories:** Part 11.16c.
+**Purpose:** Identify and verify appropriate investor representatives using permitted information (workbook Service Catalog row 7). **Epic:** EP-30. **Service spec:** Part 11.16a §11.16.5.6.3. **Stories:** Part 11.16e.
 
 | Field | Specification |
 |---|---|
@@ -801,7 +801,7 @@ flowchart TD
 
 #### INV-SVC-04 Investor Email Outreach Automation
 
-**Purpose:** Prepare and send eligible individualized investor emails (workbook Service Catalog row 8). **Epic:** EP-30. **Service spec:** Part 11.16a §11.16.5.6.4. **Stories:** Part 11.16c.
+**Purpose:** Prepare and send eligible individualized investor emails (workbook Service Catalog row 8). **Epic:** EP-30. **Service spec:** Part 11.16a §11.16.5.6.4. **Stories:** Part 11.16e.
 
 | Field | Specification |
 |---|---|
@@ -831,7 +831,7 @@ flowchart TD
 | Result / acceptance | Grounded email draft; acceptance INV-SVC-04-WF01-AT01 (Personalized investor email drafting) → TC-V12-N-157 |
 | Domain contract | Validator `urn:inv:dto:INV-SVC-04-WF01:v2`; fields below; event envelope per FR-V12-N-006 |
 | Risk and authority | R1 draft · V12 side effect: Internal analysis/draft; no external action without separate authorization |
-| Autonomy in blueprint | Template and content L1 (hash-bound approval) then L2 dispatch; offer-related content needs R02 + R10 (two-person); L3 only under a bounded mandate for re-sends (DEC-779) |
+| Autonomy in blueprint | Template and content L1 (hash-bound approval) then L2 dispatch; offering-tagged content needs R02 + R10 per message (two-person); a DEC-779 mandate may automate only non-offering IR messages (CP-O-04) |
 | Approval gate (V12) | Approve facts and template; formal offers and restricted recipients routed separately; recheck before send |
 | Operating mode / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. · Text; structured records |
 | Agent / automations | AG-165 + AG-166 · AU-005 |
@@ -890,7 +890,7 @@ flowchart TD
 | Result / acceptance | Accepted or blocked send record; acceptance INV-SVC-04-WF02-AT01 (Controlled email dispatch) → TC-V12-N-170 |
 | Domain contract | Validator `urn:inv:dto:INV-SVC-04-WF02:v2`; fields below; event envelope per FR-V12-N-006 |
 | Risk and authority | R2 external communication · V12 side effect: Potential external write/communication; controlled only after applicable permission and policy approval |
-| Autonomy in blueprint | Template and content L1 (hash-bound approval) then L2 dispatch; offer-related content needs R02 + R10 (two-person); L3 only under a bounded mandate for re-sends (DEC-779) |
+| Autonomy in blueprint | Template and content L1 (hash-bound approval) then L2 dispatch; offering-tagged content needs R02 + R10 per message (two-person); a DEC-779 mandate may automate only non-offering IR messages (CP-O-04) |
 | Approval gate (V12) | Approve facts and template; formal offers and restricted recipients routed separately; recheck before send |
 | Operating mode / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. · Text; structured records |
 | Agent / automations | — (deterministic) · AU-212, AU-203, AU-201 |
@@ -964,7 +964,7 @@ flowchart TD
 | Result / acceptance | Delivery evidence; acceptance INV-SVC-04-WF03-AT01 (Delivery and bounce processing) → TC-V12-N-185 |
 | Domain contract | Validator `urn:inv:dto:INV-SVC-04-WF03:v2`; fields below; event envelope per FR-V12-N-006 |
 | Risk and authority | R1 · V12 side effect: Potential external write/communication; controlled only after applicable permission and policy approval |
-| Autonomy in blueprint | Template and content L1 (hash-bound approval) then L2 dispatch; offer-related content needs R02 + R10 (two-person); L3 only under a bounded mandate for re-sends (DEC-779) |
+| Autonomy in blueprint | Template and content L1 (hash-bound approval) then L2 dispatch; offering-tagged content needs R02 + R10 per message (two-person); a DEC-779 mandate may automate only non-offering IR messages (CP-O-04) |
 | Approval gate (V12) | Approve facts and template; formal offers and restricted recipients routed separately; recheck before send |
 | Operating mode / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. · Text; structured records |
 | Agent / automations | — (deterministic) · AU-213 |
@@ -1020,7 +1020,7 @@ flowchart TD
 | Result / acceptance | Deliverability health report and hold decision; acceptance INV-SVC-04-WF04-AT01 (Sender reputation and deliverability optimization) → TC-V12-N-198 |
 | Domain contract | Validator `urn:inv:dto:INV-SVC-04-WF04:v2`; fields below; event envelope per FR-V12-N-006 |
 | Risk and authority | R0 + internal hold · V12 side effect: Internal analysis/draft; no external action without separate authorization |
-| Autonomy in blueprint | Template and content L1 (hash-bound approval) then L2 dispatch; offer-related content needs R02 + R10 (two-person); L3 only under a bounded mandate for re-sends (DEC-779) |
+| Autonomy in blueprint | Template and content L1 (hash-bound approval) then L2 dispatch; offering-tagged content needs R02 + R10 per message (two-person); a DEC-779 mandate may automate only non-offering IR messages (CP-O-04) |
 | Approval gate (V12) | Approve source/data rights and applicable external actions; qualified reviewer confirms legal/financial claims and any offer, filing, ownership change or payment; no autonomous regulated decision. |
 | Operating mode / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. · Text; structured records |
 | Agent / automations | AG-167 · AU-213 |
@@ -1079,7 +1079,7 @@ flowchart TD
 
 #### INV-SVC-05 Investor WhatsApp Engagement Automation
 
-**Purpose:** Conduct eligible consented direct investor communication by WhatsApp (workbook Service Catalog row 9). **Epic:** EP-30. **Service spec:** Part 11.16a §11.16.5.6.5. **Stories:** Part 11.16c.
+**Purpose:** Conduct eligible consented direct investor communication by WhatsApp (workbook Service Catalog row 9). **Epic:** EP-30. **Service spec:** Part 11.16a §11.16.5.6.5. **Stories:** Part 11.16e.
 
 | Field | Specification |
 |---|---|
@@ -1358,7 +1358,7 @@ flowchart TD
 
 #### INV-SVC-06 Investor Follow-up & Engagement Sequence Automation
 
-**Purpose:** Maintain eligible investor follow-ups without duplicates or excessive contact (workbook Service Catalog row 10). **Epic:** EP-30. **Service spec:** Part 11.16a §11.16.5.6.6. **Stories:** Part 11.16c.
+**Purpose:** Maintain eligible investor follow-ups without duplicates or excessive contact (workbook Service Catalog row 10). **Epic:** EP-30. **Service spec:** Part 11.16a §11.16.5.6.6. **Stories:** Part 11.16e.
 
 | Field | Specification |
 |---|---|
@@ -1613,7 +1613,7 @@ flowchart TD
 
 #### INV-SVC-07 Investor Conversation & Objection Resolution Automation
 
-**Purpose:** Consolidate investor conversations and prepare evidence-grounded answers (workbook Service Catalog row 11). **Epic:** EP-30. **Service spec:** Part 11.16a §11.16.5.6.7. **Stories:** Part 11.16c.
+**Purpose:** Consolidate investor conversations and prepare evidence-grounded answers (workbook Service Catalog row 11). **Epic:** EP-30. **Service spec:** Part 11.16a §11.16.5.6.7. **Stories:** Part 11.16e.
 
 | Field | Specification |
 |---|---|
@@ -1877,7 +1877,7 @@ flowchart TD
 
 #### INV-SVC-08 Investor Meeting & Briefing Automation
 
-**Purpose:** Coordinate qualified investor meetings and prepare briefings (workbook Service Catalog row 12). **Epic:** EP-30. **Service spec:** Part 11.16a §11.16.5.6.8. **Stories:** Part 11.16c.
+**Purpose:** Coordinate qualified investor meetings and prepare briefings (workbook Service Catalog row 12). **Epic:** EP-30. **Service spec:** Part 11.16a §11.16.5.6.8. **Stories:** Part 11.16e.
 
 | Field | Specification |
 |---|---|
@@ -2161,7 +2161,7 @@ flowchart TD
 
 #### INV-SVC-09 Fundraising Pitch & Financial Scenario Automation
 
-**Purpose:** Prepare issuer-specific investment materials and deterministic funding scenarios Basic funding scenarios only; advanced ownership/ESOP/instrument management in INV-SVC-20. (workbook Service Catalog row 13). **Epic:** EP-31. **Service spec:** Part 11.16a §11.16.5.6.9. **Stories:** Part 11.16c.
+**Purpose:** Prepare issuer-specific investment materials and deterministic funding scenarios Basic funding scenarios only; advanced ownership/ESOP/instrument management in INV-SVC-20. (workbook Service Catalog row 13). **Epic:** EP-31. **Service spec:** Part 11.16a §11.16.5.6.9. **Stories:** Part 11.16e.
 
 | Field | Specification |
 |---|---|
@@ -2428,7 +2428,7 @@ flowchart TD
 
 #### INV-SVC-10 Due Diligence & Secure Data Room Automation
 
-**Purpose:** Organize fundraising evidence and control eligible diligence access (workbook Service Catalog row 14). **Epic:** EP-31. **Service spec:** Part 11.16a §11.16.5.6.10. **Stories:** Part 11.16c.
+**Purpose:** Organize fundraising evidence and control eligible diligence access (workbook Service Catalog row 14). **Epic:** EP-31. **Service spec:** Part 11.16a §11.16.5.6.10. **Stories:** Part 11.16e.
 
 | Field | Specification |
 |---|---|
@@ -2706,7 +2706,7 @@ flowchart TD
 
 #### INV-SVC-11 Investment Terms, Offers & Agreement Automation
 
-**Purpose:** Prepare and manage controlled formal fundraising offers and investor applications (workbook Service Catalog row 15). **Epic:** EP-31. **Service spec:** Part 11.16a §11.16.5.6.11. **Stories:** Part 11.16c.
+**Purpose:** Prepare and manage controlled formal fundraising offers and investor applications (workbook Service Catalog row 15). **Epic:** EP-31. **Service spec:** Part 11.16a §11.16.5.6.11. **Stories:** Part 11.16e.
 
 | Field | Specification |
 |---|---|
@@ -2736,7 +2736,7 @@ flowchart TD
 | Result / acceptance | Agreement draft and approval record; acceptance INV-SVC-11-WF01-AT01 (Terms and agreement preparation) → TC-V12-N-526 |
 | Domain contract | Validator `urn:inv:dto:INV-SVC-11-WF01:v2`; fields below; event envelope per FR-V12-N-006 |
 | Risk and authority | R1 · V12 side effect: Internal analysis/draft; no external action without separate authorization |
-| Autonomy in blueprint | L1 maximum for offers, batches, agreements and acceptance (two-person, hash-bound); AI never signs, issues or accepts; L3 only for a bounded re-send mandate (DEC-779) |
+| Autonomy in blueprint | L1 maximum for offers, batches, agreements and acceptance (two-person, hash-bound, per action); AI never signs, issues or accepts; no mandate may authorise these actions (Group O CP-O-04, DEC-822) |
 | Approval gate (V12) | Explicit legal and issuer approval for offer, recipient batch, agreement and application acceptance |
 | Operating mode / modalities | Manual / supervised review; preparation only if gate not satisfied · Text; structured records |
 | Agent / automations | AG-177 · AU-206 |
@@ -2792,7 +2792,7 @@ flowchart TD
 | Result / acceptance | Offer decision and expiry task; acceptance INV-SVC-11-WF02-AT01 (Formal offer and expiry workflow) → TC-V12-N-540 |
 | Domain contract | Validator `urn:inv:dto:INV-SVC-11-WF02:v2`; fields below; event envelope per FR-V12-N-006 |
 | Risk and authority | R3 consequential legal · V12 side effect: Consequential financial/legal or authority-bearing action; prepare only until authorized |
-| Autonomy in blueprint | L1 maximum for offers, batches, agreements and acceptance (two-person, hash-bound); AI never signs, issues or accepts; L3 only for a bounded re-send mandate (DEC-779) |
+| Autonomy in blueprint | L1 maximum for offers, batches, agreements and acceptance (two-person, hash-bound, per action); AI never signs, issues or accepts; no mandate may authorise these actions (Group O CP-O-04, DEC-822) |
 | Approval gate (V12) | Explicit legal and issuer approval for offer, recipient batch, agreement and application acceptance |
 | Operating mode / modalities | Manual / supervised review; preparation only if gate not satisfied · Text; structured records |
 | Agent / automations | — (deterministic) · AU-205, AU-206, AU-207, AU-223, AU-201 |
@@ -2868,7 +2868,7 @@ flowchart TD
 | Result / acceptance | Verified or held application; acceptance INV-SVC-11-WF03-AT01 (Application and signature coordination) → TC-V12-N-556 |
 | Domain contract | Validator `urn:inv:dto:INV-SVC-11-WF03:v2`; fields below; event envelope per FR-V12-N-006 |
 | Risk and authority | R3 · V12 side effect: Potential external write/communication; controlled only after applicable permission and policy approval |
-| Autonomy in blueprint | L1 maximum for offers, batches, agreements and acceptance (two-person, hash-bound); AI never signs, issues or accepts; L3 only for a bounded re-send mandate (DEC-779) |
+| Autonomy in blueprint | L1 maximum for offers, batches, agreements and acceptance (two-person, hash-bound, per action); AI never signs, issues or accepts; no mandate may authorise these actions (Group O CP-O-04, DEC-822) |
 | Approval gate (V12) | Explicit legal and issuer approval for offer, recipient batch, agreement and application acceptance |
 | Operating mode / modalities | Manual / supervised review; preparation only if gate not satisfied · Text; structured records |
 | Agent / automations | — · AU-224, AU-202 |
@@ -2938,7 +2938,7 @@ flowchart TD
 | Result / acceptance | Comparison and negotiation scenarios; acceptance INV-SVC-11-WF04-AT01 (Term-sheet comparison and negotiation scenario analysis) → TC-V12-N-571 |
 | Domain contract | Validator `urn:inv:dto:INV-SVC-11-WF04:v2`; fields below; event envelope per FR-V12-N-006 |
 | Risk and authority | R0 · V12 side effect: Internal analysis/draft; no external action without separate authorization |
-| Autonomy in blueprint | L1 maximum for offers, batches, agreements and acceptance (two-person, hash-bound); AI never signs, issues or accepts; L3 only for a bounded re-send mandate (DEC-779) |
+| Autonomy in blueprint | L1 maximum for offers, batches, agreements and acceptance (two-person, hash-bound, per action); AI never signs, issues or accepts; no mandate may authorise these actions (Group O CP-O-04, DEC-822) |
 | Approval gate (V12) | Approve source/data rights and applicable external actions; qualified reviewer confirms legal/financial claims and any offer, filing, ownership change or payment; no autonomous regulated decision. |
 | Operating mode / modalities | Manual / supervised review; preparation only if gate not satisfied · Text; structured records |
 | Agent / automations | AG-177 · AU-219 |
@@ -2996,7 +2996,7 @@ flowchart TD
 
 #### INV-SVC-12 Investment Receipt & Financial Reconciliation Automation
 
-**Purpose:** Match verified receipts to issuer commitments and identify discrepancies (workbook Service Catalog row 16). **Epic:** EP-31. **Service spec:** Part 11.16a §11.16.5.6.12. **Stories:** Part 11.16c.
+**Purpose:** Match verified receipts to issuer commitments and identify discrepancies (workbook Service Catalog row 16). **Epic:** EP-31. **Service spec:** Part 11.16a §11.16.5.6.12. **Stories:** Part 11.16e.
 
 | Field | Specification |
 |---|---|
@@ -3254,27 +3254,27 @@ flowchart TD
 
 | Test ID | V12 ID | Scenario | Preconditions (V12) | Expected (V12) | Blueprint note |
 |---|---|---|---|---|---|
-| TC-V12-N-633 | INV-SVC-01-ENT-AT01 | Single-SKU purchase and entitlement isolation | Client selects this SKU only; foundation enabled; no upstream subscription | Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution | Covered also by PM-N-09 exhaustive suite (Part 11.16c) |
-| TC-V12-N-634 | INV-SVC-02-ENT-AT01 | Single-SKU purchase and entitlement isolation | Client selects this SKU only; foundation enabled; no upstream subscription | Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution | Covered also by PM-N-09 exhaustive suite (Part 11.16c) |
-| TC-V12-N-635 | INV-SVC-03-ENT-AT01 | Single-SKU purchase and entitlement isolation | Client selects this SKU only; foundation enabled; no upstream subscription | Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution | Covered also by PM-N-09 exhaustive suite (Part 11.16c) |
-| TC-V12-N-636 | INV-SVC-04-ENT-AT01 | Single-SKU purchase and entitlement isolation | Client selects this SKU only; foundation enabled; no upstream subscription | Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution | Covered also by PM-N-09 exhaustive suite (Part 11.16c) |
-| TC-V12-N-637 | INV-SVC-05-ENT-AT01 | Single-SKU purchase and entitlement isolation | Client selects this SKU only; foundation enabled; no upstream subscription | Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution | Covered also by PM-N-09 exhaustive suite (Part 11.16c) |
-| TC-V12-N-638 | INV-SVC-06-ENT-AT01 | Single-SKU purchase and entitlement isolation | Client selects this SKU only; foundation enabled; no upstream subscription | Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution | Covered also by PM-N-09 exhaustive suite (Part 11.16c) |
-| TC-V12-N-639 | INV-SVC-07-ENT-AT01 | Single-SKU purchase and entitlement isolation | Client selects this SKU only; foundation enabled; no upstream subscription | Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution | Covered also by PM-N-09 exhaustive suite (Part 11.16c) |
-| TC-V12-N-640 | INV-SVC-08-ENT-AT01 | Single-SKU purchase and entitlement isolation | Client selects this SKU only; foundation enabled; no upstream subscription | Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution | Covered also by PM-N-09 exhaustive suite (Part 11.16c) |
-| TC-V12-N-641 | INV-SVC-09-ENT-AT01 | Single-SKU purchase and entitlement isolation | Client selects this SKU only; foundation enabled; no upstream subscription | Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution | Covered also by PM-N-09 exhaustive suite (Part 11.16c) |
-| TC-V12-N-642 | INV-SVC-10-ENT-AT01 | Single-SKU purchase and entitlement isolation | Client selects this SKU only; foundation enabled; no upstream subscription | Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution | Covered also by PM-N-09 exhaustive suite (Part 11.16c) |
-| TC-V12-N-643 | INV-SVC-11-ENT-AT01 | Single-SKU purchase and entitlement isolation | Client selects this SKU only; foundation enabled; no upstream subscription | Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution | Covered also by PM-N-09 exhaustive suite (Part 11.16c) |
-| TC-V12-N-644 | INV-SVC-12-ENT-AT01 | Single-SKU purchase and entitlement isolation | Client selects this SKU only; foundation enabled; no upstream subscription | Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution | Covered also by PM-N-09 exhaustive suite (Part 11.16c) |
+| TC-V12-N-633 | INV-SVC-01-ENT-AT01 | Single-SKU purchase and entitlement isolation | Client selects this SKU only; foundation enabled; no upstream subscription | Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution | Covered also by PM-N-09 exhaustive suite (Part 11.16e) |
+| TC-V12-N-634 | INV-SVC-02-ENT-AT01 | Single-SKU purchase and entitlement isolation | Client selects this SKU only; foundation enabled; no upstream subscription | Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution | Covered also by PM-N-09 exhaustive suite (Part 11.16e) |
+| TC-V12-N-635 | INV-SVC-03-ENT-AT01 | Single-SKU purchase and entitlement isolation | Client selects this SKU only; foundation enabled; no upstream subscription | Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution | Covered also by PM-N-09 exhaustive suite (Part 11.16e) |
+| TC-V12-N-636 | INV-SVC-04-ENT-AT01 | Single-SKU purchase and entitlement isolation | Client selects this SKU only; foundation enabled; no upstream subscription | Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution | Covered also by PM-N-09 exhaustive suite (Part 11.16e) |
+| TC-V12-N-637 | INV-SVC-05-ENT-AT01 | Single-SKU purchase and entitlement isolation | Client selects this SKU only; foundation enabled; no upstream subscription | Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution | Covered also by PM-N-09 exhaustive suite (Part 11.16e) |
+| TC-V12-N-638 | INV-SVC-06-ENT-AT01 | Single-SKU purchase and entitlement isolation | Client selects this SKU only; foundation enabled; no upstream subscription | Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution | Covered also by PM-N-09 exhaustive suite (Part 11.16e) |
+| TC-V12-N-639 | INV-SVC-07-ENT-AT01 | Single-SKU purchase and entitlement isolation | Client selects this SKU only; foundation enabled; no upstream subscription | Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution | Covered also by PM-N-09 exhaustive suite (Part 11.16e) |
+| TC-V12-N-640 | INV-SVC-08-ENT-AT01 | Single-SKU purchase and entitlement isolation | Client selects this SKU only; foundation enabled; no upstream subscription | Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution | Covered also by PM-N-09 exhaustive suite (Part 11.16e) |
+| TC-V12-N-641 | INV-SVC-09-ENT-AT01 | Single-SKU purchase and entitlement isolation | Client selects this SKU only; foundation enabled; no upstream subscription | Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution | Covered also by PM-N-09 exhaustive suite (Part 11.16e) |
+| TC-V12-N-642 | INV-SVC-10-ENT-AT01 | Single-SKU purchase and entitlement isolation | Client selects this SKU only; foundation enabled; no upstream subscription | Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution | Covered also by PM-N-09 exhaustive suite (Part 11.16e) |
+| TC-V12-N-643 | INV-SVC-11-ENT-AT01 | Single-SKU purchase and entitlement isolation | Client selects this SKU only; foundation enabled; no upstream subscription | Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution | Covered also by PM-N-09 exhaustive suite (Part 11.16e) |
+| TC-V12-N-644 | INV-SVC-12-ENT-AT01 | Single-SKU purchase and entitlement isolation | Client selects this SKU only; foundation enabled; no upstream subscription | Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution | Covered also by PM-N-09 exhaustive suite (Part 11.16e) |
 
 ### Decisions, tags and quality gate for this file
 
-Used in this file: DEC-802, 804, 805, 809, 814, 817; ADR-231; ASSUMPTION-1000, 1003; CONFLICT-1019 (V12 side-effect labels of INV-SVC-05-WF02/WF04 weaker than the real effect; the stricter class is applied). Full registers in Part 11.16c.
+Used in this file: DEC-802, 804, 805, 809, 814, 817; ADR-231; ASSUMPTION-1000, 1003; CONFLICT-1019 (V12 side-effect labels of INV-SVC-05-WF02/WF04 weaker than the real effect; the stricter class is applied). Full registers in Part 11.16e.
 
 | # | Quality gate item | Result | Notes |
 |---|---|---|---|
 | 1 | Every requirement traced | Pass | Workbook rows quoted literally per workflow |
-| 2 | Tags logged | Pass | Part 11.16c §11.16.9 |
+| 2 | Tags logged | Pass | Part 11.16e §11.16.9 |
 | 3 | IDs unique | Pass | TC and FR allocated by n_ctx.py |
 | 4 | Every requirement has tests | Pass | Each workflow: step tests + 9–11 class tests |
 | 5 | Negative/edge/security cases | Pass | INPUT, SCOPE, ENT, DUP, QUALITY, BUDGET, RECOVERY, SEC, APPROVAL, EFFECT |
