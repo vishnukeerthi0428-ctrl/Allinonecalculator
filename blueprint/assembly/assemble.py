@@ -85,10 +85,10 @@ def cover_html(nparts, date="28 Nov 2026"):
   <p class="cover-sub">{SUBTITLE}</p>
   <p class="cover-meta">Multi-tenant · Configuration-driven · Independent operations</p>
   <table class="cover-table">
-    <tr><td>Document</td><td>Application Blueprint (Parts 0–9.10, assembled in Part 10)</td></tr>
+    <tr><td>Document</td><td>Application Blueprint (Parts 0–9.10 and Part 11 customer revision V12, 11.0–11.25)</td></tr>
     <tr><td>Version</td><td>1.2 (v1.0 27 Nov 2026; v1.1 literal match and advanced capabilities; v1.2 customer revision V12 consolidated, Part 11.25)</td></tr><tr><td>Date</td><td>{date}</td></tr>
     <tr><td>Classification</td><td>Confidential: internal and authorized delivery partners</td></tr>
-    <tr><td>Inputs</td><td>01 Business Requirements (BRD), 02 Functional Specification (FRD), and the complete 38-document engineering source pack (Part 0B)</td></tr>
+    <tr><td>Inputs</td><td>BRD V12 and FSD V12 with Appendices A–D and the 4 HTML prototypes (customer revision of 28 Nov 2026, Part 11); the original BRD, FRD and complete 38-document engineering source pack (Part 0B)</td></tr>
     <tr><td>Source files</td><td>{nparts} part documents</td></tr>
   </table>
 </div>"""
