@@ -396,7 +396,7 @@ write('trn.md', ['V12 ID', 'Screen', 'Screen name (V12)', 'V12 UAT', 'Blueprint 
 ENGID = {v: k for k, v in ENGNAMES.items()}
 write('chain.md', ['Workflow', 'Steps (AI)', 'Engine', 'Agent → candidate AG', 'UI → blueprint FR', 'RTM TCs', 'API', 'DB first → blueprint table', 'Policy'],
       [(c[0], c[2], ENGID.get(c[3], c[3]), f'{c[5]} → {c[6]}', c[8].replace('FR-', ''), c[9], c[10], f'{c[11]} → {c[12]}', 'PRECHECK + CJ' if 'CJ' in c[13] else 'PRECHECK') for c in chain_rows])
-write('ent.md', ['ENT', 'Pri', 'Requirement (V12, adopted literally)', 'Owner', 'V12 phase', 'Blueprint release (ASSUMPTION-940)', 'V12 screen', 'Before', 'Blueprint location', 'Design depth', 'Trace FR', 'Trace TC', 'Tag', 'After'], ent_rows)
+write('ent.md', ['ENT', 'Pri', 'Requirement (V12, adopted literally)', 'V12 phase → blueprint', 'V12 screen', 'Before', 'Blueprint location', 'Design depth', 'Trace FR / TC', 'After'], [(e[0], e[1], e[2], e[4] + ' → ' + e[5], e[6], e[7], e[8], e[9], e[10] + (' / ' + e[11] if e[11].startswith('TC') else ''), (e[12] + ' ' if e[12] else '') + e[13]) for e in ent_rows])
 write('cdecv.md', ['CDEC', 'Decision', 'Customer recommendation', 'Owner', 'Customer status', 'Verdict', 'Blueprint decisions', 'K decision', 'Note', 'After'], cdec_rows)
 write('rec.md', ['REC', 'Pri', 'Owner', 'Required change', 'V11 status', 'Evidence', 'Before', 'Blueprint location', 'New'], rec_rows)
 write('cdec180.md', ['CDEC', 'Blueprint alias', 'Class', 'Subject', 'Blueprint FRs', 'Part 6.9a status (before the 6.9b queue)', 'Customer status'], cdec180)

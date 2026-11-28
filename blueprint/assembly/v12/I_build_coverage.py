@@ -59,9 +59,10 @@ for r in t26[5]['rows']:
     add(F, '26', 'V5 proposed entities', r[0], f'{r[0]}: {r[1]}', 'Covered' if r[0] not in ('DB-V2-ARTIFACT', 'DB-V2-EFFECT', 'DB-V2-USAGE') else 'Partially covered', dbv2[r[0]], 'Mapped (§11.9.4.3)', 'DEC-661')
 for t in t26[6:45]:
     svc = re.search(r'Domain schema (\w+) — (SM-SVC-\d\d)', t['heading'])
+    seenf = collections.Counter()
     for r in t['rows']:
-        typed = bp_has(r[0])
-        add(F, '26', f'Domain schema {svc.group(1)} {svc.group(2)}', f'I-26-DS-{svc.group(2)}-{r[0]}', f'{svc.group(1)}.{r[0]}: {r[1]}', 'Covered' if typed else 'Partially covered',
+        typed = bp_has(r[0]); seenf[r[0]] += 1
+        add(F, '26', f'Domain schema {svc.group(1)} {svc.group(2)}', f'I-26-DS-{svc.group(2)}-{r[0]}' + ('' if seenf[r[0]] == 1 else f'-{seenf[r[0]]}'), f'{svc.group(1)}.{r[0]}: {r[1]}', 'Covered' if typed else 'Partially covered',
             'typed column of the same name in Part 3.3/3.6b' if typed else 'blueprint entity of the service (no column of this name)',
             'Validated in payload by domain_schema_registry (required keys, status vocabulary) and Appendix B JSON Schema; typed column where filterable', 'DEC-661, ADR-211, FR-V12-I-011')
 for r in t26[45]['rows']:
@@ -101,11 +102,12 @@ for t, c, typ, nul, dflt in q("select table_name, column_name, data_type, is_nul
         loc = emap[t]['bp_table'] + ('.state / .revision' if c in ('status', 'version') else '')
     add(F, 'Appendix C2' if t in c2set else 'Appendix C', 'Column', f'I-DDL-COL-{t}.{c}', f'{t}.{c} {typ} {"NULL" if nul=="YES" else "NOT NULL"} {dflt}'.strip(), sb, loc,
         'Column adopted (DEC-661)' + ('; generic domain column added to typed table' if c in newcols else ''), 'DEC-661')
-for con, t, typ, d in q("select conname, conrelid::regclass::text, contype::text, regexp_replace(pg_get_constraintdef(oid), '\s+', ' ', 'g') from pg_constraint where connamespace='public'::regnamespace order by 2,1"):
+for con, t, typ, d in q("select conname, conrelid::regclass::text, contype::text, regexp_replace(pg_get_constraintdef(oid), '[[:space:]]+', ' ', 'g') from pg_constraint where connamespace='public'::regnamespace order by 2,1"):
     kind = {'p': 'PK', 'f': 'FK', 'c': 'CHECK', 'u': 'UNIQUE'}[typ]
     weak = (t == 'role_permission' and kind in ('FK','PK')) or (t, kind) in (('webhook_delivery', 'FK'), ('config_promotion', 'FK'), ('inbox', 'PK'))
     add(F, 'Appendix C2' if t in c2set else 'Appendix C', 'Constraint', f'I-DDL-CON-{con}', f'{kind} {t}: {d}', 'Partially covered' if weak else ('Covered' if kind in ('PK', 'FK') else 'Partially covered'),
-        (core.get(t) or emap[t]['bp_table']), 'Strengthened in C3-03 (tenant-pinned key)' if weak else 'Adopted', 'GAP-915, DEC-669' if weak else 'DEC-661')
+        (core.get(t) or emap[t]['bp_table']), 'Strengthened in C3-03 (tenant-pinned key)' if weak else ('IN adopted; EU value held until Founder decision' if con == 'tenant_data_region_check' else 'Adopted'),
+        'GAP-915, DEC-669' if weak else ('CONFLICT-832 (Part 11.5a), DEC-667' if con == 'tenant_data_region_check' else 'DEC-661'), 'Pending Founder decision' if con == 'tenant_data_region_check' else 'Matched')
 for t, p, cmd in q("select tablename, policyname, cmd from pg_policies order by 1"):
     add(F, 'Appendix C2' if t in c2set else 'Appendix C', 'RLS policy', f'I-DDL-POL-{p}', f'{p} ON {t} FOR {cmd} USING/WITH CHECK tenant_id = current_setting(app.tenant_id)::uuid',
         'Partially covered', 'Part 3.3 §3.3.9 (tenant+startup, command-split)', 'Replaced by command-split tenant+company policies rls_<t>__select/insert/update (C3-13)', 'GAP-912, DEC-662, ADR-210')

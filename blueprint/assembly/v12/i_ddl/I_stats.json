@@ -1,9 +1,6 @@
 {
  "rows": 3248,
- "dupe_ids": [
-  "I-26-DS-SM-SVC-05-stage",
-  "I-26-DS-SM-SVC-10-agenda_ref"
- ],
+ "dupe_ids": [],
  "before": {
   "Partially covered": 902,
   "Conflict": 16,
@@ -11,8 +8,8 @@
   "Covered": 1809
  },
  "after": {
-  "Matched": 3246,
-  "Pending Founder decision": 2
+  "Matched": 3245,
+  "Pending Founder decision": 3
  },
  "by_section": [
   [
