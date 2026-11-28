@@ -4,7 +4,7 @@
 | Field | Value |
 |---|---|
 | Document | Part 11, Batch 14: Founder decisions on the customer revision V12, and consolidation of Parts 11.1–11.13 |
-| Version | 1.0 · 28 Nov 2026 (consolidation sections are completed when all V12 review groups have reported) |
+| Version | 1.1 · 28 Nov 2026 (§11.14.2 completed in blueprint release v1.2; Part 11.25) |
 | Precedence | This part > Parts 11.1–11.13 > Part 9.10 > earlier parts (DEC-415 extended) |
 
 ## 11.14.1 Founder decisions recorded (28 Nov 2026)
@@ -40,8 +40,21 @@ The Founder gave two instructions on 28 Nov 2026:
 | DEC-790 | **All V12 change requests are funded, irrespective of time and cost.** This covers CR-V12-A…M (every review group), the 14 new services, the UI scope, the evaluation suites and every scope item above. Budgets and dates are re-planned in the master implementation plan (Part 11.20) and the revised cost model | **Founder / Product Owner instruction in this engagement, 28 Nov 2026** ("go with V12 for all pending items … incorporate everything needed, irrespective of time and cost incurred") | Resolves CONFLICT-780, 869, 552, 657 and every remaining funding or staffing conflict (CONFLICT-462 and 113 cross-references included) |
 | DEC-791 | **Every other pending V12 item is adopted as V12 specifies.** This includes the SM-SVC-37 pricing scenarios and experiments (WF02/03) and the SM-SVC-27 generative media, plus any aspect still marked "Pending Founder decision" in the Part 11 registers. V12's own conditions, the legal gates (counsel-approved rule packs per jurisdiction) and audit always apply | **Founder / Product Owner instruction in this engagement, 28 Nov 2026** ("go with V12 for all pending items … incorporate everything needed, irrespective of time and cost incurred") | Closes all remaining "Pending Founder decision" rows. Part 11.0 is regenerated to 100% Matched |
 
-These decisions apply on top of everything recorded in Parts 11.1–11.13. Every other V12 conflict marked "Pending Founder decision" remains pending until decided (the list is consolidated in §11.14.2).
+These decisions apply on top of everything recorded in Parts 11.1–11.13. DEC-791 closes every other V12 item that was marked "Pending Founder decision"; no item remains pending (§11.14.2, consolidated in v1.2).
 
 ## 11.14.2 V12 conflicts still pending a Founder decision
 
-*Completed in the consolidation after all review groups report.*
+**None (consolidated in release v1.2, 28 Nov 2026; Part 11.25).** DEC-770…790 decide the named conflicts and DEC-791 adopts every remaining item as V12 specifies, with V12's own conditions, counsel-approved jurisdiction rule packs and audit. In v1.2 the "Pending Founder decision" status cells of the Part 11 requirement, aspect, conflict and decision rows were replaced by "Adopted (DEC-7xx)" naming the deciding decision (Part 11.25 §11.25.3); historical "status before" columns and per-part status lines keep their original counts, annotated. Erratum E-V-46 (Part 11.23c) governs any remaining occurrence.
+
+| Founder decision | Conflicts it resolves (summary) |
+|---|---|
+| DEC-770 | CONFLICT-922 (funding of the V12 backlog) |
+| DEC-771 / DEC-787 | CONFLICT-923, 765 (RTO); CONFLICT-833 (RPO) |
+| DEC-772 / DEC-776 | CONFLICT-924, 761, 832, 852, 946, 835 (residency, regions, locales, tax, BYOK) |
+| DEC-773 / DEC-774 / DEC-775 | CONFLICT-943 (24×7), 944 (SLA tiers), 945, 856, 760 (certification) |
+| DEC-777 | CONFLICT-947 (09:00–21:00 window) |
+| DEC-779 / DEC-780 / DEC-781 | CONFLICT-762, 798, 799, 814, 854 (mandates); 778 (agentic commerce); 800, 781 (bid submission) |
+| DEC-782 / DEC-783 | CONFLICT-779, 815, 818 (voice, recordings); 958, 868 (investor mode, Investment Automation) |
+| DEC-784 / DEC-785 / DEC-786 | CONFLICT-834, 887 (SSO/SCIM); 886, 888, 776 (developer platform, connectors); 889 (Vercel data path) |
+| DEC-788 / DEC-789 / DEC-790 | CONFLICT-850, 851, 853, 855, 857, 819 (model registry); 983 (benchmarks); 780, 869, 552, 657, 462, 113 (funding) |
+| DEC-791 | Every remaining item, including SM-SVC-37 pricing experiments and SM-SVC-27 generative media |

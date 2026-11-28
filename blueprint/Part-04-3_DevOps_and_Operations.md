@@ -277,6 +277,9 @@ sequenceDiagram
 
 ## 4.38 Rollback strategy
 
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
+
 | Failure | Rollback mechanism | Time target | Data consideration |
 |---|---|---|---|
 | Bad API/worker image | Redeploy the previous task definition (pipeline PL-20 or ECS circuit breaker) | ≤ 15 min | Schema is backward compatible (expand/contract), so the old code runs |
@@ -474,6 +477,9 @@ Routing keys: **P** = page (on-call phone + A014 incident + email), **T** = tick
 ## 4.43 Incident management
 
 ### 4.43.1 Severity matrix
+
+> **Erratum v1.2 (E-V-37):** superseded by single SEV communication matrix of Part 11.11 (DEC-701). See Part 11.23c.
+
 
 | Sev | Definition | Examples | Response (support hours) | Response (outside) | Update cadence | Postmortem |
 |---|---|---|---|---|---|---|

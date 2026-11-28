@@ -840,6 +840,9 @@ Template states: Draft → InReview → Published → Deprecated (Published immu
 
 ### 6.3.5.5 Group TC-18-D: Decision table – enabling a workflow revision (technique: DT) · TS-18-04
 
+> **Erratum v1.2 (E-V-01):** superseded by consequential actions above L1 only under an Active two-person bounded mandate (DEC-779). See Part 11.23c.
+
+
 | Condition / Rule | E1 | E2 | E3 | E4 | E5 |
 |---|---|---|---|---|---|
 | Requested mode ≤ cap of every action node (DEC-064) | N | Y | Y | Y | Y |

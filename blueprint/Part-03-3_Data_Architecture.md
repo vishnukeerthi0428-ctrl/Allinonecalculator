@@ -36,6 +36,9 @@
 
 ### 3.3.1.2 Binding sources used
 
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
+
 | Source | What it fixes for the data layer |
 |---|---|
 | FRD §5 (Engineering contracts) | "Independent PostgreSQL database and role per product; tenant root first, startup and membership, configuration/reference, business entities in FK order, deferred cyclic constraints, indexes/views last. All operational rows use UUID PK, UTC timestamps, scoped tenant_id/startup_id composite foreign keys, RLS and revision. Root and reference rows have explicit alternative scope. Immutable approval, financial and audit records; decimal and ISO currency; provider IDs unique within connection. Separate object storage/vector ACLs. Never expose direct DB access to browser, Copilot or provider. Validate physical naming against existing schema." |
@@ -2078,6 +2081,9 @@ erDiagram
 
 ### 3.3.5.1 Platform and extensions
 
+> **Erratum v1.2 (E-V-05):** superseded by hosting is Vercel + Supabase + AWS in Mumbai with an EU stack (DEC-421/772/786). See Part 11.23c.
+
+
 | Item | Decision | Basis |
 |---|---|---|
 | Engine | PostgreSQL **17** on Amazon RDS for PostgreSQL in ap-south-1 (16 acceptable). *Verify supported major/minor versions and extension versions on RDS at implementation (as of 27 Nov 2026).* [ASSUMPTION-113] | ASSUMPTION-005; DEC-040 |
@@ -2125,6 +2131,9 @@ erDiagram
 
 ### 3.3.5.6 Money, quantities, rates and currency (DEC-027, CA-FIN)
 
+> **Erratum v1.2 (E-V-33):** superseded by money in integer minor units (DEC-587). See Part 11.23c.
+
+
 | Kind | Type | Example columns | Rule |
 |---|---|---|---|
 | Monetary amount (document, ledger, payment) | `numeric(18,2)` | `line_total`, `total_amount`, `amount` | ROUND_HALF_UP to 2 places per line; document total = Σ rounded lines + tax lines (BRL-QTE-02) |
@@ -2165,6 +2174,9 @@ Python uses `decimal.Decimal` with a context of `ROUND_HALF_UP`; floats are bann
 
 ### 3.3.5.9 Immutability enforcement (NFR-018)
 
+> **Erratum v1.2 (E-V-04):** superseded by canonical database roles `app_rw`, `app_worker`, `app_owner` (DEC-778/894). See Part 11.23c.
+
+
 | Profile | Mechanism | Tables (examples) |
 |---|---|---|
 | **A: append-only** | `REVOKE UPDATE, DELETE` from `ge_app` and `ge_worker`; trigger `fn_forbid_mutation()` `BEFORE UPDATE OR DELETE` raises `SQLSTATE 'P0001' IMMUTABLE_RECORD` unless `current_user = 'ge_retention'` **and** `current_setting('app.retention_run_id', true)` is set (purge only) | `gov_approval`, `ops_audit_event`, `com_receivable_entry`, `com_payable_entry`, `com_payment_allocation`, `com_fulfillment_event`, `com_signature_event`, `ai_cost_ledger`, `ai_usage`, `saas_usage_meter_reading`, `saas_credit`, `gov_consent`, `gov_suppression`, `gov_eligibility_decision`, `crm_stage_transition`, `ops_domain_event` |
@@ -2174,6 +2186,9 @@ Python uses `decimal.Decimal` with a context of `ROUND_HALF_UP`; floats are bann
 | Tamper evidence | `ops_audit_event` hash chain per tenant: `hash = sha256(prev_hash ‖ canonical_json(event))`, computed in a serialized per-tenant sequence (advisory lock) by the audit writer; daily anchor hash exported to S3 Object Lock (Part 2.4 §2.34.3) | `ops_audit_event`, `ops_audit_anchor` (anchor table is part of the audit entity) |
 
 ### 3.3.5.10 Database roles and grants
+
+> **Erratum v1.2 (E-V-04):** superseded by canonical database roles `app_rw`, `app_worker`, `app_owner` (DEC-778/894). See Part 11.23c.
+
 
 | Role | Login | Used by | Privileges |
 |---|---|---|---|
@@ -2639,6 +2654,9 @@ Role grants: `ten_membership_grant (id, tenant_id, membership_id → ten_members
 
 ### 3.3.6.6 CRM
 
+> **Erratum v1.2 (E-V-33):** superseded by money in integer minor units (DEC-587). See Part 11.23c.
+
+
 **ENT-079 Lead (`crm_lead`)**: Sets: STD-S + STD-W.
 
 | Column | Type | Null | Default | Constraint | Class | Description |
@@ -2846,6 +2864,9 @@ Role grants: `ten_membership_grant (id, tenant_id, membership_id → ten_members
 | `attribution_window_days` | smallint | N | 90 | CHECK 1–365 | Int | Part 2.4 §2.31.4 |
 
 ### 3.3.6.9 Commerce
+
+> **Erratum v1.2 (E-V-33):** superseded by money in integer minor units (DEC-587). See Part 11.23c.
+
 
 **ENT-125 Proposal (`com_proposal`)**: Sets: STD-S + STD-W.
 
@@ -3200,6 +3221,9 @@ Role grants: `ten_membership_grant (id, tenant_id, membership_id → ten_members
 
 ### 3.3.6.11 AI and cost
 
+> **Erratum v1.2 (E-V-33):** superseded by money in integer minor units (DEC-587). See Part 11.23c.
+
+
 **ENT-046 ModelRun (`ai_model_run`)**: Sets: STD-SA + STD-W. Partitioned monthly by `created_at`. Payload bodies are **not** stored in the row: redacted input/output go to S3 (`ai-payload/` prefix, SSE-KMS, lifecycle expiry 90 days) and only digests stay in the database (DEC-028).
 
 | Column | Type | Null | Default | Constraint | Class | Description |
@@ -3255,6 +3279,9 @@ Role grants: `ten_membership_grant (id, tenant_id, membership_id → ten_members
 | `balance_reserved` / `balance_settled` | numeric(18,4) | N | 0 | maintained by trigger from ledger; CHECK reserved + settled ≤ cap when hard_stop | Conf | Cached balance |
 
 ### 3.3.6.12 SaaS service
+
+> **Erratum v1.2 (E-V-33):** superseded by money in integer minor units (DEC-587). See Part 11.23c.
+
 
 **ENT-179 ServicePlan (`saas_plan`)**: scope P.
 
@@ -3339,6 +3366,9 @@ Role grants: `ten_membership_grant (id, tenant_id, membership_id → ten_members
 ---
 
 ## 3.3.7 Compact dictionary: remaining 131 entities
+
+> **Erratum v1.2 (E-V-33):** superseded by money in integer minor units (DEC-587). See Part 11.23c.
+
 
 Each row gives the standard set (§3.3.6.1), the entity-specific key columns (type in brackets where not obvious) and the keys and constraints. Classification defaults to **Int** unless a column is marked (Conf) or (Rest).
 
@@ -3670,6 +3700,9 @@ Effects: portfolio mode (several `startup_ids`, empty `write_startup_id`) can re
 
 ### 3.3.9.3 Tenant-scoped, mixed and platform tables
 
+> **Erratum v1.2 (E-V-04):** superseded by canonical database roles `app_rw`, `app_worker`, `app_owner` (DEC-778/894). See Part 11.23c.
+
+
 ```sql
 -- Scope T: tenant-wide rows (startup_id NULL) are visible to every startup in the tenant
 CREATE POLICY rls_gov_suppression__select ON gov_suppression FOR SELECT
@@ -3927,6 +3960,9 @@ flowchart TD
 ```
 
 ### 3.3.12.5 Reconciliation reports
+
+> **Erratum v1.2 (E-V-16):** superseded by V12 reconciliation actions are written V12-REC-## (DEC-964). See Part 11.23c.
+
 
 | Report | Content | Pass criterion |
 |---|---|---|
@@ -4359,6 +4395,9 @@ Test cases implementing these scenarios are catalogued in Part 6 (TC-###) under 
 
 ## 3.3.21 Register of tags issued in this batch
 
+> **Erratum v1.2 (E-V-05, E-V-06):** superseded by hosting is Vercel + Supabase + AWS in Mumbai with an EU stack (DEC-421/772/786); Supabase-managed PostgreSQL (DEC-421/772). See Part 11.23c.
+
+
 | Tag | Statement | Section |
 |---|---|---|
 | RECOMMENDATION-036 | UUIDv7 primary keys generated in the application; never expose raw IDs as capabilities; 256-bit random tokens stored as hashes for every shared link | §3.3.5.2 |
@@ -4395,6 +4434,9 @@ Test cases implementing these scenarios are catalogued in Part 6 (TC-###) under 
 ---
 
 ## 3.3.22 Quality gate: Batch 3.3
+
+> **Erratum v1.2 (E-V-16):** superseded by V12 reconciliation actions are written V12-REC-## (DEC-964). See Part 11.23c.
+
 
 | # | Check | Result | Notes and fixes applied |
 |---|---|---|---|

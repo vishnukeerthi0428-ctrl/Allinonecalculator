@@ -1,0 +1,155 @@
+Task,File,Occurrences,Change
+1(a),Part-11-19a_Platform_Decisions_Identity_Developer_Platform_Connectors_Vercel.md,1,"connector_pack_guard(): predicate now uses jurisdiction_pack.jurisdiction / pack_code, status 'Approved', counsel sign-off, effective dates and the rulepack_requirement join of fn_activation_gate(); same patch applied to final/build/schema.sql, migrations/V0006 and assembly/v12b/R_frag/a_c3.md; verified on PostgreSQL 16.15 (4 cases) and 42/42 DB tests"
+1(a),Part-11-24b_Developer_Build_and_Production_Deployment_Pack.md,1,11.24b gate row points to the corrected guard
+1(a),Part-11-24c_Developer_Build_and_Production_Deployment_Pack.md,1,CONFLICT-1215 status
+1(a),Part-11-24c_Developer_Build_and_Production_Deployment_Pack.md,1,inconsistency #4 status
+1(a),Part-11-24c_Developer_Build_and_Production_Deployment_Pack.md,1,status line
+1(b),Part-11-16a_Investment_Automation_I_Investor_Mode_and_INV-SVC-01-12.md,34,invited-investor role R21 renamed R22 (all occurrences are the investor role)
+1(b),Part-11-16a_Investment_Automation_I_Investor_Mode_and_INV-SVC-01-12.md,1,role definition row note
+1(b),Part-11-16e_Investment_Automation_I_Stories_Tests_Cost_Decisions.md,9,invited-investor role R21 renamed R22 (all occurrences are the investor role)
+1(b),Part-11-20a_Master_Implementation_Plan_V12_Rollup_Releases_Gates_Calendar.md,2,invited-investor role R21 renamed R22 (all occurrences are the investor role)
+1(b),Part-11-20b_Master_Implementation_Plan_V12_Sprints_Team_Budget_RAID.md,2,invited-investor role R21 renamed R22 (all occurrences are the investor role)
+1(b),Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md,1,investor-context R21 -> R22 (agency-operator R21 lines kept)
+1(b),Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md,1,trace anomaly #4 status
+1(b),Part-11-22c_Master_User_Stories_EP18_to_EP31.md,36,invited-investor role R21 renamed R22 (all occurrences are the investor role)
+1(b),Part-11-22d_Master_User_Stories_EP32_to_EP34.md,216,invited-investor role R21 renamed R22 (all occurrences are the investor role)
+1(b),Part-11-22e_Persona_Journeys_with_Permutations.md,2,investor-context R21 -> R22 (agency-operator R21 lines kept)
+1(b),Part-11-22e_Persona_Journeys_with_Permutations.md,1,journey roles row
+1(b),Part-11-22e_Persona_Journeys_with_Permutations.md,1,reading note
+1(b),Part-11-22f_Epic_Map_Totals_Conflicts_Decisions_and_Quality_Gate.md,1,CONFLICT-1140 status
+1(b),Part-11-22f_Epic_Map_Totals_Conflicts_Decisions_and_Quality_Gate.md,1,DEC-946 authority
+1(b),Part-11-22f_Epic_Map_Totals_Conflicts_Decisions_and_Quality_Gate.md,1,tag register status
+1(b),Part-11-24a_Developer_Build_and_Production_Deployment_Pack.md,1,invited-investor role R21 renamed R22 (all occurrences are the investor role)
+1(b),Part-11-24b_Developer_Build_and_Production_Deployment_Pack.md,1,invited-investor role R21 renamed R22 (all occurrences are the investor role)
+1(b),U_coverage.csv,1,FR-V12-N-015 text
+1(b),api_index.csv,5,investor-context R21 -> R22 in generated artefact
+1(b),env_catalogue.csv,1,ENV-07 external identities R22
+1(b),openapi.yaml,10,investor-context R21 -> R22 in generated artefact
+1(b),openapi.yaml,1,BFF-web cookie roles
+1(c),A_coverage.csv,60,"coverage register status_after ""Pending Founder decision"" -> ""Adopted (DEC-7xx)"" (status_before untouched)"
+1(c),B_coverage.csv,22,"coverage register status_after ""Pending Founder decision"" -> ""Adopted (DEC-7xx)"" (status_before untouched)"
+1(c),C_coverage.csv,43,"coverage register status_after ""Pending Founder decision"" -> ""Adopted (DEC-7xx)"" (status_before untouched)"
+1(c),D_coverage.csv,99,"coverage register status_after ""Pending Founder decision"" -> ""Adopted (DEC-7xx)"" (status_before untouched)"
+1(c),E_coverage.csv,16,"coverage register status_after ""Pending Founder decision"" -> ""Adopted (DEC-7xx)"" (status_before untouched)"
+1(c),F_coverage.csv,22,"coverage register status_after ""Pending Founder decision"" -> ""Adopted (DEC-7xx)"" (status_before untouched)"
+1(c),G_coverage.csv,20,"coverage register status_after ""Pending Founder decision"" -> ""Adopted (DEC-7xx)"" (status_before untouched)"
+1(c),H_coverage.csv,7,"coverage register status_after ""Pending Founder decision"" -> ""Adopted (DEC-7xx)"" (status_before untouched)"
+1(c),I_coverage.csv,3,"coverage register status_after ""Pending Founder decision"" -> ""Adopted (DEC-7xx)"" (status_before untouched)"
+1(c),J_coverage.csv,41,"coverage register status_after ""Pending Founder decision"" -> ""Adopted (DEC-7xx)"" (status_before untouched)"
+1(c),K_coverage.csv,24,"coverage register status_after ""Pending Founder decision"" -> ""Adopted (DEC-7xx)"" (status_before untouched)"
+1(c),L_coverage.csv,1174,"coverage register status_after ""Pending Founder decision"" -> ""Adopted (DEC-7xx)"" (status_before untouched)"
+1(c),M_coverage.csv,1,"coverage register status_after ""Pending Founder decision"" -> ""Adopted (DEC-7xx)"" (status_before untouched)"
+1(c),Part-11-10a_V12_Tests_QC_Coding_Backlog.md,1,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-10c_V12_Tests_QC_Coding_Backlog.md,9,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-11a_V12_Observability_Traceability_Decision_Register.md,1,status/reading line annotated: pending counts adopted by DEC-770…791
+1(c),Part-11-11a_V12_Observability_Traceability_Decision_Register.md,22,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-11b_V12_Observability_Traceability_Decision_Register.md,1,status/reading line annotated: pending counts adopted by DEC-770…791
+1(c),Part-11-11b_V12_Observability_Traceability_Decision_Register.md,1,present-tense pending statement
+1(c),Part-11-11b_V12_Observability_Traceability_Decision_Register.md,29,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-12_Historical_Annex_V1_Baseline_and_Source_Archive_Audit.md,3,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-13a_AI_Improvement_Agents_Automations_Workflows.md,3,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-13b_AI_Improvement_Agents_Automations_Workflows.md,1,status/reading line annotated: pending counts adopted by DEC-770…791
+1(c),Part-11-13b_AI_Improvement_Agents_Automations_Workflows.md,13,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-14_V12_Consolidation_and_Founder_Decisions.md,1,11.14 closing sentence aligned with DEC-791
+1(c),Part-11-14_V12_Consolidation_and_Founder_Decisions.md,1,11.14.2 completed: no pending items; mapping table
+1(c),Part-11-14_V12_Consolidation_and_Founder_Decisions.md,1,11.14 version row
+1(c),Part-11-18d_AI_Voice_Telephony_and_Call_Recordings.md,8,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-19a_Platform_Decisions_Identity_Developer_Platform_Connectors_Vercel.md,1,status/reading line annotated: pending counts adopted by DEC-770…791
+1(c),Part-11-1a_V12_Business_Requirements.md,1,status/reading line annotated: pending counts adopted by DEC-770…791
+1(c),Part-11-1a_V12_Business_Requirements.md,60,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-1b_V12_Business_Requirements.md,1,FR-V12-A-006 amended from 'no investor entity' to product separation per DEC-783
+1(c),Part-11-1b_V12_Business_Requirements.md,1,TC-V12-A-006 amended
+1(c),Part-11-1b_V12_Business_Requirements.md,1,status/reading line annotated: pending counts adopted by DEC-770…791
+1(c),Part-11-1b_V12_Business_Requirements.md,16,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-22f_Epic_Map_Totals_Conflicts_Decisions_and_Quality_Gate.md,1,GAP-1148 status
+1(c),Part-11-2a_V12_Master_Automation_Service_Catalogue_39_Services.md,1,status/reading line annotated: pending counts adopted by DEC-770…791
+1(c),Part-11-2a_V12_Master_Automation_Service_Catalogue_39_Services.md,24,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-2b_V12_Master_Automation_Service_Catalogue_39_Services.md,1,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-2c_V12_Master_Automation_Service_Catalogue_39_Services.md,1,status/reading line annotated: pending counts adopted by DEC-770…791
+1(c),Part-11-2c_V12_Master_Automation_Service_Catalogue_39_Services.md,10,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-3a_V12_Executable_Workflows_SVC01-20.md,1,present-tense pending statement
+1(c),Part-11-3a_V12_Executable_Workflows_SVC01-20.md,1,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-3b_V12_Executable_Workflows_SVC01-20.md,14,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-3c_V12_Executable_Workflows_SVC01-20.md,1,status/reading line annotated: pending counts adopted by DEC-770…791
+1(c),Part-11-3c_V12_Executable_Workflows_SVC01-20.md,35,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-4a_V12_Executable_Workflows_SVC21-39_Registry_and_DTOs.md,3,status/reading line annotated: pending counts adopted by DEC-770…791
+1(c),Part-11-4a_V12_Executable_Workflows_SVC21-39_Registry_and_DTOs.md,1,heading
+1(c),Part-11-4a_V12_Executable_Workflows_SVC21-39_Registry_and_DTOs.md,2,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-4c_V12_Executable_Workflows_SVC21-39_Registry_and_DTOs.md,33,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-4d_V12_Executable_Workflows_SVC21-39_Registry_and_DTOs.md,1,status/reading line annotated: pending counts adopted by DEC-770…791
+1(c),Part-11-4d_V12_Executable_Workflows_SVC21-39_Registry_and_DTOs.md,35,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-5a_V12_Platform_Architecture.md,16,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-5b_V12_Platform_Architecture.md,1,status/reading line annotated: pending counts adopted by DEC-770…791
+1(c),Part-11-5b_V12_Platform_Architecture.md,12,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-6a_V12_AI_Engines_Agents_Models_Evaluation_RAG_Policy_Cost.md,3,status/reading line annotated: pending counts adopted by DEC-770…791
+1(c),Part-11-6a_V12_AI_Engines_Agents_Models_Evaluation_RAG_Policy_Cost.md,22,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-6b_V12_AI_Engines_Agents_Models_Evaluation_RAG_Policy_Cost.md,1,status/reading line annotated: pending counts adopted by DEC-770…791
+1(c),Part-11-6b_V12_AI_Engines_Agents_Models_Evaluation_RAG_Policy_Cost.md,12,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-7a_V12_Website_Portal_Operator_Portfolio_UIUX_Prototypes.md,1,status/reading line annotated: pending counts adopted by DEC-770…791
+1(c),Part-11-7a_V12_Website_Portal_Operator_Portfolio_UIUX_Prototypes.md,19,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-7c_V12_Website_Portal_Operator_Portfolio_UIUX_Prototypes.md,1,FR-V12-G-117 amended per DEC-783
+1(c),Part-11-7c_V12_Website_Portal_Operator_Portfolio_UIUX_Prototypes.md,1,US-19-YG38 amended per DEC-783
+1(c),Part-11-7c_V12_Website_Portal_Operator_Portfolio_UIUX_Prototypes.md,1,AC-V12-G-02 amended; AC-V12-G-02b added
+1(c),Part-11-7c_V12_Website_Portal_Operator_Portfolio_UIUX_Prototypes.md,1,TC-V12-G-233 amended
+1(c),Part-11-7c_V12_Website_Portal_Operator_Portfolio_UIUX_Prototypes.md,1,TC-V12-G-234 amended
+1(c),Part-11-7c_V12_Website_Portal_Operator_Portfolio_UIUX_Prototypes.md,1,status/reading line annotated: pending counts adopted by DEC-770…791
+1(c),Part-11-7c_V12_Website_Portal_Operator_Portfolio_UIUX_Prototypes.md,10,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-8a_V12_REST_API_Event_Contracts_Integrations_Plugins.md,2,status/reading line annotated: pending counts adopted by DEC-770…791
+1(c),Part-11-8a_V12_REST_API_Event_Contracts_Integrations_Plugins.md,7,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-8b_V12_REST_API_Event_Contracts_Integrations_Plugins.md,1,status/reading line annotated: pending counts adopted by DEC-770…791
+1(c),Part-11-8b_V12_REST_API_Event_Contracts_Integrations_Plugins.md,9,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-9a_V12_Database_Schema_Reconciliation.md,2,status/reading line annotated: pending counts adopted by DEC-770…791
+1(c),Part-11-9a_V12_Database_Schema_Reconciliation.md,2,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(c),Part-11-9c_V12_Security_Privacy_Analytics_KPI.md,1,status/reading line annotated: pending counts adopted by DEC-770…791
+1(c),Part-11-9c_V12_Security_Privacy_Analytics_KPI.md,6,"""Pending Founder decision"" status cells replaced by ""Adopted (DEC-7xx)"" naming the deciding decision (before-status columns, label rows, quoted meta text untouched)"
+1(d),Part-11-15a_Regulatory_Rule_Packs_Draft_Legal_Wording.md,1,VR-30 updated for Sept 2026 FCC revision
+1(d),Part-11-15b_Regulatory_Rule_Packs_Draft_Legal_Wording.md,2,11.15b US email pack effective dates (table + YAML)
+1(d),Part-11-15d_Additional_Rule_Packs_Payments_AgentCommerce_Procurement_Voice.md,1,VR-67 note
+1(d),Part-11-15d_Additional_Rule_Packs_Payments_AgentCommerce_Procurement_Voice.md,1,VR-69 note
+1(d),Part-11-15e_Additional_Rule_Packs_Procurement_Voice_Recording_Decisions.md,1,GAP-1172 closed
+1(d),Part-11-15e_Additional_Rule_Packs_Procurement_Voice_Recording_Decisions.md,1,GAP-1173 closed
+1(d),Part-11-15e_Additional_Rule_Packs_Procurement_Voice_Recording_Decisions.md,1,GAP-1174 closed
+1(d),Part-11-18a_AI_Voice_Telephony_and_Call_Recordings.md,1,France now opt-in; Bloctel discontinued 11 Aug 2026 (VR-69)
+1(d),Part-11-18a_AI_Voice_Telephony_and_Call_Recordings.md,1,France sources
+1(d),Part-11-18a_AI_Voice_Telephony_and_Call_Recordings.md,1,TCPA revocation rule revised Sept 2026 (VR-67); platform seller-wide immediate
+1(d),Part-11-18a_AI_Voice_Telephony_and_Call_Recordings.md,1,US sources
+1(d),Part-11-18a_AI_Voice_Telephony_and_Call_Recordings.md,1,India promotional voice window 09:00–19:00 Mon–Sat per DEC-769
+1(d),Part-11-18a_AI_Voice_Telephony_and_Call_Recordings.md,1,customer decision ID form (E-V-14) in touched table
+1(d),Part-11-18a_AI_Voice_Telephony_and_Call_Recordings.md,1,Bloctel scrub row replaced by FR consent check
+1(d),Part-11-18a_AI_Voice_Telephony_and_Call_Recordings.md,1,withdrawal paragraph US revocation
+1(d),Part-11-18a_AI_Voice_Telephony_and_Call_Recordings.md,1,AU-281 window override
+1(d),Part-11-18c_AI_Voice_Telephony_and_Call_Recordings.md,8,"voice combinatorial oracle regenerated (q_voice_combinatorial.py patched: France opt-in/no Bloctel, IN promotional Mon–Sat 09:00–19:00); changed test/example rows replaced in place"
+1(d),Part-11-18c_AI_Voice_Telephony_and_Call_Recordings.md,1,cost line
+1(d),Part-11-18d_AI_Voice_Telephony_and_Call_Recordings.md,38,"voice combinatorial oracle regenerated (q_voice_combinatorial.py patched: France opt-in/no Bloctel, IN promotional Mon–Sat 09:00–19:00); changed test/example rows replaced in place"
+1(d),Part-11-18d_AI_Voice_Telephony_and_Call_Recordings.md,1,outcome mix counts
+1(e),Part-11-10c_V12_Tests_QC_Coding_Backlog.md,1,R-8 reworded per DEC-779/DEC-921
+1(e),Part-11-10c_V12_Tests_QC_Coding_Backlog.md,1,R-8 follow-on sentence
+1(e),Part-11-21e_End_to_End_Suites_Traceability_Rollup_Regression_and_Decisions.md,1,inconsistency #1 status
+1(f),Part-11-12_Historical_Annex_V1_Baseline_and_Source_Archive_Audit.md,5,"Gherkin AC added for statement-only stories: US-18-YL01, US-19-YL02, US-20-YL03, US-18-YL04, US-21-YL05"
+1(f),Part-11-13b_AI_Improvement_Agents_Automations_Workflows.md,5,"Gherkin AC added for statement-only stories: US-21-YM08, US-18-YM26, US-17-YM36, US-04-YM37, US-03-YM38"
+1(f),Part-11-16d_Investment_Automation_II_Securities_Rule_Packs_Stories_Tests_Cost.md,19,story Traces rows linked to workflow FRs FR-V12-O-037…084 (GAP-1146); 48 distinct FRs
+1(f),Part-11-1b_V12_Business_Requirements.md,19,"Gherkin AC added for statement-only stories: US-20-YA02, US-20-YA03, US-20-YA04, US-20-YA05, US-20-YA06, US-20-YA07, US-20-YA08, US-19-YA02, US-19-YA03, US-02-YA01, US-17-YA01, US-17-YA02, US-03-YA02, US-04-YA01, US-16-YA01, US-16-YA02, US-21-YA01, US-21-YA02, US-21-YA03"
+1(f),Part-11-22f_Epic_Map_Totals_Conflicts_Decisions_and_Quality_Gate.md,1,RECOMMENDATION-1146 status
+1(f),Part-11-22f_Epic_Map_Totals_Conflicts_Decisions_and_Quality_Gate.md,1,GAP-1146 status
+1(f),Part-11-22f_Epic_Map_Totals_Conflicts_Decisions_and_Quality_Gate.md,1,GAP-1147 status
+1(f),Part-11-22f_Epic_Map_Totals_Conflicts_Decisions_and_Quality_Gate.md,56,"story catalogue: AC column set to ""Yes (added v1.2)"" for the 49 stories; 6 YF titles and US-19-YG38 title updated"
+1(f),Part-11-5b_V12_Platform_Architecture.md,15,"Gherkin AC added for statement-only stories: US-01-YE09, US-01-YE10, US-03-YE01, US-15-YE01, US-18-YE02, US-20-YE02, US-20-YE04, US-20-YE08, US-20-YE12, US-20-YE13, US-20-YE14, US-20-YE15, US-20-YE16, US-21-YE03, US-21-YE04"
+1(f),Part-11-6b_V12_AI_Engines_Agents_Models_Evaluation_RAG_Policy_Cost.md,1,title added to untitled agent story US-04-YF24 (GAP-1147)
+1(f),Part-11-6b_V12_AI_Engines_Agents_Models_Evaluation_RAG_Policy_Cost.md,1,feature title US-04-YF24
+1(f),Part-11-6b_V12_AI_Engines_Agents_Models_Evaluation_RAG_Policy_Cost.md,1,title added to untitled agent story US-04-YF25 (GAP-1147)
+1(f),Part-11-6b_V12_AI_Engines_Agents_Models_Evaluation_RAG_Policy_Cost.md,1,feature title US-04-YF25
+1(f),Part-11-6b_V12_AI_Engines_Agents_Models_Evaluation_RAG_Policy_Cost.md,1,title added to untitled agent story US-04-YF26 (GAP-1147)
+1(f),Part-11-6b_V12_AI_Engines_Agents_Models_Evaluation_RAG_Policy_Cost.md,1,feature title US-04-YF26
+1(f),Part-11-6b_V12_AI_Engines_Agents_Models_Evaluation_RAG_Policy_Cost.md,1,title added to untitled agent story US-03-YF27 (GAP-1147)
+1(f),Part-11-6b_V12_AI_Engines_Agents_Models_Evaluation_RAG_Policy_Cost.md,1,feature title US-03-YF27
+1(f),Part-11-6b_V12_AI_Engines_Agents_Models_Evaluation_RAG_Policy_Cost.md,1,title added to untitled agent story US-18-YF28 (GAP-1147)
+1(f),Part-11-6b_V12_AI_Engines_Agents_Models_Evaluation_RAG_Policy_Cost.md,1,feature title US-18-YF28
+1(f),Part-11-6b_V12_AI_Engines_Agents_Models_Evaluation_RAG_Policy_Cost.md,1,title added to untitled agent story US-04-YF29 (GAP-1147)
+1(f),Part-11-6b_V12_AI_Engines_Agents_Models_Evaluation_RAG_Policy_Cost.md,1,feature title US-04-YF29
+1(f),Part-11-6b_V12_AI_Engines_Agents_Models_Evaluation_RAG_Policy_Cost.md,1,US-03-YF27 AC aligned with RP-IN-SMS-009 window
+1(f),Part-11-8b_V12_REST_API_Event_Contracts_Integrations_Plugins.md,5,"Gherkin AC added for statement-only stories: US-01-YH02, US-01-YH04, US-03-YH01, US-20-YH01, US-21-YH01"
+1(g),Part-11-17a_Bounded_Mandates_Agentic_Commerce_and_Payments.md,1,MT-OUT typical workflows aligned with eligibility register (SM-SVC-38 removed)
+1(g),Part-11-17a_Bounded_Mandates_Agentic_Commerce_and_Payments.md,1,stale 'packs not yet in Part 11.15' note replaced by pointer to §11.15.22.5 (reported in 11.15e quality gate)
+1(g),Part-11-21e_End_to_End_Suites_Traceability_Rollup_Regression_and_Decisions.md,1,inconsistency #4 status
+2,front_matter.md,1,"v1.2 document-control row, precedence, decision count, developer pointer, Part 11 reading row, executive-summary alignment, v1.2 totals row"
+5,Part-11-23a_Independent_Audit_Retention_and_Errata.md,19,headline tables §11.23.2.1/§11.23.2.2: v1.2 re-run column added

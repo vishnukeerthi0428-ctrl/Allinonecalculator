@@ -41,6 +41,9 @@ Out of scope: groups A–E (Part 9.6a, DEC-234…299) and the advanced-capabilit
 
 ### 9.6b.1.3 Precedence rule
 
+> **Erratum v1.2 (E-V-02, E-V-21):** superseded by payments and bid submission allowed only under a bounded mandate; AI still never signs contracts or sets prices autonomously (DEC-779/780/781); automatic bid submission allowed under a per-tender bounded mandate (DEC-781). See Part 11.23c.
+
+
 | Step | Rule | Used in this part |
 |---|---|---|
 | 0 | Law (DPDP Act, sectoral rules), the V11 safety invariants (AI never signs, pays, submits bids, sets prices; consequential actions ≤ L1; PDP recheck at dispatch; gateway tiers with no personal data to free tiers; RLS isolation; Website/Admin separation; fail-closed; no outreach to minors; no patient data) and the blueprint's ID-uniqueness rule are never overridden | Checked for every decision; no decision weakens an invariant. DEC-301 keeps Tier 0L inside the Tier 2 data-class limit until a DPIA decision |
@@ -249,6 +252,9 @@ One entry per conflict row. 'Source (literal)' is quoted from the `docs38` text;
 
 #### ALN-B-11 · F21-011 · Capability 02 Public market / investor search (doc 21)
 
+> **Erratum v1.2 (E-V-19):** superseded by investor/fundraising mode and the Investment Automation product are in scope, gated by securities rule packs (DEC-783). See Part 11.23c.
+
+
 | Field | Content |
 |---|---|
 | Source requirement (literal) | Doc 21 §3.02 'Public market / investor search': "Avoid / replace: Tavily, Exa, hosted search APIs, premium research agents" · "Preferred implementation: Build approved source registry, RSS/sitemap/official directory adapters, HTTP conditional fetch, search query planner and PostgreSQL full text index. Optional self-hosted SearXNG with only permitted upstream engines; search quality and coverage must be measured." · "Acceptance benchmark: Recall on independently labelled target set, citation correctness, freshness and cost per verified record. Never interpret inaccessible sources as empty." Doc 21 §7: "Public market / investor search — No investment or confidential fundraising use in commercial product." |
@@ -378,6 +384,9 @@ flowchart TD
 ### 9.6b.3.2 Group G: testing and acceptance
 
 #### ALN-B-18 · G19-C08 · Critical RPO/RTO initial and growth (doc 19)
+
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
 
 | Field | Content |
 |---|---|
@@ -1421,6 +1430,9 @@ All 121 N/A rows of groups F–J were re-read against their source text. A row s
 
 ## 9.6b.5 Decisions
 
+> **Erratum v1.2 (E-V-05, E-V-09, E-V-19):** superseded by hosting is Vercel + Supabase + AWS in Mumbai with an EU stack (DEC-421/772/786); RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787); investor/fundraising mode and the Investment Automation product are in scope, gated by securities rule packs (DEC-783). See Part 11.23c.
+
+
 Binding amendment decisions **DEC-300…DEC-332** (33 of the 80 allocated; DEC-333…379 unused). Each amends the named earlier parts and IDs; the earlier files are not edited.
 
 | DEC | Decision | Authority | Effect |
@@ -1493,6 +1505,9 @@ Binding amendment decisions **DEC-300…DEC-332** (33 of the 80 allocated; DEC-3
 ---
 
 ## 9.6b.6 Test cases
+
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
 
 Each test proves the **literal source behaviour** of its rows. Priority uses the TP scale of DEC-312. Every test records its result in an evidence record with commit, configuration revision and independent reviewer (doc 15/24/29 'do not infer a pass').
 
@@ -1647,6 +1662,9 @@ All figures are **estimates** (basis: comparable packages in Part 9.5 §9.5.2.3;
 
 ### 9.6b.7.3 Subscription and running cost (recurring) — change request CR-ALN-B-02
 
+> **Erratum v1.2 (E-V-05):** superseded by hosting is Vercel + Supabase + AWS in Mumbai with an EU stack (DEC-421/772/786). See Part 11.23c.
+
+
 | # | Item | DEC | Line | ₹/month low | ₹/month high | Basis (estimate; verify) |
 |---|---|---|---|---|---|---|
 | R1 | Self-hosted exception tracker + Prometheus + Grafana (compute share and storage on the pilot host; 15-day metric retention) | DEC-308 | B01/B07 | 300 | 2,300 | ASSUMPTION-552; hosted Sentry free tier was ₹0, so no saving offsets this |
@@ -1674,6 +1692,9 @@ All figures are **estimates** (basis: comparable packages in Part 9.5 §9.5.2.3;
 ---
 
 ## 9.6b.8 Tags register (allocated range 550–579)
+
+> **Erratum v1.2 (E-V-05):** superseded by hosting is Vercel + Supabase + AWS in Mumbai with an EU stack (DEC-421/772/786). See Part 11.23c.
+
 
 | Tag | Section | Statement | Status |
 |---|---|---|---|

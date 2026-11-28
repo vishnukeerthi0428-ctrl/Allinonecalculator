@@ -46,7 +46,7 @@ ASSUMPTION-123,4.3 §4.43.2,4.3,"On-call is staffed by three engineers in weekly
 ASSUMPTION-124,4.2 §4.25.1,4.2,Traffic model parameters (§4.25.2) and Year 2 per-workspace scaling of message and research volumes,Validate with W2–W5 production telemetry; revise at W5,4.2,6
 ASSUMPTION-125,4.2 §4.25.4,4.2,"AI calls per unit of work (§4.25.4): 2 per fetch, 30% personalized drafts, 10% inbound ratio, 5% chat use, 40% Copilot adoption, 20% Tier 0",Validate in W1–W3; Part 7 refines per agent,4.2,2
 ASSUMPTION-126,4.3 §4.46.3,4.3,"Shared infrastructure costs are allocated by usage drivers (requests, task-seconds, storage) rather than per-tenant resources",FinOps review at W5,4.3,2
-ASSUMPTION-128,4.1 §4.10.2,4.1,Regulatory timing and content as understood on 27 Nov 2026: DPDP Rules notified Nov 2025 with most obligations from about May 2027; CERT-In 6-hour reporting and 180-day log retention; Amazon Time Sync acceptable as a traceable time source; internal privacy-request target 15 days,Counsel confirmation before W2 (DP-12),4.1,4
+ASSUMPTION-128,4.1 §4.10.2,4.1,Regulatory timing and content as understood on 27 Nov 2026: DPDP Rules notified Nov 2025 with most obligations from about May 2027; CERT-In 6-hour reporting and 180-day log retention; Amazon Time Sync acceptable as a traceable time source; internal privacy-request target 15 days,Counsel confirmation before W2 (DP-12),"4.1, 11.15a",5
 ASSUMPTION-140,7.1 front matter,7.3,Per-call token sizes in §7.2 and a 25% overhead allowance are estimates until measured; replace with usage data after 30 days in W1,Open — validate per source part,"7.1, 7.3",5
 ASSUMPTION-141,7.2 AG-015 Admin Copilot,7.3,Pilot Copilot usage: 8 active internal users × 3 turns × 22 working days; 20-turn daily cap,Open — validate per source part,"7.2, 7.3",3
 ASSUMPTION-142,7.3 §7.5.5,7.3,Call volumes derived from BR-S089 (15% duplicate pages; ≈ 600 inbound/month; 30% rule-resolved; 150 personalised drafts; ≈ 100 public chats),Open — validate per source part,7.3,2
@@ -57,12 +57,12 @@ ASSUMPTION-146,7.1 §7.1.2,7.1,"Delivery personas D01–D06 are derived from the
 ASSUMPTION-147,7.3 §7.5.5,7.3,Token estimates are in target-model tokens (Haiku 5.5 tokenizer ≈ 30% more tokens than older tokenizers),Open — validate per source part,7.3,2
 ASSUMPTION-150,5.1a front matter,5.1c,"1 SP ≈ 0.5–1.0 pd, central 0.7; velocity = 4.0 FTE × 10 days × 0.8 ÷ pd-per-SP = 32–64 SP/sprint, planning value 40–46 SP",Open — validate per source part,"5.1a, 5.1c, 8.1",9
 ASSUMPTION-151,5.1a §5.7.4,5.1c,"IaC baseline, CI skeleton and flag framework (Sprint 0) are booked to EP-01; EP-21 should reduce its indicative 25 pd by ≈ 5–6 pd",Open — validate per source part,"5.1a, 5.1b, 5.1c",7
-ASSUMPTION-152,5.1a §5.5.1,5.1c,"A point covers design, build, all DoD testing, scans, accessibility, docs and evidence; excludes business UAT and the 0.5 growth/compliance lead",Open — validate per source part,"5.1a, 5.1c, 8.1, 9.5",6
+ASSUMPTION-152,5.1a §5.5.1,5.1c,"A point covers design, build, all DoD testing, scans, accessibility, docs and evidence; excludes business UAT and the 0.5 growth/compliance lead",Open — validate per source part,"5.1a, 5.1c, 8.1, 9.5, 11.20a",7
 ASSUMPTION-153,5.1a §5.7.2,5.1c,"All concrete AC data are synthetic seed fixtures (example.com, .test, reserved phone ranges)",Open — validate per source part,"5.1a, 5.1b, 5.1c",3
 ASSUMPTION-154,5.1b US-0101 Identity compatibility spike (12,5.1c,"Django-native auth fallback, if needed after the spike, is a change request outside EP-01",Open — validate per source part,"5.1b, 5.1c, 6.5, 8.1, 8.2",7
 ASSUMPTION-155,5.1a §5.7.2,5.1c,"Default parameter values in AC (quiet hours, caps, upload size 25 MB, eval tolerance 2 pp, contact verification 180 days, OTP 10 min) are configurable policy values",Open — validate per source part,"5.1a, 5.1b, 5.1c, 6.5",8
 ASSUMPTION-156,5.1b US-0303 Policy Decision Point skeleton,5.1c,PDP latency budget p95 ≤ 100 ms,Open — validate per source part,"5.1b, 5.1c, 6.5",3
-ASSUMPTION-157,5.1a §5.5.2,5.1c,Sprint 0 and Sprint 1 at ≈ 70% of planning velocity,Open — validate per source part,"5.1a, 5.1c, 8.1",5
+ASSUMPTION-157,5.1a §5.5.2,5.1c,Sprint 0 and Sprint 1 at ≈ 70% of planning velocity,Open — validate per source part,"5.1a, 5.1c, 8.1, 11.20b",6
 ASSUMPTION-158,5.1a §5.3.1,5.1c,"Coverage thresholds 80/70 (general), 90/85 (PDP, RLS, finance, AI guards), 70 (frontend)",Open — validate per source part,"5.1a, 5.1c",2
 ASSUMPTION-159,5.1a §5.5.1,5.1c,Estimates exclude provider procurement/verification lead times,Open — validate per source part,"5.1a, 5.1c, 8.1",4
 ASSUMPTION-160,5.2 §5.2.1,5.2,"Epic central person-days = Σ mid story points × 0.7; range = Σ low × 0.5 to Σ high × 1.0, consistent with the Part 5.1 estimation basis",Align with Part 5.1 at assembly,5.2,3
@@ -102,12 +102,12 @@ ASSUMPTION-193,6.4 §6.4.1.5,6.4,"Monitoring and control interpretations. PSI > 
 ASSUMPTION-194,6.5 front matter,6.5,"Part 5.1 fixture names map to GSE-SYN stable keys as in §6.5.1.4; in particular Part 5.1's ""External-A / Acme Foods"" is the GSE-SYN two-tenant fixture T2, the same fixture that Part 6.1 calls ""Client B"" and Batch 6.3 calls ""Client Alpha""",Open — validate per source part,"6.5, 6.6",9
 ASSUMPTION-195,6.5 §6.5.1.5,6.5,The 40 risk-based dimension rows of Part 5.1a §5.6.5 are numbered DM-R01…DM-R40 in table order as in §6.5.1.5,Open — validate per source part,6.5,4
 ASSUMPTION-196,6.5 §6.5.1.1,6.5,"Test-oracle interpretations for thresholds Part 5.1 leaves open (MFA 12 h, grant expiry instant, flag precedence, retention purge date, freshness and verification expiry, eval tolerance equality, OTP 10 min, age at IST midnight), listed in §6.5.1.6",Open — validate per source part,6.5,15
-ASSUMPTION-197,8.1 front matter,8.1,Project start Monday 7 Dec 2026 = Day 1; Day 180 = Fri 4 Jun 2027; two-week sprints,Open — validate per source part,"8.1, 8.2",7
+ASSUMPTION-197,8.1 front matter,8.1,Project start Monday 7 Dec 2026 = Day 1; Day 180 = Fri 4 Jun 2027; two-week sprints,Open — validate per source part,"8.1, 8.2, 11.20a",8
 ASSUMPTION-198,8.1 §8.1.1.3,8.1,"Holiday and leave allowance per §8.1.1.3 (124 working days in Day 1–180); 2027 dates of Holi, Good Friday and Ambedkar Jayanti to verify",Open — validate per source part,"8.1, 8.2",3
 ASSUMPTION-199,8.1 §8.1.4.2,8.1,"Planning velocity 43 SP per 10-day sprint at 4.0 FTE, scaled linearly by FTE and working days; ramp 0.7 in S0–S1",Open — validate per source part,"8.1, 8.2",3
 ASSUMPTION-200,8.1 §8.1.4.2,8.1,QA uplift adds delivery capacity proportional to FTE (≈ 5.4 SP per full sprint),Open — validate per source part,8.1,3
 ASSUMPTION-201,8.1 §8.1.6.1,8.1,"Rate per pd = ₹1.0–1.5 L ÷ 22 working days = ₹4,545–6,818",Open — validate per source part,8.1,2
-ASSUMPTION-202,8.1 §8.1.5.2,8.1,Contract roles cost 20% more per FTE-month (₹1.2–1.8 L),Open — validate per source part,8.1,2
+ASSUMPTION-202,8.1 §8.1.5.2,8.1,Contract roles cost 20% more per FTE-month (₹1.2–1.8 L),Open — validate per source part,"8.1, 11.20a, 11.20b",4
 ASSUMPTION-203,8.1 §8.1.5.1,8.1,The FS engineer holds the Principal Engineer and AI lead roles; the Founder/CTO stays accountable,Open — validate per source part,8.1,3
 ASSUMPTION-204,8.1 §8.1.5.1,8.1,An independent reviewer is available per gate (≈ 10 days in total): a startup head not involved in the scope or an external QA reviewer,Open — validate per source part,8.1,3
 ASSUMPTION-205,8.1 §8.1.5.1,8.1,Founder/CTO spends ≈ 0.6 of their time as PO and architect; this time is not charged to C03,Open — validate per source part,8.1,3
@@ -186,7 +186,7 @@ ASSUMPTION-489,8.3b §8.3.5.1,8.3c,8.3b §8.3.5.1,Open — validate per source p
 ASSUMPTION-490,8.3c §8.3.5.13.4,8.3c,8.3c CSO-09,Open — validate per source part,8.3c,2
 ASSUMPTION-500,9.5 §9.5.2.1,9.5,"Groups C, E and G gave no estimate and Group H gave story points only for its stories; their packages are sized here by analogy to Part 5 stories (2–8 SP each, 0.7 pd per SP)",Open — validate per source part,9.5,4
 ASSUMPTION-501,9.5 §9.5.2.1,9.5,Group F's 68–110 pd used 1 pd per SP; normalised to Part 8.1's 0.7 pd per SP (47.6–77.0 pd),Open — validate per source part,9.5,3
-ASSUMPTION-502,9.5 §9.5.2.2,9.5,20% / 15% / 10% (low / central / high) of net enhancement effort is absorbed into existing baseline stories at refinement,Open — validate per source part,9.5,2
+ASSUMPTION-502,9.5 §9.5.2.2,9.5,20% / 15% / 10% (low / central / high) of net enhancement effort is absorbed into existing baseline stories at refinement,Open — validate per source part,"9.5, 11.20b",3
 ASSUMPTION-503,9.5 §9.5.2.5,9.5,An added engineer delivers 7.53 pd per sprint less 15% onboarding/coordination (6.4 pd) and can start Sprint 3 (Day 43) if contracted by about Day 15,Open — validate per source part,9.5,2
 ASSUMPTION-504,9.5 §9.5.2.5,9.5,Added engineers cost ₹1.0–1.5 L per month each (as instructed; no contract premium); months = days ÷ 30.4,Open — validate per source part,9.5,2
 ASSUMPTION-505,9.5 §9.5.3,9.5,"New run-cost items (probes, restore-instance hours, reserved worker, drift job, training tenant, CI minutes) are estimates; verify AWS and tool prices at time of implementation (as of 27 Nov 2026)",Open — validate per source part,9.5,1
@@ -227,13 +227,133 @@ ASSUMPTION-656,9.8a ADV-X2-F07 Territory planning,9.8b,"Territory view in A2 use
 ASSUMPTION-662,9.8b §9.8.13.1,9.8b,Development cash allocated to releases pro-rata by central effort; rates from BRD §6,FinOps to re-baseline at approval,9.8b,2
 ASSUMPTION-663,9.8b §9.8.11,9.8b,"Proposed KPI targets and message volumes (sends, WhatsApp) are planning values pending baselines",Confirm after A1 baseline period,9.8b,2
 ASSUMPTION-666,9.8b §9.8.5,9.8b,"Agent call volumes, token sizes and escalation shares in §9.8.5; low = 0.3 × base, high = 3 × base",Measure in A1; FinOps,9.8b,2
-ASSUMPTION-700,9.9b §9.9.12,9.9b,X3 team = 2 extended contract engineers + 1 contract data engineer + 1 contract SRE/security engineer + QA 0.5 + UX 0.5 (5.0 FTE) from Day 239,"Cited by DEC-400, DEC-417","9.9b, 9.10",5
+ASSUMPTION-700,9.9b §9.9.12,9.9b,X3 team = 2 extended contract engineers + 1 contract data engineer + 1 contract SRE/security engineer + QA 0.5 + UX 0.5 (5.0 FTE) from Day 239,"Cited by DEC-400, DEC-417","9.9b, 9.10, 11.13b, 11.20b",8
 ASSUMPTION-701,9.9a §9.9.3.1,9.9b,"Release windows A1 Day 239–299, A2 Day 302–362, A3 Day 393–481 with a December freeze",Open,"9.9a, 9.9b",2
 ASSUMPTION-702,9.9b §9.9.12,9.9b,"20% cross-cutting allowance (12% integration QA, 5% security, 3% training content)",Open,9.9b,2
 ASSUMPTION-703,9.9a §9.9.3.2,9.9b,The AppNAI IdP supports passkeys for external users and attestation for staff (DEC-019 check 5),Open; verify in spike,"9.9a, 9.9b",3
-ASSUMPTION-704,9.9a ADR-137 BYOK through cross-account KMS k,9.9b,BYOK tenants operate AWS accounts with KMS keys in ap-south-1,Open,"9.9a, 9.9b",3
+ASSUMPTION-704,9.9a ADR-137 BYOK through cross-account KMS k,9.9b,BYOK tenants operate AWS accounts with KMS keys in ap-south-1,Cited by DEC-671,"9.9a, 9.9b, 11.9a, 11.9c",6
 ASSUMPTION-705,9.9b §9.9.6,9.9b,X3 agent volumes and token sizes in 9.9.6 (pilot),Open; recalibrate after 1 month,9.9b,2
 ASSUMPTION-706,9.9b §9.9.13.1,9.9b,"Translation volume ≈ 15,000 words per locale at ₹1.5–3.0 per word",Open; obtain quotes,9.9b,2
 ASSUMPTION-750,9.10 front matter,9.10,Overlap deduction of 30 / 45 / 65 pd (§9.10.4),Open; validate at A1 planning,9.10,3
 ASSUMPTION-751,9.10 §9.10.7.1,9.10,X2 A1 development cost taken pro rata to A1 effort,Open; validate at A1 planning,9.10,2
 ASSUMPTION-752,9.10 §9.10.10,9.10,A1 runs at about 6 FTE beyond the core team over ≈ 90 working days,Cited by DEC-417,9.10,2
+ASSUMPTION-770,11.1a §11.1.2.1,11.1b,V12-R0…R5 mapping to waves and A-releases,Open (confirm at R0 planning),"11.1a, 11.1b",12
+ASSUMPTION-771,11.1b §11.1.6,11.1b,"""Owner-investment data/records"" in P-01/P-06 are the separate investor product's records; ""MedMaarg AI Hospital"" (BR-C08) is a capability label, never patient data",Open (confirm with customer),11.1b,2
+ASSUMPTION-772,11.1a front matter,11.1b,Local ID family KPI-V12-A-01…19 for unnumbered V12 metrics,Open,"11.1a, 11.1b",10
+ASSUMPTION-789,11.2a §11.2.3.2,11.2c,Workbook cost rates are illustrative and used only for sizing,Reconcile with gateway actuals,"11.2a, 11.2b, 11.2c",47
+ASSUMPTION-790,11.2c §11.2.9,11.2c,"Pilot caps are used as the sizing basis for running estimates, though unapproved",Replace with approved caps,11.2c,1
+ASSUMPTION-791,11.2a §11.2.5.7,11.2c,Effort ranges assume X1/X2 capabilities are built under their own approvals and one marketplace adapter,Re-estimate at Phase-2 planning,"11.2a, 11.2c",2
+ASSUMPTION-796,11.3b SM-SVC-01-WF03 Trend report and evidence,11.3c,"SLA targets where V12 says “baseline and threshold approved in pilot” (e.g. 2 h report draft, 2-business-day verification, 30 min import, 15 min handover) are planning values",Open — validate per source part,"11.3b, 11.3c",6
+ASSUMPTION-797,11.3b SM-SVC-04-WF02 Lead scoring and prioriti,11.3c,Score agreement tolerance ±5 points for SM-SVC-04-WF02,Open — validate per source part,"11.3b, 11.3c",2
+ASSUMPTION-806,11.3a §11.3.5.9,11.3c,Cost basis: V12 illustrative INR/invocation; meter unit ≈ one invocation; low 0.3× / high 3×; effort component estimates,Open — validate per source part,"11.3a, 11.3c",3
+ASSUMPTION-811,11.3c §11.3.8,11.3c,Multimodal enquiries processed only at Tier 1b with recording consent; jurisdictional consent rules to verify,Open — validate per source part,11.3c,2
+ASSUMPTION-825,11.4a §11.4.3.1,11.4d,"11.4b.4, envelope",Open; confirm with group E (platform),"11.4a, 11.4b, 11.4d",4
+ASSUMPTION-826,11.4c §11.4.5.10,11.4d,11.4c/d service cards; 11.4.5.31,Open; group B owns new epics,"11.4c, 11.4d",22
+ASSUMPTION-827,11.4b §11.4.5.3,11.4d,11.4b.3; 11.4.5.29,Open,"11.4b, 11.4c, 11.4d",4
+ASSUMPTION-836,11.5b §11.5.5.8,11.5b,"Supabase Pro (Mumbai) and Vercel Pro capabilities used here — PITR options, read replicas, pooler modes, log drains, firewall rules, instant rollback — are available as described (verify at time of implementation, as of 27 Nov 2026)",Open; verify at Sprint 0,11.5b,2
+ASSUMPTION-840,11.5a §11.5.4.1,11.5b,V12 Company equals blueprint Startup; Organization is an optional new grouping,Adopted via DEC-581,"11.5a, 11.5b",2
+ASSUMPTION-841,11.5a §D,11.5b,Default grace 14 days and dunning reminders on days 3 and 7,Open; Finance to confirm,"11.5a, 11.5b",3
+ASSUMPTION-842,11.5b §11.5.5.16,11.5b,Effort excludes DEC-420 AI-built savings; overlap with EP-20 baseline 30/45/65 pd,Open; recalibrate after the Sprint 2 gate,11.5b,2
+ASSUMPTION-843,11.5b I. Revenue recognition (FR-V12-E-077),11.5b,Subscription revenue recognized ratably per day; usage at rating (Ind AS 115 alignment to verify),Open; finance adviser,11.5b,2
+ASSUMPTION-861,11.6b §11.6.5.12,11.6b,Card economics use Part 7.3 §7.3.2 list prices and ₹90 per US$; verify at implementation (as of 27 Nov 2026),Open — validate per source part,"11.6b, 11.18a, 11.18d",4
+ASSUMPTION-862,11.6b §11.6.5.18.1,11.6b,"Labelling at 2–4 min per case per annotator with AI-assisted drafting, 15% adjudication at 5 min, 25–35% reuse of existing golden sets",Open — validate per source part,11.6b,3
+ASSUMPTION-863,11.6b §11.6.5.12,11.6b,Pilot design volumes per new agent (calls/month in each card) for the owned portfolio; SaaS usage billed to tenant plans,Open — validate per source part,11.6b,25
+ASSUMPTION-875,11.7b ADR-201 Route manifest as the single sou,11.7c,Utility views receive contract IDs A192–A197 and a route-manifest endpoint GET /api/v1/admin/ui/route-manifest; final path owned by the API master (Part 11.8),Open,"11.7b, 11.7c",3
+ASSUMPTION-876,11.7b Localisation and RTL contract (FR-V12-G-,11.7c,"V12 release labels map R0/R1 → Release 1, R2 → Release 2, R3–R5 → Future (W6+)",Open; confirm with Part 11.1,"11.7b, 11.7c",3
+ASSUMPTION-877,11.7c §11.7.9,11.7c,Tenant-owned sites embed W54 (script or iframe) from a verified domain allow-list configured in A107,Open,11.7c,1
+ASSUMPTION-878,11.7b front matter,11.7c,Field validation rules R-FLD-G inferred from prototype control types and labels; Part 2.7b R-FLD and Part 3.3 prevail on conflict,Open,"11.7b, 11.7c",2
+ASSUMPTION-893,11.8a front matter,11.8b,V12 phases R0–R5 map to Release 1 / Release 2 / W6 / Year 2+,Cited by DEC-655,"11.8a, 11.8b, 11.19a",5
+ASSUMPTION-894,11.8b §11.8.5.4,11.8b,API key format and HMAC-SHA-256 hashing with a server pepper,Open — validate per source part,11.8b,3
+ASSUMPTION-895,11.8b §11.8.5.6,11.8b,Webhook retry schedule (6 attempts in ≈ 22 h) within the V12 24-hour window,Open — validate per source part,11.8b,2
+ASSUMPTION-896,11.8b §11.8.5.4,11.8b,RL-KEY / RL-KEY-H / RL-SCIM default limits,Open — validate per source part,11.8b,2
+ASSUMPTION-904,11.9c §11.9.5.15,11.9c,"SKU groupings of the 14 management views (§11.9.5.15) are configuration, not fixed by V12",Open; confirm with analytics owner at W2,11.9c,2
+ASSUMPTION-917,11.9c §11.9.9,11.9c,"V12 phases map to waves: R0/R1 → Release 1, R2 → Release 2, R3–R5 → W6/Future (aligned with Part 11.5a phase mapping)",Open; confirm with Group E mapping,11.9c,1
+ASSUMPTION-918,11.9c §11.9.5.16,11.9c,"DPDP Rules 2025 timings (Board intimation, 72-hour detailed report, DSAR periods) and CERT-In 6-hour rule as encoded in C3-08",Verify (as of 27 Nov 2026) before go-live,11.9c,2
+ASSUMPTION-922,11.10c §11.10.5.12,11.10c,Step-class effort norms and per-SKU fixed effort of §11.10.5.12,Validate on the pilot SKU SM-SVC-01 actuals,11.10c,2
+ASSUMPTION-923,11.10b Quality gate: Part 11.10b,11.10c,SKU overlap classes H/M/N and reuse factors 0.20 / 0.55 / 1.00 (Part 11.10b §11.10.4.3),Validate with Group R2 service mapping,"11.10b, 11.10c",3
+ASSUMPTION-924,11.10c §11.10.5.12,11.10c,"18 productive pd per person-month; blended rates ₹4,545 / ₹5,682 / ₹6,818 per pd (Part 9.10)",Open,11.10c,2
+ASSUMPTION-925,11.10c §11.10.9,11.10c,Status before of non-curated V12 acceptance tests and prototype checks was proposed by TF-IDF similarity (≥ 0.45 / ≥ 0.17; ≥ 0.55 / ≥ 0.20) and reviewed by sampling; the 40 AIX/CJ tests were curated individually,Open; semantic approval under FR-ENH-H-006,11.10c,1
+ASSUMPTION-940,11.11a §11.11.1.4,11.11b,"V12 phases R0–R5 map to W0–W1, Release 1, Release 2 + W6 (incl. A1), and post-W6 for R3–R5",Open until Part 11.1 confirms,"11.11a, 11.11b",4
+ASSUMPTION-941,11.11b §11.11.5.1,11.11b,SLA tier names Standard/Business/Enterprise ≡ plans Self-service/Managed/Enterprise (DEC-326),Open until Part 11.2 confirms,11.11b,2
+ASSUMPTION-942,11.11a §11.11.4.8.2,11.11b,AGT → AG candidates computed by FR overlap are trace aids; Part 11.6 owns the canonical mapping,Open,"11.11a, 11.11b",2
+ASSUMPTION-950,11.11b §11.11.9.1,11.11b,"On-call option costs (allowance, NOC quotes) are planning ranges; verify quotes (as of 27 Nov 2026)",Open,11.11b,1
+ASSUMPTION-963,11.12 §11.12.1.2,11.12,MATCH ≥ 0.80 / PARTIAL ≥ 0.40 thresholds on 6-gram and field-value coverage,Open — validate per source part,11.12,3
+ASSUMPTION-964,11.12 §11.12.9,11.12,"Stripping ""label:"" prefixes and ignoring pure status words and evidence paths does not hide requirements (labels and statuses are not requirements)",Open — validate per source part,11.12,1
+ASSUMPTION-967,11.12 §11.12.5.7,11.12,Effort estimates for the additions (25–46 PD),Open — validate per source part,11.12,2
+ASSUMPTION-976,11.13a AG-096 Synthetic Buyer Panel,11.13b,"Pilot call volumes per agent (for example AG-083 1,500/month, AG-086 2,500/month) are estimates for cost only",FinOps; re-baseline at G-A1 with actuals,"11.13a, 11.13b",2
+ASSUMPTION-977,11.13b §11.13.5.12,11.13b,"Unit sizes and rates as Part 9.7b §9.7.13.1 and Part 8.4, plus 20% uplift for eval, red-team and profiles",Delivery lead,11.13b,2
+ASSUMPTION-978,11.13a AG-087 Revenue Leakage Analyst,11.13b,"Leakage of 1–3% of billed revenue and 30–50% recovery are illustrative planning values, not a forecast",Finance; replace with measured A2 data,"11.13a, 11.13b",3
+ASSUMPTION-979,11.13a §11.13.3.1,11.13b,Release A4 window Day ≈ 601–720,Product Owner; DEC-741,"11.13a, 11.13b",3
+ASSUMPTION-992,11.13b §11.13.5.13.2,11.13b,₹710 per staff hour and minutes saved per approval or touch are illustrative for the value check,FinOps,11.13b,3
+ASSUMPTION-994,11.15a §11.15.1,11.15c,"For owned startups the startup is advertiser, sender and data fiduciary; for SaaS tenants the tenant is controller/fiduciary and the platform processor (BR-V7-CJ-11). An ""active"" pack certifies the platform's controls only, not a tenant's compliance",R10; counsel to confirm in tenant terms,"11.15a, 11.15c, 11.15d",3
+ASSUMPTION-1000,11.16a front matter,11.16e,"Legal thresholds, exemptions and deadlines are the panel's reading; verify with counsel (as of 27 Nov 2026)",Open until counsel sign-off,"11.16a, 11.16b, 11.16e",7
+ASSUMPTION-1001,11.16a §11.16.1,11.16e,"Securities pack content and rule numbering are Group O's (RP-IN-SEC, RP-US-REGD, RP-US-REGCF, RP-EU-PROSP, RP-UK-FINPROM, RP-AML-KYC, RP-INV-ADVICE); Group N uses those IDs and routes as published by Group O",Cited by DEC-819,"11.16a, 11.16e",3
+ASSUMPTION-1003,11.16a §11.16.5.6.6,11.16e,Investor sequence cap 1 per 7 days,Cited by DEC-810,"11.16a, 11.16e",4
+ASSUMPTION-1004,"11.16e US-30-ZN04 Investor-data privacy, DSR an",11.16e,Retention periods for investor data pending DPO and counsel,Open,11.16e,2
+ASSUMPTION-1006,11.16e US-31-ZN07 Diligence Q&A with fair discl,11.16e,Material diligence answers shared with all granted investors,Counsel review,11.16e,2
+ASSUMPTION-1011,11.16e §11.16.5.16,11.16e,Day rates derived from DEC-770,Re-forecast at sprint review,11.16e,2
+ASSUMPTION-1014,11.16e §11.16.7,11.16e,Data-room grant default 30 days,Cited by DEC-812,11.16e,2
+ASSUMPTION-1017,11.16e §11.16.5.16.2,11.16e,Verification and e-sign unit prices,Verify,11.16e,2
+ASSUMPTION-1020,11.16d §11.16.19,11.16d,Part 11.15a is the authoritative pack template; YAML is written inline per pack (Part 11.15a uses a placeholder),Open — validate per source part,11.16d,1
+ASSUMPTION-1021,11.16c §11.16.11,11.16d,"CONFLICT-958 rows are assigned to Group O by first-mentioned service, capability crosswalk, or inheritance from the preceding row of the same source file",Open — validate per source part,"11.16c, 11.16d",3
+ASSUMPTION-1022,11.16c §11.16.14.2,11.16d,Workbook cost rates are illustrative and used only as a cross-check; agent costs use the gateway formula,Open — validate per source part,"11.16c, 11.16d",15
+ASSUMPTION-1023,11.16c §11.16.11,11.16d,Investment-product screen IDs are written INV-A0nn and V12 entity names inv_* are kept,Open — validate per source part,"11.16c, 11.16d",3
+ASSUMPTION-1037,11.16d §11.16.15.31,11.16d,Greedy covering arrays are not minimal; counts are reproducible,Open — validate per source part,11.16d,2
+ASSUMPTION-1040,11.17a front matter,11.17b,Screens A260–A269 are claimed provisionally for Group P (no screen range was allocated; A205–A259 belong to Groups N/O; SM-SIT-A260… in Part 3.5a are test IDs). Part 11.20/11.22 consolidation confirms or renumbers,Cited by DEC-962,"11.17a, 11.17b",6
+ASSUMPTION-1041,11.17a §11.17.5.6,11.17b,"Candidate PSPs (India: Razorpay, Cashfree, PayU, Juspay-orchestrated banks; EU: Stripe, Adyen, Mollie) hold the required licences and support the listed mandate schemes; single-currency mandates in this release",Open — verify at onboarding,"11.17a, 11.17b",3
+ASSUMPTION-1042,11.17b §11.17.8,11.17b,Pilot design volumes for agent calls (§11.17.8.1),Open — recalibrate after 90 days,11.17b,2
+ASSUMPTION-1043,11.15d §11.15.28.1,11.17b,"A2A, AP2, ACP and MCP remain viable; the internal envelope isolates protocol churn",Open — verify versions,"11.15d, 11.17a, 11.17b",3
+ASSUMPTION-1053,11.15e §11.15.29.4,11.17b,"Deadline guard defaults B_auto 6 h, B_hard 2 h, planned T−48 h",Cited by DEC-852,"11.15e, 11.17a, 11.17b",5
+ASSUMPTION-1054,11.17b §11.17.16.3,11.17b,Settlement and dispute timelines per scheme as tabled are indicative,Open — verify; final values in RP-IN-PAY/RP-EU-PAY,11.17b,1
+ASSUMPTION-1057,11.17b §11.17.15.1,11.17b,Component (bottom-up) estimate governs; story points re-split at refinement,Open,11.17b,2
+ASSUMPTION-1060,11.18b front matter,11.18d,b §11.18.5.21; c §11.18.5.32,Open (re-baseline after pilot month 2),"11.18b, 11.18c, 11.18d",6
+ASSUMPTION-1061,11.18d §11.18.9,11.18d,a §11.18.5.18,Open,11.18d,1
+ASSUMPTION-1062,11.18a §11.18.5.18,11.18d,a §11.18.5.18; b,Open,"11.18a, 11.18b, 11.18d",3
+ASSUMPTION-1063,11.15e §11.15.36.4,11.18d,a §11.18.5.3.3,Open (counsel),"11.15e, 11.18a, 11.18d",6
+ASSUMPTION-1066,11.15e §11.15.35.5,11.18d,a §11.18.5.2,Open,"11.15e, 11.18a, 11.18d",4
+ASSUMPTION-1075,11.15e §11.15.32.7,11.18d,a §11.18.5.3.2,Open (R10 per pack),"11.15e, 11.18a, 11.18d",3
+ASSUMPTION-1076,11.18a §11.18.5.6,11.18d,a §11.18.5.6; c,Open (pilot),"11.18a, 11.18c, 11.18d",3
+ASSUMPTION-1077,11.18c §11.18.5.32,11.18d,c §11.18.5.32,Open,"11.18c, 11.18d",2
+ASSUMPTION-1080,11.19a §A,11.19c,The reused AppNAI IdP can broker per-tenant SAML/OIDC with issuer/audience binding and amr passthrough; verified by Sprint 0 check 13; otherwise in-product SP,Open — validate per source part,"11.19a, 11.19c",2
+ASSUMPTION-1081,11.19b §A,11.19c,Supabase PITR retention options and granularity (possibly < 35 days); verify at time of implementation (as of 27 Nov 2026),Cited by DEC-889,"11.19b, 11.19c",3
+ASSUMPTION-1082,11.19a §A,11.19c,"Vercel function region identifiers bom1/fra1, region-pinning mechanism and log-content behaviour; verify (as of 27 Nov 2026)",Open — validate per source part,"11.19a, 11.19c",2
+ASSUMPTION-1083,11.19b §A,11.19c,Model providers offer EU and/or India processing locations (directly or via cloud marketplaces); verify per row,Cited by DEC-891,"11.19b, 11.19c",3
+ASSUMPTION-1084,11.19b §A,11.19c,"""Opt-in default"" in DEC-789 means participation is off until the tenant opts in under the clause",Open — validate per source part,"11.19b, 11.19c",4
+ASSUMPTION-1085,11.19a §11.19.0,11.19c,Benchmarks are built in Release 2 because cohorts of 10 tenants cannot exist before external tenants onboard,Open — validate per source part,"11.19a, 11.19b, 11.19c",3
+ASSUMPTION-1086,11.19a §A,11.19c,"CRM API access, change capture and limits depend on the tenant's edition (e.g. Salesforce API-enabled editions); verify",Open — validate per source part,"11.19a, 11.19c",3
+ASSUMPTION-1087,11.19a §A,11.19c,The DLT aggregator offers scrubbing and template validation APIs; TRAI promotional window 10:00–21:00 IST; verify current regulations,Open — validate per source part,"11.19a, 11.19c",2
+ASSUMPTION-1100,11.20a §11.20.1.3,11.20b,Calendar: Day 1 Mon 7 Dec 2026; holiday and leave list of §11.20.1.3; programme years PY1–PY3,Open — validate per source part,"11.20a, 11.20b",5
+ASSUMPTION-1101,11.20b §11.20.7.2,11.20b,Capacity: 7.53 pd per FTE-sprint; new-FTE ramp 0.5 / 0.85; leave 0.95; coordination 1.00 / 0.95 / 0.92; IP sprints at 50%,Open — validate per source part,11.20b,3
+ASSUMPTION-1102,11.20b §11.20.7.2,11.20b,Sustain reserve 10% of active capacity after R1 and 15% after R2-A,Open — validate per source part,11.20b,3
+ASSUMPTION-1103,11.20a §11.20.2.1,11.20b,Absorption of 10 / 7.5 / 5% of V12 groups A–L at refinement,Open — validate per source part,"11.20a, 11.20b",3
+ASSUMPTION-1104,11.20a §11.20.2.2,11.20b,"Enterprise engineering ENT-01…10 (228 / 348 / 521 pd) and enterprise external costs (EU and per-market counsel, tax advisers, pen tests, translation)",Open — validate per source part,"11.20a, 11.20b",9
+ASSUMPTION-1105,11.20a §11.20.4.4,11.20b,Hardening sprints per release (0–2); SOC 2 Type II window 6 months + report (≈ 14 sprints after R2-A); ISO 27701/42001 ≈ 8 sprints after ISO 27001,Open — validate per source part,"11.20a, 11.20b",3
+ASSUMPTION-1106,11.20b §11.20.9.6,11.20b,Running: managed Kubernetes ₹10–30k per region-month; tax engine ₹15–60k/month; ISO surveillance; build tooling ₹1.15–1.73 L per squad-month; sustain team 10 FTE ₹11–16.5 L/month,Open — validate per source part,11.20b,9
+ASSUMPTION-1107,11.20b §11.20.9.1,11.20b,Lead and programme-role rate ₹2.0–3.0 L per FTE-month,Open — validate per source part,11.20b,3
+ASSUMPTION-1108,11.20a §11.20.2.2,11.20b,V11 A2/A3 remainder split 55 / 45%,Open — validate per source part,"11.20a, 11.20b",3
+ASSUMPTION-1109,11.20b §11.20.8.5,11.20b,Staff augmentation delivers a profile in 2–6 weeks after the framework agreement,Open — validate per source part,11.20b,3
+ASSUMPTION-1120,11.21b §11.21.4.2,11.21e,First testable release per SKU: SM-SVC-01…16 and 25 in R1; 17…24 and 26…39 in R2 (Part 11.10b classes and epics; DEC-770),Open — validate per source part,"11.21b, 11.21e",3
+ASSUMPTION-1121,11.21b §11.21.4.1,11.21e,Mandate and budget caps are inclusive: a value exactly at the cap is allowed,Open — validate per source part,"11.21b, 11.21c, 11.21e",4
+ASSUMPTION-1122,11.21b §11.21.4.4,11.21e,"Role → SKU, channel and identity coupling derived from RBAC, R21 and custom-role rules and the SKU definitions",Open — validate per source part,"11.21b, 11.21e",2
+ASSUMPTION-1123,11.21b §11.21.4.2,11.21e,Effect class of SKUs not explicitly classified in FSD 12 derived from the service definition,Open — validate per source part,"11.21b, 11.21e",2
+ASSUMPTION-1124,11.21a §11.21.2.5,11.21e,"Synthetic tenants, persons, numbers and amounts are fictional fixtures",Open — validate per source part,"11.21a, 11.21e",2
+ASSUMPTION-1125,11.21a §11.21.3.6,11.21e,"Performance targets for AI gateway, voice, payments, SSO/SCIM, mandates, negotiation, data room and webhooks are proposed until NFRs confirm them",Open — validate per source part,"11.21a, 11.21d, 11.21e",3
+ASSUMPTION-1142,11.22a §11.22.5.1,11.22f,Acceptance-binding stories 1–3 SP; V12 stories without stated points imputed at 3–8 SP for totals,Open – replace with team estimates at refinement,"11.22a, 11.22f",3
+ASSUMPTION-1145,11.22a §11.22.5.1,11.22f,Release bucket mapping (W0–W3/R0–R1 → Release 1; W4–W5/R2 → Release 2; W6/A1–A3/R3–R5 → Release 3+),Open – Part 11.20 confirms,"11.22a, 11.22f",3
+ASSUMPTION-1150,11.22a §11.22.5.1,11.22f,"All fixtures are synthetic tenants, people and example domains",Closed,"11.22a, 11.22f",2
+ASSUMPTION-1152,11.22a §11.22.5.2,11.22f,Role × permission merged into authority classes per Part 5.1a §5.6.2; other dimensions held at baseline per model,Closed (RBAC matrix test still exhaustive),"11.22a, 11.22f",2
+ASSUMPTION-1163,11.15d §11.15.20,11.15e,"The platform is a technology service provider, not a payment aggregator or payment system operator, because it never receives, holds or settles funds and the tenant is merchant of record",Counsel C-14,"11.15d, 11.15e",7
+ASSUMPTION-1164,11.15d §11.15.26.4,11.15e,"Messages from the tenant's agent are attributable to the tenant under IT Act s.11(c) as an information system programmed on its behalf to operate automatically, supported by a tenant attestation",Counsel C-16,"11.15d, 11.15e",3
+ASSUMPTION-1169,11.15e §11.15.30.4,11.15e,An EU contracting authority may accept a qualified electronic seal of the bidder instead of a person's signature; AUTO is possible only where the tender and platform row confirm this,Counsel C-20,11.15e,3
+ASSUMPTION-1175,11.15e §11.15.36.12,11.15e,India has no general all-party recording statute; participant recording with notice and a DPDP basis is lawful (extends ASSUMPTION-1063),Counsel C-22,11.15e,3
+ASSUMPTION-1180,11.23b §11.23.6.1,11.23c,The working-tree Parts 0–9.10 and pre-V12 registers are the pre-V12 baseline (timestamps before V12 receipt; git not run),Open — confirm with git diff at consolidation,"11.23b, 11.23c",2
+ASSUMPTION-1181,11.23a §11.23.1.3,11.23c,Lexical thresholds are a proxy; every sub-moderate statement read in context,Accepted,"11.23a, 11.23c",2
+ASSUMPTION-1182,11.23c §11.23.11,11.23c,Parts 11.20–11.22 were being written in parallel; the audit is a snapshot of the parts present at the run,Re-run per DEC-970 at consolidation,"11.23c, 11.25",2
+ASSUMPTION-1200,11.24c §11.24.16.1,11.24c,"Region identifiers (Supabase Mumbai/Frankfurt, AWS ap-south-1/eu-central-1, Vercel bom1/fra1, in-zone secondary regions) are as stated; verify at implementation (as of 27 Nov 2026)",Open — validate per source part,11.24c,2
+ASSUMPTION-1201,11.24b §11.24.6.3,11.24c,"The team runs OpenTofu; modules stay within the Terraform-compatible subset; provider resource names (supabase, vercel) verified at implementation",Open — validate per source part,"11.24b, 11.24c",2
+ASSUMPTION-1202,11.24c §11.24.16.1,11.24c,"pgvector halfvec is available on Supabase; the reference run had no pgvector, so vector columns are added conditionally",Open — validate per source part,11.24c,1
+ASSUMPTION-1203,11.24b §11.24.6.1,11.24c,"A preprod Supabase project and AWS account per zone are funded under DEC-790 (≈ one further copy of non-prod hosting lines; estimate, verify)",Open — validate per source part,"11.24b, 11.24c",3
+ASSUMPTION-1219,11.24b §11.24.4.8,11.24c,"Database verification used community PostgreSQL 16.15; Supabase-specific behaviour (Supavisor, Data API, extensions) is verified at Sprint 0 by the same db-verify job",Open — validate per source part,"11.24b, 11.24c",2
+ASSUMPTION-1220,11.25 §11.25.9,11.25,"Baseline files were unchanged between the Part 11.23 scan and the marker insertion, so the scan's line numbers locate the stale lines (each verified against its text before insertion)",Verified,11.25,1
+ASSUMPTION-1221,11.25 §11.25.9,11.25,"Where a pending row names no conflict or earlier decision, subject keywords choose the deciding DEC, else DEC-791",Cited by DEC-791,11.25,1
+ASSUMPTION-1226,11.25 §11.25.9,11.25,The scratch PostgreSQL 16.15 used for db-verify behaves as Supabase-managed PostgreSQL for the DDL used (verify the Supabase major version at provisioning),Accepted,11.25,1

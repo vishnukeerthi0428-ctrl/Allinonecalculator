@@ -1944,7 +1944,7 @@ Story statements, AC IDs (`AC-<story digits>-NN`), tags and Gherkin follow Part 
 | Type | Feature |
 | Story | As P09 Legal/Compliance (R10), I want closing readiness and authorised closing record (INV-SVC-13 WF01/WF02), so that every action follows the V12 approval gates and the counsel-approved rule packs, with no unauthorised or unlawful effect |
 | Persona / roles | P09 Legal/Compliance (R10), P02 Startup Head (R02), P08 Finance (R08/R09) |
-| Traces | DEC-783; DEC-821…829; INV-SVC-13 WF01/WF02; FR-V12-O-013; model M-O2 |
+| Traces | DEC-783; DEC-821…829; INV-SVC-13 WF01/WF02; FR-V12-O-037, FR-V12-O-038 (workflow FRs, linked v1.2 — GAP-1146); FR-V12-O-013; model M-O2 |
 | Priority | Must |
 | Wave | Release 2 (DEC-770) |
 | Points | 5–8 |
@@ -2051,7 +2051,7 @@ Feature: Closing readiness and authorised closing record
 | Type | Feature |
 | Story | As P09 Legal/Compliance (R10), I want statutory filing tasks and regulatory deadline monitoring (INV-SVC-13 WF03/WF04), so that every action follows the V12 approval gates and the counsel-approved rule packs, with no unauthorised or unlawful effect |
 | Persona / roles | P09 Legal/Compliance (R10), P02 Startup Head (R02), P08 Finance (R08/R09) |
-| Traces | DEC-783; DEC-821…829; INV-SVC-13 WF03/WF04; FR-V12-O-013; model m-filings |
+| Traces | DEC-783; DEC-821…829; INV-SVC-13 WF03/WF04; FR-V12-O-039, FR-V12-O-040 (workflow FRs, linked v1.2 — GAP-1146); FR-V12-O-013; model m-filings |
 | Priority | Must |
 | Wave | Release 2 (DEC-770) |
 | Points | 3–5 |
@@ -2092,7 +2092,7 @@ Feature: Statutory filing tasks and regulatory deadline monitoring
 | Type | Feature |
 | Story | As P09 Legal/Compliance (R10), I want investor update with figure tie-out and rights-scoped dispatch (INV-SVC-14 WF03/WF04), so that every action follows the V12 approval gates and the counsel-approved rule packs, with no unauthorised or unlawful effect |
 | Persona / roles | P09 Legal/Compliance (R10), P02 Startup Head (R02), P08 Finance (R08/R09) |
-| Traces | DEC-783; DEC-821…829; INV-SVC-14 WF03/WF04; FR-V12-O-015; model M-O8 |
+| Traces | DEC-783; DEC-821…829; INV-SVC-14 WF03/WF04; FR-V12-O-043, FR-V12-O-044 (workflow FRs, linked v1.2 — GAP-1146); FR-V12-O-015; model M-O8 |
 | Priority | Must |
 | Wave | Release 2 (DEC-770) |
 | Points | 3–5 |
@@ -2145,7 +2145,7 @@ Feature: Investor update with figure tie-out and rights-scoped dispatch
 | Type | Feature |
 | Story | As P09 Legal/Compliance (R10), I want investor onboarding, obligations and use-of-funds milestones (INV-SVC-14 WF01/WF02), so that every action follows the V12 approval gates and the counsel-approved rule packs, with no unauthorised or unlawful effect |
 | Persona / roles | P09 Legal/Compliance (R10), P02 Startup Head (R02), P08 Finance (R08/R09) |
-| Traces | DEC-783; DEC-821…829; INV-SVC-14 WF01/WF02; FR-V12-O-015; model m-obligations |
+| Traces | DEC-783; DEC-821…829; INV-SVC-14 WF01/WF02; FR-V12-O-041, FR-V12-O-042 (workflow FRs, linked v1.2 — GAP-1146); FR-V12-O-015; model m-obligations |
 | Priority | Must |
 | Wave | Release 2 (DEC-770) |
 | Points | 3–5 |
@@ -2185,7 +2185,7 @@ Feature: Investor onboarding, obligations and use-of-funds milestones
 | Type | Feature |
 | Story | As P09 Legal/Compliance (R10), I want fundraising pipeline stage gates and next actions (INV-SVC-15 WF01/WF02), so that every action follows the V12 approval gates and the counsel-approved rule packs, with no unauthorised or unlawful effect |
 | Persona / roles | P09 Legal/Compliance (R10), P02 Startup Head (R02), P08 Finance (R08/R09) |
-| Traces | DEC-783; DEC-821…829; INV-SVC-15 WF01/WF02; FR-V12-O-017; model M-O9 |
+| Traces | DEC-783; DEC-821…829; INV-SVC-15 WF01/WF02; FR-V12-O-045, FR-V12-O-046 (workflow FRs, linked v1.2 — GAP-1146); FR-V12-O-017; model M-O9 |
 | Priority | Must |
 | Wave | Release 2 (DEC-770) |
 | Points | 3–5 |
@@ -2225,7 +2225,7 @@ Feature: Fundraising pipeline stage gates and next actions
 | Type | Feature |
 | Story | As P09 Legal/Compliance (R10), I want probability-weighted forecast and bottleneck analytics (INV-SVC-15 WF03/WF04), so that every action follows the V12 approval gates and the counsel-approved rule packs, with no unauthorised or unlawful effect |
 | Persona / roles | P09 Legal/Compliance (R10), P02 Startup Head (R02), P08 Finance (R08/R09) |
-| Traces | DEC-783; DEC-821…829; INV-SVC-15 WF03/WF04; FR-V12-O-017; model m-forecast |
+| Traces | DEC-783; DEC-821…829; INV-SVC-15 WF03/WF04; FR-V12-O-047, FR-V12-O-048 (workflow FRs, linked v1.2 — GAP-1146); FR-V12-O-017; model m-forecast |
 | Priority | Must |
 | Wave | Release 2 (DEC-770) |
 | Points | 3–5 |
@@ -2265,7 +2265,7 @@ Feature: Probability-weighted forecast and bottleneck analytics
 | Type | Feature |
 | Story | As P09 Legal/Compliance (R10), I want signed private enquiry intake and routing (INV-SVC-16 WF01/WF02), so that every action follows the V12 approval gates and the counsel-approved rule packs, with no unauthorised or unlawful effect |
 | Persona / roles | P09 Legal/Compliance (R10), P02 Startup Head (R02), P08 Finance (R08/R09) |
-| Traces | DEC-783; DEC-821…829; INV-SVC-16 WF01/WF02; FR-V12-O-019; model M-O10 |
+| Traces | DEC-783; DEC-821…829; INV-SVC-16 WF01/WF02; FR-V12-O-049, FR-V12-O-050 (workflow FRs, linked v1.2 — GAP-1146); FR-V12-O-019; model M-O10 |
 | Priority | Must |
 | Wave | Release 2 (DEC-770) |
 | Points | 3–5 |
@@ -2308,7 +2308,7 @@ Feature: Signed private enquiry intake and routing
 | Type | Feature |
 | Story | As P09 Legal/Compliance (R10), I want intake health monitoring and external AI-agent intake (INV-SVC-16 WF03/WF04), so that every action follows the V12 approval gates and the counsel-approved rule packs, with no unauthorised or unlawful effect |
 | Persona / roles | P09 Legal/Compliance (R10), P02 Startup Head (R02), P08 Finance (R08/R09) |
-| Traces | DEC-783; DEC-821…829; INV-SVC-16 WF03/WF04; FR-V12-O-019; model m-intakehealth |
+| Traces | DEC-783; DEC-821…829; INV-SVC-16 WF03/WF04; FR-V12-O-051, FR-V12-O-052 (workflow FRs, linked v1.2 — GAP-1146); FR-V12-O-019; model m-intakehealth |
 | Priority | Must |
 | Wave | Release 2 (DEC-770) |
 | Points | 3–5 |
@@ -2480,7 +2480,7 @@ Feature: Investor portal: offer letter, application, payment instructions and ho
 | Type | Feature |
 | Story | As P09 Legal/Compliance (R10), I want grant eligibility, drafting and submission readiness (INV-SVC-17 WF01–WF03), so that every action follows the V12 approval gates and the counsel-approved rule packs, with no unauthorised or unlawful effect |
 | Persona / roles | P09 Legal/Compliance (R10), P02 Startup Head (R02), P08 Finance (R08/R09) |
-| Traces | DEC-783; DEC-821…829; INV-SVC-17 WF01–WF03; FR-V12-O-021; model M-O11 |
+| Traces | DEC-783; DEC-821…829; INV-SVC-17 WF01–WF03; FR-V12-O-053, FR-V12-O-054, FR-V12-O-055 (workflow FRs, linked v1.2 — GAP-1146); FR-V12-O-021; model M-O11 |
 | Priority | Must |
 | Wave | Release 2 (DEC-770) |
 | Points | 3–5 |
@@ -2523,7 +2523,7 @@ Feature: Grant eligibility, drafting and submission readiness
 | Type | Feature |
 | Story | As P09 Legal/Compliance (R10), I want grant utilisation and milestone reporting (INV-SVC-17 WF04), so that every action follows the V12 approval gates and the counsel-approved rule packs, with no unauthorised or unlawful effect |
 | Persona / roles | P09 Legal/Compliance (R10), P02 Startup Head (R02), P08 Finance (R08/R09) |
-| Traces | DEC-783; DEC-821…829; INV-SVC-17 WF04; FR-V12-O-021; model m-grantutil |
+| Traces | DEC-783; DEC-821…829; INV-SVC-17 WF04; FR-V12-O-056 (workflow FRs, linked v1.2 — GAP-1146); FR-V12-O-021; model m-grantutil |
 | Priority | Must |
 | Wave | Release 2 (DEC-770) |
 | Points | 3–5 |
@@ -2567,7 +2567,7 @@ Feature: Grant utilisation and milestone reporting
 | Type | Feature |
 | Story | As P09 Legal/Compliance (R10), I want debt readiness, dossier, scenarios and covenant monitoring (INV-SVC-18 WF01–WF04), so that every action follows the V12 approval gates and the counsel-approved rule packs, with no unauthorised or unlawful effect |
 | Persona / roles | P09 Legal/Compliance (R10), P02 Startup Head (R02), P08 Finance (R08/R09) |
-| Traces | DEC-783; DEC-821…829; INV-SVC-18 WF01–WF04; FR-V12-O-023; model M-O12 |
+| Traces | DEC-783; DEC-821…829; INV-SVC-18 WF01–WF04; FR-V12-O-057, FR-V12-O-058, FR-V12-O-059, FR-V12-O-060 (workflow FRs, linked v1.2 — GAP-1146); FR-V12-O-023; model M-O12 |
 | Priority | Must |
 | Wave | Release 2 (DEC-770) |
 | Points | 5–8 |
@@ -2647,7 +2647,7 @@ Feature: Debt readiness, dossier, scenarios and covenant monitoring
 | Type | Feature |
 | Story | As P09 Legal/Compliance (R10), I want continuous readiness, burn and runway (INV-SVC-19 WF01–WF04), so that every action follows the V12 approval gates and the counsel-approved rule packs, with no unauthorised or unlawful effect |
 | Persona / roles | P09 Legal/Compliance (R10), P02 Startup Head (R02), P08 Finance (R08/R09) |
-| Traces | DEC-783; DEC-821…829; INV-SVC-19 WF01–WF04; FR-V12-O-025; model M-O13 |
+| Traces | DEC-783; DEC-821…829; INV-SVC-19 WF01–WF04; FR-V12-O-061, FR-V12-O-062, FR-V12-O-063, FR-V12-O-064 (workflow FRs, linked v1.2 — GAP-1146); FR-V12-O-025; model M-O13 |
 | Priority | Must |
 | Wave | Release 2 (DEC-770) |
 | Points | 3–5 |
@@ -2695,7 +2695,7 @@ Feature: Continuous readiness, burn and runway
 | Type | Feature |
 | Story | As P09 Legal/Compliance (R10), I want cap-table reconciliation and authorised ownership change (INV-SVC-20 WF01/WF04), so that every action follows the V12 approval gates and the counsel-approved rule packs, with no unauthorised or unlawful effect |
 | Persona / roles | P09 Legal/Compliance (R10), P02 Startup Head (R02), P08 Finance (R08/R09) |
-| Traces | DEC-783; DEC-821…829; INV-SVC-20 WF01/WF04; FR-V12-O-027; model M-O3 |
+| Traces | DEC-783; DEC-821…829; INV-SVC-20 WF01/WF04; FR-V12-O-065, FR-V12-O-068 (workflow FRs, linked v1.2 — GAP-1146); FR-V12-O-027; model M-O3 |
 | Priority | Must |
 | Wave | Release 2 (DEC-770) |
 | Points | 5–8 |
@@ -2775,7 +2775,7 @@ Feature: Cap-table reconciliation and authorised ownership change
 | Type | Feature |
 | Story | As P09 Legal/Compliance (R10), I want eSG evidence and impact disclosure release (INV-SVC-21 WF01–WF04), so that every action follows the V12 approval gates and the counsel-approved rule packs, with no unauthorised or unlawful effect |
 | Persona / roles | P09 Legal/Compliance (R10), P02 Startup Head (R02), P08 Finance (R08/R09) |
-| Traces | DEC-783; DEC-821…829; INV-SVC-21 WF01–WF04; FR-V12-O-029; model M-O14 |
+| Traces | DEC-783; DEC-821…829; INV-SVC-21 WF01–WF04; FR-V12-O-069, FR-V12-O-070, FR-V12-O-071, FR-V12-O-072 (workflow FRs, linked v1.2 — GAP-1146); FR-V12-O-029; model M-O14 |
 | Priority | Must |
 | Wave | Release 2 (DEC-770) |
 | Points | 5–8 |
@@ -2839,7 +2839,7 @@ Feature: ESG evidence and impact disclosure release
 | Type | Feature (Compliance) |
 | Story | As P09 Legal/Compliance (R10), I want cross-border requirement matrix and restriction routing (INV-SVC-22 WF01–WF04), so that every action follows the V12 approval gates and the counsel-approved rule packs, with no unauthorised or unlawful effect |
 | Persona / roles | P09 Legal/Compliance (R10), P02 Startup Head (R02), P08 Finance (R08/R09) |
-| Traces | DEC-783; DEC-821…829; INV-SVC-22 WF01–WF04; FR-V12-O-031; model M-O6 |
+| Traces | DEC-783; DEC-821…829; INV-SVC-22 WF01–WF04; FR-V12-O-073, FR-V12-O-074, FR-V12-O-075, FR-V12-O-076 (workflow FRs, linked v1.2 — GAP-1146); FR-V12-O-031; model M-O6 |
 | Priority | Must |
 | Wave | Release 2 (DEC-770) |
 | Points | 5–8 |
@@ -2925,7 +2925,7 @@ Feature: Cross-border requirement matrix and restriction routing
 | Type | Feature |
 | Story | As P09 Legal/Compliance (R10), I want dilution and instrument scenario modelling (INV-SVC-20 WF02/WF03), so that every action follows the V12 approval gates and the counsel-approved rule packs, with no unauthorised or unlawful effect |
 | Persona / roles | P09 Legal/Compliance (R10), P02 Startup Head (R02), P08 Finance (R08/R09) |
-| Traces | DEC-783; DEC-821…829; INV-SVC-20 WF02/WF03; FR-V12-O-027; model m-instruments |
+| Traces | DEC-783; DEC-821…829; INV-SVC-20 WF02/WF03; FR-V12-O-066, FR-V12-O-067 (workflow FRs, linked v1.2 — GAP-1146); FR-V12-O-027; model m-instruments |
 | Priority | Must |
 | Wave | Release 2 (DEC-770) |
 | Points | 3–5 |
@@ -2967,7 +2967,7 @@ Feature: Dilution and instrument scenario modelling
 | Type | Feature |
 | Story | As P09 Legal/Compliance (R10), I want board and shareholder meetings, notice, quorum and voting (INV-SVC-23 WF01/WF02), so that every action follows the V12 approval gates and the counsel-approved rule packs, with no unauthorised or unlawful effect |
 | Persona / roles | P09 Legal/Compliance (R10), P02 Startup Head (R02), P08 Finance (R08/R09) |
-| Traces | DEC-783; DEC-821…829; INV-SVC-23 WF01/WF02; FR-V12-O-033; model M-O4 |
+| Traces | DEC-783; DEC-821…829; INV-SVC-23 WF01/WF02; FR-V12-O-077, FR-V12-O-078 (workflow FRs, linked v1.2 — GAP-1146); FR-V12-O-033; model M-O4 |
 | Priority | Must |
 | Wave | Release 2 (DEC-770) |
 | Points | 3–5 |
@@ -3027,7 +3027,7 @@ Feature: Board and shareholder meetings, notice, quorum and voting
 | Type | Feature (Compliance) |
 | Story | As P09 Legal/Compliance (R10), I want decision tracking and governance information packs (INV-SVC-23 WF03/WF04), so that every action follows the V12 approval gates and the counsel-approved rule packs, with no unauthorised or unlawful effect |
 | Persona / roles | P09 Legal/Compliance (R10), P02 Startup Head (R02), P08 Finance (R08/R09) |
-| Traces | DEC-783; DEC-821…829; INV-SVC-23 WF03/WF04; FR-V12-O-033; model m-govpack |
+| Traces | DEC-783; DEC-821…829; INV-SVC-23 WF03/WF04; FR-V12-O-079, FR-V12-O-080 (workflow FRs, linked v1.2 — GAP-1146); FR-V12-O-033; model m-govpack |
 | Priority | Must |
 | Wave | Release 2 (DEC-770) |
 | Points | 3–5 |
@@ -3067,7 +3067,7 @@ Feature: Decision tracking and governance information packs
 | Type | Feature (Compliance) |
 | Story | As P09 Legal/Compliance (R10), I want investor verification and screening hand-off (INV-SVC-24 WF01–WF04; RP-AML-KYC), so that every action follows the V12 approval gates and the counsel-approved rule packs, with no unauthorised or unlawful effect |
 | Persona / roles | P09 Legal/Compliance (R10), P02 Startup Head (R02), P08 Finance (R08/R09) |
-| Traces | DEC-783; DEC-821…829; INV-SVC-24 WF01–WF04; RP-AML-KYC; FR-V12-O-035; model M-O5 |
+| Traces | DEC-783; DEC-821…829; INV-SVC-24 WF01–WF04; FR-V12-O-081, FR-V12-O-082, FR-V12-O-083, FR-V12-O-084 (workflow FRs, linked v1.2 — GAP-1146); RP-AML-KYC; FR-V12-O-035; model M-O5 |
 | Priority | Must |
 | Wave | Release 2 (DEC-770) |
 | Points | 5–8 |

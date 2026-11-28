@@ -42,7 +42,7 @@
 |---|---|---|
 | Candidate capabilities assessed | 33 | 33 |
 | Already covered by V12 or the blueprint (not added; mapped to the existing item) | 14 | 14 (Not applicable: already covered) |
-| New capabilities kept (status "Not covered (new idea)") | 19 | 18 Matched + 1 Pending Founder decision (M18, CONFLICT-983) |
+| New capabilities kept (status "Not covered (new idea)") | 19 | 18 Matched + 1 Adopted (DEC-789) (M18, CONFLICT-983) |
 | New agents | 0 | 16 (AG-081 to AG-096) |
 | New automations | 0 | 24 (AU-120 to AU-143) |
 | New workflows | 0 | 16 (WF-41 to WF-56) |
@@ -51,7 +51,7 @@
 | New test cases | 0 | 104 (TC-V12-M-001 to 104) |
 | New architecture decisions | 0 | 10 (ADR-170 to ADR-179) |
 | New decisions | 0 | 16 (DEC-740 to DEC-755): 6 adopted under customer revision V12, 10 pending Founder decision |
-| Coverage register rows (`final/coverage_v12/M_coverage.csv`) | — | 56 (one per new agent, automation and workflow): 55 Matched, 1 Pending Founder decision |
+| Coverage register rows (`final/coverage_v12/M_coverage.csv`) | — | 56 (one per new agent, automation and workflow): 55 Matched, 1 Adopted (DEC-791) |
 
 **Totals after this part (catalogue of record, Part 9.4 plus this part).** Agents 80 → 96. Automations 119 → 143. Workflows 38 → 54. These counts exclude the items that other V12 groups add in their own ranges (for example R5 adds AG-100 to AG-139 and AU-150 to AU-179).
 
@@ -90,7 +90,7 @@
 | 16 | M10 | Procurement negotiation preparation (buy side) | V12 SVC-39-WF02 compares supplier quotations; SVC-18 covers **sell-side** negotiation; SVC-28-WF03 covers agent mandates. No item prepares the **buyer's** negotiation: should-cost range, BATNA, concession plan and counter-offer drafts for a human to send | 3 | 3 | 9 | AG-090, AU-134, WF-50 | A3 | Matched |
 | 17 | M14 | Agent and workflow template marketplace | A113 holds the tenant's own template and node library. No item lets a tenant **publish** a certified, data-free template for other tenants, or install one with simulation | 3 | 4 | 6 | AG-094, AU-138, AU-139, WF-54 | A4 | Matched |
 | 18 | M09b | Synthetic buyer panel (directional pre-test) | AG-046 and SVC-36-WF02 use synthetic personas for **training**. No item pre-tests message variants against a calibrated synthetic panel before a real experiment | 2 | 3 | 6 | AG-096, AU-133 | A4 | Matched |
-| 19 | M18 | Privacy-preserving cross-tenant benchmarks | No item offers tenants aggregate peer benchmarks (reply rate, cycle time) | 3 | 5 | 3 | AU-143 | A4 | **Pending Founder decision** (CONFLICT-983) |
+| 19 | M18 | Privacy-preserving cross-tenant benchmarks | No item offers tenants aggregate peer benchmarks (reply rate, cycle time) | 3 | 5 | 3 | AU-143 | A4 | **Adopted (DEC-789)** (CONFLICT-983) |
 
 ### 11.13.3.3 Candidates already covered (not added; status: Not applicable, already covered)
 

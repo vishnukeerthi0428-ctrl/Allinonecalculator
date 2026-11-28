@@ -46524,7 +46524,7 @@ paths:
   /api/v1/investor/eligibility-checks:
     post:
       operationId: API-V12-N-142
-      summary: Submit evidence / provider result for AU-202 · role R04/R21 · inv_eligibility_check
+      summary: Submit evidence / provider result for AU-202 · role R04/R22 · inv_eligibility_check
       tags:
       - Investment Automation I (Part 11.16a)
       parameters:
@@ -46554,7 +46554,7 @@ paths:
       security: *id006
       x-source-part: Part 11.16a
       x-namespace: investor
-      x-roles: R04/R21 · inv_eligibility_check
+      x-roles: R04/R22 · inv_eligibility_check
       x-fr: INV-SVC-—
       x-idempotency: Key
       x-side-effect-class: W
@@ -46749,7 +46749,7 @@ paths:
   /api/v1/investor-portal/me/rooms:
     get:
       operationId: API-V12-N-147
-      summary: 'Invited investor: own granted rooms (W75) · role R21 · inv_access_grant'
+      summary: 'Invited investor: own granted rooms (W75) · role R22 · inv_access_grant'
       tags:
       - Investment Automation I (Part 11.16a)
       parameters:
@@ -46774,7 +46774,7 @@ paths:
       security: *id006
       x-source-part: Part 11.16a
       x-namespace: investor
-      x-roles: R21 · inv_access_grant
+      x-roles: R22 · inv_access_grant
       x-fr: INV-SVC-—
       x-idempotency: Safe
       x-side-effect-class: R
@@ -46785,7 +46785,7 @@ paths:
   /api/v1/investor-portal/me/eligibility:
     post:
       operationId: API-V12-N-148
-      summary: 'Invited investor: self-certification and evidence upload (W76) · role R21 · inv_eligibility_check'
+      summary: 'Invited investor: self-certification and evidence upload (W76) · role R22 · inv_eligibility_check'
       tags:
       - Investment Automation I (Part 11.16a)
       parameters:
@@ -46815,7 +46815,7 @@ paths:
       security: *id006
       x-source-part: Part 11.16a
       x-namespace: investor
-      x-roles: R21 · inv_eligibility_check
+      x-roles: R22 · inv_eligibility_check
       x-fr: INV-SVC-—
       x-idempotency: Key
       x-side-effect-class: W
@@ -46832,7 +46832,7 @@ paths:
   /api/v1/investor-portal/me/questions:
     post:
       operationId: API-V12-N-149
-      summary: 'Invited investor: diligence question (W75) · role R21 · inv_diligence_request'
+      summary: 'Invited investor: diligence question (W75) · role R22 · inv_diligence_request'
       tags:
       - Investment Automation I (Part 11.16a)
       parameters:
@@ -46862,7 +46862,7 @@ paths:
       security: *id006
       x-source-part: Part 11.16a
       x-namespace: investor
-      x-roles: R21 · inv_diligence_request
+      x-roles: R22 · inv_diligence_request
       x-fr: INV-SVC-—
       x-idempotency: Key
       x-side-effect-class: W
@@ -46879,7 +46879,7 @@ paths:
   /api/v1/investor-portal/me/applications:
     post:
       operationId: API-V12-N-150
-      summary: 'Invited investor: submit application (W75) · role R21 · inv_subscription'
+      summary: 'Invited investor: submit application (W75) · role R22 · inv_subscription'
       tags:
       - Investment Automation I (Part 11.16a)
       parameters:
@@ -46909,7 +46909,7 @@ paths:
       security: *id006
       x-source-part: Part 11.16a
       x-namespace: investor
-      x-roles: R21 · inv_subscription
+      x-roles: R22 · inv_subscription
       x-fr: INV-SVC-—
       x-idempotency: Key
       x-side-effect-class: W
@@ -53282,7 +53282,7 @@ components:
       type: apiKey
       in: cookie
       name: __Host-ge_web
-      description: BFF-web session cookie for portal users (R16, R17, R21)
+      description: BFF-web session cookie for portal users (R16, R17, R22)
     apiKey:
       type: http
       scheme: bearer

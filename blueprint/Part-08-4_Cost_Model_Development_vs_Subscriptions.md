@@ -102,6 +102,9 @@ The cash in §8.4.2.1 is higher than the low effort value because people are pai
 
 ### 8.4.3.1 Monthly cost by category (pilot scale)
 
+> **Erratum v1.2 (E-V-05):** superseded by hosting is Vercel + Supabase + AWS in Mumbai with an EU stack (DEC-421/772/786). See Part 11.23c.
+
+
 | Category | Line | Item | Billing model | ₹/month (estimate; verify) | Active from |
 |---|---|---|---|---|---|
 | **1. Cloud infrastructure** | B01 | AWS hosting: production + scheduled staging (ECS on EC2, RDS PostgreSQL, Valkey, S3) | Usage / 1-year commitment | 5,000–7,000 | Day 1 |

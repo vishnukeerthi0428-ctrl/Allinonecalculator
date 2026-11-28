@@ -90,6 +90,9 @@
 
 ## 7.4.3 Detailed coverage register
 
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 All 266 atomic aspects are listed individually below. The 538 candidate rows are reconciled in §7.4.4.2 (all 97 named candidates individually; the 441 supporting candidates by category) and individually in `F_coverage.csv` and `F_integration_candidates.csv`.
 
 **Document 15**
@@ -425,6 +428,9 @@ Document 15 defines 18 logical AI responsibilities. Each is bound below to a **p
 Envelope v2 (Part 7.4b §7.4.5.1, FR-ENH-F-001) adds the six missing fields and a schema revision.
 
 ### 7.4.4.2 Integration candidates (documents 16 and 21)
+
+> **Erratum v1.2 (E-V-19):** superseded by investor/fundraising mode and the Investment Automation product are in scope, gated by securities rule packs (DEC-783). See Part 11.23c.
+
 
 **Parse result.** 538 records; 15 of 15 fields present in every record; 538 matched to a document-21 decision (97 named in §7, 441 in the §8 supporting inventory); document 21's benchmark plan lists 28 categories totalling 538, which equals the parsed count.
 

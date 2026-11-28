@@ -1,6 +1,9 @@
 # AI Growth Engine: Employee Sales & Marketing Automation
 ## Application Blueprint: PART 9 (Batch 9.8), Advanced Revenue Growth Capabilities
 
+> **Erratum v1.2 (E-V-02, E-V-21):** superseded by payments and bid submission allowed only under a bounded mandate; AI still never signs contracts or sets prices autonomously (DEC-779/780/781); automatic bid submission allowed under a per-tender bounded mandate (DEC-781). See Part 11.23c.
+
+
 | Field | Value |
 |---|---|
 | Document | Part 9, Batch 8, file **a of b** (§9.8.1–§9.8.4: expert panel, opportunity inventory, improvement plan, feature specifications). File b (`Part-09-8b_Advanced_Revenue_Growth_Capabilities.md`) holds §9.8.5–§9.8.17: agent cards, automations, workflows, FRs, stories, tests, KPIs, effort, cost, decisions, risks, tags and quality gate |

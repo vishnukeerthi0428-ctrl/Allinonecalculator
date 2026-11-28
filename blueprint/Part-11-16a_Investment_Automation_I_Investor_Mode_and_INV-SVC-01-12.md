@@ -498,7 +498,7 @@ All 25 foundation entries (INV-01, -11, -12, -13, -14 families) are implemented 
 | ENG-04 | Multimodal AI | Shared infrastructure; no exclusive service assignment | Multimodal (DEC-788 registry), AG-172 | Private tenant/startup scope; entitlement; audit; policy; portability; acceptance |
 | ENG-05 | Communication | INV-SVC-04; INV-SVC-05; INV-SVC-06 | Messaging M24–M31 + outbox | Private tenant/startup scope; entitlement; audit; policy; portability; acceptance |
 | ENG-06 | Calendar | INV-SVC-08 | Calendar M29 | Private tenant/startup scope; entitlement; audit; policy; portability; acceptance |
-| ENG-07 | Identity and permission | INV-SVC-16; INV-SVC-24 | Identity/permission (IdP, PDP, R21) | Private tenant/startup scope; entitlement; audit; policy; portability; acceptance |
+| ENG-07 | Identity and permission | INV-SVC-16; INV-SVC-24 | Identity/permission (IdP, PDP, R22) | Private tenant/startup scope; entitlement; audit; policy; portability; acceptance |
 | ENG-08 | Document generation | INV-SVC-09; INV-SVC-11; INV-SVC-17 | Document generation M44/M46 | Private tenant/startup scope; entitlement; audit; policy; portability; acceptance |
 | ENG-09 | Financial calculation | INV-SVC-14; INV-SVC-18; INV-SVC-19; INV-SVC-20 | Financial calculation AU-219 | Private tenant/startup scope; entitlement; audit; policy; portability; acceptance |
 | ENG-10 | Transaction reconciliation | INV-SVC-12 | Transaction reconciliation AU-225/226 (billing reconciliation pattern, Part 11.5) | Private tenant/startup scope; entitlement; audit; policy; portability; acceptance |
@@ -557,7 +557,7 @@ All 25 foundation entries (INV-01, -11, -12, -13, -14 families) are implemented 
 | Platform capability | Reused as is | Investment-specific extension | Source / decision |
 |---|---|---|---|
 | Tenancy and RLS | tenant → startup (issuer) hierarchy; `app_rw` least-privilege role sets `app.tenant_id`, `app.company_ids` per transaction (DEC-778) | Postgres schema `inv`; every `inv_*` table carries tenant_id and startup_id with RLS policies; `app.product = investment` session variable; cross-product joins forbidden by policy | BRL-TEN-01…12; DEC-778; ADR-230 |
-| Identity and roles | IdP, BFF sessions, MFA step-up, SSO/SCIM (DEC-784) | Roles R02/R03/R04/R08/R09/R10 re-scoped to the investment product; new sub-role R10C external counsel; new portal role R21 invited investor (extends R16, object grants only) | DEC-811; Part 2.3 §2.26 |
+| Identity and roles | IdP, BFF sessions, MFA step-up, SSO/SCIM (DEC-784) | Roles R02/R03/R04/R08/R09/R10 re-scoped to the investment product; new sub-role R10C external counsel; new portal role R22 invited investor (extends R16, object grants only) | DEC-811; Part 2.3 §2.26 |
 | Entitlements and SKUs | Subscription, bundle and entitlement engine (V12 SM-SVC framework, Part 11.2a) | AU-200 checks product + INV SKU + foundation + role + channel/provider + budget at every action; selective/partial/full; missing prerequisite → draft/task/hold; revocation pauses safely and keeps audit | Entitlement Rules sheet; FR-V12-N-005 |
 | Policy Decision Point | scope, consent, jurisdiction, budget, approval hash recheck at dispatch | Securities gate plug-in (ADR-231): AU-201 pack activation, AU-202 eligibility, AU-203 solicitation, AU-204 document gating, AU-205 caps, AU-206 sign-off, AU-207 two-person/mandate | SEC-CTL-N-01…10 |
 | Transactional outbox | outbox row in the same transaction; idempotent consumers; uncertain → reconcile | `inv_outbox`; idempotency key = scoped event + workflow revision + action target (V12 field 44) | NFR-005/006; M06 |
@@ -762,10 +762,10 @@ Rules: (1) no investor data in public payloads (AU-228); (2) DSR access/erasure/
 | R08/R09 | Finance Maker / Checker | Receipt verification, allocation, exceptions, refunds (SoD) |
 | R10 | Legal / Compliance / DPO → **securities compliance officer** | Second approver; counsel liaison; pack approval; eligibility exceptions |
 | R10C | **External counsel** (new sub-role of R10, read + sign-off only) | Signs offering registration and rule packs per jurisdiction |
-| R21 | **Invited investor** (new portal role, extends R16) | Sees only own grants in W75/W76; never other investors |
+| R22 | **Invited investor** (new portal role, extends R16; numbered R21 before v1.2 — R21 stays the Part 2.6 agency / managed-service operator, DEC-1001) | Sees only own grants in W75/W76; never other investors |
 | R20 | AI Agent Identity | Never holds approval permissions |
 
-| Permission | R02 | R03 | R04 | R08 | R09 | R10 | R10C | R21 | R20 |
+| Permission | R02 | R03 | R04 | R08 | R09 | R10 | R10C | R22 | R20 |
 |---|---|---|---|---|---|---|---|---|---|
 | Approve funding route / materials | ✓ |  |  |  |  | ✓ (legal items) |  |  | ✗ |
 | Approve outreach template (non-offer) | ✓ |  |  |  |  |  |  |  | ✗ |
@@ -824,8 +824,8 @@ W74 requirements: FR-V12-N-011 the mode is selected by product (investment store
 | W72 | W18 | Private configuration wizard | Private | Private configuration wizard steps 1–4 (business, fundraising thesis, channels/budget, review) | tenant onboarding API | Fields: Business name, Industry, Website, Country, Model, Region / Description, Lines, Fundraising thesis, Objective, ICP, Approved claims / Preferred channel, Language, Timezone, Monthly budget, Target volume |
 | W73 | W19 | Client service portal | Private | Private client area (account, onboarding, support, usage) | tenant APIs | Authenticated client only |
 | W74 | — | Commercial website objective switch: fundraising mode | Public | Objective switch "Sales & marketing" ↔ "Fundraising"; navigates to the investment storefront origin | — | No shared session state between catalogues |
-| W75 | — | Invited-investor private room (data room viewer, Q&A, application) | Invited investor (R21) | Invited investor: rooms granted to me, documents (watermarked viewer), Q&A, application with e-sign, status; never other investors | /api/v1/investor-portal/me/* | R21; MFA; AU-204 per request; region-pinned |
-| W76 | — | Investor eligibility, jurisdiction and self-certification gate | Invited investor (R21) | Jurisdiction of residence, investor class self-certification (route-specific statements), evidence upload, KYC hand-off link, consent to processing | POST /api/v1/investor-portal/me/eligibility | AU-202 decides; AG-163 extracts; status shown as Verified / Pending / Action needed |
+| W75 | — | Invited-investor private room (data room viewer, Q&A, application) | Invited investor (R22) | Invited investor: rooms granted to me, documents (watermarked viewer), Q&A, application with e-sign, status; never other investors | /api/v1/investor-portal/me/* | R22; MFA; AU-204 per request; region-pinned |
+| W76 | — | Investor eligibility, jurisdiction and self-certification gate | Invited investor (R22) | Jurisdiction of residence, investor class self-certification (route-specific statements), evidence upload, KYC hand-off link, consent to processing | POST /api/v1/investor-portal/me/eligibility | AU-202 decides; AG-163 extracts; status shown as Verified / Pending / Action needed |
 
 States for every W screen: loading skeleton, empty, error with reference ID, offline notice, rate-limited (429 with Retry-After), and WCAG 2.2 AA (keyboard, 360 px reflow, contrast 4.5:1, labelled inputs) per Part 2.5. Layout catalogue: all 100 items render in W56 with core items locked on (25); the full/partial/selective counts 75/25/1 of the verification report are acceptance checks (TC in PM-N-06 and US-30-ZN03).
 
@@ -835,7 +835,7 @@ States for every W screen: loading skeleton, empty, error with reference ID, off
 | FR-V12-N-012 | Production notice TPL-N-03 replaces the demo strip | notice visible on all W55–W73 | demo strip text absent in prod build |
 | FR-V12-N-013 | No public route collects investment interest, investor identity or money | enquiry has only SaaS fields | AU-228 fails build on field "investment amount" |
 | FR-V12-N-014 | AU-228 scans build artefacts and anonymous responses for issuer names, offering terms, investor records, tenant IDs | neutral payload served | seeded issuer name blocks deploy |
-| FR-V12-N-015 | W75 shows only rooms granted to the signed-in R21; every item request passes AU-204 | granted document opens watermarked | un-granted id → uniform 404 |
+| FR-V12-N-015 | W75 shows only rooms granted to the signed-in R22; every item request passes AU-204 | granted document opens watermarked | un-granted id → uniform 404 |
 | FR-V12-N-016 | W76 collects route-specific self-certification and evidence; AU-202 decides | evidence → Pending → Verified | AI extraction alone never sets Verified |
 | FR-V12-N-017 | Full/partial/selective counts 75/25/≥1 and 25 locked core items | counts match | core item cannot be deselected |
 | FR-V12-N-018 | Synthetic export JSON keeps selectedAutomationIds, selectionMode, billingCycle; import validated server-side against entitlements (README gap closed) | import creates draft subscription | unknown automation id → 422 |
@@ -1336,7 +1336,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 | Type | Agent · Researcher (planner + extractor) · scope: Investment product |
 | Purpose and business outcome | Plans searches over approved funding sources and extracts routes, mandates and deadlines with evidence |
 | Linked BR / FR / US | DEC-783; INV-SVC-01-WF01/WF02; EP-30/EP-31 stories (Part 11.16e) |
-| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
+| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R22 directly except AG-166/AG-171 outputs after approval |
 | Trigger | R04 requests a discovery run in A209 |
 | Inputs and data sources | AG-003/AG-004 patterns; source registry; inv_source_policy |
 | Tools / APIs (registry §7.2.4) | TL-01 knowledge.search, TL-02 records.read, TL-10 web.fetch (approved hosts only), TL-06 draft.create |
@@ -1360,7 +1360,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 | Type | Agent · Classifier · scope: Investment product |
 | Purpose and business outcome | Decides whether a changed source signal is new and material for the issuer thesis |
 | Linked BR / FR / US | DEC-783; INV-SVC-01-WF04; EP-30/EP-31 stories (Part 11.16e) |
-| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
+| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R22 directly except AG-166/AG-171 outputs after approval |
 | Trigger | AU-210 change event |
 | Inputs and data sources | versioned signals, issuer thesis |
 | Tools / APIs (registry §7.2.4) | TL-02 records.read, TL-06 draft.create |
@@ -1384,7 +1384,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 | Type | Agent · Scorer · scope: Investment product |
 | Purpose and business outcome | Explains deterministic rubric scores and extracts mandate attributes for transparent propensity features |
 | Linked BR / FR / US | DEC-783; INV-SVC-02-WF01/WF04; EP-30/EP-31 stories (Part 11.16e) |
-| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
+| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R22 directly except AG-166/AG-171 outputs after approval |
 | Trigger | Batch scoring or analyst request in A211 |
 | Inputs and data sources | mandates, issuer round, reviewed outcomes |
 | Tools / APIs (registry §7.2.4) | TL-02 records.read, TL-06 draft.create |
@@ -1408,7 +1408,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 | Type | Agent · Extractor · scope: Investment product |
 | Purpose and business outcome | Reads investor-provided documents (accreditation letters, QIB status, net-worth certificates) and extracts fields for the deterministic eligibility resolver |
 | Linked BR / FR / US | DEC-783; INV-SVC-02-WF02; INV-SVC-11-WF03; EP-30/EP-31 stories (Part 11.16e) |
-| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
+| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R22 directly except AG-166/AG-171 outputs after approval |
 | Trigger | Upload in W76 or A230 |
 | Inputs and data sources | evidence documents (Confidential-Financial) |
 | Tools / APIs (registry §7.2.4) | TL-02 records.read, TL-06 draft.create |
@@ -1432,7 +1432,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 | Type | Agent · Extractor/matcher · scope: Investment product |
 | Purpose and business outcome | Finds and verifies investor-organisation representatives from permitted sources and proposes alias matches |
 | Linked BR / FR / US | DEC-783; INV-SVC-03-WF01/02/04; EP-30/EP-31 stories (Part 11.16e) |
-| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
+| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R22 directly except AG-166/AG-171 outputs after approval |
 | Trigger | R04 action in A212 |
 | Inputs and data sources | approved sources, client lists |
 | Tools / APIs (registry §7.2.4) | TL-01, TL-02, TL-06 |
@@ -1456,7 +1456,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 | Type | Agent · Generator · scope: Investment product |
 | Purpose and business outcome | Drafts individual investor emails/WhatsApp messages from approved issuer facts and templates |
 | Linked BR / FR / US | DEC-783; INV-SVC-04-WF01; INV-SVC-05-WF02; EP-30/EP-31 stories (Part 11.16e) |
-| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
+| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R22 directly except AG-166/AG-171 outputs after approval |
 | Trigger | R03 composes in A217 |
 | Inputs and data sources | approved claims, template, contact role, relationship history |
 | Tools / APIs (registry §7.2.4) | TL-01, TL-02, TL-06 |
@@ -1480,7 +1480,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 | Type | Agent · Classifier/guard · scope: Investment product (cross-service) |
 | Purpose and business outcome | Classifies investor-facing content and inbound questions for ADVICE, RETURN_PROMISE, SUITABILITY, TAX_LEGAL_ADVICE, GENERAL_SOLICITATION, OFFER_TERMS, MNPI risk |
 | Linked BR / FR / US | DEC-783; INV-SVC-04/05/07/09/10/11; W74; EP-30/EP-31 stories (Part 11.16e) |
-| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
+| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R22 directly except AG-166/AG-171 outputs after approval |
 | Trigger | Every investor-facing draft and every inbound question |
 | Inputs and data sources | draft text, recipient eligibility, offering tag, applicable Group O securities packs |
 | Tools / APIs (registry §7.2.4) | TL-02, TL-12 rulepack.evaluate (AU-128) |
@@ -1504,7 +1504,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 | Type | Agent · Analyst · scope: Investment product |
 | Purpose and business outcome | Explains deliverability deterioration and recommends remediation |
 | Linked BR / FR / US | DEC-783; INV-SVC-04-WF04; EP-30/EP-31 stories (Part 11.16e) |
-| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
+| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R22 directly except AG-166/AG-171 outputs after approval |
 | Trigger | AU-213 threshold breach |
 | Inputs and data sources | bounce/complaint metrics, DNS auth results |
 | Tools / APIs (registry §7.2.4) | TL-02, TL-06 |
@@ -1528,7 +1528,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 | Type | Agent · Orchestrator · scope: Investment product |
 | Purpose and business outcome | Proposes the next consent-aware WhatsApp step and coordinates with active sequences |
 | Linked BR / FR / US | DEC-783; INV-SVC-05-WF04; EP-30/EP-31 stories (Part 11.16e) |
-| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
+| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R22 directly except AG-166/AG-171 outputs after approval |
 | Trigger | Inbound message or window change |
 | Inputs and data sources | conversation, template status, opt-in |
 | Tools / APIs (registry §7.2.4) | TL-02, TL-06 |
@@ -1552,7 +1552,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 | Type | Agent · Recommender · scope: Investment product |
 | Purpose and business outcome | Classifies replies and ranks eligible next actions without conflicts |
 | Linked BR / FR / US | DEC-783; INV-SVC-06-WF02/WF04; EP-30/EP-31 stories (Part 11.16e) |
-| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
+| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R22 directly except AG-166/AG-171 outputs after approval |
 | Trigger | Reply or schedule tick |
 | Inputs and data sources | timeline, sequences, consent, budget |
 | Tools / APIs (registry §7.2.4) | TL-02, TL-06 |
@@ -1576,7 +1576,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 | Type | Agent · Classifier · scope: Investment product |
 | Purpose and business outcome | Labels purpose, sentiment, objection type and advice requests in inbound messages |
 | Linked BR / FR / US | DEC-783; INV-SVC-07-WF01; EP-30/EP-31 stories (Part 11.16e) |
-| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
+| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R22 directly except AG-166/AG-171 outputs after approval |
 | Trigger | Inbound message |
 | Inputs and data sources | message, relationship |
 | Tools / APIs (registry §7.2.4) | TL-02 |
@@ -1600,7 +1600,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 | Type | Agent · RAG generator · scope: Investment product |
 | Purpose and business outcome | Drafts answers to investor/diligence questions only from documents the investor may see |
 | Linked BR / FR / US | DEC-783; INV-SVC-07-WF02; INV-SVC-10-WF03; EP-30/EP-31 stories (Part 11.16e) |
-| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
+| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R22 directly except AG-166/AG-171 outputs after approval |
 | Trigger | Question in A222/A224 or W75 |
 | Inputs and data sources | granted documents, approved knowledge |
 | Tools / APIs (registry §7.2.4) | TL-01 knowledge.search (grant-filtered), TL-06 |
@@ -1624,7 +1624,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 | Type | Agent · Interpreter · scope: Investment product |
 | Purpose and business outcome | Transcribes/extracts consented audio, image or document enquiries and detects language and intent |
 | Linked BR / FR / US | DEC-783; INV-SVC-07-WF04; EP-30/EP-31 stories (Part 11.16e) |
-| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
+| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R22 directly except AG-166/AG-171 outputs after approval |
 | Trigger | Consented enquiry |
 | Inputs and data sources | audio/doc, consent |
 | Tools / APIs (registry §7.2.4) | TL-14 speech.transcribe (Part 11.18), TL-02 |
@@ -1648,7 +1648,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 | Type | Agent · Summarizer · scope: Investment product |
 | Purpose and business outcome | Prepares internal briefs and extracts actions from consented notes |
 | Linked BR / FR / US | DEC-783; INV-SVC-08-WF02/WF03; EP-30/EP-31 stories (Part 11.16e) |
-| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
+| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R22 directly except AG-166/AG-171 outputs after approval |
 | Trigger | Meeting scheduled/ended |
 | Inputs and data sources | relationship, approved facts, notes |
 | Tools / APIs (registry §7.2.4) | TL-02, TL-06 |
@@ -1672,7 +1672,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 | Type | Agent · Simulator · scope: Investment product |
 | Purpose and business outcome | Simulates investor questions and checks factual answers in rehearsal |
 | Linked BR / FR / US | DEC-783; INV-SVC-08-WF04; EP-30/EP-31 stories (Part 11.16e) |
-| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
+| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R22 directly except AG-166/AG-171 outputs after approval |
 | Trigger | R02 starts rehearsal |
 | Inputs and data sources | approved pitch, recording with consent |
 | Tools / APIs (registry §7.2.4) | TL-02, TL-14 |
@@ -1696,7 +1696,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 | Type | Agent · Generator · scope: Investment product |
 | Purpose and business outcome | Drafts investor-specific pitch narrative from approved claims and deterministic scenarios |
 | Linked BR / FR / US | DEC-783; INV-SVC-09-WF02/WF04; EP-30/EP-31 stories (Part 11.16e) |
-| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
+| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R22 directly except AG-166/AG-171 outputs after approval |
 | Trigger | R02 request in A227 |
 | Inputs and data sources | claims, scenarios, mandate |
 | Tools / APIs (registry §7.2.4) | TL-01, TL-02, TL-06 |
@@ -1720,7 +1720,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 | Type | Agent · Classifier · scope: Investment product |
 | Purpose and business outcome | Classifies documents, extracts metadata and detects readiness gaps |
 | Linked BR / FR / US | DEC-783; INV-SVC-10-WF01/WF04; EP-30/EP-31 stories (Part 11.16e) |
-| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
+| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R22 directly except AG-166/AG-171 outputs after approval |
 | Trigger | Upload or daily check |
 | Inputs and data sources | documents (scanned), checklist |
 | Tools / APIs (registry §7.2.4) | TL-02, TL-06 |
@@ -1744,7 +1744,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 | Type | Agent · Analyst · scope: Investment product |
 | Purpose and business outcome | Normalises term sheets and flags deviations from approved templates for legal review |
 | Linked BR / FR / US | DEC-783; INV-SVC-11-WF01/WF04; EP-30/EP-31 stories (Part 11.16e) |
-| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
+| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R22 directly except AG-166/AG-171 outputs after approval |
 | Trigger | R02 request in A228 |
 | Inputs and data sources | term sheets, templates |
 | Tools / APIs (registry §7.2.4) | TL-02, TL-06 |
@@ -1768,7 +1768,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 | Type | Agent · Explainer · scope: Investment product |
 | Purpose and business outcome | Explains why a receipt did not match (amount, reference, payer, FX) for finance reviewers |
 | Linked BR / FR / US | DEC-783; INV-SVC-12-WF03/WF04; EP-30/EP-31 stories (Part 11.16e) |
-| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
+| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R22 directly except AG-166/AG-171 outputs after approval |
 | Trigger | Exception created |
 | Inputs and data sources | masked receipt + commitment |
 | Tools / APIs (registry §7.2.4) | TL-02, TL-06 |
@@ -1792,7 +1792,7 @@ Card format of Part 7.4b. Cost formula (blueprint convention, verify prices at i
 | Type | Agent · Verifier · scope: Investment product |
 | Purpose and business outcome | Cross-checks figures and statements across pitch, data room and offer documents before release |
 | Linked BR / FR / US | DEC-783; INV-SVC-09-WF04; INV-SVC-11-WF01/WF02; EP-30/EP-31 stories (Part 11.16e) |
-| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval |
+| Persona | R02/R03/R04/R08/R10 reviewers (issuer staff); never R22 directly except AG-166/AG-171 outputs after approval |
 | Trigger | Release request |
 | Inputs and data sources | document set, claims registry |
 | Tools / APIs (registry §7.2.4) | TL-02, TL-06 |
@@ -1940,7 +1940,7 @@ Common screen behaviour (Part 2.5 design system): startup selector (BRL-TEN-05 4
 | inv_offer_counter | Route cap counters (new) | id, offering_id, route, period, scope (FY / member state / non-accredited), used, cap | Legal | 10 y | 11 | New (N) |
 | inv_guard_finding | AG-166/AU-203 findings (new; extends compliance_finding) | id, draft_ref, label, rule_id, pack_version, verdict, overridden_by | Internal | 7 y | 04–11 | New (N) |
 
-All tables: `tenant_id uuid not null`, `startup_id uuid not null`, `created_at`, `updated_at`, `version int` (optimistic lock, NFR-025); RLS policy `using (tenant_id = current_setting('app.tenant_id')::uuid and startup_id = any(current_setting('app.company_ids')::uuid[]))`; R21 portal access through views filtered by `investor_id` from the session; money as `numeric(20,4)` + ISO 4217 code (DEC-027). The V12 API uses `/investor/subscriptions` whose entity is absent from the Technical Map candidates; it is added as `inv_subscription` (application/subscription case) [GAP-1016].
+All tables: `tenant_id uuid not null`, `startup_id uuid not null`, `created_at`, `updated_at`, `version int` (optimistic lock, NFR-025); RLS policy `using (tenant_id = current_setting('app.tenant_id')::uuid and startup_id = any(current_setting('app.company_ids')::uuid[]))`; R22 portal access through views filtered by `investor_id` from the session; money as `numeric(20,4)` + ISO 4217 code (DEC-027). The V12 API uses `/investor/subscriptions` whose entity is absent from the Technical Map candidates; it is added as `inv_subscription` (application/subscription case) [GAP-1016].
 
 ```mermaid
 erDiagram
@@ -2138,15 +2138,15 @@ V12 operations are adopted literally under `/api/v1/investor/*` (DEC-814); each 
 | API-V12-N-139 | POST /api/v1/investor/offerings/{id}/counsel-signoffs | — | Record counsel sign-off per jurisdiction (R10C) with doc-set hash · role R10C · inv_counsel_signoff | New (Group N) |
 | API-V12-N-140 | POST /api/v1/investor/offerings/{id}/approve | — | R10 approval of a signed offering → approved_for_offer · role R10 · inv_offering | New (Group N) |
 | API-V12-N-141 | POST /api/v1/investor/offerings/{id}/kill | — | Kill switch for an offering (SEC-CTL-N-15) · role R01/R10 · inv_offering | New (Group N) |
-| API-V12-N-142 | POST /api/v1/investor/eligibility-checks | — | Submit evidence / provider result for AU-202 · role R04/R21 · inv_eligibility_check | New (Group N) |
+| API-V12-N-142 | POST /api/v1/investor/eligibility-checks | — | Submit evidence / provider result for AU-202 · role R04/R22 · inv_eligibility_check | New (Group N) |
 | API-V12-N-143 | GET /api/v1/investor/eligibility-checks/{id} | — | Read decision with reason codes · role R04/R10 · inv_eligibility_check | New (Group N) |
 | API-V12-N-144 | POST /api/v1/investor/relationship-provenance | — | Record pre-existing relationship evidence · role R03 · inv_relationship_provenance | New (Group N) |
 | API-V12-N-145 | POST /api/v1/investor/guard/evaluate | — | Run AG-166 + AU-203 on a draft (dry-run) · role R03 · inv_guard_finding | New (Group N) |
 | API-V12-N-146 | GET /api/v1/investor/offerings/{id}/counters | — | Read route cap counters · role R10 · inv_offer_counter | New (Group N) |
-| API-V12-N-147 | GET /api/v1/investor-portal/me/rooms | — | Invited investor: own granted rooms (W75) · role R21 · inv_access_grant | New (Group N) |
-| API-V12-N-148 | POST /api/v1/investor-portal/me/eligibility | — | Invited investor: self-certification and evidence upload (W76) · role R21 · inv_eligibility_check | New (Group N) |
-| API-V12-N-149 | POST /api/v1/investor-portal/me/questions | — | Invited investor: diligence question (W75) · role R21 · inv_diligence_request | New (Group N) |
-| API-V12-N-150 | POST /api/v1/investor-portal/me/applications | — | Invited investor: submit application (W75) · role R21 · inv_subscription | New (Group N) |
+| API-V12-N-147 | GET /api/v1/investor-portal/me/rooms | — | Invited investor: own granted rooms (W75) · role R22 · inv_access_grant | New (Group N) |
+| API-V12-N-148 | POST /api/v1/investor-portal/me/eligibility | — | Invited investor: self-certification and evidence upload (W76) · role R22 · inv_eligibility_check | New (Group N) |
+| API-V12-N-149 | POST /api/v1/investor-portal/me/questions | — | Invited investor: diligence question (W75) · role R22 · inv_diligence_request | New (Group N) |
+| API-V12-N-150 | POST /api/v1/investor-portal/me/applications | — | Invited investor: submit application (W75) · role R22 · inv_subscription | New (Group N) |
 | API-V12-N-151 | GET /api/v1/public/investment/catalog | — | Public neutral service catalogue for W55–W58 (no issuer data) · role R18 · catalog | New (Group N) |
 | API-V12-N-152 | POST /api/v1/public/investment/quote-requests | — | Public quote/demo request (W66/W70) · role R18 · saas quote request | New (Group N) |
 

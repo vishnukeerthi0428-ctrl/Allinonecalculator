@@ -387,10 +387,10 @@ Cumulative regression size of the Part 11.21 cases at each release gate: R1 719 
 
 | # | Part | Inconsistency | Handling |
 |---|---|---|---|
-| 1 | Part 11.10c §11.10.5.1 R-8 | Still states the L1 cap for every consequential test after DEC-779…781 | CONFLICT-1129 / DEC-921 |
+| 1 | Part 11.10c §11.10.5.1 R-8 | Still states the L1 cap for every consequential test after DEC-779…781 | CONFLICT-1129 / DEC-921; R-8 reworded in v1.2 (Part 11.25) |
 | 2 | Part 6.1 §6.1.3.1 T12, §6.1.14.4 | RTO 4 h | CONFLICT-1130 / DEC-922 |
 | 3 | Part 6.1 §6.1.9.5 G1 | "no-fundraising check (DEC-002)" | CONFLICT-1132 / DEC-923 |
-| 4 | Part 11.17a §11.17.5.3 vs §11.17.5.14 | The mandate-type table lists SM-SVC-38 (SMS) as a typical MT-OUT workflow, but the binding eligibility register does not; Part 11.21 follows the register (SMS has no mandate path) | Report to Group P2 owner |
+| 4 | Part 11.17a §11.17.5.3 vs §11.17.5.14 | The mandate-type table lists SM-SVC-38 (SMS) as a typical MT-OUT workflow, but the binding eligibility register does not; Part 11.21 follows the register (SMS has no mandate path) | Corrected in Part 11.17a in v1.2 (DEC-1003, Part 11.25) |
 | 5 | Load-test numbering | LT-13 and LT-16 are referenced in Part 3.4 as proposed numbers; Part 11.21 therefore uses LT-V12-T-01…12 to avoid a collision | Noted |
 | 6 | Test totals | The V12 brief's 4,156 differs slightly from a row-definition scan of Parts 2.6–9.10 (§11.21.8.1) because worked examples and aliases are counted differently | Counting basis stated |
 

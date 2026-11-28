@@ -846,6 +846,9 @@ Part 2.3 states 162 rules; errata 81 corrects the count to **161**, the number o
 
 ## 6.6.9 (h) Source-pack FR-ENH → US → TC (generated)
 
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
+
 One row per FR-ENH requirement of the ten source-pack parts (group letter = part: A 2.6, B 3.4, C 2.7, D 3.5, E 3.6, F 7.4, G 6.8, H 6.9, I 4.4, J 8.3). "Stories" are the enhancement stories whose links name the FR (or that the FR row names); "# TC (direct)" counts tests that cite the FR, tests the FR row names, and tests citing a control ID of the requirement; "# TC (total)" adds the tests of its stories. Test IDs include TC-ENH, LT-ENH, VER-ENH and baseline TCs; the full lists are in `final/RTM.csv` (type FR-ENH).
 
 | FR-ENH | Requirement (condensed) | Wave · Epic | Defined in | Stories | # TC (direct) | # TC (total) | Test IDs (sample runs) | Status |

@@ -68,6 +68,9 @@
 
 ## 3.6.3 Detailed coverage register (prose aspects)
 
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
+
 Every prose aspect is listed individually. Catalogue aspects (tables, columns, constraints, resolution rows, inventory rows) are listed individually in §3.6.4 and in `E_coverage.csv`.
 
 | ID | Section | Aspect | Status | Blueprint location | Action / new IDs |
@@ -437,6 +440,9 @@ These are blueprint normalizations or DEC-016 derivations. None conflicts with d
 **Totals (799 columns).** Same name 344 · renamed (synonym rule) 119 · semantically equivalent structure 200 · identity reuse 3 · **added in Part 3.6b 113** · **new-entity columns 11** · **conflict 6** · not adopted 3.
 
 #### (a) Column gaps, conflicts and non-adoptions (every item listed)
+
+> **Erratum v1.2 (E-V-33):** superseded by money in integer minor units (DEC-587). See Part 11.23c.
+
 
 The "Proposed column / resolution" text is the exact DDL intent; the consolidated `ALTER TABLE` statements are in Part 3.6b §3.6.5.1. All additions carry tag GAP-389 unless another tag is shown.
 

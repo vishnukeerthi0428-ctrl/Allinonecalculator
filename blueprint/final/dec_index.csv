@@ -345,3 +345,446 @@ DEC-419,9.10,Build-time tooling approved as recommended in the Cost Estimate v1.
 DEC-420,9.10,"AI-built delivery approach adopted, with a Sprint 2 calibration gate (Cost Estimate …","Tooling: AI-built tooling replaces the Claude part of DEC-419 (Claude Max 20x for 5 engineers, Pro × 3, CI sandboxes, self-hosted agent observability). Total ≈ $1,336–1,527 per month (₹1.20–1.37 L), about $475–630 more than …"
 DEC-421,9.10,"Hosting stack: Vercel + Supabase + AWS ap-south-1 (Mumbai), replacing the AWS-only …","Running cost (pilot hosting): Vercel ₹1,800–3,600 + Supabase ₹3,600–5,400 + AWS ₹2,700–4,050 + DR storage ₹300–600 = ₹8,400–13,650 per month, against ₹6,600–9,400 for the AWS-only lines B01/B20/B21. That is ≈ ₹1,800–4,250 more …"
 DEC-422,9.10,Revised running budget approved (Ledger B re-based for DEC-421). Pilot running is now …,"+₹2,070–4,888 per month against the previously approved budget with seats. Alerts at 70/90/100% per line continue (DEC-162). The AI hard caps are unchanged (B02 ₹3,000, B23 ₹1,000, B24 ₹2,000). The approved one-time budgets are …"
+DEC-500,11.1b,V12 precedence and IDs: V12 active chapters govern business requirements; V12 IDs …,Extends DEC-415
+DEC-501,11.1b,Commercial unit: 39 SKUs sold independently; 156 workflows included; 25 foundations …,Amends DEC-047 (CONFLICT-767)
+DEC-502,11.1b,"Subscription lifecycle and commercial rules of §11.1.5.2 (trial, quote, active, plan …",Extends BRL-SVC-01…07 and CSO-01…12
+DEC-503,11.1b,"Pricing method: cost formula, accepted-result cost, price floor, meter policy, price …","Extends DEC-047 ""no published price"" and §8.3.5.13"
+DEC-504,11.1b,Tenancy: each owned company is a tenant; portfolio = revocable grant; drill-down needs …,"Amends DEC-065, DEC-055 (CONFLICT-763)"
+DEC-505,11.1b,Neutral storefront; platform directory retired; tenant pages only on verified own …,"Amends FR-W02, FR-W03, API-497, US-1905 (CONFLICT-764)"
+DEC-506,11.1b,Business hierarchy tenant → organization → company → division → brand → offering; market …,Extends DEC-016 entities
+DEC-507,11.1b,Market-pack activation gate (ADR-184); CJ-GL-01…13 non-relaxable,Amends DEC-029 (CONFLICT-766)
+DEC-508,11.1b,Autonomy mapping V12 L0–L4 → blueprint L0–L3 with DEC-064 caps; mandates only for the …,Would amend DEC-064 only if the Founder chooses to widen mandates (not recommended) (CONFLICT-762)
+DEC-509,11.1b,Command Centre: 14 views + 9 optimization perspectives as A089 tabs; cascading filter …,"Extends DEC-055, DEC-062"
+DEC-510,11.1b,SLA tiers Standard 99.5% and Business 99.9% adopted as contract templates under the …,Amends §8.3.5.13.6 SLA-02/05 options; DEC-044 rule retained
+DEC-511,11.1b,KPI framework: metric registry (ADR-183); KPI-V12-A-01…19; KPI alias rule,Extends Part 1 §1.4.2 and Part 8.3c §8.3.5.15.4
+DEC-512,11.1b,Phase mapping V12-R0…R5 to blueprint releases (§11.1.5.14); approved dates unchanged,Extends DEC-411
+DEC-513,11.1b,"Enterprise readiness programme (SSO/SCIM, custom roles/SoD/SIEM, sandbox, BYOK, …",CONFLICT-760; RECOMMENDATION-775
+DEC-514,11.1b,"EU region, region choice at onboarding, EU VAT and US tax provider",CONFLICT-761; DEC-421 unchanged meanwhile
+DEC-515,11.1b,"Growth RTO 2 h as target now, binding after cost approval",CONFLICT-765; DEC-018 unchanged meanwhile
+DEC-516,11.1b,Locales: Website/portal chrome en + hi at R2-B; Admin en-IN; de/fr/ar with market packs,Amends DEC-026 (CONFLICT-777)
+DEC-517,11.1b,Investor scope reaffirmed: BRD V12 does not extend scope; BR-C01/C14 adopted literally; …,No change to DEC-002
+DEC-518,11.1b,"Customer decision import: DEC-V7-01…08, DEC-V9-01…04, DEC-V11-01…02, DEC-V12-01…07 …",Register only
+DEC-519,11.1b,Customer success definitions: first value = first accepted output; health score never …,Extends KPI-25 and CSO-06/07
+DEC-520,11.2c,"The 39-SKU Master Automation Service Catalogue (SM-SVC-01…39, 156 workflows …",Service registry FR-V12-B-001…003
+DEC-521,11.2c,Commercial model per SKU (full / partial bundle / selective; monthly base + metered …,"Amends DEC-047, DEC-210, DEC-326; resolves CONFLICT-782"
+DEC-522,11.2c,"The 25 foundation capabilities are included in every subscription, never priced and not …",FR-V12-B-004
+DEC-523,11.2c,The PDP checks SKU entitlement on every action and fails closed; each SKU has an …,"FR-V12-B-006…008, 026; ADR-185"
+DEC-524,11.2c,"Migration: retained IDs, WF04 added; SM-SVC-20 procurement split to SM-SVC-39 with …","FR-V12-B-012; BRL-V12-B-05, 20, 21"
+DEC-525,11.2c,"Meter units and pilot caps are illustrative and unapproved; all prices ""Quotation …","FR-V12-B-009, 010, 029"
+DEC-526,11.2c,"Shared engines ENG-01…15 are logical capabilities mapped to blueprint modules, never …",§11.2.4.4
+DEC-527,11.2c,"Per-SKU KPIs, 156 enhancement metrics and first-value milestones are adopted as …","FR-V12-B-021, 022, 030"
+DEC-528,11.2c,New epics EP-22…EP-29 are created for services without a blueprint home; EP-30 reserved,§11.2.5.4
+DEC-529,11.2c,"Recordings and transcripts may be processed only with all-party consent, redaction and …",Amends DEC-218; resolves CONFLICT-783
+DEC-530,11.2c,"SM-SVC-38 SMS/RCS is a Future (W6+) SKU behind DLT/NCPR activation gates; the W0–W5 ""no …",EP-23; AUR-B-02
+DEC-531,11.2c,SM-SVC-26 voice: catalogued now; inbound AI voice with disclosure first; outbound only …,Would amend DEC-387 and DEC-392 if approved; CONFLICT-779
+DEC-532,11.2c,SM-SVC-28 agentic commerce: mandate bounds negotiation only; human approval per …,Keeps the safety invariant; CONFLICT-778; ADR-186
+DEC-533,11.2c,SM-SVC-19 bid submission stays human on every portal,CONFLICT-781; BRL-V12-B-04
+DEC-534,11.2c,"Price and offer experiments (SM-SVC-30, 37) allocate only human-approved price points …",BRL-V12-B-11
+DEC-535,11.2c,New services and WF04 deltas are placed in W6 / Phase 2 and costed as CR-V12-B-01/02 …,CONFLICT-780; DEC-228/230/231/422 unchanged
+DEC-536,11.2c,Public storefront is a neutral SaaS catalogue (projection rule); client content is …,FR-V12-B-024; SM-SVC-15
+DEC-537,11.2c,Screen workspace requirements SWR-B-01…12 go to Group G; agent and automation …,"GAP-786, GAP-787"
+DEC-538,11.2c,Side-effect class drives the autonomy cap per workflow; DEC-064 caps unchanged,FR-V12-B-020
+DEC-540,11.3c,Adopt SM-SVC-01-WF01…SM-SVC-20-WF04 and their step IDs as canonical workflow-contract …,"Registry, traces and RTM carry V12 IDs"
+DEC-541,11.3c,Add the Blocked step state; V12 failure codes are StepRun reason codes; …,Amends Part 2.3 §2.27.14 and Part 3.2 run states
+DEC-542,11.3c,Authority crosswalk L0–L4/R0–R3 → blueprint autonomy (§11.3.5.4); DEC-064 caps unchanged,Amends Part 7.2 autonomy labels
+DEC-543,11.3c,Workflow DTO money = int64 minor units + ISO 4217; storage Decimal,Amends Part 3.5b Money for workflow DTOs; DEC-027 storage unchanged
+DEC-544,11.3c,"Appendix B JSON Schemas are the canonical validators (urn:sm:dto: :v2), pinned per run",FR-V12-C-008
+DEC-545,11.3c,"FSD-POL-V6-PRECHECK adopted: idempotency digest, timeouts 30 s / 90 s, ≤ 3 safe retries …","Complements NFR-016, BRL-AUT-06/07"
+DEC-546,11.3c,"Where V12 sources disagree on risk or side-effect class, the stricter applies",Resolves CONFLICT-809
+DEC-547,11.3c,"Per-workflow acceptance taxonomy (POS, INPUT, SCOPE, ENT, DUP, QUALITY, BUDGET, …",682 + 286 tests mapped to TC-V12-C
+DEC-548,11.3c,R3 workflows stay ≤ L1; V12 bounded-mandate L3 path disabled,CONFLICT-798
+DEC-549,11.3c,R2 L3 mandate only for DEC-064 L3 categories,CONFLICT-799
+DEC-550,11.3c,SM-SVC-19-WF03 submission remains human (DEC-053),CONFLICT-800
+DEC-551,11.3c,The 20 WF04 workflows are in scope as V12 contracts with the specifications in this part,"The WF04 requirements FR-V12-C-016, 020, 024 … 092 (every fourth FR)"
+DEC-552,11.3c,WF04 and not-covered capability build is placed in Phase 2 (W6) unless funded earlier; …,Budget envelope outside DEC-230/231
+DEC-553,11.3c,"V12 per-invocation INR figures are illustrative metering inputs, not prices (Quotation …",Cost columns in each block
+DEC-554,11.3c,160 workflow KPIs adopted with the formulas in this part; thresholds set after the pilot …,FR-V12-C-012; GAP-810
+DEC-560,11.4d,V12 IDs SM-SVC-21…39-WF01…04 and their 231 STEP IDs are canonical; blueprint WF-01…39 …,Amends Part 9.4 catalogue keys; no WF renumbering
+DEC-561,11.4d,"Run/step state model v2 (V12 names) with optimistic transitions, terminal immutability, …",Amends Part 2.3 §2.27.14 and Part 3.3 ENT-162/163 state CHECKs
+DEC-562,11.4d,Seven V12 executor kinds bound to NT13 node types and failure codes to run states; …,Extends Part 7.4b NT13 and aut_step_run.error_class (adds reason_code)
+DEC-563,11.4d,Canonical event envelope v2 for all events; ops_inbox added,Amends Part 3.2 §3.2.3.1 and Part 3.4 §3.4.5.2 E
+DEC-564,11.4d,"Five trigger kinds; misfire skip or reschedule_once, never burst; REC-01 draft fields; …","Amends ADR-028 wording, AU-028 and Part 3.3 ENT-161"
+DEC-565,11.4d,"App. B schemas registered as v2; v3 per-workflow projection, typed arrays and numeric …",Narrows ADR-030 to REST resources; adds aut_dto_schema
+DEC-566,11.4d,V12 L0–L4 / R0–R3 mapped to blueprint L0–L3 with stricter-wins (§11.4.5.9),DEC-064 unchanged; V12 tightenings (e.g. SVC-23-WF01) adopted
+DEC-567,11.4d,"Fair scheduler (DRR per tenant/company), tenant bulkheads, five-level budget hierarchy, …",Extends DEC-321 and AU-002
+DEC-568,11.4d,The 8/10 V12 acceptance families per workflow are mandatory release evidence …,Adds 736 test instances to the Part 6 suite
+DEC-569,11.4d,One definition per workflow revision; templates are parameter sets; BusinessContext v1 …,Amends A113 template semantics (FR-A113)
+DEC-570,11.4d,"Where V12 sources disagree on side effects, the FSD R-class governs and an approval gate …",13 workbook labels corrected; 16 workflows gain an approval gate
+DEC-571,11.4d,"SMS/RCS (SVC-38) adopted for activation after Release 2 only, with DLT header/template …",Extends TR-R1 control; funding under DEC-578
+DEC-572,11.4d,"Resolution of CONFLICT-815 (voice): specify, keep disabled, A3 evaluation through PG gates","Until decided, SVC-26 is disabled_pending_founder"
+DEC-573,11.4d,Resolution of CONFLICT-816 (agentic commerce): WF01–WF02 only; negotiation and payment …,WF03–WF04 disabled
+DEC-574,11.4d,Resolution of CONFLICT-817 (pricing): deterministic analytics only; experiments only …,WF02–WF03 disabled
+DEC-575,11.4d,Resolution of CONFLICT-818 (coaching): written notes only,Recording input rejected
+DEC-576,11.4d,Resolution of CONFLICT-819 (generative media): brand-asset composition now; generation …,"WF01, WF02, WF03 audio disabled"
+DEC-577,11.4d,Resolution of CONFLICT-814 (R3 mandates): L1 per item; L3 only for deterministic …,aut_mandate.scope = single step
+DEC-578,11.4d,Funding of CR-V12-D-1…3 (and D-4 if approved) outside DEC-230/231/422; recommended: D-1 …,No V12-D spend before approval
+DEC-579,11.4d,Marketplace (SVC-31) and procurement (SVC-39) adopted: listing prices only from approved …,Extends WF-10 and the OrganicSpec route (BR-S004)
+DEC-580,11.5b,"V12 platform IDs (ENT-IDN/ACC/BIZ, MT, REC, V5 cards, GO, R-phases, SM-xx-yy, ENG) are …",Amends DEC-415 precedence for platform chapters
+DEC-581,11.5b,Tenancy vocabulary Tenant → Organization → Company; Company = Startup (ADR-140),Amends DEC-016 entity naming
+DEC-582,11.5b,Enterprise identity ENT-IDN-01…06 and ENT-ACC-01…05 specified as §11.5.5.2; IdP remains …,Extends Part 4.1 §4.3–4.4; scheduling under DEC-597
+DEC-583,11.5b,Custom roles with SoD constraints and database trigger; R01–R20 remain built-ins; new …,Amends Part 2.3 role register
+DEC-584,11.5b,Commercial unit = SKU (39 sold; 156 workflows included); DEC-047 archetypes become …,Amends DEC-047
+DEC-585,11.5b,Commercial state machine SUB-T01…T08 and tenant lifecycle …,Amends ENT-182 state set and §2.27.18
+DEC-586,11.5b,Append-only usage ledger with atomic reservations; hourly meter readings become a …,Amends ENT-183 role
+DEC-587,11.5b,"Billing pipeline with integer minor units, rule-table tax engine (India live after …",Amends ENT-184/185 money types; extends DEC-027
+DEC-588,11.5b,Upgrade with daily proration on the effective date; downgrade at renewal; grace and …,New commercial rules
+DEC-589,11.5b,V12 provider-neutral topology realized on DEC-421 (ADR-150); DEC-V7-03 resolved by DEC-421,Completes DEC-421 design
+DEC-590,11.5b,Second production region (EU),CONFLICT-832; recommended: not before W6 exit
+DEC-591,11.5b,Backup option for RPO ≤ 15 min on Supabase (A PITR add-on / B logical replica) from …,CONFLICT-833; recommended Option A
+DEC-592,11.5b,Environment names dev/sit/uat/prod-in (prod-eu reserved) with mapping to …,Amends Part 3.1 §3.1.14 names
+DEC-593,11.5b,"Configuration contract of 15 V12 variables plus four DEC-421 variables, fail-fast at start",Extends Part 4.4b ENV
+DEC-594,11.5b,"Error class registry ERR-01…12 with breaker, retry, DLQ-replay and backpressure parameters",Extends Part 3.2 error model
+DEC-595,11.5b,Recovery objectives DEC-V9-01 adopted (critical 15 min / 4 h; growth 15 min / 2 h; …,Achievability depends on DEC-591
+DEC-596,11.5b,R0–R5 are labels over the approved waves; R0 = W0–W1; R1 ≈ Release 1; R2 ≈ Release 2 + …,"CONFLICT-834, CONFLICT-835"
+DEC-597,11.5b,"Fund CR-V12-E-01 (₹5.0–17.1 L, likely ₹9.4 L) into Release 2; CR-V12-E-02 and -03 to …",Outside Ledger A and Phase-2 estimates
+DEC-600,11.6b,V12 AGT-01…20 adopted as the canonical agent-role registry; blueprint AG/AU are …,Two-level registry (ADR-160); AU-179; §11.6.4
+DEC-601,11.6b,Prompt ID PRM- - -vN adopted; PC-01…40 and ai_prompt_version rows aliased,AU-153; §11.6.5.4
+DEC-602,11.6b,"V12 evaluation gates adopted where stricter; stricter blueprint gates kept (DEC-001, …",Amends Part 7.3 §7.6.9
+DEC-603,11.6b,"One EVAL suite per AI-inference workflow (111), ≥ 50 + 20 cases, two annotators, κ ≥ …",AU-154/155/156; amends §7.6.6 judge agreement 85%
+DEC-604,11.6b,Step classification of 517 steps (159 AI-inference) adopted; model calls only from …,AU-150; four blueprint AI usages re-bound (GAP-858)
+DEC-605,11.6b,"MDL-R0…G1 mapped to gateway tiers per DEC-418 (S1 → 1a, M1/L1 → 1b, E1 in-region open …",§11.6.5.3
+DEC-606,11.6b,Routing: rules → cheapest tier passing the workflow/locale/class suite → one escalation …,AU-152 extends AU-001 rules R6/R8
+DEC-607,11.6b,Budgets gain a workflow dimension; soft 80% / hard cap hold with deterministic …,AU-159
+DEC-608,11.6b,"Cost per accepted result is the AI FinOps unit, reported per workflow, tenant and agent …",AU-158; A117
+DEC-609,11.6b,"RAG and cache contract of ch17 adopted (scope-before-rank, provenance and rights per …",AU-164/165/166
+DEC-610,11.6b,"AI-INJ-01…12 and CTRL-AI-01…09 adopted as canonical test and control IDs, mapped to …",TC-V12-F-021…041
+DEC-611,11.6b,"Jurisdiction packs are versioned configuration; only Approved packs enforced; UK, US, …",Amends DEC-029 Year-1 allowlist; AU-170
+DEC-612,11.6b,CJ-GL-01…13 adopted as non-relaxable platform rules above tenant configuration,Mapped to BR/X rules; AU-171
+DEC-613,11.6b,Send preflight decision table (20 cases) and precedence emergency stop > …,AU-171 extends AU-009
+DEC-614,11.6b,Effect classes R0–R3 mapped to tool classes and DEC-064 caps; bounded R2 mandates = …,AU-175
+DEC-615,11.6b,ENG-01…15 are logical engines inside the modular monolith; no microservice per engine,ADR-169
+DEC-616,11.6b,"AG-100…122, AU-150…179, EXT-01…12 added as change request CR-V12-F / CR-V12-F-R, outside …",§11.6.5.18
+DEC-617,11.6b,"The 45 zero-AI-step workflows run without model calls; AG-037, AG-045, AG-046 usages in …",GAP-858 for customer confirmation
+DEC-618,11.6b,ENT-CMP-04…08 adopted as release criteria; ENT-CMP-01…03 roadmap targets,§11.6.5.9
+DEC-619,11.6b,V12 screen IDs A114–A121 and W36 are canonical; content specified in §11.6.5.7; …,GAP-859
+DEC-620,11.7c,"V12 screen IDs that collide with blueprint IDs (A114–A131, W35–W41) are kept as …",Resolves CONFLICT-870; no renumbering of Parts 9.7–9.9
+DEC-621,11.7c,The platform website W01–W34 becomes the neutral SaaS storefront with the V12 names and …,Amends Part 2.5 §2.43.1–2.43.3 and the FR-W01…W34 key fields; preserves DEC-030 in W54
+DEC-622,11.7c,"A107 renamed ""Tenant-owned website intake configuration""; A108 renamed ""Tenant-owned …",Amends Part 2.5 A107/A108
+DEC-623,11.7c,All registered Admin screens are delivered in the compact layout class with identical …,Amends DEC-043 for Admin; funding per DEC-633
+DEC-624,11.7c,Four access experiences are navigation presets derived from roles and grants …,Adds presets to Part 2.3 roles; no new role
+DEC-625,11.7c,"Website locales en-IN (launch), hi-IN (Release 2), ta-IN and or-IN (DEC-404), de, fr, ar …",Amends DEC-026/DEC-404 for the website; funding per DEC-633
+DEC-626,11.7c,Service workspaces X26–X39 become A170–A183 on the shared domain-panel component …,14 new screens
+DEC-627,11.7c,Operator screens O01–O08 become A184–A191; operators have no default read of tenant …,8 new screens
+DEC-628,11.7c,"Utility views SERVICES, SVC-*, WORKFLOWS, WF-*, INDEX, ORG get contracts A192–A197 but …",Count reconciliation; GAP-879/880 recorded
+DEC-629,11.7c,"Website behaviours adopted as acceptance: 404 view, inline validation, cookie consent …",FR-V12-G-096…100
+DEC-630,11.7c,Storefront selection modes Full / Partial / Selective over 39 SKUs; 25 foundations …,FR-V12-G-104/105; plan archetypes of DEC-047 remain the entitlement backbone
+DEC-631,11.7c,"Browser storage on the public site holds only per-viewer conveniences (cookie choice, …",Resolves GAP-881; FR-V12-G-112
+DEC-632,11.7c,Investor / fundraising mode and the Investment Automation sibling product,Recommended: remove from commercial codebase; sibling product out of scope (CONFLICT-868)
+DEC-633,11.7c,Approve the V12 UI proposal of §11.7.5.12 (₹11.45–36.54 lakh one-time + translation; …,Without approval only Release 1 must-haves funded from contingency are built (CONFLICT-869)
+DEC-634,11.7c,"A089 adopts 14 management views, 9 optimisation perspectives (audience-filtered), 17 …",FR-V12-G-091
+DEC-635,11.7c,"Run states shown as eight states with ""Reconciling"" distinct from ""Completed""; requester …",FR-V12-G-111
+DEC-636,11.7c,Planning calculators accept user-entered assumptions only and label outputs as …,FR-V12-G-107
+DEC-637,11.7c,W05/W08 show the 156 curated fictional workflow outputs as labelled samples with a …,FR-V12-G-106
+DEC-638,11.7c,"V12 A115, A117, A120, A123–A126, A128–A131, RUNS and W35, W38–W40 are delivered as …",16 alias deltas; avoids duplicate screens
+DEC-639,11.7c,Certification programme content on W46 and A159,Recommended interim wording per DEC-408 (CONFLICT-874)
+DEC-640,11.8b,Contract authority and registry: Appendix A/A2 and the FSD 25 candidates are mapped onto …,Registry rules R-1…R-7; CI gates; amends Part 3.2 §3.2.1.14 operationId rule
+DEC-641,11.8b,"Wire conventions: list {items, next_cursor}, limit default 50 max 200; wire field …","Amends Part 3.2 §3.2.1.6, §3.2.1.8, §3.2.1.9"
+DEC-642,11.8b,Status codes: blueprint superset declared on every operation; 422 SCHEMA_INVALID added; …,Amends Part 3.2 §3.2.1.9–10
+DEC-643,11.8b,Security schemes: bffSession for browser namespaces (DEC-019 unchanged); bearerAuth (API …,Resolves CONFLICT-891; ADR-205
+DEC-644,11.8b,"Developer platform phase: ENT-API-01/03/05 in Release 1, ENT-API-02/04/07 in Release 2, …",CONFLICT-886; supersedes the A3 placement of CAP-X3-23 if approved
+DEC-645,11.8b,"Outbound webhooks offered: HMAC-SHA-256 over timestamp + event ID + body, ± 300 s …","Amends Part 3.2 §3.2.1.13 (""not offered""); ADR-206; delivery timing follows DEC-644"
+DEC-646,11.8b,"Deprecation: ≥ 12 months' notice for breaking changes to published contracts; headers, …",Amends Part 3.2 §3.2.1.3
+DEC-647,11.8b,"Run gateway /api/v2/workflow-runs (create, read, approvals, cancel, steps) with …",ADR-208; v2 namespace introduced without retiring v1
+DEC-648,11.8b,"Enterprise identity and access APIs: SSO per tenant, domain verification, MFA/session …",CONFLICT-887; ADR-207; Sprint 0 identity check 13
+DEC-649,11.8b,Connector framework and activation gate CF-01…12; contact-data connectors blocked until …,Amends Part 3.2 AD-19 wave; adds CF-11 to Part 7.4b PG gate
+DEC-650,11.8b,"New adapters AD-V12-H-01…11 (CRM BYO, SMS-DLT/RCS, voice, warehouse, identity …",CONFLICT-888
+DEC-651,11.8b,Plugin register: VND-01…97 adopted as canonical IDs on the matching IC rows; decisions …,Part 7.4a register keyed by VND; F_integration_candidates unchanged
+DEC-652,11.8b,API hosting under DEC-421: API ingress on AWS; SPAs on Vercel reach the API through …,CONFLICT-889; ADR-209
+DEC-653,11.8b,Status page on an independent static host fed by approved notices,ENT-OPS-02; RECOMMENDATION-900; B27 proposal
+DEC-654,11.8b,Event catalogue additions: 24 rows / 49 event types and the outbound projection v1,Adds to Part 3.2 §3.2.3.3
+DEC-655,11.8b,"V12 phase mapping R0/R1 → Release 1, R2 → Release 2, R3 → W6, R4/R5 → Year 2+ for API …",ASSUMPTION-893
+DEC-656,11.8b,Market search providers (VND-54/73) limited to commercial market research; investor …,CONFLICT-890 resolved
+DEC-657,11.8b,CR-V12-H-01 development ₹5.00 / 9.26 / 15.55 L (R1–R2) + ₹0.91–3.00 L later + ₹0.5–1.5 L …,Outside Ledger A and DEC-422
+DEC-658,11.8b,MOB-16 handoff in production uses the authenticated server-owned application draft …,FR-V12-H-034
+DEC-659,11.8b,V8 AI-governance and compliance routes adopted (API-V12-H-049…062 plus aliases),FR-V12-H-012/013
+DEC-660,11.9c,FSD V12 Appendix C/C2 table names are the canonical logical names; physical tables …,48 core/enterprise tables mapped; 17 new physical tables
+DEC-661,11.9c,"Hybrid domain storage: typed blueprint tables plus the V12 common columns schema_ref, …",324 domain-schema fields Matched; 89 validation triggers
+DEC-662,11.9c,RLS model: command-split policies on tenant and company; no DELETE policies on business …,410 policies; GAP-912/913 closed
+DEC-663,11.9c,"Supabase privilege model: schema ge unexposed, no grants to anon/authenticated, …",CONFLICT-906 resolved
+DEC-664,11.9c,"Monetary amounts stored as bigint *_minor + char(3) currency; unit prices, quantities …",CONFLICT-908 resolved
+DEC-665,11.9c,"ID namespacing: ""V12 KPI-nn"" for V12 release KPIs, ""V12-ENG DEC-nnn"" for archive …",CONFLICT-907 resolved
+DEC-666,11.9c,Vulnerability SLA Low = 180 days (amends Part 4.1 §4.16.3),Release gate unchanged for Critical
+DEC-667,11.9c,"Residency guard: one database per region, data_region fixed at onboarding, cross-region …",India live; EU activation see DEC-678
+DEC-668,11.9c,Append-only audit with per-tenant hash chain through fn_append_audit(); append-only …,SEC-06 met
+DEC-669,11.9c,SoD enforced in the database at role build (insert/update) and per user across roles; …,ENT-ACC-02 met
+DEC-670,11.9c,Breach-notification deadlines validated in the database (CERT-In 6 h; GDPR 72 h; DPDP …,A121 clocks trustworthy
+DEC-671,11.9c,"Envelope encryption with per-tenant DEKs; platform KEK or customer KEK (AWS KMS, Azure …",Supersedes Part 9.9 ASSUMPTION-704
+DEC-672,11.9c,"Analytics model: business_event fact, metric_definition contract, versioned …",ch29 aspects Matched
+DEC-673,11.9c,"Full tenant export per ENT-DAT-01 (formats, manifest hash, second approver, ≤ 7-day link)",Part 3.3 ENT-189 extended
+DEC-674,11.9c,Tenant sandboxes with synthetic data only; configuration promotion as reviewed immutable …,Release 2
+DEC-675,11.9c,"Security programme ENT-SEC-01…07, PEN-01…08 scope, SEC-06/08…14, MOB-10 adopted; annual …",ch31 aspects Matched except ENT-SEC-08
+DEC-676,11.9c,"PERF-01…07 load profiles and V12 KPI targets (KPI-05, 06, 26–31) are binding performance …",Part 4.2 tests extended
+DEC-677,11.9c,"Index policy: every FK supported, V5 common scope index on domain tables, CI guards on …",GAP-914 closed
+DEC-678,11.9c,Enable the EU region (second Supabase project and AWS region) for ENT-DAT-03,"CONFLICT-832; until decided, onboarding is IN only and the EU value is rejected by the IN database"
+DEC-679,11.9c,24×7 security monitoring for ENT-SEC-08 (Option A MDR recommended),CONFLICT-905; R3 cost ₹40k–1.5 L/month (verify)
+DEC-680,11.10c,"V12 test IDs are canonical (workflow scenarios, step tests, AT01, ENT-AT01, AIX-TC, …","+2,316 executable tests; test total 6,472"
+DEC-681,11.10c,V12 KPI-01…35 are aliases of OKPI-01…35; the V9 reconciliation column is adopted (KPI-13 …,Amends Part 4.4a OKPI notes; no ID change
+DEC-682,11.10c,Prototype evidence (V3–V12 checks) is recorded but never counts as production …,954 prototype checks mapped to 14 classes
+DEC-683,11.10c,"RCTCFE, the 20-dimension scorecard and artifact scores are adopted as release review …",QC-V12-J-001/002/008; FR-V12-J-001/002
+DEC-684,11.10c,Workflow test completeness gate (QC-V12-J-011) is blocking per SKU before activation,TC-V12-J-129
+DEC-685,11.10c,"The chapter 40 dispositions of the archived 589 test IDs, 245 QCs and 162 work items are …",No change to Parts 6.8/6.9
+DEC-686,11.10c,The 39 SKU build tasks and TASK-V12-J-001…014 are added to the backlog with the …,CONFLICT-922
+DEC-687,11.10c,KPI-32 growth RTO stays staged per DEC-158 (review target until Topology B),CONFLICT-923
+DEC-688,11.10c,CJ-TC-09 runs region-conditional; EU-resident tenants are refused while a single region …,CONFLICT-924
+DEC-689,11.10c,Coding standards CS-V12-J-01…04 are added to Part 4.4a §4.4.5.1; chapter 35 controls …,QC-V12-J-015; TASK-V12-J-010
+DEC-690,11.10c,"Evidence records gain tenant fixture, fixture version, input and environment fields; …",QC-V12-J-007; TC-V12-J-125
+DEC-691,11.10c,17 quality controls QC-V12-J-001…017 are added to the QC register (245 → 262),Part 6.9b register extended
+DEC-700,11.11b,Customer decisions are written CDEC-### / CDEC-Vn-##; CDEC-001…180 ≡ SPDEC-001…180 …,188 CDEC Matched as equivalent; no DEC collision
+DEC-701,11.11b,SEV1–SEV4 canonical labels; the single communication matrix of §11.11.5.3 supersedes the …,"ENT-OPS-03, ENT-OPS-07, REC-23 Matched"
+DEC-702,11.11b,Support schedule SLA-05 v3: acknowledgement per DEC-327 plus first-response targets per …,"ENT-OPS-05, REC-26 Matched"
+DEC-703,11.11b,"V12-W40 ≡ W45, V12-A130 ≡ A159 + A014 + DB-01, V12-W38 ≡ W46; status page adds …","ENT-OPS-02, CS-11 Matched"
+DEC-704,11.11b,SLO-V12-K-01 (queue age) and SLO-V12-K-02 (accepted output success) added; policy holds …,"ST-01, 37-THR-01 Matched"
+DEC-705,11.11b,"AL-15 v2: robust median/MAD baseline per tenant, startup, workflow, agent, model tier …",AI-14 Matched
+DEC-706,11.11b,Scoped mobile notification rules (a)–(g) and acceptance MOB-14-AT01 apply to CAP-X3-26 …,MOB-14 Matched
+DEC-707,11.11b,TRN-001…138 are canonical customer aliases of the TRN-SCR cards; help centre covers the …,138 TRN rows and ENT-OPS-06 Matched
+DEC-708,11.11b,RTM extension with V12 row types and the 156 workflow chains (ADR-220); chain validator …,"157 chain rows, 45 V6/MT rows, 7 ownership rows Matched"
+DEC-709,11.11b,"The five disposition indexes (1,912 rows), the original optimization index (104), …","2,016 rows Matched"
+DEC-710,11.11b,"Source-archive register SAR-01…11 with recomputed hashes (11/11 match), Object Lock …",19 archive aspects Matched
+DEC-711,11.11b,"CDEC-V7-06 adopted: evaluation gates per workflow need owner approval; accuracy ≥ 90%, …",Clarifies DEC-303 wording
+DEC-712,11.11b,CDEC-V7-07 adopted: tenant AI budgets default soft cap 80% (notification) and hard cap …,Amends DEC-306 for tenant-level defaults
+DEC-713,11.11b,"CDEC-V12-02 adopted: enterprise federation with Okta, Microsoft Entra ID and Google …",Amends DEC-003 scope
+DEC-714,11.11b,CDEC-V7-05 adopted: select the DLT operator/telecom partner and define the scrubbing API …,ENT-GLB-07 Matched
+DEC-715,11.11b,"Human 24×7 on-call for SEV1/SEV2 (options A/B/C, recommendation C then B)","CONFLICT-943; ENT-OPS-04, ENT-SEC-08"
+DEC-716,11.11b,SLA tiers Business 99.9% and Enterprise 99.95% with service credits (recommended option 2),"CONFLICT-944; ENT-OPS-01, CDEC-V12-03"
+DEC-717,11.11b,Certification sequence SOC 2 / ISO 27001 / 27701 / 42001 (recommended option 2),"CONFLICT-945; ENT-CMP-01…03, CDEC-V12-01"
+DEC-718,11.11b,"Region, residency, market, locale, tax-provider and multi-cloud key expansion …",CONFLICT-946; 13 aspects
+DEC-719,11.11b,Promotional window default (recommended: keep 09:00–19:00 default; tenant may widen to …,CONFLICT-947; CDEC-V7-04
+DEC-720,11.12,Annex and V1 text are non-normative evidence; blueprint content may be promoted from …,FR-V12-L-027; ADR-225
+DEC-721,11.12,Adopt G01…G15 literally as the canonical cross-screen field-family rules (minus investor …,FR-V12-L-001…015 amend Part 2.5 / 2.7 shared component contracts
+DEC-722,11.12,ID namespace qualification for colliding families; no renaming of existing IDs,§11.12.4.2; FR-V12-L-029
+DEC-723,11.12,Adopt UX-BR-01…05 as IDs; UAT-L uses the 26 owned + 10 independent tenant fixture,FR-V12-L-016…020; AP-01 unchanged
+DEC-724,11.12,Adopt BENCH-001…028 and the benchmark-before-enable lifecycle,FR-V12-L-021…026; ADR-226; amends Part 7.4b PG flow (benchmarked state)
+DEC-725,11.12,Adopt T01…T25 (23 scenarios) as acceptance pack UAT-L,TC-V12-L-021…043 added to Part 6 release gates
+DEC-726,11.12,Archive integrity and pack-drift checks at every customer revision,"FR-V12-L-028, FR-V12-L-030"
+DEC-727,11.12,Investment Automation stays out of scope; investor mode removed from the commercial build,CONFLICT-958
+DEC-728,11.12,Archive effort and cost figures are historical; DEC-228 / DEC-230 stand,CONFLICT-960
+DEC-740,11.13b,"Adopt the Part 11.13 AI improvement catalogue (16 agents, 24 automations, 16 workflows) …",Catalogue of record grows to 96 / 143 / 54 when approved
+DEC-741,11.13b,"Create release A4 (Day ≈ 601–720) with entry gate G-A3 (A3 KPIs for 30 days, no …",Extends DEC-411 roadmap
+DEC-742,11.13b,Development budget CR-AIM-01: ₹12.69–41.16 L (central ₹23.91 L); A2 subset CR-AIM-01a …,"Outside DEC-230, 416, 417"
+DEC-743,11.13b,"New Ledger B line B25 ""AI improvement inference"" with hard cap ₹5,000/month at pilot, …",Outside DEC-422; alerts at 70/90/100% (DEC-162)
+DEC-744,11.13b,Outcome SLOs are internal objectives only; no outcome guarantee is shown or sold,Resolves CONFLICT-984
+DEC-745,11.13b,"Grouped approval binds per-item hashes; outliers must be opened; consequential finance, …",Resolves CONFLICT-985; preserves L1
+DEC-746,11.13b,"Bounded auto-tuning at L2 only for allowlist PT-01 to PT-12 within bands, with holdout, …",Enables AU-126
+DEC-747,11.13b,"Cross-tenant benchmarks (AU-143) only under the six conditions of CONFLICT-983, or not …",A4 item conditional
+DEC-748,11.13b,"Template marketplace lists definition-only, certified packages; installs are drafts; …",A4 item
+DEC-749,11.13b,Fourteen candidates already covered by V12 or the blueprint are not duplicated (R-01 to …,No duplicate items
+DEC-750,11.13b,"Reader/actor separation (V12 AIX-09) extends to swarm workers, verifier and all Part …",Enforced by AU-141 BF-01
+DEC-751,11.13b,AI-generated media carries a signed C2PA manifest and the label required by the rule …,AU-142
+DEC-752,11.13b,AU-141 behaviour firewall is a precondition: no Part 11.13 agent is enabled without an …,Release order in A2
+DEC-753,11.13b,Release placement of §11.13.5.14 (A2 / A3 / A4),"Gates G-A1, G-A2, G-A3"
+DEC-754,11.13b,Procurement negotiation support presents deterministic ranges only; the buyer sets …,AG-090 limits
+DEC-755,11.13b,"Knowledge graph is tenant- and startup-scoped, business-role facts only, person nodes …",AU-135 rules
+DEC-770,11.14,"Full Release 2 change request approved; dates follow the work. CR-V12-J-01 (Part 11.10c, …",Resolves CONFLICT-922 and DEC-686. Development budget: CR-V12-J-01 is added to Ledger A as an approved change request on top of DEC-230/416/417; re-forecast at each sprint review. Staffing stays Option 2b (DEC-228) unless the …
+DEC-771,11.14,V12 latest update adopted for recovery time: growth RTO ≤ 120 minutes is a blocking gate …,"Resolves CONFLICT-923 and CONFLICT-765. Topology for the ≤ 120 min RTO under DEC-421: Supabase with point-in-time recovery and a warm standby project in the same region, AWS API/workers on two availability zones, and a scripted …"
+DEC-772,11.14,V12 data residency adopted: India and EU. EU-resident tenants' personal data is stored …,"Resolves CONFLICT-924, CONFLICT-761, CONFLICT-832 and CONFLICT-852. The region-location parts of CONFLICT-946 are resolved; locale and tax expansion stays a separate decision. The EU stack is provisioned when the first EU tenant …"
+DEC-773,11.14,"24×7 human on-call adopted (V12 ENT-OPS-04, ENT-SEC-08). Human 24×7 on-call for …",Resolves CONFLICT-943 (DEC-715). Supersedes the business-hours support model of DEC-044/080. The SEV1 response targets of Part 11.11 become contractual. Running cost ≈ ₹1.1–2.6 L per month (hybrid; moving to a fully internal …
+DEC-774,11.14,"SLA tiers adopted now: Standard 99.5%, Business 99.9%, Enterprise 99.95%, all …","Resolves CONFLICT-944 (DEC-716). Supersedes DEC-325. Composition rule: a tier may be signed only when the underlying architecture and provider SLAs compose to it. The Enterprise 99.95% tier therefore uses multi-AZ AWS, the …"
+DEC-775,11.14,Certification sequence adopted as V12 specifies: SOC 2 Type I (Release 2) → SOC 2 Type …,"Resolves CONFLICT-945, CONFLICT-856 and the certification part of CONFLICT-760 and CONFLICT-834 (DEC-717, DEC-597). Supersedes the contract-trigger rule of DEC-408. Indicative one-time costs (verify with auditor quotes): SOC 2 …"
+DEC-776,11.14,"Global expansion adopted (V12 ENT-DAT-02/03, ENT-GLB-02/03/05/08, ENT-CMP-05; …","Resolves CONFLICT-946, CONFLICT-835 and the remaining parts of CONFLICT-761 (DEC-718, DEC-596). Amends DEC-040/421 (regions), DEC-026/404 (locales), DEC-027 (tax beyond India GST) and DEC-405 (BYOK beyond AWS KMS). The legal …"
+DEC-777,11.14,Messaging window adopted as V12 specifies: 09:00–21:00 in the recipient's local time is …,Resolves CONFLICT-947 (DEC-719). Supersedes the 09:00–19:00 Mon–Sat default of BRL-ELG-08; this is the Founder's approval of the loosening that DEC-038/BRL-APR-11 requires. Stricter law still wins: where a jurisdiction rule pack …
+DEC-778,11.14,Security correction: Supabase access model. The Django API does not use the Supabase …,"Amends DEC-421 (""service key held server-side"" is withdrawn). Closes the cross-company read and portfolio write gaps found in the customer DDL (Part 11.9b Appendix C3 policies). Tests: the Part 11.9b checks are blocking in CI"
+DEC-779,11.14,V12 autonomy and bounded mandates adopted. The V12 autonomy scale (including L3/L4) …,"Supersedes the L1 cap of DEC-064 for actions covered by an active mandate. Resolves CONFLICT-762, 798, 799, 814 and the mandate part of 854 (DEC-548, 549, 562, 572 and related). The mandate engine, approvals, limits, monitoring …"
+DEC-780,11.14,V12 agentic commerce adopted: AI-to-AI negotiation and payment mandates (SM-SVC-28 …,Resolves CONFLICT-778 and the commerce part of 854. Specified in Part 11.17
+DEC-781,11.14,V12 automatic bid submission adopted (SM-SVC-19-WF03) under a per-tender bounded …,Supersedes DEC-053 for mandated tenders. Resolves CONFLICT-800 and 781. Specified in Part 11.17
+DEC-782,11.14,"V12 AI voice calling and recordings adopted (SM-SVC-26 inbound and outbound AI calls, …","Supersedes DEC-386, 387 and 392, and DEC-218 where it restricts recording and transcripts. Resolves CONFLICT-779, 815 and the recording-coaching conflicts. Specified in Part 11.18"
+DEC-783,11.14,Investor/fundraising mode and the Investment Automation product adopted. The website's …,"Supersedes the investor and fundraising exclusion of DEC-002 and common core CC-01, and the reaffirmation in DEC-517. Resolves CONFLICT-958 and 868. Specified in Parts 11.16a/b"
+DEC-784,11.14,Enterprise SSO and SCIM in Release 1 (with custom roles and separation of duties),"Resolves the remainder of CONFLICT-760, CONFLICT-834 and 887 (DEC-597, 644). Specified in Part 11.19"
+DEC-785,11.14,"Developer platform and the CRM, SMS and voice connectors in Release 1 (API keys, OAuth …","Resolves CONFLICT-886, 888 and 776 (exclusion X-09 withdrawn). Specified in Part 11.19"
+DEC-786,11.14,Personal data may pass through Vercel (API rewrites and server functions). Required …,Resolves CONFLICT-889 and amends DEC-421. Specified in Part 11.19
+DEC-787,11.14,"V12 RPO ≤ 15 minutes adopted: continuous WAL archiving, a daily base backup and 35-day …","Resolves CONFLICT-833 (DEC-021 RPO aligned). Running cost: the PITR add-on, already included from DEC-771, plus storage for 35 days. Specified in Part 11.19"
+DEC-788,11.14,V12 provider-neutral model registry adopted. No model is used unless it is approved in …,"Amends DEC-418 (Claude Sonnet stays primary by registry approval). Resolves CONFLICT-850, 851, 853, 855, 857 and 819. Specified in Part 11.19"
+DEC-789,11.14,Cross-tenant benchmarks adopted with privacy-preserving aggregation. Tenants take part …,Resolves CONFLICT-983. Specified in Part 11.19
+DEC-790,11.14,"All V12 change requests are funded, irrespective of time and cost. This covers …","Resolves CONFLICT-780, 869, 552, 657 and every remaining funding or staffing conflict (CONFLICT-462 and 113 cross-references included)"
+DEC-791,11.14,Every other pending V12 item is adopted as V12 specifies. This includes the SM-SVC-37 …,"Closes all remaining ""Pending Founder decision"" rows. Part 11.0 is regenerated to 100% Matched"
+DEC-761,11.15c,Adopt the 11 rule packs in this part as v0.1-draft counsel-review drafts. Every pack …,Implements FR-V12-M-028 and ADR-184; reduces GAP-980 to review and sign-off
+DEC-762,11.15c,"Cross-pack precedence: applicability set CP-01, all packs must pass CP-02, strictest …",Binding evaluation semantics for AU-128 and AG-086
+DEC-763,11.15c,"Pack expiry at last counsel review + 120 days with automatic suspension (HOLD), …",Fail-closed expiry for every pack RECOMMENDATION-998
+DEC-764,11.15c,"Jurisdiction detection J1–J7 with union of signals, strictest EU member-state profile …",Implements BRL-ELG-05 deterministically
+DEC-765,11.15c,Platform labelling and commitment defaults that are stricter than some laws: (a) …,Tightens AG-086 and AU-128 behaviour; no invariant weakened
+DEC-766,11.15e,"Adopt the 14 additional packs in Parts 11.15d–e as v0.1-draft, with the action-pack …","Implements MC-10, FR-V12-P-005, DEC-856, DEC-860/861; reduces GAP-1044 to review and sign-off"
+DEC-767,11.15e,Agent-to-agent contracting requires an executed Agent Commerce Framework Agreement …,Closes the drafting part of GAP-1046; enforces FR-V12-P-076
+DEC-768,11.15e,"Procurement defaults: GeM, CPPP/GePNIC and state NIC portals ASSISTED_ONLY; unreviewed …",Tightens Part 11.17b expected defaults; no AUTO until portal rows are reviewed (GAP-1045)
+DEC-769,11.15e,Voice and recording defaults stricter than some laws: (a) AI voice is treated as …,Aligns Part 11.18 with Part 11.15 (CP-03); resolves the India window difference in favour of the stricter rule GAP-1174
+DEC-820,11.16d,Group O sections are numbered §11.16.11–§11.16.20 (Group N holds §11.16.1–§11.16.10); …,No ID collisions
+DEC-821,11.16d,INV-SVC-13…24 and their 48 workflows are adopted literally with the blueprint mapping in …,Resolves CONFLICT-958 for Group O scope
+DEC-822,11.16d,"Consequential INV action classes (offer issue, promotion dispatch, closing, allotment …","Implements DEC-783 ""no investment advice by AI"" and legal authority requirements"
+DEC-823,11.16d,"Seven securities packs (RP-IN-SEC, RP-US-REGD, RP-US-REGCF, RP-EU-PROSP, RP-UK-FINPROM, …",Fail closed until then
+DEC-824,11.16d,"India: private placement under s.42 only (no public offer, no crowdfunding, listed …",RP-IN-SEC
+DEC-825,11.16d,"US: Rule 506(b) default, 506(c) only with verification (including the 12 Mar 2025 …",RP-US-REGD/REGCF
+DEC-826,11.16d,"EU: exemption-based offers only (QI, < 150 per state, €100,000, small offers per …",RP-EU-PROSP
+DEC-827,11.16d,UK: FPO exemptions or s.21 approval by an FCA approver; no retail NRRS journeys on the …,RP-UK-FINPROM
+DEC-828,11.16d,AML/KYC by regulated provider hand-off; true sanctions match is a non-overridable block; …,ADR-237
+DEC-829,11.16d,No personalised investment advice by AI on any INV surface; deterministic filter + …,ADR-238
+DEC-830,11.16d,RP-COMMIT-020 and the DEC-002 permanent negative tests are scoped to the Sales & …,Resolves CONFLICT-1028
+DEC-831,11.16d,Screens A233–A259 and W77–W99 allocated as specified,Resolves CONFLICT-1030
+DEC-832,11.16d,Agents AG-180…199 and automations AU-230…259 adopted,—
+DEC-833,11.16d,Epics EP-32 and EP-33 created; stories US-32-ZO01…10 and US-33-ZO01…15,—
+DEC-834,11.16d,"Combinatorial design: 3-way for M-O1…M-O7, 2-way elsewhere, exhaustive ≤ 64, …",—
+DEC-835,11.16d,Effort and cost in §11.16.15.32 funded under DEC-790 as a change request outside …,—
+DEC-836,11.16d,Investor personal data and KYC tokens are Restricted and residency-pinned (DEC-772); …,—
+DEC-837,11.16d,Issuer publication never on the SaaS storefront; legacy A045/A046 routes retired for …,Resolves CONFLICT-1031
+DEC-838,11.16d,INV SKU pricing is subscription + per-unit meters; no fee linked to amounts raised,Broker/agent-perimeter risk reduction
+DEC-839,11.16d,Counsel sign-off matrix: one admitted reviewer per pack and jurisdiction; quarterly …,—
+DEC-800,11.16e,"Investment Automation is a separate product on the shared platform (own product code, …",Resolves CONFLICT-1009; ADR-230
+DEC-801,11.16e,Investment screen IDs re-identified A205–A232 and W55–W76 with INV IDs as aliases; INV …,Avoids collision with A001–A113/W01–W34
+DEC-802,11.16e,"Securities control catalogue SEC-CTL-N-01…16 is mandatory, fail-closed and not …",All INV workflows
+DEC-803,11.16e,Activation per jurisdiction only with counsel-signed Group O securities packs; order IN …,With DEC-776 region roadmap
+DEC-804,11.16e,"Investor eligibility is a deterministic decision (AU-202, decision table ADR-233); AI …",BRL-V12-N-01
+DEC-805,11.16e,No AI investment advice: AG-166 guard on all investor-facing content; refusal template …,SEC-CTL-N-05
+DEC-806,11.16e,"The platform never holds, moves or instructs investor funds; receipts are evidence",SEC-CTL-N-11; with DEC-780
+DEC-807,11.16e,Reg CF only through a registered funding portal/broker-dealer integration; the platform …,PM-N-01 REG_CF_PORTAL_ONLY
+DEC-808,11.16e,"Investor personal and financial data is class Confidential-Financial: no Tier 2, …",Amends DEC-789 scope
+DEC-809,11.16e,"Formal offers, offering-tagged dispatch, batches and acceptance need two distinct …",Narrows DEC-779 for this product
+DEC-810,11.16e,Investor sequence default cap 1 touch per 7 days across channels,BRL-V12-N-07 ASSUMPTION-1003
+DEC-811,11.16e,New roles: R22 invited investor (portal) and R10C external counsel (sign-off only),RBAC §11.16.5.4
+DEC-812,11.16e,Data-room grants expire by default after 30 days; watermark and access log mandatory,BRL-V12-N-13 ASSUMPTION-1014
+DEC-813,11.16e,Public investor-mode storefront stays neutral; investor-facing functions invite-only on …,Resolves CONFLICT-1008
+DEC-814,11.16e,V12 INV API paths and entity names adopted literally under /api/v1/investor/* and schema …,API-V12-N-###
+DEC-815,11.16e,EP-30/EP-31 in Release 2 (W4–W5); all WF04 in W6; activation per jurisdiction,Plan §11.16.5.16.3
+DEC-816,11.16e,Investment SKUs are priced by service meters only; no success fee or …,Reduces broker characterisation risk; RECOMMENDATION-1005
+DEC-817,11.16e,Every V12 INV acceptance test maps to TC-V12-N with the full negative class set,§11.16.4.3
+DEC-818,11.16e,"Combinatorial standard: 3-way for dispatch, data room, offers, receipts; pairwise …",§11.16.5.15
+DEC-819,11.16e,"Interface with Group O: securities pack content (RP-IN-SEC, RP-US-REGD, RP-US-REGCF, …",ASSUMPTION-1001
+DEC-840,11.17a,One shared mandate engine (MND) for all mandate types; workers cannot bypass it; …,ADR-240; FR-V12-P-001…069
+DEC-841,11.17a,The V12 L0–L4 controls matrix (§11.17.5.2) is binding; the DEC-064 L1 cap is lifted only …,"Amends DEC-064, BRL-AUT-01, BRL-AI-07 (scoped)"
+DEC-842,11.17a,Two-person approval rules TPA-01…11; R3 types need Finance or Legal approver; DEC-038 …,AU-261
+DEC-843,11.17a,"Caps are inclusive, Decimal, single-currency, gross of tax by default; cap hierarchy …",§11.17.5.6
+DEC-844,11.17a,PDP rule order 0–14 is fixed and is the test oracle,AU-264; model M
+DEC-845,11.17a,"Kill switch: one person engages, two people release; scopes extended to mandate, …",ADR-246; extends ADR-085
+DEC-846,11.17a,Agent identity by did:web + W3C VC 2.0 + JWS envelopes; protocol adapters behind one …,ADR-242
+DEC-847,11.17a,All negotiation numbers come from the deterministic bound engine AU-271; the model …,AU-271; AG-203
+DEC-848,11.17a,Payments only via licensed PSPs; payment-mandate types per §11.17.6.5; no credentials …,ADR-243; amends X-06
+DEC-849,11.17a,Double-entry commerce sub-ledger CoA-P; exact automated PSP matches close without manual …,ADR-244
+DEC-850,11.17a,Disputes and chargebacks are human-decided; refunds under mandate only to the original …,"AU-275, AU-276"
+DEC-851,11.17b,Bid submission modes AUTO / ASSISTED / MANUAL chosen by the portal capability registry …,"Amends BRL-BID-04, DEC-053 (scoped); ADR-245"
+DEC-852,11.17b,"Deadline guard defaults: B_auto 6 h, B_hard 2 h, planned submit T−48 h, definite-failure …",Amends BRL-BID-01 for automated attempts; ASSUMPTION-1053
+DEC-853,11.17b,"Unknown outcomes (PSP, portal, counterparty) are never retried or resubmitted before …",Extends DEC-050
+DEC-854,11.17b,Anomaly engine is tighten-only; heartbeat loss suspends money mandates,AU-267; RECOMMENDATION-1049
+DEC-855,11.17b,Shadow period for the first mandate of each type per tenant,MC-16; RECOMMENDATION-1050
+DEC-856,11.17b,"Activation per jurisdiction requires the new packs RP-IN-PAY, RP-EU-PAY, …",GAP-1044
+DEC-857,11.17b,CR-V12-P costed as: development ₹24.3 / 46.2 / 79.1 L (labour + external) and running …,Separate from DEC-230/231
+DEC-860,11.18d,SM-SVC-26 (all four workflows) is live-capable in Release 2 and activates per …,"Supersedes the ""Future (W6+), disabled"" placement of Part 11.2c/11.4c; withdraws DEC-531 and DEC-572 (pending); TC-V12-D-126 retired"
+DEC-861,11.18d,"Voice activation checklist (10 items, §11.18.5.3.4) is a blocking gate per tenant and …",Implemented by AU-170/AU-280; evidence in A170-Q7
+DEC-862,11.18d,AI self-identification standard D-1…D-7 with templates TPL-VO-DISC-01/02 in six …,AU-283; EU AI Act Art. 50(1); FCC 24-17; RP-IN-SMS-012
+DEC-863,11.18d,Recording requires the strictest party jurisdiction's basis; platform default is …,AU-282; §11.18.5.3.3
+DEC-864,11.18d,"Outbound AI calls: L1 approval of the exact campaign digest by R02 and R10 (SoD), then …",Supersedes DEC-392 (human-dialled only); resolves CONFLICT-1072
+DEC-865,11.18d,"Retention defaults: audio 90 days (max 12 months), transcripts 12 months (max 24), …",AU-286; packs may shorten
+DEC-866,11.18d,"Card data never enters platform audio or text: prevention, DTMF masking, payment pause, …","AU-285, AG-214"
+DEC-867,11.18d,Provider-neutral voice stack with ports; cascaded ASR → LLM → TTS by default; S2S only …,"ADR-250, ADR-251"
+DEC-868,11.18d,"Voice SLOs are release-blocking: turn latency p50 ≤ 1.0 s, p95 ≤ 1.6 s; barge-in ≤ 200 …",AU-289; ADR-254
+DEC-869,11.18d,Synthetic voices: stock or licensed voices only; a custom brand voice needs the …,AG-218 checks; T-Q-03
+DEC-870,11.18d,Coaching from recordings (SVC-36-WF03) allowed only with a coaching basis for every …,Supersedes DEC-386 recording exclusion; keeps its employee protections; DEC-575 withdrawn
+DEC-871,11.18d,Numbers: only inventory numbers; IN 140/1600 by purpose; STIR/SHAKEN A for US; no …,AU-284
+DEC-872,11.18d,Voice pricing = platform per-minute fee + provider pass-through at cost + margin set by …,AU-287; Part 11.20 cost model
+DEC-873,11.18d,"Language tiers: en, hi, de, fr tier A at launch; Indic set and Arabic tier B (verbatim …",AG-210/212
+DEC-874,11.18d,Voicemail rules VM-1…VM-6; no ringless voicemail anywhere,AU-280
+DEC-875,11.18d,Voice is never an authentication or approval factor; OTP before account data; approvals …,AG-218 is a risk signal only
+DEC-880,11.19c,"Tenant federation uses the reused IdP as broker per connection; Okta, Entra ID, Google …",ADR-255; §11.19.5.1
+DEC-881,11.19c,"SCIM 2.0, custom roles, SIEM streaming and JIT support access move into Release 1; …",Amends the V12 phase column (CONFLICT-1091)
+DEC-882,11.19c,"Developer platform fully in Release 1: zone-bound API keys, OAuth client credentials …",ADR-257/258
+DEC-883,11.19c,No API scope exists for consequential actions; consequential execution happens only by a …,Closes CONFLICT-1093
+DEC-884,11.19c,Connectors in Release 1: framework and gate (with counsel-approved rule pack per …,Supersedes RECOMMENDATION-902; ADR-259
+DEC-885,11.19c,"Platform is system of record for consent, suppression, approvals, mandates, audit and AI …",DDL protected-field check
+DEC-886,11.19c,"Vercel: one project per surface per zone, functions pinned to bom1/fra1 (verify), Edge …",Amends DEC-421 hosting statement; ADR-260
+DEC-887,11.19c,TLS termination at a Vercel edge location outside the zone is treated as transit; …,GAP-1088
+DEC-888,11.19c,RPO ≤ 15 min through two independent paths per zone: Supabase PITR and an in-zone AWS …,ADR-261
+DEC-889,11.19c,The 35-day PITR window is guaranteed by the WAL-G archive when the Supabase option is …,ASSUMPTION-1081
+DEC-890,11.19c,Registry rows by provider × version × hosting × zone × modality; seven evidence items; …,Resolves CONFLICT-857/1094; ADR-262
+DEC-891,11.19c,Model routing is zone-aware: EU tenants only to rows with EU processing; India tenants …,ASSUMPTION-1083
+DEC-892,11.19c,"Advanced tier (MDL-L1) and multimodal rows (image, video, voice) are registered and …",—
+DEC-893,11.19c,"Benchmarks: opt-in under clause BM-CL-1, reciprocity, k ≥ 10, dominance ≤ 30%, …",Supersedes AU-143 parameters; ADR-263
+DEC-894,11.19c,"Canonical database roles app_owner, app_migrator, app_rw, app_worker, app_readonly, …",Resolves CONFLICT-1092; ADR-264
+DEC-895,11.19c,"A global, non-personal tenant directory resolves the zone before any personal data is …",§11.19.5.0
+DEC-896,11.19c,Feature flags per capability default off until each activation gate passes; owned …,§11.19.5.12
+DEC-897,11.19c,"Proposal CR-V12-R-01: net development 120 / 176 / 253 pd (₹5.45 / 10.00 / 17.25 L), …",Development and running in separate tables (§11.19.5.13)
+DEC-898,11.19c,"SoD matrix extended by eight pairs (finance dual verification, billing, roles, mandates, …",§11.19.5.1.F
+DEC-899,11.19c,Sandbox tenants (synthetic only) and configuration promotion in Release 1,ENT-DAT-04/05
+DEC-900,11.20b,Adopt Part 11.20 as the master implementation plan of record for the entire revised …,Supersedes the calendar parts of Part 8.1 §8.1.2 and Part 9.5 §9.5.2.7 as the plan of record; their scope remains
+DEC-901,11.20b,"Effort baseline of record 4,283 / 6,374 / 9,302 pd (plan), from 7,908 pd central gross, …",Replaces 532 / 722 / 921 pd (DEC-228) as the programme estimate
+DEC-902,11.20b,"Release structure R0, R1, R2-A, R2-B, R3 (R3-a), R4 (R4-a), INV-R1, INV-R2, A1–A4 with …",DEC-228 dates become indicative (CONFLICT-1118 resolved); low and high bands published with every re-forecast
+DEC-903,11.20b,Team scaling to eleven squads (peak 55 engineering FTE + 25.25 programme roles = 80.25 …,Extends DEC-228 staffing; hiring waves of §11.20.8.5
+DEC-904,11.20b,DEC-420 calibration in the plan: plan of record assumes no saving; at ≥ 20% option A …,Calibration applied to waves 3–6 only
+DEC-905,11.20b,SAFe cadence: PI-0 (S0–S2) then PIs of six sprints with an IP sprint at 50% feature …,Removes idle capacity between A gates; CONFLICT-1119 resolved
+DEC-906,11.20b,"Build everywhere, activate per jurisdiction: release gates certify build and test; …",Activation matrix of Part 11.20a §11.20.5.2; flag names proposed in §11.20.3.6
+DEC-907,11.20b,Certification chain: SOC 2 Type I at the R2-A gate; Type II observation from R2-A; Type …,"Fixes R3/R4 exits by calendar, not effort"
+DEC-908,11.20b,EU stack built in the R3 window and ready at R3-a (Fri 19 Nov 2027); provisioned in …,Region flags of §11.20.3.6
+DEC-909,11.20b,Year-end change freeze 24 Dec – 2 Jan: no gate in a sprint containing 24–31 December,R2-B gate moved from S27 to S28
+DEC-910,11.20b,"Development (one-time) budget of record ₹14.56 / 19.11 / 23.84 Cr (rate band, …",Ledger A extended by change request; reported by release and year
+DEC-911,11.20b,"Running (recurring) budget of record by line and release (§11.20.9.6–9.8): PY1 ₹0.19 Cr, …",Ledger B lines opened as each release reaches them; alerts 70/90/100% per line
+DEC-912,11.20b,Change control under DEC-770/790: no scope removal; capacity or date moves; freeze …,Replaces the Part 8.2 spill rule
+DEC-913,11.20b,"Governance cadence of §11.20.12, including the counsel pack board and certification …",Forums and reporting of record
+DEC-914,11.20b,Sustain model after the build: SQ-01 plus one contract squad (10 FTE) and the 24×7 rota; …,Running line B-S33
+DEC-915,11.20b,"The plan is regenerated by s_master_plan.py at every PI planning with actual velocity, …",Single source for dates and budgets
+DEC-920,11.21e,Part 11.21 is the master test strategy for the V12 scope; Part 6.1 stays binding where …,Single strategy across Parts 11.15–11.22
+DEC-921,11.21e,Part 11.10c R-8 amended (CONFLICT-1129),Mandated effects are asserted in tests
+DEC-922,11.21e,RTO ≤ 120 min and RPO ≤ 15 min are the blocking targets of every DR test and drill,Part 6.1 T12 target superseded
+DEC-923,11.21e,"""No fundraising"" permanent negative retired; securities permanent negatives added",G1 content updated
+DEC-924,11.21e,"Strength policy: pairwise default; 3-way for money, law, safety, residency, isolation …",§11.21.5.1
+DEC-925,11.21e,"Covering arrays are generated by code and verified (0 missing tuples, 0 invalid rows) on …",GV-COMB
+DEC-926,11.21e,"Eleven V12 CI gates GV-COMB, GV-RLS, GV-CT, GV-SEC, GV-RES, GV-EVAL, GV-PACK, GV-A11Y, …",§11.21.2.9
+DEC-927,11.21e,EU-configured test cell from Release 1; all EU-zone suites run there until the EU stack …,test-EU environment
+DEC-928,11.21e,Entry and exit criteria per release R1–R4 as §11.21.2.6,A090 go/no-go
+DEC-929,11.21e,Severity model extended with V12 S1 examples,§11.21.2.7
+DEC-930,11.21e,Synthetic tenants SYN-T01…T12 and fixture packs are versioned test assets; no production …,§11.21.2.5
+DEC-931,11.21e,"Messaging-window oracle: half-open [09:00, 21:00) recipient local; stricter pack wins; …",XT-12; CONFLICT-1131
+DEC-932,11.21e,Regression tiers RT-0…RT-6,§11.21.8.5
+DEC-933,11.21e,Journey register J-T-01…18 and UAT packs UAT-PK-V12-01…13,"§11.21.7, §11.21.3.3"
+DEC-934,11.21e,Load tests LT-V12-T-01…12 and drills DR-V12-T-01…08,§11.21.3.6–3.7
+DEC-935,11.21e,EVAL suites gate promotion per workflow and locale; PM-T16 tests the gate machinery,GV-EVAL
+DEC-936,11.21e,Effort 167 / 250 / 364 pd (≈ ₹7.55 / 14.24 / 24.78 L) and the running items of …,Plan and budget
+DEC-937,11.21e,"Manual AT matrix includes JAWS, mobile screen readers and voice control",PM-T07
+DEC-938,11.21e,Executed t-way coverage of P0 models = 100% is a release KPI,§11.21.2.10
+DEC-939,11.21e,Test evidence is stored in the zone of the tenant whose data the test touched,ADR-273
+DEC-940,11.22f,Part 11.22 is the master story register for V12; coverage is computed by …,CI gate on Part 11 changes; register §11.22.3 regenerated
+DEC-941,11.22f,"FRs traced only to statement-only stories, and ENT trace requirements designed …",No double counting of build effort; every FR gains executable AC
+DEC-942,11.22f,"New epic EP-34 Global expansion, certification and multi-market operations for …",Epic map extended to EP-34
+DEC-943,11.22f,Twelve persona journeys JN-01…JN-12 are acceptance journeys; their Scenario Outlines …,E2E suite per persona; persona register extended
+DEC-944,11.22f,Story release buckets follow §11.22.5.1 with the overrides of DEC-771…789; dates follow …,Part 11.20 schedules ZU stories by bucket
+DEC-945,11.22f,"Combinatorial standard for stories: t = 3 for safety-, money- and law-critical models, t …",All Examples reproducible from seeds
+DEC-946,11.22f,Invited-investor role renamed R22 (CONFLICT-1140); applied in v1.2,No behaviour change; naming only
+DEC-947,11.22f,FR-V12-A-006 is read as product separation under DEC-783; US-19-YG38 superseded for the …,US-01-ZU01 carries the amended acceptance
+DEC-948,11.22f,"Register wording ""Pending Founder decision"" in FR-V12-K-004, I-013, A-147 and the …",Stories cite the deciding DEC
+DEC-960,11.23c,Audit acceptance rule. Coverage of a customer revision is accepted when every extracted …,V12 audit closed: 94.58% → 96.04% measured; 100% classified
+DEC-961,11.23c,"Errata precedence. The errata E-V-01…E-V-50 (47 entries; E-V-22, 23 and 48 withdrawn as …",Extends DEC-415/DEC-500; FR-V12-V-009 lint
+DEC-962,11.23c,Screen-ID registry. Group P's provisional screens A260–A269 (ASSUMPTION-1040) are …,"Closes ASSUMPTION-1040; errata E-V-07, E-V-08, E-V-47"
+DEC-963,11.23c,Mandate exclusion for securities-governed actions is enforced in the mandate engine and …,Resolves CONFLICT-1185; erratum E-V-13
+DEC-964,11.23c,V12 reconciliation actions are written V12-REC-##; blueprint REC-01…09 keep their meaning,Resolves CONFLICT-1186; erratum E-V-16
+DEC-965,11.23c,"Side-effect class mapping R0→none, W1→internal, X2→external, stated once here for Parts …",Resolves CONFLICT-1187; erratum E-V-36
+DEC-966,11.23c,Workflow IDs are always written SM-SVC-##-WF0#; chapter forms -WF1…4 are aliases,Erratum E-V-50
+DEC-967,11.23c,ENT-ENH-* and API-ENH-* IDs are canonical; the placeholders ENT-200…203 and API-556+ are …,Closes GAP-1183
+DEC-968,11.23c,Artifact integrity rule. Every customer delivery is hashed on receipt; text artifacts …,Resolves CONFLICT-1184
+DEC-969,11.23c,Bare-ID rule. Bare DEC-### = blueprint decision; CDEC-… = customer decision; bare KPI-## …,"Errata E-V-07, E-V-14, E-V-15"
+DEC-970,11.23c,Re-audit gate. The v_*.py audit runs at every consolidation and on every future customer …,FR-V12-V-009
+DEC-980,11.24c,Part 11.24 is the single source of truth for build and deployment artefacts; precedence …,Teams build from final/build/*
+DEC-981,11.24c,Physical schema lineage per ADR-280: V12 executable spine names for the 48 Appendix C/C2 …,Amends DEC-660 (physical naming); resolves CONFLICT-1209
+DEC-982,11.24c,"Company scope column: startup_id in typed tables, company_id in V12 spine tables; APIs …",Serializer alias; RLS templates use the existing column
+DEC-983,11.24c,"Canonical database roles created in V0001 (app_owner, app_migrator, app_rw, app_worker, …",One canonical app_rw
+DEC-984,11.24c,ai_model.model_id stays text (registry key); Part 11.19b uuid references become text,Resolves CONFLICT-1210
+DEC-985,11.24c,"jurisdiction_pack gains pack_code with UNIQUE (pack_code, version); activation per …","Resolves CONFLICT-1212; ""where lawful"" enforced in DB and PDP"
+DEC-986,11.24c,final/build/openapi.yaml (OpenAPI 3.1) is the contract of record; per-namespace …,PL-06 gate
+DEC-987,11.24c,"Environments: local, dev, staging, preprod, prod in zones IN and EU (+ recovery); …",Resolves CONFLICT-1214
+DEC-988,11.24c,Hosting of record is DEC-421 as amended by DEC-772/786 (Vercel + Supabase + AWS per …,Resolves CONFLICT-1213
+DEC-989,11.24c,IaC in HCL compatible with Terraform ≥ 1.9 and OpenTofu ≥ 1.9; pipeline runs OpenTofu …,Module outline §11.24.6.3
+DEC-990,11.24c,"The CI gate set of §11.24.7.1 is blocking, including the traceability checker, db-verify …",No merge or release on failure
+DEC-991,11.24c,"Production releases are zone-sequential (IN, then EU after 24 h stable), with dispatch …",Runbook §11.24.8.2
+DEC-992,11.24c,A DR drill per zone at every release gate and quarterly; a release is no-go when the …,GNG-19
+DEC-993,11.24c,Definition of Ready DOR-01…18 and Definition of Done DOD-01…24 adopted,Sprint and release gates
+DEC-994,11.24c,"Observability per zone: logs, traces and metrics stay in the zone; dashboards OB-01…26",§11.24.10
+DEC-995,11.24c,Hypercare: four weeks per release per zone with 24×7 human on-call,§11.24.8.7
+DEC-996,11.24c,The 27 soft references and dictionary gaps of §11.24.4.9 are validated in the service …,GAP-1205 tracked by DOR-07
+DEC-997,11.24c,Pack regeneration: any change to a source part reruns w_01…w_08; CI checks that the …,PL-P gate
+DEC-998,11.24c,Baseline schema delivered as Django app db_baseline migration 0001 (RunSQL V0001…V0015); …,Single migration path (ADR-154 choice made)
+DEC-999,11.24c,Engineer onboarding ONB-01…30 with no production access in the first two weeks and local …,§11.24.11
+DEC-1000,11.25,The connector activation check uses the Appendix C names: …,"Resolves CONFLICT-1215; Part 11.19a, schema.sql, V0006 corrected; db-verify 42/42"
+DEC-1001,11.25,Invited investor = R22; R21 stays the Part 2.6 agency / managed-service operator,"Resolves CONFLICT-1140; Parts 11.16, 11.20, 11.22, 11.24, OpenAPI, api_index, env catalogue"
+DEC-1002,11.25,"""Pending Founder decision"" status cells in Part 11 rows are replaced by ""Adopted …",Closes GAP-1148; erratum E-V-46 occurrences 773 → 310
+DEC-1003,11.25,SM-SVC-38 (SMS/RCS) has no mandate path; the MT-OUT row lists exactly the 12 workflows …,Part 11.21e inconsistency #4 closed
+DEC-1004,11.25,Baseline freeze. Parts 0–9.10 change only by erratum markers (and clearly wrong factual …,--write-part92 / --write-part94 flags; 0 baseline IDs missing
+DEC-1005,11.25,Precedence v1.2: Part 11.14 decisions > Part 11.23c errata > Part 11 parts > Parts …,Front matter; workbook README
+DEC-1006,11.25,Voice rules follow Parts 11.15d/e: France opt-in from 11 Aug 2026 without Bloctel; FCC …,"Closes GAP-1172, 1173, 1174 (blueprint text); counsel confirmation remains"
+DEC-1007,11.25,Part 11.10c R-8 reworded: L1/L2 hash-bound approval or Active two-person mandate …,Resolves CONFLICT-1129 in the source part
+DEC-1008,11.25,"FR-V12-A-006, FR-V12-G-117, US-19-YG38, AC-V12-G-02 and TC-V12-A-006/G-233/G-234 amended …",Resolves CONFLICT-1149 in the source parts
+DEC-1009,11.25,Gherkin AC added to the 49 statement-only Part 11 stories; titles to 6 agent stories; …,"Closes GAP-1146, GAP-1147; 721/721 stories with AC"
+DEC-1010,11.25,Audit scripts skip erratum-marker lines; the register-presence check counts IDs defined …,Re-run reproducible; 0 unclassified
+DEC-1011,11.25,Release identifiers: version 1.2 · 28 Nov 2026; outputs …,"assemble.py, render_pdf.js, build_xlsx.py"
+DEC-1012,11.25,"The v1.2 catalogue of agents, automations and workflows is generated into Part 11.25b; …","179 agents, 273 automations, 58 + 156 + 96 workflows"

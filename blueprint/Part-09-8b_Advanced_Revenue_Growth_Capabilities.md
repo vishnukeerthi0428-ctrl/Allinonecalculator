@@ -1738,6 +1738,9 @@ All decisions below are **proposed** and take effect only when the Founder appro
 
 ## 9.8.17 Quality gate: Batch 9.8 (files a and b)
 
+> **Erratum v1.2 (E-V-02, E-V-21):** superseded by payments and bid submission allowed only under a bounded mandate; AI still never signs contracts or sets prices autonomously (DEC-779/780/781); automatic bid submission allowed under a per-tender bounded mandate (DEC-781). See Part 11.23c.
+
+
 | # | Check | Result | Notes and fixes applied |
 |---|---|---|---|
 | 1 | Every requirement traced to a source | Pass | Each FR cites a gap (G-…), BR, BRL, DEC, SP section or tag; each feature lists rules and baseline dependencies |

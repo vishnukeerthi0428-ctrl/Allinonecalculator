@@ -19,6 +19,9 @@
 
 ## 9.5.0 Decision summary for the Founder
 
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 | # | What you need to know | Where |
 |---|---|---|
 | 1 | **101 conflicts resolved** by **59 conflict decisions** (DEC-157…DEC-215); **12 further decisions** close the earlier-part inconsistencies the reviewers reported and fix the re-plan (DEC-216…DEC-227). **72 decisions in total, including the Founder's approval of Option 2b as DEC-228**; the Founder's later approvals of the budgets, the team uplift and the XBR reading are recorded as DEC-230…233 (§9.5.2.9) | §9.5.1 |
@@ -61,6 +64,9 @@
 | **DEC-169** | CONFLICT-330, 341, 470 | Product separation: "two products, four frontends, two backends"; startups' own product webhooks vs "no automatic handoff" | (1) **This product = two frontends + one backend** (DEC-009, NFR-001, NFR-031). The pack's "four frontends and two backends" counts the separate investor application (DEC-058), which is **out of scope**; its only effect here is the isolation test "no shared runtime, credentials, data or dependency with the investor product". (2) **Product-event webhooks** from the startups' **own delivered products** are external systems behind an allowlisted adapter (ADR-105), **off by default**, with a closed event allowlist and no personal or clinical data; the "no automatic handoff" rule concerns the investor product only | Keeps DEC-009 intact while allowing a lawful, opt-in data feed later | DEC-009, DEC-058; NFR-001, NFR-031; ADR-105; FR-ENH-B-010; OKPI-02 |
 
 ### 9.5.1.3 API contracts
+
+> **Erratum v1.2 (E-V-21):** superseded by automatic bid submission allowed under a per-tender bounded mandate (DEC-781). See Part 11.23c.
+
 
 | DEC | Conflicts resolved | Issue | Decision (binding) | Rationale | Affected parts / IDs |
 |---|---|---|---|---|---|
@@ -137,6 +143,9 @@
 | **DEC-215** | CONFLICT-342 | Breakpoints: doc 17 three tiers vs Part 2.5 five tiers vs DEC-043 | **Part 2.5 §2.48 tiers stay.** Doc 17 terms map: mobile = XS + SM (< 768 effective for Admin), tablet = 768–1279, desktop ≥ 1280. Test matrix **360 / 768 / 1280 / 1440 + 320 px reflow** for public and portal. Admin below 768 px is not targeted except DEC-043's approval, notification, inbox-reply and meeting-outcome screens | Finer control already designed; one test matrix | DEC-043; Part 2.5 §2.48; FR-ENH-C-005; OKPI-23 |
 
 ### 9.5.1.9 Earlier-part inconsistencies, enhancement acceptance and the re-plan
+
+> **Erratum v1.2 (E-V-25, E-V-39):** superseded by release dates are indicative; dates follow the work (DEC-770); budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
 
 | DEC | Source of the issue | Issue | Decision (binding) | Rationale | Affected parts / IDs |
 |---|---|---|---|---|---|
@@ -430,6 +439,9 @@ Many groups specified the same control from different source documents. **Each d
 
 ### 9.5.2.4 Step 4: new total effort and comparison
 
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 ```text
 Baseline (Part 8.1 §8.1.6.4)          low 313.7   central 415.9   high 518.1  pd
 Enhancements, net to plan (§9.5.2.2)   low 218.4   central 306.3   high 403.1  pd
@@ -550,6 +562,9 @@ flowchart TD
 
 ### 9.5.2.7 Step 7: updated release scope (Option 2b dates; Option 1 dates in brackets)
 
+> **Erratum v1.2 (E-V-25):** superseded by release dates are indicative; dates follow the work (DEC-770). See Part 11.23c.
+
+
 #### Release 1 (W0–W3): go/no-go Fri 4 Jun 2027, Day 180 (Option 1: Fri 30 Jul 2027, Day 236)
 
 | Item | Baseline (Part 8.1 §8.1.3.1) | Added by Part 9.5 | New |
@@ -656,6 +671,9 @@ flowchart TD
 ---
 
 ## 9.5.5 Quality gate: Batch 9.5
+
+> **Erratum v1.2 (E-V-25):** superseded by release dates are indicative; dates follow the work (DEC-770). See Part 11.23c.
+
 
 | # | Check | Result | Notes and fixes applied |
 |---|---|---|---|

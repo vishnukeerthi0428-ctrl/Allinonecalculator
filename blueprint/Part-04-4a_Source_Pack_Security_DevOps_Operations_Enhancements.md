@@ -62,6 +62,9 @@ Every Partially covered, Not covered and Conflict aspect is listed individually.
 
 #### 4.4.3.1 Document 18
 
+> **Erratum v1.2 (E-V-19):** superseded by investor/fundraising mode and the Investment Automation product are in scope, gated by securities rule packs (DEC-783). See Part 11.23c.
+
+
 | Aspect | Section | Aspect summary | Status | Blueprint location | Action | New IDs |
 |---|---|---|---|---|---|---|
 | I-18-023 | Threat model and governance controls | Unauthorized extraction: scope export, approve manifest hash, short-lived link, revoke | **Partially covered** | Part 2.4 exports; AL-35 | Export manifest hash approval added as rule | FR-ENH-I-012 |
@@ -350,6 +353,9 @@ Covered and not-applicable aspects (grouped by section):
 
 #### 4.4.3.8 Document 32
 
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
+
 | Aspect | Section | Aspect summary | Status | Blueprint location | Action | New IDs |
 |---|---|---|---|---|---|---|
 | I-32-015 | Deployment sequence | Prepare: immutable artifact record, window, communication plan, backup point, rollback owner, freeze | **Partially covered** | PL-17 | DPL-PRE | DPL-PRE-01…10 |
@@ -400,6 +406,9 @@ Covered and not-applicable aspects (grouped by section):
 | Current scope: release gates and UX-QC | 056, 057, 058, 059, 060, 063 | Covered | Part 6 TCs; see §4.4.4.5 |
 
 #### 4.4.3.9 Optimization controls OPT-xx-yy (inventoried once across the eight documents)
+
+> **Erratum v1.2 (E-V-19):** superseded by investor/fundraising mode and the Investment Automation product are in scope, gated by securities rule packs (DEC-783). See Part 11.23c.
+
 
 | Aspect | Section | Aspect summary | Status | Blueprint location | Action | New IDs |
 |---|---|---|---|---|---|---|
@@ -471,6 +480,9 @@ Covered and not-applicable aspects (grouped by section):
 ## 4.4.4 Catalogue reconciliation
 
 ### 4.4.4.1 OPT controls carried by the eight documents → blueprint
+
+> **Erratum v1.2 (E-V-19):** superseded by investor/fundraising mode and the Investment Automation product are in scope, gated by securities rule packs (DEC-783). See Part 11.23c.
+
 
 57 unique OPT controls appear in documents 18–32 (the pack's full set is 104, reconciled by the group that owns document 36). Before this review, only six of these 57 IDs were cited in the blueprint (OPT-01-01, OPT-03-01, OPT-04-01, OPT-07-01, OPT-10-01, OPT-12-01, all via BRD/FRD §13). The table maps each to its blueprint home so that the IDs become traceable.
 

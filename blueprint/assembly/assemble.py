@@ -18,6 +18,7 @@ TITLE = "AI Growth Engine: Employee Sales & Marketing Automation"
 SUBTITLE = "End-to-End Application Blueprint"
 HEADER = "AI Growth Engine — Application Blueprint"
 
+# Numeric sort (v1.2 check): 11-2a < 11-10a < 11-15d < 11-15e < 11-20a … 11-25 < 11-25b
 PART_RE = re.compile(r"Part-(\d+)([A-Z]?)(?:-(\d+)([a-z]?))?_")
 
 
@@ -85,7 +86,7 @@ def cover_html(nparts, date="28 Nov 2026"):
   <p class="cover-meta">Multi-tenant · Configuration-driven · Independent operations</p>
   <table class="cover-table">
     <tr><td>Document</td><td>Application Blueprint (Parts 0–9.10, assembled in Part 10)</td></tr>
-    <tr><td>Version</td><td>1.1 (v1.0 27 Nov 2026; v1.1 literal match and advanced capabilities)</td></tr><tr><td>Date</td><td>{date}</td></tr>
+    <tr><td>Version</td><td>1.2 (v1.0 27 Nov 2026; v1.1 literal match and advanced capabilities; v1.2 customer revision V12 consolidated, Part 11.25)</td></tr><tr><td>Date</td><td>{date}</td></tr>
     <tr><td>Classification</td><td>Confidential: internal and authorized delivery partners</td></tr>
     <tr><td>Inputs</td><td>01 Business Requirements (BRD), 02 Functional Specification (FRD), and the complete 38-document engineering source pack (Part 0B)</td></tr>
     <tr><td>Source files</td><td>{nparts} part documents</td></tr>
@@ -281,7 +282,7 @@ def make_reference_docx(path):
         s.left_margin = s.right_margin = Mm(15)
         s.top_margin = s.bottom_margin = Mm(18)
         hp = s.header.paragraphs[0]
-        hp.text = HEADER + "    |    Confidential · v1.1 · 28 Nov 2026"
+        hp.text = HEADER + "    |    Confidential · v1.2 · 28 Nov 2026"
         hp.runs[0].font.size = Pt(8)
         hp.runs[0].font.color.rgb = RGBColor(0x66, 0x66, 0x66)
         fp = s.footer.paragraphs[0]
@@ -365,7 +366,7 @@ def build_docx(front, body, name, tmp):
     ref = Path(tmp) / "reference.docx"
     make_reference_docx(ref)
     md, nfig = docx_markdown(front, body, tmp)
-    cover = (f"---\ntitle: \"{TITLE}\"\nsubtitle: \"{SUBTITLE}\"\ndate: \"Version 1.1 · 28 Nov 2026 · Confidential\"\n---\n\n")
+    cover = (f"---\ntitle: \"{TITLE}\"\nsubtitle: \"{SUBTITLE}\"\ndate: \"Version 1.2 · 28 Nov 2026 · Confidential\"\n---\n\n")
     src = Path(tmp) / "master_docx.md"
     toc = """
 ```{=openxml}
@@ -396,7 +397,7 @@ def build_docx(front, body, name, tmp):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--out-name", default="AI_Growth_Engine_Application_Blueprint_v1.1")
+    ap.add_argument("--out-name", default="AI_Growth_Engine_Application_Blueprint_v1.2")
     ap.add_argument("--only", choices=["pdf", "docx"], default=None)
     a = ap.parse_args()
     OUT.mkdir(exist_ok=True)

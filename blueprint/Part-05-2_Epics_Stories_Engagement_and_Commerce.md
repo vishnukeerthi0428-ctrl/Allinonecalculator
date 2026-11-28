@@ -489,6 +489,9 @@ Feature: US-0810 Follow-up policies
 
 #### US-0811 Quiet-hours and frequency-cap engine
 
+> **Erratum v1.2 (E-V-17):** superseded by promotional window 09:00–21:00 recipient local time unless a stricter rule pack applies (DEC-777). See Part 11.23c.
+
+
 | Field | Value |
 |---|---|
 | Type · Persona | Enabler · P16 (R19); P09 (R10) policy owner |
@@ -886,6 +889,9 @@ Feature: US-0905 Webinar and demo event manager
 ```
 
 #### US-0906 Event registration (W19) and reminder settings (A063)
+
+> **Erratum v1.2 (E-V-17):** superseded by promotional window 09:00–21:00 recipient local time unless a stricter rule pack applies (DEC-777). See Part 11.23c.
+
 
 | Field | Value |
 |---|---|
@@ -2813,6 +2819,9 @@ Feature: US-1412 Import price lists, availability and open deals
 
 ## 5.2.9 Batch size summary
 
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 | Epic | Stories | SP low–high | pd low–high (×0.5 / ×1.0) | Central pd (mid SP × 0.7) | Guidance mid pd | Variance | Reason |
 |---|---|---|---|---|---|---|---|
 | EP-08 | 15 | 30–49 | 15.0–49.0 | 27.7 | 25 | +2.7 | Shared webhook framework and reconciliation reused by EP-09…EP-14 |
@@ -2915,6 +2924,9 @@ Story-type mix: Feature 50, Enabler 14, Spike 1, Security 2, Accessibility 3, Ob
 | BRL-AUT / BRL-TEN / BRL-SRC / BRL-PRV / BRL-FIN | AUT-01, 04, 05, 07, 08, 09, 10 (0802, 0805, 0812, 0813, 1106, 1107, 1403, 1406) · TEN-03…06, 08, 09, 10 (0801, 0805, 0808, 0813, 0815, 1103, 1313) · SRC-04, 07, 10 (0807, 1005, 1104, 1307) · PRV-06, 07 (0904, 1004, 1005, 1209, 1412) · FIN-05 (1410) |
 
 ### 5.2.10.5 Decisions honoured
+
+> **Erratum v1.2 (E-V-02):** superseded by payments and bid submission allowed only under a bounded mandate; AI still never signs contracts or sets prices autonomously (DEC-779/780/781). See Part 11.23c.
+
 
 | DEC | Requirement | Stories |
 |---|---|---|

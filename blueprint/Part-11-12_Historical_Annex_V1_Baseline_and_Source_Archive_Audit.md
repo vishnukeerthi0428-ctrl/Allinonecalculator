@@ -439,6 +439,64 @@ Candidate total 538 = `paid_plugin_replacement_decisions.csv` = `F_integration_c
 | US-04-YL06 | EP-04 | As the FinOps lead, I want every paid candidate benchmarked against the native baseline with fixed metrics and a frozen threshold, so that nothing paid is enabled without evidence | FR-V12-L-021…026 | 5 |
 | US-21-YL07 | EP-21 | As the configuration manager, I want annex precedence, archive hashes, ID namespaces and pack drift checked automatically, so that historical text never becomes a requirement by accident | FR-V12-L-027…030 | 3 |
 
+**Acceptance criteria added in release v1.2** (Part 11.25 §11.25.3.6; these stories had a statement only). Format as the Part 5.1a template: one feature per story, a happy-path and a negative or edge scenario, IDs `AC-<epic><story>-nn`.
+
+```gherkin
+Feature: US-18-YL01 Consistent scope, filters, linkage, financial and approval fields (FR-V12-L-001…011, FR-V12-L-013)
+  @happy
+  Scenario: AC-18YL01-01 Scope switch recomputes data
+    Given an Admin user switches startup scope from AppNAI to MedMaarg
+    Then cached AppNAI data is cleared, selectors depend on authorized scope and aggregates are read-only
+  @neg
+  Scenario: AC-18YL01-02 No self-approval and no fabricated zero
+    When the requester tries to approve her own request
+    Then the action is refused
+    And an aggregate with unknown inputs shows "unknown", never a real zero
+
+Feature: US-19-YL02 Published, locale-correct public content without admin selectors (FR-V12-L-002, FR-V12-L-012, FR-V12-L-014)
+  @happy
+  Scenario: AC-19YL02-01 Published snapshot in the visitor locale
+    Given a visitor opens the storefront in de-DE
+    Then only the published de-DE snapshot is shown and no tenant or admin selector exists on the page
+  @neg
+  Scenario: AC-19YL02-02 Demo mode has no side effects
+    Given the storefront demo scenario is active
+    Then no network side effect occurs and no password, MFA code or real personal data is persisted in the browser
+
+Feature: US-20-YL03 Separate SaaS client service portal (FR-V12-L-015, FR-V12-L-016)
+  @happy
+  Scenario: AC-20YL03-01 Lifecycle in one portal
+    Given a SaaS client administrator signs in to W34
+    Then plan, entitlement, usage, billing cycle, renewal, support and offboarding are available in the client portal
+  @neg
+  Scenario: AC-20YL03-02 Customer and investor roles separate
+    When a customer-role user opens W34
+    Then access is denied, and the client portal never exposes investor or customer-role screens
+
+Feature: US-18-YL04 UX-BR-02…05 verified on the 36-tenant fixture (FR-V12-L-017…020)
+  @happy
+  Scenario: AC-18YL04-01 Fixture run passes
+    Given fixture FX-L-36 with 26 owned and 10 independent tenants in non-production
+    When the UX-BR-02…05 checks run
+    Then there are no hard-coded startup-position permissions, zero unauthorized dispatches and no duplicate side effects
+  @neg
+  Scenario: AC-18YL04-02 Configuration change during active runs
+    Given active runs use template revision 4
+    When revision 5 is approved
+    Then active runs stay on revision 4 and a rollback to revision 4 is possible
+
+Feature: US-21-YL05 UAT-L pack automated on FX-L-36 (TC-V12-L-021…043)
+  @happy
+  Scenario: AC-21YL05-01 Pack runs before each release gate
+    Given the release candidate for a gate
+    When the UAT-L pack TC-V12-L-021…043 runs on FX-L-36
+    Then every case reports Pass with evidence linked in A090
+  @neg
+  Scenario: AC-21YL05-02 A failing case blocks the gate
+    Given one UAT-L case fails
+    Then the release gate is blocked until it passes or a signed waiver exists
+```
+
 ```gherkin
 Feature: Benchmark before enable (US-04-YL06)
 
@@ -520,7 +578,7 @@ Feature: Annex precedence (US-21-YL07)
 
 | Tag | Conflict | Evidence | Proposed resolution | Status |
 |---|---|---|---|---|
-| **CONFLICT-958** | The FSD embedded archive carries a complete **Investment Automation** sibling product (24 services INV-SVC-01…24, 96 workflows, 100 INV capability IDs, 19-route investor website, investor/fundraising cost, entitlement and technical maps), and the commercial prototype contains an investor objective mode (`inv` flag: "Automate your fundraising operations.", "Fundraising thesis", G01/G02 "thesis" and "issuer" vocabulary). DEC-002 and common core CC-01 exclude investor discovery, fundraising, cap table, data room and capital receipts | 1,127 residual units (R-INV 1,116; C-INV 11) plus 191 PARTIAL units; V12 itself agrees the product is separate (BRD 25 REC-10 "Investment comparator not commercial functionality"; BR-C14; FSD 03 separate deployments and audiences) | (1) Keep the Investment product **out of this blueprint**; no INV service, route, entity, role or field enters the backlog. (2) Remove the `inv` mode, "thesis" and "issuer" vocabulary from the commercial build (FR-V12-L-001, 002, 015 already exclude them). (3) If the Founder wants the Investment product, it needs its own BRD, scope approval, budget and deployment (shared libraries only; no shared data, credentials, tenants or audiences). (4) Founder to confirm (1)–(3) | **Pending Founder decision** (DEC-727) |
+| **CONFLICT-958** | The FSD embedded archive carries a complete **Investment Automation** sibling product (24 services INV-SVC-01…24, 96 workflows, 100 INV capability IDs, 19-route investor website, investor/fundraising cost, entitlement and technical maps), and the commercial prototype contains an investor objective mode (`inv` flag: "Automate your fundraising operations.", "Fundraising thesis", G01/G02 "thesis" and "issuer" vocabulary). DEC-002 and common core CC-01 exclude investor discovery, fundraising, cap table, data room and capital receipts | 1,127 residual units (R-INV 1,116; C-INV 11) plus 191 PARTIAL units; V12 itself agrees the product is separate (BRD 25 REC-10 "Investment comparator not commercial functionality"; BR-C14; FSD 03 separate deployments and audiences) | (1) Keep the Investment product **out of this blueprint**; no INV service, route, entity, role or field enters the backlog. (2) Remove the `inv` mode, "thesis" and "issuer" vocabulary from the commercial build (FR-V12-L-001, 002, 015 already exclude them). (3) If the Founder wants the Investment product, it needs its own BRD, scope approval, budget and deployment (shared libraries only; no shared data, credentials, tenants or audiences). (4) Founder to confirm (1)–(3) | **Adopted (DEC-783)** (DEC-727) |
 | CONFLICT-959 | ID namespace collisions (§11.12.4.2): DEC, REC, KPI, AI, WF, R | ID index (`idx_v12.json`, `idx_bp.json`) | Qualification rule DEC-722 and FR-V12-L-029; no existing ID renamed | Resolved (DEC-722) |
 | CONFLICT-960 | Archive effort / cost envelope (287–483 PD, ₹13.05–32.93 lakh, task register 385 PD, gross 499 PD) vs approved 532 / 722 / 921 PD and Ledger A (DEC-228, DEC-230) | Workbook tab 17; COMP-077 | Approved blueprint figures stand; archive figures are historical (V12 BRD 25 REC-12). No change | Resolved (DEC-728) |
 | GAP-961 | Acceptance list skips T16 and T17 | `Acceptance.csv` | Recorded; nothing invented; customer may supply them | Open (customer) |
@@ -539,7 +597,7 @@ Feature: Annex precedence (US-21-YL07)
 | DEC-724 | Adopt BENCH-001…028 and the benchmark-before-enable lifecycle | Customer revision V12 (28 Nov 2026) | FR-V12-L-021…026; ADR-226; amends Part 7.4b PG flow (benchmarked state) |
 | DEC-725 | Adopt T01…T25 (23 scenarios) as acceptance pack UAT-L | Customer revision V12 (28 Nov 2026) | TC-V12-L-021…043 added to Part 6 release gates |
 | DEC-726 | Archive integrity and pack-drift checks at every customer revision | Customer revision V12 (28 Nov 2026) | FR-V12-L-028, FR-V12-L-030 |
-| DEC-727 | Investment Automation stays out of scope; investor mode removed from the commercial build | **Pending Founder decision** | CONFLICT-958 |
+| DEC-727 | Investment Automation stays out of scope; investor mode removed from the commercial build | **Adopted (DEC-783)** | CONFLICT-958 |
 | DEC-728 | Archive effort and cost figures are historical; DEC-228 / DEC-230 stand | Customer revision V12 (28 Nov 2026) — V12 BRD 25 REC-12 | CONFLICT-960 |
 
 ---
@@ -561,7 +619,7 @@ Feature: Annex precedence (US-21-YL07)
 
 | Tag | Type | Summary | Where |
 |---|---|---|---|
-| CONFLICT-958 | Conflict | Investment Automation sibling product and investor mode vs DEC-002 | §11.12.6 (Pending Founder decision) |
+| CONFLICT-958 | Conflict | Investment Automation sibling product and investor mode vs DEC-002 | §11.12.6 (Adopted (DEC-783)) |
 | CONFLICT-959 | Conflict | ID namespace collisions DEC / REC / KPI / AI / WF / R | §11.12.4.2, DEC-722 |
 | CONFLICT-960 | Conflict | Archive effort / cost envelope vs DEC-228 / DEC-230 | §11.12.6, DEC-728 |
 | GAP-961 | Gap | T16, T17 missing in acceptance list | §11.12.5.3 |

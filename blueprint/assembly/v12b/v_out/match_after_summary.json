@@ -1,22 +1,22 @@
 {
  "mode": "after",
- "files": 137,
- "lines": 199575,
+ "files": 144,
+ "lines": 205825,
  "statements": 19274,
  "levels": {
-  "exact": 5328,
-  "strong": 10828,
-  "weak": 755,
-  "moderate": 2355,
+  "exact": 5327,
+  "strong": 10827,
+  "weak": 752,
+  "moderate": 2360,
   "none": 8
  },
- "matched_pct": 96.04,
+ "matched_pct": 96.06,
  "id_literal_pct": 90.34,
  "distinct_ids": 6795,
  "distinct_ids_missing": 0,
  "statements_with_thresholds": 1074,
  "id_presence_pct": 100.0,
- "ngram6_mean": 0.5042,
- "token_mean": 0.8596,
- "number_presence_pct": 98.29
+ "ngram6_mean": 0.5041,
+ "token_mean": 0.8595,
+ "number_presence_pct": 98.43
 }

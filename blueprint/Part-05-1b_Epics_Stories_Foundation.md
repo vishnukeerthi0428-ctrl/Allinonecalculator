@@ -38,6 +38,9 @@ Each epic section gives the epic card, the stories (header table plus Gherkin AC
 
 #### 5.8.1.2 Stories
 
+> **Erratum v1.2 (E-V-05):** superseded by hosting is Vercel + Supabase + AWS in Mumbai with an EU stack (DEC-421/772/786). See Part 11.23c.
+
+
 ##### US-0101 Identity compatibility spike (12 checks)
 
 | Field | Value |
@@ -1596,6 +1599,9 @@ Feature: Import of seed catalogues and price lists
 | Stories | US-0301 … US-0311 |
 
 #### 5.8.3.2 Stories
+
+> **Erratum v1.2 (E-V-17):** superseded by promotional window 09:00–21:00 recipient local time unless a stricter rule pack applies (DEC-777). See Part 11.23c.
+
 
 ##### US-0301 Consent ledger and suppression service
 

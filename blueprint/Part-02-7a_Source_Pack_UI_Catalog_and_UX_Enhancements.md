@@ -1057,6 +1057,9 @@ Feature: US-17-EC04 Responsive and accessible shell
 
 ### 2.7.5.8 Part 8 / Part 9 notes
 
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 | Item | Note |
 |---|---|
 | Estimation (Part 8.1) | Build classes (FR-ENH-C-014) allow screen-level effort weighting: Reuse ≈ 0.25×, Extension ≈ 0.5×, Contextual panel ≈ 0.6×, New ≈ 1.0×, New shell ≈ 1.5× of a standard screen; to be calibrated in W0 [RECOMMENDATION-349]. Does not change the 287–483 person-day range (DEC-012) |
@@ -1065,6 +1068,9 @@ Feature: US-17-EC04 Responsive and accessible shell
 ---
 
 ## 2.7.6 Conflicts and proposed resolutions
+
+> **Erratum v1.2 (E-V-27):** superseded by one responsive Admin build with a compact layout (DEC-623). See Part 11.23c.
+
 
 | Tag | Conflict | Sources | Proposed resolution (for coordinator decision) |
 |---|---|---|---|
@@ -1097,6 +1103,9 @@ Feature: US-17-EC04 Responsive and accessible shell
 ---
 
 ## 2.7.8 Tags register
+
+> **Erratum v1.2 (E-V-27):** superseded by one responsive Admin build with a compact layout (DEC-623). See Part 11.23c.
+
 
 | Tag | Type | Statement | Section |
 |---|---|---|---|

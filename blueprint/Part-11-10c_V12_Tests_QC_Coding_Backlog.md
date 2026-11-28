@@ -24,7 +24,7 @@
 | R-5 | A workflow is test-complete when its scenario set, one test per step, AT01 and (for each AI step) a green EVAL suite exist and pass; "Skipped" and "Not run" count as missing | QC-V12-J-011; DEC-684 |
 | R-6 | An AI-inference step test counts only after its EVAL-SM-SVC suite passes the task-type gate of FSD 16.4 (classification F1 ≥ 0.90 and no class < 0.80; extraction exact match ≥ 95%, schema 100%; generation claims 100%, citations ≥ 95%, rubric ≥ 4/5, toxicity 0; ranking NDCG@10 ≥ baseline; translation ≥ 4/5 per language; adversarial 0 violations) | FSD 16.4; AIX-05 |
 | R-7 | Archived tests (799) and V12 scenarios are deduplicated by equivalence review before execution; unique records are never deleted | FSD 33 V5; REC-19 |
-| R-8 | Consequential effects in any test (send, publish, order, booking, payment instruction, submission) require a human approval bound to the payload hash; autonomy stays L1. No test may assert an AI-executed signature, payment, bid submission or price | Safety invariants (V11 brief) |
+| R-8 | Consequential effects in any test (send, publish, order, booking, payment instruction, submission) require **either** a human approval bound to the payload hash (L1/L2) **or** an Active, eligible bounded mandate approved by two authorized people with every PDP dispatch rule passing (L3/L4: scope, per-action and aggregate caps, window, jurisdiction pack Approved, kill switch off, reconciliation). Tests **must** assert system-executed payments, agentic-commerce orders and bid submissions under such mandates, and must assert that the same effect without an Active mandate stays L1. No test may assert an AI-executed contract signature, an autonomous price outside an approved price-book revision, or a mandated securities-governed INV action (DEC-822, DEC-963) | Safety invariants (V11 brief) as amended by DEC-779…781; DEC-921 (CONFLICT-1129); wording revised v1.2 |
 | R-9 | Tier 2 free fallbacks are off in every fixture that holds personal or restricted data; the AI step class asserts this | DEC-418; safety invariants |
 | R-10 | Execution sequence: UT and IT on every PR; SIT nightly and per release candidate; UAT and E2E per release; parity regression nightly | Part 6.1 levels; §11.10.4.4 |
 
@@ -717,11 +717,11 @@ Work items: 162 (Part 6.9a) + 39 + 14 = **215**. Each task has an owner, estimat
 
 | Tag | Conflict | V12 | Blueprint / Founder decision | Proposed resolution | Status |
 |---|---|---|---|---|---|
-| CONFLICT-922 | Funding and staffing of the V12 backlog | 39 SKU build tasks and the full V12 test catalogue; "estimate after contract" | Ledger A approved budget (DEC-230), Option 2b staffing (DEC-228), Phase-2 envelope separate | Approve CR-V12-J-01 (208 / 337 / 548 pd; ₹9.4 / 19.2 / 37.3 L) for Release 2 with extra contract capacity, or reduce it to the QA infrastructure plus the first SKUs to be sold; decide CR-V12-J-02 (260 pd central) at the W6 gate. Until decided, the V12 tests are specified (Matched) and SKU build tasks are "Proposed" | Pending Founder decision |
-| CONFLICT-923 | Growth critical RTO | KPI-32 ≤ 120 min, Blocking (DEC-V9-01 adopted) | DEC-158 (CONFLICT-462): RTO 4 h at pilot; 2 h binding only after Topology B and two passed drills; hosting DEC-421; running budget DEC-231/422 | Keep DEC-158 staging: KPI-32 is a review target until Topology B is funded, then blocking. Alternative: make it blocking at Release 2 and fund warm standby (running-cost delta to be priced by R4/R8) | Pending Founder decision |
-| CONFLICT-924 | Data residency tests | CJ-TC-09: EU tenant data never written to IN region storage, and vice versa | Single region AWS Mumbai + Vercel + Supabase (DEC-421); TC-01-017 refuses non-approved regions | Test written region-conditional: in the current topology it asserts that EU-resident tenants cannot be onboarded (refusal); the dual-region assertion activates only if the Founder approves an EU region | Pending Founder decision |
+| CONFLICT-922 | Funding and staffing of the V12 backlog | 39 SKU build tasks and the full V12 test catalogue; "estimate after contract" | Ledger A approved budget (DEC-230), Option 2b staffing (DEC-228), Phase-2 envelope separate | Approve CR-V12-J-01 (208 / 337 / 548 pd; ₹9.4 / 19.2 / 37.3 L) for Release 2 with extra contract capacity, or reduce it to the QA infrastructure plus the first SKUs to be sold; decide CR-V12-J-02 (260 pd central) at the W6 gate. Until decided, the V12 tests are specified (Matched) and SKU build tasks are "Proposed" | Adopted (DEC-770) |
+| CONFLICT-923 | Growth critical RTO | KPI-32 ≤ 120 min, Blocking (DEC-V9-01 adopted) | DEC-158 (CONFLICT-462): RTO 4 h at pilot; 2 h binding only after Topology B and two passed drills; hosting DEC-421; running budget DEC-231/422 | Keep DEC-158 staging: KPI-32 is a review target until Topology B is funded, then blocking. Alternative: make it blocking at Release 2 and fund warm standby (running-cost delta to be priced by R4/R8) | Adopted (DEC-771) |
+| CONFLICT-924 | Data residency tests | CJ-TC-09: EU tenant data never written to IN region storage, and vice versa | Single region AWS Mumbai + Vercel + Supabase (DEC-421); TC-01-017 refuses non-approved regions | Test written region-conditional: in the current topology it asserts that EU-resident tenants cannot be onboarded (refusal); the dual-region assertion activates only if the Founder approves an EU region | Adopted (DEC-772) |
 
-No conflict with a safety invariant was found: the V12 EFFECT and APPROVAL scenarios already require approval before any effect, and the panel tests assert L1 for consequential actions of SM-SVC-26, 28, 31, 37, 38 and 39 (R-8). The scope questions of those services (voice, agentic commerce, pricing) are owned by Group R2.
+No conflict with a safety invariant was found: the V12 EFFECT and APPROVAL scenarios already require approval before any effect, and the panel tests assert L1 for consequential actions of SM-SVC-26, 28, 31, 37, 38 and 39 outside an Active bounded mandate, and the mandate path where one is Active (R-8 as revised in v1.2 per DEC-779/DEC-921). The scope questions of those services (voice, agentic commerce, pricing) are owned by Group R2.
 
 ---
 
@@ -735,9 +735,9 @@ No conflict with a safety invariant was found: the V12 EFFECT and APPROVAL scena
 | DEC-683 | RCTCFE, the 20-dimension scorecard and artifact scores are adopted as release review instruments; they never override a gate; unmeasured dimensions stay unscored | Customer revision V12 (28 Nov 2026) | QC-V12-J-001/002/008; FR-V12-J-001/002 |
 | DEC-684 | Workflow test completeness gate (QC-V12-J-011) is blocking per SKU before activation | Customer revision V12 (28 Nov 2026) | TC-V12-J-129 |
 | DEC-685 | The chapter 40 dispositions of the archived 589 test IDs, 245 QCs and 162 work items are closed by the existing blueprint mappings (Parts 6.8, 6.9); semantic approval stays under FR-ENH-H-006 | Customer revision V12 (28 Nov 2026) | No change to Parts 6.8/6.9 |
-| DEC-686 | The 39 SKU build tasks and TASK-V12-J-001…014 are added to the backlog with the estimates of §11.10.5.12; funding as CR-V12-J-01 (Release 2 candidate) and CR-V12-J-02 (W6) | Pending Founder decision | CONFLICT-922 |
-| DEC-687 | KPI-32 growth RTO stays staged per DEC-158 (review target until Topology B) | Pending Founder decision | CONFLICT-923 |
-| DEC-688 | CJ-TC-09 runs region-conditional; EU-resident tenants are refused while a single region is in force | Pending Founder decision | CONFLICT-924 |
+| DEC-686 | The 39 SKU build tasks and TASK-V12-J-001…014 are added to the backlog with the estimates of §11.10.5.12; funding as CR-V12-J-01 (Release 2 candidate) and CR-V12-J-02 (W6) | Adopted (DEC-770) | CONFLICT-922 |
+| DEC-687 | KPI-32 growth RTO stays staged per DEC-158 (review target until Topology B) | Adopted (DEC-771) | CONFLICT-923 |
+| DEC-688 | CJ-TC-09 runs region-conditional; EU-resident tenants are refused while a single region is in force | Adopted (DEC-772) | CONFLICT-924 |
 | DEC-689 | Coding standards CS-V12-J-01…04 are added to Part 4.4a §4.4.5.1; chapter 35 controls confirmed | Customer revision V12 (28 Nov 2026) | QC-V12-J-015; TASK-V12-J-010 |
 | DEC-690 | Evidence records gain tenant fixture, fixture version, input and environment fields; status of every V12 test is "Not run" until executed | Customer revision V12 (28 Nov 2026) | QC-V12-J-007; TC-V12-J-125 |
 | DEC-691 | 17 quality controls QC-V12-J-001…017 are added to the QC register (245 → 262) | Customer revision V12 (28 Nov 2026) | Part 6.9b register extended |
@@ -773,9 +773,9 @@ No conflict with a safety invariant was found: the V12 EFFECT and APPROVAL scena
 | GAP-925 | Gap | Every V12 test is "Not run"; only prototype evidence exists | Open until execution; DEC-682 |
 | GAP-926 | Gap | EVAL suite datasets (size, labels, languages) are not supplied | Owned by Group R5; gate wiring here (TASK-V12-J-003) |
 | GAP-927 | Gap | Blueprint preflight did not define the numeric domain of KPI evidence | Closed by TC-V12-J-121 |
-| CONFLICT-922 | Conflict | V12 backlog funding and staffing vs DEC-230/DEC-228 | Pending Founder decision |
-| CONFLICT-923 | Conflict | KPI-32 blocking 120 min vs DEC-158 staging | Pending Founder decision |
-| CONFLICT-924 | Conflict | CJ-TC-09 dual-region residency vs DEC-421 single region | Pending Founder decision |
+| CONFLICT-922 | Conflict | V12 backlog funding and staffing vs DEC-230/DEC-228 | Adopted (DEC-770) |
+| CONFLICT-923 | Conflict | KPI-32 blocking 120 min vs DEC-158 staging | Adopted (DEC-771) |
+| CONFLICT-924 | Conflict | CJ-TC-09 dual-region residency vs DEC-421 single region | Adopted (DEC-772) |
 | RECOMMENDATION-922 | Recommendation | Release 1 runs the legacy suite; V12 suites start with Release 2 SKUs | Proposed |
 | RECOMMENDATION-923 | Recommendation | Pilot the harness on SM-SVC-01 (4 workflows) before scaling to 156 | Proposed |
 | RECOMMENDATION-924 | Recommendation | Single-count rule for build estimates across R2–R5 and J | Proposed |

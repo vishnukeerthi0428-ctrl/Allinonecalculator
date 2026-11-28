@@ -42,7 +42,7 @@ PARAM_DESC = {
     "Jurisdiction": {
         "IN": "India (TRAI TCCCPR, DLT, NCPR, DPDP); RP-IN-SMS, RP-IN-DPDP",
         "EU-DE": "Germany (GDPR, ePrivacy Art. 13, UWG s.7, StGB s.201, TKG CLI rules)",
-        "EU-FR": "France (GDPR, ePrivacy, Code de la consommation L.223-1 ff., Bloctel, Decree 2022-1313 hours)",
+        "EU-FR": "France (GDPR, ePrivacy, Code de la consommation L.223-1 ff.; consumer opt-in from 11 Aug 2026, Bloctel discontinued (VR-69); Decree 2022-1313 hours)",
         "UK": "United Kingdom (UK GDPR, PECR regs 19/21, TPS, IPR 2018 recording)",
         "US-1P": "US one-party-consent state (TCPA, FCC 24-17 AI voice ruling, National DNC, 18 USC 2511(2)(d))",
         "US-AP": "US all-party-consent state, e.g. California Penal Code s.632 (plus TCPA, DNC)",
@@ -67,7 +67,7 @@ PARAM_DESC = {
     },
     "DND / registry status": {
         "NOT_REG": "Number not on the national do-not-call / preference registry",
-        "REG_FULL": "Number fully registered (NCPR full block, US National DNC, UK TPS, Bloctel, UAE DNCR)",
+        "REG_FULL": "Number fully registered (NCPR full block, US National DNC, UK TPS, UAE DNCR; no French register since 11 Aug 2026)",
         "REG_CATEGORY_OK": "Registered with a category preference that allows this category (India NCPR partial); elsewhere treated as registered",
         "SCRUB_DOWN": "Registry scrub service unavailable or scrub older than the allowed age",
     },
@@ -102,16 +102,16 @@ CONSENT_REASON = {"US-1P": "TCPA_PEWC_REQUIRED", "US-AP": "TCPA_PEWC_REQUIRED"}
 REG_OVERRIDE = {
     "IN": {"PEWC"},  # DLT digital consent only
     "EU-DE": None,   # no statutory registry: registry check not applicable
-    "EU-FR": {"CALLBACK_REQ", "EXPRESS", "PEWC"},  # Bloctel: consent / relationship exemption
+    "EU-FR": None,   # v1.2: Bloctel discontinued 11 Aug 2026; France is opt-in, consent ledger only (VR-69)
     "UK": {"CALLBACK_REQ", "EXPRESS", "PEWC"},     # TPS: specific consent to the caller
     "US-1P": {"PEWC"}, "US-AP": {"PEWC"},          # National DNC: signed written agreement
     "AE": {"PEWC"},
 }
-REGISTRY_NAME = {"IN": "NCPR", "EU-DE": "none (no statutory registry)", "EU-FR": "Bloctel",
+REGISTRY_NAME = {"IN": "NCPR", "EU-DE": "none (no statutory registry)", "EU-FR": "none (opt-in; Bloctel discontinued 11 Aug 2026)",
                  "UK": "TPS", "US-1P": "National DNC", "US-AP": "National DNC", "AE": "DNCR"}
-WINDOW = {"IN": "09:00-21:00", "EU-DE": "09:00-21:00", "EU-FR": "Mon-Fri 10:00-13:00, 14:00-20:00",
+WINDOW = {"IN": "promotional Mon-Sat 09:00-19:00 (DEC-769)", "EU-DE": "09:00-21:00", "EU-FR": "Mon-Fri 10:00-13:00, 14:00-20:00",
           "UK": "09:00-21:00", "US-1P": "09:00-21:00", "US-AP": "09:00-21:00", "AE": "09:00-18:00"}
-RESTRICTED_DAY_HOLD = {"EU-FR", "AE"}
+RESTRICTED_DAY_HOLD = {"EU-FR", "AE", "IN"}  # v1.2: IN promotional Mon-Sat only (DEC-769(b))
 REC_REQ = {"IN": "NOTICE", "UK": "NOTICE", "US-1P": "NOTICE", "US-AP": "ALL_PARTY",
            "EU-DE": "ALL_PARTY", "EU-FR": "ALL_PARTY", "AE": "ALL_PARTY"}
 LANG_TIER = {"en": "A", "hi": "A", "de": "A", "fr": "A", "ta": "B", "ar": "B"}

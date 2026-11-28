@@ -9,6 +9,8 @@ def main():
             continue
         lab = os.path.basename(f).split('_')[0].replace('Part-', '')
         for n, l in enumerate(open(f, encoding='utf-8'), 1):
+            if l.startswith('> **Erratum v1.2'):   # v1.2 erratum markers (Part 11.25) are pointers, not content
+                continue
             m = re.match(r'^#{2,6}\s+\**([AW]\d{2,3})\**\s+[—:\-–]?\s*(.+)', l) or re.match(r'^\|\s*\**([AW]\d{2,3})\**\s*\|\s*([^|]{3,70})\|', l)
             if m:
                 sid = m.group(1); name = re.sub(r'[*`]', '', m.group(2)).strip()[:60]

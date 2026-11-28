@@ -2305,9 +2305,22 @@ ALTER TABLE ge.connector_installation ADD CONSTRAINT connector_gate_ck CHECK (
 
 CREATE OR REPLACE FUNCTION ge.connector_pack_guard() RETURNS trigger LANGUAGE plpgsql AS $$
 BEGIN
+  -- v1.2 (Part 11.25, CONFLICT-1215 resolved by DEC-1000): Appendix C names. Packs are keyed by
+  -- jurisdiction_pack.jurisdiction / pack_code, status vocabulary 'Approved'; the required packs per
+  -- capability come from ge.rulepack_requirement, the same join as ge.fn_activation_gate().
   IF NEW.environment = 'production' AND NEW.status = 'Active' AND EXISTS (
-       SELECT 1 FROM unnest(NEW.markets) m WHERE NOT EXISTS (
-         SELECT 1 FROM ge.jurisdiction_pack p WHERE p.market = m AND p.status = 'approved' AND p.counsel_signoff_ref IS NOT NULL)) THEN
+       SELECT 1 FROM unnest(NEW.markets) m WHERE
+         NOT EXISTS (SELECT 1 FROM ge.jurisdiction_pack p WHERE p.jurisdiction = m AND p.status = 'Approved'
+                       AND p.counsel_signoff_ref IS NOT NULL AND p.effective_from <= current_date
+                       AND (p.effective_to IS NULL OR p.effective_to >= current_date))
+         OR EXISTS (SELECT 1 FROM ge.rulepack_requirement r
+                     WHERE r.jurisdiction = m
+                       AND r.capability = CASE NEW.provider WHEN 'sms_dlt_aggregator' THEN 'outreach.sms'
+                                            WHEN 'whatsapp_bsp' THEN 'outreach.whatsapp' WHEN 'ses' THEN 'outreach.email'
+                                            WHEN 'voice_cpaas' THEN 'voice.ai_calls' WHEN 'payments' THEN 'payments.mandated' END
+                       AND NOT EXISTS (SELECT 1 FROM ge.jurisdiction_pack p WHERE p.pack_code = r.pack_code AND p.status = 'Approved'
+                                         AND p.counsel_signoff_ref IS NOT NULL AND p.effective_from <= current_date
+                                         AND (p.effective_to IS NULL OR p.effective_to >= current_date)))) THEN
     RAISE EXCEPTION 'CONNECTOR_MARKET_PACK_NOT_APPROVED' USING ERRCODE = 'check_violation'; END IF;
   RETURN NEW; END $$;
 

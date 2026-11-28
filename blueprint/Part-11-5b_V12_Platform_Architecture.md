@@ -631,6 +631,172 @@ TC numbers above are abbreviations of TC-V12-E-###. 102 FRs, each with at least 
 | US-03-YE01 | As a compliance lead I want deny reasons ordered by V12 precedence | 022 |
 | US-01-YE10 | As a tenant I want region-pinned data and pooled-connection safety | 004, 005, 020 |
 
+**Acceptance criteria added in release v1.2** (Part 11.25 §11.25.3.6; these stories had a statement only). Format as the Part 5.1a template: one feature per story, a happy-path and a negative or edge scenario, IDs `AC-<epic><story>-nn`.
+
+```gherkin
+Feature: US-01-YE09 Job-scoped service-principal grants (FR-V12-E-021)
+  @happy
+  Scenario: AC-01YE09-01 Worker uses its own principal
+    Given a worker job for workflow SM-SVC-06-WF02 in tenant T1
+    When the job reads and writes records
+    Then it authenticates as service principal SP-06-WF02 with grants scoped to T1, that workflow and its SKU only
+  @neg
+  Scenario: AC-01YE09-02 No inherited user credentials
+    When the job tries to call an endpoint outside its grant or to reuse the requesting user's token
+    Then the authorization service denies it with reason SERVICE_PRINCIPAL_SCOPE and an audit event is written
+
+Feature: US-01-YE10 Region-pinned data and pooled-connection safety (FR-V12-E-004, FR-V12-E-005, FR-V12-E-020)
+  @happy
+  Scenario: AC-01YE10-01 Region checked on every request
+    Given tenant T-EU has region EU
+    When a request for T-EU reaches the IN stack
+    Then it is refused with RESIDENCY_ZONE_MISMATCH and nothing is written in IN (CJ-TC-09)
+  @neg
+  Scenario: AC-01YE10-02 Pooled connection context reset
+    Given a pooled connection served tenant T1
+    When it is reused for tenant T2 without set_ctx
+    Then any tenant-scoped query fails closed with 42501 and no T1 row is visible
+    And support access needs a JIT grant linked to a ticket
+
+Feature: US-03-YE01 Deny reasons ordered by V12 precedence (FR-V12-E-022)
+  @happy
+  Scenario: AC-03YE01-01 Highest-precedence reason first
+    Given a send fails both a suppression rule and a quiet-hours rule
+    When the PDP evaluates it
+    Then the verdict lists SUPPRESSED before OUTSIDE_CALLING_WINDOW in the V12 precedence order
+  @neg
+  Scenario: AC-03YE01-02 No tenant override of a jurisdiction hold
+    Given a tenant setting allows the send
+    Then the jurisdiction HOLD still wins and no provider call occurs
+
+Feature: US-15-YE01 Separate ledgers and visible FX exceptions (FR-V12-E-079, FR-V12-E-080, FR-V12-E-081, FR-V12-E-082)
+  @happy
+  Scenario: AC-15YE01-01 Ledger types never mix
+    Given SaaS fees, provider costs, subscriber revenue and ad spend for one month
+    Then each is posted to its own ledger type and the SaaS fee report contains no subscriber revenue
+  @neg
+  Scenario: AC-15YE01-02 FX exception and unallocated cost
+    Given a USD entry without an approved FX rate
+    Then it is listed as an FX exception in native currency
+    And costs that cannot be allocated are shown as "unallocated", never spread silently
+
+Feature: US-18-YE02 Backpressure and degradation never lose accepted work (FR-V12-E-096, FR-V12-E-100, FR-V12-E-101)
+  @happy
+  Scenario: AC-18YE02-01 Backpressure under overload
+    Given the queue depth exceeds the backpressure threshold
+    When new runs are submitted
+    Then they are accepted with 202 and deferred, or refused with 429 and Retry-After, and no accepted run is dropped
+  @neg
+  Scenario: AC-18YE02-02 Dependency down
+    Given the e-mail provider circuit breaker is open
+    Then e-mail steps are HELD, unaffected workflows continue, and held work resumes when the breaker closes
+
+Feature: US-20-YE02 Eight stages with draft resume on any device (FR-V12-E-032, FR-V12-E-033, FR-V12-E-034, FR-V12-E-036, FR-V12-E-037)
+  @happy
+  Scenario: AC-20YE02-01 Resume on another device
+    Given an applicant saved stage 5 with customer type "Individual" and target market Germany (Europe/Berlin)
+    When she resumes on a phone
+    Then stage 5 shows the same revision, customer type, separate registration/operating/target countries and the IANA time zone
+  @neg
+  Scenario: AC-20YE02-02 Stale draft
+    When an older revision is submitted
+    Then it is rejected with STALE_REVISION
+
+Feature: US-20-YE04 Controlled SKU lifecycle and safe public projection (FR-V12-E-045…051)
+  @happy
+  Scenario: AC-20YE04-01 Published projection uses the allowlist
+    Given SKU version SM-SVC-06 v3 is approved for release
+    When it is published
+    Then the public catalogue shows only allowlisted fields and the workflow version registry keeps an immutable run snapshot
+  @neg
+  Scenario: AC-20YE04-02 Lifecycle skip refused
+    When a reviewer moves a draft SKU directly to "released"
+    Then the transition is refused with INVALID_LIFECYCLE_TRANSITION
+
+Feature: US-20-YE08 Plan-change preview with proration (FR-V12-E-062, FR-V12-E-063)
+  @happy
+  Scenario: AC-20YE08-01 Preview before confirm
+    When the billing owner previews an upgrade
+    Then the preview shows the effective date and the prorated amount in minor units, and nothing changes before confirmation
+  @neg
+  Scenario: AC-20YE08-02 Reactivation after grace
+    Given a tenant suspended after grace pays the overdue invoice
+    Then the subscription is reactivated and the effect block is lifted
+
+Feature: US-20-YE12 Billing disputes and credit notes (FR-V12-E-078, FR-V12-E-084, FR-V12-E-064)
+  @happy
+  Scenario: AC-20YE12-01 Dispute resolved by credit note
+    Given the billing owner disputes invoice line L-3
+    When finance approves the dispute
+    Then a credit note referencing the invoice and line is issued and the ledger shows a reversal, not a deletion
+  @neg
+  Scenario: AC-20YE12-02 Rejected dispute
+    When finance rejects the dispute
+    Then no credit note is issued and the reason is recorded on the dispute
+
+Feature: US-20-YE13 Daily revenue recognition reconciled at close (FR-V12-E-077, FR-V12-E-086)
+  @happy
+  Scenario: AC-20YE13-01 Daily schedule
+    Given an annual subscription invoiced on 1 April
+    Then revenue is recognized daily and the schedule exports for the period
+  @neg
+  Scenario: AC-20YE13-02 Reconciliation break at close
+    Given recognized revenue differs from invoiced revenue at month-end
+    Then reconciliation job RJ-01…06 raises a break and the period cannot close until it is resolved
+
+Feature: US-20-YE14 Controlled offboarding with export and retention (FR-V12-E-058, FR-V12-E-127, FR-V12-A-013)
+  @happy
+  Scenario: AC-20YE14-01 Offboarding export
+    Given tenant T1 enters "offboarding"
+    Then new execution is denied, a portable export with a hashed manifest is issued, and retention classes are applied
+  @neg
+  Scenario: AC-20YE14-02 Legal hold survives offboarding
+    Given some T1 records are under legal hold
+    Then they are retained past the retention date until the hold is released
+
+Feature: US-20-YE15 Time-to-first-value and quota forecasts per tenant (FR-V12-E-083, FR-V12-E-089)
+  @happy
+  Scenario: AC-20YE15-01 Forecast and alert
+    Given tenant T1 consumed 70% of its monthly allowance by day 15
+    Then the forecast predicts exhaustion before month-end and a quota alert is sent to the subscriber admin
+  @edge
+  Scenario: AC-20YE15-02 TTFV without first value
+    Given a tenant has not reached its first-value event
+    Then TTFV reads "pending", not zero, and the onboarding playbook shows the next step
+
+Feature: US-20-YE16 Partner model, procurement pack and per-SKU service sheets (FR-V12-E-085, FR-V12-E-087, FR-V12-E-088)
+  @happy
+  Scenario: AC-20YE16-01 Service sheet per SKU
+    When the commercial lead exports the procurement pack
+    Then it contains one service sheet per released SKU with deliverable, limits, SLA tier and data handling
+  @neg
+  Scenario: AC-20YE16-02 Partner without grant
+    Given a reseller partner without a tenant consent grant
+    Then the partner sees no data of that tenant
+
+Feature: US-21-YE03 Per-SKU release gates and GO-01…08 evidence (FR-V12-E-130, FR-V12-E-132…135, FR-V12-A-191)
+  @happy
+  Scenario: AC-21YE03-01 Evidence complete
+    Given SKU SM-SVC-06 has GO-01…08 evidence linked in A090
+    When the release manager activates it progressively
+    Then the gate passes for SM-SVC-06 only and unrelated SKUs are unaffected
+  @neg
+  Scenario: AC-21YE03-02 Open P0 control
+    Given a P0 control affecting SM-SVC-09 is open
+    Then the release of SM-SVC-09 is blocked with the control ID shown
+
+Feature: US-21-YE04 Provisioning load tests, autoscaling and compute benchmark (FR-V12-E-102, FR-V12-E-103, FR-V12-E-112…114)
+  @happy
+  Scenario: AC-21YE04-01 Autoscale without lost jobs
+    Given a provisioning load test of 36 tenants in parallel
+    When workers autoscale up and down
+    Then every job completes exactly once and the BM-01 benchmark result is recorded
+  @neg
+  Scenario: AC-21YE04-02 Fault injection in non-production only
+    When a chaos experiment is requested against production
+    Then it is refused; synthetic probes keep running in every environment
+```
+
 ```gherkin
 Feature: V12 platform architecture acceptance (group E)
 
@@ -949,10 +1115,10 @@ Formula: low = pd_low × ₹4,545; likely = pd_likely × ₹5,682 (midpoint); hi
 
 | Tag | V12 statement | Conflicts with | Proposed resolution | Status |
 |---|---|---|---|---|
-| CONFLICT-832 | Two isolated production regions (India, EU); `prod-in` / `prod-eu`; R3 EU region | **DEC-421** (Mumbai only), ADR-019, DEC-422 budget | Keep India-only through Release 2 and W6. Build region-ready (ADR-151) at ≈ 3–5 pd inside E1/E20. Do not onboard EU-resident tenants' personal data until the Founder approves an EU stamp (estimated +₹8,700–14,250/month and a separate one-time effort ≈ 25–40 pd, verify) | **Pending Founder decision** (DEC-590) |
-| CONFLICT-833 | Continuous WAL archiving, daily base backup, PITR 35 days; critical RPO ≤ 15 min (DEC-V9-01) | **DEC-421** ("daily backups; PITR added at the growth gate") — also inconsistent with DEC-018 RPO ≤ 15 min | Option A (recommended for simplicity): enable Supabase PITR from the Release 1 production go-live, plus 6-hourly logical dumps kept 35 days in S3 [RECOMMENDATION-844]. Option B (lower cost, more operations): logical-replication subscriber on AWS. Option C (not recommended): accept 24 h RPO until the growth gate, which breaks DEC-018 and DEC-V9-01 | **Pending Founder decision** (DEC-591) |
-| CONFLICT-834 | R1/R2 scope and exits: tenant SSO, SCIM, custom roles, SIEM, billing and tax live, status page, SLA tiers, sandbox, SOC 2 Type I, manual WCAG audit | **DEC-230/422** budgets, **DEC-228** staffing, approved Release 1/2 scope | Specifications are adopted in full (Matched). Build scheduling: CR-V12-E-01 into Release 2 (W4–W5) as a change request; CR-V12-E-02 and CR-V12-E-03 in W6/A1 unless funded earlier; SOC 2 Type I stays on the DEC-408 trigger | **Pending Founder decision** (DEC-597) |
-| CONFLICT-835 | R3–R5 markets (EU, UK, UAE, SG, AU, US, CA, BR), their tax rules live, partner programme | Approved horizon (Day 365), DEC-421 single region, DEC-002 scope | Configure TX-04…09 now, disabled; no tax provider for US (GAP-839); partner model reserved; markets opened one by one by Founder decision with legal and tax approval | **Pending Founder decision** (DEC-596) |
+| CONFLICT-832 | Two isolated production regions (India, EU); `prod-in` / `prod-eu`; R3 EU region | **DEC-421** (Mumbai only), ADR-019, DEC-422 budget | Keep India-only through Release 2 and W6. Build region-ready (ADR-151) at ≈ 3–5 pd inside E1/E20. Do not onboard EU-resident tenants' personal data until the Founder approves an EU stamp (estimated +₹8,700–14,250/month and a separate one-time effort ≈ 25–40 pd, verify) | **Adopted (DEC-772)** (DEC-590) |
+| CONFLICT-833 | Continuous WAL archiving, daily base backup, PITR 35 days; critical RPO ≤ 15 min (DEC-V9-01) | **DEC-421** ("daily backups; PITR added at the growth gate") — also inconsistent with DEC-018 RPO ≤ 15 min | Option A (recommended for simplicity): enable Supabase PITR from the Release 1 production go-live, plus 6-hourly logical dumps kept 35 days in S3 [RECOMMENDATION-844]. Option B (lower cost, more operations): logical-replication subscriber on AWS. Option C (not recommended): accept 24 h RPO until the growth gate, which breaks DEC-018 and DEC-V9-01 | **Adopted (DEC-787)** (DEC-591) |
+| CONFLICT-834 | R1/R2 scope and exits: tenant SSO, SCIM, custom roles, SIEM, billing and tax live, status page, SLA tiers, sandbox, SOC 2 Type I, manual WCAG audit | **DEC-230/422** budgets, **DEC-228** staffing, approved Release 1/2 scope | Specifications are adopted in full (Matched). Build scheduling: CR-V12-E-01 into Release 2 (W4–W5) as a change request; CR-V12-E-02 and CR-V12-E-03 in W6/A1 unless funded earlier; SOC 2 Type I stays on the DEC-408 trigger | **Adopted (DEC-774)** (DEC-597) |
+| CONFLICT-835 | R3–R5 markets (EU, UK, UAE, SG, AU, US, CA, BR), their tax rules live, partner programme | Approved horizon (Day 365), DEC-421 single region, DEC-002 scope | Configure TX-04…09 now, disabled; no tax provider for US (GAP-839); partner model reserved; markets opened one by one by Founder decision with legal and tax approval | **Adopted (DEC-776)** (DEC-596) |
 
 No V12 platform statement weakens a safety invariant; no CONFLICT was needed on that ground. DEC-418 (Claude Sonnet primary) is untouched by these chapters (the AI gateway layer is region-pinned and metered, consistent with DEC-418).
 
@@ -970,14 +1136,14 @@ No V12 platform statement weakens a safety invariant; no CONFLICT was needed on 
 | DEC-587 | Billing pipeline with integer minor units, rule-table tax engine (India live after tax-adviser approval; other rows disabled), gateway for collection only | Customer revision V12 (28 Nov 2026) | Amends ENT-184/185 money types; extends DEC-027 |
 | DEC-588 | Upgrade with daily proration on the effective date; downgrade at renewal; grace and dunning per contract parameters; values pending Finance (GAP-838) | Customer revision V12 (28 Nov 2026) | New commercial rules |
 | DEC-589 | V12 provider-neutral topology realized on DEC-421 (ADR-150); DEC-V7-03 resolved by DEC-421 | Customer revision V12 (28 Nov 2026) | Completes DEC-421 design |
-| DEC-590 | Second production region (EU) | **Pending Founder decision** | CONFLICT-832; recommended: not before W6 exit |
-| DEC-591 | Backup option for RPO ≤ 15 min on Supabase (A PITR add-on / B logical replica) from Release 1 go-live | **Pending Founder decision** | CONFLICT-833; recommended Option A |
+| DEC-590 | Second production region (EU) | **Adopted (DEC-772)** | CONFLICT-832; recommended: not before W6 exit |
+| DEC-591 | Backup option for RPO ≤ 15 min on Supabase (A PITR add-on / B logical replica) from Release 1 go-live | **Adopted (DEC-787)** | CONFLICT-833; recommended Option A |
 | DEC-592 | Environment names dev/sit/uat/prod-in (prod-eu reserved) with mapping to local/test/staging/prod | Customer revision V12 (28 Nov 2026) | Amends Part 3.1 §3.1.14 names |
 | DEC-593 | Configuration contract of 15 V12 variables plus four DEC-421 variables, fail-fast at start | Customer revision V12 (28 Nov 2026) | Extends Part 4.4b ENV |
 | DEC-594 | Error class registry ERR-01…12 with breaker, retry, DLQ-replay and backpressure parameters | Customer revision V12 (28 Nov 2026) | Extends Part 3.2 error model |
 | DEC-595 | Recovery objectives DEC-V9-01 adopted (critical 15 min / 4 h; growth 15 min / 2 h; regenerable 24 h / 8 h); resolves CONFLICT-462 in favour of growth RTO ≤ 2 h for non-regional failures; regional loss keeps the CONFLICT-101 resolution | Customer revision V12 (28 Nov 2026) | Achievability depends on DEC-591 |
-| DEC-596 | R0–R5 are labels over the approved waves; R0 = W0–W1; R1 ≈ Release 1; R2 ≈ Release 2 + W6; R3–R5 outside the approved horizon | **Pending Founder decision** (R1–R5 scope) | CONFLICT-834, CONFLICT-835 |
-| DEC-597 | Fund CR-V12-E-01 (₹5.0–17.1 L, likely ₹9.4 L) into Release 2; CR-V12-E-02 and -03 to W6/A1 unless funded earlier | **Pending Founder decision** | Outside Ledger A and Phase-2 estimates |
+| DEC-596 | R0–R5 are labels over the approved waves; R0 = W0–W1; R1 ≈ Release 1; R2 ≈ Release 2 + W6; R3–R5 outside the approved horizon | **Adopted (DEC-784)** (R1–R5 scope) | CONFLICT-834, CONFLICT-835 |
+| DEC-597 | Fund CR-V12-E-01 (₹5.0–17.1 L, likely ₹9.4 L) into Release 2; CR-V12-E-02 and -03 to W6/A1 unless funded earlier | **Adopted (DEC-775)** | Outside Ledger A and Phase-2 estimates |
 
 DEC-598 and DEC-599 are unused and stay reserved.
 
@@ -997,10 +1163,10 @@ DEC-598 and DEC-599 are unused and stay reserved.
 
 | Tag | Statement | Status |
 |---|---|---|
-| CONFLICT-832 | V12 two isolated regions (India, EU) vs DEC-421 single Mumbai region | Pending Founder decision (DEC-590) |
-| CONFLICT-833 | V12 WAL/PITR 35 days and RPO ≤ 15 min vs DEC-421 daily backups until growth gate | Pending Founder decision (DEC-591) |
-| CONFLICT-834 | V12 R1/R2 enterprise scope and certification exits vs approved budgets and staffing | Pending Founder decision (DEC-597) |
-| CONFLICT-835 | V12 R3–R5 markets, non-India tax activation and partner programme vs approved horizon and hosting | Pending Founder decision (DEC-596) |
+| CONFLICT-832 | V12 two isolated regions (India, EU) vs DEC-421 single Mumbai region | Adopted (DEC-772) (DEC-590) |
+| CONFLICT-833 | V12 WAL/PITR 35 days and RPO ≤ 15 min vs DEC-421 daily backups until growth gate | Adopted (DEC-787) (DEC-591) |
+| CONFLICT-834 | V12 R1/R2 enterprise scope and certification exits vs approved budgets and staffing | Adopted (DEC-775) (DEC-597) |
+| CONFLICT-835 | V12 R3–R5 markets, non-India tax activation and partner programme vs approved horizon and hosting | Adopted (DEC-776) (DEC-596) |
 | ASSUMPTION-836 | Supabase Pro (Mumbai) and Vercel Pro capabilities used here — PITR options, read replicas, pooler modes, log drains, firewall rules, instant rollback — are available as described (verify at time of implementation, as of 27 Nov 2026) | Open; verify at Sprint 0 |
 | GAP-837 | Unknown whether the reused AppNAI IdP can broker per-tenant SAML/OIDC and expose SCIM-driven revocation | Open; add to the DEC-019 Sprint 0 spike |
 | GAP-838 | Commercial inputs not approved: price book, proration formula, grace and dunning days, refund policy, tax-adviser review of TX-01…03 and rounding | Open; Product Owner + Finance |
@@ -1041,4 +1207,4 @@ DEC-598 and DEC-599 are unused and stay reserved.
 | 8 | No restricted data to free-tier models | Pass | No routing change; DEC-418 intact |
 | 9 | Consistent with earlier parts | Pass with notes | Six inconsistencies reported in §11.5.9.2; four Founder conflicts raised |
 
-**Status: Part 11 Batch 11.5 complete (files 11.5a and 11.5b). 413 V12 aspects reviewed (117 covered, 163 partial, 51 not covered, 8 conflict, 74 not applicable before); after enhancement 323 Matched, 16 Pending Founder decision, 74 Not applicable — 95.3% of applicable aspects Matched. 102 FRs, 34 stories, 120 tests, 16 ADRs, 18 decisions (4 pending Founder) and four conflicts against DEC-421 and the approved budgets raised.**
+**Status: Part 11 Batch 11.5 complete (files 11.5a and 11.5b). 413 V12 aspects reviewed (117 covered, 163 partial, 51 not covered, 8 conflict, 74 not applicable before); after enhancement 323 Matched, 16 Pending Founder decision, 74 Not applicable — 95.3% of applicable aspects Matched. 102 FRs, 34 stories, 120 tests, 16 ADRs, 18 decisions (4 pending Founder) and four conflicts against DEC-421 and the approved budgets raised.** *(v1.2: every item counted here as "Pending Founder decision" was adopted by DEC-770…791 — Part 11.14; read as Adopted. Part 11.25.)*

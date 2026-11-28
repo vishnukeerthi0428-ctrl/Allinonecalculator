@@ -5,15 +5,15 @@
   "current": "L0\u2013L2 by default; L3/L4 only under an Active, eligible bounded mandate approved by two authorized people, scoped (counterparty, action type, per-action and aggregate value cap, time window, jurisdiction, data class), instantly revocable, with kill switch, PDP dispatch recheck, audit and reconciliation, in a jurisdiction whose rule pack permits it. No API scope for consequential actions (DEC-883).",
   "authority": "DEC-779, DEC-841, DEC-883",
   "reported_by": "Brief; Part 11.19c #2",
-  "occurrences": 57,
+  "occurrences": 59,
   "stale": 42,
   "where": [
-   "Part 0 L318",
-   "Part 2.2 L77",
-   "Part 5.3 L1780",
-   "Part 6.3a L854",
-   "Part 6.4 L2415",
-   "Part 7.1 L202"
+   "Part 0 L330",
+   "Part 2.2 L80",
+   "Part 5.3 L1786",
+   "Part 6.3a L857",
+   "Part 6.4 L2424",
+   "Part 7.1 L205"
   ],
   "parts": [
    "0",
@@ -50,15 +50,15 @@
   "current": "AI still never signs contracts and never sets prices autonomously; payments (DEC-780) and bid submission (DEC-781) may be executed by an agent only under a bounded mandate, through a licensed PSP or the approved portal, with exact package/amount hash, caps, kill switch and reconciliation.",
   "authority": "DEC-779, DEC-780, DEC-781",
   "reported_by": "Audit (this part)",
-  "occurrences": 44,
-  "stale": 31,
+  "occurrences": 45,
+  "stale": 29,
   "where": [
-   "Part 0A L60",
-   "Part 0 L89",
-   "Part 2.3 L189",
-   "Part 5.2 L2922",
-   "Part 6.1 L295",
-   "Part 7.1 L237"
+   "Part 0A L66",
+   "Part 0 L92",
+   "Part 2.3 L195",
+   "Part 5.2 L2934",
+   "Part 6.1 L301",
+   "Part 7.1 L240"
   ],
   "parts": [
    "0",
@@ -69,8 +69,6 @@
    "11.1a",
    "11.1b",
    "11.2b",
-   "11.2c",
-   "11.3c",
    "11.4c",
    "11.5a",
    "11.6b",
@@ -118,12 +116,12 @@
   "occurrences": 56,
   "stale": 38,
   "where": [
-   "Part 3.3 L2170",
-   "Part 3.3 L2180",
-   "Part 3.3 L2181",
    "Part 3.3 L2182",
-   "Part 3.3 L3686",
-   "Part 3.3 L3688"
+   "Part 3.3 L2195",
+   "Part 3.3 L2196",
+   "Part 3.3 L2197",
+   "Part 3.3 L3719",
+   "Part 3.3 L3721"
   ],
   "parts": [
    "11.19a",
@@ -146,12 +144,12 @@
   "occurrences": 34,
   "stale": 30,
   "where": [
-   "Part 3.1 L204",
-   "Part 3.1 L793",
-   "Part 3.1 L845",
-   "Part 3.1 L856",
-   "Part 3.1 L885",
-   "Part 3.1 L929"
+   "Part 3.1 L213",
+   "Part 3.1 L805",
+   "Part 3.1 L857",
+   "Part 3.1 L868",
+   "Part 3.1 L900",
+   "Part 3.1 L944"
   ],
   "parts": [
    "11.1b",
@@ -177,10 +175,10 @@
   "occurrences": 5,
   "stale": 4,
   "where": [
-   "Part 3.1 L164",
-   "Part 3.1 L204",
-   "Part 3.3 L4370",
-   "Part 9.2 L741"
+   "Part 3.1 L170",
+   "Part 3.1 L213",
+   "Part 3.3 L4409",
+   "Part 9.2 L753"
   ],
   "parts": [
    "3.1",
@@ -222,7 +220,7 @@
   "occurrences": 1,
   "stale": 1,
   "where": [
-   "Part 11.7c L799"
+   "Part 11.7c L805"
   ],
   "parts": [
    "11.7c"
@@ -234,23 +232,23 @@
   "current": "RPO \u2264 15 min in every residency region (continuous WAL, daily base backup, 35-day PITR; DEC-787). Growth-critical RTO \u2264 120 min is a release-blocking gate from Release 1 (OKPI-32 = V12 KPI-32; DEC-771). Core critical-tier RTO \u2264 4 h stays as the outer bound only for non-growth platform components (CDEC-V9-01). Regenerable stores RTO 24 h / RPO 8 h.",
   "authority": "DEC-771, DEC-787, CDEC-V9-01",
   "reported_by": "Brief; Part 11.5b #2, #6",
-  "occurrences": 79,
-  "stale": 62,
+  "occurrences": 82,
+  "stale": 61,
   "where": [
-   "Part 0A L55",
-   "Part 0 L339",
-   "Part 3.1 L32",
-   "Part 3.1 L1358",
-   "Part 3.1 L1412",
-   "Part 3.1 L1709"
+   "Part 0A L61",
+   "Part 0 L354",
+   "Part 3.1 L35",
+   "Part 3.1 L1382",
+   "Part 3.1 L1442",
+   "Part 3.1 L1742"
   ],
   "parts": [
    "0",
    "0A",
-   "11.10c",
    "11.12",
    "11.1a",
    "11.1b",
+   "11.21e",
    "11.22a",
    "11.22c",
    "3.1",
@@ -283,20 +281,17 @@
   "authority": "DEC-772, DEC-776",
   "reported_by": "Brief",
   "occurrences": 25,
-  "stale": 25,
+  "stale": 12,
   "where": [
-   "Part 3.1 L1407",
-   "Part 3.1 L1709",
-   "Part 3.1 L1777",
-   "Part 3.1 L1805",
-   "Part 4.2 L427",
-   "Part 8.2 L62"
+   "Part 3.1 L1434",
+   "Part 3.1 L1742",
+   "Part 3.1 L1819",
+   "Part 3.1 L1850",
+   "Part 4.2 L433",
+   "Part 8.2 L65"
   ],
   "parts": [
    "11.1a",
-   "11.1b",
-   "11.5a",
-   "11.5b",
    "11.6b",
    "11.9a",
    "11.9c",
@@ -312,13 +307,18 @@
   "current": "SM-SVC-26 (AI voice) belongs to epic EP-22 (Part 11.2a registry; Part 11.18). Pattern references to EP-08 are read as EP-22.",
   "authority": "Part 11.2a; Part 11.18d",
   "reported_by": "Brief; Part 11.18d #4",
-  "occurrences": 4,
-  "stale": 2,
+  "occurrences": 23,
+  "stale": 21,
   "where": [
-   "Part 11.4c L792",
-   "Part 11.7b L1210"
+   "Part 11.21b L334",
+   "Part 11.21b L353",
+   "Part 11.21b L448",
+   "Part 11.21b L487",
+   "Part 11.21b L514",
+   "Part 11.21b L541"
   ],
   "parts": [
+   "11.21b",
    "11.4c",
    "11.7b"
   ]
@@ -377,7 +377,6 @@
    "11.10c",
    "11.12",
    "11.14",
-   "11.18a",
    "11.19a",
    "11.19b",
    "11.1a",
@@ -385,6 +384,7 @@
    "11.22a",
    "11.22b",
    "11.22c",
+   "11.25b",
    "11.5a",
    "11.5b",
    "11.6a",
@@ -401,18 +401,20 @@
   "current": "V12 KPI-01\u202635 = OKPI-01\u202635 (DEC-681). Blueprint KPI-01\u202635 are the Part 1 business KPIs. Always write OKPI-## for V12 release KPIs.",
   "authority": "DEC-681",
   "reported_by": "Parts 11.10c #2, 11.12 #2",
-  "occurrences": 34,
-  "stale": 28,
+  "occurrences": 40,
+  "stale": 34,
   "where": [
    "Part 11.14 L21",
-   "Part 11.22a L363",
-   "Part 11.22c L7932",
-   "Part 11.22c L7957",
-   "Part 11.9a L246",
-   "Part 11.9a L247"
+   "Part 11.21a L109",
+   "Part 11.21a L451",
+   "Part 11.21e L31",
+   "Part 11.21e L78",
+   "Part 11.21e L79"
   ],
   "parts": [
    "11.14",
+   "11.21a",
+   "11.21e",
    "11.22a",
    "11.22c",
    "11.9a",
@@ -425,15 +427,15 @@
   "current": "Blueprint REC-01\u202609 are reconciliation jobs (Part 3.2). V12 REC-01\u202630 are reconciliation actions; write them `V12-REC-##`.",
   "authority": "DEC-964",
   "reported_by": "Part 11.12 #1",
-  "occurrences": 201,
-  "stale": 198,
+  "occurrences": 203,
+  "stale": 199,
   "where": [
-   "Part 3.2 L1371",
-   "Part 3.2 L1372",
-   "Part 3.2 L1373",
-   "Part 3.2 L1374",
-   "Part 3.2 L1375",
-   "Part 3.2 L1376"
+   "Part 3.2 L1377",
+   "Part 3.2 L1378",
+   "Part 3.2 L1379",
+   "Part 3.2 L1380",
+   "Part 3.2 L1381",
+   "Part 3.2 L1382"
   ],
   "parts": [
    "11.11a",
@@ -449,6 +451,7 @@
    "11.1a",
    "11.1b",
    "11.22c",
+   "11.25b",
    "11.3a",
    "11.4a",
    "11.4b",
@@ -471,22 +474,21 @@
   "current": "Promotional messages 09:00\u201321:00 in the recipient's local time (DEC-777); a stricter rule pack window wins; quiet hours, consent and suppression unchanged; transactional messages follow their own rules.",
   "authority": "DEC-777",
   "reported_by": "Part 11.14",
-  "occurrences": 28,
-  "stale": 25,
+  "occurrences": 55,
+  "stale": 23,
   "where": [
-   "Part 2.3 L49",
-   "Part 5.1a L380",
-   "Part 5.1b L1689",
-   "Part 5.1b L1809",
-   "Part 5.2 L505",
-   "Part 5.2 L917"
+   "Part 2.3 L52",
+   "Part 5.1a L386",
+   "Part 5.1b L1695",
+   "Part 5.1b L1815",
+   "Part 5.2 L508",
+   "Part 5.2 L923"
   ],
   "parts": [
-   "11.11a",
-   "11.11b",
    "11.15a",
    "11.15d",
    "11.15e",
+   "11.18a",
    "2.3",
    "5.1a",
    "5.1b",
@@ -503,16 +505,14 @@
   "authority": "DEC-773",
   "reported_by": "Part 11.14",
   "occurrences": 5,
-  "stale": 4,
+  "stale": 3,
   "where": [
-   "Part 0 L258",
-   "Part 9.1 L34",
-   "Part 9.2 L1829",
-   "Part 11.11b L777"
+   "Part 0 L264",
+   "Part 9.1 L37",
+   "Part 9.2 L1856"
   ],
   "parts": [
    "0",
-   "11.11b",
    "9.1",
    "9.2"
   ]
@@ -524,14 +524,14 @@
   "authority": "DEC-783",
   "reported_by": "Part 11.14",
   "occurrences": 40,
-  "stale": 38,
+  "stale": 35,
   "where": [
-   "Part 0 L76",
-   "Part 0 L271",
-   "Part 1 L18",
-   "Part 2.6 L1876",
-   "Part 3.4 L336",
-   "Part 3.4 L1799"
+   "Part 0 L79",
+   "Part 0 L280",
+   "Part 1 L21",
+   "Part 2.6 L1882",
+   "Part 3.4 L348",
+   "Part 3.4 L1826"
   ],
   "parts": [
    "0",
@@ -540,7 +540,6 @@
    "11.16a",
    "11.16b",
    "11.16d",
-   "11.7c",
    "11.8a",
    "11.8b",
    "2.6",
@@ -562,7 +561,7 @@
   "authority": "DEC-782, DEC-785, DEC-884",
   "reported_by": "Part 11.2c #1",
   "occurrences": 13,
-  "stale": 13,
+  "stale": 12,
   "where": [
    "Part 11.15e L1145",
    "Part 11.15e L1272",
@@ -584,14 +583,14 @@
   "authority": "DEC-781, DEC-851, DEC-852",
   "reported_by": "Part 11.17b #4",
   "occurrences": 26,
-  "stale": 23,
+  "stale": 21,
   "where": [
-   "Part 3.5b L1697",
-   "Part 8.3a L112",
-   "Part 9.2 L74",
-   "Part 9.2 L1925",
-   "Part 9.5 L73",
-   "Part 9.6a L60"
+   "Part 3.5b L1700",
+   "Part 8.3a L115",
+   "Part 9.2 L77",
+   "Part 9.2 L1952",
+   "Part 9.5 L79",
+   "Part 9.6a L63"
   ],
   "parts": [
    "11.12",
@@ -600,8 +599,6 @@
    "11.1b",
    "11.2a",
    "11.2b",
-   "11.2c",
-   "11.3c",
    "11.5a",
    "3.5b",
    "8.3a",
@@ -639,12 +636,12 @@
   "occurrences": 54,
   "stale": 53,
   "where": [
-   "Part 9.10 L166",
-   "Part 9.10 L167",
-   "Part 9.2 L444",
-   "Part 9.2 L1976",
-   "Part 9.2 L1977",
-   "Part 9.5 L154"
+   "Part 9.10 L169",
+   "Part 9.10 L170",
+   "Part 9.2 L453",
+   "Part 9.2 L2003",
+   "Part 9.2 L2004",
+   "Part 9.5 L163"
   ],
   "parts": [
    "11.11a",
@@ -665,10 +662,10 @@
   "occurrences": 6,
   "stale": 4,
   "where": [
-   "Part 6.4 L165",
-   "Part 6.4 L211",
-   "Part 7.2 L149",
-   "Part 9.7b L1459"
+   "Part 6.4 L168",
+   "Part 6.4 L217",
+   "Part 7.2 L152",
+   "Part 9.7b L1462"
   ],
   "parts": [
    "6.4",
@@ -685,12 +682,12 @@
   "occurrences": 9,
   "stale": 7,
   "where": [
-   "Part 0A L80",
-   "Part 2.7a L1073",
-   "Part 2.7a L1131",
-   "Part 5.3 L1173",
-   "Part 6.1 L154",
-   "Part 9.2 L1249"
+   "Part 0A L86",
+   "Part 2.7a L1079",
+   "Part 2.7a L1140",
+   "Part 5.3 L1176",
+   "Part 6.1 L157",
+   "Part 9.2 L1267"
   ],
   "parts": [
    "0A",
@@ -709,10 +706,10 @@
   "occurrences": 6,
   "stale": 5,
   "where": [
-   "Part 9.2 L1347",
-   "Part 9.9a L83",
-   "Part 9.9a L418",
-   "Part 9.9b L1338",
+   "Part 9.2 L1365",
+   "Part 9.9a L89",
+   "Part 9.9a L427",
+   "Part 9.9b L1341",
    "Part 11.8a L70"
   ],
   "parts": [
@@ -728,11 +725,10 @@
   "current": "Cross-tenant benchmarks in Release 2: opt-in contract clause, cohorts \u2265 10 tenants (k \u2265 10), dominance \u2264 30%, Laplace \u03b5 = 0.5 per metric per cell per month (yearly cap 6), zone-local computation.",
   "authority": "DEC-789, DEC-893",
   "reported_by": "Part 11.19c #5",
-  "occurrences": 4,
-  "stale": 3,
+  "occurrences": 5,
+  "stale": 2,
   "where": [
-   "Part 11.13b L42",
-   "Part 11.13b L1189",
+   "Part 11.13b L1246",
    "Part 11.19c L3111"
   ],
   "parts": [
@@ -773,13 +769,11 @@
   "authority": "DEC-776",
   "reported_by": "Part 11.9c #5",
   "occurrences": 2,
-  "stale": 2,
+  "stale": 1,
   "where": [
-   "Part 11.11a L187",
    "Part 11.11b L780"
   ],
   "parts": [
-   "11.11a",
    "11.11b"
   ]
  },
@@ -792,12 +786,12 @@
   "occurrences": 30,
   "stale": 24,
   "where": [
-   "Part 3.3 L2130",
-   "Part 3.3 L2675",
-   "Part 3.3 L2870",
-   "Part 3.3 L2871",
-   "Part 3.3 L2872",
-   "Part 3.3 L2873"
+   "Part 3.3 L2139",
+   "Part 3.3 L2693",
+   "Part 3.3 L2891",
+   "Part 3.3 L2892",
+   "Part 3.3 L2893",
+   "Part 3.3 L2894"
   ],
   "parts": [
    "3.3",
@@ -825,9 +819,9 @@
   "occurrences": 5,
   "stale": 4,
   "where": [
-   "Part 9.2 L2249",
-   "Part 9.4 L22",
-   "Part 9.4 L284",
+   "Part 9.2 L2279",
+   "Part 9.4 L28",
+   "Part 9.4 L293",
    "Part 11.13a L8"
   ],
   "parts": [
@@ -861,7 +855,7 @@
   "occurrences": 3,
   "stale": 1,
   "where": [
-   "Part 4.3 L480"
+   "Part 4.3 L486"
   ],
   "parts": [
    "4.3"
@@ -887,12 +881,12 @@
   "occurrences": 54,
   "stale": 48,
   "where": [
-   "Part 0A L35",
-   "Part 0 L94",
-   "Part 0 L274",
-   "Part 1 L26",
-   "Part 1 L459",
-   "Part 2.6 L1860"
+   "Part 0A L38",
+   "Part 0 L97",
+   "Part 0 L283",
+   "Part 1 L29",
+   "Part 1 L465",
+   "Part 2.6 L1863"
   ],
   "parts": [
    "0",
@@ -972,11 +966,10 @@
   "authority": "DEC-771, DEC-787",
   "reported_by": "Part 11.5b #2",
   "occurrences": 4,
-  "stale": 4,
+  "stale": 3,
   "where": [
    "Part 11.5b L214",
-   "Part 11.5b L953",
-   "Part 11.5b L1024",
+   "Part 11.5b L1190",
    "Part 11.9b L60"
   ],
   "parts": [
@@ -991,11 +984,9 @@
   "authority": "DEC-785",
   "reported_by": "Part 11.14",
   "occurrences": 4,
-  "stale": 3,
+  "stale": 1,
   "where": [
-   "Part 11.1b L467",
-   "Part 11.1b L831",
-   "Part 11.1b L897"
+   "Part 11.1b L467"
   ],
   "parts": [
    "11.1b"
@@ -1023,15 +1014,15 @@
   "current": "Every V12 item pending a Founder decision was adopted by DEC-770\u2026791 (DEC-791 closes the remainder). Read any \"Pending Founder decision\" as decided per Part 11.14.",
   "authority": "DEC-770\u2026791",
   "reported_by": "Part 11.17b #3",
-  "occurrences": 800,
-  "stale": 773,
+  "occurrences": 370,
+  "stale": 310,
   "where": [
    "Part 11.10a L94",
-   "Part 11.10a L160",
-   "Part 11.10c L720",
-   "Part 11.10c L721",
-   "Part 11.10c L722",
-   "Part 11.10c L738"
+   "Part 11.10c L802",
+   "Part 11.11a L73",
+   "Part 11.11a L113",
+   "Part 11.11a L383",
+   "Part 11.11b L11"
   ],
   "parts": [
    "11.10a",
@@ -1040,35 +1031,22 @@
    "11.11b",
    "11.12",
    "11.13a",
-   "11.13b",
-   "11.14",
    "11.16c",
    "11.16e",
    "11.17a",
    "11.18a",
    "11.18d",
-   "11.19a",
    "11.1a",
    "11.1b",
-   "11.2a",
-   "11.2b",
    "11.2c",
    "11.3a",
-   "11.3b",
-   "11.3c",
    "11.4a",
    "11.4c",
-   "11.4d",
    "11.5a",
-   "11.5b",
    "11.6a",
-   "11.6b",
    "11.7a",
    "11.7c",
-   "11.8a",
-   "11.8b",
-   "11.9a",
-   "11.9c"
+   "11.9a"
   ]
  },
  {

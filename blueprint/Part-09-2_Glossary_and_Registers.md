@@ -61,6 +61,9 @@ Columns: **Term** (bold = the searchable key), **Definition** (with the governin
 
 ### 9.2.1.1 Acronyms and abbreviations
 
+> **Erratum v1.2 (E-V-02, E-V-09, E-V-21, E-V-39):** superseded by payments and bid submission allowed only under a bounded mandate; AI still never signs contracts or sets prices autonomously (DEC-779/780/781); RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787); automatic bid submission allowed under a per-tender bounded mandate (DEC-781); budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 <!-- GLOSSARY:BEGIN -->
 
 | Term | Definition | First use |
@@ -255,6 +258,9 @@ Columns: **Term** (bold = the searchable key), **Definition** (with the governin
 
 ### 9.2.1.2 Product and domain terms
 
+> **Erratum v1.2 (E-V-01, E-V-16):** superseded by consequential actions above L1 only under an Active two-person bounded mandate (DEC-779); V12 reconciliation actions are written V12-REC-## (DEC-964). See Part 11.23c.
+
+
 | Term | Definition | First use |
 |---|---|---|
 | **Owner Portfolio Tenant** | The single tenant that holds all 25+ owned startups as startup workspaces (DEC-065) | Part 0A §F |
@@ -404,6 +410,9 @@ Columns: **Term** (bold = the searchable key), **Definition** (with the governin
 | **children's data** | Data of anyone under 18 (ASSUMPTION-016); no tracking, profiling or targeted ads (DEC-030; DPDP) | Part 0 §0.8 |
 
 ### 9.2.1.5 Source-pack terms (Parts 0B, 2.6–2.7, 3.4–3.6, 4.4, 6.8–6.10, 7.4, 8.3, 9.4–9.5)
+
+> **Erratum v1.2 (E-V-09, E-V-25):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787); release dates are indicative; dates follow the work (DEC-770). See Part 11.23c.
+
 
 | Term | Definition | First use |
 |---|---|---|
@@ -699,6 +708,9 @@ ADR index: **106** ADRs. DEC index: **346** decisions. Parts scanned: **69** (0�
 
 ### 9.2.4(a) ASSUMPTION register
 
+> **Erratum v1.2 (E-V-05, E-V-06):** superseded by hosting is Vercel + Supabase + AWS in Mumbai with an EU stack (DEC-421/772/786); Supabase-managed PostgreSQL (DEC-421/772). See Part 11.23c.
+
+
 Status "Cited by DEC-…" means a DEC row in Part 0A or 9.1 cites the assumption (for example ASSUMPTION-002 adopted by DEC-031, ASSUMPTION-166 resolved by DEC-070). "Retained (Part 0A §G)" covers ASSUMPTION-000…020. Otherwise the validation owner and status in the issuing part apply.
 
 <!-- GEN:ASSUMPTION:BEGIN -->
@@ -948,6 +960,9 @@ Status "Cited by DEC-…" means a DEC row in Part 0A or 9.1 cites the assumption
 
 ### 9.2.4(b) GAP register
 
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 <!-- GEN:GAP:BEGIN -->
 
 | ID | First seen | Gap (statement) | Status / handling |
@@ -1179,6 +1194,9 @@ Status "Cited by DEC-…" means a DEC row in Part 0A or 9.1 cites the assumption
 
 ### 9.2.4(c) CONFLICT register (with resolution status)
 
+> **Erratum v1.2 (E-V-01, E-V-09, E-V-10, E-V-19, E-V-27, E-V-28, E-V-39):** superseded by consequential actions above L1 only under an Active two-person bounded mandate (DEC-779); RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787); two residency stacks, India and EU (DEC-772/776); investor/fundraising mode and the Investment Automation product are in scope, gated by securities rule packs (DEC-783); one responsive Admin build with a compact layout (DEC-623); signed outbound webhooks are in the Release 1 developer platform (DEC-645/785); budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 Resolution sources: **Part 0A** (DEC-001…065), **Part 9.1** (DEC-066…140, including the second review cycle §9.1.4) or **locally** in the issuing part (the register row states the rule applied).
 
 <!-- GEN:CONFLICT:BEGIN -->
@@ -1354,6 +1372,9 @@ Resolution sources: **Part 0A** (DEC-001…065), **Part 9.1** (DEC-066…140, in
 <!-- GEN:CONFLICT:END -->
 
 ### 9.2.4(d) RECOMMENDATION register (with status)
+
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
 
 "Accepted" = accepted by a DEC row, by the Part 0A §G summary ("RECOMMENDATION-001…018 all accepted"), or by its own register row. "Proposed" = awaiting the owner named in the issuing part; the Part 10 assembly asks the Product Owner to accept or reject each one.
 
@@ -1623,6 +1644,9 @@ Resolution sources: **Part 0A** (DEC-001…065), **Part 9.1** (DEC-066…140, in
 
 ### 9.2.4(e) ADR index
 
+> **Erratum v1.2 (E-V-10):** superseded by two residency stacks, India and EU (DEC-772/776). See Part 11.23c.
+
+
 Status is taken from the ADR's own "Status" row (Part 3.1) or the status column of the batch register (Parts 4.1, 4.3). Part 7.3 ADRs have no status column and are shown as accepted in that part. Overlaps between Part 3.1 and Part 4.3 ADRs (ADR-012 vs ADR-051, ADR-026 vs ADR-050, ADR-015 vs ADR-052) are settled by **DEC-083: Part 3.1 governs** compute, IaC and CI.
 
 <!-- GEN:ADR:BEGIN -->
@@ -1739,6 +1763,9 @@ Status is taken from the ADR's own "Status" row (Part 3.1) or the status column 
 <!-- GEN:ADR:END -->
 
 ### 9.2.4(f) DEC index (DEC-001…233)
+
+> **Erratum v1.2 (E-V-09, E-V-18, E-V-21, E-V-25, E-V-27, E-V-39):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787); 24×7 human on-call from Release 2 GA (DEC-773); automatic bid submission allowed under a per-tender bounded mandate (DEC-781); release dates are indicative; dates follow the work (DEC-770); one responsive Admin build with a compact layout (DEC-623); budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
 
 One line per decision. The full text in Part 0A, Part 9.1 and Part 9.5 is binding. Part 9.1 decisions (§9.1.1 first cycle DEC-066…108, §9.1.4 second cycle DEC-109…156) override Part 0A where they amend it (Part 9.1 §9.1.2). Part 9.5 decisions DEC-157…215 resolve the 101 source-pack conflicts, DEC-216…227 close the earlier-part inconsistencies and set the re-plan, and DEC-228 records the Founder's approval of Option 2b (Part 9.5 §9.5.1.12 lists the earlier decisions they extend or supersede). Source-pack decision families SPDEC, SRC07-DEC and SDEC-08 are never part of this series (DEC-178).
 
@@ -2181,6 +2208,9 @@ None of the tag IDs (ASSUMPTION/GAP/CONFLICT/RECOMMENDATION) is used with two di
 ---
 
 ## 9.2.6 Document map
+
+> **Erratum v1.2 (E-V-35):** superseded by blueprint workflows WF-01…WF-60 plus V12 SM-SVC and INV workflows (Part 9.10, Part 11.4d). See Part 11.23c.
+
 
 Every part file, its contents (top-level sections, excluding tag registers and quality gates), the rendered page count (`pdfinfo`), the number of Mermaid diagrams and the word count. "In progress" means the file had no closing Status line when the script ran.
 

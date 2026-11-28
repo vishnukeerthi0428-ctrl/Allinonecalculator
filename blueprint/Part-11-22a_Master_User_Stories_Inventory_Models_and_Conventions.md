@@ -613,7 +613,7 @@ One row per FR that had no story or no story with AC. "Status after" is Matched 
 | 1 | Workflow requirements FR-V12-O-037…084 are traced by the EP-32/EP-33 stories through workflow IDs ("INV-SVC-13 WF01/WF02") but not by FR ID | Part 11.16d §11.16.15 stories | FR-level trace shows "no story" | ZU stories carry the FR IDs (US-32-ZU*, US-33-ZU*); [GAP-1146] recommends adding the FR IDs to the Part 11.16d `Traces` rows |
 | 2 | Six agent stories have an empty title in the story heading | Part 11.6b (US-03-YF27, US-04-YF24…26, US-04-YF29, US-18-YF28) | Catalogue listings show blanks | [GAP-1147]; titles derivable from the agent cards |
 | 3 | Register wording still says "Pending Founder decision" after DEC-770…791 decided it | FR-V12-K-004 (Part 11.11b), FR-V12-I-013 (Part 11.9b), FR-V12-A-147 (Part 11.1b), FR-V12-O-037…084 status-before text | Readers may think the item is open | [GAP-1148]; stories here cite the deciding DEC |
-| 4 | R21 is used for two different roles | Part 2.6 §2.6.5.3.2 (agency operator) and Part 11.16a (invited investor) | Ambiguous RBAC role | [CONFLICT-1140]; proposed resolution in §11.22.6 |
+| 4 | R21 is used for two different roles (**resolved v1.2**: investor renumbered R22, DEC-1001) | Part 2.6 §2.6.5.3.2 (agency operator) and Part 11.16a (invited investor) | Ambiguous RBAC role | [CONFLICT-1140]; proposed resolution in §11.22.6 |
 | 5 | FR-V12-A-006 and US-19-YG38 still forbid any investor entity, route or mode | Parts 11.1b and 11.7c | Contradicts DEC-783 | [CONFLICT-1149]; story US-01-ZU01 carries the amended wording |
 
 ## 11.22.5 Enhancements
@@ -747,7 +747,7 @@ One row per FR that had no story or no story with AC. "Status after" is Matched 
 
 | Parameter | Values | Value effects (PDP precedence → result) |
 |---|---|---|
-| persona | P21 investor-relations user (R03, INV), P09 counsel (R10), P22 invited investor (R21, Part 11.16a) | all values pass (no effect) |
+| persona | P21 investor-relations user (R03, INV), P09 counsel (R10), P22 invited investor (R22, Part 11.16a) | all values pass (no effect) |
 | jurisdiction | IN s.42 pack Approved, US 506(b) pack Approved, US 506(c) pack Approved, UK FPO pack Draft | UK FPO pack Draft → [6] HOLD `PACK_NOT_ACTIVE` – no offer material (DEC-783) |
 | investor eligibility | verified eligible, unverified, sanctions possible match | unverified → [6] BLOCK `ELIGIBILITY_UNVERIFIED` – no offer material; sanctions possible match → [5] HOLD for R10 review; no tip-off |
 | solicitation | pre-existing relationship, no relationship | no relationship → [6] BLOCK `GENERAL_SOLICITATION` for private routes |

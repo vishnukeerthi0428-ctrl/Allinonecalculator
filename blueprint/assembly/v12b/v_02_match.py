@@ -13,6 +13,8 @@ def build_index(files):
     for fi, f in enumerate(files):
         cur = ''
         for ln, t in enumerate(open(f, encoding='utf-8', errors='replace'), 1):
+            if t.startswith('> **Erratum v1.2'):   # v1.2 erratum markers (Part 11.25) are pointers, not content
+                continue
             t = t.rstrip('\n')
             if t.startswith('#'):
                 cur = t.lstrip('#').strip()[:90]

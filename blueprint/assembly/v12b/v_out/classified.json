@@ -266,25 +266,7 @@
 {
 "sid": "VS-000566",
 "cls": "C",
-"ref": "Part 11.2c L474 (11.2.5.43 SM-SVC-33 Customer Service & Support Operations Automation) (threshold located by phrase search)",
-"note": "Threshold present in a different line of the same section"
-},
-{
-"sid": "VS-000582",
-"cls": "C",
-"ref": "Part 11.2b L353 (11.2.5.20 SM-SVC-10 Meeting, Demo & Appointment Automation) (threshold located by phrase search)",
-"note": "Threshold present in a different line of the same section"
-},
-{
-"sid": "VS-000694",
-"cls": "C",
-"ref": "Part 11.2b L606 (11.2.5.27 SM-SVC-17 Proposal & Quotation Automation) (threshold located by phrase search)",
-"note": "Threshold present in a different line of the same section"
-},
-{
-"sid": "VS-000726",
-"cls": "C",
-"ref": "Part 11.2b L680 (11.2.5.29 SM-SVC-19 Tender & Project Bid Automation) (threshold located by phrase search)",
+"ref": "Part 11.16a L1083 (11.16.5.6.7 INV-SVC-07 Investor Conversation & Objection Resolution Automation) (threshold located by phrase search)",
 "note": "Threshold present in a different line of the same section"
 },
 {
@@ -292,12 +274,6 @@
 "cls": "C",
 "ref": "Part 11.18d L552 (Appendix Q-R: individual aspect register (continuation of \u00a711.18.3)) (threshold located by phrase search)",
 "note": "Threshold present in a different line of the same section"
-},
-{
-"sid": "VS-000894",
-"cls": "C",
-"ref": "Part 11.2c \u00a711.2.5.40 SM-SVC-30 Conversion Rate Optimization & Intelligent Experim (L362)",
-"note": "Service sector: Part 11.2c"
 },
 {
 "sid": "VS-000910",
@@ -374,7 +350,7 @@
 {
 "sid": "VS-001957",
 "cls": "C",
-"ref": "Part 11.5b \u00a711.5.5.15 Test cases (TC-V12-E) (L807)",
+"ref": "Part 11.5b \u00a711.5.5.15 Test cases (TC-V12-E) (L973)",
 "note": "Exit: export, revoke, delete subject to legal hold: Part 11.5a/b TC-V12-E-061"
 },
 {
@@ -1326,6 +1302,12 @@
 "note": "V2 Admin screen rule stated per screen in V12; blueprint carried it only implicitly (Part 11.7a \u00a711.7.1.2 note 4); restored as one binding rule"
 },
 {
+"sid": "VS-010371",
+"cls": "C",
+"ref": "Part 2.5 L305 A080 Renewal policies",
+"note": "Screen registry row: A080 Renewal policies (notice periods, reminder cadence, stop conditions) in Part 2.5 screen inventory and Part 2.7a/b screen cards; re-classified in the v1.2 re-audit (Part 11.25)"
+},
+{
 "sid": "VS-010376",
 "cls": "N",
 "ref": "FR-V12-V-007; TC-V12-V-019\u2026026; US-01-ZV01",
@@ -1728,12 +1710,6 @@
 "note": "Score history: Part 11.10a"
 },
 {
-"sid": "VS-014670",
-"cls": "C",
-"ref": "Part 11.10a \u00a711.10.3.2 V12 acceptance register: multi-tenant architecture (MT-01\u202640 (L188) (MT-11)",
-"note": "ID present; residual words are status/evidence metadata (e.g. \"Production pending\", \"PASS\")"
-},
-{
 "sid": "VS-014673",
 "cls": "C",
 "ref": "Part 11.10a \u00a711.10.3.2 V12 acceptance register: multi-tenant architecture (MT-01\u202640 (L191) (MT-14)",
@@ -1858,12 +1834,6 @@
 "cls": "C",
 "ref": "Part 3.5a \u00a73.5.4.3 Full operation mapping: source operation \u2192 blueprint operation (L292); Part 11.12 \u00a711.12 residual register R-API (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object /api/v1/knowledge/documents present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
-},
-{
-"sid": "VS-015754",
-"cls": "C",
-"ref": "Part 3.5a \u00a73.5.4.3 Full operation mapping: source operation \u2192 blueprint operation (L293); Part 11.12 \u00a711.12 residual register R-API (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
-"note": "Source-pack object /api/v1/knowledge/documents/{id}/review present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-015755",
@@ -2756,37 +2726,37 @@
 {
 "sid": "VS-016065",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L243); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L246); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_product present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016066",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L244); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L247); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_capability present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016067",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L245); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L248); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_claim present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016068",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L246); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L249); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_price_version present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016069",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L247); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L250); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_document present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016070",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L248); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L251); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_document_chunk present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
@@ -2798,301 +2768,301 @@
 {
 "sid": "VS-016072",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L250); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L253); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_consent present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016073",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L251); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L254); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_suppression present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016074",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L252); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L255); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_policy_version present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016075",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L253); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L256); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_integration present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016076",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L254); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L257); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_credential_ref present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016077",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L255); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L258); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_quota present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016078",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L256); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L259); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_outbox present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016079",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L257); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L260); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_audit_event present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016080",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L258); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L261); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_job_run present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016081",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L259); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L262); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_source present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016082",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L260); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L263); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_source_policy present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016083",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L261); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L264); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_prompt_version present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016084",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L262); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L265); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_model_run present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016085",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L263); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L266); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_eval_case present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016086",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L264); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L267); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_api_usage present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016087",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L265); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L268); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_budget present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016088",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L266); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L269); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_cost_ledger present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016089",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L267); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L270); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_privacy_request present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016090",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L268); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L271); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_retention_policy present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016091",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L269); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L272); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_release present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016092",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L270); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L273); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_incident present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016093",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L271); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L274); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_search_plan present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016094",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L272); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L275); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_query_run present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016095",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L273); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L276); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_source_record present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016096",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L274); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L277); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_fetch_log present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016097",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L275); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L278); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_evidence present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016098",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L276); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L279); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_organization present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016099",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L277); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L280); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_org_location present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016100",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L278); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L281); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_org_alias present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016101",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L279); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L282); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_signal_type present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016102",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L279); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L282); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_signal present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016103",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L281); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L284); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_need present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016104",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L282); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L285); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_need_evidence present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016105",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L283); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L286); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_solution_match present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016106",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L284); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L287); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_opportunity present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016107",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L285); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L288); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_score_version present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016108",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L286); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L289); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_contact present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016109",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L287); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L290); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_role_hypothesis present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016110",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L288); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L291); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_contact_source present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016111",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L289); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L292); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_contact_verification present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016112",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L290); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L293); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_review present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016113",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L291); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L294); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_notification present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016114",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L292); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L295); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_stage present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016115",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L293); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L296); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_deal present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016116",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L294); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L297); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_activity present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016117",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L295); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L298); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_form present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016118",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L296); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L299); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_submission present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016119",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L297); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L300); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_lead present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016120",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L298); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L301); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_account_projection present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016121",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L299); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L302); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_eligibility_decision present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
@@ -3116,43 +3086,43 @@
 {
 "sid": "VS-016125",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L303); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L306); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_message_template present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016126",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L304); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L307); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_message_draft present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016127",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L305); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L308); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_thread present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016128",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L303); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L306); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_message present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016129",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L307); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L310); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_delivery_event present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016130",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L308); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L311); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_inbound_event present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016131",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L309); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L312); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_intent present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
@@ -3170,355 +3140,355 @@
 {
 "sid": "VS-016134",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L312); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L315); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_enrollment present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016135",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L313); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L316); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_calendar_link present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016136",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L314); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L317); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_meeting present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016137",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L315); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L318); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_metric_snapshot present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016138",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L316); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L319); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_task present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016139",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L317); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L320); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_approval present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016140",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L318); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L321); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_channel_account present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016141",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L319); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L322); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_chat_session present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016142",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L320); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L323); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_identity_link present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016143",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L321); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L324); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_routing_rule present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016144",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L322); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L325); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_policy_decision present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016145",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L323); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L326); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_compliance_incident present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016146",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L324); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L327); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_social_post present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016147",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L325); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L328); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_content_asset present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016148",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L326); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L329); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_content_version present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016149",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L327); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L330); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_social_publication present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016150",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L328); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L331); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_keyword present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016151",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L329); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L332); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_seo_issue present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016152",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L330); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L333); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_page_metric present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016153",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L331); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L334); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_landing_page present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016154",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L332); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L335); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_attribution_event present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016155",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L333); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L336); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_audience present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016156",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L334); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L337); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_campaign present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016157",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L335); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L338); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_campaign_version present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016158",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L336); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L339); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_ad_campaign present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016159",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L337); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L340); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_ad_spend_event present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016160",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L338); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L341); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_business_event present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016161",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L339); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L342); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_event_registration present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016162",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L340); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L343); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_event_attendance present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016163",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L341); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L344); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_partner present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016164",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L342); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L345); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_referral present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016165",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L343); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L346); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_proposal present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016166",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L344); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L347); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_proposal_version present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016167",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L345); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L348); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_quote present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016168",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L346); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L349); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_quote_line present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016169",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L347); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L350); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_objection present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016170",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L348); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L351); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_negotiation present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016171",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L349); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L352); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_contract present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016172",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L350); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L353); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_signature_event present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016173",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L351); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L354); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_invoice present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016174",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L352); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L355); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_payment present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016175",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L353); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L356); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_onboarding present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016176",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L354); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L357); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_handoff present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016177",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L355); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L358); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_pilot present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016178",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L356); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L359); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_deployment present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016179",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L357); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L360); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_subscription present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016180",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L358); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L361); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_renewal present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016181",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L359); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L362); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_account_metric present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016182",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L360); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L363); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_deal_outcome present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016183",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.2 Entity-count reconciliation (closes the open question behind G (L232); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.2 Entity-count reconciliation (closes the open question behind G (L235); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_feedback present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016184",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L362); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L365); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_eval_run present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016185",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L363); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L366); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_competitor present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016186",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L364); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L367); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_market_event present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016187",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L365); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L368); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_stage_metric present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016188",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L366); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L369); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_forecast present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016189",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L367); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L370); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_admin_projection present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016190",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L368); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L371); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_test_run present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016191",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L369); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L372); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_integration_deal present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016192",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L370); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L373); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object growth_launch_approval present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
@@ -3536,7 +3506,7 @@
 {
 "sid": "VS-016195",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.2 Entity-count reconciliation (closes the open question behind G (L225); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.2 Entity-count reconciliation (closes the open question behind G (L228); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object sales_membership present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
@@ -3548,7 +3518,7 @@
 {
 "sid": "VS-016197",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L375); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L378); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object sales_brand_domain present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
@@ -3572,7 +3542,7 @@
 {
 "sid": "VS-016201",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L379); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L382); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object sales_support_grant present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
@@ -3584,31 +3554,31 @@
 {
 "sid": "VS-016203",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L381); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L384); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object sales_data_transfer present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016204",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L382); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L385); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object sales_action_plan present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016205",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L383); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L386); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object sales_bid present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016206",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L384); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L387); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object sales_order present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-016207",
 "cls": "C",
-"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L385); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 3.6a \u00a73.6.4.3 Complete source-table \u2192 blueprint-entity mapping (155 rows) (L388); Part 11.12 \u00a711.12 residual register R-DB (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object sales_order_line present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
@@ -4326,12 +4296,6 @@
 "note": "Source-pack object SM-SIT-A008 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
-"sid": "VS-016798",
-"cls": "C",
-"ref": "Part 3.5a \u00a73.5.4.3 Full operation mapping: source operation \u2192 blueprint operation (L289); Part 11.12 \u00a711.12 residual register R-TEST (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
-"note": "Source-pack object SM-SIT-A010 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
-},
-{
 "sid": "VS-016800",
 "cls": "C",
 "ref": "Part 3.5a \u00a73.5.4.3 Full operation mapping: source operation \u2192 blueprint operation (L291); Part 11.12 \u00a711.12 residual register R-TEST (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
@@ -4428,12 +4392,6 @@
 "note": "Source-pack object SM-SIT-A103 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
-"sid": "VS-016894",
-"cls": "C",
-"ref": "Part 3.5a \u00a73.5.4.3 Full operation mapping: source operation \u2192 blueprint operation (L385); Part 11.12 \u00a711.12 residual register R-TEST (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
-"note": "Source-pack object SM-SIT-A106 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
-},
-{
 "sid": "VS-016896",
 "cls": "C",
 "ref": "Part 3.5a \u00a73.5.4.3 Full operation mapping: source operation \u2192 blueprint operation (L387); Part 11.12 \u00a711.12 residual register R-TEST (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
@@ -4482,12 +4440,6 @@
 "note": "Source-pack object SM-SIT-A145 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
-"sid": "VS-016949",
-"cls": "C",
-"ref": "Part 3.5a \u00a73.5.4.3 Full operation mapping: source operation \u2192 blueprint operation (L440); Part 11.12 \u00a711.12 residual register R-TEST (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
-"note": "Source-pack object SM-SIT-A161 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
-},
-{
 "sid": "VS-016955",
 "cls": "C",
 "ref": "Part 3.5a \u00a73.5.4.3 Full operation mapping: source operation \u2192 blueprint operation (L446); Part 11.12 \u00a711.12 residual register R-TEST (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
@@ -4512,12 +4464,6 @@
 "note": "Source-pack object SM-SIT-A183 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
-"sid": "VS-016973",
-"cls": "C",
-"ref": "Part 3.5a \u00a73.5.4.3 Full operation mapping: source operation \u2192 blueprint operation (L464); Part 11.12 \u00a711.12 residual register R-TEST (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
-"note": "Source-pack object SM-SIT-A185 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
-},
-{
 "sid": "VS-016981",
 "cls": "C",
 "ref": "Part 3.5a \u00a73.5.4.3 Full operation mapping: source operation \u2192 blueprint operation (L472); Part 11.12 \u00a711.12 residual register R-TEST (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
@@ -4528,12 +4474,6 @@
 "cls": "C",
 "ref": "Part 3.5a \u00a73.5.4.3 Full operation mapping: source operation \u2192 blueprint operation (L474); Part 11.12 \u00a711.12 residual register R-TEST (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object SM-SIT-A195 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
-},
-{
-"sid": "VS-017000",
-"cls": "C",
-"ref": "Part 3.5a \u00a73.5.4.3 Full operation mapping: source operation \u2192 blueprint operation (L491); Part 11.12 \u00a711.12 residual register R-TEST (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
-"note": "Source-pack object SM-SIT-A212 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017002",
@@ -4582,12 +4522,6 @@
 "cls": "C",
 "ref": "Part 3.5a \u00a73.5.4.3 Full operation mapping: source operation \u2192 blueprint operation (L538); Part 11.12 \u00a711.12 residual register R-TEST (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object SM-SIT-A259 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
-},
-{
-"sid": "VS-017066",
-"cls": "C",
-"ref": "Part 3.5a \u00a73.5.4.3 Full operation mapping: source operation \u2192 blueprint operation (L557); Part 11.12 \u00a711.12 residual register R-TEST (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
-"note": "Source-pack object SM-SIT-A278 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017067",
@@ -4724,7 +4658,7 @@
 {
 "sid": "VS-017282",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.3.1 Not covered, Conflict and Partially covered aspects (individua (L156); Part 11.12 \u00a711.12 residual register R-QC (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.3.1 Not covered, Conflict and Partially covered aspects (individua (L159); Part 11.12 \u00a711.12 residual register R-QC (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object QC-05 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
@@ -4778,7 +4712,7 @@
 {
 "sid": "VS-017304",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.3.1 Not covered, Conflict and Partially covered aspects (individua (L157); Part 11.12 \u00a711.12 residual register R-QC (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.3.1 Not covered, Conflict and Partially covered aspects (individua (L160); Part 11.12 \u00a711.12 residual register R-QC (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object QC-082 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
@@ -4818,10 +4752,10 @@
 "note": "Source-pack object QC-09 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
-"sid": "VS-017321",
+"sid": "VS-017319",
 "cls": "C",
-"ref": "Part 6.9b \u00a76.9.5.1.8 QC register (245 checks) (L311); Part 11.12 \u00a711.12 residual register R-QC (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
-"note": "Source-pack object QC-097 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
+"ref": "Part 6.9b \u00a76.9.5.1.8 QC register (245 checks) (L309); Part 11.12 \u00a711.12 residual register R-QC (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"note": "Source-pack object QC-095 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017331",
@@ -4838,7 +4772,7 @@
 {
 "sid": "VS-017336",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.7 Engineering decisions (352) \u2192 blueprint decisions (L827); Part 11.12 \u00a711.12 residual register R-QC (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.7 Engineering decisions (352) \u2192 blueprint decisions (L833); Part 11.12 \u00a711.12 residual register R-QC (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object QC-11 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
@@ -4848,15 +4782,9 @@
 "note": "Source-pack object QC-113 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
-"sid": "VS-017344",
-"cls": "C",
-"ref": "Part 6.9b \u00a76.9.5.1.8 QC register (245 checks) (L334); Part 11.12 \u00a711.12 residual register R-QC (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
-"note": "Source-pack object QC-118 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
-},
-{
 "sid": "VS-017354",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.3.1 Not covered, Conflict and Partially covered aspects (individua (L160); Part 11.12 \u00a711.12 residual register R-QC (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.3.1 Not covered, Conflict and Partially covered aspects (individua (L163); Part 11.12 \u00a711.12 residual register R-QC (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object QC-13 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
@@ -4868,7 +4796,7 @@
 {
 "sid": "VS-017362",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.3.1 Not covered, Conflict and Partially covered aspects (individua (L160); Part 11.12 \u00a711.12 residual register R-QC (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.3.1 Not covered, Conflict and Partially covered aspects (individua (L163); Part 11.12 \u00a711.12 residual register R-QC (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object QC-134 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
@@ -4886,7 +4814,7 @@
 {
 "sid": "VS-017372",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.3.1 Not covered, Conflict and Partially covered aspects (individua (L162); Part 11.12 \u00a711.12 residual register R-QC (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.3.1 Not covered, Conflict and Partially covered aspects (individua (L165); Part 11.12 \u00a711.12 residual register R-QC (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object QC-15 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
@@ -4934,7 +4862,7 @@
 {
 "sid": "VS-017417",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.3.1 Not covered, Conflict and Partially covered aspects (individua (L169); Part 11.12 \u00a711.12 residual register R-QC (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.3.1 Not covered, Conflict and Partially covered aspects (individua (L172); Part 11.12 \u00a711.12 residual register R-QC (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object QC-20 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
@@ -4974,10 +4902,10 @@
 "note": "Source-pack object QC-196 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
-"sid": "VS-017443",
+"sid": "VS-017446",
 "cls": "C",
-"ref": "Part 6.9b \u00a76.9.5.1.8 QC register (245 checks) (L433); Part 11.12 \u00a711.12 residual register R-QC (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
-"note": "Source-pack object QC-206 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
+"ref": "Part 6.9b \u00a76.9.5.1.8 QC register (245 checks) (L436); Part 11.12 \u00a711.12 residual register R-QC (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"note": "Source-pack object QC-208 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017450",
@@ -5000,493 +4928,493 @@
 {
 "sid": "VS-017492",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L572); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L578); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-W02 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017494",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L574); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L580); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-W04 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017495",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L575); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L581); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-W05 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017496",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L576); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L582); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-W06 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017497",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L577); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L583); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-W07 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017498",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L578); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L584); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-W08 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017499",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L579); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L585); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-W09 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
+},
+{
+"sid": "VS-017500",
+"cls": "C",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L586); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"note": "Source-pack object TASK-W10 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017501",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L581); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L587); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-W11 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017502",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L582); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L588); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-W12 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017503",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L583); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L589); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-W13 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017504",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L584); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L590); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-W14 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017506",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L586); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L592); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-W16 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017507",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L587); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L593); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-W17 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017511",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L591); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L597); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-W21 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017512",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L592); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L598); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-W22 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017513",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L593); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L599); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-W23 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017514",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L594); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L600); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-W24 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017515",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L595); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L601); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-W25 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017516",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L596); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L602); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-W26 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017517",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L597); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L603); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-W27 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017518",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L598); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L604); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-W28 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017519",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L599); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L605); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-W29 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017520",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L600); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L606); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-W30 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017522",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L602); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L608); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A002 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017523",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L603); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L609); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A003 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017527",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L607); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L613); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A007 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017528",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L608); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L614); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A008 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017529",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L609); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L615); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A009 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017531",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L611); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L617); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A011 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017532",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L612); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L618); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A012 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
-},
-{
-"sid": "VS-017533",
-"cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L613); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
-"note": "Source-pack object TASK-A013 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017534",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L614); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L620); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A014 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017535",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L615); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L621); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A015 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017538",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L618); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L624); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A018 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017539",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L619); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L625); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A019 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017540",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L620); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L626); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A020 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017542",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L622); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L628); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A022 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017543",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L623); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L629); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A023 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017544",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L624); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L630); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A024 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017545",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L625); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L631); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A025 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017546",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L626); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L632); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A026 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017547",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L627); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L633); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A027 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017548",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L628); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L634); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A028 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017550",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L630); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L636); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A030 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017551",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L631); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L637); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A031 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017553",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L633); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L639); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A033 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017555",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L635); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L641); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A035 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017556",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L636); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L642); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A036 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017557",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L637); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L643); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A037 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017559",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L639); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L645); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A039 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017561",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L641); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L647); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A041 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017563",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L643); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L649); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A043 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017565",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L645); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L651); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A045 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017566",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L646); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L652); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A046 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017567",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L647); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L653); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A047 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017568",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L648); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L654); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A048 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017570",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L650); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L656); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A050 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017572",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L652); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L658); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A052 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017573",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L653); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L659); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A053 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017575",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L655); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L661); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A055 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017580",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L660); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L666); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A060 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017582",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L662); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L668); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A062 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017583",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L663); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L669); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A063 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017587",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L667); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L673); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A067 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017589",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L669); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L675); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A069 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017590",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L670); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L676); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A070 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017591",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L671); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L677); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A071 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017593",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L673); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L679); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A073 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017596",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L676); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L682); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A076 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017599",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L679); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L685); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A079 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017600",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L680); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L686); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A080 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017603",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L683); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L689); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A083 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017604",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L684); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L690); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A084 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017609",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L689); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L695); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A089 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017617",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L697); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L703); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A097 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017618",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L698); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L704); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A098 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017619",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L699); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L705); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A099 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017620",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L700); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L706); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A100 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017621",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L701); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L707); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A101 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017622",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L702); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L708); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A102 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017623",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L703); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L709); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A103 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017627",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L707); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L713); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-A107 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
@@ -5498,79 +5426,79 @@
 {
 "sid": "VS-017634",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.3.1 Not covered, Conflict and Partially covered aspects (individua (L184); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.3.1 Not covered, Conflict and Partially covered aspects (individua (L187); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-FND03 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017637",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.3.1 Not covered, Conflict and Partially covered aspects (individua (L186); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.3.1 Not covered, Conflict and Partially covered aspects (individua (L189); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-FND06 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017638",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.3.1 Not covered, Conflict and Partially covered aspects (individua (L186); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.3.1 Not covered, Conflict and Partially covered aspects (individua (L189); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object TASK-FND07 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017640",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.3.1 Not covered, Conflict and Partially covered aspects (individua (L187); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.3.1 Not covered, Conflict and Partially covered aspects (individua (L190); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object UX-TASK-FOUNDATION present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017641",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.3.1 Not covered, Conflict and Partially covered aspects (individua (L187); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.3.1 Not covered, Conflict and Partially covered aspects (individua (L190); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object UX-TASK-FIELDS present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017642",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L722); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L728); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object UX-TASK-EVENTS present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017643",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L723); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L729); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object UX-TASK-W31 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017644",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L724); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L730); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object UX-TASK-W32 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017645",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L725); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L731); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object UX-TASK-W33 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017646",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L726); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L732); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object UX-TASK-W34 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017647",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L727); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L733); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object UX-TASK-A109 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017650",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L730); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L736); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object UX-TASK-A112 present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
 "sid": "VS-017652",
 "cls": "C",
-"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L732); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
+"ref": "Part 6.9a \u00a76.9.4.5 Work items (162) \u2192 stories (L738); Part 11.12 \u00a711.12 residual register R-TASK (disposition rule); Part 11.11a \u00a711.11.4.5 (1,912 disposition rows)",
 "note": "Source-pack object UX-TASK-QA present; the V12 disposition text is a review instruction, executed by Parts 11.11a/11.12"
 },
 {
@@ -5774,7 +5702,7 @@
 {
 "sid": "VS-018802",
 "cls": "C",
-"ref": "Part 11.19a \u00a7D. Data model and DDL deltas (DDL-V12-R part 3) (L1163); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"ref": "Part 11.19a \u00a7D. Data model and DDL deltas (DDL-V12-R part 3) (L1176); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "table definition for channel_account; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
@@ -5804,7 +5732,7 @@
 {
 "sid": "VS-018812",
 "cls": "C",
-"ref": "Part 11.19a \u00a7D. Data model and DDL deltas (DDL-V12-R part 3) (L1141); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"ref": "Part 11.19a \u00a7D. Data model and DDL deltas (DDL-V12-R part 3) (L1140); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "table definition for jurisdiction_pack; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {
@@ -5882,7 +5810,7 @@
 {
 "sid": "VS-018847",
 "cls": "C",
-"ref": "Part 11.19a \u00a7D. Data model and DDL deltas (DDL-V12-R part 3) (L1163); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
+"ref": "Part 11.19a \u00a7D. Data model and DDL deltas (DDL-V12-R part 3) (L1176); Part 11.9b \u00a711.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)",
 "note": "tenant RLS policy (USING and WITH CHECK on app.tenant_id) for channel_account; reproduced in Part 11.9a/11.9b (tests DB-T1\u2026T9, C2-T1\u2026T11 re-run 20/20)"
 },
 {

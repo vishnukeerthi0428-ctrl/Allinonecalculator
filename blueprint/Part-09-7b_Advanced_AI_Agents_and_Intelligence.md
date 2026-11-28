@@ -1454,6 +1454,9 @@ Existing screens extended (no new IDs): A003 shell (command bar), A022 (propensi
 
 ### 9.7.11.1 Evaluation thresholds for the new agents (extends Part 7.3 §7.6.9)
 
+> **Erratum v1.2 (E-V-26):** superseded by AI-judge calibration uses Cohen's κ ≥ 0.8 (DEC-603). See Part 11.23c.
+
+
 | Dimension | Threshold (G-A1-n enablement gate, AU-006 / AU-070) | Agents |
 |---|---|---|
 | Groundedness | ≥ 95% statements supported (judge + human calibration ≥ 85% agreement) | AG-040, 043, 044, 045, 047, 054, 055, 058, 059 |

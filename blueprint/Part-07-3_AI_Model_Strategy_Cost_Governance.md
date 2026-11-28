@@ -384,6 +384,9 @@ AU-002 enforces caps per agent; when the **startup, tenant or global** B02 budge
 
 ### 7.6.3 Prompt-injection and jailbreak defences
 
+> **Erratum v1.2 (E-V-01):** superseded by consequential actions above L1 only under an Active two-person bounded mandate (DEC-779). See Part 11.23c.
+
+
 | Layer | Control | Reference |
 |---|---|---|
 | Input | AU-005 sanitizer: HTML cleaning, hidden-text removal, length caps, injection heuristics; untrusted content wrapped in delimited data blocks with provenance | THR-051, SC-32 |

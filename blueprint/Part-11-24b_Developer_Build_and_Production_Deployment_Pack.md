@@ -174,7 +174,7 @@ Every table with a `tenant_id` column has `ENABLE` and `FORCE ROW LEVEL SECURITY
 | Breach clocks | `fn_incident_deadline()`: CERT-In ≤ 6 h, GDPR/DPDP ≤ 72 h (verify) | `incident_notification` | Part 11.9b |
 | Crypto-shredding | `fn_tenant_key_revoked()` destroys wrapped DEKs | `tenant_key_config`, `tenant_data_key` | Part 11.9b |
 | SSO enforcement guard | `enforce_sso_guard()` (DDL-V12-R-01) | `idp_connection` | TC-W-DB-33 |
-| Connector market gate | `connector_pack_guard()` (DDL-V12-R-09) | `connector_installation` | Part 11.19c [CONFLICT-1215] |
+| Connector market gate | `connector_pack_guard()` (DDL-V12-R-09, corrected v1.2) | `connector_installation` | Part 11.19a; [CONFLICT-1215] resolved by DEC-1000 (Part 11.25) |
 | Activation gate | `ge.fn_activation_gate()` + two-person CHECK (V0008a) | `tenant_activation` | TC-W-DB-39…42 |
 
 | Trigger family (generated in V0010) | Tables |
@@ -315,7 +315,7 @@ All settings are read once by a typed settings object at process start; any miss
 | ENV-04 | ADMIN_ORIGIN | HTTPS URL | none | Parameter | api, bff-admin | distinct origin per zone (admin.in.*, admin.eu.*) | Part 4.4b |
 | ENV-05 | OAUTH_ISSUER | HTTPS URL | none | Parameter | bff | discovery reachable at start; iss match | Part 4.4b |
 | ENV-06 | WEBSITE_AUDIENCE / PORTAL_AUDIENCE | string | none | Parameter | bff-web | must differ from ADMIN_AUDIENCE | Part 4.4b; V12 ch36 |
-| ENV-07 | ADMIN_AUDIENCE | string | none | Parameter | bff-admin, api | rejects external identities (R16/R17/R21) | Part 4.4b |
+| ENV-07 | ADMIN_AUDIENCE | string | none | Parameter | bff-admin, api | rejects external identities (R16/R17/R22) | Part 4.4b |
 | ENV-08 | DATABASE_SECRET_REF (DATABASE_URL) | Secrets Manager ARN → Supabase pooler DSN, role app_rw | none | Secret ref | api | sslmode=verify-full; role must be app_rw (never owner, postgres or service_role); transaction pooler | Part 4.4b ENV-08; Part 11.5a; DEC-778 |
 | ENV-08W | WORKER_DATABASE_SECRET_REF | ARN → pooler DSN, role app_worker | none | Secret ref | workers, outbox-relay, beat | role app_worker; same rules as ENV-08 | Part 11.19b SA-02 |
 | ENV-09 | BROKER_SECRET_REF (BROKER_URL) | ARN → Valkey URL (TLS, ACL user per process) | none | Secret ref | api, workers | TLS; per-process ACL user | Part 4.4b |

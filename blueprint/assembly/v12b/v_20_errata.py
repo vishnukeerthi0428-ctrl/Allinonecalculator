@@ -62,6 +62,8 @@ def main():
     for f in files:
         lab = part_label(f)
         for n, l in enumerate(open(f, encoding='utf-8'), 1):
+            if l.startswith('> **Erratum v1.2'):   # v1.2 erratum markers (Part 11.25) are pointers, not content
+                continue
             for e, sp, ap in comp:
                 if sp.search(l):
                     st = 'annotated' if ap.search(l) else 'stale'

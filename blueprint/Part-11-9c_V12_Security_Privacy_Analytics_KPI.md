@@ -119,7 +119,7 @@ Attributed revenue for campaign *c* in period *P* and currency *k*: **Σₑ Σ�
 | ENT-SEC-05 | Public bug bounty after R3 | Part 4.1 RECOMMENDATION-048 (considered at W6) | VDP + `security.txt` now (unchanged); **bug-bounty programme in W6** after R3 equivalent, triage SLA 3 business days; budget proposal §11.9.5.19 | Programme live | R3 → W6 |
 | ENT-SEC-06 | TLS 1.2+, AES-256 at rest, key rotation | Part 4.1 §4.5 | Unchanged; Supabase at-rest encryption + app-layer envelope encryption for Restricted fields; DEK rotation 90/180/365 days (`tenant_key_config.rotation_days`) | TLS scan grade A; KMS rotation evidence | R0 → Release 1 |
 | ENT-SEC-07 | Secrets management with rotation and break-glass | Part 4.1 §4.6, Part 9.9 CAP-X3-18 | Unchanged; database role passwords included (SB-09); break-glass account per tenant required before SSO enforcement (C2-T4) | Rotation drill; no static long-lived secrets | R0 → Release 1 |
-| ENT-SEC-08 | 24×7 security monitoring and incident-response plan linked to breach clocks (A121); quarterly tabletop | Part 4.3: out-of-hours paging Sev1 only (CONFLICT-113, DEC-044) | IR plan, breach clocks (C3-08) and quarterly tabletop **adopted**; **24×7 monitoring Pending Founder decision** (CONFLICT-905): options in §11.9.6 | Tabletop record each quarter | R2 → Release 2 |
+| ENT-SEC-08 | 24×7 security monitoring and incident-response plan linked to breach clocks (A121); quarterly tabletop | Part 4.3: out-of-hours paging Sev1 only (CONFLICT-113, DEC-044) | IR plan, breach clocks (C3-08) and quarterly tabletop **adopted**; **24×7 monitoring Adopted (DEC-790)** (CONFLICT-905): options in §11.9.6 | Tabletop record each quarter | R2 → Release 2 |
 
 **V5 security rules (SEC-06, SEC-08…14) → blueprint controls.**
 
@@ -270,8 +270,8 @@ Basis: engineering day ₹4,545–6,818 per person-day (Part 8.4); ranges low–
 
 | Tag | Conflict | V12 position | Blueprint / Founder position | Proposed resolution | Status |
 |---|---|---|---|---|---|
-| CONFLICT-832 (raised in Part 11.5a; cross-referenced) | Data residency India **and EU now** (ENT-DAT-03; `tenant.data_region IN ('IN','EU')`) | Two regions | DEC-421 single Supabase region (Mumbai); DEC-422 budget | Keep the residency guard (works per regional database); onboard IN only; enable EU when the first EU contract is signed, as a second Supabase project + AWS region with its own budget line (Part 11.5a) | **Pending Founder decision** (DEC-678) |
-| CONFLICT-905 | ENT-SEC-08 24×7 security monitoring | P0, R2 | DEC-044 support hours; CONFLICT-113 (Sev1-only out-of-hours paging); DEC-228 staffing; DEC-422 budget | Option A (recommended): managed detection and response for Sev1/Sev2 security alerts 24×7 + existing on-call for Sev1 (R3 ₹40k–1.5 L/month, verify). Option B: keep Sev1-only paging and record a customer-accepted deviation in the enterprise contract. Option C: defer to W6 | **Pending Founder decision** (DEC-679) |
+| CONFLICT-832 (raised in Part 11.5a; cross-referenced) | Data residency India **and EU now** (ENT-DAT-03; `tenant.data_region IN ('IN','EU')`) | Two regions | DEC-421 single Supabase region (Mumbai); DEC-422 budget | Keep the residency guard (works per regional database); onboard IN only; enable EU when the first EU contract is signed, as a second Supabase project + AWS region with its own budget line (Part 11.5a) | **Adopted (DEC-772)** (DEC-678) |
+| CONFLICT-905 | ENT-SEC-08 24×7 security monitoring | P0, R2 | DEC-044 support hours; CONFLICT-113 (Sev1-only out-of-hours paging); DEC-228 staffing; DEC-422 budget | Option A (recommended): managed detection and response for Sev1/Sev2 security alerts 24×7 + existing on-call for Sev1 (R3 ₹40k–1.5 L/month, verify). Option B: keep Sev1-only paging and record a customer-accepted deviation in the enterprise contract. Option C: defer to W6 | **Adopted (DEC-790)** (DEC-679) |
 | CONFLICT-906 | DEC-421 says the Django API uses "the service key held server-side" | V12 SEC rule: non-owner RLS mandatory | Supabase `service_role` bypasses RLS | Business queries use `ge_app` (NOBYPASSRLS) through Supavisor; the service key is kept server-side only for Storage/administration. Hosting choice unchanged | Resolved (DEC-663) |
 | CONFLICT-907 | V12 KPI-01…35 and V12-ENG "DEC-039…042" reuse blueprint IDs with other meanings | V12 IDs canonical | KPI-01…31, DEC-039…042 in use | Namespace: "V12 KPI-nn", "V12-ENG DEC-nnn"; MET-V12-I-nn for formulas | Resolved (DEC-665) |
 | CONFLICT-908 | Money storage | Integer minor units + currency; exact decimal for units/rates (ch26 V5) | Part 3.3 §3.3.5.6 `numeric(18,2)` | Adopt V12 for amounts (`*_minor bigint`); keep `numeric(18,4)` unit prices and quantities; ROUND_HALF_UP rules unchanged; consistent with Part 11.5a FR-V12-E-073 | Resolved (DEC-664) |
@@ -303,8 +303,8 @@ No conflict weakens a safety invariant: AI still never signs, pays, submits, pri
 | DEC-675 | Security programme ENT-SEC-01…07, PEN-01…08 scope, SEC-06/08…14, MOB-10 adopted; annual pen test and bug bounty from W6 as separately approvable costs | Customer revision V12 (28 Nov 2026) | ch31 aspects Matched except ENT-SEC-08 |
 | DEC-676 | PERF-01…07 load profiles and V12 KPI targets (KPI-05, 06, 26–31) are binding performance acceptance | Customer revision V12 (28 Nov 2026) | Part 4.2 tests extended |
 | DEC-677 | Index policy: every FK supported, V5 common scope index on domain tables, CI guards on RLS coverage, FK indexes and Data API grants | Customer revision V12 (28 Nov 2026) | GAP-914 closed |
-| DEC-678 | Enable the EU region (second Supabase project and AWS region) for ENT-DAT-03 | **Pending Founder decision** | CONFLICT-832; until decided, onboarding is IN only and the EU value is rejected by the IN database |
-| DEC-679 | 24×7 security monitoring for ENT-SEC-08 (Option A MDR recommended) | **Pending Founder decision** | CONFLICT-905; R3 cost ₹40k–1.5 L/month (verify) |
+| DEC-678 | Enable the EU region (second Supabase project and AWS region) for ENT-DAT-03 | **Adopted (DEC-772)** | CONFLICT-832; until decided, onboarding is IN only and the EU value is rejected by the IN database |
+| DEC-679 | 24×7 security monitoring for ENT-SEC-08 (Option A MDR recommended) | **Adopted (DEC-773)** | CONFLICT-905; R3 cost ₹40k–1.5 L/month (verify) |
 
 **Architecture decision records.**
 
@@ -341,7 +341,7 @@ No conflict weakens a safety invariant: AI still never signs, pays, submits, pri
 | Tag | Statement | Where | Status |
 |---|---|---|---|
 | ASSUMPTION-904 | SKU groupings of the 14 management views (§11.9.5.15) are configuration, not fixed by V12 | 11.9c §11.9.5.15 | Open; confirm with analytics owner at W2 |
-| CONFLICT-905 | ENT-SEC-08 24×7 security monitoring vs DEC-044, CONFLICT-113, DEC-228, DEC-422 | §11.9.6 | Pending Founder decision (DEC-679) |
+| CONFLICT-905 | ENT-SEC-08 24×7 security monitoring vs DEC-044, CONFLICT-113, DEC-228, DEC-422 | §11.9.6 | Adopted (DEC-790) (DEC-679) |
 | CONFLICT-906 | DEC-421 "service key" wording vs RLS enforcement on Supabase | §11.9.6 | Resolved by DEC-663 |
 | CONFLICT-907 | V12 KPI / V12-ENG DEC ID collisions | §11.9.6 | Resolved by DEC-665 |
 | CONFLICT-908 | Money storage representation | §11.9.6 | Resolved by DEC-664 |
@@ -388,4 +388,4 @@ No conflict weakens a safety invariant: AI still never signs, pays, submits, pri
 | TC-V12-I-050…057 | PEN-01…08 executed by the independent tester on an isolated environment with synthetic data | No production-blocking condition in the PEN table |
 | TC-V12-I-058 | MOB-10-AT01 service-worker inspection and airplane mode | No private response persisted; no external action replayed |
 
-**Status: Part 11 Batch 11.9c complete. Group I (R8) covers FSD V12 chapters 26, 29, 31, Appendices C and C2 and the database files of `src/engineering`: 3,248 aspects, 3,245 Matched and 3 Pending Founder decision (EU residency ×2 under CONFLICT-832/DEC-678; 24×7 security monitoring under CONFLICT-905/DEC-679); DEC-660…679, ADR-210…214, tags 904…921; DDL-V12-I verified on PostgreSQL 16.15 (50/50 new assertions, 20/20 customer tests).**
+**Status: Part 11 Batch 11.9c complete. Group I (R8) covers FSD V12 chapters 26, 29, 31, Appendices C and C2 and the database files of `src/engineering`: 3,248 aspects, 3,245 Matched and 3 Pending Founder decision (EU residency ×2 under CONFLICT-832/DEC-678; 24×7 security monitoring under CONFLICT-905/DEC-679); DEC-660…679, ADR-210…214, tags 904…921; DDL-V12-I verified on PostgreSQL 16.15 (50/50 new assertions, 20/20 customer tests).** *(v1.2: every item counted here as "Pending Founder decision" was adopted by DEC-770…791 — Part 11.14; read as Adopted. Part 11.25.)*

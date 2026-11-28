@@ -58,7 +58,7 @@
 | Trigger (V12) | Authorized business event or manual import; signed webhook if applicable; Invoice and authorized receipt source |
 | Trigger kinds (registry, DEC-564) | `manual` (NT13-03); `event` (NT13-01; `sm.svc21.wf01.requested` or upstream domain event, §11.4b.6); `provider_callback` (signed, replay-checked) |
 | Authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Finance approves mismatches, refunds and corrections; no unverified closure |
-| Blueprint autonomy (DEC-566) | V12 L2 default → blueprint **L1 maximum** (human approval bound to the exact hash; money movement not supported, DEC-064). V12 "L3 bounded mandate" **not adopted** (CONFLICT-814, Pending Founder decision). Approver: R08 maker, R09 checker |
+| Blueprint autonomy (DEC-566) | V12 L2 default → blueprint **L1 maximum** (human approval bound to the exact hash; money movement not supported, DEC-064). V12 "L3 bounded mandate" **not adopted** (CONFLICT-814, Adopted (DEC-779)). Approver: R08 maker, R09 checker |
 | Human approval (workbook) | Finance approves mismatches, refunds and corrections; no unverified closure |
 | Effect boundary | No external effect; approval gate inserted before state change (DEC-570) |
 | Outputs produced (v3 projection) | `discrepancy_refs`, `reconciliation_state` |
@@ -88,7 +88,7 @@
 | Trigger (V12) | Manual request or validated upstream business event; Verified payment and invoice balance |
 | Trigger kinds (registry, DEC-564) | `manual` (NT13-03); `event` (NT13-01; `sm.svc21.wf02.requested` or upstream domain event, §11.4b.6); `child_workflow` (registered dependency, depth ≤ 3) |
 | Authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Finance approves mismatches, refunds and corrections; no unverified closure |
-| Blueprint autonomy (DEC-566) | V12 L2 default → blueprint **L1 maximum** (human approval bound to the exact hash; money movement not supported, DEC-064). V12 "L3 bounded mandate" **not adopted** (CONFLICT-814, Pending Founder decision). Approver: R08 maker, R09 checker |
+| Blueprint autonomy (DEC-566) | V12 L2 default → blueprint **L1 maximum** (human approval bound to the exact hash; money movement not supported, DEC-064). V12 "L3 bounded mandate" **not adopted** (CONFLICT-814, Adopted (DEC-779)). Approver: R08 maker, R09 checker |
 | Human approval (workbook) | Finance approves mismatches, refunds and corrections; no unverified closure |
 | Effect boundary | No external effect; approval gate inserted before state change (DEC-570) |
 | Outputs produced (v3 projection) | `allocation_ref`, `balance_minor`, `reconciliation_state` |
@@ -816,7 +816,7 @@
 | Detailed functionality (workbook) | Disclose AI as required; classify intent; route or answer with evidence |
 | Blueprint mapping | none (DEC-387); agents AG-058; automations AU-073 |
 | What V12 adds | Inbound AI voice answering is deferred by DEC-387; WhatsApp concierge AG-058 is the nearest capability. |
-| Behaviour status | Conflict → Pending Founder decision (CONFLICT-815) |
+| Behaviour status | Conflict → Adopted (DEC-782) (CONFLICT-815) |
 | Trigger (V12) | Manual; scheduled monitoring; validated business event; authorized provider webhook when available; Inbound call, approved knowledge, routing rules |
 | Trigger kinds (registry, DEC-564) | `manual` (NT13-03); `scheduled` (NT13-02; default cadence per §11.4b, misfire `reschedule_once`); `event` (NT13-01; `sm.svc26.wf01.requested` or upstream domain event, §11.4b.6); `provider_callback` (signed, replay-checked) |
 | Authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; verify recipient permission, sender identity, disclosure, quiet hours and provider rules before contact. |
@@ -833,9 +833,9 @@
 
 | Step ID | Action (V12) | V12 executor → node type | Blueprint handler | Output contract | Failure → run state | Model tier | Status |
 |---|---|---|---|---|---|---|---|
-| SM-SVC-26-WF01-STEP-01 | Disclose AI as required | Domain service → NT13-05 `data.write_internal` | `engagement.voice` service (revision check) | domain_result {artifact_ref,status,evidence_refs} | INVALID_STATE → HELD | Tier 0 / none | Pending Founder decision |
-| SM-SVC-26-WF01-STEP-02 | classify intent | Domain agent → NT13-08 `ai.task` + NT13-10 `approval.human` | AG-058 via gateway; routed to R10 | candidate {artifact_ref,confidence,reason_codes,review_state} | REVIEW_REQUIRED → AWAITING_APPROVAL | Tier 1a | Pending Founder decision |
-| SM-SVC-26-WF01-STEP-03 | route or answer with evidence | Domain agent → NT13-08 `ai.task` + NT13-10 `approval.human` | AG-058 via gateway; routed to R10 | candidate {artifact_ref,confidence,reason_codes,review_state} | REVIEW_REQUIRED → AWAITING_APPROVAL | Tier 1b | Pending Founder decision |
+| SM-SVC-26-WF01-STEP-01 | Disclose AI as required | Domain service → NT13-05 `data.write_internal` | `engagement.voice` service (revision check) | domain_result {artifact_ref,status,evidence_refs} | INVALID_STATE → HELD | Tier 0 / none | Adopted (DEC-782) |
+| SM-SVC-26-WF01-STEP-02 | classify intent | Domain agent → NT13-08 `ai.task` + NT13-10 `approval.human` | AG-058 via gateway; routed to R10 | candidate {artifact_ref,confidence,reason_codes,review_state} | REVIEW_REQUIRED → AWAITING_APPROVAL | Tier 1a | Adopted (DEC-782) |
+| SM-SVC-26-WF01-STEP-03 | route or answer with evidence | Domain agent → NT13-08 `ai.task` + NT13-10 `approval.human` | AG-058 via gateway; routed to R10 | candidate {artifact_ref,confidence,reason_codes,review_state} | REVIEW_REQUIRED → AWAITING_APPROVAL | Tier 1b | Adopted (DEC-782) |
 
 #### SM-SVC-26-WF02 Authorized outbound voice engagement
 
@@ -846,7 +846,7 @@
 | Detailed functionality (workbook) | Check consent, quiet hours and caps; initiate authorized call; record outcome |
 | Blueprint mapping | WF-27 human call tasks (DEC-392); agents AG-011; automations AU-086, AU-009 |
 | What V12 adds | Outbound AI-initiated calls conflict with DEC-392 (human-dialled only) and TR-R1 (no voice outreach W0-W5). |
-| Behaviour status | Conflict → Pending Founder decision (CONFLICT-815) |
+| Behaviour status | Conflict → Adopted (DEC-782) (CONFLICT-815) |
 | Trigger (V12) | Manual; scheduled monitoring; validated business event; authorized provider webhook when available; Eligible contacts, call permission, approved script |
 | Trigger kinds (registry, DEC-564) | `manual` (NT13-03); `scheduled` (NT13-02; default cadence per §11.4b, misfire `reschedule_once`); `event` (NT13-01; `sm.svc26.wf02.requested` or upstream domain event, §11.4b.6); `provider_callback` (signed, replay-checked) |
 | Authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; verify recipient permission, sender identity, disclosure, quiet hours and provider rules before contact. |
@@ -863,9 +863,9 @@
 
 | Step ID | Action (V12) | V12 executor → node type | Blueprint handler | Output contract | Failure → run state | Model tier | Status |
 |---|---|---|---|---|---|---|---|
-| SM-SVC-26-WF02-STEP-01 | Check consent, quiet hours and caps | Policy/validation engine → NT13-09 `policy.check` | PDP (AU-009) rule set | validation {passed,reason_codes,policy_version} | POLICY_DENIED → BLOCKED | Tier 0 / none | Pending Founder decision |
-| SM-SVC-26-WF02-STEP-02 | initiate authorized call | Effect adapter → NT13-13 `action.external` | Outbox → AU-009 dispatch recheck → ADP-VOICE (telephony/CPaaS, not procured) | effect_receipt {provider_ref,status,observed_at} | EFFECT_UNKNOWN → RECONCILING | none | Pending Founder decision |
-| SM-SVC-26-WF02-STEP-03 | record outcome | Domain service → NT13-05 `data.write_internal` | `engagement.voice` service (revision check) | domain_result {artifact_ref,status,evidence_refs} | INVALID_STATE → HELD | Tier 0 / none | Pending Founder decision |
+| SM-SVC-26-WF02-STEP-01 | Check consent, quiet hours and caps | Policy/validation engine → NT13-09 `policy.check` | PDP (AU-009) rule set | validation {passed,reason_codes,policy_version} | POLICY_DENIED → BLOCKED | Tier 0 / none | Adopted (DEC-782) |
+| SM-SVC-26-WF02-STEP-02 | initiate authorized call | Effect adapter → NT13-13 `action.external` | Outbox → AU-009 dispatch recheck → ADP-VOICE (telephony/CPaaS, not procured) | effect_receipt {provider_ref,status,observed_at} | EFFECT_UNKNOWN → RECONCILING | none | Adopted (DEC-782) |
+| SM-SVC-26-WF02-STEP-03 | record outcome | Domain service → NT13-05 `data.write_internal` | `engagement.voice` service (revision check) | domain_result {artifact_ref,status,evidence_refs} | INVALID_STATE → HELD | Tier 0 / none | Adopted (DEC-782) |
 
 #### SM-SVC-26-WF03 Multilingual voice conversation and appointment coordination
 
@@ -876,7 +876,7 @@
 | Detailed functionality (workbook) | Recognize language; ground answers; confirm time with caller |
 | Blueprint mapping | WF-07 meetings; agents AG-058, AG-050; automations AU-023 |
 | What V12 adds | Multilingual voice conversation needs speech services deferred by DEC-387; booking logic exists (AU-023). |
-| Behaviour status | Conflict → Pending Founder decision (CONFLICT-815) |
+| Behaviour status | Conflict → Adopted (DEC-782) (CONFLICT-815) |
 | Trigger (V12) | Manual; scheduled monitoring; validated business event; authorized provider webhook when available; Call session, language, calendar availability |
 | Trigger kinds (registry, DEC-564) | `manual` (NT13-03); `scheduled` (NT13-02; default cadence per §11.4b, misfire `reschedule_once`); `event` (NT13-01; `sm.svc26.wf03.requested` or upstream domain event, §11.4b.6); `provider_callback` (signed, replay-checked) |
 | Authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; verify recipient permission, sender identity, disclosure, quiet hours and provider rules before contact. |
@@ -893,9 +893,9 @@
 
 | Step ID | Action (V12) | V12 executor → node type | Blueprint handler | Output contract | Failure → run state | Model tier | Status |
 |---|---|---|---|---|---|---|---|
-| SM-SVC-26-WF03-STEP-01 | Recognize language | Evidence/ingestion engine → NT13-04 `data.read` | AU-007 source permission + AU-005 sanitizer, scoped read | evidence_set {items,source_ref,observed_at,hash,rights} | SOURCE_DENIED → HELD | Tier 0 / none | Pending Founder decision |
-| SM-SVC-26-WF03-STEP-02 | ground answers | Domain service → NT13-05 `data.write_internal` | `engagement.voice` service (revision check) | domain_result {artifact_ref,status,evidence_refs} | INVALID_STATE → HELD | Tier 0 / none | Pending Founder decision |
-| SM-SVC-26-WF03-STEP-03 | confirm time with caller | Domain service → NT13-05 `data.write_internal` | `engagement.voice` service (revision check) | domain_result {artifact_ref,status,evidence_refs} | INVALID_STATE → HELD | Tier 0 / none | Pending Founder decision |
+| SM-SVC-26-WF03-STEP-01 | Recognize language | Evidence/ingestion engine → NT13-04 `data.read` | AU-007 source permission + AU-005 sanitizer, scoped read | evidence_set {items,source_ref,observed_at,hash,rights} | SOURCE_DENIED → HELD | Tier 0 / none | Adopted (DEC-782) |
+| SM-SVC-26-WF03-STEP-02 | ground answers | Domain service → NT13-05 `data.write_internal` | `engagement.voice` service (revision check) | domain_result {artifact_ref,status,evidence_refs} | INVALID_STATE → HELD | Tier 0 / none | Adopted (DEC-782) |
+| SM-SVC-26-WF03-STEP-03 | confirm time with caller | Domain service → NT13-05 `data.write_internal` | `engagement.voice` service (revision check) | domain_result {artifact_ref,status,evidence_refs} | INVALID_STATE → HELD | Tier 0 / none | Adopted (DEC-782) |
 
 #### SM-SVC-26-WF04 Call intelligence, permitted transcription and CRM synchronization
 
@@ -906,7 +906,7 @@
 | Detailed functionality (workbook) | Extract actions; redact restricted data; synchronize approved notes |
 | Blueprint mapping | AG-037 staff-written notes (DEC-218); agents AG-037; automations AU-004 |
 | What V12 adds | Call transcription conflicts with DEC-218/DEC-386 (recordings and transcripts excluded). |
-| Behaviour status | Conflict → Pending Founder decision (CONFLICT-815) |
+| Behaviour status | Conflict → Adopted (DEC-782) (CONFLICT-815) |
 | Trigger (V12) | Manual; scheduled monitoring; validated business event; authorized provider webhook when available; Authorized recording or transcript, relationship ID |
 | Trigger kinds (registry, DEC-564) | `manual` (NT13-03); `scheduled` (NT13-02; default cadence per §11.4b, misfire `reschedule_once`); `event` (NT13-01; `sm.svc26.wf04.requested` or upstream domain event, §11.4b.6); `provider_callback` (signed, replay-checked) |
 | Authority (V12) | R1 scoped state write or safety control; L1/L2 review; L3 only for approved deterministic internal actions; Approve source/data rights and applicable external actions; verify recipient permission, sender identity, disclosure, quiet hours and provider rules before contact. |
@@ -923,9 +923,9 @@
 
 | Step ID | Action (V12) | V12 executor → node type | Blueprint handler | Output contract | Failure → run state | Model tier | Status |
 |---|---|---|---|---|---|---|---|
-| SM-SVC-26-WF04-STEP-01 | Extract actions | Evidence/ingestion engine → NT13-04 `data.read` | AU-007 source permission + AU-005 sanitizer, scoped read | evidence_set {items,source_ref,observed_at,hash,rights} | SOURCE_DENIED → HELD | Tier 0 / none | Pending Founder decision |
-| SM-SVC-26-WF04-STEP-02 | redact restricted data | Domain service → NT13-05 `data.write_internal` | `engagement.voice` service (revision check) | domain_result {artifact_ref,status,evidence_refs} | INVALID_STATE → HELD | Tier 0 / none | Pending Founder decision |
-| SM-SVC-26-WF04-STEP-03 | synchronize approved notes | Identity/reconciliation engine → NT13-07 `logic.compute` | AU-074 registered function | match_result {matched_refs,unmatched_refs,conflict_refs} | CONFLICT → HELD | Tier 0 / none | Pending Founder decision |
+| SM-SVC-26-WF04-STEP-01 | Extract actions | Evidence/ingestion engine → NT13-04 `data.read` | AU-007 source permission + AU-005 sanitizer, scoped read | evidence_set {items,source_ref,observed_at,hash,rights} | SOURCE_DENIED → HELD | Tier 0 / none | Adopted (DEC-782) |
+| SM-SVC-26-WF04-STEP-02 | redact restricted data | Domain service → NT13-05 `data.write_internal` | `engagement.voice` service (revision check) | domain_result {artifact_ref,status,evidence_refs} | INVALID_STATE → HELD | Tier 0 / none | Adopted (DEC-782) |
+| SM-SVC-26-WF04-STEP-03 | synchronize approved notes | Identity/reconciliation engine → NT13-07 `logic.compute` | AU-074 registered function | match_result {matched_refs,unmatched_refs,conflict_refs} | CONFLICT → HELD | Tier 0 / none | Adopted (DEC-782) |
 
 ### 11.4.5.16 SM-SVC-27 Multimodal Creative & Localization Automation
 
@@ -966,7 +966,7 @@
 | Detailed functionality (workbook) | Generate variants; check layout and claims; route review |
 | Blueprint mapping | WF-05 content (§2.11); agents AG-018; automations AU-076, AU-029 |
 | What V12 adds | Image generation was excluded by CI-061 (cost, likeness, claims); approved brand assets are the baseline. |
-| Behaviour status | Conflict → Pending Founder decision (CONFLICT-819) |
+| Behaviour status | Conflict → Adopted (DEC-788) (CONFLICT-819) |
 | Trigger (V12) | Manual; scheduled monitoring; validated business event; authorized provider webhook when available; Brand brief, asset rights, approved claims |
 | Trigger kinds (registry, DEC-564) | `manual` (NT13-03); `scheduled` (NT13-02; default cadence per §11.4b, misfire `reschedule_once`); `event` (NT13-01; `sm.svc27.wf01.requested` or upstream domain event, §11.4b.6); `provider_callback` (signed, replay-checked) |
 | Authority (V12) | R0 internal analysis/draft; L1 assisted; L3 approved read/draft; Approve source/data rights and applicable external actions; review rights, claims, brand and public publication. |
@@ -983,7 +983,7 @@
 
 | Step ID | Action (V12) | V12 executor → node type | Blueprint handler | Output contract | Failure → run state | Model tier | Status |
 |---|---|---|---|---|---|---|---|
-| SM-SVC-27-WF01-STEP-01 | Generate variants | Domain agent → NT13-08 `ai.task` + NT13-10 `approval.human` | AG-018 via gateway; routed to R05L | candidate {artifact_ref,confidence,reason_codes,review_state} | REVIEW_REQUIRED → AWAITING_APPROVAL | Tier 1b | Pending Founder decision |
+| SM-SVC-27-WF01-STEP-01 | Generate variants | Domain agent → NT13-08 `ai.task` + NT13-10 `approval.human` | AG-018 via gateway; routed to R05L | candidate {artifact_ref,confidence,reason_codes,review_state} | REVIEW_REQUIRED → AWAITING_APPROVAL | Tier 1b | Adopted (DEC-791) |
 | SM-SVC-27-WF01-STEP-02 | check layout and claims | Policy/validation engine → NT13-09 `policy.check` | PDP (AU-009) rule set | validation {passed,reason_codes,policy_version} | POLICY_DENIED → BLOCKED | Tier 0 / none | Matched |
 | SM-SVC-27-WF01-STEP-03 | route review | Domain agent → NT13-08 `ai.task` + NT13-10 `approval.human` | AG-018 via gateway; routed to R05L | candidate {artifact_ref,confidence,reason_codes,review_state} | REVIEW_REQUIRED → AWAITING_APPROVAL | Tier 1b | Matched |
 
@@ -996,7 +996,7 @@
 | Detailed functionality (workbook) | Create storyboard and clips; validate factual depiction; review |
 | Blueprint mapping | WF-05; agents AG-018; automations AU-029 |
 | What V12 adds | Video generation is not in the blueprint; same exclusion basis as CI-061. |
-| Behaviour status | Conflict → Pending Founder decision (CONFLICT-819) |
+| Behaviour status | Conflict → Adopted (DEC-788) (CONFLICT-819) |
 | Trigger (V12) | Manual; scheduled monitoring; validated business event; authorized provider webhook when available; Product facts, approved storyboard, rights |
 | Trigger kinds (registry, DEC-564) | `manual` (NT13-03); `scheduled` (NT13-02; default cadence per §11.4b, misfire `reschedule_once`); `event` (NT13-01; `sm.svc27.wf02.requested` or upstream domain event, §11.4b.6); `provider_callback` (signed, replay-checked) |
 | Authority (V12) | R0 internal analysis/draft; L1 assisted; L3 approved read/draft; Approve source/data rights and applicable external actions; review rights, claims, brand and public publication. |
@@ -1013,7 +1013,7 @@
 
 | Step ID | Action (V12) | V12 executor → node type | Blueprint handler | Output contract | Failure → run state | Model tier | Status |
 |---|---|---|---|---|---|---|---|
-| SM-SVC-27-WF02-STEP-01 | Create storyboard and clips | Domain service → NT13-05 `data.write_internal` | `marketing.creative` service (revision check) | domain_result {artifact_ref,status,evidence_refs} | INVALID_STATE → HELD | Tier 0 / none | Pending Founder decision |
+| SM-SVC-27-WF02-STEP-01 | Create storyboard and clips | Domain service → NT13-05 `data.write_internal` | `marketing.creative` service (revision check) | domain_result {artifact_ref,status,evidence_refs} | INVALID_STATE → HELD | Tier 0 / none | Adopted (DEC-791) |
 | SM-SVC-27-WF02-STEP-02 | validate factual depiction | Policy/validation engine → NT13-09 `policy.check` | PDP (AU-009) rule set | validation {passed,reason_codes,policy_version} | POLICY_DENIED → BLOCKED | Tier 0 / none | Matched |
 | SM-SVC-27-WF02-STEP-03 | review | Domain service → NT13-05 `data.write_internal` | `marketing.creative` service (revision check) | domain_result {artifact_ref,status,evidence_refs} | INVALID_STATE → HELD | Tier 0 / none | Matched |
 
@@ -1026,7 +1026,7 @@
 | Detailed functionality (workbook) | Translate and localize; generate captions/audio; quality review |
 | Blueprint mapping | WF-19 localization (Part 9.7b); agents AG-050; automations AU-076 |
 | What V12 adds | Text/subtitle localization exists (AG-050, AU-076); synthetic audio is new and needs a speech provider. |
-| Behaviour status | Conflict → Pending Founder decision (CONFLICT-819) |
+| Behaviour status | Conflict → Adopted (DEC-788) (CONFLICT-819) |
 | Trigger (V12) | Manual; scheduled monitoring; validated business event; authorized provider webhook when available; Approved asset, target language, voice rights |
 | Trigger kinds (registry, DEC-564) | `manual` (NT13-03); `scheduled` (NT13-02; default cadence per §11.4b, misfire `reschedule_once`); `event` (NT13-01; `sm.svc27.wf03.requested` or upstream domain event, §11.4b.6); `provider_callback` (signed, replay-checked) |
 | Authority (V12) | R0 internal analysis/draft; L1 assisted; L3 approved read/draft; Approve source/data rights and applicable external actions; review rights, claims, brand and public publication. |
@@ -1044,7 +1044,7 @@
 | Step ID | Action (V12) | V12 executor → node type | Blueprint handler | Output contract | Failure → run state | Model tier | Status |
 |---|---|---|---|---|---|---|---|
 | SM-SVC-27-WF03-STEP-01 | Translate and localize | Domain service → NT13-05 `data.write_internal` | `marketing.creative` service (revision check) | domain_result {artifact_ref,status,evidence_refs} | INVALID_STATE → HELD | Tier 0 / none | Matched |
-| SM-SVC-27-WF03-STEP-02 | generate captions/audio | Domain agent → NT13-08 `ai.task` + NT13-10 `approval.human` | AG-050 via gateway; routed to R05L | candidate {artifact_ref,confidence,reason_codes,review_state} | REVIEW_REQUIRED → AWAITING_APPROVAL | Tier 1b | Pending Founder decision |
+| SM-SVC-27-WF03-STEP-02 | generate captions/audio | Domain agent → NT13-08 `ai.task` + NT13-10 `approval.human` | AG-050 via gateway; routed to R05L | candidate {artifact_ref,confidence,reason_codes,review_state} | REVIEW_REQUIRED → AWAITING_APPROVAL | Tier 1b | Adopted (DEC-791) |
 | SM-SVC-27-WF03-STEP-03 | quality review | Domain service → NT13-05 `data.write_internal` | `marketing.creative` service (revision check) | domain_result {artifact_ref,status,evidence_refs} | INVALID_STATE → HELD | Tier 0 / none | Matched |
 
 #### SM-SVC-27-WF04 Brand, copyright, factual claim and creative quality validation
@@ -1176,11 +1176,11 @@
 | Detailed functionality (workbook) | Validate authority and budget; compare offers; route consequential decisions |
 | Blueprint mapping | WF-09 negotiation; agents AG-021; automations AU-089, AU-009 |
 | What V12 adds | Agent-to-agent negotiation mandates conflict with "AI never sets prices" and DEC-064 L1 caps. |
-| Behaviour status | Conflict → Pending Founder decision (CONFLICT-816) |
+| Behaviour status | Conflict → Adopted (DEC-791) (CONFLICT-816) |
 | Trigger (V12) | Manual; scheduled monitoring; validated business event; authorized provider webhook when available; Mandate, price limits, negotiation policy |
 | Trigger kinds (registry, DEC-564) | `manual` (NT13-03); `scheduled` (NT13-02; default cadence per §11.4b, misfire `reschedule_once`); `event` (NT13-01; `sm.svc28.wf03.requested` or upstream domain event, §11.4b.6); `provider_callback` (signed, replay-checked) |
 | Authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; verify agent identity, mandate, spending limits and approval before any transaction; reconcile via authorized provider. |
-| Blueprint autonomy (DEC-566) | V12 L2 default → blueprint **L1 maximum** (human approval bound to the exact hash; money movement not supported, DEC-064). V12 "L3 bounded mandate" **not adopted** (CONFLICT-814, Pending Founder decision). Approver: R02, R08 |
+| Blueprint autonomy (DEC-566) | V12 L2 default → blueprint **L1 maximum** (human approval bound to the exact hash; money movement not supported, DEC-064). V12 "L3 bounded mandate" **not adopted** (CONFLICT-814, Adopted (DEC-779)). Approver: R02, R08 |
 | Human approval (workbook) | Approve source/data rights and applicable external actions; verify agent identity, mandate, spending limits and approval before any transaction; reconcile via authorized provider. |
 | Effect boundary | No external effect; approval gate inserted before state change (DEC-570) |
 | Outputs produced (v3 projection) | `mandate_state` |
@@ -1194,8 +1194,8 @@
 | Step ID | Action (V12) | V12 executor → node type | Blueprint handler | Output contract | Failure → run state | Model tier | Status |
 |---|---|---|---|---|---|---|---|
 | SM-SVC-28-WF03-STEP-01 | Validate authority and budget | Policy/validation engine → NT13-09 `policy.check` | PDP (AU-009) rule set + AU-089 | validation {passed,reason_codes,policy_version} | POLICY_DENIED → BLOCKED | Tier 0 / none | Matched |
-| SM-SVC-28-WF03-STEP-02 | compare offers | Rules/analytics engine → NT13-07 `logic.compute` | AU-089 registered function | calculation {value,unit,assumptions,evidence_refs} | INVALID_METRIC → HELD | Tier 0 / none | Pending Founder decision |
-| SM-SVC-28-WF03-STEP-03 | route consequential decisions | Domain agent → NT13-08 `ai.task` + NT13-10 `approval.human` | AG-021 via gateway; routed to R02 | candidate {artifact_ref,confidence,reason_codes,review_state} | REVIEW_REQUIRED → AWAITING_APPROVAL | Tier 1a | Pending Founder decision |
+| SM-SVC-28-WF03-STEP-02 | compare offers | Rules/analytics engine → NT13-07 `logic.compute` | AU-089 registered function | calculation {value,unit,assumptions,evidence_refs} | INVALID_METRIC → HELD | Tier 0 / none | Adopted (DEC-780) |
+| SM-SVC-28-WF03-STEP-03 | route consequential decisions | Domain agent → NT13-08 `ai.task` + NT13-10 `approval.human` | AG-021 via gateway; routed to R02 | candidate {artifact_ref,confidence,reason_codes,review_state} | REVIEW_REQUIRED → AWAITING_APPROVAL | Tier 1a | Adopted (DEC-780) |
 
 #### SM-SVC-28-WF04 Authorized transaction, payment mandate and outcome reconciliation
 
@@ -1206,11 +1206,11 @@
 | Detailed functionality (workbook) | Verify authorization; execute only via approved provider; reconcile uncertain outcome |
 | Blueprint mapping | WF-11 closure; agents AG-024; automations AU-037, AU-026 |
 | What V12 adds | Payment mandates conflict with "money movement not supported" (DEC-064) and "AI never pays". |
-| Behaviour status | Conflict → Pending Founder decision (CONFLICT-816) |
+| Behaviour status | Conflict → Adopted (DEC-791) (CONFLICT-816) |
 | Trigger (V12) | Manual; scheduled monitoring; validated business event; authorized provider webhook when available; Approved order, verified payment mandate, provider event |
 | Trigger kinds (registry, DEC-564) | `manual` (NT13-03); `scheduled` (NT13-02; default cadence per §11.4b, misfire `reschedule_once`); `event` (NT13-01; `sm.svc28.wf04.requested` or upstream domain event, §11.4b.6); `provider_callback` (signed, replay-checked) |
 | Authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; verify agent identity, mandate, spending limits and approval before any transaction; reconcile via authorized provider. |
-| Blueprint autonomy (DEC-566) | V12 L2 default → blueprint **L1 maximum** (human approval bound to the exact hash; money movement not supported, DEC-064). V12 "L3 bounded mandate" **not adopted** (CONFLICT-814, Pending Founder decision). Approver: R08, R09, R01 |
+| Blueprint autonomy (DEC-566) | V12 L2 default → blueprint **L1 maximum** (human approval bound to the exact hash; money movement not supported, DEC-064). V12 "L3 bounded mandate" **not adopted** (CONFLICT-814, Adopted (DEC-779)). Approver: R08, R09, R01 |
 | Human approval (workbook) | Approve source/data rights and applicable external actions; verify agent identity, mandate, spending limits and approval before any transaction; reconcile via authorized provider. |
 | Effect boundary | Effect steps: STEP-02 via ADP-AGENT (MCP/A2A gateway, not procured) |
 | Outputs produced (v3 projection) | `mandate_state`, `transaction_ref`, `reconciliation_state` |
@@ -1224,8 +1224,8 @@
 | Step ID | Action (V12) | V12 executor → node type | Blueprint handler | Output contract | Failure → run state | Model tier | Status |
 |---|---|---|---|---|---|---|---|
 | SM-SVC-28-WF04-STEP-01 | Verify authorization | Policy/validation engine → NT13-09 `policy.check` | PDP (AU-009) rule set | validation {passed,reason_codes,policy_version} | POLICY_DENIED → BLOCKED | Tier 0 / none | Matched |
-| SM-SVC-28-WF04-STEP-02 | execute only via approved provider | Effect adapter → NT13-13 `action.external` | Outbox → AU-009 dispatch recheck → ADP-AGENT (MCP/A2A gateway, not procured) | effect_receipt {provider_ref,status,observed_at} | EFFECT_UNKNOWN → RECONCILING | none | Pending Founder decision |
-| SM-SVC-28-WF04-STEP-03 | reconcile uncertain outcome | Identity/reconciliation engine → NT13-07 `logic.compute` | AU-037 registered function | match_result {matched_refs,unmatched_refs,conflict_refs} | CONFLICT → HELD | Tier 0 / none | Pending Founder decision |
+| SM-SVC-28-WF04-STEP-02 | execute only via approved provider | Effect adapter → NT13-13 `action.external` | Outbox → AU-009 dispatch recheck → ADP-AGENT (MCP/A2A gateway, not procured) | effect_receipt {provider_ref,status,observed_at} | EFFECT_UNKNOWN → RECONCILING | none | Adopted (DEC-780) |
+| SM-SVC-28-WF04-STEP-03 | reconcile uncertain outcome | Identity/reconciliation engine → NT13-07 `logic.compute` | AU-037 registered function | match_result {matched_refs,unmatched_refs,conflict_refs} | CONFLICT → HELD | Tier 0 / none | Adopted (DEC-780) |
 
 ### 11.4.5.18 SM-SVC-29 Account-Based Marketing & Enterprise Buying Group Automation
 
@@ -1449,7 +1449,7 @@
 | Trigger (V12) | Manual; scheduled monitoring; validated business event; authorized provider webhook when available; Approved variants, sample plan, budget |
 | Trigger kinds (registry, DEC-564) | `manual` (NT13-03); `scheduled` (NT13-02; default cadence per §11.4b, misfire `reschedule_once`); `event` (NT13-01; `sm.svc30.wf02.requested` or upstream domain event, §11.4b.6); `provider_callback` (signed, replay-checked) |
 | Authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; approve experimental bounds, customer fairness, budget, pricing and publication before any live change. |
-| Blueprint autonomy (DEC-566) | V12 L2 default → blueprint **L1 maximum** (human approval bound to the exact hash; money movement not supported, DEC-064). V12 "L3 bounded mandate" **not adopted** (CONFLICT-814, Pending Founder decision). Approver: R05L, R02, R08 |
+| Blueprint autonomy (DEC-566) | V12 L2 default → blueprint **L1 maximum** (human approval bound to the exact hash; money movement not supported, DEC-064). V12 "L3 bounded mandate" **not adopted** (CONFLICT-814, Adopted (DEC-779)). Approver: R05L, R02, R08 |
 | Human approval (workbook) | Approve source/data rights and applicable external actions; approve experimental bounds, customer fairness, budget, pricing and publication before any live change. |
 | Effect boundary | No external effect; approval gate inserted before state change (DEC-570) |
 | Outputs produced (v3 projection) | `experiment_ref` |

@@ -1279,7 +1279,7 @@ Feature: SM-SVC-06 Email Marketing & Outreach Automation contract conformance
 
 ##### SM-SVC-06-WF02 Controlled email delivery
 
-**Requirement FR-V12-C-034** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** WF-06 dispatch with PDP recheck, outbox, AU-024.
+**Requirement FR-V12-C-034** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** WF-06 dispatch with PDP recheck, outbox, AU-024.
 
 | Field | Specification |
 |---|---------|
@@ -1288,7 +1288,7 @@ Feature: SM-SVC-06 Email Marketing & Outreach Automation contract conformance
 | Result / acceptance | Sent or blocked dispatch; acceptance: SM-SVC-06-WF02-TC-POS and step tests (ch33) |
 | Domain contract | email_message payload schema SM-SVC-06-WF02@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-06-WF02:v2`. |
 | Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve content/campaign and eligibility; stop suppressed recipients |
-| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 → DEC-549 Pending Founder decision] |
+| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 → DEC-549 Adopted (DEC-779)] |
 | Approval gate (V12) | Approve content/campaign and eligibility; stop suppressed recipients · approval check: Approve content/campaign and eligibility; stop suppressed recipients |
 | Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. · Potential external write/communication; controlled only after applicable permission and policy approval · Text; structured records (stricter classification applies, DEC-546) |
 | Engine / agent | Communication; Workflow orchestration; Governance; Outreach; localization → AG-011 (primary), AG-012, AG-058 (WhatsApp), AG-049, AG-050 |
@@ -1525,7 +1525,7 @@ Feature: SM-SVC-07 WhatsApp Business Marketing Automation contract conformance
 
 ##### SM-SVC-07-WF02 Controlled WhatsApp outreach
 
-**Requirement FR-V12-C-038** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** WF-06 WhatsApp dispatch; AU-073; AU-009.
+**Requirement FR-V12-C-038** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** WF-06 WhatsApp dispatch; AU-073; AU-009.
 
 | Field | Specification |
 |---|---------|
@@ -1534,7 +1534,7 @@ Feature: SM-SVC-07 WhatsApp Business Marketing Automation contract conformance
 | Result / acceptance | Dispatch record; acceptance: SM-SVC-07-WF02-TC-POS and step tests (ch33) |
 | Domain contract | whatsapp_message payload schema SM-SVC-07-WF02@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-07-WF02:v2`. |
 | Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Verify opt-in and applicable template/window rules; approve campaign and suppress opt-outs |
-| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 → DEC-549 Pending Founder decision] |
+| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 → DEC-549 Adopted (DEC-779)] |
 | Approval gate (V12) | Verify opt-in and applicable template/window rules; approve campaign and suppress opt-outs · approval check: Verify opt-in and applicable template/window rules; approve campaign and suppress opt-outs |
 | Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. · Potential external write/communication; controlled only after applicable permission and policy approval · Text; structured records (stricter classification applies, DEC-546) |
 | Engine / agent | Communication; Workflow orchestration; Governance; Outreach; conversation; localization → AG-011 (primary), AG-012, AG-058 (WhatsApp), AG-049, AG-050 |
@@ -1609,7 +1609,7 @@ Feature: SM-SVC-07 WhatsApp Business Marketing Automation contract conformance
 
 ##### SM-SVC-07-WF04 Interactive commerce conversation and journey management
 
-**Requirement FR-V12-C-040** (status before: Partially covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** WF-23 concierge (AG-058) + WF-10 orders. **Enhancement:** Interactive commerce offers inside chat (catalogue offers, order hand-off) are new; prices never set by AI.
+**Requirement FR-V12-C-040** (status before: Partially covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** WF-23 concierge (AG-058) + WF-10 orders. **Enhancement:** Interactive commerce offers inside chat (catalogue offers, order hand-off) are new; prices never set by AI.
 
 | Field | Specification |
 |---|---------|
@@ -1618,7 +1618,7 @@ Feature: SM-SVC-07 WhatsApp Business Marketing Automation contract conformance
 | Result / acceptance | Conversation and qualified commerce enquiry; Conversation and qualified commerce enquiry; no unapproved external side effects |
 | Domain contract | whatsapp_message payload schema SM-SVC-07-WF04@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-07-WF04:v2`. |
 | Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |
-| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 → DEC-549 Pending Founder decision] |
+| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 → DEC-549 Adopted (DEC-779)] |
 | Approval gate (V12) | Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. · approval check: Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |
 | Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. · Internal analysis/draft; no external action without separate authorization · Text; structured records (stricter classification applies, DEC-546) |
 | Engine / agent | Communication; Workflow orchestration; Governance; Outreach; conversation; localization → AG-011 (primary), AG-012, AG-058 (WhatsApp), AG-049, AG-050 |
@@ -1998,7 +1998,7 @@ Feature: SM-SVC-09 AI Chat, Unified Inbox & Objection Automation contract confor
 
 ##### SM-SVC-09-WF02 Grounded enquiry and objection response
 
-**Requirement FR-V12-C-046** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** AG-014 reply assistant; Tier 0 FAQ (AU-001); BRL-AI-03 grounding.
+**Requirement FR-V12-C-046** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** AG-014 reply assistant; Tier 0 FAQ (AU-001); BRL-AI-03 grounding.
 
 | Field | Specification |
 |---|---------|
@@ -2007,7 +2007,7 @@ Feature: SM-SVC-09 AI Chat, Unified Inbox & Objection Automation contract confor
 | Result / acceptance | Response draft or permitted reply; acceptance: SM-SVC-09-WF02-TC-POS and step tests (ch33) |
 | Domain contract | conversation payload schema SM-SVC-09-WF02@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-09-WF02:v2`. |
 | Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Review sensitive/unsupported claims, negotiation exceptions and human takeover |
-| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 → DEC-549 Pending Founder decision] |
+| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 → DEC-549 Adopted (DEC-779)] |
 | Approval gate (V12) | Review sensitive/unsupported claims, negotiation exceptions and human takeover · approval check: Review sensitive/unsupported claims, negotiation exceptions and human takeover |
 | Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. · Internal analysis/draft; no external action without separate authorization · Text; structured records (stricter classification applies, DEC-546) |
 | Engine / agent | AI knowledge and RAG; Workflow orchestration; Governance; Conversation; objection resolution; evidence retrieval → AG-014 (primary), AG-013, AG-017, AG-021 |
@@ -2102,7 +2102,7 @@ flowchart TD
 
 ##### SM-SVC-09-WF04 Multilingual multimodal enquiry resolution
 
-**Requirement FR-V12-C-048** (status before: Partially covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** AG-050 Indic localization; WF-23. **Enhancement:** Audio/image enquiry extraction is not in the blueprint; multimodal data class rules needed.
+**Requirement FR-V12-C-048** (status before: Partially covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** AG-050 Indic localization; WF-23. **Enhancement:** Audio/image enquiry extraction is not in the blueprint; multimodal data class rules needed.
 
 | Field | Specification |
 |---|---------|
@@ -2111,7 +2111,7 @@ flowchart TD
 | Result / acceptance | Grounded response and case handover; Grounded response and case handover; no unapproved external side effects |
 | Domain contract | conversation payload schema SM-SVC-09-WF04@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-09-WF04:v2`. |
 | Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |
-| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 → DEC-549 Pending Founder decision] |
+| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 → DEC-549 Adopted (DEC-779)] |
 | Approval gate (V12) | Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. · approval check: Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |
 | Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. · Internal analysis/draft; no external action without separate authorization · Text; structured records; audio/image/video where applicable and authorized (stricter classification applies, DEC-546) |
 | Engine / agent | AI knowledge and RAG; Workflow orchestration; Governance; Conversation; objection resolution; evidence retrieval → AG-014 (primary), AG-013, AG-017, AG-021 |
@@ -2223,7 +2223,7 @@ Feature: SM-SVC-10 Meeting, Demo & Appointment Automation contract conformance
 
 ##### SM-SVC-10-WF01 Slot and booking coordination
 
-**Requirement FR-V12-C-049** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** WF-07 booking; AU-023; BRL-MTG-01…04.
+**Requirement FR-V12-C-049** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** WF-07 booking; AU-023; BRL-MTG-01…04.
 
 | Field | Specification |
 |---|---------|
@@ -2232,7 +2232,7 @@ Feature: SM-SVC-10 Meeting, Demo & Appointment Automation contract conformance
 | Result / acceptance | Appointment record; acceptance: SM-SVC-10-WF01-TC-POS and step tests (ch33) |
 | Domain contract | meeting payload schema SM-SVC-10-WF01@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-10-WF01:v2`. |
 | Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Confirm invitation authorization and recording consent |
-| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 → DEC-549 Pending Founder decision] |
+| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 → DEC-549 Adopted (DEC-779)] |
 | Approval gate (V12) | Confirm invitation authorization and recording consent · approval check: Confirm invitation authorization and recording consent |
 | Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. · Potential external write/communication; controlled only after applicable permission and policy approval · Text; structured records (stricter classification applies, DEC-546) |
 | Engine / agent | Calendar; Workflow orchestration; Governance; Meeting intelligence; summarization → AG-059 (primary), AG-037, AG-045 |
@@ -2267,7 +2267,7 @@ Feature: SM-SVC-10 Meeting, Demo & Appointment Automation contract conformance
 
 ##### SM-SVC-10-WF02 Meeting preparation and reminders
 
-**Requirement FR-V12-C-050** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** AU-075 meeting-prep scheduler; AG-059; BRL-MTG-06.
+**Requirement FR-V12-C-050** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** AU-075 meeting-prep scheduler; AG-059; BRL-MTG-06.
 
 | Field | Specification |
 |---|---------|
@@ -2276,7 +2276,7 @@ Feature: SM-SVC-10 Meeting, Demo & Appointment Automation contract conformance
 | Result / acceptance | Meeting brief and reminder tasks; acceptance: SM-SVC-10-WF02-TC-POS and step tests (ch33) |
 | Domain contract | meeting payload schema SM-SVC-10-WF02@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-10-WF02:v2`. |
 | Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Confirm invitation authorization and recording consent |
-| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 → DEC-549 Pending Founder decision] |
+| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 → DEC-549 Adopted (DEC-779)] |
 | Approval gate (V12) | Confirm invitation authorization and recording consent · approval check: Confirm invitation authorization and recording consent |
 | Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. · Internal analysis/draft; no external action without separate authorization · Text; structured records; audio/image/video where applicable and authorized (stricter classification applies, DEC-546) |
 | Engine / agent | Calendar; Workflow orchestration; Governance; Meeting intelligence; summarization → AG-059 (primary), AG-037, AG-045 |

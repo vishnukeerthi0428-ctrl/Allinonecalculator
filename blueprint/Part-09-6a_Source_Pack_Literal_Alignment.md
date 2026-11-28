@@ -16,6 +16,9 @@
 
 ## 9.6a.1 Scope and method
 
+> **Erratum v1.2 (E-V-01, E-V-02, E-V-21):** superseded by consequential actions above L1 only under an Active two-person bounded mandate (DEC-779); payments and bid submission allowed only under a bounded mandate; AI still never signs contracts or sets prices autonomously (DEC-779/780/781); automatic bid submission allowed under a per-tender bounded mandate (DEC-781). See Part 11.23c.
+
+
 **Scope.** All coverage rows of groups A–E with status **Conflict** (A 4, B 15, C 9, D 11, E 16 = **55 rows**) and all rows with status **Not applicable** (A 4, B 0, C 35, D 38, E 4 = **81 rows**). Rows already Covered, Partially covered or Not covered were closed by the enhancement parts (2.6, 2.7, 3.4, 3.5, 3.6) and are out of scope here. Groups F–J are handled in Part 9.6b.
 
 **Method per row.**
@@ -109,6 +112,9 @@ Entries are grouped by the group of their first row. DEC-234 is the governance r
 ### 9.6a.3.1 Governance
 
 #### 9.6a.3.1.1 DEC-234: Literal-alignment rule: source names canonical, blueprint names as aliases; pack precedence
+
+> **Erratum v1.2 (E-V-01, E-V-02, E-V-21):** superseded by consequential actions above L1 only under an Active two-person bounded mandate (DEC-779); payments and bid submission allowed only under a bounded mandate; AI still never signs contracts or sets prices autonomously (DEC-779/780/781); automatic bid submission allowed under a per-tender bounded mandate (DEC-781). See Part 11.23c.
+
 
 **Source requirement (verbatim).**
 
@@ -283,6 +289,9 @@ Entries are grouped by the group of their first row. DEC-234 is the governance r
 
 #### 9.6a.3.3.2 DEC-240: Recovery objectives: initial ≤ 15 min / ≤ 4 h and growth ≤ 15 min / ≤ 2 h adopted as stated; regenerable ≤ 24 h / ≤ 8 h
 
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
+
 | Group | Doc | Aspect ID | Old status | New status |
 |---|---|---|---|---|
 | B | 04/09/10 | B-CAP-08 | Conflict | Covered (aligned) |
@@ -368,6 +377,9 @@ Entries are grouped by the group of their first row. DEC-234 is the governance r
 
 #### 9.6a.3.3.5 DEC-243: Deployment contract: ALB, ECS Fargate, ElastiCache, S3/CloudFront, Secrets Manager, CloudWatch/WAF satisfied at each topology
 
+> **Erratum v1.2 (E-V-05):** superseded by hosting is Vercel + Supabase + AWS in Mumbai with an EU stack (DEC-421/772/786). See Part 11.23c.
+
+
 | Group | Doc | Aspect ID | Old status | New status |
 |---|---|---|---|---|
 | B | 04/09 | B-TC-08 | Conflict | Covered (aligned) |
@@ -395,6 +407,9 @@ Entries are grouped by the group of their first row. DEC-234 is the governance r
 **Effort delta.** 1 / 2 / 3 pd (low / central / high). MoSCoW: Should (running-cost proposal needs approval). Placement: Release 1 if approved; otherwise scale gate.
 
 #### 9.6a.3.3.6 DEC-244: Pack planning figures recorded literally: 385 PD base allocation over 149 work items and 113.5-day dependency-only longest path
+
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
 
 | Group | Doc | Aspect ID | Old status | New status |
 |---|---|---|---|---|
@@ -620,6 +635,9 @@ Entries are grouped by the group of their first row. DEC-234 is the governance r
 **Effort delta.** 5 / 8 / 13 pd (low / central / high). MoSCoW: Must (OKPI-28 mandatory). Placement: Release 1 for R1 dashboards; Release 2 for R2 dashboards.
 
 #### 9.6a.3.4.3 DEC-252: “Two products, four frontends” inspection performed literally over this product and the separate investor product
+
+> **Erratum v1.2 (E-V-19):** superseded by investor/fundraising mode and the Investment Automation product are in scope, gated by securities rule packs (DEC-783). See Part 11.23c.
+
 
 | Group | Doc | Aspect ID | Old status | New status |
 |---|---|---|---|---|
@@ -1284,6 +1302,9 @@ Every N/A row of groups A–E was re-read against its source text. Test used: an
 
 ## 9.6a.5 Decisions DEC-234…DEC-270
 
+> **Erratum v1.2 (E-V-05, E-V-39):** superseded by hosting is Vercel + Supabase + AWS in Mumbai with an EU stack (DEC-421/772/786); budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 Authority for every row: **Literal alignment to the source pack (Founder instruction, 28 Nov 2026: make it 100% match)**. DEC-271…299 are reserved for this workstream and unused.
 
 | DEC | Decision | Authority | Effect |
@@ -1359,6 +1380,9 @@ Authority for every row: **Literal alignment to the source pack (Founder instruc
 ---
 
 ## 9.6a.6 Test cases
+
+> **Erratum v1.2 (E-V-05):** superseded by hosting is Vercel + Supabase + AWS in Mumbai with an EU stack (DEC-421/772/786). See Part 11.23c.
+
 
 All tests are P1 (every release candidate) unless marked; tests on isolation, money, consent and dispatch (TC-ALN-A-006, -007, -026, -030, -045, -048, -051, -054) are **P0**. Each test records actual result, immutable evidence and an independent reviewer (pack acceptance rule: “do not infer a pass”).
 
@@ -1544,6 +1568,9 @@ If the DEC-243 running-cost proposal is not approved, Topology A of DEC-163 runs
 ---
 
 ## 9.6a.8 Tags register (allocated range 520–549)
+
+> **Erratum v1.2 (E-V-05):** superseded by hosting is Vercel + Supabase + AWS in Mumbai with an EU stack (DEC-421/772/786). See Part 11.23c.
+
 
 | Tag | Statement | Where | Owner | Closure |
 |---|---|---|---|---|

@@ -9,20 +9,20 @@
   "FR-V12-V-007": 90
  },
  "final": {
-  "C": 910,
-  "M": 18194,
+  "C": 898,
+  "M": 18206,
   "S": 6,
   "N": 164
  },
  "c_groups": {
   "Manual decisions (read in context)": 86,
-  "Threshold located in another line of the same section": 12,
-  "ID-bearing rows (status/evidence wording only)": 25,
+  "Threshold located in another line of the same section": 9,
+  "ID-bearing rows (status/evidence wording only)": 24,
   "A113 template rows X26\u2013X39": 14,
-  "FSD 40 source disposition candidates \u2014 API": 155,
+  "FSD 40 source disposition candidates \u2014 API": 154,
   "FSD 40 source disposition candidates \u2014 Entity": 155,
-  "FSD 40 source disposition candidates \u2014 Test": 167,
-  "FSD 40 source disposition candidates \u2014 QC": 55,
+  "FSD 40 source disposition candidates \u2014 Test": 161,
+  "FSD 40 source disposition candidates \u2014 QC": 54,
   "FSD 40 source disposition candidates \u2014 Task": 96,
   "Customer decision rows (CDEC)": 7,
   "Appendix C/C2 DDL (table)": 22,
@@ -34,26 +34,26 @@
  "n_v2": 90,
  "base": {
   "n": 10569,
-  "retained unchanged": 10349,
-  "amended": 209,
-  "superseded": 11
+  "retained unchanged": 10345,
+  "amended": 212,
+  "superseded": 12
  },
- "n_changed": 220,
+ "n_changed": 224,
  "n_errata": 47,
- "n_stale": 1681,
+ "n_stale": 1214,
  "SB": {
   "mode": "before",
-  "files": 134,
-  "lines": 197332,
+  "files": 141,
+  "lines": 203577,
   "statements": 19274,
   "levels": {
-   "weak": 1015,
+   "weak": 1008,
    "exact": 5123,
-   "strong": 10698,
-   "moderate": 2409,
-   "none": 29
+   "strong": 10705,
+   "moderate": 2411,
+   "none": 27
   },
-  "matched_pct": 94.58,
+  "matched_pct": 94.63,
   "id_literal_pct": 90.26,
   "distinct_ids": 6795,
   "distinct_ids_missing": 11,
@@ -61,29 +61,29 @@
   "id_presence_pct": 99.92,
   "ngram6_mean": 0.4907,
   "token_mean": 0.8527,
-  "number_presence_pct": 97.11
+  "number_presence_pct": 97.35
  },
  "SA": {
   "mode": "after",
-  "files": 137,
-  "lines": 199575,
+  "files": 144,
+  "lines": 205825,
   "statements": 19274,
   "levels": {
-   "exact": 5328,
-   "strong": 10828,
-   "weak": 755,
-   "moderate": 2355,
+   "exact": 5327,
+   "strong": 10827,
+   "weak": 752,
+   "moderate": 2360,
    "none": 8
   },
-  "matched_pct": 96.04,
+  "matched_pct": 96.06,
   "id_literal_pct": 90.34,
   "distinct_ids": 6795,
   "distinct_ids_missing": 0,
   "statements_with_thresholds": 1074,
   "id_presence_pct": 100.0,
-  "ngram6_mean": 0.5042,
-  "token_mean": 0.8596,
-  "number_presence_pct": 98.29
+  "ngram6_mean": 0.5041,
+  "token_mean": 0.8595,
+  "number_presence_pct": 98.43
  },
  "EX": {
   "total_bytes": 3681899,

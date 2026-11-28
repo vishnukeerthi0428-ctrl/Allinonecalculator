@@ -1682,6 +1682,9 @@ Each row is the blueprint test for one source SIT (SM-SIT-A###) or new operation
 
 ## 3.5.6 Conflicts and proposed resolutions
 
+> **Erratum v1.2 (E-V-21):** superseded by automatic bid submission allowed under a per-tender bounded mandate (DEC-781). See Part 11.23c.
+
+
 | Tag | Conflict | Evidence | Proposed resolution (for the coordinator to bind) |
 |---|---|---|---|
 | CONFLICT-360 | **Path canon.** Document 07 retains "canonical legacy method/path contracts" for 288 operations (e.g. `/api/v1/sales/tenants`, `/api/v1/admin/jobs`), while Part 3.2 keeps only the 104 FRD-named paths and gives every other operation a derived `~/` path. Operation 289 adds `/api/v1/commercial/public/site/pages/{slug}` beside the legacy `/api/v1/public/pages/{slug}` | Doc 07 "Routing decision"; Part 3.2 §3.2.1.1 rule 1 and §3.2.2.1 | Part 3.2 paths are canonical: the product is greenfield, so no deployed client depends on the source paths (they are "proposed … require implementation validation"). Record each source path as `x-source-path` with `x-source-op` in OpenAPI (RECOMMENDATION-360). Do **not** mount 180 alias routes (double attack surface). Exceptions: (a) 104 ★ paths stay as Part 3.2 decided; (b) the website page read is mounted at both `/api/v1/commercial/public/site/pages/{slug}` (canonical for the new website build, per document 07 "new website-specific endpoints use /api/v1/commercial/public/") and the ★ legacy path (same view, same serializer) |

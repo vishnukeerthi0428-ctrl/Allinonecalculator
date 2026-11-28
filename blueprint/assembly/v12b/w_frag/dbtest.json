@@ -2,13 +2,13 @@
  "apply": {
   "IN": {
    "rc": 0,
-   "seconds": 2.8,
-   "err": "\npsql:/home/user/Allinonecalculator/blueprint/final/build/schema.sql:17377: NOTICE:  identifier \"uq_com_fulfillment_milestone__tenant_id_startup_id_order_id_milestone_\" will be truncated to \"uq_com_fulfillment_milestone__tenant_id_startup_id_order_id_mil\"\npsql:/home/user/Allinonecalculator/blueprint/final/build/schema.sql:27242: NOTICE:  relation \"platform_table_allowlist\" already exists, skipping"
+   "seconds": 2.9,
+   "err": "\npsql:/home/user/Allinonecalculator/blueprint/final/build/schema.sql:17390: NOTICE:  identifier \"uq_com_fulfillment_milestone__tenant_id_startup_id_order_id_milestone_\" will be truncated to \"uq_com_fulfillment_milestone__tenant_id_startup_id_order_id_mil\"\npsql:/home/user/Allinonecalculator/blueprint/final/build/schema.sql:27255: NOTICE:  relation \"platform_table_allowlist\" already exists, skipping"
   },
   "EU": {
    "rc": 0,
-   "seconds": 3.3,
-   "err": "\npsql:/home/user/Allinonecalculator/blueprint/final/build/schema.sql:17377: NOTICE:  identifier \"uq_com_fulfillment_milestone__tenant_id_startup_id_order_id_milestone_\" will be truncated to \"uq_com_fulfillment_milestone__tenant_id_startup_id_order_id_mil\"\npsql:/home/user/Allinonecalculator/blueprint/final/build/schema.sql:27242: NOTICE:  relation \"platform_table_allowlist\" already exists, skipping"
+   "seconds": 2.9,
+   "err": "\npsql:/home/user/Allinonecalculator/blueprint/final/build/schema.sql:17390: NOTICE:  identifier \"uq_com_fulfillment_milestone__tenant_id_startup_id_order_id_milestone_\" will be truncated to \"uq_com_fulfillment_milestone__tenant_id_startup_id_order_id_mil\"\npsql:/home/user/Allinonecalculator/blueprint/final/build/schema.sql:27255: NOTICE:  relation \"platform_table_allowlist\" already exists, skipping"
   }
  },
  "tests": [
@@ -16,13 +16,13 @@
    "id": "TC-W-DB-01",
    "title": "schema.sql applies in one transaction with ON_ERROR_STOP on a clean IN database",
    "result": "PASS",
-   "detail": "com_fulfillment_milestone__tenant_id_startup_id_order_id_milestone_\" will be truncated to \"uq_com_fulfillment_milestone__tenant_id_startup_id_order_id_mil\"\npsql:/home/user/Allinonecalculator/blueprint/final/build/schema.sql:27242: NOTICE:  relation \"platform_table_allowlist\" already exists, skipping"
+   "detail": "com_fulfillment_milestone__tenant_id_startup_id_order_id_milestone_\" will be truncated to \"uq_com_fulfillment_milestone__tenant_id_startup_id_order_id_mil\"\npsql:/home/user/Allinonecalculator/blueprint/final/build/schema.sql:27255: NOTICE:  relation \"platform_table_allowlist\" already exists, skipping"
   },
   {
    "id": "TC-W-DB-02",
    "title": "schema.sql applies in one transaction with ON_ERROR_STOP on a clean EU database",
    "result": "PASS",
-   "detail": "com_fulfillment_milestone__tenant_id_startup_id_order_id_milestone_\" will be truncated to \"uq_com_fulfillment_milestone__tenant_id_startup_id_order_id_mil\"\npsql:/home/user/Allinonecalculator/blueprint/final/build/schema.sql:27242: NOTICE:  relation \"platform_table_allowlist\" already exists, skipping"
+   "detail": "com_fulfillment_milestone__tenant_id_startup_id_order_id_milestone_\" will be truncated to \"uq_com_fulfillment_milestone__tenant_id_startup_id_order_id_mil\"\npsql:/home/user/Allinonecalculator/blueprint/final/build/schema.sql:27255: NOTICE:  relation \"platform_table_allowlist\" already exists, skipping"
   },
   {
    "id": "TC-W-DB-03",

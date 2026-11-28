@@ -249,7 +249,7 @@ The V12 scale (BRD 18 §V5) replaces the blueprint L0–L3 labels (DEC-542 adopt
 
 | Type | Purpose | Typical workflows | Effect class | Mandatory scope dimensions | Mandatory limits | Max validity | Who may request | Approvers (two, distinct) |
 |---|---|---|---|---|---|---|---|---|
-| **MT-OUT** | Routine outbound communication (approved templates, follow-ups, reminders, booking confirmations) | SVC-06-WF02, 07-WF02/04, 09-WF02/04, 10-WF01/02, 12-WF01/04, 16-WF01/02/04, 38 | R2 | channel accounts, template IDs and versions, audience segment, purpose, jurisdictions | messages per day, per recipient per 7 d (≤ BRL-ELG caps) | 90 days | R03, R05, R11 | R05L or R02 + R10 (claims) |
+| **MT-OUT** | Routine outbound communication (approved templates, follow-ups, reminders, booking confirmations) | SVC-06-WF02, 07-WF02/04, 09-WF02/04, 10-WF01/02, 12-WF01/04, 16-WF01/02/04 (exactly the 12 workflows of the binding eligibility register §11.17.5.14; SM-SVC-38 SMS/RCS has **no mandate path** and dispatches per message at ≤ L2 — corrected v1.2, DEC-1003) | R2 | channel accounts, template IDs and versions, audience segment, purpose, jurisdictions | messages per day, per recipient per 7 d (≤ BRL-ELG caps) | 90 days | R03, R05, R11 | R05L or R02 + R10 (claims) |
 | **MT-PUB** | Publication of approved content variants | SVC-11, 13 | R2 | channels, content IDs, claims | posts per day | 90 days | R05 | R05L + R10 |
 | **MT-SPEND** | Ad or campaign spend within budget | SVC-14-WF02/04 | R3 | ad accounts, campaign IDs, geos | per-day spend, per-campaign total, CPA ceiling | 90 days | R05, R03 | R02 + Finance (R08) |
 | **MT-COM** | Agentic commerce negotiation and order acceptance with counterparty agents | SVC-28-WF02/03, 31-WF02/03, 21-WF01/02 | R3 | counterparties, offering IDs, price-book revision, term library version | per-order value, aggregate per period, max discount vs list, min margin, rounds | 30 days | R03, R07 | R02 + R10; Founder + Finance above DEC-038 thresholds |
@@ -520,7 +520,7 @@ Configuration registry `mandate_eligibility` (release-controlled, not tenant-edi
 
 ### 11.17.5.15 Jurisdiction gating ("where lawful")
 
-A mandate type activates in a jurisdiction only when **every** pack listed below for that type is **Approved** in AU-128 (Part 11.15 §11.15.3; strictest wins; Draft packs never enforced as Approved, CJ-R19/R20). Part 11.15 does not yet contain these packs [GAP-1044]; they must be drafted in the Part 11.15 format and signed off by counsel before activation. The engine is built and tested against synthetic packs.
+A mandate type activates in a jurisdiction only when **every** pack listed below for that type is **Approved** in AU-128 (Part 11.15 §11.15.3; strictest wins; Draft packs never enforced as Approved, CJ-R19/R20). The packs are now drafted in Parts 11.15d–e (v0.1-draft, DEC-766); the binding pack-to-mandate gating table is Part 11.15d §11.15.22.5, which supersedes the table below where they differ [GAP-1044 drafting closed; v1.2 pointer]. Every pack must still be signed off by counsel before activation. The engine is built and tested against synthetic packs.
 
 | Mandate type | India (IN) packs required | EU packs required | Other markets (DEC-776 order) | Key legal questions for counsel (verify, as of 27 Nov 2026) |
 |---|---|---|---|---|

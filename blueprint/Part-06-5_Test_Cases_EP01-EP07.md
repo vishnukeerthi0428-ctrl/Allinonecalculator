@@ -196,6 +196,9 @@ The spike (DEC-019) is itself tested: each of the 12 checks is a test case with 
 
 ### 6.5.2.3 Group TC-01-B: Specification by example – US-0102 AWS and IaC baseline, remaining AC (techniques: UC, EP, EG) · TS-01-02
 
+> **Erratum v1.2 (E-V-05):** superseded by hosting is Vercel + Supabase + AWS in Mumbai with an EU stack (DEC-421/772/786). See Part 11.23c.
+
+
 Each row realizes one Part 5.1 Gherkin scenario not already exercised above; the technique column states how its condition was classified (§6.5.1.3).
 
 | ID | Title | Links | Pre-conditions and data | Steps | Expected | P | Type | Tech | Auto | Lvl |
@@ -756,6 +759,9 @@ Each row realizes one Part 5.1 Gherkin scenario not already exercised above; the
 | TC-03-008 | Suppression search is scoped | AC-0301-07; FR-A007; NFR-005 | Background: contact "dr.nair@kims-hospital.example.com" in MedMaarg with 2 queued emails and 1 scheduled sequence step · `gse_syn 1.4.0`; DM-R13 | 1. An External-A compliance user searches suppression for "dr.nair@kims-hospital.example.com" | 1. No result is returned and the existence of the Owner Portfolio suppression is not disclosed. No side effect: state, outbox, simulator log and ledger unchanged; one audit event with outcome=denied (SPC-2) | P0 | T15 | EP | Y | IT |
 
 ### 6.5.4.4 Group TC-03-C: Specification by example – US-0302 Consent and communication policy versions, remaining AC (techniques: UC, EP, BVA, DT, EG) · TS-03-02
+
+> **Erratum v1.2 (E-V-17):** superseded by promotional window 09:00–21:00 recipient local time unless a stricter rule pack applies (DEC-777). See Part 11.23c.
+
 
 Each row realizes one Part 5.1 Gherkin scenario not already exercised above; the technique column states how its condition was classified (§6.5.1.3).
 

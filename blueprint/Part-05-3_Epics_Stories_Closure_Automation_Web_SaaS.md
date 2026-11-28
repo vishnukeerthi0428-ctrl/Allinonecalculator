@@ -1161,6 +1161,9 @@ Feature: Onboarding, renewal, loss and pilot reporting
 
 #### US-1701 Command Centre shell, seven-view navigation and scope selector
 
+> **Erratum v1.2 (E-V-27):** superseded by one responsive Admin build with a compact layout (DEC-623). See Part 11.23c.
+
+
 | Field | Value |
 |---|---|
 | ID · Title | US-1701 · Command Centre shell, seven-view navigation and scope selector |
@@ -1753,6 +1756,9 @@ Feature: Automation template and node library
 ```
 
 #### US-1804 Workflow control centre: edit, simulate, version, enable
+
+> **Erratum v1.2 (E-V-01):** superseded by consequential actions above L1 only under an Active two-person bounded mandate (DEC-779). See Part 11.23c.
+
 
 | Field | Value |
 |---|---|
@@ -3399,6 +3405,9 @@ Feature: AP-10 two-tenant boundary acceptance for the SaaS lifecycle
 
 ### 5.37.1 Epic card
 
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
+
 | Field | Value |
 |---|---|
 | ID · Title | **EP-21** · Release readiness, QA and observability |
@@ -3686,6 +3695,9 @@ Feature: Synthetic end-to-end journey suite
 ```
 
 #### US-2108 Backup restore drill
+
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
 
 | Field | Value |
 |---|---|
@@ -3975,6 +3987,9 @@ Cross-cutting FRs exercised (owned elsewhere or shared): FR-DM-01 (US-1502, US-2
 ---
 
 ## 5.39 Estimation summary for Batch 5.3
+
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
 
 Basis (Part 5.1a §5.5, owned by Batch 5.1): pd low = Σ low SP × 0.5; pd high = Σ high SP × 1.0; central = Σ mid SP × 0.7.
 

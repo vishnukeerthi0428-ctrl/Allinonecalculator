@@ -186,6 +186,9 @@ flowchart TD
 
 ## 6.8.6 Conflicts and proposed resolutions
 
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
+
 | Tag | Conflict | Sources | Proposed resolution (for the coordinator to make binding) |
 |---|---|---|---|
 | CONFLICT-420 | DEC-094 retains SM-UT-037, -049 and -050 as **unassigned aliases with no test obligation**, but document 22 defines them (webhook signature/replay; planned offering cannot be published; wellness need matching) | DEC-094; Part 6.1 GAP-167; document 22 §4 | Supersede DEC-094: the three IDs carry test obligations mapped to TC-15-005/TC-08-048, TC-11-008/TC-13-003 and TC-05-058 + TC-ENH-G-041. Replace all inferred family labels of ASSUMPTION-180 with the source titles (Part 6.8b §6.8.4.3) |

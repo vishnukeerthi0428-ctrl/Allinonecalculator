@@ -2,7 +2,9 @@
 """Build the companion Excel workbook from the blueprint Markdown.
 
 Sheets: README, Traceability (from final/RTM.csv if present), User Stories, Test Cases,
-AI Agents & Automations, Business Requirements, Functional Requirements, Decisions, Tags Register.
+AI Agents & Automations, Business Requirements, Functional Requirements, Decisions, Tags Register;
+v1.2 adds FR-V12, Traceability V12, V12 Coverage, V12 Audit, Supersession Index, API Index, Errata,
+Erratum Markers v1.2 and Change Log v1.2.
 Usage: python3 blueprint/assembly/build_xlsx.py
 """
 import csv, re
@@ -12,7 +14,7 @@ from openpyxl.styles import Font, PatternFill, Alignment
 from openpyxl.utils import get_column_letter
 
 BP = Path(__file__).resolve().parent.parent
-OUT = BP / "final" / "AI_Growth_Engine_Blueprint_Workbook_v1.1.xlsx"
+OUT = BP / "final" / "AI_Growth_Engine_Blueprint_Workbook_v1.2.xlsx"
 HDR_FILL = PatternFill("solid", fgColor="0B3D6B")
 
 
@@ -61,7 +63,7 @@ def parse_stories():
     out = []
     for f in sorted(list(BP.glob("Part-05-*.md")) + [q for q in BP.glob("Part-*.md") if not q.name.startswith("Part-05")]):
         text = f.read_text(encoding="utf-8")
-        heads = list(re.finditer(r"^#{3,6} (US-\d{4}|US-\d{2}-(?:E[A-Z]|V\d)\d{2})\s*[:—–-]?\s*(.*)$", text, re.M))
+        heads = list(re.finditer(r"^#{3,6} (US-\d{4}|US-\d{2}-(?:E[A-Z]|V\d|[YZ][A-Z])\d{2,3})\s*[:—–-]?\s*(.*)$", text, re.M))
         for k, m in enumerate(heads):
             seg = text[m.end(): heads[k + 1].start() if k + 1 < len(heads) else len(text)]
             kv = {}
@@ -116,9 +118,9 @@ def parse_table_rows(globpat, id_re, want_cols=None):
 
 def main():
     wb = Workbook(); ws = wb.active; ws.title = "README"
-    ws.append(["AI Growth Engine – Application Blueprint workbook (v1.1, 28 Nov 2026)"])
-    ws.append(["Generated from the blueprint Markdown by assembly/build_xlsx.py. The Markdown/PDF/DOCX remain authoritative."])
-    ws.append(["Sheets: Traceability, User Stories, Test Cases, AI Agents & Automations, Business Requirements, Functional Requirements, Decisions, Cost Ledgers, Advanced FRs (v1.1), Traceability v1.1, Literal Alignment, Source Pack Coverage, Tags Register"])
+    ws.append(["AI Growth Engine – Application Blueprint workbook (v1.2, 28 Nov 2026)"])
+    ws.append(["Generated from the blueprint Markdown by assembly/build_xlsx.py. The Markdown/PDF/DOCX remain authoritative. Precedence: Part 11.14 decisions > Part 11.23c errata > Part 11 parts > Parts 0–9.10 (DEC-961, Part 11.25)."])
+    ws.append(["Sheets: Traceability, User Stories, Test Cases, AI Agents & Automations, Business Requirements, Functional Requirements, FR-V12, Decisions, Cost Ledgers, Advanced FRs (v1.1), Traceability v1.1, Traceability V12, Literal Alignment, Source Pack Coverage, V12 Coverage, V12 Audit, Supersession Index, API Index, Errata, Erratum Markers v1.2, Change Log v1.2, Tags Register"])
     ws.column_dimensions["A"].width = 140
     ws["A1"].font = Font(bold=True, size=14)
 
@@ -131,7 +133,7 @@ def main():
 
     stories = parse_stories()
     have = {r[0] for r in stories}
-    for hdr, r, fn in parse_table_rows("Part-*.md", r"^US-\d{2}-(?:E[A-Z]|V\d)\d{2}$"):
+    for hdr, r, fn in parse_table_rows("Part-*.md", r"^US-\d{2}-(?:E[A-Z]|V\d|[YZ][A-Z])\d{2,3}$"):
         sid = clean(r[0])
         if sid in have:
             continue
@@ -148,6 +150,7 @@ def main():
     add_sheet(wb, "Test Cases", ["Test case / verification ID", "Details (column: value)", "Source file"], tcs, {2: 160})
 
     ags = parse_by_prefix("Part-09-4_*.md", r"^(AG|AU|WF)-\d{2,3}$") or parse_by_prefix("Part-07-*.md", r"^(AG|AU)-\d{3}$")
+    ags += parse_by_prefix("Part-11-25b_*.md", r"^(AG|AU|WF)-\d{2,3}$|^(SM|INV)-SVC-\d{2}$")
     add_sheet(wb, "AI Agents & Automations", ["ID", "Details (column: value)", "Source file"], ags, {2: 160})
 
     brs = parse_by_prefix("Part-01_*.md", r"^BR-(M\d{2}|TENANT|WEB|AUTO|SVC|QA|S\d{3})$")
@@ -156,9 +159,17 @@ def main():
     frs = parse_by_prefix("Part-02-1_*.md", r"^FR-")
     add_sheet(wb, "Functional Requirements", ["FR ID", "Details (column: value)", "Source file"], frs, {2: 160})
 
-    decs = sum((parse_by_prefix(g, r"^\**DEC-\d{3}\**$") for g in ("Part-00A_*.md", "Part-09-1_*.md", "Part-09-5_*.md", "Part-08-4_*.md", "Part-09-6*_*.md", "Part-09-7*_*.md", "Part-09-8*_*.md", "Part-09-9*_*.md", "Part-09-10_*.md")), [])
-    decs = sorted({r[0]: r for r in decs}.values())
-    add_sheet(wb, "Decisions", ["DEC ID", "Details (column: value)", "Source file"], decs, {2: 160})
+    decs = []
+    di = BP / "final" / "dec_index.csv"      # all decision logs incl. every Part 11 file (build_registers.py, v1.2)
+    if di.exists():
+        with di.open(encoding="utf-8") as fh:
+            rd = list(csv.reader(fh))
+        decs = rd[1:]
+        add_sheet(wb, "Decisions", rd[0], decs, {3: 60, 4: 120})
+    else:
+        decs = sum((parse_by_prefix(g, r"^\**DEC-\d{3,4}\**$") for g in ("Part-00A_*.md", "Part-09-1_*.md", "Part-09-5_*.md", "Part-08-4_*.md", "Part-09-6*_*.md", "Part-09-7*_*.md", "Part-09-8*_*.md", "Part-09-9*_*.md", "Part-09-10_*.md", "Part-11-*.md")), [])
+        decs = sorted({r[0]: r for r in decs}.values())
+        add_sheet(wb, "Decisions", ["DEC ID", "Details (column: value)", "Source file"], decs, {2: 160})
 
     costs = parse_table_rows("Part-08-4_*.md", r"^(A\d|B\d|[A-Z]\d\.\d|Total|\*\*)")
     add_sheet(wb, "Cost Ledgers", ["Item", "Details (column: value)", "Source file"],
@@ -166,11 +177,18 @@ def main():
 
     adv = parse_by_prefix("Part-09-[789]*_*.md", r"^FR-ADV-X\d-\d{3}$")
     add_sheet(wb, "Advanced FRs (v1.1)", ["FR-ADV ID", "Details (column: value)", "Source file"], adv, {2: 160})
+    frv12 = parse_by_prefix("Part-11-*.md", r"^FR-V12-[A-Z]-\d{3,4}$")
+    add_sheet(wb, "FR-V12", ["FR-V12 ID", "Details (column: value)", "Source file"], frv12, {2: 160})
     rtma = BP / "final" / "RTM_advanced.csv"
     if rtma.exists():
         with rtma.open(encoding="utf-8") as fh:
             rd = list(csv.reader(fh))
         add_sheet(wb, "Traceability v1.1", rd[0], rd[1:], {4: 50, 5: 50, 6: 60})
+    rtmv = BP / "final" / "RTM_v12.csv"
+    if rtmv.exists():
+        with rtmv.open(encoding="utf-8") as fh:
+            rd = list(csv.reader(fh))
+        add_sheet(wb, "Traceability V12", rd[0], rd[1:], {4: 50, 5: 50, 6: 60})
     aln = []
     for f in sorted((BP / "final" / "coverage").glob("alignment_*.csv")):
         with f.open(encoding="utf-8") as fh:
@@ -186,8 +204,41 @@ def main():
     add_sheet(wb, "Source Pack Coverage", ["Group", "Doc", "Section", "Aspect ID", "Aspect", "Status", "Blueprint location", "Action", "New IDs"],
               cov, {5: 70, 7: 40, 8: 60})
 
+    def csv_sheet(title, path, widths=None, first_col=None, limit=None):
+        if not path.exists():
+            return 0
+        with path.open(encoding="utf-8") as fh:
+            rd = list(csv.reader(fh))
+        if not rd:
+            return 0
+        hdr = ([first_col] if first_col else []) + rd[0]
+        body = rd[1:limit] if limit else rd[1:]
+        add_sheet(wb, title, hdr, body, widths)
+        return len(body)
+
+    v12 = []
+    covdir = BP / "final" / "coverage_v12"
+    for f in sorted(covdir.glob("?_coverage.csv")):
+        with f.open(encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                v12.append([f.stem[0]] + [r.get(k, "") for k in ("doc", "chapter", "section", "aspect_id", "aspect_summary", "status_before", "blueprint_location", "action", "new_ids", "status_after")])
+    add_sheet(wb, "V12 Coverage", ["Group", "Doc", "Chapter", "Section", "Aspect ID", "Aspect", "Status before", "Blueprint location", "Action", "New IDs", "Status after"],
+              v12, {6: 70, 8: 40, 9: 50})
+    n_audit = csv_sheet("V12 Audit", covdir / "V_audit.csv", {5: 70})
+    n_sup = csv_sheet("Supersession Index", BP / "final" / "supersession_index.csv", {3: 60, 4: 60})
+    n_api = csv_sheet("API Index", BP / "final" / "build" / "api_index.csv", {3: 50, 12: 70})
+    errata = []
+    ej = BP / "assembly" / "v12b" / "v_out" / "errata_summary.json"
+    if ej.exists():
+        import json
+        for e in json.loads(ej.read_text(encoding="utf-8")):
+            errata.append([e.get("id"), e.get("title"), e.get("current"), e.get("authority"), e.get("stale"), e.get("occurrences"), "; ".join(e.get("parts", []))])
+    add_sheet(wb, "Errata", ["Erratum", "Stale statement", "Current rule (binding)", "Authority", "Stale lines", "Matching lines", "Parts with stale text"], errata, {2: 50, 3: 100, 7: 60})
+    n_mark = csv_sheet("Erratum Markers v1.2", BP / "final" / "erratum_markers_v1.2.csv", {2: 60, 4: 100})
+    n_chg = csv_sheet("Change Log v1.2", BP / "final" / "consolidation_v1.2_changes.csv", {4: 120})
+
     tags = []
-    pat = re.compile(r"\[(ASSUMPTION|GAP|CONFLICT|RECOMMENDATION)-(\d{3})\]")
+    pat = re.compile(r"\[(ASSUMPTION|GAP|CONFLICT|RECOMMENDATION)-(\d{3,4})\]")
     for f in sorted(BP.glob("Part-*.md")):
         for ln in f.read_text(encoding="utf-8").splitlines():
             for m in pat.finditer(ln):
@@ -200,7 +251,8 @@ def main():
 
     OUT.parent.mkdir(exist_ok=True)
     wb.save(OUT)
-    print(f"{OUT}: stories={len(stories)} test_cases={len(tcs)} agents={len(ags)} BRs={len(brs)} FRs={len(frs)} DECs={len(decs)} tags={len(first)}")
+    print(f"{OUT}: stories={len(stories)} test_cases={len(tcs)} agents={len(ags)} BRs={len(brs)} FRs={len(frs)} FR-V12={len(frv12)} DECs={len(decs)} tags={len(first)} "
+          f"v12cov={len(v12)} audit={n_audit} supersession={n_sup} api={n_api} errata={len(errata)} markers={n_mark} changes={n_chg}")
 
 
 if __name__ == "__main__":

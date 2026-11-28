@@ -44,7 +44,7 @@ The blueprint already has the **behaviour** of most of these workflows (universa
 | Pending Founder decision | 0 | 43 |
 | **Total** | **3,411** | **3,411** |
 
-Pending Founder decision: the authority aspects of the 12 R2 and 9 R3 workflows (V12 allows an L3 “separately approved bounded mandate” path that DEC-064 and the safety invariants do not), and SM-SVC-19-WF03 step 04 (bid submission, DEC-053). Every other aspect is Matched.
+Adopted by DEC-779 (was "Pending Founder decision"): the authority aspects of the 12 R2 and 9 R3 workflows (V12 allows an L3 “separately approved bounded mandate” path that DEC-064 and the safety invariants do not), and SM-SVC-19-WF03 step 04 (bid submission, DEC-053). Every other aspect is Matched.
 
 | Workflow capability status | Count | Workflows |
 |---|---|---|
@@ -468,7 +468,7 @@ Feature: Risk class enforcement
 | Engine contract (FR-V12-C-001…012), WF01–03 contract conformance for SVC-01…05 | Release 1 (W1–W3), inside existing EP-05/06/07/18 work | Behaviour already planned; adds contracts and tests |
 | WF01–03 conformance for SVC-06…16 | Release 1 W2–W3 (messaging, content) and Release 2 W4 (ads, events) per epic wave | Part 0 epic waves |
 | WF01–03 conformance for SVC-17…20 | Release 2 (W4–W5) | EP-13/14 waves |
-| WF04 capabilities (20) | Phase 2 (W6) unless the Founder funds earlier (DEC-552 Pending Founder decision) | V12 marks WF04 1.0-target; outside approved budgets |
+| WF04 capabilities (20) | Phase 2 (W6) unless the Founder funds earlier (DEC-552 Adopted (DEC-790)) | V12 marks WF04 1.0-target; outside approved budgets |
 
 ### 11.3.5.9 Effort and cost (separately approvable; outside DEC-230/231)
 

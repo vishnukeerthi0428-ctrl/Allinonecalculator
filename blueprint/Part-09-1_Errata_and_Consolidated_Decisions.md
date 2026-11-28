@@ -15,6 +15,9 @@
 
 ## 9.1.1 Errata decisions
 
+> **Erratum v1.2 (E-V-09, E-V-18, E-V-39):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787); 24×7 human on-call from Release 2 GA (DEC-773); budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 | DEC | Errata | Found in | Conflict | Decision (binding) | Affected parts |
 |---|---|---|---|---|---|
 | DEC-066 | E-01 | Part 5.2 | Part 0 §0.10.2 maps A046 to EP-08; Part 2.1 maps it to EP-10 | **Part 2.1 governs** for all screen-to-epic mappings. Part 0 §0.10.2 was preliminary | 0, 2.1, 5 |

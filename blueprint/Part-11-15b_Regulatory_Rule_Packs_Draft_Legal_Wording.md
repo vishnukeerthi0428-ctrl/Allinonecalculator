@@ -837,7 +837,7 @@ phrase_lists:
 | Audiences | B2B only at launch (US-R7); B2C blocked |
 | Startups | ALL (mainly AppNAI); Tenant |
 | Legal sources | CAN-SPAM Act 15 U.S.C. §§7701–7713, esp. §7704(a)(1)–(5), §7704(b) (VR-27); 16 CFR Part 316 (§316.2 definitions, §316.3 primary purpose, §316.4 sexually explicit, §316.5 opt-out restrictions) (VR-27); FTC Act §5 (15 U.S.C. §45); FTC Endorsement Guides 16 CFR Part 255 (2023) (VR-28); Consumer Reviews and Testimonials Rule 16 CFR Part 465 (VR-29); TCPA 47 U.S.C. §227 and 47 CFR §64.1200 (VR-30); ROSCA 15 U.S.C. §8401 et seq. (VR-40); CJ-US-02/03; Part 4.1 US-R1…R7 |
-| Effective dates | CAN-SPAM since 1 Jan 2004 (verify); Endorsement Guides revision 26 Jul 2023 (verified, VR-28); Part 465 effective 21 Oct 2024 (verified, VR-29); TCPA consent definition rule 29 Aug 2025; revocation rule partly 31 Jan 2027 (verified, VR-30) |
+| Effective dates | CAN-SPAM since 1 Jan 2004 (verify); Endorsement Guides revision 26 Jul 2023 (verified, VR-28); Part 465 effective 21 Oct 2024 (verified, VR-29); TCPA consent definition rule 29 Aug 2025; revocation rule waived to 31 Jan 2027 and revised by the FCC Sept 2026 Report and Order (verified, VR-30/VR-67; updated v1.2) |
 | Owner | R10 Legal/Compliance (US counsel) |
 | Review cadence | Quarterly + event-driven (FTC rules, state laws, FCC orders) |
 | Expiry / fail-closed | 120 days; US B2C and US SMS/VO always Block in this version |
@@ -953,7 +953,7 @@ pack:
   channels: "EM (primary); SMS and VO only as blocks (rule 016); LP, SO, AD for endorsement and review rules"
   audiences: "B2B only at launch (US-R7); B2C blocked"
   startups: "ALL (mainly AppNAI); Tenant"
-  effective_dates: "CAN-SPAM since 1 Jan 2004 (verify); Endorsement Guides revision 26 Jul 2023 (verified, VR-28); Part 465 effective 21 Oct 2024 (verified, VR-29); TCPA consent definition rule 29 Aug 2025; revocation rule partly 31 Jan 2027 (verified, VR-30)"
+  effective_dates: "CAN-SPAM since 1 Jan 2004 (verify); Endorsement Guides revision 26 Jul 2023 (verified, VR-28); Part 465 effective 21 Oct 2024 (verified, VR-29); TCPA consent definition rule 29 Aug 2025; revocation rule waived to 31 Jan 2027 and revised by the FCC Sept 2026 Report and Order (verified, VR-30/VR-67; updated v1.2)"
   owner: R10
   review_cadence: quarterly
   expires_after_days: 120

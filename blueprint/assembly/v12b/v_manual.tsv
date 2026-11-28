@@ -108,3 +108,4 @@ h:53e8a00e9e00	C	?learner_ref	A113 template X36: input/output refs present in Pa
 h:aece2c3ffeba	C	?offer_ref	A113 template X37: input/output refs present in Part 11.4a DTO registry; screen via A113 contract
 h:f679650012f9	C	?sender_ref	A113 template X38: input/output refs present in Part 11.4a DTO registry; screen via A113 contract
 h:2ddeef2f98f0	C	?requirement_ref	A113 template X39: input/output refs present in Part 11.4a DTO registry; screen via A113 contract
+h:d10e9a5a5df1	C	Part 2.5 L305 A080 Renewal policies	Screen registry row: A080 Renewal policies (notice periods, reminder cadence, stop conditions) in Part 2.5 screen inventory and Part 2.7a/b screen cards; re-classified in the v1.2 re-audit (Part 11.25)

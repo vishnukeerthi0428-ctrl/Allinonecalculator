@@ -1805,6 +1805,9 @@ Feature: Public intake abuse controls
 
 #### 5.9.1.1 By epic
 
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 | Epic | Title | Stories | SP range | SP mid | pd low (SP_low × 0.5) | pd high (SP_high × 1.0) | pd central (SP_mid × 0.7) | Indicative mid (brief) | Deviation |
 |---|---|---|---|---|---|---|---|---|---|
 | EP-01 | Platform foundation, identity reuse and tenancy | 17 | 39–64 | 51.5 | 19.5 | 64.0 | 36.1 | 28 | +8.1 (Sprint 0 enablers, [ASSUMPTION-151]) |

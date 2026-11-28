@@ -620,6 +620,9 @@ The 162 source work items are adopted as the **engineering task layer** beneath 
 
 #### 6.9.5.4.2 Estimate reconciliation [CONFLICT-446] [GAP-450] [GAP-451]
 
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 | Quantity | Source (doc 20 / 38) | Blueprint | Reconciliation |
 |---|---|---|---|
 | Programme envelope | 287 / 385 / 483 PD (149 items) | 287–483 PD (DEC-012) | Identical |
@@ -1052,6 +1055,9 @@ erDiagram
 ---
 
 ## 6.9.6 Conflicts and proposed resolutions
+
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
 
 | Tag | Conflict | Source | Blueprint | Proposed resolution (for Part 9.1) |
 |---|---|---|---|---|

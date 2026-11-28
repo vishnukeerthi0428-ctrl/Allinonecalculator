@@ -1,0 +1,188 @@
+File,Section (heading),Errata,Marker text summary
+Part-00A_Issue_Resolution_Decisions.md,C. Resolution of gaps,"E-V-02, E-V-09, E-V-27","Erratum v1.2 (E-V-02, E-V-09, E-V-27): superseded … see Part 11.23c"
+Part-00A_Issue_Resolution_Decisions.md,B. Corrections of probable human errors in the source documents,E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-00_Document_Ingestion_and_Validation.md,0.8 Recommendations register (RECOMMENDATION-###): additions fully,E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-00_Document_Ingestion_and_Validation.md,0.7 Assumptions register (ASSUMPTION-###),E-V-01,Erratum v1.2 (E-V-01): superseded … see Part 11.23c
+Part-00_Document_Ingestion_and_Validation.md,0.5 Conflicts register (CONFLICT-###): where documents or sections,"E-V-19, E-V-39","Erratum v1.2 (E-V-19, E-V-39): superseded … see Part 11.23c"
+Part-00_Document_Ingestion_and_Validation.md,0.4 Gaps register (GAP-###): missing information,E-V-18,Erratum v1.2 (E-V-18): superseded … see Part 11.23c
+Part-00_Document_Ingestion_and_Validation.md,0.2 Summary of understanding (under 400 words),"E-V-02, E-V-19, E-V-39","Erratum v1.2 (E-V-02, E-V-19, E-V-39): superseded … see Part 11.23c"
+Part-01_Product_and_Business_Foundation.md,1.10 Constraints,E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-01_Product_and_Business_Foundation.md,1.1 Executive summary (draft for the final document),"E-V-19, E-V-39","Erratum v1.2 (E-V-19, E-V-39): superseded … see Part 11.23c"
+Part-02-2_Functional_Design_Process_Flows.md,2.6.2 Engine invariants (tested for every flow),E-V-01,Erratum v1.2 (E-V-01): superseded … see Part 11.23c
+Part-02-3_Business_Rules_RBAC_State_Machines.md,2.25.12 BRL-CTR: Contracts,E-V-02,Erratum v1.2 (E-V-02): superseded … see Part 11.23c
+Part-02-3_Business_Rules_RBAC_State_Machines.md,"2.25.2 BRL-ELG: Eligibility, consent, suppression, jurisdiction, c",E-V-17,Erratum v1.2 (E-V-17): superseded … see Part 11.23c
+Part-02-6_Source_Pack_Business_Domain_Enhancements.md,2.6.6 Conflicts and proposed resolutions,E-V-19,Erratum v1.2 (E-V-19): superseded … see Part 11.23c
+Part-02-6_Source_Pack_Business_Domain_Enhancements.md,2.6.5.9.2 Effort estimate and wave placement (basis: Part 8.1 sto,E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-02-7a_Source_Pack_UI_Catalog_and_UX_Enhancements.md,2.7.8 Tags register,E-V-27,Erratum v1.2 (E-V-27): superseded … see Part 11.23c
+Part-02-7a_Source_Pack_UI_Catalog_and_UX_Enhancements.md,2.7.6 Conflicts and proposed resolutions,E-V-27,Erratum v1.2 (E-V-27): superseded … see Part 11.23c
+Part-02-7a_Source_Pack_UI_Catalog_and_UX_Enhancements.md,2.7.5.8 Part 8 / Part 9 notes,E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-03-1_Architecture.md,3.1.16 Tag register (Batch 3.1),"E-V-09, E-V-10","Erratum v1.2 (E-V-09, E-V-10): superseded … see Part 11.23c"
+Part-03-1_Architecture.md,3.1.15 Risks raised in this batch,E-V-10,Erratum v1.2 (E-V-10): superseded … see Part 11.23c
+Part-03-1_Architecture.md,3.1.13.3 Failure-mode table,E-V-05,Erratum v1.2 (E-V-05): superseded … see Part 11.23c
+Part-03-1_Architecture.md,3.1.13.2 Backup design,E-V-05,Erratum v1.2 (E-V-05): superseded … see Part 11.23c
+Part-03-1_Architecture.md,3.1.13.1 Objectives,"E-V-09, E-V-10","Erratum v1.2 (E-V-09, E-V-10): superseded … see Part 11.23c"
+Part-03-1_Architecture.md,"ADR-019 Single region now, multi-region later","E-V-05, E-V-09","Erratum v1.2 (E-V-05, E-V-09): superseded … see Part 11.23c"
+Part-03-1_Architecture.md,ADR-018 Self-hosted extraction (Firecrawl) with in-process fallbac,E-V-10,Erratum v1.2 (E-V-10): superseded … see Part 11.23c
+Part-03-1_Architecture.md,ADR-013 Hosting on Amazon ECS on EC2 (single instance at pilot),E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-03-1_Architecture.md,ADR-005 Backend-for-Frontend authentication with the reused IdP,E-V-05,Erratum v1.2 (E-V-05): superseded … see Part 11.23c
+Part-03-1_Architecture.md,3.1.8 Technology stack,E-V-05,Erratum v1.2 (E-V-05): superseded … see Part 11.23c
+Part-03-1_Architecture.md,3.1.6.3 Topology B: scale-gate topology (DEC-040),E-V-05,Erratum v1.2 (E-V-05): superseded … see Part 11.23c
+Part-03-1_Architecture.md,"3.1.6.2 Topology A: cost-minimal pilot (fits B01 ≈ ₹5,000/month wi",E-V-05,Erratum v1.2 (E-V-05): superseded … see Part 11.23c
+Part-03-1_Architecture.md,3.1.3.2 Container catalogue,"E-V-05, E-V-06","Erratum v1.2 (E-V-05, E-V-06): superseded … see Part 11.23c"
+Part-03-1_Architecture.md,3.1.3.1 Container diagram,E-V-06,Erratum v1.2 (E-V-06): superseded … see Part 11.23c
+Part-03-1_Architecture.md,3.1.1.1 Architecture drivers (quality attributes that shape the de,E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-03-2_API_and_Integration.md,3.2.10 Quality gate: Batch 3.2,E-V-16,Erratum v1.2 (E-V-16): superseded … see Part 11.23c
+Part-03-2_API_and_Integration.md,3.2.8.7 Inconsistencies found across Part 3 batches and earlier pa,E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-03-2_API_and_Integration.md,3.2.8.5 FinOps,E-V-16,Erratum v1.2 (E-V-16): superseded … see Part 11.23c
+Part-03-2_API_and_Integration.md,3.2.6.4 Scheduled reconciliation jobs,E-V-16,Erratum v1.2 (E-V-16): superseded … see Part 11.23c
+Part-03-2_API_and_Integration.md,"3.2.1.1 Surfaces, namespaces and ingress",E-V-05,Erratum v1.2 (E-V-05): superseded … see Part 11.23c
+Part-03-3_Data_Architecture.md,3.3.22 Quality gate: Batch 3.3,E-V-16,Erratum v1.2 (E-V-16): superseded … see Part 11.23c
+Part-03-3_Data_Architecture.md,3.3.21 Register of tags issued in this batch,"E-V-05, E-V-06","Erratum v1.2 (E-V-05, E-V-06): superseded … see Part 11.23c"
+Part-03-3_Data_Architecture.md,3.3.12.5 Reconciliation reports,E-V-16,Erratum v1.2 (E-V-16): superseded … see Part 11.23c
+Part-03-3_Data_Architecture.md,"3.3.9.3 Tenant-scoped, mixed and platform tables",E-V-04,Erratum v1.2 (E-V-04): superseded … see Part 11.23c
+Part-03-3_Data_Architecture.md,3.3.7 Compact dictionary: remaining 131 entities,E-V-33,Erratum v1.2 (E-V-33): superseded … see Part 11.23c
+Part-03-3_Data_Architecture.md,3.3.6.12 SaaS service,E-V-33,Erratum v1.2 (E-V-33): superseded … see Part 11.23c
+Part-03-3_Data_Architecture.md,3.3.6.11 AI and cost,E-V-33,Erratum v1.2 (E-V-33): superseded … see Part 11.23c
+Part-03-3_Data_Architecture.md,3.3.6.9 Commerce,E-V-33,Erratum v1.2 (E-V-33): superseded … see Part 11.23c
+Part-03-3_Data_Architecture.md,3.3.6.6 CRM,E-V-33,Erratum v1.2 (E-V-33): superseded … see Part 11.23c
+Part-03-3_Data_Architecture.md,3.3.5.10 Database roles and grants,E-V-04,Erratum v1.2 (E-V-04): superseded … see Part 11.23c
+Part-03-3_Data_Architecture.md,3.3.5.9 Immutability enforcement (NFR-018),E-V-04,Erratum v1.2 (E-V-04): superseded … see Part 11.23c
+Part-03-3_Data_Architecture.md,"3.3.5.6 Money, quantities, rates and currency (DEC-027, CA-FIN)",E-V-33,Erratum v1.2 (E-V-33): superseded … see Part 11.23c
+Part-03-3_Data_Architecture.md,3.3.5.1 Platform and extensions,E-V-05,Erratum v1.2 (E-V-05): superseded … see Part 11.23c
+Part-03-3_Data_Architecture.md,3.3.1.2 Binding sources used,E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md,3.4.6 Conflicts and proposed resolutions,E-V-19,Erratum v1.2 (E-V-19): superseded … see Part 11.23c
+Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md,"C. Expansion interfaces (W31–W34, A109–A113) task DAG (FR-ENH-B-0",E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md,"B. Discipline-level effort reconciliation (FR-ENH-B-025, RECOMMEN",E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md,A. Growth-scale capacity and reliability acceptance (FR-ENH-B-001,E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md,Document(s) 09,E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md,Document(s) 05,E-V-19,Erratum v1.2 (E-V-19): superseded … see Part 11.23c
+Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md,Document(s) 04,E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md,Document(s) 04/09/10,E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-03-4_Source_Pack_Architecture_and_Workflow_Enhancements.md,3.4.1 Documents reviewed,E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-03-5b_Source_Pack_API_Catalog_Reconciliation.md,3.5.6 Conflicts and proposed resolutions,E-V-21,Erratum v1.2 (E-V-21): superseded … see Part 11.23c
+Part-03-6a_Source_Pack_Data_Catalog_Reconciliation.md,"(a) Column gaps, conflicts and non-adoptions (every item listed)",E-V-33,Erratum v1.2 (E-V-33): superseded … see Part 11.23c
+Part-03-6a_Source_Pack_Data_Catalog_Reconciliation.md,3.6.3 Detailed coverage register (prose aspects),E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-03-6b_Source_Pack_Data_Catalog_Reconciliation.md,3.6.6 Conflicts and proposed resolutions,E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-03-6b_Source_Pack_Data_Catalog_Reconciliation.md,3.6.5.6 Test cases TC-ENH-E-001…036,E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-03-6b_Source_Pack_Data_Catalog_Reconciliation.md,(b) Column additions to existing Part 3.3 tables [GAP-389],E-V-33,Erratum v1.2 (E-V-33): superseded … see Part 11.23c
+Part-04-2_Non_Functional_Requirements.md,4.30 Registers for this batch,"E-V-09, E-V-10","Erratum v1.2 (E-V-09, E-V-10): superseded … see Part 11.23c"
+Part-04-2_Non_Functional_Requirements.md,"4.23.2 Availability, recovery and timeliness",E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-04-3_DevOps_and_Operations.md,4.43.1 Severity matrix,E-V-37,Erratum v1.2 (E-V-37): superseded … see Part 11.23c
+Part-04-3_DevOps_and_Operations.md,4.38 Rollback strategy,E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-04-4a_Source_Pack_Security_DevOps_Operations_Enhancements.md,4.4.4.1 OPT controls carried by the eight documents → blueprint,E-V-19,Erratum v1.2 (E-V-19): superseded … see Part 11.23c
+Part-04-4a_Source_Pack_Security_DevOps_Operations_Enhancements.md,4.4.3.9 Optimization controls OPT-xx-yy (inventoried once across,E-V-19,Erratum v1.2 (E-V-19): superseded … see Part 11.23c
+Part-04-4a_Source_Pack_Security_DevOps_Operations_Enhancements.md,4.4.3.8 Document 32,E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-04-4a_Source_Pack_Security_DevOps_Operations_Enhancements.md,4.4.3.1 Document 18,E-V-19,Erratum v1.2 (E-V-19): superseded … see Part 11.23c
+Part-04-4b_Source_Pack_Security_DevOps_Operations_Enhancements.md,4.4.6 Conflicts and proposed resolutions,"E-V-09, E-V-19","Erratum v1.2 (E-V-09, E-V-19): superseded … see Part 11.23c"
+Part-04-4b_Source_Pack_Security_DevOps_Operations_Enhancements.md,"4.4.5.10 Effort estimate for the enhancements (estimate, person-da",E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-05-1a_Epics_Stories_Foundation.md,5.7.2 Gherkin style,E-V-17,Erratum v1.2 (E-V-17): superseded … see Part 11.23c
+Part-05-1a_Epics_Stories_Foundation.md,5.5.1 Story points and person-days [ASSUMPTION-150],E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-05-1b_Epics_Stories_Foundation.md,5.8.3.2 Stories,E-V-17,Erratum v1.2 (E-V-17): superseded … see Part 11.23c
+Part-05-1b_Epics_Stories_Foundation.md,5.8.1.2 Stories,E-V-05,Erratum v1.2 (E-V-05): superseded … see Part 11.23c
+Part-05-1c_Epics_Stories_Foundation.md,5.9.1.1 By epic,E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-05-2_Epics_Stories_Engagement_and_Commerce.md,5.2.10.5 Decisions honoured,E-V-02,Erratum v1.2 (E-V-02): superseded … see Part 11.23c
+Part-05-2_Epics_Stories_Engagement_and_Commerce.md,5.2.9 Batch size summary,E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-05-2_Epics_Stories_Engagement_and_Commerce.md,US-0906 Event registration (W19) and reminder settings (A063),E-V-17,Erratum v1.2 (E-V-17): superseded … see Part 11.23c
+Part-05-2_Epics_Stories_Engagement_and_Commerce.md,US-0811 Quiet-hours and frequency-cap engine,E-V-17,Erratum v1.2 (E-V-17): superseded … see Part 11.23c
+Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md,5.39 Estimation summary for Batch 5.3,E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md,US-2108 Backup restore drill,E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md,5.37.1 Epic card,E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md,"US-1804 Workflow control centre: edit, simulate, version, enable",E-V-01,Erratum v1.2 (E-V-01): superseded … see Part 11.23c
+Part-05-3_Epics_Stories_Closure_Automation_Web_SaaS.md,"US-1701 Command Centre shell, seven-view navigation and scope sel",E-V-27,Erratum v1.2 (E-V-27): superseded … see Part 11.23c
+Part-06-1_Test_Strategy.md,6.1.15.2 Test effort range (estimate),E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-06-1_Test_Strategy.md,"6.1.14.4 DR / failover drill plan (RPO ≤ 15 min, RTO ≤ 4 h)",E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-06-1_Test_Strategy.md,6.1.14.3 Accessibility test plan (WCAG 2.2 AA),E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-06-1_Test_Strategy.md,6.1.11.2 Boundary value analysis: discount thresholds 0/10/20% and,E-V-17,Erratum v1.2 (E-V-17): superseded … see Part 11.23c
+Part-06-1_Test_Strategy.md,6.1.4.3 Risk matrix (functional areas × likelihood × impact → prio,E-V-02,Erratum v1.2 (E-V-02): superseded … see Part 11.23c
+Part-06-1_Test_Strategy.md,6.1.3.1 Test type catalogue,"E-V-09, E-V-27","Erratum v1.2 (E-V-09, E-V-27): superseded … see Part 11.23c"
+Part-06-2a_Test_Cases_EP08-EP11.md,Group TC-08-K: Boundary values and equivalence partitioning – qui,E-V-17,Erratum v1.2 (E-V-17): superseded … see Part 11.23c
+Part-06-2b_Test_Cases_EP12-EP14.md,6.2.13.1 Batch totals,E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-06-3a_Test_Cases_EP15-EP18.md,6.3.5.5 Group TC-18-D: Decision table – enabling a workflow revisi,E-V-01,Erratum v1.2 (E-V-01): superseded … see Part 11.23c
+Part-06-3b_Test_Cases_EP19-EP21.md,6.3.11.12 Group TC-21-K: DR / failover drill catalogue (techniques,E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-06-3b_Test_Cases_EP19-EP21.md,6.3.11.9 Group TC-21-H: Boundary values – restore drill (technique,E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-06-3b_Test_Cases_EP19-EP21.md,6.3.11.1 Scenarios,E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-06-4_AI_Evaluation_Test_Cases.md,AU-005 Untrusted-content sanitizer & injection pre-filter,E-V-01,Erratum v1.2 (E-V-01): superseded … see Part 11.23c
+Part-06-4_AI_Evaluation_Test_Cases.md,6.4.4.1 Scoring methods,E-V-26,Erratum v1.2 (E-V-26): superseded … see Part 11.23c
+Part-06-4_AI_Evaluation_Test_Cases.md,6.4.3 Acceptance thresholds per agent,E-V-26,Erratum v1.2 (E-V-26): superseded … see Part 11.23c
+Part-06-5_Test_Cases_EP01-EP07.md,6.5.4.4 Group TC-03-C: Specification by example – US-0302 Consent,E-V-17,Erratum v1.2 (E-V-17): superseded … see Part 11.23c
+Part-06-5_Test_Cases_EP01-EP07.md,6.5.2.3 Group TC-01-B: Specification by example – US-0102 AWS and,E-V-05,Erratum v1.2 (E-V-05): superseded … see Part 11.23c
+Part-06-6_Requirements_Traceability_Matrix.md,6.6.9 (h) Source-pack FR-ENH → US → TC (generated),E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-06-7_NFR_and_Coverage_Closure_Test_Cases.md,6.7.5.3 Verification items VER-023…048,E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-06-7_NFR_and_Coverage_Closure_Test_Cases.md,"6.7.2.6 Group TC-NFR-F: Availability, recovery, timeliness and sca",E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-06-8c_Source_Pack_Test_Specification_Reconciliation.md,6.8.6 Conflicts and proposed resolutions,E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-06-9a_Source_Pack_QC_RTM_and_Backlog_Reconciliation.md,"6.9.4.8 Runbook, work packages, capacity and execution backlog",E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-06-9a_Source_Pack_QC_RTM_and_Backlog_Reconciliation.md,6.9.4.5 Work items (162) → stories,E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-06-9a_Source_Pack_QC_RTM_and_Backlog_Reconciliation.md,"6.9.3.1 Not covered, Conflict and Partially covered aspects (indiv",E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-06-9b_Source_Pack_QC_RTM_and_Backlog_Reconciliation.md,6.9.6 Conflicts and proposed resolutions,E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-06-9b_Source_Pack_QC_RTM_and_Backlog_Reconciliation.md,6.9.5.4.2 Estimate reconciliation [CONFLICT-446] [GAP-450] [GAP-4,E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-07-1_AI_Discovery_and_Catalogue.md,7.1.6 Candidate idea register (all 135 ideas with dispositions),"E-V-01, E-V-02","Erratum v1.2 (E-V-01, E-V-02): superseded … see Part 11.23c"
+Part-07-2_AI_Agent_Specifications.md,AG-034 Coding Assistant,E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-07-2_AI_Agent_Specifications.md,AG-022 Contract Clause Reviewer,E-V-02,Erratum v1.2 (E-V-02): superseded … see Part 11.23c
+Part-07-2_AI_Agent_Specifications.md,AG-002 AI Quality Judge & Eval Runner,E-V-26,Erratum v1.2 (E-V-26): superseded … see Part 11.23c
+Part-07-3_AI_Model_Strategy_Cost_Governance.md,7.6.3 Prompt-injection and jailbreak defences,E-V-01,Erratum v1.2 (E-V-01): superseded … see Part 11.23c
+Part-07-4a_Source_Pack_AI_Plugin_and_Cost_Enhancements.md,7.4.4.2 Integration candidates (documents 16 and 21),E-V-19,Erratum v1.2 (E-V-19): superseded … see Part 11.23c
+Part-07-4a_Source_Pack_AI_Plugin_and_Cost_Enhancements.md,7.4.3 Detailed coverage register,E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-07-4b_Source_Pack_AI_Plugin_and_Cost_Enhancements.md,7.4.8 Tags register (Part 7.4a and 7.4b),E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-07-4b_Source_Pack_AI_Plugin_and_Cost_Enhancements.md,7.4.5.11 Enhanced functional requirements (FR-ENH-F-001…031),E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-07-4b_Source_Pack_AI_Plugin_and_Cost_Enhancements.md,"7.4.5.8.2 Procurement gate PG-01…PG-10 (FR-ENH-F-012, FR-ENH-F-01",E-V-19,Erratum v1.2 (E-V-19): superseded … see Part 11.23c
+Part-08-1_Roadmap_Releases_Sprints.md,8.1.8.1 Tags issued in Batch 8.1,E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-08-1_Roadmap_Releases_Sprints.md,8.1.6.4 Programme total against BRD §6,E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-08-1_Roadmap_Releases_Sprints.md,8.1.1.2 Binding inputs used,E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-08-2_Risks_Change_GoLive_Hypercare.md,8.2.7.1 Engineering budget (C03),E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-08-2_Risks_Change_GoLive_Hypercare.md,8.2.1.2 Register (RSK-001…RSK-092),"E-V-01, E-V-10","Erratum v1.2 (E-V-01, E-V-10): superseded … see Part 11.23c"
+Part-08-3a_Source_Pack_Training_SaaS_Maintenance_Optimization_Enhancements.md,8.3.3.1 Document 33: non-screen aspects,E-V-21,Erratum v1.2 (E-V-21): superseded … see Part 11.23c
+Part-08-3c_Source_Pack_Training_SaaS_Maintenance_Optimization_Enhancements.md,8.3.7 Expert persona review,E-V-19,Erratum v1.2 (E-V-19): superseded … see Part 11.23c
+Part-08-3c_Source_Pack_Training_SaaS_Maintenance_Optimization_Enhancements.md,8.3.5.15.9 Engineering requirements added by the optimization rev,E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-08-3c_Source_Pack_Training_SaaS_Maintenance_Optimization_Enhancements.md,8.3.5.15.5 Optimization scenarios OPT-TEST-01…24 and UX-QC-01…10,E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-08-3c_Source_Pack_Training_SaaS_Maintenance_Optimization_Enhancements.md,8.3.5.15.4 OKPI-01…OKPI-35 registry (renamed from the source's KP,E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-08-3c_Source_Pack_Training_SaaS_Maintenance_Optimization_Enhancements.md,8.3.5.13.6 SLA framework (SLA-01…SLA-12) [GAP-484] [ASSUMPTION-48,E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-08-4_Cost_Model_Development_vs_Subscriptions.md,8.4.3.1 Monthly cost by category (pilot scale),E-V-05,Erratum v1.2 (E-V-05): superseded … see Part 11.23c
+Part-09-10_Revision_v1.1_Consolidation.md,"9.10.7.2 Subscription and running cost (recurring, per month)",E-V-05,Erratum v1.2 (E-V-05): superseded … see Part 11.23c
+Part-09-10_Revision_v1.1_Consolidation.md,9.10.5 Improvement plan (roadmap),E-V-25,Erratum v1.2 (E-V-25): superseded … see Part 11.23c
+Part-09-1_Errata_and_Consolidated_Decisions.md,9.1.1 Errata decisions,"E-V-09, E-V-18, E-V-39","Erratum v1.2 (E-V-09, E-V-18, E-V-39): superseded … see Part 11.23c"
+Part-09-2_Glossary_and_Registers.md,9.2.6 Document map,E-V-35,Erratum v1.2 (E-V-35): superseded … see Part 11.23c
+Part-09-2_Glossary_and_Registers.md,9.2.4(f) DEC index (DEC-001…233),"E-V-09, E-V-18, E-V-21, E-V-25, E-V-27, E-V-39","Erratum v1.2 (E-V-09, E-V-18, E-V-21, E-V-25, E-V-27, E-V-39): superseded … see Part 11.23c"
+Part-09-2_Glossary_and_Registers.md,9.2.4(e) ADR index,E-V-10,Erratum v1.2 (E-V-10): superseded … see Part 11.23c
+Part-09-2_Glossary_and_Registers.md,9.2.4(d) RECOMMENDATION register (with status),E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-09-2_Glossary_and_Registers.md,9.2.4(c) CONFLICT register (with resolution status),"E-V-01, E-V-09, E-V-10, E-V-19, E-V-27, E-V-28, E-V-39","Erratum v1.2 (E-V-01, E-V-09, E-V-10, E-V-19, E-V-27, E-V-28, E-V-39): superseded … see Part 11.23c"
+Part-09-2_Glossary_and_Registers.md,9.2.4(b) GAP register,E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-09-2_Glossary_and_Registers.md,9.2.4(a) ASSUMPTION register,"E-V-05, E-V-06","Erratum v1.2 (E-V-05, E-V-06): superseded … see Part 11.23c"
+Part-09-2_Glossary_and_Registers.md,"9.2.1.5 Source-pack terms (Parts 0B, 2.6–2.7, 3.4–3.6, 4.4, 6.8–6.","E-V-09, E-V-25","Erratum v1.2 (E-V-09, E-V-25): superseded … see Part 11.23c"
+Part-09-2_Glossary_and_Registers.md,9.2.1.2 Product and domain terms,"E-V-01, E-V-16","Erratum v1.2 (E-V-01, E-V-16): superseded … see Part 11.23c"
+Part-09-2_Glossary_and_Registers.md,9.2.1.1 Acronyms and abbreviations,"E-V-02, E-V-09, E-V-21, E-V-39","Erratum v1.2 (E-V-02, E-V-09, E-V-21, E-V-39): superseded … see Part 11.23c"
+Part-09-4_AI_Agents_Automations_Workflows_Catalogue.md,9.4.5 How they fit together,E-V-35,Erratum v1.2 (E-V-35): superseded … see Part 11.23c
+Part-09-4_AI_Agents_Automations_Workflows_Catalogue.md,9.4.1 Summary,E-V-35,Erratum v1.2 (E-V-35): superseded … see Part 11.23c
+Part-09-4_AI_Agents_Automations_Workflows_Catalogue.md,"Application Blueprint: PART 9 (Batch 9.4), Catalogue of Workflows,",E-V-01,Erratum v1.2 (E-V-01): superseded … see Part 11.23c
+Part-09-5_Source_Pack_Decisions_and_Replan.md,9.5.5 Quality gate: Batch 9.5,E-V-25,Erratum v1.2 (E-V-25): superseded … see Part 11.23c
+Part-09-5_Source_Pack_Decisions_and_Replan.md,9.5.2.7 Step 7: updated release scope (Option 2b dates; Option 1 d,E-V-25,Erratum v1.2 (E-V-25): superseded … see Part 11.23c
+Part-09-5_Source_Pack_Decisions_and_Replan.md,9.5.2.4 Step 4: new total effort and comparison,E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-09-5_Source_Pack_Decisions_and_Replan.md,"9.5.1.9 Earlier-part inconsistencies, enhancement acceptance and t","E-V-25, E-V-39","Erratum v1.2 (E-V-25, E-V-39): superseded … see Part 11.23c"
+Part-09-5_Source_Pack_Decisions_and_Replan.md,9.5.1.3 API contracts,E-V-21,Erratum v1.2 (E-V-21): superseded … see Part 11.23c
+Part-09-5_Source_Pack_Decisions_and_Replan.md,9.5.0 Decision summary for the Founder,E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-09-6a_Source_Pack_Literal_Alignment.md,9.6a.8 Tags register (allocated range 520–549),E-V-05,Erratum v1.2 (E-V-05): superseded … see Part 11.23c
+Part-09-6a_Source_Pack_Literal_Alignment.md,9.6a.6 Test cases,E-V-05,Erratum v1.2 (E-V-05): superseded … see Part 11.23c
+Part-09-6a_Source_Pack_Literal_Alignment.md,9.6a.5 Decisions DEC-234…DEC-270,"E-V-05, E-V-39","Erratum v1.2 (E-V-05, E-V-39): superseded … see Part 11.23c"
+Part-09-6a_Source_Pack_Literal_Alignment.md,"9.6a.3.4.3 DEC-252: “Two products, four frontends” inspection per",E-V-19,Erratum v1.2 (E-V-19): superseded … see Part 11.23c
+Part-09-6a_Source_Pack_Literal_Alignment.md,9.6a.3.3.6 DEC-244: Pack planning figures recorded literally: 385,E-V-39,Erratum v1.2 (E-V-39): superseded … see Part 11.23c
+Part-09-6a_Source_Pack_Literal_Alignment.md,"9.6a.3.3.5 DEC-243: Deployment contract: ALB, ECS Fargate, Elasti",E-V-05,Erratum v1.2 (E-V-05): superseded … see Part 11.23c
+Part-09-6a_Source_Pack_Literal_Alignment.md,9.6a.3.3.2 DEC-240: Recovery objectives: initial ≤ 15 min / ≤ 4 h,E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-09-6a_Source_Pack_Literal_Alignment.md,9.6a.3.1.1 DEC-234: Literal-alignment rule: source names canonica,"E-V-01, E-V-02, E-V-21","Erratum v1.2 (E-V-01, E-V-02, E-V-21): superseded … see Part 11.23c"
+Part-09-6a_Source_Pack_Literal_Alignment.md,9.6a.1 Scope and method,"E-V-01, E-V-02, E-V-21","Erratum v1.2 (E-V-01, E-V-02, E-V-21): superseded … see Part 11.23c"
+Part-09-6b_Source_Pack_Literal_Alignment.md,9.6b.8 Tags register (allocated range 550–579),E-V-05,Erratum v1.2 (E-V-05): superseded … see Part 11.23c
+Part-09-6b_Source_Pack_Literal_Alignment.md,9.6b.7.3 Subscription and running cost (recurring) — change reques,E-V-05,Erratum v1.2 (E-V-05): superseded … see Part 11.23c
+Part-09-6b_Source_Pack_Literal_Alignment.md,9.6b.6 Test cases,E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-09-6b_Source_Pack_Literal_Alignment.md,9.6b.5 Decisions,"E-V-05, E-V-09, E-V-19","Erratum v1.2 (E-V-05, E-V-09, E-V-19): superseded … see Part 11.23c"
+Part-09-6b_Source_Pack_Literal_Alignment.md,ALN-B-18 · G19-C08 · Critical RPO/RTO initial and growth (doc 19),E-V-09,Erratum v1.2 (E-V-09): superseded … see Part 11.23c
+Part-09-6b_Source_Pack_Literal_Alignment.md,ALN-B-11 · F21-011 · Capability 02 Public market / investor searc,E-V-19,Erratum v1.2 (E-V-19): superseded … see Part 11.23c
+Part-09-6b_Source_Pack_Literal_Alignment.md,9.6b.1.3 Precedence rule,"E-V-02, E-V-21","Erratum v1.2 (E-V-02, E-V-21): superseded … see Part 11.23c"
+Part-09-7a_Advanced_AI_Agents_and_Intelligence.md,9.7.2.5 Candidates rejected or deferred,E-V-01,Erratum v1.2 (E-V-01): superseded … see Part 11.23c
+Part-09-7a_Advanced_AI_Agents_and_Intelligence.md,"Application Blueprint: PART 9 (Batch 9.7a), Advanced AI Agents and","E-V-02, E-V-21","Erratum v1.2 (E-V-02, E-V-21): superseded … see Part 11.23c"
+Part-09-7b_Advanced_AI_Agents_and_Intelligence.md,9.7.11.1 Evaluation thresholds for the new agents (extends Part 7.,E-V-26,Erratum v1.2 (E-V-26): superseded … see Part 11.23c
+Part-09-8a_Advanced_Revenue_Growth_Capabilities.md,"Application Blueprint: PART 9 (Batch 9.8), Advanced Revenue Growth","E-V-02, E-V-21","Erratum v1.2 (E-V-02, E-V-21): superseded … see Part 11.23c"
+Part-09-8b_Advanced_Revenue_Growth_Capabilities.md,9.8.17 Quality gate: Batch 9.8 (files a and b),"E-V-02, E-V-21","Erratum v1.2 (E-V-02, E-V-21): superseded … see Part 11.23c"
+Part-09-9a_Advanced_Platform_Data_Security_Experience.md,9.9.5.10 CAP-X3-10 Chaos engineering and automated game days,E-V-05,Erratum v1.2 (E-V-05): superseded … see Part 11.23c
+Part-09-9a_Advanced_Platform_Data_Security_Experience.md,ADR-138 Developer platform as a separate surface and audience,E-V-28,Erratum v1.2 (E-V-28): superseded … see Part 11.23c
+Part-09-9a_Advanced_Platform_Data_Security_Experience.md,9.9.2 Opportunity inventory,E-V-28,Erratum v1.2 (E-V-28): superseded … see Part 11.23c
+Part-09-9a_Advanced_Platform_Data_Security_Experience.md,"9.9.0 Scope, method and the non-negotiable safety envelope","E-V-02, E-V-21","Erratum v1.2 (E-V-02, E-V-21): superseded … see Part 11.23c"
+Part-09-9b_Advanced_Platform_Data_Security_Experience.md,9.9.17 Quality gate: Batch 9.9,E-V-01,Erratum v1.2 (E-V-01): superseded … see Part 11.23c
+Part-09-9b_Advanced_Platform_Data_Security_Experience.md,9.9.16.1 Tags issued in Part 9.9 (range 700…749),"E-V-01, E-V-28","Erratum v1.2 (E-V-01, E-V-28): superseded … see Part 11.23c"

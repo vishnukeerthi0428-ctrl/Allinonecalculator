@@ -488,6 +488,9 @@ erDiagram
 
 #### 7.4.5.8.2 Procurement gate PG-01…PG-10 (FR-ENH-F-012, FR-ENH-F-013; automated by AU-044)
 
+> **Erratum v1.2 (E-V-19):** superseded by investor/fundraising mode and the Investment Automation product are in scope, gated by securities rule packs (DEC-783). See Part 11.23c.
+
+
 | PG | Step | Pass condition (all evidence stored on the decision) | Owner (role) | Blocks |
 |---|---|---|---|---|
 | PG-01 | Need | A named function, the WF/AL it serves and the native alternative's measured gap (doc 16 "identify required function") | Product Owner (R02) | Request without a function |
@@ -641,6 +644,9 @@ All figures ₹, estimates; verify rates at implementation (as of 27 Nov 2026). 
 **Notes.** (1) Annual views assume pilot volume for 12 months with no growth escalation (as the source does); the growth-gate hosting (≈ ₹21,000/month B01 equivalent) and AI ceiling (₹12,000) are separate (Part 8.2 §8.2.7.5, DEC-008). (2) Benchmark trial spend (AU-045) is drawn from B10, one-time ≤ ₹3,000 per candidate, and needs PG-07 approval [RECOMMENDATION-415]. (3) No new budget line is created by Part 7.4; all new automations are ₹0 incremental on B01/B07.
 
 ### 7.4.5.11 Enhanced functional requirements (FR-ENH-F-001…031)
+
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
 
 | FR | Requirement (short) | Source aspect | Blueprint link | Wave · Epic | MoSCoW | Tests |
 |---|---|---|---|---|---|---|
@@ -1099,6 +1105,9 @@ Columns follow Part 6.4. P = priority; Type per Part 6.1 (T03 integration, T08 s
 ---
 
 ## 7.4.8 Tags register (Part 7.4a and 7.4b)
+
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
 
 | Tag | Statement | Owner / validation |
 |---|---|---|

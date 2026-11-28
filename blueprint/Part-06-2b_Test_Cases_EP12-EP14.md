@@ -914,6 +914,9 @@ TC count = explicit FR links plus TCs of the stories mapped to the FR in Part 5.
 
 ### 6.2.13.1 Batch totals
 
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 | Epic | Scenarios | TCs | P0 | P1 | P2 | P3 | Automated (Y) | Manual (N) | AC covered |
 |---|---|---|---|---|---|---|---|---|---|
 | EP-08 | 18 | 191 | 110 | 66 | 15 | 0 | 189 | 2 | 78 / 78 |

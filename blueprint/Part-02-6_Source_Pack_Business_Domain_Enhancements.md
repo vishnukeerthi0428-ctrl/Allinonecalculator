@@ -1844,6 +1844,9 @@ The cost effects are far below 1% of the ₹3,000 pilot AI ceiling (DEC-008). Ex
 
 #### 2.6.5.9.2 Effort estimate and wave placement (basis: Part 8.1 story-point to person-day ratio and comparable stories)
 
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 | Package | Items | Wave | MoSCoW | Effort (person-days, range) | Basis |
 |---|---|---|---|---|---|
 | Research coverage and playbooks | FR-ENH-A-001…004; BRL-ENH-A-02; RP-ENH-A-01; seed SPB-01…24 data | W1 | Must/Should | 8–13 | 4 stories × 3–5 points; seed data entry 1–2 days by the growth/compliance lead |
@@ -1869,6 +1872,9 @@ The cost effects are far below 1% of the ₹3,000 pilot AI ceiling (DEC-008). Ex
 | RSK-ENH-A-04 | Labelling effort for benchmarks not available | 3 × 2 | Start with the 3 highest-value families; full population when < 50 | Research lead |
 
 ## 2.6.6 Conflicts and proposed resolutions
+
+> **Erratum v1.2 (E-V-19):** superseded by investor/fundraising mode and the Investment Automation product are in scope, gated by securities rule packs (DEC-783). See Part 11.23c.
+
 
 | ID | Conflict | Source position | Blueprint position | Proposed resolution (for coordinator decision) | Impact if accepted | Decision owner |
 |---|---|---|---|---|---|---|

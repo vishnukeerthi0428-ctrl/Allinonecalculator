@@ -2,7 +2,10 @@
 """Build the Part 9.2 appendices (glossary first-use, ID registry, consolidated registers,
 duplicate-ID check, document map) from the blueprint Markdown parts.
 
-Usage:  python3 blueprint/assembly/build_registers.py [--no-write]
+Usage:  python3 blueprint/assembly/build_registers.py [--no-write] [--write-part92]
+
+v1.2: every Part 11 file is scanned as a decision log; tag and DEC numbers may have 3 or 4 digits;
+Part 9.2 generated blocks are rewritten only with --write-part92 (baseline kept frozen, DEC-1004).
 
 Inputs : blueprint/Part-*.md (Part-09-2 itself is excluded from every scan) and the PDFs next to them
 Outputs: blueprint/final/*.csv (one file per register) and the generated blocks of
@@ -120,7 +123,7 @@ REGISTRY = [
     ("FR-OP###", r"\bFR-OP(?P<n>\d{3})\b", "Operational/platform functional requirement (health, readiness, config)", "2.1 (§2.4)"),
     ("FR-{area}-##", r"\bFR-(?P<f>STD|DM|UIS|FLT|PUB|ADP|ENG|COP|SRCH|NEG|CSM|SEC|AUD|NOT|RPT|I18N|CFG)-(?P<n>\d{2})\b", "Cross-cutting functional requirement by area (standards, data mgmt, UI states, filters, publication, adapters, …)", "2.1 (§2.4)"),
     ("NFR-###", r"\bNFR-(?P<n>\d{3})\b", "Non-functional requirement", "0 (§0.6); detailed in 4.2"),
-    ("DEC-###", r"\bDEC-(?P<n>\d{3})\b", "Binding decision (DEC-001…065 Part 0A; DEC-066…140 Part 9.1)", "0A, 9.1"),
+    ("DEC-###", r"\bDEC-(?P<n>\d{3,4})\b", "Binding decision (DEC-001…065 Part 0A; DEC-066…140 Part 9.1; DEC-500…1019 Part 11)", "0A, 9.1, 11"),
     ("BRL-{domain}-##", r"\bBRL-(?P<f>[A-Z]{2,4})-(?P<n>\d{2})\b", "Business rule, by rule domain", "2.3"),
     ("R##", r"(?<![-\w])R(?P<n>\d{2})(?P<f>L?)\b", "RBAC role (R01–R20; L suffix = startup-scoped lead variant)", "2.3 (§2.21)"),
     ("P##", r"(?<![-\w])P(?P<n>\d{2})\b", "Persona", "1 (§1.6)"),
@@ -348,9 +351,9 @@ def scan_registry(parts):
 # ----------------------------------------------------------------------------------------------
 # Tag registers
 # ----------------------------------------------------------------------------------------------
-TAG_RX = re.compile(r"\b(ASSUMPTION|GAP|CONFLICT|RECOMMENDATION)-(\d{3})\b")
-RANGE_RX = re.compile(r"\b(ASSUMPTION|GAP|CONFLICT|RECOMMENDATION|DEC)-(\d{3})\s*(?:…|\.\.\.?|–|to)\s*(?:\1-)?(\d{3})\b")
-SHORT_RX = re.compile(r"\b(ASSUMPTION|GAP|CONFLICT|RECOMMENDATION|DEC)-(\d{3})((?:\s*(?:/|,)\s*-?\d{3})+)")
+TAG_RX = re.compile(r"\b(ASSUMPTION|GAP|CONFLICT|RECOMMENDATION)-(\d{3,4})\b")
+RANGE_RX = re.compile(r"\b(ASSUMPTION|GAP|CONFLICT|RECOMMENDATION|DEC)-(\d{3,4})\s*(?:…|\.\.\.?|–|to)\s*(?:\1-)?(\d{3,4})\b")
+SHORT_RX = re.compile(r"\b(ASSUMPTION|GAP|CONFLICT|RECOMMENDATION|DEC)-(\d{3,4})((?:\s*(?:/|,)\s*-?\d{3,4}(?!\d))+)")
 
 
 def expand_ids(text, kinds=TAGS + ("DEC",)):
@@ -364,9 +367,9 @@ def expand_ids(text, kinds=TAGS + ("DEC",)):
         k = m.group(1)
         if k in kinds:
             out.add(f"{k}-{m.group(2)}")
-            for n in re.findall(r"\d{3}", m.group(3)):
+            for n in re.findall(r"\d{3,4}", m.group(3)):
                 out.add(f"{k}-{n}")
-    for m in re.finditer(r"\b(ASSUMPTION|GAP|CONFLICT|RECOMMENDATION|DEC)-(\d{3})\b", text):
+    for m in re.finditer(r"\b(ASSUMPTION|GAP|CONFLICT|RECOMMENDATION|DEC)-(\d{3,4})\b", text):
         if m.group(1) in kinds:
             out.add(m.group(0))
     return out
@@ -419,7 +422,17 @@ DEC_LOGS = ("0A", "9.1", "9.5", "8.4", "9.6a", "9.6b", "9.7", "9.7a", "9.7b", "9
 REJECT_RX = re.compile(r"(?<!/)\b(?:rejected|is not (?:accepted|adopted)|are not (?:accepted|adopted)|declined|withdrawn)\b", re.I)
 
 
+DEC_HOME = {}   # DEC-id -> part label of its decision log (filled by build_dec / status_rules)
+
+
+def is_dec_log(label):
+    """v1.2: every Part 11 file is a decision log (DEC-500…1019), in addition to the v1.1 logs."""
+    return label in DEC_LOGS or (label.startswith("11.") and label != "11.0")
+
+
 def dec_log(dec):
+    if dec in DEC_HOME:
+        return DEC_HOME[dec]
     n = int(dec.split("-")[1])
     return "0A" if n <= 65 else "9.1" if n <= 156 else "9.5"
 
@@ -434,7 +447,7 @@ def status_rules(parts):
     status_rules.rejected = {}
     status_rules.narrowed = defaultdict(set)
     for p in parts:
-        if p["label"] not in DEC_LOGS:
+        if not is_dec_log(p["label"]):
             continue
         for ln in p["lines"]:
             if not is_table_row(ln):
@@ -442,26 +455,28 @@ def status_rules(parts):
             cs = cells(ln)
             first = clean(cs[0])
             ids = expand_ids(" ".join(cs[1:]), TAGS)
-            m = re.fullmatch(r"DEC-(\d{3})", first)
+            m = re.fullmatch(r"DEC-(\d{3,4})", first)
+            if m:
+                DEC_HOME.setdefault(first, p["label"])
             if m:
                 rowtxt = clean(" ".join(cs))
                 if re.search(r"\baccepted\b", rowtxt):
-                    for mm in re.finditer(r"RECOMMENDATION-(\d{3})\s*(?:…|\.\.\.|–)\s*(?:RECOMMENDATION-)?(\d{3})", rowtxt):
+                    for mm in re.finditer(r"RECOMMENDATION-(\d{3,4})\s*(?:…|\.\.\.|–)\s*(?:RECOMMENDATION-)?(\d{3,4})", rowtxt):
                         status_rules.blanket.append((int(mm.group(1)), int(mm.group(2)), first))
-                for mm in re.finditer(r"RECOMMENDATION-\d{3}", rowtxt):
+                for mm in re.finditer(r"RECOMMENDATION-\d{3,4}", rowtxt):
                     window = rowtxt[mm.end(): mm.end() + 60].split(";")[0]   # the clause after the ID
                     if REJECT_RX.search(window):
                         status_rules.rejected[mm.group(0)] = first
-                for mm in re.finditer(r"GAP-\d{3}", rowtxt):
+                for mm in re.finditer(r"GAP-\d{3,4}", rowtxt):
                     if re.search(r"narrow", rowtxt[mm.start(): mm.end() + 40], re.I):
                         status_rules.narrowed[mm.group(0)].add(first)
                 for t in ids:
                     res[t].add(first)
-                for t in re.findall(r"RECOMMENDATION-\d{3}\]?\)?\s*(?:\(|is\s+)?accepted", " ".join(cs)):
+                for t in re.findall(r"RECOMMENDATION-\d{3,4}\]?\)?\s*(?:\(|is\s+)?accepted", " ".join(cs)):
                     pass
-                for mm in re.finditer(r"(RECOMMENDATION-\d{3})\]?\s*\)?\s*(?:accepted|\(accepted\))", clean(" ".join(cs))):
+                for mm in re.finditer(r"(RECOMMENDATION-\d{3,4})\]?\s*\)?\s*(?:accepted|\(accepted\))", clean(" ".join(cs))):
                     accepted.add(mm.group(1))
-                if re.search(r"RECOMMENDATION-\d{3}[^|]{0,20}\(accepted\)|\baccepted\b", clean(" ".join(cs))):
+                if re.search(r"RECOMMENDATION-\d{3,4}[^|]{0,20}\(accepted\)|\baccepted\b", clean(" ".join(cs))):
                     for t in ids:
                         if t.startswith("RECOMMENDATION"):
                             accepted.add(t)
@@ -469,7 +484,7 @@ def status_rules(parts):
                 # Conflict-to-decision index (Part 9.5 §9.5.1.11): cells alternate CONFLICT-### | DEC-###
                 cl = [clean(c) for c in cs]
                 pairs = [(cl[k], cl[k + 1]) for k in range(0, len(cl) - 1, 2)
-                         if re.fullmatch(r"CONFLICT-\d{3}", cl[k]) and re.fullmatch(r"DEC-\d{3}", cl[k + 1])]
+                         if re.fullmatch(r"CONFLICT-\d{3,4}", cl[k]) and re.fullmatch(r"DEC-\d{3,4}", cl[k + 1])]
                 if pairs:
                     for t, d in pairs:
                         res[t].add(d)
@@ -538,7 +553,7 @@ def build_tag_registers(parts):
         if kind == "CONFLICT":
             decs = sorted(res.get(tid, []), key=nat_key)
             if decs:
-                logs = sorted({dec_log(d) for d in decs if d.startswith("DEC-")}, key=lambda x: ("0A", "9.1", "9.5").index(x))
+                logs = sorted({dec_log(d) for d in decs if d.startswith("DEC-")}, key=lambda x: order.get(x, 999))
                 src = ("Part " if len(logs) == 1 else "Parts ") + " + ".join(logs) if logs else "Part 0A §G"
                 rec["status"] = f"Resolved — {src} ({', '.join(decs)})"
             else:
@@ -628,7 +643,7 @@ def build_adr(parts):
 def build_dec(parts):
     rows = OrderedDict()
     for p in parts:
-        if p["label"] not in DEC_LOGS:
+        if not is_dec_log(p["label"]):
             continue
         hdr = None
         section = ""
@@ -643,8 +658,9 @@ def build_dec(parts):
                 continue
             cs = cells(ln)
             first = clean(cs[0])
-            if not re.fullmatch(r"DEC-\d{3}", first) or first in rows:
+            if not re.fullmatch(r"DEC-\d{3,4}", first) or first in rows:
                 continue
+            DEC_HOME.setdefault(first, p["label"])
             if p["label"] == "9.1":
                 subject = clean(cs[3]) if len(cs) > 3 else ""
                 decision = clean(cs[4]) if len(cs) > 4 else ""
@@ -908,6 +924,8 @@ def main():
                   [[r["id"], r["first"], r["owner"], r["stmt"], r["status"], r["used"], r["n"]] for r in recs])
     write_csv("adr_index.csv", ["ADR", "Title / decision", "Status", "Part"], adr_rows)
     write_csv("dec_index.csv", ["DEC", "Log", "Subject", "Decision (one line)"], dec_rows)
+    write_csv("dec_counts_by_log.csv", ["Log (part)", "Decisions defined"],
+              sorted(((lab, sum(1 for r in dec_rows if r[1] == lab)) for lab in {r[1] for r in dec_rows}), key=lambda r: [int(x) if x.isdigit() else x for x in re.findall(r"\d+|\D+", r[0])]))
     all_dups = [["Tag"] + d for d in tag_dups] + [["ADR"] + d for d in adr_dups] + [["Registry"] + d for d in id_dups]
     write_csv("duplicate_ids.csv", ["Kind", "ID", "Part A", "Meaning A", "Part B", "Meaning B", "Similarity"], all_dups)
     write_csv("document_map.csv", ["Part", "File", "Title", "Contents", "Pages", "Diagrams", "Words", "State"], docmap)
@@ -920,7 +938,9 @@ def main():
             st[r["status"].split(" ")[0].split("—")[0].strip()] += 1
         print(k, dict(st))
 
-    if not write or not SELF.exists():
+    # v1.2 (Part 11.25, DEC-1004): Part 9.2 is part of the frozen v1.1 baseline used by the retention audit.
+    # Its generated blocks are rewritten only on request; the v1.2 registers are the CSVs above and the workbook.
+    if not write or not SELF.exists() or "--write-part92" not in sys.argv:
         return
     text = SELF.read_text(encoding="utf-8")
     text, gl_csv = glossary_first_use(parts, text)

@@ -13,7 +13,7 @@ CONFLICT-011,0 §0.5,0,"Scoring components are ""normalized 0–1"", but thresho
 CONFLICT-012,0 §0.5,0,"The engineering estimate is said to be ""superseded"", yet the ""original estimate retained: ₹9–13.5L/3 months; ₹18–27L/6 months""",Resolved — Part 0A (DEC-012),"0, 0A",2
 CONFLICT-013,0 §0.5,0,"""MVP growth dashboard"" (M30 label in BRD §12) vs ""no separate product release labels""",Resolved — Part 0A (DEC-013),"0, 0A",2
 CONFLICT-014,0 §0.5,0,BRD §15 and §16 (and FRD §14/§15) repeat the same acceptance procedures with slightly different wording,Resolved — Part 0A (DEC-014),"0, 0A",3
-CONFLICT-101,3.1 front matter,3.1,DEC-018 RTO ≤ 4 h (all failures) vs DEC-040 single-region pilot,"Resolved — Parts 9.1 + 9.5 (DEC-079, DEC-158)","3.1, 3.2, 3.4, 4.4b, 9.5",20
+CONFLICT-101,3.1 front matter,3.1,DEC-018 RTO ≤ 4 h (all failures) vs DEC-040 single-region pilot,"Resolved — Parts 9.1 + 9.5 + 11.5b (DEC-079, DEC-158, DEC-595)","3.1, 3.2, 3.4, 4.4b, 9.5, 11.5a, 11.5b",23
 CONFLICT-102,3.1 §3.1.6.2,3.1,"B01 ₹5,000 vs DEC-040 pilot topology plus staging",Resolved — Part 9.1 (DEC-105),"3.1, 3.2, 8.2, 9.1",7
 CONFLICT-103,3.1 §3.1.16,3.2,"DEC-015 ""105 named operations"" vs 102 distinct FRD-named entries (104 HTTP operations)",Resolved — Part 9.1 (DEC-104),"3.1, 3.2, 3.5a, 9.1",9
 CONFLICT-106,3.3 §3.3.3.2,3.3,"Homonyms in the sources: Plan, Subscription, Feedback, Event (two meanings each); Execution = Run. Resolved by distinct physical names",Resolved locally in Part 3.3,"3.3, 3.6a",11
@@ -23,7 +23,7 @@ CONFLICT-109,3.3 §3.3.6.9,3.3,"Marketing contact 24 months vs contract signer e
 CONFLICT-110,4.1 front matter,4.3,"B07 (₹500/month monitoring/security/CI) and B21 (CDN/WAF, ₹0 until approved) vs the need for AWS WAF on public intake (NFR-022, THR-003) and possible CI minute overage",Resolved — Part 9.1 (DEC-081),"4.1, 4.3, 9.1",4
 CONFLICT-111,4.1 §4.10.2,4.1,"DEC-028 sets AI run logs and chat transcripts at 90 days, and no retention for security/application logs. CERT-In requires ICT logs for 180 days in India, and the DPDP Rules are understood to require processing logs for one year (verify)",Resolved — Part 9.1 (DEC-078),"4.1, 4.2, 9.1",9
 CONFLICT-112,4.2 §4.23.2,4.2,"DEC-018 RTO ≤ 4 h vs DEC-040 pilot topology (single-region, single-AZ application, backups copied cross-region): a full regional outage cannot be recovered in 4 h without pre-provisioned DR infrastructure, which B01 (₹5,000) does not fund",Resolved — Part 9.1 (DEC-079),"4.2, 4.3, 4.4b, 9.1",9
-CONFLICT-113,4.2 §4.23.7,4.2,"DEC-044 support hours (10:00–18:00 IST, Mon–Sat) vs 24×7 availability SLOs (DEC-018) and Critical escalation in 30 min (Part 2.4 §2.30.2)",Resolved — Part 9.1 (DEC-080),"4.2, 4.3, 4.4b, 9.1",9
+CONFLICT-113,4.2 §4.23.7,4.2,"DEC-044 support hours (10:00–18:00 IST, Mon–Sat) vs 24×7 availability SLOs (DEC-018) and Critical escalation in 30 min (Part 2.4 §2.30.2)",Resolved — Part 9.1 (DEC-080),"4.2, 4.3, 4.4b, 9.1, 11.9a, 11.9c",13
 CONFLICT-114,4.1 TB-03 Admin Command Centre,4.1,"DEC-019 spike check 5 expects WebAuthn for privileged roles, while BRL-TEN-08 says ""TOTP minimum, WebAuthn recommended""",Resolved — Part 9.1 (DEC-077),"4.1, 6.5, 9.1",7
 CONFLICT-120,7.1 front matter,7.3,"DEC-007 groups self-hosted open models with free-tier fallbacks (Tier 2), while BRL-AI-06 restricts Tier 2 to Public/Internal-non-personal; a self-hosted model in our VPC has none of the third-party data risk",Resolved locally in Part 7.3,"7.1, 7.3",4
 CONFLICT-121,6.4 §6.4.10.1,7.3,"The Copilot panel is part of the W0–W2 shell (DEC-062, Part 2.5) but DEC-035 sets no wave for Copilot capability",Resolved locally in Part 7.3,"6.4, 7.3, 8.1",5
@@ -53,7 +53,7 @@ CONFLICT-322,3.4 Document(s) 04/09/10,3.4,Growth RTO ≤ 2 h,Resolved — Part 9
 CONFLICT-323,3.4 Document(s) 05/10,3.4,"Availability ""99.9% critical availability over rolling 30 days""",Resolved — Part 9.5 (DEC-157),"3.4, 9.5",4
 CONFLICT-324,3.4 Document(s) 04,3.4,Budget alert thresholds 70/90%,Resolved — Part 9.5 (DEC-162),"3.4, 9.5",5
 CONFLICT-325,3.4 Document(s) 04,3.4,"""No cross-region replication before approval""",Resolved — Part 9.5 (DEC-164),"3.4, 9.5",6
-CONFLICT-326,3.4 Document(s) 05,3.4,"Investor-product wording: ""lead/investor record"", ""investor/customer tokens"", ""investment/commercial Django domains"", event product = investment_or_commercial",Resolved — Part 9.5 (DEC-179),"3.4, 9.5",6
+CONFLICT-326,3.4 Document(s) 05,3.4,"Investor-product wording: ""lead/investor record"", ""investor/customer tokens"", ""investment/commercial Django domains"", event product = investment_or_commercial",Resolved — Part 9.5 (DEC-179),"3.4, 9.5, 11.4b",7
 CONFLICT-327,3.4 Document(s) 10,3.4,"Agent decomposition: ""six runtime responsibilities"" vs 18 responsibilities vs blueprint catalogue",Resolved — Part 9.5 (DEC-183),"3.4, 9.5",5
 CONFLICT-328,3.4 Document(s) 04,3.4,Effort and critical path: 385 PD base for 149 work items; dependency-only path 113.5 days,Resolved — Part 9.5 (DEC-181),"3.4, 9.5",7
 CONFLICT-329,3.4 Document(s) 04/09,3.4,"Names: Django apps (accounts, catalog, …, reporting) and monorepo paths (apps/growth-ui, …)",Resolved — Part 9.5 (DEC-183),"3.4, 9.5",5
@@ -116,10 +116,10 @@ CONFLICT-443,6.9a §6.9.3.1,6.9b,Projection refresh,Resolved — Part 9.5 (DEC-1
 CONFLICT-444,6.9a §6.9.3.1,6.9b,Growth critical RTO,Resolved — Part 9.5 (DEC-158),"6.9a, 6.9b, 9.5",6
 CONFLICT-445,6.9a §6.9.1.3,6.9b,Decision ID collision,Resolved — Part 9.5 (DEC-178),"6.9a, 6.9b, 9.5",7
 CONFLICT-446,6.9a §6.9.3.1,6.9b,Expansion effort,Resolved — Part 9.5 (DEC-181),"6.9a, 6.9b, 9.5",5
-CONFLICT-447,6.9a §6.9.3.1,6.9b,BR traces on 11 FRs,"Resolved — Part 9.5 (DEC-180, DEC-313)","6.9a, 6.9b, 9.5, 9.6b",28
-CONFLICT-460,4.4a §4.4.4.1,4.4b,Critical-service availability,Resolved — Part 9.5 (DEC-157),"4.4a, 4.4b, 9.5",7
+CONFLICT-447,6.9a §6.9.3.1,6.9b,BR traces on 11 FRs,"Resolved — Parts 9.5 + 9.6b (DEC-180, DEC-313)","6.9a, 6.9b, 9.5, 9.6b",28
+CONFLICT-460,4.4a §4.4.4.1,4.4b,Critical-service availability,Resolved — Part 9.5 (DEC-157),"4.4a, 4.4b, 9.5, 11.10a",8
 CONFLICT-461,4.4a §4.4.3.1,4.4b,Capacity design points,Resolved — Part 9.5 (DEC-161),"4.4a, 4.4b, 9.5",12
-CONFLICT-462,4.4a §4.4.3.1,4.4b,Recovery time,Resolved — Part 9.5 (DEC-158),"4.4a, 4.4b, 9.5",7
+CONFLICT-462,4.4a §4.4.3.1,4.4b,Recovery time,"Resolved — Parts 9.5 + 11.5b + 11.14 (DEC-158, DEC-595, DEC-790)","4.4a, 4.4b, 9.5, 11.1a, 11.1b, 11.5a, 11.5b, 11.10c, 11.14, 11.23b",24
 CONFLICT-463,4.4a §4.4.3.1,4.4b,Projection refresh,Resolved — Part 9.5 (DEC-160),"4.4a, 4.4b, 9.5",6
 CONFLICT-464,4.4a §4.4.3.7,4.4b,5xx alert threshold (internal to doc 31),Resolved — Part 9.5 (DEC-165),"4.4a, 4.4b, 9.5",5
 CONFLICT-465,4.4a §4.4.3.5,4.4b,Spike multiplier (internal to doc 29),Resolved — Part 9.5 (DEC-161),"4.4a, 4.4b, 9.5",4
@@ -143,24 +143,137 @@ CONFLICT-488,8.3a §8.3.4.1,8.3c,Gross effort 349 / 499 / 679 PD (baseline + exp
 CONFLICT-489,8.3a §8.3.3.3,8.3c,"Pack text carries investor-product language: ""owner investment data"", ""investment thesis"", ""funding goals"", ""formal securities offers"", ""four frontends and two backends"", ""investment-related compensation""",Resolved — Part 9.5 (DEC-179),"8.3a, 8.3c, 9.5",8
 CONFLICT-490,8.3c §8.3.5.15.3,8.3c,Schema-valid AI outputs ≥ 99.5% with invalid/timeout counted (OKPI-13),Resolved — Part 9.5 (DEC-195),"8.3c, 9.5",4
 CONFLICT-491,8.3a §8.3.3.5,8.3c,"Combined preflight 1,188 records in 6 groups (document 36) vs 1,545 in 9 groups (document 38)",Resolved — Part 9.5 (DEC-206),"8.3a, 8.3c, 9.5, 9.6b",7
-CONFLICT-550,9.6b §9.6b,9.6b,DEC-306,Resolved — Part 9.5 (DEC-306),9.6b,2
-CONFLICT-551,9.6b §9.6b,9.6b,DEC-317,Resolved — Part 9.5 (DEC-317),9.6b,1
-CONFLICT-552,9.6b §9.6b,9.6b,DEC-325,Resolved — Part 9.5 (DEC-325),9.6b,1
-CONFLICT-553,9.6b §9.6b,9.6b,DEC-304,Resolved — Part 9.5 (DEC-304),9.6b,1
-CONFLICT-554,9.6b §9.6b,9.6b,DEC-309,Resolved — Part 9.5 (DEC-309),9.6b,1
-CONFLICT-555,9.6b §9.6b,9.6b,DEC-302,Resolved — Part 9.5 (DEC-302),9.6b,1
-CONFLICT-556,9.6b §9.6b,9.6b,DEC-324,Resolved — Part 9.5 (DEC-324),9.6b,1
-CONFLICT-620,9.7a front matter,9.7b,ADR-071 says only AG-016 plans and agents are never driven at run time; the brief asks for a supervisor over existing agents,Resolved — Part 9.5 (DEC-384),"9.7a, 9.7b",4
-CONFLICT-621,9.7b §9.7.15,9.7b,DEC-011 / DEC-211: one active scoring model; predictive scoring requested,"Resolved — Part 9.5 (DEC-383, Part 9.7b §G summary)",9.7b,2
-CONFLICT-622,9.7a Quality gate: Batch 9.7a,9.7b,"Coaching and conversation analytics could become employee evaluation (EU AI Act Annex III, verify)",Resolved — Part 9.5 (DEC-386),"9.7a, 9.7b",3
-CONFLICT-623,9.7b §9.7.17,9.7b,"B02 high scenario already ≈ 101% of ₹3,000 (Part 7.4b) while new agents are requested",Resolved — Part 9.5 (DEC-382),9.7b,1
-CONFLICT-657,9.8b §9.8.14,9.8b,SP-12 specifies first/last-touch attribution with window and unknown bucket; AU-040 defaults to last non-direct; X2 adds multi-touch,Resolved — Part 9.5 (DEC-397),9.8b,2
-CONFLICT-658,9.8b §9.8.14,9.8b,Part 4.1 TR-R1 states no SMS or voice outreach in W0–W5; X2 proposes call steps,Resolved — Part 9.5 (DEC-392),9.8b,2
-CONFLICT-659,9.8b §9.8.16,9.8b,"PP-01 ""outcomes over activity"" vs gamification practices that reward activity",Resolved — Part 9.5 (DEC-398),9.8b,1
-CONFLICT-720,9.9a §9.9.2,9.9b,"Request for ""Indic multilingual UI"" vs DEC-026 Admin en-IN only",Resolved — Part 9.5 (DEC-404),"9.9a, 9.9b",4
-CONFLICT-721,9.9a §9.9.2,9.9b,"Developer platform vs Part 3.2 ""outbound webhooks not offered in W0–W6""",Resolved — Part 9.5 (DEC-403),"9.9a, 9.9b",4
-CONFLICT-722,9.9b §9.9.14,9.9b,"""Real-time event streaming"" vs ADR-003 rejection of CDC/Kafka",Resolved — Part 9.5 (DEC-401),9.9b,2
+CONFLICT-550,9.6b §9.6b,9.6b,DEC-306,Resolved — Part 9.6b (DEC-306),9.6b,2
+CONFLICT-551,9.6b §9.6b,9.6b,DEC-317,Resolved — Part 9.6b (DEC-317),9.6b,1
+CONFLICT-552,9.6b §9.6b,9.6b,DEC-325,"Resolved — Parts 9.6b + 11.14 (DEC-325, DEC-790)",9.6b,1
+CONFLICT-553,9.6b §9.6b,9.6b,DEC-304,Resolved — Part 9.6b (DEC-304),9.6b,1
+CONFLICT-554,9.6b §9.6b,9.6b,DEC-309,Resolved — Part 9.6b (DEC-309),9.6b,1
+CONFLICT-555,9.6b §9.6b,9.6b,DEC-302,Resolved — Part 9.6b (DEC-302),9.6b,1
+CONFLICT-556,9.6b §9.6b,9.6b,DEC-324,Resolved — Part 9.6b (DEC-324),9.6b,1
+CONFLICT-620,9.7a front matter,9.7b,ADR-071 says only AG-016 plans and agents are never driven at run time; the brief asks for a supervisor over existing agents,Resolved — Part 9.7b (DEC-384),"9.7a, 9.7b",4
+CONFLICT-621,9.7b §9.7.15,9.7b,DEC-011 / DEC-211: one active scoring model; predictive scoring requested,"Resolved — Part 9.7b (DEC-383, Part 9.7b §G summary)",9.7b,2
+CONFLICT-622,9.7a Quality gate: Batch 9.7a,9.7b,"Coaching and conversation analytics could become employee evaluation (EU AI Act Annex III, verify)",Resolved — Part 9.7b (DEC-386),"9.7a, 9.7b",3
+CONFLICT-623,9.7b §9.7.17,9.7b,"B02 high scenario already ≈ 101% of ₹3,000 (Part 7.4b) while new agents are requested",Resolved — Part 9.7b (DEC-382),9.7b,1
+CONFLICT-657,9.8b §9.8.14,9.8b,SP-12 specifies first/last-touch attribution with window and unknown bucket; AU-040 defaults to last non-direct; X2 adds multi-touch,"Resolved — Parts 9.8b + 11.14 (DEC-397, DEC-790)",9.8b,2
+CONFLICT-658,9.8b §9.8.14,9.8b,Part 4.1 TR-R1 states no SMS or voice outreach in W0–W5; X2 proposes call steps,Resolved — Part 9.8b (DEC-392),9.8b,2
+CONFLICT-659,9.8b §9.8.16,9.8b,"PP-01 ""outcomes over activity"" vs gamification practices that reward activity",Resolved — Part 9.8b (DEC-398),9.8b,1
+CONFLICT-720,9.9a §9.9.2,9.9b,"Request for ""Indic multilingual UI"" vs DEC-026 Admin en-IN only",Resolved — Part 9.9b (DEC-404),"9.9a, 9.9b",4
+CONFLICT-721,9.9a §9.9.2,9.9b,"Developer platform vs Part 3.2 ""outbound webhooks not offered in W0–W6""",Resolved — Part 9.9b (DEC-403),"9.9a, 9.9b",4
+CONFLICT-722,9.9b §9.9.14,9.9b,"""Real-time event streaming"" vs ADR-003 rejection of CDC/Kafka",Resolved — Part 9.9b (DEC-401),9.9b,2
 CONFLICT-723,9.9a §9.9.5.3,9.9b,"""Reverse ETL"" vs ADR-011 first-party analytics only",Resolved — Part 0A §G (Part 9.9b §G summary),"9.9a, 9.9b",2
-CONFLICT-724,9.9a §9.9.5.21,9.9b,"New FinOps screen/tables vs doc 36 §5 ""use existing Admin interfaces; no new physical table or API count assumed""",Resolved — Part 9.5 (DEC-400),"9.9a, 9.9b",2
+CONFLICT-724,9.9a §9.9.5.21,9.9b,"New FinOps screen/tables vs doc 36 §5 ""use existing Admin interfaces; no new physical table or API count assumed""",Resolved — Part 9.9b (DEC-400),"9.9a, 9.9b",2
 CONFLICT-725,9.9b §9.9.16.1,9.9b,Chaos engineering vs zero external side effects and fail-closed,Resolved — Part 0A §G (Part 9.9b §G summary),9.9b,1
-CONFLICT-726,9.9b §9.9.14,9.9b,Auto-remediation vs L1 cap on consequential actions,Resolved — Part 9.5 (DEC-407),9.9b,2
+CONFLICT-726,9.9b §9.9.14,9.9b,Auto-remediation vs L1 cap on consequential actions,Resolved — Part 9.9b (DEC-407),9.9b,2
+CONFLICT-760,11.1a §11.1.2.1,11.1b,Enterprise-readiness scope versus approved budgets and staffing,"Resolved — Parts 11.1b + 11.14 (DEC-513, DEC-775, DEC-784, Part 11.19c §G summary)","11.1a, 11.1b, 11.14, 11.19a, 11.19c, 11.25",73
+CONFLICT-761,11.1a §11.1.2.1,11.1b,Data residency and regions,"Resolved — Parts 11.1b + 11.14 (DEC-514, DEC-772, DEC-776)","11.1a, 11.1b, 11.14, 11.15b, 11.20b, 11.22b",24
+CONFLICT-762,11.1a §11.1.2.1,11.1b,Autonomy scale and mandates,"Resolved — Parts 11.1b + 11.14 (DEC-508, DEC-779)","11.1a, 11.1b, 11.14, 11.17a",27
+CONFLICT-763,11.1a §11.1.3.01,11.1b,Tenancy of owned companies,"Resolved — Part 11.1b (DEC-504, Part 11.1b §G summary)","11.1a, 11.1b, 11.23b",13
+CONFLICT-764,11.1a §11.1.3.01,11.1b,Public website purpose,Resolved — Part 11.1b (DEC-505),"11.1a, 11.1b, 11.23b",49
+CONFLICT-765,11.1a §11.1.2.1,11.1b,Growth-workload recovery,"Resolved — Parts 11.1b + 11.14 (DEC-515, DEC-771)","11.1a, 11.1b, 11.14",12
+CONFLICT-766,11.1a §11.1.3.20,11.1b,Market opening,"Resolved — Part 11.1b (DEC-507, Part 11.1b §G summary)","11.1a, 11.1b",23
+CONFLICT-767,11.1a §11.1.3.01,11.1b,Unit of sale,"Resolved — Part 11.1b (DEC-501, Part 11.1b §G summary)","11.1a, 11.1b, 11.23b",11
+CONFLICT-776,11.1a §11.1.2.1,11.1b,CRM integration,Resolved — Part 0A §G (Part 11.19c §G summary),"11.1a, 11.1b, 11.19a",72
+CONFLICT-777,11.1a §11.1.3.12,11.1b,Locales,"Resolved — Part 11.1b (DEC-516, Part 11.1b §G summary)","11.1a, 11.1b",7
+CONFLICT-778,11.2a §11.2.2,11.2c,Agentic commerce could transact under a standing mandate,"Resolved — Parts 11.2c + 11.14 (DEC-532, DEC-780)","11.2a, 11.2b, 11.2c, 11.14, 11.17a",24
+CONFLICT-779,11.2a §11.2.3.3,11.2c,AI voice outbound calls and AI-conducted conversations,"Resolved — Parts 11.2c + 11.14 (DEC-531, DEC-782, Part 11.18d §G summary)","11.2a, 11.2c, 11.14, 11.18a, 11.18d",57
+CONFLICT-780,11.2a §11.2.3.2,11.2c,Scope and funding of 14 new services and 39 WF04 deltas,"Resolved — Parts 11.2c + 11.14 (DEC-535, DEC-790)","11.2a, 11.2c, 11.14",6
+CONFLICT-781,11.2a §11.2.3.3,11.2c,Bid submission by the system,Resolved — Part 11.2c (DEC-533),"11.2a, 11.2b, 11.2c, 11.17a",14
+CONFLICT-782,11.2c §11.2.6,11.2c,Plan archetypes vs per-SKU subscriptions,"Resolved — Part 11.2c (DEC-521, Part 11.2c §G summary)",11.2c,3
+CONFLICT-783,11.2c §11.2.6,11.2c,Recordings and transcripts,"Resolved — Part 11.2c (DEC-529, Part 11.2c §G summary)",11.2c,3
+CONFLICT-798,11.3a §11.3.5.4,11.3c,R3 workflows may run at L3 under a “separately approved bounded mandate where lawful”,"Resolved — Parts 11.3c + 11.14 (DEC-548, DEC-779)","11.3a, 11.3c, 11.17a",28
+CONFLICT-799,11.3a §11.3.5.4,11.3c,R2 workflows may run at L3 with a bounded mandate,"Resolved — Parts 11.3c + 11.14 (DEC-549, DEC-779)","11.3a, 11.3b, 11.3c, 11.17a",32
+CONFLICT-800,11.3c SM-SVC-19-WF03 Bid preparation and submi,11.3c,SM-SVC-19-WF03 step 04 “coordinate authorized submission and track receipt”; workbook “manual submission unless permitted API”,"Resolved — Parts 11.3c + 11.14 (DEC-550, DEC-781)","11.3c, 11.14, 11.17a",7
+CONFLICT-801,11.3c §11.3.6,11.3c,Authority scale L0–L4 vs blueprint L0–L3,"Resolved — Part 11.3c (DEC-542, Part 11.3c §G summary)",11.3c,2
+CONFLICT-802,11.3c §11.3.6,11.3c,DTO money as int64 minor units,"Resolved — Part 11.3c (DEC-543, Part 11.3c §G summary)",11.3c,2
+CONFLICT-809,11.3c §11.3.6,11.3c,V12 sources disagree on side-effect classification for some workflows,Resolved — Part 11.3c (DEC-546),11.3c,3
+CONFLICT-814,11.4a §11.4.2,11.4d,"R3 workflows: ""L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful"" (10 workflows: SVC-21-WF01/02, 28-WF03/04, 30-WF02, 31-WF02/03, 32-WF04, 37-WF03, 39-WF03)","Resolved — Parts 11.4d + 11.14 (DEC-577, DEC-779)","11.4a, 11.4b, 11.4c, 11.4d, 11.17a",38
+CONFLICT-815,11.4a §11.4.2,11.4d,"SVC-26 AI voice: inbound AI answering, outbound AI calls, multilingual voice booking, permitted transcription","Resolved — Parts 11.4d + 11.14 (DEC-572, DEC-782, Part 11.18d §G summary)","11.4a, 11.4c, 11.4d, 11.18a, 11.18d",194
+CONFLICT-816,11.4a §11.4.2,11.4d,SVC-28 agent-assisted negotiation mandates (WF03) and authorized transaction/payment mandates (WF04),Resolved — Part 11.4d (DEC-573),"11.4a, 11.4c, 11.4d, 11.17a",24
+CONFLICT-817,11.4a §11.4.2,11.4d,SVC-37 price-sensitivity scenarios (WF02) and live pricing/promotion experiments (WF03),Resolved — Part 11.4d (DEC-574),"11.4a, 11.4d",21
+CONFLICT-818,11.4a §11.4.2,11.4d,"SVC-36-WF03 coaching from permitted sales meetings and conversations; channel includes Voice; ""review recordings and training outputs""","Resolved — Part 11.4d (DEC-575, Part 11.18d §G summary)","11.4a, 11.4d, 11.18a, 11.18d",15
+CONFLICT-819,11.4a §11.4.2,11.4d,"SVC-27 image, video and synthetic audio generation (WF01, WF02, WF03 audio)",Resolved — Part 11.4d (DEC-576),"11.4a, 11.4c, 11.4d",27
+CONFLICT-820,11.4a §11.4.2,11.4d,"76 workflows with typed contracts, a common engine upgrade and new adapters",Resolved locally in Part 11.4d,"11.4a, 11.4d",4
+CONFLICT-832,11.5a §11.5.3,11.5b,"Two isolated production regions (India, EU); prod-in / prod-eu; R3 EU region","Resolved — Parts 11.5b + 11.9c + 11.14 (DEC-590, DEC-678, DEC-772)","11.5a, 11.5b, 11.9a, 11.9b, 11.9c, 11.14",24
+CONFLICT-833,11.5a §11.5.3,11.5b,"Continuous WAL archiving, daily base backup, PITR 35 days; critical RPO ≤ 15 min (DEC-V9-01)","Resolved — Parts 11.5b + 11.14 (DEC-591, DEC-787, Part 11.19c §G summary)","11.5a, 11.5b, 11.9b, 11.14, 11.19a, 11.19c",32
+CONFLICT-834,11.5a §11.5.3,11.5b,"R1/R2 scope and exits: tenant SSO, SCIM, custom roles, SIEM, billing and tax live, status page, SLA tiers, sandbox, SOC 2 Type I, manual WCAG audit","Resolved — Parts 11.5b + 11.14 (DEC-596, DEC-775, DEC-784, Part 11.19c §G summary)","11.5a, 11.5b, 11.14, 11.19a",54
+CONFLICT-835,11.5a §11.5.3,11.5b,"R3–R5 markets (EU, UK, UAE, SG, AU, US, CA, BR), their tax rules live, partner programme","Resolved — Parts 11.5b + 11.14 (DEC-596, DEC-776)","11.5a, 11.5b, 11.14",27
+CONFLICT-850,11.6a §11.6.3.1,11.6b,"ch16.2 / DEC-V7-02: provider-neutral model registry; ""no provider or model is approved""; candidates include OpenAI, Gemini, Llama, Mistral, Qwen","Resolved — Parts 9.10 + 11.6b + 11.14 (DEC-418, DEC-605, DEC-788)","11.6a, 11.6b, 11.14, 11.19a, 11.19c",35
+CONFLICT-851,11.6a §11.6.3.1,11.6b,"MDL-S1 ""hosted or open-weight"" for Public, Internal and Personal (masked) data","Resolved — Parts 11.6b + 11.14 (DEC-605, DEC-788)","11.6a, 11.6b",8
+CONFLICT-852,11.6a §11.6.3.1,11.6b,"Model and embedding region ""IN / EU per tenant""; ""same region as data""; indexes per tenant and region; CJ-R09 region pinning","Resolved — Parts 11.6b + 11.14 (DEC-605, DEC-772)","11.6a, 11.6b, 11.14",22
+CONFLICT-853,11.6a §11.6.3.1,11.6b,"MDL-L1 advanced tier; multimodal engine ENG-04 (image/video generation SVC-27, voice SVC-26)","Resolved — Parts 11.6b + 11.14 + 11.19c (DEC-605, DEC-788, DEC-890)","11.6a, 11.6b",10
+CONFLICT-854,11.6a §11.6.3.1,11.6b,"FL-09 persistent approval mandates; R3 mandate ""only if expressly approved""; SVC-28 agentic commerce negotiation and payment mandates; external agent interoperability",Resolved — Part 11.6b (DEC-614),"11.6a, 11.6b, 11.17a, 11.17b, 11.25b",33
+CONFLICT-855,11.6a §11.6.3.1,11.6b,"111 EVAL suites × (50 labelled + 20 adversarial), two annotators, κ ≥ 0.7, four languages","Resolved — Parts 11.6b + 11.14 + 11.19c (DEC-603, DEC-788, DEC-891)","11.6a, 11.6b",6
+CONFLICT-856,11.6a §11.6.3.1,11.6b,"ENT-CMP-01…03: SOC 2 Type I at R2, Type II at R3; ISO 27001 at R3; ISO 27701 and 42001 at R4","Resolved — Parts 11.6b + 11.14 (DEC-618, DEC-775)","11.6a, 11.6b, 11.14",11
+CONFLICT-857,11.6a §11.6.3.1,11.6b,"Fallback ""same schema, same region, same or stricter class; never silently to an unapproved model""; approval needs DPA with no-training clause and region","Resolved — Parts 11.14 + 11.19c (DEC-788, DEC-890, DEC-892)","11.6a, 11.6b, 11.19b, 11.19c, 11.25b",11
+CONFLICT-868,11.7a §11.7.1.3,11.7c,Investor / fundraising mode,"Resolved — Parts 0A + 11.7c (DEC-002, DEC-632)","11.7a, 11.7c, 11.16a, 11.16e",25
+CONFLICT-869,11.7a Register BG: Blueprint governance (budge,11.7c,Budget for V12 UI scope,"Resolved — Parts 11.7c + 11.14 (DEC-633, DEC-790)","11.7a, 11.7c",5
+CONFLICT-870,11.7a §11.7.1.3,11.7c,Screen ID collision,Resolved — Part 11.7c (DEC-620),"11.7a, 11.7c",4
+CONFLICT-871,11.7a Register F24: FSD ch24 UI/UX master (pro,11.7c,Admin on mobile,Resolved — Part 0A §G (Part 11.7c §G summary),"11.7a, 11.7c",12
+CONFLICT-872,11.7a Register F20: FSD ch20 Public SaaS Websi,11.7c,Locales and RTL,Resolved — Part 0A §G (Part 11.7c §G summary),"11.7a, 11.7c, 11.21b, 11.21d, 11.21e",6
+CONFLICT-873,11.7c §11.7.6,11.7c,Neutral storefront replaces the portfolio public website,Resolved — Part 0A §G (Part 11.7c §G summary),"11.7c, 11.23b",8
+CONFLICT-874,11.7c §11.7.6,11.7c,Certification programme shown on the website and A129,Resolved — Part 11.7c (DEC-639),11.7c,3
+CONFLICT-886,11.8a §11.8.2,11.8b,Developer platform and connector framework in R1,"Resolved — Parts 11.8b + 11.14 (DEC-644, DEC-785, Part 11.19c §G summary)","11.8a, 11.8b, 11.14, 11.19a, 11.19c",46
+CONFLICT-887,11.8a §11.8.2,11.8b,Enterprise identity in R1/R2,"Resolved — Part 11.8b (DEC-648, Part 11.19c §G summary)","11.8a, 11.8b, 11.19a",9
+CONFLICT-888,11.8a §11.8.2,11.8b,New connector kinds,"Resolved — Parts 11.8b + 11.14 (DEC-650, DEC-785, Part 11.19c §G summary)","11.8a, 11.8b, 11.19a, 11.19c",12
+CONFLICT-889,11.8a §11.8.2,11.8b,API ingress under DEC-421,"Resolved — Parts 11.8b + 11.14 (DEC-652, DEC-786, Part 11.19c §G summary)","11.8a, 11.8b, 11.14, 11.19a, 11.19c",12
+CONFLICT-890,11.8b §11.8.5.9,11.8b,"""Investor search"" label on VND-54/73","Resolved — Part 11.8b (DEC-656, Part 11.8b §G summary)",11.8b,4
+CONFLICT-891,11.8a §11.8.3.1,11.8b,Bearer JWT as the global security scheme,"Resolved — Part 11.8b (DEC-643, Part 11.8b §G summary)","11.8a, 11.8b",4
+CONFLICT-892,11.8b §11.8.6,11.8b,"Pagination, version field, deprecation period, outbound webhooks",Resolved — Part 0A §G (Part 11.8b §G summary),11.8b,2
+CONFLICT-905,11.9a §11.9.2,11.9c,ENT-SEC-08 24×7 security monitoring,Resolved — Part 11.9c (DEC-679),"11.9a, 11.9c",8
+CONFLICT-906,11.9a §11.9.3.1,11.9c,"DEC-421 says the Django API uses ""the service key held server-side""","Resolved — Part 11.9c (DEC-663, Part 11.9c §G summary)","11.9a, 11.9b, 11.9c",7
+CONFLICT-907,11.9a §11.9.3.1,11.9c,"V12 KPI-01…35 and V12-ENG ""DEC-039…042"" reuse blueprint IDs with other meanings","Resolved — Part 11.9c (DEC-665, Part 11.9c §G summary)","11.9a, 11.9c",16
+CONFLICT-908,11.9a §11.9.3.3,11.9c,Money storage,Resolved — Part 11.9c (DEC-664),"11.9a, 11.9c",4
+CONFLICT-909,11.9a §11.9.3.1,11.9c,Missing tenant context,Resolved — Part 11.9c (DEC-662),"11.9a, 11.9b, 11.9c, 11.23c",7
+CONFLICT-910,11.9a §11.9.3.1,11.9c,Customer-managed keys,Resolved — Part 11.9c (DEC-671),"11.9a, 11.9c",4
+CONFLICT-911,11.9a §11.9.3.1,11.9c,Low-severity remediation SLA,Resolved — Part 11.9c (DEC-666),"11.9a, 11.9c",4
+CONFLICT-922,11.10a §11.10.2.1,11.10c,Funding and staffing of the V12 backlog,"Resolved — Parts 11.10c + 11.14 (DEC-686, DEC-770)","11.10a, 11.10c, 11.14",9
+CONFLICT-923,11.10a §11.10.2.1,11.10c,Growth critical RTO,"Resolved — Parts 11.10c + 11.14 (DEC-687, DEC-771)","11.10a, 11.10c, 11.14",8
+CONFLICT-924,11.10a §11.10.2.1,11.10c,Data residency tests,"Resolved — Parts 11.10c + 11.14 (DEC-688, DEC-772)","11.10a, 11.10c, 11.14",7
+CONFLICT-943,11.11a §11.11.2.1,11.11b,"Human 24×7 on-call for SEV1/SEV2 from R2; 24×7 security monitoring with human response (ENT-OPS-04, ENT-SEC-08)","Resolved — Parts 11.11b + 11.14 (DEC-715, DEC-773)","11.11a, 11.11b, 11.14",15
+CONFLICT-944,11.11a §11.11.2.3,11.11b,SLA tiers 99.9% (Business) and 99.95% (Enterprise) contractual with service credits (ENT-OPS-01; CDEC-V12-03),"Resolved — Parts 11.11b + 11.14 (DEC-716, DEC-774)","11.11a, 11.11b, 11.14",10
+CONFLICT-945,11.11a §11.11.1.4,11.11b,Certification sequence SOC 2 Type I (R2) → Type II + ISO 27001 (R3) → ISO 27701 + 42001 (R4) (ENT-CMP-01…03; CDEC-V12-01),"Resolved — Parts 11.11b + 11.14 (DEC-717, DEC-775)","11.11a, 11.11b, 11.14",13
+CONFLICT-946,11.11a §11.11.1.4,11.11b,"Region expansion and data residency (IN → EU → UK/ME/APAC → US), EU as second jurisdiction, managed Kubernetes, residency choice at onboarding, de/fr/ar locales and RTL, global tax provider, multi-cloud customer-managed keys, EU DPIA/AI Act (ENT-DAT-02/03, ENT-GLB-02/03/05/08, ENT-CMP-05; CDEC-V7-01/03/08, CDEC-V12-04/05/06)","Resolved — Parts 11.11b + 11.14 (DEC-718, DEC-772, DEC-776)","11.11a, 11.11b, 11.14",29
+CONFLICT-947,11.11a §11.11.2.3,11.11b,Promotional time window default 09:00–21:00 recipient time (CDEC-V7-04),"Resolved — Parts 11.11b + 11.14 (DEC-719, DEC-777)","11.11a, 11.11b, 11.14",7
+CONFLICT-958,11.0 §11.0.2,11.12,"The FSD embedded archive carries a complete Investment Automation sibling product (24 services INV-SVC-01…24, 96 workflows, 100 INV capability IDs, 19-route investor website, investor/fundraising cost, entitlement and technical maps), and the commercial prototype contains an investor objective mode (inv flag: ""Automate your fundraising operations."", ""Fundraising thesis"", G01/G02 ""thesis"" and ""issuer"" vocabulary). DEC-002 and common core CC-01 exclude investor discovery, fundraising, cap table, data room and capital receipts","Resolved — Parts 11.12 + 11.14 + 11.16d (DEC-727, DEC-783, DEC-821)","11.0, 11.12, 11.14, 11.16a, 11.16b, 11.16c, 11.16d, 11.16e",171
+CONFLICT-959,11.12 §11.12.3.2,11.12,"ID namespace collisions (§11.12.4.2): DEC, REC, KPI, AI, WF, R",Resolved — Part 11.12 (DEC-722),11.12,3
+CONFLICT-960,11.12 §11.12.3.2,11.12,"Archive effort / cost envelope (287–483 PD, ₹13.05–32.93 lakh, task register 385 PD, gross 499 PD) vs approved 532 / 722 / 921 PD and Ledger A (DEC-228, DEC-230)","Resolved — Part 11.12 (DEC-728, Part 11.12 §G summary)",11.12,4
+CONFLICT-983,11.13a §11.13.2,11.13b,"Cross-tenant benchmarks (AU-143) use metrics derived from several tenants' data, while V12 BR-V7-AI-05 states customer data stays private and the blueprint enforces strict tenant isolation (MT-10, RLS)","Resolved — Parts 11.13b + 11.14 (DEC-747, DEC-789, Part 11.19c §G summary)","11.13a, 11.13b, 11.14, 11.19a, 11.19b, 11.19c, 11.21e",28
+CONFLICT-984,11.13a §11.13.3.2,11.13b,"The task named ""service-level outcome guarantees""; V12 says public pages make no outcome guarantees (W01/W04/W05)",Resolved — Part 11.13b (DEC-744),"11.13a, 11.13b",4
+CONFLICT-985,11.13a §11.13.3.2,11.13b,An AI SDR and grouped approvals could pressure the L1 invariant (one human approval per consequential action),"Resolved — Part 11.13b (DEC-745, Part 11.13b §G summary)","11.13a, 11.13b",4
+CONFLICT-1008,11.16a §11.16.3,11.16e,"V12 README: storefront ""is not a securities marketplace or offer"" vs DEC-783 ""investor website""","Resolved — Part 11.16e (DEC-813, Part 11.16e §G summary)","11.16a, 11.16e",6
+CONFLICT-1009,11.16a §11.16.3,11.16e,"V12 BR-C03/BR-C14, REC-10 (""Investment is separate""; ""do not implement investment services as part of commercial product"") vs DEC-783 adoption","Resolved — Part 11.16e (DEC-800, Part 11.16e §G summary)","11.16a, 11.16e",5
+CONFLICT-1019,11.16a §11.16.3,11.16e,"V12 labels INV-SVC-05-WF02 and WF04 side effect ""Internal analysis/draft"" although they send messages; INV-SVC-12-WF04 labelled consequential although detection-only",Resolved — Part 0A §G (Part 11.16e §G summary),"11.16a, 11.16b, 11.16e",9
+CONFLICT-1028,11.16c Quality gate (Part 11.16c),11.16d,"Part 11.15a §11.15.1 says no pack contains securities-marketing rules and RP-COMMIT-020 blocks fundraising content; Part 6.1 T02 keeps a DEC-002 ""no-fundraising"" permanent negative test. Both pre-date DEC-783","Resolved — Part 11.16d (DEC-830, Part 11.16d §G summary)","11.16c, 11.16d",6
+CONFLICT-1029,11.16d §11.16.16,11.16d,"Workbook operating mode allows ""controlled autonomous for preapproved routine actions"", and DEC-779 allows bounded mandates, while securities law requires named corporate authority for allotment, filing and offers",Resolved — Part 11.16d (DEC-822),11.16d,2
+CONFLICT-1030,11.16c §11.16.14.2,11.16d,"Technical Map: ""do not increase screen counts before reuse analysis"" vs the need for new workspaces",Resolved — Part 11.16d (DEC-831),"11.16c, 11.16d",5
+CONFLICT-1031,11.16c §11.16.14.2,11.16d,INV-SVC-16 legacy A045/A046 website publication routes vs the neutral storefront and the private-placement advertising bans,Resolved — Part 11.16d (DEC-837),"11.16c, 11.16d",5
+CONFLICT-1047,11.17a §11.17.4.2,11.17b,DEC-388/395 (AI never proposes or computes a price) vs DEC-780 negotiation,"Resolved — Part 11.17a (DEC-847, Part 11.17b §G summary)","11.17a, 11.17b",5
+CONFLICT-1048,11.17a §11.17.4.2,11.17b,BRL-APR-07 Finance maker-checker for every payment verification vs automated mandate reconciliation,Resolved — Part 11.17a (DEC-849),"11.17a, 11.17b",4
+CONFLICT-1069,11.18d §11.18.6,11.18d,"SM-SVC-36 ""review recordings and training outputs""",Resolved — Part 0A §G (Part 11.18d §G summary),"11.18d, 11.23b",4
+CONFLICT-1070,11.18a SM-SVC-26-WF03 Multilingual voice conver,11.18d,FSD ch13: SM-SVC-26-WF03 and WF04 have 0 AI-labelled steps,Resolved — Part 0A §G (Part 11.18d §G summary),"11.18a, 11.18d",3
+CONFLICT-1071,11.18d §11.18.6,11.18d,"WF01 ""route or answer with evidence""; WF03 ""ground answers""",Resolved — Part 0A §G (Part 11.18d §G summary),11.18d,2
+CONFLICT-1072,11.18d §11.18.6,11.18d,"WF02 ""L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful""","Resolved — Part 11.18d (DEC-864, Part 11.18d §G summary)",11.18d,3
+CONFLICT-1091,11.19a §11.19.4.1,11.19c,"V12 phases SCIM, custom roles, SIEM, JIT (R2), OAuth CC, portal, sandbox, versioning (R2), SDKs (R3) vs DEC-784/785 ""Release 1""","Resolved — Part 11.19c (DEC-881, Part 11.19c §G summary)","11.19a, 11.19c",5
+CONFLICT-1092,11.19a Quality gate: Batch 11.19a,11.19c,"Database role names: DEC-778 ""one canonical name app_rw"" vs Part 11.9b DDL ge_app/ge_worker/ge_owner","Resolved — Part 11.19c (DEC-894, Part 11.19c §G summary)","11.19a, 11.19b, 11.19c",8
+CONFLICT-1093,11.19a §A,11.19c,"Part 11.8b scope registry text ""consequential actions stay capped at L1"" vs DEC-779 bounded mandates","Resolved — Parts 11.14 + 11.19c (DEC-779, DEC-883, Part 11.19c §G summary)","11.19a, 11.19c",5
+CONFLICT-1094,11.19b §A,11.19c,Part 11.9b ai_model_t2_data_ck (tier T2 non-personal) cannot express DEC-788 open-weight masked personal,"Resolved — Parts 11.14 + 11.19c (DEC-788, DEC-890, Part 11.19c §G summary)","11.19b, 11.19c",5
+CONFLICT-1095,11.19b §A,11.19c,"AU-143 parameters (ε = 1, W6+/A4, k ≥ 10) vs DEC-789 implementation","Resolved — Part 11.14 (DEC-789, Part 11.19c §G summary)","11.19b, 11.19c",3
+CONFLICT-1118,11.20a §11.20.6.2,11.20b,"DEC-228 dates (Release 1 Day 180, Release 2 Day 208) versus the capacity-derived plan (R1 Day 208, R2-A Day 334). Resolution: DEC-770 makes dates follow the work; DEC-902 records the new dates","Resolved — Part 11.20b (DEC-902, Part 11.20b §G summary)","11.20a, 11.20b",4
+CONFLICT-1119,11.20b §11.20.14.1,11.20b,"DEC-411/DEC-417 sequence A2 after gate G-A1 (A1 ""Day ≈ 239–365"") versus the plan (A1 Day 446; A2 build overlapping the G-A1 window). Resolution: builds overlap, activation gates unchanged (DEC-905)","Resolved — Part 11.20b (DEC-905, Part 11.20b §G summary)",11.20b,3
+CONFLICT-1129,11.10c §11.10.5.1,11.21e,"Part 11.10c rule R-8 says consequential effects in any test keep autonomy L1 and ""no test may assert an AI-executed signature, payment, bid submission or price""; DEC-779…781 allow mandated L3/L4 payments, commerce and bids","Resolved — Parts 11.21e + 11.25 (DEC-921, DEC-1007, Part 11.21e §G summary, Part 11.25 §G summary)","11.10c, 11.21a, 11.21e, 11.25",10
+CONFLICT-1130,11.21a §11.21.3.7,11.21e,Part 6.1 T12 and DR-1…8 use RTO ≤ 4 h (DEC-018/158); DEC-771 sets RTO ≤ 120 min as blocking,Resolved — Part 0A §G (Part 11.21e §G summary),"11.21a, 11.21e",4
+CONFLICT-1131,11.21e §11.21.9,11.21e,Part 6 quiet-hour cases use 09:00–19:00 Monday–Saturday (BRL-ELG-08); DEC-777 sets 09:00–21:00 with stricter packs winning,"Resolved — Part 11.21e (DEC-931, Part 11.21e §G summary)",11.21e,3
+CONFLICT-1132,11.21e §11.21.9,11.21e,"Part 6.1 G1 includes a permanent ""no-fundraising check (DEC-002)""; DEC-783 adopts investor/fundraising",Resolved — Part 0A §G (Part 11.21e §G summary),11.21e,3
+CONFLICT-1140,11.22a §11.22.4.3,11.22f,"Role ID R21 means ""agency / managed-service operator"" in Part 2.6 §2.6.5.3.2 and ""invited investor"" in Part 11.16a","Resolved — Parts 11.22f + 11.25 (DEC-946, DEC-1001, Part 11.22f §G summary, Part 11.25 §G summary)","11.22a, 11.22e, 11.22f, 11.25",11
+CONFLICT-1149,11.22a §11.22.4.3,11.22f,"FR-V12-A-006 (""no investor entity, route, filter or term"") and US-19-YG38 (""No investor / fundraising mode in the website"") contradict DEC-783, which adopted investor mode and the Investment Automation product","Resolved — Parts 11.22f + 11.25 (DEC-947, DEC-1008, Part 11.22f §G summary, Part 11.25 §G summary)","11.22a, 11.22b, 11.22f, 11.25",7
+CONFLICT-1184,11.23a §11.23.2.3,11.23c,The four V12 HTML prototypes as received have SHA-256 values different from the hashes declared in BRD/FSD V12 ch01,Resolved — Part 11.23c (DEC-968),"11.23a, 11.23c",6
+CONFLICT-1185,11.23c §11.23.8,11.23c,DEC-822 (no mandates for securities-governed INV actions) narrows Founder DEC-779,"Resolved — Part 11.23c (DEC-963, Part 11.23c §G summary)",11.23c,3
+CONFLICT-1186,11.23c §11.23.8,11.23c,"V12 REC-01…30 (reconciliation actions) collide with blueprint REC-01…09 (reconciliation jobs, Part 3.2)",Resolved — Part 11.23c (DEC-964),11.23c,3
+CONFLICT-1187,11.23c §11.23.8,11.23c,Side-effect class vocabularies R0/W1/X2 (Part 7.4b NT13) and none/internal/external (Part 3.3),"Resolved — Part 11.23c (DEC-965, Part 11.23c §G summary)",11.23c,3
+CONFLICT-1209,11.24b §11.24.4.2,11.24c,DEC-660 (prefixed physical names) vs DDL-V12-R written on V12 names,"Resolved — Part 11.24c (DEC-981, Part 11.24c §G summary)","11.24b, 11.24c",5
+CONFLICT-1210,11.24c §11.24.12,11.24c,ai_model.model_id text (Appendix C) vs uuid (Part 11.19b DDL-V12-R-14),Resolved — Part 11.24c (DEC-984),11.24c,2
+CONFLICT-1211,11.24c §11.24.14,11.24c,config_promotion status Rolled back (C3) vs RolledBack (Part 11.19a),Resolved — Part 0A §G (Part 11.24c §G summary),11.24c,1
+CONFLICT-1212,11.24c §11.24.12,11.24c,"jurisdiction_pack UNIQUE (jurisdiction, version) (Appendix C) vs many packs per jurisdiction (Parts 11.15, 11.16d)",Resolved — Part 11.24c (DEC-985),11.24c,2
+CONFLICT-1213,11.24a §11.24.1.2,11.24c,"Part 3.1/4.3 RDS, CloudFront and single-region topology vs DEC-421/772","Resolved — Part 11.24c (DEC-988, Part 11.24c §G summary)","11.24a, 11.24c",3
+CONFLICT-1214,11.24c §11.24.12,11.24c,Environment names (Part 11.5a dev/sit/uat/prod-in vs this pack's local/dev/staging/preprod/prod),Resolved — Part 11.24c (DEC-987),11.24c,2
+CONFLICT-1215,11.19a §D,11.24c,"connector_pack_guard() (Part 11.19a DDL-V12-R-09) compares jurisdiction_pack.status = 'approved' and p.market, while Appendix C uses Approved and packs are keyed by pack_code; the guard therefore refuses every production connector activation (fail closed but wrong)",Resolved — Part 11.25 (DEC-1000),"11.19a, 11.24b, 11.24c, 11.25",12

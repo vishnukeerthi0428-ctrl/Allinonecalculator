@@ -13,14 +13,14 @@
 
 ### 11.22.5.5 Persona journeys
 
-**How to read a journey.** The card names the persona (Part 1 §1.8 P01–P16; Part 2.6 P17–P20; new P21–P23 [RECOMMENDATION-1141]), the roles (Part 2.3 R01–R20; R21 per Parts 2.6/11.16a, see [CONFLICT-1140]) and the goal. The step table maps every step to the screens, the control the system applies and the **stories** that deliver it (existing V12 stories and new ZU stories) with the **FR-V12** requirements behind them. Every story ID is checked by the build. The journey Scenario Outline is the journey's end-to-end acceptance test: its Examples are pairwise permutations of the journey's variant dimensions with oracle-computed outcomes (ADR-276), and Part 11.21 realises them as end-to-end test cases [RECOMMENDATION-1146].
+**How to read a journey.** The card names the persona (Part 1 §1.8 P01–P16; Part 2.6 P17–P20; new P21–P23 [RECOMMENDATION-1141]), the roles (Part 2.3 R01–R20; R21 agency operator per Part 2.6; R22 invited investor per Part 11.16a (v1.2, DEC-1001), see [CONFLICT-1140]) and the goal. The step table maps every step to the screens, the control the system applies and the **stories** that deliver it (existing V12 stories and new ZU stories) with the **FR-V12** requirements behind them. Every story ID is checked by the build. The journey Scenario Outline is the journey's end-to-end acceptance test: its Examples are pairwise permutations of the journey's variant dimensions with oracle-computed outcomes (ADR-276), and Part 11.21 realises them as end-to-end test cases [RECOMMENDATION-1146].
 
 **New personas [RECOMMENDATION-1141].**
 
 | ID | Persona | Product | Role mapping | Goals | Pains | Never |
 |---|---|---|---|---|---|---|
 | P21 | Investor-relations user | Investment Automation (DEC-783) | R03 in the INV product; approvals by R02 + R10 | Run a lawful round: discovery, outreach, data room, offers, receipts, closing, updates | Securities rules differ by route and market; manual tracking of clocks and caps | Send offer material where the pack is not Active; let AI give investment advice |
-| P22 | Invited investor | Investor portal W77–W99 | R21 as defined in Part 11.16a (object grants only; extends R16) | Review, verify, apply and follow holdings privately | Repeated KYC, unclear status, privacy | See another investor's data; receive unsolicited offers |
+| P22 | Invited investor | Investor portal W77–W99 | R22 as defined in Part 11.16a (object grants only; extends R16) | Review, verify, apply and follow holdings privately | Repeated KYC, unclear status, privacy | See another investor's data; receive unsolicited offers |
 | P23 | Partner / reseller | SM-SVC-32 co-selling, marketplaces, agentic commerce | R16 with a partner grant; P17/R21 (Part 2.6) for managed-service work | Register and co-sell deals, interoperate, get settled | Channel conflict; data-sharing limits; settlement delays | Read data outside the partner agreement; act for two clients in one session |
 
 #### JN-01 Owner / founder journey
@@ -933,7 +933,7 @@ Feature: JN-09 Investor-relations user end-to-end journey
 |---|---|
 | Journey | JN-10 |
 | Persona | Invited investor (P22 (new, RECOMMENDATION-1141)) |
-| Roles | R21 invited investor (Part 11.16a; see CONFLICT-1140) |
+| Roles | R22 invited investor (Part 11.16a; renumbered from R21 in v1.2, CONFLICT-1140 resolved by DEC-1001) |
 | Goal | Review an invitation, complete verification, diligence, application and payment instructions, and follow holdings and governance, privately |
 | Preconditions | Priya Raman has a pre-existing relationship with AppNAI and receives a portal invitation |
 | Stories touched | 15 (3 new ZU) |
@@ -981,7 +981,7 @@ flowchart TD
 ```gherkin
 Feature: JN-10 Invited investor end-to-end journey
   Background:
-    Given the persona P22 holds R21 invited investor (Part 11.16a
+    Given the persona P22 holds R22 invited investor (Part 11.16a
     And Priya Raman has a pre-existing relationship with AppNAI and receives a portal invitation
 
   @e2e @journey @happy @sec

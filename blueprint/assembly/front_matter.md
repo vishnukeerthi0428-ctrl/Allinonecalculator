@@ -8,13 +8,15 @@
 | 0.95 | 27 Nov 2026 | Blueprint team | Part 9 errata (DEC-066…156), registers, final quality report |
 | 1.0 | 27 Nov 2026 | Blueprint team + Founder | Full 38-document source-pack review (Part 0B and ten enhancement parts); decisions DEC-157…227 (Part 9.5); Founder approvals of Option 2b (DEC-228), both budgets, the QA/growth uplift and the XBR reading (DEC-230…233); Part 10 assembly (this document) |
 | 1.1 | 28 Nov 2026 | Blueprint team + expert panels + Founder | **100% literal match** with the 38-document source pack (Parts 9.6a/b, DEC-234…270 and DEC-300…332); **advanced capabilities** from three expert panels: AI agents (Part 9.7), revenue growth (Part 9.8), platform, data, security and experience (Part 9.9); consolidation, roadmap A1–A3 and separately approvable budget (Part 9.10, DEC-410…415); Founder decisions 28 Nov 2026: alignment funded (DEC-416), advanced A1 approved (DEC-417), **Claude Sonnet kept as primary model** (DEC-418) |
+| **1.2** | **28 Nov 2026** | Blueprint team + V12 review groups + independent assurance panel + Founder | **Customer revision V12 (BRD V12, FSD V12, 4 HTML prototypes) matched** (Parts 11.0–11.13, DEC-500…759); **Founder adopted V12 on every pending item** (Part 11.14, DEC-770…791); rule packs, Investment Automation, bounded mandates, AI voice, platform decisions, master plan, test strategy and stories (Parts 11.15–11.22, DEC-760…959); independent audit and 47 errata (Part 11.23, DEC-960…970); developer build and deployment pack (Part 11.24, DEC-980…999); **consolidation and release readiness** (Part 11.25, DEC-1000…1012): in-place corrections, erratum markers in Parts 0–9.10, regenerated registers and workbook, re-measured audit |
 
 | Item | Value |
 |---|---|
 | Inputs | The complete 38-document engineering package (01 BRD, 02 FRD, 03–36 domain specifications, 37 illustrative workflow, 38 all numbers). Coverage of every document is reported in Part 0B |
 | Classification | Confidential: internal and authorized delivery partners |
-| Decision authority | Product Owner delegated decision-making to the blueprint team (27 Nov 2026). Every decision is listed (DEC-001…233, DEC-234…270, DEC-300…332, DEC-380…422) and can be overridden through change control (BRD §11) |
-| Precedence | Later decisions override earlier text: Part 9.10 (DEC-410…422) > Parts 9.6–9.9 (DEC-234…409) > Part 9.5 §9.5.2.9 (DEC-230…233) > Part 8.4 (DEC-229) > Part 9.5 (DEC-157…228) > Part 9.1 (DEC-066…156) > Part 0A (DEC-001…065) > earlier part text > source documents, where a decision resolves a conflict or gap |
+| Decision authority | Product Owner delegated decision-making to the blueprint team (27 Nov 2026); the Founder decided every V12 item on 28 Nov 2026 (DEC-770…791). Every decision is listed: **789 decisions** in 38 decision logs (v1.1: 346, DEC-001…422; v1.2 adds DEC-500…1012 in Part 11; index `final/dec_index.csv`, counts per log `final/dec_counts_by_log.csv`). Decisions can be overridden through change control (BRD §11) |
+| **Precedence (v1.2)** | **Part 11.14 Founder decisions (DEC-770…791) > Part 11.23c errata (E-V-01…50, DEC-961) > Part 11 parts (11.0–11.25; within Part 11 the later batch wins where it says so) > Parts 0–9.10** (inside Parts 0–9.10 the v1.1 order still applies: Part 9.10 > Parts 9.6–9.9 > Part 9.5 §9.5.2.9 > Part 8.4 > Part 9.5 > Part 9.1 > Part 0A > earlier part text) > source documents. A section of Parts 0–9.10 that carries an "Erratum v1.2" marker is superseded as the marker says (DEC-1005) |
+| How to read this for developers | Start with **Part 11.24** (Developer Build and Production Deployment Pack: repository layout, OpenAPI 3.1 contract, ordered DDL, configuration, IaC, CI/CD, runbook, Definition of Ready/Done) and its artefacts in `final/build/`; then Part 11.23c (errata: the current rule wherever older text differs), Part 11.14 (Founder decisions) and Part 11.25 (v1.2 change log and release-readiness checklist). Use Parts 0–9.10 for depth, reading every erratum marker |
 | Time-sensitive facts | Prices, model names, free tiers, provider terms and regulatory dates are marked "verify at time of implementation (as of 27 Nov 2026)" |
 
 # Executive summary
@@ -28,13 +30,13 @@
 - orders and fulfilment;
 - verified payment closure, onboarding and renewal.
 
-The four seed businesses are AppNAI (global AI project bids), MedMaarg (institutional wellness partnerships, with no patient data), EduVerse (education, with no direct outreach to minors) and OrganicSpec (agri buy/sell, with separate receivable and payable ledgers). Fundraising and investor activity are out of scope.
+The four seed businesses are AppNAI (global AI project bids), MedMaarg (institutional wellness partnerships, with no patient data), EduVerse (education, with no direct outreach to minors) and OrganicSpec (agri buy/sell, with separate receivable and payable ledgers). Fundraising and investor activity were out of scope until v1.1; **v1.2 adds them as the separate Investment Automation product, gated by securities rule packs and counsel sign-off per jurisdiction (DEC-783, Parts 11.16a–e)**.
 
 **How it works.** The platform has two React frontends:
 - a public **Website and Portal** (34 screens);
 - a confidential **Admin Command Centre** (113 screens in seven views).
 
-Behind them sits a **Django modular monolith** on AWS Mumbai, with PostgreSQL row-level security, Celery/Valkey workers and a transactional outbox. A deterministic **Policy Decision Point** rechecks scope, consent, jurisdiction, budget and the approval hash at the moment of every external action.
+Behind them sits a **Django modular monolith** (hosting from v1.1: Vercel + Supabase + AWS Mumbai, DEC-421; from v1.2 with an EU stack for EU-resident tenants, DEC-772), with PostgreSQL row-level security, Celery/Valkey workers and a transactional outbox. A deterministic **Policy Decision Point** rechecks scope, consent, jurisdiction, budget and the approval hash at the moment of every external action.
 
 **AI** drafts, classifies, extracts and matches through a model gateway:
 - rules and cache first;
@@ -43,7 +45,7 @@ Behind them sits a **Django modular monolith** on AWS Mumbai, with PostgreSQL ro
 - free fallbacks only for non-personal data;
 - otherwise graceful degradation.
 
-AI never signs, pays, submits bids or sets prices.
+AI never signs contracts or sets prices autonomously. **From v1.2, payments, agentic-commerce orders and bid submissions may run only under an Active bounded mandate approved by two people, with caps, kill switch, PDP dispatch recheck and reconciliation, in a jurisdiction whose rule pack is approved (DEC-779…781, Part 11.17; erratum E-V-01/E-V-02).**
 
 **What the blueprint contains.**
 
@@ -67,6 +69,7 @@ AI never signs, pays, submits bids or sets prices.
 | Source-pack match | 11,269 aspects of the 38 documents reviewed line by line. **Literal match 99.97%: 11,128 of 11,131 applicable aspects**, with 138 confirmed not applicable. All 141 conflicts were aligned (Parts 9.6a/b). The three remaining aspects are Founder-approved deviations: Claude Sonnet stays primary (DEC-418, two aspects), and Vercel + Supabase hosting (DEC-421, one aspect). Every applicable aspect has an approved disposition (Part 0B §0B.7) |
 | Advanced capabilities (v1.1) | 94 capabilities from 17 expert personas; 240 FR-ADV, 96 stories, 258 TC-ADV and 91 TC-ALN tests, 71 screens; 100% traced (Part 9.10 §9.10.8) |
 | Optimization model | 21 dimensions, 104 controls, 24 scenarios, 35 optimization KPIs OKPI-01…35 (21 mandatory) |
+| **v1.2 totals (customer revision V12)** | **789 decisions · 179 AI agents · 273 automations · 58 blueprint workflows + 156 SM-SVC and 96 INV service workflows · 1,191 user stories · 13,710 test cases · 1,122 API operations · 368 screen IDs**; V12 coverage 100.00% (39,404 / 39,404) of applicable aspects matched (Part 11.0); independent audit 96.06% measured, 100% classified (Part 11.23, re-run in Part 11.25); details in Part 11.25 §11.25.4 |
 
 **Delivery.**
 - **Team (approved, DEC-228):** 4 engineers + **2 contract engineers from Sprint 3 to the Release 2 build gate** + QA (1.0 FTE from Sprint 3) + a growth/compliance lead (0.5–0.75), with the founder as Product Owner.
@@ -124,7 +127,8 @@ All other decisions are recorded and can proceed as defaulted.
 | 6 (6.1–6.10) | Test strategy, test cases, AI evaluations, traceability, source-pack test/QC/RTM reconciliation | QA, engineers, PO |
 | 7 (7.1–7.4) | AI agents and automations: catalogue, specs, model strategy, cost, governance, prompts/RAG/plugins | AI lead, engineers, FinOps, compliance |
 | 8 (8.1–8.4) | Delivery plan: roadmap, releases, sprints, team, risks, go-live, hypercare, budget; training manual, SaaS service, maintenance, optimization; **cost model with development and subscription costs separated** | Founder, PO, delivery lead |
-| 9 (9.1–9.5) | Errata decisions, glossary, registers, final quality report, AI/workflow catalogue, source-pack decisions and re-plan | Everyone |
+| 9 (9.1–9.10) | Errata decisions, glossary, registers, final quality report, AI/workflow catalogue, source-pack decisions and re-plan, literal alignment, advanced capabilities, v1.1 consolidation | Everyone |
+| 11 (11.0–11.25) | **Customer revision V12**: coverage report; V12 business requirements, services, workflows, platform, AI, UI, API, data, tests, observability, archive, AI improvements; Founder decisions (11.14); rule packs (11.15); Investment Automation (11.16); mandates, commerce, payments and bids (11.17); AI voice (11.18); platform decisions (11.19); master plan (11.20), test strategy (11.21), stories (11.22); independent audit and errata (11.23); **developer build and deployment pack (11.24)**; v1.2 change log and release readiness (11.25) and the v1.2 catalogue of agents, automations and workflows (11.25b) | Everyone; developers start at 11.24 |
 
 **Conventions.**
 - Sources are cited as *BRD §n / FRD §n* (numbering per Part 0 §0.1.2).

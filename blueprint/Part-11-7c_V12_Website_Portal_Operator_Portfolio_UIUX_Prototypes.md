@@ -132,7 +132,7 @@ Each FR is satisfied by the contract named in its "Screens" column (Batch 11.7b)
 | FR-V12-G-114 | Private customer success planning and operating hierarchy panels on W22/W27/W34; requested service workspaces; first-value milestones | W22, W27, W34 | RT-02/03; ch21 V5 portal additions | Release 2 (W4–W5) | EP-20 |
 | FR-V12-G-115 | Customer experience controls in UI: guided tours, human escalation, progress/hold visibility, explainable recommendations, feedback and regeneration, actionable errors, notification preferences, closed-loop feedback | A089, W22, W28, A110 | CS-01…13 (ch24) | Release 1–2 | EP-17 |
 | FR-V12-G-116 | Shared domain-panel component for 39 service workspaces with local draft/review, versioned edit, search, scoped export and four workflow entries | A004–A105 mapped panels; A170–A183; A193 | FSD V12 ch21; ADR-202 | Release 1 (W0–W3) | EP-18 |
-| FR-V12-G-117 | No investor / fundraising mode in the commercial product (DEC-002) — pending Founder decision on V12 investor mode | Website build config; W01, W33 | Prototype CFG.inv; Investment Automation sibling pack | Pending Founder decision | EP-19 |
+| FR-V12-G-117 | Investor / fundraising objective mode is delivered only by the separate Investment Automation product and investor website W55–W99 (Parts 11.16a–e); the Sales & Marketing commercial build keeps `inv=false` and exposes no investor route, flag or string (amended v1.2: DEC-783 superseded DEC-002; DEC-947) | Website build config; W01, W33; investor website W55–W99 | Prototype CFG.inv; Investment Automation sibling pack | Adopted (DEC-783) | EP-19 |
 
 
 ### 11.7.5.14 User stories
@@ -257,7 +257,7 @@ Story IDs follow `US-<EP>-YG<nn>`. Each story's acceptance is the pair of tests 
 | US-20-YG20 | FR-V12-G-114 | As a SaaS client admin (R17/R12) or operator (R13/R14), I want Private customer success planning and operating hierarchy panels on W22/W27/W34; requested service workspaces; first-val so that the V12 behaviour is available with scope, consent and approval controls intact | Given my role and grants When I use W22, W27, W34 Then TC-V12-G-227 and TC-V12-G-228 pass |
 | US-17-YG08 | FR-V12-G-115 | As a startup head (R02), I want Customer experience controls in UI: guided tours, human escalation, progress/hold visibility, explainable recommendation so that the V12 behaviour is available with scope, consent and approval controls intact | Given my role and grants When I use A089, W22, W28, A110 Then TC-V12-G-229 and TC-V12-G-230 pass |
 | US-18-YG07 | FR-V12-G-116 | As an automation lead (R11), I want Shared domain-panel component for 39 service workspaces with local draft/review, versioned edit, search, scoped export a so that the V12 behaviour is available with scope, consent and approval controls intact | Given my role and grants When I use A004–A105 mapped panels; A170–A183; A193 Then TC-V12-G-231 and TC-V12-G-232 pass |
-| US-19-YG38 | FR-V12-G-117 | As an anonymous visitor (R18), I want No investor / fundraising mode in the commercial product (DEC-002) — pending Founder decision on V12 investor mode so that the V12 behaviour is available with scope, consent and approval controls intact | Given my role and grants When I use Website build config; W01, W33 Then TC-V12-G-233 and TC-V12-G-234 pass |
+| US-19-YG38 | FR-V12-G-117 | As an anonymous visitor (R18), I want the Sales & Marketing commercial website to stay free of investor / fundraising mode while the separate investor website (W55–W99, Investment Automation, DEC-783) offers it, so that each storefront shows only its own product with scope, consent and approval controls intact (amended v1.2; DEC-947) | Given my role and grants When I use Website build config; W01, W33 Then TC-V12-G-233 and TC-V12-G-234 pass |
 
 
 ```gherkin
@@ -269,12 +269,18 @@ Feature: Neutral storefront exposes no tenant data (FR-V12-G-001…020, ADR-204)
     And no response contains a tenant ID, company name, contact, pipeline or published client snapshot
     And authenticated endpoints are never called
 
-Feature: Investor mode absent (FR-V12-G-117, DEC-002, CONFLICT-868)
-  Scenario: AC-V12-G-02 Build and runtime check
-    Given the commercial website and Admin builds
+Feature: Investor mode only in the Investment Automation product (FR-V12-G-117, DEC-783, CONFLICT-868 resolved)
+  Scenario: AC-V12-G-02 Build and runtime check (amended v1.2)
+    Given the Sales & Marketing commercial website and Admin builds
     When the bundles, route manifests, message catalogues and OpenAPI schema are scanned
-    Then no route, flag, string or schema field for investor, fundraising, issuer or thesis exists
-    And a request with an investor-mode parameter is rejected
+    Then no route, flag, string or schema field for investor, fundraising, issuer or thesis exists in the Sales & Marketing build
+    And a request with an investor-mode parameter to the Sales & Marketing website is rejected
+  Scenario: AC-V12-G-02b Investor website gated by product and jurisdiction (v1.2, DEC-783)
+    Given the separate Investment Automation investor website W55–W99 for an INV-entitled tenant
+    And the securities rule pack for the visitor's jurisdiction is Approved with counsel sign-off
+    When an anonymous visitor opens the investor storefront
+    Then only fundraising workflow software is offered and no securities offer, investor directory or tenant data is shown
+    And where the jurisdiction pack is not Approved the investor storefront returns the neutral unavailable page
 
 Feature: Agentic commerce stays human-approved (FR-V12-G-042, A172)
   Scenario: AC-V12-G-03 Agent message cannot pay
@@ -709,8 +715,8 @@ Two tests per FR: a conformance test (contract present, validation, states, acce
 | TC-V12-G-230 | FR-V12-G-115 | Negative / scope / safety | Out-of-scope user, non-entitled tenant or anonymous visitor opens A089, W22, W28, A110: server denies (403/404), no data in payload, denied view shown; invalid inputs rejected with inline announced errors |
 | TC-V12-G-231 | FR-V12-G-116 | Conformance | Render A004–A105 mapped panels; A170–A183; A193 in each permitted access experience at 360, 768 and 1280 px; every field, action, table and state in the contract is present with the specified validation; axe-core 0 violations; keyboard-only path completes |
 | TC-V12-G-232 | FR-V12-G-116 | Negative / scope / safety | Out-of-scope user, non-entitled tenant or anonymous visitor opens A004–A105 mapped panels; A170–A183; A193: server denies (403/404), no data in payload, denied view shown; invalid inputs rejected with inline announced errors |
-| TC-V12-G-233 | FR-V12-G-117 | Conformance | Build the commercial website and Admin; search bundles, routes, strings and API schema for investor, fundraising, issuer and thesis terms and for a mode flag: none present (DEC-002 regression) |
-| TC-V12-G-234 | FR-V12-G-117 | Negative / scope / safety | Attempt to enable an investor mode via configuration or query parameter: rejected; build fails if CFG-style inv flag exists |
+| TC-V12-G-233 | FR-V12-G-117 | Conformance | Build the commercial website and Admin; search the **Sales & Marketing** bundles, routes, strings and API schema for investor, fundraising, issuer and thesis terms and for a mode flag: none present; the same terms are present only in the separate Investment Automation build (product-separation regression, DEC-783; amended v1.2) |
+| TC-V12-G-234 | FR-V12-G-117 | Negative / scope / safety | Attempt to enable an investor mode in the Sales & Marketing build via configuration or query parameter: rejected; the SM build fails if a CFG-style `inv` flag is true; the investor website W55–W99 opens only for an INV-entitled tenant in a jurisdiction with an Approved securities pack (amended v1.2, DEC-783) |
 
 
 ---
@@ -719,13 +725,13 @@ Two tests per FR: a conformance test (contract present, validation, states, acce
 
 | Tag | Conflict | V12 position | Blueprint position | Proposed resolution | Status |
 |---|---|---|---|---|---|
-| CONFLICT-868 | **Investor / fundraising mode** | The website template keeps an `inv` mode ("Automate your fundraising operations", "eligible investors", "Fundraising thesis"); the commercial build sets it off. The source archive ships a sibling "Investment Automation" storefront (19 routes) and catalogue (24 services, 96 workflows); the README describes the investment storefront as fundraising workflow software | DEC-002 (Founder): no fundraising capability; permanent negative regression test; common core CC-01 excludes investor discovery and fundraising | **Recommended:** (a) remove the investor mode and all its strings from the commercial codebase (FR-V12-G-117; TC-V12-G-233/234); (b) treat the Investment Automation product as a separate product outside this blueprint, with its own decision, budget and legal review (securities and investment-advice regulation); (c) no shared deployment, tenant or data with the commercial platform. Alternative (not recommended): keep a dormant flag — rejected because DEC-002 requires the absence to be provable | **Pending Founder decision** (DEC-632) |
-| CONFLICT-869 | **Budget for V12 UI scope** | 40 new screens, 34 route repurposes, Admin mobile parity, locales de/fr/ar and RTL | DEC-230/DEC-231/DEC-422 approved budgets; DEC-228 staffing | Separate proposal §11.7.5.12: 252–536 pd, ₹11.45–36.54 lakh one-time plus translation ₹0.38–4.0 lakh; ₹750–4,500 per month recurring. Recommended split: P1 (items 7, 9, 10, 12, 15; ≈ 20–43 pd) in Release 1 contingency; the rest as a Release 2 / Future change request | **Pending Founder decision** (DEC-633) |
+| CONFLICT-868 | **Investor / fundraising mode** | The website template keeps an `inv` mode ("Automate your fundraising operations", "eligible investors", "Fundraising thesis"); the commercial build sets it off. The source archive ships a sibling "Investment Automation" storefront (19 routes) and catalogue (24 services, 96 workflows); the README describes the investment storefront as fundraising workflow software | DEC-002 (Founder): no fundraising capability; permanent negative regression test; common core CC-01 excludes investor discovery and fundraising | **Recommended:** (a) remove the investor mode and all its strings from the commercial codebase (FR-V12-G-117; TC-V12-G-233/234); (b) treat the Investment Automation product as a separate product outside this blueprint, with its own decision, budget and legal review (securities and investment-advice regulation); (c) no shared deployment, tenant or data with the commercial platform. Alternative (not recommended): keep a dormant flag — rejected because DEC-002 requires the absence to be provable | **Adopted (DEC-783)** (DEC-632) |
+| CONFLICT-869 | **Budget for V12 UI scope** | 40 new screens, 34 route repurposes, Admin mobile parity, locales de/fr/ar and RTL | DEC-230/DEC-231/DEC-422 approved budgets; DEC-228 staffing | Separate proposal §11.7.5.12: 252–536 pd, ₹11.45–36.54 lakh one-time plus translation ₹0.38–4.0 lakh; ₹750–4,500 per month recurring. Recommended split: P1 (items 7, 9, 10, 12, 15; ≈ 20–43 pd) in Release 1 contingency; the rest as a Release 2 / Future change request | **Adopted (DEC-790)** (DEC-633) |
 | CONFLICT-870 | **Screen ID collision** | V12 uses A114–A131 and W35–W41 for its own new screens | Parts 9.7–9.9 already use those IDs for other screens (596 references) | Dual-ID rule §11.7.4.4: blueprint IDs primary; V12 IDs as `V12-` aliases in the manifest and headers; confirm with the customer [RECOMMENDATION-885] | Resolved (DEC-620) |
 | CONFLICT-871 | **Admin on mobile** | MOB-01/MOB-06: every Admin screen in both device builds | DEC-043: Admin desktop-first, review/approval usable down to 768 px | Adopt V12: one responsive build, compact layout class for all registered Admin screens; DEC-043 amended for Admin; cost in CONFLICT-869 | Resolved (DEC-623); funding pending under 869 |
 | CONFLICT-872 | **Locales and RTL** | ENT-GLB-02/03: en + hi (R2), de + fr (R3), ar with RTL (R4) on the website | DEC-026 en-IN with hi/ta/or content locales; DEC-404 Indic website chrome from A2, Admin en-IN | Adopt V12 for the website (adds de, fr, ar, RTL; keeps ta, or per DEC-404); Admin stays en-IN; framework in Release 1, locales by phase | Resolved (DEC-625); funding pending under 869 |
 | CONFLICT-873 | **Neutral storefront replaces the portfolio public website** | W01–W34 re-purposed; client names, profiles, products and published snapshots never in anonymous payloads | Part 2.5 W02 directory, W03 startup websites, W04–W05 offerings, W12–W20 startup intake incl. W17 EduVerse training with under-18 guardian branch (DEC-030 safety invariant) | Adopt V12 (DEC-621). Owned startups keep public presence on their **own** domains through A107/A108 (renamed) and the W54 embeddable intake with nine templates; the guardian branch, minimal learner data and no outreach to minors move unchanged into the "training" template; nothing in the safety invariant is weakened | Resolved (DEC-621, DEC-622) |
-| CONFLICT-874 | **Certification programme shown on the website and A129** | ENT-CMP-01…03: SOC 2 Type I at R2, Type II at R3, ISO 27001 at R3, ISO 27701 and 42001 at R4; W38 lists them as "Planned — not started" | DEC-408 (Founder): continuous evidence; external audit only when an enterprise contract requires it, with its own budget; trust-centre wording "SOC 2-aligned" | UI shows only approved programme rows; until the Founder decides, W46 (V12 W38) and A159 show "SOC 2-aligned controls; external audit on contract requirement (DEC-408)" and omit target phases. Substantive decision belongs with the security/compliance group | **Pending Founder decision** (DEC-639) |
+| CONFLICT-874 | **Certification programme shown on the website and A129** | ENT-CMP-01…03: SOC 2 Type I at R2, Type II at R3, ISO 27001 at R3, ISO 27701 and 42001 at R4; W38 lists them as "Planned — not started" | DEC-408 (Founder): continuous evidence; external audit only when an enterprise contract requires it, with its own budget; trust-centre wording "SOC 2-aligned" | UI shows only approved programme rows; until the Founder decides, W46 (V12 W38) and A159 show "SOC 2-aligned controls; external audit on contract requirement (DEC-408)" and omit target phases. Substantive decision belongs with the security/compliance group | **Adopted (DEC-775)** (DEC-639) |
 
 ---
 
@@ -745,14 +751,14 @@ Two tests per FR: a conformance test (contract present, validation, states, acce
 | DEC-629 | Website behaviours adopted as acceptance: 404 view, inline validation, cookie consent with notice version, skip link, route focus, `aria-current`, 44 px targets, labelled scroll regions | Customer revision V12 (28 Nov 2026) | FR-V12-G-096…100 |
 | DEC-630 | Storefront selection modes Full / Partial / Selective over 39 SKUs; 25 foundations included and not purchasable; quote request only, no checkout until an approved price book (ENT-BIZ-02, DEC-047) | Customer revision V12 (28 Nov 2026) | FR-V12-G-104/105; plan archetypes of DEC-047 remain the entitlement backbone |
 | DEC-631 | Browser storage on the public site holds only per-viewer conveniences (cookie choice, language); application drafts live server-side with TTL, revocation and optimistic concurrency | Customer revision V12 (28 Nov 2026) | Resolves GAP-881; FR-V12-G-112 |
-| DEC-632 | Investor / fundraising mode and the Investment Automation sibling product | **Pending Founder decision** | Recommended: remove from commercial codebase; sibling product out of scope (CONFLICT-868) |
-| DEC-633 | Approve the V12 UI proposal of §11.7.5.12 (₹11.45–36.54 lakh one-time + translation; ₹750–4,500 per month) outside DEC-230/231/422 | **Pending Founder decision** | Without approval only Release 1 must-haves funded from contingency are built (CONFLICT-869) |
+| DEC-632 | Investor / fundraising mode and the Investment Automation sibling product | **Adopted (DEC-783)** | Recommended: remove from commercial codebase; sibling product out of scope (CONFLICT-868) |
+| DEC-633 | Approve the V12 UI proposal of §11.7.5.12 (₹11.45–36.54 lakh one-time + translation; ₹750–4,500 per month) outside DEC-230/231/422 | **Adopted (DEC-790)** | Without approval only Release 1 must-haves funded from contingency are built (CONFLICT-869) |
 | DEC-634 | A089 adopts 14 management views, 9 optimisation perspectives (audience-filtered), 17 context filters, scope-keyed saved views and native-currency reporting | Customer revision V12 (28 Nov 2026) | FR-V12-G-091 |
 | DEC-635 | Run states shown as eight states with "Reconciling" distinct from "Completed"; requester ≠ reviewer enforced on every device | Customer revision V12 (28 Nov 2026) | FR-V12-G-111 |
 | DEC-636 | Planning calculators accept user-entered assumptions only and label outputs as estimates; no fabricated prices or outcomes | Customer revision V12 (28 Nov 2026) | FR-V12-G-107 |
 | DEC-637 | W05/W08 show the 156 curated fictional workflow outputs as labelled samples with a three-preview session cap and per-SKU download | Customer revision V12 (28 Nov 2026) | FR-V12-G-106 |
 | DEC-638 | V12 A115, A117, A120, A123–A126, A128–A131, RUNS and W35, W38–W40 are delivered as deltas on blueprint A128, A012, A163 (+A013), A002, A009, A168, A103 (+A162), A008, A159 (+A165), A156 (+A014), A101 (+A187), A110 and W49, W46, W47, W45 | Customer revision V12 (28 Nov 2026) | 16 alias deltas; avoids duplicate screens |
-| DEC-639 | Certification programme content on W46 and A159 | **Pending Founder decision** | Recommended interim wording per DEC-408 (CONFLICT-874) |
+| DEC-639 | Certification programme content on W46 and A159 | **Adopted (DEC-775)** | Recommended interim wording per DEC-408 (CONFLICT-874) |
 
 ---
 
@@ -777,13 +783,13 @@ Two tests per FR: a conformance test (contract present, validation, states, acce
 
 | Tag | Type | Statement | Where | Status |
 |---|---|---|---|---|
-| CONFLICT-868 | Conflict | Investor/fundraising mode in V12 website template and sibling archive vs DEC-002 | §11.7.6 | Pending Founder decision (DEC-632) |
-| CONFLICT-869 | Conflict | V12 UI scope vs approved budgets DEC-230/231/422 and staffing DEC-228 | §11.7.6, §11.7.5.12 | Pending Founder decision (DEC-633) |
+| CONFLICT-868 | Conflict | Investor/fundraising mode in V12 website template and sibling archive vs DEC-002 | §11.7.6 | Adopted (DEC-783) (DEC-632) |
+| CONFLICT-869 | Conflict | V12 UI scope vs approved budgets DEC-230/231/422 and staffing DEC-228 | §11.7.6, §11.7.5.12 | Adopted (DEC-790) (DEC-633) |
 | CONFLICT-870 | Conflict | V12 screen IDs A114–A131, W35–W41 collide with Parts 9.7–9.9 | §11.7.4.4 | Resolved by DEC-620 |
 | CONFLICT-871 | Conflict | MOB-01/06 Admin mobile parity vs DEC-043 | §11.7.6 | Resolved by DEC-623 |
 | CONFLICT-872 | Conflict | ENT-GLB-02/03 locales and RTL vs DEC-026/DEC-404 | §11.7.6 | Resolved by DEC-625 |
 | CONFLICT-873 | Conflict | Neutral storefront vs portfolio public website and EduVerse guardian intake (DEC-030) | §11.7.6 | Resolved by DEC-621/622 with W54 |
-| CONFLICT-874 | Conflict | Certification targets on W38/A129 vs DEC-408 | §11.7.6 | Pending Founder decision (DEC-639) |
+| CONFLICT-874 | Conflict | Certification targets on W38/A129 vs DEC-408 | §11.7.6 | Adopted (DEC-775) (DEC-639) |
 | ASSUMPTION-875 | Assumption | Utility views receive contract IDs A192–A197 and a route-manifest endpoint `GET /api/v1/admin/ui/route-manifest`; final path owned by the API master (Part 11.8) | §11.7.5.5, ADR-201 | Open |
 | ASSUMPTION-876 | Assumption | V12 release labels map R0/R1 → Release 1, R2 → Release 2, R3–R5 → Future (W6+) | §11.7.5.13 | Open; confirm with Part 11.1 |
 | ASSUMPTION-877 | Assumption | Tenant-owned sites embed W54 (script or iframe) from a verified domain allow-list configured in A107 | W54 card | Open |
@@ -824,4 +830,4 @@ All 18 numbers of the allocated range 868–885 are used. Screen IDs A205–A259
 | 8 | No restricted data routed to free-tier models | **Pass** | A198 maps Tier 2 to Public/Internal-non-personal, opt-in, default off; public website calls no model; content screen (A199) runs locally without storing content |
 | 9 | Consistent with earlier parts | **Pass** | Approved budgets unchanged (proposal outside, DEC-633); autonomy L1 for consequential actions; PDP at dispatch; DEC-002 upheld pending Founder decision on the V12 investor mode; DEC-030 preserved in W54; DEC-043, DEC-026/404 amended explicitly by DEC-623/625 |
 
-**Status: Part 11 Batch 11.7 complete. 5,430 atomic aspects (3,220 covered before; 5,404 Matched after, 20 Pending Founder decision, 6 Not applicable); 40 new screens (A170–A204, W50–W54) with full contracts; 34 re-purposed website route contracts; 20 deltas on existing screens; 117 FRs, 117 stories, 234 tests; 5 ADRs (ADR-200…204); 20 decisions (DEC-620…639, 3 pending Founder); 18 tags (868–885); costed proposal ₹11.45–36.54 lakh one-time plus translation, ₹750–4,500 per month, outside approved budgets.**
+**Status: Part 11 Batch 11.7 complete. 5,430 atomic aspects (3,220 covered before; 5,404 Matched after, 20 Pending Founder decision, 6 Not applicable); 40 new screens (A170–A204, W50–W54) with full contracts; 34 re-purposed website route contracts; 20 deltas on existing screens; 117 FRs, 117 stories, 234 tests; 5 ADRs (ADR-200…204); 20 decisions (DEC-620…639, 3 pending Founder); 18 tags (868–885); costed proposal ₹11.45–36.54 lakh one-time plus translation, ₹750–4,500 per month, outside approved budgets.** *(v1.2: every item counted here as "Pending Founder decision" was adopted by DEC-770…791 — Part 11.14; read as Adopted. Part 11.25.)*

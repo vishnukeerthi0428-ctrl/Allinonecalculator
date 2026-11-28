@@ -140,6 +140,9 @@ The BRD names three evidence levels: unit, SIT and UAT (BRD §10). This strategy
 
 ### 6.1.3.1 Test type catalogue
 
+> **Erratum v1.2 (E-V-09, E-V-27):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787); one responsive Admin build with a compact layout (DEC-623). See Part 11.23c.
+
+
 | # | Type | Objective | Approach | Tools | Cadence | Owner | Pass criteria |
 |---|---|---|---|---|---|---|---|
 | T01 | **Functional** | Each FR behaves per its acceptance profile and story AC: normal, alternate, validation, denied, timeout, duplicate, stale revision and recovery paths (FRD §10) | Specification-based design from FR/US/AC/BRL using the technique catalogue (§6.1.11); executed at UT, IT, SYS and E2E | pytest, Vitest, Playwright | Every PR (UT/IT); nightly (SYS/E2E) | Developers; QA automation | 100% of FRs have ≥ 1 passing test; 100% of AC have ≥ 1 TC; all P0/P1 pass |
@@ -280,6 +283,9 @@ The BRD names three evidence levels: unit, SIT and UAT (BRD §10). This strategy
 | **D1** | Light | Happy path and one negative per FR; smoke in E2E or SYS |
 
 ### 6.1.4.3 Risk matrix (functional areas × likelihood × impact → priority and depth)
+
+> **Erratum v1.2 (E-V-02):** superseded by payments and bid submission allowed only under a bounded mandate; AI still never signs contracts or sets prices autonomously (DEC-779/780/781). See Part 11.23c.
+
 
 | # | Functional area | Key requirements | L | I | Score | Priority | Depth | Rationale |
 |---|---|---|---|---|---|---|---|---|
@@ -950,6 +956,9 @@ Result: 10 partitions replace 200+ country values; each partition is one TC, and
 
 ### 6.1.11.2 Boundary value analysis: discount thresholds 0/10/20% and margin floor (DEC-038; BRL-APR-04)
 
+> **Erratum v1.2 (E-V-17):** superseded by promotional window 09:00–21:00 recipient local time unless a stricter rule pack applies (DEC-777). See Part 11.23c.
+
+
 Interpretation: discount stored to 2 decimal places of a percent; thresholds as written in BRL-APR-04 (0 < d ≤ 10; 10 < d ≤ 20; d > 20); "margin below floor" means strictly less than 25.00% [ASSUMPTION-184]. Base case margin = 40% unless stated.
 
 | TC hint | Discount d (%) | Margin after discount (%) | Expected required approver(s) | Note |
@@ -1512,6 +1521,9 @@ sequenceDiagram
 
 ### 6.1.14.3 Accessibility test plan (WCAG 2.2 AA)
 
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
+
 | Layer | What | Tool / method | Cadence | Pass criteria |
 |---|---|---|---|---|
 | Components | Every shared component: roles, names, states, focus management, contrast tokens | vitest-axe + RTL keyboard tests | G1 | 0 violations |
@@ -1528,6 +1540,9 @@ sequenceDiagram
 Accessibility defects that block a P0 journey for keyboard or screen-reader users are S2 (§6.1.8.2) and block release in P0 areas (RBR-2).
 
 ### 6.1.14.4 DR / failover drill plan (RPO ≤ 15 min, RTO ≤ 4 h)
+
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
 
 **Measurement method.** A heartbeat writer inserts a timestamped row every 10 s in `staging` during the drill. **RPO measured** = failure-injection time − timestamp of the last heartbeat present after restore. **RTO measured** = time the incident is declared → `/ready` green **and** post-restore smoke and integrity checks pass.
 
@@ -1613,6 +1628,9 @@ R = responsible, A = accountable, C = consulted, I = informed.
 | Independent review | n/a | n/a | n/a | n/a | n/a | n/a | n/a | R (independent reviewer) |
 
 ### 6.1.15.2 Test effort range (estimate)
+
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
 
 | Item | Low | High | Basis |
 |---|---|---|---|

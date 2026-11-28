@@ -16,6 +16,9 @@
 
 ### 9.9.0 Scope, method and the non-negotiable safety envelope
 
+> **Erratum v1.2 (E-V-02, E-V-21):** superseded by payments and bid submission allowed only under a bounded mandate; AI still never signs contracts or sets prices autonomously (DEC-779/780/781); automatic bid submission allowed under a per-tender bounded mandate (DEC-781). See Part 11.23c.
+
+
 **What the client asked.** "Take the best personas who have strong expertise in this area and provide advanced features and functionalities and AI Agents. First identify, list them, come up with the improvisation plan and then incorporate it." This batch does exactly that for the **platform, data, security, reliability, cost and experience** layers. Workstreams X1 (Part 9.7, AI intelligence) and X2 (Part 9.8, revenue growth) cover the business-facing agents; X3 strengthens the foundation they run on.
 
 **Method.** (1) Six experts read the baseline and the source pack and record specific gaps with citations (9.9.1). (2) The gaps become 30 candidate capabilities, each tested for "already covered?" and prioritized with MoSCoW (9.9.2). (3) The plan sequences them into releases A1–A3 with gates (9.9.3). (4) Architecture, NFRs and the threat model are uplifted (9.9.4). (5) Each capability is specified to build depth (9.9.5) with agents, automations, workflows, FRs, stories, tests, effort and cost in file b.
@@ -53,6 +56,9 @@ Each expert is a role the team applies, not a hire. The "gaps found" column cite
 ---
 
 ## 9.9.2 Opportunity inventory
+
+> **Erratum v1.2 (E-V-28):** superseded by signed outbound webhooks are in the Release 1 developer platform (DEC-645/785). See Part 11.23c.
+
 
 **MoSCoW in this part** is relative to the X3 package (Must = recommended minimum if DEC-400 is approved). "Why not already covered" names the nearest baseline item and the delta.
 
@@ -413,6 +419,9 @@ flowchart TD
 
 #### ADR-138 Developer platform as a separate surface and audience
 
+> **Erratum v1.2 (E-V-28):** superseded by signed outbound webhooks are in the Release 1 developer platform (DEC-645/785). See Part 11.23c.
+
+
 | Field | Content |
 |---|---|
 | Status | Proposed (A3) [RECOMMENDATION-744]; requires DEC-403 because Part 3.2 says outbound webhooks are not offered in W0–W6 [CONFLICT-721] |
@@ -617,6 +626,9 @@ Each specification uses the same rows. Business rules are numbered `BRL-X3-<cap>
 | Safety | S2, S7 |
 
 ### 9.9.5.10 CAP-X3-10 Chaos engineering and automated game days
+
+> **Erratum v1.2 (E-V-05):** superseded by hosting is Vercel + Supabase + AWS in Mumbai with an EU stack (DEC-421/772/786). See Part 11.23c.
+
 
 | Aspect | Specification |
 |---|---|

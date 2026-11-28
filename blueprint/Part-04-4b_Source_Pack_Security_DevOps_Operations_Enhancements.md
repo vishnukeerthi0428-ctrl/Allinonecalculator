@@ -760,6 +760,9 @@ Feature: Budget pause (US-04-EI01, FR-ENH-I-051)
 
 ### 4.4.5.10 Effort estimate for the enhancements (estimate, person-days)
 
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 Basis: the DEC-005 team; reuse of existing pipeline stages and libraries; estimates as ranges (low = tooling already familiar, high = first-time setup and tuning).
 
 | Work item | Low | High | Basis |
@@ -782,6 +785,9 @@ Cost at the blended rates used in Part 8.2 §8.2.7.1 (estimate; formula: PD × b
 ---
 
 ## 4.4.6 Conflicts and proposed resolutions
+
+> **Erratum v1.2 (E-V-09, E-V-19):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787); investor/fundraising mode and the Investment Automation product are in scope, gated by securities rule packs (DEC-783). See Part 11.23c.
+
 
 | ID | Conflict | Source position | Blueprint position | Proposed resolution |
 |---|---|---|---|---|

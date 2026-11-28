@@ -170,7 +170,7 @@ growth-engine/
 | Hosting | Vercel projects `website-in`, `website-eu` (functions bom1 / fra1, DEC-786) | Vercel projects `admin-in`, `admin-eu` |
 | Origin | Startup domains, platform domain per zone | `admin.in.<domain>`, `admin.eu.<domain>` |
 | Calls | `api.{zone}.<domain>` via Vercel rewrite (one pattern per environment, recorded in A090); never Supabase (DEC-421, SA-01) | same |
-| Auth | BFF-web session cookie (R16, R17, R21) | BFF-admin session cookie (R01–R15), step-up for privileged actions |
+| Auth | BFF-web session cookie (R16, R17, R22) | BFF-admin session cookie (R01–R15), step-up for privileged actions |
 | Client | `@growth/api-client` generated from `openapi.yaml`, namespace filter `public`, `portal`, `investor` | namespace filter `admin`, `tenant-api` |
 | Budgets | ≤ 150 KB gzip JS per public route (NFR-043) | ≤ 350 KB main (NFR-044) |
 | Env | FE-01…FE-06 (§11.24.5.2); no secrets | same |

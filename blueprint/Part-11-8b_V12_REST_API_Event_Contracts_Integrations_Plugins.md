@@ -668,6 +668,63 @@ flowchart TD
 | US-20-YH01 | EP-20 | As a billing administrator I want invoice previews with tax lines so that customers see correct totals before issue | FR-V12-H-039 | Release 2 |
 | US-21-YH01 | EP-21 | As an SRE I want to declare incidents and publish status on an independent host so that customers are informed during outages | FR-V12-H-041 | Release 2 |
 
+**Acceptance criteria added in release v1.2** (Part 11.25 §11.25.3.6; these stories had a statement only). Format as the Part 5.1a template: one feature per story, a happy-path and a negative or edge scenario, IDs `AC-<epic><story>-nn`.
+
+```gherkin
+Feature: US-01-YH02 OAuth client credentials with short-lived, audience-bound tokens (FR-V12-H-002)
+  @happy
+  Scenario: AC-01YH02-01 Token issued for one audience and scope
+    Given client "erp-connector" registered with scope "leads:read"
+    When it requests a token with the client-credentials grant
+    Then the token carries audience "api" and scope "leads:read" and expires within the configured lifetime
+  @neg
+  Scenario: AC-01YH02-02 Expired or wrong-audience token
+    When an expired token or a token for another audience is presented
+    Then the API returns 401 and no data is returned
+
+Feature: US-01-YH04 Developer portal and sandbox without production data (FR-V12-H-006, FR-V12-H-007)
+  @happy
+  Scenario: AC-01YH04-01 Executable examples in the sandbox
+    Given a developer signed in to the portal
+    When she runs an example from the API reference
+    Then it executes against the sandbox and the SDK contract tests pass against the sandbox
+  @neg
+  Scenario: AC-01YH04-02 No production data in the sandbox
+    When the sandbox is queried for a production tenant's records
+    Then nothing is returned and sandbox keys are rejected by production endpoints
+
+Feature: US-03-YH01 Withdrawals, incidents with clocks and notifications (FR-V12-H-013)
+  @happy
+  Scenario: AC-03YH01-01 Incident clock
+    Given the DPO opens a personal-data incident for an EU tenant
+    Then the incident register starts the 72-hour notification clock and records each notification with timestamp
+  @neg
+  Scenario: AC-03YH01-02 Withdrawal stops processing
+    When a data principal withdraws consent for marketing
+    Then the consent ledger records the withdrawal and the next marketing send is blocked with CONSENT_WITHDRAWN
+
+Feature: US-20-YH01 Invoice preview with tax lines (FR-V12-H-039)
+  @happy
+  Scenario: AC-20YH01-01 Tax per line from approved rules
+    Given an invoice for an Indian customer in Karnataka billed from Karnataka
+    When the billing administrator previews it
+    Then each line shows CGST and SGST from the approved tax rule table and the total equals the sum in minor units
+  @neg
+  Scenario: AC-20YH01-02 No approved rule
+    Given a market whose tax rules are not approved
+    Then the preview is blocked with TAX_RULE_NOT_APPROVED and no invoice is issued
+
+Feature: US-21-YH01 Incident declaration and independent status page (FR-V12-H-041)
+  @happy
+  Scenario: AC-21YH01-01 SEV1 published on the independent host
+    Given the SRE declares a SEV1 incident
+    Then an approved notice is published on the status host within 1 hour and updated every 2 hours
+  @neg
+  Scenario: AC-21YH01-02 Platform outage does not take the status page down
+    Given the primary platform is unavailable
+    Then the status page still serves from its independent host and an overdue critical vulnerability blocks the next release
+```
+
 ```gherkin
 Feature: API keys (US-01-YH01)
   Scenario: Key shown once and stored as hash
@@ -900,10 +957,10 @@ This proposal does **not** change Ledger A (DEC-230), the running budget (DEC-42
 
 | Tag | Conflict | V12 position | Blueprint / Founder position | Proposed resolution | Status |
 |---|---|---|---|---|---|
-| CONFLICT-886 | Developer platform and connector framework in R1 | ENT-API-01/03/05 and ENT-INT-01/05 are P0 in R1 (private beta) | Part 9.9a CAP-X3-23 in A3 (Year 2), not approved (DEC-417 approves A1 only); Release 1 budget/team/dates fixed (DEC-228, DEC-230, DEC-422) | Adopt V12 requirements. Fund CR-V12-H-01 H1, H7 and the R1 part of H10 (≈ 36 / 53 / 74 pd) as a change request; if the Founder declines, deliver them in Release 2 and keep Release 1 private beta on browser-only access | **Pending Founder decision** (DEC-644, DEC-657) |
-| CONFLICT-887 | Enterprise identity in R1/R2 | SSO, domains, MFA policy, break-glass R1; SCIM, custom roles R2 | DEC-019 shared IdP; no per-tenant SSO/SCIM/custom roles; budgets as above | Adopt; SSO in Release 1 only if the IdP passes Sprint 0 check 13 (brokering) at no licence cost; SCIM and custom roles in Release 2 | **Pending Founder decision** (DEC-648, DEC-657) |
-| CONFLICT-888 | New connector kinds | CRM and SMS-DLT connectors in R1; voice SVC-26; warehouse | Native CRM only; "no SMS in W0–W5" (Part 3.2 AD-02 fallback); no voice | Adopt as adapters AD-V12-H-01…04; CRM as tenant BYO (no platform licence); SMS-DLT funded via B25; voice R3+ | **Pending Founder decision** (DEC-650, DEC-657) |
-| CONFLICT-889 | API ingress under DEC-421 | — (V12 is host-neutral) | DEC-421: Vercel functions process no personal data; Part 3.2 same-origin, CORS disabled | Option A Vercel rewrites with transit-only DPA and metadata logging (§11.8.5.10) | **Pending Founder decision** (DEC-652) |
+| CONFLICT-886 | Developer platform and connector framework in R1 | ENT-API-01/03/05 and ENT-INT-01/05 are P0 in R1 (private beta) | Part 9.9a CAP-X3-23 in A3 (Year 2), not approved (DEC-417 approves A1 only); Release 1 budget/team/dates fixed (DEC-228, DEC-230, DEC-422) | Adopt V12 requirements. Fund CR-V12-H-01 H1, H7 and the R1 part of H10 (≈ 36 / 53 / 74 pd) as a change request; if the Founder declines, deliver them in Release 2 and keep Release 1 private beta on browser-only access | **Adopted (DEC-785)** (DEC-644, DEC-657) |
+| CONFLICT-887 | Enterprise identity in R1/R2 | SSO, domains, MFA policy, break-glass R1; SCIM, custom roles R2 | DEC-019 shared IdP; no per-tenant SSO/SCIM/custom roles; budgets as above | Adopt; SSO in Release 1 only if the IdP passes Sprint 0 check 13 (brokering) at no licence cost; SCIM and custom roles in Release 2 | **Adopted (DEC-784)** (DEC-648, DEC-657) |
+| CONFLICT-888 | New connector kinds | CRM and SMS-DLT connectors in R1; voice SVC-26; warehouse | Native CRM only; "no SMS in W0–W5" (Part 3.2 AD-02 fallback); no voice | Adopt as adapters AD-V12-H-01…04; CRM as tenant BYO (no platform licence); SMS-DLT funded via B25; voice R3+ | **Adopted (DEC-785)** (DEC-650, DEC-657) |
+| CONFLICT-889 | API ingress under DEC-421 | — (V12 is host-neutral) | DEC-421: Vercel functions process no personal data; Part 3.2 same-origin, CORS disabled | Option A Vercel rewrites with transit-only DPA and metadata logging (§11.8.5.10) | **Adopted (DEC-786)** (DEC-652) |
 | CONFLICT-890 | "Investor search" label on VND-54/73 | Category "Public market / investor search" | DEC-002 excludes investor discovery and fundraising | Use for commercial market research only; investor use excluded; negative test TC-V12-H-095 | Resolved (DEC-656; consistent with DEC-002, no change to a Founder decision) |
 | CONFLICT-891 | Bearer JWT as the global security scheme | Appendix A/A2 `bearerAuth` JWT | DEC-019: no bearer tokens from browsers | Two schemes; bearer only on the developer host, SCIM and token callers of `/api/v2` | Resolved (DEC-643) |
 | CONFLICT-892 | Pagination, version field, deprecation period, outbound webhooks | Page {items, next_cursor}, limit ≤ 200; Record.version; ≥ 12 months; signed webhooks | Part 3.2 {data, page}, ≤ 100; revision; ≥ 6 months; webhooks not offered | Adopt V12 (blueprint text, not a Founder decision) | Resolved (DEC-641, DEC-645, DEC-646) |
@@ -916,20 +973,20 @@ This proposal does **not** change Ledger A (DEC-230), the running budget (DEC-42
 | DEC-641 | **Wire conventions:** list `{items, next_cursor}`, `limit` default 50 max 200; wire field `version`; `expected_version` accepted; error envelope superset `{code, message, correlation_id, field_errors}` + RFC 9457 members | Customer revision V12 (28 Nov 2026) | Amends Part 3.2 §3.2.1.6, §3.2.1.8, §3.2.1.9 |
 | DEC-642 | **Status codes:** blueprint superset declared on every operation; `422 SCHEMA_INVALID` added; new codes `API_KEY_REVOKED`, `API_KEY_EXPIRED`, `TOKEN_EXPIRED`, `INSUFFICIENT_SCOPE`, `IP_NOT_ALLOWED`, `VERSION_PRECONDITION_MISMATCH`, `GATE_INCOMPLETE`, `CHECK_PENDING` | Customer revision V12 (28 Nov 2026) | Amends Part 3.2 §3.2.1.9–10 |
 | DEC-643 | **Security schemes:** `bffSession` for browser namespaces (DEC-019 unchanged); `bearerAuth` (API keys, OAuth JWT, SCIM tokens) only on the developer host and token callers of `/api/v2`; bearer on browser ingress → 401 | Customer revision V12 (28 Nov 2026) | Resolves CONFLICT-891; ADR-205 |
-| DEC-644 | **Developer platform phase:** ENT-API-01/03/05 in Release 1, ENT-API-02/04/07 in Release 2, ENT-API-06 in W6 | **Pending Founder decision** | CONFLICT-886; supersedes the A3 placement of CAP-X3-23 if approved |
+| DEC-644 | **Developer platform phase:** ENT-API-01/03/05 in Release 1, ENT-API-02/04/07 in Release 2, ENT-API-06 in W6 | **Adopted (DEC-785)** | CONFLICT-886; supersedes the A3 placement of CAP-X3-23 if approved |
 | DEC-645 | **Outbound webhooks offered:** HMAC-SHA-256 over timestamp + event ID + body, ± 300 s freshness, 6 attempts in 24 h, delivery log and replay, reference-only projection of 24 event types | Customer revision V12 (28 Nov 2026) | Amends Part 3.2 §3.2.1.13 ("not offered"); ADR-206; delivery timing follows DEC-644 |
 | DEC-646 | **Deprecation:** ≥ 12 months' notice for breaking changes to published contracts; headers, changelog, notice to key owners; Admin-only operations keep the release-coupled rule | Customer revision V12 (28 Nov 2026) | Amends Part 3.2 §3.2.1.3 |
 | DEC-647 | **Run gateway** `/api/v2/workflow-runs` (create, read, approvals, cancel, steps) with RunRequest/BusinessContext DTOs, Appendix B validation, dry run, gate order of §11.8.5.11 | Customer revision V12 (28 Nov 2026) | ADR-208; v2 namespace introduced without retiring v1 |
-| DEC-648 | **Enterprise identity and access APIs:** SSO per tenant, domain verification, MFA/session policy with DEC-077 floor, break-glass, SCIM 2.0, custom roles with SoD | **Pending Founder decision** (release and funding) | CONFLICT-887; ADR-207; Sprint 0 identity check 13 |
+| DEC-648 | **Enterprise identity and access APIs:** SSO per tenant, domain verification, MFA/session policy with DEC-077 floor, break-glass, SCIM 2.0, custom roles with SoD | **Adopted (DEC-784)** (release and funding) | CONFLICT-887; ADR-207; Sprint 0 identity check 13 |
 | DEC-649 | **Connector framework and activation gate** CF-01…12; contact-data connectors blocked until DEC-V9-04 closes (stricter than the AD-19 W1 pilot) | Customer revision V12 (28 Nov 2026) | Amends Part 3.2 AD-19 wave; adds CF-11 to Part 7.4b PG gate |
-| DEC-650 | **New adapters** AD-V12-H-01…11 (CRM BYO, SMS-DLT/RCS, voice, warehouse, identity federation, webhook delivery, SIEM, tax, tenant KMS, status publisher, ESP alternates) | **Pending Founder decision** for CRM and SMS-DLT in Release 1; others Customer revision V12 | CONFLICT-888 |
+| DEC-650 | **New adapters** AD-V12-H-01…11 (CRM BYO, SMS-DLT/RCS, voice, warehouse, identity federation, webhook delivery, SIEM, tax, tenant KMS, status publisher, ESP alternates) | **Adopted (DEC-785)** for CRM and SMS-DLT in Release 1; others Customer revision V12 | CONFLICT-888 |
 | DEC-651 | **Plugin register:** VND-01…97 adopted as canonical IDs on the matching IC rows; decisions unchanged; GC-09/10/11/13/15 procedures adopted; OSS components of §11.8.5.9 | Customer revision V12 (28 Nov 2026) | Part 7.4a register keyed by VND; F_integration_candidates unchanged |
-| DEC-652 | **API hosting under DEC-421:** API ingress on AWS; SPAs on Vercel reach the API through external rewrites (Option A) with origin-verify and metadata-only logging; webhooks, developer API and SCIM direct to AWS | **Pending Founder decision** | CONFLICT-889; ADR-209 |
+| DEC-652 | **API hosting under DEC-421:** API ingress on AWS; SPAs on Vercel reach the API through external rewrites (Option A) with origin-verify and metadata-only logging; webhooks, developer API and SCIM direct to AWS | **Adopted (DEC-786)** | CONFLICT-889; ADR-209 |
 | DEC-653 | **Status page** on an independent static host fed by approved notices | Customer revision V12 (28 Nov 2026) | ENT-OPS-02; RECOMMENDATION-900; B27 proposal |
 | DEC-654 | **Event catalogue additions:** 24 rows / 49 event types and the outbound projection v1 | Customer revision V12 (28 Nov 2026) | Adds to Part 3.2 §3.2.3.3 |
 | DEC-655 | **V12 phase mapping** R0/R1 → Release 1, R2 → Release 2, R3 → W6, R4/R5 → Year 2+ for API and integration scope | Customer revision V12 (28 Nov 2026), subject to DEC-644/648/650 | ASSUMPTION-893 |
 | DEC-656 | **Market search providers** (VND-54/73) limited to commercial market research; investor discovery stays excluded | Customer revision V12 (28 Nov 2026), consistent with DEC-002 | CONFLICT-890 resolved |
-| DEC-657 | **CR-V12-H-01** development ₹5.00 / 9.26 / 15.55 L (R1–R2) + ₹0.91–3.00 L later + ₹0.5–1.5 L pen-test scope; running ₹300–3,700/month | **Pending Founder decision** | Outside Ledger A and DEC-422 |
+| DEC-657 | **CR-V12-H-01** development ₹5.00 / 9.26 / 15.55 L (R1–R2) + ₹0.91–3.00 L later + ₹0.5–1.5 L pen-test scope; running ₹300–3,700/month | **Adopted (DEC-790)** | Outside Ledger A and DEC-422 |
 | DEC-658 | **MOB-16 handoff in production** uses the authenticated server-owned application draft (API-504 revision, API-ENH-D-019 read); the JSON fingerprint is demo-only | Customer revision V12 (28 Nov 2026) | FR-V12-H-034 |
 | DEC-659 | **V8 AI-governance and compliance routes** adopted (API-V12-H-049…062 plus aliases) | Customer revision V12 (28 Nov 2026) | FR-V12-H-012/013 |
 
@@ -1028,4 +1085,4 @@ This proposal does **not** change Ledger A (DEC-230), the running budget (DEC-42
 | 8 | No restricted data routed to free-tier models | Pass | Content screening keeps Restricted text off Tier 2; DEC-418 routing unchanged |
 | 9 | Consistent with earlier parts | Pass with findings | Five inconsistencies reported (§11.8.8.5); safety invariants unchanged: no scope or route lets AI or API keys sign, pay, submit bids, set prices or send consequential actions without a human; L1 cap, PDP dispatch recheck, RLS isolation and Website/Admin separation retained |
 
-**Status: Part 11 Batch 11.8 complete. 1176 V12 aspects reconciled: 1168 Matched, 7 Pending Founder decision (CONFLICT-886/887/888), 1 Not applicable; 76 new operations (blueprint 579 → 655), 49 new event types and a 24-type outbound webhook projection, 11 adapters, 12 connector-framework clauses, 97 VND decisions confirmed; DEC-640…659 (five pending the Founder), ADR-205…209; CR-V12-H-01 ₹5.00–15.55 L one-time (R1–R2) and ₹300–3,700/month proposed outside the approved budgets.**
+**Status: Part 11 Batch 11.8 complete. 1176 V12 aspects reconciled: 1168 Matched, 7 Pending Founder decision (CONFLICT-886/887/888), 1 Not applicable; 76 new operations (blueprint 579 → 655), 49 new event types and a 24-type outbound webhook projection, 11 adapters, 12 connector-framework clauses, 97 VND decisions confirmed; DEC-640…659 (five pending the Founder), ADR-205…209; CR-V12-H-01 ₹5.00–15.55 L one-time (R1–R2) and ₹300–3,700/month proposed outside the approved budgets.** *(v1.2: every item counted here as "Pending Founder decision" was adopted by DEC-770…791 — Part 11.14; read as Adopted. Part 11.25.)*

@@ -123,7 +123,7 @@
  "fr_uncovered": 0,
  "fr_covered_without_ac": 0,
  "no_ac": [],
- "stories_with_ac": 672,
+ "stories_with_ac": 721,
  "uncovered": [],
  "fr": {
   "FR-V12-A-001": {
@@ -328,12 +328,12 @@
    "def": {
     "file": "Part-11-1b_V12_Business_Requirements.md",
     "line": 33,
-    "text": "**Product separation**: the Investment Automation product is separate; only libraries/patterns are reused; no implicit cross-product access; no investor entity, route, filter or term (DEC-002, DEC-058, BRL-TEN-12)",
+    "text": "**Product separation** (amended v1.2 per DEC-783, DEC-947): Sales & Marketing (SM) and Investment Automation (INV, Parts 11.16a\u2013e) are separate product codes with separate entitlements; only libraries/patterns are reused; no implicit cross-product access; investor entities, routes, filters and terms",
     "cells": [
      "FR-V12-A-006",
-     "**Product separation**: the Investment Automation product is separate; only libraries/patterns are reused; no implicit cross-product access; no investor entity, route, filter or term (DEC-002, DEC-058, BRL-TEN-12)",
+     "**Product separation** (amended v1.2 per DEC-783, DEC-947): Sales & Marketing (SM) and Investment Automation (INV, Parts 11.16a\u2013e) are separate product codes with separate entitlements; only libraries/patterns are reused; no implicit cross-product access; investor entities, routes, filters and terms exist only in the INV product code and `inv` schema, never in the SM catalogue, routes or schemas (DEC-058, BRL-TEN-12; DEC-002 investor exclusion superseded by DEC-783)",
      "BR-C14, REC-V2-10",
-     "CI build check finds no investor/fundraising term in catalogue, routes or schemas; investor-audience tokens rejected",
+     "CI build check finds no investor/fundraising term in the **SM** catalogue, routes or schemas; an SM-only tenant receives 404 on `/api/v1/investor/*` and an investor-audience token is rejected by SM endpoints; INV endpoints are reachable only with the INV entitlement",
      "Must",
      "R1-B",
      "EP-01",
@@ -8606,8 +8606,8 @@
    "def": {
     "file": "Part-11-3b_V12_Executable_Workflows_SVC01-20.md",
     "line": 1282,
-    "text": "(status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** WF-06 dispatch with PDP recheck, outbox, AU-024.",
-    "para": "**Requirement FR-V12-C-034** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** WF-06 dispatch with PDP recheck, outbox, AU-024.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Controlled email delivery: Approved message and authorized sender \u2192 Sent or blocked dispatch |\n| Trigger | Authorized business event or manual import; signed webhook if applicable (FSD: Authorized business event or manual import; signed webhook if applicable; Approved message and authorized sender) |\n| Result / acceptance | Sent or blocked dispatch; acceptance: SM-SVC-06-WF02-TC-POS and step tests (ch33) |\n| Domain contract | email_message payload schema SM-SVC-06-WF02@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-06-WF02:v2`. |\n| Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve content/campaign and eligibility; stop suppressed recipients |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 \u2192 DEC-549 Pending Founder decision] |\n| Approval gate (V12) | Approve content/campaign and eligibility; stop suppressed recipients \u00b7 approval check: Approve content/campaign and eligibility; stop suppressed recipients |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Potential external write/communication; controlled only after applicable permission and policy approval \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Communication; Workflow orchestration; Governance; Outreach; localization \u2192 AG-011 (primary), AG-012, AG-058 (WhatsApp), AG-049, AG-050 |\n| Channels / UI input controls | Email \u00b7 Approved message [text]; authorized sender [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 0 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | duplicate send rate; accepted delivery reconciliation; baseline and threshold approved in pilot; source service KPI Unauthorized sends = 0; duplicate dispatch = 0; delivery reconciliation \u226599% |",
+    "text": "(status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** WF-06 dispatch with PDP recheck, outbox, AU-024.",
+    "para": "**Requirement FR-V12-C-034** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** WF-06 dispatch with PDP recheck, outbox, AU-024.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Controlled email delivery: Approved message and authorized sender \u2192 Sent or blocked dispatch |\n| Trigger | Authorized business event or manual import; signed webhook if applicable (FSD: Authorized business event or manual import; signed webhook if applicable; Approved message and authorized sender) |\n| Result / acceptance | Sent or blocked dispatch; acceptance: SM-SVC-06-WF02-TC-POS and step tests (ch33) |\n| Domain contract | email_message payload schema SM-SVC-06-WF02@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-06-WF02:v2`. |\n| Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve content/campaign and eligibility; stop suppressed recipients |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 \u2192 DEC-549 Adopted (DEC-779)] |\n| Approval gate (V12) | Approve content/campaign and eligibility; stop suppressed recipients \u00b7 approval check: Approve content/campaign and eligibility; stop suppressed recipients |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Potential external write/communication; controlled only after applicable permission and policy approval \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Communication; Workflow orchestration; Governance; Outreach; localization \u2192 AG-011 (primary), AG-012, AG-058 (WhatsApp), AG-049, AG-050 |\n| Channels / UI input controls | Email \u00b7 Approved message [text]; authorized sender [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 0 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | duplicate send rate; accepted delivery reconciliation; baseline and threshold approved in pilot; source service KPI Unauthorized sends = 0; duplicate dispatch = 0; delivery reconciliation \u226599% |",
     "section": "SM-SVC-06-WF02 Controlled email delivery"
    },
    "stories": [
@@ -8654,8 +8654,8 @@
    "def": {
     "file": "Part-11-3b_V12_Executable_Workflows_SVC01-20.md",
     "line": 1528,
-    "text": "(status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** WF-06 WhatsApp dispatch; AU-073; AU-009.",
-    "para": "**Requirement FR-V12-C-038** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** WF-06 WhatsApp dispatch; AU-073; AU-009.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Controlled WhatsApp outreach: Eligible contact and approved message \u2192 Dispatch record |\n| Trigger | Manual request or validated upstream business event (FSD: Manual request or validated upstream business event; Eligible contact and approved message) |\n| Result / acceptance | Dispatch record; acceptance: SM-SVC-07-WF02-TC-POS and step tests (ch33) |\n| Domain contract | whatsapp_message payload schema SM-SVC-07-WF02@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-07-WF02:v2`. |\n| Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Verify opt-in and applicable template/window rules; approve campaign and suppress opt-outs |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 \u2192 DEC-549 Pending Founder decision] |\n| Approval gate (V12) | Verify opt-in and applicable template/window rules; approve campaign and suppress opt-outs \u00b7 approval check: Verify opt-in and applicable template/window rules; approve campaign and suppress opt-outs |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Potential external write/communication; controlled only after applicable permission and policy approval \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Communication; Workflow orchestration; Governance; Outreach; conversation; localization \u2192 AG-011 (primary), AG-012, AG-058 (WhatsApp), AG-049, AG-050 |\n| Channels / UI input controls | WhatsApp \u00b7 Eligible contact [text]; approved message [text] (3 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 1 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | authorized dispatch rate; duplicate send rate; baseline and threshold approved in pilot; source service KPI Ineligible template/recipient sends = 0; duplicate dispatch = 0 |",
+    "text": "(status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** WF-06 WhatsApp dispatch; AU-073; AU-009.",
+    "para": "**Requirement FR-V12-C-038** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** WF-06 WhatsApp dispatch; AU-073; AU-009.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Controlled WhatsApp outreach: Eligible contact and approved message \u2192 Dispatch record |\n| Trigger | Manual request or validated upstream business event (FSD: Manual request or validated upstream business event; Eligible contact and approved message) |\n| Result / acceptance | Dispatch record; acceptance: SM-SVC-07-WF02-TC-POS and step tests (ch33) |\n| Domain contract | whatsapp_message payload schema SM-SVC-07-WF02@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-07-WF02:v2`. |\n| Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Verify opt-in and applicable template/window rules; approve campaign and suppress opt-outs |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 \u2192 DEC-549 Adopted (DEC-779)] |\n| Approval gate (V12) | Verify opt-in and applicable template/window rules; approve campaign and suppress opt-outs \u00b7 approval check: Verify opt-in and applicable template/window rules; approve campaign and suppress opt-outs |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Potential external write/communication; controlled only after applicable permission and policy approval \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Communication; Workflow orchestration; Governance; Outreach; conversation; localization \u2192 AG-011 (primary), AG-012, AG-058 (WhatsApp), AG-049, AG-050 |\n| Channels / UI input controls | WhatsApp \u00b7 Eligible contact [text]; approved message [text] (3 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 1 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | authorized dispatch rate; duplicate send rate; baseline and threshold approved in pilot; source service KPI Ineligible template/recipient sends = 0; duplicate dispatch = 0 |",
     "section": "SM-SVC-07-WF02 Controlled WhatsApp outreach"
    },
    "stories": [
@@ -8678,8 +8678,8 @@
    "def": {
     "file": "Part-11-3b_V12_Executable_Workflows_SVC01-20.md",
     "line": 1612,
-    "text": "(status before: Partially covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** WF-23 concierge (AG-058) + WF-10 orders. **Enhancement:** Interactive commerce offers inside chat (catalogue offers, order hand-off) are new; prices never set by AI.",
-    "para": "**Requirement FR-V12-C-040** (status before: Partially covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** WF-23 concierge (AG-058) + WF-10 orders. **Enhancement:** Interactive commerce offers inside chat (catalogue offers, order hand-off) are new; prices never set by AI.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Interactive commerce conversation and journey management: Opted-in conversation, approved offering, template state \u2192 Conversation and qualified commerce enquiry |\n| Trigger | Manual; scheduled or relevant validated business event; provider webhook only where authorized (FSD: Manual; scheduled or relevant validated business event; provider webhook only where authorized; Opted-in conversation, approved offering, template state) |\n| Result / acceptance | Conversation and qualified commerce enquiry; Conversation and qualified commerce enquiry; no unapproved external side effects |\n| Domain contract | whatsapp_message payload schema SM-SVC-07-WF04@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-07-WF04:v2`. |\n| Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 \u2192 DEC-549 Pending Founder decision] |\n| Approval gate (V12) | Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. \u00b7 approval check: Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Communication; Workflow orchestration; Governance; Outreach; conversation; localization \u2192 AG-011 (primary), AG-012, AG-058 (WhatsApp), AG-049, AG-050 |\n| Channels / UI input controls | WhatsApp \u00b7 Opted-in conversation [text]; approved offering [text]; template state [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 3 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | intent accuracy; commerce handoff completeness; baseline and threshold approved in pilot; source service KPI Ineligible template/recipient sends = 0; duplicate dispatch = 0 |",
+    "text": "(status before: Partially covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** WF-23 concierge (AG-058) + WF-10 orders. **Enhancement:** Interactive commerce offers inside chat (catalogue offers, order hand-off) are new; prices never set by AI.",
+    "para": "**Requirement FR-V12-C-040** (status before: Partially covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** WF-23 concierge (AG-058) + WF-10 orders. **Enhancement:** Interactive commerce offers inside chat (catalogue offers, order hand-off) are new; prices never set by AI.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Interactive commerce conversation and journey management: Opted-in conversation, approved offering, template state \u2192 Conversation and qualified commerce enquiry |\n| Trigger | Manual; scheduled or relevant validated business event; provider webhook only where authorized (FSD: Manual; scheduled or relevant validated business event; provider webhook only where authorized; Opted-in conversation, approved offering, template state) |\n| Result / acceptance | Conversation and qualified commerce enquiry; Conversation and qualified commerce enquiry; no unapproved external side effects |\n| Domain contract | whatsapp_message payload schema SM-SVC-07-WF04@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-07-WF04:v2`. |\n| Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 \u2192 DEC-549 Adopted (DEC-779)] |\n| Approval gate (V12) | Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. \u00b7 approval check: Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Communication; Workflow orchestration; Governance; Outreach; conversation; localization \u2192 AG-011 (primary), AG-012, AG-058 (WhatsApp), AG-049, AG-050 |\n| Channels / UI input controls | WhatsApp \u00b7 Opted-in conversation [text]; approved offering [text]; template state [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 3 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | intent accuracy; commerce handoff completeness; baseline and threshold approved in pilot; source service KPI Ineligible template/recipient sends = 0; duplicate dispatch = 0 |",
     "section": "SM-SVC-07-WF04 Interactive commerce conversation and journey management"
    },
    "stories": [
@@ -8750,8 +8750,8 @@
    "def": {
     "file": "Part-11-3b_V12_Executable_Workflows_SVC01-20.md",
     "line": 2001,
-    "text": "(status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** AG-014 reply assistant; Tier 0 FAQ (AU-001); BRL-AI-03 grounding.",
-    "para": "**Requirement FR-V12-C-046** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** AG-014 reply assistant; Tier 0 FAQ (AU-001); BRL-AI-03 grounding.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Grounded enquiry and objection response: Question and approved FAQ/knowledge \u2192 Response draft or permitted reply |\n| Trigger | Manual request or validated upstream business event (FSD: Manual request or validated upstream business event; Question and approved FAQ/knowledge) |\n| Result / acceptance | Response draft or permitted reply; acceptance: SM-SVC-09-WF02-TC-POS and step tests (ch33) |\n| Domain contract | conversation payload schema SM-SVC-09-WF02@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-09-WF02:v2`. |\n| Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Review sensitive/unsupported claims, negotiation exceptions and human takeover |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 \u2192 DEC-549 Pending Founder decision] |\n| Approval gate (V12) | Review sensitive/unsupported claims, negotiation exceptions and human takeover \u00b7 approval check: Review sensitive/unsupported claims, negotiation exceptions and human takeover |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | AI knowledge and RAG; Workflow orchestration; Governance; Conversation; objection resolution; evidence retrieval \u2192 AG-014 (primary), AG-013, AG-017, AG-021 |\n| Channels / UI input controls | Website, Email, WhatsApp, CRM \u00b7 Question [text]; approved FAQ/knowledge [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 1 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | grounded answer rate; escalation recall; baseline and threshold approved in pilot; source service KPI Grounded answers \u226595%; handover SLA met \u226595% |",
+    "text": "(status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** AG-014 reply assistant; Tier 0 FAQ (AU-001); BRL-AI-03 grounding.",
+    "para": "**Requirement FR-V12-C-046** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** AG-014 reply assistant; Tier 0 FAQ (AU-001); BRL-AI-03 grounding.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Grounded enquiry and objection response: Question and approved FAQ/knowledge \u2192 Response draft or permitted reply |\n| Trigger | Manual request or validated upstream business event (FSD: Manual request or validated upstream business event; Question and approved FAQ/knowledge) |\n| Result / acceptance | Response draft or permitted reply; acceptance: SM-SVC-09-WF02-TC-POS and step tests (ch33) |\n| Domain contract | conversation payload schema SM-SVC-09-WF02@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-09-WF02:v2`. |\n| Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Review sensitive/unsupported claims, negotiation exceptions and human takeover |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 \u2192 DEC-549 Adopted (DEC-779)] |\n| Approval gate (V12) | Review sensitive/unsupported claims, negotiation exceptions and human takeover \u00b7 approval check: Review sensitive/unsupported claims, negotiation exceptions and human takeover |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | AI knowledge and RAG; Workflow orchestration; Governance; Conversation; objection resolution; evidence retrieval \u2192 AG-014 (primary), AG-013, AG-017, AG-021 |\n| Channels / UI input controls | Website, Email, WhatsApp, CRM \u00b7 Question [text]; approved FAQ/knowledge [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 1 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | grounded answer rate; escalation recall; baseline and threshold approved in pilot; source service KPI Grounded answers \u226595%; handover SLA met \u226595% |",
     "section": "SM-SVC-09-WF02 Grounded enquiry and objection response"
    },
    "stories": [
@@ -8774,8 +8774,8 @@
    "def": {
     "file": "Part-11-3b_V12_Executable_Workflows_SVC01-20.md",
     "line": 2105,
-    "text": "(status before: Partially covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** AG-050 Indic localization; WF-23. **Enhancement:** Audio/image enquiry extraction is not in the blueprint; multimodal data class rules needed.",
-    "para": "**Requirement FR-V12-C-048** (status before: Partially covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** AG-050 Indic localization; WF-23. **Enhancement:** Audio/image enquiry extraction is not in the blueprint; multimodal data class rules needed.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Multilingual multimodal enquiry resolution: Authorized audio, image or text enquiry, approved knowledge \u2192 Grounded response and case handover |\n| Trigger | Manual; scheduled or relevant validated business event; provider webhook only where authorized (FSD: Manual; scheduled or relevant validated business event; provider webhook only where authorized; Authorized audio, image or text enquiry, approved knowledge) |\n| Result / acceptance | Grounded response and case handover; Grounded response and case handover; no unapproved external side effects |\n| Domain contract | conversation payload schema SM-SVC-09-WF04@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-09-WF04:v2`. |\n| Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 \u2192 DEC-549 Pending Founder decision] |\n| Approval gate (V12) | Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. \u00b7 approval check: Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records; audio/image/video where applicable and authorized (stricter classification applies, DEC-546) |\n| Engine / agent | AI knowledge and RAG; Workflow orchestration; Governance; Conversation; objection resolution; evidence retrieval \u2192 AG-014 (primary), AG-013, AG-017, AG-021 |\n| Channels / UI input controls | Website, Email, WhatsApp, CRM \u00b7 Authorized audio [text]; image or text enquiry [text]; approved knowledge [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 1 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | multilingual intent accuracy; grounding coverage; baseline and threshold approved in pilot; source service KPI Grounded answers \u226595%; handover SLA met \u226595% |",
+    "text": "(status before: Partially covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** AG-050 Indic localization; WF-23. **Enhancement:** Audio/image enquiry extraction is not in the blueprint; multimodal data class rules needed.",
+    "para": "**Requirement FR-V12-C-048** (status before: Partially covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** AG-050 Indic localization; WF-23. **Enhancement:** Audio/image enquiry extraction is not in the blueprint; multimodal data class rules needed.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Multilingual multimodal enquiry resolution: Authorized audio, image or text enquiry, approved knowledge \u2192 Grounded response and case handover |\n| Trigger | Manual; scheduled or relevant validated business event; provider webhook only where authorized (FSD: Manual; scheduled or relevant validated business event; provider webhook only where authorized; Authorized audio, image or text enquiry, approved knowledge) |\n| Result / acceptance | Grounded response and case handover; Grounded response and case handover; no unapproved external side effects |\n| Domain contract | conversation payload schema SM-SVC-09-WF04@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-09-WF04:v2`. |\n| Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 \u2192 DEC-549 Adopted (DEC-779)] |\n| Approval gate (V12) | Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. \u00b7 approval check: Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records; audio/image/video where applicable and authorized (stricter classification applies, DEC-546) |\n| Engine / agent | AI knowledge and RAG; Workflow orchestration; Governance; Conversation; objection resolution; evidence retrieval \u2192 AG-014 (primary), AG-013, AG-017, AG-021 |\n| Channels / UI input controls | Website, Email, WhatsApp, CRM \u00b7 Authorized audio [text]; image or text enquiry [text]; approved knowledge [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 1 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | multilingual intent accuracy; grounding coverage; baseline and threshold approved in pilot; source service KPI Grounded answers \u226595%; handover SLA met \u226595% |",
     "section": "SM-SVC-09-WF04 Multilingual multimodal enquiry resolution"
    },
    "stories": [
@@ -8786,8 +8786,8 @@
    "def": {
     "file": "Part-11-3b_V12_Executable_Workflows_SVC01-20.md",
     "line": 2226,
-    "text": "(status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** WF-07 booking; AU-023; BRL-MTG-01\u202604.",
-    "para": "**Requirement FR-V12-C-049** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** WF-07 booking; AU-023; BRL-MTG-01\u202604.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Slot and booking coordination: Participant availability and preferences \u2192 Appointment record |\n| Trigger | Manual request or validated upstream business event (FSD: Manual request or validated upstream business event; Participant availability and preferences) |\n| Result / acceptance | Appointment record; acceptance: SM-SVC-10-WF01-TC-POS and step tests (ch33) |\n| Domain contract | meeting payload schema SM-SVC-10-WF01@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-10-WF01:v2`. |\n| Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Confirm invitation authorization and recording consent |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 \u2192 DEC-549 Pending Founder decision] |\n| Approval gate (V12) | Confirm invitation authorization and recording consent \u00b7 approval check: Confirm invitation authorization and recording consent |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Potential external write/communication; controlled only after applicable permission and policy approval \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Calendar; Workflow orchestration; Governance; Meeting intelligence; summarization \u2192 AG-059 (primary), AG-037, AG-045 |\n| Channels / UI input controls | CRM, Email \u00b7 Participant availability [text]; preferences [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 1 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | booking conflict rate; confirmation evidence; baseline and threshold approved in pilot; source service KPI Duplicate bookings = 0; eligible reminders completed \u226599% |",
+    "text": "(status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** WF-07 booking; AU-023; BRL-MTG-01\u202604.",
+    "para": "**Requirement FR-V12-C-049** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** WF-07 booking; AU-023; BRL-MTG-01\u202604.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Slot and booking coordination: Participant availability and preferences \u2192 Appointment record |\n| Trigger | Manual request or validated upstream business event (FSD: Manual request or validated upstream business event; Participant availability and preferences) |\n| Result / acceptance | Appointment record; acceptance: SM-SVC-10-WF01-TC-POS and step tests (ch33) |\n| Domain contract | meeting payload schema SM-SVC-10-WF01@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-10-WF01:v2`. |\n| Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Confirm invitation authorization and recording consent |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 \u2192 DEC-549 Adopted (DEC-779)] |\n| Approval gate (V12) | Confirm invitation authorization and recording consent \u00b7 approval check: Confirm invitation authorization and recording consent |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Potential external write/communication; controlled only after applicable permission and policy approval \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Calendar; Workflow orchestration; Governance; Meeting intelligence; summarization \u2192 AG-059 (primary), AG-037, AG-045 |\n| Channels / UI input controls | CRM, Email \u00b7 Participant availability [text]; preferences [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 1 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | booking conflict rate; confirmation evidence; baseline and threshold approved in pilot; source service KPI Duplicate bookings = 0; eligible reminders completed \u226599% |",
     "section": "SM-SVC-10-WF01 Slot and booking coordination"
    },
    "stories": [
@@ -8798,8 +8798,8 @@
    "def": {
     "file": "Part-11-3b_V12_Executable_Workflows_SVC01-20.md",
     "line": 2270,
-    "text": "(status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** AU-075 meeting-prep scheduler; AG-059; BRL-MTG-06.",
-    "para": "**Requirement FR-V12-C-050** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** AU-075 meeting-prep scheduler; AG-059; BRL-MTG-06.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Meeting preparation and reminders: Opportunity and agenda \u2192 Meeting brief and reminder tasks |\n| Trigger | Scheduled or manual; scoped event on change (FSD: Scheduled or manual; scoped event on change; Opportunity and agenda) |\n| Result / acceptance | Meeting brief and reminder tasks; acceptance: SM-SVC-10-WF02-TC-POS and step tests (ch33) |\n| Domain contract | meeting payload schema SM-SVC-10-WF02@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-10-WF02:v2`. |\n| Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Confirm invitation authorization and recording consent |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 \u2192 DEC-549 Pending Founder decision] |\n| Approval gate (V12) | Confirm invitation authorization and recording consent \u00b7 approval check: Confirm invitation authorization and recording consent |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records; audio/image/video where applicable and authorized (stricter classification applies, DEC-546) |\n| Engine / agent | Calendar; Workflow orchestration; Governance; Meeting intelligence; summarization \u2192 AG-059 (primary), AG-037, AG-045 |\n| Channels / UI input controls | CRM, Email \u00b7 Opportunity [text]; agenda [text] (3 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 2 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | agenda requirement coverage; reminder timing; baseline and threshold approved in pilot; source service KPI Duplicate bookings = 0; eligible reminders completed \u226599% |",
+    "text": "(status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** AU-075 meeting-prep scheduler; AG-059; BRL-MTG-06.",
+    "para": "**Requirement FR-V12-C-050** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** AU-075 meeting-prep scheduler; AG-059; BRL-MTG-06.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Meeting preparation and reminders: Opportunity and agenda \u2192 Meeting brief and reminder tasks |\n| Trigger | Scheduled or manual; scoped event on change (FSD: Scheduled or manual; scoped event on change; Opportunity and agenda) |\n| Result / acceptance | Meeting brief and reminder tasks; acceptance: SM-SVC-10-WF02-TC-POS and step tests (ch33) |\n| Domain contract | meeting payload schema SM-SVC-10-WF02@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-10-WF02:v2`. |\n| Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Confirm invitation authorization and recording consent |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 \u2192 DEC-549 Adopted (DEC-779)] |\n| Approval gate (V12) | Confirm invitation authorization and recording consent \u00b7 approval check: Confirm invitation authorization and recording consent |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records; audio/image/video where applicable and authorized (stricter classification applies, DEC-546) |\n| Engine / agent | Calendar; Workflow orchestration; Governance; Meeting intelligence; summarization \u2192 AG-059 (primary), AG-037, AG-045 |\n| Channels / UI input controls | CRM, Email \u00b7 Opportunity [text]; agenda [text] (3 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 2 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | agenda requirement coverage; reminder timing; baseline and threshold approved in pilot; source service KPI Duplicate bookings = 0; eligible reminders completed \u226599% |",
     "section": "SM-SVC-10-WF02 Meeting preparation and reminders"
    },
    "stories": [
@@ -8882,8 +8882,8 @@
    "def": {
     "file": "Part-11-3c_V12_Executable_Workflows_SVC01-20.md",
     "line": 302,
-    "text": "(status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** WF-05 social scheduling; AU-029; BRL-MKT-07.",
-    "para": "**Requirement FR-V12-C-057** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** WF-05 social scheduling; AU-029; BRL-MKT-07.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Social account and publication scheduling: Approved content and account grant \u2192 Scheduled or blocked publication |\n| Trigger | Manual request or validated upstream business event (FSD: Manual request or validated upstream business event; Approved content and account grant) |\n| Result / acceptance | Scheduled or blocked publication; acceptance: SM-SVC-12-WF01-TC-POS and step tests (ch33) |\n| Domain contract | social_post payload schema SM-SVC-12-WF01@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-12-WF01:v2`. |\n| Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve publication and response policies; platform permissions enforced |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 \u2192 DEC-549 Pending Founder decision] |\n| Approval gate (V12) | Approve publication and response policies; platform permissions enforced \u00b7 approval check: Approve publication and response policies; platform permissions enforced |\n| Operating mode / side effect / modalities | Manual / supervised review; preparation only if gate not satisfied \u00b7 Potential external write/communication; controlled only after applicable permission and policy approval \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Communication; Workflow orchestration; Governance; Market intelligence; content adaptation \u2192 AG-018 (social/SEO drafting), AG-027 (listening, visibility) |\n| Channels / UI input controls | Social \u00b7 Approved content [text]; account grant [text] (3 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 0 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | schedule accuracy; duplicate publication count; baseline and threshold approved in pilot; source service KPI Unauthorized publication = 0; provider status reconciled \u226599% |",
+    "text": "(status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** WF-05 social scheduling; AU-029; BRL-MKT-07.",
+    "para": "**Requirement FR-V12-C-057** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** WF-05 social scheduling; AU-029; BRL-MKT-07.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Social account and publication scheduling: Approved content and account grant \u2192 Scheduled or blocked publication |\n| Trigger | Manual request or validated upstream business event (FSD: Manual request or validated upstream business event; Approved content and account grant) |\n| Result / acceptance | Scheduled or blocked publication; acceptance: SM-SVC-12-WF01-TC-POS and step tests (ch33) |\n| Domain contract | social_post payload schema SM-SVC-12-WF01@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-12-WF01:v2`. |\n| Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve publication and response policies; platform permissions enforced |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 \u2192 DEC-549 Adopted (DEC-779)] |\n| Approval gate (V12) | Approve publication and response policies; platform permissions enforced \u00b7 approval check: Approve publication and response policies; platform permissions enforced |\n| Operating mode / side effect / modalities | Manual / supervised review; preparation only if gate not satisfied \u00b7 Potential external write/communication; controlled only after applicable permission and policy approval \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Communication; Workflow orchestration; Governance; Market intelligence; content adaptation \u2192 AG-018 (social/SEO drafting), AG-027 (listening, visibility) |\n| Channels / UI input controls | Social \u00b7 Approved content [text]; account grant [text] (3 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 0 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | schedule accuracy; duplicate publication count; baseline and threshold approved in pilot; source service KPI Unauthorized publication = 0; provider status reconciled \u226599% |",
     "section": "SM-SVC-12-WF01 Social account and publication scheduling"
    },
    "stories": [
@@ -8920,8 +8920,8 @@
    "def": {
     "file": "Part-11-3c_V12_Executable_Workflows_SVC01-20.md",
     "line": 428,
-    "text": "(status before: Not covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** \u2014. **Enhancement:** Community response queue and social trend coordination are not in the blueprint.",
-    "para": "**Requirement FR-V12-C-060** (status before: Not covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** \u2014. **Enhancement:** Community response queue and social trend coordination are not in the blueprint.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Community response and social trend coordination: Permitted social events, approved response playbook \u2192 Trend report and approved-response queue |\n| Trigger | Manual; scheduled or relevant validated business event; provider webhook only where authorized (FSD: Manual; scheduled or relevant validated business event; provider webhook only where authorized; Permitted social events, approved response playbook) |\n| Result / acceptance | Trend report and approved-response queue; Trend report and approved-response queue; no unapproved external side effects |\n| Domain contract | social_post payload schema SM-SVC-12-WF04@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-12-WF04:v2`. |\n| Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 \u2192 DEC-549 Pending Founder decision] |\n| Approval gate (V12) | Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. \u00b7 approval check: Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |\n| Operating mode / side effect / modalities | Manual / supervised review; preparation only if gate not satisfied \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Communication; Workflow orchestration; Governance; Market intelligence; content adaptation \u2192 AG-018 (social/SEO drafting), AG-027 (listening, visibility) |\n| Channels / UI input controls | Social \u00b7 Permitted social events [text]; approved response playbook [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 2 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | trend precision; approved-response queue accuracy; baseline and threshold approved in pilot; source service KPI Unauthorized publication = 0; provider status reconciled \u226599% |",
+    "text": "(status before: Not covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** \u2014. **Enhancement:** Community response queue and social trend coordination are not in the blueprint.",
+    "para": "**Requirement FR-V12-C-060** (status before: Not covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** \u2014. **Enhancement:** Community response queue and social trend coordination are not in the blueprint.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Community response and social trend coordination: Permitted social events, approved response playbook \u2192 Trend report and approved-response queue |\n| Trigger | Manual; scheduled or relevant validated business event; provider webhook only where authorized (FSD: Manual; scheduled or relevant validated business event; provider webhook only where authorized; Permitted social events, approved response playbook) |\n| Result / acceptance | Trend report and approved-response queue; Trend report and approved-response queue; no unapproved external side effects |\n| Domain contract | social_post payload schema SM-SVC-12-WF04@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-12-WF04:v2`. |\n| Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 \u2192 DEC-549 Adopted (DEC-779)] |\n| Approval gate (V12) | Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. \u00b7 approval check: Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |\n| Operating mode / side effect / modalities | Manual / supervised review; preparation only if gate not satisfied \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Communication; Workflow orchestration; Governance; Market intelligence; content adaptation \u2192 AG-018 (social/SEO drafting), AG-027 (listening, visibility) |\n| Channels / UI input controls | Social \u00b7 Permitted social events [text]; approved response playbook [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 2 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | trend precision; approved-response queue accuracy; baseline and threshold approved in pilot; source service KPI Unauthorized publication = 0; provider status reconciled \u226599% |",
     "section": "SM-SVC-12-WF04 Community response and social trend coordination"
    },
    "stories": [
@@ -8994,8 +8994,8 @@
    "def": {
     "file": "Part-11-3c_V12_Executable_Workflows_SVC01-20.md",
     "line": 831,
-    "text": "(status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-798]. **Blueprint:** WF-05 activation (AU-032 caps, AU-009 recheck, AU-026).",
-    "para": "**Requirement FR-V12-C-066** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-798]. **Blueprint:** WF-05 activation (AU-032 caps, AU-009 recheck, AU-026).\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Budget-controlled campaign activation: Approved campaign and spend cap \u2192 Activation or blocked action |\n| Trigger | Manual request or validated upstream business event (FSD: Manual request or validated upstream business event; Approved campaign and spend cap) |\n| Result / acceptance | Activation or blocked action; acceptance: SM-SVC-14-WF02-TC-POS and step tests (ch33) |\n| Domain contract | ad_campaign payload schema SM-SVC-14-WF02@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-14-WF02:v2`. |\n| Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Explicit campaign/audience/spend approval; no autonomous uncapped spend |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: \u2264 L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 \u2192 DEC-548 Pending Founder decision] |\n| Approval gate (V12) | Explicit campaign/audience/spend approval; no autonomous uncapped spend \u00b7 approval check: Explicit campaign/audience/spend approval; no autonomous uncapped spend |\n| Operating mode / side effect / modalities | Manual / supervised review; preparation only if gate not satisfied \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Experimentation; Workflow orchestration; Governance; Campaign optimization; attribution analysis \u2192 AG-051 (primary), AG-052, AG-053 |\n| Channels / UI input controls | Paid ads \u00b7 Approved campaign [text]; spend cap [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 0 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | unauthorized spend count; reconciliation rate; baseline and threshold approved in pilot; source service KPI Unapproved spend = 0; budget enforcement 100%; attribution completeness tracked |",
+    "text": "(status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798]. **Blueprint:** WF-05 activation (AU-032 caps, AU-009 recheck, AU-026).",
+    "para": "**Requirement FR-V12-C-066** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798]. **Blueprint:** WF-05 activation (AU-032 caps, AU-009 recheck, AU-026).\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Budget-controlled campaign activation: Approved campaign and spend cap \u2192 Activation or blocked action |\n| Trigger | Manual request or validated upstream business event (FSD: Manual request or validated upstream business event; Approved campaign and spend cap) |\n| Result / acceptance | Activation or blocked action; acceptance: SM-SVC-14-WF02-TC-POS and step tests (ch33) |\n| Domain contract | ad_campaign payload schema SM-SVC-14-WF02@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-14-WF02:v2`. |\n| Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Explicit campaign/audience/spend approval; no autonomous uncapped spend |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: \u2264 L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 \u2192 DEC-548 Adopted (DEC-779)] |\n| Approval gate (V12) | Explicit campaign/audience/spend approval; no autonomous uncapped spend \u00b7 approval check: Explicit campaign/audience/spend approval; no autonomous uncapped spend |\n| Operating mode / side effect / modalities | Manual / supervised review; preparation only if gate not satisfied \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Experimentation; Workflow orchestration; Governance; Campaign optimization; attribution analysis \u2192 AG-051 (primary), AG-052, AG-053 |\n| Channels / UI input controls | Paid ads \u00b7 Approved campaign [text]; spend cap [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 0 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | unauthorized spend count; reconciliation rate; baseline and threshold approved in pilot; source service KPI Unapproved spend = 0; budget enforcement 100%; attribution completeness tracked |",
     "section": "SM-SVC-14-WF02 Budget-controlled campaign activation"
    },
    "stories": [
@@ -9018,8 +9018,8 @@
    "def": {
     "file": "Part-11-3c_V12_Executable_Workflows_SVC01-20.md",
     "line": 935,
-    "text": "(status before: Partially covered; after: Pending Founder decision on authority only) [CONFLICT-798]. **Blueprint:** WF-20 experiment lifecycle; AU-065; AU-098; AG-052. **Enhancement:** Incrementality measurement with spend cap per variant partially specified.",
-    "para": "**Requirement FR-V12-C-068** (status before: Partially covered; after: Pending Founder decision on authority only) [CONFLICT-798]. **Blueprint:** WF-20 experiment lifecycle; AU-065; AU-098; AG-052. **Enhancement:** Incrementality measurement with spend cap per variant partially specified.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Controlled experimentation and incremental campaign performance analysis: Approved campaign, experiment design, budget, conversion events \u2192 Experiment report and recommendation |\n| Trigger | Manual; scheduled or relevant validated business event; provider webhook only where authorized (FSD: Manual; scheduled or relevant validated business event; provider webhook only where authorized; Approved campaign, experiment design, budget, conversion events) |\n| Result / acceptance | Experiment report and recommendation; Experiment report and recommendation; no unapproved external side effects |\n| Domain contract | ad_campaign payload schema SM-SVC-14-WF04@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-14-WF04:v2`. |\n| Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: \u2264 L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 \u2192 DEC-548 Pending Founder decision] |\n| Approval gate (V12) | Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. \u00b7 approval check: Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Experimentation; Workflow orchestration; Governance; Campaign optimization; attribution analysis \u2192 AG-051 (primary), AG-052, AG-053 |\n| Channels / UI input controls | Paid ads \u00b7 Approved campaign [text]; experiment design [text]; budget [number]; conversion events [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 1 rules-labeled; 2 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | incrementality confidence; cap violation count; baseline and threshold approved in pilot; source service KPI Unapproved spend = 0; budget enforcement 100%; attribution completeness tracked |",
+    "text": "(status before: Partially covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798]. **Blueprint:** WF-20 experiment lifecycle; AU-065; AU-098; AG-052. **Enhancement:** Incrementality measurement with spend cap per variant partially specified.",
+    "para": "**Requirement FR-V12-C-068** (status before: Partially covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798]. **Blueprint:** WF-20 experiment lifecycle; AU-065; AU-098; AG-052. **Enhancement:** Incrementality measurement with spend cap per variant partially specified.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Controlled experimentation and incremental campaign performance analysis: Approved campaign, experiment design, budget, conversion events \u2192 Experiment report and recommendation |\n| Trigger | Manual; scheduled or relevant validated business event; provider webhook only where authorized (FSD: Manual; scheduled or relevant validated business event; provider webhook only where authorized; Approved campaign, experiment design, budget, conversion events) |\n| Result / acceptance | Experiment report and recommendation; Experiment report and recommendation; no unapproved external side effects |\n| Domain contract | ad_campaign payload schema SM-SVC-14-WF04@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-14-WF04:v2`. |\n| Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: \u2264 L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 \u2192 DEC-548 Adopted (DEC-779)] |\n| Approval gate (V12) | Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. \u00b7 approval check: Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Experimentation; Workflow orchestration; Governance; Campaign optimization; attribution analysis \u2192 AG-051 (primary), AG-052, AG-053 |\n| Channels / UI input controls | Paid ads \u00b7 Approved campaign [text]; experiment design [text]; budget [number]; conversion events [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 1 rules-labeled; 2 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | incrementality confidence; cap violation count; baseline and threshold approved in pilot; source service KPI Unapproved spend = 0; budget enforcement 100%; attribution completeness tracked |",
     "section": "SM-SVC-14-WF04 Controlled experimentation and incremental campaign performance analysis"
    },
    "stories": [
@@ -9078,8 +9078,8 @@
    "def": {
     "file": "Part-11-3c_V12_Executable_Workflows_SVC01-20.md",
     "line": 1264,
-    "text": "(status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** AU-051 event registration; A062/A063.",
-    "para": "**Requirement FR-V12-C-073** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** AU-051 event registration; A062/A063.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Event setup and registration intake: Approved event and registration schema \u2192 Event and registration records |\n| Trigger | Authorized business event or manual import; signed webhook if applicable (FSD: Authorized business event or manual import; signed webhook if applicable; Approved event and registration schema) |\n| Result / acceptance | Event and registration records; acceptance: SM-SVC-16-WF01-TC-POS and step tests (ch33) |\n| Domain contract | event_registration payload schema SM-SVC-16-WF01@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-16-WF01:v2`. |\n| Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve event content and referral policies; follow-up permission checked |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 \u2192 DEC-549 Pending Founder decision] |\n| Approval gate (V12) | Approve event content and referral policies; follow-up permission checked \u00b7 approval check: Approve event content and referral policies; follow-up permission checked |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Calendar; Workflow orchestration; Governance; Qualification; outreach; meeting intelligence \u2192 AG-009 (primary), AG-007, AG-042; AG-013 and AG-069 for SM-SVC-16 |\n| Channels / UI input controls | Website, Email, Partner \u00b7 Approved event [text]; registration schema [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 1 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | registration accuracy; duplicate signup count; baseline and threshold approved in pilot; source service KPI Eligible reminder completion \u226599%; duplicate registration action = 0 |",
+    "text": "(status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** AU-051 event registration; A062/A063.",
+    "para": "**Requirement FR-V12-C-073** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** AU-051 event registration; A062/A063.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Event setup and registration intake: Approved event and registration schema \u2192 Event and registration records |\n| Trigger | Authorized business event or manual import; signed webhook if applicable (FSD: Authorized business event or manual import; signed webhook if applicable; Approved event and registration schema) |\n| Result / acceptance | Event and registration records; acceptance: SM-SVC-16-WF01-TC-POS and step tests (ch33) |\n| Domain contract | event_registration payload schema SM-SVC-16-WF01@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-16-WF01:v2`. |\n| Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve event content and referral policies; follow-up permission checked |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 \u2192 DEC-549 Adopted (DEC-779)] |\n| Approval gate (V12) | Approve event content and referral policies; follow-up permission checked \u00b7 approval check: Approve event content and referral policies; follow-up permission checked |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Calendar; Workflow orchestration; Governance; Qualification; outreach; meeting intelligence \u2192 AG-009 (primary), AG-007, AG-042; AG-013 and AG-069 for SM-SVC-16 |\n| Channels / UI input controls | Website, Email, Partner \u00b7 Approved event [text]; registration schema [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 1 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | registration accuracy; duplicate signup count; baseline and threshold approved in pilot; source service KPI Eligible reminder completion \u226599%; duplicate registration action = 0 |",
     "section": "SM-SVC-16-WF01 Event setup and registration intake"
    },
    "stories": [
@@ -9090,8 +9090,8 @@
    "def": {
     "file": "Part-11-3c_V12_Executable_Workflows_SVC01-20.md",
     "line": 1308,
-    "text": "(status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** AU-051 reminders; BRL-MTG-06; AU-022.",
-    "para": "**Requirement FR-V12-C-074** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** AU-051 reminders; BRL-MTG-06; AU-022.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Attendee reminders and follow-up: Registration and attendance evidence \u2192 Attendance and follow-up tasks |\n| Trigger | Scheduled or manual; scoped event on change (FSD: Scheduled or manual; scoped event on change; Registration and attendance evidence) |\n| Result / acceptance | Attendance and follow-up tasks; acceptance: SM-SVC-16-WF02-TC-POS and step tests (ch33) |\n| Domain contract | event_registration payload schema SM-SVC-16-WF02@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-16-WF02:v2`. |\n| Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve event content and referral policies; follow-up permission checked |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 \u2192 DEC-549 Pending Founder decision] |\n| Approval gate (V12) | Approve event content and referral policies; follow-up permission checked \u00b7 approval check: Approve event content and referral policies; follow-up permission checked |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Calendar; Workflow orchestration; Governance; Qualification; outreach; meeting intelligence \u2192 AG-009 (primary), AG-007, AG-042; AG-013 and AG-069 for SM-SVC-16 |\n| Channels / UI input controls | Website, Email, Partner \u00b7 Registration [text]; attendance evidence [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 3 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | eligible reminder rate; attendance match rate; baseline and threshold approved in pilot; source service KPI Eligible reminder completion \u226599%; duplicate registration action = 0 |",
+    "text": "(status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** AU-051 reminders; BRL-MTG-06; AU-022.",
+    "para": "**Requirement FR-V12-C-074** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** AU-051 reminders; BRL-MTG-06; AU-022.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Attendee reminders and follow-up: Registration and attendance evidence \u2192 Attendance and follow-up tasks |\n| Trigger | Scheduled or manual; scoped event on change (FSD: Scheduled or manual; scoped event on change; Registration and attendance evidence) |\n| Result / acceptance | Attendance and follow-up tasks; acceptance: SM-SVC-16-WF02-TC-POS and step tests (ch33) |\n| Domain contract | event_registration payload schema SM-SVC-16-WF02@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-16-WF02:v2`. |\n| Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve event content and referral policies; follow-up permission checked |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 \u2192 DEC-549 Adopted (DEC-779)] |\n| Approval gate (V12) | Approve event content and referral policies; follow-up permission checked \u00b7 approval check: Approve event content and referral policies; follow-up permission checked |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Calendar; Workflow orchestration; Governance; Qualification; outreach; meeting intelligence \u2192 AG-009 (primary), AG-007, AG-042; AG-013 and AG-069 for SM-SVC-16 |\n| Channels / UI input controls | Website, Email, Partner \u00b7 Registration [text]; attendance evidence [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 3 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | eligible reminder rate; attendance match rate; baseline and threshold approved in pilot; source service KPI Eligible reminder completion \u226599%; duplicate registration action = 0 |",
     "section": "SM-SVC-16-WF02 Attendee reminders and follow-up"
    },
    "stories": [
@@ -9114,8 +9114,8 @@
    "def": {
     "file": "Part-11-3c_V12_Executable_Workflows_SVC01-20.md",
     "line": 1393,
-    "text": "(status before: Partially covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** AU-096 attribution; WF-20. **Enhancement:** Event conversion journey report partly specified.",
-    "para": "**Requirement FR-V12-C-076** (status before: Partially covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** AU-096 attribution; WF-20. **Enhancement:** Event conversion journey report partly specified.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Event conversion and attendee journey optimization: Registration, permitted attendance and CRM outcomes \u2192 Event conversion report |\n| Trigger | Manual; scheduled or relevant validated business event; provider webhook only where authorized (FSD: Manual; scheduled or relevant validated business event; provider webhook only where authorized; Registration, permitted attendance and CRM outcomes) |\n| Result / acceptance | Event conversion report; Event conversion report; no unapproved external side effects |\n| Domain contract | event_registration payload schema SM-SVC-16-WF04@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-16-WF04:v2`. |\n| Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 \u2192 DEC-549 Pending Founder decision] |\n| Approval gate (V12) | Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. \u00b7 approval check: Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Calendar; Workflow orchestration; Governance; Qualification; outreach; meeting intelligence \u2192 AG-009 (primary), AG-007, AG-042; AG-013 and AG-069 for SM-SVC-16 |\n| Channels / UI input controls | Website, Email, Partner \u00b7 Registration [text]; permitted attendance [text]; CRM outcomes [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 1 rules-labeled; 1 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | event funnel coverage; opt-out compliance; baseline and threshold approved in pilot; source service KPI Eligible reminder completion \u226599%; duplicate registration action = 0 |",
+    "text": "(status before: Partially covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** AU-096 attribution; WF-20. **Enhancement:** Event conversion journey report partly specified.",
+    "para": "**Requirement FR-V12-C-076** (status before: Partially covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** AU-096 attribution; WF-20. **Enhancement:** Event conversion journey report partly specified.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Event conversion and attendee journey optimization: Registration, permitted attendance and CRM outcomes \u2192 Event conversion report |\n| Trigger | Manual; scheduled or relevant validated business event; provider webhook only where authorized (FSD: Manual; scheduled or relevant validated business event; provider webhook only where authorized; Registration, permitted attendance and CRM outcomes) |\n| Result / acceptance | Event conversion report; Event conversion report; no unapproved external side effects |\n| Domain contract | event_registration payload schema SM-SVC-16-WF04@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-16-WF04:v2`. |\n| Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 \u2192 DEC-549 Adopted (DEC-779)] |\n| Approval gate (V12) | Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. \u00b7 approval check: Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Calendar; Workflow orchestration; Governance; Qualification; outreach; meeting intelligence \u2192 AG-009 (primary), AG-007, AG-042; AG-013 and AG-069 for SM-SVC-16 |\n| Channels / UI input controls | Website, Email, Partner \u00b7 Registration [text]; permitted attendance [text]; CRM outcomes [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 1 rules-labeled; 1 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | event funnel coverage; opt-out compliance; baseline and threshold approved in pilot; source service KPI Eligible reminder completion \u226599%; duplicate registration action = 0 |",
     "section": "SM-SVC-16-WF04 Event conversion and attendee journey optimization"
    },
    "stories": [
@@ -9138,8 +9138,8 @@
    "def": {
     "file": "Part-11-3c_V12_Executable_Workflows_SVC01-20.md",
     "line": 1538,
-    "text": "(status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-798]. **Blueprint:** AU-035 quote calculator; BRL-QTE-01\u202607; DEC-027.",
-    "para": "**Requirement FR-V12-C-078** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-798]. **Blueprint:** AU-035 quote calculator; BRL-QTE-01\u202607; DEC-027.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Quotation calculation: Line items, quantities, prices, tax and discounts \u2192 Deterministic quotation |\n| Trigger | Manual request or validated upstream business event (FSD: Manual request or validated upstream business event; Line items, quantities, prices, tax and discounts) |\n| Result / acceptance | Deterministic quotation; acceptance: SM-SVC-17-WF02-TC-POS and step tests (ch33) |\n| Domain contract | quotation payload schema SM-SVC-17-WF02@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-17-WF02:v2`. |\n| Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve scope, discounts and exceptions; no unauthorized pricing changes |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: \u2264 L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 \u2192 DEC-548 Pending Founder decision] |\n| Approval gate (V12) | Approve scope, discounts and exceptions; no unauthorized pricing changes \u00b7 approval check: Approve scope, discounts and exceptions; no unauthorized pricing changes |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Document generation; Workflow orchestration; Governance; Document intelligence; conversion; financial review \u2192 AG-020 (SM-SVC-17), AG-048, AG-066; AG-023 (SM-SVC-20) |\n| Channels / UI input controls | CRM, Email \u00b7 Line items [text]; quantities [text]; prices [text]; tax [text]; discounts [text] (3 source steps; preview and trace) |\n| Step classes (FSD ch13) | 1 rules-labeled; 0 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | calculation accuracy; discount violation count; baseline and threshold approved in pilot; source service KPI Quote arithmetic test pass 100%; unapproved discounts = 0 |",
+    "text": "(status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798]. **Blueprint:** AU-035 quote calculator; BRL-QTE-01\u202607; DEC-027.",
+    "para": "**Requirement FR-V12-C-078** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798]. **Blueprint:** AU-035 quote calculator; BRL-QTE-01\u202607; DEC-027.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Quotation calculation: Line items, quantities, prices, tax and discounts \u2192 Deterministic quotation |\n| Trigger | Manual request or validated upstream business event (FSD: Manual request or validated upstream business event; Line items, quantities, prices, tax and discounts) |\n| Result / acceptance | Deterministic quotation; acceptance: SM-SVC-17-WF02-TC-POS and step tests (ch33) |\n| Domain contract | quotation payload schema SM-SVC-17-WF02@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-17-WF02:v2`. |\n| Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve scope, discounts and exceptions; no unauthorized pricing changes |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: \u2264 L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 \u2192 DEC-548 Adopted (DEC-779)] |\n| Approval gate (V12) | Approve scope, discounts and exceptions; no unauthorized pricing changes \u00b7 approval check: Approve scope, discounts and exceptions; no unauthorized pricing changes |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Document generation; Workflow orchestration; Governance; Document intelligence; conversion; financial review \u2192 AG-020 (SM-SVC-17), AG-048, AG-066; AG-023 (SM-SVC-20) |\n| Channels / UI input controls | CRM, Email \u00b7 Line items [text]; quantities [text]; prices [text]; tax [text]; discounts [text] (3 source steps; preview and trace) |\n| Step classes (FSD ch13) | 1 rules-labeled; 0 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | calculation accuracy; discount violation count; baseline and threshold approved in pilot; source service KPI Quote arithmetic test pass 100%; unapproved discounts = 0 |",
     "section": "SM-SVC-17-WF02 Quotation calculation"
    },
    "stories": [
@@ -9150,8 +9150,8 @@
    "def": {
     "file": "Part-11-3c_V12_Executable_Workflows_SVC01-20.md",
     "line": 1597,
-    "text": "(status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-798]. **Blueprint:** WF-09 approval; BRL-QTE-06; BRL-APR-02.",
-    "para": "**Requirement FR-V12-C-079** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-798]. **Blueprint:** WF-09 approval; BRL-QTE-06; BRL-APR-02.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Revision and approval workflow: Proposal/quote and reviewer feedback \u2192 Approved quote or revision hold |\n| Trigger | Manual request or validated upstream business event (FSD: Manual request or validated upstream business event; Proposal/quote and reviewer feedback) |\n| Result / acceptance | Approved quote or revision hold; acceptance: SM-SVC-17-WF03-TC-POS and step tests (ch33) |\n| Domain contract | quotation payload schema SM-SVC-17-WF03@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-17-WF03:v2`. |\n| Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve scope, discounts and exceptions; no unauthorized pricing changes |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: \u2264 L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 \u2192 DEC-548 Pending Founder decision] |\n| Approval gate (V12) | Approve scope, discounts and exceptions; no unauthorized pricing changes \u00b7 approval check: Approve scope, discounts and exceptions; no unauthorized pricing changes |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Document generation; Workflow orchestration; Governance; Document intelligence; conversion; financial review \u2192 AG-020 (SM-SVC-17), AG-048, AG-066; AG-023 (SM-SVC-20) |\n| Channels / UI input controls | CRM, Email \u00b7 Proposal/quote [text]; reviewer feedback [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 1 rules-labeled; 0 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | version integrity; approval traceability; baseline and threshold approved in pilot; source service KPI Quote arithmetic test pass 100%; unapproved discounts = 0 |",
+    "text": "(status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798]. **Blueprint:** WF-09 approval; BRL-QTE-06; BRL-APR-02.",
+    "para": "**Requirement FR-V12-C-079** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798]. **Blueprint:** WF-09 approval; BRL-QTE-06; BRL-APR-02.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Revision and approval workflow: Proposal/quote and reviewer feedback \u2192 Approved quote or revision hold |\n| Trigger | Manual request or validated upstream business event (FSD: Manual request or validated upstream business event; Proposal/quote and reviewer feedback) |\n| Result / acceptance | Approved quote or revision hold; acceptance: SM-SVC-17-WF03-TC-POS and step tests (ch33) |\n| Domain contract | quotation payload schema SM-SVC-17-WF03@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-17-WF03:v2`. |\n| Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve scope, discounts and exceptions; no unauthorized pricing changes |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: \u2264 L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 \u2192 DEC-548 Adopted (DEC-779)] |\n| Approval gate (V12) | Approve scope, discounts and exceptions; no unauthorized pricing changes \u00b7 approval check: Approve scope, discounts and exceptions; no unauthorized pricing changes |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Document generation; Workflow orchestration; Governance; Document intelligence; conversion; financial review \u2192 AG-020 (SM-SVC-17), AG-048, AG-066; AG-023 (SM-SVC-20) |\n| Channels / UI input controls | CRM, Email \u00b7 Proposal/quote [text]; reviewer feedback [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 1 rules-labeled; 0 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | version integrity; approval traceability; baseline and threshold approved in pilot; source service KPI Quote arithmetic test pass 100%; unapproved discounts = 0 |",
     "section": "SM-SVC-17-WF03 Revision and approval workflow"
    },
    "stories": [
@@ -9162,8 +9162,8 @@
    "def": {
     "file": "Part-11-3c_V12_Executable_Workflows_SVC01-20.md",
     "line": 1641,
-    "text": "(status before: Partially covered; after: Pending Founder decision on authority only) [CONFLICT-798]. **Blueprint:** WF-28 guarded quote; AU-089 CPQ; AG-066. **Enhancement:** Configurable bundle quotation with versioned configuration partly specified.",
-    "para": "**Requirement FR-V12-C-080** (status before: Partially covered; after: Pending Founder decision on authority only) [CONFLICT-798]. **Blueprint:** WF-28 guarded quote; AU-089 CPQ; AG-066. **Enhancement:** Configurable bundle quotation with versioned configuration partly specified.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Configurable product, service and bundle quotation generation: Approved price revision, quantities, configuration and tax rules \u2192 Versioned quotation |\n| Trigger | Manual; scheduled or relevant validated business event; provider webhook only where authorized (FSD: Manual; scheduled or relevant validated business event; provider webhook only where authorized; Approved price revision, quantities, configuration and tax rules) |\n| Result / acceptance | Versioned quotation; Versioned quotation; no unapproved external side effects |\n| Domain contract | quotation payload schema SM-SVC-17-WF04@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-17-WF04:v2`. |\n| Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: \u2264 L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 \u2192 DEC-548 Pending Founder decision] |\n| Approval gate (V12) | Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. \u00b7 approval check: Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Document generation; Workflow orchestration; Governance; Document intelligence; conversion; financial review \u2192 AG-020 (SM-SVC-17), AG-048, AG-066; AG-023 (SM-SVC-20) |\n| Channels / UI input controls | CRM, Email \u00b7 Approved price revision [number]; quantities [text]; configuration [text]; tax rules [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 1 rules-labeled; 1 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | configuration coverage; deterministic total accuracy; baseline and threshold approved in pilot; source service KPI Quote arithmetic test pass 100%; unapproved discounts = 0 |",
+    "text": "(status before: Partially covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798]. **Blueprint:** WF-28 guarded quote; AU-089 CPQ; AG-066. **Enhancement:** Configurable bundle quotation with versioned configuration partly specified.",
+    "para": "**Requirement FR-V12-C-080** (status before: Partially covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798]. **Blueprint:** WF-28 guarded quote; AU-089 CPQ; AG-066. **Enhancement:** Configurable bundle quotation with versioned configuration partly specified.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Configurable product, service and bundle quotation generation: Approved price revision, quantities, configuration and tax rules \u2192 Versioned quotation |\n| Trigger | Manual; scheduled or relevant validated business event; provider webhook only where authorized (FSD: Manual; scheduled or relevant validated business event; provider webhook only where authorized; Approved price revision, quantities, configuration and tax rules) |\n| Result / acceptance | Versioned quotation; Versioned quotation; no unapproved external side effects |\n| Domain contract | quotation payload schema SM-SVC-17-WF04@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-17-WF04:v2`. |\n| Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: \u2264 L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 \u2192 DEC-548 Adopted (DEC-779)] |\n| Approval gate (V12) | Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. \u00b7 approval check: Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Document generation; Workflow orchestration; Governance; Document intelligence; conversion; financial review \u2192 AG-020 (SM-SVC-17), AG-048, AG-066; AG-023 (SM-SVC-20) |\n| Channels / UI input controls | CRM, Email \u00b7 Approved price revision [number]; quantities [text]; configuration [text]; tax rules [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 1 rules-labeled; 1 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | configuration coverage; deterministic total accuracy; baseline and threshold approved in pilot; source service KPI Quote arithmetic test pass 100%; unapproved discounts = 0 |",
     "section": "SM-SVC-17-WF04 Configurable product, service and bundle quotation generation"
    },
    "stories": [
@@ -9198,8 +9198,8 @@
    "def": {
     "file": "Part-11-3c_V12_Executable_Workflows_SVC01-20.md",
     "line": 1829,
-    "text": "(status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-798]. **Blueprint:** WF-11; DEC-023 e-sign adapter; BRL-CTR-03/04.",
-    "para": "**Requirement FR-V12-C-083** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-798]. **Blueprint:** WF-11; DEC-023 e-sign adapter; BRL-CTR-03/04.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Signature and commitment coordination: Approved agreement and verified signatory \u2192 Signed or held agreement record |\n| Trigger | Authorized business event or manual import; signed webhook if applicable (FSD: Authorized business event or manual import; signed webhook if applicable; Approved agreement and verified signatory) |\n| Result / acceptance | Signed or held agreement record; acceptance: SM-SVC-18-WF03-TC-POS and step tests (ch33) |\n| Domain contract | agreement payload schema SM-SVC-18-WF03@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-18-WF03:v2`. |\n| Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Legal/commercial approval mandatory for binding terms, licensing and signature |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: \u2264 L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 \u2192 DEC-548 Pending Founder decision] |\n| Approval gate (V12) | Legal/commercial approval mandatory for binding terms, licensing and signature \u00b7 approval check: Legal/commercial approval mandatory for binding terms, licensing and signature |\n| Operating mode / side effect / modalities | Manual / supervised review; preparation only if gate not satisfied \u00b7 Consequential financial/legal or authority-bearing action; prepare only until authorized \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Document generation; Workflow orchestration; Governance; Objection resolution; conversion; document intelligence \u2192 AG-021 (primary), AG-022, AG-046 |\n| Channels / UI input controls | CRM, Email \u00b7 Approved agreement [text]; verified signatory [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 0 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | signatory authorization pass; receipt reconciliation; baseline and threshold approved in pilot; source service KPI Unapproved binding terms = 0; signed revision consistency 100% |",
+    "text": "(status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798]. **Blueprint:** WF-11; DEC-023 e-sign adapter; BRL-CTR-03/04.",
+    "para": "**Requirement FR-V12-C-083** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798]. **Blueprint:** WF-11; DEC-023 e-sign adapter; BRL-CTR-03/04.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Signature and commitment coordination: Approved agreement and verified signatory \u2192 Signed or held agreement record |\n| Trigger | Authorized business event or manual import; signed webhook if applicable (FSD: Authorized business event or manual import; signed webhook if applicable; Approved agreement and verified signatory) |\n| Result / acceptance | Signed or held agreement record; acceptance: SM-SVC-18-WF03-TC-POS and step tests (ch33) |\n| Domain contract | agreement payload schema SM-SVC-18-WF03@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-18-WF03:v2`. |\n| Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Legal/commercial approval mandatory for binding terms, licensing and signature |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: \u2264 L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 \u2192 DEC-548 Adopted (DEC-779)] |\n| Approval gate (V12) | Legal/commercial approval mandatory for binding terms, licensing and signature \u00b7 approval check: Legal/commercial approval mandatory for binding terms, licensing and signature |\n| Operating mode / side effect / modalities | Manual / supervised review; preparation only if gate not satisfied \u00b7 Consequential financial/legal or authority-bearing action; prepare only until authorized \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Document generation; Workflow orchestration; Governance; Objection resolution; conversion; document intelligence \u2192 AG-021 (primary), AG-022, AG-046 |\n| Channels / UI input controls | CRM, Email \u00b7 Approved agreement [text]; verified signatory [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 0 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | signatory authorization pass; receipt reconciliation; baseline and threshold approved in pilot; source service KPI Unapproved binding terms = 0; signed revision consistency 100% |",
     "section": "SM-SVC-18-WF03 Signature and commitment coordination"
    },
    "stories": [
@@ -9246,8 +9246,8 @@
    "def": {
     "file": "Part-11-3c_V12_Executable_Workflows_SVC01-20.md",
     "line": 2075,
-    "text": "(status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-798] [CONFLICT-800]. **Blueprint:** WF-08 package + human submission (DEC-053); WF-18.",
-    "para": "**Requirement FR-V12-C-087** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-798] [CONFLICT-800]. **Blueprint:** WF-08 package + human submission (DEC-053); WF-18.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Bid preparation and submission coordination: Approved decision and tender response schema \u2192 Bid package and submission evidence |\n| Trigger | Manual request or validated upstream business event (FSD: Manual request or validated upstream business event; Approved decision and tender response schema) |\n| Result / acceptance | Bid package and submission evidence; acceptance: SM-SVC-19-WF03-TC-POS and step tests (ch33) |\n| Domain contract | tender payload schema SM-SVC-19-WF03@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-19-WF03:v2`. |\n| Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Capability grant and explicit bid approval; no automatic submission to restricted portal |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: \u2264 L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 \u2192 DEC-548 Pending Founder decision] |\n| Approval gate (V12) | Capability grant and explicit bid approval; no automatic submission to restricted portal \u00b7 approval check: Capability grant and explicit bid approval; no automatic submission to restricted portal |\n| Operating mode / side effect / modalities | Manual / supervised review; preparation only if gate not satisfied \u00b7 Potential external write/communication; controlled only after applicable permission and policy approval \u00b7 Text; structured records; documents (stricter classification applies, DEC-546) |\n| Engine / agent | Research and evidence; Workflow orchestration; Governance; Research; qualification; document intelligence \u2192 AG-019 (primary), AG-020, AG-047 |\n| Channels / UI input controls | Research, CRM \u00b7 Approved decision [text]; tender response schema [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 2 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | attachment completeness; verified receipt rate; baseline and threshold approved in pilot; source service KPI Mandatory requirement checks 100%; unapproved bid submissions = 0 |",
+    "text": "(status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798] [CONFLICT-800]. **Blueprint:** WF-08 package + human submission (DEC-053); WF-18.",
+    "para": "**Requirement FR-V12-C-087** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798] [CONFLICT-800]. **Blueprint:** WF-08 package + human submission (DEC-053); WF-18.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Bid preparation and submission coordination: Approved decision and tender response schema \u2192 Bid package and submission evidence |\n| Trigger | Manual request or validated upstream business event (FSD: Manual request or validated upstream business event; Approved decision and tender response schema) |\n| Result / acceptance | Bid package and submission evidence; acceptance: SM-SVC-19-WF03-TC-POS and step tests (ch33) |\n| Domain contract | tender payload schema SM-SVC-19-WF03@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-19-WF03:v2`. |\n| Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Capability grant and explicit bid approval; no automatic submission to restricted portal |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: \u2264 L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 \u2192 DEC-548 Adopted (DEC-779)] |\n| Approval gate (V12) | Capability grant and explicit bid approval; no automatic submission to restricted portal \u00b7 approval check: Capability grant and explicit bid approval; no automatic submission to restricted portal |\n| Operating mode / side effect / modalities | Manual / supervised review; preparation only if gate not satisfied \u00b7 Potential external write/communication; controlled only after applicable permission and policy approval \u00b7 Text; structured records; documents (stricter classification applies, DEC-546) |\n| Engine / agent | Research and evidence; Workflow orchestration; Governance; Research; qualification; document intelligence \u2192 AG-019 (primary), AG-020, AG-047 |\n| Channels / UI input controls | Research, CRM \u00b7 Approved decision [text]; tender response schema [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 2 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | attachment completeness; verified receipt rate; baseline and threshold approved in pilot; source service KPI Mandatory requirement checks 100%; unapproved bid submissions = 0 |",
     "section": "SM-SVC-19-WF03 Bid preparation and submission coordination"
    },
    "stories": [
@@ -9282,8 +9282,8 @@
    "def": {
     "file": "Part-11-3c_V12_Executable_Workflows_SVC01-20.md",
     "line": 2279,
-    "text": "(status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-798]. **Blueprint:** WF-10 fulfilment; BRL-ORD-02\u202604.",
-    "para": "**Requirement FR-V12-C-090** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-798]. **Blueprint:** WF-10 fulfilment; BRL-ORD-02\u202604.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Order and milestone coordination: Approved order and fulfillment evidence \u2192 Fulfillment plan and status |\n| Trigger | Manual request or validated upstream business event (FSD: Manual request or validated upstream business event; Approved order and fulfillment evidence) |\n| Result / acceptance | Fulfillment plan and status; acceptance: SM-SVC-20-WF02-TC-POS and step tests (ch33) |\n| Domain contract | sales_order payload schema SM-SVC-20-WF02@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-20-WF02:v2`. |\n| Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve sales commitments, price, fulfillment acceptance and changes; procurement is separate. |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: \u2264 L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 \u2192 DEC-548 Pending Founder decision] |\n| Approval gate (V12) | Approve sales commitments, price, fulfillment acceptance and changes; procurement is separate. \u00b7 approval check: Approve sales commitments, price, fulfillment acceptance and changes; procurement is separate. |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Workflow orchestration; Workflow orchestration; Governance; Document intelligence; operations planning \u2192 AG-020 (SM-SVC-17), AG-048, AG-066; AG-023 (SM-SVC-20) |\n| Channels / UI input controls | CRM, Partner \u00b7 Approved order [text]; fulfillment evidence [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 2 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | milestone assignment completeness; delay detection; baseline and threshold approved in pilot; source service KPI Order arithmetic pass 100%; duplicate commitments = 0 |",
+    "text": "(status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798]. **Blueprint:** WF-10 fulfilment; BRL-ORD-02\u202604.",
+    "para": "**Requirement FR-V12-C-090** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798]. **Blueprint:** WF-10 fulfilment; BRL-ORD-02\u202604.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Order and milestone coordination: Approved order and fulfillment evidence \u2192 Fulfillment plan and status |\n| Trigger | Manual request or validated upstream business event (FSD: Manual request or validated upstream business event; Approved order and fulfillment evidence) |\n| Result / acceptance | Fulfillment plan and status; acceptance: SM-SVC-20-WF02-TC-POS and step tests (ch33) |\n| Domain contract | sales_order payload schema SM-SVC-20-WF02@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-20-WF02:v2`. |\n| Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve sales commitments, price, fulfillment acceptance and changes; procurement is separate. |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: \u2264 L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 \u2192 DEC-548 Adopted (DEC-779)] |\n| Approval gate (V12) | Approve sales commitments, price, fulfillment acceptance and changes; procurement is separate. \u00b7 approval check: Approve sales commitments, price, fulfillment acceptance and changes; procurement is separate. |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Internal analysis/draft; no external action without separate authorization \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Workflow orchestration; Workflow orchestration; Governance; Document intelligence; operations planning \u2192 AG-020 (SM-SVC-17), AG-048, AG-066; AG-023 (SM-SVC-20) |\n| Channels / UI input controls | CRM, Partner \u00b7 Approved order [text]; fulfillment evidence [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 2 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | milestone assignment completeness; delay detection; baseline and threshold approved in pilot; source service KPI Order arithmetic pass 100%; duplicate commitments = 0 |",
     "section": "SM-SVC-20-WF02 Order and milestone coordination"
    },
    "stories": [
@@ -9294,8 +9294,8 @@
    "def": {
     "file": "Part-11-3c_V12_Executable_Workflows_SVC01-20.md",
     "line": 2323,
-    "text": "(status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-798]. **Blueprint:** WF-10 acceptance; BRL-ORD-05; AU-038.",
-    "para": "**Requirement FR-V12-C-091** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-798]. **Blueprint:** WF-10 acceptance; BRL-ORD-05; AU-038.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Acceptance and delivery exception handling: Delivery evidence or exception \u2192 Accepted or held milestone |\n| Trigger | Authorized business event or manual import; signed webhook if applicable (FSD: Authorized business event or manual import; signed webhook if applicable; Delivery evidence or exception) |\n| Result / acceptance | Accepted or held milestone; acceptance: SM-SVC-20-WF03-TC-POS and step tests (ch33) |\n| Domain contract | sales_order payload schema SM-SVC-20-WF03@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-20-WF03:v2`. |\n| Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve sales commitments, price, fulfillment acceptance and changes; procurement is separate. |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: \u2264 L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 \u2192 DEC-548 Pending Founder decision] |\n| Approval gate (V12) | Approve sales commitments, price, fulfillment acceptance and changes; procurement is separate. \u00b7 approval check: Approve sales commitments, price, fulfillment acceptance and changes; procurement is separate. |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Potential external write/communication; controlled only after applicable permission and policy approval \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Workflow orchestration; Workflow orchestration; Governance; Document intelligence; operations planning \u2192 AG-020 (SM-SVC-17), AG-048, AG-066; AG-023 (SM-SVC-20) |\n| Channels / UI input controls | CRM, Partner \u00b7 Delivery evidence or exception [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 1 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | acceptance evidence match; invalid transition rejection; baseline and threshold approved in pilot; source service KPI Order arithmetic pass 100%; duplicate commitments = 0 |",
+    "text": "(status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798]. **Blueprint:** WF-10 acceptance; BRL-ORD-05; AU-038.",
+    "para": "**Requirement FR-V12-C-091** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798]. **Blueprint:** WF-10 acceptance; BRL-ORD-05; AU-038.\n\n| Field | Specification |\n|---|---------|\n| Business outcome / input \u2192 output | Acceptance and delivery exception handling: Delivery evidence or exception \u2192 Accepted or held milestone |\n| Trigger | Authorized business event or manual import; signed webhook if applicable (FSD: Authorized business event or manual import; signed webhook if applicable; Delivery evidence or exception) |\n| Result / acceptance | Accepted or held milestone; acceptance: SM-SVC-20-WF03-TC-POS and step tests (ch33) |\n| Domain contract | sales_order payload schema SM-SVC-20-WF03@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-20-WF03:v2`. |\n| Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve sales commitments, price, fulfillment acceptance and changes; procurement is separate. |\n| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate \u2192 blueprint: \u2264 L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 \u2192 DEC-548 Adopted (DEC-779)] |\n| Approval gate (V12) | Approve sales commitments, price, fulfillment acceptance and changes; procurement is separate. \u00b7 approval check: Approve sales commitments, price, fulfillment acceptance and changes; procurement is separate. |\n| Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. \u00b7 Potential external write/communication; controlled only after applicable permission and policy approval \u00b7 Text; structured records (stricter classification applies, DEC-546) |\n| Engine / agent | Workflow orchestration; Workflow orchestration; Governance; Document intelligence; operations planning \u2192 AG-020 (SM-SVC-17), AG-048, AG-066; AG-023 (SM-SVC-20) |\n| Channels / UI input controls | CRM, Partner \u00b7 Delivery evidence or exception [text] (4 source steps; preview and trace) |\n| Step classes (FSD ch13) | 0 rules-labeled; 1 agent-labeled. Validate step taxonomy at contract review. Controls: AI-01/02/06/12/15; FL-01/02/03/07/09/13; ST-04/05/06 |\n| Workflow KPI (V12) | acceptance evidence match; invalid transition rejection; baseline and threshold approved in pilot; source service KPI Order arithmetic pass 100%; duplicate commitments = 0 |",
     "section": "SM-SVC-20-WF03 Acceptance and delivery exception handling"
    },
    "stories": [
@@ -20980,13 +20980,13 @@
    "def": {
     "file": "Part-11-7c_V12_Website_Portal_Operator_Portfolio_UIUX_Prototypes.md",
     "line": 135,
-    "text": "No investor / fundraising mode in the commercial product (DEC-002) \u2014 pending Founder decision on V12 investor mode",
+    "text": "Investor / fundraising objective mode is delivered only by the separate Investment Automation product and investor website W55\u2013W99 (Parts 11.16a\u2013e); the Sales & Marketing commercial build keeps `inv=false` and exposes no investor route, flag or string (amended v1.2: DEC-783 superseded DEC-002; DEC-9",
     "cells": [
      "FR-V12-G-117",
-     "No investor / fundraising mode in the commercial product (DEC-002) \u2014 pending Founder decision on V12 investor mode",
-     "Website build config; W01, W33",
+     "Investor / fundraising objective mode is delivered only by the separate Investment Automation product and investor website W55\u2013W99 (Parts 11.16a\u2013e); the Sales & Marketing commercial build keeps `inv=false` and exposes no investor route, flag or string (amended v1.2: DEC-783 superseded DEC-002; DEC-947)",
+     "Website build config; W01, W33; investor website W55\u2013W99",
      "Prototype CFG.inv; Investment Automation sibling pack",
-     "Pending Founder decision",
+     "Adopted (DEC-783)",
      "EP-19"
     ],
     "header": [
@@ -24020,10 +24020,10 @@
    "def": {
     "file": "Part-11-11b_V12_Observability_Traceability_Decision_Register.md",
     "line": 379,
-    "text": "24\u00d77 human on-call for SEV1/SEV2 per the option chosen in DEC-715 (Pending Founder decision)",
+    "text": "24\u00d77 human on-call for SEV1/SEV2 per the option chosen in DEC-715 (Adopted (DEC-773))",
     "cells": [
      "FR-V12-K-004",
-     "24\u00d77 human on-call for SEV1/SEV2 per the option chosen in DEC-715 (Pending Founder decision)",
+     "24\u00d77 human on-call for SEV1/SEV2 per the option chosen in DEC-715 (Adopted (DEC-773))",
      "ENT-OPS-04",
      "R2 \u00b7 EP-21",
      "TC-V12-K-014"
@@ -25235,7 +25235,7 @@
      "TC-V12-K-120",
      "Part 11.9 (Group I)",
      "Post-W6 (A2/A3 roadmap, DEC-411) - EU launch",
-     "CONFLICT-946 Pending Founder decision"
+     "CONFLICT-946 Adopted (DEC-772)"
     ],
     "header": [
      "fr",
@@ -25271,7 +25271,7 @@
      "TC-V12-K-121",
      "this part",
      "Release 1 \u2026 Post-W6",
-     "CONFLICT-946 Pending Founder decision"
+     "CONFLICT-946 Adopted (DEC-772)"
     ],
     "header": [
      "fr",
@@ -25807,7 +25807,7 @@
      "TC-V12-K-136",
      "this part",
      "Release 2 + W6 GA India (incl. A1, DEC-417)",
-     "CONFLICT-943 Pending Founder decision"
+     "CONFLICT-943 Adopted (DEC-773)"
     ],
     "header": [
      "fr",
@@ -25842,7 +25842,7 @@
      "TC-V12-K-137",
      "this part",
      "Release 2 + W6 GA India \u2026 Post-W6",
-     "CONFLICT-945 Pending Founder decision"
+     "CONFLICT-945 Adopted (DEC-775)"
     ],
     "header": [
      "fr",
@@ -25877,7 +25877,7 @@
      "TC-V12-K-138",
      "this part",
      "Post-W6 (A2/A3 roadmap, DEC-411) - EU launch",
-     "CONFLICT-945 Pending Founder decision"
+     "CONFLICT-945 Adopted (DEC-775)"
     ],
     "header": [
      "fr",
@@ -25912,7 +25912,7 @@
      "TC-V12-K-139",
      "this part",
      "Post-W6 (A3+) - UK/ME/APAC",
-     "CONFLICT-945 Pending Founder decision"
+     "CONFLICT-945 Adopted (DEC-775)"
     ],
     "header": [
      "fr",
@@ -25983,7 +25983,7 @@
      "TC-V12-K-141",
      "Part 11.9 (Group I)",
      "Post-W6 (A2/A3 roadmap, DEC-411) - EU launch",
-     "CONFLICT-946 Pending Founder decision"
+     "CONFLICT-946 Adopted (DEC-784)"
     ],
     "header": [
      "fr",
@@ -26163,7 +26163,7 @@
      "TC-V12-K-146",
      "this part",
      "Release 2 + W6 GA India \u2026 Post-W6",
-     "CONFLICT-946 Pending Founder decision"
+     "CONFLICT-946 Adopted (DEC-776)"
     ],
     "header": [
      "fr",
@@ -26198,7 +26198,7 @@
      "TC-V12-K-147",
      "this part",
      "Post-W6 (A3+) - UK/ME/APAC",
-     "CONFLICT-946 Pending Founder decision"
+     "CONFLICT-946 Adopted (DEC-776)"
     ],
     "header": [
      "fr",
@@ -26268,7 +26268,7 @@
      "TC-V12-K-149",
      "Part 11.2 (Group B)",
      "Release 2 + W6 GA India (incl. A1, DEC-417)",
-     "CONFLICT-946 Pending Founder decision"
+     "CONFLICT-946 Adopted (DEC-776)"
     ],
     "header": [
      "fr",
@@ -26378,7 +26378,7 @@
      "TC-V12-K-152",
      "this part",
      "Post-W6 \u2026 Post-W6",
-     "CONFLICT-946 Pending Founder decision"
+     "CONFLICT-946 Adopted (DEC-772)"
     ],
     "header": [
      "fr",
@@ -30922,10 +30922,10 @@
    "def": {
     "file": "Part-11-16a_Investment_Automation_I_Investor_Mode_and_INV-SVC-01-12.md",
     "line": 838,
-    "text": "W75 shows only rooms granted to the signed-in R21; every item request passes AU-204",
+    "text": "W75 shows only rooms granted to the signed-in R22; every item request passes AU-204",
     "cells": [
      "FR-V12-N-015",
-     "W75 shows only rooms granted to the signed-in R21; every item request passes AU-204",
+     "W75 shows only rooms granted to the signed-in R22; every item request passes AU-204",
      "granted document opens watermarked",
      "un-granted id \u2192 uniform 404"
     ],
@@ -34316,6 +34316,7 @@
     "US-32-ZO01",
     "US-32-ZO02",
     "US-32-ZO09",
+    "US-33-ZO01",
     "US-33-ZU09"
    ]
   },
@@ -34331,6 +34332,7 @@
     "US-32-ZO01",
     "US-32-ZO02",
     "US-32-ZO09",
+    "US-33-ZO01",
     "US-33-ZU09"
    ]
   },
@@ -34346,6 +34348,7 @@
     "US-32-ZO01",
     "US-32-ZO02",
     "US-32-ZO09",
+    "US-33-ZO01",
     "US-33-ZU09"
    ]
   },
@@ -34361,6 +34364,7 @@
     "US-32-ZO01",
     "US-32-ZO02",
     "US-32-ZO09",
+    "US-33-ZO02",
     "US-33-ZU09"
    ]
   },
@@ -34375,6 +34379,7 @@
    "stories": [
     "US-32-ZO03",
     "US-32-ZO09",
+    "US-33-ZO03",
     "US-33-ZU10"
    ]
   },
@@ -34389,6 +34394,7 @@
    "stories": [
     "US-32-ZO03",
     "US-32-ZO09",
+    "US-33-ZO03",
     "US-33-ZU10"
    ]
   },
@@ -34403,6 +34409,7 @@
    "stories": [
     "US-32-ZO03",
     "US-32-ZO09",
+    "US-33-ZO03",
     "US-33-ZU10"
    ]
   },
@@ -34417,6 +34424,7 @@
    "stories": [
     "US-32-ZO03",
     "US-32-ZO09",
+    "US-33-ZO03",
     "US-33-ZU10"
    ]
   },
@@ -34431,6 +34439,7 @@
    "stories": [
     "US-32-ZO04",
     "US-32-ZO09",
+    "US-33-ZO04",
     "US-33-ZU11"
    ]
   },
@@ -34445,6 +34454,7 @@
    "stories": [
     "US-32-ZO04",
     "US-32-ZO09",
+    "US-33-ZO04",
     "US-33-ZU11"
    ]
   },
@@ -34459,6 +34469,7 @@
    "stories": [
     "US-32-ZO04",
     "US-32-ZO09",
+    "US-33-ZO04",
     "US-33-ZU11"
    ]
   },
@@ -34473,6 +34484,7 @@
    "stories": [
     "US-32-ZO04",
     "US-32-ZO09",
+    "US-33-ZO04",
     "US-33-ZU11"
    ]
   },
@@ -34488,6 +34500,7 @@
     "US-32-ZO05",
     "US-32-ZO08",
     "US-32-ZO09",
+    "US-33-ZO05",
     "US-33-ZU12"
    ]
   },
@@ -34503,6 +34516,7 @@
     "US-32-ZO05",
     "US-32-ZO08",
     "US-32-ZO09",
+    "US-33-ZO08",
     "US-33-ZU12"
    ]
   },
@@ -34518,6 +34532,7 @@
     "US-32-ZO05",
     "US-32-ZO08",
     "US-32-ZO09",
+    "US-33-ZO08",
     "US-33-ZU12"
    ]
   },
@@ -34533,6 +34548,7 @@
     "US-32-ZO05",
     "US-32-ZO08",
     "US-32-ZO09",
+    "US-33-ZO05",
     "US-33-ZU12"
    ]
   },
@@ -34547,6 +34563,7 @@
    "stories": [
     "US-32-ZO06",
     "US-32-ZO09",
+    "US-33-ZO06",
     "US-33-ZU13"
    ]
   },
@@ -34561,6 +34578,7 @@
    "stories": [
     "US-32-ZO06",
     "US-32-ZO09",
+    "US-33-ZO06",
     "US-33-ZU13"
    ]
   },
@@ -34575,6 +34593,7 @@
    "stories": [
     "US-32-ZO06",
     "US-32-ZO09",
+    "US-33-ZO06",
     "US-33-ZU13"
    ]
   },
@@ -34589,6 +34608,7 @@
    "stories": [
     "US-32-ZO06",
     "US-32-ZO09",
+    "US-33-ZO06",
     "US-33-ZU13"
    ]
   },
@@ -34605,6 +34625,7 @@
     "US-32-ZO02",
     "US-32-ZO07",
     "US-32-ZO09",
+    "US-33-ZO07",
     "US-33-ZU14"
    ]
   },
@@ -34621,6 +34642,7 @@
     "US-32-ZO02",
     "US-32-ZO07",
     "US-32-ZO09",
+    "US-33-ZO07",
     "US-33-ZU14"
    ]
   },
@@ -34637,6 +34659,7 @@
     "US-32-ZO02",
     "US-32-ZO07",
     "US-32-ZO09",
+    "US-33-ZO07",
     "US-33-ZU14"
    ]
   },
@@ -34653,6 +34676,7 @@
     "US-32-ZO02",
     "US-32-ZO07",
     "US-32-ZO09",
+    "US-33-ZO07",
     "US-33-ZU14"
    ]
   },
@@ -34669,6 +34693,7 @@
     "US-32-ZO04",
     "US-32-ZO09",
     "US-32-ZO10",
+    "US-33-ZO09",
     "US-33-ZU15"
    ]
   },
@@ -34685,6 +34710,7 @@
     "US-32-ZO04",
     "US-32-ZO09",
     "US-32-ZO10",
+    "US-33-ZO09",
     "US-33-ZU15"
    ]
   },
@@ -34701,6 +34727,7 @@
     "US-32-ZO04",
     "US-32-ZO09",
     "US-32-ZO10",
+    "US-33-ZO10",
     "US-33-ZU15"
    ]
   },
@@ -34717,6 +34744,7 @@
     "US-32-ZO04",
     "US-32-ZO09",
     "US-32-ZO10",
+    "US-33-ZO10",
     "US-33-ZU15"
    ]
   },
@@ -34731,6 +34759,7 @@
    "stories": [
     "US-32-ZO09",
     "US-32-ZO11",
+    "US-33-ZO11",
     "US-33-ZU16"
    ]
   },
@@ -34745,6 +34774,7 @@
    "stories": [
     "US-32-ZO09",
     "US-32-ZO11",
+    "US-33-ZO11",
     "US-33-ZU16"
    ]
   },
@@ -34759,6 +34789,7 @@
    "stories": [
     "US-32-ZO09",
     "US-32-ZO11",
+    "US-33-ZO11",
     "US-33-ZU16"
    ]
   },
@@ -34773,6 +34804,7 @@
    "stories": [
     "US-32-ZO09",
     "US-32-ZO11",
+    "US-33-ZO11",
     "US-33-ZU16"
    ]
   },
@@ -46038,7 +46070,7 @@
    "frs": [
     "FR-V12-E-021"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-01-YE10": {
@@ -46051,7 +46083,7 @@
     "FR-V12-E-005",
     "FR-V12-E-020"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-01-YG01": {
@@ -46147,7 +46179,7 @@
    "frs": [
     "FR-V12-H-002"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-01-YH03": {
@@ -46172,7 +46204,7 @@
     "FR-V12-H-006",
     "FR-V12-H-007"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-01-YH05": {
@@ -46859,7 +46891,7 @@
     "FR-V12-A-077",
     "FR-V12-A-079"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-02-YB01": {
@@ -47082,7 +47114,7 @@
     "FR-V12-A-134",
     "FR-V12-A-135"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-03-YE01": {
@@ -47093,13 +47125,13 @@
    "frs": [
     "FR-V12-E-022"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-03-YF27": {
    "file": "Part-11-6b_V12_AI_Engines_Agents_Models_Evaluation_RAG_Policy_Cost.md",
    "line": 103,
-   "title": "",
+   "title": "Send preflight decision table with fixed precedence (AU-171)",
    "format": "block",
    "release": "Not stated",
    "frs": [
@@ -47207,7 +47239,7 @@
    "frs": [
     "FR-V12-H-013"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-03-YI01": {
@@ -47364,7 +47396,7 @@
    "frs": [
     "FR-V12-M-100"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": [
     "AIX-05"
    ]
@@ -47673,7 +47705,7 @@
     "FR-V12-A-116",
     "FR-V12-A-117"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": [
     "AIX-05"
    ]
@@ -47681,7 +47713,7 @@
   "US-04-YF24": {
    "file": "Part-11-6b_V12_AI_Engines_Agents_Models_Evaluation_RAG_Policy_Cost.md",
    "line": 118,
-   "title": "",
+   "title": "Cheapest passing Claude tier with at most one escalation (AU-152)",
    "format": "block",
    "release": "Not stated",
    "frs": [
@@ -47695,7 +47727,7 @@
   "US-04-YF25": {
    "file": "Part-11-6b_V12_AI_Engines_Agents_Models_Evaluation_RAG_Policy_Cost.md",
    "line": 119,
-   "title": "",
+   "title": "Locale-specific EVAL gate blocks unevidenced AI steps (AU-154)",
    "format": "block",
    "release": "Not stated",
    "frs": [
@@ -47709,7 +47741,7 @@
   "US-04-YF26": {
    "file": "Part-11-6b_V12_AI_Engines_Agents_Models_Evaluation_RAG_Policy_Cost.md",
    "line": 120,
-   "title": "",
+   "title": "Cost per accepted result with rejected outputs in the denominator (AU-158)",
    "format": "block",
    "release": "Not stated",
    "frs": [
@@ -47723,7 +47755,7 @@
   "US-04-YF29": {
    "file": "Part-11-6b_V12_AI_Engines_Agents_Models_Evaluation_RAG_Policy_Cost.md",
    "line": 121,
-   "title": "",
+   "title": "Tenant fair-share scheduling protects interactive AI latency (AU-160)",
    "format": "block",
    "release": "Not stated",
    "frs": [
@@ -47915,7 +47947,7 @@
    "frs": [
     "FR-V12-M-099"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": [
     "AIX-05"
    ]
@@ -52602,7 +52634,7 @@
     "FR-V12-E-081",
     "FR-V12-E-082"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-15-YF10": {
@@ -52945,7 +52977,7 @@
     "FR-V12-A-160",
     "FR-V12-A-161"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-16-YA02": {
@@ -52959,7 +52991,7 @@
     "FR-V12-A-162",
     "FR-V12-A-163"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-16-YB01": {
@@ -53332,7 +53364,7 @@
     "FR-V12-A-122",
     "FR-V12-A-123"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-17-YA02": {
@@ -53346,7 +53378,7 @@
     "FR-V12-A-036",
     "FR-V12-A-124"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-17-YD01": {
@@ -53533,7 +53565,7 @@
    "frs": [
     "FR-V12-M-098"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-17-ZR24": {
@@ -54155,13 +54187,13 @@
     "FR-V12-E-100",
     "FR-V12-E-101"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-18-YF28": {
    "file": "Part-11-6b_V12_AI_Engines_Agents_Models_Evaluation_RAG_Policy_Cost.md",
    "line": 312,
-   "title": "",
+   "title": "Approval bound to the exact payload digest; stale approvals rejected (AU-175)",
    "format": "block",
    "release": "Not stated",
    "frs": [
@@ -54313,7 +54345,7 @@
     "FR-V12-L-014",
     "FR-V12-L-015"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": [
     "MT-01"
    ]
@@ -54330,7 +54362,7 @@
     "FR-V12-L-019",
     "FR-V12-L-020"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-18-YM05": {
@@ -54405,7 +54437,7 @@
     "FR-V12-M-079",
     "FR-V12-M-080"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-18-ZP01": {
@@ -55307,7 +55339,7 @@
     "FR-V12-A-053",
     "FR-V12-A-054"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-19-YA03": {
@@ -55322,7 +55354,7 @@
     "FR-V12-A-057",
     "FR-V12-A-059"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-19-YG01": {
@@ -55776,7 +55808,7 @@
   "US-19-YG38": {
    "file": "Part-11-22f_Epic_Map_Totals_Conflicts_Decisions_and_Quality_Gate.md",
    "line": 380,
-   "title": "As an anonymous visitor (R18), I want No investor / fundraising mode in the commercial\u2026",
+   "title": "As an anonymous visitor (R18), I want the S&M website free of investor mode while the separate investor website (DEC-783) offers it\u2026",
    "format": "table",
    "release": "Not stated",
    "frs": [
@@ -55810,7 +55842,7 @@
     "FR-V12-L-012",
     "FR-V12-L-014"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-19-ZU01": {
@@ -55971,7 +56003,7 @@
     "FR-V12-A-097",
     "FR-V12-A-120"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-20-YA03": {
@@ -56002,7 +56034,7 @@
     "FR-V12-A-097",
     "FR-V12-A-120"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-20-YA04": {
@@ -56033,7 +56065,7 @@
     "FR-V12-A-097",
     "FR-V12-A-120"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-20-YA05": {
@@ -56065,7 +56097,7 @@
     "FR-V12-A-120",
     "FR-V12-A-168"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-20-YA06": {
@@ -56098,7 +56130,7 @@
     "FR-V12-A-097",
     "FR-V12-A-120"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-20-YA07": {
@@ -56113,7 +56145,7 @@
     "FR-V12-A-033",
     "FR-V12-A-035"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-20-YA08": {
@@ -56135,7 +56167,7 @@
     "FR-V12-A-188",
     "FR-V12-A-189"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-20-YD01": {
@@ -56193,7 +56225,7 @@
     "FR-V12-E-036",
     "FR-V12-E-037"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-20-YE03": {
@@ -56225,7 +56257,7 @@
     "FR-V12-E-050",
     "FR-V12-E-051"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-20-YE05": {
@@ -56284,7 +56316,7 @@
     "FR-V12-E-062",
     "FR-V12-E-063"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-20-YE09": {
@@ -56338,7 +56370,7 @@
     "FR-V12-E-078",
     "FR-V12-E-084"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-20-YE13": {
@@ -56350,7 +56382,7 @@
     "FR-V12-E-077",
     "FR-V12-E-086"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-20-YE14": {
@@ -56364,7 +56396,7 @@
     "FR-V12-E-127",
     "FR-V12-K-119"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-20-YE15": {
@@ -56376,7 +56408,7 @@
     "FR-V12-E-083",
     "FR-V12-E-089"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-20-YE16": {
@@ -56390,7 +56422,7 @@
     "FR-V12-E-088",
     "FR-V12-K-157"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-20-YF07": {
@@ -56655,7 +56687,7 @@
    "frs": [
     "FR-V12-H-039"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-20-YI01": {
@@ -56753,7 +56785,7 @@
     "FR-V12-L-019",
     "FR-V12-L-020"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-20-YM23": {
@@ -60722,7 +60754,7 @@
     "FR-V12-A-152",
     "FR-V12-A-220"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-21-YA02": {
@@ -60737,7 +60769,7 @@
     "FR-V12-A-141",
     "FR-V12-A-143"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-21-YA03": {
@@ -60752,7 +60784,7 @@
     "FR-V12-A-201",
     "FR-V12-A-202"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-21-YD01": {
@@ -60820,7 +60852,7 @@
     "FR-V12-E-134",
     "FR-V12-E-135"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-21-YE04": {
@@ -60835,7 +60867,7 @@
     "FR-V12-E-113",
     "FR-V12-E-114"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-21-YG01": {
@@ -60930,7 +60962,7 @@
    "frs": [
     "FR-V12-H-041"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-21-YI01": {
@@ -61117,7 +61149,7 @@
    "format": "table",
    "points": "8",
    "frs": [],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-21-YL07": {
@@ -61149,7 +61181,7 @@
     "FR-V12-M-024",
     "FR-V12-M-025"
    ],
-   "has_ac": false,
+   "has_ac": true,
    "tokens": []
   },
   "US-21-YM13": {
@@ -66131,7 +66163,10 @@
    "wave": "Release 2 (DEC-770)",
    "points": "3\u20135",
    "frs": [
-    "FR-V12-O-021"
+    "FR-V12-O-021",
+    "FR-V12-O-053",
+    "FR-V12-O-054",
+    "FR-V12-O-055"
    ],
    "has_ac": true,
    "tokens": [
@@ -66147,7 +66182,8 @@
    "wave": "Release 2 (DEC-770)",
    "points": "3\u20135",
    "frs": [
-    "FR-V12-O-021"
+    "FR-V12-O-021",
+    "FR-V12-O-056"
    ],
    "has_ac": true,
    "tokens": [
@@ -66163,7 +66199,11 @@
    "wave": "Release 2 (DEC-770)",
    "points": "5\u20138",
    "frs": [
-    "FR-V12-O-023"
+    "FR-V12-O-023",
+    "FR-V12-O-057",
+    "FR-V12-O-058",
+    "FR-V12-O-059",
+    "FR-V12-O-060"
    ],
    "has_ac": true,
    "tokens": [
@@ -66179,7 +66219,11 @@
    "wave": "Release 2 (DEC-770)",
    "points": "3\u20135",
    "frs": [
-    "FR-V12-O-025"
+    "FR-V12-O-025",
+    "FR-V12-O-061",
+    "FR-V12-O-062",
+    "FR-V12-O-063",
+    "FR-V12-O-064"
    ],
    "has_ac": true,
    "tokens": [
@@ -66195,7 +66239,9 @@
    "wave": "Release 2 (DEC-770)",
    "points": "5\u20138",
    "frs": [
-    "FR-V12-O-027"
+    "FR-V12-O-027",
+    "FR-V12-O-065",
+    "FR-V12-O-068"
    ],
    "has_ac": true,
    "tokens": [
@@ -66211,7 +66257,11 @@
    "wave": "Release 2 (DEC-770)",
    "points": "5\u20138",
    "frs": [
-    "FR-V12-O-029"
+    "FR-V12-O-029",
+    "FR-V12-O-069",
+    "FR-V12-O-070",
+    "FR-V12-O-071",
+    "FR-V12-O-072"
    ],
    "has_ac": true,
    "tokens": [
@@ -66227,7 +66277,11 @@
    "wave": "Release 2 (DEC-770)",
    "points": "5\u20138",
    "frs": [
-    "FR-V12-O-031"
+    "FR-V12-O-031",
+    "FR-V12-O-073",
+    "FR-V12-O-074",
+    "FR-V12-O-075",
+    "FR-V12-O-076"
    ],
    "has_ac": true,
    "tokens": [
@@ -66243,7 +66297,9 @@
    "wave": "Release 2 (DEC-770)",
    "points": "3\u20135",
    "frs": [
-    "FR-V12-O-027"
+    "FR-V12-O-027",
+    "FR-V12-O-066",
+    "FR-V12-O-067"
    ],
    "has_ac": true,
    "tokens": [
@@ -66259,7 +66315,9 @@
    "wave": "Release 2 (DEC-770)",
    "points": "3\u20135",
    "frs": [
-    "FR-V12-O-033"
+    "FR-V12-O-033",
+    "FR-V12-O-077",
+    "FR-V12-O-078"
    ],
    "has_ac": true,
    "tokens": [
@@ -66275,7 +66333,9 @@
    "wave": "Release 2 (DEC-770)",
    "points": "3\u20135",
    "frs": [
-    "FR-V12-O-033"
+    "FR-V12-O-033",
+    "FR-V12-O-079",
+    "FR-V12-O-080"
    ],
    "has_ac": true,
    "tokens": [
@@ -66291,7 +66351,11 @@
    "wave": "Release 2 (DEC-770)",
    "points": "5\u20138",
    "frs": [
-    "FR-V12-O-035"
+    "FR-V12-O-035",
+    "FR-V12-O-081",
+    "FR-V12-O-082",
+    "FR-V12-O-083",
+    "FR-V12-O-084"
    ],
    "has_ac": true,
    "tokens": [

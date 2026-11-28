@@ -65,8 +65,8 @@
 | US-01-YE06 | EP-01 | As a tenant administrator I want to set MFA and session policy within platform bounds | E: 013–014 | Yes | Not stated | not stated | Part-11-5b |
 | US-01-YE07 | EP-01 | As a tenant administrator I want custom roles that cannot break separation of duties | E: 016–017 | Yes | Not stated | not stated | Part-11-5b |
 | US-01-YE08 | EP-01 | As an auditor I want to export and verify the audit trail and stream it to our SIEM | E: 018–019 | Yes | Not stated | not stated | Part-11-5b |
-| US-01-YE09 | EP-01 | As the platform I want job-scoped service-principal grants so that workers never inherit… | E: 021 | No → US-01-ZU03 | Not stated | not stated | Part-11-5b |
-| US-01-YE10 | EP-01 | As a tenant I want region-pinned data and pooled-connection safety | E: 004–005, 020 | No → US-01-ZU02 | Not stated | not stated | Part-11-5b |
+| US-01-YE09 | EP-01 | As the platform I want job-scoped service-principal grants so that workers never inherit… | E: 021 | Yes (added v1.2) → US-01-ZU03 | Not stated | not stated | Part-11-5b |
+| US-01-YE10 | EP-01 | As a tenant I want region-pinned data and pooled-connection safety | E: 004–005, 020 | Yes (added v1.2) → US-01-ZU02 | Not stated | not stated | Part-11-5b |
 | US-01-YG01 | EP-01 | As the tenant administrator (R12), I want A197 Business and Organization Management… | G: 067 | Yes | Not stated | not stated | Part-11-7c |
 | US-01-YG02 | EP-01 | As the tenant administrator (R12), I want A203 Identity, SSO | G: 073 | Yes | Not stated | not stated | Part-11-7c |
 | US-01-YG03 | EP-01 | As the tenant administrator (R12), I want A002 User and role administration: V12 A123… | G: 082 | Yes | Not stated | not stated | Part-11-7c |
@@ -74,9 +74,9 @@
 | US-01-YG05 | EP-01 | As the tenant administrator (R12), I want A008 Integration connections: V12 A128 delta so… | G: 086 | Yes | Not stated | not stated | Part-11-7c |
 | US-01-YG06 | EP-01 | As the tenant administrator (R12), I want Four access experiences (Platform operator | G: 103 | Yes | Not stated | not stated | Part-11-7c |
 | US-01-YH01 | EP-01 | As a tenant administrator I want scoped, expiring API keys shown once so that our servers… | H: 001, 003 | Yes | Release 1 | not stated | Part-11-8b |
-| US-01-YH02 | EP-01 | As an integration developer I want OAuth client credentials so that server tokens are… | H: 002 | No →  | Release 2 | not stated | Part-11-8b |
+| US-01-YH02 | EP-01 | As an integration developer I want OAuth client credentials so that server tokens are… | H: 002 | Yes (added v1.2) | Release 2 | not stated | Part-11-8b |
 | US-01-YH03 | EP-01 | As a tenant administrator I want signed outbound webhooks with a delivery log and replay… | H: 005, 035 | Yes | Release 1 | not stated | Part-11-8b |
-| US-01-YH04 | EP-01 | As a developer I want a portal with reference, guides and a sandbox so that I can build… | H: 006–007 | No →  | Release 2 | not stated | Part-11-8b |
+| US-01-YH04 | EP-01 | As a developer I want a portal with reference, guides and a sandbox so that I can build… | H: 006–007 | Yes (added v1.2) | Release 2 | not stated | Part-11-8b |
 | US-01-YH05 | EP-01 | As a tenant administrator I want SAML/OIDC SSO with verified domains and break-glass so… | H: 036 | Yes | Release 1 | not stated | Part-11-8b |
 | US-01-YH06 | EP-01 | As an IT administrator I want SCIM provisioning so that leavers lose access within 15… | H: 036 | Yes | Release 2 | not stated | Part-11-8b |
 | US-01-YH07 | EP-01 | As a tenant administrator I want custom roles that cannot combine request and approve so… | H: 037 | Yes | Release 2 | not stated | Part-11-8b |
@@ -92,15 +92,15 @@
 | US-01-ZR26 | EP-01 | Least-privilege database role app_rw with per-transaction context | R: 143–155 | Yes | Release 1 | 3–5 | Part-11-19c |
 | US-01-ZR27 | EP-01 | Data API disabled and service_role only through break-glass | R: 143–155 | Yes | Release 1 | 2–3 | Part-11-19c |
 | US-01-ZR28 | EP-01 | Residency choice at onboarding and region routing | R: 005 | Yes | Release 1 | 3–5 | Part-11-19c |
-| US-02-YA01 | EP-02 | As a tenant admin, I want divisions, brands, markets and channel accounts with separate… | A: 075–077, 079 | No → US-02-ZU01 | Release 1 | 8 | Part-11-1b |
+| US-02-YA01 | EP-02 | As a tenant admin, I want divisions, brands, markets and channel accounts with separate… | A: 075–077, 079 | Yes (added v1.2) → US-02-ZU01 | Release 1 | 8 | Part-11-1b |
 | US-02-YB01 | EP-02 | SM-SVC-25 Business Document & Knowledge Intelligence Automation: V12 SKU deltas | B: 059 | Yes | Release 3+ | not stated | Part-11-2a |
 | US-02-YD01 | EP-02 | As Compliance (R10), I want document intake, grounding | D: 125 | Yes | Not stated | 5–8 | Part-11-4d |
 | US-02-YM19 | EP-02 | As a Research Analyst I want relations extracted with provenance so that I can trust the… | M: 059–064 | Yes | Release 3+ | not stated | Part-11-13b |
 | US-02-YM20 | EP-02 | As a seller I want warm-path queries so that I reach buying committees through known… | M: 059–064 | Yes | Release 3+ | not stated | Part-11-13b |
 | US-03-YA01 | EP-03 | As legal, I want a market pack to block outbound until counsel approves it | A: 053, 130–135 | Yes | Release 1 | 5 | Part-11-1b |
-| US-03-YA02 | EP-03 | As a data principal, I want to lodge grievance and nomination requests and receive a due… | A: 053, 130–135 | No →  | Release 1 | 3 | Part-11-1b |
-| US-03-YE01 | EP-03 | As a compliance lead I want deny reasons ordered by V12 precedence | E: 022 | No → US-03-ZU01 | Not stated | not stated | Part-11-5b |
-| US-03-YF27 | EP-03 |  | F: 043 | Yes | Not stated | not stated | Part-11-6b |
+| US-03-YA02 | EP-03 | As a data principal, I want to lodge grievance and nomination requests and receive a due… | A: 053, 130–135 | Yes (added v1.2) | Release 1 | 3 | Part-11-1b |
+| US-03-YE01 | EP-03 | As a compliance lead I want deny reasons ordered by V12 precedence | E: 022 | Yes (added v1.2) → US-03-ZU01 | Not stated | not stated | Part-11-5b |
+| US-03-YF27 | EP-03 | Send preflight decision table with fixed precedence (AU-171) | F: 043 | Yes | Not stated | not stated | Part-11-6b |
 | US-03-YG01 | EP-03 | As the DPO (R10), I want W29 repurposed as 'Communication preferences' | G: 029 | Yes | Not stated | not stated | Part-11-7c |
 | US-03-YG02 | EP-03 | As the DPO (R10), I want A200 Jurisdiction policy packs and send preflight | G: 070 | Yes | Not stated | not stated | Part-11-7c |
 | US-03-YG03 | EP-03 | As the DPO (R10), I want A201 Consent and suppression ledger | G: 071 | Yes | Not stated | not stated | Part-11-7c |
@@ -108,17 +108,17 @@
 | US-03-YG05 | EP-03 | As the DPO (R10), I want W49 Rights request tracker: V12 W35 delta so that the V12… | G: 075 | Yes | Not stated | not stated | Part-11-7c |
 | US-03-YG06 | EP-03 | As the DPO (R10), I want A163 Rights Case Console (with A013 Privacy request queue): V12… | G: 081 | Yes | Not stated | not stated | Part-11-7c |
 | US-03-YG07 | EP-03 | As the DPO (R10), I want Cookie consent banner and preferences with notice version | G: 096 | Yes | Not stated | not stated | Part-11-7c |
-| US-03-YH01 | EP-03 | As a DPO I want to record withdrawals, open incidents with clocks and record… | H: 013 | No → US-03-ZU04 | Release 1 | not stated | Part-11-8b |
+| US-03-YH01 | EP-03 | As a DPO I want to record withdrawals, open incidents with clocks and record… | H: 013 | Yes (added v1.2) → US-03-ZU04 | Release 1 | not stated | Part-11-8b |
 | US-03-YI01 | EP-03 | As the DPO I want breach deadlines validated when notifications are planned so that… | I: 014 | Yes | Not stated | not stated | Part-11-9b |
 | US-03-YI02 | EP-03 | As the DPO I want DSAR completion blocked until identity is verified and evidence attached | I: 006–007 | Yes | Not stated | not stated | Part-11-9b |
 | US-03-YM09 | EP-03 | As Legal/Compliance I want rule packs versioned and signed off so that AI checks cite… | M: 027–033 | Yes | Release 3+ | not stated | Part-11-13b |
 | US-03-YM10 | EP-03 | As a marketer I want clause-level findings and commitment flags before approval so that I… | M: 027–033 | Yes | Release 3+ | not stated | Part-11-13b |
-| US-03-YM38 | EP-03 | As a recipient or user I want AI assistance disclosed so that I know where AI was used | M: 100 | No → US-03-ZU08 | Release 3+ | not stated | Part-11-13b |
-| US-04-YA01 | EP-04 | As the AI owner, I want AI labels, region pinning and language slice gates before a… | A: 054, 111, 114–117 | No → US-04-ZU01, US-04-ZU03 | Release 1 | 5 | Part-11-1b |
-| US-04-YF24 | EP-04 |  | F: 003 | Yes | Not stated | not stated | Part-11-6b |
-| US-04-YF25 | EP-04 |  | F: 005 | Yes | Not stated | not stated | Part-11-6b |
-| US-04-YF26 | EP-04 |  | F: 050 | Yes | Not stated | not stated | Part-11-6b |
-| US-04-YF29 | EP-04 |  | F: 016 | Yes | Not stated | not stated | Part-11-6b |
+| US-03-YM38 | EP-03 | As a recipient or user I want AI assistance disclosed so that I know where AI was used | M: 100 | Yes (added v1.2) → US-03-ZU08 | Release 3+ | not stated | Part-11-13b |
+| US-04-YA01 | EP-04 | As the AI owner, I want AI labels, region pinning and language slice gates before a… | A: 054, 111, 114–117 | Yes (added v1.2) → US-04-ZU01, US-04-ZU03 | Release 1 | 5 | Part-11-1b |
+| US-04-YF24 | EP-04 | Cheapest passing Claude tier with at most one escalation (AU-152) | F: 003 | Yes | Not stated | not stated | Part-11-6b |
+| US-04-YF25 | EP-04 | Locale-specific EVAL gate blocks unevidenced AI steps (AU-154) | F: 005 | Yes | Not stated | not stated | Part-11-6b |
+| US-04-YF26 | EP-04 | Cost per accepted result with rejected outputs in the denominator (AU-158) | F: 050 | Yes | Not stated | not stated | Part-11-6b |
+| US-04-YF29 | EP-04 | Tenant fair-share scheduling protects interactive AI latency (AU-160) | F: 016 | Yes | Not stated | not stated | Part-11-6b |
 | US-04-YG01 | EP-04 | As the AI lead (R11), I want A198 AI model registry and routing | G: 068 | Yes | Not stated | not stated | Part-11-7c |
 | US-04-YG02 | EP-04 | As the AI lead (R11), I want A199 Prompt-injection defence and red-team | G: 069 | Yes | Not stated | not stated | Part-11-7c |
 | US-04-YG03 | EP-04 | As the AI lead (R11), I want A128 AI Evaluation, Red-Team and Drift Observatory: V12 A115… | G: 079 | Yes | Not stated | not stated | Part-11-7c |
@@ -131,7 +131,7 @@
 | US-04-YM28 | EP-04 | As the AI lead I want candidates proven offline and canaried so that no regression… | M: 081–085 | Yes | Release 3+ | not stated | Part-11-13b |
 | US-04-YM33 | EP-04 | As the security lead I want abnormal agent tool use quarantined so that injection or… | M: 093–094 | Yes | Release 3+ | not stated | Part-11-13b |
 | US-04-YM34 | EP-04 | As the security lead I want agents blocked when the firewall is down or unprofiled so… | M: 095–096 | Yes | Release 3+ | not stated | Part-11-13b |
-| US-04-YM37 | EP-04 | As the FinOps lead I want all new agents metered to a capped budget line so that spend… | M: 099 | No → US-04-ZU17 | Release 3+ | not stated | Part-11-13b |
+| US-04-YM37 | EP-04 | As the FinOps lead I want all new agents metered to a capped budget line so that spend… | M: 099 | Yes (added v1.2) → US-04-ZU17 | Release 3+ | not stated | Part-11-13b |
 | US-04-ZR20 | EP-04 | Model registry data model and two-person approval | F: 002–003, 037–038; R: 111–130 | Yes | Release 1 | 5–8 | Part-11-19c |
 | US-04-ZR21 | EP-04 | Approval evidence, multimodal rows and re-certification | F: 002–003, 037–038; R: 111–130 | Yes | Release 1 | 3–5 | Part-11-19c |
 | US-04-ZR22 | EP-04 | Zone- and class-aware routing through the registry | F: 002–003, 037–038; R: 111–130 | Yes | Release 1 | 8–13 | Part-11-19c |
@@ -247,7 +247,7 @@
 | US-15-YB01 | EP-15 | SM-SVC-21 Payment, Invoice & Reconciliation Automation: V12 SKU deltas | B: 055 | Yes | Release 3+ | not stated | Part-11-2a |
 | US-15-YB02 | EP-15 | SM-SVC-24 Revenue, Attribution & Sales Forecast Automation: V12 SKU deltas | B: 058 | Yes | Release 3+ | not stated | Part-11-2a |
 | US-15-YD01 | EP-15 | As a Finance Maker (R08), I want payment evidence imported | D: 121 | Yes | Not stated | 8–13 | Part-11-4d |
-| US-15-YE01 | EP-15 | As a finance user I want SaaS, provider, subscriber and ad-spend ledgers separate | E: 079–082 | No → US-15-ZU01 | Not stated | not stated | Part-11-5b |
+| US-15-YE01 | EP-15 | As a finance user I want SaaS, provider, subscriber and ad-spend ledgers separate | E: 079–082 | Yes (added v1.2) → US-15-ZU01 | Not stated | not stated | Part-11-5b |
 | US-15-YF10 | EP-15 | Pricing and Margin Insight Analyst (AG-109, AGT-20) | F: 060 | Yes | Not stated | not stated | Part-11-6b |
 | US-15-YF17 | EP-15 | Receivable Discrepancy and Overdue-Risk Explainer (AG-116, AGT-16) | F: 067 | Yes | Not stated | not stated | Part-11-6b |
 | US-15-YG01 | EP-15 | As a permitted user, I want W26 repurposed as 'Billing & invoice status' | G: 026 | Yes | Not stated | not stated | Part-11-7c |
@@ -257,8 +257,8 @@
 | US-15-ZP01 | EP-15 | Register payment mandates and execute payments via a licensed PSP | P: 001–006, 008, 012–015, 019–023, 027–029, 031–033, 036–040, 052–053, 058–059, 061–062 | Yes | Release 2 | 8–13 | Part-11-17b |
 | US-15-ZP02 | EP-15 | Reconcile settlements and post journals | P: 062, 064, 083–092 | Yes | Release 2 | 8–13 | Part-11-17b |
 | US-15-ZP03 | EP-15 | Handle refunds, disputes and chargebacks | P: 083–092 | Yes | Release 2 | 5–8 | Part-11-17b |
-| US-16-YA01 | EP-16 | As a customer success manager, I want a first-value milestone and success plan for each… | A: 160–161 | No → US-16-ZU02 | Release 2 | 8 | Part-11-1b |
-| US-16-YA02 | EP-16 | As a customer success manager, I want health scores that show unknown inputs and never… | A: 162–163 | No → US-16-ZU03 | Release 3+ | 5 | Part-11-1b |
+| US-16-YA01 | EP-16 | As a customer success manager, I want a first-value milestone and success plan for each… | A: 160–161 | Yes (added v1.2) → US-16-ZU02 | Release 2 | 8 | Part-11-1b |
+| US-16-YA02 | EP-16 | As a customer success manager, I want health scores that show unknown inputs and never… | A: 162–163 | Yes (added v1.2) → US-16-ZU03 | Release 3+ | 5 | Part-11-1b |
 | US-16-YB01 | EP-16 | SM-SVC-22 Customer, Partner & Institutional Onboarding Automation: V12 SKU deltas | B: 056 | Yes | Release 3+ | not stated | Part-11-2a |
 | US-16-YB02 | EP-16 | SM-SVC-23 Customer Retention, Renewal & Feedback Automation: V12 SKU deltas | B: 057 | Yes | Release 3+ | not stated | Part-11-2a |
 | US-16-YB03 | EP-16 | SM-SVC-32 Partner, Distributor & Co-Selling Automation: V12 SKU deltas | B: 085 | Yes | Release 3+ | not stated | Part-11-2a |
@@ -276,8 +276,8 @@
 | US-16-YG04 | EP-16 | As a permitted user, I want A177 Customer Service & Support Operations workspace | G: 047 | Yes | Not stated | not stated | Part-11-7c |
 | US-16-YG05 | EP-16 | As a permitted user, I want A178 Product-Led Growth & Usage Intelligence workspace | G: 048 | Yes | Not stated | not stated | Part-11-7c |
 | US-16-YI01 | EP-16 | As a customer-success lead I want CSAT/CES/NPS with response rates | I: 047 | Yes | Not stated | not stated | Part-11-9c |
-| US-17-YA01 | EP-17 | As a manager, I want 14 differentiated Command Centre views with cascading filters that… | A: 120, 122–123 | No → US-17-ZU03 | Release 2 | 13 | Part-11-1b |
-| US-17-YA02 | EP-17 | As an analyst, I want drill-down totals that reconcile to tiles in native currency | A: 036, 124 | No → US-17-ZU01 | Release 2 | 5 | Part-11-1b |
+| US-17-YA01 | EP-17 | As a manager, I want 14 differentiated Command Centre views with cascading filters that… | A: 120, 122–123 | Yes (added v1.2) → US-17-ZU03 | Release 2 | 13 | Part-11-1b |
+| US-17-YA02 | EP-17 | As an analyst, I want drill-down totals that reconcile to tiles in native currency | A: 036, 124 | Yes (added v1.2) → US-17-ZU01 | Release 2 | 5 | Part-11-1b |
 | US-17-YD01 | EP-17 | As Finance (R08), I want attribution, forecast scenarios and calibration from SVC-24 | D: 124 | Yes | Not stated | 5–8 | Part-11-4d |
 | US-17-YG01 | EP-17 | As a startup head (R02), I want A180 AI Sales Enablement & Coaching workspace (V12 X36 | G: 050 | Yes | Not stated | not stated | Part-11-7c |
 | US-17-YG02 | EP-17 | As a startup head (R02), I want A089 Unified Command Centre: 14 management views | G: 091 | Yes | Not stated | not stated | Part-11-7c |
@@ -291,7 +291,7 @@
 | US-17-YI02 | EP-17 | As an analytics owner I want metric definitions approved and versioned so that late… | I: 044 | Yes | Not stated | not stated | Part-11-9c |
 | US-17-YM21 | EP-17 | As the Founder I want a daily decision-first flash so that nothing waits on me unnoticed | M: 065–069 | Yes | Release 3+ | not stated | Part-11-13b |
 | US-17-YM22 | EP-17 | As a Startup Head I want my weekly brief to show only data I may see so that… | M: 065–069 | Yes | Release 3+ | not stated | Part-11-13b |
-| US-17-YM36 | EP-17 | As a SaaS client admin I want peer benchmarks, only if privacy is guaranteed | M: 098 | No →  | Release 3+ | not stated | Part-11-13b |
+| US-17-YM36 | EP-17 | As a SaaS client admin I want peer benchmarks, only if privacy is guaranteed | M: 098 | Yes (added v1.2) | Release 3+ | not stated | Part-11-13b |
 | US-17-ZR24 | EP-17 | Benchmark participation under contract clause | M: 098; R: 131–155 | Yes | Release 2 | 3–5 | Part-11-19c |
 | US-17-ZR25 | EP-17 | Differentially private benchmark computation and publication | M: 098; R: 131–155 | Yes | Release 2 | 8–13 | Part-11-19c |
 | US-18-YA01 | EP-18 | As the compliance lead, I want V12 authority levels mapped to the DEC-064 caps so that no… | A: 110–112 | Yes | Release 1 | 5 | Part-11-1b |
@@ -308,8 +308,8 @@
 | US-18-YD09 | EP-18 | As a Tenant Administrator (R12), I want to pause and re-cadence my schedules within… | D: 022 | Yes | Not stated | 3–5 | Part-11-4d |
 | US-18-YD10 | EP-18 | As a Product Owner, I want templates as parameter sets and KPIs registered per workflow | D: 013–015, 024–025, 027 | Yes | Not stated | 5–8 | Part-11-4d |
 | US-18-YE01 | EP-18 | As an automation lead I want to replay dead letters only with current policy and the… | E: 095, 097–099 | Yes | Not stated | not stated | Part-11-5b |
-| US-18-YE02 | EP-18 | As the platform I want backpressure and degradation so overload never loses accepted work | E: 096, 100–101 | No → US-18-ZU03 | Not stated | not stated | Part-11-5b |
-| US-18-YF28 | EP-18 |  | F: 035 | Yes | Not stated | not stated | Part-11-6b |
+| US-18-YE02 | EP-18 | As the platform I want backpressure and degradation so overload never loses accepted work | E: 096, 100–101 | Yes (added v1.2) → US-18-ZU03 | Not stated | not stated | Part-11-5b |
+| US-18-YF28 | EP-18 | Approval bound to the exact payload digest; stale approvals rejected (AU-175) | F: 035 | Yes | Not stated | not stated | Part-11-6b |
 | US-18-YG01 | EP-18 | As an automation lead (R11), I want A192 Automation service catalogue (tenant view) | G: 062 | Yes | Not stated | not stated | Part-11-7c |
 | US-18-YG02 | EP-18 | As an automation lead (R11), I want A193 Service workspace detail | G: 063 | Yes | Not stated | not stated | Part-11-7c |
 | US-18-YG03 | EP-18 | As an automation lead (R11), I want A194 Workflow registry | G: 064 | Yes | Not stated | not stated | Part-11-7c |
@@ -320,12 +320,12 @@
 | US-18-YH01 | EP-18 | As an integrator I want one run gateway with typed DTOs and dry-run so that I can start… | H: 011 | Yes | Release 1 | not stated | Part-11-8b |
 | US-18-YI01 | EP-18 | As a workflow owner I want effects to move forward only and never be deleted so that… | I: 015 | Yes | Not stated | not stated | Part-11-9b |
 | US-18-YI02 | EP-18 | As a configuration owner I want workflow configurations tied to an approved revision with… | I: 023 | Yes | Not stated | not stated | Part-11-9b |
-| US-18-YL01 | EP-18 | As an Admin user, I want scope, filters, record linkage | L: 001–015 | No → US-18-ZU10, US-18-ZU11, US-18-ZU12, US-18-ZU13 | Not stated | 8 | Part-11-12 |
-| US-18-YL04 | EP-18 | As the product owner, I want UX-BR-02…05 verified on the 36-tenant fixture | L: 017–020 | No → US-18-ZU14 | Not stated | 5 | Part-11-12 |
+| US-18-YL01 | EP-18 | As an Admin user, I want scope, filters, record linkage | L: 001–015 | Yes (added v1.2) → US-18-ZU10, US-18-ZU11, US-18-ZU12, US-18-ZU13 | Not stated | 8 | Part-11-12 |
+| US-18-YL04 | EP-18 | As the product owner, I want UX-BR-02…05 verified on the 36-tenant fixture | L: 017–020 | Yes (added v1.2) → US-18-ZU14 | Not stated | 5 | Part-11-12 |
 | US-18-YM05 | EP-18 | As an approver I want similar items grouped with outliers highlighted so that I review… | M: 014–019 | Yes | Release 3+ | not stated | Part-11-13b |
 | US-18-YM06 | EP-18 | As an approver I want a neutral note with risks and diffs so that I know what to check | M: 014–019 | Yes | Release 3+ | not stated | Part-11-13b |
 | US-18-YM07 | EP-18 | As an Automation Lead I want weekly service improvement proposals so that services meet… | M: 020–026 | Yes | Release 3+ | not stated | Part-11-13b |
-| US-18-YM26 | EP-18 | As a tenant I want to install a certified template as a draft so that I adopt proven… | M: 079–080 | No →  | Release 3+ | not stated | Part-11-13b |
+| US-18-YM26 | EP-18 | As a tenant I want to install a certified template as a draft so that I adopt proven… | M: 079–080 | Yes (added v1.2) | Release 3+ | not stated | Part-11-13b |
 | US-18-ZP01 | EP-18 | Draft and simulate a bounded mandate | P: 001–006, 008, 012–015, 019–023, 027–029, 031–033, 036–040, 052–053, 058–059, 061–062 | Yes | Release 2 | 5–8 | Part-11-17b |
 | US-18-ZP02 | EP-18 | Approve a mandate with two distinct people | P: 006, 008, 012–015, 019–022, 032 | Yes | Release 2 | 8–13 | Part-11-17b |
 | US-18-ZP03 | EP-18 | Recheck every mandated dispatch in the PDP | P: 040, 052 | Yes | Release 2 | 8–13 | Part-11-17b |
@@ -338,8 +338,8 @@
 | US-18-ZP10 | EP-18 | Bind L4 plans to L3 mandates | P: 004–005, 098 | Yes | Release 2 | 5–8 | Part-11-17b |
 | US-18-ZR11 | EP-18 | Connector framework and activation gate | R: 056–080 | Yes | Release 1 | 5–8 | Part-11-19c |
 | US-19-YA01 | EP-19 | As a visitor, I want a neutral catalogue of 39 automation services with no customer data | A: 050–052, 055 | Yes | Release 1 | 8 | Part-11-1b |
-| US-19-YA02 | EP-19 | As a visitor, I want public data-rights and AI-transparency pages | A: 053–054 | No →  | Release 1 | 5 | Part-11-1b |
-| US-19-YA03 | EP-19 | As a visitor, I want explainable SKU suggestions, comparisons and a TCO/ROI estimate that… | A: 056–057, 059 | No → US-19-ZU02 | Release 2 | 8 | Part-11-1b |
+| US-19-YA02 | EP-19 | As a visitor, I want public data-rights and AI-transparency pages | A: 053–054 | Yes (added v1.2) | Release 1 | 5 | Part-11-1b |
+| US-19-YA03 | EP-19 | As a visitor, I want explainable SKU suggestions, comparisons and a TCO/ROI estimate that… | A: 056–057, 059 | Yes (added v1.2) → US-19-ZU02 | Release 2 | 8 | Part-11-1b |
 | US-19-YG01 | EP-19 | As an anonymous visitor (R18), I want W01 repurposed as 'Home' | G: 001 | Yes | Not stated | not stated | Part-11-7c |
 | US-19-YG02 | EP-19 | As an anonymous visitor (R18), I want W02 repurposed as 'Automation categories' | G: 002 | Yes | Not stated | not stated | Part-11-7c |
 | US-19-YG03 | EP-19 | As an anonymous visitor (R18), I want W03 repurposed as 'Automation family details' | G: 003 | Yes | Not stated | not stated | Part-11-7c |
@@ -377,35 +377,35 @@
 | US-19-YG35 | EP-19 | As an anonymous visitor (R18), I want W05/W08 workflow sample library: four workflow… | G: 106 | Yes | Not stated | not stated | Part-11-7c |
 | US-19-YG36 | EP-19 | As an anonymous visitor (R18), I want Planning calculators: W01 illustrative savings | G: 107 | Yes | Not stated | not stated | Part-11-7c |
 | US-19-YG37 | EP-19 | As an anonymous visitor (R18), I want Readiness assessment and opportunity report | G: 108 | Yes | Not stated | not stated | Part-11-7c |
-| US-19-YG38 | EP-19 | As an anonymous visitor (R18), I want No investor / fundraising mode in the commercial… | G: 117 | Yes | Not stated | not stated | Part-11-7c |
+| US-19-YG38 | EP-19 | As an anonymous visitor (R18), I want the S&M website free of investor mode while the separate investor website (DEC-783) offers it… | G: 117 | Yes | Not stated | not stated | Part-11-7c |
 | US-19-YK10 | EP-19 | Scoped mobile notifications | K: 009 | Yes | Not stated | not stated | Part-11-11b |
-| US-19-YL02 | EP-19 | As a public visitor or portal user, I want only published | L: 002, 012, 014 | No →  | Not stated | 3 | Part-11-12 |
+| US-19-YL02 | EP-19 | As a public visitor or portal user, I want only published | L: 002, 012, 014 | Yes (added v1.2) | Not stated | 3 | Part-11-12 |
 | US-20-YA01 | EP-20 | As a subscriber admin, I want to buy a single SKU without buying its upstream SKUs | A: 001–003, 010–011, 014, 016–022, 055–057, 071, 090, 096–097, 120 | Yes | Release 2 | 5 | Part-11-1b |
-| US-20-YA02 | EP-20 | As a subscriber admin, I want to preview the effect of an upgrade or downgrade before I… | A: 001–003, 014, 016–022, 055–057, 071, 090, 096–097, 120 | No →  | Release 2 | 8 | Part-11-1b |
-| US-20-YA03 | EP-20 | As finance, I want a quote and its acceptance bound to the exact application revision and… | A: 001–003, 014, 016–022, 055–057, 071, 090, 096–097, 120 | No →  | Release 2 | 5 | Part-11-1b |
-| US-20-YA04 | EP-20 | As finance, I want failed payments to enter a grace period with notices before… | A: 001–003, 014, 016–022, 055–057, 071, 090, 096–097, 120 | No →  | Release 2 | 5 | Part-11-1b |
-| US-20-YA05 | EP-20 | As a subscriber admin, I want to cancel without a forced survey and receive my export and… | A: 001–003, 014, 016–022, 055–057, 071, 090, 096–097, 120, 168 | No → US-20-ZU10 | Release 2 | 5 | Part-11-1b |
-| US-20-YA06 | EP-20 | As an applicant, I want an eight-stage wizard that saves server-side drafts and rejects… | A: 001–003, 014, 016–022, 055–057, 071, 090–092, 096–097, 120 | No → US-20-ZU07 | Release 2 | 13 | Part-11-1b |
-| US-20-YA07 | EP-20 | As the service owner, I want a per-SKU meter registry with pilot caps and cost ranges | A: 032–033, 035 | No → US-20-ZU05 | Release 2 | 8 | Part-11-1b |
-| US-20-YA08 | EP-20 | As the CPO, I want BR-V12 enterprise capabilities registered with release mapping and… | A: 180–189 | No → US-20-ZU11, US-20-ZU12, US-20-ZU13 | Release 1 | 3 | Part-11-1b |
+| US-20-YA02 | EP-20 | As a subscriber admin, I want to preview the effect of an upgrade or downgrade before I… | A: 001–003, 014, 016–022, 055–057, 071, 090, 096–097, 120 | Yes (added v1.2) | Release 2 | 8 | Part-11-1b |
+| US-20-YA03 | EP-20 | As finance, I want a quote and its acceptance bound to the exact application revision and… | A: 001–003, 014, 016–022, 055–057, 071, 090, 096–097, 120 | Yes (added v1.2) | Release 2 | 5 | Part-11-1b |
+| US-20-YA04 | EP-20 | As finance, I want failed payments to enter a grace period with notices before… | A: 001–003, 014, 016–022, 055–057, 071, 090, 096–097, 120 | Yes (added v1.2) | Release 2 | 5 | Part-11-1b |
+| US-20-YA05 | EP-20 | As a subscriber admin, I want to cancel without a forced survey and receive my export and… | A: 001–003, 014, 016–022, 055–057, 071, 090, 096–097, 120, 168 | Yes (added v1.2) → US-20-ZU10 | Release 2 | 5 | Part-11-1b |
+| US-20-YA06 | EP-20 | As an applicant, I want an eight-stage wizard that saves server-side drafts and rejects… | A: 001–003, 014, 016–022, 055–057, 071, 090–092, 096–097, 120 | Yes (added v1.2) → US-20-ZU07 | Release 2 | 13 | Part-11-1b |
+| US-20-YA07 | EP-20 | As the service owner, I want a per-SKU meter registry with pilot caps and cost ranges | A: 032–033, 035 | Yes (added v1.2) → US-20-ZU05 | Release 2 | 8 | Part-11-1b |
+| US-20-YA08 | EP-20 | As the CPO, I want BR-V12 enterprise capabilities registered with release mapping and… | A: 180–189 | Yes (added v1.2) → US-20-ZU11, US-20-ZU12, US-20-ZU13 | Release 1 | 3 | Part-11-1b |
 | US-20-YD01 | EP-20 | As a support lead, I want cases created, triaged, resolved and SLA-monitored by SVC-33 | D: 133 | Yes | Not stated | 8–13 | Part-11-4d |
 | US-20-YD02 | EP-20 | As a Growth Manager, I want usage, activation and expansion signals from SVC-34 | D: 134 | Yes | Not stated | 5–8 | Part-11-4d |
 | US-20-YE01 | EP-20 | As an applicant I want to submit a configuration envelope and have stale revisions… | E: 030–031, 040 | Yes | Not stated | not stated | Part-11-5b |
-| US-20-YE02 | EP-20 | As an applicant I want to complete eight stages and resume a draft on any device | E: 032–034, 036–037 | No → US-20-ZU15, US-20-ZU16 | Not stated | not stated | Part-11-5b |
+| US-20-YE02 | EP-20 | As an applicant I want to complete eight stages and resume a draft on any device | E: 032–034, 036–037 | Yes (added v1.2) → US-20-ZU15, US-20-ZU16 | Not stated | not stated | Part-11-5b |
 | US-20-YE03 | EP-20 | As a platform operator I want a provisioning saga that holds on failure and compensates… | E: 035, 038 | Yes | Not stated | not stated | Part-11-5b |
-| US-20-YE04 | EP-20 | As a catalogue reviewer I want SKU versions to move through a controlled lifecycle and… | E: 045–051 | No → US-20-ZU17, US-20-ZU18 | Not stated | not stated | Part-11-5b |
+| US-20-YE04 | EP-20 | As a catalogue reviewer I want SKU versions to move through a controlled lifecycle and… | E: 045–051 | Yes (added v1.2) → US-20-ZU17, US-20-ZU18 | Not stated | not stated | Part-11-5b |
 | US-20-YE05 | EP-20 | As a billing owner I want to accept an exact quote revision so that I am bound only to… | E: 055–057, 065 | Yes | Not stated | not stated | Part-11-5b |
 | US-20-YE06 | EP-20 | As the platform I want provisioning only after a verified payment event | E: 057, 075 | Yes | Not stated | not stated | Part-11-5b |
 | US-20-YE07 | EP-20 | As the platform I want entitlement checked at API, enqueue, worker and effect | E: 059–061 | Yes | Not stated | not stated | Part-11-5b |
-| US-20-YE08 | EP-20 | As a billing owner I want to preview a plan change with proration before confirming | E: 062–063 | No → US-20-ZU20 | Not stated | not stated | Part-11-5b |
+| US-20-YE08 | EP-20 | As a billing owner I want to preview a plan change with proration before confirming | E: 062–063 | Yes (added v1.2) → US-20-ZU20 | Not stated | not stated | Part-11-5b |
 | US-20-YE09 | EP-20 | As the platform I want atomic reservations that release unused units and keep uncertain… | E: 070–071 | Yes | Not stated | not stated | Part-11-5b |
 | US-20-YE10 | EP-20 | As a finance user I want invoices with correct tax in integer minor units | E: 072–074 | Yes | Not stated | not stated | Part-11-5b |
 | US-20-YE11 | EP-20 | As a finance user I want dunning to suspend only after grace and reinstate on payment | E: 063, 076 | Yes | Not stated | not stated | Part-11-5b |
-| US-20-YE12 | EP-20 | As a billing owner I want to dispute lines and receive a credit note after review | E: 064, 078, 084 | No → US-20-ZU21 | Not stated | not stated | Part-11-5b |
-| US-20-YE13 | EP-20 | As a finance user I want revenue recognized daily and reconciled at close | E: 077, 086 | No → US-20-ZU22 | Not stated | not stated | Part-11-5b |
-| US-20-YE14 | EP-20 | As a tenant I want controlled offboarding with export and retention | E: 058, 127 | No → US-20-ZU19 | Not stated | not stated | Part-11-5b |
-| US-20-YE15 | EP-20 | As a customer-success lead I want TTFV and quota forecasts per tenant | E: 083, 089 | No → US-20-ZU23 | Not stated | not stated | Part-11-5b |
-| US-20-YE16 | EP-20 | As a commercial lead I want the partner model, procurement pack and per-SKU service… | E: 085, 087–088 | No → US-20-ZU24 | Not stated | not stated | Part-11-5b |
+| US-20-YE12 | EP-20 | As a billing owner I want to dispute lines and receive a credit note after review | E: 064, 078, 084 | Yes (added v1.2) → US-20-ZU21 | Not stated | not stated | Part-11-5b |
+| US-20-YE13 | EP-20 | As a finance user I want revenue recognized daily and reconciled at close | E: 077, 086 | Yes (added v1.2) → US-20-ZU22 | Not stated | not stated | Part-11-5b |
+| US-20-YE14 | EP-20 | As a tenant I want controlled offboarding with export and retention | E: 058, 127 | Yes (added v1.2) → US-20-ZU19 | Not stated | not stated | Part-11-5b |
+| US-20-YE15 | EP-20 | As a customer-success lead I want TTFV and quota forecasts per tenant | E: 083, 089 | Yes (added v1.2) → US-20-ZU23 | Not stated | not stated | Part-11-5b |
+| US-20-YE16 | EP-20 | As a commercial lead I want the partner model, procurement pack and per-SKU service… | E: 085, 087–088 | Yes (added v1.2) → US-20-ZU24 | Not stated | not stated | Part-11-5b |
 | US-20-YF07 | EP-20 | Trial Conversion and Upgrade Recommendation Drafter (AG-106, AGT-20) | F: 057 | Yes | Not stated | not stated | Part-11-6b |
 | US-20-YG01 | EP-20 | As a SaaS client admin (R17/R12) or operator (R13/R14) | G: 031 | Yes | Not stated | not stated | Part-11-7c |
 | US-20-YG02 | EP-20 | As a SaaS client admin (R17/R12) or operator (R13/R14) | G: 032 | Yes | Not stated | not stated | Part-11-7c |
@@ -427,7 +427,7 @@
 | US-20-YG18 | EP-20 | As a SaaS client admin (R17/R12) or operator (R13/R14) | G: 112 | Yes | Not stated | not stated | Part-11-7c |
 | US-20-YG19 | EP-20 | As a SaaS client admin (R17/R12) or operator (R13/R14) | G: 113 | Yes | Not stated | not stated | Part-11-7c |
 | US-20-YG20 | EP-20 | As a SaaS client admin (R17/R12) or operator (R13/R14) | G: 114 | Yes | Not stated | not stated | Part-11-7c |
-| US-20-YH01 | EP-20 | As a billing administrator I want invoice previews with tax lines so that customers see… | H: 039 | No → US-20-ZU28 | Release 2 | not stated | Part-11-8b |
+| US-20-YH01 | EP-20 | As a billing administrator I want invoice previews with tax lines so that customers see… | H: 039 | Yes (added v1.2) → US-20-ZU28 | Release 2 | not stated | Part-11-8b |
 | US-20-YI01 | EP-20 | As a tenant administrator I want a full export with a second approver and a link valid… | I: 020 | Yes | Not stated | not stated | Part-11-9b |
 | US-20-YI02 | EP-20 | As a Scale-plan tenant I want to bring my own KMS key and have my data made unreadable if… | I: 021 | Yes | Not stated | not stated | Part-11-9b |
 | US-20-YI03 | EP-20 | As a developer of a tenant I want API keys shown once and stored only as a hash | I: 019 | Yes | Not stated | not stated | Part-11-9b |
@@ -435,7 +435,7 @@
 | US-20-YK04 | EP-20 | Status page with maintenance and unknown state | K: 002, 012 | Yes | Not stated | not stated | Part-11-11b |
 | US-20-YK05 | EP-20 | SLA schedule and monthly statement | K: 001 | Yes | Not stated | not stated | Part-11-11b |
 | US-20-YK06 | EP-20 | Help centre top 50 tasks | K: 006 | Yes | Not stated | not stated | Part-11-11b |
-| US-20-YL03 | EP-20 | As a SaaS client administrator, I want a service portal separate from customer roles | L: 015–020 | No → US-20-ZU37 | Not stated | 3 | Part-11-12 |
+| US-20-YL03 | EP-20 | As a SaaS client administrator, I want a service portal separate from customer roles | L: 015–020 | Yes (added v1.2) → US-20-ZU37 | Not stated | 3 | Part-11-12 |
 | US-20-YM23 | EP-20 | As a SaaS client admin I want a go-live checklist that verifies itself so that I know… | M: 070–075 | Yes | Release 3+ | not stated | Part-11-13b |
 | US-20-YM24 | EP-20 | As a SaaS client admin I want a copilot that explains blockers and drafts artefacts so… | M: 070–075 | Yes | Release 3+ | not stated | Part-11-13b |
 | US-20-YM25 | EP-20 | As a tenant I want to publish a template safely so that others benefit without seeing my… | M: 076–080 | Yes | Release 3+ | not stated | Part-11-13b |
@@ -444,14 +444,14 @@
 | US-20-ZR08 | EP-20 | Signed webhooks with delivery log and replay | H: 001–007; R: 031–055 | Yes | Release 1 | 8–13 | Part-11-19c |
 | US-20-ZR09 | EP-20 | Developer portal, versioning policy and sandbox with promotion | H: 001–007; R: 031–055 | Yes | Release 1 | 5–8 | Part-11-19c |
 | US-20-ZR10 | EP-20 | SDKs for TypeScript, Python and Java | H: 001–007; R: 031–055 | Yes | Release 1 | 5–8 | Part-11-19c |
-| US-21-YA01 | EP-21 | As the CPO, I want every KPI defined once in a metric registry with denominator and… | A: 150–152, 220 | No → US-21-ZU03 | Release 2 | 8 | Part-11-1b |
-| US-21-YA02 | EP-21 | As the service owner, I want SLA tier templates attachable only after three months of… | A: 140–141, 143 | No → US-21-ZU01 | Release 2 | 5 | Part-11-1b |
-| US-21-YA03 | EP-21 | As QA, I want V12 acceptance IDs to resolve to blueprint tests in the RTM | A: 200–202 | No → US-21-ZU05 | Release 1 | 3 | Part-11-1b |
+| US-21-YA01 | EP-21 | As the CPO, I want every KPI defined once in a metric registry with denominator and… | A: 150–152, 220 | Yes (added v1.2) → US-21-ZU03 | Release 2 | 8 | Part-11-1b |
+| US-21-YA02 | EP-21 | As the service owner, I want SLA tier templates attachable only after three months of… | A: 140–141, 143 | Yes (added v1.2) → US-21-ZU01 | Release 2 | 5 | Part-11-1b |
+| US-21-YA03 | EP-21 | As QA, I want V12 acceptance IDs to resolve to blueprint tests in the RTM | A: 200–202 | Yes (added v1.2) → US-21-ZU05 | Release 1 | 3 | Part-11-1b |
 | US-21-YD01 | EP-21 | As a salesperson, I want playbooks, practice and private coaching from SVC-36 | D: 136 | Yes | Not stated | 5–8 | Part-11-4d |
 | US-21-YE01 | EP-21 | As a DevOps lead I want the DEC-421 pipeline to promote the same digest with automatic… | E: 105–111, 115–116, 131 | Yes | Not stated | not stated | Part-11-5b |
 | US-21-YE02 | EP-21 | As an SRE I want quarterly restore drills that replay erasures and prove RPO/RTO | E: 120–126 | Yes | Not stated | not stated | Part-11-5b |
-| US-21-YE03 | EP-21 | As a release manager I want per-SKU gates and GO-01…08 evidence in A090 | E: 130, 132–135 | No → US-21-ZU10, US-21-ZU11 | Not stated | not stated | Part-11-5b |
-| US-21-YE04 | EP-21 | As an SRE I want provisioning load tests, autoscaling and a compute benchmark | E: 102–103, 112–114 | No → US-21-ZU08, US-21-ZU09 | Not stated | not stated | Part-11-5b |
+| US-21-YE03 | EP-21 | As a release manager I want per-SKU gates and GO-01…08 evidence in A090 | E: 130, 132–135 | Yes (added v1.2) → US-21-ZU10, US-21-ZU11 | Not stated | not stated | Part-11-5b |
+| US-21-YE04 | EP-21 | As an SRE I want provisioning load tests, autoscaling and a compute benchmark | E: 102–103, 112–114 | Yes (added v1.2) → US-21-ZU08, US-21-ZU09 | Not stated | not stated | Part-11-5b |
 | US-21-YG01 | EP-21 | As a release manager (R13), I want A190 Release gates & decision register | G: 060 | Yes | Not stated | not stated | Part-11-7c |
 | US-21-YG02 | EP-21 | As a release manager (R13), I want A196 Screen inventory and traceability | G: 066 | Yes | Not stated | not stated | Part-11-7c |
 | US-21-YG03 | EP-21 | As a release manager (R13), I want W46 Trust centre: V12 W38 delta so that the V12… | G: 076 | Yes | Not stated | not stated | Part-11-7c |
@@ -459,7 +459,7 @@
 | US-21-YG05 | EP-21 | As a release manager (R13), I want A159 Status and Trust Centre Admin | G: 087 | Yes | Not stated | not stated | Part-11-7c |
 | US-21-YG06 | EP-21 | As a release manager (R13), I want A156 SLO and Remediation Console | G: 088 | Yes | Not stated | not stated | Part-11-7c |
 | US-21-YG07 | EP-21 | As a release manager (R13), I want Device parity: every registered Website and Admin… | G: 102 | Yes | Not stated | not stated | Part-11-7c |
-| US-21-YH01 | EP-21 | As an SRE I want to declare incidents and publish status on an independent host so that… | H: 041 | No → US-21-ZU13 | Release 2 | not stated | Part-11-8b |
+| US-21-YH01 | EP-21 | As an SRE I want to declare incidents and publish status on an independent host so that… | H: 041 | Yes (added v1.2) → US-21-ZU13 | Release 2 | not stated | Part-11-8b |
 | US-21-YI01 | EP-21 | As the release manager I want CI guards on RLS coverage | I: 012 | Yes | Not stated | not stated | Part-11-9b |
 | US-21-YI02 | EP-21 | As the security lead I want a release blocked by an overdue Critical finding or an… | I: 050–052 | Yes | Not stated | not stated | Part-11-9c |
 | US-21-YI03 | EP-21 | As the DPO I want quarterly incident tabletop exercises with breach clocks | I: 057 | Yes | Not stated | not stated | Part-11-9c |
@@ -474,9 +474,9 @@
 | US-21-YK09 | EP-21 | SLOs with policy-hold separation | K: 011 | Yes | Not stated | not stated | Part-11-11b |
 | US-21-YK11 | EP-21 | V12 traceability chains in the RTM | K: 020–021, 026 | Yes | Not stated | not stated | Part-11-11b |
 | US-21-YK12 | EP-21 | Customer decision queue with owners | K: 022, 025 | Yes | Not stated | not stated | Part-11-11b |
-| US-21-YL05 | EP-21 | As the QA lead, I want the UAT-L pack automated on FX-L-36 | — | No →  | Not stated | 8 | Part-11-12 |
+| US-21-YL05 | EP-21 | As the QA lead, I want the UAT-L pack automated on FX-L-36 | — | Yes (added v1.2) | Not stated | 8 | Part-11-12 |
 | US-21-YL07 | EP-21 | As the configuration manager, I want annex precedence, archive hashes | L: 027–030 | Yes | Not stated | 3 | Part-11-12 |
-| US-21-YM08 | EP-21 | As an Automation Lead I want safe parameters tuned within bands and reverted… | M: 022–025 | No →  | Release 3+ | not stated | Part-11-13b |
+| US-21-YM08 | EP-21 | As an Automation Lead I want safe parameters tuned within bands and reverted… | M: 022–025 | Yes (added v1.2) | Release 3+ | not stated | Part-11-13b |
 | US-21-YM13 | EP-21 | As Platform Support I want integration failures detected and safe ones fixed… | M: 041–047 | Yes | Release 3+ | not stated | Part-11-13b |
 | US-21-YM14 | EP-21 | As a Tenant Administrator I want a tested fix proposal for integration failures so that I… | M: 041–047 | Yes | Release 3+ | not stated | Part-11-13b |
 | US-21-ZR16 | EP-21 | Regional Vercel projects with pinned functions | R: 081–095 | Yes | Release 1 | 3–5 | Part-11-19c |
@@ -859,7 +859,7 @@
 
 | Tag | Conflict | Sources | Proposed resolution | Status |
 |---|---|---|---|---|
-| CONFLICT-1140 | Role ID R21 means "agency / managed-service operator" in Part 2.6 §2.6.5.3.2 and "invited investor" in Part 11.16a | Part 2.6; Part 11.16a §11.16.5 | Keep R21 = agency operator (earlier definition); rename the invited-investor role to **R22** in the next consolidation of Part 11.14/11.16; until then this part writes "R21 (Part 11.16a)" for the investor and "R21 (Part 2.6)" for the agency operator. No story behaviour changes | Proposed (DEC-946) |
+| CONFLICT-1140 | Role ID R21 means "agency / managed-service operator" in Part 2.6 §2.6.5.3.2 and "invited investor" in Part 11.16a | Part 2.6; Part 11.16a §11.16.5 | Keep R21 = agency operator (earlier definition); rename the invited-investor role to **R22** in the next consolidation of Part 11.14/11.16; until then this part writes "R21 (Part 11.16a)" for the investor and "R21 (Part 2.6)" for the agency operator. No story behaviour changes | **Resolved v1.2** (DEC-946 adopted by DEC-1001, Part 11.25: investor = R22 in Parts 11.16, 11.20, 11.22, 11.24 and the build artefacts) |
 | CONFLICT-1149 | FR-V12-A-006 ("no investor entity, route, filter or term") and US-19-YG38 ("No investor / fundraising mode in the website") contradict DEC-783, which adopted investor mode and the Investment Automation product | Parts 11.1b, 11.7c; Part 11.14 DEC-783 | Read A-006 as **product separation**: separate product code, no implicit cross-product access, investor entities only in the INV namespace (US-01-ZU01); US-19-YG38 is superseded for the investor website W55–W74 and stays valid for the Sales & Marketing storefront | Resolved by DEC-947 under DEC-783 |
 
 ## 11.22.7 Decisions
@@ -872,7 +872,7 @@
 | DEC-943 | Twelve persona journeys JN-01…JN-12 are acceptance journeys; their Scenario Outlines become end-to-end tests in Part 11.21; new personas P21–P23 adopted | Founder V12-B instruction, applied by Group U | E2E suite per persona; persona register extended |
 | DEC-944 | Story release buckets follow §11.22.5.1 with the overrides of DEC-771…789; dates follow the work (DEC-770) | Founder decisions DEC-770…789 | Part 11.20 schedules ZU stories by bucket |
 | DEC-945 | Combinatorial standard for stories: t = 3 for safety-, money- and law-critical models, t = 2 otherwise, exhaustive ≤ 64, baseline-allow rows, oracle by PDP precedence (ADR-276) | V12-B brief (permutations mandatory), applied by Group U | All Examples reproducible from seeds |
-| DEC-946 | Proposed: invited-investor role renamed R22 at the next consolidation (CONFLICT-1140) | Proposed to the Part 11.14 owner (consolidation) | No behaviour change; naming only |
+| DEC-946 | Invited-investor role renamed R22 (CONFLICT-1140); applied in v1.2 | Adopted by the consolidation lead, DEC-1001 (Part 11.25) | No behaviour change; naming only |
 | DEC-947 | FR-V12-A-006 is read as product separation under DEC-783; US-19-YG38 superseded for the investor website (CONFLICT-1149) | Founder decision DEC-783 | US-01-ZU01 carries the amended acceptance |
 | DEC-948 | Register wording "Pending Founder decision" in FR-V12-K-004, I-013, A-147 and the O-037…084 status texts is read as decided by DEC-771/772/773/783 (GAP-1148) | Founder decisions DEC-771…783 | Stories cite the deciding DEC |
 
@@ -894,16 +894,16 @@
 
 | Tag | Type | Statement | Where used | Status |
 |---|---|---|---|---|
-| CONFLICT-1140 | Conflict | R21 defined twice (agency operator, invited investor) | §11.22.4.3, §11.22.6, file e | Proposed resolution DEC-946 |
+| CONFLICT-1140 | Conflict | R21 defined twice (agency operator, invited investor) | §11.22.4.3, §11.22.6, file e | Resolved v1.2 (DEC-946, DEC-1001) |
 | RECOMMENDATION-1141 | Recommendation | Add personas P21 investor-relations user, P22 invited investor, P23 partner / reseller | File e | Adopted DEC-943 |
 | ASSUMPTION-1142 | Assumption | Acceptance-binding stories 1–3 SP; V12 stories without stated points imputed at 3–8 SP for totals | §11.22.5.1, §11.22.5.7 | Open – replace with team estimates at refinement |
 | GAP-1143 | Gap | 116 FRs were traced only to statement-only stories without AC | §11.22.2, §11.22.4.2 | Closed by acceptance-binding stories |
 | GAP-1144 | Gap | 264 FRs had no story at all | §11.22.2, §11.22.3 | Closed by new stories |
 | ASSUMPTION-1145 | Assumption | Release bucket mapping (W0–W3/R0–R1 → Release 1; W4–W5/R2 → Release 2; W6/A1–A3/R3–R5 → Release 3+) | §11.22.5.1 | Open – Part 11.20 confirms |
-| RECOMMENDATION-1146 | Recommendation | Part 11.21 realises every EX row and journey row as a TC-V12-T test case; Part 11.16d adds FR IDs to EP-32/EP-33 story traces (GAP-1146 trace part) | §11.22.4.3, file e | Open |
-| GAP-1146 | Gap | O-037…084 traced by workflow ID only | §11.22.4.3 | Closed here; source fix recommended |
-| GAP-1147 | Gap | Six Part 11.6b agent stories have empty titles | §11.22.4.3 | Open (owner Part 11.6) |
-| GAP-1148 | Gap | Stale "Pending Founder decision" wording in decided FR rows | §11.22.4.3, DEC-948 | Closed by DEC-948 reading |
+| RECOMMENDATION-1146 | Recommendation | Part 11.21 realises every EX row and journey row as a TC-V12-T test case; Part 11.16d adds FR IDs to EP-32/EP-33 story traces (GAP-1146 trace part) | §11.22.4.3, file e | Trace part done v1.2 (Part 11.16d Traces rows carry FR-V12-O-037…084); test realisation per Part 11.21 |
+| GAP-1146 | Gap | O-037…084 traced by workflow ID only | §11.22.4.3 | Closed; source fix applied in v1.2 (Part 11.16d, Part 11.25) |
+| GAP-1147 | Gap | Six Part 11.6b agent stories have empty titles | §11.22.4.3 | Closed v1.2: titles added in Part 11.6b (Part 11.25) |
+| GAP-1148 | Gap | Stale "Pending Founder decision" wording in decided FR rows | §11.22.4.3, DEC-948 | Closed by DEC-948; wording replaced in v1.2 by "Adopted (DEC-7xx)" (Part 11.25) |
 | CONFLICT-1149 | Conflict | FR-V12-A-006 / US-19-YG38 versus DEC-783 | §11.22.6, US-01-ZU01 | Resolved DEC-947 |
 | ASSUMPTION-1150 | Assumption | All fixtures are synthetic tenants, people and `example` domains | All story files | Closed |
 | RECOMMENDATION-1151 | Recommendation | New epic EP-34 for certification and global expansion | §11.22.5.3 | Adopted DEC-942 |

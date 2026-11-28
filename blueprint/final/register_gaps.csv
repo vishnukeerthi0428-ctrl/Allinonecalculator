@@ -39,26 +39,26 @@ GAP-103,2.7a §2.7.2,3.2,The original 302-operation catalogue (BRD §9) is not a
 GAP-104,3.1 §3.1.6.2,3.1,No WAF budget at pilot (B21 ₹0) while NFR-022 requires abuse controls on public intake,Compensating controls; revisit at W3,"3.1, 3.2",5
 GAP-105,3.2 §3.2.4.3,3.2,"Several providers lack full sandboxes (social posting, some e-sign and ads features, WhatsApp production templates)",Recorded fixtures + internal-recipient canaries,3.2,3
 GAP-107,3.1 §3.1.6.1,3.1,"Approach and limits for 25+ startup custom domains on CloudFront (certificates, alternate names, KVS) not specified",Verify quotas in Sprint 0,"3.1, 8.1, 8.2",5
-GAP-111,3.2 §3.2.4.2,3.3,Embedding model/provider not decided in the baseline (the Claude API is not assumed to provide embeddings; verify). Interim: dimension 1024 fixed per model; provider chosen in Part 7,Open — handling per source part,"3.2, 3.3",4
+GAP-111,3.2 §3.2.4.2,3.3,Embedding model/provider not decided in the baseline (the Claude API is not assumed to provide embeddings; verify). Interim: dimension 1024 fixed per model; provider chosen in Part 7,Open — handling per source part,"3.2, 3.3, 11.9b, 11.9c",6
 GAP-112,2.7a §2.7.3.1,3.3,"The original 149-entity catalogue was not supplied; 17 retained entities cannot be identified, so a one-to-one reconciliation is impossible","Closed by DEC-087, DEC-191","2.7a, 3.2, 3.3, 3.6a, 3.6b, 9.1, 9.5",16
 GAP-113,3.3 §3.3.3.1,3.3,"DEC-028 does not cover delivery events, eligibility/policy decisions, meetings, business records and configuration; interim periods given; Legal to confirm",Open — handling per source part,3.3,11
 GAP-114,3.3 §3.3.11.3,3.3,Archive retrieval SLA not defined; interim 5 business days,Open — handling per source part,3.3,2
 GAP-115,3.3 §3.3.16.7,3.3,DPDP verifiable parental consent mechanism to be confirmed; the consent model keeps capture_method and evidence extensible,Open — handling per source part,3.3,2
 GAP-116,3.3 §3.3.6.4,3.3,"""Global"" suppression scope in BRL-ELG-02 is undefined; interpreted as tenant-wide (cross-tenant suppression is prohibited by DEC-065)",Open — handling per source part,3.3,2
 GAP-120,4.1 front matter,4.1,No budget line for external penetration tests (B07 is ₹500/month; B11 contingency is shared). Estimated ₹1.5–4 lakh per engagement for this scope (estimate; verify quotes),Founder to approve a security testing line before end W3,"4.1, 4.2, 4.4b, 8.1, 8.2",12
-GAP-121,4.1 §4.12.1,4.1,No named Grievance Officer / DPDP contact person or CERT-In point of contact,Founder to designate before W2 public launch,"4.1, 8.1, 8.2",6
+GAP-121,4.1 §4.12.1,4.1,No named Grievance Officer / DPDP contact person or CERT-In point of contact,Founder to designate before W2 public launch,"4.1, 8.1, 8.2, 11.15a",7
 GAP-122,4.3 §4.43.2,4.3,No on-call compensation or out-of-hours coverage commitment in the baseline,Founder decision before W3,"4.3, 4.4b",5
 GAP-123,4.3 §4.49.2,4.3,"Part 3 ADRs (compute platform, IaC, CI) not available while this batch was written; ADR-050…053, 058…060 may duplicate or conflict",Closed by DEC-083,"4.3, 4.4b, 9.1",3
 GAP-124,4.1 §4.12.10,4.1,Cyber insurance not considered,Evaluate at W4 when payments go live,4.1,2
-GAP-125,4.1 §4.12.5,4.1,GDPR Art. 27 EU representative and UK representative not addressed for EU/UK outbound under DEC-029,Counsel decision before enabling the EU/UK pack,"4.1, 8.2",3
-GAP-126,4.3 §4.43.4,4.3,No customer-facing status page or incident communication channel for SaaS tenants,Closed by DEC-406,"4.3, 8.2, 9.9a, 9.9b",9
+GAP-125,4.1 §4.12.5,4.1,GDPR Art. 27 EU representative and UK representative not addressed for EU/UK outbound under DEC-029,Counsel decision before enabling the EU/UK pack,"4.1, 8.2, 11.15b",5
+GAP-126,4.3 §4.43.4,4.3,No customer-facing status page or incident communication channel for SaaS tenants,Closed by DEC-406,"4.3, 8.2, 9.9a, 9.9b, 11.11b, 11.23b, 11.23c",16
 GAP-127,4.3 §4.49.2,4.3,"B22 (LLM observability/eval tooling) is ₹0; the eval harness must run on OSS (DeepEval candidate, M54) and CI minutes",Accept OSS-only at pilot; revisit at the growth gate,"4.3, 8.2",2
 GAP-140,7.1 front matter,7.3,No measured AI usage baseline exists,Open — handling per source part,"7.1, 7.3, 8.2",4
-GAP-141,7.3 §7.3.1,7.3,"Anthropic commercial terms for this deployment (data retention, training exclusion, DPA, cross-border processing, ZDR eligibility) not yet confirmed",Open — handling per source part,"7.3, 8.1, 8.2, 9.7b",10
-GAP-142,6.4 §6.4.2.1,7.3,"Golden eval datasets do not exist (≥ 200 labelled per vertical for qualification, DEC-001)",Open — handling per source part,"6.4, 7.3, 7.4a, 7.4b",10
+GAP-141,7.3 §7.3.1,7.3,"Anthropic commercial terms for this deployment (data retention, training exclusion, DPA, cross-border processing, ZDR eligibility) not yet confirmed",Open — handling per source part,"7.3, 8.1, 8.2, 9.7b, 11.6a, 11.6b, 11.13a",13
+GAP-142,6.4 §6.4.2.1,7.3,"Golden eval datasets do not exist (≥ 200 labelled per vertical for qualification, DEC-001)",Open — handling per source part,"6.4, 7.3, 7.4a, 7.4b, 11.6a, 11.6b",12
 GAP-143,3.4 Document(s) 05,7.1,No lawful meeting-recording or transcript source exists; meeting summarization is excluded until one is approved with consent,Narrowed by DEC-218,"3.4, 7.1, 7.3, 7.4a, 7.4b, 9.4, 9.5, 9.7a, 9.7b",31
 GAP-144,6.4 §6.4.6,7.3,"Tier 2 provider terms (Groq DPA, Gemini/OpenRouter/Mistral free terms) not legally reviewed",Open — handling per source part,"6.4, 7.3, 8.1",4
-GAP-145,7.3 §7.5.4,7.3,"DEC-047 ""AI tasks"" quotas have no defined unit or cost basis",Open — handling per source part,7.3,2
+GAP-145,7.3 §7.5.4,7.3,"DEC-047 ""AI tasks"" quotas have no defined unit or cost basis",Open — handling per source part,"7.3, 11.2c",3
 GAP-150,5.1a front matter,5.1c,"Import template columns for catalogues, organizations, contacts and deals are not specified",Open — handling per source part,"5.1a, 5.1b, 5.1c, 8.2",8
 GAP-151,"5.1b US-0306 Contact, privacy, terms and help",5.1c,DPDP response deadline for privacy requests not given in the baseline (BRL-PRV-02 says verify),Closed by DEC-100,"5.1b, 5.1c, 6.5, 8.2, 9.1",9
 GAP-152,5.1c US-0506 Buying signal classification and,5.1c,Signal-type and need-category taxonomies are not enumerated; AC values are illustrative,Open — handling per source part,5.1c,3
@@ -83,9 +83,9 @@ GAP-170,6.5 front matter,6.5,"Part 2.3 §2.25 states ""162 business rules"", but
 GAP-171,6.5 §6.5.10.2,6.5,"Load-test IDs collide: Part 4.2 §4.26 defines LT-01…LT-12 differently from Part 6.1 §6.1.14.1 (for example LT-02 is ""Soak at design load"" in 4.2 but ""Public website and portal"" in 6.1; LT-05 is 50 webhooks/s for 10 min vs 2 min). ERRATA-30 says Part 6.1 owns LT-01…LT-12, but Part 4.2's NFR rows cite its own LT meanings",Closed by DEC-143,"6.5, 6.6, 9.1",6
 GAP-172,6.5 front matter,6.6,Gap (closed by Batch 6.7),Open — handling per source part,"6.5, 6.6, 6.10",10
 GAP-173,8.1 front matter,8.1,No named business UAT participants or approved time exist (second half of GAP-165),Open — handling per source part,"8.1, 8.2",7
-GAP-174,8.1 §8.1.6.5,8.1,"C03 has no line for the QA uplift, DevOps front-load, UX contractor, independent reviewer, pen tests or external counsel",Open — handling per source part,"8.1, 8.2, 8.4, 9.7b",9
+GAP-174,8.1 §8.1.6.5,8.1,"C03 has no line for the QA uplift, DevOps front-load, UX contractor, independent reviewer, pen tests or external counsel",Open — handling per source part,"8.1, 8.2, 8.4, 9.7b, 11.2a",10
 GAP-175,8.2 §8.2.6,8.2,"KPI-03, 05, 09, 10, 11, 15, 22, 26, 28 have ""baseline"" targets without values; baseline capture dates are set in §8.2.6",Open — handling per source part,8.2,3
-GAP-176,8.1 §8.1.3.4,8.1,No Service Owner is named for SaaS activation and DEC-047 plan approval,Open — handling per source part,8.1,3
+GAP-176,8.1 §8.1.3.4,8.1,No Service Owner is named for SaaS activation and DEC-047 plan approval,Open — handling per source part,"8.1, 11.2c",4
 GAP-177,8.1 §8.1.1.3,8.1,The organisation's holiday calendar and leave policy are not in the baseline,Open — handling per source part,8.1,3
 GAP-178,8.2 §8.2.2.2,8.2,No owner for help-centre content and training materials,Open — handling per source part,"8.2, 8.3b, 8.3c",5
 GAP-179,8.1 §8.1.3.3,8.2,No tenant-facing status page or incident channel (Part 4.3 GAP-126) is decided before the first external tenant,Closed by DEC-406,"8.1, 8.2, 8.3c, 9.9a, 9.9b",11
@@ -174,7 +174,7 @@ GAP-446,6.9a §6.9.3.1,6.9b,No regenerable-data RPO/RTO class,Open — handling 
 GAP-447,6.9a §6.9.3.2,6.9b,Erasure scope omits derived embeddings and cached snippets,Open — handling per source part,"6.9a, 6.9b",4
 GAP-448,6.9a §6.9.3.1,6.9b,No SaaS client service request entity,Open — handling per source part,"6.9a, 6.9b",6
 GAP-449,6.9b §6.9.5.5.4,6.9b,No production credential handover procedure or access inventory,Open — handling per source part,6.9b,2
-GAP-450,6.9a §6.9.3.1,6.9b,Approval review effort (32.55/62.85/123.70 PD) unbudgeted,Open — handling per source part,"6.9a, 6.9b",4
+GAP-450,6.9a §6.9.3.1,6.9b,Approval review effort (32.55/62.85/123.70 PD) unbudgeted,Open — handling per source part,"6.9a, 6.9b, 11.10a, 11.10c",12
 GAP-451,6.9a §6.9.3.1,6.9b,No discipline baseline or estimate-vs-actual tracking,Open — handling per source part,"6.9a, 6.9b",4
 GAP-452,6.9b §6.9.5.5.1,6.9b,"No predeployment, daily operations or client offboarding runbook",Open — handling per source part,6.9b,4
 GAP-453,6.9b §6.9.5.5.5,6.9b,No artefact/version consistency or document inventory check,Open — handling per source part,6.9b,3
@@ -202,7 +202,7 @@ GAP-490,8.3a §8.3.4.1,8.3c,8.3a §8.3.4.1,Open — handling per source part,"8.
 GAP-510,6.6 front matter,6.10,"Part 2.7a stories US-01-EC01, US-04-EC01, US-17-EC01…04, US-19-EC01, US-21-EC01 are Gherkin features without AC IDs, story fields or FR links",Open — handling per source part,"6.6, 6.10",8
 GAP-511,6.6 §6.6.13.2,6.10,"Part 3.6b stories US-01-EE01, US-14-EE01, US-20-EE01/02, US-21-EE01/02 state AC inline (""AC-1 …"") without IDs",Open — handling per source part,"6.6, 6.10",2
 GAP-512,6.6 §6.6.13.2,6.10,"Part 4.4b TC-ENH-I rows cite control IDs (CS-, RGV-, SMK-) in their Requirement column rather than the FR-ENH-I they verify; six FR-ENH-I had no test",Open — handling per source part,"6.6, 6.10",2
-GAP-513,6.10 §6.10.8,6.10,"54 of 245 QCs had blueprint_verification_refs that are section citations with no test, VER or control ID",Open — handling per source part,6.10,1
+GAP-513,6.10 §6.10.8,6.10,"54 of 245 QCs had blueprint_verification_refs that are section citations with no test, VER or control ID",Open — handling per source part,"6.10, 11.10c",2
 GAP-514,6.6 §6.6.13.2,6.10,"Part 6.5 cites ""Batch 6.6 §6.6.9"" for the tag register; Part 6.6 now numbers the register §6.6.13 after adding sections h, i, j",Open — handling per source part,"6.6, 6.10",2
 GAP-520,9.6a §9.6a,9.6a,"The investor product’s deployment inventory is owned outside this programme and must be supplied for the “two products, four frontends” inspection",Closed by DEC-252,9.6a,4
 GAP-610,9.7a front matter,9.7b,"Per-locale quality of the gateway models for Odia, Bengali, Telugu, Marathi, Kannada, Malayalam and Gujarati is not yet measured",Per-locale eval (TC-ADV-X1-045) before enabling each locale,"9.7a, 9.7b",3
@@ -213,11 +213,124 @@ GAP-614,9.7b §9.7.17,9.7b,Maturity of OpenTelemetry GenAI semantic conventions 
 GAP-615,9.7b §9.7.17,9.7b,Final application dates of EU AI Act obligations under the Digital Omnibus,Verify each quarter,9.7b,2
 GAP-616,9.7b §9.7.17,9.7b,Answer-library ownership (who owns which answer families) is undefined,Define in A1 sprint 1,9.7b,1
 GAP-617,9.7b §9.7.17,9.7b,NBA action catalogue content (actions per stage and startup) needs Product Owner definition,Workshop before A2,9.7b,1
-GAP-660,9.8b §9.8.13,9.8b,"External legal counsel not estimated for partner agreements, voice-call rules and survey consent by jurisdiction",Obtain quotes; R10,9.8b,3
+GAP-660,9.8b §9.8.13,9.8b,"External legal counsel not estimated for partner agreements, voice-call rules and survey consent by jurisdiction",Obtain quotes; R10,"9.8b, 11.2c",4
 GAP-661,9.8b §9.8.13.2,9.8b,"Third-party intent data vendors' terms, data rights and prices unknown",Benchmark and quote before any enablement,9.8b,2
 GAP-665,9.8b §9.8.16,9.8b,No HR policy exists for any use of recognition data in performance management,Closed by DEC-398,9.8b,1
 GAP-710,9.9a §9.9.5.15,9.9b,"DEC-047 has no named ""Enterprise"" plan; BYOK is mapped to Scale (custom)",Open; Service Owner,"9.9a, 9.9b",2
 GAP-711,9.9a §9.9.5.16,9.9b,No registered DPDP consent manager engaged; adapter readiness only,Open; R10 to monitor registrations,"9.9a, 9.9b",2
 GAP-712,9.9a ADR-136 Zero-trust Admin access: passkey,9.9b,No device-management (MDM) in the organization; device certificates via step-ca,Open,"9.9a, 9.9b",2
 GAP-713,9.9a §9.9.3.1,9.9b,"Developer terms of use, API licence and BYOK acceptance text not drafted; counsel cost not estimated",Open; legal,"9.9a, 9.9b",4
-GAP-714,9.9b §9.9.13.1,9.9b,No SOC 2 auditor or budget identified,Open; only on trigger,9.9b,2
+GAP-714,9.9b §9.9.13.1,9.9b,No SOC 2 auditor or budget identified,Open; only on trigger,"9.9b, 11.5b, 11.11b, 11.20b",5
+GAP-768,11.1a §11.1.3.25,11.1b,Customer reuses REC-01…12 for an older series in chapter 25,Closed by REC-V2-nn citation,"11.1a, 11.1b",7
+GAP-769,11.1a §11.1.3.11,11.1b,V12 SKU cost table excludes external fees and has no price; caps exceed pilot AI ceiling if summed,Closed by method; prices pending Finance,"11.1a, 11.1b, 11.22c",45
+GAP-784,11.2a §11.2.5.7,11.2c,"Providers and prices for telephony, ASR/TTS, SMS/RCS, media generation, marketplaces and agent protocols not selected or quoted",Quotes before activation,"11.2a, 11.2c",5
+GAP-785,11.2a §11.2.1,11.2c,FSD ch. 26 field schemas and ch. 12 DTOs for the 39 domain artifacts are owned by other groups,Domain artifact names adopted,"11.2a, 11.2c",2
+GAP-786,11.2a §11.2.1,11.2c,Screen IDs for SWR-B-01…12 not allocated here,Closed by DEC-537,"11.2a, 11.2c",4
+GAP-787,11.2a §11.2.1,11.2c,Agent and automation cards for ACR-B-01…08 and AUR-B-01…07 not issued here,Closed by DEC-537,"11.2a, 11.2c",3
+GAP-788,11.2c §11.2.9,11.2c,"Rate cards, margin targets and unit economics per SKU are ""TBD by owner""",Before any SKU release,11.2c,1
+GAP-803,11.3a §11.3.5.1,11.3c,"Physical DDL for run artefact, evidence and effect receipt (V12 DB-V2-*)",Open — handling per source part,"11.3a, 11.3c",3
+GAP-804,11.3a §11.3.5.1,11.3c,Typed start-run endpoint for catalogued workflows (V12 API-V2-RUN),Open — handling per source part,"11.3a, 11.3c",3
+GAP-805,11.3b SM-SVC-07 WhatsApp Business Marketing Au,11.3c,"Provider terms for answer-engine observation, social listening APIs, WhatsApp commerce messages and e-sign evidence are unverified",Open — handling per source part,"11.3b, 11.3c",5
+GAP-810,11.3b SM-SVC-01-WF01 Market and demand monitor,11.3c,No numeric thresholds for 160 workflow KPIs in V12,Closed by DEC-554,"11.3b, 11.3c",82
+GAP-821,11.4a §11.4.1,11.4d,11.4.4.3,Closed by DEC-570,"11.4a, 11.4d",6
+GAP-822,11.4b §11.4.5.6,11.4d,11.4b.6.3,Closed by Part 11.4d §G,"11.4b, 11.4d",4
+GAP-823,11.4b §11.4.5.6,11.4d,11.4b.6.4,Closed by Part 11.4d §G,"11.4b, 11.4d",3
+GAP-824,11.4a §11.4.1,11.4d,11.4b.4,Closed by DEC-565,"11.4a, 11.4b, 11.4c, 11.4d",12
+GAP-831,11.4a §11.4.3.1,11.4d,11.4c/d cards; 11.4.5.33,Mitigated: blueprint estimates added; margin owner = service owner,"11.4a, 11.4c, 11.4d",4
+GAP-837,11.5b §11.5.5.16,11.5b,Unknown whether the reused AppNAI IdP can broker per-tenant SAML/OIDC and expose SCIM-driven revocation,Open; add to the DEC-019 Sprint 0 spike,11.5b,3
+GAP-838,11.5a §11.5.3,11.5b,"Commercial inputs not approved: price book, proration formula, grace and dunning days, refund policy, tax-adviser review of TX-01…03 and rounding",Closed by DEC-588,"11.5a, 11.5b",7
+GAP-839,11.5a §11.5.3,11.5b,Payment collection provider for SaaS billing and the US sales-tax provider (DEC-V12-05) not selected,Open; procurement,"11.5a, 11.5b",7
+GAP-858,11.6a §11.6.1.2,11.6b,"V12 classifies SM-SVC-10-WF03, 26-WF03, 26-WF04, 27-WF02, 35-WF04, 36-WF02, 36-WF03 with 0 AI steps although their tasks are naturally AI-assisted; customer to confirm. Blueprint follows V12 meanwhile (DEC-617)","Closed by DEC-604, DEC-617","11.6a, 11.6b, 11.18a",11
+GAP-859,11.6a §11.6.3.1,11.6b,Screen-ID collision: V12 A114–A121 vs blueprint Part 9.7 A114–A128; Group G to renumber,Closed by DEC-619,"11.6a, 11.6b",9
+GAP-865,11.6a §11.6.3.1,11.6b,"V12 gives all 20 roles one identical tool list; per-role least-privilege lists are not specified, so blueprint AG-level TL grants are the effective control",Open — handling per source part,"11.6a, 11.6b",3
+GAP-867,11.6a §11.6.3.1,11.6b,"V12 AI-12 sets no numeric loop limits; blueprint §7.2.9 defaults (50 steps, 8 LLM calls, 5 tool calls per turn, deadlines, token budgets) apply until the customer specifies",Open — handling per source part,"11.6a, 11.6b",3
+GAP-879,11.7a §11.7.4.1,11.7c,V12 route counts are stale (36 website / 143 Admin) against its prototype (41 / 153),Closed by DEC-628,"11.7a, 11.7c",4
+GAP-880,11.7a §11.7.4.1,11.7c,Prototype INDEX lists 145 rows versus 153 registered screens,Closed by DEC-628,"11.7a, 11.7b, 11.7c",3
+GAP-881,11.7a Register F24: FSD ch24 UI/UX master (pro,11.7c,"README says ""no localStorage"" while the prototype stores cookie choice and language locally",Closed by DEC-631,"11.7a, 11.7c",5
+GAP-882,11.7c §11.7.9,11.7c,V12 gives no visual design tokens beyond prototype colours; Part 2.5 §2.45 design system governs,Closed (blueprint governs),11.7c,1
+GAP-897,11.8a §11.8.4.2.1,11.8b,Appendix A/A2 lack per-operation request/response DTOs (generic Command/Record payloads),Open — handling per source part,"11.8a, 11.8b",3
+GAP-898,11.8b §11.8.9,11.8b,"DEC-V9-04, CJ-R15 and CJ-GL-01 legal closures are outside the blueprint baseline; the blueprint only gates on them",Open — handling per source part,11.8b,1
+GAP-899,11.8b §11.8.9,11.8b,"AIX-##, CJ-R##, CJ-IN-## and ENT-IDN/ACC/DAT IDs are defined in other V12 chapters (Groups E, F, I); this part cross-references them",Open — handling per source part,11.8b,1
+GAP-912,11.9a §11.9.3.3,11.9c,"Customer RLS: tenant-only, FOR ALL, company scope unused",Closed by DEC-662,"11.9a, 11.9b, 11.9c",4
+GAP-913,11.9a §11.9.3.1,11.9c,Four tenant tables without RLS; nullable scope keys,Closed by DEC-662,"11.9a, 11.9c",7
+GAP-914,11.9a §11.9.3.1,11.9c,No secondary indexes; 110 unindexed FKs,Closed by DEC-677,"11.9a, 11.9c",4
+GAP-915,11.9a §11.9.3.1,11.9c,No roles/grants; mutable audit/consent; SoD insert-only; non-composite keys; 109 free-text states,"Closed by C3-01…07, C3-10","11.9a, 11.9c",7
+GAP-916,11.9a §11.9.3.1,11.9c,"No vector column; embedding model and dimension undecided (V12-ENG DEC-042, Part 3.3 GAP-111)",Design ready; closes at the W1 model decision,"11.9a, 11.9b, 11.9c",6
+GAP-922,11.10c §11.10.9,11.10c,"V12 SKU build tasks have no estimates (""estimate after contract"")",Closed by §11.10.5.11–12,11.10c,1
+GAP-923,11.10c §11.10.9,11.10c,V12 scenario fixtures are boilerplate without data values,Closed by class fixtures (§11.10.5.2) and family fixtures (§11.10.5.3),11.10c,1
+GAP-924,11.10a §11.10.2.2,11.10c,9 approval-routed workflows lack an APPROVAL scenario,Closed by TC-V12-J-201…209,"11.10a, 11.10b, 11.10c",14
+GAP-925,11.10c §11.10.9,11.10c,"Every V12 test is ""Not run""; only prototype evidence exists",Open until execution; DEC-682,11.10c,1
+GAP-926,11.10c §11.10.9,11.10c,"EVAL suite datasets (size, labels, languages) are not supplied",Owned by Group R5; gate wiring here (TASK-V12-J-003),11.10c,1
+GAP-927,11.10c §11.10.9,11.10c,Blueprint preflight did not define the numeric domain of KPI evidence,Closed by TC-V12-J-121,11.10c,1
+GAP-948,11.11b §11.11.5.5,11.11b,V12 sets only P1 first-response targets and no coverage hours per tier,"Closed by proposal (RECOMMENDATION-952), Service Owner approval pending",11.11b,2
+GAP-949,11.11b §11.11.5.8,11.11b,"""Agreed workload"" for the HTTP p95 threshold undefined",Closed by DEC-315,11.11b,2
+GAP-956,11.11b §11.11.5.13,11.11b,The 180 inherited decisions have no named owners or due dates,Closed by rule FR-V12-K-025; names need the actual team,11.11b,2
+GAP-961,11.12 §11.12.5.3,11.12,Acceptance list skips T16 and T17,Open (customer),11.12,3
+GAP-962,11.12 §11.12.1.3,11.12,"Package manifest drift (5 mismatched, 7 absent html/* files; two manifests describe prior packages)",Open (customer),11.12,5
+GAP-969,11.12 §11.12.9,11.12,"The 172 UX-DEC field-review records are pending owner decisions in the source; their field lists are reconciled at screen level by group G (Part 11.7), not field by field here",Open — handling per source part,11.12,1
+GAP-980,11.13a AG-086 Regulatory Rule-Pack Compliance R,11.13b,Legal content of the 11 rule packs and their quarterly upkeep need counsel authoring and quotes,Closed by DEC-761,"11.13a, 11.13b, 11.15a, 11.15c",17
+GAP-981,11.13b §11.13.5.11,11.13b,"C2PA signing-certificate issuer, trust-list status and price not yet selected",Security lead,11.13b,3
+GAP-982,11.13a AG-094 Template Certification Assistant,11.13b,"Marketplace commercial terms (IP licence, revenue share, liability, takedown) undefined",Closed by DEC-748,"11.13a, 11.13b",5
+GAP-991,11.13b §11.13.5.13.2,11.13b,Availability and cost of provider sandboxes for integration probes and self-healing tests (some marketplaces and CRMs offer none),Platform Support,11.13b,2
+GAP-994,11.15a front matter,11.15a,ID ranges used · Rule IDs RP- -NNN (pack-local) · phrase lists PL- -NN · templates TPL- -NN · tests TC-RP- -NN · verification entries VR-01…VR-40 · DEC-761 to DEC-765 · ASSUMPTION/RECOMMENDATION/GAP-994 to 999,Open — handling per source part,"11.15a, 11.15c",2
+GAP-995,11.15a front matter,11.15c,"Primary government and regulator sites could not be fetched from this environment; verification relied on secondary sources; clause numbers of ASCI Code, CCPA guidelines, DMR Act, DPDP Rules and TCCCPR need primary-text checks",Counsel (C-01) before sign-off,"11.15a, 11.15c",3
+GAP-996,11.15b front matter,11.15c,"Hindi (and German/French) template wording needs certified legal translation and counsel review; other Eighth-Schedule languages (DEC-026: ta, or) not yet drafted",R10 with legal translators before activation,"11.15b, 11.15c, 11.15d, 11.15e, 11.20a",8
+GAP-999,11.15a §11.15.2,11.15c,Open legal questions needing counsel opinion before activation: DPDP s.3(c)(ii) for B2B outreach; TCCCPR promotional time window and amendment details; platform's status under the IT SGI Rules 2026; AI Act provider/deployer allocation with the model provider,"Counsel (C-02, C-03, C-06, C-07)","11.15a, 11.15b, 11.15c, 11.18a",6
+GAP-1002,11.16a §11.16.4.5,11.16e,The 70-screen investment engineering package is not in the material; screens derived from Technical Map,Closed by design,"11.16a, 11.16e",3
+GAP-1007,11.16e §11.16.9,11.16e,V12 website has no invited-investor portal (routes repurposed); W75/W76 added,Closed,11.16e,1
+GAP-1010,11.16a §11.16.4.4,11.16e,Workbook cost rates illustrative and not vendor prices,Re-costed,"11.16a, 11.16e",2
+GAP-1013,11.16e §11.16.9,11.16e,KYC/accreditation provider not selected,Vendor selection in I-3,11.16e,1
+GAP-1016,11.16a §11.16.5.10,11.16e,inv_subscription missing from V12 entity candidates,Closed,"11.16a, 11.16e",3
+GAP-1024,11.16c Quality gate (Part 11.16c),11.16d,"Part 11.16a/b (Group N) appeared while this part was being written. Pack names were aligned (§11.16.15.20.1). Group N refers to a ""Part 11.16c"" for its own stories (EP-30/EP-31), §11.16.6 and an Appendix A register, while the brief assigns the file names 11.16c/d to Group O: the file-name collision must be resolved at consolidation (e.g. Group N renames to 11.16b2)",Closed by Part 11.16d §G,"11.16c, 11.16d",2
+GAP-1025,11.16c §11.16.11,11.16d,Primary statutory texts were not reachable; citations verified via secondary sources,Open — handling per source part,"11.16c, 11.16d",3
+GAP-1026,11.16d §11.16.15.20.2,11.16d,s.42 sub-section numbering and the 200-person count basis (aggregate vs per class); PAS-3 15 vs 30 days; PAS-4/5 filing vs maintenance,Open — handling per source part,11.16d,7
+GAP-1027,11.16d §11.16.19,11.16d,No Indian framework for equity crowdfunding; RP-IN-SEC-019 blocks it until law changes,Open — handling per source part,11.16d,1
+GAP-1035,11.16d §11.16.15.20.2,11.16d,SEC Reg CF thresholds adjust for inflation every five years (next expected 2027); parameters must be updated,Open — handling per source part,11.16d,3
+GAP-1036,11.16d §11.16.15.20.2,11.16d,Member-state elections under the Listing Act small-offer threshold (€12 m or €5 m) not yet tabulated,Open — handling per source part,11.16d,2
+GAP-1039,11.16d §11.16.19,11.16d,"Grant, lending and green-claims sector rules (e.g. EU green claims, lender regulation) beyond these packs are not covered; RP-INV-ADVICE and RP-COMMIT apply meanwhile",Open — handling per source part,11.16d,1
+GAP-1044,11.15d front matter,11.17b,"Part 11.15 has no payment, agentic-contracting or e-procurement packs; RP-IN-PAY, RP-EU-PAY, RP-GL-AGENTCOM, RP-IN-AGENTCOM, RP-EU-AGENTCOM, RP-IN-PROC, RP-EU-PROC, RP-US-PROC must be drafted and signed off before activation (DEC-856)","Closed by DEC-766, DEC-856","11.15d, 11.15e, 11.17a, 11.17b",14
+GAP-1045,11.15d front matter,11.17b,"Each portal's terms of use must be reviewed by counsel to set its capability; until reviewed, MANUAL_ONLY",Closed by DEC-768,"11.15d, 11.15e, 11.17b",11
+GAP-1046,11.15d front matter,11.17b,"Contracting framework for agent-to-agent commerce (attribution of agent messages, error correction, liability) and platform-not-a-party terms in the MSA",Closed by DEC-767,"11.15d, 11.15e, 11.17a, 11.17b",22
+GAP-1055,11.17b §11.17.16.3,11.17b,Tenant-level liability caps and crime/cyber insurance covering agent-initiated transactions are not defined,Open — Finance/Legal,11.17b,1
+GAP-1058,11.17a §11.17.6.2,11.17b,No national trust framework for agent business credentials; tenant trust lists + KYB tiers used meanwhile,Open,"11.17a, 11.17b",2
+GAP-1064,11.18a §11.18.5.18,11.18d,a §11.18.5.18; c,Open (procurement PG-01…10),"11.18a, 11.18c, 11.18d",4
+GAP-1065,11.18a §11.18.5.11,11.18d,a §11.18.5.11,Open,"11.18a, 11.18d",3
+GAP-1067,11.15d front matter,11.18d,"a §11.18.5.3, §11.18.5.17, §11.18.5.18",Open (counsel),"11.15d, 11.15e, 11.18a, 11.18d",15
+GAP-1068,11.15d front matter,11.18d,a §11.18.5.3.1,Open (counsel),"11.15d, 11.15e, 11.18a, 11.18d, 11.25",9
+GAP-1078,11.18b §11.18.5.24,11.18d,b §11.18.5.24; d §11.18.6,Open (Part 11.4c schema owner),"11.18b, 11.18d",4
+GAP-1088,11.19a §A,11.19c,"Legal position on TLS termination at out-of-zone edge locations needs counsel opinion (IN, EU)",Closed by DEC-887,"11.19a, 11.19b, 11.19c",5
+GAP-1089,11.19a §A,11.19c,AI voice behaviour on top of VoicePort is specified by Part 11.18; this part supplies the transport contract only,Open — handling per source part,"11.19a, 11.19b, 11.19c",3
+GAP-1090,11.19b §B,11.19c,Supabase dashboard SSO/MFA and organisation roles depend on the plan; confirm at implementation,Open — handling per source part,"11.19b, 11.19c",2
+GAP-1115,11.20a §11.20.5.2,11.20b,"No named counsel panel, auditors, NOC/SOC vendor or staff-augmentation vendors; UK/US payment packs not drafted",Open — handling per source part,"11.20a, 11.20b",4
+GAP-1116,11.20b §11.20.11.2,11.20b,"No quotes for managed Kubernetes, tax engine, per-market counsel, certification bodies",Open — handling per source part,11.20b,2
+GAP-1117,11.20a §11.20.4.6,11.20b,Business UAT participants for the new products not named,Open — handling per source part,"11.20a, 11.20b",4
+GAP-1126,11.21a §11.21.3.11,11.21e,"No Approved-pack drafts yet for SG, AE (and UK/US for non-securities capabilities); those jurisdictions are tested only for fail-closed behaviour",Open — handling per source part,"11.21a, 11.21c, 11.21e",3
+GAP-1127,11.21a §11.21.2.11,11.21e,"Parts 11.20 (plan) and 11.22 (stories) are produced in parallel; sprint placement of suites, de-duplication of effort and links to US-…-ZU stories to be completed there",Open — handling per source part,"11.21a, 11.21e",2
+GAP-1128,11.21e §11.21.12.1,11.21e,No contractual acknowledgement targets for SEV3/SEV4 by SLA tier; the Part 11.11b matrix is used,Open — handling per source part,11.21e,1
+GAP-1143,11.22f §11.22.9,11.22f,116 FRs were traced only to statement-only stories without AC,Closed by acceptance-binding stories,11.22f,1
+GAP-1144,11.22f §11.22.9,11.22f,264 FRs had no story at all,Closed by new stories,11.22f,1
+GAP-1146,11.16d US-32-ZO01 Closing readiness and authori,11.22f,O-037…084 traced by workflow ID only,Closed by DEC-1009,"11.16d, 11.22a, 11.22f, 11.25",26
+GAP-1147,11.22a §11.22.4.3,11.22f,Six Part 11.6b agent stories have empty titles,Closed by DEC-1009,"11.22a, 11.22f, 11.25",4
+GAP-1148,11.22a §11.22.4.3,11.22f,"Stale ""Pending Founder decision"" wording in decided FR rows","Closed by DEC-948, DEC-1002","11.22a, 11.22c, 11.22f, 11.25",6
+GAP-1160,11.15d front matter,11.15e,"Regulator primary texts (RBI, NPCI, FCC, EUR-Lex, DGCCRF, UAE legislation, acquisition.gov) were located but read only through search summaries; counsel must read primary text",Counsel (C-13…C-26),"11.15d, 11.15e",3
+GAP-1161,11.15e §11.15.40,11.15e,RBI PA Directions updated 11 Nov 2026 and Authentication Directions exemptions not read in full; e-NACH limits and NPCI AutoPay peak windows not verified,India payments counsel,11.15e,1
+GAP-1162,11.15d §11.15.21,11.15e,PSD3/PSR not yet in the Official Journal; RP-EU-PAY drafted on PSD2/RTS with rule 018 dormant,R10; MAJOR revision on publication,"11.15d, 11.15e",2
+GAP-1165,11.15d §11.15.21,11.15e,India is not shown as a party to the UN ECC and Indian law gives no statutory input-error right; error correction depends on contract (ACFA cl. 7),Counsel C-16,"11.15d, 11.15e",2
+GAP-1167,11.15d §11.15.21,11.15e,Card-network agentic tokens are not generally available in India (controlled demonstrations only) and RBI tokenisation binds tokens to merchant and device; agent tokens are disabled in India,Payments counsel; re-check quarterly,"11.15d, 11.15e",2
+GAP-1168,11.15d §11.15.21,11.15e,No express automation clause found in GeM GTC or CPPP terms; capability must be set per portal by counsel (extends GAP-1045),Counsel C-19,"11.15d, 11.15e",4
+GAP-1170,11.15d §11.15.21,11.15e,FAR clause numbering is changing under the Revolutionary FAR Overhaul; RP-US-PROC cites pre-overhaul FAR and reads each solicitation's clause set,US counsel C-21,"11.15d, 11.15e",4
+GAP-1172,11.15d §11.15.21,11.15e,France moved to consumer opt-in on 11 Aug 2026 and Bloctel ceased; Part 11.18a §11.18.5.3.1/§11.18.5.5 and AU-280 still reference a Bloctel scrub (not edited here),Closed by DEC-1006,"11.15d, 11.15e, 11.18a, 11.25",11
+GAP-1173,11.15a §11.15.2,11.15e,"FCC Sept 2026 order revises the ""revoke all"" rule previously waived to 31 Jan 2027; Part 11.15a VR-30 and Part 11.18a are out of date; RP-US-VOICE-009 keeps the stricter seller-wide scope",Closed by DEC-1006,"11.15a, 11.15d, 11.15e, 11.18a, 11.25",8
+GAP-1174,11.15d §11.15.21,11.15e,"TRAI promotional calling window still unverified (VR-13, VR-75); Part 11.18a uses 09:00–21:00 for India while RP-IN-SMS-009 sets 09:00–19:00 Mon–Sat for promotional SMS and voice; DEC-769(b) applies the stricter window","Closed by DEC-769, DEC-1006","11.15d, 11.15e, 11.18a, 11.25",9
+GAP-1176,11.15d §11.15.21,11.15e,"Sources conflict on the US all-party list (MT, NV, MI, CT, DE, OR); the platform treats disputed states as all-party",US counsel C-26,"11.15d, 11.15e",3
+GAP-1177,11.15d §11.15.21,11.15e,"UAE law requires recording of marketing calls with notice while recording without consent is an offence; the platform obtains consent and ends refused calls; refusal, repeat-call and retention details of Res. 56/57 still need primary-text confirmation (narrows GAP-1067)",UAE counsel C-25,"11.15d, 11.15e",5
+GAP-1178,11.15d §11.15.21,11.15e,"Member-state voice profiles for NL, IT, ES, IE and others rest on secondary sources (Spain conflicting)",EU counsel C-24,"11.15d, 11.15e",3
+GAP-1183,11.23b §11.23.6.6,11.23c,ENT-200…203 and API-556+ placeholders never assigned,Closed by DEC-967,"11.23b, 11.23c",3
+GAP-1204,11.24c §11.24.9.1,11.24c,"33 V12-B tables (Parts 11.16c, 11.17b normalised projections) have purposes but no column lists; generated with standard sets plus state, payload, region",Open — handling per source part,11.24c,4
+GAP-1205,11.24b §11.24.4.9,11.24c,"27 references not turned into DDL (soft references, dictionary column names missing)",Closed by DEC-996,"11.24b, 11.24c",4
+GAP-1206,11.24a §11.24.3.4,11.24c,Request/response field schemas exist only for Part 3.5b and 11.8b operations; others use shared schemas until serializers exist; one POST (/api/v2/mandates/{id}/simulate) has no idempotency rule in its source,Open — handling per source part,"11.24a, 11.24c",4
+GAP-1207,11.24c §11.24.16.1,11.24c,"No catalogue defined EU-zone provider settings (SES EU, Sentry EU region, Vercel fra1 drains); added as ENV-W rows and to be confirmed by vendors",Open — handling per source part,11.24c,1
+GAP-1208,11.24b §11.24.5.4,11.24c,35 of 70 capability × jurisdiction cells have no rule pack; they are hard OFF,Open — handling per source part,"11.24b, 11.24c",2
+GAP-1222,11.25 §11.25.9,11.25,"1,214 stale lines remain in the parts (most in Part 11 registers and in the combinatorial rows of Part 11.21b); errata govern them",Open — apply in place at the next revision of each part (RECOMMENDATION-1188),11.25,2
+GAP-1223,11.25 §11.25.4.2,11.25,"A small share of V12 test rows and three catalogue items trace to decisions, rule packs or approval records but not to an FR or story ID",Open — owner QA lead,11.25,3
+GAP-1227,11.25 §11.25.9,11.25,The E-V-11 scan pattern also matches combinatorial rows that name SM-SVC-26 near an unrelated EP-08 token (Part 11.21b),Open — scanner refinement,11.25,1

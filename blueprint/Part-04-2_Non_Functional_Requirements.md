@@ -97,6 +97,9 @@ Columns: **ID · Category · Requirement (refined) · Measurable target · Measu
 
 ### 4.23.2 Availability, recovery and timeliness
 
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
+
 | ID | Category | Requirement | Measurable target | Measurement / tool | Test method | Env | Source | Epic |
 |---|---|---|---|---|---|---|---|---|
 | NFR-053 | Availability | Website and portal availability | **99.5%** monthly at pilot (≤ 216 min bad minutes/30-day month) → **99.9%** after the scale gate (≤ 43 min) | Synthetic probes + server success ratio (§4.21) | Monthly SLO report | Prod | DEC-018 | EP-19 |
@@ -409,6 +412,9 @@ Feature: Emergency stop (NFR-049)
 ---
 
 ## 4.30 Registers for this batch
+
+> **Erratum v1.2 (E-V-09, E-V-10):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787); two residency stacks, India and EU (DEC-772/776). See Part 11.23c.
+
 
 | ID | Type | Statement | Resolution / owner |
 |---|---|---|---|

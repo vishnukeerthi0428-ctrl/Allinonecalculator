@@ -134,6 +134,9 @@ The complete register (1,532 rows, one per atomic aspect) is `final/coverage/H_c
 
 ### 6.9.3.1 Not covered, Conflict and Partially covered aspects (individual)
 
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 | Doc | Aspect | Summary | Status | Blueprint location | Action |
 |---|---|---|---|---|---|
 | 38/24 | XBR-01 | Expansion business requirement counted in doc 38 but not enumerated | Partially covered | Part 1 BR-S138 | Interpreted and mapped [GAP-440] |
@@ -557,6 +560,9 @@ Screen and non-screen FRs (BR check: "=" all source BRs present in Part 2.1; "+X
 
 ### 6.9.4.5 Work items (162) → stories
 
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 | Metric | Source (doc 20) | Blueprint | Note |
 |---|---|---|---|
 | Work items | 149 + 13 = 162 | 230 stories (Part 5); 205 scheduled S0–S12 (Part 8.1) | Many-to-many: a work item is a screen/API slice; a story is a user outcome |
@@ -968,6 +974,9 @@ All 180 numbered source decisions with their alias, class, FR and blueprint reso
 | SPDEC-180 | A108 / Website preview, approval, publishing and | UI semantic mapping approval | FR-A108 | FR-A108; AP-08; Part 6.6 §6.6.8.2; 100% approval [CONFLICT-442] | Partially covered |
 
 ### 6.9.4.8 Runbook, work packages, capacity and execution backlog
+
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
 
 | Kind | Item | Source | Status | Blueprint | Note |
 |---|---|---|---|---|---|

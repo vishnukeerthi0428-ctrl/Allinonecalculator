@@ -161,6 +161,9 @@ The overlaps reduce combined effort by an estimated 30 / 45 / 65 pd. **[ASSUMPTI
 
 ## 9.10.5 Improvement plan (roadmap)
 
+> **Erratum v1.2 (E-V-25):** superseded by release dates are indicative; dates follow the work (DEC-770). See Part 11.23c.
+
+
 ```mermaid
 flowchart TD
   R1["Release 1 go/no-go Fri 4 Jun 2027 (Day 180)<br/>+ literal-alignment Must items"]
@@ -227,6 +230,9 @@ All figures are **estimates**. Rates come from Part 8.4: ₹4,545–6,818 per pe
 | **A1 only (recommended start)** | **≈ ₹28.0 L** | — | **≈ ₹55.4 L** | X1 A1 ₹7.10–22.62 L (Part 9.7b); X2 A1 ≈ ₹10.0–15.3 L (pro rata to A1 effort 98/268 and 185/508 **[ASSUMPTION-751]**); X3 A1 ₹10.9–17.5 L (Part 9.9b) |
 
 ### 9.10.7.2 Subscription and running cost (recurring, per month)
+
+> **Erratum v1.2 (E-V-05):** superseded by hosting is Vercel + Supabase + AWS in Mumbai with an EU stack (DEC-421/772/786). See Part 11.23c.
+
 
 | Item | Low | High | Basis |
 |---|---|---|---|

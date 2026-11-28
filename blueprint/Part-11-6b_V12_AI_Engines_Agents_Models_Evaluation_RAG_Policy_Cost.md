@@ -1687,12 +1687,12 @@ Feature: Onboarding and Pilot Readiness Planner
     And when the budget hard cap is reached the step is HELD and deterministic steps continue
 ```
 
-##### US-04-YF24
+##### US-04-YF24 Cheapest passing Claude tier with at most one escalation (AU-152)
 
 **As** AI platform owner, **I want** to route each AI step to the cheapest Claude tier whose EVAL suite passes for the workflow, language and data class, escalating at most once, **so that** cost stays inside DEC-008 without quality regression. Traces: AU-152; FR-V12-F-003; TC-V12-F-003.
 
 ```gherkin
-Feature: US-04-YF24
+Feature: US-04-YF24 Cheapest passing Claude tier with at most one escalation (AU-152)
   Scenario: One escalation then hold
     Given Tier 1a and Tier 1b both pass the suite for SM-SVC-06-WF01 in en
     When a draft is requested
@@ -1703,12 +1703,12 @@ Feature: US-04-YF24
     Then the step is HELD for a reviewer and no further model call is made
 ```
 
-##### US-04-YF25
+##### US-04-YF25 Locale-specific EVAL gate blocks unevidenced AI steps (AU-154)
 
 **As** AI evaluation lead, **I want** to block any AI step whose EVAL suite is missing or below gate for that locale, **so that** only evidenced AI runs in production. Traces: AU-154; FR-V12-F-005; TC-V12-F-005.
 
 ```gherkin
-Feature: US-04-YF25
+Feature: US-04-YF25 Locale-specific EVAL gate blocks unevidenced AI steps (AU-154)
   Scenario: Locale-specific block
     Given EVAL-SM-SVC-09-WF02 passes for en and fails the rubric gate for hi
     When an hi enquiry reaches the AI step
@@ -1716,12 +1716,12 @@ Feature: US-04-YF25
     And en enquiries continue to use the agent
 ```
 
-##### US-04-YF26
+##### US-04-YF26 Cost per accepted result with rejected outputs in the denominator (AU-158)
 
 **As** finance lead, **I want** to see cost per accepted result per workflow and tenant with the rejected outputs in the denominator, **so that** AI spend is judged by accepted output, not by calls. Traces: AU-158; FR-V12-F-050; TC-V12-F-014.
 
 ```gherkin
-Feature: US-04-YF26
+Feature: US-04-YF26 Cost per accepted result with rejected outputs in the denominator (AU-158)
   Scenario: Denominator shown
     Given 100 drafts were produced for SM-SVC-06-WF01 in a month and 80 were accepted
     When the CPAR report is opened in A117
@@ -1730,26 +1730,26 @@ Feature: US-04-YF26
     And any unpriced unit is shown in tokens, not rupees
 ```
 
-##### US-03-YF27
+##### US-03-YF27 Send preflight decision table with fixed precedence (AU-171)
 
 **As** compliance lead (R10), **I want** to have every external effect pass the send preflight decision table with fixed precedence, **so that** no tenant setting can override a jurisdiction hold. Traces: AU-171; FR-V12-F-043; TC-V12-F-098.
 
 ```gherkin
-Feature: US-03-YF27
+Feature: US-03-YF27 Send preflight decision table with fixed precedence (AU-171)
   Scenario: Tenant grant cannot override a pack HOLD
-    Given the IN pack returns HOLD for a promotional SMS outside 09:00-21:00 recipient time
+    Given the IN pack returns HOLD for a promotional SMS outside 09:00-19:00 Mon-Sat recipient time (RP-IN-SMS-009, stricter than the DEC-777 platform default)
     And the tenant has an action grant allowing the send
     When the effect adapter requests dispatch
     Then the verdict is HOLD with reason CJ-IN-06
     And effect.preflight_verdict is not ALLOW and no provider call occurs
 ```
 
-##### US-18-YF28
+##### US-18-YF28 Approval bound to the exact payload digest; stale approvals rejected (AU-175)
 
 **As** startup head (R02), **I want** to approve an exact action and have any later change to it rejected, **so that** approvals cannot be reused for a different payload. Traces: AU-175; FR-V12-F-035; TC-V12-F-184.
 
 ```gherkin
-Feature: US-18-YF28
+Feature: US-18-YF28 Approval bound to the exact payload digest; stale approvals rejected (AU-175)
   Scenario: Stale approval rejected
     Given an approval bound to payload digest D1 and policy version P3
     When the payload changes to digest D2 before execution
@@ -1758,12 +1758,12 @@ Feature: US-18-YF28
     And no mandate can substitute for an R3 financial or legal approval
 ```
 
-##### US-04-YF29
+##### US-04-YF29 Tenant fair-share scheduling protects interactive AI latency (AU-160)
 
 **As** tenant administrator, **I want** to have my tenant's AI jobs protected from another tenant's bulk jobs, **so that** interactive latency stays within target. Traces: AU-160; FR-V12-F-016; TC-V12-F-016.
 
 ```gherkin
-Feature: US-04-YF29
+Feature: US-04-YF29 Tenant fair-share scheduling protects interactive AI latency (AU-160)
   Scenario: Noisy neighbour
     Given tenant A submits 5,000 batch jobs
     When tenant B makes an interactive request
@@ -2039,14 +2039,14 @@ Basis: Part 9.7b §9.7.13.1 unit sizes (agent S 2/3/5, M 4/6/8, C 6/9/13 pd; aut
 
 | Tag | V12 position | Blueprint / Founder position | Recommended resolution | Status |
 |---|---|---|---|---|
-| CONFLICT-850 | ch16.2 / DEC-V7-02: provider-neutral model registry; "no provider or model is approved"; candidates include OpenAI, Gemini, Llama, Mistral, Qwen | **DEC-418**: Claude Sonnet primary, Haiku-class lighter tier | Treat DEC-418 as the answer to DEC-V7-02: MDL-S1 = Tier 1a Claude Haiku-class, MDL-M1/L1 = Tier 1b Sonnet. Other families only as **offline benchmark comparators** (AI-15, AU-045) on synthetic data; never in production routing without a new Founder decision | Pending Founder decision |
-| CONFLICT-851 | MDL-S1 "hosted **or open-weight**" for Public, Internal and **Personal (masked)** data | Safety invariant: no restricted or personal data to free tiers; DEC-418 self-hosted model only for non-restricted data, outage only | Masked personal data only to Tier 1a Claude under DPA. Any open-weight model (self-hosted 2e in ap-south-1) receives **Public and Internal-non-personal data only**. The invariant is not weakened | Pending Founder decision |
-| CONFLICT-852 | Model and embedding region "IN / EU per tenant"; "same region as data"; indexes per tenant **and region**; CJ-R09 region pinning | DEC-421 hosting is Mumbai only; Part 7.3 §7.6.8 discloses model processing outside India under DPA | Pilot: keep in-region data, vectors (MDL-E1 in-region already), logs and backups; accept Claude processing location under DPA with a transfer-register entry (CJ-R15; DPDP s.16 permits transfers except to notified countries — verify). At the EU-launch gate: evaluate in-region Claude inference through a cloud marketplace (verify model availability per region as of 27 Nov 2026) and an EU data plane; Founder decides with DEC-421 | Pending Founder decision |
-| CONFLICT-853 | MDL-L1 advanced tier; multimodal engine ENG-04 (image/video generation SVC-27, voice SVC-26) | DEC-418 has no tier above Sonnet; Claude does not generate images or speech; budgets have no line for such providers | Tier L = Sonnet at higher effort (no new tier). Creatives: template renderer (open-source) by default; any image/video/STT/TTS provider is a new paid provider → procurement gate AU-044, Founder approval, costs outside budgets; open-source self-hosted STT preferred (open-source first) | Pending Founder decision |
-| CONFLICT-854 | FL-09 persistent approval mandates; R3 mandate "only if expressly approved"; SVC-28 agentic commerce negotiation and **payment mandates**; external agent interoperability | Invariant: AI never pays, signs, submits bids, sets prices or sends consequential actions without a human; consequential actions capped at L1 (DEC-064, X-06) | Allow **bounded R2 mandates** only where DEC-064 already allows L2/L3 dispatch of approved templates. **Disable R3 mandates.** SVC-28-WF02/03 at L1 (each quotation or counter-offer approved by a human under DEC-038); SVC-28-WF04 payment mandate **not supported** — record and reconcile human-made payments only. External agent interop stays OFF until the Founder decides | Pending Founder decision |
-| CONFLICT-855 | 111 EVAL suites × (50 labelled + 20 adversarial), two annotators, κ ≥ 0.7, four languages | Per-agent golden sets; GAP-142 labelling 6–10 pd; no budget for 7,770 cases | Phase the programme with releases (EVAL-PRG-1/2/3: 40 / 24 / 16 central pd); AI-assisted synthetic drafting with human double-labelling (DEC-420); de/fr slices only at the EU gate (RECOMMENDATION-866). One-time ₹2.5–8.2 L for the programme inside CR-V12-F | Pending Founder decision |
-| CONFLICT-856 | ENT-CMP-01…03: SOC 2 Type I at R2, Type II at R3; ISO 27001 at R3; ISO 27701 and 42001 at R4 | No certification budget in DEC-230/231/422 | Adopt as roadmap targets; produce the AI-governance evidence now from AU-079/151/154 at no extra build cost; obtain auditor quotes (verify) and decide timing at the Release 2 gate. Cross-reference: Group I may raise the security side | Pending Founder decision |
-| CONFLICT-857 | Fallback "same schema, same region, same or stricter class; never silently to an unapproved model"; approval needs DPA with no-training clause and region | DEC-418 retains Tier 2 free fallbacks (Groq, Gemini, OpenRouter, Mistral free plans; some train on inputs, regions outside India), opt-in, default off | Keep Tier 2 **off**. Under V12, a free-tier provider cannot pass AU-151 (no DPA, no region guarantee), so Tier 2 reduces to the optional self-hosted model in ap-south-1 for Public/Internal-non-personal data after it passes AU-151. Founder confirms this narrowing of DEC-418's Tier 2 element | Pending Founder decision |
+| CONFLICT-850 | ch16.2 / DEC-V7-02: provider-neutral model registry; "no provider or model is approved"; candidates include OpenAI, Gemini, Llama, Mistral, Qwen | **DEC-418**: Claude Sonnet primary, Haiku-class lighter tier | Treat DEC-418 as the answer to DEC-V7-02: MDL-S1 = Tier 1a Claude Haiku-class, MDL-M1/L1 = Tier 1b Sonnet. Other families only as **offline benchmark comparators** (AI-15, AU-045) on synthetic data; never in production routing without a new Founder decision | Adopted (DEC-788) |
+| CONFLICT-851 | MDL-S1 "hosted **or open-weight**" for Public, Internal and **Personal (masked)** data | Safety invariant: no restricted or personal data to free tiers; DEC-418 self-hosted model only for non-restricted data, outage only | Masked personal data only to Tier 1a Claude under DPA. Any open-weight model (self-hosted 2e in ap-south-1) receives **Public and Internal-non-personal data only**. The invariant is not weakened | Adopted (DEC-788) |
+| CONFLICT-852 | Model and embedding region "IN / EU per tenant"; "same region as data"; indexes per tenant **and region**; CJ-R09 region pinning | DEC-421 hosting is Mumbai only; Part 7.3 §7.6.8 discloses model processing outside India under DPA | Pilot: keep in-region data, vectors (MDL-E1 in-region already), logs and backups; accept Claude processing location under DPA with a transfer-register entry (CJ-R15; DPDP s.16 permits transfers except to notified countries — verify). At the EU-launch gate: evaluate in-region Claude inference through a cloud marketplace (verify model availability per region as of 27 Nov 2026) and an EU data plane; Founder decides with DEC-421 | Adopted (DEC-772) |
+| CONFLICT-853 | MDL-L1 advanced tier; multimodal engine ENG-04 (image/video generation SVC-27, voice SVC-26) | DEC-418 has no tier above Sonnet; Claude does not generate images or speech; budgets have no line for such providers | Tier L = Sonnet at higher effort (no new tier). Creatives: template renderer (open-source) by default; any image/video/STT/TTS provider is a new paid provider → procurement gate AU-044, Founder approval, costs outside budgets; open-source self-hosted STT preferred (open-source first) | Adopted (DEC-788) |
+| CONFLICT-854 | FL-09 persistent approval mandates; R3 mandate "only if expressly approved"; SVC-28 agentic commerce negotiation and **payment mandates**; external agent interoperability | Invariant: AI never pays, signs, submits bids, sets prices or sends consequential actions without a human; consequential actions capped at L1 (DEC-064, X-06) | Allow **bounded R2 mandates** only where DEC-064 already allows L2/L3 dispatch of approved templates. **Disable R3 mandates.** SVC-28-WF02/03 at L1 (each quotation or counter-offer approved by a human under DEC-038); SVC-28-WF04 payment mandate **not supported** — record and reconcile human-made payments only. External agent interop stays OFF until the Founder decides | Adopted (DEC-780) |
+| CONFLICT-855 | 111 EVAL suites × (50 labelled + 20 adversarial), two annotators, κ ≥ 0.7, four languages | Per-agent golden sets; GAP-142 labelling 6–10 pd; no budget for 7,770 cases | Phase the programme with releases (EVAL-PRG-1/2/3: 40 / 24 / 16 central pd); AI-assisted synthetic drafting with human double-labelling (DEC-420); de/fr slices only at the EU gate (RECOMMENDATION-866). One-time ₹2.5–8.2 L for the programme inside CR-V12-F | Adopted (DEC-788) |
+| CONFLICT-856 | ENT-CMP-01…03: SOC 2 Type I at R2, Type II at R3; ISO 27001 at R3; ISO 27701 and 42001 at R4 | No certification budget in DEC-230/231/422 | Adopt as roadmap targets; produce the AI-governance evidence now from AU-079/151/154 at no extra build cost; obtain auditor quotes (verify) and decide timing at the Release 2 gate. Cross-reference: Group I may raise the security side | Adopted (DEC-775) |
+| CONFLICT-857 | Fallback "same schema, same region, same or stricter class; never silently to an unapproved model"; approval needs DPA with no-training clause and region | DEC-418 retains Tier 2 free fallbacks (Groq, Gemini, OpenRouter, Mistral free plans; some train on inputs, regions outside India), opt-in, default off | Keep Tier 2 **off**. Under V12, a free-tier provider cannot pass AU-151 (no DPA, no region guarantee), so Tier 2 reduces to the optional self-hosted model in ap-south-1 for Public/Internal-non-personal data after it passes AU-151. Founder confirms this narrowing of DEC-418's Tier 2 element | Adopted (DEC-788) |
 
 ## 11.6.7 Decisions
 
@@ -2057,7 +2057,7 @@ Basis: Part 9.7b §9.7.13.1 unit sizes (agent S 2/3/5, M 4/6/8, C 6/9/13 pd; aut
 | DEC-602 | V12 evaluation gates adopted where stricter; stricter blueprint gates kept (DEC-001, STOP 100%, payment 97%); workflow owner signs gates (DEC-V7-06) | Customer revision V12 (28 Nov 2026) | Amends Part 7.3 §7.6.9 |
 | DEC-603 | One EVAL suite per AI-inference workflow (111), ≥ 50 + 20 cases, two annotators, κ ≥ 0.7; judge gating at κ ≥ 0.8 | Customer revision V12 (28 Nov 2026); funding pending Founder (CONFLICT-855) | AU-154/155/156; amends §7.6.6 judge agreement 85% |
 | DEC-604 | Step classification of 517 steps (159 AI-inference) adopted; model calls only from AI-inference steps, enforced in CI | Customer revision V12 (28 Nov 2026) | AU-150; four blueprint AI usages re-bound (GAP-858) |
-| DEC-605 | MDL-R0…G1 mapped to gateway tiers per DEC-418 (S1 → 1a, M1/L1 → 1b, E1 in-region open model, G1 in-region classifier) | Pending Founder decision (CONFLICT-850…853) | §11.6.5.3 |
+| DEC-605 | MDL-R0…G1 mapped to gateway tiers per DEC-418 (S1 → 1a, M1/L1 → 1b, E1 in-region open model, G1 in-region classifier) | Adopted (DEC-788) (CONFLICT-850…853) | §11.6.5.3 |
 | DEC-606 | Routing: rules → cheapest tier passing the workflow/locale/class suite → one escalation within budget → HOLD for reviewer | Customer revision V12 (28 Nov 2026) | AU-152 extends AU-001 rules R6/R8 |
 | DEC-607 | Budgets gain a workflow dimension; soft 80% / hard cap hold with deterministic continuation; DEC-008 ceilings and B02/B23/B24 caps unchanged | Customer revision V12 (28 Nov 2026) | AU-159 |
 | DEC-608 | Cost per accepted result is the AI FinOps unit, reported per workflow, tenant and agent with denominator | Customer revision V12 (28 Nov 2026) | AU-158; A117 |
@@ -2066,11 +2066,11 @@ Basis: Part 9.7b §9.7.13.1 unit sizes (agent S 2/3/5, M 4/6/8, C 6/9/13 pd; aut
 | DEC-611 | Jurisdiction packs are versioned configuration; only Approved packs enforced; UK, US, CA, AU, SG, AE, BR packs Draft · disabled until counsel review; unreviewed rules default stricter | Customer revision V12 (28 Nov 2026) | **Amends DEC-029** Year-1 allowlist; AU-170 |
 | DEC-612 | CJ-GL-01…13 adopted as non-relaxable platform rules above tenant configuration | Customer revision V12 (28 Nov 2026) | Mapped to BR/X rules; AU-171 |
 | DEC-613 | Send preflight decision table (20 cases) and precedence emergency stop > revocation/suppression > pack > tenant cap > grant | Customer revision V12 (28 Nov 2026) | AU-171 extends AU-009 |
-| DEC-614 | Effect classes R0–R3 mapped to tool classes and DEC-064 caps; bounded R2 mandates = approved-template dispatch; R3 mandates disabled | Customer revision V12 (28 Nov 2026) for R0–R2; R3 and SVC-28 mandates **Pending Founder decision** (CONFLICT-854) | AU-175 |
+| DEC-614 | Effect classes R0–R3 mapped to tool classes and DEC-064 caps; bounded R2 mandates = approved-template dispatch; R3 mandates disabled | Customer revision V12 (28 Nov 2026) for R0–R2; R3 and SVC-28 mandates **Adopted (DEC-779)** (CONFLICT-854) | AU-175 |
 | DEC-615 | ENG-01…15 are logical engines inside the modular monolith; no microservice per engine | Customer revision V12 (28 Nov 2026) | ADR-169 |
-| DEC-616 | AG-100…122, AU-150…179, EXT-01…12 added as change request CR-V12-F / CR-V12-F-R, outside approved budgets | Pending Founder decision (budget) | §11.6.5.18 |
+| DEC-616 | AG-100…122, AU-150…179, EXT-01…12 added as change request CR-V12-F / CR-V12-F-R, outside approved budgets | Adopted (DEC-790) (budget) | §11.6.5.18 |
 | DEC-617 | The 45 zero-AI-step workflows run without model calls; AG-037, AG-045, AG-046 usages in SM-SVC-10-WF03 and SM-SVC-36-WF02/03 move to deterministic steps; the agents stay bound to sibling AI workflows | Customer revision V12 (28 Nov 2026) | GAP-858 for customer confirmation |
-| DEC-618 | ENT-CMP-04…08 adopted as release criteria; ENT-CMP-01…03 roadmap targets | Customer revision V12 (28 Nov 2026) for 04…08; 01…03 **Pending Founder decision** (CONFLICT-856) | §11.6.5.9 |
+| DEC-618 | ENT-CMP-04…08 adopted as release criteria; ENT-CMP-01…03 roadmap targets | Customer revision V12 (28 Nov 2026) for 04…08; 01…03 **Adopted (DEC-775)** (CONFLICT-856) | §11.6.5.9 |
 | DEC-619 | V12 screen IDs A114–A121 and W36 are canonical; content specified in §11.6.5.7; renumbering of colliding Part 9.7 screens referred to Group G | Customer revision V12 (28 Nov 2026) | GAP-859 |
 
 ### 11.6.7.1 Architecture decision records
@@ -2144,4 +2144,4 @@ Basis: Part 9.7b §9.7.13.1 unit sizes (agent S 2/3/5, M 4/6/8, C 6/9/13 pd; aut
 | 8 | No restricted data routed to free-tier models | **Pass** | Only AG-102 (Public approved text), AG-118 (Public) and AG-120 (Internal-non-personal aggregates) are Tier 2 eligible, opt-in, default off; CONFLICT-851 and 857 keep personal data off open/free tiers |
 | 9 | Consistent with earlier parts | **Pass** | DEC-008 ceilings and B02/B23/B24 unchanged; L1 cap and X-06 kept; PDP at dispatch strengthened; DEC-418 governs production until the Founder rules on CONFLICT-850…853/857 |
 
-**Status: Part 11 Batch 11.6b complete. Group F: 563 V12 aspects → 541 Matched and 22 Pending Founder decision (8 conflicts); 20 AGT roles and 156 workflows reconciled; 111 EVAL suites registered; 23 new agents (AG-100…122), 12 task extensions, 30 automations (AU-150…179), 10 tools, 73 FRs, 29 stories, 164 test cases; 20 decisions (DEC-600…619) and 10 ADRs (ADR-160…169); CR-V12-F one-time 242 / 357 / 530 pd (₹11.0–36.1 L) and recurring ₹580–4,586 per month, both outside approved budgets.**
+**Status: Part 11 Batch 11.6b complete. Group F: 563 V12 aspects → 541 Matched and 22 Pending Founder decision (8 conflicts); 20 AGT roles and 156 workflows reconciled; 111 EVAL suites registered; 23 new agents (AG-100…122), 12 task extensions, 30 automations (AU-150…179), 10 tools, 73 FRs, 29 stories, 164 test cases; 20 decisions (DEC-600…619) and 10 ADRs (ADR-160…169); CR-V12-F one-time 242 / 357 / 530 pd (₹11.0–36.1 L) and recurring ₹580–4,586 per month, both outside approved budgets.** *(v1.2: every item counted here as "Pending Founder decision" was adopted by DEC-770…791 — Part 11.14; read as Adopted. Part 11.25.)*

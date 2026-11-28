@@ -33,7 +33,7 @@
 
 ## 11.4.2 Coverage summary
 
-Statuses follow the V12 brief: Covered / Partially covered / Not covered / Conflict before; Matched / Pending Founder decision / Not applicable after. A workflow whose behaviour exists in the blueprint is at most "Partially covered", because the V12 canonical IDs, typed DTO, step IDs, KPIs and acceptance IDs did not exist in the blueprint before this part.
+Statuses follow the V12 brief: Covered / Partially covered / Not covered / Conflict before; Matched / Pending Founder decision / Not applicable after. A workflow whose behaviour exists in the blueprint is at most "Partially covered", because the V12 canonical IDs, typed DTO, step IDs, KPIs and acceptance IDs did not exist in the blueprint before this part. *(v1.2: every item counted here as "Pending Founder decision" was adopted by DEC-770…791 — Part 11.14; read as Adopted. Part 11.25.)*
 
 | Status | Before | After |
 |---|---|---|
@@ -77,7 +77,7 @@ Statuses follow the V12 brief: Covered / Partially covered / Not covered / Confl
 | SM-SVC-38 SMS, RCS & Business Messaging Automation | 4 | 11 | 0 / 0 / 4 / 0 | 101 | 0 |
 | SM-SVC-39 Procurement & Supplier Management Automation | 4 | 13 | 0 / 2 / 2 / 0 | 103 | 1 |
 
-**Reading the result.** 1976 aspects are Matched by the specifications in Parts 11.4b–11.4d. 99 aspects are Pending Founder decision: the voice service SM-SVC-26 (CONFLICT-815), generative image/video/audio in SM-SVC-27 (CONFLICT-819), agent-to-agent negotiation and payment mandates in SM-SVC-28 (CONFLICT-816), price-sensitivity and live pricing experiments in SM-SVC-37 (CONFLICT-817), recording-based coaching in SM-SVC-36-WF03 (CONFLICT-818) and the V12 "L3 bounded mandate" option on the ten R3 workflows (CONFLICT-814). For each, the full specification is still written, and the workflow ships **disabled** with a recommended resolution. Funding for all V12 work in this group is a separate Founder item (CONFLICT-820) that does not change any aspect's specification status.
+**Reading the result.** 1976 aspects are Matched by the specifications in Parts 11.4b–11.4d. 99 aspects are Pending Founder decision: the voice service SM-SVC-26 (CONFLICT-815), generative image/video/audio in SM-SVC-27 (CONFLICT-819), agent-to-agent negotiation and payment mandates in SM-SVC-28 (CONFLICT-816), price-sensitivity and live pricing experiments in SM-SVC-37 (CONFLICT-817), recording-based coaching in SM-SVC-36-WF03 (CONFLICT-818) and the V12 "L3 bounded mandate" option on the ten R3 workflows (CONFLICT-814). For each, the full specification is still written, and the workflow ships **disabled** with a recommended resolution. Funding for all V12 work in this group is a separate Founder item (CONFLICT-820) that does not change any aspect's specification status. *(v1.2: every item counted here as "Pending Founder decision" was adopted by DEC-770…791 — Part 11.14; read as Adopted. Part 11.25.)*
 
 **Behaviour-level view of the 76 workflows.** 49 already exist in the blueprint in substance (48 partially, 1 fully: SM-SVC-36-WF02 practice against synthetic personas, AG-046); 15 are new and buildable within the safety invariants (marketplace, SMS/RCS, procurement, reputation, agentic catalogue/quote drafts, adaptive onboarding); 12 conflict with a Founder decision or safety invariant.
 
@@ -352,7 +352,7 @@ Legend: C Covered, P Partially covered, N Not covered, X Conflict → M Matched,
 | SM-SVC-38 | `sender_ref`, `template_ref`, `recipient_refs`, `consent_refs` | `eligibility_state`, `dispatch_ref`, `delivery_state`, `suppression_state` |
 | SM-SVC-39 | `requirement_ref`, `supplier_refs`, `quote_refs`, `budget_ref` | `shortlist_ref`, `comparison_ref`, `purchase_order_ref`, `exception_refs` |
 
-#### 11.4.3.5 Every Conflict aspect individually (all end Pending Founder decision)
+#### 11.4.3.5 Every Conflict aspect individually (all ended Pending Founder decision; adopted by DEC-779…791 in Part 11.14)
 
 | Aspect ID | Summary | Conflict | Proposed resolution |
 |---|---|---|---|
@@ -584,9 +584,9 @@ The workbook column "External side-effect classification" and the absence of an 
 | Step ID | Action | Workflow R-class | Adapter (port) | Approval binding | Status |
 |---|---|---|---|---|---|
 | SM-SVC-22-WF03-STEP-02 | send eligible reminders | R2 | ADP-EMAIL (SES) via outbox | Exact payload digest approved by R02 | Matched |
-| SM-SVC-26-WF02-STEP-02 | initiate authorized call | R2 | ADP-VOICE (telephony/CPaaS, not procured) | Exact payload digest approved by R10, R01 | Pending Founder decision |
+| SM-SVC-26-WF02-STEP-02 | initiate authorized call | R2 | ADP-VOICE (telephony/CPaaS, not procured) | Exact payload digest approved by R10, R01 | Adopted (DEC-782) |
 | SM-SVC-28-WF01-STEP-02 | publish to authorized client endpoint | R2 | ADP-AGENT (MCP/A2A gateway, not procured) | Exact payload digest approved by R02, R10 | Matched |
-| SM-SVC-28-WF04-STEP-02 | execute only via approved provider | R3 | ADP-AGENT (MCP/A2A gateway, not procured) | Exact payload digest approved by R08, R09, R01 | Pending Founder decision |
+| SM-SVC-28-WF04-STEP-02 | execute only via approved provider | R3 | ADP-AGENT (MCP/A2A gateway, not procured) | Exact payload digest approved by R08, R09, R01 | Adopted (DEC-780) |
 | SM-SVC-31-WF01-STEP-03 | publish eligible updates | R2 | ADP-MKT (marketplace seller API, not procured) | Exact payload digest approved by R02, R10 | Matched |
 | SM-SVC-31-WF02-STEP-03 | update authorized listings | R3 | ADP-MKT (marketplace seller API, not procured) | Exact payload digest approved by R02, R08 | Matched |
 | SM-SVC-32-WF02-STEP-02 | grant scoped access | R2 | Portal grant (AU-090 pattern, R16P) | Exact payload digest approved by R02, R10 | Matched |
@@ -671,4 +671,4 @@ FSD ch12 recovers only the 20 group names with 5 historical entries each; the en
 | 8 | No restricted data to free-tier models | Pass | Tier 2 marked not eligible for every workflow handling personal or confidential data |
 | 9 | Consistent with earlier parts | Pass | Mappings cite Parts 2.2, 2.3, 3.1–3.4, 7.4b, 9.4, 9.7–9.9 |
 
-**Status: Part 11 Batch 11.4a complete. 2075 aspects inventoried and reconciled; 1976 Matched, 99 Pending Founder decision.**
+**Status: Part 11 Batch 11.4a complete. 2075 aspects inventoried and reconciled; 1976 Matched, 99 Pending Founder decision.** *(v1.2: every item counted here as "Pending Founder decision" was adopted by DEC-770…791 — Part 11.14; read as Adopted. Part 11.25.)*

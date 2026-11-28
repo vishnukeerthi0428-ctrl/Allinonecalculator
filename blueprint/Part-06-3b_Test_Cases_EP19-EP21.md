@@ -475,6 +475,9 @@ Risk areas: RA-16 (release, rollback, backup and restore; **P0, depth D3**), RA-
 
 ### 6.3.11.1 Scenarios
 
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
+
 | TS ID | Title | Linked US / FR | Risk area · Priority | TCs |
 |---|---|---|---|---|
 | TS-21-01 | Pipeline blocks builds on every failing gate and deploys to production only through the approved pipeline role | US-2101; FR-NEG-01 | RA-16 · P0 | TC-21-001…012 |
@@ -624,6 +627,9 @@ Journeys J1…J12 per ASSUMPTION-175 (Part 5.3). Each journey is one automated T
 
 ### 6.3.11.9 Group TC-21-H: Boundary values – restore drill (techniques: BVA, UC) · TS-21-08
 
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
+
 **Restore drill procedure (DR-1 on staging, executed per US-2108, before each wave exit and monthly during pilot, ASSUMPTION-176).**
 
 | Step | Action | Measurement / evidence |
@@ -676,6 +682,9 @@ Journeys J1…J12 per ASSUMPTION-175 (Part 5.3). Each journey is one automated T
 | TC-21-090 | Record AP-08 semantic approval with a 10% spot-check of links | AC-2110-01; AP-08; Part 6.1 §6.1.13.6 | Traceability matrix | 1. PO spot-checks 10% (random seed recorded) | Approval record with spot-check results; failures re-linked | P1 | T01 | UC | N (semantic review) | UAT |
 
 ### 6.3.11.12 Group TC-21-K: DR / failover drill catalogue (techniques: UC, EG, BVA) · TS-21-11
+
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
 
 The drill catalogue of Part 6.1 §6.1.14.4 executed as test cases. Measurement method: heartbeat writer every 10 s; RPO = failure-injection time − last heartbeat present after recovery; RTO = incident declared → `/ready` green **and** integrity checklist 1–10 passed. Each drill emits the drill report of RECOMMENDATION-078.
 

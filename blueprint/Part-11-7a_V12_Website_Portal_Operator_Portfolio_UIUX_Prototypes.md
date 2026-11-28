@@ -88,7 +88,7 @@
 | **Total** |  | **5430** | **3220** | **823** | **1309** | **72** | **6** | **5404** | **20** | **6** |
 
 
-**Reading the numbers.** 3,220 aspects (59%) were already covered, almost all of them field, route and rule atoms of the 113 Admin screen specifications and the 147-screen workbook, which carry the same content as baseline source document 06 that Part 2.7b already reconciled. The uncovered mass sits where V12 is genuinely new: the prototype admin screens X26–X39, O01–O08 and V12 A114–A131 (710 elements), the storefront routes (168), the 156 fictional workflow outputs and the domain panels. After this part, 5,404 aspects are **Matched**, 20 are **Pending Founder decision** (investor/fundraising mode and the investment sibling: 18; budget: 1; certification programme vs DEC-408: 1) and 6 are **Not applicable** with a reason.
+**Reading the numbers.** 3,220 aspects (59%) were already covered, almost all of them field, route and rule atoms of the 113 Admin screen specifications and the 147-screen workbook, which carry the same content as baseline source document 06 that Part 2.7b already reconciled. The uncovered mass sits where V12 is genuinely new: the prototype admin screens X26–X39, O01–O08 and V12 A114–A131 (710 elements), the storefront routes (168), the 156 fictional workflow outputs and the domain panels. After this part, 5,404 aspects are **Matched**, 20 are **Pending Founder decision** (investor/fundraising mode and the investment sibling: 18; budget: 1; certification programme vs DEC-408: 1) and 6 are **Not applicable** with a reason. *(v1.2: every item counted here as "Pending Founder decision" was adopted by DEC-770…791 — Part 11.14; read as Adopted. Part 11.25.)*
 
 ### 11.7.2.2 Covered aspects (grouped)
 
@@ -795,10 +795,10 @@ All 156 rows were Not covered before and are Matched by FR-V12-G-106; each row i
 
 | Aspect | Summary | Before | Blueprint location | Action | New IDs | After |
 |---|---|---|---|---|---|---|
-| G-WP-0001 | NEUTRAL SaaS STOREFRONTS — DEVELOPER HANDOFF  Open commercial_website.html or investment_website.html locally in Chrome/Edge. | Conflict | DEC-002 (no fundraising) | CONFLICT-868 pending Founder | FR-V12-G-117 | Pending Founder decision |
+| G-WP-0001 | NEUTRAL SaaS STOREFRONTS — DEVELOPER HANDOFF  Open commercial_website.html or investment_website.html locally in Chrome/Edge. | Conflict | DEC-002 (no fundraising) | CONFLICT-868 pending Founder | FR-V12-G-117 | Adopted (DEC-783) |
 | G-WP-0002 | Each is standalone; no dependencies. | Partially covered | Part 2.5 §2.40.2; Part 4.1 | Adopted in §11.7.5 storefront rules | FR-V12-G-104 | Matched |
 | G-WP-0003 | The public catalog describes proposed automation capabilities, not client businesses. | Partially covered | Part 2.5 §2.40.2; Part 4.1 | Adopted in §11.7.5 storefront rules | FR-V12-G-104 | Matched |
-| G-WP-0004 | The original 34 commercial and 19 investment Website route IDs are retained but old issuer/business relationship routes are repurposed (see reconciliation CSVs). | Conflict | DEC-002 (no fundraising) | CONFLICT-868 pending Founder | FR-V12-G-117 | Pending Founder decision |
+| G-WP-0004 | The original 34 commercial and 19 investment Website route IDs are retained but old issuer/business relationship routes are repurposed (see reconciliation CSVs). | Conflict | DEC-002 (no fundraising) | CONFLICT-868 pending Founder | FR-V12-G-117 | Adopted (DEC-783) |
 | G-WP-0005 | Existing Admin prototypes are not included or modified. | Partially covered | Part 2.5 §2.40.2; Part 4.1 | Adopted in §11.7.5 storefront rules | FR-V12-G-104 | Matched |
 | G-WP-0006 | Existing 36/38-document packages and master engineering workbooks are not modified; they require reconciliation before development. | Partially covered | Part 2.5 §2.40.2; Part 4.1 | Adopted in §11.7.5 storefront rules | FR-V12-G-104 | Matched |
 | G-WP-0007 | Each catalog contains 100 proposed capability entries in 20 families: 75 optional selections, 25 foundational entries. | Partially covered | Part 2.5 §2.40.2; Part 4.1 | Adopted in §11.7.5 storefront rules | FR-V12-G-104 | Matched |
@@ -808,8 +808,8 @@ All 156 rows were Not covered before and are Matched by FR-V12-G-106; each row i
 | G-WP-0011 | Delivery model, billing cycle and quote currency are selectable. | Partially covered | Part 2.5 §2.40.2; Part 4.1 | Adopted in §11.7.5 storefront rules | FR-V12-G-104 | Matched |
 | G-WP-0012 | No approved pricing is supplied, so purchase journey is a quote and demo subscription request, not live checkout or payment. | Partially covered | Part 2.5 §2.40.2; Part 4.1 | Adopted in §11.7.5 storefront rules | FR-V12-G-104 | Matched |
 | G-WP-0013 | No external dispatch or funds transfer occurs. | Partially covered | Part 2.5 §2.40.2; Part 4.1 | Adopted in §11.7.5 storefront rules | FR-V12-G-104 | Matched |
-| G-WP-0014 | Investment storefront sells fundraising workflow software only; it is not a securities marketplace or offer. | Conflict | DEC-002 (no fundraising) | CONFLICT-868 pending Founder | FR-V12-G-117 | Pending Founder decision |
-| G-WP-0015 | All investment offers, diligence, issuer data, and closing records belong to authorized private operations. | Conflict | DEC-002 (no fundraising) | CONFLICT-868 pending Founder | FR-V12-G-117 | Pending Founder decision |
+| G-WP-0014 | Investment storefront sells fundraising workflow software only; it is not a securities marketplace or offer. | Conflict | DEC-002 (no fundraising) | CONFLICT-868 pending Founder | FR-V12-G-117 | Adopted (DEC-783) |
+| G-WP-0015 | All investment offers, diligence, issuer data, and closing records belong to authorized private operations. | Conflict | DEC-002 (no fundraising) | CONFLICT-868 pending Founder | FR-V12-G-117 | Adopted (DEC-783) |
 | G-WP-0016 | Private demo access is illustrative, not actual security. | Partially covered | Part 2.5 §2.40.2; Part 4.1 | Adopted in §11.7.5 storefront rules | FR-V12-G-104 | Matched |
 | G-WP-0017 | Business fields accept synthetic data only and remain in browser memory; sign-out clears private application state. | Partially covered | Part 2.5 §2.40.2; Part 4.1 | Adopted in §11.7.5 storefront rules | FR-V12-G-104 | Matched |
 | G-WP-0018 | No real credentials requested, no localStorage, no client seed records, and no public profile publication or snapshot import. | Partially covered | Part 2.5 §2.40.2; Part 4.1 | Adopted in §11.7.5 storefront rules | FR-V12-G-104 | Matched |
@@ -817,7 +817,7 @@ All 156 rows were Not covered before and are Matched by FR-V12-G-106; each row i
 | G-WP-0020 | Real company-specific fields and operational records must be served exclusively by authenticated, authorized backend endpoints. | Partially covered | Part 2.5 §2.40.2; Part 4.1 | Adopted in §11.7.5 storefront rules | FR-V12-G-104 | Matched |
 | G-WP-0021 | Do not host any Admin HTML or other private developer artifact on a public origin. | Partially covered | Part 2.5 §2.40.2; Part 4.1 | Adopted in §11.7.5 storefront rules | FR-V12-G-104 | Matched |
 | G-WP-0022 | In production, anonymous endpoints return only product service catalog, approved pricing, public policy and educational information. | Partially covered | Part 2.5 §2.40.2; Part 4.1 | Adopted in §11.7.5 storefront rules | FR-V12-G-104 | Matched |
-| G-WP-0023 | Do not expose client business names, profile, products, private pipeline, investor/customer directory, client-specific published snapshots, or tenant identifiers in anonymous payloads. | Conflict | DEC-002 (no fundraising) | CONFLICT-868 pending Founder | FR-V12-G-117 | Pending Founder decision |
+| G-WP-0023 | Do not expose client business names, profile, products, private pipeline, investor/customer directory, client-specific published snapshots, or tenant identifiers in anonymous payloads. | Conflict | DEC-002 (no fundraising) | CONFLICT-868 pending Founder | FR-V12-G-117 | Adopted (DEC-783) |
 | G-WP-0024 | Store onboarding data server-side after appropriate verification; validate tenant membership and entitlement at every API. | Partially covered | Part 2.5 §2.40.2; Part 4.1 | Adopted in §11.7.5 storefront rules | FR-V12-G-104 | Matched |
 | G-WP-0025 | Generic industry templates are not client records. | Partially covered | Part 2.5 §2.40.2; Part 4.1 | Adopted in §11.7.5 storefront rules | FR-V12-G-104 | Matched |
 | G-WP-0026 | A synthetic application can be exported as private JSON with selectedAutomationIds, selectionMode and billingCycle. | Partially covered | Part 2.5 §2.40.2; Part 4.1 | Adopted in §11.7.5 storefront rules | FR-V12-G-104 | Matched |
@@ -873,17 +873,17 @@ All 156 rows were Not covered before and are Matched by FR-V12-G-106; each row i
 | G-WP-0076 | Prototype verification quote_and_order_simulation = True | Partially covered | Part 6.1 E2E strategy | Converted to production tests TC-V12-G | FR-V12-G-104 | Matched |
 | G-WP-0077 | Prototype verification signout_gate = True | Partially covered | Part 6.1 E2E strategy | Converted to production tests TC-V12-G | FR-V12-G-104 | Matched |
 | G-WP-0078 | Prototype verification mobile_home_no_overflow = True | Partially covered | Part 6.1 E2E strategy | Converted to production tests TC-V12-G | FR-V12-G-102 | Matched |
-| G-WP-0079 | Investment storefront verification routes = 19 | Conflict | DEC-002 | CONFLICT-868 | FR-V12-G-117 | Pending Founder decision |
-| G-WP-0080 | Investment storefront verification routes_checked_signed_out_and_demo_session = True | Conflict | DEC-002 | CONFLICT-868 | FR-V12-G-117 | Pending Founder decision |
-| G-WP-0081 | Investment storefront verification js_errors = [] | Conflict | DEC-002 | CONFLICT-868 | FR-V12-G-117 | Pending Founder decision |
-| G-WP-0082 | Investment storefront verification no_seed_name_scan = True | Conflict | DEC-002 | CONFLICT-868 | FR-V12-G-117 | Pending Founder decision |
-| G-WP-0083 | Investment storefront verification full_selection = 75 | Conflict | DEC-002 | CONFLICT-868 | FR-V12-G-117 | Pending Founder decision |
-| G-WP-0084 | Investment storefront verification partial_selection = 25 | Conflict | DEC-002 | CONFLICT-868 | FR-V12-G-117 | Pending Founder decision |
-| G-WP-0085 | Investment storefront verification selective_selection = 1 | Conflict | DEC-002 | CONFLICT-868 | FR-V12-G-117 | Pending Founder decision |
-| G-WP-0086 | Investment storefront verification private_wizard_and_export = True | Conflict | DEC-002 | CONFLICT-868 | FR-V12-G-117 | Pending Founder decision |
-| G-WP-0087 | Investment storefront verification quote_and_order_simulation = True | Conflict | DEC-002 | CONFLICT-868 | FR-V12-G-117 | Pending Founder decision |
-| G-WP-0088 | Investment storefront verification signout_gate = True | Conflict | DEC-002 | CONFLICT-868 | FR-V12-G-117 | Pending Founder decision |
-| G-WP-0089 | Investment storefront verification mobile_home_no_overflow = True | Conflict | DEC-002 | CONFLICT-868 | FR-V12-G-117 | Pending Founder decision |
+| G-WP-0079 | Investment storefront verification routes = 19 | Conflict | DEC-002 | CONFLICT-868 | FR-V12-G-117 | Adopted (DEC-783) |
+| G-WP-0080 | Investment storefront verification routes_checked_signed_out_and_demo_session = True | Conflict | DEC-002 | CONFLICT-868 | FR-V12-G-117 | Adopted (DEC-783) |
+| G-WP-0081 | Investment storefront verification js_errors = [] | Conflict | DEC-002 | CONFLICT-868 | FR-V12-G-117 | Adopted (DEC-783) |
+| G-WP-0082 | Investment storefront verification no_seed_name_scan = True | Conflict | DEC-002 | CONFLICT-868 | FR-V12-G-117 | Adopted (DEC-783) |
+| G-WP-0083 | Investment storefront verification full_selection = 75 | Conflict | DEC-002 | CONFLICT-868 | FR-V12-G-117 | Adopted (DEC-783) |
+| G-WP-0084 | Investment storefront verification partial_selection = 25 | Conflict | DEC-002 | CONFLICT-868 | FR-V12-G-117 | Adopted (DEC-783) |
+| G-WP-0085 | Investment storefront verification selective_selection = 1 | Conflict | DEC-002 | CONFLICT-868 | FR-V12-G-117 | Adopted (DEC-783) |
+| G-WP-0086 | Investment storefront verification private_wizard_and_export = True | Conflict | DEC-002 | CONFLICT-868 | FR-V12-G-117 | Adopted (DEC-783) |
+| G-WP-0087 | Investment storefront verification quote_and_order_simulation = True | Conflict | DEC-002 | CONFLICT-868 | FR-V12-G-117 | Adopted (DEC-783) |
+| G-WP-0088 | Investment storefront verification signout_gate = True | Conflict | DEC-002 | CONFLICT-868 | FR-V12-G-117 | Adopted (DEC-783) |
+| G-WP-0089 | Investment storefront verification mobile_home_no_overflow = True | Conflict | DEC-002 | CONFLICT-868 | FR-V12-G-117 | Adopted (DEC-783) |
 
 #### Register WPC: Website pack layout catalogue (145 aspects)
 
@@ -1124,7 +1124,7 @@ All 156 rows were Not covered before and are Matched by FR-V12-G-106; each row i
 | G-PW-0294 | W40 → W45: V12 · System status — sections: System status / Incident communication | Partially covered | Blueprint W45 | Route card W45 | FR-V12-G-078 | Matched |
 | G-PW-0297 | W41 → W52: V12 · Legal centre — sections: Legal centre | Not covered | Blueprint W52 | Route card W52 | FR-V12-G-037 | Matched |
 | G-PW-0299 | W99X → W53: Sales & Marketing Automation — Page not found — sections: Page not found | Not covered | Blueprint W53 | Route card W53 | FR-V12-G-038 | Matched |
-| G-PW-0300 | Website template contains an investor/fundraising objective mode (CFG.inv) with 'Automate your fundraising operations', 'eligible investors', 'Fundraising thesis' wording; commercial build sets inv=false | Conflict | DEC-002; CC-01; negative regression test (Part 6.1 T02) | CONFLICT-868: remove mode from the commercial codebase; Founder decides on sibling product | FR-V12-G-117; DEC-632 | Pending Founder decision |
+| G-PW-0300 | Website template contains an investor/fundraising objective mode (CFG.inv) with 'Automate your fundraising operations', 'eligible investors', 'Fundraising thesis' wording; commercial build sets inv=false | Conflict | DEC-002; CC-01; negative regression test (Part 6.1 T02) | CONFLICT-868: remove mode from the commercial codebase; Founder decides on sibling product | FR-V12-G-117; DEC-632 | Adopted (DEC-783) |
 
 #### Register PWD: Prototype website datasets (8 aspects)
 
@@ -1364,13 +1364,13 @@ All 156 rows were Not covered before and are Matched by FR-V12-G-106; each row i
 
 | Aspect | Summary | Before | Blueprint location | Action | New IDs | After |
 |---|---|---|---|---|---|---|
-| G-SA-0001 | Sibling investor/fundraising storefront and catalogue in the V12 source archive | Conflict | DEC-002 | CONFLICT-868 | FR-V12-G-117 | Pending Founder decision |
+| G-SA-0001 | Sibling investor/fundraising storefront and catalogue in the V12 source archive | Conflict | DEC-002 | CONFLICT-868 | FR-V12-G-117 | Adopted (DEC-783) |
 
 #### Register BG: Blueprint governance (budget) (1 aspects)
 
 | Aspect | Summary | Before | Blueprint location | Action | New IDs | After |
 |---|---|---|---|---|---|---|
-| G-BG-0001 | New screens A170–A204, W50–W54, Admin mobile parity, locales de/fr/ar and RTL exceed approved Ledger A/B scope | Conflict | DEC-230/DEC-422/DEC-228 | CONFLICT-869; separate costed proposal §11.7.5.12 | DEC-633 | Pending Founder decision |
+| G-BG-0001 | New screens A170–A204, W50–W54, Admin mobile parity, locales de/fr/ar and RTL exceed approved Ledger A/B scope | Conflict | DEC-230/DEC-422/DEC-228 | CONFLICT-869; separate costed proposal §11.7.5.12 | DEC-633 | Adopted (DEC-790) |
 
 #### Register PW/PA itemised screen elements (890 aspects in 193 rows)
 

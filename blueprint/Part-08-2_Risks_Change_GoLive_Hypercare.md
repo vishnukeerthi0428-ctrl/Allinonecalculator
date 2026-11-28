@@ -30,6 +30,9 @@
 
 ### 8.2.1.2 Register (RSK-001…RSK-092)
 
+> **Erratum v1.2 (E-V-01, E-V-10):** superseded by consequential actions above L1 only under an Active two-person bounded mandate (DEC-779); two residency stacks, India and EU (DEC-772/776). See Part 11.23c.
+
+
 | ID | Risk | Source | P | I | Score | Mitigation | Contingency | Owner | Trigger | Status |
 |---|---|---|---|---|---|---|---|---|---|---|
 | RSK-001 | Wave content is front-loaded: Release 1 holds ≈ 446 SP (≈ 312 pd) against ≈ 200 pd capacity by Day 90, so BRD §8 day-phase gates slip (CONFLICT-142) | Part 8 §8.1.2; DEC-005, DEC-034 | 5 | 4 | **20** | Re-baselined gate calendar (§8.1.2); W0-A/W0-B split (errata 34); QA uplift and DevOps front-load (RECOMMENDATION-082/083); MoSCoW spill list approved in advance (RECOMMENDATION-085) | Option B acceleration: 2 contract engineers S2–S6 (RECOMMENDATION-086); or descope the W3 Should set to W6 | Founder/PO | Sprint 3 rolling velocity < 40 SP, or W1 signal gate not passed by Day 54 | Open – accepted with re-baseline |
@@ -496,6 +499,9 @@ Baseline rule: a baseline needs ≥ 4 weeks of data in the activated scope, with
 All prices and rates: **estimates; verify at time of implementation (as of 27 Nov 2026)**. FX ₹90/USD (BRD §6). GST and other taxes excluded unless stated (BRD §6).
 
 ### 8.2.7.1 Engineering budget (C03)
+
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
 
 | Item | Formula | Low | Central | High | Source |
 |---|---|---|---|---|---|

@@ -30,7 +30,7 @@ The customer's commercial unit rule (BRD 01 §V12, §V8; BR-V3-01; BR-C03, BR-C0
 | FR-V12-A-003 | Every released SKU has a **service workspace** with domain-specific draft and evidence fields, searchable scoped records, versioned edits, review and export (generic pattern; bespoke design gated) | BR-V3-11 | No workspace renders for an unentitled SKU; edits create versions | Should | R2-B | EP-20 | P-A | TC-V12-A-003 |
 | FR-V12-A-004 | **Catalogue versioning and alias map**: every SKU/workflow change is a new version; legacy capability IDs (100) and the 75 old selectable entries map as aliases, never as products | BR-C12, BRD 12 §V4 | Alias resolves to one SKU; alias is not purchasable | Should | R2-B | EP-20 | P-A | TC-V12-A-004 |
 | FR-V12-A-005 | **Bundles** (full suite = all released eligible SKUs; partial bundle; DEC-047 archetypes Starter/Growth/Scale as preset bundles) expand to stable SKU IDs at quote time | BR-C04, BR-V3-04 | Full suite expands to all *released* SKUs only; bundle never contains a planned SKU | Must | R2-B | EP-20 | P-A | TC-V12-A-005 |
-| FR-V12-A-006 | **Product separation**: the Investment Automation product is separate; only libraries/patterns are reused; no implicit cross-product access; no investor entity, route, filter or term (DEC-002, DEC-058, BRL-TEN-12) | BR-C14, REC-V2-10 | CI build check finds no investor/fundraising term in catalogue, routes or schemas; investor-audience tokens rejected | Must | R1-B | EP-01 | In scope | TC-V12-A-006 |
+| FR-V12-A-006 | **Product separation** (amended v1.2 per DEC-783, DEC-947): Sales & Marketing (SM) and Investment Automation (INV, Parts 11.16a–e) are separate product codes with separate entitlements; only libraries/patterns are reused; no implicit cross-product access; investor entities, routes, filters and terms exist only in the INV product code and `inv` schema, never in the SM catalogue, routes or schemas (DEC-058, BRL-TEN-12; DEC-002 investor exclusion superseded by DEC-783) | BR-C14, REC-V2-10 | CI build check finds no investor/fundraising term in the **SM** catalogue, routes or schemas; an SM-only tenant receives 404 on `/api/v1/investor/*` and an investor-audience token is rejected by SM endpoints; INV endpoints are reachable only with the INV entitlement | Must | R1-B | EP-01 | In scope | TC-V12-A-006 |
 
 ### 11.1.5.2 Subscription, bundle and entitlement model
 
@@ -555,6 +555,232 @@ Stories use the blueprint template (Part 5). Story points: Fibonacci, team-relat
 | US-21-YA02 | EP-21 | As the service owner, I want SLA tier templates attachable only after three months of measured attainment | 140, 141, 143 | 5 | R2-B |
 | US-21-YA03 | EP-21 | As QA, I want V12 acceptance IDs to resolve to blueprint tests in the RTM | 200–202 | 3 | R1-B |
 
+**Acceptance criteria added in release v1.2** (Part 11.25 §11.25.3.6; these stories had a statement only). Format as the Part 5.1a template: one feature per story, a happy-path and a negative or edge scenario, IDs `AC-<epic><story>-nn`.
+
+```gherkin
+Feature: US-20-YA02 Plan-change preview before confirmation (FR-V12-A-016)
+  @happy
+  Scenario: AC-20YA02-01 Upgrade preview shows effective date and proration
+    Given subscriber admin "neha@harborfoods.example.com" (R17) holds plan "Growth" with SKU SM-SVC-06 on a monthly cycle
+    When she previews an upgrade to "Scale" effective on the approved date
+    Then the preview shows the effective date, the prorated charge in INR minor units and every entitlement gained or lost
+    And no subscription, invoice or entitlement row changes until she confirms
+  @neg
+  Scenario: AC-20YA02-02 Downgrade never removes rights silently
+    When she requests a downgrade that removes SKU SM-SVC-06 mid-cycle without a signed exception
+    Then the change is scheduled for the renewal date and the preview lists the rights that end on that date
+
+Feature: US-20-YA03 Quote and acceptance bound to the application revision and digest (FR-V12-A-017)
+  @happy
+  Scenario: AC-20YA03-01 Acceptance binds the exact digest
+    Given quote Q-1 for application A-7 revision 3 with digest D1
+    When the verified signer accepts Q-1
+    Then the acceptance record stores A-7, revision 3, digest D1, signer identity and timestamp
+  @neg
+  Scenario: AC-20YA03-02 A material edit invalidates acceptance
+    Given Q-1 was accepted for digest D1
+    When finance edits the allowance so that the digest becomes D2
+    Then the prior acceptance is marked invalid with reason QUOTE_DIGEST_CHANGED and a new acceptance is required
+
+Feature: US-20-YA04 Failed payment enters grace before suspension (FR-V12-A-021)
+  @happy
+  Scenario: AC-20YA04-01 Grace with notices
+    Given a renewal payment fails for tenant "Harbor Foods Pvt Ltd" under a contract with a 14-day grace period
+    When the dunning schedule runs
+    Then the tenant shows state Grace in W26 and W34 and receives every notice of the approved schedule
+    And new effects continue during grace
+  @edge
+  Scenario: AC-20YA04-02 Suspension blocks effects only
+    Given the grace period ends unpaid
+    When the tenant is suspended
+    Then new external effects are denied with reason TENANT_SUSPENDED
+    And authorized export and support remain available and no data is deleted
+
+Feature: US-20-YA05 Ethical cancellation with export and final settlement (FR-V12-A-022, FR-V12-A-168)
+  @happy
+  Scenario: AC-20YA05-01 Cancel without a survey
+    Given subscriber admin "neha@harborfoods.example.com" (R17) opens cancellation in W34
+    When she skips the optional reason and confirms
+    Then cancellation completes, a final usage settlement and an export link are issued, and auto-renewal is off
+  @neg
+  Scenario: AC-20YA05-02 No win-back without consent
+    Given she opted out of marketing during cancellation
+    When the win-back campaign runs
+    Then no win-back message is queued for her and the refund, if any, needs finance approval with a linked credit note
+
+Feature: US-20-YA06 Eight-stage wizard with server-side drafts (FR-V12-A-090, FR-V12-A-091, FR-V12-A-092, FR-V12-A-096, FR-V12-A-097)
+  @happy
+  Scenario: AC-20YA06-01 Resume a draft on another device
+    Given applicant "ravi@kestrel.example.com" saved stage 4 of 8 on a laptop as revision 2
+    When he signs in on a phone
+    Then stage 4 opens with the same revision and no quote or entitlement exists yet
+  @neg
+  Scenario: AC-20YA06-02 Stale revision rejected
+    Given revision 3 is the current pending revision
+    When a submission arrives with revision 2
+    Then it is rejected with 409 STALE_REVISION and the current review is unchanged
+
+Feature: US-20-YA07 Per-SKU meter registry with pilot caps and cost ranges (FR-V12-A-032, FR-V12-A-033, FR-V12-A-035)
+  @happy
+  Scenario: AC-20YA07-01 Accepted-result cost computed per SKU
+    Given SKU SM-SVC-06 recorded 100 outputs in the pilot month and 80 were accepted
+    When the cost model runs
+    Then cost per accepted result equals attributable cost divided by 80, exact to 2 decimals, with every cost component listed
+    And the price status reads "Quote pending; excludes external fees" until Finance approves
+  @edge
+  Scenario: AC-20YA07-02 Zero denominator
+    Given a SKU with no accepted output in the period
+    Then the accepted-result cost is shown as undefined, never as zero
+
+Feature: US-20-YA08 BR-V12 enterprise capabilities registered with release and status (FR-V12-A-180…189)
+  @happy
+  Scenario: AC-20YA08-01 Register shows release mapping and decision
+    Given the CPO opens the BR-V12 register in A090
+    Then each of BR-V12-01…10 shows its release, its status and the deciding decision (e.g. BR-V12-01 SSO/SCIM: Release 1, Adopted DEC-784)
+  @neg
+  Scenario: AC-20YA08-02 Unfunded capability cannot be promised
+    Given a capability whose release gate has no evidence
+    When sales generates a proposal that lists it as available
+    Then the proposal check flags it as "roadmap" and blocks the "available now" wording
+
+Feature: US-19-YA02 Public data-rights and AI-transparency pages (FR-V12-A-053, FR-V12-A-054)
+  @happy
+  Scenario: AC-19YA02-01 Valid EU erasure request
+    Given an anonymous visitor on the data-rights page in the EU locale
+    When she submits an erasure request with a verified e-mail
+    Then she receives a reference number and a due date one month ahead
+  @neg
+  Scenario: AC-19YA02-02 Empty submit and AI disclosure
+    When the form is submitted empty
+    Then inline errors name each required field and nothing is stored
+    And the AI-transparency page lists where AI is used, the safeguards and the human review
+
+Feature: US-19-YA03 Explainable SKU suggestions, comparison and TCO estimate (FR-V12-A-056, FR-V12-A-057, FR-V12-A-059)
+  @happy
+  Scenario: AC-19YA03-01 Suggestions with reasons, customer confirms each SKU
+    Given a visitor selects objective "more qualified B2B meetings" and business model "B2B services"
+    When the selection assistant runs
+    Then suggested SKUs show their reasons and optional prerequisites, and nothing is added to the selection until the visitor confirms each SKU
+  @neg
+  Scenario: AC-19YA03-02 TCO estimate never promises outcomes
+    When the visitor enters assumptions that give a negative ROI
+    Then the negative ROI stays visible, totals equal the inputs, and the result is labelled "estimate, not a quote"
+
+Feature: US-02-YA01 Divisions, brands, markets and channel accounts (FR-V12-A-075, FR-V12-A-076, FR-V12-A-077, FR-V12-A-079)
+  @happy
+  Scenario: AC-02YA01-01 Separate registration and target countries
+    Given company "Kestrel Analytics Pvt Ltd" registered in India with target market United States
+    When the analyst filters prospects by target country US
+    Then the filter uses the target country only and the registration country stays India
+  @neg
+  Scenario: AC-02YA01-02 Brand name reuse does not leak
+    Given brand "Nova" exists in division D1 and division D2
+    When a user scoped to D1 opens brand settings
+    Then only the D1 brand configuration and approved claims are visible
+    And a suspended offering denies new effects while its past events stay retained
+
+Feature: US-17-YA01 Fourteen Command Centre views with cascading filters (FR-V12-A-120, FR-V12-A-122, FR-V12-A-123)
+  @happy
+  Scenario: AC-17YA01-01 Each view shows its own KPI set
+    Given manager "ira@ownerportfolio.example.com" (R02) opens view 7 of A089
+    Then the view shows its mapped KPIs and an unmeasured live KPI reads "pending"
+  @neg
+  Scenario: AC-17YA01-02 Changing an ancestor clears stale descendants
+    Given company "AppNAI" and brand "AppNAI Bids" are selected
+    When she changes the company to "MedMaarg"
+    Then the brand selection is cleared, options derive only from allowed IDs and the in-flight query for the old filter is cancelled
+
+Feature: US-17-YA02 Drill-down totals reconcile in native currency (FR-V12-A-124, FR-V12-A-036)
+  @happy
+  Scenario: AC-17YA02-01 Tile equals drill-down
+    Given a revenue tile for Q3 with filter "company = OrganicSpec"
+    When the analyst drills down
+    Then the row count and the per-currency sums equal the tile for the same filter and timestamp
+  @neg
+  Scenario: AC-17YA02-02 Missing FX rate
+    Given an EUR amount has no approved FX rate for the period
+    Then the amount is excluded from the INR total, counted as "unconverted" and shown in EUR
+
+Feature: US-03-YA02 Grievance and nomination requests with due dates (FR-V12-A-132)
+  @happy
+  Scenario: AC-03YA02-01 Nomination routed with due date
+    Given a verified data principal in India submits a nomination request
+    Then the request is routed to the DPO queue with a due date from the RP-IN-DPDP pack and a reference number
+  @neg
+  Scenario: AC-03YA02-02 Legal hold recorded
+    Given the principal's records are under legal hold
+    When an erasure or objection request is completed
+    Then the response records the legal hold and the records under hold are not erased
+
+Feature: US-04-YA01 AI labels, region pinning and language slice gates (FR-V12-A-114, FR-V12-A-116, FR-V12-A-117)
+  @happy
+  Scenario: AC-04YA01-01 Region-pinned model calls
+    Given an India tenant and an EU tenant (DEC-772)
+    When each requests an AI draft
+    Then the India call uses the approved India-region endpoint and the EU call the approved EU-region endpoint, both registry-approved with a no-training DPA (DEC-788)
+  @neg
+  Scenario: AC-04YA01-02 Unlabelled EU draft and failing language slice
+    Given an EU-market draft without the AI-generated label
+    Then dispatch is held until the label and machine-readable marking are present
+    And enabling the Hindi locale is blocked until the Hindi evaluation slice passes
+
+Feature: US-16-YA01 First-value milestone and success plan per selected SKU (FR-V12-A-160, FR-V12-A-161)
+  @happy
+  Scenario: AC-16YA01-01 Plan only for selected SKUs
+    Given tenant "Harbor Foods Pvt Ltd" activated SKUs SM-SVC-06 and SM-SVC-09
+    When the success plan is generated
+    Then it lists steps, owners and the first-value event for those two SKUs only, and time-to-first-value is tracked from activation
+  @neg
+  Scenario: AC-16YA01-02 No activation before readiness
+    Given the connector readiness check for SM-SVC-09 is not verified
+    Then activation of SM-SVC-09 is refused with reason READINESS_NOT_VERIFIED
+
+Feature: US-16-YA02 Health score with unknown inputs, never restricting cancellation (FR-V12-A-162, FR-V12-A-163)
+  @happy
+  Scenario: AC-16YA02-01 Missing inputs shown unknown
+    Given support data is missing for a tenant
+    When the health score is computed
+    Then the support component reads "unknown" and the score is reproducible from the stored weights
+  @neg
+  Scenario: AC-16YA02-02 Health never blocks cancellation
+    Given a tenant with a low health score requests cancellation
+    Then cancellation proceeds unchanged and paused or ineligible subscriptions are excluded from underuse guidance
+
+Feature: US-21-YA01 Every KPI defined once in the metric registry (FR-V12-A-150, FR-V12-A-151, FR-V12-A-152, FR-V12-A-220)
+  @happy
+  Scenario: AC-21YA01-01 Registry definition drives the tile
+    Given KPI-V12-A-04 is registered with numerator, denominator, period and freshness
+    Then its dashboard tile shows those four attributes
+  @neg
+  Scenario: AC-21YA01-02 Unregistered tile and zero denominator
+    Given a dashboard tile has no registry definition
+    Then the CI metric check fails the build
+    And a tile whose denominator is zero shows "n/a", never a measured value
+
+Feature: US-21-YA02 SLA tier templates attached only with validation evidence (FR-V12-A-140, FR-V12-A-141, FR-V12-A-143; DEC-774)
+  @happy
+  Scenario: AC-21YA02-01 Validated tier attached
+    Given the Business 99.9% tier has validation evidence (composed provider SLAs and measured attainment per §8.3.5.13.6, DEC-774)
+    When the service owner attaches it to a subscription
+    Then the tier, its credit ladder and the SEV1 communication timeline (notice within 1 h, updates every 2 h) apply
+  @neg
+  Scenario: AC-21YA02-02 Tier without evidence
+    When a tier is attached without validation evidence
+    Then the attachment is refused with reason SLA_TIER_NOT_VALIDATED and provider outages are reported separately from platform availability
+
+Feature: US-21-YA03 V12 acceptance IDs resolve in the RTM (FR-V12-A-200, FR-V12-A-201, FR-V12-A-202)
+  @happy
+  Scenario: AC-21YA03-01 Aliases resolve
+    Given acceptance aliases OPT-TC-*, MT-TC-MT-nn, MOB-nn-AT01 and SM-SVC-nn-ENT-AT01
+    When the RTM build runs
+    Then every alias resolves to a TC-V12 or blueprint test and the build reports 0 unresolved aliases
+  @neg
+  Scenario: AC-21YA03-02 Unresolved alias or unsigned SKU
+    Given one alias has no target test
+    Then the RTM build fails
+    And a SKU without a signed business acceptance record cannot be set to "released"
+```
+
 ```gherkin
 Feature: Independent SKU purchase and scoped entitlement (US-20-YA01)
   Background:
@@ -666,7 +892,7 @@ Columns: ID · Requirement · Preconditions/data · Steps · Expected result · 
 | TC-V12-A-003 | FR-V12-A-003 | Tenant entitled to SKU 11 only | Open SKU 11 and SKU 19 workspaces | 11 renders; 19 not available | P2 | SEC |
 | TC-V12-A-004 | FR-V12-A-004 | Legacy alias "CAP-034" → SM-SVC-11 | Resolve and try to buy alias | Resolves; not purchasable | P2 | NEG |
 | TC-V12-A-005 | FR-V12-A-005 | 30 released, 9 planned | Expand "full suite" | 30 SKU IDs; 0 planned | P1 | BVA |
-| TC-V12-A-006 | FR-V12-A-006 | Built artifacts | CI scan for investor/fundraising terms; call API with investor-audience token | 0 hits; token rejected 401 | P0 | SEC |
+| TC-V12-A-006 | FR-V12-A-006 | Built SM artifacts; SM-only tenant and INV-entitled tenant (amended v1.2, DEC-783) | CI scan of the SM bundles for investor/fundraising terms; call SM API with an investor-audience token; SM-only tenant calls `/api/v1/investor/*`; INV-entitled tenant calls the same route | 0 hits in SM; token rejected 401 by SM; SM-only tenant 404; INV-entitled tenant 200 within its own tenant scope | P0 | SEC |
 | TC-V12-A-011 | FR-V12-A-011 | See Gherkin US-20-YA01 | Run two offerings | One entitlement, no new charge | P0 | — |
 | TC-V12-A-012 | FR-V12-A-012 | Import application | Inspect entitlements | 0 entitlements until signed version | P0 | NEG |
 | TC-V12-A-013 | FR-V12-A-013 | Tenant suspended with 1 in-flight run | Request new run | Denied `TENANT_SUSPENDED`; in-flight reconciled | P0 | NEG |
@@ -820,15 +1046,15 @@ All figures are **estimates**. Day rate ₹4,545 / ₹5,682 / ₹6,818 per perso
 
 | Tag | Conflict | V12 position | Blueprint position | Recommended resolution | Status |
 |---|---|---|---|---|---|
-| CONFLICT-760 | Enterprise-readiness scope versus approved budgets and staffing | BR-V12-01…10, ENT-OPS-04 (24×7 from R2), DEC-V12-01/02 (certifications, IdPs, SCIM), V12-R2 exit (SOC 2 Type I, custom roles, SCIM, sandbox, manual WCAG audit) | DEC-228 staffing (6.5 FTE + QA), DEC-230/422 budgets; enterprise items only as readiness in A2/A3 (Part 9.9) | Adopt BR-V12 as requirements now (FR-V12-A-180…189) with honest status; deliver legal readiness, billing/tax, SLA templates and support desk inside R2-B/W6; put SSO in A1, SCIM/custom roles/sandbox/BYOK in A2, certifications after R2-B with a quoted budget; no sales claim before delivery | **Pending Founder decision** |
-| CONFLICT-761 | Data residency and regions | Customer chooses India or EU region at onboarding (BR-V7-CJ-07, DEC-V7-08); one cloud with India and EU regions (DEC-V7-03); region order IN → EU → UK/ME/APAC → US (DEC-V12-06); EU VAT, US sales-tax provider | DEC-421: Vercel + Supabase + AWS ap-south-1 only | Keep India-only through R2-B; record EU region as an A2/A3 gate item with its own ADR and budget; EU outbound stays under the EU pack (DEC-507) and EU personal data is not onboarded until the region exists | **Pending Founder decision** |
-| CONFLICT-762 | Autonomy scale and mandates | L0–L4; L3 bounded mandates; L4 adaptive orchestration; "real external actions require exact approval or eligible bounded mandate" (BR-C09, FL-09); "No autonomous commitment without mandate" (BRD 16) | Safety invariant: consequential actions capped at L1 (DEC-064, DEC-053) | Map V12-L2 → blueprint L1 for consequential classes (Matched); allow mandates and V12-L3 only for the DEC-064 routine class; L4 only for internal non-effect orchestration; SM-SVC-28 agentic commerce exchanges quotes for human approval and never commits | **Pending Founder decision** (recommended: keep the invariant) |
+| CONFLICT-760 | Enterprise-readiness scope versus approved budgets and staffing | BR-V12-01…10, ENT-OPS-04 (24×7 from R2), DEC-V12-01/02 (certifications, IdPs, SCIM), V12-R2 exit (SOC 2 Type I, custom roles, SCIM, sandbox, manual WCAG audit) | DEC-228 staffing (6.5 FTE + QA), DEC-230/422 budgets; enterprise items only as readiness in A2/A3 (Part 9.9) | Adopt BR-V12 as requirements now (FR-V12-A-180…189) with honest status; deliver legal readiness, billing/tax, SLA templates and support desk inside R2-B/W6; put SSO in A1, SCIM/custom roles/sandbox/BYOK in A2, certifications after R2-B with a quoted budget; no sales claim before delivery | **Adopted (DEC-773)** |
+| CONFLICT-761 | Data residency and regions | Customer chooses India or EU region at onboarding (BR-V7-CJ-07, DEC-V7-08); one cloud with India and EU regions (DEC-V7-03); region order IN → EU → UK/ME/APAC → US (DEC-V12-06); EU VAT, US sales-tax provider | DEC-421: Vercel + Supabase + AWS ap-south-1 only | Keep India-only through R2-B; record EU region as an A2/A3 gate item with its own ADR and budget; EU outbound stays under the EU pack (DEC-507) and EU personal data is not onboarded until the region exists | **Adopted (DEC-772)** |
+| CONFLICT-762 | Autonomy scale and mandates | L0–L4; L3 bounded mandates; L4 adaptive orchestration; "real external actions require exact approval or eligible bounded mandate" (BR-C09, FL-09); "No autonomous commitment without mandate" (BRD 16) | Safety invariant: consequential actions capped at L1 (DEC-064, DEC-053) | Map V12-L2 → blueprint L1 for consequential classes (Matched); allow mandates and V12-L3 only for the DEC-064 routine class; L4 only for internal non-effect orchestration; SM-SVC-28 agentic commerce exchanges quotes for human approval and never commits | **Adopted (DEC-779)** (recommended: keep the invariant) |
 | CONFLICT-763 | Tenancy of owned companies | Each owned company has its own tenant; portfolio is a revocable grant (BRD 06; BR-C02) | DEC-065 one Owner Portfolio Tenant; DEC-055 | Adopt V12 (ADR-180; DEC-504) | Adopted — Matched |
 | CONFLICT-764 | Public website purpose | Neutral SaaS storefront; no directories or customer offerings; tenant intake/landing pages only on client property (BR-C01; REC-V2-01/05) | FR-W02 startup directory, FR-W03 startup sites on the platform website | Adopt V12 (ADR-182; DEC-505); Group G renumbers routes | Adopted — Matched |
-| CONFLICT-765 | Growth-workload recovery | Growth RTO ≤ 2 h (DEC-V9-01; approved by product owner DEC-V11-01; platform-owner cost confirmation open) | RTO ≤ 4 h (DEC-018); 2 h binding only after Topology B and two drills (RC-1, CONFLICT-462) | Adopt 2 h as the target now and measure in drills; make it binding when the Founder approves the Topology B/Multi-AZ running cost (Part 9.10 §9.10.7.2 conditional ₹2,875–6,900/month for RDS Multi-AZ, verify) | **Pending Founder decision** |
+| CONFLICT-765 | Growth-workload recovery | Growth RTO ≤ 2 h (DEC-V9-01; approved by product owner DEC-V11-01; platform-owner cost confirmation open) | RTO ≤ 4 h (DEC-018); 2 h binding only after Topology B and two drills (RC-1, CONFLICT-462) | Adopt 2 h as the target now and measure in drills; make it binding when the Founder approves the Topology B/Multi-AZ running cost (Part 9.10 §9.10.7.2 conditional ₹2,875–6,900/month for RDS Multi-AZ, verify) | **Adopted (DEC-771)** |
 | CONFLICT-766 | Market opening | Each market opens only after counsel approves its pack; UK/US drafts disabled | DEC-029 Year-1 outbound allowlist incl. EU/UK/US/UAE/SG/AU | Adopt V12 (ADR-184; DEC-507); RECOMMENDATION-774 | Adopted — Matched |
 | CONFLICT-767 | Unit of sale | 39 SKUs sold independently; workflows included; bundles expand to SKUs | DEC-047 plan archetypes as the unit | Adopt V12; archetypes become preset bundles (DEC-501) | Adopted — Matched |
-| CONFLICT-776 | CRM integration | BR-V12-05 connectors incl. CRM; V12-R1 includes a CRM connector | X-09 enterprise CRM integration excluded (build/buy) | Reverse X-09 for a reviewed CRM connector in A1; keep the native CRM (M21) as system of record | **Pending Founder decision** (with CONFLICT-760) |
+| CONFLICT-776 | CRM integration | BR-V12-05 connectors incl. CRM; V12-R1 includes a CRM connector | X-09 enterprise CRM integration excluded (build/buy) | Reverse X-09 for a reviewed CRM connector in A1; keep the native CRM (M21) as system of record | **Adopted (DEC-785)** (with CONFLICT-760) |
 | CONFLICT-777 | Locales | en + hi (V12-R2), de + fr (V12-R3), ar RTL (V12-R4); five locales in the prototype | DEC-026: Admin en-IN only; content hi/ta/or in W5 | Adopt: Website/portal chrome en + hi at R2-B; Admin stays en-IN until a market requires otherwise; de/fr/ar follow their market packs; machine translation stays draft-only | Adopted — Matched (cost in P-A) |
 
 **Investor / fundraising check (DEC-002).** The assigned BRD chapters do **not** extend scope to investors or fundraising. They reaffirm the exclusion: BR-C01 ("no … investor data"), BR-C03/BR-C14 ("Investment is separate … no implicit cross-product access"), REC-V2-10 ("Investment comparator not commercial functionality"), XS-02 ("Investment excludes commercial activities") and chapter 01 §V8 (the Investment RCTCFE prompt was used only as an evaluation method, "no Investment scope copied"). Persona journeys P-01 and P-06 mention "owner-investment data/records" only as **negative acceptance** (access must be denied); the blueprint treats these as records of the separate investor product, unreachable here (DEC-058) [ASSUMPTION-771]. DEC-517 records the reaffirmation. The **investor/fundraising objective mode in the website prototype** is a separate CONFLICT owned by Group G (Part 11 R6) and is not re-raised here.
@@ -847,14 +1073,14 @@ All figures are **estimates**. Day rate ₹4,545 / ₹5,682 / ₹6,818 per perso
 | DEC-505 | **Neutral storefront**; platform directory retired; tenant pages only on verified own property (ADR-182) | Customer revision V12 (28 Nov 2026) | Amends FR-W02, FR-W03, API-497, US-1905 (CONFLICT-764) |
 | DEC-506 | **Business hierarchy** tenant → organization → company → division → brand → offering; market profiles and channel accounts; registration/operating/target countries; 14 customer types | Customer revision V12 (28 Nov 2026) | Extends DEC-016 entities |
 | DEC-507 | **Market-pack activation gate** (ADR-184); CJ-GL-01…13 non-relaxable | Customer revision V12 (28 Nov 2026) | Amends DEC-029 (CONFLICT-766) |
-| DEC-508 | **Autonomy mapping** V12 L0–L4 → blueprint L0–L3 with DEC-064 caps; mandates only for the routine class | Pending Founder decision | Would amend DEC-064 only if the Founder chooses to widen mandates (not recommended) (CONFLICT-762) |
+| DEC-508 | **Autonomy mapping** V12 L0–L4 → blueprint L0–L3 with DEC-064 caps; mandates only for the routine class | Adopted (DEC-779) | Would amend DEC-064 only if the Founder chooses to widen mandates (not recommended) (CONFLICT-762) |
 | DEC-509 | **Command Centre**: 14 views + 9 optimization perspectives as A089 tabs; cascading filter semantics; reconciled drill-down | Customer revision V12 (28 Nov 2026) | Extends DEC-055, DEC-062 |
-| DEC-510 | **SLA tiers** Standard 99.5% and Business 99.9% adopted as contract templates under the measure-first rule; Enterprise 99.95% and 24×7 pending | Customer revision V12 (28 Nov 2026) for templates; Pending Founder decision for Enterprise tier | Amends §8.3.5.13.6 SLA-02/05 options; DEC-044 rule retained |
+| DEC-510 | **SLA tiers** Standard 99.5% and Business 99.9% adopted as contract templates under the measure-first rule; Enterprise 99.95% and 24×7 pending | Customer revision V12 (28 Nov 2026) for templates; Adopted (DEC-774) for Enterprise tier | Amends §8.3.5.13.6 SLA-02/05 options; DEC-044 rule retained |
 | DEC-511 | **KPI framework**: metric registry (ADR-183); KPI-V12-A-01…19; KPI alias rule | Customer revision V12 (28 Nov 2026) | Extends Part 1 §1.4.2 and Part 8.3c §8.3.5.15.4 |
-| DEC-512 | **Phase mapping** V12-R0…R5 to blueprint releases (§11.1.5.14); approved dates unchanged | Customer revision V12 (28 Nov 2026) for the mapping; Pending Founder decision for beyond-budget items | Extends DEC-411 |
-| DEC-513 | **Enterprise readiness programme** (SSO/SCIM, custom roles/SoD/SIEM, sandbox, BYOK, connectors, certifications, 24×7) | Pending Founder decision | CONFLICT-760; RECOMMENDATION-775 |
-| DEC-514 | **EU region, region choice at onboarding, EU VAT and US tax provider** | Pending Founder decision | CONFLICT-761; DEC-421 unchanged meanwhile |
-| DEC-515 | **Growth RTO 2 h** as target now, binding after cost approval | Pending Founder decision | CONFLICT-765; DEC-018 unchanged meanwhile |
+| DEC-512 | **Phase mapping** V12-R0…R5 to blueprint releases (§11.1.5.14); approved dates unchanged | Customer revision V12 (28 Nov 2026) for the mapping; Adopted (DEC-790) for beyond-budget items | Extends DEC-411 |
+| DEC-513 | **Enterprise readiness programme** (SSO/SCIM, custom roles/SoD/SIEM, sandbox, BYOK, connectors, certifications, 24×7) | Adopted (DEC-773) | CONFLICT-760; RECOMMENDATION-775 |
+| DEC-514 | **EU region, region choice at onboarding, EU VAT and US tax provider** | Adopted (DEC-772) | CONFLICT-761; DEC-421 unchanged meanwhile |
+| DEC-515 | **Growth RTO 2 h** as target now, binding after cost approval | Adopted (DEC-771) | CONFLICT-765; DEC-018 unchanged meanwhile |
 | DEC-516 | **Locales**: Website/portal chrome en + hi at R2-B; Admin en-IN; de/fr/ar with market packs | Customer revision V12 (28 Nov 2026) | Amends DEC-026 (CONFLICT-777) |
 | DEC-517 | **Investor scope reaffirmed**: BRD V12 does not extend scope; BR-C01/C14 adopted literally; DEC-002, DEC-058, BRL-TEN-12 stand | Customer revision V12 (28 Nov 2026) and DEC-002 | No change to DEC-002 |
 | DEC-518 | **Customer decision import**: DEC-V7-01…08, DEC-V9-01…04, DEC-V11-01…02, DEC-V12-01…07 recorded with blueprint answers (§11.1.4.8) | Customer revision V12 (28 Nov 2026) | Register only |
@@ -878,12 +1104,12 @@ All figures are **estimates**. Day rate ₹4,545 / ₹5,682 / ₹6,818 per perso
 
 | Tag | Type | Summary | Where | Status |
 |---|---|---|---|---|
-| CONFLICT-760 | Conflict | Enterprise-readiness scope (BR-V12, ENT-OPS-04, DEC-V12-01/02, V12-R2 exit) vs DEC-228 and DEC-230/422 | §11.1.6; 38 CSV rows | Pending Founder decision |
-| CONFLICT-761 | Conflict | EU and multi-region residency vs DEC-421 | §11.1.6; 8 rows | Pending Founder decision |
-| CONFLICT-762 | Conflict | V12 L3/L4 and bounded mandates vs L1 cap on consequential actions | §11.1.5.7, §11.1.6; 10 rows | Pending Founder decision |
+| CONFLICT-760 | Conflict | Enterprise-readiness scope (BR-V12, ENT-OPS-04, DEC-V12-01/02, V12-R2 exit) vs DEC-228 and DEC-230/422 | §11.1.6; 38 CSV rows | Adopted (DEC-775) |
+| CONFLICT-761 | Conflict | EU and multi-region residency vs DEC-421 | §11.1.6; 8 rows | Adopted (DEC-772) |
+| CONFLICT-762 | Conflict | V12 L3/L4 and bounded mandates vs L1 cap on consequential actions | §11.1.5.7, §11.1.6; 10 rows | Adopted (DEC-779) |
 | CONFLICT-763 | Conflict | Owned companies as separate tenants vs DEC-065/055 | ADR-180; DEC-504 | Resolved (V12 adopted) |
 | CONFLICT-764 | Conflict | Neutral storefront vs startup directory and sites | ADR-182; DEC-505 | Resolved (V12 adopted) |
-| CONFLICT-765 | Conflict | Growth RTO 2 h vs cost (DEC-018, CONFLICT-462) | DEC-515 | Pending Founder decision |
+| CONFLICT-765 | Conflict | Growth RTO 2 h vs cost (DEC-018, CONFLICT-462) | DEC-515 | Adopted (DEC-771) |
 | CONFLICT-766 | Conflict | Market opening only after counsel approval vs DEC-029 | ADR-184; DEC-507 | Resolved (V12 adopted) |
 | CONFLICT-767 | Conflict | 39 SKUs as unit of sale vs DEC-047 plan archetypes | DEC-501 | Resolved (V12 adopted) |
 | GAP-768 | Gap | Customer reuses REC-01…12 for an older series in chapter 25 | §11.1.4.9 | Closed by REC-V2-nn citation |
@@ -894,7 +1120,7 @@ All figures are **estimates**. Day rate ₹4,545 / ₹5,682 / ₹6,818 per perso
 | RECOMMENDATION-773 | Recommendation | Namespace V12 screens (V12-W35…W41, V12-A114…A131) or renumber; Group G decides | §11.1.4.1 | Referred to Group G |
 | RECOMMENDATION-774 | Recommendation | Fast-track counsel review of EU, UK and US packs to unblock AppNAI global outreach | ADR-184 | Open |
 | RECOMMENDATION-775 | Recommendation | Separately approvable enterprise-readiness proposal with quoted audit, certification and on-call costs | §11.1.5.20 | Open |
-| CONFLICT-776 | Conflict | CRM connector (BR-V12-05) vs X-09 exclusion | §11.1.6 | Pending Founder decision |
+| CONFLICT-776 | Conflict | CRM connector (BR-V12-05) vs X-09 exclusion | §11.1.6 | Adopted (DEC-785) |
 | CONFLICT-777 | Conflict | Locale sequence vs DEC-026 | DEC-516 | Resolved (V12 adopted) |
 
 ---
@@ -913,4 +1139,4 @@ All figures are **estimates**. Day rate ₹4,545 / ₹5,682 / ₹6,818 per perso
 | 8 | No restricted data routed to free-tier models | **Pass** | No routing change; region pinning (FR-V12-A-116) and DEC-418 tiers unchanged |
 | 9 | Consistent with earlier parts | **Pass with findings** | Amended decisions named (DEC-026, 029, 047, 055, 065; FR-W02/W03). Findings reported: (a) blueprint W01–W34 and V12 W01–W34 share IDs with different meanings; (b) V12 schema-validity target 100% (DEC-V7-06) vs OKPI-13 ≥ 99.5% (Group F); (c) DEC-047 archetype quotas (1,000/5,000 AI tasks) have no SKU dimension; (d) X-09 conflicts with V12 connectors |
 
-**Status: Part 11 Batch 11.1 (a + b) complete. 1,310 aspects of BRD V12 chapters 00–07, 10–25 and the ID index reviewed: before 503 Covered / 352 Partial / 135 Not covered / 92 Conflict / 228 N/A; after 1,022 Matched / 60 Pending Founder decision / 228 Not applicable. 123 FR-V12-A requirements, 24 stories, 122 tests, DEC-500…519, ADR-180…184, tags 760–777. Separately approvable proposal P-A: 119 / 177 / 254 pd (₹5.41 / 10.06 / 17.32 L) and ₹300–5,800/month; approved budgets unchanged.**
+**Status: Part 11 Batch 11.1 (a + b) complete. 1,310 aspects of BRD V12 chapters 00–07, 10–25 and the ID index reviewed: before 503 Covered / 352 Partial / 135 Not covered / 92 Conflict / 228 N/A; after 1,022 Matched / 60 Pending Founder decision / 228 Not applicable. 123 FR-V12-A requirements, 24 stories, 122 tests, DEC-500…519, ADR-180…184, tags 760–777. Separately approvable proposal P-A: 119 / 177 / 254 pd (₹5.41 / 10.06 / 17.32 L) and ₹300–5,800/month; approved budgets unchanged.** *(v1.2: every item counted here as "Pending Founder decision" was adopted by DEC-770…791 — Part 11.14; read as Adopted. Part 11.25.)*

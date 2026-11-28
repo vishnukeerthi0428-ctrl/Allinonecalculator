@@ -86,7 +86,7 @@ Workflow cards follow the reading guide of Part 11.4c. Common rules (preconditio
 | Trigger (V12) | Manual; scheduled monitoring; validated business event; authorized provider webhook when available; Approved prices, stock and channel rules |
 | Trigger kinds (registry, DEC-564) | `manual` (NT13-03); `scheduled` (NT13-02; default cadence per §11.4b, misfire `reschedule_once`); `event` (NT13-01; `sm.svc31.wf02.requested` or upstream domain event, §11.4b.6); `provider_callback` (signed, replay-checked) |
 | Authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; approve purchase/order commitments, pricing and any external listing or supplier change. |
-| Blueprint autonomy (DEC-566) | V12 L2 default → blueprint **L1 maximum** (human approval bound to the exact hash; money movement not supported, DEC-064). V12 "L3 bounded mandate" **not adopted** (CONFLICT-814, Pending Founder decision). Approver: R02, R08 |
+| Blueprint autonomy (DEC-566) | V12 L2 default → blueprint **L1 maximum** (human approval bound to the exact hash; money movement not supported, DEC-064). V12 "L3 bounded mandate" **not adopted** (CONFLICT-814, Adopted (DEC-779)). Approver: R02, R08 |
 | Human approval (workbook) | Approve source/data rights and applicable external actions; approve purchase/order commitments, pricing and any external listing or supplier change. |
 | Effect boundary | Effect steps: STEP-03 via ADP-MKT (marketplace seller API, not procured) |
 | Outputs produced (v3 projection) | `listing_ref`, `inventory_version` |
@@ -116,7 +116,7 @@ Workflow cards follow the reading guide of Part 11.4c. Common rules (preconditio
 | Trigger (V12) | Manual; scheduled monitoring; validated business event; authorized provider webhook when available; Verified marketplace order events and policies |
 | Trigger kinds (registry, DEC-564) | `manual` (NT13-03); `scheduled` (NT13-02; default cadence per §11.4b, misfire `reschedule_once`); `event` (NT13-01; `sm.svc31.wf03.requested` or upstream domain event, §11.4b.6); `provider_callback` (signed, replay-checked) |
 | Authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; approve purchase/order commitments, pricing and any external listing or supplier change. |
-| Blueprint autonomy (DEC-566) | V12 L2 default → blueprint **L1 maximum** (human approval bound to the exact hash; money movement not supported, DEC-064). V12 "L3 bounded mandate" **not adopted** (CONFLICT-814, Pending Founder decision). Approver: R07 |
+| Blueprint autonomy (DEC-566) | V12 L2 default → blueprint **L1 maximum** (human approval bound to the exact hash; money movement not supported, DEC-064). V12 "L3 bounded mandate" **not adopted** (CONFLICT-814, Adopted (DEC-779)). Approver: R07 |
 | Human approval (workbook) | Approve source/data rights and applicable external actions; approve purchase/order commitments, pricing and any external listing or supplier change. |
 | Effect boundary | No external effect; approval gate inserted before state change (DEC-570) |
 | Outputs produced (v3 projection) | `order_event_ref` |
@@ -295,7 +295,7 @@ Workflow cards follow the reading guide of Part 11.4c. Common rules (preconditio
 | Trigger (V12) | Manual; scheduled monitoring; validated business event; authorized provider webhook when available; Approved agreement, verified deal outcomes |
 | Trigger kinds (registry, DEC-564) | `manual` (NT13-03); `scheduled` (NT13-02; default cadence per §11.4b, misfire `reschedule_once`); `event` (NT13-01; `sm.svc32.wf04.requested` or upstream domain event, §11.4b.6); `provider_callback` (signed, replay-checked) |
 | Authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |
-| Blueprint autonomy (DEC-566) | V12 L2 default → blueprint **L1 maximum** (human approval bound to the exact hash; money movement not supported, DEC-064). V12 "L3 bounded mandate" **not adopted** (CONFLICT-814, Pending Founder decision). Approver: R08, R09 |
+| Blueprint autonomy (DEC-566) | V12 L2 default → blueprint **L1 maximum** (human approval bound to the exact hash; money movement not supported, DEC-064). V12 "L3 bounded mandate" **not adopted** (CONFLICT-814, Adopted (DEC-779)). Approver: R08, R09 |
 | Human approval (workbook) | Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |
 | Effect boundary | No external effect; approval gate inserted before state change (DEC-570) |
 | Outputs produced (v3 projection) | `performance_ref` |
@@ -860,7 +860,7 @@ Workflow cards follow the reading guide of Part 11.4c. Common rules (preconditio
 | Detailed functionality (workbook) | Extract observable behaviors; offer coaching; protect privacy |
 | Blueprint mapping | AG-045 conversation intelligence, written only (DEC-386); agents AG-045; automations AU-004 |
 | What V12 adds | Coaching on recordings conflicts with DEC-218/DEC-386; written notes are allowed. |
-| Behaviour status | Conflict → Pending Founder decision (CONFLICT-818) |
+| Behaviour status | Conflict → Adopted (DEC-782) (CONFLICT-818) |
 | Trigger (V12) | Manual; scheduled monitoring; validated business event; authorized provider webhook when available; Authorized recording/notes, coaching rubric |
 | Trigger kinds (registry, DEC-564) | `manual` (NT13-03); `scheduled` (NT13-02; default cadence per §11.4b, misfire `reschedule_once`); `event` (NT13-01; `sm.svc36.wf03.requested` or upstream domain event, §11.4b.6); `provider_callback` (signed, replay-checked) |
 | Authority (V12) | R0 internal analysis/draft; L1 assisted; L3 approved read/draft; Approve source/data rights and applicable external actions; review recordings and training outputs; no automated employment decisions. |
@@ -877,7 +877,7 @@ Workflow cards follow the reading guide of Part 11.4c. Common rules (preconditio
 
 | Step ID | Action (V12) | V12 executor → node type | Blueprint handler | Output contract | Failure → run state | Model tier | Status |
 |---|---|---|---|---|---|---|---|
-| SM-SVC-36-WF03-STEP-01 | Extract observable behaviors | Evidence/ingestion engine → NT13-04 `data.read` | AU-007 source permission + AU-005 sanitizer, scoped read | evidence_set {items,source_ref,observed_at,hash,rights} | SOURCE_DENIED → HELD | Tier 0 / none | Pending Founder decision |
+| SM-SVC-36-WF03-STEP-01 | Extract observable behaviors | Evidence/ingestion engine → NT13-04 `data.read` | AU-007 source permission + AU-005 sanitizer, scoped read | evidence_set {items,source_ref,observed_at,hash,rights} | SOURCE_DENIED → HELD | Tier 0 / none | Adopted (DEC-782) |
 | SM-SVC-36-WF03-STEP-02 | offer coaching | Domain service → NT13-05 `data.write_internal` | `enablement.coaching` service (revision check) | domain_result {artifact_ref,status,evidence_refs} | INVALID_STATE → HELD | Tier 0 / none | Matched |
 | SM-SVC-36-WF03-STEP-03 | protect privacy | Domain service → NT13-05 `data.write_internal` | `enablement.coaching` service (revision check) | domain_result {artifact_ref,status,evidence_refs} | INVALID_STATE → HELD | Tier 0 / none | Matched |
 
@@ -980,7 +980,7 @@ Workflow cards follow the reading guide of Part 11.4c. Common rules (preconditio
 | Detailed functionality (workbook) | Estimate sensitivity with uncertainty; compare scenarios |
 | Blueprint mapping | none (CI-071); agents none (deterministic only); automations AU-049 |
 | What V12 adds | Price-sensitivity scenarios move toward price recommendation (CI-071, DEC-388). |
-| Behaviour status | Conflict → Pending Founder decision (CONFLICT-817) |
+| Behaviour status | Conflict → Adopted (DEC-791) (CONFLICT-817) |
 | Trigger (V12) | Manual; scheduled monitoring; validated business event; authorized provider webhook when available; Demand history, price assumptions, costs |
 | Trigger kinds (registry, DEC-564) | `manual` (NT13-03); `scheduled` (NT13-02; default cadence per §11.4b, misfire `reschedule_once`); `event` (NT13-01; `sm.svc37.wf02.requested` or upstream domain event, §11.4b.6); `provider_callback` (signed, replay-checked) |
 | Authority (V12) | R0 internal analysis/draft; L1 assisted; L3 approved read/draft; Approve source/data rights and applicable external actions; approve experimental bounds, customer fairness, budget, pricing and publication before any live change. |
@@ -997,8 +997,8 @@ Workflow cards follow the reading guide of Part 11.4c. Common rules (preconditio
 
 | Step ID | Action (V12) | V12 executor → node type | Blueprint handler | Output contract | Failure → run state | Model tier | Status |
 |---|---|---|---|---|---|---|---|
-| SM-SVC-37-WF02-STEP-01 | Estimate sensitivity with uncertainty | Rules/analytics engine → NT13-07 `logic.compute` | AU-049 registered function | calculation {value,unit,assumptions,evidence_refs} | INVALID_METRIC → HELD | Tier 0 / none | Pending Founder decision |
-| SM-SVC-37-WF02-STEP-02 | compare scenarios | Rules/analytics engine → NT13-07 `logic.compute` | AU-049 registered function | calculation {value,unit,assumptions,evidence_refs} | INVALID_METRIC → HELD | Tier 0 / none | Pending Founder decision |
+| SM-SVC-37-WF02-STEP-01 | Estimate sensitivity with uncertainty | Rules/analytics engine → NT13-07 `logic.compute` | AU-049 registered function | calculation {value,unit,assumptions,evidence_refs} | INVALID_METRIC → HELD | Tier 0 / none | Adopted (DEC-791) |
+| SM-SVC-37-WF02-STEP-02 | compare scenarios | Rules/analytics engine → NT13-07 `logic.compute` | AU-049 registered function | calculation {value,unit,assumptions,evidence_refs} | INVALID_METRIC → HELD | Tier 0 / none | Adopted (DEC-791) |
 
 #### SM-SVC-37-WF03 Approved pricing and promotion experimentation
 
@@ -1009,11 +1009,11 @@ Workflow cards follow the reading guide of Part 11.4c. Common rules (preconditio
 | Detailed functionality (workbook) | Simulate or run approved experiment; enforce limits; measure outcomes |
 | Blueprint mapping | WF-20 experiments; agents none (deterministic only); automations AU-098, AU-065, AU-089 |
 | What V12 adds | Live pricing experiments change prices customers see (DEC-064, DEC-395). |
-| Behaviour status | Conflict → Pending Founder decision (CONFLICT-817) |
+| Behaviour status | Conflict → Adopted (DEC-791) (CONFLICT-817) |
 | Trigger (V12) | Manual; scheduled monitoring; validated business event; authorized provider webhook when available; Approved price bounds, eligible variants and sample plan |
 | Trigger kinds (registry, DEC-564) | `manual` (NT13-03); `scheduled` (NT13-02; default cadence per §11.4b, misfire `reschedule_once`); `event` (NT13-01; `sm.svc37.wf03.requested` or upstream domain event, §11.4b.6); `provider_callback` (signed, replay-checked) |
 | Authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; approve experimental bounds, customer fairness, budget, pricing and publication before any live change. |
-| Blueprint autonomy (DEC-566) | V12 L2 default → blueprint **L1 maximum** (human approval bound to the exact hash; money movement not supported, DEC-064). V12 "L3 bounded mandate" **not adopted** (CONFLICT-814, Pending Founder decision). Approver: R08, R02, R01 |
+| Blueprint autonomy (DEC-566) | V12 L2 default → blueprint **L1 maximum** (human approval bound to the exact hash; money movement not supported, DEC-064). V12 "L3 bounded mandate" **not adopted** (CONFLICT-814, Adopted (DEC-779)). Approver: R08, R02, R01 |
 | Human approval (workbook) | Approve source/data rights and applicable external actions; approve experimental bounds, customer fairness, budget, pricing and publication before any live change. |
 | Effect boundary | No external effect; approval gate inserted before state change (DEC-570) |
 | Outputs produced (v3 projection) | `experiment_ref` |
@@ -1026,9 +1026,9 @@ Workflow cards follow the reading guide of Part 11.4c. Common rules (preconditio
 
 | Step ID | Action (V12) | V12 executor → node type | Blueprint handler | Output contract | Failure → run state | Model tier | Status |
 |---|---|---|---|---|---|---|---|
-| SM-SVC-37-WF03-STEP-01 | Simulate or run approved experiment | Domain service → NT13-05 `data.write_internal` | `commerce.pricing_analytics` service (revision check) | domain_result {artifact_ref,status,evidence_refs} | INVALID_STATE → HELD | Tier 0 / none | Pending Founder decision |
-| SM-SVC-37-WF03-STEP-02 | enforce limits | Policy/validation engine → NT13-09 `policy.check` | PDP (AU-009) rule set + AU-089 | validation {passed,reason_codes,policy_version} | POLICY_DENIED → BLOCKED | Tier 0 / none | Pending Founder decision |
-| SM-SVC-37-WF03-STEP-03 | measure outcomes | Rules/analytics engine → NT13-07 `logic.compute` | AU-098 registered function | calculation {value,unit,assumptions,evidence_refs} | INVALID_METRIC → HELD | Tier 0 / none | Pending Founder decision |
+| SM-SVC-37-WF03-STEP-01 | Simulate or run approved experiment | Domain service → NT13-05 `data.write_internal` | `commerce.pricing_analytics` service (revision check) | domain_result {artifact_ref,status,evidence_refs} | INVALID_STATE → HELD | Tier 0 / none | Adopted (DEC-791) |
+| SM-SVC-37-WF03-STEP-02 | enforce limits | Policy/validation engine → NT13-09 `policy.check` | PDP (AU-009) rule set + AU-089 | validation {passed,reason_codes,policy_version} | POLICY_DENIED → BLOCKED | Tier 0 / none | Adopted (DEC-791) |
+| SM-SVC-37-WF03-STEP-03 | measure outcomes | Rules/analytics engine → NT13-07 `logic.compute` | AU-098 registered function | calculation {value,unit,assumptions,evidence_refs} | INVALID_METRIC → HELD | Tier 0 / none | Adopted (DEC-791) |
 
 #### SM-SVC-37-WF04 Margin anomaly and commercial pricing-policy monitoring
 
@@ -1312,7 +1312,7 @@ Workflow cards follow the reading guide of Part 11.4c. Common rules (preconditio
 | Trigger (V12) | Manual; scheduled monitoring; validated business event; authorized provider webhook when available; Approved requisition, selected quote, budget authority |
 | Trigger kinds (registry, DEC-564) | `manual` (NT13-03); `scheduled` (NT13-02; default cadence per §11.4b, misfire `reschedule_once`); `event` (NT13-01; `sm.svc39.wf03.requested` or upstream domain event, §11.4b.6); `provider_callback` (signed, replay-checked) |
 | Authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; approve purchase/order commitments, pricing and any external listing or supplier change. |
-| Blueprint autonomy (DEC-566) | V12 L2 default → blueprint **L1 maximum** (human approval bound to the exact hash; money movement not supported, DEC-064). V12 "L3 bounded mandate" **not adopted** (CONFLICT-814, Pending Founder decision). Approver: R07, R08, R09 |
+| Blueprint autonomy (DEC-566) | V12 L2 default → blueprint **L1 maximum** (human approval bound to the exact hash; money movement not supported, DEC-064). V12 "L3 bounded mandate" **not adopted** (CONFLICT-814, Adopted (DEC-779)). Approver: R07, R08, R09 |
 | Human approval (workbook) | Approve source/data rights and applicable external actions; approve purchase/order commitments, pricing and any external listing or supplier change. |
 | Effect boundary | Effect steps: STEP-03 via ADP-ERP (purchase order record/export, not procured) |
 | Outputs produced (v3 projection) | `purchase_order_ref` |
@@ -1764,13 +1764,13 @@ Feature: V12 services SM-SVC-21 … SM-SVC-39 (service stories)
 
 | Tag | V12 says | Baseline says | Why it conflicts | Options | Recommended resolution | Status |
 |---|---|---|---|---|---|---|
-| CONFLICT-814 | R3 workflows: "L2 mandatory approved effect; **L3 only with separately approved bounded mandate where lawful**" (10 workflows: SVC-21-WF01/02, 28-WF03/04, 30-WF02, 31-WF02/03, 32-WF04, 37-WF03, 39-WF03) | DEC-064: money movement not supported; contracts, quotes, discounts, bids, legal terms L1 maximum; V11 invariant "consequential actions capped at L1" | A standing mandate lets future financial or commitment actions execute without a per-item human approval | (a) adopt L3 mandates; (b) keep L1 per item; (c) allow L3 only for record-keeping steps with no external commitment | **(b) with (c):** V12 L2 = blueprint L1 per item; record-only internal steps may run at L3 when deterministic. V12 R3 default (L2) is fully honoured | Pending Founder decision (DEC-577) |
-| CONFLICT-815 | SVC-26 AI voice: inbound AI answering, outbound AI calls, multilingual voice booking, permitted transcription | DEC-387 voice deferred (Won't this horizon, A3 re-evaluation via PG gates); DEC-218/DEC-386 recordings and transcripts excluded; DEC-392 calls human-dialled only; TR-R1 no voice outreach W0–W5 | Founder decisions and privacy controls | (a) adopt now; (b) defer to A3 with gates; (c) never | **(b):** keep the full specification; disabled; A3 evaluation via PG-01…PG-10 with self-hosted vs paid speech benchmark, TRAI/DND and recording-consent design, DPIA; outbound stays human-dialled; no transcripts until legal review | Pending Founder decision (DEC-572) |
-| CONFLICT-816 | SVC-28 agent-assisted negotiation mandates (WF03) and authorized transaction/payment mandates (WF04) | Invariant: AI never signs, pays, submits or sets prices; DEC-064 money movement not supported; DEC-395 no AI price values | Machine-negotiated terms and payment mandates are consequential actions without a per-item human | (a) adopt; (b) WF01–WF02 only (catalogue, quote drafts released by a human); (c) defer all | **(b):** catalogue publication and approved quote drafts only; negotiation and payment stay human; transaction outcomes recorded and reconciled (record-only) | Pending Founder decision (DEC-573) |
-| CONFLICT-817 | SVC-37 price-sensitivity scenarios (WF02) and live pricing/promotion experiments (WF03) | CI-071 excluded price recommendation; DEC-388 AI never proposes or computes a price; DEC-395 approved price books only | Scenario outputs become price recommendations; experiments change prices customers see | (a) adopt; (b) deterministic analytics only (WF01, WF04); (c) allow experiments only between two human-approved price-book revisions with Finance sign-off | **(b) now, (c) as a later Founder option**; no AI-generated price value in any case | Pending Founder decision (DEC-574) |
-| CONFLICT-818 | SVC-36-WF03 coaching from permitted sales meetings and conversations; channel includes Voice; "review recordings and training outputs" | DEC-218 recordings/transcripts excluded; DEC-386 written notes only, no employee evaluation | Recordings are excluded data | (a) adopt; (b) written notes only | **(b):** coach on staff-written notes and in-product threads; learner-private outputs | Pending Founder decision (DEC-575) |
-| CONFLICT-819 | SVC-27 image, video and synthetic audio generation (WF01, WF02, WF03 audio) | CI-061 excluded image generation (cost, likeness, claims); DEC-418 model strategy is Claude text models; budgets DEC-422 | Needs a new paid multimodal provider, likeness/consent policy and budget | (a) adopt with a provider; (b) brand-asset composition only; (c) defer | **(b) now; (a) at A2 gate** after PG-01…PG-10, matched benchmark, likeness and rights policy, budget line | Pending Founder decision (DEC-576) |
-| CONFLICT-820 | 76 workflows with typed contracts, a common engine upgrade and new adapters | Approved budgets DEC-230/231/422 and staffing DEC-228 do not include V12 work | Development ₹9.66–27.61 L (+ ₹3.91–11.73 L if D-4) and ₹2,589–4,860/month recurring are outside the approved figures | (a) fund D-1…D-3 as proposed; (b) fund D-1 only now; (c) defer | **(b) now** (engine + Release 1/2 alignment, protects the Release 2 build), D-2 with A1, D-3 at G-A1/G-A2 | Pending Founder decision (DEC-578) |
+| CONFLICT-814 | R3 workflows: "L2 mandatory approved effect; **L3 only with separately approved bounded mandate where lawful**" (10 workflows: SVC-21-WF01/02, 28-WF03/04, 30-WF02, 31-WF02/03, 32-WF04, 37-WF03, 39-WF03) | DEC-064: money movement not supported; contracts, quotes, discounts, bids, legal terms L1 maximum; V11 invariant "consequential actions capped at L1" | A standing mandate lets future financial or commitment actions execute without a per-item human approval | (a) adopt L3 mandates; (b) keep L1 per item; (c) allow L3 only for record-keeping steps with no external commitment | **(b) with (c):** V12 L2 = blueprint L1 per item; record-only internal steps may run at L3 when deterministic. V12 R3 default (L2) is fully honoured | Adopted (DEC-779) (DEC-577) |
+| CONFLICT-815 | SVC-26 AI voice: inbound AI answering, outbound AI calls, multilingual voice booking, permitted transcription | DEC-387 voice deferred (Won't this horizon, A3 re-evaluation via PG gates); DEC-218/DEC-386 recordings and transcripts excluded; DEC-392 calls human-dialled only; TR-R1 no voice outreach W0–W5 | Founder decisions and privacy controls | (a) adopt now; (b) defer to A3 with gates; (c) never | **(b):** keep the full specification; disabled; A3 evaluation via PG-01…PG-10 with self-hosted vs paid speech benchmark, TRAI/DND and recording-consent design, DPIA; outbound stays human-dialled; no transcripts until legal review | Adopted (DEC-782) (DEC-572) |
+| CONFLICT-816 | SVC-28 agent-assisted negotiation mandates (WF03) and authorized transaction/payment mandates (WF04) | Invariant: AI never signs, pays, submits or sets prices; DEC-064 money movement not supported; DEC-395 no AI price values | Machine-negotiated terms and payment mandates are consequential actions without a per-item human | (a) adopt; (b) WF01–WF02 only (catalogue, quote drafts released by a human); (c) defer all | **(b):** catalogue publication and approved quote drafts only; negotiation and payment stay human; transaction outcomes recorded and reconciled (record-only) | Adopted (DEC-782) (DEC-573) |
+| CONFLICT-817 | SVC-37 price-sensitivity scenarios (WF02) and live pricing/promotion experiments (WF03) | CI-071 excluded price recommendation; DEC-388 AI never proposes or computes a price; DEC-395 approved price books only | Scenario outputs become price recommendations; experiments change prices customers see | (a) adopt; (b) deterministic analytics only (WF01, WF04); (c) allow experiments only between two human-approved price-book revisions with Finance sign-off | **(b) now, (c) as a later Founder option**; no AI-generated price value in any case | Adopted (DEC-791) (DEC-574) |
+| CONFLICT-818 | SVC-36-WF03 coaching from permitted sales meetings and conversations; channel includes Voice; "review recordings and training outputs" | DEC-218 recordings/transcripts excluded; DEC-386 written notes only, no employee evaluation | Recordings are excluded data | (a) adopt; (b) written notes only | **(b):** coach on staff-written notes and in-product threads; learner-private outputs | Adopted (DEC-782) (DEC-575) |
+| CONFLICT-819 | SVC-27 image, video and synthetic audio generation (WF01, WF02, WF03 audio) | CI-061 excluded image generation (cost, likeness, claims); DEC-418 model strategy is Claude text models; budgets DEC-422 | Needs a new paid multimodal provider, likeness/consent policy and budget | (a) adopt with a provider; (b) brand-asset composition only; (c) defer | **(b) now; (a) at A2 gate** after PG-01…PG-10, matched benchmark, likeness and rights policy, budget line | Adopted (DEC-788) (DEC-576) |
+| CONFLICT-820 | 76 workflows with typed contracts, a common engine upgrade and new adapters | Approved budgets DEC-230/231/422 and staffing DEC-228 do not include V12 work | Development ₹9.66–27.61 L (+ ₹3.91–11.73 L if D-4) and ₹2,589–4,860/month recurring are outside the approved figures | (a) fund D-1…D-3 as proposed; (b) fund D-1 only now; (c) defer | **(b) now** (engine + Release 1/2 alignment, protects the Release 2 build), D-2 with A1, D-3 at G-A1/G-A2 | Adopted (DEC-790) (DEC-578) |
 
 ## 11.4.7 Decisions
 
@@ -1788,13 +1788,13 @@ Feature: V12 services SM-SVC-21 … SM-SVC-39 (service stories)
 | DEC-569 | One definition per workflow revision; templates are parameter sets; BusinessContext v1 stored on every run | Customer revision V12 (28 Nov 2026) | Amends A113 template semantics (FR-A113) |
 | DEC-570 | Where V12 sources disagree on side effects, the FSD R-class governs and an approval gate is inserted before the state change (GAP-821) | Customer revision V12 (28 Nov 2026) | 13 workbook labels corrected; 16 workflows gain an approval gate |
 | DEC-571 | SMS/RCS (SVC-38) adopted for activation after Release 2 only, with DLT header/template registration, NCPR/DND scrub and AU-008 STOP as activation gates; "no SMS or voice outreach in W0–W5" unchanged | Customer revision V12 (28 Nov 2026) | Extends TR-R1 control; funding under DEC-578 |
-| DEC-572 | Resolution of CONFLICT-815 (voice): specify, keep disabled, A3 evaluation through PG gates | Pending Founder decision | Until decided, SVC-26 is `disabled_pending_founder` |
-| DEC-573 | Resolution of CONFLICT-816 (agentic commerce): WF01–WF02 only; negotiation and payment human | Pending Founder decision | WF03–WF04 disabled |
-| DEC-574 | Resolution of CONFLICT-817 (pricing): deterministic analytics only; experiments only between approved revisions if later approved | Pending Founder decision | WF02–WF03 disabled |
-| DEC-575 | Resolution of CONFLICT-818 (coaching): written notes only | Pending Founder decision | Recording input rejected |
-| DEC-576 | Resolution of CONFLICT-819 (generative media): brand-asset composition now; generation at A2 gate | Pending Founder decision | WF01, WF02, WF03 audio disabled |
-| DEC-577 | Resolution of CONFLICT-814 (R3 mandates): L1 per item; L3 only for deterministic record-keeping | Pending Founder decision | `aut_mandate.scope` = single step |
-| DEC-578 | Funding of CR-V12-D-1…3 (and D-4 if approved) outside DEC-230/231/422; recommended: D-1 now | Pending Founder decision | No V12-D spend before approval |
+| DEC-572 | Resolution of CONFLICT-815 (voice): specify, keep disabled, A3 evaluation through PG gates | Adopted (DEC-782) | Until decided, SVC-26 is `disabled_pending_founder` |
+| DEC-573 | Resolution of CONFLICT-816 (agentic commerce): WF01–WF02 only; negotiation and payment human | Adopted (DEC-782) | WF03–WF04 disabled |
+| DEC-574 | Resolution of CONFLICT-817 (pricing): deterministic analytics only; experiments only between approved revisions if later approved | Adopted (DEC-791) | WF02–WF03 disabled |
+| DEC-575 | Resolution of CONFLICT-818 (coaching): written notes only | Adopted (DEC-782) | Recording input rejected |
+| DEC-576 | Resolution of CONFLICT-819 (generative media): brand-asset composition now; generation at A2 gate | Adopted (DEC-788) | WF01, WF02, WF03 audio disabled |
+| DEC-577 | Resolution of CONFLICT-814 (R3 mandates): L1 per item; L3 only for deterministic record-keeping | Adopted (DEC-779) | `aut_mandate.scope` = single step |
+| DEC-578 | Funding of CR-V12-D-1…3 (and D-4 if approved) outside DEC-230/231/422; recommended: D-1 now | Adopted (DEC-790) | No V12-D spend before approval |
 | DEC-579 | Marketplace (SVC-31) and procurement (SVC-39) adopted: listing prices only from approved price-book revisions; purchase orders are human-approved commitments within DEC-038 thresholds; payables separate from receivables | Customer revision V12 (28 Nov 2026) | Extends WF-10 and the OrganicSpec route (BR-S004) |
 
 ## 11.4.8 Expert persona review
@@ -1813,13 +1813,13 @@ Feature: V12 services SM-SVC-21 … SM-SVC-39 (service stories)
 
 | Tag | Type | Section | Statement | Status |
 |---|---|---|---|---|
-| CONFLICT-814 | Conflict | 11.4.6 | V12 R3 "L3 bounded mandate" vs DEC-064 L1 cap | Pending Founder decision (DEC-577) |
-| CONFLICT-815 | Conflict | 11.4.6 | SVC-26 AI voice vs DEC-387, DEC-218, DEC-386, DEC-392, TR-R1 | Pending Founder decision (DEC-572) |
-| CONFLICT-816 | Conflict | 11.4.6 | SVC-28 negotiation and payment mandates vs "AI never pays, signs or sets prices" | Pending Founder decision (DEC-573) |
-| CONFLICT-817 | Conflict | 11.4.6 | SVC-37 price sensitivity and pricing experiments vs CI-071, DEC-388, DEC-395 | Pending Founder decision (DEC-574) |
-| CONFLICT-818 | Conflict | 11.4.6 | SVC-36-WF03 recordings vs DEC-218, DEC-386 | Pending Founder decision (DEC-575) |
-| CONFLICT-819 | Conflict | 11.4.6 | SVC-27 generative media vs CI-061, DEC-418 model strategy, DEC-422 budget | Pending Founder decision (DEC-576) |
-| CONFLICT-820 | Conflict | 11.4.6, 11.4.5.33 | V12 work outside approved budgets and staffing (DEC-228/230/231/422) | Pending Founder decision (DEC-578) |
+| CONFLICT-814 | Conflict | 11.4.6 | V12 R3 "L3 bounded mandate" vs DEC-064 L1 cap | Adopted (DEC-779) (DEC-577) |
+| CONFLICT-815 | Conflict | 11.4.6 | SVC-26 AI voice vs DEC-387, DEC-218, DEC-386, DEC-392, TR-R1 | Adopted (DEC-782) (DEC-572) |
+| CONFLICT-816 | Conflict | 11.4.6 | SVC-28 negotiation and payment mandates vs "AI never pays, signs or sets prices" | Adopted (DEC-782) (DEC-573) |
+| CONFLICT-817 | Conflict | 11.4.6 | SVC-37 price sensitivity and pricing experiments vs CI-071, DEC-388, DEC-395 | Adopted (DEC-791) (DEC-574) |
+| CONFLICT-818 | Conflict | 11.4.6 | SVC-36-WF03 recordings vs DEC-218, DEC-386 | Adopted (DEC-782) (DEC-575) |
+| CONFLICT-819 | Conflict | 11.4.6 | SVC-27 generative media vs CI-061, DEC-418 model strategy, DEC-422 budget | Adopted (DEC-788) (DEC-576) |
+| CONFLICT-820 | Conflict | 11.4.6, 11.4.5.33 | V12 work outside approved budgets and staffing (DEC-228/230/231/422) | Adopted (DEC-790) (DEC-578) |
 | GAP-821 | Gap | 11.4.4.3 | 13 R2/R3 workflows labelled "internal" in the workbook; 16 R2/R3 without an effect step | Resolved by DEC-570 |
 | GAP-822 | Gap | 11.4b.6.3 | No event-type catalogue for "validated upstream business event" triggers | Resolved: event types defined |
 | GAP-823 | Gap | 11.4b.6.4 | No default cadence for scheduled triggers | Resolved: defaults defined, tenant-editable |
@@ -1848,4 +1848,4 @@ Feature: V12 services SM-SVC-21 … SM-SVC-39 (service stories)
 | 8 | No restricted data to free-tier models | Pass | `tier2_eligible = false` for all 231 steps |
 | 9 | Consistent with earlier parts | Pass | DEC-064, DEC-218, DEC-383, DEC-386…388, DEC-392, DEC-395, DEC-418, DEC-421 respected; three earlier-part inconsistencies reported |
 
-**Status: Part 11 Batch 11.4 complete. 76 V12 workflows (231 steps) of SM-SVC-21…39 captured and specified; 2075 aspects: 1976 Matched, 99 Pending Founder decision (CONFLICT-814…820), 0 unresolved.**
+**Status: Part 11 Batch 11.4 complete. 76 V12 workflows (231 steps) of SM-SVC-21…39 captured and specified; 2075 aspects: 1976 Matched, 99 Pending Founder decision (CONFLICT-814…820), 0 unresolved.** *(v1.2: every item counted here as "Pending Founder decision" was adopted by DEC-770…791 — Part 11.14; read as Adopted. Part 11.25.)*

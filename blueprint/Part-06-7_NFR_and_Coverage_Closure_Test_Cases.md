@@ -168,6 +168,9 @@ Workloads follow Part 4.2 §4.25 (Year 1 design 30 RPS, Year 2 design 120 RPS, s
 
 ### 6.7.2.6 Group TC-NFR-F: Availability, recovery, timeliness and scalability (NFR-053…062) (techniques: BVA, EP, UC)
 
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
+
 Availability NFRs are production targets over a calendar month. The test case proves the **measurement rule** of Part 4.2 §4.21 with injected faults in `staging`; attainment is a verification item (§6.7.3) [ASSUMPTION-218].
 
 | ID | Title | Linked | Pre-conditions, environment and data or workload | Steps | Expected result (target) | Tool | Maps to | P | Type | Tech | Auto | Lvl |
@@ -460,6 +463,9 @@ Role × view decision table used by TC-BRS-005…008 (Admin views per BRD §3; s
 | TC-BRS-013 | Grant desk access by role and startup capability | BR-S133; FR-A104; FR-A105; DEC-052 | `test`; R06 Bid Manager (AppNAI); R07 Order Coordinator (OrganicSpec) | 1. R06 opens A104 for AppNAI and for EduVerse. 2. R07 opens A105 for OrganicSpec and for AppNAI | Allowed only where the startup grants the capability; otherwise 403 | Playwright | — | P1 | T07 | DT | Y | E2E |
 
 ### 6.7.5.3 Verification items VER-023…048
+
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
 
 Method definitions: **Inspection** = examine an artefact against a checklist; **Review** = a decision meeting with a record (gate review, FinOps review); **Analysis** = compute from data (KPI report, cost ledger, effort actuals); **Demonstration** = show the capability working end to end for an approver. Budget-line statements are verified by **FinOps review at the go/no-go gate** (Part 8.2 §8.2.4.3 GL-A03, GL-T03; Part 4.3 §4.46); phase-gate statements by the **release readiness review** at the wave gate (Part 8.1 §8.1.2.5; A090).
 

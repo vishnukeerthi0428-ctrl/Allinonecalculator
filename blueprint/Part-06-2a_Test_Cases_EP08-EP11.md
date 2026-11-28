@@ -415,6 +415,9 @@ Machine: Part 2.3 §2.27.10 (8 valid transitions). 0-switch coverage and the sto
 
 #### Group TC-08-K: Boundary values and equivalence partitioning – quiet-hours and frequency-cap engine (US-0811)
 
+> **Erratum v1.2 (E-V-17):** superseded by promotional window 09:00–21:00 recipient local time unless a stricter rule pack applies (DEC-777). See Part 11.23c.
+
+
 **Common for TC-08-114…131:** Pre: PP-04 for the engine (UT) and PP-01 for the API (`POST /api/v1/commercial/internal/engagement/check?explain=true`, service identity R19). Policy default: window 09:00–19:00 recipient local, Monday–Saturday, half-open [09:00, 19:00) (ASSUMPTION-184); caps 2 marketing touches / 7 d and 6 / 30 d per channel; first-touch 1 per organisation / 7 d per startup (BRL-ELG-09). Recipient zone Asia/Kolkata unless stated. Steps: call the check with the stated time and history. Expected: decision, rule IDs and `next_eligible_at` exactly as listed; the API and the UT engine give identical results.
 
 | ID | Data | Expected | Links | P | Type | Tech | Auto | Lvl |

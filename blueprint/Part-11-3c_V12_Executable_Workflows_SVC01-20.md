@@ -299,7 +299,7 @@ Feature: SM-SVC-12 Social Media Publishing & Listening Automation contract confo
 
 ##### SM-SVC-12-WF01 Social account and publication scheduling
 
-**Requirement FR-V12-C-057** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** WF-05 social scheduling; AU-029; BRL-MKT-07.
+**Requirement FR-V12-C-057** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** WF-05 social scheduling; AU-029; BRL-MKT-07.
 
 | Field | Specification |
 |---|---------|
@@ -308,7 +308,7 @@ Feature: SM-SVC-12 Social Media Publishing & Listening Automation contract confo
 | Result / acceptance | Scheduled or blocked publication; acceptance: SM-SVC-12-WF01-TC-POS and step tests (ch33) |
 | Domain contract | social_post payload schema SM-SVC-12-WF01@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-12-WF01:v2`. |
 | Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve publication and response policies; platform permissions enforced |
-| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 → DEC-549 Pending Founder decision] |
+| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 → DEC-549 Adopted (DEC-779)] |
 | Approval gate (V12) | Approve publication and response policies; platform permissions enforced · approval check: Approve publication and response policies; platform permissions enforced |
 | Operating mode / side effect / modalities | Manual / supervised review; preparation only if gate not satisfied · Potential external write/communication; controlled only after applicable permission and policy approval · Text; structured records (stricter classification applies, DEC-546) |
 | Engine / agent | Communication; Workflow orchestration; Governance; Market intelligence; content adaptation → AG-018 (social/SEO drafting), AG-027 (listening, visibility) |
@@ -425,7 +425,7 @@ Feature: SM-SVC-12 Social Media Publishing & Listening Automation contract confo
 
 ##### SM-SVC-12-WF04 Community response and social trend coordination
 
-**Requirement FR-V12-C-060** (status before: Not covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** —. **Enhancement:** Community response queue and social trend coordination are not in the blueprint.
+**Requirement FR-V12-C-060** (status before: Not covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** —. **Enhancement:** Community response queue and social trend coordination are not in the blueprint.
 
 | Field | Specification |
 |---|---------|
@@ -434,7 +434,7 @@ Feature: SM-SVC-12 Social Media Publishing & Listening Automation contract confo
 | Result / acceptance | Trend report and approved-response queue; Trend report and approved-response queue; no unapproved external side effects |
 | Domain contract | social_post payload schema SM-SVC-12-WF04@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-12-WF04:v2`. |
 | Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |
-| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 → DEC-549 Pending Founder decision] |
+| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 → DEC-549 Adopted (DEC-779)] |
 | Approval gate (V12) | Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. · approval check: Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |
 | Operating mode / side effect / modalities | Manual / supervised review; preparation only if gate not satisfied · Internal analysis/draft; no external action without separate authorization · Text; structured records (stricter classification applies, DEC-546) |
 | Engine / agent | Communication; Workflow orchestration; Governance; Market intelligence; content adaptation → AG-018 (social/SEO drafting), AG-027 (listening, visibility) |
@@ -828,7 +828,7 @@ Feature: SM-SVC-14 Paid Digital Advertising Automation contract conformance
 
 ##### SM-SVC-14-WF02 Budget-controlled campaign activation
 
-**Requirement FR-V12-C-066** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-798]. **Blueprint:** WF-05 activation (AU-032 caps, AU-009 recheck, AU-026).
+**Requirement FR-V12-C-066** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798]. **Blueprint:** WF-05 activation (AU-032 caps, AU-009 recheck, AU-026).
 
 | Field | Specification |
 |---|---------|
@@ -837,7 +837,7 @@ Feature: SM-SVC-14 Paid Digital Advertising Automation contract conformance
 | Result / acceptance | Activation or blocked action; acceptance: SM-SVC-14-WF02-TC-POS and step tests (ch33) |
 | Domain contract | ad_campaign payload schema SM-SVC-14-WF02@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-14-WF02:v2`. |
 | Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Explicit campaign/audience/spend approval; no autonomous uncapped spend |
-| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: ≤ L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 → DEC-548 Pending Founder decision] |
+| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: ≤ L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 → DEC-548 Adopted (DEC-779)] |
 | Approval gate (V12) | Explicit campaign/audience/spend approval; no autonomous uncapped spend · approval check: Explicit campaign/audience/spend approval; no autonomous uncapped spend |
 | Operating mode / side effect / modalities | Manual / supervised review; preparation only if gate not satisfied · Internal analysis/draft; no external action without separate authorization · Text; structured records (stricter classification applies, DEC-546) |
 | Engine / agent | Experimentation; Workflow orchestration; Governance; Campaign optimization; attribution analysis → AG-051 (primary), AG-052, AG-053 |
@@ -932,7 +932,7 @@ flowchart TD
 
 ##### SM-SVC-14-WF04 Controlled experimentation and incremental campaign performance analysis
 
-**Requirement FR-V12-C-068** (status before: Partially covered; after: Pending Founder decision on authority only) [CONFLICT-798]. **Blueprint:** WF-20 experiment lifecycle; AU-065; AU-098; AG-052. **Enhancement:** Incrementality measurement with spend cap per variant partially specified.
+**Requirement FR-V12-C-068** (status before: Partially covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798]. **Blueprint:** WF-20 experiment lifecycle; AU-065; AU-098; AG-052. **Enhancement:** Incrementality measurement with spend cap per variant partially specified.
 
 | Field | Specification |
 |---|---------|
@@ -941,7 +941,7 @@ flowchart TD
 | Result / acceptance | Experiment report and recommendation; Experiment report and recommendation; no unapproved external side effects |
 | Domain contract | ad_campaign payload schema SM-SVC-14-WF04@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-14-WF04:v2`. |
 | Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |
-| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: ≤ L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 → DEC-548 Pending Founder decision] |
+| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: ≤ L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 → DEC-548 Adopted (DEC-779)] |
 | Approval gate (V12) | Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. · approval check: Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |
 | Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. · Internal analysis/draft; no external action without separate authorization · Text; structured records (stricter classification applies, DEC-546) |
 | Engine / agent | Experimentation; Workflow orchestration; Governance; Campaign optimization; attribution analysis → AG-051 (primary), AG-052, AG-053 |
@@ -1261,7 +1261,7 @@ Feature: SM-SVC-16 Webinar, Event & Referral Acquisition Automation contract con
 
 ##### SM-SVC-16-WF01 Event setup and registration intake
 
-**Requirement FR-V12-C-073** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** AU-051 event registration; A062/A063.
+**Requirement FR-V12-C-073** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** AU-051 event registration; A062/A063.
 
 | Field | Specification |
 |---|---------|
@@ -1270,7 +1270,7 @@ Feature: SM-SVC-16 Webinar, Event & Referral Acquisition Automation contract con
 | Result / acceptance | Event and registration records; acceptance: SM-SVC-16-WF01-TC-POS and step tests (ch33) |
 | Domain contract | event_registration payload schema SM-SVC-16-WF01@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-16-WF01:v2`. |
 | Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve event content and referral policies; follow-up permission checked |
-| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 → DEC-549 Pending Founder decision] |
+| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 → DEC-549 Adopted (DEC-779)] |
 | Approval gate (V12) | Approve event content and referral policies; follow-up permission checked · approval check: Approve event content and referral policies; follow-up permission checked |
 | Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. · Internal analysis/draft; no external action without separate authorization · Text; structured records (stricter classification applies, DEC-546) |
 | Engine / agent | Calendar; Workflow orchestration; Governance; Qualification; outreach; meeting intelligence → AG-009 (primary), AG-007, AG-042; AG-013 and AG-069 for SM-SVC-16 |
@@ -1305,7 +1305,7 @@ Feature: SM-SVC-16 Webinar, Event & Referral Acquisition Automation contract con
 
 ##### SM-SVC-16-WF02 Attendee reminders and follow-up
 
-**Requirement FR-V12-C-074** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** AU-051 reminders; BRL-MTG-06; AU-022.
+**Requirement FR-V12-C-074** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** AU-051 reminders; BRL-MTG-06; AU-022.
 
 | Field | Specification |
 |---|---------|
@@ -1314,7 +1314,7 @@ Feature: SM-SVC-16 Webinar, Event & Referral Acquisition Automation contract con
 | Result / acceptance | Attendance and follow-up tasks; acceptance: SM-SVC-16-WF02-TC-POS and step tests (ch33) |
 | Domain contract | event_registration payload schema SM-SVC-16-WF02@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-16-WF02:v2`. |
 | Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve event content and referral policies; follow-up permission checked |
-| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 → DEC-549 Pending Founder decision] |
+| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 → DEC-549 Adopted (DEC-779)] |
 | Approval gate (V12) | Approve event content and referral policies; follow-up permission checked · approval check: Approve event content and referral policies; follow-up permission checked |
 | Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. · Internal analysis/draft; no external action without separate authorization · Text; structured records (stricter classification applies, DEC-546) |
 | Engine / agent | Calendar; Workflow orchestration; Governance; Qualification; outreach; meeting intelligence → AG-009 (primary), AG-007, AG-042; AG-013 and AG-069 for SM-SVC-16 |
@@ -1390,7 +1390,7 @@ Feature: SM-SVC-16 Webinar, Event & Referral Acquisition Automation contract con
 
 ##### SM-SVC-16-WF04 Event conversion and attendee journey optimization
 
-**Requirement FR-V12-C-076** (status before: Partially covered; after: Pending Founder decision on authority only) [CONFLICT-799]. **Blueprint:** AU-096 attribution; WF-20. **Enhancement:** Event conversion journey report partly specified.
+**Requirement FR-V12-C-076** (status before: Partially covered; after: Adopted (DEC-779) on authority only) [CONFLICT-799]. **Blueprint:** AU-096 attribution; WF-20. **Enhancement:** Event conversion journey report partly specified.
 
 | Field | Specification |
 |---|---------|
@@ -1399,7 +1399,7 @@ Feature: SM-SVC-16 Webinar, Event & Referral Acquisition Automation contract con
 | Result / acceptance | Event conversion report; Event conversion report; no unapproved external side effects |
 | Domain contract | event_registration payload schema SM-SVC-16-WF04@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-16-WF04:v2`. |
 | Risk and authority (V12) | R2 external communication/provider/access write; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |
-| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 → DEC-549 Pending Founder decision] |
+| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: L1 approval of exact hash then L2 dispatch of the approved item; L3 only for DEC-064 L3 categories (approved-FAQ replies, eligible follow-ups, reminders) [CONFLICT-799 → DEC-549 Adopted (DEC-779)] |
 | Approval gate (V12) | Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. · approval check: Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |
 | Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. · Internal analysis/draft; no external action without separate authorization · Text; structured records (stricter classification applies, DEC-546) |
 | Engine / agent | Calendar; Workflow orchestration; Governance; Qualification; outreach; meeting intelligence → AG-009 (primary), AG-007, AG-042; AG-013 and AG-069 for SM-SVC-16 |
@@ -1535,7 +1535,7 @@ Feature: SM-SVC-17 Proposal & Quotation Automation contract conformance
 
 ##### SM-SVC-17-WF02 Quotation calculation
 
-**Requirement FR-V12-C-078** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-798]. **Blueprint:** AU-035 quote calculator; BRL-QTE-01…07; DEC-027.
+**Requirement FR-V12-C-078** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798]. **Blueprint:** AU-035 quote calculator; BRL-QTE-01…07; DEC-027.
 
 | Field | Specification |
 |---|---------|
@@ -1544,7 +1544,7 @@ Feature: SM-SVC-17 Proposal & Quotation Automation contract conformance
 | Result / acceptance | Deterministic quotation; acceptance: SM-SVC-17-WF02-TC-POS and step tests (ch33) |
 | Domain contract | quotation payload schema SM-SVC-17-WF02@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-17-WF02:v2`. |
 | Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve scope, discounts and exceptions; no unauthorized pricing changes |
-| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: ≤ L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 → DEC-548 Pending Founder decision] |
+| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: ≤ L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 → DEC-548 Adopted (DEC-779)] |
 | Approval gate (V12) | Approve scope, discounts and exceptions; no unauthorized pricing changes · approval check: Approve scope, discounts and exceptions; no unauthorized pricing changes |
 | Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. · Internal analysis/draft; no external action without separate authorization · Text; structured records (stricter classification applies, DEC-546) |
 | Engine / agent | Document generation; Workflow orchestration; Governance; Document intelligence; conversion; financial review → AG-020 (SM-SVC-17), AG-048, AG-066; AG-023 (SM-SVC-20) |
@@ -1594,7 +1594,7 @@ flowchart TD
 
 ##### SM-SVC-17-WF03 Revision and approval workflow
 
-**Requirement FR-V12-C-079** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-798]. **Blueprint:** WF-09 approval; BRL-QTE-06; BRL-APR-02.
+**Requirement FR-V12-C-079** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798]. **Blueprint:** WF-09 approval; BRL-QTE-06; BRL-APR-02.
 
 | Field | Specification |
 |---|---------|
@@ -1603,7 +1603,7 @@ flowchart TD
 | Result / acceptance | Approved quote or revision hold; acceptance: SM-SVC-17-WF03-TC-POS and step tests (ch33) |
 | Domain contract | quotation payload schema SM-SVC-17-WF03@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-17-WF03:v2`. |
 | Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve scope, discounts and exceptions; no unauthorized pricing changes |
-| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: ≤ L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 → DEC-548 Pending Founder decision] |
+| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: ≤ L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 → DEC-548 Adopted (DEC-779)] |
 | Approval gate (V12) | Approve scope, discounts and exceptions; no unauthorized pricing changes · approval check: Approve scope, discounts and exceptions; no unauthorized pricing changes |
 | Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. · Internal analysis/draft; no external action without separate authorization · Text; structured records (stricter classification applies, DEC-546) |
 | Engine / agent | Document generation; Workflow orchestration; Governance; Document intelligence; conversion; financial review → AG-020 (SM-SVC-17), AG-048, AG-066; AG-023 (SM-SVC-20) |
@@ -1638,7 +1638,7 @@ flowchart TD
 
 ##### SM-SVC-17-WF04 Configurable product, service and bundle quotation generation
 
-**Requirement FR-V12-C-080** (status before: Partially covered; after: Pending Founder decision on authority only) [CONFLICT-798]. **Blueprint:** WF-28 guarded quote; AU-089 CPQ; AG-066. **Enhancement:** Configurable bundle quotation with versioned configuration partly specified.
+**Requirement FR-V12-C-080** (status before: Partially covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798]. **Blueprint:** WF-28 guarded quote; AU-089 CPQ; AG-066. **Enhancement:** Configurable bundle quotation with versioned configuration partly specified.
 
 | Field | Specification |
 |---|---------|
@@ -1647,7 +1647,7 @@ flowchart TD
 | Result / acceptance | Versioned quotation; Versioned quotation; no unapproved external side effects |
 | Domain contract | quotation payload schema SM-SVC-17-WF04@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-17-WF04:v2`. |
 | Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |
-| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: ≤ L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 → DEC-548 Pending Founder decision] |
+| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: ≤ L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 → DEC-548 Adopted (DEC-779)] |
 | Approval gate (V12) | Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. · approval check: Approve source/data rights and applicable external actions; approve consequential communications, commitments and changes; routine steps only within preapproved policies. |
 | Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. · Internal analysis/draft; no external action without separate authorization · Text; structured records (stricter classification applies, DEC-546) |
 | Engine / agent | Document generation; Workflow orchestration; Governance; Document intelligence; conversion; financial review → AG-020 (SM-SVC-17), AG-048, AG-066; AG-023 (SM-SVC-20) |
@@ -1826,7 +1826,7 @@ Feature: SM-SVC-18 Negotiation, Contract & MoU Automation contract conformance
 
 ##### SM-SVC-18-WF03 Signature and commitment coordination
 
-**Requirement FR-V12-C-083** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-798]. **Blueprint:** WF-11; DEC-023 e-sign adapter; BRL-CTR-03/04.
+**Requirement FR-V12-C-083** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798]. **Blueprint:** WF-11; DEC-023 e-sign adapter; BRL-CTR-03/04.
 
 | Field | Specification |
 |---|---------|
@@ -1835,7 +1835,7 @@ Feature: SM-SVC-18 Negotiation, Contract & MoU Automation contract conformance
 | Result / acceptance | Signed or held agreement record; acceptance: SM-SVC-18-WF03-TC-POS and step tests (ch33) |
 | Domain contract | agreement payload schema SM-SVC-18-WF03@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-18-WF03:v2`. |
 | Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Legal/commercial approval mandatory for binding terms, licensing and signature |
-| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: ≤ L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 → DEC-548 Pending Founder decision] |
+| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: ≤ L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 → DEC-548 Adopted (DEC-779)] |
 | Approval gate (V12) | Legal/commercial approval mandatory for binding terms, licensing and signature · approval check: Legal/commercial approval mandatory for binding terms, licensing and signature |
 | Operating mode / side effect / modalities | Manual / supervised review; preparation only if gate not satisfied · Consequential financial/legal or authority-bearing action; prepare only until authorized · Text; structured records (stricter classification applies, DEC-546) |
 | Engine / agent | Document generation; Workflow orchestration; Governance; Objection resolution; conversion; document intelligence → AG-021 (primary), AG-022, AG-046 |
@@ -2072,7 +2072,7 @@ Feature: SM-SVC-19 Tender & Project Bid Automation contract conformance
 
 ##### SM-SVC-19-WF03 Bid preparation and submission coordination
 
-**Requirement FR-V12-C-087** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-798] [CONFLICT-800]. **Blueprint:** WF-08 package + human submission (DEC-053); WF-18.
+**Requirement FR-V12-C-087** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798] [CONFLICT-800]. **Blueprint:** WF-08 package + human submission (DEC-053); WF-18.
 
 | Field | Specification |
 |---|---------|
@@ -2081,7 +2081,7 @@ Feature: SM-SVC-19 Tender & Project Bid Automation contract conformance
 | Result / acceptance | Bid package and submission evidence; acceptance: SM-SVC-19-WF03-TC-POS and step tests (ch33) |
 | Domain contract | tender payload schema SM-SVC-19-WF03@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-19-WF03:v2`. |
 | Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Capability grant and explicit bid approval; no automatic submission to restricted portal |
-| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: ≤ L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 → DEC-548 Pending Founder decision] |
+| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: ≤ L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 → DEC-548 Adopted (DEC-779)] |
 | Approval gate (V12) | Capability grant and explicit bid approval; no automatic submission to restricted portal · approval check: Capability grant and explicit bid approval; no automatic submission to restricted portal |
 | Operating mode / side effect / modalities | Manual / supervised review; preparation only if gate not satisfied · Potential external write/communication; controlled only after applicable permission and policy approval · Text; structured records; documents (stricter classification applies, DEC-546) |
 | Engine / agent | Research and evidence; Workflow orchestration; Governance; Research; qualification; document intelligence → AG-019 (primary), AG-020, AG-047 |
@@ -2276,7 +2276,7 @@ Feature: SM-SVC-20 Sales Order & Fulfillment Automation contract conformance
 
 ##### SM-SVC-20-WF02 Order and milestone coordination
 
-**Requirement FR-V12-C-090** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-798]. **Blueprint:** WF-10 fulfilment; BRL-ORD-02…04.
+**Requirement FR-V12-C-090** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798]. **Blueprint:** WF-10 fulfilment; BRL-ORD-02…04.
 
 | Field | Specification |
 |---|---------|
@@ -2285,7 +2285,7 @@ Feature: SM-SVC-20 Sales Order & Fulfillment Automation contract conformance
 | Result / acceptance | Fulfillment plan and status; acceptance: SM-SVC-20-WF02-TC-POS and step tests (ch33) |
 | Domain contract | sales_order payload schema SM-SVC-20-WF02@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-20-WF02:v2`. |
 | Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve sales commitments, price, fulfillment acceptance and changes; procurement is separate. |
-| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: ≤ L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 → DEC-548 Pending Founder decision] |
+| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: ≤ L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 → DEC-548 Adopted (DEC-779)] |
 | Approval gate (V12) | Approve sales commitments, price, fulfillment acceptance and changes; procurement is separate. · approval check: Approve sales commitments, price, fulfillment acceptance and changes; procurement is separate. |
 | Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. · Internal analysis/draft; no external action without separate authorization · Text; structured records (stricter classification applies, DEC-546) |
 | Engine / agent | Workflow orchestration; Workflow orchestration; Governance; Document intelligence; operations planning → AG-020 (SM-SVC-17), AG-048, AG-066; AG-023 (SM-SVC-20) |
@@ -2320,7 +2320,7 @@ Feature: SM-SVC-20 Sales Order & Fulfillment Automation contract conformance
 
 ##### SM-SVC-20-WF03 Acceptance and delivery exception handling
 
-**Requirement FR-V12-C-091** (status before: Covered; after: Pending Founder decision on authority only) [CONFLICT-798]. **Blueprint:** WF-10 acceptance; BRL-ORD-05; AU-038.
+**Requirement FR-V12-C-091** (status before: Covered; after: Adopted (DEC-779) on authority only) [CONFLICT-798]. **Blueprint:** WF-10 acceptance; BRL-ORD-05; AU-038.
 
 | Field | Specification |
 |---|---------|
@@ -2329,7 +2329,7 @@ Feature: SM-SVC-20 Sales Order & Fulfillment Automation contract conformance
 | Result / acceptance | Accepted or held milestone; acceptance: SM-SVC-20-WF03-TC-POS and step tests (ch33) |
 | Domain contract | sales_order payload schema SM-SVC-20-WF03@2; fields below; source-specific mandatory fields validated against required input; nullable non-applicable fields only. Validator `urn:sm:dto:SM-SVC-20-WF03:v2`. |
 | Risk and authority (V12) | R3 financial/legal/commitment; L2 mandatory approved effect; L3 only with separately approved bounded mandate where lawful; Approve sales commitments, price, fulfillment acceptance and changes; procurement is separate. |
-| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: ≤ L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 → DEC-548 Pending Founder decision] |
+| Autonomy in blueprint | V12 L2 mandatory approved effect; L3 only with separate bounded mandate → blueprint: ≤ L1 (DEC-064, BRL-AUT-01); V12 L3 mandate path disabled [CONFLICT-798 → DEC-548 Adopted (DEC-779)] |
 | Approval gate (V12) | Approve sales commitments, price, fulfillment acceptance and changes; procurement is separate. · approval check: Approve sales commitments, price, fulfillment acceptance and changes; procurement is separate. |
 | Operating mode / side effect / modalities | AI-assisted / supervised; controlled autonomous only for preapproved eligible routine steps; simulation has zero external effects. · Potential external write/communication; controlled only after applicable permission and policy approval · Text; structured records (stricter classification applies, DEC-546) |
 | Engine / agent | Workflow orchestration; Workflow orchestration; Governance; Document intelligence; operations planning → AG-020 (SM-SVC-17), AG-048, AG-066; AG-023 (SM-SVC-20) |
@@ -2424,9 +2424,9 @@ flowchart TD
 
 | Tag | Conflict | V12 position | Blueprint position | Proposed resolution | Status |
 |---|---|---|---|---|---|
-| CONFLICT-798 | R3 workflows may run at L3 under a “separately approved bounded mandate where lawful” | SM-SVC-14-WF02, SM-SVC-14-WF04, SM-SVC-17-WF02, SM-SVC-17-WF03, SM-SVC-17-WF04, SM-SVC-18-WF03, SM-SVC-19-WF03, SM-SVC-20-WF02, SM-SVC-20-WF03 (9) | DEC-064 and BRL-AUT-01: quotes, discounts, contracts, legal terms, bid submission ≤ L1; spend activation L1 approval; safety invariant “consequential actions capped at L1” | Keep ≤ L1 (V12 L2 = blueprint L1 + L2 dispatch of the exact item); keep the mandate data model but disable the L3 path by a non-tenant-editable flag; revisit only with legal opinion per jurisdiction | **Pending Founder decision** (DEC-548) |
-| CONFLICT-799 | R2 workflows may run at L3 with a bounded mandate | SM-SVC-06-WF02, SM-SVC-07-WF02, SM-SVC-07-WF04, SM-SVC-09-WF02, SM-SVC-09-WF04, SM-SVC-10-WF01, SM-SVC-10-WF02, SM-SVC-12-WF01, SM-SVC-12-WF04, SM-SVC-16-WF01, SM-SVC-16-WF02, SM-SVC-16-WF04 (12) | DEC-064: L3 only for approved-FAQ replies, eligible follow-ups and reminders; first-touch outreach and publication L1 | Allow the V12 mandate only for DEC-064 L3 categories (SM-SVC-09-WF02 approved FAQ, SM-SVC-10-WF01/02 and SM-SVC-16-WF02 reminders/bookings, eligible follow-ups); all others L1 + L2 dispatch | **Pending Founder decision** (DEC-549) |
-| CONFLICT-800 | SM-SVC-19-WF03 step 04 “coordinate authorized submission and track receipt”; workbook “manual submission unless permitted API” | Submission by permitted API possible | DEC-053: tender submission never automated; human submits; AI never submits bids (safety invariant) | Step 04 = human submission task with evidence capture (BRL-BID-04); no portal API submission adapter | **Pending Founder decision** (DEC-550) |
+| CONFLICT-798 | R3 workflows may run at L3 under a “separately approved bounded mandate where lawful” | SM-SVC-14-WF02, SM-SVC-14-WF04, SM-SVC-17-WF02, SM-SVC-17-WF03, SM-SVC-17-WF04, SM-SVC-18-WF03, SM-SVC-19-WF03, SM-SVC-20-WF02, SM-SVC-20-WF03 (9) | DEC-064 and BRL-AUT-01: quotes, discounts, contracts, legal terms, bid submission ≤ L1; spend activation L1 approval; safety invariant “consequential actions capped at L1” | Keep ≤ L1 (V12 L2 = blueprint L1 + L2 dispatch of the exact item); keep the mandate data model but disable the L3 path by a non-tenant-editable flag; revisit only with legal opinion per jurisdiction | **Adopted (DEC-779)** (DEC-548) |
+| CONFLICT-799 | R2 workflows may run at L3 with a bounded mandate | SM-SVC-06-WF02, SM-SVC-07-WF02, SM-SVC-07-WF04, SM-SVC-09-WF02, SM-SVC-09-WF04, SM-SVC-10-WF01, SM-SVC-10-WF02, SM-SVC-12-WF01, SM-SVC-12-WF04, SM-SVC-16-WF01, SM-SVC-16-WF02, SM-SVC-16-WF04 (12) | DEC-064: L3 only for approved-FAQ replies, eligible follow-ups and reminders; first-touch outreach and publication L1 | Allow the V12 mandate only for DEC-064 L3 categories (SM-SVC-09-WF02 approved FAQ, SM-SVC-10-WF01/02 and SM-SVC-16-WF02 reminders/bookings, eligible follow-ups); all others L1 + L2 dispatch | **Adopted (DEC-779)** (DEC-549) |
+| CONFLICT-800 | SM-SVC-19-WF03 step 04 “coordinate authorized submission and track receipt”; workbook “manual submission unless permitted API” | Submission by permitted API possible | DEC-053: tender submission never automated; human submits; AI never submits bids (safety invariant) | Step 04 = human submission task with evidence capture (BRL-BID-04); no portal API submission adapter | **Adopted (DEC-781)** (DEC-550) |
 | CONFLICT-801 | Authority scale L0–L4 vs blueprint L0–L3 | L2 = exact approved action; L4 adaptive orchestration | L0–L3 (Part 7.2; DEC-064) | Crosswalk §11.3.5.4; L4 is a label for supervisor orchestration with L3 ceiling | Resolved — adopt V12 labels (DEC-542) |
 | CONFLICT-802 | DTO money as int64 minor units | `budget_minor`, `spend_minor`, `total_minor`, `tax_minor` | DEC-027 Decimal; Part 3.5b Money decimal string | Minor units at the workflow DTO boundary; Decimal storage; exact conversion | Resolved — adopt V12 (DEC-543, amends Part 3.5b for workflow DTOs) |
 | CONFLICT-809 | V12 sources disagree on side-effect classification for some workflows | e.g. SM-SVC-14-WF04, SM-SVC-17-WF02/03/04 and SM-SVC-20-WF02 are R3 in BRD/FSD but “Internal analysis/draft” in the workbook; SM-SVC-19-WF04 and SM-SVC-08-WF01 are R0/R1 but “Potential external write” | — | Apply the stricter classification per workflow and step | Resolved (DEC-546) |
@@ -2445,11 +2445,11 @@ No item weakens a safety invariant. Investor/fundraising scope: no workflow in S
 | DEC-545 | FSD-POL-V6-PRECHECK adopted: idempotency digest, timeouts 30 s / 90 s, ≤ 3 safe retries with jitter, finalize contents | Customer revision V12 (28 Nov 2026) | Complements NFR-016, BRL-AUT-06/07 |
 | DEC-546 | Where V12 sources disagree on risk or side-effect class, the stricter applies | Customer revision V12 (28 Nov 2026) | Resolves CONFLICT-809 |
 | DEC-547 | Per-workflow acceptance taxonomy (POS, INPUT, SCOPE, ENT, DUP, QUALITY, BUDGET, RECOVERY; +APPROVAL, EFFECT for R2/R3) is a release gate per workflow | Customer revision V12 (28 Nov 2026) | 682 + 286 tests mapped to TC-V12-C |
-| DEC-548 | R3 workflows stay ≤ L1; V12 bounded-mandate L3 path disabled | Pending Founder decision | CONFLICT-798 |
-| DEC-549 | R2 L3 mandate only for DEC-064 L3 categories | Pending Founder decision | CONFLICT-799 |
-| DEC-550 | SM-SVC-19-WF03 submission remains human (DEC-053) | Pending Founder decision | CONFLICT-800 |
+| DEC-548 | R3 workflows stay ≤ L1; V12 bounded-mandate L3 path disabled | Adopted (DEC-779) | CONFLICT-798 |
+| DEC-549 | R2 L3 mandate only for DEC-064 L3 categories | Adopted (DEC-779) | CONFLICT-799 |
+| DEC-550 | SM-SVC-19-WF03 submission remains human (DEC-053) | Adopted (DEC-781) | CONFLICT-800 |
 | DEC-551 | The 20 WF04 workflows are in scope as V12 contracts with the specifications in this part | Customer revision V12 (28 Nov 2026) | The WF04 requirements FR-V12-C-016, 020, 024 … 092 (every fourth FR) |
-| DEC-552 | WF04 and not-covered capability build is placed in Phase 2 (W6) unless funded earlier; cost per §11.3.5.9 | Pending Founder decision | Budget envelope outside DEC-230/231 |
+| DEC-552 | WF04 and not-covered capability build is placed in Phase 2 (W6) unless funded earlier; cost per §11.3.5.9 | Adopted (DEC-790) | Budget envelope outside DEC-230/231 |
 | DEC-553 | V12 per-invocation INR figures are illustrative metering inputs, not prices (Quotation pending) | Customer revision V12 (28 Nov 2026) | Cost columns in each block |
 | DEC-554 | 160 workflow KPIs adopted with the formulas in this part; thresholds set after the pilot baseline | Customer revision V12 (28 Nov 2026) | FR-V12-C-012; GAP-810 |
 
@@ -2507,4 +2507,4 @@ No item weakens a safety invariant. Investor/fundraising scope: no workflow in S
 | 8 | No restricted data routed to free-tier models | Pass | Tier 2 eligibility stated per service; contact, conversation, commercial and multimodal data never Tier 2 |
 | 9 | Consistent with earlier parts | Pass | Safety invariants kept (L1 cap, PDP recheck, simulation zero effect, no minors, no patient data, human bid submission); approved budgets unchanged |
 
-**Status: Part 11 Batch 11.3 complete (files a, b and c). 80 V12 workflows, 286 steps, 676 DTO rows, 968 V12 tests mapped plus 30 engine tests; 3,411 aspects: 3,368 Matched, 43 Pending Founder decision; 3 conflicts pending the Founder (DEC-548/549/550).**
+**Status: Part 11 Batch 11.3 complete (files a, b and c). 80 V12 workflows, 286 steps, 676 DTO rows, 968 V12 tests mapped plus 30 engine tests; 3,411 aspects: 3,368 Matched, 43 Pending Founder decision; 3 conflicts pending the Founder (DEC-548/549/550).** *(v1.2: every item counted here as "Pending Founder decision" was adopted by DEC-770…791 — Part 11.14; read as Adopted. Part 11.25.)*

@@ -21,6 +21,9 @@
 
 ### 3.1.1.1 Architecture drivers (quality attributes that shape the design)
 
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
+
 | Driver ID | Driver | Measurable target | Source | Primary architectural response |
 |---|---|---|---|---|
 | AD-01 | **Tenant and startup isolation** | Zero cross-scope disclosure or side effect on the two-tenant fixture | NFR-031, NFR-032, BRD §2, DEC-065 | Shared schema with composite tenant/startup keys and PostgreSQL RLS (ADR-002); scope-carrying jobs; per-tenant cache keys; per-tenant storage prefixes |
@@ -138,6 +141,9 @@ flowchart TD
 
 ### 3.1.3.1 Container diagram
 
+> **Erratum v1.2 (E-V-06):** superseded by Supabase-managed PostgreSQL (DEC-421/772). See Part 11.23c.
+
+
 ```mermaid
 flowchart TD
   subgraph EDGE["Edge · CloudFront"]
@@ -187,6 +193,9 @@ flowchart TD
 ```
 
 ### 3.1.3.2 Container catalogue
+
+> **Erratum v1.2 (E-V-05, E-V-06):** superseded by hosting is Vercel + Supabase + AWS in Mumbai with an EU stack (DEC-421/772/786); Supabase-managed PostgreSQL (DEC-421/772). See Part 11.23c.
+
 
 | ID | Container | Technology | Responsibilities | Exposed on | Scales by | Pilot placement | Source |
 |---|---|---|---|---|---|---|---|
@@ -777,6 +786,9 @@ flowchart TD
 
 ### 3.1.6.2 Topology A: cost-minimal pilot (fits B01 ≈ ₹5,000/month with commitments) [RECOMMENDATION-030]
 
+> **Erratum v1.2 (E-V-05):** superseded by hosting is Vercel + Supabase + AWS in Mumbai with an EU stack (DEC-421/772/786). See Part 11.23c.
+
+
 ```mermaid
 flowchart TD
   U["Users and visitors"]
@@ -875,6 +887,9 @@ flowchart TD
 **Not in B01 at pilot (by design):** AWS WAF (B21, ₹0 — GAP-104; compensating controls in §3.1.11 and Part 3.2 §3.2.1.7), Multi-AZ, ALB, NAT, ElastiCache, customer-managed KMS keys, interface VPC endpoints.
 
 ### 3.1.6.3 Topology B: scale-gate topology (DEC-040)
+
+> **Erratum v1.2 (E-V-05):** superseded by hosting is Vercel + Supabase + AWS in Mumbai with an EU stack (DEC-421/772/786). See Part 11.23c.
+
 
 Activated when the BRD §8 scale gate passes (measured cost per qualified opportunity, consent compliance, conversion) **and** at least one trigger in §3.1.6.4 fires. Required elements per DEC-040: Multi-AZ database and two application instances behind a load balancer; public availability target 99.9% (DEC-018).
 
@@ -1170,6 +1185,9 @@ sequenceDiagram
 
 ## 3.1.8 Technology stack
 
+> **Erratum v1.2 (E-V-05):** superseded by hosting is Vercel + Supabase + AWS in Mumbai with an EU stack (DEC-421/772/786). See Part 11.23c.
+
+
 All versions are **targets to verify at time of implementation (as of 27 Nov 2026)**: pick the latest patch of the named line that is supported for the whole of W0–W6, and pin it in lock files. "Mandated" means fixed by CN-01 / BRD §1.2.
 
 | Layer | Technology | Target version (verify) | Licence | Rationale | Alternatives rejected | ADR |
@@ -1261,6 +1279,9 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 
 ### ADR-005 Backend-for-Frontend authentication with the reused IdP
 
+> **Erratum v1.2 (E-V-05):** superseded by hosting is Vercel + Supabase + AWS in Mumbai with an EU stack (DEC-421/772/786). See Part 11.23c.
+
+
 | Field | Content |
 |---|---|
 | Status | Accepted (baseline): DEC-003, DEC-019, DEC-058, NFR-001, NFR-003 |
@@ -1349,6 +1370,9 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 
 ### ADR-013 Hosting on Amazon ECS on EC2 (single instance at pilot)
 
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
+
 | Field | Content |
 |---|---|
 | Status | Proposed [RECOMMENDATION-030]; scale gate per DEC-040 |
@@ -1397,6 +1421,9 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 
 ### ADR-018 Self-hosted extraction (Firecrawl) with in-process fallback
 
+> **Erratum v1.2 (E-V-10):** superseded by two residency stacks, India and EU (DEC-772/776). See Part 11.23c.
+
+
 | Field | Content |
 |---|---|
 | Status | Accepted (baseline "self-host first", BRD §6 B04); licence handling Proposed |
@@ -1405,6 +1432,9 @@ All versions are **targets to verify at time of implementation (as of 27 Nov 202
 | Consequences | − AGPL obligations if modified: **legal review required** before any modification (RSK-303) |
 
 ### ADR-019 Single region now, multi-region later
+
+> **Erratum v1.2 (E-V-05, E-V-09):** superseded by hosting is Vercel + Supabase + AWS in Mumbai with an EU stack (DEC-421/772/786); RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
 
 | Field | Content |
 |---|---|
@@ -1698,6 +1728,9 @@ Design points from DEC-031; per-user behaviour is an assumption to be replaced b
 
 ### 3.1.13.1 Objectives
 
+> **Erratum v1.2 (E-V-09, E-V-10):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787); two residency stacks, India and EU (DEC-772/776). See Part 11.23c.
+
+
 | Objective | Pilot (Topology A) | Scale gate (Topology B) | Source |
 |---|---|---|---|
 | Availability (monthly) | Website/portal 99.5%; Admin 99.5% | Website/portal 99.9%; Admin 99.5% | DEC-018 |
@@ -1709,6 +1742,9 @@ Design points from DEC-031; per-user behaviour is an assumption to be replaced b
 **CONFLICT-101 (DEC-018 RTO ≤ 4 h vs DEC-040 single-region pilot).** DEC-018 sets RTO ≤ 4 h without distinguishing failure scope, while DEC-040 places the pilot in one region with backup copies only. A regional rebuild (network, ECS, RDS restore from replicated backups, DNS/CloudFront origin switch) is estimated at 3–8 h depending on database size and rehearsal. **Resolution proposed:** the 4-hour RTO is binding for instance, AZ, data-corruption and deployment failures; for a full regional loss the pilot commits to "best effort ≤ 8 h, RPO ≤ 15 min", becoming binding ≤ 4 h at the scale gate after two successful rehearsals. Product Owner acceptance required (RSK-304).
 
 ### 3.1.13.2 Backup design
+
+> **Erratum v1.2 (E-V-05):** superseded by hosting is Vercel + Supabase + AWS in Mumbai with an EU stack (DEC-421/772/786). See Part 11.23c.
+
 
 | Asset | Mechanism | Frequency / RPO | Retention | Location | Restore test |
 |---|---|---|---|---|---|
@@ -1722,6 +1758,9 @@ Design points from DEC-031; per-user behaviour is an assumption to be replaced b
 | Secrets | Secrets Manager (replicated secret to ap-south-2 at scale gate) | — | Versioned | ap-south-1 | Rotation drill quarterly |
 
 ### 3.1.13.3 Failure-mode table
+
+> **Erratum v1.2 (E-V-05):** superseded by hosting is Vercel + Supabase + AWS in Mumbai with an EU stack (DEC-421/772/786). See Part 11.23c.
+
 
 | # | Failure | Detection | Impact (pilot) | Automatic response | Manual runbook | RTO / RPO achieved |
 |---|---|---|---|---|---|---|
@@ -1769,6 +1808,9 @@ Design points from DEC-031; per-user behaviour is an assumption to be replaced b
 
 ## 3.1.15 Risks raised in this batch
 
+> **Erratum v1.2 (E-V-10):** superseded by two residency stacks, India and EU (DEC-772/776). See Part 11.23c.
+
+
 | RSK | Risk | Likelihood | Impact | Mitigation | Owner |
 |---|---|---|---|---|---|
 | RSK-301 | Pilot hosting exceeds B01 (₹5,000) by ≈ ₹850–1,900/month if commitments or staging scheduling are not applied | Medium | Low | Savings Plan + RDS reservation after W0; scheduled staging; B20 for regional backups; monthly FinOps review | FinOps Lead |
@@ -1787,6 +1829,9 @@ Design points from DEC-031; per-user behaviour is an assumption to be replaced b
 ---
 
 ## 3.1.16 Tag register (Batch 3.1)
+
+> **Erratum v1.2 (E-V-09, E-V-10):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787); two residency stacks, India and EU (DEC-772/776). See Part 11.23c.
+
 
 | Tag | Statement | Where used | Status |
 |---|---|---|---|

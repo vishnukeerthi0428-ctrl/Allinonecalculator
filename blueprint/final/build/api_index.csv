@@ -986,15 +986,15 @@ API-V12-N-138,POST,/api/v1/investor/offerings,investor,Investment Automation I (
 API-V12-N-139,POST,/api/v1/investor/offerings/{id}/counsel-signoffs,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Record counsel sign-off per jurisdiction (R10C) with doc-set hash · role R10C · inv_counsel_signoff
 API-V12-N-140,POST,/api/v1/investor/offerings/{id}/approve,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,R10 approval of a signed offering → approved_for_offer · role R10 · inv_offering
 API-V12-N-141,POST,/api/v1/investor/offerings/{id}/kill,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Kill switch for an offering (SEC-CTL-N-15) · role R01/R10 · inv_offering
-API-V12-N-142,POST,/api/v1/investor/eligibility-checks,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Submit evidence / provider result for AU-202 · role R04/R21 · inv_eligibility_check
+API-V12-N-142,POST,/api/v1/investor/eligibility-checks,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Submit evidence / provider result for AU-202 · role R04/R22 · inv_eligibility_check
 API-V12-N-143,GET,/api/v1/investor/eligibility-checks/{id},investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read decision with reason codes · role R04/R10 · inv_eligibility_check
 API-V12-N-144,POST,/api/v1/investor/relationship-provenance,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Record pre-existing relationship evidence · role R03 · inv_relationship_provenance
 API-V12-N-145,POST,/api/v1/investor/guard/evaluate,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Run AG-166 + AU-203 on a draft (dry-run) · role R03 · inv_guard_finding
 API-V12-N-146,GET,/api/v1/investor/offerings/{id}/counters,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Read route cap counters · role R10 · inv_offer_counter
-API-V12-N-147,GET,/api/v1/investor-portal/me/rooms,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Invited investor: own granted rooms (W75) · role R21 · inv_access_grant
-API-V12-N-148,POST,/api/v1/investor-portal/me/eligibility,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Invited investor: self-certification and evidence upload (W76) · role R21 · inv_eligibility_check
-API-V12-N-149,POST,/api/v1/investor-portal/me/questions,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Invited investor: diligence question (W75) · role R21 · inv_diligence_request
-API-V12-N-150,POST,/api/v1/investor-portal/me/applications,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Invited investor: submit application (W75) · role R21 · inv_subscription
+API-V12-N-147,GET,/api/v1/investor-portal/me/rooms,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Invited investor: own granted rooms (W75) · role R22 · inv_access_grant
+API-V12-N-148,POST,/api/v1/investor-portal/me/eligibility,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Invited investor: self-certification and evidence upload (W76) · role R22 · inv_eligibility_check
+API-V12-N-149,POST,/api/v1/investor-portal/me/questions,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Invited investor: diligence question (W75) · role R22 · inv_diligence_request
+API-V12-N-150,POST,/api/v1/investor-portal/me/applications,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Invited investor: submit application (W75) · role R22 · inv_subscription
 API-V12-N-151,GET,/api/v1/public/investment/catalog,investor,Investment Automation I (Part 11.16a),11.16a,R,,RL-ADM,no,,Public neutral service catalogue for W55–W58 (no issuer data) · role R18 · catalog
 API-V12-N-152,POST,/api/v1/public/investment/quote-requests,investor,Investment Automation I (Part 11.16a),11.16a,W,,RL-ADM,no,,Public quote/demo request (W66/W70) · role R18 · saas quote request
 API-V12-W-0055,POST,/api/v1/investor/{id}/ledger/reserve,investor,Investment Automation II (Part 11.16c),11.16c,W,,RL-ADM,no,,Reserve an offeree slot (AU-230)

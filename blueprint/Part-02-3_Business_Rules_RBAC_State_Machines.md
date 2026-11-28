@@ -37,6 +37,9 @@ Each rule gives: ID · rule · condition → action · exceptions · source · e
 
 ### 2.25.2 BRL-ELG: Eligibility, consent, suppression, jurisdiction, caps
 
+> **Erratum v1.2 (E-V-17):** superseded by promotional window 09:00–21:00 recipient local time unless a stricter rule pack applies (DEC-777). See Part 11.23c.
+
+
 | ID | Rule | Condition → action | Exceptions | Source | Enforced | Config |
 |---|---|---|---|---|---|---|
 | BRL-ELG-01 | Fail closed | Eligibility Unknown → **no send**; task created with reason | None | M24 | PDP | Fixed |
@@ -180,6 +183,9 @@ Each rule gives: ID · rule · condition → action · exceptions · source · e
 | BRL-QTE-07 | Quantity/unit validation per SKU (allowed units, min/max order) | A105 | SVC | Policy |
 
 ### 2.25.12 BRL-CTR: Contracts
+
+> **Erratum v1.2 (E-V-02):** superseded by payments and bid submission allowed only under a bounded mandate; AI still never signs contracts or sets prices autonomously (DEC-779/780/781). See Part 11.23c.
+
 
 | ID | Rule | Source | Enforced | Config |
 |---|---|---|---|---|

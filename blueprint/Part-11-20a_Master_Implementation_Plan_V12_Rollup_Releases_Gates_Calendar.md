@@ -376,7 +376,7 @@ Flags follow the Part 4.3 §4.36 pattern and the Part 8.1 §8.1.3.3 rule: a flag
 | `commerce.payment.<psp>` / `commerce.agent.<protocol>` | R2-B | R08 + R01 | PSP certification; counterparty allowlist; RP-*-PAY / AGENTCOM active |
 | `bid.auto.<portal-family>` | R2-B | R12 + R02 | Portal capability registry entry counsel-reviewed; RP-*-PROC active; single-use MT-BID |
 | `voice.<inbound|outbound|recording>.<country>` | R2-B | R10 + R02 | Country `VO` rows active; activation checklist §11.18.5.3.4 |
-| `inv.offering.<jurisdiction>` | INV-R1 / INV-R2 | R21 + R10C | Securities pack signed; counsel UAT signed; DPIA |
+| `inv.offering.<jurisdiction>` | INV-R1 / INV-R2 | R22 + R10C | Securities pack signed; counsel UAT signed; DPIA |
 | `ai.registry.row.<REG>` | R1 onward | Two-person approval | Evidence complete (DEC-788) |
 | `ai.tier2.<provider>` | — | not planned | DEC-007; no personal data (unchanged) |
 
@@ -609,7 +609,7 @@ All exits require the BRD §12.2 evidence record for every story and test counte
 | R2-A | As R1 + Finance (billing, tax, credits) + Service Owner + Security lead (SOC 2 Type I) | NOC/SOC vendor; FinOps | A090 |
 | R2-B | As R1 + Finance (payments, reconciliation) + payments lead + voice lead | Counsel (advisory only; sign-off is per pack) | A090 + kill-switch drill record |
 | R3-a / R3 exit / R4-a / R4 exit | Founder/PO; DPO; Security lead; SRE lead | Auditors (certificates) | A090 |
-| INV-R1 / INV-R2 | Founder/PO; R21; R10C; Legal/DPO; independent reviewer | Securities counsel | A090 + counsel UAT record |
+| INV-R1 / INV-R2 | Founder/PO; R22; R10C; Legal/DPO; independent reviewer | Securities counsel | A090 + counsel UAT record |
 | A1…A4 | Founder/PO; AI governance lead; independent reviewer | FinOps | A090 + KPI window report |
 
 A single "no-go" from Legal/DPO, Finance or the independent reviewer on an activation blocker cannot be overruled (Part 8.1 §8.1.3.4, unchanged).

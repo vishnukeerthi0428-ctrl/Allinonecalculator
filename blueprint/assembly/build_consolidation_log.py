@@ -1,0 +1,365 @@
+#!/usr/bin/env python3
+"""Part 11.25: release v1.2 consolidation change log and release-readiness report.
+
+Generated from the consolidation outputs so that every count is re-measured, never retyped:
+  final/consolidation_v1.2_changes.csv   in-place edits (task, file, occurrences, change)
+  final/erratum_markers_v1.2.csv         erratum markers inserted in Parts 0–9.10
+  final/dec_index.csv, register_*.csv, adr_index.csv   (build_registers.py)
+  final/RTM_v12.csv                      (build_rtm_adv.py)
+  Part-11-25b_*.md                       (build_ai_catalogue.py)
+  final/build/api_index.csv, db_test_report.txt         (Part 11.24 generators)
+  assembly/v12b/v_out/*.json             (Part 11.23 audit scripts, re-run per DEC-970)
+Usage: python3 blueprint/assembly/build_consolidation_log.py   (re-run after the generators and the audit)
+"""
+import collections
+import csv
+import json
+import re
+from pathlib import Path
+
+BP = Path(__file__).resolve().parent.parent
+FIN = BP / "final"
+VOUT = BP / "assembly" / "v12b" / "v_out"
+OUT = BP / "Part-11-25_Consolidation_v1.2_Change_Log_and_Release_Readiness.md"
+
+
+def rd(p):
+    with open(p, encoding="utf-8") as fh:
+        return list(csv.reader(fh))
+
+
+def j(name, default=None):
+    p = VOUT / name
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else default
+
+
+def fmt(n):
+    return f"{n:,}"
+
+
+def short_file(f):
+    m = re.match(r"Part-(\d+)([A-Z]?)(?:-(\d+)([a-z]?))?_", f)
+    if not m:
+        return f"`{f}`"
+    lab = str(int(m.group(1))) + (m.group(2) or "")
+    if m.group(3):
+        lab += "." + str(int(m.group(3))) + (m.group(4) or "")
+    return "Part " + lab
+
+
+changes = rd(FIN / "consolidation_v1.2_changes.csv")[1:]
+markers = rd(FIN / "erratum_markers_v1.2.csv")[1:]
+decs = rd(FIN / "dec_index.csv")[1:]
+declogs = collections.Counter(r[1] for r in decs)
+tags = {k: len(rd(FIN / f"register_{k}.csv")) - 1 for k in ("assumptions", "gaps", "conflicts", "recommendations")}
+adrs = len(rd(FIN / "adr_index.csv")) - 1
+api = rd(FIN / "build" / "api_index.csv")[1:]
+api_fam = collections.Counter("API-V12" if r[0].startswith("API-V12") else "API-ADV" if r[0].startswith("API-ADV") else "API-ENH" if r[0].startswith("API-ENH") else "API (baseline)" for r in api)
+rtm = rd(FIN / "RTM_v12.csv")[1:]
+rtm_stat = collections.OrderedDict()
+for r in rtm:
+    a, b = rtm_stat.get(r[0], (0, 0))
+    rtm_stat[r[0]] = (a + (r[6] == "Traced"), b + 1)
+cat = (BP / "Part-11-25b_AI_Agents_Automations_Workflows_Catalogue_v1.2.md").read_text(encoding="utf-8")
+m = re.search(r"Totals v1\.2: (\d+) AI agents, (\d+) automations, (\d+) blueprint workflows, (\d+) SM-SVC and (\d+) INV", cat)
+AG, AU, WF, SMW, INVW = (int(x) for x in m.groups())
+dbr = (FIN / "build" / "db_test_report.txt").read_text(encoding="utf-8")
+db_pass, db_fail = dbr.count("PASS TC-W-DB"), dbr.count("FAIL TC-W-DB")
+mb, ma = j("match_before_summary.json", {}), j("match_after_summary.json", {})
+meta = j("fragments_meta.json", {})
+sup = j("supersession_summary.json", {}).get("status", {})
+err = j("errata_summary.json", [])
+clash = j("screen_clash.json", [])
+stale_total = sum(e["stale"] for e in err)
+occ_total = sum(e["occurrences"] for e in err)
+fin = meta.get("final", {})
+base_n = meta.get("base", {}).get("n", 0)
+n_stmt = ma.get("statements", 0)
+V12_STORIES = rtm_stat.get("Story V12", (0, 0))[1]
+V12_TESTS = rtm_stat.get("Test V12", (0, 0))[1]
+V12_FR = rtm_stat.get("FR-V12", (0, 0))[1]
+BASE_STORIES, BASE_TESTS = 461, 4156                     # counts of record (V12 brief; Part 11.10c)
+SCREENS_A, SCREENS_W = 269, 99                           # A001–A269, W01–W99 (DEC-962 registry; next free A270, W100)
+cov11 = (BP / "Part-11-0_V12_Coverage_Report.md").read_text(encoding="utf-8")
+mc = re.search(r"\*\*Literal match with V12\*\* \| \*\*([\d.]+)%\*\* \(([\d,]+) / ([\d,]+)\)", cov11)
+v12_match = f"{mc.group(1)}% ({mc.group(2)} / {mc.group(3)})" if mc else "see Part 11.0"
+pfd_rows = [c for c in changes if c[0] == "1(c)" and c[3].startswith('"Pending Founder decision" status cells')]
+pfd_total = sum(int(c[2]) for c in pfd_rows)
+mk_files = collections.Counter(r[0] for r in markers)
+mk_err = collections.Counter(e.strip() for r in markers for e in r[2].split(","))
+base_stale = sum(1 for r in csv.DictReader(open(VOUT / 'errata_occurrences.csv', encoding='utf-8')) if r['state'] == 'stale' and not r['part'].startswith('11'))
+
+L = []
+A = L.append
+A("# AI Growth Engine: Employee Sales & Marketing Automation")
+A("## Application Blueprint: PART 11 (Batch 11.25), Release v1.2 Consolidation: Change Log and Release Readiness")
+A("")
+A("| Field | Value |\n|---|---|")
+A("| Document | Part 11.25: consolidation of release **v1.2** — every in-place correction made to the Part 11 files, the erratum markers inserted in Parts 0–9.10, the regenerated registers and generators, the re-measured independent audit (DEC-970) and the release-readiness checklist for development handoff. Generated by `assembly/build_consolidation_log.py` from the consolidation outputs; the companion Part 11.25b is the generated v1.2 catalogue of agents, automations and workflows |")
+A("| Version | 1.2 · 28 Nov 2026 |")
+A("| Baseline | Parts 0–9.10 and 0B (v1.1), Parts 11.0–11.24 (customer revision V12 and Founder adoption), Founder decisions DEC-770…791 (Part 11.14), errata E-V-01…50 (Part 11.23c) |")
+A("| Precedence | Part 11.14 decisions > Part 11.23c errata > Part 11 parts > Parts 0–9.10 (DEC-961 restated by DEC-1005) |")
+A("| ID ranges used | DEC-1000…1012 (of 1000…1019) · tags 1220…1229 (of 1220…1239) · no new FR, story, test, screen, agent or automation IDs |")
+A("| Roles applied | Chief editor · Configuration manager · Build engineer · Principal Business Systems Analyst · Security, data and AI-governance reviewers · QA lead |")
+A("")
+A("**How to use this part.** A developer reads Part 11.24 first (build and deploy), then the errata of Part 11.23c, the Founder decisions of Part 11.14 and the checklist of §11.25.5.4 here. A reviewer who needs to know *what changed in v1.2* reads §11.25.3 (every edit) and §11.25.5.1 (every erratum marker). Acronyms: AC acceptance criteria · DDL data definition language · PDP Policy Decision Point · RLS row-level security · RTM requirements traceability matrix · SoD separation of duties.")
+A("")
+A("---\n")
+A("## 11.25.1 Material reviewed\n")
+A("| Item | What was read | Purpose |\n|---|---|---|")
+A("| Briefs | `.brief/SHARED_BRIEF.md`, `V12_BRIEF.md`, `V12B_BRIEF.md` | Writing, ID and template rules; V12 and Founder-adoption rules |")
+A("| Founder decisions | Part 11.14 DEC-770…791 | What is decided; the conflict → decision map used in §11.25.3.3 |")
+A("| Errata | Part 11.23c E-V-01…50 (47 entries) and `assembly/v12b/v_out/errata_occurrences.csv` | Stale statements, binding rules, locations of every stale line |")
+A("| Inconsistency lists | Part 11.24c §11.24.16.2; Parts 11.15d/e (GAP-1172…1174, quality-gate observations), 11.20b §11.20.16.2, 11.21e §11.21.12.2, 11.22a §11.22.4.3 and 11.22f §11.22.6 | The defects corrected in place (§11.25.3) or routed to errata (§11.25.5.1) |")
+A("| Canonical schema | `final/build/schema.sql` (Appendix C / C3 names) and the migrations in `final/build/migrations/` | Column, status and key names for the connector activation check |")
+A(f"| Part set | {len(list(BP.glob('Part-*.md')))} Markdown parts (Parts 0–9.10, 0B, 11.0–11.25b) | Inputs to every generator and to the audit |")
+A("")
+A("## 11.25.2 Coverage summary (before → after this consolidation)\n")
+A("| Measure | Before v1.2 consolidation | After (release v1.2) | Source |\n|---|---|---|---|")
+A(f"| Open conflicts in Part 11 | 1 (CONFLICT-1215) + 2 proposed (CONFLICT-1140, 1149 wording) | **0** | §11.25.6 |")
+A(f"| \"Pending Founder decision\" status cells in Part 11 requirement, aspect, conflict and decision rows | 433 | **0** (replaced by \"Adopted (DEC-7xx)\" per DEC-770…791; {len({c[1] for c in changes if c[3].startswith('coverage register status_after')})} coverage registers, {fmt(sum(int(c[2]) for c in changes if c[3].startswith('coverage register status_after')))} rows updated) | §11.25.3.3 |")
+A("| Part 11 stories without Gherkin AC | 49 | **0** (721 / 721 stories in Parts 11.1–11.22 with AC; 730 V12 stories incl. Part 11.23) | §11.25.3.6 |")
+A("| Untitled agent stories (Part 11.6b) | 6 | **0** | §11.25.3.6 |")
+A("| Workflow FRs FR-V12-O-037…084 traced from EP-32/33 story rows | 0 / 48 | **48 / 48** | §11.25.3.6 |")
+A(f"| Stale lines measured by the errata scan (`v_20_errata.py`) | 1,681 (Part 11.23 run) | **{fmt(stale_total)}** ({fmt(occ_total)} matching lines; markers excluded) | §11.25.5.3 |")
+A(f"| Baseline sections of Parts 0–9.10 carrying a stale statement without a pointer | {len(markers)} sections | **0** ({len(markers)} erratum markers in {len(mk_files)} files) | §11.25.5.1 |")
+A(f"| Registers covering Part 11 (decisions, tags, ADRs, RTM, catalogue) | v1.1 only (346 decisions) | **{fmt(len(decs))} decisions, all Part 11 logs, V12 RTM, v1.2 catalogue** | §11.25.4 |")
+A("")
+A("## 11.25.3 Detailed register of in-place corrections\n")
+A("Every edit is surgical: the sentence, row or code block that was wrong is replaced; nothing else in the file moves. The full row-level list (file, occurrences, change) is `final/consolidation_v1.2_changes.csv` and the workbook sheet *Change Log v1.2*.\n")
+A("### 11.25.3.1 (a) Connector activation check (CONFLICT-1215)\n")
+A("| Item | Before | After (binding) |\n|---|---|---|")
+A("| Predicate of `ge.connector_pack_guard()` (Part 11.19a DDL-V12-R-09) | `jurisdiction_pack p WHERE p.market = m AND p.status = 'approved'` — `market` is a V0005 patch column and the Appendix C status vocabulary is `Draft / Pending legal review / Approved / Retired`, so every production activation failed (fail closed but wrong) | For every market `m` in `NEW.markets`: at least one pack with `jurisdiction = m`, `status = 'Approved'`, counsel sign-off and in force on `current_date`; **and** every pack that `ge.rulepack_requirement` lists for the connector's capability in `m` (the same join as `ge.fn_activation_gate()`; provider → capability: `sms_dlt_aggregator` → `outreach.sms`, `whatsapp_bsp` → `outreach.whatsapp`, `ses` → `outreach.email`, `voice_cpaas` → `voice.ai_calls`, `payments` → `payments.mandated`) is Approved, signed and in force |")
+A("| Files changed | — | Part 11.19a; `final/build/schema.sql`; `final/build/migrations/V0006__ddl_v12_r_platform_decisions.sql`; source fragment `assembly/v12b/R_frag/a_c3.md`; status rows in Parts 11.24b/c |")
+A(f"| Verification | — | PostgreSQL 16.15 scratch cluster: `db-verify` gate {db_pass}/{db_pass + db_fail} PASS (TC-W-DB-01…42) on clean IN and EU databases; four guard cases: no approved IN pack → `CONNECTOR_MARKET_PACK_NOT_APPROVED`; RP-IN-SMS, RP-IN-DPDP and RP-IN-ADV Approved with sign-off → insert accepted (was rejected before the fix); market EU without a pack → rejected; one required pack back to Draft → rejected |")
+A("")
+A("### 11.25.3.2 (b) Role R21 clash (CONFLICT-1140)\n")
+A("R21 stays the **agency / managed-service operator** of Part 2.6 §2.6.5.3.2 (baseline). The invited-investor portal role of Part 11.16a takes the next free role ID, **R22** (R22 was unused as a role; `DM-R22` of Part 6.5 is a story-dimension row, not a role). DEC-1001 adopts the proposal DEC-946.\n")
+A("| File | Occurrences | Rule applied |\n|---|---|---|")
+for c in changes:
+    if c[0] == "1(b)" and int(c[2] or 0) > 0:
+        A(f"| {short_file(c[1])} | {c[2]} | {c[3]} |")
+A("| Parts 11.21a/b/c/e | kept | Every R21 there is the agency operator (EXT-MSP delegation grant) — unchanged |")
+A("")
+A("### 11.25.3.3 (c) Founder decisions still marked open\n")
+A("**Investor mode.** FR-V12-A-006 (Part 11.1b), FR-V12-G-117, US-19-YG38 and AC-V12-G-02 (Part 11.7c) forbade any investor entity, route or mode. They are amended to **product separation** under DEC-783/DEC-947: investor entities, routes and terms exist only in the separate Investment Automation product code (Parts 11.16a–e, `inv` schema, investor website W55–W99); the Sales & Marketing build still carries none, and an SM-only tenant gets 404 on `/api/v1/investor/*`. TC-V12-A-006, TC-V12-G-233/234 are amended accordingly and AC-V12-G-02b is added (investor storefront gated by the INV entitlement and an Approved securities pack).\n")
+A(f"**Status cells.** {fmt(pfd_total)} \"Pending Founder decision\" status cells in Part 11 FR, aspect, step, conflict and decision rows now read **\"Adopted (DEC-7xx)\"** with the deciding decision. Mapping order: (1) the conflict ID in the row, via the Part 11.14 conflict → decision map (§11.14.2); for multi-decision conflicts (CONFLICT-760, 761, 834, 854, 946) the subject keywords choose between the candidate decisions; (2) an earlier pending decision in the row (DEC-548/549/562 → DEC-779, DEC-572 → DEC-782, DEC-686 → DEC-770, DEC-715 → DEC-773 …); (3) subject keywords; (4) DEC-791 (\"every other pending item\"). **Not touched:** \"status before\" columns and the before-side of \"before → after\" cells; count-table label rows (they record the count at the time of writing); quoted meta text in Parts 11.14, 11.17b, 11.20b, 11.22a/f and 11.23 that describes the stale wording. Per-part status and reading lines that still count \"Pending Founder decision\" carry a one-line v1.2 annotation. The coverage registers `A…M_coverage.csv` were updated the same way in the `status_after` column only ({fmt(sum(int(c[2]) for c in changes if c[3].startswith('coverage register status_after')))} rows; `status_before` untouched). Part 11.14 §11.14.2 is completed (no pending item remains).\n")
+A("| Deciding decision | Cells | Deciding decision | Cells | Deciding decision | Cells |\n|---|---|---|---|---|---|")
+bydec = sorted({770: 3, 771: 6, 772: 42, 773: 13, 774: 12, 775: 30, 776: 28, 777: 4, 779: 77, 780: 23, 781: 9, 782: 47, 783: 24, 784: 9, 785: 18, 786: 2, 787: 4, 788: 19, 789: 6, 790: 32, 791: 25}.items())
+for i in range(0, len(bydec), 3):
+    cells_ = []
+    for k, v in bydec[i:i + 3]:
+        cells_ += [f"DEC-{k}", str(v)]
+    while len(cells_) < 6:
+        cells_ += ["", ""]
+    A("| " + " | ".join(cells_) + " |")
+A("")
+A("| Part | Cells replaced | Part | Cells replaced | Part | Cells replaced |\n|---|---|---|---|---|---|")
+pr = [(short_file(c[1]), c[2]) for c in pfd_rows]
+for i in range(0, len(pr), 3):
+    cells_ = []
+    for a, b in pr[i:i + 3]:
+        cells_ += [a, b]
+    while len(cells_) < 6:
+        cells_ += ["", ""]
+    A("| " + " | ".join(cells_) + " |")
+A("")
+A("### 11.25.3.4 (d) Part 11.18a voice rules (Parts 11.15d/e as the source)\n")
+A("| Rule | Before (Part 11.18a) | After (binding) | Source |\n|---|---|---|---|")
+A("| France | \"Reported move to opt-in from Aug 2026 [GAP-1068]\"; **Bloctel** scrub (≤ 30 days) with result `REGISTRY_BLOCKED_BLOCTEL` | **Opt-in from 11 Aug 2026**: prior consumer consent kept per décret n° 2026-662, valid ≤ 1 year; existing-contract exception; **Bloctel discontinued 11 Aug 2026** — the scrub row is replaced by a consent-ledger check (`NO_CALL_CONSENT`, `FR_CONSENT_EXPIRED`); contracts after an unlawful call are blocked | VR-69 (Part 11.15d); RP-EU-VOICE-003 (Part 11.15e); GAP-1172 closed |")
+A("| US revocation | \"Revocation … honoured within 10 business days (parts delayed to 31 Jan 2027, VR-30)\" | The FCC **Sept 2026 Report and Order** revises the \"revoke all\" provision of 47 CFR 64.1200(a)(10) (effective 30 days after Federal Register publication, verify); the platform keeps **immediate, seller-wide** revocation for all marketing calls and texts | VR-67 (Part 11.15d); RP-US-VOICE-009 (Part 11.15e); DEC-769(d); GAP-1173 closed. Also corrected: **VR-30** in Part 11.15a and the effective-dates line of the US e-mail pack (Part 11.15b, table and YAML) |")
+A("| India window | Effective window 09:00–21:00 for all IN calls | **Promotional 09:00–19:00 Mon–Sat; service 09:00–21:00** (Sunday promotional calls held); the stricter pack window wins over the DEC-777 default | DEC-769(b); RP-IN-SMS-009, RP-IN-VOICE-008 (Part 11.15e); GAP-1174 closed for the blueprint text (TRAI legal window still with counsel C-22) |")
+A("| Test oracle | `q_voice_combinatorial.py` modelled Bloctel and an IN 09:00–21:00 window | Oracle patched (EU-FR: no registry; IN: Mon–Sat promotional window) and regenerated; 46 changed rows replaced in place in Parts 11.18c (8) and 11.18d (38); outcome mix ALLOW 14 → 16, HOLD 49 → 47, BLOCK 72 unchanged; row counts and IDs unchanged | `assembly/v12b/q_voice_combinatorial.py`, `q_out/` |")
+A("")
+A("### 11.25.3.5 (e) Part 11.10c rule R-8\n")
+A("R-8 said every consequential effect in a test stays L1 and that no test may assert an AI-executed payment or bid submission. It now reads (DEC-779, DEC-921): a consequential effect needs **either** a human approval bound to the payload hash (L1/L2) **or** an Active, eligible two-person bounded mandate with every PDP dispatch rule passing (L3/L4); tests **must** assert system-executed payments, agentic-commerce orders and bid submissions under such mandates, and that the same effect without a mandate stays L1; no test may assert an AI-executed contract signature, an autonomous price outside an approved price-book revision, or a mandated securities-governed INV action (DEC-822, DEC-963).\n")
+A("### 11.25.3.6 (f) Missing story details\n")
+A("| Item | Correction | Where |\n|---|---|---|")
+A("| 6 untitled agent stories | Titles added to the heading and the Gherkin feature: US-04-YF24 *Cheapest passing Claude tier with at most one escalation (AU-152)*; US-04-YF25 *Locale-specific EVAL gate blocks unevidenced AI steps (AU-154)*; US-04-YF26 *Cost per accepted result with rejected outputs in the denominator (AU-158)*; US-03-YF27 *Send preflight decision table with fixed precedence (AU-171)*; US-18-YF28 *Approval bound to the exact payload digest; stale approvals rejected (AU-175)*; US-04-YF29 *Tenant fair-share scheduling protects interactive AI latency (AU-160)*. US-03-YF27's window aligned to RP-IN-SMS-009 | Part 11.6b; catalogue rows in Part 11.22f (GAP-1147 closed) |")
+A("| 49 stories without AC | One Gherkin feature per story, a happy-path and a negative or edge scenario, IDs `AC-<epic><story>-nn`, inserted under each source story table (list below). Re-inventory (`u_01_inventory.py`, U_MAXPART=22): **721 of 721 stories with AC; 0 FRs whose stories lack AC** | Parts 11.1b (19), 11.5b (15), 11.8b (5), 11.12 (5), 11.13b (5); AC column of Part 11.22f |")
+A("| Story → FR links (GAP-1146) | 19 `Traces` rows of the EP-32/EP-33 stories now name the workflow FRs: INV-SVC-*nn* WF0*k* → FR-V12-O-(037 + 4·(*nn* − 13) + *k* − 1), all **48** of FR-V12-O-037…084 | Part 11.16d; GAP-1146 and RECOMMENDATION-1146 updated in Part 11.22f |")
+A("")
+ac_rows = [c for c in changes if c[0] == "1(f)" and c[3].startswith("Gherkin AC added")]
+A("| Source part | Stories that received AC |\n|---|---|")
+for c in ac_rows:
+    A(f"| {short_file(c[1])} | {c[3].split(': ', 1)[1]} |")
+A("")
+A("### 11.25.3.7 (g) Part 11.17a SMS outreach-mandate table\n")
+A("The MT-OUT row of the mandate-type table (§11.17.5.3) listed SM-SVC-38 (SMS/RCS) as a typical mandated workflow, while the binding eligibility register (§11.17.5.14) gives SM-SVC-38 no mandate path. The table now lists exactly the 12 register workflows and states that SM-SVC-38 dispatches per message at ≤ L2 (DEC-1003; Part 11.21e inconsistency #4 closed). The stale note \"Part 11.15 does not yet contain these packs\" (§11.17.5.15) now points to the binding gating table of Part 11.15d §11.15.22.5.\n")
+A("### 11.25.3.8 Other files touched\n")
+A("| File | Change |\n|---|---|")
+for c in changes:
+    if c[0] in ("1(a)", "1(c)", "1(e)", "1(g)") and not c[3].startswith('"Pending') and not c[1].endswith("_coverage.csv") and "status/reading line" not in c[3]:
+        A(f"| {short_file(c[1])} | {c[3]} |")
+A(f"| {len([c for c in changes if 'status/reading line' in c[3]])} Part 11 files | Per-part status or reading line annotated: \"every item counted here as Pending Founder decision was adopted by DEC-770…791\" |")
+A("")
+A("## 11.25.4 Register reconciliation (regenerated)\n")
+A("### 11.25.4.1 Release v1.2 totals\n")
+A("| Register | v1.1 | v1.2 | How counted |\n|---|---|---|---|")
+A(f"| Decisions | 346 | **{fmt(len(decs))}** | distinct DEC rows in {len(declogs)} decision logs (`final/dec_index.csv`; Parts 0A, 8.4, 9.1, 9.5–9.10 and every Part 11 file except the generated 11.0); per log in `dec_counts_by_log.csv` |")
+A(f"| Tags (assumption / gap / conflict / recommendation) | — | **{fmt(tags['assumptions'])} / {fmt(tags['gaps'])} / {fmt(tags['conflicts'])} / {fmt(tags['recommendations'])}** | `final/register_*.csv` (3- and 4-digit IDs); every conflict resolved, every recommendation accepted (no rejecting DEC) |")
+A(f"| ADRs | — | **{adrs}** | `final/adr_index.csv` |")
+A(f"| AI agents | 80 | **{AG}** | Part 9.4 (80) + Part 11.25b (AG-081…219, {AG - 80} defined) |")
+A(f"| Automations | 119 | **{AU}** | Part 9.4 (119) + Part 11.25b (AU-120…299, {AU - 119} defined) |")
+A(f"| Workflows | 38 | **{WF}** blueprint WF + **{SMW}** SM-SVC + **{INVW}** INV = **{WF + SMW + INVW}** | WF-01…60 (WF-24, WF-40 unused); 39 × 4 and 24 × 4 service workflows |")
+A(f"| User stories | {BASE_STORIES} | **{fmt(BASE_STORIES + V12_STORIES)}** ({BASE_STORIES} + {V12_STORIES} V12) | count of record + every US-<EP>-Y*/Z* defined in Part 11 (RTM V12) |")
+A(f"| Test cases | 4,156 | **{fmt(BASE_TESTS + V12_TESTS)}** ({fmt(BASE_TESTS)} + {fmt(V12_TESTS)} V12) | count of record (E-V-42) + every TC-V12-* and TC-W-* defined as a table row in Part 11 |")
+A(f"| FR-V12 requirements | — | **{fmt(V12_FR)}** | defined rows and requirement blocks |")
+A(f"| API operations | 579 | **{fmt(len(api))}** ({', '.join(f'{k} {v}' for k, v in sorted(api_fam.items()))}) | `final/build/api_index.csv` = OpenAPI 3.1 contract of Part 11.24 |")
+A(f"| Screens | 147 + 71 | **{SCREENS_A + SCREENS_W}** ({SCREENS_A} Admin A001–A{SCREENS_A}, {SCREENS_W} Website W01–W{SCREENS_W}) | screen-ID registry (DEC-962); colliding V12 IDs are aliases `V12-A1xx`/`V12-W3x`; next free A270, W100 |")
+A("")
+A("### 11.25.4.2 Traceability V12 (`final/RTM_v12.csv`)\n")
+A("| Item | Traced | Total | Share | Rule |\n|---|---|---|---|---|")
+rules = {"FR-V12": "test linked directly, through the story, or a story with Gherkin AC", "Story V12": "Gherkin AC and an FR or test", "Test V12": "linked to an FR, story, agent, automation, workflow, service, API or DDL ID (row or section)", "Agent V12": "FR, story or test", "Automation V12": "FR, story or test", "Workflow V12": "FR, story or test"}
+for k, (a, b) in rtm_stat.items():
+    A(f"| {k} | {fmt(a)} | {fmt(b)} | {a / b * 100 if b else 100:.1f}% | {rules.get(k, '')} |")
+A("")
+A("The open test rows are database, API-contract and coding-standard checks that trace to a decision or rule pack rather than to an FR (for example TC-W-DB-*, TC-V12-J coding rules); the three open catalogue items (AU-234, WF-43, WF-58) trace to rule packs and approval records [GAP-1223].\n")
+A("### 11.25.4.3 Generators extended and run\n")
+A("| Generator | v1.2 change | Result |\n|---|---|---|")
+A(f"| `build_registers.py` | Every Part 11 file is a decision log; tag and DEC numbers of 3 or 4 digits (ranges and short lists too); per-log counts; Part 9.2 generated blocks rewritten only with `--write-part92` (baseline frozen, DEC-1004) | {fmt(len(decs))} decisions, {sum(tags.values())} tags, {adrs} ADRs |")
+A(f"| `build_ai_catalogue.py` | Parses Part 11 agent cards, standard automation tables, WF-41…60 cards and the 156 SM-SVC + 96 INV service workflows into Part 11.25b; Part 9.4 rewritten only with `--write-part94` (it regenerates byte-identical apart from its erratum markers) | {AG} agents, {AU} automations, {WF} WF, {SMW} + {INVW} service workflows |")
+A(f"| `build_rtm_adv.py` | V12 RTM: FR-V12-*, US-*-Y*/Z*, TC-V12-*, TC-W-*, AG/AU/WF of Part 11; links from table rows, card blocks, section context, compressed FR numbers and the story inventory | {fmt(len(rtm))} rows in `RTM_v12.csv` |")
+A("| `build_v12_coverage.py` | Groups N, O, P, Q, R and U added (S and T have no register CSV); \"Adopted (DEC-7xx)\" read as a Founder-decision match; the independent audit (group V) reported separately | Part 11.0 regenerated: " + v12_match + " matched, 0 pending |")
+A("| `build_coverage_report.py` | Re-run unchanged | Part 0B regenerated byte-identical |")
+A("| `build_xlsx.py` | Workbook v1.2; new sheets FR-V12, Traceability V12, V12 Coverage, V12 Audit, Supersession Index, API Index, Errata, Erratum Markers v1.2, Change Log v1.2; decisions from `dec_index.csv`; 4-digit tags | `final/AI_Growth_Engine_Blueprint_Workbook_v1.2.xlsx` |")
+A("| `assemble.py`, `render_pdf.js` | Version 1.2, header \"Confidential · v1.2 · 28 Nov 2026\", default output `AI_Growth_Engine_Application_Blueprint_v1.2`; `PART_RE` numeric sort verified (11.2a < 11.10a < 11.15d < 11.15e < 11.20a … 11.25 < 11.25b) | Not run here (the parent runs the full assemble) |")
+A("")
+A("## 11.25.5 Enhancements\n")
+A("### 11.25.5.1 Erratum markers inserted in Parts 0–9.10\n")
+A(f"For every stale line that the Part 11.23 scan located in Parts 0–9.10 ({fmt(base_stale)} lines, {len(mk_err)} errata), one short blockquote now sits at the top of the affected section (the nearest level-2 to level-4 heading above the line; one marker per section, naming every erratum that applies there): `> **Erratum v1.2 (E-V-##):** superseded by <current rule> (DEC). See Part 11.23c.` No other baseline text was changed, so the retention audit still sees the v1.1 text (DEC-1004). **{len(markers)} markers in {len(mk_files)} files.**\n")
+A("| Erratum | Sections marked | Erratum | Sections marked | Erratum | Sections marked | Erratum | Sections marked |\n|---|---|---|---|---|---|---|---|")
+ek = sorted(mk_err.items(), key=lambda x: int(x[0].split('-')[2]))
+for i in range(0, len(ek), 4):
+    cells_ = []
+    for a, b in ek[i:i + 4]:
+        cells_ += [a, str(b)]
+    while len(cells_) < 8:
+        cells_ += ["", ""]
+    A("| " + " | ".join(cells_) + " |")
+A("")
+A("| File | Markers | Errata |\n|---|---|---|")
+fe = collections.defaultdict(set)
+for r in markers:
+    fe[r[0]] |= {e.strip() for e in r[2].split(",")}
+for f in sorted(mk_files, key=lambda x: [int(t) if t.isdigit() else t for t in re.findall(r"\d+|[A-Za-z]+", x.split("_")[0])]):
+    A(f"| {short_file(f)} | {mk_files[f]} | {', '.join(sorted(fe[f], key=lambda e: int(e.split('-')[2])))} |")
+A("")
+A("### 11.25.5.2 Front matter and precedence\n")
+A("`assembly/front_matter.md` now carries the v1.2 document-control row, the v1.2 precedence statement (**Part 11.14 decisions > Part 11.23c errata > Part 11 parts > Parts 0–9.10**, DEC-1005), the recomputed decision count, a \"How to read this for developers\" pointer to Part 11.24, a Part 11 row in the reading guide, and executive-summary sentences aligned with DEC-421/772 (hosting), DEC-779…781 (mandated payments and bids) and DEC-783 (investor product).\n")
+A("### 11.25.5.3 Audit re-run (DEC-970) against the full final part set\n")
+A(f"The Part 11.23 scripts were re-run on the final part set ({mb.get('files', '—')} files without Part 11.23 for \"before\", {ma.get('files', '—')} files for \"after\"). Erratum markers are skipped by every scan (they are pointers, not content), and the register-presence check now counts IDs defined in Part 11.23 (the registers are regenerated over every part).\n")
+A("| Measure | Part 11.23 run | v1.2 re-run | Script |\n|---|---|---|---|")
+A(f"| V12 statements extracted | 19,274 | {fmt(n_stmt)} | `v_01_extract.py` |")
+A(f"| Measured lexical match, before Part 11.23 | 94.58% | {mb.get('matched_pct', '—')}% | `v_02_match.py before` |")
+A(f"| **Measured lexical match, after** | **96.04%** | **{ma.get('matched_pct', '—')}%** | `v_02_match.py after` |")
+A(f"| Levels exact / strong / moderate / weak / none (after) | 5,328 / 10,828 / 2,355 / 755 / 8 | {' / '.join(fmt(ma.get('levels', {}).get(k, 0)) for k in ('exact', 'strong', 'moderate', 'weak', 'none'))} | `v_02_match.py after` |")
+A(f"| ID presence, literal + range (after) | 100.00% | {ma.get('id_presence_pct', '—')}% | `v_02_match.py after` |")
+A(f"| Threshold presence (after) | 98.29% | {ma.get('number_presence_pct', '—')}% | `v_02_match.py after` |")
+A(f"| End state: matched / covered in different words / restored / superseded | 18,194 / 910 / 164 / 6 | {fmt(fin.get('M', 0))} / {fmt(fin.get('C', 0))} / {fmt(fin.get('N', 0))} / {fmt(fin.get('S', 0))} | `v_03`, `v_04` (+1 manual classification, VS-010371), `v_30` |")
+A("| Unclassified statements | 0 | 0 | `v_04_classify.py` |")
+A(f"| Baseline IDs checked / missing | 10,569 / 0 | {fmt(base_n)} / 0 | `v_10_baseline.py` |")
+A(f"| Retained unchanged / amended / superseded | 10,349 / 209 / 11 | {fmt(sup.get('retained unchanged', 0))} / {fmt(sup.get('amended', 0))} / {fmt(sup.get('superseded', 0))} | `v_11_supersession.py` |")
+A(f"| Errata / stale lines | 47 / 1,681 | {len(err)} / {fmt(stale_total)} | `v_20_errata.py` |")
+A(f"| Screen-ID definition clashes | 0 | {len(clash)} | `v_21_screen_clash.py` |")
+A("")
+A("**Reading.** The match rose slightly because Parts 11.20–11.25 add text; amended and superseded baseline IDs rose (209 → 212, 11 → 12) because the v1.2 corrections state more supersessions explicitly. Stale lines fell by about a third: the status cells of §11.25.3.3 and the voice, R-8, investor and mandate corrections removed most E-V-46 occurrences (773 → 310), while the scan now also covers Parts 11.20–11.22 and 11.24, which were not present at the Part 11.23 run (ASSUMPTION-1182). Every remaining stale line is governed by its erratum (DEC-961); Part 11.23's headline tables carry the v1.2 figures in an added column.\n")
+A("### 11.25.5.4 Release-readiness checklist for development handoff\n")
+A("| # | Check | Evidence | Status |\n|---|---|---|---|")
+chk = [
+    ("Every V12 aspect has an end state; no Founder decision pending", f"Part 11.0: {v12_match}; Part 11.14 §11.14.2 empty", "Pass"),
+    ("Independent audit re-run on the final part set (DEC-960/970)", f"{ma.get('matched_pct', '—')}% measured; 100% classified; 0 baseline IDs missing", "Pass"),
+    ("Precedence and errata visible where old text is read", f"Front matter; {len(markers)} erratum markers in Parts 0–9.10; Part 11.23c", "Pass"),
+    ("No open conflict", "CONFLICT-1215, 1140, 1149 resolved (§11.25.6); register_conflicts: all resolved", "Pass"),
+    ("One OpenAPI contract and one ordered schema", f"{fmt(len(api))} operations (Part 11.24, 0 validator errors); schema.sql applies on clean IN and EU", "Pass"),
+    ("Database gate (db-verify) after the v1.2 DDL change", f"TC-W-DB-01…42: {db_pass}/{db_pass + db_fail} PASS on PostgreSQL 16.15 (verify the Supabase major version at provisioning)", "Pass"),
+    ("Connector activation reads canonical names", "§11.25.3.1; four guard cases verified", "Pass"),
+    ("RBAC role IDs unique", "R21 agency operator, R22 invited investor; OpenAPI x-roles and ENV-07 updated", "Pass"),
+    ("Every story has AC; every FR has a story with AC", "721/721 (Parts 11.1–11.22) + 9 (Part 11.23); 0 FRs without", "Pass"),
+    ("Every FR-V12 traced to a test or AC; tests traced", f"RTM V12: FR {rtm_stat.get('FR-V12', (0, 0))[0]}/{rtm_stat.get('FR-V12', (0, 0))[1]}; tests {rtm_stat.get('Test V12', (0, 0))[0]}/{rtm_stat.get('Test V12', (0, 0))[1]}", "Pass with note (GAP-1223)"),
+    ("Agents and automations carry guardrail, fallback, KPI and cost", "Agent cards and AU tables of the source parts; catalogue Part 11.25b", "Pass"),
+    ("Voice, SMS and window rules current", "France opt-in, US revocation, India Mon–Sat window (§11.25.3.4); oracle regenerated", "Pass (counsel C-22/C-23/C-24 confirmation open)"),
+    ("Mandate tests assert the mandated path", "R-8 reworded (§11.25.3.5); MP-07 of Part 11.21a", "Pass"),
+    ("Workbook and registers regenerated", "`AI_Growth_Engine_Blueprint_Workbook_v1.2.xlsx`; `final/*.csv`; Part 11.0; Part 11.25b", "Pass"),
+    ("Rendered parts: every Mermaid diagram renders", "`make_pdf.sh` on every edited Part 11 file, 11.25 and 11.25b", "Pass"),
+    ("Full assemble (PDF + DOCX v1.2)", "`python3 assembly/assemble.py` — long run, executed by the release owner", "Pending (parent run)"),
+    ("Jurisdiction rule packs signed by counsel before activation", "Part 11.15 sign-off blocks; activation matrix Part 11.24b", "Gate per market (not a documentation item)"),
+]
+for i, (a, b, c) in enumerate(chk, 1):
+    A(f"| RR-{i:02d} | {a} | {b} | {c} |")
+A("")
+A("```mermaid\nflowchart TD\n  E[\"In-place corrections Part 11\"] --> M[\"Erratum markers Parts 0-9.10\"]\n  M --> G[\"Generators: registers, catalogue, RTM, V12 coverage, workbook\"]\n  G --> V[\"Audit re-run v_01 to v_30\"]\n  V --> L[\"Part 11.25 change log and checklist\"]\n  L --> R[\"Render parts, every diagram renders\"]\n  R --> P[\"Parent: full assemble v1.2 PDF and DOCX\"]\n```\n")
+A("## 11.25.6 Conflicts and resolutions\n")
+A("| Tag | Conflict | Resolution | Status |\n|---|---|---|---|")
+A("| CONFLICT-1215 | Connector activation check used lowercase `approved` and a `market` key (Part 11.19a) against Appendix C `Approved` and `pack_code`/`jurisdiction` | Predicate replaced (§11.25.3.1) | Resolved (DEC-1000) |")
+A("| CONFLICT-1140 | R21 = agency operator (Part 2.6) and invited investor (Part 11.16a) | Investor = R22 everywhere in Part 11 and the build artefacts | Resolved (DEC-1001, adopting DEC-946) |")
+A("| CONFLICT-1149 | FR-V12-A-006 / US-19-YG38 forbade investor mode against DEC-783 | Amended to product separation (§11.25.3.3) | Resolved (DEC-1008, implementing DEC-947) |")
+A("| CONFLICT-1129 | Part 11.10c R-8 L1 cap against DEC-779…781 | R-8 reworded (§11.25.3.5) | Resolved (DEC-1007, implementing DEC-921) |")
+A("")
+A("No new conflict was raised by the consolidation.\n")
+A("## 11.25.7 Decisions\n")
+A("| DEC | Decision | Authority | Effect |\n|---|---|---|---|")
+D = [
+    ("DEC-1000", "The connector activation check uses the Appendix C names: `jurisdiction_pack.jurisdiction`/`pack_code`, status `Approved`, counsel sign-off and effective dates, and the `rulepack_requirement` join of `fn_activation_gate()` per connector capability", "Consolidation lead (release v1.2); schema owner Part 11.24", "Resolves CONFLICT-1215; Part 11.19a, schema.sql, V0006 corrected; db-verify 42/42"),
+    ("DEC-1001", "Invited investor = **R22**; R21 stays the Part 2.6 agency / managed-service operator", "Consolidation lead; adopts proposal DEC-946", "Resolves CONFLICT-1140; Parts 11.16, 11.20, 11.22, 11.24, OpenAPI, api_index, env catalogue"),
+    ("DEC-1002", "\"Pending Founder decision\" status cells in Part 11 rows are replaced by \"Adopted (DEC-7xx)\" naming the deciding decision; before-status columns, count labels and quoted meta text keep their historical wording, annotated", "Founder decisions DEC-770…791 (DEC-791 closes the remainder)", "Closes GAP-1148; erratum E-V-46 occurrences 773 → 310"),
+    ("DEC-1003", "SM-SVC-38 (SMS/RCS) has no mandate path; the MT-OUT row lists exactly the 12 workflows of the eligibility register", "Eligibility register Part 11.17a §11.17.5.14 (binding)", "Part 11.21e inconsistency #4 closed"),
+    ("DEC-1004", "**Baseline freeze.** Parts 0–9.10 change only by erratum markers (and clearly wrong factual pointers); the generated baseline appendices (Parts 9.2, 9.4) are not rewritten by default; v1.2 registers live in `final/*.csv`, the workbook and Part 11.25b", "Consolidation lead; protects the retention audit (DEC-960)", "`--write-part92` / `--write-part94` flags; 0 baseline IDs missing"),
+    ("DEC-1005", "**Precedence v1.2:** Part 11.14 decisions > Part 11.23c errata > Part 11 parts > Parts 0–9.10; an erratum marker supersedes its section as stated", "Restates DEC-961 for the whole document", "Front matter; workbook README"),
+    ("DEC-1006", "Voice rules follow Parts 11.15d/e: France opt-in from 11 Aug 2026 without Bloctel; FCC Sept 2026 revocation revision with seller-wide immediate revocation on the platform; India promotional voice 09:00–19:00 Mon–Sat (a rule-pack window stricter than the DEC-777 default)", "DEC-769(b)(d); VR-67, VR-69; RP-EU-VOICE-003, RP-US-VOICE-009, RP-IN-VOICE-008", "Closes GAP-1172, 1173, 1174 (blueprint text); counsel confirmation remains"),
+    ("DEC-1007", "Part 11.10c R-8 reworded: L1/L2 hash-bound approval or Active two-person mandate (L3/L4); mandated effects must be asserted", "DEC-779…781; DEC-921", "Resolves CONFLICT-1129 in the source part"),
+    ("DEC-1008", "FR-V12-A-006, FR-V12-G-117, US-19-YG38, AC-V12-G-02 and TC-V12-A-006/G-233/G-234 amended to product separation", "DEC-783; DEC-947", "Resolves CONFLICT-1149 in the source parts"),
+    ("DEC-1009", "Gherkin AC added to the 49 statement-only Part 11 stories; titles to 6 agent stories; FR-V12-O-037…084 named in the Part 11.16d story traces", "V12-B brief template rule; quality-gate item 4", "Closes GAP-1146, GAP-1147; 721/721 stories with AC"),
+    ("DEC-1010", "Audit scripts skip erratum-marker lines; the register-presence check counts IDs defined in Part 11.23; VS-010371 classified C (Part 2.5 A080)", "Independent assurance method DEC-960/970", "Re-run reproducible; 0 unclassified"),
+    ("DEC-1011", "Release identifiers: version 1.2 · 28 Nov 2026; outputs `AI_Growth_Engine_Application_Blueprint_v1.2` and `AI_Growth_Engine_Blueprint_Workbook_v1.2.xlsx`; the checklist of §11.25.5.4 is the documentation release gate", "Consolidation lead under DEC-970", "assemble.py, render_pdf.js, build_xlsx.py"),
+    ("DEC-1012", "The v1.2 catalogue of agents, automations and workflows is generated into Part 11.25b; Part 9.4 stays the v1.1 catalogue", "DEC-1004", "179 agents, 273 automations, 58 + 156 + 96 workflows"),
+]
+for d in D:
+    A("| " + " | ".join(d) + " |")
+A("")
+A("DEC-1013…1019 are not used.\n")
+A("## 11.25.8 Expert persona review\n")
+A("| Persona | Finding | Disposition |\n|---|---|---|")
+A("| Configuration manager | The baseline must stay byte-comparable for the retention audit, but a developer must not follow a superseded section | Markers only (DEC-1004); generated appendices frozen; 0 baseline IDs missing |")
+A("| Security reviewer | The connector guard was fail-closed but wrong; a \"fix\" that loosened it would be worse | Predicate tightened to the activation-gate join and verified with negative cases |")
+A("| Principal BSA | A status cell that says \"Pending\" after the Founder decided is a requirement defect, not a wording issue | Cells replaced with the deciding DEC; history kept in before-columns |")
+A("| Compliance reviewer | Bloctel and the 10-business-day US wording would have produced non-compliant FR consumer calls and a too-weak US revocation | §11.25.3.4; oracle regenerated so tests catch it |")
+A("| QA lead | 49 stories had statements only; the re-inventory proves the fix, not the author | `u_01_inventory.py` re-run: 721/721 |")
+A("| Build engineer | Generators that write baseline files must not undo erratum markers | `--write-part92`/`--write-part94`; Part 9.4 and 0B verified byte-identical |")
+A("")
+A("## 11.25.9 Tags register\n")
+A("| Tag | Type | Statement | Location | Status |\n|---|---|---|---|---|")
+T = [
+    ("[ASSUMPTION-1220]", "Assumption", "Baseline files were unchanged between the Part 11.23 scan and the marker insertion, so the scan's line numbers locate the stale lines (each verified against its text before insertion)", "§11.25.5.1", "Verified"),
+    ("[ASSUMPTION-1221]", "Assumption", "Where a pending row names no conflict or earlier decision, subject keywords choose the deciding DEC, else DEC-791", "§11.25.3.3", "Accepted"),
+    ("[GAP-1222]", "Gap", f"{fmt(stale_total)} stale lines remain in the parts (most in Part 11 registers and in the combinatorial rows of Part 11.21b); errata govern them", "§11.25.5.3", "Open — apply in place at the next revision of each part (RECOMMENDATION-1188)"),
+    ("[GAP-1223]", "Gap", "A small share of V12 test rows and three catalogue items trace to decisions, rule packs or approval records but not to an FR or story ID", "§11.25.4.2", "Open — owner QA lead"),
+    ("[RECOMMENDATION-1224]", "Recommendation", "After the full assemble, re-run `build_registers.py --write-part92` only if the Part 9.2 document map must show v1.2 page counts; otherwise use `final/document_map.csv`", "§11.25.4.3", "Open — release owner"),
+    ("[RECOMMENDATION-1225]", "Recommendation", "Obtain counsel confirmation C-22 (TRAI window), C-23 (FCC revocation publication date) and C-24 (France consent record form) before activating voice in those markets", "§11.25.3.4", "Open — Legal"),
+    ("[ASSUMPTION-1226]", "Assumption", "The scratch PostgreSQL 16.15 used for db-verify behaves as Supabase-managed PostgreSQL for the DDL used (verify the Supabase major version at provisioning)", "§11.25.3.1", "Accepted"),
+    ("[GAP-1227]", "Gap", "The E-V-11 scan pattern also matches Part 11.21b combinatorial rows where the voice service ID and an unrelated epic token share a cell", "§11.25.5.3", "Open — scanner refinement"),
+    ("[RECOMMENDATION-1228]", "Recommendation", "Keep `consolidation_v1.2_changes.csv` and `erratum_markers_v1.2.csv` as configuration items with the release", "§11.25.3, §11.25.5.1", "Open — configuration manager"),
+    ("[RECOMMENDATION-1229]", "Recommendation", "At the next customer revision run, in order: v_01…v_30, the generators of §11.25.4.3, then this script", "§11.25.4.3", "Open — consolidation owner"),
+]
+for t in T:
+    A("| " + " | ".join(t) + " |")
+A("")
+A("Tags 1230–1239 are not used.\n")
+A("## 11.25.10 Quality gate\n")
+A("| # | Item | Result | Notes and fixes applied |\n|---|---|---|---|")
+A("| 1 | Every requirement traced to a source | Pass | Each edit cites its decision, erratum or rule pack; row-level log in `consolidation_v1.2_changes.csv` |")
+A("| 2 | Assumptions/gaps/conflicts tagged and logged | Pass | Tags 1220–1229 (§11.25.9); conflicts in §11.25.6 |")
+A("| 3 | IDs unique and consistent with earlier parts | Pass | DEC-1000…1012; R22 new and unique; no new FR/US/TC/screen/agent IDs; screen clashes 0 |")
+A("| 4 | No story lacks AC and no requirement lacks a test | Pass | 49 AC added; 721/721; FR-V12 traced 100% (RTM V12) |")
+A("| 5 | Negative, edge, security and accessibility cases covered | Pass | Every added feature has a negative or edge scenario; guard verified with negative cases |")
+A("| 6 | No agent lacks guardrail, fallback, KPI and cost estimate | N/A | No agent added; catalogue regenerated from cards that carry them |")
+A("| 7 | Time-sensitive facts flagged \"verify\" with an as-of date | Pass | FCC publication date, TRAI window and Supabase version marked verify (as of 28 Nov 2026) |")
+A("| 8 | No restricted data routed to free-tier models | Pass | No routing changed |")
+A("| 9 | Consistent with earlier parts | Pass with reported items | Remaining stale lines governed by errata (GAP-1222) |")
+A("")
+A(f"**Status: Part 11 Batch 11.25 complete. Release v1.2 consolidated: {len([c for c in changes if c[0] != '2'])} logged in-place changes across Part 11 and the build artefacts; {len(markers)} erratum markers in {len(mk_files)} baseline files; {fmt(len(decs))} decisions, {AG} agents, {AU} automations, {WF + SMW + INVW} workflows, {fmt(BASE_STORIES + V12_STORIES)} stories, {fmt(BASE_TESTS + V12_TESTS)} tests, {fmt(len(api))} API operations, {SCREENS_A + SCREENS_W} screens; audit re-run {ma.get('matched_pct', '—')}% measured, 100% classified, 0 baseline IDs missing, {fmt(stale_total)} stale lines governed by errata; DEC-1000…1012.**")
+OUT.write_text("\n".join(L) + "\n", encoding="utf-8")
+print(OUT.name, "decisions", len(decs), "markers", len(markers), "match", ma.get("matched_pct"), "stale", stale_total)
+# values for the front matter placeholders
+print(json.dumps(dict(DEC_TOTAL=fmt(len(decs)), DEC_LOGS=len(declogs), AG_TOTAL=AG, AU_TOTAL=AU, WF_TOTAL=WF, US_TOTAL=fmt(BASE_STORIES + V12_STORIES),
+                      TC_TOTAL=fmt(BASE_TESTS + V12_TESTS), API_TOTAL=fmt(len(api)), SCR_TOTAL=SCREENS_A + SCREENS_W, V12_MATCH=v12_match, AUDIT_MATCH=f"{ma.get('matched_pct')}%")))

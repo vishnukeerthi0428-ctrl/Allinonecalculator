@@ -21,6 +21,9 @@
 
 ### 3.2.1.1 Surfaces, namespaces and ingress
 
+> **Erratum v1.2 (E-V-05):** superseded by hosting is Vercel + Supabase + AWS in Mumbai with an EU stack (DEC-421/772/786). See Part 11.23c.
+
+
 BRD §9 / FRD §8 require separate website and Admin ingress allowlists, retained legacy paths, new namespaces and default denial for any route not admitted to the website. Batch 3.1 (§3.1.3.2) implements this with three Django process groups that load **different URL configurations**.
 
 | Namespace | Base path | Served by (process group) | Origin / distribution | Authentication | Who | Default caching | Source |
@@ -1366,6 +1369,9 @@ The general flow is Part 2.2 §2.22.5 (query, then re-query with back-off, human
 
 ### 3.2.6.4 Scheduled reconciliation jobs
 
+> **Erratum v1.2 (E-V-16):** superseded by V12 reconciliation actions are written V12-REC-## (DEC-964). See Part 11.23c.
+
+
 | Job | Schedule | Compares | On mismatch |
 |---|---|---|---|
 | REC-01 Payments | Daily 06:00 IST | Gateway settlements vs Payment/PaymentAllocation and ReceivableEntry | DiscrepancyCase (A074); Critical notification if > ₹1 lakh (§2.30.2) |
@@ -1487,6 +1493,9 @@ Each role reviewed the architecture (Batch 3.1), API and integration design (thi
 
 ### 3.2.8.5 FinOps
 
+> **Erratum v1.2 (E-V-16):** superseded by V12 reconciliation actions are written V12-REC-## (DEC-964). See Part 11.23c.
+
+
 | ID | Concern | Resolution | Residual / owner |
 |---|---|---|---|
 | XR-FIN-01 | B01 ₹5,000 is tight for production + staging | Cost lines with formulas; commitments, scheduled staging, B20 for regional backups (3.1 §3.1.6.2); verdict ₹4,670–5,960 committed | CONFLICT-102, GAP-101, GAP-102; RSK-301 |
@@ -1507,6 +1516,9 @@ Each role reviewed the architecture (Batch 3.1), API and integration design (thi
 | XR-PO-05 | Time to first value for SaaS clients (KPI-25 ≤ 1 business day) | Idempotent provisioning saga triggered by the `client_application` approval (§3.2.2.3); wizard simulation before submit | None |
 
 ### 3.2.8.7 Inconsistencies found across Part 3 batches and earlier parts (reported, not changed in other files)
+
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
 
 | # | Finding | Where | Handling |
 |---|---|---|---|
@@ -1555,6 +1567,9 @@ Tags issued in Batch 3.1: ASSUMPTION-101…106, -109, -110; GAP-101, -102, -104,
 ---
 
 ## 3.2.10 Quality gate: Batch 3.2
+
+> **Erratum v1.2 (E-V-16):** superseded by V12 reconciliation actions are written V12-REC-## (DEC-964). See Part 11.23c.
+
 
 | # | Check | Result | Notes and fixes applied |
 |---|---|---|---|

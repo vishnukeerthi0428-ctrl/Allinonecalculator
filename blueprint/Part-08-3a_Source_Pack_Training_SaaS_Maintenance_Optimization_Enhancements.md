@@ -104,6 +104,9 @@ Every Partially covered, Not covered and Conflict item is listed individually be
 
 ### 8.3.3.1 Document 33: non-screen aspects
 
+> **Erratum v1.2 (E-V-21):** superseded by automatic bid submission allowed under a per-tender bounded mandate (DEC-781). See Part 11.23c.
+
+
 | Aspect | Section | Summary | Status | Blueprint location | Action | New IDs |
 |---|---|---|---|---|---|---|
 | 33-01 | Purpose and operating boundary | Common core (purpose, boundary, counts) | Covered | Part 0/1 | Common core: see document 01/02 coverage |  |

@@ -136,6 +136,9 @@ The source requires an accountable owner to record "decision, approved scope, im
 
 ### 5.5.1 Story points and person-days [ASSUMPTION-150]
 
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 | Parameter | Value | Basis |
 |---|---|---|
 | Scale | Fibonacci 1, 2, 3, 5, 8, 13, written as a range (e.g. "3–5"); > 13 must be split | Part 5 brief |
@@ -374,6 +377,9 @@ Pairwise coverage finds two-factor faults. The highest-risk faults in this produ
 | Statement | "As a [persona (role)], I want [capability] so that [benefit]." Enablers and spikes: "As the [team/consuming epic], we need … so that …" |
 
 ### 5.7.2 Gherkin style
+
+> **Erratum v1.2 (E-V-17):** superseded by promotional window 09:00–21:00 recipient local time unless a stricter rule pack applies (DEC-777). See Part 11.23c.
+
 
 - One `Feature:` per story (= story title). `Background:` holds shared fixtures (tenant, startup, user, flags).
 - Concrete data: INR amounts as Decimal with two places (`₹1,250.00`), ISO-8601 timestamps with offset (`2027-01-15T10:00:00+05:30`), quantities with units (`2 kg`), synthetic names and `example.com`/`.test` domains [ASSUMPTION-153].

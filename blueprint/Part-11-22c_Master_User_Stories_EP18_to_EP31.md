@@ -8964,7 +8964,7 @@ Feature: Solicitation guard and no AI investment advice (SEC-CTL-N-03, N-05)
 
   @perm @BRL-TEN-04
   Scenario: AC-30ZU01-07 Permission – an invited investor sees only their own objects
-    Given invited investor "priya@angelfund.example.com" (R21, Part 11.16a)
+    Given invited investor "priya@angelfund.example.com" (R22, Part 11.16a)
     When she requests investor record INV-0021 of another investor
     Then the portal returns the uniform 404 and the attempt is audited
 
@@ -8987,48 +8987,48 @@ Feature: Solicitation guard and no AI investment advice (SEC-CTL-N-03, N-05)
     Examples: MU08 rows (3-way, seed 1046; space 864; tuples 677/677; +2 baseline-allow)
       | ex | operation | persona | jurisdiction | investor_eligibility | solicitation | autonomy_mandate | region | expected |
       | EX-30ZU01-01 | N-023 | P21/R03 | UK FPO draft | unverified | no relationship | L1 two-person | EU | HOLD PACK_NOT_ACTIVE |
-      | EX-30ZU01-02 | N-023 | P22/R21 | US 506b ✓ | unverified | relationship | L3 IR-msg mandate | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
+      | EX-30ZU01-02 | N-023 | P22/R22 | US 506b ✓ | unverified | relationship | L3 IR-msg mandate | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
       | EX-30ZU01-03 | N-021 | P09/R10 | US 506c ✓ | unverified | relationship | L1 two-person | IN | BLOCK ELIGIBILITY_UNVERIFIED |
       | EX-30ZU01-04 | N-021 | P09/R10 | UK FPO draft | eligible | no relationship | L3 IR-msg mandate | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
       | EX-30ZU01-05 | N-021 | P21/R03 | IN s42 ✓ | sanctions match? | relationship | L3 IR-msg mandate | EU | HOLD for R10 review |
-      | EX-30ZU01-06 | N-023 | P22/R21 | US 506c ✓ | sanctions match? | no relationship | L3 IR-msg mandate | IN | HOLD for R10 review |
-      | EX-30ZU01-07 | N-021 | P22/R21 | US 506b ✓ | eligible | no relationship | L1 two-person | EU | BLOCK GENERAL_SOLICITATION for private routes |
+      | EX-30ZU01-06 | N-023 | P22/R22 | US 506c ✓ | sanctions match? | no relationship | L3 IR-msg mandate | IN | HOLD for R10 review |
+      | EX-30ZU01-07 | N-021 | P22/R22 | US 506b ✓ | eligible | no relationship | L1 two-person | EU | BLOCK GENERAL_SOLICITATION for private routes |
       | EX-30ZU01-08 | N-023 | P21/R03 | IN s42 ✓ | eligible | relationship | L1 two-person | IN | PENDING two approvals (R02 + R10) on the content hash |
       | EX-30ZU01-09 | N-023 | P09/R10 | IN s42 ✓ | sanctions match? | no relationship | L1 two-person | EU→IN (misrouted) | HOLD for R10 review |
-      | EX-30ZU01-10 | N-021 | P22/R21 | UK FPO draft | sanctions match? | relationship | L1 two-person | EU→IN (misrouted) | HOLD for R10 review |
+      | EX-30ZU01-10 | N-021 | P22/R22 | UK FPO draft | sanctions match? | relationship | L1 two-person | EU→IN (misrouted) | HOLD for R10 review |
       | EX-30ZU01-11 | N-023 | P09/R10 | US 506c ✓ | eligible | relationship | L3 IR-msg mandate | EU | ALLOW: factual cited answer |
       | EX-30ZU01-12 | N-021 | P21/R03 | US 506b ✓ | unverified | no relationship | L3 IR-msg mandate | IN | BLOCK ELIGIBILITY_UNVERIFIED |
       | EX-30ZU01-13 | N-021 | P21/R03 | US 506c ✓ | eligible | no relationship | L1 two-person | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
       | EX-30ZU01-14 | N-023 | P09/R10 | UK FPO draft | sanctions match? | relationship | L3 IR-msg mandate | IN | HOLD for R10 review |
-      | EX-30ZU01-15 | N-021 | P22/R21 | IN s42 ✓ | eligible | no relationship | L3 IR-msg mandate | IN | BLOCK GENERAL_SOLICITATION for private routes |
+      | EX-30ZU01-15 | N-021 | P22/R22 | IN s42 ✓ | eligible | no relationship | L3 IR-msg mandate | IN | BLOCK GENERAL_SOLICITATION for private routes |
       | EX-30ZU01-16 | N-023 | P09/R10 | US 506b ✓ | sanctions match? | no relationship | L1 two-person | EU | HOLD for R10 review |
-      | EX-30ZU01-17 | N-023 | P22/R21 | IN s42 ✓ | unverified | relationship | L1 two-person | EU | BLOCK ELIGIBILITY_UNVERIFIED |
+      | EX-30ZU01-17 | N-023 | P22/R22 | IN s42 ✓ | unverified | relationship | L1 two-person | EU | BLOCK ELIGIBILITY_UNVERIFIED |
       | EX-30ZU01-18 | N-023 | P21/R03 | US 506c ✓ | sanctions match? | relationship | L3 IR-msg mandate | EU→IN (misrouted) | HOLD for R10 review |
       | EX-30ZU01-19 | N-021 | P09/R10 | IN s42 ✓ | unverified | no relationship | L3 IR-msg mandate | EU | BLOCK ELIGIBILITY_UNVERIFIED |
       | EX-30ZU01-20 | N-021 | P09/R10 | US 506b ✓ | eligible | relationship | L1 two-person | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
-      | EX-30ZU01-21 | N-023 | P22/R21 | UK FPO draft | eligible | no relationship | L1 two-person | IN | HOLD PACK_NOT_ACTIVE |
+      | EX-30ZU01-21 | N-023 | P22/R22 | UK FPO draft | eligible | no relationship | L1 two-person | IN | HOLD PACK_NOT_ACTIVE |
       | EX-30ZU01-22 | N-021 | P21/R03 | US 506b ✓ | sanctions match? | relationship | L1 two-person | IN | HOLD for R10 review |
-      | EX-30ZU01-23 | N-021 | P22/R21 | US 506c ✓ | unverified | no relationship | L1 two-person | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
+      | EX-30ZU01-23 | N-021 | P22/R22 | US 506c ✓ | unverified | no relationship | L1 two-person | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
       | EX-30ZU01-24 | N-021 | P09/R10 | US 506c ✓ | sanctions match? | no relationship | L1 two-person | EU | HOLD for R10 review |
       | EX-30ZU01-25 | N-021 | P21/R03 | UK FPO draft | eligible | relationship | L3 IR-msg mandate | EU | HOLD PACK_NOT_ACTIVE |
-      | EX-30ZU01-26 | N-021 | P22/R21 | UK FPO draft | unverified | relationship | L3 IR-msg mandate | IN | HOLD PACK_NOT_ACTIVE |
-      | EX-30ZU01-27 | N-023 | P22/R21 | IN s42 ✓ | eligible | relationship | L3 IR-msg mandate | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
+      | EX-30ZU01-26 | N-021 | P22/R22 | UK FPO draft | unverified | relationship | L3 IR-msg mandate | IN | HOLD PACK_NOT_ACTIVE |
+      | EX-30ZU01-27 | N-023 | P22/R22 | IN s42 ✓ | eligible | relationship | L3 IR-msg mandate | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
       | EX-30ZU01-28 | N-023 | P09/R10 | US 506b ✓ | eligible | no relationship | L3 IR-msg mandate | IN | BLOCK GENERAL_SOLICITATION for private routes |
       | EX-30ZU01-29 | N-021 | P21/R03 | IN s42 ✓ | unverified | no relationship | L1 two-person | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
       | EX-30ZU01-30 | N-023 | P21/R03 | US 506b ✓ | sanctions match? | no relationship | L3 IR-msg mandate | EU→IN (misrouted) | HOLD for R10 review |
       | EX-30ZU01-31 | N-023 | P21/R03 | US 506c ✓ | unverified | relationship | L1 two-person | EU | BLOCK ELIGIBILITY_UNVERIFIED |
       | EX-30ZU01-32 | N-023 | P09/R10 | UK FPO draft | unverified | relationship | L1 two-person | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
-      | EX-30ZU01-33 | N-021 | P22/R21 | US 506c ✓ | sanctions match? | relationship | L3 IR-msg mandate | EU | HOLD for R10 review |
+      | EX-30ZU01-33 | N-021 | P22/R22 | US 506c ✓ | sanctions match? | relationship | L3 IR-msg mandate | EU | HOLD for R10 review |
       | EX-30ZU01-34 | N-023 | P09/R10 | IN s42 ✓ | unverified | relationship | L1 two-person | IN | BLOCK ELIGIBILITY_UNVERIFIED |
       | EX-30ZU01-35 | N-021 | P21/R03 | US 506b ✓ | eligible | relationship | L3 IR-msg mandate | EU | ALLOW: relationship provenance → allow |
       | EX-30ZU01-36 | N-021 | P21/R03 | UK FPO draft | sanctions match? | no relationship | L3 IR-msg mandate | IN | HOLD for R10 review |
       | EX-30ZU01-37 | N-023 | P09/R10 | US 506b ✓ | unverified | relationship | L1 two-person | EU | BLOCK ELIGIBILITY_UNVERIFIED |
-      | EX-30ZU01-38 | N-023 | P22/R21 | US 506c ✓ | eligible | relationship | L3 IR-msg mandate | IN | ALLOW: factual cited answer |
+      | EX-30ZU01-38 | N-023 | P22/R22 | US 506c ✓ | eligible | relationship | L3 IR-msg mandate | IN | ALLOW: factual cited answer |
       | EX-30ZU01-39 | N-023 | P09/R10 | IN s42 ✓ | eligible | relationship | L3 IR-msg mandate | EU | ALLOW: factual cited answer |
       | EX-30ZU01-40 | N-023 | P09/R10 | US 506c ✓ | unverified | relationship | L3 IR-msg mandate | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
-      | EX-30ZU01-41 | N-023 | P22/R21 | IN s42 ✓ | sanctions match? | no relationship | L1 two-person | IN | HOLD for R10 review |
-      | EX-30ZU01-42 | N-023 | P22/R21 | UK FPO draft | sanctions match? | no relationship | L3 IR-msg mandate | EU | HOLD for R10 review |
-      | EX-30ZU01-43 | N-023 | P22/R21 | US 506b ✓ | sanctions match? | no relationship | L3 IR-msg mandate | IN | HOLD for R10 review |
+      | EX-30ZU01-41 | N-023 | P22/R22 | IN s42 ✓ | sanctions match? | no relationship | L1 two-person | IN | HOLD for R10 review |
+      | EX-30ZU01-42 | N-023 | P22/R22 | UK FPO draft | sanctions match? | no relationship | L3 IR-msg mandate | EU | HOLD for R10 review |
+      | EX-30ZU01-43 | N-023 | P22/R22 | US 506b ✓ | sanctions match? | no relationship | L3 IR-msg mandate | IN | HOLD for R10 review |
       | EX-30ZU01-44 | N-021 | P09/R10 | UK FPO draft | eligible | relationship | L3 IR-msg mandate | EU | HOLD PACK_NOT_ACTIVE |
       | EX-30ZU01-45 | N-021 | P21/R03 | UK FPO draft | sanctions match? | no relationship | L1 two-person | EU→IN (misrouted) | HOLD for R10 review |
       | EX-30ZU01-46 | N-023 | P21/R03 | US 506c ✓ | eligible | no relationship | L3 IR-msg mandate | IN | BLOCK GENERAL_SOLICITATION for private routes |
@@ -9128,7 +9128,7 @@ Feature: Route caps, no custody and cross-border hold (SEC-CTL-N-09, N-11, N-14)
 
   @perm @BRL-TEN-04
   Scenario: AC-31ZU01-09 Permission – an invited investor sees only their own objects
-    Given invited investor "priya@angelfund.example.com" (R21, Part 11.16a)
+    Given invited investor "priya@angelfund.example.com" (R22, Part 11.16a)
     When she requests investor record INV-0021 of another investor
     Then the portal returns the uniform 404 and the attempt is audited
 
@@ -9151,53 +9151,53 @@ Feature: Route caps, no custody and cross-border hold (SEC-CTL-N-09, N-11, N-14)
     #   N-029 = SEC-CTL-N-14 cross-border hold
     Examples: MU08 rows (3-way, seed 1053; space 1,296; tuples 796/796; +3 baseline-allow)
       | ex | operation | persona | jurisdiction | investor_eligibility | solicitation | autonomy_mandate | region | expected |
-      | EX-31ZU01-01 | N-028 | P22/R21 | US 506b ✓ | sanctions match? | no relationship | L3 IR-msg mandate | IN | HOLD for R10 review |
+      | EX-31ZU01-01 | N-028 | P22/R22 | US 506b ✓ | sanctions match? | no relationship | L3 IR-msg mandate | IN | HOLD for R10 review |
       | EX-31ZU01-02 | N-028 | P09/R10 | US 506c ✓ | eligible | relationship | L1 two-person | IN | PENDING two approvals (R02 + R10) on the content hash |
       | EX-31ZU01-03 | N-029 | P09/R10 | UK FPO draft | sanctions match? | no relationship | L1 two-person | EU→IN (misrouted) | HOLD for R10 review |
       | EX-31ZU01-04 | N-026 | P21/R03 | US 506b ✓ | sanctions match? | relationship | L1 two-person | EU | HOLD for R10 review |
       | EX-31ZU01-05 | N-029 | P21/R03 | IN s42 ✓ | unverified | relationship | L3 IR-msg mandate | IN | BLOCK ELIGIBILITY_UNVERIFIED |
       | EX-31ZU01-06 | N-026 | P09/R10 | US 506c ✓ | unverified | no relationship | L3 IR-msg mandate | EU | BLOCK ELIGIBILITY_UNVERIFIED |
-      | EX-31ZU01-07 | N-029 | P22/R21 | UK FPO draft | eligible | relationship | L3 IR-msg mandate | EU | HOLD PACK_NOT_ACTIVE |
+      | EX-31ZU01-07 | N-029 | P22/R22 | UK FPO draft | eligible | relationship | L3 IR-msg mandate | EU | HOLD PACK_NOT_ACTIVE |
       | EX-31ZU01-08 | N-028 | P21/R03 | IN s42 ✓ | eligible | no relationship | L1 two-person | EU | BLOCK GENERAL_SOLICITATION for private routes |
-      | EX-31ZU01-09 | N-026 | P22/R21 | UK FPO draft | unverified | no relationship | L1 two-person | IN | HOLD PACK_NOT_ACTIVE |
+      | EX-31ZU01-09 | N-026 | P22/R22 | UK FPO draft | unverified | no relationship | L1 two-person | IN | HOLD PACK_NOT_ACTIVE |
       | EX-31ZU01-10 | N-028 | P21/R03 | US 506c ✓ | sanctions match? | relationship | L3 IR-msg mandate | EU→IN (misrouted) | HOLD for R10 review |
-      | EX-31ZU01-11 | N-026 | P22/R21 | IN s42 ✓ | eligible | no relationship | L3 IR-msg mandate | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
-      | EX-31ZU01-12 | N-028 | P22/R21 | US 506b ✓ | unverified | relationship | L1 two-person | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
+      | EX-31ZU01-11 | N-026 | P22/R22 | IN s42 ✓ | eligible | no relationship | L3 IR-msg mandate | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
+      | EX-31ZU01-12 | N-028 | P22/R22 | US 506b ✓ | unverified | relationship | L1 two-person | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
       | EX-31ZU01-13 | N-026 | P09/R10 | UK FPO draft | sanctions match? | relationship | L3 IR-msg mandate | IN | HOLD for R10 review |
       | EX-31ZU01-14 | N-029 | P21/R03 | US 506b ✓ | eligible | no relationship | L3 IR-msg mandate | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
       | EX-31ZU01-15 | N-029 | P09/R10 | US 506b ✓ | unverified | relationship | L1 two-person | EU | BLOCK ELIGIBILITY_UNVERIFIED |
-      | EX-31ZU01-16 | N-029 | P22/R21 | US 506c ✓ | sanctions match? | no relationship | L1 two-person | EU | HOLD for R10 review |
+      | EX-31ZU01-16 | N-029 | P22/R22 | US 506c ✓ | sanctions match? | no relationship | L1 two-person | EU | HOLD for R10 review |
       | EX-31ZU01-17 | N-026 | P09/R10 | IN s42 ✓ | eligible | relationship | L1 two-person | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
       | EX-31ZU01-18 | N-028 | P09/R10 | UK FPO draft | unverified | no relationship | L3 IR-msg mandate | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
       | EX-31ZU01-19 | N-026 | P21/R03 | US 506c ✓ | eligible | no relationship | L3 IR-msg mandate | IN | BLOCK GENERAL_SOLICITATION for private routes |
       | EX-31ZU01-20 | N-028 | P09/R10 | IN s42 ✓ | sanctions match? | relationship | L3 IR-msg mandate | EU | HOLD for R10 review |
       | EX-31ZU01-21 | N-029 | P21/R03 | IN s42 ✓ | sanctions match? | no relationship | L1 two-person | IN | HOLD for R10 review |
       | EX-31ZU01-22 | N-026 | P21/R03 | UK FPO draft | unverified | relationship | L1 two-person | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
-      | EX-31ZU01-23 | N-029 | P22/R21 | US 506c ✓ | unverified | relationship | L3 IR-msg mandate | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
-      | EX-31ZU01-24 | N-029 | P22/R21 | US 506b ✓ | eligible | relationship | L1 two-person | IN | PENDING two approvals (R02 + R10) on the content hash |
+      | EX-31ZU01-23 | N-029 | P22/R22 | US 506c ✓ | unverified | relationship | L3 IR-msg mandate | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
+      | EX-31ZU01-24 | N-029 | P22/R22 | US 506b ✓ | eligible | relationship | L1 two-person | IN | PENDING two approvals (R02 + R10) on the content hash |
       | EX-31ZU01-25 | N-026 | P09/R10 | US 506b ✓ | eligible | no relationship | L3 IR-msg mandate | EU | BLOCK GENERAL_SOLICITATION for private routes |
       | EX-31ZU01-26 | N-028 | P21/R03 | UK FPO draft | unverified | no relationship | L3 IR-msg mandate | EU | HOLD PACK_NOT_ACTIVE |
-      | EX-31ZU01-27 | N-026 | P22/R21 | US 506c ✓ | sanctions match? | relationship | L1 two-person | EU→IN (misrouted) | HOLD for R10 review |
+      | EX-31ZU01-27 | N-026 | P22/R22 | US 506c ✓ | sanctions match? | relationship | L1 two-person | EU→IN (misrouted) | HOLD for R10 review |
       | EX-31ZU01-28 | N-029 | P09/R10 | IN s42 ✓ | unverified | no relationship | L1 two-person | IN | BLOCK ELIGIBILITY_UNVERIFIED |
-      | EX-31ZU01-29 | N-026 | P22/R21 | IN s42 ✓ | unverified | relationship | L1 two-person | EU | BLOCK ELIGIBILITY_UNVERIFIED |
+      | EX-31ZU01-29 | N-026 | P22/R22 | IN s42 ✓ | unverified | relationship | L1 two-person | EU | BLOCK ELIGIBILITY_UNVERIFIED |
       | EX-31ZU01-30 | N-028 | P21/R03 | UK FPO draft | eligible | relationship | L1 two-person | IN | HOLD PACK_NOT_ACTIVE |
       | EX-31ZU01-31 | N-029 | P09/R10 | US 506b ✓ | sanctions match? | relationship | L3 IR-msg mandate | EU→IN (misrouted) | HOLD for R10 review |
-      | EX-31ZU01-32 | N-028 | P22/R21 | US 506c ✓ | eligible | no relationship | L3 IR-msg mandate | EU | BLOCK GENERAL_SOLICITATION for private routes |
+      | EX-31ZU01-32 | N-028 | P22/R22 | US 506c ✓ | eligible | no relationship | L3 IR-msg mandate | EU | BLOCK GENERAL_SOLICITATION for private routes |
       | EX-31ZU01-33 | N-028 | P21/R03 | US 506b ✓ | unverified | no relationship | L3 IR-msg mandate | IN | BLOCK ELIGIBILITY_UNVERIFIED |
       | EX-31ZU01-34 | N-029 | P21/R03 | US 506c ✓ | unverified | relationship | L1 two-person | EU | BLOCK ELIGIBILITY_UNVERIFIED |
       | EX-31ZU01-35 | N-026 | P09/R10 | UK FPO draft | eligible | no relationship | L1 two-person | EU | HOLD PACK_NOT_ACTIVE |
       | EX-31ZU01-36 | N-029 | P09/R10 | US 506c ✓ | eligible | no relationship | L1 two-person | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
-      | EX-31ZU01-37 | N-026 | P22/R21 | IN s42 ✓ | sanctions match? | no relationship | L1 two-person | IN | HOLD for R10 review |
-      | EX-31ZU01-38 | N-028 | P22/R21 | UK FPO draft | sanctions match? | relationship | L1 two-person | EU | HOLD for R10 review |
-      | EX-31ZU01-39 | N-026 | P22/R21 | US 506b ✓ | unverified | no relationship | L1 two-person | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
-      | EX-31ZU01-40 | N-028 | P22/R21 | IN s42 ✓ | unverified | no relationship | L1 two-person | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
+      | EX-31ZU01-37 | N-026 | P22/R22 | IN s42 ✓ | sanctions match? | no relationship | L1 two-person | IN | HOLD for R10 review |
+      | EX-31ZU01-38 | N-028 | P22/R22 | UK FPO draft | sanctions match? | relationship | L1 two-person | EU | HOLD for R10 review |
+      | EX-31ZU01-39 | N-026 | P22/R22 | US 506b ✓ | unverified | no relationship | L1 two-person | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
+      | EX-31ZU01-40 | N-028 | P22/R22 | IN s42 ✓ | unverified | no relationship | L1 two-person | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
       | EX-31ZU01-41 | N-029 | P09/R10 | US 506c ✓ | sanctions match? | no relationship | L1 two-person | IN | HOLD for R10 review |
       | EX-31ZU01-42 | N-029 | P21/R03 | UK FPO draft | unverified | relationship | L3 IR-msg mandate | IN | HOLD PACK_NOT_ACTIVE |
-      | EX-31ZU01-43 | N-028 | P22/R21 | US 506b ✓ | eligible | relationship | L3 IR-msg mandate | EU | ALLOW: receipt evidence only |
-      | EX-31ZU01-44 | N-029 | P22/R21 | IN s42 ✓ | eligible | no relationship | L3 IR-msg mandate | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
-      | EX-31ZU01-45 | N-028 | P22/R21 | UK FPO draft | eligible | no relationship | L1 two-person | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
+      | EX-31ZU01-43 | N-028 | P22/R22 | US 506b ✓ | eligible | relationship | L3 IR-msg mandate | EU | ALLOW: receipt evidence only |
+      | EX-31ZU01-44 | N-029 | P22/R22 | IN s42 ✓ | eligible | no relationship | L3 IR-msg mandate | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
+      | EX-31ZU01-45 | N-028 | P22/R22 | UK FPO draft | eligible | no relationship | L1 two-person | EU→IN (misrouted) | 409 RESIDENCY_ZONE_MISMATCH |
       | EX-31ZU01-46 | N-026 | P21/R03 | IN s42 ✓ | sanctions match? | relationship | L3 IR-msg mandate | EU→IN (misrouted) | HOLD for R10 review |
-      | EX-31ZU01-47 | N-028 | P22/R21 | US 506c ✓ | unverified | relationship | L1 two-person | IN | BLOCK ELIGIBILITY_UNVERIFIED |
+      | EX-31ZU01-47 | N-028 | P22/R22 | US 506c ✓ | unverified | relationship | L1 two-person | IN | BLOCK ELIGIBILITY_UNVERIFIED |
       | EX-31ZU01-48 | N-026 | P09/R10 | US 506b ✓ | unverified | relationship | L3 IR-msg mandate | IN | BLOCK ELIGIBILITY_UNVERIFIED |
       | EX-31ZU01-49 | N-028 | P09/R10 | IN s42 ✓ | eligible | relationship | L3 IR-msg mandate | IN | ALLOW: receipt evidence only |
       | EX-31ZU01-50 | N-029 | P21/R03 | UK FPO draft | sanctions match? | relationship | L1 two-person | EU→IN (misrouted) | HOLD for R10 review |

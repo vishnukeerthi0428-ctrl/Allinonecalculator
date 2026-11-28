@@ -123,7 +123,7 @@
 | DBA Database access, roles, RLS | 16 | 15 | 1 | 15 | 0 | 16 | 0 | 0 |
 | **Total** | **662** | **384** | **471** | **71** | **120** | **662 (100%)** | **0** | **0** |
 
-**Reading the result.** Before this part, 120 of the core aspects were *specified* but **Pending Founder decision** on timing or scope (Conflict), and a further group were *partially covered* (designed, but scheduled for R2/R3 or limited by DEC-421 wording). After this part every aspect is **Matched**: the Founder decisions settle timing and scope, and §11.19.5 supplies the remaining design depth (sequence diagrams, configuration, DDL deltas, APIs, events, runbooks, controls, cut-over, stories and tests). No aspect is left "Pending Founder decision" and none is "Not applicable".
+**Reading the result.** Before this part, 120 of the core aspects were *specified* but **Pending Founder decision** on timing or scope (Conflict), and a further group were *partially covered* (designed, but scheduled for R2/R3 or limited by DEC-421 wording). After this part every aspect is **Matched**: the Founder decisions settle timing and scope, and §11.19.5 supplies the remaining design depth (sequence diagrams, configuration, DDL deltas, APIs, events, runbooks, controls, cut-over, stories and tests). No aspect is left "Pending Founder decision" and none is "Not applicable". *(v1.2: every item counted here as "Pending Founder decision" was adopted by DEC-770…791 — Part 11.14; read as Adopted. Part 11.25.)*
 
 ---
 
@@ -1133,12 +1133,25 @@ ALTER TABLE ge.connector_installation ADD CONSTRAINT connector_gate_ck CHECK (
     legal_review_ref IS NOT NULL AND security_review_ref IS NOT NULL AND dpa_ref IS NOT NULL AND transfer_entry_ref IS NOT NULL
     AND approved_by IS NOT NULL AND approved_by <> requested_by
     AND (provider NOT IN ('sms_dlt_aggregator','voice_cpaas','whatsapp_bsp') OR registration_ref IS NOT NULL)));
--- rule-pack check is a trigger because it reads another table
+-- rule-pack check is a trigger because it reads another table (corrected in v1.2: Appendix C names `jurisdiction`, `pack_code`, status 'Approved'; CONFLICT-1215, DEC-1000, Part 11.25)
 CREATE FUNCTION ge.connector_pack_guard() RETURNS trigger LANGUAGE plpgsql AS $$
 BEGIN
+  -- v1.2 (Part 11.25, CONFLICT-1215 resolved by DEC-1000): Appendix C names. Packs are keyed by
+  -- jurisdiction_pack.jurisdiction / pack_code, status vocabulary 'Approved'; the required packs per
+  -- capability come from ge.rulepack_requirement, the same join as ge.fn_activation_gate().
   IF NEW.environment = 'production' AND NEW.status = 'Active' AND EXISTS (
-       SELECT 1 FROM unnest(NEW.markets) m WHERE NOT EXISTS (
-         SELECT 1 FROM ge.jurisdiction_pack p WHERE p.market = m AND p.status = 'approved' AND p.counsel_signoff_ref IS NOT NULL)) THEN
+       SELECT 1 FROM unnest(NEW.markets) m WHERE
+         NOT EXISTS (SELECT 1 FROM ge.jurisdiction_pack p WHERE p.jurisdiction = m AND p.status = 'Approved'
+                       AND p.counsel_signoff_ref IS NOT NULL AND p.effective_from <= current_date
+                       AND (p.effective_to IS NULL OR p.effective_to >= current_date))
+         OR EXISTS (SELECT 1 FROM ge.rulepack_requirement r
+                     WHERE r.jurisdiction = m
+                       AND r.capability = CASE NEW.provider WHEN 'sms_dlt_aggregator' THEN 'outreach.sms'
+                                            WHEN 'whatsapp_bsp' THEN 'outreach.whatsapp' WHEN 'ses' THEN 'outreach.email'
+                                            WHEN 'voice_cpaas' THEN 'voice.ai_calls' WHEN 'payments' THEN 'payments.mandated' END
+                       AND NOT EXISTS (SELECT 1 FROM ge.jurisdiction_pack p WHERE p.pack_code = r.pack_code AND p.status = 'Approved'
+                                         AND p.counsel_signoff_ref IS NOT NULL AND p.effective_from <= current_date
+                                         AND (p.effective_to IS NULL OR p.effective_to >= current_date)))) THEN
     RAISE EXCEPTION 'CONNECTOR_MARKET_PACK_NOT_APPROVED' USING ERRCODE = 'check_violation'; END IF;
   RETURN NEW; END $$;
 CREATE TRIGGER connector_installation_pack_guard BEFORE INSERT OR UPDATE ON ge.connector_installation

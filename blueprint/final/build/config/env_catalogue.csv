@@ -5,7 +5,7 @@ ENV-03,WEBSITE_ORIGIN,HTTPS URL list,none,Parameter,"api, bff-web",no wildcard; 
 ENV-04,ADMIN_ORIGIN,HTTPS URL,none,Parameter,"api, bff-admin","distinct origin per zone (admin.in.*, admin.eu.*)",Part 4.4b
 ENV-05,OAUTH_ISSUER,HTTPS URL,none,Parameter,bff,discovery reachable at start; iss match,Part 4.4b
 ENV-06,WEBSITE_AUDIENCE / PORTAL_AUDIENCE,string,none,Parameter,bff-web,must differ from ADMIN_AUDIENCE,Part 4.4b; V12 ch36
-ENV-07,ADMIN_AUDIENCE,string,none,Parameter,"bff-admin, api",rejects external identities (R16/R17/R21),Part 4.4b
+ENV-07,ADMIN_AUDIENCE,string,none,Parameter,"bff-admin, api",rejects external identities (R16/R17/R22),Part 4.4b
 ENV-08,DATABASE_SECRET_REF (DATABASE_URL),"Secrets Manager ARN → Supabase pooler DSN, role app_rw",none,Secret ref,api,"sslmode=verify-full; role must be app_rw (never owner, postgres or service_role); transaction pooler",Part 4.4b ENV-08; Part 11.5a; DEC-778
 ENV-08W,WORKER_DATABASE_SECRET_REF,"ARN → pooler DSN, role app_worker",none,Secret ref,"workers, outbox-relay, beat",role app_worker; same rules as ENV-08,Part 11.19b SA-02
 ENV-09,BROKER_SECRET_REF (BROKER_URL),"ARN → Valkey URL (TLS, ACL user per process)",none,Secret ref,"api, workers",TLS; per-process ACL user,Part 4.4b

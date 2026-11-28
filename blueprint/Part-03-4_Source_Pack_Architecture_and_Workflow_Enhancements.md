@@ -23,6 +23,9 @@
 
 ## 3.4.1 Documents reviewed
 
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 All four documents were read completely, line by line. Every table row was also parsed programmatically by `groupB_parse.py` (48 tables, 402 table rows across the four documents), so that no row, ID or threshold was skipped.
 
 **Pattern found.** Each document opens with the same common core as documents 01/02 (product purpose and boundary, the four initial startups, technology and execution principles). Documents 04, 09 and 10 then share three further sections that are **not** in 01/02 (Independent deployment topology, Capacity/reliability/recovery acceptance, Configuration and activation; lines 37–118 are byte-identical in 04, 09 and 10). Every document closes with the common Website/Admin operating contract, the implementation and acceptance controls, an optimization section and the nine-interface expansion table (W31–W34, A109–A113). The common core is registered once (aspects B-CC-01…16) and marked "Common core: see document 01/02 coverage".
@@ -111,6 +114,9 @@ Every aspect is listed. Covered aspects cite the blueprint location that already
 
 #### Document(s) 04/09/10
 
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
+
 | Aspect ID | Section | Aspect | Status | Blueprint location | Action | New IDs |
 |---|---|---|---|---|---|---|
 | B-AR-01 | Independent deployment topology | Browser layer: separate product origin, shared component library only, scoped cache | Covered | Part 3.1 §3.1.3.2 C01/C02, ADR-006, §3.1.11 | Mapped | — |
@@ -164,6 +170,9 @@ Every aspect is listed. Covered aspects cite the blueprint location that already
 | OPT-06-05 | Optimization engineering and acceptance | Noisy neighbour: per-tenant concurrency, quota, fair queue | Covered | ADR-021; Part 6.7 | Mapped (OPT ID cross-reference §3.4.4.4) | — |
 
 #### Document(s) 04
+
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
 
 | Aspect ID | Section | Aspect | Status | Blueprint location | Action | New IDs |
 |---|---|---|---|---|---|---|
@@ -255,6 +264,9 @@ Every aspect is listed. Covered aspects cite the blueprint location that already
 
 #### Document(s) 05
 
+> **Erratum v1.2 (E-V-19):** superseded by investor/fundraising mode and the Investment Automation product are in scope, gated by securities rule packs (DEC-783). See Part 11.23c.
+
+
 | Aspect ID | Section | Aspect | Status | Blueprint location | Action | New IDs |
 |---|---|---|---|---|---|---|
 | B-05-001 | Workflow register — end-to-end execution | 14 workflows with trigger/processing and stop (duplicated twice in 05) | Covered | Part 2.2 WF-01…WF-14 | Common core: see document 01/02 coverage | — |
@@ -340,6 +352,9 @@ Every aspect is listed. Covered aspects cite the blueprint location that already
 | OPT-11-01 | Optimization engineering and acceptance | Provenance and source rights; 100% permitted provenance | Covered | BR-M07; AU-007 | Mapped (OPT ID cross-reference §3.4.4.4) | — |
 
 #### Document(s) 09
+
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
 
 | Aspect ID | Section | Aspect | Status | Blueprint location | Action | New IDs |
 |---|---|---|---|---|---|---|
@@ -674,6 +689,9 @@ This section writes the missing content. Each item states its source aspect(s), 
 ### 3.4.5.1 Part 3.1 Architecture enhancements
 
 #### A. Growth-scale capacity and reliability acceptance (FR-ENH-B-001, FR-ENH-B-003)
+
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
 
 **Why.** Documents 04, 09 and 10 define an initial and a growth capacity matrix. The blueprint sizes the system on DEC-031 design points (Year 1: 25–40 workspaces, 2–10 tenants, 15–60 users; Year 2: 100 workspaces, 30 tenants, 200 users) and validates "10× pilot volume" with LT-11. The pack's growth target (100 external tenants, 250 concurrent staff sessions, 1 M opportunities, 100,000 scheduled actions per day) goes beyond Year 2 in tenants and in data volume and has no load profile [GAP-320], and the tenant counts differ from DEC-031 [CONFLICT-321].
 
@@ -1455,6 +1473,9 @@ The mapping follows Part 8.1 §8.1.2 (re-baselined calendar, CONFLICT-142). WP7 
 
 #### B. Discipline-level effort reconciliation (FR-ENH-B-025, RECOMMENDATION-328)
 
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 **Source.** Doc 04 "proposed base allocation 385 person-days for 149 work items" with a six-discipline split; "dependency-only longest path is 113.5 days assuming … unlimited resources". Part 8.1 estimates from stories (central 416 pd; capacity ≈ 398 pd with uplifts) and has no discipline split [CONFLICT-328].
 
 **Resolution.** Part 8.1's story-based plan governs scope, calendar and critical path. The pack's 385 PD is a second, top-down estimate inside the same BRD §6 envelope (287–483 PD); the 31 PD difference (≈ 8%) is within Part 8's P80 spread. The pack's **discipline shares** are adopted as a cross-check of role capacity:
@@ -1476,6 +1497,9 @@ The mapping follows Part 8.1 §8.1.2 (re-baselined calendar, CONFLICT-142). WP7 
 **Vertical-slice checklist (doc 04).** A story that delivers a named screen is Done only when all eight slice parts exist or are explicitly N/A: (1) migration, (2) transactional service with service card (§3.4.5.3 A), (3) API contract in OpenAPI, (4) React screen with all UI states, (5) worker/outbox path, (6) integration stub or fake adapter, (7) acceptance evidence (tests + EVR), (8) independent review. This extends the Part 5 Definition of Done without changing its IDs.
 
 #### C. Expansion interfaces (W31–W34, A109–A113) task DAG (FR-ENH-B-026)
+
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
 
 | Task | Work | Predecessors | Low / base / high PD | Earliest start (base, unlimited resources) |
 |---|---|---|---|---|
@@ -1787,6 +1811,9 @@ Format as Part 3.1 §3.1.9. All are **Proposed** until the coordinator accepts t
 ---
 
 ## 3.4.6 Conflicts and proposed resolutions
+
+> **Erratum v1.2 (E-V-19):** superseded by investor/fundraising mode and the Investment Automation product are in scope, gated by securities rule packs (DEC-783). See Part 11.23c.
+
 
 | ID | Conflict | Source (pack) | Blueprint position | Proposed resolution | Decision owner |
 |---|---|---|---|---|---|

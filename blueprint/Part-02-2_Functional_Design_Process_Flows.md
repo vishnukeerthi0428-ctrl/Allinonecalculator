@@ -65,6 +65,9 @@ sequenceDiagram
 
 ### 2.6.2 Engine invariants (tested for every flow)
 
+> **Erratum v1.2 (E-V-01):** superseded by consequential actions above L1 only under an Active two-person bounded mandate (DEC-779). See Part 11.23c.
+
+
 | # | Invariant | Source |
 |---|---|---|
 | E-1 | Scope (product, tenant, startup) is resolved from current membership, never from browser-supplied IDs | BRD §2 |

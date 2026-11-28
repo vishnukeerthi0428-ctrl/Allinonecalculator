@@ -31,6 +31,8 @@ def scan(files, with_ranges=True):
     for f in files:
         lab = part_label(f); head = ''
         for n, l in enumerate(open(f, encoding='utf-8'), 1):
+            if l.startswith('> **Erratum v1.2'):   # v1.2 erratum markers (Part 11.25) are pointers, not content
+                continue
             if l.startswith('#'):
                 head = l.lstrip('#').strip()[:80]
             for i in ids_in(l):
@@ -62,6 +64,8 @@ def main():
     for f in bfiles:
         lab = part_label(f)
         for n, l in enumerate(open(f, encoding='utf-8'), 1):
+            if l.startswith('> **Erratum v1.2'):   # v1.2 erratum markers (Part 11.25) are pointers, not content
+                continue
             s = l.strip()
             m = re.match(r'^(?:\|\s*|#+\s*)\**([A-Z][A-Z0-9]*(?:-[A-Za-z0-9]+)+|[AW]\d{2,3})\**\s*(?:\||[ :.—-])\s*(.*)', s)
             if m and m.group(1) in base_ids and m.group(1) not in desc:
@@ -73,6 +77,8 @@ def main():
     for f in p11:
         lab = part_label(f); head = ''
         for n, l in enumerate(open(f, encoding='utf-8'), 1):
+            if l.startswith('> **Erratum v1.2'):   # v1.2 erratum markers (Part 11.25) are pointers, not content
+                continue
             if l.startswith('#'):
                 head = l.lstrip('#').strip()[:80]
             ids = ids_in(l)
@@ -97,6 +103,9 @@ def main():
                 if family(i) and not NEWFAM.match(i):
                     reg_ids[i].add(os.path.relpath(r, BP))
     allpresent = set(rlit) | set(rimp)
+    # v1.2: registers are regenerated over every part (build_registers.py), so IDs defined in Part 11.23 count as present
+    alit, aimp = scan(sorted(f for f in glob.glob(os.path.join(BP, 'Part-11-23*.md'))))
+    allpresent |= set(alit) | set(aimp)
     missing_reg = sorted(i for i in reg_ids if i not in allpresent and i not in blit)
     missing_base = sorted(i for i in base_ids if i not in rlit)
     json.dump(dict(missing_reg={i: sorted(reg_ids[i]) for i in missing_reg}, missing_base=missing_base,

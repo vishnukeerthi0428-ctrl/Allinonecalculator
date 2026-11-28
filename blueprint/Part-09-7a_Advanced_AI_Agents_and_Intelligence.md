@@ -1,6 +1,9 @@
 # AI Growth Engine: Employee Sales & Marketing Automation
 ## Application Blueprint: PART 9 (Batch 9.7a), Advanced AI Agents and Intelligence
 
+> **Erratum v1.2 (E-V-02, E-V-21):** superseded by payments and bid submission allowed only under a bounded mandate; AI still never signs contracts or sets prices autonomously (DEC-779/780/781); automatic bid submission allowed under a per-tender bounded mandate (DEC-781). See Part 11.23c.
+
+
 | Field | Value |
 |---|---|
 | Document | Part 9, Batch 9.7a of 9.7a–9.7b (workstream X1, advanced AI agents and intelligence). Batch 9.7a holds §9.7.1–§9.7.5 (expert panel, opportunity inventory, improvement plan, architecture uplift, agent cards). Batch 9.7b holds §9.7.6–§9.7.18 (automations, workflows, FRs, stories, data/API/screens, tests, governance, effort, cost, decisions, risks, tags, quality gate) |
@@ -195,6 +198,9 @@ flowchart TD
 | WF-23 | WhatsApp concierge with human handoff | Waiting customers | Answers in seconds, human when needed | Should | A2 | WF-04/WF-06 handle inbound and outreach, not concierge sessions |
 
 ### 9.7.2.5 Candidates rejected or deferred
+
+> **Erratum v1.2 (E-V-01):** superseded by consequential actions above L1 only under an Active two-person bounded mandate (DEC-779). See Part 11.23c.
+
 
 | Candidate | Decision | Reason (baseline reference) |
 |---|---|---|

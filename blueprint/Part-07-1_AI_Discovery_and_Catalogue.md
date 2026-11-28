@@ -158,6 +158,9 @@ A cell is "active" when the persona does real work in that stage (● active, ·
 
 ### 7.1.6 Candidate idea register (all 135 ideas with dispositions)
 
+> **Erratum v1.2 (E-V-01, E-V-02):** superseded by consequential actions above L1 only under an Active two-person bounded mandate (DEC-779); payments and bid submission allowed only under a bounded mandate; AI still never signs contracts or sets prices autonomously (DEC-779/780/781). See Part 11.23c.
+
+
 | ID | Candidate idea | Stage | Persona | Pattern | Disposition | Target | Reason / merge note |
 |---|---|---|---|---|---|---|---|
 | CI-001 | Answer anonymous visitors' product questions from approved public knowledge | Support, Intake | P15 | Assistant | Kept (primary) | AG-017 | Primary job of the agent |

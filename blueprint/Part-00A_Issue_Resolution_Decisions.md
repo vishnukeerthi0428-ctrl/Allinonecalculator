@@ -26,6 +26,9 @@ The documents themselves supplied the criteria for every correction:
 
 ## B. Corrections of probable human errors in the source documents
 
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 | DEC | Item | Probable error | Correction (now baseline) |
 |---|---|---|---|
 | DEC-001 | CONFLICT-001: 80% vs 90% precision | Two numbers written for two different gates without saying so | **Two gates.** (a) *Signal classification* (M14) must reach **≥ 80% precision** on ≥ 100 human-reviewed pilot signals to exit Wave 1. (b) *Qualification* (OPT-04-02) must reach **≥ 90% precision** on the approved benchmark set (≥ 200 labelled items per vertical) before any qualification step runs at Supervised (L2) or Controlled Autonomous (L3) level. Below 90%, qualification stays at Assisted (L1, human accepts each item). Recall is also tracked (target ≥ 60%) to stop over-abstention |
@@ -46,6 +49,9 @@ The documents themselves supplied the criteria for every correction:
 ---
 
 ## C. Resolution of gaps
+
+> **Erratum v1.2 (E-V-02, E-V-09, E-V-27):** superseded by payments and bid submission allowed only under a bounded mandate; AI still never signs contracts or sets prices autonomously (DEC-779/780/781); RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787); one responsive Admin build with a compact layout (DEC-623). See Part 11.23c.
+
 
 | DEC | Gap | Decision (baseline from now on) |
 |---|---|---|

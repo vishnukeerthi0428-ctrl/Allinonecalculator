@@ -130,6 +130,9 @@ Every card has the same 19 fields. The fields are produced from one source datas
 
 #### AG-002 AI Quality Judge & Eval Runner
 
+> **Erratum v1.2 (E-V-26):** superseded by AI-judge calibration uses Cohen's κ ≥ 0.8 (DEC-603). See Part 11.23c.
+
+
 | Field | Specification |
 |---|---|
 | Type | Agent · Validator / QA · scope: Product + Delivery |
@@ -610,6 +613,9 @@ Every card has the same 19 fields. The fields are produced from one source datas
 
 #### AG-022 Contract Clause Reviewer
 
+> **Erratum v1.2 (E-V-02):** superseded by payments and bid submission allowed only under a bounded mandate; AI still never signs contracts or sets prices autonomously (DEC-779/780/781). See Part 11.23c.
+
+
 | Field | Specification |
 |---|---|
 | Type | Agent · Validator / QA · scope: Product |
@@ -897,6 +903,9 @@ Every card has the same 19 fields. The fields are produced from one source datas
 | Release | Release 1 · W0 (DEC-006) |
 
 #### AG-034 Coding Assistant
+
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
 
 | Field | Specification |
 |---|---|

@@ -1,8 +1,8 @@
 {
  "status": {
-  "retained unchanged": 10349,
-  "amended": 209,
-  "superseded": 11
+  "retained unchanged": 10345,
+  "amended": 212,
+  "superseded": 12
  },
  "by_family": {
   "AC": {
@@ -21,8 +21,8 @@
    "amended": 3
   },
   "AU": {
-   "amended": 4,
-   "retained unchanged": 116
+   "amended": 5,
+   "retained unchanged": 115
   },
   "BR": {
    "retained unchanged": 204,
@@ -54,8 +54,8 @@
    "amended": 1
   },
   "NFR": {
-   "retained unchanged": 127,
-   "amended": 3
+   "retained unchanged": 126,
+   "amended": 4
   },
   "OKPI": {
    "retained unchanged": 33,
@@ -69,13 +69,14 @@
    "amended": 3
   },
   "SCREEN": {
-   "amended": 72,
-   "retained unchanged": 160,
+   "amended": 73,
+   "retained unchanged": 159,
    "superseded": 1
   },
   "TC": {
-   "retained unchanged": 4633,
-   "amended": 20
+   "retained unchanged": 4632,
+   "amended": 20,
+   "superseded": 1
   },
   "US": {
    "retained unchanged": 470,

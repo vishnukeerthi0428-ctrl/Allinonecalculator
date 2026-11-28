@@ -106,6 +106,9 @@ R = responsible, A = accountable, C = consulted, I = informed. The signed scope 
 
 #### 8.3.5.13.6 SLA framework (SLA-01…SLA-12) [GAP-484] [ASSUMPTION-482] [CONFLICT-482] [CONFLICT-484]
 
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
+
 **No SLA figure is offered to any client until it has been measured for at least three consecutive months in production and approved by the Service Owner** (DEC-044; OPT-20-03; document 34 "no guarantee until measured and contracted"). The schedule below is the template that becomes contractual per client.
 
 | Item | Content | Pilot internal target (binding today) | Contract option (offer only after validation) | Measurement |
@@ -548,6 +551,9 @@ Status counts: Covered 78, Partially covered 20, Conflict 5, Not covered 1. "Cit
 
 #### 8.3.5.15.4 OKPI-01…OKPI-35 registry (renamed from the source's KPI-01…35)
 
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
+
 21 mandatory OKPIs block acceptance (G0): OKPI-01, OKPI-02, OKPI-03, OKPI-04, OKPI-05, OKPI-07, OKPI-08, OKPI-11, OKPI-12, OKPI-16, OKPI-17, OKPI-18, OKPI-19, OKPI-20, OKPI-22, OKPI-23, OKPI-26, OKPI-27, OKPI-28, OKPI-32, OKPI-35. Status counts: Covered 24, Partially covered 5, Conflict 3, Not covered 3.
 
 | OKPI | Metric | Target | Mandatory (blocking) | Measurement context (source) | Blueprint NFR | Blueprint KPI / SLO | Tests | Screen | Owner | Status | Note |
@@ -598,6 +604,9 @@ Status counts: Covered 78, Partially covered 20, Conflict 5, Not covered 1. "Cit
 6. Each OKPI is a MetricDefinition row (ENT-191, CFG-21) with `okpi_code`, `mandatory`, `numeric_domain` (count, bounded ratio, duration, signed ratio), `target_operator`, `target_value`, `unit`, `population_rule`; measured values are MetricSnapshot rows (ENT-192) linked to EVRs (FR-ENH-J-014) [RECOMMENDATION-480].
 
 #### 8.3.5.15.5 Optimization scenarios OPT-TEST-01…24 and UX-QC-01…10 as test cases
+
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
 
 All are **Not run** (source status) and are specified for staging execution with synthetic data; production evidence is collected later for OKPIs that require it.
 
@@ -756,6 +765,9 @@ flowchart TD
 Any step with an external side effect requires current authorization, policy and budget; emergency stop prevents new actions; unknown outcomes enter reconciliation; the optimizer never deploys to production or performs a financial action (document 36 §7).
 
 #### 8.3.5.15.9 Engineering requirements added by the optimization review
+
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
 
 | FR | Requirement | Rules / source | Wave · Epic | Tests |
 |---|---|---|---|---|
@@ -938,6 +950,9 @@ Feature: US-04-EJ01 spend early warning
 ---
 
 ## 8.3.7 Expert persona review
+
+> **Erratum v1.2 (E-V-19):** superseded by investor/fundraising mode and the Investment Automation product are in scope, gated by securities rule packs (DEC-783). See Part 11.23c.
+
 
 | Persona | How the perspective was applied | What they would still flag |
 |---|---|---|

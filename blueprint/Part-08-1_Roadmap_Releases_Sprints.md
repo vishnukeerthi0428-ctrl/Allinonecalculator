@@ -29,6 +29,9 @@
 
 ### 8.1.1.2 Binding inputs used
 
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 | Input | What it fixes for this plan | Source |
 |---|---|---|
 | Team | 4.0 engineering FTE (1 BE, 1 FS, 1 FE, 0.5 QA automation, 0.5 DevOps/SRE contractor) + 0.5 growth/compliance lead; founder/CTO is PO and architect; capacity ≈ 400 pd in 180 days; overflow to W6 by MoSCoW; fallback 3 FTE over ≈ 7.5 months | DEC-005 |
@@ -621,6 +624,9 @@ Per batch: Batch 5.1 (EP-01…EP-07) 155.8 pd central; Batch 5.2 (EP-08…EP-14)
 
 ### 8.1.6.4 Programme total against BRD §6
 
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 ```text
 Planning band (pd)  low     = Σ SP_low  × 0.7 − 5.5 = 456 × 0.7 − 5.5 = 313.7
                     central = Σ SP_mid  × 0.7 − 5.5 = 602 × 0.7 − 5.5 = 415.9   (errata 41: ≈ 416)
@@ -759,6 +765,9 @@ Lead times are typical industry ranges as generally documented by providers; **e
 ## 8.1.8 Registers for this batch
 
 ### 8.1.8.1 Tags issued in Batch 8.1
+
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
 
 | Tag | Statement | Basis | Validate by / owner |
 |---|---|---|---|

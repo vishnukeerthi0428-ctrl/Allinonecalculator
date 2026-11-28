@@ -39,7 +39,7 @@ Automations are deterministic (no LLM call). AU-132 and AU-133 use statistical s
 | AU-140 | Offline replay comparator for prompt candidates | W6+ · A3 | BR-M54; FR-V12-M-082…084; V12 AIX-06 | Candidate created by AG-095 | Replays golden set + 100 recent redacted production inputs through baseline and candidates with a pinned model version; scores with AG-002 rubric and deterministic checks; quality, cost and latency deltas with bootstrap confidence intervals; eligible only if no dimension is worse beyond tolerance and the locked-clause hash matches | Replay report | L3 (internal) | Dispatch off, tool calls stubbed | Failure → candidate stays draft | Report ≤ 24 h | Replay AI cost (M-R7) |
 | AU-141 | Agent tool-call behaviour firewall | W6+ · A2 (first) | BR-M08; FR-V12-M-093…096; ADR-178; DEC-752; V12 AI-12, AIX-09 | Every agent tool call (inline in the gateway) | Per-agent profile: allowed tools (AGT registry), call-count distribution per run, allowed sequences (n-grams), allowed target scopes. Rules BF-01 to BF-08 (§11.13.5.6.7). Actions: allow, throttle, quarantine run (suspend with state kept), kill run | Decision per call; quarantine event; WF-56 incident | L3 within policy (protective) | Fail closed: firewall unavailable → agent tool calls denied (Tier 0 paths continue) | — | 0 undetected seeded exfiltration fixtures; false quarantine ≤ 0.5% of runs | ₹0; added latency ≤ 5 ms p95 |
 | AU-142 | AI content provenance signer and label enforcer | W6+ · A2 | BR-V7-AI-01; FR-V12-M-097; ADR-179; DEC-751 | Generated image, video or audio approved for publication (SM-SVC-27) | Attaches a C2PA manifest (generator = platform, AI-generated assertion, model tier, approval ID) signed with the platform certificate; text assets get the visible label required by the rule pack; verifies the manifest after export; the manifest holds no personal data | Signed asset; verification record | L3 (internal) | Publication blocked when a required label or manifest is missing (AU-128) | Signer down → publication of AI media held | 100% AI media labelled | Certificate (M-R4) |
-| AU-143 | Privacy-preserving cross-tenant benchmark aggregator | W6+ · A4 (Pending Founder decision) | FR-V12-M-098; DEC-747; [CONFLICT-983] | Monthly | Only tenants that opted in by contract; rates and durations only, no content; cohort by industry × size; a cell is published only with ≥ 10 tenants and no tenant > 30% of events; Laplace noise ε = 1 per metric per month; Owner Portfolio startups excluded unless R01 opts in | Benchmark cells | L3 (internal) | Not enabled before the Founder decision | — | 0 re-identifications in audit | ₹0 |
+| AU-143 | Privacy-preserving cross-tenant benchmark aggregator | W6+ · A4 (Adopted (DEC-789)) | FR-V12-M-098; DEC-747; [CONFLICT-983] | Monthly | Only tenants that opted in by contract; rates and durations only, no content; cohort by industry × size; a cell is published only with ≥ 10 tenants and no tenant > 30% of events; Laplace noise ε = 1 per metric per month; Owner Portfolio startups excluded unless R01 opts in | Benchmark cells | L3 (internal) | Not enabled before the Founder decision | — | 0 re-identifications in audit | ₹0 |
 
 ### 11.13.5.5 Workflows (WF-41 to WF-56)
 
@@ -836,6 +836,63 @@ All legal content is authored and signed off by counsel before publication [GAP-
 | US-04-YM37 | As the FinOps lead I want all new agents metered to a capped budget line so that spend cannot overrun | 099 | A2 |
 | US-03-YM38 | As a recipient or user I want AI assistance disclosed so that I know where AI was used | 100 | A2 |
 
+**Acceptance criteria added in release v1.2** (Part 11.25 §11.25.3.6; these stories had a statement only). Format as the Part 5.1a template: one feature per story, a happy-path and a negative or edge scenario, IDs `AC-<epic><story>-nn`.
+
+```gherkin
+Feature: US-21-YM08 Bounded auto-tuning with automatic revert (FR-V12-M-022…025)
+  @happy
+  Scenario: AC-21YM08-01 Allowlisted parameter tuned within its band
+    Given parameter PT-03 is allowlisted with band 2–6
+    When AU-126 proposes 5 and the holdout shows improvement
+    Then the change is applied at L2 and logged with before and after values
+  @neg
+  Scenario: AC-21YM08-02 Revert and freeze
+    Given a guard metric worsens after a tuning
+    Then the tuning reverts automatically
+    And no tuning runs during an S1/S2 incident, at budget ≥ 90% or during month-end close
+
+Feature: US-18-YM26 Certified template installed as a draft (FR-V12-M-079, FR-V12-M-080)
+  @happy
+  Scenario: AC-18YM26-01 Install as draft
+    When a tenant installs certified template TPL-12 from the marketplace
+    Then it is created as a draft that needs simulation and approval before activation
+  @neg
+  Scenario: AC-18YM26-02 No consequential autonomy in a template
+    Given a template whose consequential step is above L1
+    Then certification rejects it; consequential steps can run above L1 only under the tenant's own Active bounded mandate (DEC-779)
+
+Feature: US-17-YM36 Privacy-preserving peer benchmarks (FR-V12-M-098; DEC-789, DEC-893)
+  @happy
+  Scenario: AC-17YM36-01 Opted-in cohort of at least 10
+    Given 12 opted-in tenants in a cohort
+    When the monthly benchmark runs in the tenant's residency zone
+    Then the benchmark is published with Laplace noise (epsilon 0.5 per metric per cell) and no tenant-level value
+  @neg
+  Scenario: AC-17YM36-02 Small or dominated cohort
+    Given a cohort of 9 tenants, or one tenant above 30% of the total
+    Then the cell is suppressed and nothing is published for it
+
+Feature: US-04-YM37 New agents metered to a capped budget line (FR-V12-M-099)
+  @happy
+  Scenario: AC-04YM37-01 Usage metered to B25
+    When AG-083 runs
+    Then its tokens and cost are metered to Ledger B line B25 with the agent and tenant IDs
+  @neg
+  Scenario: AC-04YM37-02 Hard cap reached
+    Given B25 usage reaches 100% of the cap
+    Then further calls are refused and the worklist falls back to Tier 0 templates
+
+Feature: US-03-YM38 AI assistance disclosed (FR-V12-M-100)
+  @happy
+  Scenario: AC-03YM38-01 Label on every shown output
+    When an AG-084 note is shown to a user
+    Then it carries the "AI-assisted" label
+  @neg
+  Scenario: AC-03YM38-02 Unlabelled output blocked
+    Given an output without the label reaches a user-facing view
+    Then the render check replaces it with a held state and logs a disclosure violation
+```
+
 ```gherkin
 Feature: Supervised research swarm (US-05-YM01, US-05-YM02)
   Scenario: Swarm plan within limits runs workers in parallel
@@ -1475,7 +1532,7 @@ Local risk IDs (MR-) are used because no RSK range is allocated to this group; t
 
 | Tag | Conflict | Sources | Proposed resolution | Status |
 |---|---|---|---|---|
-| [CONFLICT-983] | Cross-tenant benchmarks (AU-143) use metrics derived from several tenants' data, while V12 BR-V7-AI-05 states customer data stays private and the blueprint enforces strict tenant isolation (MT-10, RLS) | BRD 18 BR-V7-AI-05; DEC-421 controls; panel proposal M18 | Enable only with (1) an explicit contractual opt-in per tenant; (2) aggregate rates and durations only, no content; (3) k ≥ 10 tenants per cell, no tenant > 30%; (4) Laplace noise; (5) Owner Portfolio startups excluded unless R01 opts in; (6) DPIA update. Otherwise drop M18 | **Pending Founder decision** (DEC-747) |
+| [CONFLICT-983] | Cross-tenant benchmarks (AU-143) use metrics derived from several tenants' data, while V12 BR-V7-AI-05 states customer data stays private and the blueprint enforces strict tenant isolation (MT-10, RLS) | BRD 18 BR-V7-AI-05; DEC-421 controls; panel proposal M18 | Enable only with (1) an explicit contractual opt-in per tenant; (2) aggregate rates and durations only, no content; (3) k ≥ 10 tenants per cell, no tenant > 30%; (4) Laplace noise; (5) Owner Portfolio startups excluded unless R01 opts in; (6) DPIA update. Otherwise drop M18 | **Adopted (DEC-789)** (DEC-747) |
 | [CONFLICT-984] | The task named "service-level outcome guarantees"; V12 says public pages make **no outcome guarantees** (W01/W04/W05) | BRD V12 (Discovery row); panel brief | Adopt V12: outcome SLOs are internal objectives only, never displayed publicly or sold as guarantees (FR-V12-M-021) | Resolved (DEC-744, customer revision V12) |
 | [CONFLICT-985] | An AI SDR and grouped approvals could pressure the L1 invariant (one human approval per consequential action) | V11 safety invariants; DEC-064; panel proposal M02/M04 | Approval binds each item hash; outliers forced open; payment, contract, bid, price and payee items never grouped; no sample-based approval (ADR-171) | Resolved (DEC-745, customer revision V12 BR-V7-AI-02 and MOB-09) |
 
@@ -1487,20 +1544,20 @@ No V12 requirement and no Founder decision is weakened by this part. Safety inva
 
 | DEC | Decision | Authority | Effect |
 |---|---|---|---|
-| DEC-740 | Adopt the Part 11.13 AI improvement catalogue (16 agents, 24 automations, 16 workflows) as change request CR-AIM-01, separately approvable; nothing is built or spent until approved | Pending Founder decision | Catalogue of record grows to 96 / 143 / 54 when approved |
-| DEC-741 | Create release **A4** (Day ≈ 601–720) with entry gate G-A3 (A3 KPIs for 30 days, no unresolved S1, B25 within cap, SDR complaint ≤ 0.1%) | Pending Founder decision | Extends DEC-411 roadmap |
-| DEC-742 | Development budget CR-AIM-01: ₹12.69–41.16 L (central ₹23.91 L); A2 subset CR-AIM-01a ₹5.45–17.89 L (central ₹10.38 L); reserve ₹2.39 L | Pending Founder decision | Outside DEC-230, 416, 417 |
-| DEC-743 | New Ledger B line **B25 "AI improvement inference"** with hard cap ₹5,000/month at pilot, ladder in §11.13.5.13.2; recurring total ₹4,364–21,965/month (base ₹12,986) at steady state | Pending Founder decision | Outside DEC-422; alerts at 70/90/100% (DEC-162) |
+| DEC-740 | Adopt the Part 11.13 AI improvement catalogue (16 agents, 24 automations, 16 workflows) as change request CR-AIM-01, separately approvable; nothing is built or spent until approved | Adopted (DEC-791) | Catalogue of record grows to 96 / 143 / 54 when approved |
+| DEC-741 | Create release **A4** (Day ≈ 601–720) with entry gate G-A3 (A3 KPIs for 30 days, no unresolved S1, B25 within cap, SDR complaint ≤ 0.1%) | Adopted (DEC-791) | Extends DEC-411 roadmap |
+| DEC-742 | Development budget CR-AIM-01: ₹12.69–41.16 L (central ₹23.91 L); A2 subset CR-AIM-01a ₹5.45–17.89 L (central ₹10.38 L); reserve ₹2.39 L | Adopted (DEC-790) | Outside DEC-230, 416, 417 |
+| DEC-743 | New Ledger B line **B25 "AI improvement inference"** with hard cap ₹5,000/month at pilot, ladder in §11.13.5.13.2; recurring total ₹4,364–21,965/month (base ₹12,986) at steady state | Adopted (DEC-791) | Outside DEC-422; alerts at 70/90/100% (DEC-162) |
 | DEC-744 | Outcome SLOs are internal objectives only; no outcome guarantee is shown or sold | Customer revision V12 (28 Nov 2026) | Resolves CONFLICT-984 |
 | DEC-745 | Grouped approval binds per-item hashes; outliers must be opened; consequential finance, contract, bid, price and payee items are never grouped; no sampled approval | Customer revision V12 (28 Nov 2026) | Resolves CONFLICT-985; preserves L1 |
-| DEC-746 | Bounded auto-tuning at L2 only for allowlist PT-01 to PT-12 within bands, with holdout, freezes and auto-revert; blocklist BL-01 to BL-09 is never auto-tuned | Pending Founder decision | Enables AU-126 |
-| DEC-747 | Cross-tenant benchmarks (AU-143) only under the six conditions of CONFLICT-983, or not at all | Pending Founder decision | A4 item conditional |
-| DEC-748 | Template marketplace lists definition-only, certified packages; installs are drafts; commercial terms to be defined [GAP-982] | Pending Founder decision | A4 item |
+| DEC-746 | Bounded auto-tuning at L2 only for allowlist PT-01 to PT-12 within bands, with holdout, freezes and auto-revert; blocklist BL-01 to BL-09 is never auto-tuned | Adopted (DEC-791) | Enables AU-126 |
+| DEC-747 | Cross-tenant benchmarks (AU-143) only under the six conditions of CONFLICT-983, or not at all | Adopted (DEC-789) | A4 item conditional |
+| DEC-748 | Template marketplace lists definition-only, certified packages; installs are drafts; commercial terms to be defined [GAP-982] | Adopted (DEC-775) | A4 item |
 | DEC-749 | Fourteen candidates already covered by V12 or the blueprint are not duplicated (R-01 to R-14); three are rejected on safety grounds (R-11, R-12, R-13) | Customer revision V12 (28 Nov 2026) | No duplicate items |
 | DEC-750 | Reader/actor separation (V12 AIX-09) extends to swarm workers, verifier and all Part 11.13 agents: no agent holds TL-13 dispatch | Customer revision V12 (28 Nov 2026) | Enforced by AU-141 BF-01 |
-| DEC-751 | AI-generated media carries a signed C2PA manifest and the label required by the rule pack (implements BR-V7-AI-01); certificate cost per M-R4 | Pending Founder decision (cost); labelling itself is customer revision V12 | AU-142 |
-| DEC-752 | AU-141 behaviour firewall is a precondition: no Part 11.13 agent is enabled without an approved behaviour profile; profiles learn in shadow for 14 days | Pending Founder decision | Release order in A2 |
-| DEC-753 | Release placement of §11.13.5.14 (A2 / A3 / A4) | Pending Founder decision | Gates G-A1, G-A2, G-A3 |
+| DEC-751 | AI-generated media carries a signed C2PA manifest and the label required by the rule pack (implements BR-V7-AI-01); certificate cost per M-R4 | Adopted (DEC-791) (cost); labelling itself is customer revision V12 | AU-142 |
+| DEC-752 | AU-141 behaviour firewall is a precondition: no Part 11.13 agent is enabled without an approved behaviour profile; profiles learn in shadow for 14 days | Adopted (DEC-791) | Release order in A2 |
+| DEC-753 | Release placement of §11.13.5.14 (A2 / A3 / A4) | Adopted (DEC-791) | Gates G-A1, G-A2, G-A3 |
 | DEC-754 | Procurement negotiation support presents deterministic ranges only; the buyer sets figures and sends; no deceptive tactics; no cross-supplier data | Customer revision V12 (28 Nov 2026) (SM-SVC-39 controls and safety invariant "AI never sets prices") | AG-090 limits |
 | DEC-755 | Knowledge graph is tenant- and startup-scoped, business-role facts only, person nodes reviewed, edges expire with sources | Customer revision V12 (28 Nov 2026) (MT-10, MT-12) | AU-135 rules |
 
@@ -1529,7 +1586,7 @@ No V12 requirement and no Founder decision is weakened by this part. Safety inva
 | GAP-980 | Gap | Legal content of the 11 rule packs and their quarterly upkeep need counsel authoring and quotes | AU-128; AG-086; M-D4; M-R5 | R10; obtain quotes before A2 |
 | GAP-981 | Gap | C2PA signing-certificate issuer, trust-list status and price not yet selected | AU-142; M-R4; ADR-179 | Security lead |
 | GAP-982 | Gap | Marketplace commercial terms (IP licence, revenue share, liability, takedown) undefined | AG-094; WF-54; DEC-748 | Founder / legal before A4 |
-| CONFLICT-983 | Conflict | Cross-tenant benchmarks vs customer-data privacy and tenant isolation | AU-143; §11.13.6 | **Pending Founder decision** (DEC-747) |
+| CONFLICT-983 | Conflict | Cross-tenant benchmarks vs customer-data privacy and tenant isolation | AU-143; §11.13.6 | **Adopted (DEC-789)** (DEC-747) |
 | CONFLICT-984 | Conflict | "Outcome guarantees" vs V12 "no outcome guarantees" | AG-085; §11.13.6 | Resolved by DEC-744 |
 | CONFLICT-985 | Conflict | SDR and grouped approval vs L1 per-action approval | AG-083; AU-122; §11.13.6 | Resolved by DEC-745 / ADR-171 |
 | RECOMMENDATION-986 | Recommendation | Approve the A2 subset (CR-AIM-01a) first; decide A3 and A4 at gates with A2 actuals | §11.13.5.13; §11.13.8 | Founder |
@@ -1557,4 +1614,4 @@ No V12 requirement and no Founder decision is weakened by this part. Safety inva
 | 8 | No restricted data routed to free-tier models | Pass | 15 agents Tier 2 ineligible; AG-096 eligible only for synthetic non-personal inputs, opt-in, default off; AU-004 blocks recipient fields |
 | 9 | Consistent with earlier parts | Pass | DEC-418 (Sonnet primary), DEC-421 (Supabase PostgreSQL for graph, ADR-176), DEC-422/230/231/416/417 budgets untouched; L1 cap and PDP unchanged. Observation for the Programme Office (not fixed here): V12 numbers screens A114–A129 differently from blueprint Part 9.7b; this part uses the blueprint meaning |
 
-**Status: Part 11 Batch 11.13 complete (11.13a and 11.13b). 33 candidates assessed; 19 new capabilities specified (18 Matched, 1 Pending Founder decision); 16 agents, 24 automations, 16 workflows, 100 FRs, 38 stories, 104 tests, 10 ADRs, 16 decisions (6 customer revision V12, 10 pending Founder decision). Development ₹12.69–41.16 L (central ₹23.91 L) and running ₹4,364–21,965 per month (base ₹12,986), both separately approvable.**
+**Status: Part 11 Batch 11.13 complete (11.13a and 11.13b). 33 candidates assessed; 19 new capabilities specified (18 Matched, 1 Pending Founder decision); 16 agents, 24 automations, 16 workflows, 100 FRs, 38 stories, 104 tests, 10 ADRs, 16 decisions (6 customer revision V12, 10 pending Founder decision). Development ₹12.69–41.16 L (central ₹23.91 L) and running ₹4,364–21,965 per month (base ₹12,986), both separately approvable.** *(v1.2: every item counted here as "Pending Founder decision" was adopted by DEC-770…791 — Part 11.14; read as Adopted. Part 11.25.)*

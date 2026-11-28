@@ -1286,8 +1286,8 @@ Feature: Offering registration and counsel sign-off per jurisdiction (A232)
 | ID | US-31-ZN02 |
 | Title | Investor eligibility gate and KYC/AML hand-off (W76, A230) |
 | Type | Compliance |
-| Story | As Invited investor (R21), I want to self-certify, upload evidence and complete KYC with the issuer's provider, so that I can access the documents I am eligible for |
-| Persona / roles | Invited investor (R21) |
+| Story | As Invited investor (R22), I want to self-certify, upload evidence and complete KYC with the issuer's provider, so that I can access the documents I am eligible for |
+| Persona / roles | Invited investor (R22) |
 | Traces | SEC-CTL-N-02/07; FR-V12-N-016, FR-V12-N-020, FR-V12-N-024; AU-202; AG-163 |
 | Priority | Must |
 | Wave | W5 |
@@ -1455,8 +1455,8 @@ Feature: Data-room document intake and readiness (INV-SVC-10 WF01, WF04)
 | ID | US-31-ZN06 |
 | Title | Gated data-room access and invited-investor room (INV-SVC-10-WF02, W75) |
 | Type | Security |
-| Story | As Invited investor (R21), I want to see only documents my grant, NDA, eligibility and the offering sign-off permit, so that confidential and offering documents never reach the wrong person |
-| Persona / roles | Invited investor (R21) |
+| Story | As Invited investor (R22), I want to see only documents my grant, NDA, eligibility and the offering sign-off permit, so that confidential and offering documents never reach the wrong person |
+| Persona / roles | Invited investor (R22) |
 | Traces | FR-V12-N-054, FR-V12-N-138, FR-V12-N-015, FR-V12-N-022; AU-204/221/222 |
 | Priority | Must |
 | Wave | W5 |
@@ -1972,7 +1972,7 @@ Feature: No-AI-advice evaluation suite EVAL-N-ADV
 | Item | Rule for the investment product |
 |---|---|
 | Levels | UT (decision tables, calculators, guards) · CT (DTO schemas, API contracts) · IT (PostgreSQL+RLS, Celery, outbox, provider simulators for email, WhatsApp, calendar, e-sign, KYC, bank import) · SYS · E2E (Playwright) · AIE (eval suites incl. EVAL-N-ADV) · CHAOS · UAT with counsel (manual, SYS-M) |
-| Precondition profiles | PP-N-01 Admin API (issuer staff, startup AppNAI, packs RP-IN-SEC/RP-IN-DPDP active, virtual clock CLK-N = Tue 2027-05-04 10:00 IST) · PP-N-02 Public storefront (anonymous, invest.growth.example.com) · PP-N-03 Invited investor portal (R21, MFA, grants per row) · PP-N-04 Unit (pure decision table/oracle) · PP-N-05 Integration (provider simulators, outbound allowlist guard on) · PP-N-06 Counsel UAT (signed synthetic offering pack) |
+| Precondition profiles | PP-N-01 Admin API (issuer staff, startup AppNAI, packs RP-IN-SEC/RP-IN-DPDP active, virtual clock CLK-N = Tue 2027-05-04 10:00 IST) · PP-N-02 Public storefront (anonymous, invest.growth.example.com) · PP-N-03 Invited investor portal (R22, MFA, grants per row) · PP-N-04 Unit (pure decision table/oracle) · PP-N-05 Integration (provider simulators, outbound allowlist guard on) · PP-N-06 Counsel UAT (signed synthetic offering pack) |
 | Shorthand | NSE = no side effect (no state change, no outbox row, empty provider-simulator log for the correlation id, no budget reservation, denial audit written); U404 = uniform 404 + NSE (as Part 6.2a) |
 | Combinatorial method | Parameters and values declared per model (§11.16.5.15); valid space enumerated with constraints; t-way covering array generated greedily over the valid space (`covering_array`), independently verified by `verify_coverage` (every feasible t-tuple present); risk-based base-choice slices added for the allow paths; exhaustive enumeration where the space ≤ 64. Oracles compute the expected result; the same oracle is implemented as the production decision table, and the test asserts the production result equals the oracle |
 | Strength rule (V12B) | 3-way for law-, money- and safety-critical decisions (PM-N-01 dispatch, PM-N-02 data room, PM-N-03 offers, PM-N-04 receipts); pairwise for PM-N-05/06/07; exhaustive for PM-N-08 (36) and PM-N-09 (48) |
@@ -2342,7 +2342,7 @@ Constraint of PM-N-01: the offering route must belong to the jurisdiction (IN: s
 
 **Generation.** Strength 3; full space 3,456; valid 3,456; feasible t-tuples covered 1,213 of 1,213; 82 array rows + 24 base-choice rows = 106 test cases.
 
-**Common (parameterized form).** Title: Data-room access decision for the row values · Links: TS-N-22 · US-31-ZN06 · INV-SVC-10-WF02; SEC-CTL-N-02/04/07/08 · Preconditions: PP-N-04 for the oracle, PP-N-05 for the system run · Steps: Seed eligibility, KYC, NDA, grant, document, sign-off per row; as R21 GET /api/v1/investor/room-items/{id}/download; read access log · Expected: outcome and reason exactly as the row; any non-allow outcome is NSE.
+**Common (parameterized form).** Title: Data-room access decision for the row values · Links: TS-N-22 · US-31-ZN06 · INV-SVC-10-WF02; SEC-CTL-N-02/04/07/08 · Preconditions: PP-N-04 for the oracle, PP-N-05 for the system run · Steps: Seed eligibility, KYC, NDA, grant, document, sign-off per row; as R22 GET /api/v1/investor/room-items/{id}/download; read access log · Expected: outcome and reason exactly as the row; any non-allow outcome is NSE.
 
 | ID | Data (row) | Expected result (outcome · reason · control) | P | Type | Tech | Auto | Lvl |
 |---|---|---|---|---|---|---|---|
@@ -2977,7 +2977,7 @@ All figures are **estimates**, outside Ledger A/B, funded by DEC-790 as CR-V12-N
 
 | Work package | pd low | pd central | pd high | Cost low | Cost central | Cost high |
 |---|---|---|---|---|---|---|
-| Platform boundary, entitlement, securities gate plug-in (AU-200…208), offering registration and sign-off (A232), eligibility resolver, R21/R10C roles | 45 | 70 | 105 | ₹2.03 L | ₹3.99 L | ₹7.15 L |
+| Platform boundary, entitlement, securities gate plug-in (AU-200…208), offering registration and sign-off (A232), eligibility resolver, R22/R10C roles | 45 | 70 | 105 | ₹2.03 L | ₹3.99 L | ₹7.15 L |
 | Investor-mode website W55–W74, invited-investor portal W75/W76, AU-228 CI gate | 18 | 28 | 42 | ₹0.81 L | ₹1.60 L | ₹2.86 L |
 | INV-SVC-01 Global Funding & Investor Discovery Automation (4 workflows, screens, APIs, entities) | 14 | 22 | 34 | ₹0.63 L | ₹1.25 L | ₹2.31 L |
 | INV-SVC-02 Investor Intelligence & Qualification Automation (4 workflows, screens, APIs, entities) | 16 | 25 | 38 | ₹0.72 L | ₹1.42 L | ₹2.59 L |
@@ -3053,7 +3053,7 @@ Growth scaling: KYC, e-sign and counsel lines scale with active offerings and ju
 
 | Sprint (2 weeks) | Scope | Stories | Exit evidence |
 |---|---|---|---|
-| I-1 | Product boundary, RLS schema `inv`, AU-200, roles R21/R10C, AU-201 consumer, offering registration skeleton | US-30-ZN01, US-30-ZN02, US-31-ZN01 (part) | TS-N-01/02 P0 pass; PM-N-09 green |
+| I-1 | Product boundary, RLS schema `inv`, AU-200, roles R22/R10C, AU-201 consumer, offering registration skeleton | US-30-ZN01, US-30-ZN02, US-31-ZN01 (part) | TS-N-01/02 P0 pass; PM-N-09 green |
 | I-2 | Storefront W55–W74, AU-228, privacy and DSR | US-30-ZN03, US-30-ZN04 | PM-N-06/07 green; a11y pass |
 | I-3 | INV-SVC-01/02/03 WF01–03; AU-202 eligibility; W76 | US-30-ZN05, ZN07, ZN09, US-31-ZN02 | TS-N-05…07 P0; eligibility table UT 100% |
 | I-4 | INV-SVC-04 drafting + AG-166 guard + dispatch; EVAL-N-ADV | US-30-ZN10, ZN11, ZN12, US-31-ZN16 | PM-N-01 3-way green; EVAL recall ≥ 98% |
@@ -3095,7 +3095,7 @@ Growth scaling: KYC, e-sign and counsel lines scale with active offerings and ju
 | DEC-808 | Investor personal and financial data is class Confidential-Financial: no Tier 2, tenant-region only, excluded from cross-tenant benchmarks | Founder decision DEC-783 (28 Nov 2026), specified by Group N | Amends DEC-789 scope |
 | DEC-809 | Formal offers, offering-tagged dispatch, batches and acceptance need two distinct approvers (R02 + R10) bound to the hash per action; no mandate may authorise securities-governed actions (aligned with Group O CP-O-04 / DEC-822); mandates only for non-offering IR messages | Founder decision DEC-783 (28 Nov 2026), specified by Group N | Narrows DEC-779 for this product |
 | DEC-810 | Investor sequence default cap 1 touch per 7 days across channels | Customer revision V12 (28 Nov 2026) | BRL-V12-N-07 [ASSUMPTION-1003] |
-| DEC-811 | New roles: R21 invited investor (portal) and R10C external counsel (sign-off only) | Founder decision DEC-783 (28 Nov 2026), specified by Group N | RBAC §11.16.5.4 |
+| DEC-811 | New roles: R22 invited investor (portal) and R10C external counsel (sign-off only) | Founder decision DEC-783 (28 Nov 2026), specified by Group N | RBAC §11.16.5.4 |
 | DEC-812 | Data-room grants expire by default after 30 days; watermark and access log mandatory | Customer revision V12 (28 Nov 2026) | BRL-V12-N-13 [ASSUMPTION-1014] |
 | DEC-813 | Public investor-mode storefront stays neutral; investor-facing functions invite-only on a separate origin | Customer revision V12 (28 Nov 2026) | Resolves CONFLICT-1008 |
 | DEC-814 | V12 INV API paths and entity names adopted literally under /api/v1/investor/* and schema inv | Customer revision V12 (28 Nov 2026) | API-V12-N-### |

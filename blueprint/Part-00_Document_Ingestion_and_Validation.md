@@ -73,6 +73,9 @@ Neither document numbers its sections. For citations I number the top-level head
 
 ## 0.2 Summary of understanding (under 400 words)
 
+> **Erratum v1.2 (E-V-02, E-V-19, E-V-39):** superseded by payments and bid submission allowed only under a bounded mandate; AI still never signs contracts or sets prices autonomously (DEC-779/780/781); investor/fundraising mode and the Investment Automation product are in scope, gated by securities rule packs (DEC-783); budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 The **AI Growth Engine – Employee Sales & Marketing Automation** is an **independently deployed, multi-tenant, configuration-driven commercial growth platform** (BRD §1). Employees use it to run market intelligence, content and campaigns, outreach, enquiries, project bids, quotes, buy/sell orders, agreements, onboarding, fulfilment and renewals. **Fundraising and investor activity are explicitly excluded.** Those belong to a separate investor application that shares SSO but not product access or data.
 
 The platform serves **25+ owned startups** and **independently onboarded third-party SaaS tenants**. A *tenant* is the security and billing boundary; a *startup* is a legal-entity workspace. The four seed startups have different commercial routes (BRD §1.1, §4):
@@ -224,6 +227,9 @@ The documents have no NFR section. The statements below are non-functional in na
 
 ## 0.4 Gaps register (GAP-###): missing information
 
+> **Erratum v1.2 (E-V-18):** superseded by 24×7 human on-call from Release 2 GA (DEC-773). See Part 11.23c.
+
+
 | ID | Gap | Source context | Impact | Severity | Handling / proposed default | OQ |
 |---|---|---|---|---|---|---|
 | GAP-001 | API catalogue of 302 retained + 19 candidate operations is not attached; only 105 operations are named | BRD §9; FRD §6, §11 | API design completeness, contract tests | High | Part 3 derives a complete API catalogue from the 147 screens + 66 module specs, tagged *DERIVED*; reconcile when the source catalogue arrives | OQ-013 |
@@ -265,6 +271,9 @@ The documents have no NFR section. The statements below are non-functional in na
 
 ## 0.5 Conflicts register (CONFLICT-###): where documents or sections contradict
 
+> **Erratum v1.2 (E-V-19, E-V-39):** superseded by investor/fundraising mode and the Investment Automation product are in scope, gated by securities rule packs (DEC-783); budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 | ID | Conflict | Sources | Resolution proposed (default) | Owner | OQ |
 |---|---|---|---|---|---|
 | CONFLICT-001 | Precision target: "≥80% precision on reviewed pilot sample" vs "Precision ≥90% on approved benchmark" | BRD M14, §8 Day 16–30 vs FRD OPT-04-02 | Two-stage gate: ≥80% to exit the Day 16–30 pilot (signal classification); ≥90% on the approved benchmark before any qualification step runs at Supervised/Controlled-Autonomous level | Product Owner / AI lead | OQ-001 |
@@ -303,6 +312,9 @@ The documents have no NFR section. The statements below are non-functional in na
 
 ## 0.7 Assumptions register (ASSUMPTION-###)
 
+> **Erratum v1.2 (E-V-01):** superseded by consequential actions above L1 only under an Active two-person bounded mandate (DEC-779). See Part 11.23c.
+
+
 | ID | Assumption | Basis | Validate by | Risk if wrong |
 |---|---|---|---|---|
 | ASSUMPTION-000 | Section numbering convention per 0.1.2 | No numbering in source | N/A | Citation confusion |
@@ -330,6 +342,9 @@ The documents have no NFR section. The statements below are non-functional in na
 ---
 
 ## 0.8 Recommendations register (RECOMMENDATION-###): additions fully aligned with the requirements
+
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
 
 You authorized additions that align with the requirements. Each item below fills a gap or strengthens an existing requirement. None changes stated scope.
 

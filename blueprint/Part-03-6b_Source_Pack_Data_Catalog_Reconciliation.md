@@ -84,6 +84,9 @@ Rules: every state change of a milestone writes a `com_fulfillment_event` (UQ-ID
 
 #### (b) Column additions to existing Part 3.3 tables [GAP-389]
 
+> **Erratum v1.2 (E-V-33):** superseded by money in integer minor units (DEC-587). See Part 11.23c.
+
+
 Migration rule (Part 4.3 §4.37.2 applies): a column shown `NOT NULL` without a default is added `NULL` in the expand release, backfilled in batches, then constrained with `CHECK (col IS NOT NULL) NOT VALID` → `VALIDATE CONSTRAINT` → `SET NOT NULL`. Foreign keys on scope-S tables are composite `(tenant_id, startup_id, col) → target(tenant_id, startup_id, id)` per §3.3.5.3; the single-column `REFERENCES` below is shorthand for that rule. Columns holding hashes of personal identifiers are class **Rest**; free-text columns are **Conf** unless stated.
 
 | Domain | Tables changed | Columns added |
@@ -784,6 +787,9 @@ sequenceDiagram
 
 ### 3.6.5.6 Test cases TC-ENH-E-001…036
 
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
+
 | TC | Title | Type | Source | Expected result |
 |---|---|---|---|---|
 | TC-ENH-E-001 | Two tenants × two startups: API, worker, cache, storage and export isolation | SIT / security | Doc 08 acceptance "Tenant and startup isolation" | Zero cross-scope rows or effects; denials audited |
@@ -915,6 +921,9 @@ Feature: Service requests are safe (US-20-EE01)
 ---
 
 ## 3.6.6 Conflicts and proposed resolutions
+
+> **Erratum v1.2 (E-V-09):** superseded by RPO ≤ 15 min in every region and growth-critical RTO ≤ 120 min as a release gate (DEC-771/787). See Part 11.23c.
+
 
 | Tag | Conflict | Proposed resolution | Decision needed from |
 |---|---|---|---|

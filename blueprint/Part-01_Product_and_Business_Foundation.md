@@ -15,6 +15,9 @@
 
 ## 1.1 Executive summary (draft for the final document)
 
+> **Erratum v1.2 (E-V-19, E-V-39):** superseded by investor/fundraising mode and the Investment Automation product are in scope, gated by securities rule packs (DEC-783); budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
+
 **What we are building.** The AI Growth Engine is an independently deployed, multi-tenant, configuration-driven platform. Employees of 25+ owned startups, and of independently onboarded client companies, use it to find, win, deliver and renew **commercial business**. It covers market and tender discovery, evidence-based qualification, compliant omnichannel outreach, content and campaigns, proposals and quotations, contracts, orders and fulfilment, verified payment closure, onboarding and renewal. Fundraising and investor activity are **out of scope** (BRD §1; DEC-002).
 
 **Why.** Today each startup's growth work is manual, scattered across tools, and hard to govern. Leads are not qualified on evidence. Consent and opt-outs are not enforced across channels. AI use is uncontrolled in cost and claims. "Won" deals are not reconciled with cash. The platform replaces this with **one governed engine**: rules-first automation, AI that drafts and classifies but never commits the business, and outcome metrics tied to verified receipts (BRD §12.1, §13.1).
@@ -447,6 +450,9 @@ Persona IDs (P01–P16) are used in user stories (Part 5) and RBAC (Part 2). Per
 ---
 
 ## 1.10 Constraints
+
+> **Erratum v1.2 (E-V-39):** superseded by budget DEC-230 plus the funded V12 change requests (DEC-770/790). See Part 11.23c.
+
 
 | ID | Constraint | Type | Source |
 |---|---|---|---|

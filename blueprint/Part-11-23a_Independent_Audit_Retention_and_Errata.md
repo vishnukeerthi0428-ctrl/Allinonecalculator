@@ -91,34 +91,34 @@ Outputs: `final/coverage_v12/V_audit.csv` (one row per statement, 19,274 rows, w
 
 "Before" is the blueprint without this part; "after" includes Parts 11.23a–c. Both runs used the same snapshot of the other parts.
 
-| Measure | Before (blueprint without Part 11.23) | After (with Part 11.23) | Method |
-|---|---|---|---|
-| Statements extracted (requirement-like) | 19,274 | 19,274 | `v_01_extract.py`: prose sentences with a modal, ID or threshold; every non-header table row; ID headings; 330 OpenAPI operations; 156 DTO schemas; SQL statements |
-| Distinct V12 IDs in the statements | 6,795 | 6,795 | `ID_RE` + screen IDs |
-| ID presence, literal | 90.26% | 90.34% | exact ID string in `Part-*.md` |
-| ID presence, literal + range/compressed | 99.92% | 100.00% | adds range notation (`X-001…045`) and the Part 11.10b compressed test catalogue |
-| Distinct IDs absent | 11 | 0 | listed in §11.23.5.2 |
-| Mean 6-gram containment | 0.491 | 0.504 | share of the statement's 6-word shingles found anywhere in the blueprint |
-| Mean token containment (best passage) | 0.853 | 0.860 | content tokens of the statement found in the best blueprint passage (line ±2) or in the lines carrying its IDs |
-| Threshold presence (1,074 statements with thresholds) | 97.11% | 98.29% | numbers with unit, comparator, currency or decimals found in the matched passage, the ID lines, or a line sharing ≥ 50% of the tokens |
-| Level exact | 5,123 | 5,328 | §11.23.1.3 thresholds |
-| Level strong | 10,698 | 10,828 | §11.23.1.3 thresholds |
-| Level moderate | 2,409 | 2,355 | §11.23.1.3 thresholds |
-| Level weak | 1,015 | 755 | §11.23.1.3 thresholds |
-| Level none | 29 | 8 | §11.23.1.3 thresholds |
-| **Measured lexical match (exact + strong + moderate)** | **94.58%** | **96.04%** | deterministic; reproducible with `v_02_match.py before` and `after` |
+| Measure | Before (blueprint without Part 11.23) | After (with Part 11.23) | Method | v1.2 re-run (Part 11.25) |
+|---|---|---|---|---|
+| Statements extracted (requirement-like) | 19,274 | 19,274 | `v_01_extract.py`: prose sentences with a modal, ID or threshold; every non-header table row; ID headings; 330 OpenAPI operations; 156 DTO schemas; SQL statements | 19,274 |
+| Distinct V12 IDs in the statements | 6,795 | 6,795 | `ID_RE` + screen IDs | 6,795 |
+| ID presence, literal | 90.26% | 90.34% | exact ID string in `Part-*.md` | 90.34% |
+| ID presence, literal + range/compressed | 99.92% | 100.00% | adds range notation (`X-001…045`) and the Part 11.10b compressed test catalogue | 100.00% |
+| Distinct IDs absent | 11 | 0 | listed in §11.23.5.2 | 0 |
+| Mean 6-gram containment | 0.491 | 0.504 | share of the statement's 6-word shingles found anywhere in the blueprint | 0.504 |
+| Mean token containment (best passage) | 0.853 | 0.860 | content tokens of the statement found in the best blueprint passage (line ±2) or in the lines carrying its IDs | 0.860 |
+| Threshold presence (1,074 statements with thresholds) | 97.11% | 98.29% | numbers with unit, comparator, currency or decimals found in the matched passage, the ID lines, or a line sharing ≥ 50% of the tokens | 98.43% |
+| Level exact | 5,123 | 5,328 | §11.23.1.3 thresholds | 5,327 |
+| Level strong | 10,698 | 10,828 | §11.23.1.3 thresholds | 10,827 |
+| Level moderate | 2,409 | 2,355 | §11.23.1.3 thresholds | 2,360 |
+| Level weak | 1,015 | 755 | §11.23.1.3 thresholds | 752 |
+| Level none | 29 | 8 | §11.23.1.3 thresholds | 8 |
+| **Measured lexical match (exact + strong + moderate)** | **94.58%** | **96.04%** | deterministic; reproducible with `v_02_match.py before` and `after` | **96.06%** (before 94.63%) |
 
 **Reading.** The blueprint already reproduced V12 closely: 94.58% of the statements match at moderate level or better before this audit, and 99.92% of V12 ID occurrences are present (literally or through range and compressed notation). The weak residue is concentrated in metadata-heavy registers (FSD 40 source dispositions, prototype lineage, DDL policies) and in a small set of genuinely missing items. After the restored content, the measured match is **96.04%**; the remaining lexical gap is closed by classification, not by copying text (§11.23.2.2).
 
 ### 11.23.2.2 End state of every statement (after classification)
 
-| End state | Statements | Share | Meaning |
-|---|---|---|---|
-| Matched (measured exact/strong/moderate, not triaged) | 18,194 | 94.4% | text, IDs and thresholds found |
-| Covered in different words (cited) | 910 | 4.7% | read in context; part, section, line and ID cited in `V_audit.csv` |
-| Not covered → restored in this part | 164 | 0.9% | FR-V12-V-001…007 at full depth (§11.23.5) |
-| Correctly superseded by a Founder decision | 6 | 0.0% | DEC cited |
-| **Total with a verified end state** | **19,274** | **100%** | 0 unclassified |
+| End state | Statements | Share | Meaning | v1.2 re-run (Part 11.25) |
+|---|---|---|---|---|
+| Matched (measured exact/strong/moderate, not triaged) | 18,194 | 94.4% | text, IDs and thresholds found | 18,206 |
+| Covered in different words (cited) | 910 | 4.7% | read in context; part, section, line and ID cited in `V_audit.csv` | 898 |
+| Not covered → restored in this part | 164 | 0.9% | FR-V12-V-001…007 at full depth (§11.23.5) | 164 |
+| Correctly superseded by a Founder decision | 6 | 0.0% | DEC cited | 6 |
+| **Total with a verified end state** | **19,274** | **100%** | 0 unclassified | **19,274** (0 unclassified) |
 
 ### 11.23.2.3 What was genuinely missing
 

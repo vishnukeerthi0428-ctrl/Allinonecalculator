@@ -1320,6 +1320,9 @@ All are **proposed**; none is in force until the named authority approves it.
 
 ### 9.9.16.1 Tags issued in Part 9.9 (range 700…749)
 
+> **Erratum v1.2 (E-V-01, E-V-28):** superseded by consequential actions above L1 only under an Active two-person bounded mandate (DEC-779); signed outbound webhooks are in the Release 1 developer platform (DEC-645/785). See Part 11.23c.
+
+
 | Tag | Statement | Where | Status |
 |---|---|---|---|
 | ASSUMPTION-700 | X3 team = 2 extended contract engineers + 1 contract data engineer + 1 contract SRE/security engineer + QA 0.5 + UX 0.5 (5.0 FTE) from Day 239 | 9.9.12, 9.9.13 | Open; confirm with DEC-400 |
@@ -1367,6 +1370,9 @@ Numbers 739, 740, 742, 743 and 745–749 are unused and reserved.
 ---
 
 ## 9.9.17 Quality gate: Batch 9.9
+
+> **Erratum v1.2 (E-V-01):** superseded by consequential actions above L1 only under an Active two-person bounded mandate (DEC-779). See Part 11.23c.
+
 
 | # | Check | Result | Notes and fixes applied |
 |---|---|---|---|

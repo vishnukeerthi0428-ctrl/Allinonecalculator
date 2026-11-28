@@ -157,7 +157,7 @@ Columns: V12 test · requirement · priority · title · V12 owner · V12 accept
 | CJ-TC-06 | CJ-R06 | P0 | DLT and registry integration (IN) | Integrations | Unregistered template or unscrubbed list → HOLD. | Not covered | — (no India DLT registry check) | Matched |
 | CJ-TC-07 | CJ-R07 | P0 | Data-subject request workflow | Privacy operations | Erasure under legal hold blocked with reason; due date computed per pack. | Partially covered | TC-03-073; TC-AU-AU011-004 (no per-pack due date) | Matched |
 | CJ-TC-08 | CJ-R08 | P0 | Breach and incident clocks | Security / incident response | Clocks start at detection/awareness; overdue state visible. | Partially covered | TC-ADV-X3-018; Part 4.1 incident response | Matched |
-| CJ-TC-09 | CJ-R09 | P0 | Data residency and region pinning | Cloud / data architecture | EU tenant data never written to IN region storage, and vice versa. | Conflict | TC-01-017 (single approved region, DEC-421) | Pending Founder decision |
+| CJ-TC-09 | CJ-R09 | P0 | Data residency and region pinning | Cloud / data architecture | EU tenant data never written to IN region storage, and vice versa. | Conflict | TC-01-017 (single approved region, DEC-421) | Adopted (DEC-772) |
 | CJ-TC-10 | CJ-R10 | P0 | Children's data | Privacy engineering | Known-minor promotional send → HOLD. | Covered | TC-ENH-G-045; DEC-030 no outreach to minors | Matched |
 | CJ-TC-11 | CJ-R11 | P1 | Retention schedule | Data governance | Expired records deleted or anonymised; deletion log retained. | Covered | TC-NFR-076; TC-ENH-E-019 | Matched |
 | CJ-TC-12 | CJ-R12 | P1 | Cookie consent (website) | Web engineering | Analytics scripts absent until consent; choice persists and can be reopened. | Partially covered | TC-ALN-A-046 (DEC-263); W29/W30 | Matched |

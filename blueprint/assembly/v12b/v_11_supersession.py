@@ -19,6 +19,8 @@ def main():
     for f in p11:
         lab = part_label(f); head = ''
         for n, l in enumerate(open(f, encoding='utf-8'), 1):
+            if l.startswith('> **Erratum v1.2'):   # v1.2 erratum markers (Part 11.25) are pointers, not content
+                continue
             if l.startswith('#'):
                 head = l.lstrip('#').strip()[:70]
             m = re.match(r'^\|\s*\**(DEC-\d{3})\**\s*\|', l)
@@ -75,6 +77,8 @@ def main():
     for f in sorted(glob.glob(os.path.join(BP, 'Part-0*.md'))):
         lab = part_label(f)
         for n, l in enumerate(open(f, encoding='utf-8'), 1):
+            if l.startswith('> **Erratum v1.2'):   # v1.2 erratum markers (Part 11.25) are pointers, not content
+                continue
             m = re.match(r'^(?:\|\s*|#+\s*)\**([A-Z][A-Z0-9]*(?:-[A-Za-z0-9]+)+|[AW]\d{2,3})\**\s*(?:\||[ :.—-])', l.strip())
             if not m or m.group(1) not in base:
                 continue

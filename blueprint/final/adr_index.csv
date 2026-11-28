@@ -105,3 +105,125 @@ ADR-136,"Zero-trust Admin access: passkeys, device certificate and JIT elevation
 ADR-137,BYOK through cross-account KMS keys wrapping per-tenant data keys,"Proposed (A3, Scale plan only) RECOMMENDATION-737",9.9a
 ADR-138,Developer platform as a separate surface and audience,Proposed (A3) RECOMMENDATION-744; requires DEC-403 because Part 3.2 says outbound webhooks are not offered in W0–W6 CONFLICT-721,9.9a
 ADR-139,PWA with offline drafts only,Proposed (A3) RECOMMENDATION-741,9.9a
+ADR-140,Tenant → Organization → Company hierarchy,Proposed,11.5b
+ADR-141,Tenant federation through the reused IdP broker,Proposed (GAP-837),11.5b
+ADR-142,SCIM 2.0 server in core.identity,Proposed,11.5b
+ADR-143,"Permission catalogue, custom roles and SoD trigger",Proposed,11.5b
+ADR-144,Catalogue registry with immutable released versions,Proposed,11.5b
+ADR-145,SKU grants under plan archetypes,Proposed,11.5b
+ADR-146,Append-only usage ledger with atomic reservations,Proposed,11.5b
+ADR-147,In-house rating and invoicing; gateway for collection only,Proposed,11.5b
+ADR-148,Rule-table tax engine with integer minor units,Proposed,11.5b
+ADR-149,Durable provisioning saga,Proposed,11.5b
+ADR-150,V12 layers on DEC-421,Proposed (DEC-589),11.5b
+ADR-151,Region-ready single region,Proposed (DEC-590 pending),11.5b
+ADR-152,Error class registry,Proposed,11.5b
+ADR-153,Backup independent of the database vendor,Proposed (DEC-591 pending),11.5b
+ADR-154,Environment set dev/sit/uat/prod-in,Proposed,11.5b
+ADR-155,Per-SKU release gates and R-phase labels,Proposed,11.5b
+ADR-160,Two-level agent registry: V12 role (AGT) over blueprint implementation agents (AG) and automations (AU),Accepted,11.6b
+ADR-161,Model registry rows (MDL) map onto gateway tiers; provider per DEC-418; eligibility needs seven evidence items,Accepted (provider choice pending CONFLICT-850),11.6b
+ADR-162,"Evaluation evidence keyed by (candidate, workflow, PRM, language, data class, dataset); promotion request ≠ activation",Accepted,11.6b
+ADR-163,Step classes enforced statically; reader/actor separation verified by AU-179,Accepted,11.6b
+ADR-164,Cost per accepted result as the FinOps unit; unpriced units shown in tokens,Accepted,11.6b
+ADR-165,Jurisdiction packs as versioned configuration with stricter default for unreviewed rules,Accepted,11.6b
+ADR-166,Approval records and mandates: R0–R3 classes; R3 mandates disabled,Accepted (R3 pending CONFLICT-854),11.6b
+ADR-167,"Cache and RAG invalidation keyed by purpose, policy and evidence hashes",Accepted,11.6b
+ADR-168,Per-tenant token buckets and weighted fair queues for AI jobs,Accepted,11.6b
+ADR-169,Logical engines as groupings of Django apps; no microservice per engine,Accepted,11.6b
+ADR-170,Swarm = supervisor + bounded parallel read-only workers + independent verifier + deterministic quorum,Accepted in part (no status column),11.13b
+ADR-171,Grouped review with approval bound to each item hash; outliers forced open; ungroupable types,Accepted in part (no status column),11.13b
+ADR-172,"Bounded auto-tuning only on an allowlist with bands, holdout and auto-revert",Accepted in part (no status column),11.13b
+ADR-173,Leakage as deterministic rules over ledger joins; LLM only explains,Accepted in part (no status column),11.13b
+ADR-174,Six safe remediation classes; everything else human-approved,Accepted in part (no status column),11.13b
+ADR-175,Monte Carlo simulation over historical distributions on a shadow configuration,Accepted in part (no status column),11.13b
+ADR-176,"Graph stored as relational node and edge tables in Supabase PostgreSQL with RLS and recursive queries (open-source first, DEC-421)",Accepted in part (no status column),11.13b
+ADR-177,Template package = definition-only manifest referencing registry roles; certification in isolated tenant,Accepted in part (no status column),11.13b
+ADR-178,Inline behaviour firewall in the model gateway with per-agent profiles,Accepted in part (no status column),11.13b
+ADR-179,C2PA manifests via an open-source SDK (verify licence through AU-047) with a platform signing certificate GAP-981,Accepted in part (no status column),11.13b
+ADR-180,Tenant per customer contract; company as scope; portfolio as a revocable grant,"Accepted (Customer revision V12, 28 Nov 2026)",11.1b
+ADR-181,SKU-scoped entitlement ledger with atomic reservation,See part,11.1b
+ADR-182,Neutral storefront; tenant publication only on the tenant's own property,"Accepted (Customer revision V12, 28 Nov 2026)",11.1b
+ADR-183,Metric registry as the single definition of every KPI,"Accepted (Customer revision V12, 28 Nov 2026)",11.1b
+ADR-184,Market-pack activation gate,"Accepted (Customer revision V12, 28 Nov 2026)",11.1b
+ADR-185,SKU entitlement inside the PDP,Accepted in part (no status column),11.2c
+ADR-186,Mandate model for agentic commerce,Accepted in part (no status column),11.2c
+ADR-187,Telecom channel adapters,Accepted in part (no status column),11.2c
+ADR-188,Marketplace connector and order-event ledger,Accepted in part (no status column),11.2c
+ADR-190,Step-class handler library for SKU workflows,Accepted in part (no status column),11.3a
+ADR-191,JSON Schema 2020-12 validation at the run boundary,Accepted in part (no status column),11.3a
+ADR-192,Explicit Blocked state and V12 reason codes,Accepted in part (no status column),11.3a
+ADR-196,Canonical event envelope v2 and an inbox table,Proposed (Customer revision V12),11.4d
+ADR-197,Run and step state model v2,Proposed (Customer revision V12),11.4d
+ADR-198,DTO schema registry with per-workflow projections,Proposed (Customer revision V12),11.4d
+ADR-199,Fair scheduling and hierarchical budget reservation,Proposed (Customer revision V12),11.4d
+ADR-200,One responsive build per frontend with layout classes,Proposed with this part; amends DEC-043 for Admin,11.7b
+ADR-201,"Route manifest as the single source for navigation, inventory and parity tests",Proposed (RECOMMENDATION-883),11.7b
+ADR-202,Shared domain-panel component for the 39 service workspaces,Proposed,11.7b
+ADR-203,Internationalisation with ICU messages and logical CSS properties,Proposed; library choice verify at time of implementation (as of 27 Nov 2026),11.7b
+ADR-204,Anonymous catalogue projection for the public storefront,Proposed,11.7b
+ADR-205,Developer API as a separate host and audience,Accepted in part (no status column),11.8b
+ADR-206,Outbound webhook engine on outbox + Celery,Accepted in part (no status column),11.8b
+ADR-207,Enterprise SSO and SCIM,Accepted in part (no status column),11.8b
+ADR-208,Run gateway as a thin facade,Accepted in part (no status column),11.8b
+ADR-209,API ingress under DEC-421,Accepted in part (no status column),11.8b
+ADR-210,Command-split tenant + company RLS with fail-closed context,Accepted in part (no status column),11.9c
+ADR-211,Hybrid typed + validated-payload domain tables,Accepted in part (no status column),11.9c
+ADR-212,Supabase connection and privilege model,Accepted in part (no status column),11.9c
+ADR-213,Envelope encryption with multi-cloud customer KEKs,Accepted in part (no status column),11.9c
+ADR-214,Business-event fact with metric contract and versioned aggregates,Accepted in part (no status column),11.9c
+ADR-230,Investment as a separate Django app and schema,Accepted in part (no status column),11.16e
+ADR-231,Securities gate as a PDP plug-in,Accepted in part (no status column),11.16e
+ADR-232,Data-room storage and delivery,Accepted in part (no status column),11.16e
+ADR-233,Eligibility resolver as a versioned decision table,Accepted in part (no status column),11.16e
+ADR-234,Receipts ledger append-only with atomic allocation,Accepted in part (no status column),11.16e
+ADR-235,Securities rule-pack activation gate,Accepted in part (no status column),11.16d
+ADR-236,Offer eligibility ledger,Accepted in part (no status column),11.16d
+ADR-237,KYC hand-off pattern,Accepted in part (no status column),11.16d
+ADR-238,Advice-boundary filter,Accepted in part (no status column),11.16d
+ADR-239,Cap-table event sourcing,Accepted in part (no status column),11.16d
+ADR-240,Mandate engine as a module in the Django monolith with its own schema and service API; all effects pass its PDP hook,Accepted in part (no status column),11.17b
+ADR-241,Ledger concurrency by row-locked period counters in PostgreSQL (app_rw),Accepted in part (no status column),11.17b
+ADR-242,did:web + W3C VC 2.0 + JWS envelopes; protocol adapters,Accepted in part (no status column),11.17b
+ADR-243,PSP adapter abstraction with per-region PSP registry and licence evidence,Accepted in part (no status column),11.17b
+ADR-244,Double-entry commerce sub-ledger feeding existing ledgers,Accepted in part (no status column),11.17b
+ADR-245,Portal capability registry + adapter contract + assisted sessions,Accepted in part (no status column),11.17b
+ADR-246,Fence tokens checked at the adapter gateway,Accepted in part (no status column),11.17b
+ADR-247,Combinatorial three-layer test design with executable oracles shared by tests,Accepted in part (no status column),11.17b
+ADR-250,Cascaded voice pipeline behind ports,Accepted in part (no status column),11.18d
+ADR-251,Media plane through a regional voice gateway,Accepted in part (no status column),11.18d
+ADR-252,Recording storage,Accepted in part (no status column),11.18d
+ADR-253,Consent ledger reuse,Accepted in part (no status column),11.18d
+ADR-254,SLO measurement and degradation ladder,Accepted in part (no status column),11.18d
+ADR-255,Tenant federation through the reused IdP as broker,Accepted (DEC-880),11.19b
+ADR-256,In-product SCIM 2.0 server per zone,Accepted,11.19b
+ADR-257,Developer credentials: zone-bound API keys and OAuth client credentials,Accepted (DEC-882/883),11.19b
+ADR-258,Native webhook engine on Celery,Accepted,11.19b
+ADR-259,Connector framework with platform-owned consent and per-field policies,Accepted (DEC-884/885),11.19b
+ADR-260,Regional Vercel projects with personal-data controls,Accepted (DEC-886),11.19b
+ADR-261,Dual-path recovery: Supabase PITR plus in-zone WAL-G standby,Accepted (DEC-888/889),11.19b
+ADR-262,Provider-neutral model registry as the only routing source,Accepted (DEC-890…892),11.19b
+ADR-263,Tenant-level differential privacy for benchmarks,Accepted (DEC-893),11.19b
+ADR-264,Canonical least-privilege database roles on Supabase,Accepted (DEC-894),11.19b
+ADR-265,Squad topology and ownership,Proposed (P5),11.20b
+ADR-266,Activation control plane,Proposed (P5),11.20b
+ADR-267,Region promotion path,Proposed (P5),11.20b
+ADR-268,Single-owner work-package register,Proposed (P5),11.20b
+ADR-269,Continuous certification evidence,Proposed (P5),11.20b
+ADR-270,Model-driven combinatorial test generation,Accepted in part (no status column),11.21e
+ADR-271,Per-zone test environments with an EU test cell from R1,Accepted in part (no status column),11.21e
+ADR-272,Test-only seeding API and simulators,Accepted in part (no status column),11.21e
+ADR-273,Evidence store per zone,Accepted in part (no status column),11.21e
+ADR-274,Impact-based regression selection,Accepted in part (no status column),11.21e
+ADR-275,Story inventory and coverage as code,Accepted (DEC-940),11.22a
+ADR-276,Oracle-derived expected results for generated Examples,Accepted (DEC-945),11.22a
+ADR-280,Hybrid physical schema lineage,Accepted in part (no status column),11.24c
+ADR-281,Contract-first merged OpenAPI 3.1,Accepted in part (no status column),11.24c
+ADR-282,Migration delivery,Accepted in part (no status column),11.24c
+ADR-283,Residency cells,Accepted in part (no status column),11.24c
+ADR-284,Activation gates in the database,Accepted in part (no status column),11.24c
+ADR-285,Pre-production per zone,Accepted in part (no status column),11.24c
+ADR-286,Zone-sequential canary releases,Accepted in part (no status column),11.24c
+ADR-287,Standby promotion as primary growth-RTO path,Accepted in part (no status column),11.24c
+ADR-288,Typed fail-closed configuration,Accepted in part (no status column),11.24c
+ADR-289,Observability per zone,Accepted in part (no status column),11.24c
