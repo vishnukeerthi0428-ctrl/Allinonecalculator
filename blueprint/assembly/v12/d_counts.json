@@ -1,0 +1,31 @@
+{
+ "workflows": 76,
+ "services": 19,
+ "steps": 231,
+ "dto_fields": 620,
+ "acceptance_ids": 660,
+ "source_at": 76,
+ "csv_fields": 3800,
+ "problems": [],
+ "svc_titles": {
+  "SM-SVC-21": "Payment, Invoice & Reconciliation Automation",
+  "SM-SVC-22": "Customer, Partner & Institutional Onboarding Automation",
+  "SM-SVC-23": "Customer Retention, Renewal & Feedback Automation",
+  "SM-SVC-24": "Revenue, Attribution & Sales Forecast Automation",
+  "SM-SVC-25": "Business Document & Knowledge Intelligence Automation",
+  "SM-SVC-26": "AI Voice & Intelligent Telephony Automation",
+  "SM-SVC-27": "Multimodal Creative & Localization Automation",
+  "SM-SVC-28": "Agentic Commerce & AI-to-AI Business Transaction Automation",
+  "SM-SVC-29": "Account-Based Marketing & Enterprise Buying Group Automation",
+  "SM-SVC-30": "Conversion Rate Optimization & Intelligent Experimentation Automation",
+  "SM-SVC-31": "Marketplace & E-commerce Channel Operations Automation",
+  "SM-SVC-32": "Partner, Distributor & Co-Selling Automation",
+  "SM-SVC-33": "Customer Service & Support Operations Automation",
+  "SM-SVC-34": "Product-Led Growth & Usage Intelligence Automation",
+  "SM-SVC-35": "Brand Reputation & Review Intelligence Automation",
+  "SM-SVC-36": "AI Sales Enablement & Coaching Automation",
+  "SM-SVC-37": "Pricing, Offer & Revenue Optimization Automation",
+  "SM-SVC-38": "SMS, RCS & Business Messaging Automation",
+  "SM-SVC-39": "Procurement & Supplier Management Automation"
+ }
+}

@@ -1,0 +1,286 @@
+{
+ "apr_gap": 9,
+ "build_tot": {
+  "H": [
+   130.5,
+   211.6,
+   341.2
+  ],
+  "M": [
+   95.0,
+   155.1,
+   249.7
+  ],
+  "N": [
+   63.4,
+   105.2,
+   168.1
+  ]
+ },
+ "build_all": [
+  289.0,
+  472.0,
+  759.0
+ ],
+ "aspects": 5429,
+ "dups": [],
+ "by_before": {
+  "Partially covered": 2374,
+  "Not covered": 1431,
+  "Covered": 1616,
+  "Conflict": 2,
+  "Not applicable": 6
+ },
+ "by_after": {
+  "Matched": 5382,
+  "Pending Founder decision": 41,
+  "Not applicable (reference-code result, not product evidence)": 3,
+  "Not applicable (prototype evidence boundary)": 3
+ },
+ "by_section": {
+  "V5 optimization requirements and controls (1,342 workflow scenarios)": {
+   "Partially covered": 850,
+   "Not covered": 492
+  },
+  "33.3 Step-level tests (517)": {
+   "Partially covered": 357,
+   "Not covered": 160
+  },
+  "16.4 Evaluation sets (gate for AI-inference step tests)": {
+   "Partially covered": 77,
+   "Not covered": 34
+  },
+  "Service & workflow acceptance": {
+   "Partially covered": 139,
+   "Not covered": 56
+  },
+  "V8 requirement status register (233)": {
+   "Partially covered": 180,
+   "Not covered": 40,
+   "Covered": 12,
+   "Conflict": 1
+  },
+  "V9 Release scenarios XS-01\u202610": {
+   "Covered": 10
+  },
+  "V10 Source-derived lifecycle event sequence": {
+   "Not covered": 7
+  },
+  "V9 UAT-E2E-01 Enquiry to verified payment": {
+   "Not covered": 7
+  },
+  "UAT-E2E-01 automation exceptions": {
+   "Not covered": 5,
+   "Partially covered": 2
+  },
+  "V10 Historical reconciliation controls": {
+   "Partially covered": 2,
+   "Not covered": 1,
+   "Covered": 1
+  },
+  "V12 Verification evidence (enterprise W37\u2013W41)": {
+   "Not covered": 14,
+   "Partially covered": 22
+  },
+  "V12 Verification evidence": {
+   "Partially covered": 43,
+   "Not covered": 34
+  },
+  "V12 Localisation audit": {
+   "Not covered": 8
+  },
+  "V11 Verification evidence": {
+   "Partially covered": 43,
+   "Not covered": 34
+  },
+  "V10 Targeted prototype test evidence": {
+   "Partially covered": 48,
+   "Not covered": 2
+  },
+  "V9 prototype verification (75 checks)": {
+   "Partially covered": 47,
+   "Not covered": 28
+  },
+  "V8 Verification evidence (axe-core)": {
+   "Partially covered": 4
+  },
+  "V8 Verification evidence summary": {
+   "Partially covered": 5
+  },
+  "33.2 V8 prototype verification": {
+   "Partially covered": 49,
+   "Not covered": 22
+  },
+  "V7 Verification test groups": {
+   "Partially covered": 4,
+   "Not covered": 1
+  },
+  "V7 targeted browser check register": {
+   "Partially covered": 353,
+   "Not covered": 77
+  },
+  "V6 browser verification": {
+   "Partially covered": 20,
+   "Not covered": 5
+  },
+  "V5 browser regression evidence": {
+   "Partially covered": 48,
+   "Not covered": 12
+  },
+  "Historical V3 QA results": {
+   "Not covered": 5,
+   "Partially covered": 5
+  },
+  "V4 targeted browser acceptance record": {
+   "Partially covered": 21
+  },
+  "V12 RCTCFE evaluation": {
+   "Not covered": 9
+  },
+  "V12 artifact scores": {
+   "Not covered": 6
+  },
+  "V12 20-dimension scorecard": {
+   "Not covered": 21
+  },
+  "V11 RCTCFE evaluation": {
+   "Not covered": 9
+  },
+  "V11 artifact scores": {
+   "Not covered": 6
+  },
+  "V11 20-dimension scorecard": {
+   "Not covered": 21
+  },
+  "V11 gates": {
+   "Not covered": 5
+  },
+  "V10 historical engineering weights": {
+   "Not covered": 20
+  },
+  "V9 RCTCFE evaluation": {
+   "Not covered": 9
+  },
+  "V8 RCTCFE evaluation": {
+   "Not covered": 9
+  },
+  "V8 artifact scores": {
+   "Not covered": 6
+  },
+  "V8 gates": {
+   "Not covered": 5
+  },
+  "V9 Release KPIs": {
+   "Covered": 34,
+   "Conflict": 1
+  },
+  "V8 requirement status register (233) \u2014 status columns": {
+   "Not covered": 233
+  },
+  "V10 Source coding and review controls": {
+   "Covered": 6
+  },
+  "V8 Prototype code is not production code (backlog)": {
+   "Partially covered": 25,
+   "Not covered": 14
+  },
+  "Source disposition candidates \u2014 Test": {
+   "Covered": 1029
+  },
+  "Source disposition candidates \u2014 QC": {
+   "Covered": 245
+  },
+  "Source disposition candidates \u2014 Task": {
+   "Covered": 162
+  },
+  "closure/test_acceptance.py": {
+   "Covered": 1,
+   "Partially covered": 12
+  },
+  "closure/test_closure.py": {
+   "Covered": 10
+  },
+  "starter/test_completeness_gate.py": {
+   "Covered": 6
+  },
+  "starter/test_reference_extended.py": {
+   "Covered": 10
+  },
+  "starter/test_contract_fixtures.py": {
+   "Covered": 5
+  },
+  "optimization/test_optimization_reference.py": {
+   "Covered": 23
+  },
+  "optimization/test_completeness_optimizer.py": {
+   "Covered": 5,
+   "Partially covered": 6
+  },
+  "optimization_acceptance_scenarios.csv": {
+   "Covered": 24
+  },
+  "closure_effort_review.csv": {
+   "Covered": 7
+  },
+  "acceptance_required_ids.json": {
+   "Covered": 6
+  },
+  "ai_eval_seed.jsonl": {
+   "Covered": 4
+  },
+  "starter_regression.txt": {
+   "Not applicable": 1
+  },
+  "optimization_regression.txt": {
+   "Not applicable": 1
+  },
+  "closure_tests.txt": {
+   "Not applicable": 1
+  },
+  "V12 prose": {
+   "Partially covered": 1,
+   "Not covered": 1
+  },
+  "V11 prose": {
+   "Partially covered": 1,
+   "Not covered": 1
+  },
+  "V10 prose": {
+   "Covered": 2,
+   "Partially covered": 1
+  },
+  "V8 prose": {
+   "Partially covered": 3,
+   "Not covered": 1,
+   "Covered": 2
+  },
+  "V6 prose": {
+   "Partially covered": 1,
+   "Covered": 1
+  },
+  "V5 prose": {
+   "Not covered": 2,
+   "Partially covered": 1,
+   "Covered": 2,
+   "Not applicable": 1
+  },
+  "V9 prose": {
+   "Covered": 1
+  },
+  "V7 prose": {
+   "Partially covered": 2,
+   "Not applicable": 1,
+   "Covered": 6
+  },
+  "V3 prose": {
+   "Partially covered": 2,
+   "Covered": 2
+  },
+  "V4 prose": {
+   "Not applicable": 1
+  },
+  "Panel finding: approval-routed workflow without APPROVAL scenario": {
+   "Not covered": 9
+  }
+ }
+}

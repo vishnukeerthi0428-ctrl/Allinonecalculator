@@ -1,0 +1,22 @@
+| AGT | Role (V12) | Workflows | Services | AI steps | Engines (ch40) | EVAL suites | Blueprint implementers (AG) | Deterministic implementers (AU) | Status before → after |
+|---|---|---|---|---|---|---|---|---|---|
+| AGT-01 | Research intelligence | 4 | 01 | 5 | Research and evidence | 4 | AG-003, AG-004, AG-027, AG-029, AG-041 | AU-007, AU-014, AU-055, AU-069, AU-167 | Partially covered → Matched |
+| AGT-02 | Research planning | 4 | 02 | 6 | Research and evidence | 4 | AG-003, AG-004, AG-005, AG-006, AG-032, AG-041, AG-062 | AU-019, AU-052, AU-055, AU-084 | Partially covered → Matched |
+| AGT-03 | Contact intelligence | 4 | 03 | 3 | Contact intelligence | 3 | AG-008, AG-060 | AU-008, AU-009, AU-018, AU-020, AU-074, AU-171 | Partially covered → Matched |
+| AGT-04 | Qualification | 8 | 04, 16 | 10 | Calendar; Prediction | 7 | AG-006, AG-007, AG-009, AG-011, AG-018, AG-042, AG-052, AG-069 | AU-016, AU-017, AU-019, AU-020, AU-051, AU-056, AU-065, AU-081, AU-091, AU-171 | Partially covered → Matched |
+| AGT-05 | Orchestration | 4 | 05 | 5 | Workflow orchestration | 3 | AG-010, AG-043, AG-044, AG-060 | AU-015, AU-021, AU-058, AU-060, AU-088 | Covered → Matched |
+| AGT-06 | Outreach | 8 | 06, 07 | 6 | Communication | 4 | AG-011, AG-012, AG-049, AG-058, AG-066, AG-120 | AU-008, AU-009, AU-020, AU-022, AU-024, AU-073, AU-077, AU-086, AU-171 | Partially covered → Matched |
+| AGT-07 | Follow-up | 4 | 08 | 2 | Communication | 2 | AG-013, AG-063 | AU-008, AU-022, AU-030, AU-086 | Covered → Matched |
+| AGT-08 | Conversation | 4 | 09 | 4 | AI knowledge and RAG | 4 | AG-013, AG-014, AG-017, AG-021, AG-050, AG-058, AG-121 | AU-073 | Partially covered → Matched |
+| AGT-09 | Meeting intelligence | 4 | 10 | 5 | Calendar | 3 | AG-013, AG-037, AG-045, AG-059 | AU-023, AU-075, AU-150 | Partially covered → Matched |
+| AGT-10 | Content drafting | 8 | 11, 15 | 10 | AI knowledge and RAG; Document generation | 6 | AG-012, AG-018, AG-029, AG-051, AG-055, AG-076 | AU-020, AU-029, AU-065, AU-069, AU-081, AU-150, AU-179 | Partially covered → Matched |
+| AGT-11 | Market intelligence | 8 | 12, 13 | 10 | Communication; Research and evidence | 7 | AG-014, AG-018, AG-026, AG-027, AG-118, AG-119 | AU-029, AU-033 | Partially covered → Matched |
+| AGT-12 | Campaign optimization | 4 | 14 | 6 | Experimentation | 3 | AG-049, AG-051, AG-052 | AU-032, AU-064, AU-065, AU-067 | Covered → Matched |
+| AGT-13 | Document intelligence | 12 | 17, 20, 25 | 12 | AI knowledge and RAG; Document generation; Workflow orchestration | 9 | AG-001, AG-020, AG-023, AG-025, AG-047, AG-055, AG-066, AG-115 | AU-029, AU-035, AU-036, AU-038, AU-046, AU-063, AU-069, AU-089, AU-175 | Partially covered → Matched |
+| AGT-14 | Objection resolution | 4 | 18 | 6 | Document generation | 3 | AG-021, AG-022, AG-046, AG-117 | AU-036, AU-175 | Partially covered → Matched |
+| AGT-15 | Research | 4 | 19 | 5 | Research and evidence | 3 | AG-019, AG-020, AG-047 | AU-034, AU-052 | Covered → Matched |
+| AGT-16 | Financial review | 4 | 21 | 4 | Transaction reconciliation | 3 | AG-024, AG-079, AG-116 | AU-035, AU-037, AU-040, AU-116 | Partially covered → Matched |
+| AGT-17 | Lifecycle planning | 4 | 22 | 4 | Workflow orchestration | 3 | AG-025, AG-030, AG-122 | AU-038, AU-043, AU-090 | Partially covered → Matched |
+| AGT-18 | Lifecycle analysis | 4 | 23 | 7 | Prediction | 4 | AG-011, AG-026, AG-038, AG-067, AG-068 | AU-039, AU-059 | Covered → Matched |
+| AGT-19 | Optimization | 4 | 24 | 3 | Financial calculation | 2 | AG-029, AG-053, AG-054 | AU-040, AU-041, AU-087, AU-096 | Partially covered → Matched |
+| AGT-20 | Domain evidence review | 56 | 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39 | 46 | AI knowledge and RAG; Communication; Contact intelligence; Experimentation; Financial calculation; Identity and permission; Multimodal AI; Prediction; Research and evidence; Transaction reconciliation; Workflow orchestration | 34 | AG-012, AG-013, AG-014, AG-017, AG-023, AG-027, AG-031, AG-032, AG-045, AG-046, AG-048, AG-050, AG-052, AG-055, AG-061, AG-062, AG-067, AG-068, AG-069, AG-070, AG-100, AG-101, AG-102, AG-103, AG-104, AG-105, AG-106, AG-107, AG-108, AG-109, AG-110, AG-111, AG-112, AG-113, AG-114 | AU-027, AU-029, AU-040, AU-048, AU-049, AU-065, AU-082, AU-083, AU-084, AU-085, AU-086, AU-089, AU-091, AU-092, AU-098, AU-102, AU-150, AU-168, AU-171, AU-172, AU-173, AU-175, AU-179 | Partially covered → Matched |

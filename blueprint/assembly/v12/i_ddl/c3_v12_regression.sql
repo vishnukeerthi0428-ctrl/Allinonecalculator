@@ -1,0 +1,79 @@
+-- TC-V12-I-032: FSD V12 DB-T1..T9 and C2-T1..T11 re-run on the C3 build as ge_app with tenant+company context
+\set ON_ERROR_STOP off
+\pset format unaligned
+SET app.deployment_region='IN';
+SET ROLE ge_app;
+\echo 'DB-T1 expect error (composite FK)'
+BEGIN; SELECT t_ctx('00000000-0000-0000-0000-00000000000a','{00000000-0000-0000-0000-0000000000c1}','00000000-0000-0000-0000-0000000000c1');
+SELECT set_config('app.company_ids','{00000000-0000-0000-0000-0000000000c9}',true), set_config('app.write_company_id','00000000-0000-0000-0000-0000000000c9',true);
+INSERT INTO company(tenant_id,company_id,organization_id,legal_name) VALUES ('00000000-0000-0000-0000-00000000000a','00000000-0000-0000-0000-0000000000c9','00000000-0000-0000-0000-0000000000b1','X'); ROLLBACK;
+\echo 'DB-T2 expect error (no context)'
+SELECT count(*) FROM company;  -- C3: company scope applies
+\echo 'DB-T3 expect 1'
+BEGIN; SELECT t_ctx('00000000-0000-0000-0000-00000000000a','{00000000-0000-0000-0000-0000000000c1}','00000000-0000-0000-0000-0000000000c1'); SELECT count(*) FROM company;  -- C3: company scope applies COMMIT;
+\echo 'DB-T4 expect RLS error'
+BEGIN; SELECT t_ctx('00000000-0000-0000-0000-00000000000a','{00000000-0000-0000-0000-0000000000c1}','00000000-0000-0000-0000-0000000000c1');
+INSERT INTO organization(tenant_id,name) VALUES ('00000000-0000-0000-0000-00000000000b','Sneaky'); ROLLBACK;
+\echo 'DB-T5 expect check error'
+BEGIN; SELECT t_ctx('00000000-0000-0000-0000-00000000000a','{00000000-0000-0000-0000-0000000000c1}','00000000-0000-0000-0000-0000000000c1');
+INSERT INTO workflow_run(tenant_id,company_id,sku_id,wf_id,wf_version,business_context,input,status,requested_by,reviewed_by,idempotency_key)
+VALUES ('00000000-0000-0000-0000-00000000000a','00000000-0000-0000-0000-0000000000c1','SM-SVC-01','SM-SVC-01-WF1',1,'{}','{}','Queued','00000000-0000-0000-0000-000000000001','00000000-0000-0000-0000-000000000001','k1'); ROLLBACK;
+\echo 'DB-T6 expect check error'
+BEGIN; SELECT t_ctx('00000000-0000-0000-0000-00000000000a','{00000000-0000-0000-0000-0000000000c1}','00000000-0000-0000-0000-0000000000c1');
+INSERT INTO effect(tenant_id,company_id,run_id,step_id,idempotency_key,preflight_verdict,status) VALUES ('00000000-0000-0000-0000-00000000000a','00000000-0000-0000-0000-0000000000c1','00000000-0000-0000-0000-0000000000e1','s1','e1','HOLD','Intended'); ROLLBACK;
+\echo 'DB-T7 expect check error'
+BEGIN; SELECT t_ctx('00000000-0000-0000-0000-00000000000a','{00000000-0000-0000-0000-0000000000c1}','00000000-0000-0000-0000-0000000000c1');
+INSERT INTO workflow_run(tenant_id,company_id,run_id,sku_id,wf_id,wf_version,business_context,input,status,requested_by,idempotency_key)
+VALUES ('00000000-0000-0000-0000-00000000000a','00000000-0000-0000-0000-0000000000c1','00000000-0000-0000-0000-0000000000e7','SM-SVC-01','SM-SVC-01-WF1',1,'{}','{}','Queued','00000000-0000-0000-0000-000000000001','k7');
+INSERT INTO workflow_step_run(tenant_id,company_id,run_id,step_id,step_class,status,model_id) VALUES ('00000000-0000-0000-0000-00000000000a','00000000-0000-0000-0000-0000000000c1','00000000-0000-0000-0000-0000000000e7','s1','deterministic','Running','m1'); ROLLBACK;
+\echo 'DB-T8 expect unique error'
+BEGIN; SELECT t_ctx('00000000-0000-0000-0000-00000000000a','{00000000-0000-0000-0000-0000000000c1}','00000000-0000-0000-0000-0000000000c1');
+INSERT INTO workflow_run(tenant_id,company_id,sku_id,wf_id,wf_version,business_context,input,status,requested_by,idempotency_key)
+VALUES ('00000000-0000-0000-0000-00000000000a','00000000-0000-0000-0000-0000000000c1','SM-SVC-01','SM-SVC-01-WF1',1,'{}','{}','Queued','00000000-0000-0000-0000-000000000001','dup');
+INSERT INTO workflow_run(tenant_id,company_id,sku_id,wf_id,wf_version,business_context,input,status,requested_by,idempotency_key)
+VALUES ('00000000-0000-0000-0000-00000000000a','00000000-0000-0000-0000-0000000000c1','SM-SVC-01','SM-SVC-01-WF1',1,'{}','{}','Queued','00000000-0000-0000-0000-000000000001','dup'); ROLLBACK;
+\echo 'DB-T9 expect 0'
+BEGIN; SELECT t_ctx('00000000-0000-0000-0000-00000000000a','{00000000-0000-0000-0000-0000000000c1}','00000000-0000-0000-0000-0000000000c1');
+INSERT INTO workflow_run(tenant_id,company_id,sku_id,wf_id,wf_version,business_context,input,status,requested_by,idempotency_key)
+VALUES ('00000000-0000-0000-0000-00000000000a','00000000-0000-0000-0000-0000000000c1','SM-SVC-01','SM-SVC-01-WF1',1,'{}','{}','Queued','00000000-0000-0000-0000-000000000001','t9'); COMMIT;
+BEGIN; SELECT t_ctx('00000000-0000-0000-0000-00000000000b','{00000000-0000-0000-0000-0000000000c2}','00000000-0000-0000-0000-0000000000c2'); SELECT count(*) FROM workflow_run; COMMIT;
+\echo 'C2-T1 expect SoD error'
+BEGIN; SELECT t_ctx('00000000-0000-0000-0000-00000000000a','{00000000-0000-0000-0000-0000000000c1}','00000000-0000-0000-0000-0000000000c1');
+INSERT INTO custom_role(tenant_id,role_id,name) VALUES ('00000000-0000-0000-0000-00000000000a','00000000-0000-0000-0000-0000000000f5','Ops');
+INSERT INTO role_permission VALUES ('00000000-0000-0000-0000-00000000000a','00000000-0000-0000-0000-0000000000f5','Runs:create');
+INSERT INTO role_permission VALUES ('00000000-0000-0000-0000-00000000000a','00000000-0000-0000-0000-0000000000f5','Runs:approve'); ROLLBACK;
+\echo 'C2-T2 expect check error'
+BEGIN; SELECT t_ctx('00000000-0000-0000-0000-00000000000a','{00000000-0000-0000-0000-0000000000c1}','00000000-0000-0000-0000-0000000000c1');
+INSERT INTO export_job(tenant_id,scope,format,requested_by,approved_by,status) VALUES ('00000000-0000-0000-0000-00000000000a','full','jsonl','00000000-0000-0000-0000-000000000001','00000000-0000-0000-0000-000000000001','Running'); ROLLBACK;
+\echo 'C2-T3 expect check error'
+BEGIN; SELECT t_ctx('00000000-0000-0000-0000-00000000000a','{00000000-0000-0000-0000-0000000000c1}','00000000-0000-0000-0000-0000000000c1');
+INSERT INTO sandbox_environment(tenant_id,sandbox_id,name,copies_configuration) VALUES ('00000000-0000-0000-0000-00000000000a','00000000-0000-0000-0000-0000000000d1','sb',true);
+INSERT INTO config_promotion(tenant_id,sandbox_id,requested_by,approved_by,status) VALUES ('00000000-0000-0000-0000-00000000000a','00000000-0000-0000-0000-0000000000d1','00000000-0000-0000-0000-000000000001','00000000-0000-0000-0000-000000000001','Approved'); ROLLBACK;
+\echo 'C2-T4 expect check error'
+BEGIN; SELECT t_ctx('00000000-0000-0000-0000-00000000000a','{00000000-0000-0000-0000-0000000000c1}','00000000-0000-0000-0000-0000000000c1');
+INSERT INTO identity_provider VALUES ('00000000-0000-0000-0000-00000000000a','SAML 2.0','https://idp.example','iss','example.com',false,NULL,true,'required',8,30); ROLLBACK;
+\echo 'C2-T5 expect check error'
+BEGIN; SELECT t_ctx('00000000-0000-0000-0000-00000000000a','{00000000-0000-0000-0000-0000000000c1}','00000000-0000-0000-0000-0000000000c1');
+INSERT INTO sandbox_environment(tenant_id,name,copies_configuration,contains_personal_data) VALUES ('00000000-0000-0000-0000-00000000000a','sb',true,true); ROLLBACK;
+\echo 'C2-T6 expect check error'
+BEGIN; SELECT t_ctx('00000000-0000-0000-0000-00000000000a','{00000000-0000-0000-0000-0000000000c1}','00000000-0000-0000-0000-0000000000c1');
+INSERT INTO connector_installation(tenant_id,connector_id,environment,credential_ref,status) VALUES ('00000000-0000-0000-0000-00000000000a','crm','production','vault://x','Active'); ROLLBACK;
+\echo 'C2-T7 expect check error'
+SET ROLE ge_platform_sec; BEGIN; INSERT INTO security_finding(title,severity,found_at,due_at) VALUES ('x','Critical','2026-11-01','2026-11-20'); ROLLBACK; SET ROLE ge_app;
+\echo 'C2-T8 expect check error'
+BEGIN; SELECT t_ctx('00000000-0000-0000-0000-00000000000a','{00000000-0000-0000-0000-0000000000c1}','00000000-0000-0000-0000-0000000000c1');
+INSERT INTO invoice(tenant_id,number,currency,net_minor,tax_minor,total_minor,status) VALUES ('00000000-0000-0000-0000-00000000000a','INV-1','INR',1000,180,1000,'Issued'); ROLLBACK;
+\echo 'C2-T9 expect 0'
+SELECT count(*) FROM information_schema.columns WHERE table_name='api_key' AND column_name IN ('key','api_key','plaintext_key','secret');
+\echo 'C2-T10 expect 0 then error'
+BEGIN; SELECT t_ctx('00000000-0000-0000-0000-00000000000a','{00000000-0000-0000-0000-0000000000c1}','00000000-0000-0000-0000-0000000000c1');
+INSERT INTO api_key(tenant_id,name,prefix,last4,key_hash,scopes,expires_at) VALUES ('00000000-0000-0000-0000-00000000000a','k','agx_reg','abcd',digest('k','sha256'),'{runs:read}',now()+interval '90 days'); COMMIT;
+BEGIN; SELECT t_ctx('00000000-0000-0000-0000-00000000000b','{00000000-0000-0000-0000-0000000000c2}','00000000-0000-0000-0000-0000000000c2'); SELECT count(*) FROM api_key; COMMIT;
+SELECT count(*) FROM api_key;
+\echo 'C2-T11 expect accepted'
+BEGIN; SELECT t_ctx('00000000-0000-0000-0000-00000000000a','{00000000-0000-0000-0000-0000000000c1}','00000000-0000-0000-0000-0000000000c1');
+INSERT INTO custom_role(tenant_id,role_id,name) VALUES ('00000000-0000-0000-0000-00000000000a','00000000-0000-0000-0000-0000000000f6','Viewer');
+INSERT INTO role_permission VALUES ('00000000-0000-0000-0000-00000000000a','00000000-0000-0000-0000-0000000000f6','Billing:view');
+INSERT INTO invoice(tenant_id,number,currency,net_minor,tax_minor,total_minor,status) VALUES ('00000000-0000-0000-0000-00000000000a','INV-2','INR',1000,180,1180,'Issued');
+SELECT 'accepted'; ROLLBACK;
+RESET ROLE;

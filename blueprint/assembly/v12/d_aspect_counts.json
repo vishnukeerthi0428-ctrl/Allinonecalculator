@@ -1,0 +1,21 @@
+{
+ "total": 2075,
+ "before": {
+  "Partially covered": 1175,
+  "Not covered": 742,
+  "Covered": 59,
+  "Conflict": 99
+ },
+ "after": {
+  "Matched": 1976,
+  "Pending Founder decision": 99
+ },
+ "by_chapter": {
+  "12 Executable Workflow Specification": 1250,
+  "13 Workflow Step, Trigger & Event Registry": 132,
+  "19 Automation Scheduler & Execution Control": 19,
+  "09 Business Workflow Catalogue": 80,
+  "Appendix B Workflow DTO JSON Schemas": 162,
+  "Workflow_Catalog (50-field)": 432
+ }
+}

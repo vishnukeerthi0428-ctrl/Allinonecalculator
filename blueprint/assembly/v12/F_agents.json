@@ -1,0 +1,1107 @@
+{
+ "AGT-01": {
+  "role": "Research intelligence",
+  "wf_count": 4,
+  "reg_wfs": "4: SM-SVC-01-WF01, SM-SVC-01-WF02, SM-SVC-01-WF03, SM-SVC-01-WF04",
+  "allowed": "Scoped read, retrieval (own tenant), draft/score output",
+  "never": "Send, publish, spend, change live state, read other tenants",
+  "trace_wfs": [
+   "SM-SVC-01-WF01",
+   "SM-SVC-01-WF02",
+   "SM-SVC-01-WF03",
+   "SM-SVC-01-WF04"
+  ],
+  "eval": [
+   [
+    "EVAL-SM-SVC-01-WF01",
+    "Market and demand monitoring",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-01-WF02",
+    "Competitor and geographic intelligence",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-01-WF03",
+    "Trend report and evidence refresh",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-01-WF04",
+    "Emerging market signal and scenario monitoring",
+    2
+   ]
+  ],
+  "engines": [
+   "Research and evidence"
+  ],
+  "ai_steps": 5,
+  "svcs": [
+   "SM-SVC-01"
+  ]
+ },
+ "AGT-02": {
+  "role": "Research planning",
+  "wf_count": 4,
+  "reg_wfs": "4: SM-SVC-02-WF01, SM-SVC-02-WF02, SM-SVC-02-WF03, SM-SVC-02-WF04",
+  "allowed": "Scoped read, retrieval (own tenant), draft/score output",
+  "never": "Send, publish, spend, change live state, read other tenants",
+  "trace_wfs": [
+   "SM-SVC-02-WF01",
+   "SM-SVC-02-WF02",
+   "SM-SVC-02-WF03",
+   "SM-SVC-02-WF04"
+  ],
+  "eval": [
+   [
+    "EVAL-SM-SVC-02-WF01",
+    "Customer and enterprise discovery",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-02-WF02",
+    "Supplier, distributor and partner discovery",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-02-WF03",
+    "Opportunity monitoring and alerts",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-02-WF04",
+    "Continuous buying-signal and opportunity-change detection",
+    1
+   ]
+  ],
+  "engines": [
+   "Research and evidence"
+  ],
+  "ai_steps": 6,
+  "svcs": [
+   "SM-SVC-02"
+  ]
+ },
+ "AGT-03": {
+  "role": "Contact intelligence",
+  "wf_count": 4,
+  "reg_wfs": "4: SM-SVC-03-WF01, SM-SVC-03-WF02, SM-SVC-03-WF03, SM-SVC-03-WF04",
+  "allowed": "Scoped read, retrieval (own tenant), draft/score output",
+  "never": "Send, publish, spend, change live state, read other tenants",
+  "trace_wfs": [
+   "SM-SVC-03-WF01",
+   "SM-SVC-03-WF02",
+   "SM-SVC-03-WF03",
+   "SM-SVC-03-WF04"
+  ],
+  "eval": [
+   [
+    "EVAL-SM-SVC-03-WF01",
+    "Decision-maker discovery",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-03-WF02",
+    "Contact verification and deduplication",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-03-WF04",
+    "Organization and decision-maker change monitoring",
+    1
+   ]
+  ],
+  "engines": [
+   "Contact intelligence"
+  ],
+  "ai_steps": 3,
+  "svcs": [
+   "SM-SVC-03"
+  ]
+ },
+ "AGT-04": {
+  "role": "Qualification",
+  "wf_count": 8,
+  "reg_wfs": "8: SM-SVC-04-WF01, SM-SVC-04-WF02, SM-SVC-04-WF03, SM-SVC-04-WF04 \u2026",
+  "allowed": "Scoped read, retrieval (own tenant), draft/score output",
+  "never": "Send, publish, spend, change live state, read other tenants",
+  "trace_wfs": [
+   "SM-SVC-04-WF01",
+   "SM-SVC-04-WF02",
+   "SM-SVC-04-WF03",
+   "SM-SVC-04-WF04",
+   "SM-SVC-16-WF01",
+   "SM-SVC-16-WF02",
+   "SM-SVC-16-WF03",
+   "SM-SVC-16-WF04"
+  ],
+  "eval": [
+   [
+    "EVAL-SM-SVC-04-WF01",
+    "Business need and offering matching",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-04-WF02",
+    "Lead scoring and prioritization",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-04-WF04",
+    "Explainable conversion propensity and dynamic lead scoring",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-16-WF01",
+    "Event setup and registration intake",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-16-WF02",
+    "Attendee reminders and follow-up",
+    3
+   ],
+   [
+    "EVAL-SM-SVC-16-WF03",
+    "Partner and referral lead routing",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-16-WF04",
+    "Event conversion and attendee journey optimization",
+    1
+   ]
+  ],
+  "engines": [
+   "Calendar",
+   "Prediction"
+  ],
+  "ai_steps": 10,
+  "svcs": [
+   "SM-SVC-04",
+   "SM-SVC-16"
+  ]
+ },
+ "AGT-05": {
+  "role": "Orchestration",
+  "wf_count": 4,
+  "reg_wfs": "4: SM-SVC-05-WF01, SM-SVC-05-WF02, SM-SVC-05-WF03, SM-SVC-05-WF04",
+  "allowed": "Scoped read, retrieval (own tenant), draft/score output",
+  "never": "Send, publish, spend, change live state, read other tenants",
+  "trace_wfs": [
+   "SM-SVC-05-WF01",
+   "SM-SVC-05-WF02",
+   "SM-SVC-05-WF03",
+   "SM-SVC-05-WF04"
+  ],
+  "eval": [
+   [
+    "EVAL-SM-SVC-05-WF01",
+    "CRM import and relationship consolidation",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-05-WF03",
+    "Next-best action and queue prioritization",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-05-WF04",
+    "Stalled-deal detection and next-best-action automation",
+    2
+   ]
+  ],
+  "engines": [
+   "Workflow orchestration"
+  ],
+  "ai_steps": 5,
+  "svcs": [
+   "SM-SVC-05"
+  ]
+ },
+ "AGT-06": {
+  "role": "Outreach",
+  "wf_count": 8,
+  "reg_wfs": "8: SM-SVC-06-WF01, SM-SVC-06-WF02, SM-SVC-06-WF03, SM-SVC-06-WF04 \u2026",
+  "allowed": "Scoped read, retrieval (own tenant), draft/score output",
+  "never": "Send, publish, spend, change live state, read other tenants",
+  "trace_wfs": [
+   "SM-SVC-06-WF01",
+   "SM-SVC-06-WF02",
+   "SM-SVC-06-WF03",
+   "SM-SVC-06-WF04",
+   "SM-SVC-07-WF01",
+   "SM-SVC-07-WF02",
+   "SM-SVC-07-WF03",
+   "SM-SVC-07-WF04"
+  ],
+  "eval": [
+   [
+    "EVAL-SM-SVC-06-WF01",
+    "Personalized email drafting",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-06-WF04",
+    "Sender reputation and deliverability optimization",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-07-WF02",
+    "Controlled WhatsApp outreach",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-07-WF04",
+    "Interactive commerce conversation and journey management",
+    3
+   ]
+  ],
+  "engines": [
+   "Communication"
+  ],
+  "ai_steps": 6,
+  "svcs": [
+   "SM-SVC-06",
+   "SM-SVC-07"
+  ]
+ },
+ "AGT-07": {
+  "role": "Follow-up",
+  "wf_count": 4,
+  "reg_wfs": "4: SM-SVC-08-WF01, SM-SVC-08-WF02, SM-SVC-08-WF03, SM-SVC-08-WF04",
+  "allowed": "Scoped read, retrieval (own tenant), draft/score output",
+  "never": "Send, publish, spend, change live state, read other tenants",
+  "trace_wfs": [
+   "SM-SVC-08-WF01",
+   "SM-SVC-08-WF02",
+   "SM-SVC-08-WF03",
+   "SM-SVC-08-WF04"
+  ],
+  "eval": [
+   [
+    "EVAL-SM-SVC-08-WF02",
+    "Adaptive channel and response planning",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-08-WF03",
+    "Stop and escalation handling",
+    1
+   ]
+  ],
+  "engines": [
+   "Communication"
+  ],
+  "ai_steps": 2,
+  "svcs": [
+   "SM-SVC-08"
+  ]
+ },
+ "AGT-08": {
+  "role": "Conversation",
+  "wf_count": 4,
+  "reg_wfs": "4: SM-SVC-09-WF01, SM-SVC-09-WF02, SM-SVC-09-WF03, SM-SVC-09-WF04",
+  "allowed": "Scoped read, retrieval (own tenant), draft/score output",
+  "never": "Send, publish, spend, change live state, read other tenants",
+  "trace_wfs": [
+   "SM-SVC-09-WF01",
+   "SM-SVC-09-WF02",
+   "SM-SVC-09-WF03",
+   "SM-SVC-09-WF04"
+  ],
+  "eval": [
+   [
+    "EVAL-SM-SVC-09-WF01",
+    "Unified conversation capture",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-09-WF02",
+    "Grounded enquiry and objection response",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-09-WF03",
+    "Handover and continuity",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-09-WF04",
+    "Multilingual multimodal enquiry resolution",
+    1
+   ]
+  ],
+  "engines": [
+   "AI knowledge and RAG"
+  ],
+  "ai_steps": 4,
+  "svcs": [
+   "SM-SVC-09"
+  ]
+ },
+ "AGT-09": {
+  "role": "Meeting intelligence",
+  "wf_count": 4,
+  "reg_wfs": "4: SM-SVC-10-WF01, SM-SVC-10-WF02, SM-SVC-10-WF03, SM-SVC-10-WF04",
+  "allowed": "Scoped read, retrieval (own tenant), draft/score output",
+  "never": "Send, publish, spend, change live state, read other tenants",
+  "trace_wfs": [
+   "SM-SVC-10-WF01",
+   "SM-SVC-10-WF02",
+   "SM-SVC-10-WF03",
+   "SM-SVC-10-WF04"
+  ],
+  "eval": [
+   [
+    "EVAL-SM-SVC-10-WF01",
+    "Slot and booking coordination",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-10-WF02",
+    "Meeting preparation and reminders",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-10-WF04",
+    "Intelligent demonstration preparation and meeting intelligence",
+    2
+   ]
+  ],
+  "engines": [
+   "Calendar"
+  ],
+  "ai_steps": 5,
+  "svcs": [
+   "SM-SVC-10"
+  ]
+ },
+ "AGT-10": {
+  "role": "Content drafting",
+  "wf_count": 8,
+  "reg_wfs": "8: SM-SVC-11-WF01, SM-SVC-11-WF02, SM-SVC-11-WF03, SM-SVC-11-WF04 \u2026",
+  "allowed": "Scoped read, retrieval (own tenant), draft/score output",
+  "never": "Send, publish, spend, change live state, read other tenants",
+  "trace_wfs": [
+   "SM-SVC-11-WF01",
+   "SM-SVC-11-WF02",
+   "SM-SVC-11-WF03",
+   "SM-SVC-11-WF04",
+   "SM-SVC-15-WF01",
+   "SM-SVC-15-WF02",
+   "SM-SVC-15-WF03",
+   "SM-SVC-15-WF04"
+  ],
+  "eval": [
+   [
+    "EVAL-SM-SVC-11-WF01",
+    "Content strategy and calendar",
+    3
+   ],
+   [
+    "EVAL-SM-SVC-11-WF02",
+    "Article and campaign content drafting",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-11-WF03",
+    "Content review and optimization",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-11-WF04",
+    "Content gap, freshness and evidence monitoring",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-15-WF01",
+    "Landing page and form design",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-15-WF03",
+    "Intake health and conversion monitoring",
+    2
+   ]
+  ],
+  "engines": [
+   "AI knowledge and RAG",
+   "Document generation"
+  ],
+  "ai_steps": 10,
+  "svcs": [
+   "SM-SVC-11",
+   "SM-SVC-15"
+  ]
+ },
+ "AGT-11": {
+  "role": "Market intelligence",
+  "wf_count": 8,
+  "reg_wfs": "8: SM-SVC-12-WF01, SM-SVC-12-WF02, SM-SVC-12-WF03, SM-SVC-12-WF04 \u2026",
+  "allowed": "Scoped read, retrieval (own tenant), draft/score output",
+  "never": "Send, publish, spend, change live state, read other tenants",
+  "trace_wfs": [
+   "SM-SVC-12-WF01",
+   "SM-SVC-12-WF02",
+   "SM-SVC-12-WF03",
+   "SM-SVC-12-WF04",
+   "SM-SVC-13-WF01",
+   "SM-SVC-13-WF02",
+   "SM-SVC-13-WF03",
+   "SM-SVC-13-WF04"
+  ],
+  "eval": [
+   [
+    "EVAL-SM-SVC-12-WF02",
+    "Publication status and engagement capture",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-12-WF03",
+    "Permitted social listening",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-12-WF04",
+    "Community response and social trend coordination",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-13-WF01",
+    "Search visibility and keyword review",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-13-WF02",
+    "Technical and content issue detection",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-13-WF03",
+    "Optimization recommendations and validation",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-13-WF04",
+    "AI search and answer-engine visibility monitoring",
+    1
+   ]
+  ],
+  "engines": [
+   "Communication",
+   "Research and evidence"
+  ],
+  "ai_steps": 10,
+  "svcs": [
+   "SM-SVC-12",
+   "SM-SVC-13"
+  ]
+ },
+ "AGT-12": {
+  "role": "Campaign optimization",
+  "wf_count": 4,
+  "reg_wfs": "4: SM-SVC-14-WF01, SM-SVC-14-WF02, SM-SVC-14-WF03, SM-SVC-14-WF04",
+  "allowed": "Scoped read, retrieval (own tenant), draft/score output",
+  "never": "Send, publish, spend, change live state, read other tenants",
+  "trace_wfs": [
+   "SM-SVC-14-WF01",
+   "SM-SVC-14-WF02",
+   "SM-SVC-14-WF03",
+   "SM-SVC-14-WF04"
+  ],
+  "eval": [
+   [
+    "EVAL-SM-SVC-14-WF01",
+    "Campaign and audience preparation",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-14-WF03",
+    "Performance and spend optimization",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-14-WF04",
+    "Controlled experimentation and incremental campaign performance analysis",
+    2
+   ]
+  ],
+  "engines": [
+   "Experimentation"
+  ],
+  "ai_steps": 6,
+  "svcs": [
+   "SM-SVC-14"
+  ]
+ },
+ "AGT-13": {
+  "role": "Document intelligence",
+  "wf_count": 12,
+  "reg_wfs": "12: SM-SVC-17-WF01, SM-SVC-17-WF02, SM-SVC-17-WF03, SM-SVC-17-WF04 \u2026",
+  "allowed": "Scoped read, retrieval (own tenant), draft/score output",
+  "never": "Send, publish, spend, change live state, read other tenants",
+  "trace_wfs": [
+   "SM-SVC-17-WF01",
+   "SM-SVC-17-WF02",
+   "SM-SVC-17-WF03",
+   "SM-SVC-17-WF04",
+   "SM-SVC-20-WF01",
+   "SM-SVC-20-WF02",
+   "SM-SVC-20-WF03",
+   "SM-SVC-20-WF04",
+   "SM-SVC-25-WF01",
+   "SM-SVC-25-WF02",
+   "SM-SVC-25-WF03",
+   "SM-SVC-25-WF04"
+  ],
+  "eval": [
+   [
+    "EVAL-SM-SVC-17-WF01",
+    "Proposal scope and draft",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-17-WF04",
+    "Configurable product, service and bundle quotation generation",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-20-WF01",
+    "Sales order preparation",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-20-WF02",
+    "Order and milestone coordination",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-20-WF03",
+    "Acceptance and delivery exception handling",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-20-WF04",
+    "Order fulfillment prediction and exception monitoring",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-25-WF01",
+    "Document intake and classification",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-25-WF03",
+    "Draft business document and expiry tracking",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-25-WF04",
+    "Continuous business knowledge validation and contradiction detection",
+    1
+   ]
+  ],
+  "engines": [
+   "AI knowledge and RAG",
+   "Document generation",
+   "Workflow orchestration"
+  ],
+  "ai_steps": 12,
+  "svcs": [
+   "SM-SVC-17",
+   "SM-SVC-20",
+   "SM-SVC-25"
+  ]
+ },
+ "AGT-14": {
+  "role": "Objection resolution",
+  "wf_count": 4,
+  "reg_wfs": "4: SM-SVC-18-WF01, SM-SVC-18-WF02, SM-SVC-18-WF03, SM-SVC-18-WF04",
+  "allowed": "Scoped read, retrieval (own tenant), draft/score output",
+  "never": "Send, publish, spend, change live state, read other tenants",
+  "trace_wfs": [
+   "SM-SVC-18-WF01",
+   "SM-SVC-18-WF02",
+   "SM-SVC-18-WF03",
+   "SM-SVC-18-WF04"
+  ],
+  "eval": [
+   [
+    "EVAL-SM-SVC-18-WF01",
+    "Negotiation assistance and objection handling",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-18-WF02",
+    "Contract or MoU drafting",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-18-WF04",
+    "Contract obligation extraction and negotiation scenario analysis",
+    2
+   ]
+  ],
+  "engines": [
+   "Document generation"
+  ],
+  "ai_steps": 6,
+  "svcs": [
+   "SM-SVC-18"
+  ]
+ },
+ "AGT-15": {
+  "role": "Research",
+  "wf_count": 4,
+  "reg_wfs": "4: SM-SVC-19-WF01, SM-SVC-19-WF02, SM-SVC-19-WF03, SM-SVC-19-WF04",
+  "allowed": "Scoped read, retrieval (own tenant), draft/score output",
+  "never": "Send, publish, spend, change live state, read other tenants",
+  "trace_wfs": [
+   "SM-SVC-19-WF01",
+   "SM-SVC-19-WF02",
+   "SM-SVC-19-WF03",
+   "SM-SVC-19-WF04"
+  ],
+  "eval": [
+   [
+    "EVAL-SM-SVC-19-WF02",
+    "Bid/no-bid assessment",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-19-WF03",
+    "Bid preparation and submission coordination",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-19-WF04",
+    "Continuous bid compliance and submission-readiness evaluation",
+    1
+   ]
+  ],
+  "engines": [
+   "Research and evidence"
+  ],
+  "ai_steps": 5,
+  "svcs": [
+   "SM-SVC-19"
+  ]
+ },
+ "AGT-16": {
+  "role": "Financial review",
+  "wf_count": 4,
+  "reg_wfs": "4: SM-SVC-21-WF01, SM-SVC-21-WF02, SM-SVC-21-WF03, SM-SVC-21-WF04",
+  "allowed": "Scoped read, retrieval (own tenant), draft/score output",
+  "never": "Send, publish, spend, change live state, read other tenants",
+  "trace_wfs": [
+   "SM-SVC-21-WF01",
+   "SM-SVC-21-WF02",
+   "SM-SVC-21-WF03",
+   "SM-SVC-21-WF04"
+  ],
+  "eval": [
+   [
+    "EVAL-SM-SVC-21-WF02",
+    "Partial payment reconciliation",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-21-WF03",
+    "Discrepancy and financial reporting",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-21-WF04",
+    "Receivable anomaly and overdue payment-risk monitoring",
+    2
+   ]
+  ],
+  "engines": [
+   "Transaction reconciliation"
+  ],
+  "ai_steps": 4,
+  "svcs": [
+   "SM-SVC-21"
+  ]
+ },
+ "AGT-17": {
+  "role": "Lifecycle planning",
+  "wf_count": 4,
+  "reg_wfs": "4: SM-SVC-22-WF01, SM-SVC-22-WF02, SM-SVC-22-WF03, SM-SVC-22-WF04",
+  "allowed": "Scoped read, retrieval (own tenant), draft/score output",
+  "never": "Send, publish, spend, change live state, read other tenants",
+  "trace_wfs": [
+   "SM-SVC-22-WF01",
+   "SM-SVC-22-WF02",
+   "SM-SVC-22-WF03",
+   "SM-SVC-22-WF04"
+  ],
+  "eval": [
+   [
+    "EVAL-SM-SVC-22-WF01",
+    "Customer or partner onboarding plan",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-22-WF02",
+    "Institutional pilot and deployment readiness",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-22-WF04",
+    "Adaptive onboarding plans and readiness monitoring",
+    1
+   ]
+  ],
+  "engines": [
+   "Workflow orchestration"
+  ],
+  "ai_steps": 4,
+  "svcs": [
+   "SM-SVC-22"
+  ]
+ },
+ "AGT-18": {
+  "role": "Lifecycle analysis",
+  "wf_count": 4,
+  "reg_wfs": "4: SM-SVC-23-WF01, SM-SVC-23-WF02, SM-SVC-23-WF03, SM-SVC-23-WF04",
+  "allowed": "Scoped read, retrieval (own tenant), draft/score output",
+  "never": "Send, publish, spend, change live state, read other tenants",
+  "trace_wfs": [
+   "SM-SVC-23-WF01",
+   "SM-SVC-23-WF02",
+   "SM-SVC-23-WF03",
+   "SM-SVC-23-WF04"
+  ],
+  "eval": [
+   [
+    "EVAL-SM-SVC-23-WF01",
+    "Renewal and obligation reminders",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-23-WF02",
+    "Feedback and lost-deal analysis",
+    3
+   ],
+   [
+    "EVAL-SM-SVC-23-WF03",
+    "Retention and re-engagement plan",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-23-WF04",
+    "Churn and customer expansion opportunity prediction",
+    1
+   ]
+  ],
+  "engines": [
+   "Prediction"
+  ],
+  "ai_steps": 7,
+  "svcs": [
+   "SM-SVC-23"
+  ]
+ },
+ "AGT-19": {
+  "role": "Optimization",
+  "wf_count": 4,
+  "reg_wfs": "4: SM-SVC-24-WF01, SM-SVC-24-WF02, SM-SVC-24-WF03, SM-SVC-24-WF04",
+  "allowed": "Scoped read, retrieval (own tenant), draft/score output",
+  "never": "Send, publish, spend, change live state, read other tenants",
+  "trace_wfs": [
+   "SM-SVC-24-WF01",
+   "SM-SVC-24-WF02",
+   "SM-SVC-24-WF03",
+   "SM-SVC-24-WF04"
+  ],
+  "eval": [
+   [
+    "EVAL-SM-SVC-24-WF03",
+    "Performance and optimization review",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-24-WF04",
+    "Revenue scenario simulation and forecast calibration",
+    1
+   ]
+  ],
+  "engines": [
+   "Financial calculation"
+  ],
+  "ai_steps": 3,
+  "svcs": [
+   "SM-SVC-24"
+  ]
+ },
+ "AGT-20": {
+  "role": "Domain evidence review",
+  "wf_count": 56,
+  "reg_wfs": "56: SM-SVC-26-WF01, SM-SVC-26-WF02, SM-SVC-26-WF03, SM-SVC-26-WF04 \u2026",
+  "allowed": "Scoped read, retrieval (own tenant), draft/score output",
+  "never": "Send, publish, spend, change live state, read other tenants",
+  "trace_wfs": [
+   "SM-SVC-26-WF01",
+   "SM-SVC-26-WF02",
+   "SM-SVC-26-WF03",
+   "SM-SVC-26-WF04",
+   "SM-SVC-27-WF01",
+   "SM-SVC-27-WF02",
+   "SM-SVC-27-WF03",
+   "SM-SVC-27-WF04",
+   "SM-SVC-28-WF01",
+   "SM-SVC-28-WF02",
+   "SM-SVC-28-WF03",
+   "SM-SVC-28-WF04",
+   "SM-SVC-29-WF01",
+   "SM-SVC-29-WF02",
+   "SM-SVC-29-WF03",
+   "SM-SVC-29-WF04",
+   "SM-SVC-30-WF01",
+   "SM-SVC-30-WF02",
+   "SM-SVC-30-WF03",
+   "SM-SVC-30-WF04",
+   "SM-SVC-31-WF01",
+   "SM-SVC-31-WF02",
+   "SM-SVC-31-WF03",
+   "SM-SVC-31-WF04",
+   "SM-SVC-32-WF01",
+   "SM-SVC-32-WF02",
+   "SM-SVC-32-WF03",
+   "SM-SVC-32-WF04",
+   "SM-SVC-33-WF01",
+   "SM-SVC-33-WF02",
+   "SM-SVC-33-WF03",
+   "SM-SVC-33-WF04",
+   "SM-SVC-34-WF01",
+   "SM-SVC-34-WF02",
+   "SM-SVC-34-WF03",
+   "SM-SVC-34-WF04",
+   "SM-SVC-35-WF01",
+   "SM-SVC-35-WF02",
+   "SM-SVC-35-WF03",
+   "SM-SVC-35-WF04",
+   "SM-SVC-36-WF01",
+   "SM-SVC-36-WF02",
+   "SM-SVC-36-WF03",
+   "SM-SVC-36-WF04",
+   "SM-SVC-37-WF01",
+   "SM-SVC-37-WF02",
+   "SM-SVC-37-WF03",
+   "SM-SVC-37-WF04",
+   "SM-SVC-38-WF01",
+   "SM-SVC-38-WF02",
+   "SM-SVC-38-WF03",
+   "SM-SVC-38-WF04",
+   "SM-SVC-39-WF01",
+   "SM-SVC-39-WF02",
+   "SM-SVC-39-WF03",
+   "SM-SVC-39-WF04"
+  ],
+  "eval": [
+   [
+    "EVAL-SM-SVC-26-WF01",
+    "Inbound AI voice enquiry and call routing",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-27-WF01",
+    "Marketing image and advertising creative generation",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-27-WF03",
+    "Multilingual audio, subtitle and creative localization",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-27-WF04",
+    "Brand, copyright, factual claim and creative quality validation",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-28-WF02",
+    "Authorized AI-agent requirement discovery and quotation exchange",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-28-WF03",
+    "Agent-assisted purchasing and negotiation mandate coordination",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-29-WF01",
+    "Strategic account selection and account growth planning",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-29-WF02",
+    "Buying committee and organizational relationship mapping",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-29-WF04",
+    "Account engagement, opportunity progression and expansion intelligence",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-30-WF04",
+    "Experiment effectiveness and incremental conversion evaluation",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-31-WF03",
+    "Order, cancellation and return-event coordination",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-32-WF01",
+    "Partner recruitment and territory opportunity identification",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-32-WF02",
+    "Partner product enablement and sales material distribution",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-32-WF03",
+    "Deal registration, lead sharing and co-selling coordination",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-32-WF04",
+    "Partner performance, commission evidence and expansion monitoring",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-33-WF01",
+    "Customer support ticket creation, classification and routing",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-33-WF02",
+    "Evidence-grounded resolution and authorized self-service",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-33-WF03",
+    "SLA monitoring, escalation and service recovery",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-33-WF04",
+    "Support quality, recurring issue and resolution intelligence",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-34-WF01",
+    "Authorized product usage and activation event analysis",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-34-WF02",
+    "Trial conversion and customer activation journeys",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-34-WF03",
+    "Feature adoption and expansion opportunity detection",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-34-WF04",
+    "Usage-based upgrade and customer engagement recommendations",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-35-WF01",
+    "Authorized review and brand reputation monitoring",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-35-WF02",
+    "Review classification and evidence-grounded response drafting",
+    3
+   ],
+   [
+    "EVAL-SM-SVC-35-WF03",
+    "Reputation incident detection and escalation",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-36-WF01",
+    "Sales knowledge and product playbook generation",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-36-WF04",
+    "Sales capability-gap and training recommendation generation",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-37-WF01",
+    "Pricing and product bundle profitability analysis",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-37-WF04",
+    "Margin anomaly and commercial pricing-policy monitoring",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-38-WF03",
+    "Delivery, inbound response and approved channel fallback",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-38-WF04",
+    "Messaging performance, usage and suppression monitoring",
+    1
+   ],
+   [
+    "EVAL-SM-SVC-39-WF01",
+    "Supplier qualification and procurement requirement preparation",
+    2
+   ],
+   [
+    "EVAL-SM-SVC-39-WF02",
+    "RFQ generation and supplier quotation comparison",
+    1
+   ]
+  ],
+  "engines": [
+   "AI knowledge and RAG",
+   "Communication",
+   "Contact intelligence",
+   "Experimentation",
+   "Financial calculation",
+   "Identity and permission",
+   "Multimodal AI",
+   "Prediction",
+   "Research and evidence",
+   "Transaction reconciliation",
+   "Workflow orchestration"
+  ],
+  "ai_steps": 46,
+  "svcs": [
+   "SM-SVC-26",
+   "SM-SVC-27",
+   "SM-SVC-28",
+   "SM-SVC-29",
+   "SM-SVC-30",
+   "SM-SVC-31",
+   "SM-SVC-32",
+   "SM-SVC-33",
+   "SM-SVC-34",
+   "SM-SVC-35",
+   "SM-SVC-36",
+   "SM-SVC-37",
+   "SM-SVC-38",
+   "SM-SVC-39"
+  ]
+ }
+}

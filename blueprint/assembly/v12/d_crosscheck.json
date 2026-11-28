@@ -1,0 +1,139 @@
+{
+ "R2/R3 but CSV side-effect internal": [
+  [
+   "SM-SVC-21-WF01",
+   "R3",
+   "Internal analysis/draft; no external action without separate"
+  ],
+  [
+   "SM-SVC-21-WF02",
+   "R3",
+   "Internal analysis/draft; no external action without separate"
+  ],
+  [
+   "SM-SVC-22-WF03",
+   "R2",
+   "Internal analysis/draft; no external action without separate"
+  ],
+  [
+   "SM-SVC-23-WF01",
+   "R2",
+   "Internal analysis/draft; no external action without separate"
+  ],
+  [
+   "SM-SVC-28-WF03",
+   "R3",
+   "Internal analysis/draft; no external action without separate"
+  ],
+  [
+   "SM-SVC-30-WF02",
+   "R3",
+   "Internal analysis/draft; no external action without separate"
+  ],
+  [
+   "SM-SVC-30-WF03",
+   "R2",
+   "Internal analysis/draft; no external action without separate"
+  ],
+  [
+   "SM-SVC-31-WF03",
+   "R3",
+   "Internal analysis/draft; no external action without separate"
+  ],
+  [
+   "SM-SVC-32-WF02",
+   "R2",
+   "Internal analysis/draft; no external action without separate"
+  ],
+  [
+   "SM-SVC-32-WF03",
+   "R2",
+   "Internal analysis/draft; no external action without separate"
+  ],
+  [
+   "SM-SVC-32-WF04",
+   "R3",
+   "Internal analysis/draft; no external action without separate"
+  ],
+  [
+   "SM-SVC-33-WF02",
+   "R2",
+   "Internal analysis/draft; no external action without separate"
+  ],
+  [
+   "SM-SVC-34-WF02",
+   "R2",
+   "Internal analysis/draft; no external action without separate"
+  ]
+ ],
+ "R2/R3 without effect step": [
+  [
+   "SM-SVC-21-WF01",
+   "R3"
+  ],
+  [
+   "SM-SVC-21-WF02",
+   "R3"
+  ],
+  [
+   "SM-SVC-23-WF01",
+   "R2"
+  ],
+  [
+   "SM-SVC-26-WF01",
+   "R2"
+  ],
+  [
+   "SM-SVC-26-WF03",
+   "R2"
+  ],
+  [
+   "SM-SVC-28-WF02",
+   "R2"
+  ],
+  [
+   "SM-SVC-28-WF03",
+   "R3"
+  ],
+  [
+   "SM-SVC-29-WF03",
+   "R2"
+  ],
+  [
+   "SM-SVC-30-WF02",
+   "R3"
+  ],
+  [
+   "SM-SVC-30-WF03",
+   "R2"
+  ],
+  [
+   "SM-SVC-31-WF03",
+   "R3"
+  ],
+  [
+   "SM-SVC-32-WF03",
+   "R2"
+  ],
+  [
+   "SM-SVC-32-WF04",
+   "R3"
+  ],
+  [
+   "SM-SVC-34-WF02",
+   "R2"
+  ],
+  [
+   "SM-SVC-37-WF03",
+   "R3"
+  ],
+  [
+   "SM-SVC-38-WF03",
+   "R2"
+  ]
+ ],
+ "version_counts": {
+  "('2.0-target', '2.0-target')": 15,
+  "('1.0-target', '1.0-target')": 61
+ }
+}

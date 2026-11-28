@@ -1,0 +1,76 @@
+{
+ "before": {
+  "Partially covered": 1165,
+  "Not covered": 1200,
+  "Covered": 1065,
+  "Conflict": 26,
+  "Not applicable": 1
+ },
+ "after": {
+  "Matched": 3434,
+  "Pending Founder decision": 22,
+  "Not applicable (workflow detail owned by Groups C/D)": 1
+ },
+ "by": {
+  "BRD V12 08": {
+   "Partially covered": 225,
+   "Not covered": 338,
+   "Covered": 174,
+   "Conflict": 3
+  },
+  "FSD V12 08": {
+   "Partially covered": 42,
+   "Not covered": 3
+  },
+  "FSD V12 11": {
+   "Not covered": 90,
+   "Covered": 163,
+   "Partially covered": 210,
+   "Conflict": 5
+  },
+  "Workbook Service_Catalog": {
+   "Covered": 566,
+   "Partially covered": 528,
+   "Not covered": 315,
+   "Conflict": 12
+  },
+  "Workbook Service_Index": {
+   "Not covered": 39
+  },
+  "Workbook Entitlement_Rules": {
+   "Partially covered": 39
+  },
+  "Workbook Migration": {
+   "Not covered": 39
+  },
+  "Workbook Start_Here": {
+   "Not covered": 11,
+   "Partially covered": 2
+  },
+  "Workbook Sources_Decisions": {
+   "Partially covered": 19
+  },
+  "Workbook Capability_Crosswalk": {
+   "Partially covered": 100
+  },
+  "Workbook Technical_Map": {
+   "Covered": 162,
+   "Conflict": 2,
+   "Not covered": 14
+  },
+  "Workbook Cost_Model": {
+   "Not covered": 156,
+   "Conflict": 4
+  },
+  "Workbook Acceptance_Tests": {
+   "Not covered": 195
+  },
+  "Workbook Workflow_Catalog": {
+   "Not applicable": 1
+  }
+ },
+ "n": 3457,
+ "fr": 105,
+ "us": 78,
+ "tc": 264
+}

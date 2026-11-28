@@ -1,0 +1,408 @@
+{
+ "SKU": {
+  "SM-SVC-01": {
+   "name": "Market & Competitive Intelligence Automation",
+   "family": "Market intelligence",
+   "bundle": "Research & Lead Intelligence",
+   "meter": "market research batch",
+   "cls": "H",
+   "ep": "EP-05",
+   "anchor": "Release 1/2 capability"
+  },
+  "SM-SVC-02": {
+   "name": "Global Business Opportunity Discovery Automation",
+   "family": "Research & acquisition",
+   "bundle": "Research & Lead Intelligence",
+   "meter": "discovery batch",
+   "cls": "H",
+   "ep": "EP-05",
+   "anchor": "Release 1/2 capability"
+  },
+  "SM-SVC-03": {
+   "name": "B2B Contact & Decision-Maker Intelligence Automation",
+   "family": "Contact intelligence",
+   "bundle": "Research & Lead Intelligence",
+   "meter": "contact assessed",
+   "cls": "H",
+   "ep": "EP-06",
+   "anchor": "Release 1/2 capability"
+  },
+  "SM-SVC-04": {
+   "name": "Lead Qualification & Intelligent Matching Automation",
+   "family": "Qualification",
+   "bundle": "Research & Lead Intelligence",
+   "meter": "lead assessed",
+   "cls": "H",
+   "ep": "EP-06",
+   "anchor": "Release 1/2 capability"
+  },
+  "SM-SVC-05": {
+   "name": "CRM & Sales Pipeline Automation",
+   "family": "Relationship management",
+   "bundle": "Research & Lead Intelligence",
+   "meter": "relationship update",
+   "cls": "H",
+   "ep": "EP-07",
+   "anchor": "Release 1/2 capability"
+  },
+  "SM-SVC-06": {
+   "name": "Email Marketing & Outreach Automation",
+   "family": "Outreach",
+   "bundle": "Outreach & Conversations",
+   "meter": "email attempt",
+   "cls": "H",
+   "ep": "EP-08",
+   "anchor": "Release 1/2 capability"
+  },
+  "SM-SVC-07": {
+   "name": "WhatsApp Business Marketing Automation",
+   "family": "Outreach",
+   "bundle": "Outreach & Conversations",
+   "meter": "message attempt",
+   "cls": "H",
+   "ep": "EP-10",
+   "anchor": "Release 1/2 capability"
+  },
+  "SM-SVC-08": {
+   "name": "Omnichannel Follow-up & Lead Nurturing Automation",
+   "family": "Relationship engagement",
+   "bundle": "Outreach & Conversations",
+   "meter": "follow-up decision",
+   "cls": "H",
+   "ep": "EP-08",
+   "anchor": "Release 1/2 capability"
+  },
+  "SM-SVC-09": {
+   "name": "AI Chat, Unified Inbox & Objection Automation",
+   "family": "Conversation intelligence",
+   "bundle": "Outreach & Conversations",
+   "meter": "conversation item",
+   "cls": "H",
+   "ep": "EP-08/EP-10",
+   "anchor": "Release 1/2 capability"
+  },
+  "SM-SVC-10": {
+   "name": "Meeting, Demo & Appointment Automation",
+   "family": "Meetings",
+   "bundle": "Outreach & Conversations",
+   "meter": "meeting cycle",
+   "cls": "H",
+   "ep": "EP-09",
+   "anchor": "Release 1/2 capability"
+  },
+  "SM-SVC-11": {
+   "name": "Content Marketing Automation",
+   "family": "Content marketing",
+   "bundle": "Digital Marketing & Acquisition",
+   "meter": "content draft",
+   "cls": "H",
+   "ep": "EP-11",
+   "anchor": "Release 1/2 capability"
+  },
+  "SM-SVC-12": {
+   "name": "Social Media Publishing & Listening Automation",
+   "family": "Digital marketing",
+   "bundle": "Digital Marketing & Acquisition",
+   "meter": "social action or listening batch",
+   "cls": "H",
+   "ep": "EP-11",
+   "anchor": "Release 1/2 capability"
+  },
+  "SM-SVC-13": {
+   "name": "SEO & Search Visibility Automation",
+   "family": "Digital marketing",
+   "bundle": "Digital Marketing & Acquisition",
+   "meter": "page or keyword review",
+   "cls": "H",
+   "ep": "EP-11",
+   "anchor": "Release 1/2 capability"
+  },
+  "SM-SVC-14": {
+   "name": "Paid Digital Advertising Automation",
+   "family": "Digital marketing",
+   "bundle": "Digital Marketing & Acquisition",
+   "meter": "campaign review or action",
+   "cls": "H",
+   "ep": "EP-12",
+   "anchor": "Release 1/2 capability"
+  },
+  "SM-SVC-15": {
+   "name": "Landing Page & Website Lead Intake Automation",
+   "family": "Intake & integration",
+   "bundle": "Digital Marketing & Acquisition",
+   "meter": "page draft or enquiry event",
+   "cls": "H",
+   "ep": "EP-12/EP-19",
+   "anchor": "Release 1/2 capability"
+  },
+  "SM-SVC-16": {
+   "name": "Webinar, Event & Referral Acquisition Automation",
+   "family": "Event acquisition",
+   "bundle": "Digital Marketing & Acquisition",
+   "meter": "attendee or referral event",
+   "cls": "H",
+   "ep": "EP-09/EP-12",
+   "anchor": "Release 1/2 capability"
+  },
+  "SM-SVC-17": {
+   "name": "Proposal & Quotation Automation",
+   "family": "Commercial conversion",
+   "bundle": "Sales Conversion & Operations",
+   "meter": "proposal or quotation case",
+   "cls": "H",
+   "ep": "EP-13",
+   "anchor": "Release 1/2 capability"
+  },
+  "SM-SVC-18": {
+   "name": "Negotiation, Contract & MoU Automation",
+   "family": "Commercial conversion",
+   "bundle": "Sales Conversion & Operations",
+   "meter": "agreement case",
+   "cls": "H",
+   "ep": "EP-13",
+   "anchor": "Release 1/2 capability"
+  },
+  "SM-SVC-19": {
+   "name": "Tender & Project Bid Automation",
+   "family": "Commercial acquisition",
+   "bundle": "Sales Conversion & Operations",
+   "meter": "tender case",
+   "cls": "H",
+   "ep": "EP-14",
+   "anchor": "Release 1/2 capability"
+  },
+  "SM-SVC-20": {
+   "name": "Sales Order & Fulfillment Automation",
+   "family": "Commercial operations",
+   "bundle": "Sales Conversion & Operations",
+   "meter": "order case",
+   "cls": "H",
+   "ep": "EP-14",
+   "anchor": "Release 1/2 capability"
+  },
+  "SM-SVC-21": {
+   "name": "Payment, Invoice & Reconciliation Automation",
+   "family": "Financial controls",
+   "bundle": "Sales Conversion & Operations",
+   "meter": "invoice or receipt record",
+   "cls": "H",
+   "ep": "EP-15",
+   "anchor": "Release 1/2 capability"
+  },
+  "SM-SVC-22": {
+   "name": "Customer, Partner & Institutional Onboarding Automation",
+   "family": "Customer lifecycle",
+   "bundle": "Lifecycle & Business Intelligence",
+   "meter": "onboarding case",
+   "cls": "H",
+   "ep": "EP-16",
+   "anchor": "Release 1/2 capability"
+  },
+  "SM-SVC-23": {
+   "name": "Customer Retention, Renewal & Feedback Automation",
+   "family": "Customer lifecycle",
+   "bundle": "Lifecycle & Business Intelligence",
+   "meter": "customer review",
+   "cls": "H",
+   "ep": "EP-16",
+   "anchor": "Release 1/2 capability"
+  },
+  "SM-SVC-24": {
+   "name": "Revenue, Attribution & Sales Forecast Automation",
+   "family": "Analytics",
+   "bundle": "Lifecycle & Business Intelligence",
+   "meter": "analytics review",
+   "cls": "H",
+   "ep": "EP-15/EP-17",
+   "anchor": "Release 1/2 capability"
+  },
+  "SM-SVC-25": {
+   "name": "Business Document & Knowledge Intelligence Automation",
+   "family": "Document intelligence",
+   "bundle": "Lifecycle & Business Intelligence",
+   "meter": "document processed",
+   "cls": "H",
+   "ep": "EP-02",
+   "anchor": "Release 1/2 capability"
+  },
+  "SM-SVC-26": {
+   "name": "AI Voice & Intelligent Telephony Automation",
+   "family": "Voice engagement",
+   "bundle": "Outreach & Conversations",
+   "meter": "Call minute",
+   "cls": "N",
+   "ep": "EP-08",
+   "anchor": "none"
+  },
+  "SM-SVC-27": {
+   "name": "Multimodal Creative & Localization Automation",
+   "family": "Creative production",
+   "bundle": "Digital Marketing & Acquisition",
+   "meter": "Creative asset",
+   "cls": "M",
+   "ep": "EP-11",
+   "anchor": "AG-049, AG-050"
+  },
+  "SM-SVC-28": {
+   "name": "Agentic Commerce & AI-to-AI Business Transaction Automation",
+   "family": "Agentic commerce",
+   "bundle": "Commerce & Procurement",
+   "meter": "Agent transaction case",
+   "cls": "N",
+   "ep": "EP-14",
+   "anchor": "none"
+  },
+  "SM-SVC-29": {
+   "name": "Account-Based Marketing & Enterprise Buying Group Automation",
+   "family": "Account intelligence",
+   "bundle": "Research & Lead Intelligence",
+   "meter": "Account review",
+   "cls": "M",
+   "ep": "EP-06",
+   "anchor": "AG-061"
+  },
+  "SM-SVC-30": {
+   "name": "Conversion Rate Optimization & Intelligent Experimentation Automation",
+   "family": "Experimentation",
+   "bundle": "Digital Marketing & Acquisition",
+   "meter": "Experiment",
+   "cls": "M",
+   "ep": "EP-12",
+   "anchor": "AG-052"
+  },
+  "SM-SVC-31": {
+   "name": "Marketplace & E-commerce Channel Operations Automation",
+   "family": "Marketplace operations",
+   "bundle": "Commerce & Procurement",
+   "meter": "Marketplace order/event",
+   "cls": "N",
+   "ep": "EP-14",
+   "anchor": "none"
+  },
+  "SM-SVC-32": {
+   "name": "Partner, Distributor & Co-Selling Automation",
+   "family": "Partner growth",
+   "bundle": "Lifecycle & Business Intelligence",
+   "meter": "Partner opportunity",
+   "cls": "M",
+   "ep": "EP-16",
+   "anchor": "AG-069"
+  },
+  "SM-SVC-33": {
+   "name": "Customer Service & Support Operations Automation",
+   "family": "Support operations",
+   "bundle": "Lifecycle & Business Intelligence",
+   "meter": "Support case",
+   "cls": "M",
+   "ep": "EP-16",
+   "anchor": "AG-031"
+  },
+  "SM-SVC-34": {
+   "name": "Product-Led Growth & Usage Intelligence Automation",
+   "family": "Usage intelligence",
+   "bundle": "Lifecycle & Business Intelligence",
+   "meter": "Account usage review",
+   "cls": "N",
+   "ep": "EP-20",
+   "anchor": "none"
+  },
+  "SM-SVC-35": {
+   "name": "Brand Reputation & Review Intelligence Automation",
+   "family": "Reputation",
+   "bundle": "Digital Marketing & Acquisition",
+   "meter": "Review item",
+   "cls": "M",
+   "ep": "EP-11",
+   "anchor": "\u2014"
+  },
+  "SM-SVC-36": {
+   "name": "AI Sales Enablement & Coaching Automation",
+   "family": "Sales enablement",
+   "bundle": "Lifecycle & Business Intelligence",
+   "meter": "Coaching session",
+   "cls": "M",
+   "ep": "EP-17",
+   "anchor": "AG-046, AG-070"
+  },
+  "SM-SVC-37": {
+   "name": "Pricing, Offer & Revenue Optimization Automation",
+   "family": "Pricing intelligence",
+   "bundle": "Sales Conversion & Operations",
+   "meter": "Pricing scenario",
+   "cls": "M",
+   "ep": "EP-13",
+   "anchor": "AG-048, AG-066 (recommend only; AI never sets prices)"
+  },
+  "SM-SVC-38": {
+   "name": "SMS, RCS & Business Messaging Automation",
+   "family": "Mobile messaging",
+   "bundle": "Outreach & Conversations",
+   "meter": "Message attempt",
+   "cls": "M",
+   "ep": "EP-08",
+   "anchor": "\u2014"
+  },
+  "SM-SVC-39": {
+   "name": "Procurement & Supplier Management Automation",
+   "family": "Procurement",
+   "bundle": "Commerce & Procurement",
+   "meter": "Procurement case",
+   "cls": "M",
+   "ep": "EP-14",
+   "anchor": "AU-044; OrganicSpec payable ledger"
+  }
+ },
+ "CATTC": {
+  "POS": "TC-V12-J-001",
+  "INPUT": "TC-V12-J-002",
+  "SCOPE": "TC-V12-J-003",
+  "ENT": "TC-V12-J-004",
+  "DUP": "TC-V12-J-005",
+  "QUALITY": "TC-V12-J-006",
+  "BUDGET": "TC-V12-J-007",
+  "RECOVERY": "TC-V12-J-008",
+  "APPROVAL": "TC-V12-J-009",
+  "EFFECT": "TC-V12-J-010"
+ },
+ "STEPTC": {
+  "Evidence retrieval": "TC-V12-J-011",
+  "AI inference": "TC-V12-J-012",
+  "Deterministic calculation": "TC-V12-J-013",
+  "Deterministic domain logic": "TC-V12-J-014",
+  "Policy gate / human review": "TC-V12-J-015",
+  "Deterministic identity / reconciliation": "TC-V12-J-016",
+  "External effect": "TC-V12-J-017"
+ },
+ "APRTC": {
+  "SM-SVC-14-WF01": "TC-V12-J-201",
+  "SM-SVC-15-WF01": "TC-V12-J-202",
+  "SM-SVC-19-WF04": "TC-V12-J-203",
+  "SM-SVC-20-WF01": "TC-V12-J-204",
+  "SM-SVC-22-WF02": "TC-V12-J-205",
+  "SM-SVC-27-WF01": "TC-V12-J-206",
+  "SM-SVC-27-WF04": "TC-V12-J-207",
+  "SM-SVC-38-WF01": "TC-V12-J-208",
+  "SM-SVC-39-WF01": "TC-V12-J-209"
+ },
+ "ANCH": {
+  "POS": "epic functional TCs",
+  "INPUT": "TC-ENH-K-051, TC-ENH-G-006, TC-03-034",
+  "SCOPE": "TC-ENH-G-002, TC-ENH-E-001, TC-ENH-E-006",
+  "ENT": "TC-16-062, TC-20-054, TC-20-086",
+  "DUP": "TC-ENH-G-003, TC-ENH-J-028, TC-AU-AU020-001",
+  "QUALITY": "TC-AI-AG011-002, TC-ADV-X1-057, TC-04-038",
+  "BUDGET": "TC-NFR-014, TC-ENH-A-045, TC-03-024",
+  "RECOVERY": "TC-ENH-K-071, TC-01-071, TC-16-038",
+  "APPROVAL": "TC-ENH-G-004, TC-18-111, TC-15-020",
+  "EFFECT": "TC-04-003, TC-ENH-A-022, TC-ENH-G-016"
+ },
+ "STEPANCH": {
+  "Evidence retrieval": "TC-05-021, TC-AI-AG004-003, TC-ENH-G-007",
+  "AI inference": "TC-ENH-G-006, TC-AI-AG020-002, TC-ADV-X1-008",
+  "Deterministic calculation": "TC-15-081, TC-ENH-G-011",
+  "Deterministic domain logic": "TC-17-057, TC-ENH-F-008",
+  "Policy gate / human review": "TC-NFR-095, TC-ENH-G-008, TC-02-015",
+  "Deterministic identity / reconciliation": "TC-ADV-X1-077, TC-06-032, TC-15-041",
+  "External effect": "TC-ENH-G-008, TC-04-003, TC-ENH-G-016"
+ }
+}

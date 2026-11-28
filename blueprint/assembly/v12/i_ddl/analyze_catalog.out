@@ -1,0 +1,402 @@
+Output format is unaligned.
+## A1 tables with tenant_id but RLS disabled
+relname
+inbox
+incident
+portfolio_grant
+tenant
+(4 rows)
+## A2 tables without tenant_id and without RLS (global/platform)
+relname
+ai_model
+eval_run
+eval_suite
+fx_rate
+incident_notification
+jurisdiction_pack
+jurisdiction_rule
+locale_bundle
+ops_incident
+prompt_version
+security_finding
+sod_conflict
+tax_rule
+(13 rows)
+## A3 tables with company_id whose policies never reference company
+relname
+company
+division
+market
+brand
+channel_account
+offering
+workflow_run
+portfolio_grant
+consent_record
+suppression
+ai_usage_event
+growth_source
+growth_source_record
+growth_source_policy
+growth_evidence
+growth_competitor
+growth_referral
+growth_signal_type
+growth_market_event
+growth_search_plan
+growth_organization
+growth_need_evidence
+growth_signal
+growth_contact
+growth_contact_source
+growth_contact_verification
+growth_consent
+growth_deal
+growth_score_version
+growth_suppression
+growth_need
+growth_product
+growth_activity
+growth_opportunity
+growth_stage
+growth_task
+growth_budget
+growth_message
+growth_inbound_event
+growth_thread
+growth_message_draft
+growth_message_template
+growth_outbox
+growth_channel_account
+growth_delivery_event
+growth_enrollment
+growth_sequence
+growth_sequence_step
+growth_routing_rule
+growth_event_attendance
+growth_meeting
+growth_workflow_execution
+growth_identity_link
+growth_objection
+growth_business_event
+growth_calendar_link
+growth_event_registration
+growth_claim
+growth_content_asset
+growth_content_version
+growth_landing_page
+growth_page_metric
+growth_approval
+growth_social_post
+growth_social_publication
+growth_seo_issue
+growth_keyword
+growth_audience
+growth_campaign
+growth_campaign_version
+growth_ad_campaign
+growth_quote
+growth_proposal
+growth_ad_spend_event
+growth_attribution_event
+growth_form
+growth_proposal_version
+growth_lead
+growth_quote_line
+growth_negotiation
+growth_contract
+growth_integration_deal
+growth_onboarding
+sales_order
+sales_bid
+growth_invoice
+growth_payment
+sales_order_line
+sales_fulfillment
+growth_deployment
+growth_partner
+growth_pilot
+growth_renewal
+growth_embedding
+growth_document
+growth_feedback
+growth_metric_snapshot
+growth_forecast
+growth_document_chunk
+growth_stage_metric
+(100 rows)
+## A4 policy command distribution
+cmd|count
+ALL|120
+(1 row)
+## A5 nullable tenant_id columns
+table_name
+inbox
+incident
+outbox
+portfolio_grant
+(4 rows)
+## A6 foreign keys without a supporting index (leading columns)
+tbl|conname|pg_get_constraintdef
+company|company_tenant_id_organization_id_fkey|FOREIGN KEY (tenant_id, organization_id) REFERENCES organization(tenant_id, organization_id)
+division|division_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+brand|brand_tenant_id_division_id_fkey|FOREIGN KEY (tenant_id, division_id) REFERENCES division(tenant_id, division_id)
+offering|offering_tenant_id_brand_id_fkey|FOREIGN KEY (tenant_id, brand_id) REFERENCES brand(tenant_id, brand_id)
+market|market_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+channel_account|channel_account_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+workflow_run|workflow_run_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_competitor|growth_competitor_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_market_event|growth_market_event_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+consent_record|consent_record_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+ai_model|ai_model_rollback_to_fkey|FOREIGN KEY (rollback_to) REFERENCES ai_model(model_id)
+eval_run|eval_run_suite_id_fkey|FOREIGN KEY (suite_id) REFERENCES eval_suite(suite_id)
+growth_source|growth_source_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_source_policy|growth_source_policy_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_source_record|growth_source_record_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_evidence|growth_evidence_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_search_plan|growth_search_plan_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_organization|growth_organization_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_signal|growth_signal_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_signal_type|growth_signal_type_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_need_evidence|growth_need_evidence_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_referral|growth_referral_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_contact|growth_contact_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_contact_source|growth_contact_source_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_contact_verification|growth_contact_verification_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_consent|growth_consent_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_suppression|growth_suppression_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_need|growth_need_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_product|growth_product_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_opportunity|growth_opportunity_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_score_version|growth_score_version_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_activity|growth_activity_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_deal|growth_deal_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_stage|growth_stage_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_task|growth_task_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_budget|growth_budget_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_message|growth_message_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_message_draft|growth_message_draft_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_message_template|growth_message_template_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_outbox|growth_outbox_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_delivery_event|growth_delivery_event_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_thread|growth_thread_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_channel_account|growth_channel_account_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_inbound_event|growth_inbound_event_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_enrollment|growth_enrollment_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_sequence|growth_sequence_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_sequence_step|growth_sequence_step_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_routing_rule|growth_routing_rule_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_workflow_execution|growth_workflow_execution_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_identity_link|growth_identity_link_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_objection|growth_objection_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_calendar_link|growth_calendar_link_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_meeting|growth_meeting_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_business_event|growth_business_event_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_event_attendance|growth_event_attendance_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_event_registration|growth_event_registration_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_claim|growth_claim_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_content_asset|growth_content_asset_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_content_version|growth_content_version_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_approval|growth_approval_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_social_post|growth_social_post_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_social_publication|growth_social_publication_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_keyword|growth_keyword_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_page_metric|growth_page_metric_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_seo_issue|growth_seo_issue_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_landing_page|growth_landing_page_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_audience|growth_audience_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_campaign|growth_campaign_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_campaign_version|growth_campaign_version_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_ad_campaign|growth_ad_campaign_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_ad_spend_event|growth_ad_spend_event_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_attribution_event|growth_attribution_event_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_form|growth_form_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_lead|growth_lead_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_proposal|growth_proposal_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_proposal_version|growth_proposal_version_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_quote|growth_quote_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_quote_line|growth_quote_line_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_negotiation|growth_negotiation_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_contract|growth_contract_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_integration_deal|growth_integration_deal_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+sales_bid|sales_bid_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_invoice|growth_invoice_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_payment|growth_payment_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+sales_fulfillment|sales_fulfillment_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+sales_order|sales_order_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+sales_order_line|sales_order_line_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_onboarding|growth_onboarding_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_deployment|growth_deployment_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_partner|growth_partner_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_pilot|growth_pilot_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_renewal|growth_renewal_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_feedback|growth_feedback_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_metric_snapshot|growth_metric_snapshot_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_forecast|growth_forecast_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_stage_metric|growth_stage_metric_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_document|growth_document_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_document_chunk|growth_document_chunk_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+growth_embedding|growth_embedding_tenant_id_company_id_fkey|FOREIGN KEY (tenant_id, company_id) REFERENCES company(tenant_id, company_id)
+webhook_delivery|webhook_delivery_endpoint_id_fkey|FOREIGN KEY (endpoint_id) REFERENCES webhook_endpoint(endpoint_id)
+scim_token|scim_token_tenant_id_fkey|FOREIGN KEY (tenant_id) REFERENCES tenant(tenant_id)
+api_key|api_key_tenant_id_fkey|FOREIGN KEY (tenant_id) REFERENCES tenant(tenant_id)
+webhook_endpoint|webhook_endpoint_tenant_id_fkey|FOREIGN KEY (tenant_id) REFERENCES tenant(tenant_id)
+audit_sink|audit_sink_tenant_id_fkey|FOREIGN KEY (tenant_id) REFERENCES tenant(tenant_id)
+export_job|export_job_tenant_id_fkey|FOREIGN KEY (tenant_id) REFERENCES tenant(tenant_id)
+sandbox_environment|sandbox_environment_tenant_id_fkey|FOREIGN KEY (tenant_id) REFERENCES tenant(tenant_id)
+config_promotion|config_promotion_sandbox_id_fkey|FOREIGN KEY (sandbox_id) REFERENCES sandbox_environment(sandbox_id)
+connector_installation|connector_installation_tenant_id_fkey|FOREIGN KEY (tenant_id) REFERENCES tenant(tenant_id)
+invoice|invoice_tenant_id_fkey|FOREIGN KEY (tenant_id) REFERENCES tenant(tenant_id)
+invoice|invoice_tax_rule_id_fkey|FOREIGN KEY (tax_rule_id) REFERENCES tax_rule(rule_id)
+(110 rows)
+## A7 single-column FKs from tenant-scoped table to tenant-scoped table (not composite)
+conrelid|pg_get_constraintdef
+webhook_delivery|FOREIGN KEY (endpoint_id) REFERENCES webhook_endpoint(endpoint_id)
+role_permission|FOREIGN KEY (role_id) REFERENCES custom_role(role_id)
+config_promotion|FOREIGN KEY (sandbox_id) REFERENCES sandbox_environment(sandbox_id)
+(3 rows)
+## A8 status/state/severity text columns without a CHECK naming them
+table_name|column_name
+ai_model|tier
+ai_usage_event|outcome
+channel_account|channel
+channel_account|status
+company|status
+config_promotion|status
+connector_installation|status
+consent_record|channel
+dsar_request|request_type
+dsar_request|status
+growth_activity|status
+growth_ad_campaign|status
+growth_ad_spend_event|status
+growth_approval|status
+growth_attribution_event|status
+growth_audience|status
+growth_budget|status
+growth_business_event|status
+growth_calendar_link|status
+growth_campaign|status
+growth_campaign_version|status
+growth_channel_account|status
+growth_claim|status
+growth_competitor|status
+growth_consent|status
+growth_contact|status
+growth_contact_source|status
+growth_contact_verification|status
+growth_content_asset|status
+growth_content_version|status
+growth_contract|status
+growth_deal|status
+growth_delivery_event|status
+growth_deployment|status
+growth_document|status
+growth_document_chunk|status
+growth_embedding|status
+growth_enrollment|status
+growth_event_attendance|status
+growth_event_registration|status
+growth_evidence|status
+growth_feedback|status
+growth_forecast|status
+growth_form|status
+growth_identity_link|status
+growth_inbound_event|status
+growth_integration_deal|status
+growth_invoice|status
+growth_keyword|status
+growth_landing_page|status
+growth_lead|status
+growth_market_event|status
+growth_meeting|status
+growth_message|status
+growth_message_draft|status
+growth_message_template|status
+growth_metric_snapshot|status
+growth_need|status
+growth_need_evidence|status
+growth_negotiation|status
+growth_objection|status
+growth_onboarding|status
+growth_opportunity|status
+growth_organization|status
+growth_outbox|status
+growth_page_metric|status
+growth_partner|status
+growth_payment|status
+growth_pilot|status
+growth_product|status
+growth_proposal|status
+growth_proposal_version|status
+growth_quote|status
+growth_quote_line|status
+growth_referral|status
+growth_renewal|status
+growth_routing_rule|status
+growth_score_version|status
+growth_search_plan|status
+growth_seo_issue|status
+growth_sequence|status
+growth_sequence_step|status
+growth_signal|status
+growth_signal_type|status
+growth_social_post|status
+growth_social_publication|status
+growth_source|status
+growth_source_policy|status
+growth_source_record|status
+growth_stage|status
+growth_stage_metric|status
+growth_suppression|status
+growth_task|status
+growth_thread|status
+growth_workflow_execution|status
+incident|severity
+invoice|status
+jurisdiction_rule|channel
+offering|offering_type
+offering|status
+prompt_version|status
+sales_bid|status
+sales_fulfillment|status
+sales_order|status
+sales_order_line|status
+suppression|channel
+tenant|contract_status
+tenant|customer_type
+workflow_step_run|status
+(109 rows)
+## A9 secondary (non-PK, non-unique) indexes
+count
+0
+(1 row)
+## A10 money-like columns
+table_name|column_name|data_type|numeric_precision|numeric_scale
+fx_rate|rate_id|uuid||
+fx_rate|rate|numeric|20|10
+invoice|total_minor|bigint|64|0
+invoice|net_minor|bigint|64|0
+invoice|tax_minor|bigint|64|0
+offering|price_amount|numeric|18|4
+tax_rule|rate_percent|numeric|5|2
+tax_rule|needs_rate_input|boolean||
+(8 rows)
+## A11 jsonb columns count, tables using generic domain shape
+count
+97
+(1 row)
+count
+89
+(1 row)
+## A12 roles/grants defined by DDL
+rolname
+(0 rows)
+## A13 triggers and UPDATE coverage
+tgname|tgtype
+role_permission_sod|7
+(1 row)
+## A14 tables lacking created_at
+count
+33
+(1 row)

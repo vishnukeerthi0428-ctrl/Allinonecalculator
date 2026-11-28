@@ -1,0 +1,4803 @@
+{
+"FR": [
+[
+"FR-V12-B-001",
+"COMMON",
+"Service registry holds the 39 service SKUs SM-SVC-01…39 with stable IDs, name, family, bundle, service version (2.0-target for SM-SVC-01…25, 1.0-target for SM-SVC-26…39), readiness and lifecycle draft → reviewed → pilot/released → restricted/deprecated; drafts are never public",
+"a reviewed SKU moves to pilot only with scope, permission, pricing, benchmark, SLA and acceptance sign-off recorded",
+"a draft SKU is requested by the public projection API and is not returned"
+],
+[
+"FR-V12-B-002",
+"COMMON",
+"Workflow versions follow draft → validated → approved → released; a running execution pins an immutable snapshot of the released revision",
+"a new revision released mid-run leaves the running execution on its pinned revision",
+"an attempt to edit a released revision creates a new draft revision instead"
+],
+[
+"FR-V12-B-003",
+"COMMON",
+"Bundle registry holds six partial bundles (Research & Lead Intelligence 6, Outreach & Conversations 7, Digital Marketing & Acquisition 9, Sales Conversion & Operations 6, Lifecycle & Business Intelligence 8, Commerce & Procurement 3) as versioned lists of eligible SKU IDs; the foundation is added automatically",
+"bundle membership totals 39 SKUs and 156 included workflows",
+"a bundle revision that lists an unknown or deprecated SKU is rejected"
+],
+[
+"FR-V12-B-004",
+"COMMON",
+"The 25 foundation capabilities (SM-01-01…05, SM-11-01…05, SM-12-01…05, SM-13-01…05, SM-14-01…05) are included in every subscription, are never priced separately and cannot be disabled",
+"every subscription shows the 25 foundation entries as included at ₹0",
+"an attempt to remove a foundation entry or add a price to it is refused"
+],
+[
+"FR-V12-B-005",
+"COMMON",
+"Selection modes are full suite (all approved SKUs), partial bundle (predefined or client-selected) and selective (one or more SKUs); no upstream SKU is compulsory when the client supplies an authorized equivalent input; 156 workflows are never sold as separate SKUs",
+"a client buys SM-SVC-17 alone and runs it with a client-supplied approved offering catalogue",
+"a quote line for a single workflow ID is rejected"
+],
+[
+"FR-V12-B-006",
+"COMMON",
+"Every action checks tenant/startup scope, SKU entitlement, capability, role, channel/provider grant and budget reservation in the Policy Decision Point; the check fails closed",
+"an entitled action proceeds and the decision record names the SKU and entitlement revision",
+"an action of an unpurchased SKU is blocked with reason ENTITLEMENT_MISSING and no side effect"
+],
+[
+"FR-V12-B-007",
+"COMMON",
+"When a required authorization, input or provider is missing the workflow runs in draft-only or task-only mode or holds, and says why",
+"a missing email transport turns SM-SVC-08 dispatch steps into human tasks",
+"no external call is attempted while the prerequisite is missing"
+],
+[
+"FR-V12-B-008",
+"COMMON",
+"Revocation of a SKU blocks new executions, pauses or safely resolves active runs, and retains audit and lawful export",
+"after revocation the active run reaches a safe paused state within one step and an audit event is written",
+"a new run started after revocation is refused"
+],
+[
+"FR-V12-B-009",
+"COMMON",
+"Each SKU has its own meter unit and an illustrative pilot cap (not approved), one concurrent run by default, a configurable hard budget, provider quota and frequency limit",
+"usage of SM-SVC-06 is metered per email attempt and alerts at 80% and 100% of the approved cap",
+"the 101st market research batch over a cap of 100 is refused unless an approved overage exists"
+],
+[
+"FR-V12-B-010",
+"COMMON",
+"Commercial model: proposed monthly base entitlement plus metered excess per meter unit, annual option, provider charges and managed service quoted separately; all prices 'Quotation pending'; public pages offer quote requests only",
+"the storefront shows 'Request a quote' for every SKU",
+"a SKU without an approved rate card cannot be invoiced"
+],
+[
+"FR-V12-B-011",
+"COMMON",
+"Capability crosswalk keeps the 100 legacy capability IDs SM-01-01…SM-20-05: 25 foundation and 75 selectable entries mapped to a primary service; related families may share internals without a duplicate purchase charge",
+"SM-04-05 Assignment resolves to primary service SM-SVC-05",
+"a client holding SM-SVC-04 and SM-SVC-05 is not charged twice for shared internals"
+],
+[
+"FR-V12-B-012",
+"COMMON",
+"Migration: retained service IDs keep WF01–03 and add WF04; SM-SVC-20 procurement moves to SM-SVC-39-WF03; purchased scope is honoured until an approved transition; new services are not activated or billed until the owner approves",
+"a legacy SM-SVC-20 subscriber keeps buy-side order rights until the transition is approved",
+"SM-SVC-26 cannot be activated while its approval status is pending"
+],
+[
+"FR-V12-B-013",
+"COMMON",
+"Event envelope for every service trigger: event_id, tenant_id, startup_id, service_id, workflow_revision, input_ref, occurred_at, correlation_id; the schema is validated and mismatched scope is rejected",
+"a valid event starts the pinned workflow revision",
+"an event whose startup_id is outside the token scope is rejected and audited"
+],
+[
+"FR-V12-B-014",
+"COMMON",
+"Idempotency key = scoped event + workflow revision + action target; duplicate side effects, conflicts, active reply/suppression and budget reservation are checked before any action",
+"a replayed provider webhook creates no second action",
+"two workflows targeting the same relationship raise a conflict for A111"
+],
+[
+"FR-V12-B-015",
+"COMMON",
+"Escalation and recovery: bounded retry for safe failures; an uncertain external outcome is reconciled before retry; otherwise pause, route to a reviewer and log; emergency stop is available per tenant, startup, service and channel",
+"a timeout after submission is reconciled with the provider before any retry",
+"a fourth retry of the same step is refused"
+],
+[
+"FR-V12-B-016",
+"COMMON",
+"Data provenance on every evidence-bearing record: authorized source ID, owner, scope, observed_at, evidence hash/version, permitted use and freshness; stale or conflicting evidence is held",
+"a finding without source ID cannot be accepted",
+"evidence past its freshness window is flagged stale and held"
+],
+[
+"FR-V12-B-017",
+"COMMON",
+"Agent identity: each service runs as a scoped service principal or an authorized delegated user with short-lived grants; privilege escalation is denied; credentials are never shared",
+"a service principal token expires and is refreshed within scope",
+"a grant request for a wider scope than the SKU allows is denied"
+],
+[
+"FR-V12-B-018",
+"COMMON",
+"External agent interoperability is disabled unless explicitly granted per tenant and SKU (only SM-SVC-28 defines a protocol adapter)",
+"an external agent call without a grant is refused",
+"a grant for one SKU does not open another SKU"
+],
+[
+"FR-V12-B-019",
+"COMMON",
+"Model portability: every model call goes through the model gateway (Tier 0 rules/cache → Tier 1a → Tier 1b Claude Sonnet → Tier 2 opt-in free fallback for Public/Internal non-personal data only → Tier 3 degrade) with a quality and cost gate",
+"a Tier 1b call is reserved against the tenant budget before execution",
+"personal data is never routed to Tier 2"
+],
+[
+"FR-V12-B-020",
+"COMMON",
+"External side-effect class per workflow (internal analysis/draft; potential external write/communication; consequential financial/legal or authority-bearing action) drives the autonomy cap: internal ≤ L3, communication L1 approval then L2 dispatch, consequential L1 maximum (DEC-064)",
+"SM-SVC-28-WF04 is classed consequential and capped at L1",
+"a configuration that raises a consequential workflow to L2 is refused"
+],
+[
+"FR-V12-B-021",
+"COMMON",
+"First-value milestone per SKU: record activation and first acceptance timestamps; the owner validates evidence and agreed quality",
+"time-to-first-value is reported per tenant and SKU",
+"a first value without owner acceptance is not counted"
+],
+[
+"FR-V12-B-022",
+"COMMON",
+"Enhancement metrics: each of the 156 workflows records its two named enhancement metrics (BRD 08) per run and per period",
+"SM-SVC-06-WF02 reports duplicate send rate and accepted delivery reconciliation",
+"a workflow without metric emitters fails the release gate"
+],
+[
+"FR-V12-B-023",
+"COMMON",
+"Shared engines ENG-01…15 are logical reusable capabilities mapped to blueprint modules; they are never billed and keep tenant/startup data private",
+"ENG-05 Communication is used by SM-SVC-06, 07, 08, 12 and 38",
+"an engine invocation carries the calling SKU and is metered to it"
+],
+[
+"FR-V12-B-024",
+"COMMON",
+"Public projection of a service: description, deliverables, readiness, prerequisites, approved pricing or quote CTA and locale only; internal records, subscriber identities and owned-startup data are never exposed",
+"the storefront lists 39 services with readiness 'Planned / proposed'",
+"no client or owned-startup name appears in any public payload"
+],
+[
+"FR-V12-B-025",
+"COMMON",
+"Readiness gate: a SKU is released individually only after scope, permission, pricing, benchmark, SLA and acceptance sign-off; all 195 workbook acceptance scenarios start 'Not run'",
+"release evidence links ENT and WF01–04 acceptance results",
+"a SKU with any 'Not run' acceptance scenario cannot be released"
+],
+[
+"FR-V12-B-026",
+"COMMON",
+"Entitlement acceptance per SKU (SM-SVC-xx-ENT-AT01): single-SKU purchase, scope assignment, run, attempt of an unpurchased service, revocation",
+"purchased service eligible; unpurchased blocked; revocation prevents new runs",
+"wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun are all refused"
+],
+[
+"FR-V12-B-027",
+"COMMON",
+"Service catalogue administration: the Service Owner maintains SKUs, bundles, meters, caps, rate cards, readiness and migration mappings with approval and audit (extends A101)",
+"a rate-card revision needs Service Owner approval before use",
+"an author cannot approve their own rate-card revision"
+],
+[
+"FR-V12-B-028",
+"COMMON",
+"Simulation: every workflow supports a synthetic dry run with zero external effects; simulated records are flagged and excluded from metrics",
+"a dry run of SM-SVC-14-WF02 produces a simulated spend record only",
+"a simulated record never reaches a provider adapter"
+],
+[
+"FR-V12-B-029",
+"COMMON",
+"Cost model: per-invocation internal cost is estimated from the workbook scenario (₹0.20 per 1,000 input tokens, ₹0.80 per 1,000 output tokens, ₹0.15 compute) and reconciled with actual gateway cost; external fees, retries and human review are excluded and quoted separately",
+"the FinOps view shows estimated and actual cost per SKU",
+"an estimate is never shown as a price"
+],
+[
+"FR-V12-B-030",
+"COMMON",
+"Measurable customer outcome is accepted against the SKU KPI and evidence and is never presented as a guaranteed business result",
+"acceptance shows KPI value and evidence links",
+"marketing copy that guarantees sales or rankings is blocked by the claims guard"
+],
+[
+"FR-V12-B-031",
+"SM-SVC-01",
+"WF04: maintain named market scenarios with explicit, dated assumptions; on a material signal change compare scenarios, verify evidence and alert the owner; estimates are labelled separately from facts",
+"a material competitor price event triggers a scenario comparison with cited evidence and an owner alert",
+"a scenario conclusion without cited evidence is held for review"
+],
+[
+"FR-V12-B-032",
+"SM-SVC-01",
+"Every finding past its source freshness window carries a stale-source flag (target 100%) and is excluded from new reports until refreshed",
+"a 90-day-old observation in a 30-day window is flagged stale",
+"a stale finding cannot be added to an approved trend report"
+],
+[
+"FR-V12-B-033",
+"SM-SVC-02",
+"WF02 classifies each discovered organization's role (customer, supplier, distributor, partner, institution, project owner) and flags role conflicts and duplicates before upsert",
+"an organization found as both supplier and customer is upserted once with two role tags and a conflict flag",
+"an investor or fund role is never created (DEC-002)"
+],
+[
+"FR-V12-B-034",
+"SM-SVC-02",
+"WF04 deduplicates new signals against open opportunities and updates the existing opportunity instead of raising a second alert",
+"a repeated tender notice updates the open opportunity and raises no new alert",
+"a duplicate alert rate above 5% raises a quality incident"
+],
+[
+"FR-V12-B-035",
+"SM-SVC-03",
+"WF04 compares permitted source updates with stored roles; a departed or changed decision-maker invalidates the stale relationship link and routes re-verification",
+"a role change observed on the official site invalidates the old link and opens a verification task",
+"an unverified change never overwrites a verified role"
+],
+[
+"FR-V12-B-036",
+"SM-SVC-04",
+"WF04 reports calibration error and drift detection recall per model version and routes drifted scores to review",
+"a drift alert moves affected scores to 'review' and notifies the owner",
+"an uncalibrated model version cannot be activated"
+],
+[
+"FR-V12-B-037",
+"SM-SVC-05",
+"WF01 import consolidates relationships with identity resolution, owner assignment and interaction history; rejected rows are reported with reasons",
+"an import of 1,000 rows reports matched, created and rejected counts",
+"a row without tenant scope is rejected"
+],
+[
+"FR-V12-B-038",
+"SM-SVC-06",
+"WF04 validates sender authentication (SPF, DKIM, DMARC alignment) before activation and monitors bounce and complaint rates per sender; risky sends pause automatically and a remediation proposal is drafted",
+"a complaint rate above the configured threshold pauses the sender and opens a remediation task",
+"a sender without DKIM alignment cannot be activated"
+],
+[
+"FR-V12-B-039",
+"SM-SVC-07",
+"WF04 classifies buying intent in an open service window and attaches an approved offer (catalogue item, approved price version) to a draft reply for human approval; checkout, order acceptance and payment are never completed in chat",
+"a 'price for 50 kg?' message produces a draft with the approved price version and a 'create quote' task",
+"the assistant never confirms an order or sends a payment link without a human approval"
+],
+[
+"FR-V12-B-040",
+"SM-SVC-08",
+"Without an eligible transport the sequence runs in task-only mode: due steps become human tasks; SMS steps are skipped unless SM-SVC-38 is entitled and active",
+"a tenant without email transport sees follow-up tasks in A137",
+"no SMS is dispatched for a tenant without SM-SVC-38"
+],
+[
+"FR-V12-B-041",
+"SM-SVC-09",
+"WF04 accepts image and document attachments on inbound enquiries: malware scan, text extraction, language detection, grounded answer; uncertain or sensitive content escalates to a human",
+"a photo of a product label is extracted and answered from approved knowledge with citation",
+"an attachment that fails the scan is quarantined and never sent to a model"
+],
+[
+"FR-V12-B-042",
+"SM-SVC-10",
+"WF04 extracts action items from staff notes and, where all participants consented, from an authorized recording or transcript; consent evidence is stored with the meeting",
+"a transcript with consent from all participants yields reviewed action items",
+"a recording without consent evidence is rejected and not processed"
+],
+[
+"FR-V12-B-043",
+"SM-SVC-11",
+"WF04 identifies missing or stale content coverage against approved offerings and claims, re-verifies claims and prioritizes revisions in the content backlog",
+"a claim that expires flags every content version that uses it",
+"stale content is never republished without a new approval"
+],
+[
+"FR-V12-B-044",
+"SM-SVC-12",
+"WF04 classifies public comments and trends, deduplicates, drafts responses for approval and escalates sensitive issues; no automated direct messages",
+"a product question on a post produces a draft reply in the approval queue",
+"a direct message is never sent automatically (BRL-MKT-07)"
+],
+[
+"FR-V12-B-045",
+"SM-SVC-13",
+"WF04 measures observed visibility of the client's pages in AI answer engines from authorized query observations, checks indexability and structured data, and recommends improvements with evidence; no ranking or inclusion guarantee",
+"a weekly observation set reports query coverage and citation accuracy",
+"a fabricated or estimated observation cannot be stored as measured (BRL-MKT-08)"
+],
+[
+"FR-V12-B-046",
+"SM-SVC-14",
+"WF02 re-checks the provider grant and reserves spend against the approved cap before any authorized change, then reconciles provider status",
+"a launch reserves the daily cap and records provider status",
+"a change without a reservation or above cap is refused (no autonomous uncapped spend)"
+],
+[
+"FR-V12-B-047",
+"SM-SVC-15",
+"Client lead-intake pages and forms are published only to a separate verified client-controlled property; the legacy publication route is replaced or isolated and never used for the public SaaS storefront (Technical Map)",
+"a client page is previewed on its own verified domain",
+"an attempt to publish client content on the SaaS storefront domain is refused"
+],
+[
+"FR-V12-B-048",
+"SM-SVC-15",
+"WF04 validates the structured offering data and form schema (machine-readable offering), checks access and privacy notices, and runs a synthetic intake test before go-live",
+"a missing consent field fails validation",
+"a page with a data leak (personal data in public JSON) is blocked"
+],
+[
+"FR-V12-B-049",
+"SM-SVC-16",
+"WF04 segments eligible attendees by attendance and interest, measures journey progression to qualified opportunity and proposes follow-up; opt-outs are suppressed",
+"the event funnel shows registered → attended → qualified with counts",
+"an opted-out attendee is never enrolled in follow-up"
+],
+[
+"FR-V12-B-050",
+"SM-SVC-17",
+"Quote totals are deterministic (Decimal, ROUND_HALF_UP) from the approved price version; AI never sets a price or discount",
+"a 3-line quote reproduces the arithmetic test to the paisa",
+"a manual price outside the price version is held for approval"
+],
+[
+"FR-V12-B-051",
+"SM-SVC-18",
+"WF04 extracts obligations (party, duty, due date, evidence) from the signed version into an obligation register linked to onboarding and renewal tasks, and compares negotiation scenarios against the playbook",
+"a signed MoU yields reviewed obligations with due dates",
+"an extracted obligation is not active until a human confirms it"
+],
+[
+"FR-V12-B-052",
+"SM-SVC-19",
+"WF03 prepares the submission package and checklist and records the human submission receipt; the system never submits a bid, including where a portal API exists (CONFLICT-781)",
+"a submitted bid has receipt evidence uploaded by the submitter",
+"no adapter call to a tender portal submission endpoint exists"
+],
+[
+"FR-V12-B-053",
+"SM-SVC-20",
+"Sell-direction orders belong to SM-SVC-20; buy-direction orders require the SM-SVC-39 entitlement; legacy SM-SVC-20 subscribers keep buy-side rights until the approved transition",
+"a tenant with SM-SVC-20 only sees Sell orders after transition",
+"creating a Buy order without SM-SVC-39 (and without a legacy right) is refused"
+],
+[
+"FR-V12-B-054",
+"SM-SVC-20",
+"WF04 estimates delay risk per milestone from history, compares actual milestones and escalates exceptions",
+"a milestone predicted late raises an owner alert",
+"a prediction never changes a milestone date automatically"
+],
+[
+"FR-V12-B-055",
+"SM-SVC-21",
+"WF04 calculates overdue exposure by ageing bucket and flags anomalies (duplicate references, unusual amounts) for finance review; it never initiates refunds or transfers",
+"an overdue invoice appears in the 61–90 day bucket with exposure",
+"no payment instruction is generated"
+],
+[
+"FR-V12-B-056",
+"SM-SVC-22",
+"WF04 regenerates scoped onboarding tasks when scope changes, evaluates readiness, proposes due-date changes and escalates blockers; every due-date change is audited",
+"a blocked dependency proposes a new due date for owner approval",
+"a due date is never moved without an audit entry"
+],
+[
+"FR-V12-B-057",
+"SM-SVC-23",
+"WF04 reports churn calibration and expansion precision and routes only approved actions; renewal offers stay L1",
+"a high-risk account shows explained drivers and a proposed action",
+"no renewal offer is sent without approval"
+],
+[
+"FR-V12-B-058",
+"SM-SVC-24",
+"WF04 runs revenue scenarios from approved assumptions, backtests forecasts and reports error and interval coverage; forecasts are never mixed with verified revenue",
+"a scenario report shows assumptions, interval and backtest error",
+"a forecast value never appears in a verified-revenue total (BRL-FIN-06)"
+],
+[
+"FR-V12-B-059",
+"SM-SVC-25",
+"WF04 detects contradictory or stale claims across approved knowledge, traces the sources, holds affected outputs (drafts, FAQ answers) and requests review",
+"two documents stating different warranty periods hold the dependent FAQ answer",
+"a held claim is never used in a new draft"
+],
+[
+"FR-V12-B-060",
+"SM-SVC-26",
+"WF01 inbound: disclose that the caller is speaking with an AI assistant at the start of every call, classify intent, answer only from approved knowledge, and transfer to a human on request or uncertainty",
+"the first utterance contains the approved disclosure and the call log records it",
+"a call where the disclosure fails to play is transferred to a human or ended"
+],
+[
+"FR-V12-B-061",
+"SM-SVC-26",
+"WF02 outbound: a call is placed only to a contact with recorded call permission (or callback request), after DLT/NCPR scrub, quiet-hours and frequency checks and an approved script hash; never to minors (EduVerse) and never for patient topics (MedMaarg)",
+"an eligible callback request produces one call within the approved window",
+"a contact on the DND register or under 18 is never dialled"
+],
+[
+"FR-V12-B-062",
+"SM-SVC-26",
+"WF03 multilingual: recognize language, answer from grounded knowledge and confirm an appointment slot verbally with the caller before booking through the calendar adapter",
+"a Hindi caller books a slot and receives a confirmation",
+"a slot not confirmed verbally is not booked"
+],
+[
+"FR-V12-B-063",
+"SM-SVC-26",
+"WF04 call intelligence: transcribe only calls with recorded consent, redact restricted data, extract actions and synchronize approved notes to the relationship timeline",
+"a consented call yields a redacted summary in Customer 360",
+"a call without recording consent produces only metadata (time, duration, disposition)"
+],
+[
+"FR-V12-B-064",
+"SM-SVC-26",
+"The AI voice agent never quotes a non-approved price, accepts an order, agrees terms or takes payment details during a call; such requests become human tasks",
+"a caller asking for a discount gets a callback task for a human",
+"no payment card or bank details are captured or stored"
+],
+[
+"FR-V12-B-065",
+"SM-SVC-26",
+"Call minutes are metered per SKU with a hard budget; a call is not placed when the reservation fails",
+"minute usage appears in the SKU meter",
+"a call is refused when the monthly cap is reached"
+],
+[
+"FR-V12-B-066",
+"SM-SVC-27",
+"WF01 generates marketing image variants from an approved brand brief, checks layout, brand rules and claims, and routes them for review",
+"three variants with claim checks reach the approval queue",
+"a variant containing an unapproved claim is blocked"
+],
+[
+"FR-V12-B-067",
+"SM-SVC-27",
+"WF02 builds a storyboard and video draft from approved product facts; every depicted capability must match an approved claim",
+"a demo video draft lists the claims it depicts with evidence",
+"a depiction of a planned (unavailable) capability is blocked (BRL-MKT-02)"
+],
+[
+"FR-V12-B-068",
+"SM-SVC-27",
+"WF03 localizes approved assets: translation with glossary (AU-076), captions and audio; synthetic voice only with voice rights evidence",
+"a Tamil caption file passes caption-sync quality checks",
+"a synthetic voice without rights evidence is refused"
+],
+[
+"FR-V12-B-069",
+"SM-SVC-27",
+"WF04 records a creative QA record (rights evidence, licence, claim validation, brand compliance, AI-generated label where required) before publication; 100% review before publication",
+"every published asset links to a QA record",
+"an asset without licence evidence cannot be scheduled"
+],
+[
+"FR-V12-B-070",
+"SM-SVC-27",
+"Creative assets are metered per creative asset with a hard budget per provider",
+"asset generation cost is reserved before the provider call",
+"a generation request over the cap is refused"
+],
+[
+"FR-V12-B-071",
+"SM-SVC-28",
+"WF01 publishes a machine-readable catalogue of approved offerings (approved claims and price versions only) to an authorized client endpoint with versioning",
+"a catalogue version lists only Released offerings with price version IDs",
+"a Planned offering or unapproved price is never published"
+],
+[
+"FR-V12-B-072",
+"SM-SVC-28",
+"WF02 accepts requirement and quotation requests only from external agents with verified identity and a scoped grant; it returns a scoped quotation draft built by the deterministic quote engine",
+"a verified agent receives a quotation draft ID pending human approval",
+"an unverified agent, or a request outside scope, is refused and audited"
+],
+[
+"FR-V12-B-073",
+"SM-SVC-28",
+"A mandate record holds principal, counterpart agent identity, scope, item and price limits, total cap, expiry and the human approval hash; the mandate bounds the negotiation but never substitutes for approval of a transaction",
+"a mandate with cap ₹50,000 rejects an offer of ₹60,000",
+"an expired or revoked mandate blocks any effect (OPT-TC-FL-09)"
+],
+[
+"FR-V12-B-074",
+"SM-SVC-28",
+"WF03 compares offers within the mandate and routes every consequential decision (accept, commit, order) to a human approver; the AI never accepts or commits",
+"an in-mandate best offer appears in the approval queue with comparison",
+"no order is created without a human approval hash"
+],
+[
+"FR-V12-B-075",
+"SM-SVC-28",
+"WF04 executes an approved transaction only through the approved provider after a human approval hash matching the exact payload; payment is never initiated autonomously; uncertain outcomes are reconciled before any retry",
+"an approved order is executed once and reconciled",
+"a changed payload after approval blocks execution"
+],
+[
+"FR-V12-B-076",
+"SM-SVC-28",
+"Interaction logs with external agents are append-only, signed and linked to the mandate, quote and order",
+"a dispute review can replay the exchange",
+"a log edit is impossible"
+],
+[
+"FR-V12-B-077",
+"SM-SVC-28",
+"Untrusted content from external agents is sanitized and never treated as instructions (AU-005)",
+"an injected instruction in an agent message is ignored and flagged",
+"no tool call is triggered by counterpart text"
+],
+[
+"FR-V12-B-078",
+"SM-SVC-29",
+"SM-SVC-29 is the SKU wrapper of the X2 ABM capability (A130/A131, AG-061, AU-085): entitlement, meter 'Account review' and KPIs apply to those screens and agents",
+"a tenant without SM-SVC-29 cannot open A131",
+"account evidence coverage below 95% is reported"
+],
+[
+"FR-V12-B-079",
+"SM-SVC-30",
+"WF03 personalization uses only approved segments and consented context; sensitive inference (health, minors, protected attributes) is prohibited and tested",
+"an approved segment rule personalizes the hero block",
+"a rule referencing a sensitive attribute is rejected at validation"
+],
+[
+"FR-V12-B-080",
+"SM-SVC-30",
+"Experiments on price or offer use only human-approved variants and stop on guardrail breach (see SM-SVC-37)",
+"an experiment pauses when complaint rate exceeds the guardrail",
+"a variant not approved cannot be allocated"
+],
+[
+"FR-V12-B-081",
+"SM-SVC-31",
+"WF01 maps approved SKU catalogue fields to each marketplace schema, validates content and publishes only eligible, approved listings",
+"a listing publishes with approved claims and images",
+"a listing with an unapproved claim is held"
+],
+[
+"FR-V12-B-082",
+"SM-SVC-31",
+"WF02 synchronizes price and availability only from the approved price version and verified stock; stale prices are rejected",
+"a stock change propagates within the configured interval",
+"a price that differs from the approved version is never pushed"
+],
+[
+"FR-V12-B-083",
+"SM-SVC-31",
+"WF03 deduplicates order, cancellation and return events into an order-event ledger and routes returns and exceptions to a human",
+"a replayed order webhook creates no duplicate",
+"an invalid return transition is rejected"
+],
+[
+"FR-V12-B-084",
+"SM-SVC-31",
+"WF04 matches marketplace sales, fees and verified receipts and reports anomalies and net performance; marketplace payouts are receivables, never netted with payables",
+"a settlement report reconciles to ≥99% with exceptions listed",
+"fees are never netted against supplier payables (BRL-ORD-06)"
+],
+[
+"FR-V12-B-085",
+"SM-SVC-32",
+"SM-SVC-32 is the SKU wrapper of the X2 partner capability (A141, AG-069, AU-091/092); commission is a calculated record from verified outcomes and is never paid by the system",
+"a disputed commission is flagged for review",
+"no payout instruction is generated"
+],
+[
+"FR-V12-B-086",
+"SM-SVC-33",
+"WF01 creates or matches a case from any channel, classifies severity and category and assigns a queue",
+"an email and a chat about the same issue link to one case",
+"a case without tenant scope is rejected"
+],
+[
+"FR-V12-B-087",
+"SM-SVC-33",
+"WF02 proposes a grounded fix and executes only actions on the approved self-service grant list; refunds, credits and commitments go to a human",
+"a password-reset style approved action runs with audit",
+"a refund request becomes a human task"
+],
+[
+"FR-V12-B-088",
+"SM-SVC-33",
+"WF03 calculates SLA deadlines from the entitlement and policy, alerts risk and escalates overdue cases (SLA measurement coverage 100%)",
+"a case at 80% of SLA alerts the owner",
+"a breached case escalates to the next level"
+],
+[
+"FR-V12-B-089",
+"SM-SVC-33",
+"WF04 analyzes resolved cases for recurring causes and recommends corrective work with evidence",
+"the monthly report lists top recurring issues with case links",
+"personal data does not appear in the aggregated report"
+],
+[
+"FR-V12-B-090",
+"SM-SVC-34",
+"WF01 ingests a consented product-usage event stream with schema validation and aggregates activation state per account (event integrity ≥99%)",
+"valid events update the usage scorecard",
+"events without consent flag or account ID are rejected"
+],
+[
+"FR-V12-B-091",
+"SM-SVC-34",
+"WF04 compares plan fit and prepares an upgrade recommendation for human review; the system never changes a plan or charges automatically",
+"an over-limit account gets a recommendation in A144",
+"no plan change or charge is executed (unapproved upgrades = 0)"
+],
+[
+"FR-V12-B-092",
+"SM-SVC-35",
+"WF01–02 collect allowed reviews with provenance (100%), deduplicate, classify issues and draft respectful, evidence-based responses for approval",
+"a negative review gets a draft response citing verified facts",
+"a response that discloses personal data is blocked"
+],
+[
+"FR-V12-B-093",
+"SM-SVC-35",
+"The service never generates, solicits in breach of platform policy, or posts fake reviews (fake review generation = 0)",
+"a prompt asking for review text is refused by the claims guard",
+"no review is posted under any identity"
+],
+[
+"FR-V12-B-094",
+"SM-SVC-36",
+"Coaching outputs are private to the learner and their coach, are never used as an automated employment decision, and recordings are used only with consent of all parties",
+"a learner sees rubric feedback with cited moments",
+"a manager report shows no individual ranking without human review"
+],
+[
+"FR-V12-B-095",
+"SM-SVC-37",
+"WF01–02 calculate bundle margin and price sensitivity scenarios with explicit assumptions and uncertainty; results are recommendations only",
+"a scenario report reconciles margins to cost inputs 100%",
+"a recommendation never updates a price version"
+],
+[
+"FR-V12-B-096",
+"SM-SVC-37",
+"WF03 price experiments use only human-approved price points within approved bounds, deterministic allocation, fairness review and stop rules (BRL-V12-B-11)",
+"an approved two-price test allocates deterministically",
+"an AI-proposed price that is not approved can never be allocated"
+],
+[
+"FR-V12-B-097",
+"SM-SVC-37",
+"WF04 detects price or margin deviations from approved rules and routes them for approval",
+"a quote below margin floor is flagged",
+"the deviation is never auto-corrected"
+],
+[
+"FR-V12-B-098",
+"SM-SVC-38",
+"WF01 verifies the sender (DLT entity, header, template IDs, RCS agent) and holds any message whose template or registration evidence is missing",
+"a registered template passes eligibility",
+"a message without a matching DLT template ID is held"
+],
+[
+"FR-V12-B-099",
+"SM-SVC-38",
+"WF02 checks consent, preference (NCPR/DND), quiet hours and frequency, then dispatches approved messages with an idempotency key and logs the outcome",
+"an eligible recipient receives one message",
+"a DND-registered number without an exemption is never messaged"
+],
+[
+"FR-V12-B-100",
+"SM-SVC-38",
+"WF03 reconciles delivery reports, classifies replies (STOP cancels queued messages immediately, AU-008) and falls back only to channels the recipient permitted",
+"an RCS failure falls back to SMS only when SMS consent exists",
+"a fallback to a non-consented channel is refused"
+],
+[
+"FR-V12-B-101",
+"SM-SVC-38",
+"WF04 reports performance, usage, complaints and opt-outs and enforces suppression and budget",
+"suppression propagation latency is measured",
+"a complaint spike auto-pauses the sender (AU-031)"
+],
+[
+"FR-V12-B-102",
+"SM-SVC-39",
+"WF01 validates the need, scores suppliers against qualification rules and evidence, flags gaps and routes the shortlist for review",
+"a shortlist shows criteria coverage per supplier",
+"a supplier without required certification is flagged, not excluded silently"
+],
+[
+"FR-V12-B-103",
+"SM-SVC-39",
+"WF02 drafts the RFQ and normalizes supplier quotes (unit, currency, terms, lead time) for comparison of price and quality",
+"three quotes in different units compare on one normalized basis",
+"a quote with an unknown unit is held"
+],
+[
+"FR-V12-B-104",
+"SM-SVC-39",
+"WF03 calculates the purchase order, requires purchasing approval within budget authority (buy-side separation of duties when enabled) and records the supplier commitment",
+"an approved PO records approver and budget authority",
+"the PO approver cannot verify the goods receipt when buy_side_sod is on"
+],
+[
+"FR-V12-B-105",
+"SM-SVC-39",
+"WF04 tracks milestones, reconciles receipts against the PO (three-way match) and escalates discrepancies; payables stay separate from receivables",
+"an unmatched receipt is escalated",
+"a payable is never netted against a receivable"
+]
+],
+"STORY": [
+[
+"US-29-YB01",
+"EP-29",
+"Service, workflow and bundle registry",
+[
+"FR-V12-B-001",
+"FR-V12-B-002",
+"FR-V12-B-003",
+"FR-V12-B-028"
+],
+"All"
+],
+[
+"US-29-YB02",
+"EP-29",
+"Foundation inclusion and selection modes",
+[
+"FR-V12-B-004",
+"FR-V12-B-005",
+"FR-V12-B-011"
+],
+"All"
+],
+[
+"US-29-YB03",
+"EP-29",
+"Per-action SKU entitlement in the PDP",
+[
+"FR-V12-B-006",
+"FR-V12-B-007",
+"FR-V12-B-008",
+"FR-V12-B-026"
+],
+"All"
+],
+[
+"US-29-YB04",
+"EP-29",
+"Meters, caps and commercial model",
+[
+"FR-V12-B-009",
+"FR-V12-B-010",
+"FR-V12-B-029"
+],
+"All"
+],
+[
+"US-29-YB05",
+"EP-29",
+"Migration and legacy entitlements",
+[
+"FR-V12-B-012"
+],
+"All"
+],
+[
+"US-29-YB06",
+"EP-29",
+"Event envelope, idempotency and recovery",
+[
+"FR-V12-B-013",
+"FR-V12-B-014",
+"FR-V12-B-015",
+"FR-V12-B-016"
+],
+"All"
+],
+[
+"US-29-YB07",
+"EP-29",
+"Agent identity, interoperability and model portability",
+[
+"FR-V12-B-017",
+"FR-V12-B-018",
+"FR-V12-B-019"
+],
+"All"
+],
+[
+"US-29-YB08",
+"EP-29",
+"Side-effect class and autonomy cap",
+[
+"FR-V12-B-020"
+],
+"All"
+],
+[
+"US-29-YB09",
+"EP-29",
+"First value, enhancement metrics and outcome acceptance",
+[
+"FR-V12-B-021",
+"FR-V12-B-022",
+"FR-V12-B-030"
+],
+"All"
+],
+[
+"US-29-YB10",
+"EP-29",
+"Shared engines",
+[
+"FR-V12-B-023"
+],
+"All"
+],
+[
+"US-29-YB11",
+"EP-29",
+"Public service catalogue projection",
+[
+"FR-V12-B-024"
+],
+"All"
+],
+[
+"US-29-YB12",
+"EP-29",
+"Readiness gate and catalogue administration",
+[
+"FR-V12-B-025",
+"FR-V12-B-027"
+],
+"All"
+],
+[
+"US-05-YB01",
+"EP-05",
+"SM-SVC-01 Market & Competitive Intelligence Automation: V12 SKU deltas",
+[
+"FR-V12-B-031",
+"FR-V12-B-032"
+],
+"SM-SVC-01"
+],
+[
+"US-05-YB02",
+"EP-05",
+"SM-SVC-02 Global Business Opportunity Discovery Automation: V12 SKU deltas",
+[
+"FR-V12-B-033",
+"FR-V12-B-034"
+],
+"SM-SVC-02"
+],
+[
+"US-06-YB01",
+"EP-06",
+"SM-SVC-03 B2B Contact & Decision-Maker Intelligence Automation: V12 SKU deltas",
+[
+"FR-V12-B-035"
+],
+"SM-SVC-03"
+],
+[
+"US-06-YB02",
+"EP-06",
+"SM-SVC-04 Lead Qualification & Intelligent Matching Automation: V12 SKU deltas",
+[
+"FR-V12-B-036"
+],
+"SM-SVC-04"
+],
+[
+"US-07-YB01",
+"EP-07",
+"SM-SVC-05 CRM & Sales Pipeline Automation: V12 SKU deltas",
+[
+"FR-V12-B-037"
+],
+"SM-SVC-05"
+],
+[
+"US-08-YB01",
+"EP-08",
+"SM-SVC-06 Email Marketing & Outreach Automation: V12 SKU deltas",
+[
+"FR-V12-B-038"
+],
+"SM-SVC-06"
+],
+[
+"US-10-YB01",
+"EP-10",
+"SM-SVC-07 WhatsApp Business Marketing Automation: V12 SKU deltas",
+[
+"FR-V12-B-039"
+],
+"SM-SVC-07"
+],
+[
+"US-08-YB02",
+"EP-08",
+"SM-SVC-08 Omnichannel Follow-up & Lead Nurturing Automation: V12 SKU deltas",
+[
+"FR-V12-B-040"
+],
+"SM-SVC-08"
+],
+[
+"US-08-YB03",
+"EP-08",
+"SM-SVC-09 AI Chat, Unified Inbox & Objection Automation: V12 SKU deltas",
+[
+"FR-V12-B-041"
+],
+"SM-SVC-09"
+],
+[
+"US-09-YB01",
+"EP-09",
+"SM-SVC-10 Meeting, Demo & Appointment Automation: V12 SKU deltas",
+[
+"FR-V12-B-042"
+],
+"SM-SVC-10"
+],
+[
+"US-11-YB01",
+"EP-11",
+"SM-SVC-11 Content Marketing Automation: V12 SKU deltas",
+[
+"FR-V12-B-043"
+],
+"SM-SVC-11"
+],
+[
+"US-11-YB02",
+"EP-11",
+"SM-SVC-12 Social Media Publishing & Listening Automation: V12 SKU deltas",
+[
+"FR-V12-B-044"
+],
+"SM-SVC-12"
+],
+[
+"US-11-YB03",
+"EP-11",
+"SM-SVC-13 SEO & Search Visibility Automation: V12 SKU deltas",
+[
+"FR-V12-B-045"
+],
+"SM-SVC-13"
+],
+[
+"US-12-YB01",
+"EP-12",
+"SM-SVC-14 Paid Digital Advertising Automation: V12 SKU deltas",
+[
+"FR-V12-B-046"
+],
+"SM-SVC-14"
+],
+[
+"US-12-YB02",
+"EP-12",
+"SM-SVC-15 Landing Page & Website Lead Intake Automation: V12 SKU deltas",
+[
+"FR-V12-B-047",
+"FR-V12-B-048"
+],
+"SM-SVC-15"
+],
+[
+"US-09-YB02",
+"EP-09",
+"SM-SVC-16 Webinar, Event & Referral Acquisition Automation: V12 SKU deltas",
+[
+"FR-V12-B-049"
+],
+"SM-SVC-16"
+],
+[
+"US-13-YB01",
+"EP-13",
+"SM-SVC-17 Proposal & Quotation Automation: V12 SKU deltas",
+[
+"FR-V12-B-050"
+],
+"SM-SVC-17"
+],
+[
+"US-13-YB02",
+"EP-13",
+"SM-SVC-18 Negotiation, Contract & MoU Automation: V12 SKU deltas",
+[
+"FR-V12-B-051"
+],
+"SM-SVC-18"
+],
+[
+"US-14-YB01",
+"EP-14",
+"SM-SVC-19 Tender & Project Bid Automation: V12 SKU deltas",
+[
+"FR-V12-B-052"
+],
+"SM-SVC-19"
+],
+[
+"US-14-YB02",
+"EP-14",
+"SM-SVC-20 Sales Order & Fulfillment Automation: V12 SKU deltas",
+[
+"FR-V12-B-053",
+"FR-V12-B-054"
+],
+"SM-SVC-20"
+],
+[
+"US-15-YB01",
+"EP-15",
+"SM-SVC-21 Payment, Invoice & Reconciliation Automation: V12 SKU deltas",
+[
+"FR-V12-B-055"
+],
+"SM-SVC-21"
+],
+[
+"US-16-YB01",
+"EP-16",
+"SM-SVC-22 Customer, Partner & Institutional Onboarding Automation: V12 SKU deltas",
+[
+"FR-V12-B-056"
+],
+"SM-SVC-22"
+],
+[
+"US-16-YB02",
+"EP-16",
+"SM-SVC-23 Customer Retention, Renewal & Feedback Automation: V12 SKU deltas",
+[
+"FR-V12-B-057"
+],
+"SM-SVC-23"
+],
+[
+"US-15-YB02",
+"EP-15",
+"SM-SVC-24 Revenue, Attribution & Sales Forecast Automation: V12 SKU deltas",
+[
+"FR-V12-B-058"
+],
+"SM-SVC-24"
+],
+[
+"US-02-YB01",
+"EP-02",
+"SM-SVC-25 Business Document & Knowledge Intelligence Automation: V12 SKU deltas",
+[
+"FR-V12-B-059"
+],
+"SM-SVC-25"
+],
+[
+"US-22-YB01",
+"EP-22",
+"WF01 inbound",
+[
+"FR-V12-B-060"
+],
+"SM-SVC-26"
+],
+[
+"US-22-YB02",
+"EP-22",
+"WF02 outbound",
+[
+"FR-V12-B-061"
+],
+"SM-SVC-26"
+],
+[
+"US-22-YB03",
+"EP-22",
+"WF03 multilingual",
+[
+"FR-V12-B-062"
+],
+"SM-SVC-26"
+],
+[
+"US-22-YB04",
+"EP-22",
+"WF04 call intelligence",
+[
+"FR-V12-B-063"
+],
+"SM-SVC-26"
+],
+[
+"US-22-YB05",
+"EP-22",
+"The AI voice agent never quotes a non-approved price, accepts an order, agrees terms or ta",
+[
+"FR-V12-B-064"
+],
+"SM-SVC-26"
+],
+[
+"US-22-YB06",
+"EP-22",
+"Call minutes are metered per SKU with a hard budget; a call is not placed when the reserva",
+[
+"FR-V12-B-065"
+],
+"SM-SVC-26"
+],
+[
+"US-28-YB01",
+"EP-28",
+"WF01 generates marketing image variants from an approved brand brief, checks layout, brand",
+[
+"FR-V12-B-066"
+],
+"SM-SVC-27"
+],
+[
+"US-28-YB02",
+"EP-28",
+"WF02 builds a storyboard and video draft from approved product facts; every depicted capab",
+[
+"FR-V12-B-067"
+],
+"SM-SVC-27"
+],
+[
+"US-28-YB03",
+"EP-28",
+"WF03 localizes approved assets",
+[
+"FR-V12-B-068"
+],
+"SM-SVC-27"
+],
+[
+"US-28-YB04",
+"EP-28",
+"WF04 records a creative QA record (rights evidence, licence, claim validation, brand compl",
+[
+"FR-V12-B-069"
+],
+"SM-SVC-27"
+],
+[
+"US-28-YB05",
+"EP-28",
+"Creative assets are metered per creative asset with a hard budget per provider",
+[
+"FR-V12-B-070"
+],
+"SM-SVC-27"
+],
+[
+"US-24-YB01",
+"EP-24",
+"WF01 publishes a machine-readable catalogue of approved offerings (approved claims and pri",
+[
+"FR-V12-B-071"
+],
+"SM-SVC-28"
+],
+[
+"US-24-YB02",
+"EP-24",
+"WF02 accepts requirement and quotation requests only from external agents with verified id",
+[
+"FR-V12-B-072"
+],
+"SM-SVC-28"
+],
+[
+"US-24-YB03",
+"EP-24",
+"A mandate record holds principal, counterpart agent identity, scope, item and price limits",
+[
+"FR-V12-B-073"
+],
+"SM-SVC-28"
+],
+[
+"US-24-YB04",
+"EP-24",
+"WF03 compares offers within the mandate and routes every consequential decision (accept, c",
+[
+"FR-V12-B-074"
+],
+"SM-SVC-28"
+],
+[
+"US-24-YB05",
+"EP-24",
+"WF04 executes an approved transaction only through the approved provider after a human app",
+[
+"FR-V12-B-075"
+],
+"SM-SVC-28"
+],
+[
+"US-24-YB06",
+"EP-24",
+"Interaction logs with external agents are append-only, signed and linked to the mandate, q",
+[
+"FR-V12-B-076"
+],
+"SM-SVC-28"
+],
+[
+"US-24-YB07",
+"EP-24",
+"Untrusted content from external agents is sanitized and never treated as instructions (AU-",
+[
+"FR-V12-B-077"
+],
+"SM-SVC-28"
+],
+[
+"US-06-YB03",
+"EP-06",
+"SM-SVC-29 Account-Based Marketing & Enterprise Buying Group Automation: V12 SKU deltas",
+[
+"FR-V12-B-078"
+],
+"SM-SVC-29"
+],
+[
+"US-12-YB03",
+"EP-12",
+"SM-SVC-30 Conversion Rate Optimization & Intelligent Experimentation Automation: V12 SKU deltas",
+[
+"FR-V12-B-079",
+"FR-V12-B-080"
+],
+"SM-SVC-30"
+],
+[
+"US-25-YB01",
+"EP-25",
+"WF01 maps approved SKU catalogue fields to each marketplace schema, validates content and ",
+[
+"FR-V12-B-081"
+],
+"SM-SVC-31"
+],
+[
+"US-25-YB02",
+"EP-25",
+"WF02 synchronizes price and availability only from the approved price version and verified",
+[
+"FR-V12-B-082"
+],
+"SM-SVC-31"
+],
+[
+"US-25-YB03",
+"EP-25",
+"WF03 deduplicates order, cancellation and return events into an order-event ledger and rou",
+[
+"FR-V12-B-083"
+],
+"SM-SVC-31"
+],
+[
+"US-25-YB04",
+"EP-25",
+"WF04 matches marketplace sales, fees and verified receipts and reports anomalies and net p",
+[
+"FR-V12-B-084"
+],
+"SM-SVC-31"
+],
+[
+"US-16-YB03",
+"EP-16",
+"SM-SVC-32 Partner, Distributor & Co-Selling Automation: V12 SKU deltas",
+[
+"FR-V12-B-085"
+],
+"SM-SVC-32"
+],
+[
+"US-27-YB01",
+"EP-27",
+"WF01 creates or matches a case from any channel, classifies severity and category and assi",
+[
+"FR-V12-B-086"
+],
+"SM-SVC-33"
+],
+[
+"US-27-YB02",
+"EP-27",
+"WF02 proposes a grounded fix and executes only actions on the approved self-service grant ",
+[
+"FR-V12-B-087"
+],
+"SM-SVC-33"
+],
+[
+"US-27-YB03",
+"EP-27",
+"WF03 calculates SLA deadlines from the entitlement and policy, alerts risk and escalates o",
+[
+"FR-V12-B-088"
+],
+"SM-SVC-33"
+],
+[
+"US-27-YB04",
+"EP-27",
+"WF04 analyzes resolved cases for recurring causes and recommends corrective work with evid",
+[
+"FR-V12-B-089"
+],
+"SM-SVC-33"
+],
+[
+"US-16-YB04",
+"EP-16",
+"SM-SVC-34 Product-Led Growth & Usage Intelligence Automation: V12 SKU deltas",
+[
+"FR-V12-B-090",
+"FR-V12-B-091"
+],
+"SM-SVC-34"
+],
+[
+"US-11-YB04",
+"EP-11",
+"SM-SVC-35 Brand Reputation & Review Intelligence Automation: V12 SKU deltas",
+[
+"FR-V12-B-092",
+"FR-V12-B-093"
+],
+"SM-SVC-35"
+],
+[
+"US-08-YB04",
+"EP-08",
+"SM-SVC-36 AI Sales Enablement & Coaching Automation: V12 SKU deltas",
+[
+"FR-V12-B-094"
+],
+"SM-SVC-36"
+],
+[
+"US-13-YB03",
+"EP-13",
+"SM-SVC-37 Pricing, Offer & Revenue Optimization Automation: V12 SKU deltas",
+[
+"FR-V12-B-095",
+"FR-V12-B-096",
+"FR-V12-B-097"
+],
+"SM-SVC-37"
+],
+[
+"US-23-YB01",
+"EP-23",
+"WF01 verifies the sender (DLT entity, header, template IDs, RCS agent) and holds any messa",
+[
+"FR-V12-B-098"
+],
+"SM-SVC-38"
+],
+[
+"US-23-YB02",
+"EP-23",
+"WF02 checks consent, preference (NCPR/DND), quiet hours and frequency, then dispatches app",
+[
+"FR-V12-B-099"
+],
+"SM-SVC-38"
+],
+[
+"US-23-YB03",
+"EP-23",
+"WF03 reconciles delivery reports, classifies replies (STOP cancels queued messages immedia",
+[
+"FR-V12-B-100"
+],
+"SM-SVC-38"
+],
+[
+"US-23-YB04",
+"EP-23",
+"WF04 reports performance, usage, complaints and opt-outs and enforces suppression and budg",
+[
+"FR-V12-B-101"
+],
+"SM-SVC-38"
+],
+[
+"US-26-YB01",
+"EP-26",
+"WF01 validates the need, scores suppliers against qualification rules and evidence, flags ",
+[
+"FR-V12-B-102"
+],
+"SM-SVC-39"
+],
+[
+"US-26-YB02",
+"EP-26",
+"WF02 drafts the RFQ and normalizes supplier quotes (unit, currency, terms, lead time) for ",
+[
+"FR-V12-B-103"
+],
+"SM-SVC-39"
+],
+[
+"US-26-YB03",
+"EP-26",
+"WF03 calculates the purchase order, requires purchasing approval within budget authority (",
+[
+"FR-V12-B-104"
+],
+"SM-SVC-39"
+],
+[
+"US-26-YB04",
+"EP-26",
+"WF04 tracks milestones, reconciles receipts against the PO (three-way match) and escalates",
+[
+"FR-V12-B-105"
+],
+"SM-SVC-39"
+]
+],
+"TC": [
+[
+"TC-V12-B-001",
+"Positive: Service registry holds the 39 service SKUs SM-SVC-01…39 with stable ID",
+"FR-V12-B-001",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-001",
+"a reviewed SKU moves to pilot only with scope, permission, pricing, benchmark, SLA and acceptance sign-off recorded",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-002",
+"Negative/boundary: Service registry holds the 39 service SKUs SM-SVC-01…39 with s",
+"FR-V12-B-001",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a draft SKU is requested by the public projection API and is not returned",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-003",
+"Positive: Workflow versions follow draft → validated → approved → released; a ru",
+"FR-V12-B-002",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-002",
+"a new revision released mid-run leaves the running execution on its pinned revision",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-004",
+"Negative/boundary: Workflow versions follow draft → validated → approved → releas",
+"FR-V12-B-002",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"an attempt to edit a released revision creates a new draft revision instead",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-005",
+"Positive: Bundle registry holds six partial bundles (Research & Lead Intelligenc",
+"FR-V12-B-003",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-003",
+"bundle membership totals 39 SKUs and 156 included workflows",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-006",
+"Negative/boundary: Bundle registry holds six partial bundles (Research & Lead Int",
+"FR-V12-B-003",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a bundle revision that lists an unknown or deprecated SKU is rejected",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-007",
+"Positive: The 25 foundation capabilities (SM-01-01…05, SM-11-01…05, SM-12-01…05,",
+"FR-V12-B-004",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-004",
+"every subscription shows the 25 foundation entries as included at ₹0",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-008",
+"Negative/boundary: The 25 foundation capabilities (SM-01-01…05, SM-11-01…05, SM-1",
+"FR-V12-B-004",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"an attempt to remove a foundation entry or add a price to it is refused",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-009",
+"Positive: Selection modes are full suite (all approved SKUs), partial bundle (pr",
+"FR-V12-B-005",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-005",
+"a client buys SM-SVC-17 alone and runs it with a client-supplied approved offering catalogue",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-010",
+"Negative/boundary: Selection modes are full suite (all approved SKUs), partial bu",
+"FR-V12-B-005",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a quote line for a single workflow ID is rejected",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-011",
+"Positive: Every action checks tenant/startup scope, SKU entitlement, capability,",
+"FR-V12-B-006",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-006",
+"an entitled action proceeds and the decision record names the SKU and entitlement revision",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-012",
+"Negative/boundary: Every action checks tenant/startup scope, SKU entitlement, cap",
+"FR-V12-B-006",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"an action of an unpurchased SKU is blocked with reason ENTITLEMENT_MISSING and no side effect",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-013",
+"Positive: When a required authorization, input or provider is missing the workfl",
+"FR-V12-B-007",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-007",
+"a missing email transport turns SM-SVC-08 dispatch steps into human tasks",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-014",
+"Negative/boundary: When a required authorization, input or provider is missing th",
+"FR-V12-B-007",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"no external call is attempted while the prerequisite is missing",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-015",
+"Positive: Revocation of a SKU blocks new executions, pauses or safely resolves a",
+"FR-V12-B-008",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-008",
+"after revocation the active run reaches a safe paused state within one step and an audit event is written",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-016",
+"Negative/boundary: Revocation of a SKU blocks new executions, pauses or safely re",
+"FR-V12-B-008",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a new run started after revocation is refused",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-017",
+"Positive: Each SKU has its own meter unit and an illustrative pilot cap (not app",
+"FR-V12-B-009",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-009",
+"usage of SM-SVC-06 is metered per email attempt and alerts at 80% and 100% of the approved cap",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-018",
+"Negative/boundary: Each SKU has its own meter unit and an illustrative pilot cap ",
+"FR-V12-B-009",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"the 101st market research batch over a cap of 100 is refused unless an approved overage exists",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-019",
+"Positive: Commercial model: proposed monthly base entitlement plus metered exces",
+"FR-V12-B-010",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-010",
+"the storefront shows 'Request a quote' for every SKU",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-020",
+"Negative/boundary: Commercial model: proposed monthly base entitlement plus meter",
+"FR-V12-B-010",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a SKU without an approved rate card cannot be invoiced",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-021",
+"Positive: Capability crosswalk keeps the 100 legacy capability IDs SM-01-01…SM-2",
+"FR-V12-B-011",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-011",
+"SM-04-05 Assignment resolves to primary service SM-SVC-05",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-022",
+"Negative/boundary: Capability crosswalk keeps the 100 legacy capability IDs SM-01",
+"FR-V12-B-011",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a client holding SM-SVC-04 and SM-SVC-05 is not charged twice for shared internals",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-023",
+"Positive: Migration: retained service IDs keep WF01–03 and add WF04; SM-SVC-20 p",
+"FR-V12-B-012",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-012",
+"a legacy SM-SVC-20 subscriber keeps buy-side order rights until the transition is approved",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-024",
+"Negative/boundary: Migration: retained service IDs keep WF01–03 and add WF04; SM-",
+"FR-V12-B-012",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"SM-SVC-26 cannot be activated while its approval status is pending",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-025",
+"Positive: Event envelope for every service trigger: event_id, tenant_id, startup",
+"FR-V12-B-013",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-013",
+"a valid event starts the pinned workflow revision",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-026",
+"Negative/boundary: Event envelope for every service trigger: event_id, tenant_id,",
+"FR-V12-B-013",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"an event whose startup_id is outside the token scope is rejected and audited",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-027",
+"Positive: Idempotency key = scoped event + workflow revision + action target; du",
+"FR-V12-B-014",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-014",
+"a replayed provider webhook creates no second action",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-028",
+"Negative/boundary: Idempotency key = scoped event + workflow revision + action ta",
+"FR-V12-B-014",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"two workflows targeting the same relationship raise a conflict for A111",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-029",
+"Positive: Escalation and recovery: bounded retry for safe failures; an uncertain",
+"FR-V12-B-015",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-015",
+"a timeout after submission is reconciled with the provider before any retry",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-030",
+"Negative/boundary: Escalation and recovery: bounded retry for safe failures; an u",
+"FR-V12-B-015",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a fourth retry of the same step is refused",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-031",
+"Positive: Data provenance on every evidence-bearing record: authorized source ID",
+"FR-V12-B-016",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-016",
+"a finding without source ID cannot be accepted",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-032",
+"Negative/boundary: Data provenance on every evidence-bearing record: authorized s",
+"FR-V12-B-016",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"evidence past its freshness window is flagged stale and held",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-033",
+"Positive: Agent identity: each service runs as a scoped service principal or an ",
+"FR-V12-B-017",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-017",
+"a service principal token expires and is refreshed within scope",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-034",
+"Negative/boundary: Agent identity: each service runs as a scoped service principa",
+"FR-V12-B-017",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a grant request for a wider scope than the SKU allows is denied",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-035",
+"Positive: External agent interoperability is disabled unless explicitly granted ",
+"FR-V12-B-018",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-018",
+"an external agent call without a grant is refused",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-036",
+"Negative/boundary: External agent interoperability is disabled unless explicitly ",
+"FR-V12-B-018",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a grant for one SKU does not open another SKU",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-037",
+"Positive: Model portability: every model call goes through the model gateway (Ti",
+"FR-V12-B-019",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-019",
+"a Tier 1b call is reserved against the tenant budget before execution",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-038",
+"Negative/boundary: Model portability: every model call goes through the model gat",
+"FR-V12-B-019",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"personal data is never routed to Tier 2",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-039",
+"Positive: External side-effect class per workflow (internal analysis/draft; pote",
+"FR-V12-B-020",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-020",
+"SM-SVC-28-WF04 is classed consequential and capped at L1",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-040",
+"Negative/boundary: External side-effect class per workflow (internal analysis/dra",
+"FR-V12-B-020",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a configuration that raises a consequential workflow to L2 is refused",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-041",
+"Positive: First-value milestone per SKU: record activation and first acceptance ",
+"FR-V12-B-021",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-021",
+"time-to-first-value is reported per tenant and SKU",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-042",
+"Negative/boundary: First-value milestone per SKU: record activation and first acc",
+"FR-V12-B-021",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a first value without owner acceptance is not counted",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-043",
+"Positive: Enhancement metrics: each of the 156 workflows records its two named e",
+"FR-V12-B-022",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-022",
+"SM-SVC-06-WF02 reports duplicate send rate and accepted delivery reconciliation",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-044",
+"Negative/boundary: Enhancement metrics: each of the 156 workflows records its two",
+"FR-V12-B-022",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a workflow without metric emitters fails the release gate",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-045",
+"Positive: Shared engines ENG-01…15 are logical reusable capabilities mapped to b",
+"FR-V12-B-023",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-023",
+"ENG-05 Communication is used by SM-SVC-06, 07, 08, 12 and 38",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-046",
+"Negative/boundary: Shared engines ENG-01…15 are logical reusable capabilities map",
+"FR-V12-B-023",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"an engine invocation carries the calling SKU and is metered to it",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-047",
+"Positive: Public projection of a service: description, deliverables, readiness, ",
+"FR-V12-B-024",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-024",
+"the storefront lists 39 services with readiness 'Planned / proposed'",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-048",
+"Negative/boundary: Public projection of a service: description, deliverables, rea",
+"FR-V12-B-024",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"no client or owned-startup name appears in any public payload",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-049",
+"Positive: Readiness gate: a SKU is released individually only after scope, permi",
+"FR-V12-B-025",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-025",
+"release evidence links ENT and WF01–04 acceptance results",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-050",
+"Negative/boundary: Readiness gate: a SKU is released individually only after scop",
+"FR-V12-B-025",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a SKU with any 'Not run' acceptance scenario cannot be released",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-051",
+"Positive: Entitlement acceptance per SKU (SM-SVC-xx-ENT-AT01): single-SKU purcha",
+"FR-V12-B-026",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-026",
+"purchased service eligible; unpurchased blocked; revocation prevents new runs",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-052",
+"Negative/boundary: Entitlement acceptance per SKU (SM-SVC-xx-ENT-AT01): single-SK",
+"FR-V12-B-026",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun are all refused",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-053",
+"Positive: Service catalogue administration: the Service Owner maintains SKUs, bu",
+"FR-V12-B-027",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-027",
+"a rate-card revision needs Service Owner approval before use",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-054",
+"Negative/boundary: Service catalogue administration: the Service Owner maintains ",
+"FR-V12-B-027",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"an author cannot approve their own rate-card revision",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-055",
+"Positive: Simulation: every workflow supports a synthetic dry run with zero exte",
+"FR-V12-B-028",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-028",
+"a dry run of SM-SVC-14-WF02 produces a simulated spend record only",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-056",
+"Negative/boundary: Simulation: every workflow supports a synthetic dry run with z",
+"FR-V12-B-028",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a simulated record never reaches a provider adapter",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-057",
+"Positive: Cost model: per-invocation internal cost is estimated from the workboo",
+"FR-V12-B-029",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-029",
+"the FinOps view shows estimated and actual cost per SKU",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-058",
+"Negative/boundary: Cost model: per-invocation internal cost is estimated from the",
+"FR-V12-B-029",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"an estimate is never shown as a price",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-059",
+"Positive: Measurable customer outcome is accepted against the SKU KPI and eviden",
+"FR-V12-B-030",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-030",
+"acceptance shows KPI value and evidence links",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-060",
+"Negative/boundary: Measurable customer outcome is accepted against the SKU KPI an",
+"FR-V12-B-030",
+"Tenant T, startup S; active entitlement for the SKU under test; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"marketing copy that guarantees sales or rankings is blocked by the claims guard",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-061",
+"Positive: WF04: maintain named market scenarios with explicit, dated assumptions",
+"FR-V12-B-031",
+"Tenant T, startup S; active entitlement for SM-SVC-01; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-031",
+"a material competitor price event triggers a scenario comparison with cited evidence and an owner alert",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-062",
+"Negative/boundary: WF04: maintain named market scenarios with explicit, dated ass",
+"FR-V12-B-031",
+"Tenant T, startup S; active entitlement for SM-SVC-01; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a scenario conclusion without cited evidence is held for review",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-063",
+"Positive: Every finding past its source freshness window carries a stale-source ",
+"FR-V12-B-032",
+"Tenant T, startup S; active entitlement for SM-SVC-01; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-032",
+"a 90-day-old observation in a 30-day window is flagged stale",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-064",
+"Negative/boundary: Every finding past its source freshness window carries a stale",
+"FR-V12-B-032",
+"Tenant T, startup S; active entitlement for SM-SVC-01; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a stale finding cannot be added to an approved trend report",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-065",
+"Positive: WF02 classifies each discovered organization's role (customer, supplie",
+"FR-V12-B-033",
+"Tenant T, startup S; active entitlement for SM-SVC-02; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-033",
+"an organization found as both supplier and customer is upserted once with two role tags and a conflict flag",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-066",
+"Negative/boundary: WF02 classifies each discovered organization's role (customer,",
+"FR-V12-B-033",
+"Tenant T, startup S; active entitlement for SM-SVC-02; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"an investor or fund role is never created (DEC-002)",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-067",
+"Positive: WF04 deduplicates new signals against open opportunities and updates t",
+"FR-V12-B-034",
+"Tenant T, startup S; active entitlement for SM-SVC-02; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-034",
+"a repeated tender notice updates the open opportunity and raises no new alert",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-068",
+"Negative/boundary: WF04 deduplicates new signals against open opportunities and u",
+"FR-V12-B-034",
+"Tenant T, startup S; active entitlement for SM-SVC-02; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a duplicate alert rate above 5% raises a quality incident",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-069",
+"Positive: WF04 compares permitted source updates with stored roles; a departed o",
+"FR-V12-B-035",
+"Tenant T, startup S; active entitlement for SM-SVC-03; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-035",
+"a role change observed on the official site invalidates the old link and opens a verification task",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-070",
+"Negative/boundary: WF04 compares permitted source updates with stored roles; a de",
+"FR-V12-B-035",
+"Tenant T, startup S; active entitlement for SM-SVC-03; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"an unverified change never overwrites a verified role",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-071",
+"Positive: WF04 reports calibration error and drift detection recall per model ve",
+"FR-V12-B-036",
+"Tenant T, startup S; active entitlement for SM-SVC-04; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-036",
+"a drift alert moves affected scores to 'review' and notifies the owner",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-072",
+"Negative/boundary: WF04 reports calibration error and drift detection recall per ",
+"FR-V12-B-036",
+"Tenant T, startup S; active entitlement for SM-SVC-04; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"an uncalibrated model version cannot be activated",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-073",
+"Positive: WF01 import consolidates relationships with identity resolution, owner",
+"FR-V12-B-037",
+"Tenant T, startup S; active entitlement for SM-SVC-05; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-037",
+"an import of 1,000 rows reports matched, created and rejected counts",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-074",
+"Negative/boundary: WF01 import consolidates relationships with identity resolutio",
+"FR-V12-B-037",
+"Tenant T, startup S; active entitlement for SM-SVC-05; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a row without tenant scope is rejected",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-075",
+"Positive: WF04 validates sender authentication (SPF, DKIM, DMARC alignment) befo",
+"FR-V12-B-038",
+"Tenant T, startup S; active entitlement for SM-SVC-06; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-038",
+"a complaint rate above the configured threshold pauses the sender and opens a remediation task",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-076",
+"Negative/boundary: WF04 validates sender authentication (SPF, DKIM, DMARC alignme",
+"FR-V12-B-038",
+"Tenant T, startup S; active entitlement for SM-SVC-06; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a sender without DKIM alignment cannot be activated",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-077",
+"Positive: WF04 classifies buying intent in an open service window and attaches a",
+"FR-V12-B-039",
+"Tenant T, startup S; active entitlement for SM-SVC-07; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-039",
+"a 'price for 50 kg?' message produces a draft with the approved price version and a 'create quote' task",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-078",
+"Negative/boundary: WF04 classifies buying intent in an open service window and at",
+"FR-V12-B-039",
+"Tenant T, startup S; active entitlement for SM-SVC-07; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"the assistant never confirms an order or sends a payment link without a human approval",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-079",
+"Positive: Without an eligible transport the sequence runs in task-only mode: due",
+"FR-V12-B-040",
+"Tenant T, startup S; active entitlement for SM-SVC-08; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-040",
+"a tenant without email transport sees follow-up tasks in A137",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-080",
+"Negative/boundary: Without an eligible transport the sequence runs in task-only m",
+"FR-V12-B-040",
+"Tenant T, startup S; active entitlement for SM-SVC-08; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"no SMS is dispatched for a tenant without SM-SVC-38",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-081",
+"Positive: WF04 accepts image and document attachments on inbound enquiries: malw",
+"FR-V12-B-041",
+"Tenant T, startup S; active entitlement for SM-SVC-09; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-041",
+"a photo of a product label is extracted and answered from approved knowledge with citation",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-082",
+"Negative/boundary: WF04 accepts image and document attachments on inbound enquiri",
+"FR-V12-B-041",
+"Tenant T, startup S; active entitlement for SM-SVC-09; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"an attachment that fails the scan is quarantined and never sent to a model",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-083",
+"Positive: WF04 extracts action items from staff notes and, where all participant",
+"FR-V12-B-042",
+"Tenant T, startup S; active entitlement for SM-SVC-10; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-042",
+"a transcript with consent from all participants yields reviewed action items",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-084",
+"Negative/boundary: WF04 extracts action items from staff notes and, where all par",
+"FR-V12-B-042",
+"Tenant T, startup S; active entitlement for SM-SVC-10; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a recording without consent evidence is rejected and not processed",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-085",
+"Positive: WF04 identifies missing or stale content coverage against approved off",
+"FR-V12-B-043",
+"Tenant T, startup S; active entitlement for SM-SVC-11; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-043",
+"a claim that expires flags every content version that uses it",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-086",
+"Negative/boundary: WF04 identifies missing or stale content coverage against appr",
+"FR-V12-B-043",
+"Tenant T, startup S; active entitlement for SM-SVC-11; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"stale content is never republished without a new approval",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-087",
+"Positive: WF04 classifies public comments and trends, deduplicates, drafts respo",
+"FR-V12-B-044",
+"Tenant T, startup S; active entitlement for SM-SVC-12; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-044",
+"a product question on a post produces a draft reply in the approval queue",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-088",
+"Negative/boundary: WF04 classifies public comments and trends, deduplicates, draf",
+"FR-V12-B-044",
+"Tenant T, startup S; active entitlement for SM-SVC-12; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a direct message is never sent automatically (BRL-MKT-07)",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-089",
+"Positive: WF04 measures observed visibility of the client's pages in AI answer e",
+"FR-V12-B-045",
+"Tenant T, startup S; active entitlement for SM-SVC-13; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-045",
+"a weekly observation set reports query coverage and citation accuracy",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-090",
+"Negative/boundary: WF04 measures observed visibility of the client's pages in AI ",
+"FR-V12-B-045",
+"Tenant T, startup S; active entitlement for SM-SVC-13; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a fabricated or estimated observation cannot be stored as measured (BRL-MKT-08)",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-091",
+"Positive: WF02 re-checks the provider grant and reserves spend against the appro",
+"FR-V12-B-046",
+"Tenant T, startup S; active entitlement for SM-SVC-14; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-046",
+"a launch reserves the daily cap and records provider status",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-092",
+"Negative/boundary: WF02 re-checks the provider grant and reserves spend against t",
+"FR-V12-B-046",
+"Tenant T, startup S; active entitlement for SM-SVC-14; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a change without a reservation or above cap is refused (no autonomous uncapped spend)",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-093",
+"Positive: Client lead-intake pages and forms are published only to a separate ve",
+"FR-V12-B-047",
+"Tenant T, startup S; active entitlement for SM-SVC-15; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-047",
+"a client page is previewed on its own verified domain",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-094",
+"Negative/boundary: Client lead-intake pages and forms are published only to a sep",
+"FR-V12-B-047",
+"Tenant T, startup S; active entitlement for SM-SVC-15; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"an attempt to publish client content on the SaaS storefront domain is refused",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-095",
+"Positive: WF04 validates the structured offering data and form schema (machine-r",
+"FR-V12-B-048",
+"Tenant T, startup S; active entitlement for SM-SVC-15; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-048",
+"a missing consent field fails validation",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-096",
+"Negative/boundary: WF04 validates the structured offering data and form schema (m",
+"FR-V12-B-048",
+"Tenant T, startup S; active entitlement for SM-SVC-15; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a page with a data leak (personal data in public JSON) is blocked",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-097",
+"Positive: WF04 segments eligible attendees by attendance and interest, measures ",
+"FR-V12-B-049",
+"Tenant T, startup S; active entitlement for SM-SVC-16; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-049",
+"the event funnel shows registered → attended → qualified with counts",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-098",
+"Negative/boundary: WF04 segments eligible attendees by attendance and interest, m",
+"FR-V12-B-049",
+"Tenant T, startup S; active entitlement for SM-SVC-16; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"an opted-out attendee is never enrolled in follow-up",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-099",
+"Positive: Quote totals are deterministic (Decimal, ROUND_HALF_UP) from the appro",
+"FR-V12-B-050",
+"Tenant T, startup S; active entitlement for SM-SVC-17; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-050",
+"a 3-line quote reproduces the arithmetic test to the paisa",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-100",
+"Negative/boundary: Quote totals are deterministic (Decimal, ROUND_HALF_UP) from t",
+"FR-V12-B-050",
+"Tenant T, startup S; active entitlement for SM-SVC-17; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a manual price outside the price version is held for approval",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-101",
+"Positive: WF04 extracts obligations (party, duty, due date, evidence) from the s",
+"FR-V12-B-051",
+"Tenant T, startup S; active entitlement for SM-SVC-18; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-051",
+"a signed MoU yields reviewed obligations with due dates",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-102",
+"Negative/boundary: WF04 extracts obligations (party, duty, due date, evidence) fr",
+"FR-V12-B-051",
+"Tenant T, startup S; active entitlement for SM-SVC-18; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"an extracted obligation is not active until a human confirms it",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-103",
+"Positive: WF03 prepares the submission package and checklist and records the hum",
+"FR-V12-B-052",
+"Tenant T, startup S; active entitlement for SM-SVC-19; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-052",
+"a submitted bid has receipt evidence uploaded by the submitter",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-104",
+"Negative/boundary: WF03 prepares the submission package and checklist and records",
+"FR-V12-B-052",
+"Tenant T, startup S; active entitlement for SM-SVC-19; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"no adapter call to a tender portal submission endpoint exists",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-105",
+"Positive: Sell-direction orders belong to SM-SVC-20; buy-direction orders requir",
+"FR-V12-B-053",
+"Tenant T, startup S; active entitlement for SM-SVC-20; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-053",
+"a tenant with SM-SVC-20 only sees Sell orders after transition",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-106",
+"Negative/boundary: Sell-direction orders belong to SM-SVC-20; buy-direction order",
+"FR-V12-B-053",
+"Tenant T, startup S; active entitlement for SM-SVC-20; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"creating a Buy order without SM-SVC-39 (and without a legacy right) is refused",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-107",
+"Positive: WF04 estimates delay risk per milestone from history, compares actual ",
+"FR-V12-B-054",
+"Tenant T, startup S; active entitlement for SM-SVC-20; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-054",
+"a milestone predicted late raises an owner alert",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-108",
+"Negative/boundary: WF04 estimates delay risk per milestone from history, compares",
+"FR-V12-B-054",
+"Tenant T, startup S; active entitlement for SM-SVC-20; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a prediction never changes a milestone date automatically",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-109",
+"Positive: WF04 calculates overdue exposure by ageing bucket and flags anomalies ",
+"FR-V12-B-055",
+"Tenant T, startup S; active entitlement for SM-SVC-21; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-055",
+"an overdue invoice appears in the 61–90 day bucket with exposure",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-110",
+"Negative/boundary: WF04 calculates overdue exposure by ageing bucket and flags an",
+"FR-V12-B-055",
+"Tenant T, startup S; active entitlement for SM-SVC-21; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"no payment instruction is generated",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-111",
+"Positive: WF04 regenerates scoped onboarding tasks when scope changes, evaluates",
+"FR-V12-B-056",
+"Tenant T, startup S; active entitlement for SM-SVC-22; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-056",
+"a blocked dependency proposes a new due date for owner approval",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-112",
+"Negative/boundary: WF04 regenerates scoped onboarding tasks when scope changes, e",
+"FR-V12-B-056",
+"Tenant T, startup S; active entitlement for SM-SVC-22; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a due date is never moved without an audit entry",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-113",
+"Positive: WF04 reports churn calibration and expansion precision and routes only",
+"FR-V12-B-057",
+"Tenant T, startup S; active entitlement for SM-SVC-23; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-057",
+"a high-risk account shows explained drivers and a proposed action",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-114",
+"Negative/boundary: WF04 reports churn calibration and expansion precision and rou",
+"FR-V12-B-057",
+"Tenant T, startup S; active entitlement for SM-SVC-23; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"no renewal offer is sent without approval",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-115",
+"Positive: WF04 runs revenue scenarios from approved assumptions, backtests forec",
+"FR-V12-B-058",
+"Tenant T, startup S; active entitlement for SM-SVC-24; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-058",
+"a scenario report shows assumptions, interval and backtest error",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-116",
+"Negative/boundary: WF04 runs revenue scenarios from approved assumptions, backtes",
+"FR-V12-B-058",
+"Tenant T, startup S; active entitlement for SM-SVC-24; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a forecast value never appears in a verified-revenue total (BRL-FIN-06)",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-117",
+"Positive: WF04 detects contradictory or stale claims across approved knowledge, ",
+"FR-V12-B-059",
+"Tenant T, startup S; active entitlement for SM-SVC-25; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-059",
+"two documents stating different warranty periods hold the dependent FAQ answer",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-118",
+"Negative/boundary: WF04 detects contradictory or stale claims across approved kno",
+"FR-V12-B-059",
+"Tenant T, startup S; active entitlement for SM-SVC-25; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a held claim is never used in a new draft",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-119",
+"Positive: WF01 inbound: disclose that the caller is speaking with an AI assistan",
+"FR-V12-B-060",
+"Tenant T, startup S; active entitlement for SM-SVC-26; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-060",
+"the first utterance contains the approved disclosure and the call log records it",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-120",
+"Negative/boundary: WF01 inbound: disclose that the caller is speaking with an AI ",
+"FR-V12-B-060",
+"Tenant T, startup S; active entitlement for SM-SVC-26; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a call where the disclosure fails to play is transferred to a human or ended",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-121",
+"Positive: WF02 outbound: a call is placed only to a contact with recorded call p",
+"FR-V12-B-061",
+"Tenant T, startup S; active entitlement for SM-SVC-26; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-061",
+"an eligible callback request produces one call within the approved window",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-122",
+"Negative/boundary: WF02 outbound: a call is placed only to a contact with recorde",
+"FR-V12-B-061",
+"Tenant T, startup S; active entitlement for SM-SVC-26; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a contact on the DND register or under 18 is never dialled",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-123",
+"Positive: WF03 multilingual: recognize language, answer from grounded knowledge ",
+"FR-V12-B-062",
+"Tenant T, startup S; active entitlement for SM-SVC-26; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-062",
+"a Hindi caller books a slot and receives a confirmation",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-124",
+"Negative/boundary: WF03 multilingual: recognize language, answer from grounded kn",
+"FR-V12-B-062",
+"Tenant T, startup S; active entitlement for SM-SVC-26; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a slot not confirmed verbally is not booked",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-125",
+"Positive: WF04 call intelligence: transcribe only calls with recorded consent, r",
+"FR-V12-B-063",
+"Tenant T, startup S; active entitlement for SM-SVC-26; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-063",
+"a consented call yields a redacted summary in Customer 360",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-126",
+"Negative/boundary: WF04 call intelligence: transcribe only calls with recorded co",
+"FR-V12-B-063",
+"Tenant T, startup S; active entitlement for SM-SVC-26; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a call without recording consent produces only metadata (time, duration, disposition)",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-127",
+"Positive: The AI voice agent never quotes a non-approved price, accepts an order",
+"FR-V12-B-064",
+"Tenant T, startup S; active entitlement for SM-SVC-26; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-064",
+"a caller asking for a discount gets a callback task for a human",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-128",
+"Negative/boundary: The AI voice agent never quotes a non-approved price, accepts ",
+"FR-V12-B-064",
+"Tenant T, startup S; active entitlement for SM-SVC-26; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"no payment card or bank details are captured or stored",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-129",
+"Positive: Call minutes are metered per SKU with a hard budget; a call is not pla",
+"FR-V12-B-065",
+"Tenant T, startup S; active entitlement for SM-SVC-26; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-065",
+"minute usage appears in the SKU meter",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-130",
+"Negative/boundary: Call minutes are metered per SKU with a hard budget; a call is",
+"FR-V12-B-065",
+"Tenant T, startup S; active entitlement for SM-SVC-26; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a call is refused when the monthly cap is reached",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-131",
+"Positive: WF01 generates marketing image variants from an approved brand brief, ",
+"FR-V12-B-066",
+"Tenant T, startup S; active entitlement for SM-SVC-27; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-066",
+"three variants with claim checks reach the approval queue",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-132",
+"Negative/boundary: WF01 generates marketing image variants from an approved brand",
+"FR-V12-B-066",
+"Tenant T, startup S; active entitlement for SM-SVC-27; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a variant containing an unapproved claim is blocked",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-133",
+"Positive: WF02 builds a storyboard and video draft from approved product facts; ",
+"FR-V12-B-067",
+"Tenant T, startup S; active entitlement for SM-SVC-27; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-067",
+"a demo video draft lists the claims it depicts with evidence",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-134",
+"Negative/boundary: WF02 builds a storyboard and video draft from approved product",
+"FR-V12-B-067",
+"Tenant T, startup S; active entitlement for SM-SVC-27; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a depiction of a planned (unavailable) capability is blocked (BRL-MKT-02)",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-135",
+"Positive: WF03 localizes approved assets: translation with glossary (AU-076), ca",
+"FR-V12-B-068",
+"Tenant T, startup S; active entitlement for SM-SVC-27; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-068",
+"a Tamil caption file passes caption-sync quality checks",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-136",
+"Negative/boundary: WF03 localizes approved assets: translation with glossary (AU-",
+"FR-V12-B-068",
+"Tenant T, startup S; active entitlement for SM-SVC-27; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a synthetic voice without rights evidence is refused",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-137",
+"Positive: WF04 records a creative QA record (rights evidence, licence, claim val",
+"FR-V12-B-069",
+"Tenant T, startup S; active entitlement for SM-SVC-27; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-069",
+"every published asset links to a QA record",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-138",
+"Negative/boundary: WF04 records a creative QA record (rights evidence, licence, c",
+"FR-V12-B-069",
+"Tenant T, startup S; active entitlement for SM-SVC-27; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"an asset without licence evidence cannot be scheduled",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-139",
+"Positive: Creative assets are metered per creative asset with a hard budget per ",
+"FR-V12-B-070",
+"Tenant T, startup S; active entitlement for SM-SVC-27; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-070",
+"asset generation cost is reserved before the provider call",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-140",
+"Negative/boundary: Creative assets are metered per creative asset with a hard bud",
+"FR-V12-B-070",
+"Tenant T, startup S; active entitlement for SM-SVC-27; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a generation request over the cap is refused",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-141",
+"Positive: WF01 publishes a machine-readable catalogue of approved offerings (app",
+"FR-V12-B-071",
+"Tenant T, startup S; active entitlement for SM-SVC-28; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-071",
+"a catalogue version lists only Released offerings with price version IDs",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-142",
+"Negative/boundary: WF01 publishes a machine-readable catalogue of approved offeri",
+"FR-V12-B-071",
+"Tenant T, startup S; active entitlement for SM-SVC-28; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a Planned offering or unapproved price is never published",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-143",
+"Positive: WF02 accepts requirement and quotation requests only from external age",
+"FR-V12-B-072",
+"Tenant T, startup S; active entitlement for SM-SVC-28; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-072",
+"a verified agent receives a quotation draft ID pending human approval",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-144",
+"Negative/boundary: WF02 accepts requirement and quotation requests only from exte",
+"FR-V12-B-072",
+"Tenant T, startup S; active entitlement for SM-SVC-28; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"an unverified agent, or a request outside scope, is refused and audited",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-145",
+"Positive: A mandate record holds principal, counterpart agent identity, scope, i",
+"FR-V12-B-073",
+"Tenant T, startup S; active entitlement for SM-SVC-28; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-073",
+"a mandate with cap ₹50,000 rejects an offer of ₹60,000",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-146",
+"Negative/boundary: A mandate record holds principal, counterpart agent identity, ",
+"FR-V12-B-073",
+"Tenant T, startup S; active entitlement for SM-SVC-28; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"an expired or revoked mandate blocks any effect (OPT-TC-FL-09)",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-147",
+"Positive: WF03 compares offers within the mandate and routes every consequential",
+"FR-V12-B-074",
+"Tenant T, startup S; active entitlement for SM-SVC-28; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-074",
+"an in-mandate best offer appears in the approval queue with comparison",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-148",
+"Negative/boundary: WF03 compares offers within the mandate and routes every conse",
+"FR-V12-B-074",
+"Tenant T, startup S; active entitlement for SM-SVC-28; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"no order is created without a human approval hash",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-149",
+"Positive: WF04 executes an approved transaction only through the approved provid",
+"FR-V12-B-075",
+"Tenant T, startup S; active entitlement for SM-SVC-28; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-075",
+"an approved order is executed once and reconciled",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-150",
+"Negative/boundary: WF04 executes an approved transaction only through the approve",
+"FR-V12-B-075",
+"Tenant T, startup S; active entitlement for SM-SVC-28; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a changed payload after approval blocks execution",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-151",
+"Positive: Interaction logs with external agents are append-only, signed and link",
+"FR-V12-B-076",
+"Tenant T, startup S; active entitlement for SM-SVC-28; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-076",
+"a dispute review can replay the exchange",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-152",
+"Negative/boundary: Interaction logs with external agents are append-only, signed ",
+"FR-V12-B-076",
+"Tenant T, startup S; active entitlement for SM-SVC-28; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a log edit is impossible",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-153",
+"Positive: Untrusted content from external agents is sanitized and never treated ",
+"FR-V12-B-077",
+"Tenant T, startup S; active entitlement for SM-SVC-28; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-077",
+"an injected instruction in an agent message is ignored and flagged",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-154",
+"Negative/boundary: Untrusted content from external agents is sanitized and never ",
+"FR-V12-B-077",
+"Tenant T, startup S; active entitlement for SM-SVC-28; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"no tool call is triggered by counterpart text",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-155",
+"Positive: SM-SVC-29 is the SKU wrapper of the X2 ABM capability (A130/A131, AG-0",
+"FR-V12-B-078",
+"Tenant T, startup S; active entitlement for SM-SVC-29; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-078",
+"a tenant without SM-SVC-29 cannot open A131",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-156",
+"Negative/boundary: SM-SVC-29 is the SKU wrapper of the X2 ABM capability (A130/A1",
+"FR-V12-B-078",
+"Tenant T, startup S; active entitlement for SM-SVC-29; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"account evidence coverage below 95% is reported",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-157",
+"Positive: WF03 personalization uses only approved segments and consented context",
+"FR-V12-B-079",
+"Tenant T, startup S; active entitlement for SM-SVC-30; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-079",
+"an approved segment rule personalizes the hero block",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-158",
+"Negative/boundary: WF03 personalization uses only approved segments and consented",
+"FR-V12-B-079",
+"Tenant T, startup S; active entitlement for SM-SVC-30; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a rule referencing a sensitive attribute is rejected at validation",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-159",
+"Positive: Experiments on price or offer use only human-approved variants and sto",
+"FR-V12-B-080",
+"Tenant T, startup S; active entitlement for SM-SVC-30; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-080",
+"an experiment pauses when complaint rate exceeds the guardrail",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-160",
+"Negative/boundary: Experiments on price or offer use only human-approved variants",
+"FR-V12-B-080",
+"Tenant T, startup S; active entitlement for SM-SVC-30; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a variant not approved cannot be allocated",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-161",
+"Positive: WF01 maps approved SKU catalogue fields to each marketplace schema, va",
+"FR-V12-B-081",
+"Tenant T, startup S; active entitlement for SM-SVC-31; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-081",
+"a listing publishes with approved claims and images",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-162",
+"Negative/boundary: WF01 maps approved SKU catalogue fields to each marketplace sc",
+"FR-V12-B-081",
+"Tenant T, startup S; active entitlement for SM-SVC-31; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a listing with an unapproved claim is held",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-163",
+"Positive: WF02 synchronizes price and availability only from the approved price ",
+"FR-V12-B-082",
+"Tenant T, startup S; active entitlement for SM-SVC-31; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-082",
+"a stock change propagates within the configured interval",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-164",
+"Negative/boundary: WF02 synchronizes price and availability only from the approve",
+"FR-V12-B-082",
+"Tenant T, startup S; active entitlement for SM-SVC-31; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a price that differs from the approved version is never pushed",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-165",
+"Positive: WF03 deduplicates order, cancellation and return events into an order-",
+"FR-V12-B-083",
+"Tenant T, startup S; active entitlement for SM-SVC-31; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-083",
+"a replayed order webhook creates no duplicate",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-166",
+"Negative/boundary: WF03 deduplicates order, cancellation and return events into a",
+"FR-V12-B-083",
+"Tenant T, startup S; active entitlement for SM-SVC-31; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"an invalid return transition is rejected",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-167",
+"Positive: WF04 matches marketplace sales, fees and verified receipts and reports",
+"FR-V12-B-084",
+"Tenant T, startup S; active entitlement for SM-SVC-31; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-084",
+"a settlement report reconciles to ≥99% with exceptions listed",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-168",
+"Negative/boundary: WF04 matches marketplace sales, fees and verified receipts and",
+"FR-V12-B-084",
+"Tenant T, startup S; active entitlement for SM-SVC-31; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"fees are never netted against supplier payables (BRL-ORD-06)",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-169",
+"Positive: SM-SVC-32 is the SKU wrapper of the X2 partner capability (A141, AG-06",
+"FR-V12-B-085",
+"Tenant T, startup S; active entitlement for SM-SVC-32; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-085",
+"a disputed commission is flagged for review",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-170",
+"Negative/boundary: SM-SVC-32 is the SKU wrapper of the X2 partner capability (A14",
+"FR-V12-B-085",
+"Tenant T, startup S; active entitlement for SM-SVC-32; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"no payout instruction is generated",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-171",
+"Positive: WF01 creates or matches a case from any channel, classifies severity a",
+"FR-V12-B-086",
+"Tenant T, startup S; active entitlement for SM-SVC-33; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-086",
+"an email and a chat about the same issue link to one case",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-172",
+"Negative/boundary: WF01 creates or matches a case from any channel, classifies se",
+"FR-V12-B-086",
+"Tenant T, startup S; active entitlement for SM-SVC-33; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a case without tenant scope is rejected",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-173",
+"Positive: WF02 proposes a grounded fix and executes only actions on the approved",
+"FR-V12-B-087",
+"Tenant T, startup S; active entitlement for SM-SVC-33; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-087",
+"a password-reset style approved action runs with audit",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-174",
+"Negative/boundary: WF02 proposes a grounded fix and executes only actions on the ",
+"FR-V12-B-087",
+"Tenant T, startup S; active entitlement for SM-SVC-33; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a refund request becomes a human task",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-175",
+"Positive: WF03 calculates SLA deadlines from the entitlement and policy, alerts ",
+"FR-V12-B-088",
+"Tenant T, startup S; active entitlement for SM-SVC-33; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-088",
+"a case at 80% of SLA alerts the owner",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-176",
+"Negative/boundary: WF03 calculates SLA deadlines from the entitlement and policy,",
+"FR-V12-B-088",
+"Tenant T, startup S; active entitlement for SM-SVC-33; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a breached case escalates to the next level",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-177",
+"Positive: WF04 analyzes resolved cases for recurring causes and recommends corre",
+"FR-V12-B-089",
+"Tenant T, startup S; active entitlement for SM-SVC-33; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-089",
+"the monthly report lists top recurring issues with case links",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-178",
+"Negative/boundary: WF04 analyzes resolved cases for recurring causes and recommen",
+"FR-V12-B-089",
+"Tenant T, startup S; active entitlement for SM-SVC-33; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"personal data does not appear in the aggregated report",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-179",
+"Positive: WF01 ingests a consented product-usage event stream with schema valida",
+"FR-V12-B-090",
+"Tenant T, startup S; active entitlement for SM-SVC-34; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-090",
+"valid events update the usage scorecard",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-180",
+"Negative/boundary: WF01 ingests a consented product-usage event stream with schem",
+"FR-V12-B-090",
+"Tenant T, startup S; active entitlement for SM-SVC-34; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"events without consent flag or account ID are rejected",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-181",
+"Positive: WF04 compares plan fit and prepares an upgrade recommendation for huma",
+"FR-V12-B-091",
+"Tenant T, startup S; active entitlement for SM-SVC-34; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-091",
+"an over-limit account gets a recommendation in A144",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-182",
+"Negative/boundary: WF04 compares plan fit and prepares an upgrade recommendation ",
+"FR-V12-B-091",
+"Tenant T, startup S; active entitlement for SM-SVC-34; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"no plan change or charge is executed (unapproved upgrades = 0)",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-183",
+"Positive: WF01–02 collect allowed reviews with provenance (100%), deduplicate, c",
+"FR-V12-B-092",
+"Tenant T, startup S; active entitlement for SM-SVC-35; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-092",
+"a negative review gets a draft response citing verified facts",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-184",
+"Negative/boundary: WF01–02 collect allowed reviews with provenance (100%), dedupl",
+"FR-V12-B-092",
+"Tenant T, startup S; active entitlement for SM-SVC-35; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a response that discloses personal data is blocked",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-185",
+"Positive: The service never generates, solicits in breach of platform policy, or",
+"FR-V12-B-093",
+"Tenant T, startup S; active entitlement for SM-SVC-35; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-093",
+"a prompt asking for review text is refused by the claims guard",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-186",
+"Negative/boundary: The service never generates, solicits in breach of platform po",
+"FR-V12-B-093",
+"Tenant T, startup S; active entitlement for SM-SVC-35; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"no review is posted under any identity",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-187",
+"Positive: Coaching outputs are private to the learner and their coach, are never",
+"FR-V12-B-094",
+"Tenant T, startup S; active entitlement for SM-SVC-36; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-094",
+"a learner sees rubric feedback with cited moments",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-188",
+"Negative/boundary: Coaching outputs are private to the learner and their coach, a",
+"FR-V12-B-094",
+"Tenant T, startup S; active entitlement for SM-SVC-36; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a manager report shows no individual ranking without human review",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-189",
+"Positive: WF01–02 calculate bundle margin and price sensitivity scenarios with e",
+"FR-V12-B-095",
+"Tenant T, startup S; active entitlement for SM-SVC-37; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-095",
+"a scenario report reconciles margins to cost inputs 100%",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-190",
+"Negative/boundary: WF01–02 calculate bundle margin and price sensitivity scenario",
+"FR-V12-B-095",
+"Tenant T, startup S; active entitlement for SM-SVC-37; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a recommendation never updates a price version",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-191",
+"Positive: WF03 price experiments use only human-approved price points within app",
+"FR-V12-B-096",
+"Tenant T, startup S; active entitlement for SM-SVC-37; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-096",
+"an approved two-price test allocates deterministically",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-192",
+"Negative/boundary: WF03 price experiments use only human-approved price points wi",
+"FR-V12-B-096",
+"Tenant T, startup S; active entitlement for SM-SVC-37; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"an AI-proposed price that is not approved can never be allocated",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-193",
+"Positive: WF04 detects price or margin deviations from approved rules and routes",
+"FR-V12-B-097",
+"Tenant T, startup S; active entitlement for SM-SVC-37; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-097",
+"a quote below margin floor is flagged",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-194",
+"Negative/boundary: WF04 detects price or margin deviations from approved rules an",
+"FR-V12-B-097",
+"Tenant T, startup S; active entitlement for SM-SVC-37; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"the deviation is never auto-corrected",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-195",
+"Positive: WF01 verifies the sender (DLT entity, header, template IDs, RCS agent)",
+"FR-V12-B-098",
+"Tenant T, startup S; active entitlement for SM-SVC-38; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-098",
+"a registered template passes eligibility",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-196",
+"Negative/boundary: WF01 verifies the sender (DLT entity, header, template IDs, RC",
+"FR-V12-B-098",
+"Tenant T, startup S; active entitlement for SM-SVC-38; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a message without a matching DLT template ID is held",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-197",
+"Positive: WF02 checks consent, preference (NCPR/DND), quiet hours and frequency,",
+"FR-V12-B-099",
+"Tenant T, startup S; active entitlement for SM-SVC-38; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-099",
+"an eligible recipient receives one message",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-198",
+"Negative/boundary: WF02 checks consent, preference (NCPR/DND), quiet hours and fr",
+"FR-V12-B-099",
+"Tenant T, startup S; active entitlement for SM-SVC-38; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a DND-registered number without an exemption is never messaged",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-199",
+"Positive: WF03 reconciles delivery reports, classifies replies (STOP cancels que",
+"FR-V12-B-100",
+"Tenant T, startup S; active entitlement for SM-SVC-38; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-100",
+"an RCS failure falls back to SMS only when SMS consent exists",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-200",
+"Negative/boundary: WF03 reconciles delivery reports, classifies replies (STOP can",
+"FR-V12-B-100",
+"Tenant T, startup S; active entitlement for SM-SVC-38; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a fallback to a non-consented channel is refused",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-201",
+"Positive: WF04 reports performance, usage, complaints and opt-outs and enforces ",
+"FR-V12-B-101",
+"Tenant T, startup S; active entitlement for SM-SVC-38; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-101",
+"suppression propagation latency is measured",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-202",
+"Negative/boundary: WF04 reports performance, usage, complaints and opt-outs and e",
+"FR-V12-B-101",
+"Tenant T, startup S; active entitlement for SM-SVC-38; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a complaint spike auto-pauses the sender (AU-031)",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-203",
+"Positive: WF01 validates the need, scores suppliers against qualification rules ",
+"FR-V12-B-102",
+"Tenant T, startup S; active entitlement for SM-SVC-39; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-102",
+"a shortlist shows criteria coverage per supplier",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-204",
+"Negative/boundary: WF01 validates the need, scores suppliers against qualificatio",
+"FR-V12-B-102",
+"Tenant T, startup S; active entitlement for SM-SVC-39; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a supplier without required certification is flagged, not excluded silently",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-205",
+"Positive: WF02 drafts the RFQ and normalizes supplier quotes (unit, currency, te",
+"FR-V12-B-103",
+"Tenant T, startup S; active entitlement for SM-SVC-39; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-103",
+"three quotes in different units compare on one normalized basis",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-206",
+"Negative/boundary: WF02 drafts the RFQ and normalizes supplier quotes (unit, curr",
+"FR-V12-B-103",
+"Tenant T, startup S; active entitlement for SM-SVC-39; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a quote with an unknown unit is held",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-207",
+"Positive: WF03 calculates the purchase order, requires purchasing approval withi",
+"FR-V12-B-104",
+"Tenant T, startup S; active entitlement for SM-SVC-39; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-104",
+"an approved PO records approver and budget authority",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-208",
+"Negative/boundary: WF03 calculates the purchase order, requires purchasing approv",
+"FR-V12-B-104",
+"Tenant T, startup S; active entitlement for SM-SVC-39; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"the PO approver cannot verify the goods receipt when buy_side_sod is on",
+"Negative",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-209",
+"Positive: WF04 tracks milestones, reconciles receipts against the PO (three-way ",
+"FR-V12-B-105",
+"Tenant T, startup S; active entitlement for SM-SVC-39; synthetic fixtures; provider stub",
+"Execute the behaviour in FR-V12-B-105",
+"an unmatched receipt is escalated",
+"Positive",
+"SIT",
+"P1"
+],
+[
+"TC-V12-B-210",
+"Negative/boundary: WF04 tracks milestones, reconciles receipts against the PO (th",
+"FR-V12-B-105",
+"Tenant T, startup S; active entitlement for SM-SVC-39; synthetic fixtures; provider stub",
+"Attempt the prohibited or boundary case",
+"a payable is never netted against a receivable",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-211",
+"Entitlement isolation SM-SVC-01 (SM-SVC-01-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects this SKU only; foundation enabled; no upstream subscription",
+"Create quote; approve subscription; assign scope; run selected workflow; attempt unpurchased workflow; revoke entitlement",
+"Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution; Wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun; no unauthorized action.",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-212",
+"Entitlement isolation SM-SVC-02 (SM-SVC-02-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects this SKU only; foundation enabled; no upstream subscription",
+"Create quote; approve subscription; assign scope; run selected workflow; attempt unpurchased workflow; revoke entitlement",
+"Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution; Wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun; no unauthorized action.",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-213",
+"Entitlement isolation SM-SVC-03 (SM-SVC-03-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects this SKU only; foundation enabled; no upstream subscription",
+"Create quote; approve subscription; assign scope; run selected workflow; attempt unpurchased workflow; revoke entitlement",
+"Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution; Wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun; no unauthorized action.",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-214",
+"Entitlement isolation SM-SVC-04 (SM-SVC-04-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects this SKU only; foundation enabled; no upstream subscription",
+"Create quote; approve subscription; assign scope; run selected workflow; attempt unpurchased workflow; revoke entitlement",
+"Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution; Wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun; no unauthorized action.",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-215",
+"Entitlement isolation SM-SVC-05 (SM-SVC-05-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects this SKU only; foundation enabled; no upstream subscription",
+"Create quote; approve subscription; assign scope; run selected workflow; attempt unpurchased workflow; revoke entitlement",
+"Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution; Wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun; no unauthorized action.",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-216",
+"Entitlement isolation SM-SVC-06 (SM-SVC-06-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects this SKU only; foundation enabled; no upstream subscription",
+"Create quote; approve subscription; assign scope; run selected workflow; attempt unpurchased workflow; revoke entitlement",
+"Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution; Wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun; no unauthorized action.",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-217",
+"Entitlement isolation SM-SVC-07 (SM-SVC-07-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects this SKU only; foundation enabled; no upstream subscription",
+"Create quote; approve subscription; assign scope; run selected workflow; attempt unpurchased workflow; revoke entitlement",
+"Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution; Wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun; no unauthorized action.",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-218",
+"Entitlement isolation SM-SVC-08 (SM-SVC-08-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects this SKU only; foundation enabled; no upstream subscription",
+"Create quote; approve subscription; assign scope; run selected workflow; attempt unpurchased workflow; revoke entitlement",
+"Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution; Wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun; no unauthorized action.",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-219",
+"Entitlement isolation SM-SVC-09 (SM-SVC-09-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects this SKU only; foundation enabled; no upstream subscription",
+"Create quote; approve subscription; assign scope; run selected workflow; attempt unpurchased workflow; revoke entitlement",
+"Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution; Wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun; no unauthorized action.",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-220",
+"Entitlement isolation SM-SVC-10 (SM-SVC-10-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects this SKU only; foundation enabled; no upstream subscription",
+"Create quote; approve subscription; assign scope; run selected workflow; attempt unpurchased workflow; revoke entitlement",
+"Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution; Wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun; no unauthorized action.",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-221",
+"Entitlement isolation SM-SVC-11 (SM-SVC-11-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects this SKU only; foundation enabled; no upstream subscription",
+"Create quote; approve subscription; assign scope; run selected workflow; attempt unpurchased workflow; revoke entitlement",
+"Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution; Wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun; no unauthorized action.",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-222",
+"Entitlement isolation SM-SVC-12 (SM-SVC-12-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects this SKU only; foundation enabled; no upstream subscription",
+"Create quote; approve subscription; assign scope; run selected workflow; attempt unpurchased workflow; revoke entitlement",
+"Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution; Wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun; no unauthorized action.",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-223",
+"Entitlement isolation SM-SVC-13 (SM-SVC-13-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects this SKU only; foundation enabled; no upstream subscription",
+"Create quote; approve subscription; assign scope; run selected workflow; attempt unpurchased workflow; revoke entitlement",
+"Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution; Wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun; no unauthorized action.",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-224",
+"Entitlement isolation SM-SVC-14 (SM-SVC-14-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects this SKU only; foundation enabled; no upstream subscription",
+"Create quote; approve subscription; assign scope; run selected workflow; attempt unpurchased workflow; revoke entitlement",
+"Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution; Wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun; no unauthorized action.",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-225",
+"Entitlement isolation SM-SVC-15 (SM-SVC-15-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects this SKU only; foundation enabled; no upstream subscription",
+"Create quote; approve subscription; assign scope; run selected workflow; attempt unpurchased workflow; revoke entitlement",
+"Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution; Wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun; no unauthorized action.",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-226",
+"Entitlement isolation SM-SVC-16 (SM-SVC-16-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects this SKU only; foundation enabled; no upstream subscription",
+"Create quote; approve subscription; assign scope; run selected workflow; attempt unpurchased workflow; revoke entitlement",
+"Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution; Wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun; no unauthorized action.",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-227",
+"Entitlement isolation SM-SVC-17 (SM-SVC-17-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects this SKU only; foundation enabled; no upstream subscription",
+"Create quote; approve subscription; assign scope; run selected workflow; attempt unpurchased workflow; revoke entitlement",
+"Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution; Wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun; no unauthorized action.",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-228",
+"Entitlement isolation SM-SVC-18 (SM-SVC-18-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects this SKU only; foundation enabled; no upstream subscription",
+"Create quote; approve subscription; assign scope; run selected workflow; attempt unpurchased workflow; revoke entitlement",
+"Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution; Wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun; no unauthorized action.",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-229",
+"Entitlement isolation SM-SVC-19 (SM-SVC-19-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects this SKU only; foundation enabled; no upstream subscription",
+"Create quote; approve subscription; assign scope; run selected workflow; attempt unpurchased workflow; revoke entitlement",
+"Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution; Wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun; no unauthorized action.",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-230",
+"Entitlement isolation SM-SVC-20 (SM-SVC-20-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects this SKU only; foundation enabled; no upstream subscription",
+"Create quote; approve subscription; assign scope; run selected workflow; attempt unpurchased workflow; revoke entitlement",
+"Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution; Wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun; no unauthorized action.",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-231",
+"Entitlement isolation SM-SVC-21 (SM-SVC-21-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects this SKU only; foundation enabled; no upstream subscription",
+"Create quote; approve subscription; assign scope; run selected workflow; attempt unpurchased workflow; revoke entitlement",
+"Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution; Wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun; no unauthorized action.",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-232",
+"Entitlement isolation SM-SVC-22 (SM-SVC-22-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects this SKU only; foundation enabled; no upstream subscription",
+"Create quote; approve subscription; assign scope; run selected workflow; attempt unpurchased workflow; revoke entitlement",
+"Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution; Wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun; no unauthorized action.",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-233",
+"Entitlement isolation SM-SVC-23 (SM-SVC-23-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects this SKU only; foundation enabled; no upstream subscription",
+"Create quote; approve subscription; assign scope; run selected workflow; attempt unpurchased workflow; revoke entitlement",
+"Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution; Wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun; no unauthorized action.",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-234",
+"Entitlement isolation SM-SVC-24 (SM-SVC-24-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects this SKU only; foundation enabled; no upstream subscription",
+"Create quote; approve subscription; assign scope; run selected workflow; attempt unpurchased workflow; revoke entitlement",
+"Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution; Wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun; no unauthorized action.",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-235",
+"Entitlement isolation SM-SVC-25 (SM-SVC-25-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects this SKU only; foundation enabled; no upstream subscription",
+"Create quote; approve subscription; assign scope; run selected workflow; attempt unpurchased workflow; revoke entitlement",
+"Selected service eligible; unpurchased service blocked; no compulsory paid upstream SKU; revoke prevents new execution; Wrong tenant, stale entitlement, duplicate charge, unapproved provider and budget overrun; no unauthorized action.",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-236",
+"Entitlement isolation SM-SVC-26 (SM-SVC-26-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects SKU only; foundation enabled; no compulsory upstream purchase",
+"Create quote; approve; assign tenant/startup; run eligible workflow; attempt unpurchased service; revoke",
+"Purchased service eligible; unpurchased service blocked; no automatic upstream purchase; new runs revoked; Wrong tenant, stale entitlement, duplicate billing, budget and provider denial; block unauthorized action",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-237",
+"Entitlement isolation SM-SVC-27 (SM-SVC-27-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects SKU only; foundation enabled; no compulsory upstream purchase",
+"Create quote; approve; assign tenant/startup; run eligible workflow; attempt unpurchased service; revoke",
+"Purchased service eligible; unpurchased service blocked; no automatic upstream purchase; new runs revoked; Wrong tenant, stale entitlement, duplicate billing, budget and provider denial; block unauthorized action",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-238",
+"Entitlement isolation SM-SVC-28 (SM-SVC-28-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects SKU only; foundation enabled; no compulsory upstream purchase",
+"Create quote; approve; assign tenant/startup; run eligible workflow; attempt unpurchased service; revoke",
+"Purchased service eligible; unpurchased service blocked; no automatic upstream purchase; new runs revoked; Wrong tenant, stale entitlement, duplicate billing, budget and provider denial; block unauthorized action",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-239",
+"Entitlement isolation SM-SVC-29 (SM-SVC-29-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects SKU only; foundation enabled; no compulsory upstream purchase",
+"Create quote; approve; assign tenant/startup; run eligible workflow; attempt unpurchased service; revoke",
+"Purchased service eligible; unpurchased service blocked; no automatic upstream purchase; new runs revoked; Wrong tenant, stale entitlement, duplicate billing, budget and provider denial; block unauthorized action",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-240",
+"Entitlement isolation SM-SVC-30 (SM-SVC-30-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects SKU only; foundation enabled; no compulsory upstream purchase",
+"Create quote; approve; assign tenant/startup; run eligible workflow; attempt unpurchased service; revoke",
+"Purchased service eligible; unpurchased service blocked; no automatic upstream purchase; new runs revoked; Wrong tenant, stale entitlement, duplicate billing, budget and provider denial; block unauthorized action",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-241",
+"Entitlement isolation SM-SVC-31 (SM-SVC-31-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects SKU only; foundation enabled; no compulsory upstream purchase",
+"Create quote; approve; assign tenant/startup; run eligible workflow; attempt unpurchased service; revoke",
+"Purchased service eligible; unpurchased service blocked; no automatic upstream purchase; new runs revoked; Wrong tenant, stale entitlement, duplicate billing, budget and provider denial; block unauthorized action",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-242",
+"Entitlement isolation SM-SVC-32 (SM-SVC-32-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects SKU only; foundation enabled; no compulsory upstream purchase",
+"Create quote; approve; assign tenant/startup; run eligible workflow; attempt unpurchased service; revoke",
+"Purchased service eligible; unpurchased service blocked; no automatic upstream purchase; new runs revoked; Wrong tenant, stale entitlement, duplicate billing, budget and provider denial; block unauthorized action",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-243",
+"Entitlement isolation SM-SVC-33 (SM-SVC-33-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects SKU only; foundation enabled; no compulsory upstream purchase",
+"Create quote; approve; assign tenant/startup; run eligible workflow; attempt unpurchased service; revoke",
+"Purchased service eligible; unpurchased service blocked; no automatic upstream purchase; new runs revoked; Wrong tenant, stale entitlement, duplicate billing, budget and provider denial; block unauthorized action",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-244",
+"Entitlement isolation SM-SVC-34 (SM-SVC-34-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects SKU only; foundation enabled; no compulsory upstream purchase",
+"Create quote; approve; assign tenant/startup; run eligible workflow; attempt unpurchased service; revoke",
+"Purchased service eligible; unpurchased service blocked; no automatic upstream purchase; new runs revoked; Wrong tenant, stale entitlement, duplicate billing, budget and provider denial; block unauthorized action",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-245",
+"Entitlement isolation SM-SVC-35 (SM-SVC-35-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects SKU only; foundation enabled; no compulsory upstream purchase",
+"Create quote; approve; assign tenant/startup; run eligible workflow; attempt unpurchased service; revoke",
+"Purchased service eligible; unpurchased service blocked; no automatic upstream purchase; new runs revoked; Wrong tenant, stale entitlement, duplicate billing, budget and provider denial; block unauthorized action",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-246",
+"Entitlement isolation SM-SVC-36 (SM-SVC-36-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects SKU only; foundation enabled; no compulsory upstream purchase",
+"Create quote; approve; assign tenant/startup; run eligible workflow; attempt unpurchased service; revoke",
+"Purchased service eligible; unpurchased service blocked; no automatic upstream purchase; new runs revoked; Wrong tenant, stale entitlement, duplicate billing, budget and provider denial; block unauthorized action",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-247",
+"Entitlement isolation SM-SVC-37 (SM-SVC-37-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects SKU only; foundation enabled; no compulsory upstream purchase",
+"Create quote; approve; assign tenant/startup; run eligible workflow; attempt unpurchased service; revoke",
+"Purchased service eligible; unpurchased service blocked; no automatic upstream purchase; new runs revoked; Wrong tenant, stale entitlement, duplicate billing, budget and provider denial; block unauthorized action",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-248",
+"Entitlement isolation SM-SVC-38 (SM-SVC-38-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects SKU only; foundation enabled; no compulsory upstream purchase",
+"Create quote; approve; assign tenant/startup; run eligible workflow; attempt unpurchased service; revoke",
+"Purchased service eligible; unpurchased service blocked; no automatic upstream purchase; new runs revoked; Wrong tenant, stale entitlement, duplicate billing, budget and provider denial; block unauthorized action",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-249",
+"Entitlement isolation SM-SVC-39 (SM-SVC-39-ENT-AT01)",
+"FR-V12-B-026",
+"Client selects SKU only; foundation enabled; no compulsory upstream purchase",
+"Create quote; approve; assign tenant/startup; run eligible workflow; attempt unpurchased service; revoke",
+"Purchased service eligible; unpurchased service blocked; no automatic upstream purchase; new runs revoked; Wrong tenant, stale entitlement, duplicate billing, budget and provider denial; block unauthorized action",
+"Security",
+"SIT/UAT",
+"P0"
+],
+[
+"TC-V12-B-250",
+"Accessibility WCAG 2.2 AA: Voice engagement workspace",
+"FR-V12-B-060",
+"Screen built for SWR-B-01",
+"Keyboard-only run; screen reader; contrast; status messages",
+"No WCAG 2.2 AA failure; focus order logical; errors announced",
+"Accessibility",
+"UAT",
+"P1"
+],
+[
+"TC-V12-B-251",
+"Accessibility WCAG 2.2 AA: Creative production workspace",
+"FR-V12-B-066",
+"Screen built for SWR-B-02",
+"Keyboard-only run; screen reader; contrast; status messages",
+"No WCAG 2.2 AA failure; focus order logical; errors announced",
+"Accessibility",
+"UAT",
+"P1"
+],
+[
+"TC-V12-B-252",
+"Accessibility WCAG 2.2 AA: Agentic commerce and mandate workspace",
+"FR-V12-B-071",
+"Screen built for SWR-B-03",
+"Keyboard-only run; screen reader; contrast; status messages",
+"No WCAG 2.2 AA failure; focus order logical; errors announced",
+"Accessibility",
+"UAT",
+"P1"
+],
+[
+"TC-V12-B-253",
+"Accessibility WCAG 2.2 AA: Marketplace operations workspace",
+"FR-V12-B-081",
+"Screen built for SWR-B-04",
+"Keyboard-only run; screen reader; contrast; status messages",
+"No WCAG 2.2 AA failure; focus order logical; errors announced",
+"Accessibility",
+"UAT",
+"P1"
+],
+[
+"TC-V12-B-254",
+"Accessibility WCAG 2.2 AA: Support operations workspace",
+"FR-V12-B-086",
+"Screen built for SWR-B-05",
+"Keyboard-only run; screen reader; contrast; status messages",
+"No WCAG 2.2 AA failure; focus order logical; errors announced",
+"Accessibility",
+"UAT",
+"P1"
+],
+[
+"TC-V12-B-255",
+"Accessibility WCAG 2.2 AA: Usage intelligence tab (extends A142)",
+"FR-V12-B-090",
+"Screen built for SWR-B-06",
+"Keyboard-only run; screen reader; contrast; status messages",
+"No WCAG 2.2 AA failure; focus order logical; errors announced",
+"Accessibility",
+"UAT",
+"P1"
+],
+[
+"TC-V12-B-256",
+"Accessibility WCAG 2.2 AA: Reputation tab (extends A145/A048)",
+"FR-V12-B-092",
+"Screen built for SWR-B-07",
+"Keyboard-only run; screen reader; contrast; status messages",
+"No WCAG 2.2 AA failure; focus order logical; errors announced",
+"Accessibility",
+"UAT",
+"P1"
+],
+[
+"TC-V12-B-257",
+"Accessibility WCAG 2.2 AA: Pricing intelligence tab (extends A139)",
+"FR-V12-B-095",
+"Screen built for SWR-B-08",
+"Keyboard-only run; screen reader; contrast; status messages",
+"No WCAG 2.2 AA failure; focus order logical; errors announced",
+"Accessibility",
+"UAT",
+"P1"
+],
+[
+"TC-V12-B-258",
+"Accessibility WCAG 2.2 AA: SMS/RCS channel, sender and templates workspace",
+"FR-V12-B-098",
+"Screen built for SWR-B-09",
+"Keyboard-only run; screen reader; contrast; status messages",
+"No WCAG 2.2 AA failure; focus order logical; errors announced",
+"Accessibility",
+"UAT",
+"P1"
+],
+[
+"TC-V12-B-259",
+"Accessibility WCAG 2.2 AA: Procurement and supplier workspace",
+"FR-V12-B-102",
+"Screen built for SWR-B-10",
+"Keyboard-only run; screen reader; contrast; status messages",
+"No WCAG 2.2 AA failure; focus order logical; errors announced",
+"Accessibility",
+"UAT",
+"P1"
+],
+[
+"TC-V12-B-260",
+"Accessibility WCAG 2.2 AA: Service catalogue and SKU registry (extends A101)",
+"FR-V12-B-027",
+"Screen built for SWR-B-11",
+"Keyboard-only run; screen reader; contrast; status messages",
+"No WCAG 2.2 AA failure; focus order logical; errors announced",
+"Accessibility",
+"UAT",
+"P1"
+],
+[
+"TC-V12-B-261",
+"Accessibility WCAG 2.2 AA: Public service catalogue and quote request (Website)",
+"FR-V12-B-027",
+"Screen built for SWR-B-12",
+"Keyboard-only run; screen reader; contrast; status messages",
+"No WCAG 2.2 AA failure; focus order logical; errors announced",
+"Accessibility",
+"UAT",
+"P1"
+],
+[
+"TC-V12-B-262",
+"Cross-tenant isolation across all 39 SKUs",
+"FR-V12-B-006",
+"Tenants T1 and T2 with different SKUs",
+"T1 user calls every SKU endpoint with T2 object IDs",
+"0 records disclosed; 403/404 only; audit events written",
+"Security",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-263",
+"Fundraising capability absent from catalogue",
+"FR-V12-B-024",
+"Catalogue loaded",
+"Search public and admin catalogue for investor/fundraising capability",
+"No SKU, workflow or route offers investor discovery or fundraising (DEC-002)",
+"Negative",
+"SIT",
+"P0"
+],
+[
+"TC-V12-B-264",
+"Free-tier routing refused for personal data in new SKUs",
+"FR-V12-B-019",
+"Tier 2 opt-in on",
+"Run SM-SVC-26, 33, 38 with personal data",
+"Gateway never selects Tier 2; decision log shows data class",
+"Security",
+"SIT",
+"P0"
+]
+],
+"ENT_TC": {
+"SM-SVC-01": "TC-V12-B-211",
+"SM-SVC-02": "TC-V12-B-212",
+"SM-SVC-03": "TC-V12-B-213",
+"SM-SVC-04": "TC-V12-B-214",
+"SM-SVC-05": "TC-V12-B-215",
+"SM-SVC-06": "TC-V12-B-216",
+"SM-SVC-07": "TC-V12-B-217",
+"SM-SVC-08": "TC-V12-B-218",
+"SM-SVC-09": "TC-V12-B-219",
+"SM-SVC-10": "TC-V12-B-220",
+"SM-SVC-11": "TC-V12-B-221",
+"SM-SVC-12": "TC-V12-B-222",
+"SM-SVC-13": "TC-V12-B-223",
+"SM-SVC-14": "TC-V12-B-224",
+"SM-SVC-15": "TC-V12-B-225",
+"SM-SVC-16": "TC-V12-B-226",
+"SM-SVC-17": "TC-V12-B-227",
+"SM-SVC-18": "TC-V12-B-228",
+"SM-SVC-19": "TC-V12-B-229",
+"SM-SVC-20": "TC-V12-B-230",
+"SM-SVC-21": "TC-V12-B-231",
+"SM-SVC-22": "TC-V12-B-232",
+"SM-SVC-23": "TC-V12-B-233",
+"SM-SVC-24": "TC-V12-B-234",
+"SM-SVC-25": "TC-V12-B-235",
+"SM-SVC-26": "TC-V12-B-236",
+"SM-SVC-27": "TC-V12-B-237",
+"SM-SVC-28": "TC-V12-B-238",
+"SM-SVC-29": "TC-V12-B-239",
+"SM-SVC-30": "TC-V12-B-240",
+"SM-SVC-31": "TC-V12-B-241",
+"SM-SVC-32": "TC-V12-B-242",
+"SM-SVC-33": "TC-V12-B-243",
+"SM-SVC-34": "TC-V12-B-244",
+"SM-SVC-35": "TC-V12-B-245",
+"SM-SVC-36": "TC-V12-B-246",
+"SM-SVC-37": "TC-V12-B-247",
+"SM-SVC-38": "TC-V12-B-248",
+"SM-SVC-39": "TC-V12-B-249"
+},
+"SVC_FR": {
+"SM-SVC-01": [
+"FR-V12-B-031",
+"FR-V12-B-032"
+],
+"SM-SVC-02": [
+"FR-V12-B-033",
+"FR-V12-B-034"
+],
+"SM-SVC-03": [
+"FR-V12-B-035"
+],
+"SM-SVC-04": [
+"FR-V12-B-036"
+],
+"SM-SVC-05": [
+"FR-V12-B-037"
+],
+"SM-SVC-06": [
+"FR-V12-B-038"
+],
+"SM-SVC-07": [
+"FR-V12-B-039"
+],
+"SM-SVC-08": [
+"FR-V12-B-040"
+],
+"SM-SVC-09": [
+"FR-V12-B-041"
+],
+"SM-SVC-10": [
+"FR-V12-B-042"
+],
+"SM-SVC-11": [
+"FR-V12-B-043"
+],
+"SM-SVC-12": [
+"FR-V12-B-044"
+],
+"SM-SVC-13": [
+"FR-V12-B-045"
+],
+"SM-SVC-14": [
+"FR-V12-B-046"
+],
+"SM-SVC-15": [
+"FR-V12-B-047",
+"FR-V12-B-048"
+],
+"SM-SVC-16": [
+"FR-V12-B-049"
+],
+"SM-SVC-17": [
+"FR-V12-B-050"
+],
+"SM-SVC-18": [
+"FR-V12-B-051"
+],
+"SM-SVC-19": [
+"FR-V12-B-052"
+],
+"SM-SVC-20": [
+"FR-V12-B-053",
+"FR-V12-B-054"
+],
+"SM-SVC-21": [
+"FR-V12-B-055"
+],
+"SM-SVC-22": [
+"FR-V12-B-056"
+],
+"SM-SVC-23": [
+"FR-V12-B-057"
+],
+"SM-SVC-24": [
+"FR-V12-B-058"
+],
+"SM-SVC-25": [
+"FR-V12-B-059"
+],
+"SM-SVC-26": [
+"FR-V12-B-060",
+"FR-V12-B-061",
+"FR-V12-B-062",
+"FR-V12-B-063",
+"FR-V12-B-064",
+"FR-V12-B-065"
+],
+"SM-SVC-27": [
+"FR-V12-B-066",
+"FR-V12-B-067",
+"FR-V12-B-068",
+"FR-V12-B-069",
+"FR-V12-B-070"
+],
+"SM-SVC-28": [
+"FR-V12-B-071",
+"FR-V12-B-072",
+"FR-V12-B-073",
+"FR-V12-B-074",
+"FR-V12-B-075",
+"FR-V12-B-076",
+"FR-V12-B-077"
+],
+"SM-SVC-29": [
+"FR-V12-B-078"
+],
+"SM-SVC-30": [
+"FR-V12-B-079",
+"FR-V12-B-080"
+],
+"SM-SVC-31": [
+"FR-V12-B-081",
+"FR-V12-B-082",
+"FR-V12-B-083",
+"FR-V12-B-084"
+],
+"SM-SVC-32": [
+"FR-V12-B-085"
+],
+"SM-SVC-33": [
+"FR-V12-B-086",
+"FR-V12-B-087",
+"FR-V12-B-088",
+"FR-V12-B-089"
+],
+"SM-SVC-34": [
+"FR-V12-B-090",
+"FR-V12-B-091"
+],
+"SM-SVC-35": [
+"FR-V12-B-092",
+"FR-V12-B-093"
+],
+"SM-SVC-36": [
+"FR-V12-B-094"
+],
+"SM-SVC-37": [
+"FR-V12-B-095",
+"FR-V12-B-096",
+"FR-V12-B-097"
+],
+"SM-SVC-38": [
+"FR-V12-B-098",
+"FR-V12-B-099",
+"FR-V12-B-100",
+"FR-V12-B-101"
+],
+"SM-SVC-39": [
+"FR-V12-B-102",
+"FR-V12-B-103",
+"FR-V12-B-104",
+"FR-V12-B-105"
+]
+},
+"SVC_STORY": {
+"All": [
+"US-29-YB01",
+"US-29-YB02",
+"US-29-YB03",
+"US-29-YB04",
+"US-29-YB05",
+"US-29-YB06",
+"US-29-YB07",
+"US-29-YB08",
+"US-29-YB09",
+"US-29-YB10",
+"US-29-YB11",
+"US-29-YB12"
+],
+"SM-SVC-01": [
+"US-05-YB01"
+],
+"SM-SVC-02": [
+"US-05-YB02"
+],
+"SM-SVC-03": [
+"US-06-YB01"
+],
+"SM-SVC-04": [
+"US-06-YB02"
+],
+"SM-SVC-05": [
+"US-07-YB01"
+],
+"SM-SVC-06": [
+"US-08-YB01"
+],
+"SM-SVC-07": [
+"US-10-YB01"
+],
+"SM-SVC-08": [
+"US-08-YB02"
+],
+"SM-SVC-09": [
+"US-08-YB03"
+],
+"SM-SVC-10": [
+"US-09-YB01"
+],
+"SM-SVC-11": [
+"US-11-YB01"
+],
+"SM-SVC-12": [
+"US-11-YB02"
+],
+"SM-SVC-13": [
+"US-11-YB03"
+],
+"SM-SVC-14": [
+"US-12-YB01"
+],
+"SM-SVC-15": [
+"US-12-YB02"
+],
+"SM-SVC-16": [
+"US-09-YB02"
+],
+"SM-SVC-17": [
+"US-13-YB01"
+],
+"SM-SVC-18": [
+"US-13-YB02"
+],
+"SM-SVC-19": [
+"US-14-YB01"
+],
+"SM-SVC-20": [
+"US-14-YB02"
+],
+"SM-SVC-21": [
+"US-15-YB01"
+],
+"SM-SVC-22": [
+"US-16-YB01"
+],
+"SM-SVC-23": [
+"US-16-YB02"
+],
+"SM-SVC-24": [
+"US-15-YB02"
+],
+"SM-SVC-25": [
+"US-02-YB01"
+],
+"SM-SVC-26": [
+"US-22-YB01",
+"US-22-YB02",
+"US-22-YB03",
+"US-22-YB04",
+"US-22-YB05",
+"US-22-YB06"
+],
+"SM-SVC-27": [
+"US-28-YB01",
+"US-28-YB02",
+"US-28-YB03",
+"US-28-YB04",
+"US-28-YB05"
+],
+"SM-SVC-28": [
+"US-24-YB01",
+"US-24-YB02",
+"US-24-YB03",
+"US-24-YB04",
+"US-24-YB05",
+"US-24-YB06",
+"US-24-YB07"
+],
+"SM-SVC-29": [
+"US-06-YB03"
+],
+"SM-SVC-30": [
+"US-12-YB03"
+],
+"SM-SVC-31": [
+"US-25-YB01",
+"US-25-YB02",
+"US-25-YB03",
+"US-25-YB04"
+],
+"SM-SVC-32": [
+"US-16-YB03"
+],
+"SM-SVC-33": [
+"US-27-YB01",
+"US-27-YB02",
+"US-27-YB03",
+"US-27-YB04"
+],
+"SM-SVC-34": [
+"US-16-YB04"
+],
+"SM-SVC-35": [
+"US-11-YB04"
+],
+"SM-SVC-36": [
+"US-08-YB04"
+],
+"SM-SVC-37": [
+"US-13-YB03"
+],
+"SM-SVC-38": [
+"US-23-YB01",
+"US-23-YB02",
+"US-23-YB03",
+"US-23-YB04"
+],
+"SM-SVC-39": [
+"US-26-YB01",
+"US-26-YB02",
+"US-26-YB03",
+"US-26-YB04"
+]
+},
+"CB": {
+"Partially covered": 1165,
+"Not covered": 1200,
+"Covered": 1065,
+"Conflict": 26,
+"Not applicable": 1
+},
+"CA": {
+"Matched": 3434,
+"Pending Founder decision": 22,
+"Not applicable (workflow detail owned by Groups C/D)": 1
+},
+"CBD": {
+"BRD V12 08": {
+"Partially covered": 225,
+"Not covered": 338,
+"Covered": 174,
+"Conflict": 3
+},
+"FSD V12 08": {
+"Partially covered": 42,
+"Not covered": 3
+},
+"FSD V12 11": {
+"Not covered": 90,
+"Covered": 163,
+"Partially covered": 210,
+"Conflict": 5
+},
+"Workbook Service_Catalog": {
+"Covered": 566,
+"Partially covered": 528,
+"Not covered": 315,
+"Conflict": 12
+},
+"Workbook Service_Index": {
+"Not covered": 39
+},
+"Workbook Entitlement_Rules": {
+"Partially covered": 39
+},
+"Workbook Migration": {
+"Not covered": 39
+},
+"Workbook Start_Here": {
+"Not covered": 11,
+"Partially covered": 2
+},
+"Workbook Sources_Decisions": {
+"Partially covered": 19
+},
+"Workbook Capability_Crosswalk": {
+"Partially covered": 100
+},
+"Workbook Technical_Map": {
+"Covered": 162,
+"Conflict": 2,
+"Not covered": 14
+},
+"Workbook Cost_Model": {
+"Not covered": 156,
+"Conflict": 4
+},
+"Workbook Acceptance_Tests": {
+"Not covered": 195
+},
+"Workbook Workflow_Catalog": {
+"Not applicable": 1
+}
+},
+"NCOV": 3457
+}

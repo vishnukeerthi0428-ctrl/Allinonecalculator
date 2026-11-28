@@ -1,0 +1,46 @@
+Output format is unaligned.
+DB-T1 expect error (composite FK)
+ERROR:  insert or update on table "company" violates foreign key constraint "company_tenant_id_organization_id_fkey"
+DETAIL:  Key is not present in table "organization".
+DB-T2 expect error (no context)
+ERROR:  invalid input syntax for type uuid: ""
+DB-T3 expect 1
+1
+DB-T4 expect RLS error
+ERROR:  new row violates row-level security policy for table "organization"
+DB-T5 expect check error
+ERROR:  new row for relation "workflow_run" violates check constraint "workflow_run_check"
+DB-T6 expect check error
+ERROR:  new row for relation "effect" violates check constraint "effect_preflight_verdict_check"
+DB-T7 expect check error
+ERROR:  new row for relation "workflow_step_run" violates check constraint "workflow_step_run_check"
+DB-T8 expect unique error
+ERROR:  duplicate key value violates unique constraint "workflow_run_tenant_id_idempotency_key_key"
+DB-T9 expect 0
+0
+C2-T1 expect SoD error
+ERROR:  separation of duties violation: Runs:approve conflicts within role
+CONTEXT:  PL/pgSQL function enforce_sod() line 6 at RAISE
+C2-T2 expect check error
+ERROR:  new row for relation "export_job" violates check constraint "export_job_check"
+C2-T3 expect check error
+ERROR:  new row for relation "config_promotion" violates check constraint "config_promotion_check"
+C2-T4 expect check error
+ERROR:  new row for relation "identity_provider" violates check constraint "identity_provider_check"
+C2-T5 expect check error
+ERROR:  new row for relation "sandbox_environment" violates check constraint "sandbox_environment_contains_personal_data_check"
+C2-T6 expect check error
+ERROR:  new row for relation "connector_installation" violates check constraint "connector_installation_check"
+C2-T7 expect check error
+ERROR:  new row for relation "security_finding" violates check constraint "security_finding_check"
+DETAIL:  Failing row contains (6c54b826-2675-4ac8-8f05-44060d3f4afc, x, Critical, 2026-11-01, 2026-11-20, null, null).
+C2-T8 expect check error
+ERROR:  new row for relation "invoice" violates check constraint "invoice_check"
+C2-T9 expect 0
+0
+C2-T10 expect 0 then error
+0
+ERROR:  invalid input syntax for type uuid: ""
+C2-T11 expect accepted
+accepted
+RESET

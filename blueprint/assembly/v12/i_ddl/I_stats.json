@@ -1,0 +1,726 @@
+{
+ "rows": 3248,
+ "dupe_ids": [
+  "I-26-DS-SM-SVC-05-stage",
+  "I-26-DS-SM-SVC-10-agenda_ref"
+ ],
+ "before": {
+  "Partially covered": 902,
+  "Conflict": 16,
+  "Not covered": 521,
+  "Covered": 1809
+ },
+ "after": {
+  "Matched": 3246,
+  "Pending Founder decision": 2
+ },
+ "by_section": [
+  [
+   [
+    "Appendix C",
+    "Column"
+   ],
+   1206
+  ],
+  [
+   [
+    "Appendix C",
+    "Constraint"
+   ],
+   241
+  ],
+  [
+   [
+    "26",
+    "Historical entity (149)"
+   ],
+   149
+  ],
+  [
+   [
+    "engineering",
+    "database_contract_review.csv"
+   ],
+   149
+  ],
+  [
+   [
+    "starter",
+    "catalog_schema_review(_enhanced).sql"
+   ],
+   146
+  ],
+  [
+   [
+    "engineering",
+    "database_field_resolution_proposals.csv"
+   ],
+   136
+  ],
+  [
+   [
+    "starter",
+    "database_field_review.csv"
+   ],
+   136
+  ],
+  [
+   [
+    "Appendix C2",
+    "Column"
+   ],
+   120
+  ],
+  [
+   [
+    "Appendix C",
+    "Table"
+   ],
+   118
+  ],
+  [
+   [
+    "Appendix C",
+    "RLS policy"
+   ],
+   106
+  ],
+  [
+   [
+    "Appendix C2",
+    "Constraint"
+   ],
+   69
+  ],
+  [
+   [
+    "engineering",
+    "database_constraint_proposals.csv"
+   ],
+   35
+  ],
+  [
+   [
+    "31",
+    "V5 optimization requirements and controls"
+   ],
+   33
+  ],
+  [
+   [
+    "Appendix C2",
+    "Table"
+   ],
+   19
+  ],
+  [
+   [
+    "26",
+    "V6 entity graph"
+   ],
+   16
+  ],
+  [
+   [
+    "Appendix C2",
+    "RLS policy"
+   ],
+   14
+  ],
+  [
+   [
+    "29",
+    "V5 optimization requirements and controls"
+   ],
+   14
+  ],
+  [
+   [
+    "29",
+    "Fourteen management views"
+   ],
+   14
+  ],
+  [
+   [
+    "starter",
+    "reference_schema.sql / reference_schema_smoke.sql"
+   ],
+   12
+  ],
+  [
+   [
+    "26",
+    "V12 C2 tests"
+   ],
+   11
+  ],
+  [
+   [
+    "26",
+    "V5 optimization requirements and controls"
+   ],
+   10
+  ],
+  [
+   [
+    "26",
+    "V5 proposed entities"
+   ],
+   10
+  ],
+  [
+   [
+    "26",
+    "Domain schema ad_campaign SM-SVC-14"
+   ],
+   10
+  ],
+  [
+   [
+    "31",
+    "V5 threats"
+   ],
+   10
+  ],
+  [
+   [
+    "26",
+    "V8 DB tests"
+   ],
+   9
+  ],
+  [
+   [
+    "26",
+    "V5 candidate entities"
+   ],
+   9
+  ],
+  [
+   [
+    "26",
+    "Domain schema opportunity SM-SVC-02"
+   ],
+   9
+  ],
+  [
+   [
+    "26",
+    "Domain schema contact SM-SVC-03"
+   ],
+   9
+  ],
+  [
+   [
+    "26",
+    "Domain schema qualification SM-SVC-04"
+   ],
+   9
+  ],
+  [
+   [
+    "26",
+    "Domain schema crm_relationship SM-SVC-05"
+   ],
+   9
+  ],
+  [
+   [
+    "26",
+    "Domain schema email_message SM-SVC-06"
+   ],
+   9
+  ],
+  [
+   [
+    "26",
+    "Domain schema quotation SM-SVC-17"
+   ],
+   9
+  ],
+  [
+   [
+    "26",
+    "Domain schema agreement SM-SVC-18"
+   ],
+   9
+  ],
+  [
+   [
+    "26",
+    "Domain schema revenue_analysis SM-SVC-24"
+   ],
+   9
+  ],
+  [
+   [
+    "26",
+    "Domain schema experiment SM-SVC-30"
+   ],
+   9
+  ],
+  [
+   [
+    "26",
+    "Domain schema support_case SM-SVC-33"
+   ],
+   9
+  ],
+  [
+   [
+    "31",
+    "V5 controls"
+   ],
+   9
+  ],
+  [
+   [
+    "26",
+    "Domain schema market_signal SM-SVC-01"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema whatsapp_message SM-SVC-07"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema journey SM-SVC-08"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema conversation SM-SVC-09"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema meeting SM-SVC-10"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema content SM-SVC-11"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema social_post SM-SVC-12"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema search_visibility SM-SVC-13"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema lead_intake SM-SVC-15"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema event_registration SM-SVC-16"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema tender SM-SVC-19"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema sales_order SM-SVC-20"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema receivable SM-SVC-21"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema onboarding SM-SVC-22"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema retention SM-SVC-23"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema knowledge SM-SVC-25"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema voice_session SM-SVC-26"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema creative_asset SM-SVC-27"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema agent_transaction SM-SVC-28"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema account_plan SM-SVC-29"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema marketplace_listing SM-SVC-31"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema partner_deal SM-SVC-32"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema product_usage SM-SVC-34"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema reputation SM-SVC-35"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema coaching SM-SVC-36"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema pricing SM-SVC-37"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema sms_message SM-SVC-38"
+   ],
+   8
+  ],
+  [
+   [
+    "26",
+    "Domain schema procurement SM-SVC-39"
+   ],
+   8
+  ],
+  [
+   [
+    "29",
+    "V9 release KPIs"
+   ],
+   8
+  ],
+  [
+   [
+    "31",
+    "V12 security programme"
+   ],
+   8
+  ],
+  [
+   [
+    "31",
+    "V9 penetration-test plan"
+   ],
+   8
+  ],
+  [
+   [
+    "29",
+    "V9 load profiles"
+   ],
+   7
+  ],
+  [
+   [
+    "26",
+    "Proposed V4 persistence additions"
+   ],
+   6
+  ],
+  [
+   [
+    "Appendix C",
+    "Convention"
+   ],
+   6
+  ],
+  [
+   [
+    "Appendix C/C2",
+    "Analysis finding"
+   ],
+   6
+  ],
+  [
+   [
+    "ui_upgrade",
+    "candidate_database_register.csv"
+   ],
+   6
+  ],
+  [
+   [
+    "26",
+    "V12 Data control"
+   ],
+   5
+  ],
+  [
+   [
+    "26",
+    "V6 controlled requirements"
+   ],
+   5
+  ],
+  [
+   [
+    "31",
+    "MOB-10  PWA and offline boundary"
+   ],
+   5
+  ],
+  [
+   [
+    "Appendix C",
+    "RLS gap"
+   ],
+   4
+  ],
+  [
+   [
+    "Appendix C2",
+    "Seed"
+   ],
+   4
+  ],
+  [
+   [
+    "closure",
+    "database_confirmation_plan.csv"
+   ],
+   4
+  ],
+  [
+   [
+    "26",
+    "MT-09 \u2014 Business division master"
+   ],
+   3
+  ],
+  [
+   [
+    "26",
+    "MT-10 \u2014 Brand management"
+   ],
+   3
+  ],
+  [
+   [
+    "26",
+    "MT-11 \u2014 Unified subscriber offering master"
+   ],
+   3
+  ],
+  [
+   [
+    "26",
+    "MT-18 \u2014 Multiple countries per offering"
+   ],
+   3
+  ],
+  [
+   [
+    "26",
+    "MT-33 \u2014 Canonical master data"
+   ],
+   3
+  ],
+  [
+   [
+    "29",
+    "MT-13 \u2014 Offering-specific audiences"
+   ],
+   3
+  ],
+  [
+   [
+    "29",
+    "MT-27 \u2014 Business event attribution"
+   ],
+   3
+  ],
+  [
+   [
+    "29",
+    "MT-31 \u2014 Tenant and offering-level performance"
+   ],
+   3
+  ],
+  [
+   [
+    "31",
+    "V8 | Regulatory security obligations"
+   ],
+   3
+  ],
+  [
+   [
+    "Appendix C",
+    "Extension"
+   ],
+   2
+  ],
+  [
+   [
+    "26",
+    "V12 | Data control and enterprise schema"
+   ],
+   1
+  ],
+  [
+   [
+    "26",
+    "V8 | Schema additions and verification"
+   ],
+   1
+  ],
+  [
+   [
+    "26",
+    "V6 | Universal architecture and controlled requirements"
+   ],
+   1
+  ],
+  [
+   [
+    "Appendix C2",
+    "Trigger"
+   ],
+   1
+  ],
+  [
+   [
+    "29",
+    "V10 reconciliation"
+   ],
+   1
+  ],
+  [
+   [
+    "29",
+    "V9 | Capacity, load and front-end performance profiles"
+   ],
+   1
+  ],
+  [
+   [
+    "29",
+    "V6 | Universal architecture and controlled requirements"
+   ],
+   1
+  ],
+  [
+   [
+    "29",
+    "Fourteen distinct management views \u2014 V4 KPI mapping"
+   ],
+   1
+  ],
+  [
+   [
+    "31",
+    "V9 | Penetration-test plan"
+   ],
+   1
+  ],
+  [
+   [
+    "31",
+    "V5 testing note"
+   ],
+   1
+  ],
+  [
+   [
+    "engineering",
+    "database_catalog.json"
+   ],
+   1
+  ],
+  [
+   [
+    "engineering",
+    "ui_upgrade/current_database_inventory.json"
+   ],
+   1
+  ]
+ ]
+}
