@@ -8,7 +8,7 @@
 | Baseline | Parts 0–9.5 and 8.4; Part 7.1 (discovery funnel, CI-001…135), Part 7.2 (AG-001…036 cards, tool registry TL-01…20, orchestration §7.2.5–§7.2.11), Part 7.3 (tiers, routing R1–R13, cost formula §7.5.5, ladder §7.5.7, governance §7.6), Part 7.4a/7.4b (AG-037/038, AU-044…052, envelope v2, PC-01…18, RAG ACL), Part 9.4 (catalogue), Part 1 (P01–P16, BR-M01…M66, KPI-01…31), Part 2.1 (FR register), Part 2.6 (P17–P20), Part 8.3c (OKPI-01…35), Part 8.4 (Ledgers A and B), Part 9.5 (DEC-157…233); source documents 15, 16, 21 (docs38) |
 | Roles applied | Expert panel (§9.7.1): Chief AI Officer (lead), Principal ML/LLM Engineer, RAG and Prompt Engineering Lead, AI Governance and Responsible AI Lead, LLMOps/FinOps Engineer; supported by Product Owner, QA Lead and Security Lead |
 | Authority | Founder instruction 28 Nov 2026 ("take the best personas … identify, list, plan, incorporate"). Everything in this part is an **expert-panel recommendation and a separately approvable proposal**. It does **not** change Release 1, Release 2, DEC-230 (Ledger A) or DEC-231 (Ledger B) |
-| New IDs (both batches) | AG-039…AG-060 (22 agents) · AU-053…AU-079 (27 automations) · WF-15…WF-23 (9 workflows) · FR-ADV-X1-001…064 · US-<EP>-V1nn (32 stories) · TC-ADV-X1-001…090 · screens A114–A129 · ADR-110…119 · DEC-380…389 · RSK-ADV-X1-01…14 · PU-01…10, OT-01…04 (effort items) · API-ADV-X1-01…40 · PC-19…PC-40 (prompt contracts) · TL-21…TL-32 (tools) |
+| New IDs (both batches) | AG-039…AG-060 (22 agents) · AU-053…AU-079 (27 automations) · WF-15…WF-23 (9 workflows) · FR-ADV-X1-001…064 · US-<EP>-V1nn (34 stories) · TC-ADV-X1-001…092 · screens A114–A129 · ADR-110…119 · DEC-380…389 · RSK-ADV-X1-01…14 · PU-01…10, OT-01…04 (effort items) · API-ADV-X1-01…40 · PC-19…PC-40 (prompt contracts) · TL-21…TL-32 (tools) |
 | Tags | ASSUMPTION-600…609 · GAP-610…617 · CONFLICT-620…623 · RECOMMENDATION-625…641 (register §9.7.17, Batch 9.7b) |
 
 **Verification convention.** Every model name, price, free-tier limit, provider term, open-source licence and regulatory date in this part is marked **"verify at time of implementation (as of 27 Nov 2026)"**. Model prices reuse Part 7.3 §7.3.2 and Part 7.4b (Claude Sonnet 5.5 `claude-sonnet-5-5` $2.00/$10.00 per MTok, cache read $0.10, 5-minute cache write $2.50; Claude Haiku 5.5 `claude-haiku-5-5` $0.10/$0.50, cache read $0.01, cache write $0.125; Batch 50% off; FX ₹90/USD) [ASSUMPTION-144]. All costs are estimates with formulas shown (Part 7.3 §7.5.5). Agents are referred to by gateway tier (Tier 0 / 1a / 1b / 2 / 3), not by vendor, except where a current model is named with the verify flag.
@@ -1154,6 +1154,20 @@ All cards use the 20-field format of Part 7.4b (AG-037). Costs follow Part 7.3 �
 
 The largest contributors at base are AG-047 (₹401, 35%), AG-046 (₹151), AG-039 (₹120) and AG-050 (₹111). B02 (₹3,000, DEC-008) is **unchanged** and does not carry any of these costs.
 
-**Continuation.** Automations (§9.7.6), workflows (§9.7.7), functional requirements (§9.7.8), user stories (§9.7.9), data/API/screen additions (§9.7.10), tests (§9.7.11), governance (§9.7.12), effort (§9.7.13), cost (§9.7.14), decisions (§9.7.15), risks (§9.7.16), tags (§9.7.17) and the quality gate for both batches (§9.7.18) are in **Batch 9.7b** (`Part-09-7b_Advanced_AI_Agents_and_Intelligence.md`).
+**Continuation.** Automations (§9.7.6), workflows (§9.7.7), functional requirements (§9.7.8), user stories (§9.7.9), data/API/screen additions (§9.7.10), tests (§9.7.11), governance (§9.7.12), effort (§9.7.13), cost (§9.7.14), decisions (§9.7.15), risks (§9.7.16), tags (§9.7.17) and the full quality gate for both batches (§9.7.18) are in **Batch 9.7b** (`Part-09-7b_Advanced_AI_Agents_and_Intelligence.md`).
 
-**Status: Part 9 Batch 9.7a complete (expert panel of 5, 22 new agent cards AG-039…AG-060, architecture uplift with ADR-110…119, phased plan A1–A3). Quality gate for 9.7a and 9.7b in §9.7.18.**
+## Quality gate: Batch 9.7a
+
+| # | Check | Result | Notes |
+|---|---|---|---|
+| 1 | Every requirement traced to a source | Pass | Each inventory row and card cites BR-, FR-, DEC-, CI- or source-pack items; FR detail in 9.7b §9.7.8 |
+| 2 | Assumptions, gaps and conflicts tagged and logged | Pass | Tags used here (ASSUMPTION-600…607, RECOMMENDATION-630/631, CONFLICT-622) are in the register, 9.7b §9.7.17 |
+| 3 | IDs unique and consistent with earlier parts | Pass | AG-039…060, ADR-110…119, PC-19…40, TL-21…32 are new and inside the allocation |
+| 4 | No story lacks AC and no requirement lacks a test | N/A here | Stories and tests are in 9.7b §9.7.9 and §9.7.11 (Pass there) |
+| 5 | Negative, edge, security and accessibility cases covered | N/A here | See 9.7b §9.7.11 |
+| 6 | No agent lacks guardrail, fallback, KPI and cost estimate | Pass | All 22 cards have every field, including per-call formula and monthly low/base/high cost |
+| 7 | Time-sensitive facts flagged "verify" with an as-of date | Pass | Models, prices, licences, regulatory dates, WhatsApp policy flagged "verify (as of 27 Nov 2026)" |
+| 8 | No restricted data routed to free-tier models | Pass | Tier 2 "No" for every agent that can see personal or confidential data; eligible sub-tasks are Public or Internal-non-personal, opt-in, default OFF |
+| 9 | Consistent with earlier parts | Pass | ADR-071 extended (ADR-110), DEC-011, DEC-064, DEC-218, DEC-008 and Release 1/2 unchanged |
+
+**Status: Part 9 Batch 9.7a complete (expert panel of 5, opportunity inventory of 58 adopted items and 10 rejected or deferred, phased plan A1–A3, architecture uplift with ADR-110…119, 22 new agent cards AG-039…AG-060). Continues in Batch 9.7b.**

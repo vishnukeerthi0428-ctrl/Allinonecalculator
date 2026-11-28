@@ -609,7 +609,7 @@ Feature: B24 budget line
 
   Scenario: AC-04-V106-02 Ladder sheds advanced agents first
     Given B24 usage reaches 85 percent
-    Then AG-046, AG-059 and AG-053 are deferred per the B24 ladder and an NT-025 alert is sent
+    Then AG-059, AG-053, AG-045 and AG-054 are deferred per the B24 ladder and an NT-025 alert is sent
 ```
 
 ##### US-04-V107 AI inventory and model cards
@@ -1568,3 +1568,421 @@ Columns follow Part 6.4 and Part 7.4b: P = priority; Type (T03 integration, T08 
 | TC-ADV-X1-091 | Feedback queue redaction and isolation | FR-ADV-X1-063; FR-ENH-F-006 | Edits from tenants T1 and T2 | Sample; promote | Items redacted; T1 items never in T2 sets; promotion needs R10 + AI lead | P0 | T08 | EP | Y | IT |
 | TC-ADV-X1-092 | No Confidential data to Tier 2 (all new agents) | Cross-cutting; DEC-007; NFR-077 | Tier 2 opted in; fixtures with personal and Confidential fields for each of the 22 agents | Force Tier 1 outage | 0 Confidential or personal items reach Tier 2; eligible Public sub-tasks only | P0 | T08 | DT | Y | SYS |
 
+---
+
+## 9.7.12 Governance
+
+### 9.7.12.1 Risk classification
+
+Classification method: (a) **EU AI Act** role and tier (the platform is a *deployer* of general-purpose models; obligations apply where outputs are used in the EU, DEC-029; verify the application dates and any Digital Omnibus changes at implementation, as of 27 Nov 2026); (b) **India DPDP Act 2023 and DPDP Rules 2025** role (data fiduciary for the owned portfolio, processor for SaaS tenants; verify commencement dates); (c) **internal risk tier** R1 low / R2 medium / R3 high = impact if the output is wrong × likelihood × reach, before controls; (d) **NIST AI RMF 1.0** functions where the main controls sit.
+
+| Item | Intended purpose | EU AI Act tier (deployer view) | DPDP relevance | Internal tier | Key controls |
+|---|---|---|---|---|---|
+| AG-039 Supervisor | Plan internal multi-step work | Minimal | Processes business records by ID | R2 | AU-053, plan approval, caps, kill switch |
+| AG-040 Account research | Organization briefs | Minimal | Professional contact roles only; no profiling | R2 | VP-02, permitted sources, citations |
+| AG-041 / AU-055 Intent | Organization intent | Minimal | Consented analytics only | R1 | Consent filter, Unknown rule |
+| AU-056 / AG-042 Propensity | Advisory ranking of organizations' opportunities | Minimal (no natural-person decisions; not credit, employment or essential services) | Organization-level features | R2 | Shadow, calibration, fairness, DEC-011 unchanged |
+| AG-043 / AU-060 NBA | Suggest next step | Minimal | Eligibility via PDP dry run | R2 | Candidate set, L0 |
+| AG-044 / AU-058 Deal risk | Flag slipping deals | Minimal | — | R1 | Rule IDs, L0 |
+| AU-059 Churn | Advisory customer risk | Minimal | No medical data | R2 | Feature allowlist, data gate |
+| AG-045 Conversation intel | Team-level insights | Minimal; **would become high-risk if used for employee evaluation** (Annex III employment, verify) — prohibited by design | Notice and purpose required (DEC-386) | R3 | Aggregation k ≥ 5, no per-employee output, recordings excluded |
+| AG-046 Coach | Practice with synthetic personas | Minimal (same Annex III caveat; scores private) | Learner's own data only | R2 | Private scores, no HR export |
+| AG-047 RFP co-pilot | Draft bid answers | Minimal | Client NDA content | R2 | L1, citations, DEC-053 |
+| AG-048 Price-book | Explain approved prices and routes | Minimal | — | R2 | VP-01, read-only tool |
+| AG-049 / AG-050 Variants and localization | Draft approved-claim content | Limited: AI-generated content transparency where published (Art. 50, verify); India synthetic-content labelling (verify) | Organization-level segments | R2 | AG-012, VP-05/06, L1 templates |
+| AG-051 / AU-064 Campaign | Plan and pacing | Minimal | No health events to pixels; no minors targeting | R2 | Cap, L1 |
+| AG-052 / AU-065 Experiments | Measure lift | Minimal | Consent and eligibility unchanged | R2 | Pre-registration, guardrails |
+| AG-053 / AU-066 MMM | Channel analysis | Minimal | Aggregates | R1 | Uncertainty, estimate labels |
+| AG-054 Forecast variance | Explain forecasts | Minimal | — | R1 | Deterministic numbers |
+| AG-055 / AU-069 Knowledge | Curate knowledge | Minimal | Redacted queries | R2 | Owner approval |
+| AG-056 / AU-070 Red-team | Test defences | Minimal | Synthetic only | R1 | Sandbox |
+| AG-057 / AU-072 Command bar | Navigate and draft | Minimal | User's own scope | R2 | RBAC resolver, no approval commands |
+| AG-058 / AU-073 Concierge | Customer answers on WhatsApp | **Limited: Art. 50 chatbot transparency** (verify) | Personal data in chat; consent; minors | R3 | Disclosure, FAQ-only L3, handoff, STOP first |
+| AG-059 Meeting prep | Internal brief | Minimal | Roles only | R1 | Citations |
+| AG-060 / AU-074 Dedupe | Clean directory | Minimal | Organization records | R2 | L1 merge, ≥ 2 identifiers |
+| AU-061 / AU-062 Memory | Governed recall | Minimal | **High DPDP relevance**: purpose, notice, retention, erasure | R3 | OFF by default, gate, TTL, purge |
+
+**No item is prohibited (Art. 5) or high-risk (Annex III) as designed.** The two design rules that keep it so are: no evaluation of employees from AI outputs (AG-045, AG-046), and no decisions about natural persons' access to education, employment, credit or essential services (EduVerse admissions and assessment stay out of scope, as Part 7.3 §7.6.12 and RSK-375 already state).
+
+### 9.7.12.2 Model card template (AU-079, A129)
+
+| Section | Content |
+|---|---|
+| Identity | System ID (AG/AU), version, owner, release, status, kill-switch scope |
+| Intended purpose and users | Purpose statement; personas; out-of-scope uses (explicit list, e.g. "not for employee evaluation", "not for pricing") |
+| Risk classification | §9.7.12.1 row; DPIA reference when personal data is processed |
+| Data | Input data classes; sources; retention; Tier 2 eligibility; training data (ML) with time window and exclusions |
+| Model and route | Gateway tier(s), model IDs (verify), prompt contract PC-nn, prompt version, schema revision; or ML algorithm, features, calibration |
+| Evaluation | Datasets (IDs, hashes, sizes), metrics with 95% CIs, thresholds met, fairness slices, red-team pass rates, last run date |
+| Limitations | Known failure modes, languages or segments with insufficient data, drift sensitivities |
+| Human oversight | Autonomy cap, checkpoint, approver roles, override and stop, automation-bias mitigations (below) |
+| Monitoring | SLOs, drift metrics, review cadence, incident history links |
+| Cost | Per-call formula inputs, monthly estimate, budget line, cap |
+| Change log | Versions, canary history, rollbacks |
+
+### 9.7.12.3 Human-oversight design
+
+| Principle | Implementation |
+|---|---|
+| Humans decide anything consequential | Autonomy caps per §9.7.4.10; DEC-064 unchanged; no new X2 tool; approval of exact hashes |
+| Understandability | Every output shows citations, rule IDs, model version and an "Estimate" or "AI draft – not yet approved" badge; explanations are faithful to deterministic numbers (TC-ADV-X1-022, 056) |
+| Automation-bias mitigation | NBA shows two alternatives and the reason; propensity shows an interval; reviewers see "why not" for dismissed candidates; weekly sampled audit of accepted suggestions (≥ 10%) by R02; dismissal reasons collected (AU-078) |
+| Ability to intervene | Kill switch per agent, plan, tier and B24 line (≤ 60 s); canary rollback; per-user "turn off suggestions" for NBA and command bar |
+| Competence | AI-literacy module for staff (EU AI Act Art. 4, verify) added to Part 8.3 training: 45 minutes per role group; coach and concierge supervisors get handoff drills |
+| Separation of duties | Template and plan approvers ≠ authors; model visible-mode needs R01 + AI lead + R10; eval-set promotion needs R10 + AI lead |
+| Contestability | Customers can request a human at any point in WhatsApp (AG-058); staff can flag any AI output as wrong, which enters AU-078 |
+
+### 9.7.12.4 Incident handling (extends Part 7.3 §7.6.10)
+
+| Severity | New examples for advanced items | Response |
+|---|---|---|
+| AI-S1 | Supervisor plan executes a step without validation; memory stores special-category data about a person; concierge gives clinical advice or collects a minor's data; propensity shown on Website/Portal; cross-tenant memory or brief exposure | Kill switch at narrowest scope ≤ 15 min; R10 + Founder notified; DPDP breach assessment (verify notification duties under DPDP Rules); purge (AU-061/046); post-incident review ≤ 5 business days; regression case added via AG-056 |
+| AI-S2 | Price text in an approved RFP answer; wrong merge approved from AG-060 proposal; experiment arm sent to an ineligible contact (PDP should deny, so this means PDP defect); B24 overspend > 10% | Disable agent version; rollback; correction to customer where needed; review ≤ 10 days |
+| AI-S3 | Drift alert; SLO burn; canary rollback; fairness slice gap > 10 pp; abstention spike | Fix in next release; monitor; record in model card |
+
+```mermaid
+stateDiagram-v2
+  [*] --> Detected
+  Detected --> Triaged : AU-071, AU-057, AG-056 or user report
+  Triaged --> Contained : kill switch, rollback, disable Tier 2
+  Contained --> Assessed : scope from audit digests and spans
+  Assessed --> Notified : internal, customer, regulator where required
+  Notified --> Remediated : fix plus regression case
+  Remediated --> Closed : evidence in A047 and model card
+  Assessed --> Remediated : no notification duty
+  Closed --> [*]
+```
+
+### 9.7.12.5 NIST AI RMF 1.0 mapping
+
+| Function | Practices in this part |
+|---|---|
+| **Govern** | AI inventory and model cards (AU-079, A129); roles and SoD (§9.7.12.3); DEC-380…389; quarterly model review board chaired by the AI lead with R10 and the Founder [RECOMMENDATION-639] |
+| **Map** | Intended purpose and out-of-scope uses per card; risk classification §9.7.12.1; data-class and Tier 2 eligibility per agent; stakeholder impact (customers, staff, minors, patients excluded) |
+| **Measure** | Eval harness v2 (ADR-117); fairness slices; calibration; red-team; SLOs; cost per task; measured lift via AU-065 |
+| **Manage** | Canary and rollback (AU-054); kill switch; B24 ladder; incident handling §9.7.12.4; retirement path in WF-16 |
+
+### 9.7.12.6 DPDP controls for the personal-data-touching items
+
+| Item | Purpose and notice | Data minimization | Retention and erasure | Rights | Cross-border |
+|---|---|---|---|---|---|
+| Memory (AU-061/062) | Purpose "account service and sales continuity" added to the staff and customer notices before enabling (R10) | Allowlisted fact types; persons as roles | TTL 180 days; purge on request ≤ 15 min | Included in AU-011 locator | Model calls under existing provider terms (GAP-141, verify) |
+| Conversation intel (AG-045) | Notice covers "service improvement analytics" (DEC-386 legal review) | Redaction before model; team-level output | Insights 2 years; source threads per DEC-028 | Thread deletion removes contributions at next weekly run | Same |
+| WhatsApp concierge (AG-058) | AI disclosure and privacy link at session start | Bounded enquiry fields only | Sessions 90 days (DEC-028) | Human handoff on request | Same; Meta processing per its terms (verify) |
+| Propensity / churn (AU-056/059) | Internal processing of organization data | No natural-person features | Predictions 13 months | Not used for individual decisions | In-region compute (ap-south-1) |
+
+---
+
+## 9.7.13 Effort
+
+### 9.7.13.1 Basis of estimate
+
+Effort is estimated bottom-up per item with three-point ranges (low / central / high). Unit sizes: agent S 2/3/5 pd, M 4/6/8 pd, C 6/9/13 pd (prompt contract, schema, eval sets wiring, guardrails, Tier 3 path, UI hooks, tests); automation S 1.5/2.5/4, M 3/4/6, C 4/6/9 pd; workflow wiring 1/2/3 pd; Admin screen 3/4/6 pd (Part 2.5 patterns reused); platform uplift items sized individually. Rates as Part 8.4: ₹4,545 (low) … ₹6,818 (high) per person-day; central uses the midpoint ₹5,682 [ASSUMPTION-609]. Effort excludes the baseline's Release 1/2 scope and the ≈ 100 pd Phase-2 (W6) scope of Part 9.5 §9.5.2.3.
+
+### 9.7.13.2 Effort per item
+
+| Item | Description | Release | Low pd | Central pd | High pd |
+|---|---|---|---|---|---|
+| PU-01 | Supervisor plan schema, plan validator and engine executor extension (ADR-110) | A1 | 8 | 12 | 16 |
+| PU-02 | Agent and prompt registry v2 with canary rollout and auto-rollback (ADR-111) | A1 | 6 | 9 | 12 |
+| PU-03 | Long-term memory store, write gate, consent and purge (ADR-112) | A1 | 8 | 12 | 16 |
+| PU-04 | ML platform: feature snapshots, MLflow registry, training and scoring jobs (ADR-113) | A1 | 8 | 12 | 16 |
+| PU-05 | Envelope v3, capability tokens and handoff contracts (ADR-114) | A1 | 4 | 6 | 8 |
+| PU-06 | Observability: OpenTelemetry GenAI spans, Langfuse self-hosted, SLO burn alerts (ADR-115) | A1 | 4 | 6 | 8 |
+| PU-07 | Guardrail stack extension and policy packs (ADR-116) | A1 | 4 | 6 | 8 |
+| PU-08 | Evaluation harness v2: online judge sampling, shadow, red-team, drift (ADR-117) | A1 | 6 | 9 | 12 |
+| PU-09 | Experimentation engine core (ADR-118) | A2 | 5 | 7 | 10 |
+| PU-10 | Advanced AI budget line B24, ladder and metering (ADR-119) | A1 | 2 | 3 | 4 |
+| AG-039 | Agent Supervisor and Planner | A1 | 6 | 9 | 13 |
+| AG-040 | Account Research Agent | A1 | 6 | 9 | 13 |
+| AG-041 | Signal and Intent Fusion Analyst | A2 | 4 | 6 | 8 |
+| AG-042 | Predictive Score Explainer | A1 | 2 | 3 | 5 |
+| AG-043 | Next-Best-Action and Offer Advisor | A2 | 4 | 6 | 8 |
+| AG-044 | Deal-Risk Early-Warning Analyst | A2 | 4 | 6 | 8 |
+| AG-045 | Conversation Intelligence Analyst | A3 | 6 | 9 | 13 |
+| AG-046 | Objection-Handling Coach | A2 | 4 | 6 | 8 |
+| AG-047 | RFP Response Co-pilot | A1 | 6 | 9 | 13 |
+| AG-048 | Price-Book Guidance Assistant | A2 | 2 | 3 | 5 |
+| AG-049 | Personalization-at-Scale Variant Generator | A2 | 6 | 9 | 13 |
+| AG-050 | Indic Localization Agent | A2 | 6 | 9 | 13 |
+| AG-051 | Campaign Planner and Pacing Advisor | A2 | 4 | 6 | 8 |
+| AG-052 | Experiment Designer and Analyst | A2 | 4 | 6 | 8 |
+| AG-053 | Attribution and Marketing-Mix Analyst | A3 | 4 | 6 | 8 |
+| AG-054 | Forecast Variance and Pipeline Hygiene Analyst | A2 | 2 | 3 | 5 |
+| AG-055 | Knowledge Curator and RAG Freshness Agent | A1 | 4 | 6 | 8 |
+| AG-056 | Agent Red-Team and Drift Analyst | A1 | 4 | 6 | 8 |
+| AG-057 | Admin Command Bar Interpreter | A2 | 4 | 6 | 8 |
+| AG-058 | WhatsApp Concierge with Human Handoff | A2 | 6 | 9 | 13 |
+| AG-059 | Meeting-Prep Brief Agent | A2 | 2 | 3 | 5 |
+| AG-060 | Data-Quality and Dedupe Steward | A1 | 4 | 6 | 8 |
+| AU-053 | Supervisor plan validator and step guard | A1 | 3 | 4 | 6 |
+| AU-054 | Agent version canary controller and auto-rollback | A1 | 3 | 4 | 6 |
+| AU-055 | Intent fusion score | A2 | 1.5 | 2.5 | 4 |
+| AU-056 | Propensity model training, scoring and calibration | A1 | 4 | 6 | 9 |
+| AU-057 | Model and agent drift monitor | A1 | 3 | 4 | 6 |
+| AU-058 | Deal-risk rule pack | A2 | 1.5 | 2.5 | 4 |
+| AU-059 | Churn-risk model | A3 | 4 | 6 | 9 |
+| AU-060 | Action catalogue eligibility filter | A2 | 3 | 4 | 6 |
+| AU-061 | Memory consent, retention and purge controller | A1 | 3 | 4 | 6 |
+| AU-062 | Memory write gate | A1 | 1.5 | 2.5 | 4 |
+| AU-063 | RFP answer library freshness and expiry | A1 | 1.5 | 2.5 | 4 |
+| AU-064 | Budget pacing calculator | A2 | 1.5 | 2.5 | 4 |
+| AU-065 | Experiment allocator and statistics engine | A2 | 4 | 6 | 9 |
+| AU-066 | Marketing-mix model run | A3 | 4 | 6 | 9 |
+| AU-067 | Compliance pre-check for plans and campaigns | A1 | 3 | 4 | 6 |
+| AU-068 | Gateway cost optimizer | A1 | 1.5 | 2.5 | 4 |
+| AU-069 | RAG freshness and coverage monitor | A1 | 1.5 | 2.5 | 4 |
+| AU-070 | Golden-set and red-team scheduler | A1 | 1.5 | 2.5 | 4 |
+| AU-071 | Agent observability and AI SLO tracker | A1 | 1.5 | 2.5 | 4 |
+| AU-072 | Command registry and RBAC resolver | A2 | 1.5 | 2.5 | 4 |
+| AU-073 | WhatsApp service-window and handoff router | A2 | 1.5 | 2.5 | 4 |
+| AU-074 | Data-quality rules and dedupe blocking | A1 | 3 | 4 | 6 |
+| AU-075 | Meeting-prep scheduler | A2 | 1.5 | 2.5 | 4 |
+| AU-076 | Translation memory and glossary enforcer | A2 | 1.5 | 2.5 | 4 |
+| AU-077 | Send-time window optimizer (statistical) | A3 | 1.5 | 2.5 | 4 |
+| AU-078 | Human feedback capture and label queue | A1 | 1.5 | 2.5 | 4 |
+| AU-079 | AI system inventory and model-card sync | A1 | 1.5 | 2.5 | 4 |
+| WF-15 | Workflow wiring, simulation fixtures and end-to-end test | A1 | 1 | 2 | 3 |
+| WF-16 | Workflow wiring, simulation fixtures and end-to-end test | A1 | 1 | 2 | 3 |
+| WF-17 | Workflow wiring, simulation fixtures and end-to-end test | A2 | 1 | 2 | 3 |
+| WF-18 | Workflow wiring, simulation fixtures and end-to-end test | A1 | 1 | 2 | 3 |
+| WF-19 | Workflow wiring, simulation fixtures and end-to-end test | A2 | 1 | 2 | 3 |
+| WF-20 | Workflow wiring, simulation fixtures and end-to-end test | A2 | 1 | 2 | 3 |
+| WF-21 | Workflow wiring, simulation fixtures and end-to-end test | A1 | 1 | 2 | 3 |
+| WF-22 | Workflow wiring, simulation fixtures and end-to-end test | A1 | 1 | 2 | 3 |
+| WF-23 | Workflow wiring, simulation fixtures and end-to-end test | A2 | 1 | 2 | 3 |
+| A114 | Admin screen (design, build, accessibility, tests) | A1 | 3 | 4 | 6 |
+| A115 | Admin screen (design, build, accessibility, tests) | A1 | 3 | 4 | 6 |
+| A116 | Admin screen (design, build, accessibility, tests) | A1 | 3 | 4 | 6 |
+| A117 | Admin screen (design, build, accessibility, tests) | A2 | 3 | 4 | 6 |
+| A118 | Admin screen (design, build, accessibility, tests) | A1 | 3 | 4 | 6 |
+| A119 | Admin screen (design, build, accessibility, tests) | A2 | 3 | 4 | 6 |
+| A120 | Admin screen (design, build, accessibility, tests) | A2 | 3 | 4 | 6 |
+| A121 | Admin screen (design, build, accessibility, tests) | A3 | 3 | 4 | 6 |
+| A122 | Admin screen (design, build, accessibility, tests) | A2 | 3 | 4 | 6 |
+| A123 | Admin screen (design, build, accessibility, tests) | A1 | 3 | 4 | 6 |
+| A124 | Admin screen (design, build, accessibility, tests) | A2 | 3 | 4 | 6 |
+| A125 | Admin screen (design, build, accessibility, tests) | A2 | 3 | 4 | 6 |
+| A126 | Admin screen (design, build, accessibility, tests) | A3 | 3 | 4 | 6 |
+| A127 | Admin screen (design, build, accessibility, tests) | A1 | 3 | 4 | 6 |
+| A128 | Admin screen (design, build, accessibility, tests) | A1 | 3 | 4 | 6 |
+| A129 | Admin screen (design, build, accessibility, tests) | A1 | 3 | 4 | 6 |
+| OT-01 | Evaluation datasets and labelling (golden, adversarial, fairness and fallback sets for 22 agents and 3 ML models) | A1/A2/A3 (50/35/15%) | 12 | 18 | 25 |
+| OT-02 | Governance: model cards, DPIA updates, AI system register, EU AI Act and NIST AI RMF mapping | A1/A2/A3 (50/30/20%) | 4 | 6 | 9 |
+| OT-03 | Training and change management (task cards, coaching for P03, P05, P06) | A1/A2/A3 (40/40/20%) | 3 | 5 | 7 |
+| OT-04 | Hypercare after each advanced release (A1, A2, A3) | A1/A2/A3 (33/33/33%) | 6 | 9 | 12 |
+| **Total** | | | **292** | **435** | **627** |
+
+| Group | Low pd | Central pd | High pd |
+|---|---|---|---|
+| Platform uplift PU-01…10 | 55 | 82 | 110 |
+| Agents AG-039…060 (22) | 94 | 141 | 199 |
+| Automations AU-053…079 (27) | 61 | 92 | 142 |
+| Workflows WF-15…23 (9) | 9 | 18 | 27 |
+| Screens A114–A129 (16) | 48 | 64 | 96 |
+| Other OT-01…04 | 25 | 38 | 53 |
+| **Total** | **292** | **435** | **627** |
+
+| Release | Low pd | Central pd | High pd | Low ₹ lakh (× ₹4,545) | Central ₹ lakh (× ₹5,682) | High ₹ lakh (× ₹6,818) |
+|---|---|---|---|---|---|---|
+| A1 | 156.2 | 232 | 331.8 | 7.10 | 13.18 | 22.62 |
+| A2 | 105.1 | 157.6 | 229.2 | 4.78 | 8.95 | 15.63 |
+| A3 | 30.7 | 45.4 | 65.9 | 1.40 | 2.58 | 4.50 |
+| **Total** | **292** | **435** | **627** | **13.27** | **24.71** | **42.75** |
+
+### 9.7.13.3 Delivery capacity
+
+| Release | Working days (approx.) | Central pd | FTE needed at 80% focus | Proposed delivery team [RECOMMENDATION-634] |
+|---|---|---|---|---|
+| A1 (Day 239–365) | ≈ 90 | 232 | ≈ 3.2 | 2 contract AI/LLM engineers + 1 ML/data engineer (contract) + QA 0.5 + UX 0.25 from the core team, backfilled (≈ 3.75 FTE) |
+| A2 (Day 366–480) | ≈ 80 | 158 | ≈ 2.5 | 2 AI/LLM engineers + 0.5 ML/data + QA 0.25 |
+| A3 (Day 481–600) | ≈ 85 | 45 | ≈ 0.7 | 1 AI/ML engineer part-time |
+
+The pod is costed in §9.7.14 at the effort value; if the Founder approves Phase 2 (A2 of Ledger A) and assigns spare core-team capacity, part of A1 could be absorbed there instead of using contractors, but this proposal does **not** assume that, so the figures stay conservative.
+
+---
+
+## 9.7.14 Cost (separately approvable proposal)
+
+**Status.** Everything in this section is **outside** the approved Ledger A (DEC-230, ₹52.7–84.1 lakh to Day 208), the approved Ledger B (DEC-231, ₹19,895–26,335/month base) and the not-yet-approved Phase-2 Ledger A2 (₹25.8–38.7 lakh). It is presented for **Founder approval** under DEC-381 (development) and DEC-382 (running). All prices: **verify at time of implementation (as of 27 Nov 2026)**. Taxes (GST), external legal counsel and Founder time are excluded, as in Part 8.4.
+
+### 9.7.14.1 Development cost (one-time)
+
+| # | Item | Formula | Low | Central | High |
+|---|---|---|---|---|---|
+| X1-D1 | A1 build (Day 239–365) | 156.2 / 232 / 331.8 pd × ₹4,545 / 5,682 / 6,818 | ₹7.10 L | ₹13.18 L | ₹22.62 L |
+| X1-D2 | A2 build (Day 366–480) | 105.1 / 157.6 / 229.2 pd × rates | ₹4.78 L | ₹8.95 L | ₹15.63 L |
+| X1-D3 | A3 build (Day 481–600), only after the scale gate | 30.7 / 45.4 / 65.9 pd × rates | ₹1.40 L | ₹2.58 L | ₹4.50 L |
+| X1-D4 | Independent AI red-team and security review before A1 enablement (external) [RECOMMENDATION-636] | Fixed-scope engagement; quotes to verify | ₹1.00 L | ₹1.75 L | ₹2.50 L |
+| X1-D5 | Indic glossary seeding and one-time linguist QA for up to 9 locales | 9 locales × ≈ ₹5,500–13,000 (assumption; quotes to verify) | ₹0.50 L | ₹0.85 L | ₹1.20 L |
+| X1-D6 | Open-source licences (scikit-learn, LightGBM, MLflow, Langfuse, PyMC-based MMM; verify each licence via AU-047) | ₹0 licence | ₹0 | ₹0 | ₹0 |
+| | **Total development (one-time)** | X1-D1 … D6 | **₹14.78 L** | **₹27.31 L** | **₹46.45 L** |
+| | of which A1 + A2 only (if A3 is never unlocked) | D1 + D2 + D4 + D5 | ₹13.38 L | ₹24.73 L | ₹41.95 L |
+| R-X1 | Management reserve (not in total; released via change control) | 10% of central | — | ₹2.73 L | — |
+| Excl. | Legal review for memory DPIA, conversation-intelligence notice and WhatsApp concierge terms | Not estimated; obtain quotes [GAP-612] | — | — | — |
+
+### 9.7.14.2 Subscription and running cost (recurring, monthly, at pilot volume)
+
+Steady state with all A1 + A2 + A3 items enabled. "AI" lines use the §9.7.5 card formulas with the 25% overhead allowance; the high scenario for B24 is shown **at the hard cap** because AU-002 enforces it.
+
+| # | Line | Item | Billing model | Low ₹/month | Base ₹/month | High ₹/month (ceiling) | Active from |
+|---|---|---|---|---|---|---|---|
+| X1-R1 | **B24 (new)** | Advanced AI inference, 21 agents (Claude Haiku/Sonnet via gateway; verify prices) | Pay-as-you-go, **hard cap ₹2,000** | 650 | 1,429 | 2,000 (uncapped estimate 3,554) | A1 |
+| X1-R2 | B23 (increment) | Delivery AI for AG-056 continuous red-team | Pay-as-you-go, inside B23 cap | 51 | 105 | 258 | A1 |
+| X1-R3 | B22 (pulled forward) | Langfuse self-hosted (container + PostgreSQL/ClickHouse storage) | Hosting | 2,250 | 2,475 | 2,700 | A1 (instead of growth gate) |
+| X1-R4 | B01 (increment) | MLflow tracking server + S3 artefacts | Hosting | 400 | 650 | 900 | A1 |
+| X1-R5 | B01 (increment) | ML training and batch scoring compute (CPU, Batch window) | Usage | 300 | 650 | 1,000 | A1 |
+| X1-R6 | B01/B20 (increment) | Storage and IOPS for memory, traces, features, eval artefacts, backups | Usage | 300 | 550 | 800 | A1 |
+| X1-R7 | B06 (increment) | WhatsApp concierge conversation charges (customer-initiated service conversations reported free within the window; templates outside the window chargeable; verify Meta pricing) [GAP-611] | Per message / conversation | 0 | 750 | 1,500 | A2 |
+| X1-R8 | — | Voice assistant | Deferred (DEC-387) | 0 | 0 | 0 | — |
+| | | **Subtotal** | | **3,951** | **6,609** | **9,158** | |
+| | B11 | Contingency 15% | | 593 | 991 | 1,374 | |
+| | | **Total recurring (monthly)** | | **₹4,544** | **₹7,600** | **₹10,532** | |
+| | | **12 months** | | ₹0.55 L | ₹0.91 L | ₹1.26 L | |
+
+**Ramp by release (base, with contingency).**
+
+| Period | What is enabled | B24 AI (base, incl. overhead) | Tools and infra (base) | Monthly total with 15% | Months | Period total |
+|---|---|---|---|---|---|---|
+| A1 (Aug–Dec 2027) | 7 agents incl. AG-047 | ₹714 | ₹4,130 (R2–R6) | ≈ ₹5,571 | 4.2 | ≈ ₹23,400 |
+| A2 (Dec 2027–Mar 2028) | + 13 agents, concierge | ₹1,379 | ₹5,180 | ≈ ₹7,543 | 3.8 | ≈ ₹28,660 |
+| A3 (Apr–Jul 2028) | All | ₹1,429 | ₹5,180 | ≈ ₹7,600 | 3.9 | ≈ ₹29,640 |
+| **Day 239–600** | | | | | ≈ 12 | **≈ ₹0.82 L** |
+
+### 9.7.14.3 Scaling of the recurring cost
+
+| Volume level (Part 7.3 §7.5.6) | B24 AI base estimate | Proposed B24 cap (DEC-382) | Tools change | Note |
+|---|---|---|---|---|
+| Pilot (1×) | ₹1,429 | **₹2,000** | As §9.7.14.2 | Base uses 71% of cap |
+| Growth gate (4×) | ₹5,716 | **₹7,500** | Langfuse no longer incremental (already planned in B22 at the growth gate): −₹2,475 | Unlocked with the BRD §8 scale gate |
+| Scale (12×) | ₹17,148 | **₹20,000** | MLflow and storage roughly × 2 | Re-benchmark Tier 2e self-hosted inference for the high-volume Haiku agents (RECOMMENDATION-067) |
+
+SaaS tenants that enable advanced agents pay through their own AI-task quotas (DEC-047, AU-042); those costs are never in B24.
+
+### 9.7.14.4 B24 degradation ladder (ADR-119)
+
+| Step | B24 used | Action | Agents affected |
+|---|---|---|---|
+| 1 | 80% | Alert R01, R08, R11 (NT-025); AG-057 Tier 0 grammar only; AG-046 flash-card mode | AG-057, AG-046 |
+| 2 | 85% | Defer non-urgent briefs and analytics to the next window | AG-059, AG-053, AG-045, AG-054 |
+| 3 | 90% | AG-047 uses Haiku for matching, Sonnet only for final drafting; AG-039 offers template plans only; AG-049/050 queued to next month | AG-047, AG-039, AG-049, AG-050 |
+| 4 | 95% | Advisory explainers off (rule outputs and tables only) | AG-041, AG-042, AG-043, AG-044, AG-055, AG-060 |
+| 5 | 100% | Hard stop of B24 calls; AG-058 answers exact FAQ from Tier 0 and routes everything else to humans | All B24 |
+
+B02 and its ladder (Part 7.3 §7.5.7) are unaffected by any B24 step (TC-ADV-X1-087).
+
+### 9.7.14.5 Value check (illustrative, not a forecast)
+
+| Driver | Basis | Monthly value at pilot (illustrative) |
+|---|---|---|
+| Bid drafting time (AG-047) | 4 bids/month × 3 pd saved per bid × ₹5,682 × 25–40% realization [ASSUMPTION-602] | ≈ ₹17,000–27,000 of staff time |
+| Pursuit preparation (AG-039, AG-040, AG-059) | 20 qualified accounts × 1.5 h saved × ₹710/h [ASSUMPTION-601] | ≈ ₹21,000 of staff time |
+| AI cost optimization (AU-068) | 10–20% of B02 + B24 base (₹2,594) [ASSUMPTION-604] | ≈ ₹260–520 |
+
+Staff-time value is capacity, not cash. The panel's position is that A1 is justified mainly by AppNAI bid productivity and pursuit speed, and A2 by measured lift from AU-065 experiments; **A2 should be released only after G-A1 shows the A1 measures** (DEC-381).
+
+---
+
+## 9.7.15 Decisions (DEC-380…DEC-389)
+
+All decisions below are **expert-panel recommendations made on the Founder's instruction of 28 Nov 2026**. Those marked **[Founder approval required — budget]** take effect only when the Founder approves them; until then the baseline (DEC-001…233) governs unchanged and none of the advanced scope is built.
+
+| DEC | Decision | Authority | Effect |
+|---|---|---|---|
+| DEC-380 | Adopt the X1 advanced AI programme (22 agents, 27 automations, 9 workflows, 16 screens) as a **separately approvable proposal** phased A1 (Day 239–365), A2 (Day 366–480), A3 (Day 481–600, scale-gated). **No change to Release 1, Release 2, DEC-228, DEC-230 or DEC-231** | Expert-panel recommendation, Founder instruction 28 Nov 2026. **[Founder approval required — budget]** | Defines scope and gates G-X0, G-A1, G-A2, G-A3 (§9.7.3); nothing is built before approval |
+| DEC-381 | Approve development budget for the proposal: **A1 ₹7.1–22.6 L (central ₹13.2 L)** plus D4 red-team review and D5 linguist QA; **A2 ₹4.8–15.6 L** released only after G-A1 evidence; **A3 ₹1.4–4.5 L** only after G-A2 and the BRD §8 scale gate. Programme total **₹14.8–46.5 L (central ₹27.3 L)**, outside DEC-230 and outside the Phase-2 Ledger A2 | Expert-panel recommendation, Founder instruction 28 Nov 2026. **[Founder approval required — budget]** | Staged release of money tied to measured value (§9.7.14.5) |
+| DEC-382 | Create budget line **B24 "Advanced AI"** with hard caps **₹2,000/month (pilot)**, ₹7,500 (growth gate) and ₹20,000 (scale), its own ladder (§9.7.14.4), and approve recurring running cost of **₹4,544–10,532/month (base ₹7,600)** including tools and 15% contingency, outside DEC-231 | Expert-panel recommendation, Founder instruction 28 Nov 2026. **[Founder approval required — budget]** | B02 and DEC-008 ceilings unchanged; advanced agents can never starve baseline agents (ADR-119) |
+| DEC-383 | Predictive propensity (AU-056) and churn (AU-059) are **advisory only**: Admin-only display, never altering the DEC-011 score, bands, Unknown rule, eligibility, PDP inputs or forecast; visible mode only after the FR-ADV-X1-010 gates and R01 + AI lead + R10 approval. Any future use inside scoring bands needs a new DEC after ≥ 2 quarters of visible operation (consistent with DEC-211) | Expert-panel recommendation, Founder instruction 28 Nov 2026 | Resolves CONFLICT-621; keeps DEC-011 binding |
+| DEC-384 | Multi-agent orchestration follows **supervisor-as-planner** (ADR-110): AG-039 proposes; AU-053 validates; the M55 engine executes; agents never call agents; ≤ 2 re-plans; no X2 step representable; DEC-064 caps unchanged | Expert-panel recommendation, Founder instruction 28 Nov 2026 | Resolves CONFLICT-620 with ADR-071 (extends, does not replace) |
+| DEC-385 | Long-term memory (ADR-112) is **OFF by default per tenant**; enabling requires R01 + R10 and a signed DPIA delta; structured allowlisted facts only; default TTL 180 days; purge on request ≤ 15 minutes; never shared across startups or tenants | Expert-panel recommendation, Founder instruction 28 Nov 2026 | DPDP purpose limitation and erasure evidenced; AU-061/062 mandatory |
+| DEC-386 | Conversation intelligence (AG-045) covers **staff-written notes and in-product written threads only**; **audio recordings and call transcripts remain excluded** (DEC-218 unchanged); outputs are team-level with k ≥ 5; **no AI output (AG-045, AG-046) may be used to evaluate employees**; coaching scores are private to the learner; A3 start requires legal review of notices | Expert-panel recommendation, Founder instruction 28 Nov 2026 | Resolves CONFLICT-622; keeps the system out of EU AI Act Annex III employment use (verify) |
+| DEC-387 | **Voice assistant deferred** (Won't for this horizon); re-evaluation in A3 only through PG-01…PG-10 with a benchmark of self-hosted speech versus paid providers and a consent design for calls; WhatsApp concierge (AG-058) is the first conversational channel | Expert-panel recommendation, Founder instruction 28 Nov 2026 | No telephony spend; avoids conflict with DEC-218 |
+| DEC-388 | Price-book guidance (AG-048) **explains approved price versions and DEC-038 routes only**; it never proposes, computes or changes a price or discount (CI-071 and DEC-064 stay binding); VP-01 applies to all advanced agents that could mention money | Expert-panel recommendation, Founder instruction 28 Nov 2026 | Safety invariant preserved |
+| DEC-389 | Adopt **open-source** MLflow (self-hosted) for the ML registry and **pull forward self-hosted Langfuse** (ADR-078, B22) from the growth gate to A1, both in ap-south-1, after AU-047 licence checks; costs are in X1-R3/R4 | Expert-panel recommendation, Founder instruction 28 Nov 2026. **[Founder approval required — budget]** (part of DEC-382) | Open-source first; data stays in region; enables multi-step trace debugging |
+
+---
+
+## 9.7.16 Risks
+
+| ID | Risk | Likelihood | Impact | Mitigation | Owner | Early warning |
+|---|---|---|---|---|---|---|
+| RSK-ADV-X1-01 | Supervisor plans add latency and cost without better outcomes | Medium | Medium | AU-065 holdout on WF-15; plan cost cap ₹25; template plans as fallback; G-A1 evidence before A2 | AI lead | Plan approval rate < 70%; no measured time saving |
+| RSK-ADV-X1-02 | A planner or memory defect bypasses an approval | Low | High | AU-053 fail-closed; no X2 representable; PDP at dispatch; capability tokens; TC-ADV-X1-002/009/010; independent red-team (X1-D4) | Security lead | Any PDP deny on a supervised run step |
+| RSK-ADV-X1-03 | Too few closed outcomes for reliable propensity/churn models | High (Year 1) | Medium | Stay in shadow; global model with segment indicator; data gates G-A3 | AI lead | ECE > 0.08 after 2 retrains |
+| RSK-ADV-X1-04 | Automation bias: staff accept NBA or propensity uncritically | Medium | Medium | Alternatives and intervals shown; ≥ 10% weekly audit; dismissal reasons; training | R02 | Acceptance > 90% with no edits |
+| RSK-ADV-X1-05 | Memory accumulates personal data beyond purpose | Medium | High | OFF by default; AU-062 gate; TTL; purge; DPIA; sampled audits | R10 | Gate rejection rate rises; audit finds non-allowlisted content |
+| RSK-ADV-X1-06 | B24 high scenario exceeds the ₹2,000 cap, degrading advanced features | High | Low | Ladder; AU-068 optimizations; AG-047 Haiku matching step; request cap change via DEC only | FinOps | B24 > 80% for 2 consecutive weeks |
+| RSK-ADV-X1-07 | Conversation analytics perceived as staff surveillance | Medium | Medium | Team-level, k ≥ 5, no per-employee output, notices, A3 only after legal review (DEC-386) | R10 | Staff concerns raised; works-council style objections |
+| RSK-ADV-X1-08 | Indic localization quality uneven across locales; linguist capacity short | Medium | Medium | Glossary and TM; per-locale eval; enable locales one by one; external linguist reserve (X1-D5) | P05 lead | Linguist edit distance > 25% |
+| RSK-ADV-X1-09 | WhatsApp policy or pricing changes (window, templates, AI use) | Medium | Medium | AU-073 configurable rules; monthly terms check; human fallback | Integration admin (R12I) | Meta policy update notices (verify) |
+| RSK-ADV-X1-10 | Experiment practice misused (peeking, under-powered tests) leading to wrong decisions | Medium | Medium | Pre-registration; SRM; power gate; readout language rules | P10 | Readouts blocked > 30% |
+| RSK-ADV-X1-11 | Contract AI pod knowledge leaves at end of engagement | Medium | Medium | Pairing with core team; ADRs and cards; runbooks; handover sprint in each release | Delivery lead | Single-person ownership of a component |
+| RSK-ADV-X1-12 | Open-source component licence or maintenance risk (MLflow, Langfuse, LightGBM, MMM library) | Low | Medium | AU-047 licence gate; pinned versions; replacement plan per component | DevOps lead | Licence change or > 6 months without upstream release |
+| RSK-ADV-X1-13 | Regulatory reclassification (EU AI Act Digital Omnibus timing, India synthetic-content labelling rules) | Medium | Medium | §9.7.12.1 review each quarter; labelling configurable; counsel review | R10 | New official guidance (verify) |
+| RSK-ADV-X1-14 | Advanced scope distracts the core team from Release 1/2 and Phase-2 commitments | Medium | High | Separate pod; G-X0 requires W5 exit; no R1/R2 items; change control | Founder | Core-team hours booked to X1 before G-X0 |
+
+---
+
+## 9.7.17 Tags register
+
+| Tag | Statement | Owner | Resolution path |
+|---|---|---|---|
+| [ASSUMPTION-600] | Outcome fields needed for ML features (stage history, intent labels, reply timestamps, renewal outcomes) are already retained under DEC-028 | Data architect | Confirm during Release 2 hypercare; no change requested |
+| [ASSUMPTION-601] | Account briefs reduce tokens on account-centric agents by ≈ 20% and pursuit preparation by ≈ 1.5 h per qualified account | AI lead | Measure with AU-065 holdout in A1 |
+| [ASSUMPTION-602] | RFP co-pilot reduces drafting time by 25–40% once ≥ 50 approved answers exist | P06 lead | Measure on ≥ 5 bids at G-A1 |
+| [ASSUMPTION-603] | Additional locales bn, te, mr, kn, ml, gu are wanted by some startups; enabled per startup only | Product owner | Confirm per startup before A2 |
+| [ASSUMPTION-604] | AU-068 finds 10–20% savings at equal quality | FinOps | Track quarterly |
+| [ASSUMPTION-605] | A2 and A3 calendar dates follow W6 continuously in Year 2 | Founder | Confirm at G-A1 |
+| [ASSUMPTION-606] | At least 10 past AppNAI bids are available to seed the answer library | P06 lead | Inventory before A1 |
+| [ASSUMPTION-607] | Pilot call volumes per agent (§9.7.5 cards) derive from BR-S089 volumes and DEC-031 users | AI lead | Replace with measured volumes after 4 weeks of each agent |
+| [ASSUMPTION-608] | Langfuse self-hosted cost equals the B22 estimate of Part 8.4 (₹2,250–2,700/month) | FinOps | Verify at deployment |
+| [ASSUMPTION-609] | Contract AI pod rates fall within the BRD loaded rate band ₹1.0–1.5 lakh per person-month | Founder | Quotes before G-X0 |
+| [GAP-610] | Per-locale quality of the gateway models for Odia, Bengali, Telugu, Marathi, Kannada, Malayalam and Gujarati is not yet measured | AI lead | Per-locale eval (TC-ADV-X1-045) before enabling each locale |
+| [GAP-611] | Current Meta WhatsApp pricing, service-window and AI-use policy must be verified | R12I | Verify at implementation (as of 27 Nov 2026) |
+| [GAP-612] | Legal review cost and content for the memory DPIA, conversation-intelligence notice and concierge terms are not estimated | R10 | Obtain counsel quotes (as GAP-174) |
+| [GAP-613] | No labelled outcome data yet for propensity and churn | AI lead | Accumulates from Release 1; data gates in §9.7.3.3 |
+| [GAP-614] | Maturity of OpenTelemetry GenAI semantic conventions and Langfuse support for them | DevOps lead | Verify at implementation |
+| [GAP-615] | Final application dates of EU AI Act obligations under the Digital Omnibus | R10 | Verify each quarter |
+| [GAP-616] | Answer-library ownership (who owns which answer families) is undefined | P02 (AppNAI) | Define in A1 sprint 1 |
+| [GAP-617] | NBA action catalogue content (actions per stage and startup) needs Product Owner definition | Product owner | Workshop before A2 |
+| [CONFLICT-620] | ADR-071 says only AG-016 plans and agents are never driven at run time; the brief asks for a supervisor over existing agents | AI lead | **Resolved** by ADR-110 / DEC-384: supervisor plans only; the engine executes; agents never call agents |
+| [CONFLICT-621] | DEC-011 / DEC-211: one active scoring model; predictive scoring requested | AI lead | **Resolved** by DEC-383: advisory, separate field, DEC-011 untouched |
+| [CONFLICT-622] | Coaching and conversation analytics could become employee evaluation (EU AI Act Annex III, verify) | R10 | **Resolved** by DEC-386: no employee evaluation; private scores; team-level aggregates |
+| [CONFLICT-623] | B02 high scenario already ≈ 101% of ₹3,000 (Part 7.4b) while new agents are requested | FinOps | **Resolved** by ADR-119 / DEC-382: separate B24 line |
+| [RECOMMENDATION-625] | Supervisor plans for multi-step objectives (FR-ADV-X1-001) | AI lead | DEC-384 |
+| [RECOMMENDATION-626] | Reuse a single cited account brief across agents (FR-ADV-X1-005) | AI lead | A1 |
+| [RECOMMENDATION-627] | Pipeline NBA/NBO from a deterministic candidate set (FR-ADV-X1-011) | Product owner | A2 |
+| [RECOMMENDATION-628] | Experimentation as the evidence base for AI value (FR-ADV-X1-031) | Product owner | A2 |
+| [RECOMMENDATION-629] | RBAC-bound command bar (FR-ADV-X1-045) | UX lead | A2 |
+| [RECOMMENDATION-630] | Do not adopt guard frameworks wholesale; benchmark first | AI lead | ADR-116 |
+| [RECOMMENDATION-631] | Do not adopt direct agent-to-agent invocation protocols; keep the blackboard | AI lead | ADR-114 |
+| [RECOMMENDATION-632] | Pull Langfuse forward to A1 | DevOps lead | DEC-389 |
+| [RECOMMENDATION-633] | Separate hard-capped B24 line with its own ladder | FinOps | DEC-382 |
+| [RECOMMENDATION-634] | Deliver through a contract AI pod paired with the core team | Founder | §9.7.13.3 |
+| [RECOMMENDATION-635] | Defer voice; WhatsApp first | Product owner | DEC-387 |
+| [RECOMMENDATION-636] | Independent AI red-team review before A1 enablement | R10 | X1-D4 |
+| [RECOMMENDATION-637] | Memory OFF by default with DPIA | R10 | DEC-385 |
+| [RECOMMENDATION-638] | Propensity shadow ≥ 4 weeks before visible | AI lead | FR-ADV-X1-010 |
+| [RECOMMENDATION-639] | Quarterly AI model review board (AI lead, R10, Founder) | Founder | §9.7.12.5 |
+| [RECOMMENDATION-640] | Seed the answer library from ≥ 10 past bids | P06 lead | ASSUMPTION-606 |
+| [RECOMMENDATION-641] | Report advanced-programme measures (plan approval rate, NBA acceptance, bid drafting time, abstention rate, B24 use) in A128 alongside OKPI-13/14/16/21 | AI lead | A1 |
+
+---
+
+## 9.7.18 Quality gate (Batches 9.7a and 9.7b)
+
+| # | Check | Result | Notes and fixes applied |
+|---|---|---|---|
+| 1 | Every requirement traced to a source | Pass | All 64 FRs cite BR-, DEC-, OPT-, CI- or source-pack items; items without a direct source requirement are tagged RECOMMENDATION-625…629. Fix applied: AG-048 re-scoped to explanation only after the CI-071 check |
+| 2 | Assumptions, gaps and conflicts tagged and logged | Pass | ASSUMPTION-600…609, GAP-610…617, CONFLICT-620…623 (all resolved by DEC/ADR), RECOMMENDATION-625…641; register §9.7.17. Existing ASSUMPTION-144 reused for prices |
+| 3 | IDs unique and consistent with earlier parts | Pass | Only allocated ranges used: AG-039…060, AU-053…079, WF-15…23, ADR-110…119, DEC-380…389, tags 600–641, screens A114–A129. API and risk IDs use the X1-scoped prefixes API-ADV-X1 and RSK-ADV-X1 to avoid collision with API-### and RSK-### |
+| 4 | No story lacks AC and no requirement lacks a test | Pass | 34 stories, each with 2 Gherkin scenarios; 64 FRs each mapped to ≥ 1 of TC-ADV-X1-001…092; cross-cutting Tier 2 rule tested by TC-ADV-X1-092 |
+| 5 | Negative, edge, security and accessibility cases covered | Pass | Boundary tests (TC-004, 012, 018, 028, 036, 062, 071, 082), security (TC-005, 009, 014, 021, 068, 078, 086), injection (TC-007, 015, 039), bias (TC-020, 064), safety (minors TC-027, 073; clinical TC-072; recordings TC-031). Accessibility: all 16 screens follow Part 2.5 WCAG 2.2 AA patterns; screen-level accessibility tests reuse Part 6.7 checklists (N/A for new TC IDs) |
+| 6 | No agent lacks guardrail, fallback, KPI and cost estimate | Pass | All 22 cards carry guardrails, Tier 3 fallback, KPIs, eval dimensions and per-call formula with monthly low/base/high; all 27 automations carry guardrail, fallback, KPI and cost |
+| 7 | Time-sensitive facts flagged "verify" with an as-of date | Pass | Model names and prices (ASSUMPTION-144), WhatsApp policy (GAP-611), EU AI Act and DPDP dates (GAP-615), OTel conventions (GAP-614), licences and quotes all flagged "verify at time of implementation (as of 27 Nov 2026)" |
+| 8 | No restricted data routed to free-tier models | Pass | Tier 2 eligibility "No" for every agent that can see personal, confidential or restricted data; only Public/Internal-non-personal sub-tasks (AG-040 public evidence, AG-046 synthetic practice, AG-049 public briefs, AG-050 public content, AG-052/053 aggregates, AG-056 synthetic corpora) are eligible, opt-in, default OFF; PV-04 and TC-ADV-X1-005, 047, 092 enforce it |
+| 9 | Consistent with earlier parts | Pass | No change to Release 1/2, DEC-228/230/231, DEC-008 ceilings, DEC-011, DEC-064 caps, DEC-218, ADR-071 (extended by ADR-110), ADR-082. Inconsistencies found in earlier parts are reported below, not fixed |
+
+**Observations on earlier parts (reported, not changed).** (1) Part 9.4 lists AG-037 as Release 2 · W4, while DEC-218 (Part 9.5) places AG-037 as "Should, W6"; the catalogue generator should take the wave from the latest decision. (2) Part 7.4b's B02 high scenario (₹3,037) already exceeds the ₹3,000 pilot ceiling by ≈ 1% and relies on the ladder; any future B02 agent addition needs its own budget decision (addressed here by B24). (3) Part 7.2 §7.2.4 lists TL-15 as "reserved"; AG-060 is now its first agent user, so the registry row should be updated when this proposal is approved.
+
+**Status: Part 9 Batch 9.7b complete (27 automations AU-053…AU-079, 9 workflows WF-15…WF-23, 64 FRs, 34 user stories, 92 test cases, 16 screens A114–A129, 40 API endpoints, DEC-380…389, 14 risks). Batches 9.7a and 9.7b together form the X1 advanced AI proposal for Founder approval: effort 292 / 435 / 627 person-days; development ₹14.8–46.5 lakh (central ₹27.3 lakh, one-time); running ₹4,544–10,532 per month (base ₹7,600), all outside DEC-230/231.**
