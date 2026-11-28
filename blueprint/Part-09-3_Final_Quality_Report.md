@@ -193,7 +193,6 @@ After the blueprint above was completed, the client supplied the complete 38-doc
 | 5 | Legal confirmations; identity spike; provider onboarding; price verification | As in §9.3.6 items 4–7 |
 | 6 | Effort estimates by analogy for groups C, E and G; field-standardization residual | Review at Sprint 3 and Sprint 7 |
 
-**Status: Part 9 Batch 9.3 updated (v1.1).**
 
 ## 9.3.9 Revision v1.1 update (28 Nov 2026): literal match and advanced capabilities
 
@@ -222,3 +221,13 @@ After the blueprint above was completed, the client supplied the complete 38-doc
 - **Routing change for the Founder to confirm (DEC-413):** literal alignment (DEC-301) puts self-hosted inference ahead of Claude.
 
 **Status: Part 9 Batch 9.3 updated (v1.1).**
+
+### 9.3.9.1 Founder decisions of 28 Nov 2026 (supersede the open items above)
+
+| Decision | Effect |
+|---|---|
+| DEC-416: Release 1 alignment work funded (DEC-412 approved) | CR-ALN-01 ₹2.79–11.64 L one-time; recurring up to ₹1,495–10,120/month. Release dates unchanged |
+| DEC-417: advanced release A1 approved (DEC-414) | ≈ ₹28.0–55.4 L one-time; recurring added as items go live. A2 and A3 are decided at gates G-A1 and G-A2 |
+| DEC-418: **Claude Sonnet stays the primary model** (DEC-413 resolved; DEC-301 superseded) | Literal match **99.98% (11,129 / 11,131)**; F15-052 and F21-015 are Founder-approved deviations. AI cost stays within the DEC-008 ceilings. A zero-allowance degraded mode and an optional outage-only local fallback are retained |
+
+**Status: Part 9 Batch 9.3 updated (v1.1, with Founder decisions of 28 Nov 2026).**

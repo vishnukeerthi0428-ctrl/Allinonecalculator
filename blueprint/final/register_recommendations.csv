@@ -252,7 +252,7 @@ RECOMMENDATION-737,9.9a ADR-137 BYOK through cross-account KMS k,9.9b,BYOK via c
 RECOMMENDATION-738,9.9a §9.9.5.31,9.9b,New page patterns PP-STATUS and PP-DOCS,Accepted (no rejecting DEC; issued in Part 9.9b),"9.9a, 9.9b",2
 RECOMMENDATION-741,9.9a ADR-139 PWA with offline drafts only,9.9b,PWA with drafts-only offline mode,Accepted (no rejecting DEC; issued in Part 9.9b),"9.9a, 9.9b",2
 RECOMMENDATION-744,9.9a ADR-138 Developer platform as a separate,9.9b,Developer platform as a separate surface and audience,Accepted (no rejecting DEC; issued in Part 9.9b),"9.9a, 9.9b",2
-RECOMMENDATION-750,9.10 front matter,9.10,Approve A1 only; decide A2 and A3 at their gates,Accepted (no rejecting DEC; issued in Part 9.10),9.10,3
-RECOMMENDATION-751,9.10 §9.10.11,9.10,Fund the Release 1 alignment work to protect the date,Accepted (no rejecting DEC; issued in Part 9.10),9.10,1
+RECOMMENDATION-750,9.10 front matter,9.10,Approve A1 only; decide A2 and A3 at their gates,Accepted (DEC-417),9.10,3
+RECOMMENDATION-751,9.10 §9.10.11,9.10,Fund the Release 1 alignment work to protect the date,Accepted (DEC-416),9.10,1
 RECOMMENDATION-752,9.10 §9.10.11,9.10,Benchmark the local model against Claude at W1 before fixing the routing order for each task class,Accepted (no rejecting DEC; issued in Part 9.10),9.10,1
 RECOMMENDATION-753,9.10 §9.10.11,9.10,"Regenerate the AI catalogue, registers and RTM after every change to Parts 9.6–9.9",Accepted,9.10,1

@@ -7,14 +7,14 @@
 | 0.3–0.9 | 27 Nov 2026 | Blueprint team | Parts 1–8 drafted, reviewed and rendered |
 | 0.95 | 27 Nov 2026 | Blueprint team | Part 9 errata (DEC-066…156), registers, final quality report |
 | 1.0 | 27 Nov 2026 | Blueprint team + Founder | Full 38-document source-pack review (Part 0B and ten enhancement parts); decisions DEC-157…227 (Part 9.5); Founder approvals of Option 2b (DEC-228), both budgets, the QA/growth uplift and the XBR reading (DEC-230…233); Part 10 assembly (this document) |
-| 1.1 | 28 Nov 2026 | Blueprint team + expert panels + Founder | **100% literal match** with the 38-document source pack (Parts 9.6a/b, DEC-234…270 and DEC-300…332); **advanced capabilities** from three expert panels: AI agents (Part 9.7), revenue growth (Part 9.8), platform, data, security and experience (Part 9.9); consolidation, roadmap A1–A3 and separately approvable budget (Part 9.10, DEC-410…415) |
+| 1.1 | 28 Nov 2026 | Blueprint team + expert panels + Founder | **100% literal match** with the 38-document source pack (Parts 9.6a/b, DEC-234…270 and DEC-300…332); **advanced capabilities** from three expert panels: AI agents (Part 9.7), revenue growth (Part 9.8), platform, data, security and experience (Part 9.9); consolidation, roadmap A1–A3 and separately approvable budget (Part 9.10, DEC-410…415); Founder decisions 28 Nov 2026: alignment funded (DEC-416), advanced A1 approved (DEC-417), **Claude Sonnet kept as primary model** (DEC-418) |
 
 | Item | Value |
 |---|---|
 | Inputs | The complete 38-document engineering package (01 BRD, 02 FRD, 03–36 domain specifications, 37 illustrative workflow, 38 all numbers). Coverage of every document is reported in Part 0B |
 | Classification | Confidential: internal and authorized delivery partners |
-| Decision authority | Product Owner delegated decision-making to the blueprint team (27 Nov 2026). Every decision is listed (DEC-001…233, DEC-234…270, DEC-300…332, DEC-380…415) and can be overridden through change control (BRD §11) |
-| Precedence | Later decisions override earlier text: Part 9.10 (DEC-410…415) > Parts 9.6–9.9 (DEC-234…409) > Part 9.5 §9.5.2.9 (DEC-230…233) > Part 8.4 (DEC-229) > Part 9.5 (DEC-157…228) > Part 9.1 (DEC-066…156) > Part 0A (DEC-001…065) > earlier part text > source documents, where a decision resolves a conflict or gap |
+| Decision authority | Product Owner delegated decision-making to the blueprint team (27 Nov 2026). Every decision is listed (DEC-001…233, DEC-234…270, DEC-300…332, DEC-380…418) and can be overridden through change control (BRD §11) |
+| Precedence | Later decisions override earlier text: Part 9.10 (DEC-410…418) > Parts 9.6–9.9 (DEC-234…409) > Part 9.5 §9.5.2.9 (DEC-230…233) > Part 8.4 (DEC-229) > Part 9.5 (DEC-157…228) > Part 9.1 (DEC-066…156) > Part 0A (DEC-001…065) > earlier part text > source documents, where a decision resolves a conflict or gap |
 | Time-sensitive facts | Prices, model names, free tiers, provider terms and regulatory dates are marked "verify at time of implementation (as of 27 Nov 2026)" |
 
 # Executive summary
@@ -63,8 +63,8 @@ AI never signs, pays, submits bids or sets prices.
 | User stories | 230, with about 1,357 Gherkin scenarios |
 | Test cases | 2,912 (2,138 functional, NFR, filter and BR-S + 774 AI/automation evaluations) + 952 enhancement cases (TC-ENH, including 64 closure cases in Part 6.10) plus verification items; 799 source-pack tests mapped; **100% traceability at every level, including the 38-document source pack** |
 | AI agents, automations and workflows | **80 agents, 119 automations and 38 workflows** (v1.0: 38 + 52 + 14; v1.1 advanced: 42 + 67 + 24), each with guardrails, fallbacks, KPIs and costs; plus a 100-use-case automation library |
-| Decisions | 339 (v1.0: 233; v1.1: 37 + 33 literal-alignment decisions, 30 expert-panel decisions, 6 consolidation decisions) |
-| Source-pack match | 11,269 aspects of the 38 documents reviewed line by line. **Literal match 100%: 11,131 of 11,131 applicable aspects** (138 confirmed not applicable) after the alignment in Parts 9.6a/b (Part 0B §0B.7) |
+| Decisions | 342 (v1.0: 233; v1.1: 37 + 33 literal-alignment decisions, 30 expert-panel decisions, 9 consolidation and Founder decisions) |
+| Source-pack match | 11,269 aspects of the 38 documents reviewed line by line. **Literal match 99.98%: 11,129 of 11,131 applicable aspects**, with 138 confirmed not applicable. All 141 conflicts were aligned (Parts 9.6a/b). The two remaining aspects (local model in front of Claude) are Founder-approved deviations: Claude Sonnet stays primary (DEC-418). Every applicable aspect has an approved disposition (Part 0B §0B.7) |
 | Advanced capabilities (v1.1) | 94 capabilities from 17 expert personas; 240 FR-ADV, 96 stories, 258 TC-ADV and 91 TC-ALN tests, 71 screens; 100% traced (Part 9.10 §9.10.8) |
 | Optimization model | 21 dimensions, 104 controls, 24 scenarios, 35 optimization KPIs OKPI-01…35 (21 mandatory) |
 
@@ -99,10 +99,10 @@ AI never signs, pays, submits bids or sets prices.
 3. ~~Approve the two budgets~~: **done; Ledger A development ₹52.7–84.1 L approved (DEC-230) and Ledger B running cost ₹19,895–26,335 per month approved (DEC-231).**
 4. ~~Confirm the reading of the "+5 business requirements" as XBR-01…05~~: **done; confirmed (DEC-233).**
 5. Obtain the legal confirmations listed in Part 8.
-6. **New in v1.1 (Part 9.10 §9.10.10):**
-   - **DEC-412:** fund the Release 1 literal-alignment work (₹3.0–12.2 L one-time), or accept a go/no-go about 1.5–2 weeks later.
-   - **DEC-413:** keep the source pack's local-model-first routing (DEC-301, needed for the 100% literal match), or restore Claude Sonnet as primary.
-   - **DEC-414:** approve the advanced A1 budget (≈ ₹28.0–55.4 L one-time; recurring added per item). A2 and A3 are decided at their gates.
+6. ~~v1.1 decisions~~ (Part 9.10 §9.10.10), **all done on 28 Nov 2026:**
+   - Release 1 alignment work funded: CR-ALN-01 ₹2.79–11.64 L (DEC-416). Dates unchanged.
+   - Advanced A1 approved at ≈ ₹28.0–55.4 L one-time (DEC-417). A2 and A3 are decided at their gates.
+   - **Claude Sonnet kept as primary model** (DEC-418).
 
 All other decisions are recorded and can proceed as defaulted.
 

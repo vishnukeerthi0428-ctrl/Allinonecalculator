@@ -227,7 +227,7 @@ ASSUMPTION-656,9.8a ADV-X2-F07 Territory planning,9.8b,"Territory view in A2 use
 ASSUMPTION-662,9.8b §9.8.13.1,9.8b,Development cash allocated to releases pro-rata by central effort; rates from BRD §6,FinOps to re-baseline at approval,9.8b,2
 ASSUMPTION-663,9.8b §9.8.11,9.8b,"Proposed KPI targets and message volumes (sends, WhatsApp) are planning values pending baselines",Confirm after A1 baseline period,9.8b,2
 ASSUMPTION-666,9.8b §9.8.5,9.8b,"Agent call volumes, token sizes and escalation shares in §9.8.5; low = 0.3 × base, high = 3 × base",Measure in A1; FinOps,9.8b,2
-ASSUMPTION-700,9.9b §9.9.12,9.9b,X3 team = 2 extended contract engineers + 1 contract data engineer + 1 contract SRE/security engineer + QA 0.5 + UX 0.5 (5.0 FTE) from Day 239,Cited by DEC-400,"9.9b, 9.10",5
+ASSUMPTION-700,9.9b §9.9.12,9.9b,X3 team = 2 extended contract engineers + 1 contract data engineer + 1 contract SRE/security engineer + QA 0.5 + UX 0.5 (5.0 FTE) from Day 239,"Cited by DEC-400, DEC-417","9.9b, 9.10",5
 ASSUMPTION-701,9.9a §9.9.3.1,9.9b,"Release windows A1 Day 239–299, A2 Day 302–362, A3 Day 393–481 with a December freeze",Open,"9.9a, 9.9b",2
 ASSUMPTION-702,9.9b §9.9.12,9.9b,"20% cross-cutting allowance (12% integration QA, 5% security, 3% training content)",Open,9.9b,2
 ASSUMPTION-703,9.9a §9.9.3.2,9.9b,The AppNAI IdP supports passkeys for external users and attestation for staff (DEC-019 check 5),Open; verify in spike,"9.9a, 9.9b",3
@@ -236,4 +236,4 @@ ASSUMPTION-705,9.9b §9.9.6,9.9b,X3 agent volumes and token sizes in 9.9.6 (pilo
 ASSUMPTION-706,9.9b §9.9.13.1,9.9b,"Translation volume ≈ 15,000 words per locale at ₹1.5–3.0 per word",Open; obtain quotes,9.9b,2
 ASSUMPTION-750,9.10 front matter,9.10,Overlap deduction of 30 / 45 / 65 pd (§9.10.4),Open; validate at A1 planning,9.10,3
 ASSUMPTION-751,9.10 §9.10.7.1,9.10,X2 A1 development cost taken pro rata to A1 effort,Open; validate at A1 planning,9.10,2
-ASSUMPTION-752,9.10 §9.10.11,9.10,A1 runs at about 6 FTE beyond the core team over ≈ 90 working days,Open; validate at gate G-A0,9.10,1
+ASSUMPTION-752,9.10 §9.10.10,9.10,A1 runs at about 6 FTE beyond the core team over ≈ 90 working days,Cited by DEC-417,9.10,2
