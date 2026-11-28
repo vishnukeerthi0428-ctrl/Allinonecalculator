@@ -59,26 +59,26 @@
   "Part-11-9b_V12_DDL_RLS_Supabase.md",
   "Part-11-9c_V12_Security_Privacy_Analytics_KPI.md"
  ],
- "fr_total": 1498,
+ "fr_total": 1470,
  "fr_defined": 1436,
- "fr_reference_only_in_range": 62,
+ "fr_reference_only_in_range": 34,
  "fr_by_letter": {
-  "A": 134,
-  "B": 107,
-  "C": 93,
-  "D": 49,
-  "E": 106,
-  "F": 77,
+  "A": 123,
+  "B": 105,
+  "C": 92,
+  "D": 47,
+  "E": 102,
+  "F": 73,
   "G": 117,
-  "H": 43,
+  "H": 41,
   "I": 46,
   "J": 6,
   "K": 79,
   "L": 30,
-  "M": 101,
-  "N": 112,
+  "M": 100,
+  "N": 110,
   "O": 91,
-  "P": 97,
+  "P": 98,
   "Q": 55,
   "R": 155
  },
@@ -119,14 +119,10 @@
   "EP-28": 5,
   "EP-29": 12
  },
- "fr_covered": 1498,
+ "fr_covered": 1470,
  "fr_uncovered": 0,
- "fr_covered_without_ac": 3,
- "no_ac": [
-  "FR-V12-A-119",
-  "FR-V12-A-127",
-  "FR-V12-E-157"
- ],
+ "fr_covered_without_ac": 0,
+ "no_ac": [],
  "stories_with_ac": 672,
  "uncovered": [],
  "fr": {
@@ -162,8 +158,6 @@
     "release": "R2-B"
    },
    "stories": [
-    "US-01-YE01",
-    "US-19-YA01",
     "US-20-YA01",
     "US-20-YA02",
     "US-20-YA03",
@@ -172,10 +166,7 @@
     "US-20-YA06",
     "US-20-YE02",
     "US-20-YE05",
-    "US-21-YJ03",
-    "US-29-YB02",
-    "US-29-YB12",
-    "US-30-ZN01"
+    "US-29-YB02"
    ]
   },
   "FR-V12-A-002": {
@@ -210,7 +201,6 @@
     "release": "R2-B"
    },
    "stories": [
-    "US-01-YE01",
     "US-20-YA01",
     "US-20-YA02",
     "US-20-YA03",
@@ -219,10 +209,7 @@
     "US-20-YA06",
     "US-20-YE02",
     "US-20-YE05",
-    "US-21-YJ03",
-    "US-29-YB02",
-    "US-29-YB12",
-    "US-30-ZN01"
+    "US-29-YB02"
    ]
   },
   "FR-V12-A-003": {
@@ -262,8 +249,7 @@
     "US-20-YA03",
     "US-20-YA04",
     "US-20-YA05",
-    "US-20-YA06",
-    "US-21-YK01"
+    "US-20-YA06"
    ]
   },
   "FR-V12-A-004": {
@@ -298,9 +284,7 @@
     "release": "R2-B"
    },
    "stories": [
-    "US-19-YA01",
     "US-20-ZU01",
-    "US-21-YK01",
     "US-29-YB12"
    ]
   },
@@ -374,7 +358,6 @@
    "stories": [
     "US-01-ZU01",
     "US-19-YG38",
-    "US-19-ZU03",
     "US-30-ZN01"
    ]
   },
@@ -410,7 +393,6 @@
     "release": "R2-B"
    },
    "stories": [
-    "US-01-YA01",
     "US-20-YA01"
    ]
   },
@@ -446,7 +428,6 @@
     "release": "R2-B"
    },
    "stories": [
-    "US-01-YA01",
     "US-20-YA01"
    ]
   },
@@ -558,10 +539,7 @@
     "US-20-YA03",
     "US-20-YA04",
     "US-20-YA05",
-    "US-20-YA06",
-    "US-20-ZU04",
-    "US-20-ZU05",
-    "US-20-ZU07"
+    "US-20-YA06"
    ]
   },
   "FR-V12-A-015": {
@@ -716,10 +694,7 @@
     "US-20-YA03",
     "US-20-YA04",
     "US-20-YA05",
-    "US-20-YA06",
-    "US-34-ZU01",
-    "US-34-ZU03",
-    "US-34-ZU07"
+    "US-20-YA06"
    ]
   },
   "FR-V12-A-019": {
@@ -952,12 +927,6 @@
     "US-20-ZU03"
    ]
   },
-  "FR-V12-A-025": {
-   "def": null,
-   "stories": [
-    "US-30-ZN01"
-   ]
-  },
   "FR-V12-A-030": {
    "def": {
     "file": "Part-11-1b_V12_Business_Requirements.md",
@@ -1065,7 +1034,6 @@
    },
    "stories": [
     "US-20-YA07",
-    "US-20-YE02",
     "US-20-ZU04",
     "US-20-ZU05",
     "US-20-ZU07"
@@ -1215,20 +1183,6 @@
     "US-34-ZU01",
     "US-34-ZU03",
     "US-34-ZU07"
-   ]
-  },
-  "FR-V12-A-045": {
-   "def": null,
-   "stories": [
-    "US-12-ZU01",
-    "US-12-ZU03",
-    "US-29-YB12"
-   ]
-  },
-  "FR-V12-A-047": {
-   "def": null,
-   "stories": [
-    "US-16-ZU01"
    ]
   },
   "FR-V12-A-050": {
@@ -1448,8 +1402,7 @@
     "US-20-YA03",
     "US-20-YA04",
     "US-20-YA05",
-    "US-20-YA06",
-    "US-20-YE05"
+    "US-20-YA06"
    ]
   },
   "FR-V12-A-056": {
@@ -1566,8 +1519,7 @@
     "release": "R2-B"
    },
    "stories": [
-    "US-19-ZU01",
-    "US-20-YE14"
+    "US-19-ZU01"
    ]
   },
   "FR-V12-A-059": {
@@ -1674,18 +1626,6 @@
    },
    "stories": [
     "US-19-ZU01"
-   ]
-  },
-  "FR-V12-A-064": {
-   "def": null,
-   "stories": [
-    "US-20-ZU04"
-   ]
-  },
-  "FR-V12-A-065": {
-   "def": null,
-   "stories": [
-    "US-17-YM21"
    ]
   },
   "FR-V12-A-070": {
@@ -1796,9 +1736,7 @@
     "release": "R1-B"
    },
    "stories": [
-    "US-01-YA01",
-    "US-20-ZU03",
-    "US-20-ZU04"
+    "US-01-YA01"
    ]
   },
   "FR-V12-A-073": {
@@ -1833,8 +1771,6 @@
     "release": "R2-B"
    },
    "stories": [
-    "US-20-ZU03",
-    "US-20-ZU04",
     "US-20-ZU06"
    ]
   },
@@ -2014,8 +1950,7 @@
     "release": "R2-B"
    },
    "stories": [
-    "US-05-ZU01",
-    "US-20-ZU04"
+    "US-05-ZU01"
    ]
   },
   "FR-V12-A-079": {
@@ -2161,7 +2096,6 @@
     "release": "R2-B"
    },
    "stories": [
-    "US-17-YM21",
     "US-20-YA06",
     "US-20-ZU07"
    ]
@@ -2387,18 +2321,6 @@
     "US-20-YA04",
     "US-20-YA05",
     "US-20-YA06"
-   ]
-  },
-  "FR-V12-A-106": {
-   "def": null,
-   "stories": [
-    "US-19-ZU01"
-   ]
-  },
-  "FR-V12-A-108": {
-   "def": null,
-   "stories": [
-    "US-19-ZU01"
    ]
   },
   "FR-V12-A-110": {
@@ -2721,12 +2643,6 @@
     "US-04-ZU02"
    ]
   },
-  "FR-V12-A-119": {
-   "def": null,
-   "stories": [
-    "US-20-YE14"
-   ]
-  },
   "FR-V12-A-120": {
    "def": {
     "file": "Part-11-1b_V12_Business_Requirements.md",
@@ -2837,9 +2753,7 @@
    },
    "stories": [
     "US-17-YA01",
-    "US-17-ZU03",
-    "US-21-ZR18",
-    "US-21-ZR19"
+    "US-17-ZU03"
    ]
   },
   "FR-V12-A-123": {
@@ -2875,9 +2789,7 @@
    },
    "stories": [
     "US-17-YA01",
-    "US-17-ZU03",
-    "US-21-ZR18",
-    "US-21-ZR19"
+    "US-17-ZU03"
    ]
   },
   "FR-V12-A-124": {
@@ -2951,18 +2863,6 @@
     "US-01-YA01"
    ]
   },
-  "FR-V12-A-127": {
-   "def": null,
-   "stories": [
-    "US-20-YE14"
-   ]
-  },
-  "FR-V12-A-129": {
-   "def": null,
-   "stories": [
-    "US-05-ZU01"
-   ]
-  },
   "FR-V12-A-130": {
    "def": {
     "file": "Part-11-1b_V12_Business_Requirements.md",
@@ -2996,8 +2896,7 @@
    },
    "stories": [
     "US-03-YA01",
-    "US-03-YA02",
-    "US-21-YE03"
+    "US-03-YA02"
    ]
   },
   "FR-V12-A-131": {
@@ -3069,8 +2968,7 @@
    },
    "stories": [
     "US-03-YA01",
-    "US-03-YA02",
-    "US-21-YE03"
+    "US-03-YA02"
    ]
   },
   "FR-V12-A-133": {
@@ -3357,7 +3255,6 @@
     "release": "R2-B"
    },
    "stories": [
-    "US-03-YA01",
     "US-19-ZU03"
    ]
   },
@@ -3468,14 +3365,6 @@
     "US-21-ZU02"
    ]
   },
-  "FR-V12-A-149": {
-   "def": null,
-   "stories": [
-    "US-03-YA01",
-    "US-20-ZU03",
-    "US-20-ZU04"
-   ]
-  },
   "FR-V12-A-150": {
    "def": {
     "file": "Part-11-1b_V12_Business_Requirements.md",
@@ -3510,10 +3399,7 @@
    "stories": [
     "US-17-YM21",
     "US-21-YA01",
-    "US-21-ZU03",
-    "US-34-ZU01",
-    "US-34-ZU03",
-    "US-34-ZU07"
+    "US-21-ZU03"
    ]
   },
   "FR-V12-A-151": {
@@ -4738,10 +4624,6 @@
     "release": ""
    },
    "stories": [
-    "US-22-ZQ01",
-    "US-22-ZQ02",
-    "US-22-ZQ03",
-    "US-22-ZQ05",
     "US-29-YB01",
     "US-29-YB02",
     "US-29-YB03",
@@ -4782,10 +4664,6 @@
     "release": ""
    },
    "stories": [
-    "US-22-ZQ01",
-    "US-22-ZQ02",
-    "US-22-ZQ03",
-    "US-22-ZQ05",
     "US-29-YB01",
     "US-29-YB02",
     "US-29-YB03",
@@ -5866,7 +5744,6 @@
     "release": ""
    },
    "stories": [
-    "US-03-YG01",
     "US-29-YB01",
     "US-29-YB02",
     "US-29-YB03",
@@ -5999,8 +5876,7 @@
     "release": ""
    },
    "stories": [
-    "US-05-YB02",
-    "US-08-YC06"
+    "US-05-YB02"
    ]
   },
   "FR-V12-B-034": {
@@ -6027,8 +5903,7 @@
     "release": ""
    },
    "stories": [
-    "US-05-YB02",
-    "US-08-YC06"
+    "US-05-YB02"
    ]
   },
   "FR-V12-B-035": {
@@ -6541,7 +6416,6 @@
     "release": ""
    },
    "stories": [
-    "US-11-YC11",
     "US-14-YB02"
    ]
   },
@@ -6569,7 +6443,6 @@
     "release": ""
    },
    "stories": [
-    "US-11-YC11",
     "US-14-YB02"
    ]
   },
@@ -7061,8 +6934,6 @@
     "release": ""
    },
    "stories": [
-    "US-24-ZP02",
-    "US-24-ZP03",
     "US-28-YB01",
     "US-28-YB02",
     "US-28-YB03",
@@ -7296,7 +7167,6 @@
     "release": ""
    },
    "stories": [
-    "US-13-YC17",
     "US-24-YB01",
     "US-24-YB02",
     "US-24-YB03",
@@ -7330,8 +7200,7 @@
     "release": ""
    },
    "stories": [
-    "US-06-YB03",
-    "US-13-YC17"
+    "US-06-YB03"
    ]
   },
   "FR-V12-B-079": {
@@ -8117,19 +7986,6 @@
     "US-26-YB04"
    ]
   },
-  "FR-V12-B-133": {
-   "def": null,
-   "stories": [
-    "US-27-YB01",
-    "US-27-YB03"
-   ]
-  },
-  "FR-V12-B-157": {
-   "def": null,
-   "stories": [
-    "US-16-YB03"
-   ]
-  },
   "FR-V12-C-001": {
    "def": {
     "file": "Part-11-3a_V12_Executable_Workflows_SVC01-20.md",
@@ -8887,7 +8743,6 @@
     "section": "SM-SVC-09-WF01 Unified conversation capture"
    },
    "stories": [
-    "US-08-YC06",
     "US-08-YC09"
    ]
   },
@@ -9168,8 +9023,7 @@
     "section": "SM-SVC-14-WF04 Controlled experimentation and incremental campaign performance analysis"
    },
    "stories": [
-    "US-12-YC14",
-    "US-13-YC18"
+    "US-12-YC14"
    ]
   },
   "FR-V12-C-069": {
@@ -9193,7 +9047,6 @@
     "section": "SM-SVC-15-WF02 Lead capture and routing"
    },
    "stories": [
-    "US-08-YC06",
     "US-12-YC15"
    ]
   },
@@ -9459,12 +9312,6 @@
    },
    "stories": [
     "US-14-YC20"
-   ]
-  },
-  "FR-V12-C-096": {
-   "def": null,
-   "stories": [
-    "US-12-YC15"
    ]
   },
   "FR-V12-D-001": {
@@ -10294,19 +10141,6 @@
     "US-18-YD07"
    ]
   },
-  "FR-V12-D-034": {
-   "def": null,
-   "stories": [
-    "US-18-YD03"
-   ]
-  },
-  "FR-V12-D-046": {
-   "def": null,
-   "stories": [
-    "US-12-YD01",
-    "US-16-YD03"
-   ]
-  },
   "FR-V12-D-121": {
    "def": {
     "file": "Part-11-4c_V12_Executable_Workflows_SVC21-39_Registry_and_DTOs.md",
@@ -10394,6 +10228,7 @@
     "text": "(defined in register; see block)"
    },
    "stories": [
+    "US-05-ZU01",
     "US-06-YD01"
    ]
   },
@@ -10434,7 +10269,9 @@
     "text": "(defined in register; see block)"
    },
    "stories": [
-    "US-20-YD01"
+    "US-20-YD01",
+    "US-27-YB01",
+    "US-27-YB03"
    ]
   },
   "FR-V12-D-134": {
@@ -10652,18 +10489,6 @@
     "US-01-ZU02"
    ]
   },
-  "FR-V12-E-008": {
-   "def": null,
-   "stories": [
-    "US-01-ZR04"
-   ]
-  },
-  "FR-V12-E-009": {
-   "def": null,
-   "stories": [
-    "US-01-ZR05"
-   ]
-  },
   "FR-V12-E-010": {
    "def": {
     "file": "Part-11-5b_V12_Platform_Architecture.md",
@@ -10690,6 +10515,7 @@
     "release": "Release 2+ (CONFLICT-834)"
    },
    "stories": [
+    "US-01-YA01",
     "US-01-YE03",
     "US-01-ZR01",
     "US-01-ZR02",
@@ -10722,6 +10548,7 @@
     "release": "Release 2+"
    },
    "stories": [
+    "US-01-YA01",
     "US-01-YE04",
     "US-01-ZR01",
     "US-01-ZR02",
@@ -10882,7 +10709,6 @@
     "release": "Release 2+"
    },
    "stories": [
-    "US-01-YE02",
     "US-01-YE07",
     "US-01-ZR04",
     "US-01-ZR05",
@@ -11463,7 +11289,8 @@
    },
    "stories": [
     "US-20-YE04",
-    "US-20-ZU17"
+    "US-20-ZU17",
+    "US-29-YB12"
    ]
   },
   "FR-V12-E-046": {
@@ -11975,6 +11802,7 @@
    },
    "stories": [
     "US-20-YE12",
+    "US-20-ZU04",
     "US-20-ZU21"
    ]
   },
@@ -12091,7 +11919,9 @@
     "release": "W5"
    },
    "stories": [
-    "US-20-YE10"
+    "US-20-YE10",
+    "US-20-ZU03",
+    "US-20-ZU04"
    ]
   },
   "FR-V12-E-073": {
@@ -12120,7 +11950,9 @@
     "release": "W5"
    },
    "stories": [
-    "US-20-YE10"
+    "US-20-YE10",
+    "US-20-ZU03",
+    "US-20-ZU04"
    ]
   },
   "FR-V12-E-074": {
@@ -12276,6 +12108,7 @@
    },
    "stories": [
     "US-20-YE12",
+    "US-20-ZU04",
     "US-20-ZU21"
    ]
   },
@@ -12867,8 +12700,6 @@
     "release": "Release 1"
    },
    "stories": [
-    "US-01-ZR01",
-    "US-01-ZR02",
     "US-18-YE02",
     "US-18-ZU03"
    ]
@@ -12937,7 +12768,6 @@
     "release": "Release 2"
    },
    "stories": [
-    "US-01-ZR03",
     "US-21-YE04",
     "US-21-ZU08"
    ]
@@ -12997,8 +12827,6 @@
     "release": "W0"
    },
    "stories": [
-    "US-01-ZR01",
-    "US-01-ZR02",
     "US-21-YE01"
    ]
   },
@@ -13057,7 +12885,6 @@
     "release": "W0"
    },
    "stories": [
-    "US-01-ZR04",
     "US-21-YE01"
    ]
   },
@@ -13116,7 +12943,6 @@
     "release": "W1"
    },
    "stories": [
-    "US-01-ZR05",
     "US-21-YE01"
    ]
   },
@@ -13146,7 +12972,6 @@
     "release": "W1"
    },
    "stories": [
-    "US-01-ZU13",
     "US-21-YE01"
    ]
   },
@@ -13754,18 +13579,6 @@
     "US-21-ZU11"
    ]
   },
-  "FR-V12-E-153": {
-   "def": null,
-   "stories": [
-    "US-20-YE11"
-   ]
-  },
-  "FR-V12-E-157": {
-   "def": null,
-   "stories": [
-    "US-20-YE16"
-   ]
-  },
   "FR-V12-F-001": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
@@ -14076,7 +13889,6 @@
    },
    "stories": [
     "US-02-ZU02",
-    "US-03-YI02",
     "US-03-YM09",
     "US-03-ZU02",
     "US-03-ZU03",
@@ -14134,7 +13946,6 @@
    },
    "stories": [
     "US-02-ZU02",
-    "US-03-YI02",
     "US-03-YM09",
     "US-03-ZU02",
     "US-03-ZU03",
@@ -14544,7 +14355,10 @@
     "US-18-YD02",
     "US-18-YD03",
     "US-18-ZU04",
-    "US-18-ZU05"
+    "US-18-ZU05",
+    "US-20-ZU04",
+    "US-20-ZU05",
+    "US-20-ZU07"
    ]
   },
   "FR-V12-F-015": {
@@ -15816,8 +15630,6 @@
     "US-18-YD01",
     "US-18-YD02",
     "US-18-YD03",
-    "US-18-ZP06",
-    "US-18-ZP07",
     "US-18-ZU04",
     "US-18-ZU05"
    ]
@@ -16258,6 +16070,7 @@
     "US-04-ZU12",
     "US-04-ZU13",
     "US-04-ZU14",
+    "US-08-YC06",
     "US-08-ZU01",
     "US-18-YD01",
     "US-18-YD02",
@@ -16702,8 +16515,6 @@
     "US-18-YD01",
     "US-18-YD02",
     "US-18-YD03",
-    "US-18-ZP06",
-    "US-18-ZP07",
     "US-18-ZU04",
     "US-18-ZU05"
    ]
@@ -16758,8 +16569,6 @@
     "US-18-YD01",
     "US-18-YD02",
     "US-18-YD03",
-    "US-18-ZP06",
-    "US-18-ZP07",
     "US-18-ZU04",
     "US-18-ZU05"
    ]
@@ -17512,6 +17321,7 @@
     "US-04-ZU13",
     "US-04-ZU14",
     "US-08-ZU01",
+    "US-13-YC18",
     "US-13-YF18",
     "US-18-YD01",
     "US-18-YD02",
@@ -17657,7 +17467,6 @@
    },
    "stories": [
     "US-02-ZU02",
-    "US-03-YG03",
     "US-03-YM09",
     "US-03-ZU02",
     "US-03-ZU03",
@@ -17791,30 +17600,6 @@
     "US-18-ZU05"
    ]
   },
-  "FR-V12-F-097": {
-   "def": null,
-   "stories": [
-    "US-03-ZU03"
-   ]
-  },
-  "FR-V12-F-099": {
-   "def": null,
-   "stories": [
-    "US-04-ZU07"
-   ]
-  },
-  "FR-V12-F-100": {
-   "def": null,
-   "stories": [
-    "US-03-ZU03"
-   ]
-  },
-  "FR-V12-F-144": {
-   "def": null,
-   "stories": [
-    "US-03-YM09"
-   ]
-  },
   "FR-V12-G-001": {
    "def": {
     "file": "Part-11-7c_V12_Website_Portal_Operator_Portfolio_UIUX_Prototypes.md",
@@ -17841,6 +17626,7 @@
     "release": "W01 repurposed as 'Home' (Public) per V12 neutral SaaS storefront"
    },
    "stories": [
+    "US-19-YA01",
     "US-19-YG01"
    ]
   },
@@ -17928,6 +17714,7 @@
     "release": "W04 repurposed as 'Complete automation catalog' (Public) per V12 neutral SaaS storefront"
    },
    "stories": [
+    "US-19-YA01",
     "US-19-YG04"
    ]
   },
@@ -19120,7 +18907,6 @@
     "release": "Future (W6+)"
    },
    "stories": [
-    "US-03-YG07",
     "US-14-YG02"
    ]
   },
@@ -19150,6 +18936,7 @@
     "release": "Future (W6+); reuses A141 partner screens of Part 9.8"
    },
    "stories": [
+    "US-16-YD03",
     "US-16-YG03"
    ]
   },
@@ -19469,7 +19256,6 @@
     "release": "Release 2 (W4\u2013W5)"
    },
    "stories": [
-    "US-03-YG04",
     "US-20-YG08"
    ]
   },
@@ -19847,7 +19633,8 @@
     "release": "Release 1 (W0\u2013W3)"
    },
    "stories": [
-    "US-03-YG02"
+    "US-03-YG02",
+    "US-03-ZU02"
    ]
   },
   "FR-V12-G-071": {
@@ -20456,7 +20243,8 @@
     "release": "Release 1 (W0\u2013W3)"
    },
    "stories": [
-    "US-17-YG02"
+    "US-17-YG02",
+    "US-17-YM21"
    ]
   },
   "FR-V12-G-092": {
@@ -20601,7 +20389,8 @@
     "release": "W01+ ; W30"
    },
    "stories": [
-    "US-03-YG07"
+    "US-03-YG07",
+    "US-12-YC15"
    ]
   },
   "FR-V12-G-097": {
@@ -20834,7 +20623,6 @@
     "release": "W02\u2013W06, W31"
    },
    "stories": [
-    "US-17-YG05",
     "US-20-YG16"
    ]
   },
@@ -20893,7 +20681,8 @@
     "release": "W05/W08 workflow sample library: four workflow previews per SKU, 156 curated fictional outputs, 3-preview session cap, download all four"
    },
    "stories": [
-    "US-19-YG35"
+    "US-19-YG35",
+    "US-19-ZU01"
    ]
   },
   "FR-V12-G-107": {
@@ -20951,7 +20740,8 @@
     "release": "W07, W11"
    },
    "stories": [
-    "US-19-YG37"
+    "US-19-YG37",
+    "US-19-ZU01"
    ]
   },
   "FR-V12-G-109": {
@@ -21743,6 +21533,7 @@
     "release": "Release 1"
    },
    "stories": [
+    "US-01-YE02",
     "US-01-ZU04"
    ]
   },
@@ -22560,20 +22351,6 @@
     "US-21-ZU13"
    ]
   },
-  "FR-V12-H-112": {
-   "def": null,
-   "stories": [
-    "US-18-ZR06",
-    "US-18-ZR11"
-   ]
-  },
-  "FR-V12-H-128": {
-   "def": null,
-   "stories": [
-    "US-18-ZR06",
-    "US-18-ZR11"
-   ]
-  },
   "FR-V12-I-001": {
    "def": {
     "file": "Part-11-22a_Master_User_Stories_Inventory_Models_and_Conventions.md",
@@ -22724,7 +22501,6 @@
     "release": "Release 1"
    },
    "stories": [
-    "US-01-ZR28",
     "US-01-ZU05"
    ]
   },
@@ -22813,6 +22589,7 @@
     "release": "Release 1"
    },
    "stories": [
+    "US-01-ZR04",
     "US-01-ZU06"
    ]
   },
@@ -22846,6 +22623,7 @@
     "release": "Release 1"
    },
    "stories": [
+    "US-01-ZR05",
     "US-01-ZU06"
    ]
   },
@@ -23121,7 +22899,10 @@
     "release": "Release 2"
    },
    "stories": [
-    "US-01-ZU07"
+    "US-01-ZU07",
+    "US-34-ZU01",
+    "US-34-ZU03",
+    "US-34-ZU07"
    ]
   },
   "FR-V12-I-019": {
@@ -23607,7 +23388,9 @@
     "release": "Release 1"
    },
    "stories": [
-    "US-12-ZU01"
+    "US-03-YG07",
+    "US-12-ZU01",
+    "US-12-ZU03"
    ]
   },
   "FR-V12-I-046": {
@@ -23634,6 +23417,7 @@
     "release": "Release 2"
    },
    "stories": [
+    "US-12-YD01",
     "US-12-YI01"
    ]
   },
@@ -23661,7 +23445,8 @@
     "release": "Release 2"
    },
    "stories": [
-    "US-16-YI01"
+    "US-16-YI01",
+    "US-16-ZU01"
    ]
   },
   "FR-V12-I-050": {
@@ -23901,6 +23686,7 @@
     "release": "Release 2 (24\u00d77 pending)"
    },
    "stories": [
+    "US-03-YG04",
     "US-21-YI03"
    ]
   },
@@ -24254,6 +24040,7 @@
     "release": "R2 \u00b7 EP-21"
    },
    "stories": [
+    "US-21-YK01",
     "US-21-ZU17"
    ]
   },
@@ -24308,6 +24095,7 @@
     "release": "R2 \u2192 Release 2 \u00b7 EP-20"
    },
    "stories": [
+    "US-19-ZU03",
     "US-20-YK06"
    ]
   },
@@ -24864,7 +24652,8 @@
    "stories": [
     "US-01-ZR02",
     "US-01-ZR03",
-    "US-01-ZU11"
+    "US-01-ZU11",
+    "US-17-YG05"
    ]
   },
   "FR-V12-K-105": {
@@ -24936,6 +24725,7 @@
     "release": "Release 1 (W0-W3, go/no-go 4 Jun 2027)"
    },
    "stories": [
+    "US-01-ZR01",
     "US-01-ZR02",
     "US-01-ZR03",
     "US-01-ZU11"
@@ -25162,6 +24952,8 @@
     "US-01-ZR06",
     "US-01-ZR07",
     "US-01-ZR08",
+    "US-18-ZR06",
+    "US-18-ZR11",
     "US-20-ZU31"
    ]
   },
@@ -25425,6 +25217,7 @@
     "release": "Release 1 (W0-W3, go/no-go 4 Jun 2027)"
    },
    "stories": [
+    "US-20-YE14",
     "US-20-ZU34"
    ]
   },
@@ -25746,6 +25539,8 @@
     "release": "Release 1 (W0-W3, go/no-go 4 Jun 2027)"
    },
    "stories": [
+    "US-18-ZR06",
+    "US-18-ZR11",
     "US-21-EH01",
     "US-21-ZU19"
    ]
@@ -26314,6 +26109,8 @@
     "release": "Release 1 \u2026 Post-W6"
    },
    "stories": [
+    "US-03-YA01",
+    "US-03-YM09",
     "US-03-ZU07"
    ]
   },
@@ -26489,6 +26286,9 @@
     "release": "Release 2 + W6 GA India (incl. A1, DEC-417)"
    },
    "stories": [
+    "US-03-YA01",
+    "US-20-ZU03",
+    "US-20-ZU04",
     "US-34-ZU03"
    ]
   },
@@ -26524,7 +26324,9 @@
     "release": "Release 2 + W6 GA India (incl. A1, DEC-417)"
    },
    "stories": [
-    "US-34-ZU03"
+    "US-34-ZU01",
+    "US-34-ZU03",
+    "US-34-ZU07"
    ]
   },
   "FR-V12-K-151": {
@@ -26629,6 +26431,7 @@
     "release": "Release 2 + W6 GA India (incl. A1, DEC-417)"
    },
    "stories": [
+    "US-20-YE11",
     "US-20-ZU35"
    ]
   },
@@ -26769,7 +26572,9 @@
     "release": ""
    },
    "stories": [
-    "US-16-ZU06"
+    "US-16-YB03",
+    "US-16-ZU06",
+    "US-20-YE16"
    ]
   },
   "FR-V12-K-158": {
@@ -30666,6 +30471,7 @@
     "release": ""
    },
    "stories": [
+    "US-03-ZU03",
     "US-11-YM35"
    ]
   },
@@ -30727,6 +30533,7 @@
    },
    "stories": [
     "US-04-YM37",
+    "US-04-ZU07",
     "US-04-ZU17"
    ]
   },
@@ -30757,14 +30564,8 @@
    },
    "stories": [
     "US-03-YM38",
+    "US-03-ZU03",
     "US-03-ZU08"
-   ]
-  },
-  "FR-V12-M-131": {
-   "def": null,
-   "stories": [
-    "US-17-ZR24",
-    "US-17-ZR25"
    ]
   },
   "FR-V12-N-001": {
@@ -30839,9 +30640,7 @@
     "release": ""
    },
    "stories": [
-    "US-30-ZN01",
-    "US-32-ZO10",
-    "US-33-ZO14"
+    "US-30-ZN01"
    ]
   },
   "FR-V12-N-004": {
@@ -30866,9 +30665,7 @@
     "release": ""
    },
    "stories": [
-    "US-30-ZN01",
-    "US-32-ZO10",
-    "US-33-ZO14"
+    "US-30-ZN01"
    ]
   },
   "FR-V12-N-005": {
@@ -31118,8 +30915,7 @@
     "release": ""
    },
    "stories": [
-    "US-30-ZN03",
-    "US-31-ZN12"
+    "US-30-ZN03"
    ]
   },
   "FR-V12-N-015": {
@@ -31410,6 +31206,7 @@
     "release": ""
    },
    "stories": [
+    "US-30-ZN01",
     "US-31-ZN01"
    ]
   },
@@ -31569,8 +31366,7 @@
    },
    "stories": [
     "US-30-ZN05",
-    "US-30-ZN06",
-    "US-31-ZU01"
+    "US-30-ZN06"
    ]
   },
   "FR-V12-N-032": {
@@ -31674,8 +31470,7 @@
    },
    "stories": [
     "US-30-ZN07",
-    "US-30-ZN08",
-    "US-31-ZN02"
+    "US-30-ZN08"
    ]
   },
   "FR-V12-N-036": {
@@ -31700,8 +31495,7 @@
     "release": ""
    },
    "stories": [
-    "US-30-ZN09",
-    "US-31-ZN02"
+    "US-30-ZN09"
    ]
   },
   "FR-V12-N-037": {
@@ -32359,20 +32153,6 @@
    },
    "stories": [
     "US-31-ZN14"
-   ]
-  },
-  "FR-V12-N-085": {
-   "def": null,
-   "stories": [
-    "US-31-ZN01",
-    "US-31-ZN16"
-   ]
-  },
-  "FR-V12-N-086": {
-   "def": null,
-   "stories": [
-    "US-31-ZN01",
-    "US-31-ZN16"
    ]
   },
   "FR-V12-N-101": {
@@ -33390,6 +33170,7 @@
     "release": ""
    },
    "stories": [
+    "US-30-ZN01",
     "US-32-ZU01"
    ]
   },
@@ -33668,6 +33449,7 @@
     "release": ""
    },
    "stories": [
+    "US-31-ZN12",
     "US-32-ZU02"
    ]
   },
@@ -34136,6 +33918,7 @@
     "release": ""
    },
    "stories": [
+    "US-31-ZU01",
     "US-33-ZO07"
    ]
   },
@@ -34245,6 +34028,7 @@
     "release": ""
    },
    "stories": [
+    "US-31-ZN02",
     "US-33-ZO11"
    ]
   },
@@ -34272,6 +34056,7 @@
     "release": "R10 override attempt on true match \u2192 no path"
    },
    "stories": [
+    "US-31-ZN02",
     "US-33-ZU08"
    ]
   },
@@ -35011,6 +34796,8 @@
     "release": ""
    },
    "stories": [
+    "US-31-ZN01",
+    "US-31-ZN16",
     "US-33-ZO12",
     "US-33-ZO13",
     "US-33-ZO15"
@@ -35036,6 +34823,8 @@
     "release": ""
    },
    "stories": [
+    "US-31-ZN01",
+    "US-31-ZN16",
     "US-33-ZO12",
     "US-33-ZO13",
     "US-33-ZO15"
@@ -35754,6 +35543,7 @@
     "US-14-ZP01",
     "US-15-ZP01",
     "US-18-ZP01",
+    "US-18-ZP06",
     "US-18-ZP07",
     "US-18-ZP08",
     "US-18-ZP09",
@@ -35860,6 +35650,19 @@
     "US-18-ZP01",
     "US-18-ZP05",
     "US-18-ZP06",
+    "US-18-ZP07",
+    "US-24-ZP01"
+   ]
+  },
+  "FR-V12-P-054": {
+   "def": null,
+   "stories": [
+    "US-14-ZP01",
+    "US-15-ZP01",
+    "US-18-ZP01",
+    "US-18-ZP05",
+    "US-18-ZP06",
+    "US-18-ZP07",
     "US-24-ZP01"
    ]
   },
@@ -36070,6 +35873,7 @@
     "US-18-ZP01",
     "US-24-ZP01",
     "US-24-ZP02",
+    "US-24-ZP03",
     "US-24-ZP04",
     "US-24-ZP05"
    ]
@@ -36109,6 +35913,7 @@
     "US-18-ZP01",
     "US-24-ZP01",
     "US-24-ZP02",
+    "US-24-ZP03",
     "US-24-ZP04",
     "US-24-ZP05"
    ]
@@ -43077,6 +42882,7 @@
     "release": "Release 1"
    },
    "stories": [
+    "US-08-YC06",
     "US-18-ZR11",
     "US-18-ZR12",
     "US-18-ZR13",
@@ -46144,13 +45950,13 @@
    "points": "13",
    "release": "R1-B",
    "frs": [
-    "FR-V12-A-010",
-    "FR-V12-A-011",
     "FR-V12-A-070",
     "FR-V12-A-071",
     "FR-V12-A-072",
     "FR-V12-A-074",
-    "FR-V12-A-125"
+    "FR-V12-A-125",
+    "FR-V12-E-010",
+    "FR-V12-E-011"
    ],
    "has_ac": true,
    "tokens": []
@@ -46162,8 +45968,6 @@
    "format": "table",
    "release": "Not stated",
    "frs": [
-    "FR-V12-A-001",
-    "FR-V12-A-002",
     "FR-V12-A-075",
     "FR-V12-A-093",
     "FR-V12-E-001",
@@ -46180,7 +45984,7 @@
    "release": "Not stated",
    "frs": [
     "FR-V12-E-003",
-    "FR-V12-E-016"
+    "FR-V12-H-016"
    ],
    "has_ac": true,
    "tokens": []
@@ -46507,12 +46311,11 @@
     "FR-V12-E-013",
     "FR-V12-E-014",
     "FR-V12-E-015",
-    "FR-V12-E-101",
-    "FR-V12-E-106",
     "FR-V12-H-036",
     "FR-V12-K-101",
     "FR-V12-K-102",
     "FR-V12-K-103",
+    "FR-V12-K-106",
     "FR-V12-R-001",
     "FR-V12-R-002",
     "FR-V12-R-003",
@@ -46552,8 +46355,6 @@
     "FR-V12-E-013",
     "FR-V12-E-014",
     "FR-V12-E-015",
-    "FR-V12-E-101",
-    "FR-V12-E-106",
     "FR-V12-H-036",
     "FR-V12-K-101",
     "FR-V12-K-102",
@@ -46604,7 +46405,6 @@
     "FR-V12-E-013",
     "FR-V12-E-014",
     "FR-V12-E-015",
-    "FR-V12-E-103",
     "FR-V12-H-036",
     "FR-V12-K-101",
     "FR-V12-K-102",
@@ -46660,14 +46460,13 @@
    "wave": "Release 1 (S5)",
    "points": "5\u20138",
    "frs": [
-    "FR-V12-E-008",
     "FR-V12-E-016",
     "FR-V12-E-017",
     "FR-V12-E-018",
     "FR-V12-E-019",
     "FR-V12-E-020",
-    "FR-V12-E-108",
     "FR-V12-H-037",
+    "FR-V12-I-008",
     "FR-V12-K-107",
     "FR-V12-K-108",
     "FR-V12-K-109",
@@ -46710,15 +46509,14 @@
    "wave": "Release 1 (S6)",
    "points": "5\u20138",
    "frs": [
-    "FR-V12-E-009",
     "FR-V12-E-016",
     "FR-V12-E-017",
     "FR-V12-E-018",
     "FR-V12-E-019",
     "FR-V12-E-020",
-    "FR-V12-E-110",
     "FR-V12-H-037",
     "FR-V12-H-038",
+    "FR-V12-I-009",
     "FR-V12-K-107",
     "FR-V12-K-108",
     "FR-V12-K-109",
@@ -46814,7 +46612,6 @@
    "wave": "Release 1 (S1)",
    "points": "3\u20135",
    "frs": [
-    "FR-V12-I-005",
     "FR-V12-I-013",
     "FR-V12-K-120",
     "FR-V12-K-121",
@@ -47056,7 +46853,6 @@
    "frs": [
     "FR-V12-E-016",
     "FR-V12-E-017",
-    "FR-V12-E-111",
     "FR-V12-K-110",
     "FR-V12-K-111",
     "FR-V12-U-648"
@@ -47299,8 +47095,8 @@
     "FR-V12-A-133",
     "FR-V12-A-134",
     "FR-V12-A-135",
-    "FR-V12-A-144",
-    "FR-V12-A-149"
+    "FR-V12-K-144",
+    "FR-V12-K-149"
    ],
    "has_ac": true,
    "tokens": []
@@ -47354,7 +47150,6 @@
    "format": "table",
    "release": "Not stated",
    "frs": [
-    "FR-V12-B-029",
     "FR-V12-B-098",
     "FR-V12-B-099",
     "FR-V12-G-029"
@@ -47382,7 +47177,6 @@
    "release": "Not stated",
    "frs": [
     "FR-V12-F-044",
-    "FR-V12-F-071",
     "FR-V12-G-071"
    ],
    "has_ac": true,
@@ -47395,8 +47189,8 @@
    "format": "table",
    "release": "Not stated",
    "frs": [
-    "FR-V12-G-057",
-    "FR-V12-G-072"
+    "FR-V12-G-072",
+    "FR-V12-I-057"
    ],
    "has_ac": true,
    "tokens": []
@@ -47432,8 +47226,8 @@
    "format": "table",
    "release": "Not stated",
    "frs": [
-    "FR-V12-G-045",
-    "FR-V12-G-096"
+    "FR-V12-G-096",
+    "FR-V12-I-045"
    ],
    "has_ac": true,
    "tokens": [
@@ -47470,8 +47264,6 @@
    "format": "table",
    "release": "Not stated",
    "frs": [
-    "FR-V12-F-006",
-    "FR-V12-F-007",
     "FR-V12-F-046",
     "FR-V12-I-006",
     "FR-V12-I-007"
@@ -47559,7 +47351,7 @@
     "FR-V12-F-071",
     "FR-V12-F-072",
     "FR-V12-F-073",
-    "FR-V12-F-144",
+    "FR-V12-K-144",
     "FR-V12-M-027",
     "FR-V12-M-028",
     "FR-V12-M-029",
@@ -47708,7 +47500,8 @@
     "FR-V12-F-070",
     "FR-V12-F-071",
     "FR-V12-F-072",
-    "FR-V12-F-073"
+    "FR-V12-F-073",
+    "FR-V12-G-070"
    ],
    "has_ac": true,
    "tokens": [
@@ -47799,8 +47592,8 @@
     "FR-V12-F-071",
     "FR-V12-F-072",
     "FR-V12-F-073",
-    "FR-V12-F-097",
-    "FR-V12-F-100",
+    "FR-V12-M-097",
+    "FR-V12-M-100",
     "FR-V12-U-972"
    ],
    "has_ac": true,
@@ -49257,7 +49050,7 @@
     "FR-V12-F-071",
     "FR-V12-F-072",
     "FR-V12-F-073",
-    "FR-V12-F-099",
+    "FR-V12-M-099",
     "FR-V12-U-102",
     "FR-V12-U-103",
     "FR-V12-U-104",
@@ -50814,7 +50607,7 @@
    "points": "5\u20138",
    "frs": [
     "FR-V12-A-078",
-    "FR-V12-A-129",
+    "FR-V12-D-129",
     "FR-V12-U-972"
    ],
    "has_ac": true,
@@ -51085,16 +50878,14 @@
    "format": "table",
    "release": "Not stated",
    "frs": [
-    "FR-V12-B-033",
-    "FR-V12-B-034",
     "FR-V12-B-098",
     "FR-V12-B-099",
     "FR-V12-C-033",
     "FR-V12-C-034",
     "FR-V12-C-035",
     "FR-V12-C-036",
-    "FR-V12-C-045",
-    "FR-V12-C-070"
+    "FR-V12-F-045",
+    "FR-V12-R-070"
    ],
    "has_ac": true,
    "tokens": [
@@ -51662,8 +51453,6 @@
    "format": "table",
    "release": "Not stated",
    "frs": [
-    "FR-V12-B-053",
-    "FR-V12-B-054",
     "FR-V12-B-066",
     "FR-V12-B-067",
     "FR-V12-C-053",
@@ -51945,7 +51734,7 @@
     "FR-V12-C-070",
     "FR-V12-C-071",
     "FR-V12-C-072",
-    "FR-V12-C-096"
+    "FR-V12-G-096"
    ],
    "has_ac": true,
    "tokens": [
@@ -51960,8 +51749,8 @@
    "release": "Not stated",
    "points": "5\u20138",
    "frs": [
-    "FR-V12-D-046",
-    "FR-V12-D-130"
+    "FR-V12-D-130",
+    "FR-V12-I-046"
    ],
    "has_ac": true,
    "tokens": []
@@ -52093,7 +51882,6 @@
    "wave": "Release 1 (dates follow the work, DEC-770)",
    "points": "3\u20135",
    "frs": [
-    "FR-V12-A-045",
     "FR-V12-A-152",
     "FR-V12-I-045",
     "FR-V12-U-972"
@@ -52157,8 +51945,6 @@
    "format": "table",
    "release": "Not stated",
    "frs": [
-    "FR-V12-B-077",
-    "FR-V12-B-078",
     "FR-V12-B-095",
     "FR-V12-B-096",
     "FR-V12-C-077",
@@ -52178,11 +51964,11 @@
    "format": "table",
    "release": "Not stated",
    "frs": [
-    "FR-V12-C-068",
     "FR-V12-C-081",
     "FR-V12-C-082",
     "FR-V12-C-083",
-    "FR-V12-C-084"
+    "FR-V12-C-084",
+    "FR-V12-F-068"
    ],
    "has_ac": true,
    "tokens": [
@@ -53250,7 +53036,7 @@
    "priority": "Should",
    "frs": [
     "FR-V12-B-085",
-    "FR-V12-B-157"
+    "FR-V12-K-157"
    ],
    "has_ac": true,
    "tokens": [
@@ -53307,8 +53093,8 @@
    "release": "Not stated",
    "points": "5\u20138",
    "frs": [
-    "FR-V12-D-046",
-    "FR-V12-D-132"
+    "FR-V12-D-132",
+    "FR-V12-G-046"
    ],
    "has_ac": true,
    "tokens": []
@@ -53457,8 +53243,8 @@
    "wave": "Release 2 (dates follow the work, DEC-770)",
    "points": "3\u20135",
    "frs": [
-    "FR-V12-A-047",
     "FR-V12-A-153",
+    "FR-V12-I-047",
     "FR-V12-U-729"
    ],
    "has_ac": true,
@@ -53671,7 +53457,7 @@
    "release": "Not stated",
    "frs": [
     "FR-V12-G-101",
-    "FR-V12-G-104"
+    "FR-V12-K-104"
    ],
    "has_ac": true,
    "tokens": []
@@ -53745,10 +53531,9 @@
    "format": "table",
    "release": "A2",
    "frs": [
-    "FR-V12-A-065",
-    "FR-V12-A-091",
     "FR-V12-A-121",
     "FR-V12-A-150",
+    "FR-V12-G-091",
     "FR-V12-M-065",
     "FR-V12-M-066",
     "FR-V12-M-067",
@@ -53796,7 +53581,6 @@
    "points": "3\u20135",
    "frs": [
     "FR-V12-M-098",
-    "FR-V12-M-131",
     "FR-V12-R-131",
     "FR-V12-R-132",
     "FR-V12-R-133",
@@ -53836,7 +53620,6 @@
    "points": "8\u201313",
    "frs": [
     "FR-V12-M-098",
-    "FR-V12-M-131",
     "FR-V12-R-131",
     "FR-V12-R-132",
     "FR-V12-R-133",
@@ -54202,7 +53985,6 @@
    "frs": [
     "FR-V12-D-009",
     "FR-V12-D-026",
-    "FR-V12-D-034",
     "FR-V12-F-001",
     "FR-V12-F-002",
     "FR-V12-F-003",
@@ -54972,9 +54754,7 @@
    "points": "5\u20138",
    "frs": [
     "FR-V12-F-020",
-    "FR-V12-F-037",
-    "FR-V12-F-053",
-    "FR-V12-F-054",
+    "FR-V12-P-037",
     "FR-V12-P-053",
     "FR-V12-P-054",
     "FR-V12-P-055",
@@ -54995,10 +54775,9 @@
    "points": "5\u20138",
    "frs": [
     "FR-V12-F-020",
-    "FR-V12-F-037",
-    "FR-V12-F-053",
-    "FR-V12-F-054",
     "FR-V12-P-037",
+    "FR-V12-P-053",
+    "FR-V12-P-054",
     "FR-V12-P-059",
     "FR-V12-P-060",
     "FR-V12-P-061",
@@ -55088,12 +54867,12 @@
     "FR-V12-H-019",
     "FR-V12-H-020",
     "FR-V12-H-021",
-    "FR-V12-H-112",
-    "FR-V12-H-128",
+    "FR-V12-K-112",
     "FR-V12-K-124",
     "FR-V12-K-125",
     "FR-V12-K-126",
     "FR-V12-K-127",
+    "FR-V12-K-128",
     "FR-V12-R-056",
     "FR-V12-R-057",
     "FR-V12-R-058",
@@ -55540,12 +55319,12 @@
    "points": "8",
    "release": "R1-B",
    "frs": [
-    "FR-V12-A-001",
-    "FR-V12-A-004",
     "FR-V12-A-050",
     "FR-V12-A-051",
     "FR-V12-A-052",
-    "FR-V12-A-055"
+    "FR-V12-A-055",
+    "FR-V12-G-001",
+    "FR-V12-G-004"
    ],
    "has_ac": true,
    "tokens": [
@@ -56081,8 +55860,8 @@
     "FR-V12-A-058",
     "FR-V12-A-060",
     "FR-V12-A-061",
-    "FR-V12-A-106",
-    "FR-V12-A-108"
+    "FR-V12-G-106",
+    "FR-V12-G-108"
    ],
    "has_ac": true,
    "tokens": [
@@ -56122,8 +55901,8 @@
    "wave": "Release 2 (dates follow the work, DEC-770)",
    "points": "3\u20135",
    "frs": [
-    "FR-V12-A-006",
     "FR-V12-A-144",
+    "FR-V12-K-006",
     "FR-V12-U-729"
    ],
    "has_ac": true,
@@ -56442,7 +56221,6 @@
    "frs": [
     "FR-V12-A-001",
     "FR-V12-A-002",
-    "FR-V12-A-032",
     "FR-V12-A-095",
     "FR-V12-E-032",
     "FR-V12-E-033",
@@ -56495,7 +56273,6 @@
     "FR-V12-A-001",
     "FR-V12-A-002",
     "FR-V12-A-030",
-    "FR-V12-A-055",
     "FR-V12-E-055",
     "FR-V12-E-056",
     "FR-V12-E-057",
@@ -56581,7 +56358,7 @@
    "frs": [
     "FR-V12-E-063",
     "FR-V12-E-076",
-    "FR-V12-E-153"
+    "FR-V12-K-153"
    ],
    "has_ac": true,
    "tokens": []
@@ -56618,11 +56395,9 @@
    "format": "table",
    "frs": [
     "FR-V12-A-013",
-    "FR-V12-A-058",
-    "FR-V12-A-119",
-    "FR-V12-A-127",
     "FR-V12-E-058",
-    "FR-V12-E-127"
+    "FR-V12-E-127",
+    "FR-V12-K-119"
    ],
    "has_ac": false,
    "tokens": []
@@ -56648,7 +56423,7 @@
     "FR-V12-E-085",
     "FR-V12-E-087",
     "FR-V12-E-088",
-    "FR-V12-E-157"
+    "FR-V12-K-157"
    ],
    "has_ac": false,
    "tokens": []
@@ -57531,9 +57306,9 @@
     "FR-V12-A-023",
     "FR-V12-A-024",
     "FR-V12-A-030",
-    "FR-V12-A-072",
-    "FR-V12-A-073",
-    "FR-V12-A-149",
+    "FR-V12-E-072",
+    "FR-V12-E-073",
+    "FR-V12-K-149",
     "FR-V12-U-123",
     "FR-V12-U-124",
     "FR-V12-U-125",
@@ -57628,16 +57403,16 @@
    "wave": "Release 2 (dates follow the work, DEC-770)",
    "points": "8\u201313",
    "frs": [
-    "FR-V12-A-014",
     "FR-V12-A-030",
     "FR-V12-A-031",
     "FR-V12-A-032",
     "FR-V12-A-034",
-    "FR-V12-A-064",
-    "FR-V12-A-072",
-    "FR-V12-A-073",
-    "FR-V12-A-078",
-    "FR-V12-A-149",
+    "FR-V12-E-064",
+    "FR-V12-E-072",
+    "FR-V12-E-073",
+    "FR-V12-E-078",
+    "FR-V12-F-014",
+    "FR-V12-K-149",
     "FR-V12-U-123",
     "FR-V12-U-124",
     "FR-V12-U-125",
@@ -57735,11 +57510,11 @@
    "wave": "Release 2 (dates follow the work, DEC-770)",
    "points": "2\u20133",
    "frs": [
-    "FR-V12-A-014",
     "FR-V12-A-031",
     "FR-V12-A-032",
     "FR-V12-A-033",
     "FR-V12-A-035",
+    "FR-V12-F-014",
     "FR-V12-U-123",
     "FR-V12-U-124",
     "FR-V12-U-125",
@@ -57932,11 +57707,11 @@
    "wave": "Release 2 (dates follow the work, DEC-770)",
    "points": "1\u20132",
    "frs": [
-    "FR-V12-A-014",
     "FR-V12-A-031",
     "FR-V12-A-032",
     "FR-V12-A-091",
     "FR-V12-A-092",
+    "FR-V12-F-014",
     "FR-V12-U-123",
     "FR-V12-U-124",
     "FR-V12-U-125",
@@ -61073,8 +60848,6 @@
    "title": "US-21-ZU10, US-21-ZU11",
    "format": "table",
    "frs": [
-    "FR-V12-A-130",
-    "FR-V12-A-132",
     "FR-V12-A-191",
     "FR-V12-E-130",
     "FR-V12-E-132",
@@ -61265,8 +61038,6 @@
    "title": "Block a release while a gate is not satisfied",
    "format": "block",
    "frs": [
-    "FR-V12-A-001",
-    "FR-V12-A-002",
     "FR-V12-A-190",
     "FR-V12-A-191",
     "FR-V12-J-001",
@@ -61306,10 +61077,9 @@
    "title": "Declare and communicate incidents by SEV",
    "format": "block",
    "frs": [
-    "FR-V12-A-003",
-    "FR-V12-A-004",
     "FR-V12-A-142",
-    "FR-V12-K-003"
+    "FR-V12-K-003",
+    "FR-V12-K-004"
    ],
    "has_ac": true,
    "tokens": []
@@ -61521,8 +61291,6 @@
    "wave": "Release 1 (S1\u2013S3)",
    "points": "8\u201313",
    "frs": [
-    "FR-V12-A-122",
-    "FR-V12-A-123",
     "FR-V12-A-147",
     "FR-V12-E-122",
     "FR-V12-E-123",
@@ -61558,8 +61326,6 @@
    "wave": "Release 1 (S4, S7)",
    "points": "5\u20138",
    "frs": [
-    "FR-V12-A-122",
-    "FR-V12-A-123",
     "FR-V12-A-147",
     "FR-V12-E-122",
     "FR-V12-E-123",
@@ -62124,8 +61890,6 @@
    "wave": "Release 2",
    "points": "8\u201313",
    "frs": [
-    "FR-V12-B-001",
-    "FR-V12-B-002",
     "FR-V12-B-060",
     "FR-V12-B-064",
     "FR-V12-F-047",
@@ -62204,8 +61968,6 @@
    "wave": "Release 2",
    "points": "8\u201313",
    "frs": [
-    "FR-V12-B-001",
-    "FR-V12-B-002",
     "FR-V12-B-060",
     "FR-V12-B-064",
     "FR-V12-Q-001",
@@ -62278,8 +62040,6 @@
    "wave": "Release 2",
    "points": "13\u201321",
    "frs": [
-    "FR-V12-B-001",
-    "FR-V12-B-002",
     "FR-V12-B-060",
     "FR-V12-B-064",
     "FR-V12-Q-001",
@@ -62426,8 +62186,6 @@
    "wave": "Release 2",
    "points": "8\u201313",
    "frs": [
-    "FR-V12-B-001",
-    "FR-V12-B-002",
     "FR-V12-B-060",
     "FR-V12-B-064",
     "FR-V12-Q-001",
@@ -63626,7 +63384,6 @@
    "wave": "R2",
    "points": "8\u201313",
    "frs": [
-    "FR-V12-B-070",
     "FR-V12-B-071",
     "FR-V12-B-072",
     "FR-V12-P-070",
@@ -63657,9 +63414,10 @@
    "wave": "R2",
    "points": "8\u201313",
    "frs": [
-    "FR-V12-B-070",
     "FR-V12-B-071",
     "FR-V12-B-072",
+    "FR-V12-P-070",
+    "FR-V12-P-071",
     "FR-V12-P-078",
     "FR-V12-P-079",
     "FR-V12-P-080",
@@ -63904,7 +63662,7 @@
     "FR-V12-B-087",
     "FR-V12-B-088",
     "FR-V12-B-089",
-    "FR-V12-B-133"
+    "FR-V12-D-133"
    ],
    "has_ac": true,
    "tokens": [
@@ -63941,7 +63699,7 @@
     "FR-V12-B-087",
     "FR-V12-B-088",
     "FR-V12-B-089",
-    "FR-V12-B-133"
+    "FR-V12-D-133"
    ],
    "has_ac": true,
    "tokens": [
@@ -64555,10 +64313,7 @@
    "release": "EP-29 registry first",
    "priority": "Must",
    "frs": [
-    "FR-V12-A-001",
-    "FR-V12-A-002",
     "FR-V12-A-004",
-    "FR-V12-A-045",
     "FR-V12-B-001",
     "FR-V12-B-002",
     "FR-V12-B-003",
@@ -64588,7 +64343,8 @@
     "FR-V12-B-027",
     "FR-V12-B-028",
     "FR-V12-B-029",
-    "FR-V12-B-030"
+    "FR-V12-B-030",
+    "FR-V12-E-045"
    ],
    "has_ac": true,
    "tokens": []
@@ -64602,10 +64358,7 @@
    "wave": "W4",
    "points": "8\u201313",
    "frs": [
-    "FR-V12-A-001",
-    "FR-V12-A-002",
     "FR-V12-A-006",
-    "FR-V12-A-025",
     "FR-V12-N-001",
     "FR-V12-N-002",
     "FR-V12-N-003",
@@ -64616,6 +64369,7 @@
     "FR-V12-N-008",
     "FR-V12-N-009",
     "FR-V12-N-010",
+    "FR-V12-N-025",
     "FR-V12-N-101",
     "FR-V12-N-102",
     "FR-V12-N-103",
@@ -64639,7 +64393,8 @@
     "FR-V12-N-145",
     "FR-V12-N-146",
     "FR-V12-N-147",
-    "FR-V12-N-148"
+    "FR-V12-N-148",
+    "FR-V12-O-002"
    ],
    "has_ac": true,
    "tokens": [
@@ -65526,8 +65281,8 @@
    "points": "8\u201313",
    "frs": [
     "FR-V12-N-025",
-    "FR-V12-N-085",
-    "FR-V12-N-086"
+    "FR-V12-O-085",
+    "FR-V12-O-086"
    ],
    "has_ac": true,
    "tokens": [
@@ -65546,8 +65301,8 @@
     "FR-V12-N-016",
     "FR-V12-N-020",
     "FR-V12-N-024",
-    "FR-V12-N-035",
-    "FR-V12-N-036"
+    "FR-V12-O-035",
+    "FR-V12-O-036"
    ],
    "has_ac": true,
    "tokens": [
@@ -65739,10 +65494,10 @@
    "wave": "W5",
    "points": "5\u20138",
    "frs": [
-    "FR-V12-N-014",
     "FR-V12-N-028",
     "FR-V12-N-060",
-    "FR-V12-N-145"
+    "FR-V12-N-145",
+    "FR-V12-O-014"
    ],
    "has_ac": true,
    "tokens": [
@@ -65818,8 +65573,8 @@
    "points": "5\u20138",
    "frs": [
     "FR-V12-N-023",
-    "FR-V12-N-085",
-    "FR-V12-N-086"
+    "FR-V12-O-085",
+    "FR-V12-O-086"
    ],
    "has_ac": true,
    "tokens": [
@@ -65838,9 +65593,9 @@
     "FR-V12-N-026",
     "FR-V12-N-028",
     "FR-V12-N-029",
-    "FR-V12-N-031",
     "FR-V12-N-060",
-    "FR-V12-N-145"
+    "FR-V12-N-145",
+    "FR-V12-O-031"
    ],
    "has_ac": true,
    "tokens": [
@@ -66198,8 +65953,6 @@
    "wave": "Release 2 (DEC-770)",
    "points": "3\u20135",
    "frs": [
-    "FR-V12-N-003",
-    "FR-V12-N-004",
     "FR-V12-N-058",
     "FR-V12-N-143",
     "FR-V12-O-003",
@@ -66629,8 +66382,6 @@
    "wave": "Release 2 (DEC-770)",
    "points": "3\u20135",
    "frs": [
-    "FR-V12-N-003",
-    "FR-V12-N-004",
     "FR-V12-N-021",
     "FR-V12-O-003",
     "FR-V12-O-004",
@@ -68045,12 +67796,12 @@
    "wave": "Release 2 (dates follow the work, DEC-770)",
    "points": "8\u201313",
    "frs": [
-    "FR-V12-A-018",
     "FR-V12-A-036",
-    "FR-V12-A-150",
+    "FR-V12-I-018",
     "FR-V12-K-137",
     "FR-V12-K-138",
-    "FR-V12-K-139"
+    "FR-V12-K-139",
+    "FR-V12-K-150"
    ],
    "has_ac": true,
    "tokens": [
@@ -68088,9 +67839,8 @@
    "wave": "Release 1 (dates follow the work, DEC-770)",
    "points": "8\u201313",
    "frs": [
-    "FR-V12-A-018",
     "FR-V12-A-036",
-    "FR-V12-A-150",
+    "FR-V12-I-018",
     "FR-V12-K-148",
     "FR-V12-K-149",
     "FR-V12-K-150"
