@@ -371,7 +371,7 @@ def build(D, path):
         ("Pilot running per month (approved Ledger B with contingency and seats)", f"='Running Costs'!E{3 + len(M.LEDGER_B) + 4}", None, f"='Running Costs'!F{3 + len(M.LEDGER_B) + 4}", "Per month"),
         ("All-in running per month after the full advanced roadmap", f"='Running Costs'!E{3 + len(M.LEDGER_B) + 6 + len(M.RUN_ADDITIONS) + 1}", None, f"='Running Costs'!F{3 + len(M.LEDGER_B) + 6 + len(M.RUN_ADDITIONS) + 1}", "Per month"),
         ("Running cost paid during the build (Day 1–208)", D["B_DURING_BUILD"][0], None, D["B_DURING_BUILD"][1], "Total for the build period"),
-        ("Recommended build-time tooling per month (excl. approved baseline and optional)", D["rec"][0] * M.FX, None, D["rec"][1] * M.FX, "See Build Tooling (recommended rows)"),
+        ("Approved build-time tooling per month (DEC-419; excl. Ledger B baseline and optional)", D["rec"][0] * M.FX, None, D["rec"][1] * M.FX, "See Build Tooling (DEC-419 rows)"),
         ("THREE-YEAR TCO", None, None, None, ""),
         ("Approved path (build + 3 years)", f"=TCO!L{3 + 2 + len(D['tco_ap'])}", None, f"=TCO!M{3 + 2 + len(D['tco_ap'])}", "TCO sheet"),
         ("Full roadmap (build + 3 years)", f"=TCO!L{3 + 2 + len(D['tco_ap']) + 3 + 2 + len(D['tco_full'])}", None, f"=TCO!M{3 + 2 + len(D['tco_ap']) + 3 + 2 + len(D['tco_full'])}", "TCO sheet"),

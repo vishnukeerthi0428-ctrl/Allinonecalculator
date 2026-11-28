@@ -5,7 +5,7 @@
 |---|---|
 | Document | Cost Estimate v1.0 for the AI Growth Engine (Employee Sales & Marketing Automation) |
 | Date | 28 Nov 2026 |
-| Basis | Application Blueprint v1.1 (Parts 0–9.10, 342 decisions), approved budgets DEC-230/231, Founder decisions DEC-416…418 |
+| Basis | Application Blueprint v1.1 (Parts 0–9.10, 342 decisions), approved budgets DEC-230/231, Founder decisions DEC-416…419 |
 | Currency | INR and USD at **₹90 = $1** (blueprint rate, Part 8.4; verify at time of payment). Sensitivity at ₹85 and ₹95 in §13 |
 | Prepared by | FinOps Lead with Product Owner, Delivery Lead, Solutions Architect, QA Lead and AI Governance Lead (blueprint team) |
 | Classification | Confidential: Founder and authorized delivery partners |
@@ -33,7 +33,7 @@
 | Recurring item | Per month (INR) | Per month (USD) | Per year (INR) | Per year (USD) |
 |---|---|---|---|---|
 | Running cost paid **during the build** (Day 1–208, ramping up), approved Ledger B | ₹1.47 L – ₹1.75 L for the whole build | $1,633 – $1,944 total | — | — |
-| Recommended **build-time tooling** (Claude for all engineers, GitHub, Figma, Workspace, Bitwarden, BrowserStack), in addition to Ledger B | ₹73,890 – ₹77,094 | $821 – $857 | ₹8.87 L – ₹9.25 L | $9,852 – $10,279 |
+| Approved **build-time tooling** (DEC-419: Claude for all engineers, GitHub, Figma, Workspace, Bitwarden, BrowserStack), in addition to Ledger B | ₹73,890 – ₹77,094 | $821 – $857 | ₹8.87 L – ₹9.25 L | $9,852 – $10,279 |
 | Pilot running cost **after launch** (approved Ledger B base + 15% contingency + 2 Claude seats) | ₹24,035 – ₹30,475 | $267 – $339 | ₹2.88 L – ₹3.66 L | $3,205 – $4,063 |
 | Plus literal-alignment running additions (CR-ALN-02, upper bound) | ₹1,495 – ₹10,120 | $17 – $112 | ₹0.18 L – ₹1.21 L | $199 – $1,349 |
 | Plus advanced capabilities at full rollout (X1 + X2 + X3, after A3) | ₹11,051 – ₹36,098 | $123 – $401 | ₹1.33 L – ₹4.33 L | $1,473 – $4,813 |
@@ -49,7 +49,7 @@
 
 - **People dominate.** About **79%** of the approved-scope money (central) is the build team. External vendors (penetration tests, training content) are about **6%**. Subscriptions and running costs for the build plus 12 months of operation are about **15%**.
 - **AI usage is small and capped.** All 80 AI agents together cost an estimated **₹4,391 per month** at pilot volume (base; ₹1,974–₹11,002), inside the hard AI caps. Claude Sonnet stays the primary model (DEC-418).
-- **Subscriptions for building** are mainly developer seats, above all Claude for the engineers. The approved baseline has 2 Claude seats. This estimate recommends Claude Code for all 6 engineers. The extra cost is repaid if it saves about 1 engineer-day per engineer per month (§13.5).
+- **Subscriptions for building** are mainly developer seats, above all Claude for the engineers. The approved baseline has 2 Claude seats. The Founder approved Claude Code for all 6 engineers on 28 Nov 2026 (DEC-419). The extra cost is repaid if it saves about 1 engineer-day per engineer per month (§13.5).
 - **Lifecycle costs** after launch are maintenance (15–20% of development per year), future-proofing (model migrations, framework upgrades, security tests, DR drills) and running costs that step up only when the business passes the scale gates.
 
 ![Where the money goes](img/share.png)
@@ -65,7 +65,7 @@
 | Claude Sonnet as primary model | Approved | DEC-418 |
 | Phase-2 core continuation (W6) ₹25.8–38.7 L | Open: decide at the Release 2 go/no-go | Part 8.4 |
 | Advanced A2 and A3 | Open: decide at gates G-A1 and G-A2 | DEC-411 |
-| Recommended build-time tooling (Claude for all engineers etc.) | Open: recommendation in this document | §7 |
+| Build-time tooling (Claude for all engineers, GitHub, Figma, Workspace, Bitwarden, BrowserStack, domains) | Approved 28 Nov 2026 | DEC-419; §7 |
 | Items often missed (legal counsel, insurance, GST, etc.) | Open: see §11 | §11 |
 
 # 2. Estimation basis, method and assumptions
@@ -560,22 +560,22 @@ Prices are USD list prices per user per month, as known on the document date. **
 | Tool | Purpose | Plan | Unit $/user/month | Seats (build) | Per month (USD) | Per month (INR) | Status | Notes |
 |---|---|---|---|---|---|---|---|---|
 | Claude (Anthropic) – coding and drafting assistant | AI pair-programming (Claude Code), story/test drafting, reviews | Approved baseline B09: Pro × 2 | $20.00 | 2 | $40 | ₹3,600 | Approved (B09) | Baseline in Ledger B (₹4,140/month incl. 15%) |
-| Claude (Anthropic) – recommended full-team upgrade | Claude Code for all 6 engineers (Max 5x) + Pro for QA, growth lead, PO | Max 5x × 6 + Pro × 3 (minus baseline 2 × Pro) | $100.00 | 6 | $600 | ₹54,000 | Recommended | Replaces B09 if adopted: $660/month gross; Team plan with premium seats is an alternative (verify) |
-| Claude (Anthropic) – Pro for the third non-engineering user | Drafting stories, tests, UAT scripts, compliance notes | Pro | $20.00 | 1 | $20 | ₹1,800 | Recommended | With the 2 baseline Pro seats, covers QA, growth/compliance lead and PO |
+| Claude (Anthropic) – recommended full-team upgrade | Claude Code for all 6 engineers (Max 5x) + Pro for QA, growth lead, PO | Max 5x × 6 + Pro × 3 (minus baseline 2 × Pro) | $100.00 | 6 | $600 | ₹54,000 | Approved (DEC-419) | Replaces B09 if adopted: $660/month gross; Team plan with premium seats is an alternative (verify) |
+| Claude (Anthropic) – Pro for the third non-engineering user | Drafting stories, tests, UAT scripts, compliance notes | Pro | $20.00 | 1 | $20 | ₹1,800 | Approved (DEC-419) | With the 2 baseline Pro seats, covers QA, growth/compliance lead and PO |
 | Claude API (Anthropic Console) | CI review bots, evaluation judge, fixture generation | Pay-as-you-go, capped | $11.00 | 1 | $11 | ₹990 | Approved (B23) | ≈ ₹1,000/month cap, already in Ledger B |
-| GitHub Team | Source control, pull requests, Actions CI, Dependabot, secret scanning | Team | $4.00 | 9 | $36 | ₹3,240 | Required | Actions minutes beyond the included quota in B07 |
-| Figma Professional | UX design, prototypes, design system | Professional full seat | $16.00–$20.00 | 2 | $32–$40 | ₹2,880–₹3,600 | Required | Developers use free view seats |
+| GitHub Team | Source control, pull requests, Actions CI, Dependabot, secret scanning | Team | $4.00 | 9 | $36 | ₹3,240 | Approved (DEC-419) | Actions minutes beyond the included quota in B07 |
+| Figma Professional | UX design, prototypes, design system | Professional full seat | $16.00–$20.00 | 2 | $32–$40 | ₹2,880–₹3,600 | Approved (DEC-419) | Developers use free view seats |
 | Jira Software / Confluence | Backlog, sprints, documentation | Free (≤ 10 users) | $0.00 | 9 | $0 | ₹0 | Required (free tier) | Standard plan ≈ $8–9/user if > 10 users (verify) |
-| Google Workspace Business Starter | Email, documents, video meetings for the team | Business Starter | $7.00–$8.40 | 9 | $63–$76 | ₹5,670–₹6,804 | Recommended (if not already owned) | Use existing company workspace if available |
+| Google Workspace Business Starter | Email, documents, video meetings for the team | Business Starter | $7.00–$8.40 | 9 | $63–$76 | ₹5,670–₹6,804 | Approved (DEC-419; skip if already owned) | Use existing company workspace if available |
 | Slack Pro (optional) | Team chat and alert channels | Pro | $7.25–$8.75 | 9 | $65–$79 | ₹5,872–₹7,088 | Optional | Google Chat inside Workspace is a free alternative |
-| Bitwarden Teams | Shared secrets for the team (not production secrets) | Teams | $4.00 | 9 | $36 | ₹3,240 | Recommended | Production secrets stay in AWS Secrets Manager (B01) |
-| BrowserStack Live (or LambdaTest) | Cross-browser and assistive-technology checks for WCAG 2.2 AA | Live, 1 parallel | $29.00–$39.00 | 1 | $29–$39 | ₹2,610–₹3,510 | Recommended | Playwright + axe-core (free) cover automation |
+| Bitwarden Teams | Shared secrets for the team (not production secrets) | Teams | $4.00 | 9 | $36 | ₹3,240 | Approved (DEC-419) | Production secrets stay in AWS Secrets Manager (B01) |
+| BrowserStack Live (or LambdaTest) | Cross-browser and assistive-technology checks for WCAG 2.2 AA | Live, 1 parallel | $29.00–$39.00 | 1 | $29–$39 | ₹2,610–₹3,510 | Approved (DEC-419) | Playwright + axe-core (free) cover automation |
 | Postman | API exploration and contract checks | Free | $0.00 | 9 | $0 | ₹0 | Optional (free) | Schemathesis/OpenAPI tests are free |
 | Domain names | Platform and startup site domains (≈ 5) | Annual registration | $1.00–$2.00 | 5 | $5–$10 | ₹450–₹900 | Required | ≈ $12–24 per domain per year; shown per month |
 | Open-source toolchain | Playwright, pytest, k6, OWASP ZAP, Trivy, SonarQube Community, axe-core, Mermaid, draw.io, Prometheus, Grafana, Langfuse (self-hosted) | Free / self-hosted | $0.00 | 1 | $0 | ₹0 | Required (free) | Hosting inside B01 |
 
 - **Approved baseline:** $51 per month. This is 2 Claude seats plus delivery-team API use; it is already in Ledger B lines B09 and B23.
-- **Recommended additions:** $821 – $857 per month (₹73,890 – ₹77,094). Over the 8 core build months that is **$6,568 – $6,853** (₹5.91 L – ₹6.17 L).
+- **Approved additions (DEC-419, 28 Nov 2026):** $821 – $857 per month (₹73,890 – ₹77,094). Over the 8 core build months that is **$6,568 – $6,853** (₹5.91 L – ₹6.17 L).
 - **Optional:** Slack, $65 – $79 per month.
 - **Lean alternative:** Claude Pro for all 9 users instead of Max for engineers. This lowers the Claude line by $480 per month.
 
@@ -585,7 +585,7 @@ Prices are USD list prices per user per month, as known on the document date. **
 |---|---|---|---|---|
 | Approved baseline: Claude Pro × 2 | 2 | $40 | ₹3,600 | Minimum: two engineers use Claude Code |
 | Lean: Claude Pro × 9 (all team members) | 9 | $180 | ₹16,200 | Everyone drafts with Claude; lighter Claude Code use |
-| **Recommended: Claude Max 5x × 6 engineers + Pro × 3** | 9 | **$660** | **₹59,400** | Daily Claude Code use by all engineers (higher usage limits) |
+| **Approved (DEC-419): Claude Max 5x × 6 engineers + Pro × 3** | 9 | **$660** | **₹59,400** | Daily Claude Code use by all engineers (higher usage limits) |
 | Heavy: Claude Max 20x × 6 engineers + Pro × 3 | 9 | $1,260 | ₹1,13,400 | Very heavy agentic coding |
 | Team plan (Standard seats + premium seats for engineers) | 9 | ≈ $30 per standard seat, ≈ $150 per premium seat (verify) | — | If central billing, SSO and admin controls are required |
 
@@ -659,7 +659,7 @@ External SaaS tenants pay for their own AI, messaging and storage use through th
 
 ## 8.5 Tools after the build (maintenance team)
 
-After the build the tooling seats fall to the maintenance team: about 2 engineers, a part-time QA, the growth lead and the PO. The recommended tooling then costs **$341 – $367 per month** (₹30,690 – ₹33,030), in addition to Ledger B.
+After the build the tooling seats fall to the maintenance team: about 2 engineers, a part-time QA, the growth lead and the PO. The approved tooling then costs **$341 – $367 per month** (₹30,690 – ₹33,030), in addition to Ledger B.
 
 # 9. Timeline and month-by-month cash flow (approved scope)
 
@@ -674,7 +674,7 @@ After the build the tooling seats fall to the maintenance team: about 2 engineer
 | Advanced A2 (if approved at G-A1) | ≈ 366–480 | Dec 2027 – Mar 2028 |
 | Advanced A3 (after the scale gate) | ≈ 481–600 | Apr – Jul 2028 |
 
-| Month | Development (central) | Running (central) | Recommended tools (central) | Month total | Cumulative (central) | Cumulative range | Cumulative (USD) |
+| Month | Development (central) | Running (central) | Approved tools (central) | Month total | Cumulative (central) | Cumulative range | Cumulative (USD) |
 |---|---|---|---|---|---|---|---|
 | Dec 2026 | ₹6.80 L | ₹16,732 | ₹75,492 | ₹7.72 L | ₹7.72 L | ₹6.29 L – ₹9.15 L | $8,580 |
 | Jan 2027 | ₹10.65 L | ₹19,608 | ₹75,492 | ₹11.60 L | ₹19.32 L | ₹15.14 L – ₹23.87 L | $21,465 |
@@ -752,7 +752,7 @@ Budgeting these items each year keeps the platform supportable and avoids a cost
 |---|---|---|---|
 | Approved one-time development (central) | ₹116.17 L | ₹20.91 L | ₹137.08 L |
 | Pilot running per month (high) | ₹30,475 | ₹5,485 | ₹35,960 |
-| Recommended tooling per month (high) | ₹77,094 | ₹13,877 | ₹90,971 |
+| Approved tooling per month (high) | ₹77,094 | ₹13,877 | ₹90,971 |
 
 GST on salaries does not apply. GST on contractor, vendor and SaaS invoices is usually recoverable as input tax credit for a GST-registered company. Confirm with the finance advisor.
 
@@ -815,7 +815,7 @@ All 72 combinations (6 scopes × 4 team models × 3 estimate points) are in the 
 
 ## 13.3 FX sensitivity (approved one-time development, central)
 
-| ₹ per USD | Approved development (USD) | Recommended tooling per month (INR) |
+| ₹ per USD | Approved development (USD) | Approved tooling per month (INR) |
 |---|---|---|
 | ₹85 | $136,672 | ₹69,785 – ₹72,811 |
 | ₹90 | $129,079 | ₹73,890 – ₹77,094 |

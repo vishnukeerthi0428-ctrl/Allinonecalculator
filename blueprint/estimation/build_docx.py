@@ -8,7 +8,9 @@ ASM = Path(__file__).resolve().parent.parent / "assembly"
 sys.path.insert(0, str(ASM))
 
 
-def build(md, out):
+def build(md, out, header="AI Growth Engine — End-to-End Cost Estimate v1.0    |    Confidential · 28 Nov 2026",
+          title="AI Growth Engine: End-to-End Cost Estimate", subtitle="Development, subscriptions, AI agents, automations, workflows and lifecycle costs (INR and USD)",
+          version="Version 1.0 · 28 Nov 2026 · Confidential"):
     import assemble as AS
     from docx import Document
     from docx.shared import Pt
@@ -20,12 +22,11 @@ def build(md, out):
         hp = s.header.paragraphs[0]
         for r in hp.runs:
             r.text = ""
-        hp.runs[0].text = "AI Growth Engine — End-to-End Cost Estimate v1.0    |    Confidential · 28 Nov 2026"
+        hp.runs[0].text = header
         hp.runs[0].font.size = Pt(8)
     d.save(str(ref))
     meta = md.parent / "meta.yaml"
-    meta.write_text('---\ntitle: "AI Growth Engine: End-to-End Cost Estimate"\nsubtitle: "Development, subscriptions, AI agents, automations, workflows and lifecycle costs (INR and USD)"\n'
-                    'date: "Version 1.0 · 28 Nov 2026 · Confidential"\ntoc-title: "Contents"\n---\n', encoding="utf-8")
+    meta.write_text(f'---\ntitle: "{title}"\nsubtitle: "{subtitle}"\ndate: "{version}"\ntoc-title: "Contents"\n---\n', encoding="utf-8")
     env = {**os.environ, "LANG": "C.UTF-8", "LC_ALL": "C.UTF-8"}
     subprocess.run(["pandoc", str(meta), str(md), "-f", "markdown+pipe_tables", "-t", "docx", "--toc", "--toc-depth=2",
                     "--reference-doc", str(ref), "--resource-path", str(md.parent), "-o", str(out)], check=True, env=env, cwd=md.parent)

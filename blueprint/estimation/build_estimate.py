@@ -107,14 +107,14 @@ for t in M.TOOLS:
     tool_rows.append(dict(name=name, purpose=purpose, plan=plan, ulo=ulo, uhi=uhi, seats=seats, req=req, after=after, note=note,
                           mlo=ulo * seats, mhi=uhi * seats, alo=ulo * after, ahi=uhi * after))
 # add the third Pro seat for QA/growth/PO
-tool_rows.insert(2, dict(name="Claude (Anthropic) – Pro for the third non-engineering user", purpose="Drafting stories, tests, UAT scripts, compliance notes", plan="Pro", ulo=20, uhi=20, seats=1, req="Recommended", after=1, note="With the 2 baseline Pro seats, covers QA, growth/compliance lead and PO", mlo=20, mhi=20, alo=20, ahi=20))
-baseline_usd = sum(r["mlo"] for r in tool_rows if r["req"].startswith("Approved"))
-rec_lo = sum(r["mlo"] for r in tool_rows if not r["req"].startswith("Optional") and not r["req"].startswith("Approved"))
-rec_hi = sum(r["mhi"] for r in tool_rows if not r["req"].startswith("Optional") and not r["req"].startswith("Approved"))
+tool_rows.insert(2, dict(name="Claude (Anthropic) – Pro for the third non-engineering user", purpose="Drafting stories, tests, UAT scripts, compliance notes", plan="Pro", ulo=20, uhi=20, seats=1, req="Approved (DEC-419)", after=1, note="With the 2 baseline Pro seats, covers QA, growth/compliance lead and PO", mlo=20, mhi=20, alo=20, ahi=20))
+baseline_usd = sum(r["mlo"] for r in tool_rows if r["req"].startswith("Approved (B"))
+rec_lo = sum(r["mlo"] for r in tool_rows if not r["req"].startswith("Optional") and not r["req"].startswith("Approved (B"))
+rec_hi = sum(r["mhi"] for r in tool_rows if not r["req"].startswith("Optional") and not r["req"].startswith("Approved (B"))
 opt_lo = sum(r["mlo"] for r in tool_rows if r["req"].startswith("Optional"))
 opt_hi = sum(r["mhi"] for r in tool_rows if r["req"].startswith("Optional"))
-after_lo = sum(r["alo"] for r in tool_rows if not r["req"].startswith("Optional") and not r["req"].startswith("Approved"))
-after_hi = sum(r["ahi"] for r in tool_rows if not r["req"].startswith("Optional") and not r["req"].startswith("Approved"))
+after_lo = sum(r["alo"] for r in tool_rows if not r["req"].startswith("Optional") and not r["req"].startswith("Approved (B"))
+after_hi = sum(r["ahi"] for r in tool_rows if not r["req"].startswith("Optional") and not r["req"].startswith("Approved (B"))
 lean_claude = 9 * 20 - 40   # Pro for all 9 users, minus the 2 baseline seats
 
 # effort by activity
@@ -343,7 +343,7 @@ A("")
 table(["Field", "Value"], [
     ["Document", "Cost Estimate v1.0 for the AI Growth Engine (Employee Sales & Marketing Automation)"],
     ["Date", f"{M.AS_OF}"],
-    ["Basis", "Application Blueprint v1.1 (Parts 0–9.10, 342 decisions), approved budgets DEC-230/231, Founder decisions DEC-416…418"],
+    ["Basis", "Application Blueprint v1.1 (Parts 0–9.10, 342 decisions), approved budgets DEC-230/231, Founder decisions DEC-416…419"],
     ["Currency", f"INR and USD at **₹{M.FX:.0f} = $1** (blueprint rate, Part 8.4; verify at time of payment). Sensitivity at ₹85 and ₹95 in §13"],
     ["Prepared by", "FinOps Lead with Product Owner, Delivery Lead, Solutions Architect, QA Lead and AI Governance Lead (blueprint team)"],
     ["Classification", "Confidential: Founder and authorized delivery partners"],
@@ -365,7 +365,7 @@ table(["One-time development package", "Status", "When", "Low (INR)", "Central (
 A("**Recurring subscriptions and running cost (separate from development).**\n")
 table(["Recurring item", "Per month (INR)", "Per month (USD)", "Per year (INR)", "Per year (USD)"], [
     ["Running cost paid **during the build** (Day 1–208, ramping up), approved Ledger B", rng(*B_DURING_BUILD) + " for the whole build", rng(*B_DURING_BUILD, usd) + " total", "—", "—"],
-    ["Recommended **build-time tooling** (Claude for all engineers, GitHub, Figma, Workspace, Bitwarden, BrowserStack), in addition to Ledger B", rng(rec_lo * M.FX, rec_hi * M.FX, inr), rng(rec_lo, rec_hi, usdv), rng(rec_lo * M.FX * 12, rec_hi * M.FX * 12), rng(rec_lo * 12, rec_hi * 12, usdv)],
+    ["Approved **build-time tooling** (DEC-419: Claude for all engineers, GitHub, Figma, Workspace, Bitwarden, BrowserStack), in addition to Ledger B", rng(rec_lo * M.FX, rec_hi * M.FX, inr), rng(rec_lo, rec_hi, usdv), rng(rec_lo * M.FX * 12, rec_hi * M.FX * 12), rng(rec_lo * 12, rec_hi * 12, usdv)],
     ["Pilot running cost **after launch** (approved Ledger B base + 15% contingency + 2 Claude seats)", rng(runs_lo, runs_hi, inr), rng(runs_lo, runs_hi, usd), rng(runs_lo * 12, runs_hi * 12), rng(runs_lo * 12, runs_hi * 12, usd)],
     ["Plus literal-alignment running additions (CR-ALN-02, upper bound)", rng(*aln_run, inr), rng(*aln_run, usd), rng(aln_run[0] * 12, aln_run[1] * 12), rng(aln_run[0] * 12, aln_run[1] * 12, usd)],
     ["Plus advanced capabilities at full rollout (X1 + X2 + X3, after A3)", rng(adv_lo, adv_hi, inr), rng(adv_lo, adv_hi, usd), rng(adv_lo * 12, adv_hi * 12), rng(adv_lo * 12, adv_hi * 12, usd)],
@@ -379,7 +379,7 @@ A("![One-time development cost by package](img/packages.png)\n")
 A("## 1.2 What drives the cost\n")
 A(f"- **People dominate.** About **{people_c / (people_c + vendors_c + subs_c) * 100:.0f}%** of the approved-scope money (central) is the build team. External vendors (penetration tests, training content) are about **{vendors_c / (people_c + vendors_c + subs_c) * 100:.0f}%**. Subscriptions and running costs for the build plus 12 months of operation are about **{subs_c / (people_c + vendors_c + subs_c) * 100:.0f}%**.")
 A(f"- **AI usage is small and capped.** All {len(by_kind['AG'])} AI agents together cost an estimated **{inr(ag_run[1])} per month** at pilot volume (base; {inr(ag_run[0])}–{inr(ag_run[2])}), inside the hard AI caps. Claude Sonnet stays the primary model (DEC-418).")
-A("- **Subscriptions for building** are mainly developer seats, above all Claude for the engineers. The approved baseline has 2 Claude seats. This estimate recommends Claude Code for all 6 engineers. The extra cost is repaid if it saves about 1 engineer-day per engineer per month (§13.5).")
+A("- **Subscriptions for building** are mainly developer seats, above all Claude for the engineers. The approved baseline has 2 Claude seats. The Founder approved Claude Code for all 6 engineers on 28 Nov 2026 (DEC-419). The extra cost is repaid if it saves about 1 engineer-day per engineer per month (§13.5).")
 A("- **Lifecycle costs** after launch are maintenance (15–20% of development per year), future-proofing (model migrations, framework upgrades, security tests, DR drills) and running costs that step up only when the business passes the scale gates.\n")
 A("![Where the money goes](img/share.png)\n")
 A("## 1.3 Decisions already taken and still open\n")
@@ -391,7 +391,7 @@ table(["Item", "Status", "Reference"], [
     ["Claude Sonnet as primary model", "Approved", "DEC-418"],
     ["Phase-2 core continuation (W6) ₹25.8–38.7 L", "Open: decide at the Release 2 go/no-go", "Part 8.4"],
     ["Advanced A2 and A3", "Open: decide at gates G-A1 and G-A2", "DEC-411"],
-    ["Recommended build-time tooling (Claude for all engineers etc.)", "Open: recommendation in this document", "§7"],
+    ["Build-time tooling (Claude for all engineers, GitHub, Figma, Workspace, Bitwarden, BrowserStack, domains)", "Approved 28 Nov 2026", "DEC-419; §7"],
     ["Items often missed (legal counsel, insurance, GST, etc.)", "Open: see §11", "§11"],
 ])
 
@@ -582,14 +582,14 @@ for r in tool_rows:
                  f"{usdv(r['mlo'])}–{usdv(r['mhi'])}" if r["mhi"] != r["mlo"] else usdv(r["mlo"]), f"{inr(r['mlo'] * M.FX)}–{inr(r['mhi'] * M.FX)}" if r["mhi"] != r["mlo"] else inr(r["mlo"] * M.FX), r["req"], r["note"]])
 table(["Tool", "Purpose", "Plan", "Unit $/user/month", "Seats (build)", "Per month (USD)", "Per month (INR)", "Status", "Notes"], rows)
 A(f"- **Approved baseline:** {usdv(baseline_usd)} per month. This is 2 Claude seats plus delivery-team API use; it is already in Ledger B lines B09 and B23.")
-A(f"- **Recommended additions:** {rng(rec_lo, rec_hi, usdv)} per month ({rng(rec_lo * M.FX, rec_hi * M.FX, inr)}). Over the 8 core build months that is **{rng(rec_lo * 8, rec_hi * 8, usdv)}** ({rng(rec_lo * 8 * M.FX, rec_hi * 8 * M.FX)}).")
+A(f"- **Approved additions (DEC-419, 28 Nov 2026):** {rng(rec_lo, rec_hi, usdv)} per month ({rng(rec_lo * M.FX, rec_hi * M.FX, inr)}). Over the 8 core build months that is **{rng(rec_lo * 8, rec_hi * 8, usdv)}** ({rng(rec_lo * 8 * M.FX, rec_hi * 8 * M.FX)}).")
 A(f"- **Optional:** Slack, {rng(opt_lo, opt_hi, usdv)} per month.")
 A(f"- **Lean alternative:** Claude Pro for all 9 users instead of Max for engineers. This lowers the Claude line by {usdv(600 + 20 - lean_claude)} per month.\n")
 A("## 7.2 Claude plans compared (for the build team)\n")
 table(["Option", "Seats", "Per month (USD)", "Per month (INR)", "When to choose"], [
     ["Approved baseline: Claude Pro × 2", "2", "$40", inr(40 * M.FX), "Minimum: two engineers use Claude Code"],
     ["Lean: Claude Pro × 9 (all team members)", "9", "$180", inr(180 * M.FX), "Everyone drafts with Claude; lighter Claude Code use"],
-    ["**Recommended: Claude Max 5x × 6 engineers + Pro × 3**", "9", "**$660**", f"**{inr(660 * M.FX)}**", "Daily Claude Code use by all engineers (higher usage limits)"],
+    ["**Approved (DEC-419): Claude Max 5x × 6 engineers + Pro × 3**", "9", "**$660**", f"**{inr(660 * M.FX)}**", "Daily Claude Code use by all engineers (higher usage limits)"],
     ["Heavy: Claude Max 20x × 6 engineers + Pro × 3", "9", "$1,260", inr(1260 * M.FX), "Very heavy agentic coding"],
     ["Team plan (Standard seats + premium seats for engineers)", "9", "≈ $30 per standard seat, ≈ $150 per premium seat (verify)", "—", "If central billing, SSO and admin controls are required"],
 ])
@@ -624,7 +624,7 @@ A("## 8.4 Running cost as the business scales\n")
 table(["Stage", "Hosting", "AI ceiling", "Typical total per month (INR)", "Per month (USD)", "Gate"], [[s, h, a, rng(*t, inr), rng(*t, usd), g] for s, h, a, t, g in M.SCALE_STAGES])
 A("External SaaS tenants pay for their own AI, messaging and storage use through their plan and metered overage (DEC-008, DEC-047). Their usage is never charged to the platform's B02 line.\n")
 A("## 8.5 Tools after the build (maintenance team)\n")
-A(f"After the build the tooling seats fall to the maintenance team: about 2 engineers, a part-time QA, the growth lead and the PO. The recommended tooling then costs **{rng(after_lo, after_hi, usdv)} per month** ({rng(after_lo * M.FX, after_hi * M.FX, inr)}), in addition to Ledger B.\n")
+A(f"After the build the tooling seats fall to the maintenance team: about 2 engineers, a part-time QA, the growth lead and the PO. The approved tooling then costs **{rng(after_lo, after_hi, usdv)} per month** ({rng(after_lo * M.FX, after_hi * M.FX, inr)}), in addition to Ledger B.\n")
 
 # 9 Cash flow
 A("# 9. Timeline and month-by-month cash flow (approved scope)\n")
@@ -641,7 +641,7 @@ table(["Milestone", "Day", "Date"], [
 rows = []
 for r in cash:
     rows.append([r["m"], lakh(r["dev"][1]), inr(r["run"][1]), inr(r["tools"][1]), lakh(r["tot"][1]), lakh(r["cum"][1]), rng(r["cum"][0], r["cum"][2]), usd(r["cum"][1])])
-table(["Month", "Development (central)", "Running (central)", "Recommended tools (central)", "Month total", "Cumulative (central)", "Cumulative range", "Cumulative (USD)"], rows)
+table(["Month", "Development (central)", "Running (central)", "Approved tools (central)", "Month total", "Cumulative (central)", "Cumulative range", "Cumulative (USD)"], rows)
 A("![Cumulative cash flow](img/cashflow.png)\n")
 
 # 10 Future-proofing
@@ -669,7 +669,7 @@ A("## 11.1 With-GST view (indicative)\n")
 table(["Item", "Excluding GST", "GST 18%", "Including GST"], [
     ["Approved one-time development (central)", lakh(ap_c), lakh(ap_c * M.GST), lakh(ap_c * (1 + M.GST))],
     ["Pilot running per month (high)", inr(runs_hi), inr(runs_hi * M.GST), inr(runs_hi * (1 + M.GST))],
-    ["Recommended tooling per month (high)", inr(rec_hi * M.FX), inr(rec_hi * M.FX * M.GST), inr(rec_hi * M.FX * (1 + M.GST))],
+    ["Approved tooling per month (high)", inr(rec_hi * M.FX), inr(rec_hi * M.FX * M.GST), inr(rec_hi * M.FX * (1 + M.GST))],
 ])
 A("GST on salaries does not apply. GST on contractor, vendor and SaaS invoices is usually recoverable as input tax credit for a GST-registered company. Confirm with the finance advisor.\n")
 
@@ -705,7 +705,7 @@ table(["Scope"] + [f"{t[0]}: {t[1]}" for t in M.TEAM_MODELS], rows)
 table(["Model", "Basis"], [[f"{t[0]} {t[1]}", t[3]] for t in M.TEAM_MODELS])
 A(f"All {len(scen)} combinations (6 scopes × 4 team models × 3 estimate points) are in the workbook sheet *Scenarios*, with FX sensitivity.\n")
 A("## 13.3 FX sensitivity (approved one-time development, central)\n")
-table(["₹ per USD", "Approved development (USD)", "Recommended tooling per month (INR)"], [[f"₹{f:.0f}", f"${ap_c / f:,.0f}", f"{inr(rec_lo * f)} – {inr(rec_hi * f)}"] for f in M.FX_SENS])
+table(["₹ per USD", "Approved development (USD)", "Approved tooling per month (INR)"], [[f"₹{f:.0f}", f"${ap_c / f:,.0f}", f"{inr(rec_lo * f)} – {inr(rec_hi * f)}"] for f in M.FX_SENS])
 A("## 13.4 AI usage scenarios (production inference)\n")
 table(["Scenario", "AI per month (INR)", "AI per month (USD)", "Notes"], [
     ["All agents at pilot base volumes (catalogue estimate)", inr(ag_run[1] * 1.25), usd(ag_run[1] * 1.25), "Sum of the 80 agents' base cost + 25% overhead"],
