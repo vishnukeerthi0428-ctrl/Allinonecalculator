@@ -167,7 +167,7 @@ for b in fsd[CH20]:
         add(DOC, "20", "Frontend scope and canonical route registry", "F20", b["text"], "Partially covered", "Part 2.5 §2.40.2", "DEC-621; ADR-204 anonymous catalogue projection", FRX["SELECT"])
     if b["type"] == "text" and re.match(r"^(Public catalogue|Verified membership)", b["text"]):
         wid = b["path"].split(">")[-1].strip().split()[0]
-        add(DOC, "20", "Frontend scope and canonical route registry > " + wid, "F20", f"{wid}: {b['text']}", "Partially covered", bp_w_loc(wid), f"Route delta card {wid}; UAT {wid}-V2-UAT mapped to {TC_BASE} tests", FRW[wid])
+        add(DOC, "20", "Frontend scope and canonical route registry > " + wid, "F20", f"{wid}: {b['text']}", "Partially covered", bp_w_loc(wid), f"Route delta card {wid}; UAT {wid}-V2-UAT mapped to {TC_BASE} tests", FRW[wid] + ("; " + FRX["QUOTE"] if wid in ("W06", "W14", "W23") else ""))
     if b["type"] == "text" and b["path"].endswith("commercial transparency"):
         for sent in [s for s in re.split(r"(?<=\.) ", b["text"]) if s.strip()]:
             add(DOC, "20", "Workflow demonstrations and commercial transparency", "F20", sent, "Not covered", "No workflow preview library in blueprint", "W05 sample library; calculators", FRX["SAMPLES"] if "W05" in sent or "fictional" in sent or "No real" in sent else FRX["CALC"] if "ROI" in sent else FRX["I18N"])
@@ -413,7 +413,7 @@ for s_ in [x.strip() for x in re.split(r"(?<=\.) ", readme.replace("\n", " ")) i
 for r in csv_rows(WEBPACK + "/commercial_website_route_reconciliation.csv", 1):
     if r:
         add(DOCP, "Route reconciliation", "commercial_website_route_reconciliation.csv", "WP", f"{r[0]}: '{r[1]}' ({r[2]}) → '{r[3]}' ({r[4]}); {r[5]}", "Conflict", f"{bp_w_loc(r[0])} uses previous name '{r[1]}'",
-            "Adopt V12 (DEC-621); previous startup-site semantics move to tenant-owned intake W54 and A107/A108", FRW[r[0]] + "; DEC-621")
+            "Adopt V12 (DEC-621); previous startup-site semantics move to tenant-owned intake W54 and A107/A108", FRW[r[0]] + "; DEC-621" + ("; " + FRN["W54"] if r[0] in ("W02", "W03", "W10", "W12", "W13", "W14", "W15", "W16", "W17", "W18", "W19", "W20") else ""))
 cat = json.load(open(WEBPACK + "/commercial_website_layout_catalog.json", encoding="utf-8"))
 for it in cat["items"]:
     core = it.get("core")
