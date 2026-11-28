@@ -329,7 +329,7 @@ for i, (v, d) in enumerate(OPS.items()):
 | Attribute | Value |
 |---|---|
 | Purpose | {esc(d['purpose'])} |
-| Access | Platform operator experience only → {AUD_ROLE['Platform operator']}. No default read of tenant CRM or business data; tenant data only through an O06 support grant |
+| Access | Platform operator experience only → {AUD_ROLE['Platform operator']}. No default read of tenant CRM or business data; tenant data only through an A189 (V12 O06) support grant |
 | Pattern · epic · release | {d['pattern']} · {d['ep']} · {d['rel']} |
 | Requirements | {esc(d['reqs'])} |
 | Catalogue fields (DATA.screens) | {esc('; '.join(m['fields']))} |

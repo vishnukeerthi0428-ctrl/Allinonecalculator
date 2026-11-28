@@ -1606,7 +1606,7 @@ Operator screens A184–A191 (V12 O01–O08), utility views A192–A197 (not cou
 | Attribute | Value |
 |---|---|
 | Purpose | Govern the 39 service SKUs, their bundles, versions and release states (Planned → Pilot → Released → Deprecated → Retired) and the commercial label (Quotation pending until a price book is approved, ENT-BIZ-02). |
-| Access | Platform operator experience only → R01 acting as Service Owner (DEC-047), R13 Platform Support, R14 Platform Billing. No default read of tenant CRM or business data; tenant data only through an O06 support grant |
+| Access | Platform operator experience only → R01 acting as Service Owner (DEC-047), R13 Platform Support, R14 Platform Billing. No default read of tenant CRM or business data; tenant data only through an A189 (V12 O06) support grant |
 | Pattern · epic · release | LP-LIST + LP-DETAIL drawer · EP-20 · Release 2 (W4–W5) |
 | Requirements | BR-S series (Part 1); DEC-047; V12 ch22 operator scope |
 | Catalogue fields (DATA.screens) | SKU; Version; Release state; Owner; Acceptance evidence |
@@ -1630,7 +1630,7 @@ _No input fields (content or table screen)._
 | Attribute | Value |
 |---|---|
 | Purpose | Review private customer applications (website W32/W33 output, schema SM-APPLICATION-6) and create pending tenants; no automatic activation. |
-| Access | Platform operator experience only → R01 acting as Service Owner (DEC-047), R13 Platform Support, R14 Platform Billing. No default read of tenant CRM or business data; tenant data only through an O06 support grant |
+| Access | Platform operator experience only → R01 acting as Service Owner (DEC-047), R13 Platform Support, R14 Platform Billing. No default read of tenant CRM or business data; tenant data only through an A189 (V12 O06) support grant |
 | Pattern · epic · release | LP-QUEUE + LP-WIZARD (pending tenant) · EP-20 · Release 2 (W4–W5) |
 | Requirements | V12 ch21 service stages Contract/trial and Provision; G15; T04 |
 | Catalogue fields (DATA.screens) | Application; Tenant; Selected SKUs; Verification; Readiness |
@@ -1669,7 +1669,7 @@ _No input fields (content or table screen)._
 | Attribute | Value |
 |---|---|
 | Purpose | Manage subscription quote versions and agreements for SaaS clients; quote invalidates when the selection changes; accepted quotes are immutable. |
-| Access | Platform operator experience only → R01 acting as Service Owner (DEC-047), R13 Platform Support, R14 Platform Billing. No default read of tenant CRM or business data; tenant data only through an O06 support grant |
+| Access | Platform operator experience only → R01 acting as Service Owner (DEC-047), R13 Platform Support, R14 Platform Billing. No default read of tenant CRM or business data; tenant data only through an A189 (V12 O06) support grant |
 | Pattern · epic · release | LP-LIST + PT-DOC preview · EP-20 · Release 2 (W4–W5) |
 | Requirements | DEC-047; ENT-BIZ-02, ENT-BIZ-03 |
 | Catalogue fields (DATA.screens) | Quote; Plan; Currency; Service model; Approval status |
@@ -1693,7 +1693,7 @@ _No input fields (content or table screen)._
 | Attribute | Value |
 |---|---|
 | Purpose | Operator subscription ledger: usage meters per SKU, rated charges, invoices and verified payments; separate from tenant revenue ledgers. |
-| Access | Platform operator experience only → R01 acting as Service Owner (DEC-047), R13 Platform Support, R14 Platform Billing. No default read of tenant CRM or business data; tenant data only through an O06 support grant |
+| Access | Platform operator experience only → R01 acting as Service Owner (DEC-047), R13 Platform Support, R14 Platform Billing. No default read of tenant CRM or business data; tenant data only through an A189 (V12 O06) support grant |
 | Pattern · epic · release | LP-LIST + LP-DASH · EP-20 · Release 2 (W4–W5) |
 | Requirements | ENT-BIZ-01; ENT-GLB-05/06; V12 ch21 service stage Billing |
 | Catalogue fields (DATA.screens) | Subscription; SKU; Usage unit; Invoice status; Payment verification |
@@ -1717,7 +1717,7 @@ _No input fields (content or table screen)._
 | Attribute | Value |
 |---|---|
 | Purpose | Provider and connector capability, live permission, health and fallback per channel; no credentials shown. |
-| Access | Platform operator experience only → R01 acting as Service Owner (DEC-047), R13 Platform Support, R14 Platform Billing. No default read of tenant CRM or business data; tenant data only through an O06 support grant |
+| Access | Platform operator experience only → R01 acting as Service Owner (DEC-047), R13 Platform Support, R14 Platform Billing. No default read of tenant CRM or business data; tenant data only through an A189 (V12 O06) support grant |
 | Pattern · epic · release | LP-MONITOR + LP-LIST · EP-20 · Release 1 (W0–W3) read-only; Release 2 actions |
 | Requirements | ENT-INT-04; AT-11; G05 |
 | Catalogue fields (DATA.screens) | Provider; Channel; Health; Permission; Fallback |
@@ -1740,7 +1740,7 @@ _No input fields (content or table screen)._
 | Attribute | Value |
 |---|---|
 | Purpose | Ticket-linked, tenant-approved, time-limited support access grants and break-glass with reason, expiry, audit and review. |
-| Access | Platform operator experience only → R01 acting as Service Owner (DEC-047), R13 Platform Support, R14 Platform Billing. No default read of tenant CRM or business data; tenant data only through an O06 support grant |
+| Access | Platform operator experience only → R01 acting as Service Owner (DEC-047), R13 Platform Support, R14 Platform Billing. No default read of tenant CRM or business data; tenant data only through an A189 (V12 O06) support grant |
 | Pattern · epic · release | LP-QUEUE + LP-DETAIL · EP-20 · Release 1 (W0–W3) |
 | Requirements | ENT-ACC-05; V12 ch22 operator scope; BRL-TEN |
 | Catalogue fields (DATA.screens) | Ticket; Tenant; Scope; Expiry; Approval |
@@ -1764,7 +1764,7 @@ _No input fields (content or table screen)._
 | Attribute | Value |
 |---|---|
 | Purpose | Release gates and decision register: proposed contracts, affected IDs, owner, evidence and state before go-live. |
-| Access | Platform operator experience only → R01 acting as Service Owner (DEC-047), R13 Platform Support, R14 Platform Billing. No default read of tenant CRM or business data; tenant data only through an O06 support grant |
+| Access | Platform operator experience only → R01 acting as Service Owner (DEC-047), R13 Platform Support, R14 Platform Billing. No default read of tenant CRM or business data; tenant data only through an A189 (V12 O06) support grant |
 | Pattern · epic · release | LP-LIST + LP-DETAIL · EP-21 · Release 1 (W0–W3) |
 | Requirements | V12 ch22 operator scope; A090 release readiness |
 | Catalogue fields (DATA.screens) | Decision; Affected ID; Owner; Evidence; State |
@@ -1787,7 +1787,7 @@ _No input fields (content or table screen)._
 | Attribute | Value |
 |---|---|
 | Purpose | Explicit portfolio aggregate grants (portfolio, company, scope, expiry); independent SaaS clients are never in a portfolio grant by default. |
-| Access | Platform operator experience only → R01 acting as Service Owner (DEC-047), R13 Platform Support, R14 Platform Billing. No default read of tenant CRM or business data; tenant data only through an O06 support grant |
+| Access | Platform operator experience only → R01 acting as Service Owner (DEC-047), R13 Platform Support, R14 Platform Billing. No default read of tenant CRM or business data; tenant data only through an A189 (V12 O06) support grant |
 | Pattern · epic · release | LP-LIST + drawer · EP-20 · Release 1 (W0–W3) |
 | Requirements | V12 ch23 portfolio filter contract; MT-02; REC-13 |
 | Catalogue fields (DATA.screens) | Portfolio; Company; Scope; Expiry; Grant state |
