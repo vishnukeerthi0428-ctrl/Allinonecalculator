@@ -65,7 +65,7 @@ Appendix C2 (enterprise schema, owned by Group I) was read for the field shapes 
 | Wire conventions | Appendix A components (18) | Partially covered / conflict | DEC-640…642 |
 | Connectors and adapters | ENT-INT-01…05, INT-01…11, families, MT-22/23, GC-08/10/13 | Partially covered | CF-01…12; AD-V12-H-01…11; API-V12-H-037/038/074/075 |
 | Plugins and FinOps | VND-01…97; GC-09/11/15 | Covered (decisions identical) | VND IDs adopted; contact-data conditions; API-V12-H-076; DEC-651 |
-| Events | 12 derived | Partially covered / not covered | 38 new event types + 24-type outbound projection |
+| Events | 12 derived | Partially covered / not covered | 49 new event types (24 catalogue rows) + 24-type outbound projection |
 | Hosting | DEC-421 (not in V12 text) | — | API ingress per host, ADR-209, CONFLICT-889 |
 
 ---
