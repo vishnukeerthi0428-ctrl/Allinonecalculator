@@ -567,6 +567,8 @@ for f_ in ["Tenant", "Business division", "Brand", "Product / service / programm
 add(DOCH, "Investor mode", "CFG.inv flag", "PW", "Website template contains an investor/fundraising objective mode (CFG.inv) with 'Automate your fundraising operations', 'eligible investors', 'Fundraising thesis' wording; commercial build sets inv=false", "Conflict", "DEC-002; CC-01; negative regression test (Part 6.1 T02)", "CONFLICT-868: remove mode from the commercial codebase; Founder decides on sibling product", FRX["INVEST"] + "; DEC-632", "Pending Founder decision")
 add("Source archive", "Investment Automation", "Investment_Automation_19_Neutral_SaaS_Website + 24 services/96 workflows workbook", "SA", "Sibling investor/fundraising storefront and catalogue in the V12 source archive", "Conflict", "DEC-002", "CONFLICT-868", FRX["INVEST"], "Pending Founder decision")
 
+# certification programme vs DEC-408
+add(DOCH, "W38", "Table", "PW", "W38 certification programme targets (SOC 2 Type I R2, Type II R3, ISO 27001 R3, ISO 27701/42001 R4) vs Founder decision DEC-408", "Conflict", "DEC-408 (Part 9.9b); W46", "CONFLICT-874; interim wording per DEC-408", FRA["W38"] + "; DEC-639", "Pending Founder decision")
 # budget conflict aspect
 add("Blueprint governance", "Budget", "UI scope added by V12", "BG", "New screens A170–A204, W50–W54, Admin mobile parity, locales de/fr/ar and RTL exceed approved Ledger A/B scope", "Conflict", "DEC-230/DEC-422/DEC-228", "CONFLICT-869; separate costed proposal §11.7.5.12", "DEC-633", "Pending Founder decision")
 

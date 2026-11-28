@@ -417,8 +417,20 @@ svc_md, costrows = gen_services()
 cost_md, tv, tb = gen_cost(costrows)
 json.dump({'v12_month': tv, 'bp_month': tb}, open(D + '/d_cost.json', 'w'))
 
+def escape_dollars(md):
+    out, fence = [], False
+    for line in md.split('\n'):
+        if line.lstrip().startswith('```'):
+            fence = not fence; out.append(line); continue
+        if fence or '$' not in line:
+            out.append(line); continue
+        parts = line.split('`')
+        for i in range(0, len(parts), 2):
+            parts[i] = re.sub(r'(?<!\\)\$', r'\\$', parts[i])
+        out.append('`'.join(parts))
+    return '\n'.join(out)
 def fill(t):
-    return (t.replace('{{REGISTER}}', gen_register()).replace('{{COUNTS}}', gen_counts()).replace('{{RECON}}', gen_reconciliation())
+    return escape_dollars(t.replace('{{REGISTER}}', gen_register()).replace('{{COUNTS}}', gen_counts()).replace('{{RECON}}', gen_reconciliation())
              .replace('{{EFFECTS}}', gen_effect_catalogue()).replace('{{INCONSISTENCY}}', gen_inconsistency()).replace('{{SERVICES_1}}', svc_md[0]).replace('{{SERVICES_2}}', svc_md[1])
              .replace('{{AICOST}}', cost_md).replace('{{N_ASPECTS}}', str(len(ASP))).replace('{{N_PENDING}}', str(after.get('Pending Founder decision', 0)))
              .replace('{{N_MATCHED}}', str(after.get('Matched', 0))))

@@ -8,7 +8,7 @@
 | Baseline | Blueprint Parts 0–9.10 and 0B (346 decisions DEC-001…422); Part 2.5 (147 screens), Part 2.7a/2.7b (147 contract cards), Parts 9.7–9.9 (A114–A169, W35–W49); V11_BRIEF safety invariants; customer revision V12 (FSD V12 chapters 20–24, source workbook 147 Screen Field, neutral website pack, four HTML prototypes) received 28 Nov 2026 |
 | Roles applied | Head of Product Design (enterprise SaaS), Principal UX Architect, Accessibility Lead (WCAG 2.2 AA), Principal Frontend Engineer (React/TypeScript), Mobile UX Specialist; Business Systems Analyst for traceability |
 | ID ranges used | DEC-620…639 · ASSUMPTION/GAP/CONFLICT/RECOMMENDATION-868…885 · ADR-200…204 · FR-V12-G-001…117 · US-<EP>-YG<nn> · TC-V12-G-001…234 · screens A170–A204 and W50–W54 (A205–A259 and W55–W99 reserved, unused) · aspect IDs G-<src>-#### |
-| Machine-readable register | `final/coverage_v12/G_coverage.csv` (5,429 aspects, columns doc, chapter, section, aspect_id, aspect_summary, status_before, blueprint_location, action, new_ids, status_after) |
+| Machine-readable register | `final/coverage_v12/G_coverage.csv` (5,430 aspects, columns doc, chapter, section, aspect_id, aspect_summary, status_before, blueprint_location, action, new_ids, status_after) |
 | Scripts | `assembly/v12/g_parse_fsd.py` (FSD tables), `g_crawl_prototypes.js` (sandboxed headless crawl, network disabled), `g_common.py`, `g_screens.py`, `g_build.py` (aspects and CSV), `g_render.py` (tables and cards) |
 
 **How to read this part.** V12 is the customer's revised specification. It keeps the 147 screen IDs of the baseline and adds 46 more, but it **re-purposes the public website**: W01–W34 no longer present the owned startups to the public. They now form a **neutral SaaS storefront** that sells the 39 automation services (SM-SVC-01…39). It also adds tenant service workspaces (X26–X39), platform-operator screens (O01–O08), AI-governance and compliance screens (V12 A114–A121), enterprise screens (V12 A122–A131) and enterprise website pages (V12 W35–W41). Batch 11.7a lists what was reviewed, how every aspect compares with the blueprint, and how every V12 route maps to a blueprint screen. Batch 11.7b specifies the missing screens and behaviours at build depth. Batch 11.7c closes traceability, conflicts and decisions.
@@ -30,11 +30,11 @@
 | 5 | FSD V12 ch24 `24_UI_UX_Components_Screens_Interaction_Ma.txt` | 172 KB | REC-14; MOB alignment (18); V8 screens (10) and behaviours (7); MOB-01/02/03/07/08/12; presentation inventory; website crosswalk (34); admin crosswalk (135); MT-26/37; 11 optimisation items; admin route registry (135); **113 per-screen specification tables × 7 rows** | UI/UX master | Parsed programmatically (`g_parse_fsd.py`: 122 tables, 1,148 rows) | 3,223 |
 | 6 | Workbook `Sales_Marketing_Automation_147_Screen_Field_csv/` (Summary, Website, Admin, New_screens, Global_fields, Acceptance) | 78 KB | 31 website rows, 108 admin rows, 9 new layouts, G01–G15, T01–T25 | Field audit (same content as baseline source doc 06) | CSV | 188 |
 | 7 | Website pack `Sales_Marketing_Automation_34_Neutral_SaaS_Website(1)/` (README, route reconciliation, layout catalogue, verification report, preview) | 233 KB | 34 route renames; 64 catalogue entries (39 SKUs + 25 foundations), 7 families, 12 channels, 12 industries; 22 verification checks | Developer handoff of the neutral storefront | JSON/CSV | 234 |
-| 8 | `commercial_website_desktop_V12.html` = `…_mobile_V12.html` | 251 KB each | 4 scripts; data object CFG; 41 routes + 404; 2 session states | Website prototype | Single-page app, hash routes | 308 |
+| 8 | `commercial_website_desktop_V12.html` = `…_mobile_V12.html` | 251 KB each | 4 scripts; data object CFG; 41 routes + 404; 2 session states | Website prototype | Single-page app, hash routes | 309 |
 | 9 | `commercial_admin_desktop_V12.html` = `…_mobile_V12.html` | 1,092 KB each | 5 scripts; DATA (39 services, 156 workflows, 135 screens, 25 foundations, 15 engines); V5/V6/R10 registers; V8/E12 screens and 9 constant tables | Admin prototype | Single-page app; 4 access experiences | 1,016 |
 | 10 | Source archive (Investment Automation sibling: 19-route website, 24 services / 96 workflows workbook) | — | Investor and fundraising product | Sibling product | — | 1 |
 | 11 | Blueprint governance (approved budgets) | — | — | Budget fit of V12 UI scope | — | 1 |
-| | **Total** | | | | | **5,429** |
+| | **Total** | | | | | **5,430** |
 
 ### 11.7.1.2 Method
 
@@ -79,16 +79,16 @@
 | WB | Workbook 147 Screen Field (6 sheets) | 188 | 185 | 3 | 0 | 0 | 0 | 188 | 0 | 0 |
 | WP | Website pack (README, reconciliation, verification) | 89 | 0 | 39 | 0 | 50 | 0 | 73 | 16 | 0 |
 | WPC | Website pack layout catalogue | 145 | 0 | 99 | 46 | 0 | 0 | 145 | 0 | 0 |
-| PW | Prototype website (41 routes + 404, chrome) | 300 | 6 | 120 | 168 | 4 | 2 | 297 | 1 | 2 |
+| PW | Prototype website (41 routes + 404, chrome) | 301 | 6 | 120 | 168 | 5 | 2 | 297 | 2 | 2 |
 | PWD | Prototype website datasets | 8 | 0 | 0 | 8 | 0 | 0 | 8 | 0 | 0 |
 | PA | Prototype admin (153 screens + utility views, chrome) | 899 | 124 | 62 | 710 | 2 | 1 | 898 | 0 | 1 |
 | PAD | Prototype admin datasets | 117 | 0 | 52 | 65 | 0 | 0 | 117 | 0 | 0 |
 | SA | Source archive (Investment sibling) | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 0 |
 | BG | Blueprint governance (budget) | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 1 | 0 |
-| **Total** |  | **5429** | **3220** | **823** | **1309** | **71** | **6** | **5404** | **19** | **6** |
+| **Total** |  | **5430** | **3220** | **823** | **1309** | **72** | **6** | **5404** | **20** | **6** |
 
 
-**Reading the numbers.** 3,220 aspects (59%) were already covered, almost all of them field, route and rule atoms of the 113 Admin screen specifications and the 147-screen workbook, which carry the same content as baseline source document 06 that Part 2.7b already reconciled. The uncovered mass sits where V12 is genuinely new: the prototype admin screens X26–X39, O01–O08 and V12 A114–A131 (710 elements), the storefront routes (168), the 156 fictional workflow outputs and the domain panels. After this part, 5,404 aspects are **Matched**, 19 are **Pending Founder decision** (investor mode: 17; budget: 1; plus the investment sibling archive: 1) and 6 are **Not applicable** with a reason.
+**Reading the numbers.** 3,220 aspects (59%) were already covered, almost all of them field, route and rule atoms of the 113 Admin screen specifications and the 147-screen workbook, which carry the same content as baseline source document 06 that Part 2.7b already reconciled. The uncovered mass sits where V12 is genuinely new: the prototype admin screens X26–X39, O01–O08 and V12 A114–A131 (710 elements), the storefront routes (168), the 156 fictional workflow outputs and the domain panels. After this part, 5,404 aspects are **Matched**, 20 are **Pending Founder decision** (investor/fundraising mode and the investment sibling: 18; budget: 1; certification programme vs DEC-408: 1) and 6 are **Not applicable** with a reason.
 
 ### 11.7.2.2 Covered aspects (grouped)
 
@@ -106,11 +106,11 @@
 
 | Action kind | Aspects | Where |
 |---|---|---|
-| Route delta on a re-purposed website screen (W01–W34) | 34 FRs; 470 aspect links | §11.7.5.2 (Batch 11.7b) |
+| Route delta on a re-purposed website screen (W01–W34) | 34 FRs; 467 aspect links | §11.7.5.2 (Batch 11.7b) |
 | New screen contract (A170–A204, W50–W54) | 40 FRs; 765 aspect links | §11.7.5.4–11.7.5.6 |
-| Delta on an existing screen (aliases, A089, A106, A107/A108) | 20 FRs; 389 aspect links | §11.7.5.3 |
+| Delta on an existing screen (aliases, A089, A106, A107/A108) | 20 FRs; 390 aspect links | §11.7.5.3 |
 | Cross-cutting behaviour (i18n, accessibility, mobile, storefront, drafts, domain panel) | 23 FRs; 1,027 aspect links (an aspect may link to several FRs) | §11.7.5.7–11.7.5.11 |
-| Pending Founder decision | 19 aspects | §11.7.6 |
+| Pending Founder decision | 20 aspects | §11.7.6 |
 | Not applicable | 6 aspects | §11.7.3 rows with reason |
 
 ---
@@ -1372,7 +1372,7 @@ All 156 rows were Not covered before and are Matched by FR-V12-G-106; each row i
 |---|---|---|---|---|---|---|
 | G-BG-0001 | New screens A170–A204, W50–W54, Admin mobile parity, locales de/fr/ar and RTL exceed approved Ledger A/B scope | Conflict | DEC-230/DEC-422/DEC-228 | CONFLICT-869; separate costed proposal §11.7.5.12 | DEC-633 | Pending Founder decision |
 
-#### Register PW/PA itemised screen elements (889 aspects in 193 rows)
+#### Register PW/PA itemised screen elements (890 aspects in 193 rows)
 
 Each row names every individual field, action, table or disclosure of one prototype screen that was not already covered; each item is a separate aspect ID in `G_coverage.csv`.
 
@@ -1440,7 +1440,7 @@ Each row names every individual field, action, table or disclosure of one protot
 | G-PW-0276…0279 | W34 | Action | 2 | 'Manage selection'; 'Save synthetic planning worksheet' | Not covered | FR-V12-G-034 | Matched |
 | G-PW-0282…0286 | W35 | Form field | 5 | 'Jurisdiction' [select-one, options: India (DPDP Act 2023) \| European ; 'Request type' [select-one, options: Access \| Correction or completion; 'Email address' [email, required]; 'Details (optional, max 2,000 characters)' [textarea]; 'I understand my identity will be verified before the request is fulfi | Not covered | FR-V12-G-075 | Matched |
 | G-PW-0287…0287 | W35 | Action | 1 | 'Submit request' | Not covered | FR-V12-G-075 | Matched |
-| G-PW-0291…0292 | W38 | Table | 2 | [Programme / Status / Target phase] rows=8; [Topic / Approach] rows=4 | Not covered | FR-V12-G-076 | Matched |
+| G-PW-0291…0301 | W38 | Table | 3 | [Programme / Status / Target phase] rows=8; [Topic / Approach] rows=4; W38 certification programme targets (SOC 2 Type I R2, Type II R3, ISO | Not covered | FR-V12-G-076 | Matched |
 | G-PW-0295…0296 | W40 | Table | 2 | [Component / Status (synthetic) / 90-day availability] rows=7; [Severity / First update / Update cadence] rows=3 | Not covered | FR-V12-G-078 | Matched |
 | G-PW-0298…0298 | W41 | Table | 1 | [Document / Purpose / Status] rows=8 | Not covered | FR-V12-G-037 | Matched |
 | G-PA-0100…0161 | A089 | Form field | 62 | 'Explicit demo membership switch' [select-one, 5 options]; 'Tenant' [select-one, 2 options]; 'Business division' [select-one, 2 options]; 'Brand' [select-one, 2 options]; 'Product / service / programme' [select-one, 3 options]; 'Target market' [select-one, 3 options]; 'Target country' [select-one, 3 options]; 'State / region' [select-one, 2 options]; 'Channel account' [select-one, 14 options]; 'Industry' [select-one, 2 options]; 'Customer type' [select-one, 2 options]; 'Target segment' [select-one, 2 options]; 'Campaign' [select-one, 5 options]; 'Opportunity type' [select-one, 4 options]; 'Employee' [select-one, 4 options]; 'Team' [select-one, 3 options]; 'Risk / priority' [select-one, 4 options]; 'Authority level' [select-one, 3 options]; 'Demo membership (switch fictional persona)' [select-one, 5 options]; 'Action role' [select-one, 3 options]; 'Company / tenant' [select-one, 1 options | Not covered | FR-V12-G-091 | Matched |

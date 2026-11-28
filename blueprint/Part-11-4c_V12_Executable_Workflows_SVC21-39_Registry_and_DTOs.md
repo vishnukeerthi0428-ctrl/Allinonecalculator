@@ -1,3 +1,20 @@
+# AI Growth Engine: Employee Sales & Marketing Automation
+## Application Blueprint: PART 11 (Batch 11.4c), V12 Executable Workflows: Specifications SM-SVC-21…30
+
+| Field | Value |
+|---|---|
+| Document | Part 11, Batch 4c of 4: executable specifications of the 40 workflows of SM-SVC-21…30 (128 steps) |
+| Version | 1.0 · 28 Nov 2026 |
+| Baseline | Part 11.4b common contract (registry, DTO v2/v3, executor contracts, envelope v2, triggers, state model v2, scheduler, authority mapping); Part 9.4 catalogue; Parts 2.2, 9.7–9.9 workflow definitions |
+| V12 sources | BRD ch09; FSD ch12 entries lines 9,111–12,749; FSD ch13 mapping rows; App. B schemas; workbook rows (generated from `assembly/v12/d_workflows.json` by `d_generate.py`, no retyping) |
+| Roles applied | Principal Workflow/BPM Architect, Principal Engineer, QA Architect, Security/AI-Governance Lead, FinOps Lead |
+
+## 11.4.5 Enhancements (part 2 of 3): workflow specifications
+
+**How to read a workflow card.** The upper table gives the V12 contract and its blueprint binding; the step table binds each V12 STEP ID to an NT13 node type (Part 7.4b), a handler (agent, automation or module service), its output contract (Part 11.4b §11.4.5.4–5), the failure route to a run state (§11.4.5.7), the model tier and its after-status. Rows marked "Pending Founder decision" are specified and shipped **disabled** (`implementation_status = disabled_pending_founder`); the PDP denies them with `FOUNDER_DECISION_PENDING` until the Founder decides (§11.4.6). Model-cost estimates use Part 7.3 prices (Haiku 5.5 \$0.10/\$0.50, Sonnet 5.5 \$2.00/\$10.00 per million input/output tokens; 1,500/400 tokens per Tier 1a call and 3,000/800 per Tier 1b call; FX ₹90/USD); **verify at time of implementation (as of 27 Nov 2026)**. V12 illustrative costs are quoted literally and exclude provider, retry and labour costs (GAP-831).
+
+**Common to every card (not repeated).** Preconditions and failure handling follow D-F12-030/031 and §11.4b.5; idempotency key, timeouts and retries follow §11.4.5.5.3; every effect is an NT13-13 step through the outbox with the PDP dispatch recheck; simulation creates zero external effects; Tier 2 free models are not eligible for any step in this batch.
+
 ### 11.4.5.10 SM-SVC-21 Payment, Invoice & Reconciliation Automation
 
 | Field | Specification |
@@ -6,13 +23,14 @@
 | Channels / providers | Private financial workspace; Authorized accounting/bank/payment connection or statement import; no autonomous money transfer |
 | Optional producers / complementary | Included foundation; no mandatory upstream paid service; optional input producers: SM-SVC-20; authorized equivalent input accepted. |
 | Service KPI | Duplicate allocations = 0; reconciled payment or exception 100% |
+| Usage limit (pilot, not approved) | Illustrative pilot: 500 invoice or receipt record(s)/month; 1 concurrent run; configurable hard budget, provider quota and frequency limits. Not approved. |
 | Availability / bundle | Full suite / Sales Conversion & Operations bundle / selective (1 SKU); entitlement and usage approval required. |
 | Interoperability / readiness | Optional authorized connector; external agent access disabled unless explicitly granted; Proposed; test and validate customer demand, provider access and economics |
 | Open-source stack | Python; Django REST Framework; PostgreSQL; Celery / Beat; Valkey; decimal arithmetic and atomic PostgreSQL transactions |
 | Blueprint epic / module | EP-15 (ASSUMPTION-826) / `commerce.payments` |
 | Effect adapter | none (record/verify only, DEC-064) |
 | Service guardrail | Money movement stays unsupported (DEC-064): the service records and verifies; it never transfers, refunds or settles. |
-| Functional requirement | FR-V12-D-121 (§11.4.5.29 register) |
+| Functional requirement | FR-V12-D-121 (§11.4.5.30 register) |
 
 **DTO `urn:sm:dto:SM-SVC-21-WF0n:v2` (one schema shared by the four workflows; v3 projection per workflow below):**
 
@@ -21,7 +39,7 @@
 | in | `invoice_ref` | string format=uuid | UUID / scoped external reference; input, validate authorized scope | com_invoice.id (ENT-140) |
 | in | `payment_ref` | string format=uuid | UUID / scoped external reference; input, validate authorized scope | com_payment.id (ENT-142) |
 | in | `amount_minor` | integer minimum=0 | int64, nonnegative except signed ledger deltas; input, validate author | com_payment.amount numeric(18,4) ↔ int64 minor (RECOMMENDATION-829) |
-| in | `currency` | string pattern=^[A-Z]{3}$ | ISO 4217 code; input, validate authorized scope | char(3) ISO 4217 (DEC-027) |
+| in | `currency` | string pattern=^[A-Z]{3}\$ | ISO 4217 code; input, validate authorized scope | char(3) ISO 4217 (DEC-027) |
 | out | `allocation_ref` | string format=uuid | UUID / scoped external reference; output, validate schema and evidence | com_payment_allocation.id (Part 3.3 allocation rows) |
 | out | `balance_minor` | integer minimum=0 | int64, nonnegative except signed ledger deltas; output, validate schem | derived: invoice total − Σ allocations |
 | out | `discrepancy_refs` | array maxItems=500 | array (typed references or structured items); output, validate schema  | aut_artifact items (domain receivable) |
@@ -47,7 +65,6 @@
 | Workflow KPI | reference match precision; duplicate receipt count; baseline and threshold approved in pilot; source service KPI Duplicate allocations = 0; reconciled payment or exception 100% |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 1, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.15/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.00/run for 0 agent step(s) at Tier 1a (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 500 invoice or receipt record(s)/month; 1 concurrent run; configurable hard budget, provider quota and frequency limits. Not approved. |
 | Data modalities / version | Text; structured records; audio/image/video where applicable and authorized; documents; service 2.0-target, workflow 2.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-21-WF01-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY,APPROVAL,EFFECT} → TC-V12-D-101…110; SM-SVC-21-WF01-AT01 → TC-V12-D-111 |
 | Release proposal | R1 (W4) alignment |
@@ -78,7 +95,6 @@
 | Workflow KPI | allocation balance accuracy; over-allocation rejection; baseline and threshold approved in pilot; source service KPI Duplicate allocations = 0; reconciled payment or exception 100% |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 1, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.15/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.03/run for 1 agent step(s) at Tier 1a (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 500 invoice or receipt record(s)/month; 1 concurrent run; configurable hard budget, provider quota and frequency limits. Not approved. |
 | Data modalities / version | Text; structured records; service 2.0-target, workflow 2.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-21-WF02-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY,APPROVAL,EFFECT} → TC-V12-D-101…110; SM-SVC-21-WF02-AT01 → TC-V12-D-111 |
 | Release proposal | R1 (W4) alignment |
@@ -110,7 +126,6 @@
 | Workflow KPI | exception completeness; verified ledger coverage; baseline and threshold approved in pilot; source service KPI Duplicate allocations = 0; reconciled payment or exception 100% |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 1, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.55/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.03/run for 1 agent step(s) at Tier 1a (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 500 invoice or receipt record(s)/month; 1 concurrent run; configurable hard budget, provider quota and frequency limits. Not approved. |
 | Data modalities / version | Text; structured records; service 2.0-target, workflow 2.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-21-WF03-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-21-WF03-AT01 → TC-V12-D-111 |
 | Release proposal | R1 (W4) alignment |
@@ -141,7 +156,6 @@
 | Workflow KPI | overdue exposure accuracy; anomaly precision; baseline and threshold approved in pilot; source service KPI Duplicate allocations = 0; reconciled payment or exception 100% |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 2, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.55/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.06/run for 2 agent step(s) at Tier 1a (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 500 invoice or receipt record(s)/month; 1 concurrent run; configurable hard budget, provider quota and frequency limits. Not approved. |
 | Data modalities / version | Text; structured records; service 1.0-target, workflow 1.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-21-WF04-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-21-WF04-AT01 → TC-V12-D-111 |
 | Release proposal | R2 (W5) |
@@ -161,13 +175,14 @@
 | Channels / providers | Private workspace, eligible client notifications; Client systems or manual milestone evidence; no sensitive health data by default |
 | Optional producers / complementary | Included foundation; no mandatory upstream paid service; optional input producers: SM-SVC-18; SM-SVC-20; authorized equivalent input accepted. |
 | Service KPI | Required readiness gates 100%; overdue escalation ≥99% |
+| Usage limit (pilot, not approved) | Illustrative pilot: 100 onboarding case(s)/month; 1 concurrent run; configurable hard budget, provider quota and frequency limits. Not approved. |
 | Availability / bundle | Full suite / Lifecycle & Business Intelligence bundle / selective (1 SKU); entitlement and usage approval required. |
 | Interoperability / readiness | Optional authorized connector; external agent access disabled unless explicitly granted; Proposed; test and validate customer demand, provider access and economics |
 | Open-source stack | Python; Django REST Framework; PostgreSQL; Celery / Beat; Valkey |
 | Blueprint epic / module | EP-16 (ASSUMPTION-826) / `lifecycle.onboarding` |
 | Effect adapter | ADP-EMAIL (SES) via outbox |
 | Service guardrail | MedMaarg institutional pilots carry no patient data (BR-S002, DEC-030 analogue for health). |
-| Functional requirement | FR-V12-D-122 (§11.4.5.29 register) |
+| Functional requirement | FR-V12-D-122 (§11.4.5.30 register) |
 
 **DTO `urn:sm:dto:SM-SVC-22-WF0n:v2` (one schema shared by the four workflows; v3 projection per workflow below):**
 
@@ -202,7 +217,6 @@
 | Workflow KPI | dependency coverage; task owner completeness; baseline and threshold approved in pilot; source service KPI Required readiness gates 100%; overdue escalation ≥99% |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 1, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.75/invocation (excludes provider, retry, labour). Blueprint model estimate ₹1.29/run for 2 agent step(s) at Tier 1a (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 100 onboarding case(s)/month; 1 concurrent run; configurable hard budget, provider quota and frequency limits. Not approved. |
 | Data modalities / version | Text; structured records; service 2.0-target, workflow 2.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-22-WF01-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-22-WF01-AT01 → TC-V12-D-111 |
 | Release proposal | R2 (W5) alignment |
@@ -233,7 +247,6 @@
 | Workflow KPI | readiness evidence coverage; unsafe activation count; baseline and threshold approved in pilot; source service KPI Required readiness gates 100%; overdue escalation ≥99% |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 1, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.97/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.03/run for 1 agent step(s) at Tier 1a (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 100 onboarding case(s)/month; 1 concurrent run; configurable hard budget, provider quota and frequency limits. Not approved. |
 | Data modalities / version | Text; structured records; service 2.0-target, workflow 2.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-22-WF02-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-22-WF02-AT01 → TC-V12-D-111 |
 | Release proposal | R2 (W5) alignment |
@@ -264,7 +277,6 @@
 | Workflow KPI | milestone acceptance accuracy; escalation latency; baseline and threshold approved in pilot; source service KPI Required readiness gates 100%; overdue escalation ≥99% |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 1, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.15/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.00/run for 0 agent step(s) at Tier 1a (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 100 onboarding case(s)/month; 1 concurrent run; configurable hard budget, provider quota and frequency limits. Not approved. |
 | Data modalities / version | Text; structured records; service 2.0-target, workflow 2.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-22-WF03-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY,APPROVAL,EFFECT} → TC-V12-D-101…110; SM-SVC-22-WF03-AT01 → TC-V12-D-111 |
 | Release proposal | R2 (W5) alignment |
@@ -296,7 +308,6 @@
 | Workflow KPI | blocker recall; due-date change audit coverage; baseline and threshold approved in pilot; source service KPI Required readiness gates 100%; overdue escalation ≥99% |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 2, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.55/invocation (excludes provider, retry, labour). Blueprint model estimate ₹1.26/run for 1 agent step(s) at Tier 1a (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 100 onboarding case(s)/month; 1 concurrent run; configurable hard budget, provider quota and frequency limits. Not approved. |
 | Data modalities / version | Text; structured records; service 1.0-target, workflow 1.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-22-WF04-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-22-WF04-AT01 → TC-V12-D-111 |
 | Release proposal | W6 / A1 |
@@ -316,13 +327,14 @@
 | Channels / providers | Email, WhatsApp where eligible, private tasks; Authorized communication provider or manual follow-up; customer feedback source |
 | Optional producers / complementary | Included foundation; no mandatory upstream paid service; optional input producers: SM-SVC-22; SM-SVC-05; authorized equivalent input accepted. |
 | Service KPI | Applicable consent/stop checks 100%; renewal reminders ≥99% |
+| Usage limit (pilot, not approved) | Illustrative pilot: 500 customer review(s)/month; 1 concurrent run; configurable hard budget, provider quota and frequency limits. Not approved. |
 | Availability / bundle | Full suite / Lifecycle & Business Intelligence bundle / selective (1 SKU); entitlement and usage approval required. |
 | Interoperability / readiness | Optional authorized connector; external agent access disabled unless explicitly granted; Proposed; test and validate customer demand, provider access and economics |
 | Open-source stack | Python; Django REST Framework; PostgreSQL; Celery / Beat; Valkey |
 | Blueprint epic / module | EP-16 (ASSUMPTION-826) / `lifecycle.retention` |
 | Effect adapter | ADP-EMAIL / ADP-WA via outbox |
 | Service guardrail | Renewal reminders tighten from DEC-064 "up to L3" to V12 R2 "L2 exact approved effect" (stricter wins). |
-| Functional requirement | FR-V12-D-123 (§11.4.5.29 register) |
+| Functional requirement | FR-V12-D-123 (§11.4.5.30 register) |
 
 **DTO `urn:sm:dto:SM-SVC-23-WF0n:v2` (one schema shared by the four workflows; v3 projection per workflow below):**
 
@@ -333,7 +345,7 @@
 | in | `feedback_refs` | array maxItems=500 | array (typed references or structured items); input, validate authoriz | lcy_feedback.id[] (ENT-157) |
 | in | `consent_ref` | string format=uuid | UUID / scoped external reference; input, validate authorized scope | gov_consent.id (ENT-027) |
 | out | `renewal_task_ref` | string format=uuid | UUID / scoped external reference; output, validate schema and evidence | lcy_task.id |
-| out | `risk_score` | string pattern=^-?\d{1,14}(\.\d{1,4})?$ | decimal; unit and bounds defined by metric policy; output, validate sc | numeric(5,2) 0–100 (V12 string: GAP-824) |
+| out | `risk_score` | string pattern=^-?\d{1,14}(\.\d{1,4})?\$ | decimal; unit and bounds defined by metric policy; output, validate sc | enum band from registry `risk_score` (v3 adds numeric `risk_value` 0–1, GAP-824) |
 | out | `reason_codes` | array maxItems=50 | array of configured reason codes (reason-code registry); output, valid | text[] from versioned reason registry |
 | out | `recommendation_ref` | string format=uuid | UUID / scoped external reference; output, validate schema and evidence | aut_artifact (domain recommendation) |
 
@@ -357,7 +369,6 @@
 | Workflow KPI | renewal date accuracy; duplicate reminders; baseline and threshold approved in pilot; source service KPI Applicable consent/stop checks 100%; renewal reminders ≥99% |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 1, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.15/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.03/run for 1 agent step(s) at Tier 1a (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 500 customer review(s)/month; 1 concurrent run; configurable hard budget, provider quota and frequency limits. Not approved. |
 | Data modalities / version | Text; structured records; service 2.0-target, workflow 2.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-23-WF01-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY,APPROVAL,EFFECT} → TC-V12-D-101…110; SM-SVC-23-WF01-AT01 → TC-V12-D-111 |
 | Release proposal | R2 (W5) alignment |
@@ -389,7 +400,6 @@
 | Workflow KPI | theme classification accuracy; issue routing rate; baseline and threshold approved in pilot; source service KPI Applicable consent/stop checks 100%; renewal reminders ≥99% |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 1, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.87/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.09/run for 3 agent step(s) at Tier 1a (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 500 customer review(s)/month; 1 concurrent run; configurable hard budget, provider quota and frequency limits. Not approved. |
 | Data modalities / version | Text; structured records; service 2.0-target, workflow 2.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-23-WF02-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-23-WF02-AT01 → TC-V12-D-111 |
 | Release proposal | R2 (W5) alignment |
@@ -420,7 +430,6 @@
 | Workflow KPI | eligible recommendation rate; unsupported offer count; baseline and threshold approved in pilot; source service KPI Applicable consent/stop checks 100%; renewal reminders ≥99% |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 1, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.75/invocation (excludes provider, retry, labour). Blueprint model estimate ₹1.29/run for 2 agent step(s) at Tier 1a (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 500 customer review(s)/month; 1 concurrent run; configurable hard budget, provider quota and frequency limits. Not approved. |
 | Data modalities / version | Text; structured records; service 2.0-target, workflow 2.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-23-WF03-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-23-WF03-AT01 → TC-V12-D-111 |
 | Release proposal | R2 (W5) alignment |
@@ -451,7 +460,6 @@
 | Workflow KPI | churn calibration; expansion precision; baseline and threshold approved in pilot; source service KPI Applicable consent/stop checks 100%; renewal reminders ≥99% |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 2, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.55/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.03/run for 1 agent step(s) at Tier 1a (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 500 customer review(s)/month; 1 concurrent run; configurable hard budget, provider quota and frequency limits. Not approved. |
 | Data modalities / version | Text; structured records; service 1.0-target, workflow 1.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-23-WF04-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-23-WF04-AT01 → TC-V12-D-111 |
 | Release proposal | A1 |
@@ -470,13 +478,14 @@
 | Channels / providers | Private dashboard, internal reports; Authorized accounting and campaign data or imports; transparent model assumptions |
 | Optional producers / complementary | Included foundation; no mandatory upstream paid service; optional input producers: SM-SVC-05; SM-SVC-14; SM-SVC-21; authorized equivalent input accepted. |
 | Service KPI | Revenue reconciliation 100% or explicit exception; forecast error tracked |
+| Usage limit (pilot, not approved) | Illustrative pilot: 100 analytics review(s)/month; 1 concurrent run; configurable hard budget, provider quota and frequency limits. Not approved. |
 | Availability / bundle | Full suite / Lifecycle & Business Intelligence bundle / selective (1 SKU); entitlement and usage approval required. |
 | Interoperability / readiness | Optional authorized connector; external agent access disabled unless explicitly granted; Proposed; test and validate customer demand, provider access and economics |
 | Open-source stack | Python; Django REST Framework; PostgreSQL; Celery / Beat; Valkey |
 | Blueprint epic / module | EP-17 (ASSUMPTION-826) / `analytics.revenue` |
 | Effect adapter | none |
 | Service guardrail | Forecasts are labelled estimates and never mixed with actuals (DEC-391); default attribution stays last non-direct (DEC-397). |
-| Functional requirement | FR-V12-D-124 (§11.4.5.29 register) |
+| Functional requirement | FR-V12-D-124 (§11.4.5.30 register) |
 
 **DTO `urn:sm:dto:SM-SVC-24-WF0n:v2` (one schema shared by the four workflows; v3 projection per workflow below):**
 
@@ -489,8 +498,8 @@
 | out | `report_ref` | string format=uuid | UUID / scoped external reference; output, validate schema and evidence | ana_metric_snapshot / aut_artifact report |
 | out | `attributed_minor` | integer minimum=0 | int64, nonnegative except signed ledger deltas; output, validate schem | numeric(18,4) ↔ int64 minor |
 | out | `forecast_minor` | integer minimum=0 | int64, nonnegative except signed ledger deltas; output, validate schem | ana_forecast amount ↔ int64 minor (label: estimate) |
-| out | `error_metric` | string pattern=^-?\d{1,14}(\.\d{1,4})?$ | decimal; unit and bounds defined by metric policy; output, validate sc | numeric MAPE (KPI-29) (V12 string: GAP-824) |
-| out | `confidence` | string pattern=^-?\d{1,14}(\.\d{1,4})?$ | decimal; unit and bounds defined by metric policy; output, validate sc | numeric 0–1 + interval (V12 string: GAP-824) |
+| out | `error_metric` | string pattern=^-?\d{1,14}(\.\d{1,4})?\$ | decimal; unit and bounds defined by metric policy; output, validate sc | enum metric name (e.g. MAPE, KPI-29) (v3 adds numeric `error_value`) |
+| out | `confidence` | string pattern=^-?\d{1,14}(\.\d{1,4})?\$ | decimal; unit and bounds defined by metric policy; output, validate sc | enum band (v3 adds numeric `confidence_value` 0–1) |
 
 #### SM-SVC-24-WF01 Revenue and attribution calculation
 
@@ -512,7 +521,6 @@
 | Workflow KPI | attribution reconciliation; unmatched outcome rate; baseline and threshold approved in pilot; source service KPI Revenue reconciliation 100% or explicit exception; forecast error tracked |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 1, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.15/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.00/run for 0 agent step(s) at Tier 1b (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 100 analytics review(s)/month; 1 concurrent run; configurable hard budget, provider quota and frequency limits. Not approved. |
 | Data modalities / version | Text; structured records; service 2.0-target, workflow 2.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-24-WF01-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-24-WF01-AT01 → TC-V12-D-111 |
 | Release proposal | R2 (W5) alignment |
@@ -543,7 +551,6 @@
 | Workflow KPI | forecast arithmetic accuracy; assumption coverage; baseline and threshold approved in pilot; source service KPI Revenue reconciliation 100% or explicit exception; forecast error tracked |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 1, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.51/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.00/run for 0 agent step(s) at Tier 1b (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 100 analytics review(s)/month; 1 concurrent run; configurable hard budget, provider quota and frequency limits. Not approved. |
 | Data modalities / version | Text; structured records; service 2.0-target, workflow 2.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-24-WF02-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-24-WF02-AT01 → TC-V12-D-111 |
 | Release proposal | R2 (W5) alignment |
@@ -574,7 +581,6 @@
 | Workflow KPI | baseline coverage; improvement measurement rate; baseline and threshold approved in pilot; source service KPI Revenue reconciliation 100% or explicit exception; forecast error tracked |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 1, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹1.01/invocation (excludes provider, retry, labour). Blueprint model estimate ₹2.52/run for 2 agent step(s) at Tier 1b (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 100 analytics review(s)/month; 1 concurrent run; configurable hard budget, provider quota and frequency limits. Not approved. |
 | Data modalities / version | Text; structured records; service 2.0-target, workflow 2.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-24-WF03-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-24-WF03-AT01 → TC-V12-D-111 |
 | Release proposal | R2 (W5) alignment |
@@ -606,7 +612,6 @@
 | Workflow KPI | backtest error; interval coverage; baseline and threshold approved in pilot; source service KPI Revenue reconciliation 100% or explicit exception; forecast error tracked |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 2, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹1.05/invocation (excludes provider, retry, labour). Blueprint model estimate ₹1.26/run for 1 agent step(s) at Tier 1b (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 100 analytics review(s)/month; 1 concurrent run; configurable hard budget, provider quota and frequency limits. Not approved. |
 | Data modalities / version | Text; structured records; service 1.0-target, workflow 1.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-24-WF04-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-24-WF04-AT01 → TC-V12-D-111 |
 | Release proposal | A1 |
@@ -626,13 +631,14 @@
 | Channels / providers | Private workspace, authorized document exchange; Secure file storage and permitted document processing; optional OCR if needed |
 | Optional producers / complementary | Included foundation; no mandatory upstream paid service; optional input producers: None; authorized equivalent input accepted. |
 | Service KPI | Evidence grounding ≥95%; unauthorized retrieval = 0 |
+| Usage limit (pilot, not approved) | Illustrative pilot: 200 document processed(s)/month; 1 concurrent run; configurable hard budget, provider quota and frequency limits. Not approved. |
 | Availability / bundle | Full suite / Lifecycle & Business Intelligence bundle / selective (1 SKU); entitlement and usage approval required. |
 | Interoperability / readiness | Optional authorized connector; external agent access disabled unless explicitly granted; Proposed; test and validate customer demand, provider access and economics |
 | Open-source stack | Python; Django REST Framework; PostgreSQL; Celery / Beat; Valkey; pgvector if needed; approved extraction libraries |
 | Blueprint epic / module | EP-02 (ASSUMPTION-826) / `catalog.knowledge` |
 | Effect adapter | none |
 | Service guardrail | All knowledge edits go through the M03 approval pipeline; no cross-client retrieval (RLS + per-startup index). |
-| Functional requirement | FR-V12-D-125 (§11.4.5.29 register) |
+| Functional requirement | FR-V12-D-125 (§11.4.5.30 register) |
 
 **DTO `urn:sm:dto:SM-SVC-25-WF0n:v2` (one schema shared by the four workflows; v3 projection per workflow below):**
 
@@ -667,7 +673,6 @@
 | Workflow KPI | classification accuracy; unsafe file rejection; baseline and threshold approved in pilot; source service KPI Evidence grounding ≥95%; unauthorized retrieval = 0 |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 1, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹1.13/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.03/run for 1 agent step(s) at Tier 1b (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 200 document processed(s)/month; 1 concurrent run; configurable hard budget, provider quota and frequency limits. Not approved. |
 | Data modalities / version | Text; structured records; documents; service 2.0-target, workflow 2.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-25-WF01-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-25-WF01-AT01 → TC-V12-D-111 |
 | Release proposal | R1 (W0) alignment |
@@ -699,7 +704,6 @@
 | Workflow KPI | claim provenance coverage; stale index rate; baseline and threshold approved in pilot; source service KPI Evidence grounding ≥95%; unauthorized retrieval = 0 |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 1, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹1.35/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.00/run for 0 agent step(s) at Tier 1b (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 200 document processed(s)/month; 1 concurrent run; configurable hard budget, provider quota and frequency limits. Not approved. |
 | Data modalities / version | Text; structured records; service 2.0-target, workflow 2.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-25-WF02-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-25-WF02-AT01 → TC-V12-D-111 |
 | Release proposal | R1 alignment |
@@ -731,7 +735,6 @@
 | Workflow KPI | document fact accuracy; expiry task accuracy; baseline and threshold approved in pilot; source service KPI Evidence grounding ≥95%; unauthorized retrieval = 0 |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 1, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹1.27/invocation (excludes provider, retry, labour). Blueprint model estimate ₹2.52/run for 2 agent step(s) at Tier 1b (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 200 document processed(s)/month; 1 concurrent run; configurable hard budget, provider quota and frequency limits. Not approved. |
 | Data modalities / version | Text; structured records; documents; service 2.0-target, workflow 2.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-25-WF03-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-25-WF03-AT01 → TC-V12-D-111 |
 | Release proposal | R2 alignment |
@@ -763,7 +766,6 @@
 | Workflow KPI | contradiction recall; stale claim hold rate; baseline and threshold approved in pilot; source service KPI Evidence grounding ≥95%; unauthorized retrieval = 0 |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 2, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.55/invocation (excludes provider, retry, labour). Blueprint model estimate ₹1.26/run for 1 agent step(s) at Tier 1b (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 200 document processed(s)/month; 1 concurrent run; configurable hard budget, provider quota and frequency limits. Not approved. |
 | Data modalities / version | Text; structured records; service 1.0-target, workflow 1.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-25-WF04-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-25-WF04-AT01 → TC-V12-D-111 |
 | Release proposal | A1 |
@@ -783,13 +785,14 @@
 | Channels / providers | Private Admin; approved client data and connectors; voice/telephony; Authorized telephony, speech recognition and synthesis; calling/recording permission |
 | Optional producers / complementary | Included foundation; no mandatory upstream paid service; optional input producers: SM-SVC-07; SM-SVC-09; SM-SVC-10; authorized equivalent input accepted. |
 | Service KPI | Consent and disclosure checks 100%; unauthorized calls = 0 |
+| Usage limit (pilot, not approved) | Illustrative pilot: 100 Call minute(s)/month; 1 concurrent run; approved caps, provider quotas and hard budget required. |
 | Availability / bundle | Full / Outreach & Conversations / selective (1 SKU); eligible inputs and approvals required. |
 | Interoperability / readiness | Optional authorized connector; external agent access disabled unless explicitly granted; Provider, jurisdiction and specialist approval required before live operation |
 | Open-source stack | Python; Django REST Framework; PostgreSQL; Celery/Beat; Valkey; pgvector if needed; specialist library/provider review pending |
 | Blueprint epic / module | EP-08 (ASSUMPTION-826) / `engagement.voice` |
 | Effect adapter | ADP-VOICE (telephony/CPaaS, not procured) |
 | Service guardrail | Blocked by DEC-387 (voice deferred), DEC-218/DEC-386 (no recordings or transcripts) and DEC-392 (human-dialled calls only). |
-| Functional requirement | FR-V12-D-126 (§11.4.5.29 register) |
+| Functional requirement | FR-V12-D-126 (§11.4.5.30 register) |
 
 **DTO `urn:sm:dto:SM-SVC-26-WF0n:v2` (one schema shared by the four workflows; v3 projection per workflow below):**
 
@@ -824,7 +827,6 @@
 | Workflow KPI | routing accuracy; disclosure compliance; baseline and threshold approved in pilot; source service KPI Consent and disclosure checks 100%; unauthorized calls = 0 |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 2, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.55/invocation (excludes provider, retry, labour). Blueprint model estimate ₹1.29/run for 2 agent step(s) at Tier 1b (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 100 Call minute(s)/month; 1 concurrent run; approved caps, provider quotas and hard budget required. |
 | Data modalities / version | Text; structured records; audio/image/video where applicable and authorized; service 1.0-target, workflow 1.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-26-WF01-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY,APPROVAL,EFFECT} → TC-V12-D-101…110; SM-SVC-26-WF01-AT01 → TC-V12-D-111 |
 | Release proposal | Spec only (Founder) |
@@ -855,7 +857,6 @@
 | Workflow KPI | unauthorized call count; call outcome reconciliation; baseline and threshold approved in pilot; source service KPI Consent and disclosure checks 100%; unauthorized calls = 0 |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 2, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.55/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.00/run for 0 agent step(s) at Tier 1b (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 100 Call minute(s)/month; 1 concurrent run; approved caps, provider quotas and hard budget required. |
 | Data modalities / version | Text; structured records; audio/image/video where applicable and authorized; service 1.0-target, workflow 1.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-26-WF02-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY,APPROVAL,EFFECT} → TC-V12-D-101…110; SM-SVC-26-WF02-AT01 → TC-V12-D-111 |
 | Release proposal | Spec only (Founder) |
@@ -886,7 +887,6 @@
 | Workflow KPI | language accuracy; booking confirmation rate; baseline and threshold approved in pilot; source service KPI Consent and disclosure checks 100%; unauthorized calls = 0 |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 2, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.55/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.00/run for 0 agent step(s) at Tier 1b (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 100 Call minute(s)/month; 1 concurrent run; approved caps, provider quotas and hard budget required. |
 | Data modalities / version | Text; structured records; audio/image/video where applicable and authorized; service 1.0-target, workflow 1.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-26-WF03-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY,APPROVAL,EFFECT} → TC-V12-D-101…110; SM-SVC-26-WF03-AT01 → TC-V12-D-111 |
 | Release proposal | Spec only (Founder) |
@@ -917,7 +917,6 @@
 | Workflow KPI | redaction recall; CRM sync correctness; baseline and threshold approved in pilot; source service KPI Consent and disclosure checks 100%; unauthorized calls = 0 |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 2, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹1.05/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.00/run for 0 agent step(s) at Tier 1b (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 100 Call minute(s)/month; 1 concurrent run; approved caps, provider quotas and hard budget required. |
 | Data modalities / version | Text; structured records; audio/image/video where applicable and authorized; service 1.0-target, workflow 1.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-26-WF04-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-26-WF04-AT01 → TC-V12-D-111 |
 | Release proposal | Spec only (Founder) |
@@ -936,13 +935,14 @@
 | Channels / providers | Private Admin; approved client data and connectors; Authorized image/video/audio generation and asset rights |
 | Optional producers / complementary | Included foundation; no mandatory upstream paid service; optional input producers: SM-SVC-11; SM-SVC-12; SM-SVC-14; authorized equivalent input accepted. |
 | Service KPI | Asset rights and factual claim review 100% before publication |
+| Usage limit (pilot, not approved) | Illustrative pilot: 50 Creative asset(s)/month; 1 concurrent run; approved caps, provider quotas and hard budget required. |
 | Availability / bundle | Full / Digital Marketing & Acquisition / selective (1 SKU); eligible inputs and approvals required. |
 | Interoperability / readiness | Optional authorized connector; external agent access disabled unless explicitly granted; Provider, jurisdiction and specialist approval required before live operation |
 | Open-source stack | Python; Django REST Framework; PostgreSQL; Celery/Beat; Valkey; pgvector if needed; specialist library/provider review pending |
 | Blueprint epic / module | EP-11 (ASSUMPTION-826) / `marketing.creative` |
 | Effect adapter | ADP-MEDIA (generative media, not procured) |
 | Service guardrail | CI-061 excluded image generation for cost and likeness risk; V12 re-introduces it. |
-| Functional requirement | FR-V12-D-127 (§11.4.5.29 register) |
+| Functional requirement | FR-V12-D-127 (§11.4.5.30 register) |
 
 **DTO `urn:sm:dto:SM-SVC-27-WF0n:v2` (one schema shared by the four workflows; v3 projection per workflow below):**
 
@@ -977,7 +977,6 @@
 | Workflow KPI | brand compliance; rights evidence coverage; baseline and threshold approved in pilot; source service KPI Asset rights and factual claim review 100% before publication |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 2, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹1.05/invocation (excludes provider, retry, labour). Blueprint model estimate ₹2.52/run for 2 agent step(s) at Tier 1b (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 50 Creative asset(s)/month; 1 concurrent run; approved caps, provider quotas and hard budget required. |
 | Data modalities / version | Text; structured records; audio/image/video where applicable and authorized; service 1.0-target, workflow 1.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-27-WF01-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-27-WF01-AT01 → TC-V12-D-111 |
 | Release proposal | Spec only (Founder) |
@@ -1008,7 +1007,6 @@
 | Workflow KPI | factual depiction accuracy; storyboard adherence; baseline and threshold approved in pilot; source service KPI Asset rights and factual claim review 100% before publication |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 2, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹1.05/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.00/run for 0 agent step(s) at Tier 1b (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 50 Creative asset(s)/month; 1 concurrent run; approved caps, provider quotas and hard budget required. |
 | Data modalities / version | Text; structured records; audio/image/video where applicable and authorized; service 1.0-target, workflow 1.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-27-WF02-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-27-WF02-AT01 → TC-V12-D-111 |
 | Release proposal | Spec only (Founder) |
@@ -1039,7 +1037,6 @@
 | Workflow KPI | translation accuracy; caption sync quality; baseline and threshold approved in pilot; source service KPI Asset rights and factual claim review 100% before publication |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 2, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹1.05/invocation (excludes provider, retry, labour). Blueprint model estimate ₹1.26/run for 1 agent step(s) at Tier 1b (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 50 Creative asset(s)/month; 1 concurrent run; approved caps, provider quotas and hard budget required. |
 | Data modalities / version | Text; structured records; audio/image/video where applicable and authorized; service 1.0-target, workflow 1.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-27-WF03-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-27-WF03-AT01 → TC-V12-D-111 |
 | Release proposal | A2 text part; audio Spec only |
@@ -1070,7 +1067,6 @@
 | Workflow KPI | rights violation detection; claim validation recall; baseline and threshold approved in pilot; source service KPI Asset rights and factual claim review 100% before publication |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 2, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.55/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.03/run for 1 agent step(s) at Tier 1b (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 50 Creative asset(s)/month; 1 concurrent run; approved caps, provider quotas and hard budget required. |
 | Data modalities / version | Text; structured records; audio/image/video where applicable and authorized; service 1.0-target, workflow 1.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-27-WF04-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-27-WF04-AT01 → TC-V12-D-111 |
 | Release proposal | R1 alignment |
@@ -1089,13 +1085,14 @@
 | Channels / providers | Private Admin; approved client data and connectors; authorized agent-to-agent exchange; Supported agent protocols and authorized payment/commerce providers; verified mandates |
 | Optional producers / complementary | Included foundation; no mandatory upstream paid service; optional input producers: SM-SVC-15; SM-SVC-17; SM-SVC-18; SM-SVC-20; SM-SVC-21; authorized equivalent input accepted. |
 | Service KPI | Verified mandate and idempotency 100%; unauthorized transactions = 0 |
+| Usage limit (pilot, not approved) | Illustrative pilot: 50 Agent transaction case(s)/month; 1 concurrent run; approved caps, provider quotas and hard budget required. |
 | Availability / bundle | Full / Commerce & Procurement / selective (1 SKU); eligible inputs and approvals required. |
 | Interoperability / readiness | Protocol-agnostic agent/tool adapter; MCP/A2A or equivalent only after identity, scope, schema and provider validation; Design now; provider/protocol interoperability, security and mandate validation required before activation |
 | Open-source stack | Python; Django REST Framework; PostgreSQL; Celery/Beat; Valkey; pgvector if needed; specialist library/provider review pending |
 | Blueprint epic / module | EP-13 (ASSUMPTION-826) / `commerce.agentic` |
 | Effect adapter | ADP-AGENT (MCP/A2A gateway, not procured) |
 | Service guardrail | AI never signs, pays, submits or sets prices; external agents are untrusted callers (R18-equivalent) with scoped grants. |
-| Functional requirement | FR-V12-D-128 (§11.4.5.29 register) |
+| Functional requirement | FR-V12-D-128 (§11.4.5.30 register) |
 
 **DTO `urn:sm:dto:SM-SVC-28-WF0n:v2` (one schema shared by the four workflows; v3 projection per workflow below):**
 
@@ -1130,7 +1127,6 @@
 | Workflow KPI | catalog schema accuracy; unauthorized exposure count; baseline and threshold approved in pilot; source service KPI Verified mandate and idempotency 100%; unauthorized transactions = 0 |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 2, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.55/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.00/run for 0 agent step(s) at Tier 1a (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 50 Agent transaction case(s)/month; 1 concurrent run; approved caps, provider quotas and hard budget required. |
 | Data modalities / version | Text; structured records; service 1.0-target, workflow 1.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-28-WF01-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY,APPROVAL,EFFECT} → TC-V12-D-101…110; SM-SVC-28-WF01-AT01 → TC-V12-D-111 |
 | Release proposal | A2 |
@@ -1161,7 +1157,6 @@
 | Workflow KPI | mandate validation; quote scope accuracy; baseline and threshold approved in pilot; source service KPI Verified mandate and idempotency 100%; unauthorized transactions = 0 |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 2, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.55/invocation (excludes provider, retry, labour). Blueprint model estimate ₹1.26/run for 1 agent step(s) at Tier 1a (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 50 Agent transaction case(s)/month; 1 concurrent run; approved caps, provider quotas and hard budget required. |
 | Data modalities / version | Text; structured records; service 1.0-target, workflow 1.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-28-WF02-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY,APPROVAL,EFFECT} → TC-V12-D-101…110; SM-SVC-28-WF02-AT01 → TC-V12-D-111 |
 | Release proposal | A3 |
@@ -1192,7 +1187,6 @@
 | Workflow KPI | budget violation rejection; decision traceability; baseline and threshold approved in pilot; source service KPI Verified mandate and idempotency 100%; unauthorized transactions = 0 |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 2, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.55/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.03/run for 1 agent step(s) at Tier 1a (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 50 Agent transaction case(s)/month; 1 concurrent run; approved caps, provider quotas and hard budget required. |
 | Data modalities / version | Text; structured records; service 1.0-target, workflow 1.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-28-WF03-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY,APPROVAL,EFFECT} → TC-V12-D-101…110; SM-SVC-28-WF03-AT01 → TC-V12-D-111 |
 | Release proposal | Spec only (Founder) |
@@ -1223,7 +1217,6 @@
 | Workflow KPI | duplicate transaction count; reconciliation accuracy; baseline and threshold approved in pilot; source service KPI Verified mandate and idempotency 100%; unauthorized transactions = 0 |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 2, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.55/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.00/run for 0 agent step(s) at Tier 1a (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 50 Agent transaction case(s)/month; 1 concurrent run; approved caps, provider quotas and hard budget required. |
 | Data modalities / version | Text; structured records; service 1.0-target, workflow 1.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-28-WF04-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY,APPROVAL,EFFECT} → TC-V12-D-101…110; SM-SVC-28-WF04-AT01 → TC-V12-D-111 |
 | Release proposal | Spec only (Founder) |
@@ -1242,13 +1235,14 @@
 | Channels / providers | Private Admin; approved client data and connectors; Authorized CRM and professional/business data sources |
 | Optional producers / complementary | Included foundation; no mandatory upstream paid service; optional input producers: SM-SVC-02; SM-SVC-03; SM-SVC-04; SM-SVC-05; SM-SVC-08; authorized equivalent input accepted. |
 | Service KPI | Account and stakeholder evidence coverage ≥95%; unauthorized contacts = 0 |
+| Usage limit (pilot, not approved) | Illustrative pilot: 100 Account review(s)/month; 1 concurrent run; approved caps, provider quotas and hard budget required. |
 | Availability / bundle | Full / Research & Lead Intelligence / selective (1 SKU); eligible inputs and approvals required. |
 | Interoperability / readiness | Optional authorized connector; external agent access disabled unless explicitly granted; Proposed; test and validate customer demand, provider access and economics |
 | Open-source stack | Python; Django REST Framework; PostgreSQL; Celery/Beat; Valkey; pgvector if needed; specialist library/provider review pending |
 | Blueprint epic / module | EP-06 (ASSUMPTION-826) / `crm.accounts` |
 | Effect adapter | outbox to WF-27 cadence (AU-086) |
 | Service guardrail | Contact eligibility is never inferred from evidence (CJ-GL-02); LinkedIn and call steps stay human tasks (DEC-392). |
-| Functional requirement | FR-V12-D-129 (§11.4.5.29 register) |
+| Functional requirement | FR-V12-D-129 (§11.4.5.30 register) |
 
 **DTO `urn:sm:dto:SM-SVC-29-WF0n:v2` (one schema shared by the four workflows; v3 projection per workflow below):**
 
@@ -1283,7 +1277,6 @@
 | Workflow KPI | account fit precision; plan completeness; baseline and threshold approved in pilot; source service KPI Account and stakeholder evidence coverage ≥95%; unauthorized contacts = 0 |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 2, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.55/invocation (excludes provider, retry, labour). Blueprint model estimate ₹1.26/run for 1 agent step(s) at Tier 1b (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 100 Account review(s)/month; 1 concurrent run; approved caps, provider quotas and hard budget required. |
 | Data modalities / version | Text; structured records; service 1.0-target, workflow 1.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-29-WF01-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-29-WF01-AT01 → TC-V12-D-111 |
 | Release proposal | A1 |
@@ -1314,7 +1307,6 @@
 | Workflow KPI | role map accuracy; uncertain link flag rate; baseline and threshold approved in pilot; source service KPI Account and stakeholder evidence coverage ≥95%; unauthorized contacts = 0 |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 2, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.55/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.03/run for 1 agent step(s) at Tier 1b (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 100 Account review(s)/month; 1 concurrent run; approved caps, provider quotas and hard budget required. |
 | Data modalities / version | Text; structured records; service 1.0-target, workflow 1.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-29-WF02-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-29-WF02-AT01 → TC-V12-D-111 |
 | Release proposal | A1 |
@@ -1344,7 +1336,6 @@
 | Workflow KPI | consent compliance; journey conflict rate; baseline and threshold approved in pilot; source service KPI Account and stakeholder evidence coverage ≥95%; unauthorized contacts = 0 |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 2, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.55/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.00/run for 0 agent step(s) at Tier 1b (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 100 Account review(s)/month; 1 concurrent run; approved caps, provider quotas and hard budget required. |
 | Data modalities / version | Text; structured records; service 1.0-target, workflow 1.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-29-WF03-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY,APPROVAL,EFFECT} → TC-V12-D-101…110; SM-SVC-29-WF03-AT01 → TC-V12-D-111 |
 | Release proposal | A1 |
@@ -1374,7 +1365,6 @@
 | Workflow KPI | stalled opportunity recall; engagement coverage; baseline and threshold approved in pilot; source service KPI Account and stakeholder evidence coverage ≥95%; unauthorized contacts = 0 |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 2, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹1.05/invocation (excludes provider, retry, labour). Blueprint model estimate ₹2.52/run for 2 agent step(s) at Tier 1b (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 100 Account review(s)/month; 1 concurrent run; approved caps, provider quotas and hard budget required. |
 | Data modalities / version | Text; structured records; service 1.0-target, workflow 1.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-29-WF04-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-29-WF04-AT01 → TC-V12-D-111 |
 | Release proposal | A1 |
@@ -1393,13 +1383,14 @@
 | Channels / providers | Private Admin; approved client data and connectors; Authorized analytics, experiment platform and client site access |
 | Optional producers / complementary | Included foundation; no mandatory upstream paid service; optional input producers: SM-SVC-13; SM-SVC-14; SM-SVC-15; SM-SVC-24; authorized equivalent input accepted. |
 | Service KPI | Experiment allocation and budget checks 100%; report uncertainty |
+| Usage limit (pilot, not approved) | Illustrative pilot: 30 Experiment(s)/month; 1 concurrent run; approved caps, provider quotas and hard budget required. |
 | Availability / bundle | Full / Digital Marketing & Acquisition / selective (1 SKU); eligible inputs and approvals required. |
 | Interoperability / readiness | Optional authorized connector; external agent access disabled unless explicitly granted; Provider, jurisdiction and specialist approval required before live operation |
 | Open-source stack | Python; Django REST Framework; PostgreSQL; Celery/Beat; Valkey; pgvector if needed; specialist library/provider review pending |
 | Blueprint epic / module | EP-12 (ASSUMPTION-826) / `marketing.experiments` |
 | Effect adapter | ADP-WEB publication (AU-029) |
 | Service guardrail | Experiments are pre-registered (WF-20); offer arms may only use approved price-book revisions (DEC-395). |
-| Functional requirement | FR-V12-D-130 (§11.4.5.29 register) |
+| Functional requirement | FR-V12-D-130 (§11.4.5.30 register) |
 
 **DTO `urn:sm:dto:SM-SVC-30-WF0n:v2` (one schema shared by the four workflows; v3 projection per workflow below):**
 
@@ -1411,8 +1402,8 @@
 | in | `event_refs` | array maxItems=500 | array (typed references or structured items); input, validate authoriz | ops_domain_event.id[] (ENT-170) |
 | out | `experiment_ref` | string format=uuid | UUID / scoped external reference; output, validate schema and evidence | experiment registry id |
 | out | `allocation_ref` | string format=uuid | UUID / scoped external reference; output, validate schema and evidence | com_payment_allocation.id (Part 3.3 allocation rows) |
-| out | `lift` | string pattern=^-?\d{1,14}(\.\d{1,4})?$ | decimal; unit and bounds defined by metric policy; output, validate sc | numeric (V12 string: GAP-824) |
-| out | `interval` | object | object {lower, upper, confidence_level}; output, validate schema and e | object {low, high, level} |
+| out | `lift` | string pattern=^-?\d{1,14}(\.\d{1,4})?\$ | decimal; unit and bounds defined by metric policy; output, validate sc | decimal string ^-?\d{1,14}(\.\d{1,4})?\$ (ADR-030 compatible) |
+| out | `interval` | object | object {lower, upper, confidence_level}; output, validate schema and e | object {lower, upper, confidence_level 0–1} (v3 adds additionalProperties false) |
 | out | `decision_state` | string maxLength=64 | string / configured enum; length and allowed values in versioned schem | enum {running, stop_harm, inconclusive, ship, no_ship} |
 
 #### SM-SVC-30-WF01 Conversion funnel and abandonment analysis
@@ -1435,7 +1426,6 @@
 | Workflow KPI | event completeness; funnel arithmetic accuracy; baseline and threshold approved in pilot; source service KPI Experiment allocation and budget checks 100%; report uncertainty |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 2, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹1.05/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.00/run for 0 agent step(s) at Tier 1a (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 30 Experiment(s)/month; 1 concurrent run; approved caps, provider quotas and hard budget required. |
 | Data modalities / version | Text; structured records; service 1.0-target, workflow 1.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-30-WF01-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-30-WF01-AT01 → TC-V12-D-111 |
 | Release proposal | A2 |
@@ -1466,7 +1456,6 @@
 | Workflow KPI | assignment consistency; guardrail violations; baseline and threshold approved in pilot; source service KPI Experiment allocation and budget checks 100%; report uncertainty |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 2, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.55/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.00/run for 0 agent step(s) at Tier 1a (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 30 Experiment(s)/month; 1 concurrent run; approved caps, provider quotas and hard budget required. |
 | Data modalities / version | Text; structured records; service 1.0-target, workflow 1.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-30-WF02-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY,APPROVAL,EFFECT} → TC-V12-D-101…110; SM-SVC-30-WF02-AT01 → TC-V12-D-111 |
 | Release proposal | A2 |
@@ -1497,7 +1486,6 @@
 | Workflow KPI | eligible personalization rate; prohibited inference count; baseline and threshold approved in pilot; source service KPI Experiment allocation and budget checks 100%; report uncertainty |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 2, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.55/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.00/run for 0 agent step(s) at Tier 1a (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 30 Experiment(s)/month; 1 concurrent run; approved caps, provider quotas and hard budget required. |
 | Data modalities / version | Text; structured records; service 1.0-target, workflow 1.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-30-WF03-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY,APPROVAL,EFFECT} → TC-V12-D-101…110; SM-SVC-30-WF03-AT01 → TC-V12-D-111 |
 | Release proposal | A2 |
@@ -1528,7 +1516,6 @@
 | Workflow KPI | interval coverage; inconclusive result handling; baseline and threshold approved in pilot; source service KPI Experiment allocation and budget checks 100%; report uncertainty |
 | Preconditions / failure handling | Common contract (D-F12-030 variant 2, D-F12-031): §11.4b.5 |
 | Cost | V12 illustrative ₹0.55/invocation (excludes provider, retry, labour). Blueprint model estimate ₹0.03/run for 1 agent step(s) at Tier 1a (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data) |
-| Usage limit (pilot, not approved) | Illustrative pilot: 30 Experiment(s)/month; 1 concurrent run; approved caps, provider quotas and hard budget required. |
 | Data modalities / version | Text; structured records; service 1.0-target, workflow 1.0-target |
 | Acceptance (V12 → blueprint) | SM-SVC-30-WF04-TC-{POS,INPUT,SCOPE,ENT,DUP,QUALITY,BUDGET,RECOVERY} → TC-V12-D-101…108; SM-SVC-30-WF04-AT01 → TC-V12-D-111 |
 | Release proposal | A2 |
@@ -1537,3 +1524,20 @@
 |---|---|---|---|---|---|---|---|
 | SM-SVC-30-WF04-STEP-01 | Estimate lift and uncertainty | Rules/analytics engine → NT13-07 `logic.compute` | AU-065 registered function | calculation {value,unit,assumptions,evidence_refs} | INVALID_METRIC → HELD | Tier 0 / none | Matched |
 | SM-SVC-30-WF04-STEP-02 | flag inconclusive results | Domain agent → NT13-08 `ai.task` + NT13-10 `approval.human` | AG-052 via gateway; routed to R05L | candidate {artifact_ref,confidence,reason_codes,review_state} | REVIEW_REQUIRED → AWAITING_APPROVAL | Tier 1a | Matched |
+
+
+## Quality gate: Batch 11.4c
+
+| # | Check | Result | Notes and fixes applied |
+|---|---|---|---|
+| 1 | Every requirement traced to a source | Pass | Each card cites the FSD ch12 line range, App. B `$id` and workbook row; each step keeps its V12 STEP ID |
+| 2 | Assumptions, gaps, conflicts tagged and logged | Pass | CONFLICT-814/815/816/819, GAP-824/831, ASSUMPTION-826/827 referenced in cards |
+| 3 | IDs unique and consistent | Pass | Generated from parsed data; V12 IDs literal; blueprint IDs from Part 9.4 |
+| 4 | No story lacks AC and no requirement lacks a test | Pass | Every workflow maps its 8 or 10 V12 acceptance IDs to TC-V12-D-101…110 and its AT01 to TC-V12-D-111 |
+| 5 | Negative, edge, security, accessibility cases | Pass | Failure route per step; conflict steps disabled; R3 capped at L1 |
+| 6 | Agents have guardrail, fallback, KPI, cost | Pass | Reused agents keep their Part 7.2/9.7–9.9 cards; per-run model cost given per workflow |
+| 7 | Time-sensitive facts flagged | Pass | Model prices flagged "verify (as of 27 Nov 2026)" |
+| 8 | No restricted data to free tiers | Pass | Tier 2 not eligible in every card |
+| 9 | Consistent with earlier parts | Pass | DEC-064, DEC-383, DEC-387, DEC-391, DEC-395, DEC-397 respected |
+
+**Status: Part 11 Batch 11.4c complete. 40 workflows and 128 steps of SM-SVC-21…30 specified; 9 workflows of SVC-26/27/28 shipped disabled pending the Founder.**
