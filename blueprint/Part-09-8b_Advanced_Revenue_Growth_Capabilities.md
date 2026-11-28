@@ -1509,3 +1509,245 @@ Columns follow Part 2.6 §2.6.5.8. **P** priority (P0 blocks release). **Type**:
 
 **Coverage check:** 96 FRs × 1 matched TC = 96; 8 cross-cutting (TC-097…104) covering isolation (2), injection (1), Tier 2 (1), emergency stop (1), accessibility (2) and jurisdiction (1). By type: FUN 29, EDGE 6, NEG 28, CON 23, SEC 12, ISO 3, A11Y 3 (negative, consent, security, isolation and accessibility together = 69). P0 = 57, P1 = 31, P2 = 16.
 
+---
+
+## 9.8.11 New business KPIs (KPI-ADV-X2-01…20)
+
+These KPIs extend KPI-01…31 and KPI-ENH-A-01…05 and never reuse KPI-01…31 or OKPI-01…35 IDs. The `X2` infix keeps them distinct from any KPI-ADV IDs issued by the parallel X1/X3 workstreams [RECOMMENDATION-664]. Binding rules from Part 1 §1.4 apply: distinct records, numerator and denominator shown, as-of time, original currency, Unknown ≠ 0, estimates labelled. Targets are proposals to be confirmed after a baseline period [ASSUMPTION-663].
+
+| KPI | Name | Formula | Target (proposed) | Frequency | Owner | Data source |
+|---|---|---|---|---|---|---|
+| KPI-ADV-X2-01 | Target-account engagement | tier-1 and tier-2 TAL accounts with ≥ 1 meaningful engagement in 30 days ÷ tier-1 and tier-2 TAL accounts | Baseline in A1; +15 pp in 2 quarters | Weekly | Growth lead | RP-ADV-X2-01 |
+| KPI-ADV-X2-02 | Buying-committee coverage | Σ engaged required slots ÷ Σ required slots, tier-1 open deals | ≥ 60% | Weekly | Sales lead (R03L) | AU-085 |
+| KPI-ADV-X2-03 | Speed-to-lead (median) | median business minutes from hot lead creation to first qualifying response | ≤ 60 business minutes | Daily | Sales lead | crm_lead_sla |
+| KPI-ADV-X2-04 | SLA attainment | leads with first response before due ÷ leads with SLA in period | ≥ 90% hot, ≥ 95% standard | Weekly | Sales lead | RP-ADV-X2-03 |
+| KPI-ADV-X2-05 | L2A match precision | correct auto-links (audited sample) ÷ audited auto-links | ≥ 98% on ≥ 100 sampled | Monthly | Research lead | crm_l2a_match |
+| KPI-ADV-X2-06 | Cadence meaningful reply rate | enrolments with a substantive reply ÷ eligible enrolments that received ≥ 1 delivered step, per channel mix; guardrails KPI-17 = 0 and KPI-18 < 0.1% | Above single-channel baseline (matched cohort) | Weekly | Growth lead | RP-ADV-X2-05 |
+| KPI-ADV-X2-07 | Commit accuracy (estimate) | Closed-Verified amount in period ÷ Commit amount at the period-start snapshot | 85–110% band | Per period | Startup head | RP-ADV-X2-12 |
+| KPI-ADV-X2-08 | Inspection hygiene | open deals with zero high-severity flags ÷ open deals | ≥ 80% | Weekly | Sales lead | RP-ADV-X2-11 |
+| KPI-ADV-X2-09 | MAP on-time milestones | confirmed milestones done by due date ÷ confirmed milestones due | ≥ 75% | Weekly | Owner / R03L | RP-ADV-X2-06 |
+| KPI-ADV-X2-10 | Quote first-time-right and time-to-quote | quotes issued without red result or rework ÷ quotes issued; median hours request → issue | ≥ 90%; −30% vs baseline | Monthly | Startup head | RP-ADV-X2-07 |
+| KPI-ADV-X2-11 | Partner-sourced verified revenue share | verified revenue from partner-registered or referred opportunities ÷ total verified revenue | Baseline; reported per startup | Quarterly | Partner manager | RP-ADV-X2-08 |
+| KPI-ADV-X2-12 | GRR and NRR (verified) | GRR = (start recurring revenue − churn − contraction) ÷ start; NRR = (start − churn − contraction + expansion) ÷ start, verified ledgers only, per cohort and currency | GRR ≥ 90%; NRR ≥ 105% (proposal) | Quarterly | Startup head / CSM | RP-ADV-X2-09 |
+| KPI-ADV-X2-13 | Health score validity (estimate) | renewal rate of Green − renewal rate of Red, prior-quarter bands, with sample sizes | Positive and ≥ 20 pp; reported with n | Quarterly | CSM lead | AU-093 back-test |
+| KPI-ADV-X2-14 | NPS and CSAT with response rate | NPS = % promoters − % detractors; CSAT = mean 1–5; response rate = responses ÷ eligible invitations | Report NPS with n ≥ 30; response ≥ 20% | Quarterly | CSM lead | RP-ADV-X2-10 |
+| KPI-ADV-X2-15 | Insight closure rate | insights with closed actions within 60 days ÷ insights created | ≥ 70% | Monthly | Startup head | crm_insight |
+| KPI-ADV-X2-16 | Campaign ROI (estimate) | (attributed verified gross margin − campaign cost) ÷ campaign cost, per model; "not assessed" for zero denominators | Positive for ≥ 50% of assessed campaigns | Monthly | Marketing lead | RP-ADV-X2-14 |
+| KPI-ADV-X2-17 | Experiment decisions with guardrails | experiments concluded with a recorded decision ÷ experiments started; breaches tracked by KPI-ENH-A-05 | ≥ 80% concluded with decision | Quarterly | Growth lead | Experiment registry |
+| KPI-ADV-X2-18 | Enablement usage in won deals | won deals with ≥ 1 approved asset attached ÷ won deals (association) | Reported; trend up | Quarterly | Marketing lead | RP-ADV-X2-15 |
+| KPI-ADV-X2-19 | Healthy recognition | participation (opt-in rate), focus-mode share, pulse "feel pressured" share, coercion complaints | Complaints = 0; pressured ≤ 10% | Quarterly | Startup head with HR | RP-ADV-X2-16 |
+| KPI-ADV-X2-20 | Territory balance index | 1 − Gini coefficient of TAL potential across territories | ≥ 0.75 | Per revision | Startup head | AU-082 |
+
+---
+
+## 9.8.12 Effort (person-days)
+
+**Basis of estimate.** Bottom-up per feature by analogy with comparable baseline items in Part 9.5 §9.5.2.3 (for example, coverage ledger 4.0–6.5 pd, managed-service delegation 3.0–5.0 pd), adjusted for screen count, entities, integrations and test depth. Low assumes reuse of baseline engines (sequence engine, outbox, portal shell, approval queue) with no rework; high adds 30–40% for integration surprises and external review findings. Cross-cutting work is listed separately and allocated pro-rata to releases by central feature effort.
+
+| Feature | Release | Low | Central | High | Main drivers |
+|---|---|---|---|---|---|
+| F01 TAL and tiers | A1 | 6 | 8 | 11 | A130, 2 entities, bulk preview |
+| F02 Buying committee | A1 | 5 | 7 | 9 | Templates, A131 tab, AU-085 |
+| F03 Account plans | A2 | 5 | 7 | 10 | Versioned plan, approval, plays |
+| F04 Intent and signal hub | A1 | 10 | 14 | 19 | Website event SDK with consent, AU-084, A132 |
+| F05 L2A matching | A1 | 6 | 8 | 11 | AU-080, A133 queue |
+| F06 Routing and SLAs | A1 | 7 | 10 | 13 | AU-081, business calendars, A134 |
+| F07 Territory planning | A2 | 7 | 10 | 14 | Rules engine, simulator |
+| F08 Capacity and quota | A2 | 5 | 7 | 10 | Capacity tab, routing weights |
+| F09 Multichannel cadences | A1 | 12 | 16 | 22 | AU-086 on sequence engine, A136, A137 |
+| F10 Deal rooms | A2 | 10 | 14 | 19 | Portal audience objects, W35, AU-090 |
+| F11 MAP | A2 | 6 | 8 | 11 | W36, two-sided confirmation |
+| F12 CPQ guardrails | A1 | 10 | 14 | 19 | A139, AU-089, A067 changes |
+| F13 Partner programme | A2 | 7 | 10 | 13 | A141, terms, AU-092 |
+| F14 Partner portal | A2 | 12 | 16 | 22 | New audience W37–W39, isolation, AU-091 |
+| F15 Health v2 | A1 | 6 | 9 | 12 | AU-093, A142, back-test |
+| F16 QBR packs | A2 | 5 | 7 | 10 | AU-094, A143, W41 |
+| F17 Renewal and expansion | A2 | 6 | 9 | 12 | A144, W44, templates |
+| F18 NPS/CSAT | A2 | 7 | 10 | 13 | AU-095, W40, signed tokens |
+| F19 Win/loss | A2 | 5 | 7 | 10 | A145 tab, insights |
+| F20 Pipeline inspection | A1 | 6 | 9 | 12 | AU-088, A140 inspection |
+| F21 Forecast commit | A1 | 8 | 11 | 15 | AU-087, snapshots, A140 forecast |
+| F22 Attribution | A2 | 7 | 10 | 14 | AU-096, six models |
+| F23 Campaign ROI | A2 | 5 | 7 | 9 | AU-097, A146 |
+| F24 Page and form builder | A3 | 14 | 19 | 26 | Block editor integration, forms, W42, AU-098 |
+| F25 SEO calendar | A3 | 5 | 7 | 9 | A148 calendar |
+| F26 Event programmes | A3 | 7 | 10 | 13 | A062 extension, W43 |
+| F27 Recognition | A3 | 6 | 8 | 11 | A149, AU-099, preferences |
+| F28 Enablement hub | A2 | 8 | 11 | 15 | Index, A148 tab, AU-083 |
+| F29 AppNAI bid playbook | A1 | 5 | 7 | 9 | Matrix, answer library, capacity |
+| F30 MedMaarg playbook | A2 | 4 | 6 | 8 | Templates and guardrails |
+| F31 EduVerse playbook | A2 | 4 | 6 | 8 | Templates and guardrails |
+| F32 OrganicSpec playbook | A2 | 5 | 7 | 9 | Re-order, supplier coverage |
+| **Features subtotal** | | **221** | **309** | **418** | |
+| X-1 Agent prompts, schemas, evals for AG-061…070 (AU-006 suites) | all | 12 | 16 | 21 | 10 agents × 1.2–2.1 pd |
+| X-2 QA automation, two-tenant fixtures, accessibility audits | all | 20 | 28 | 38 | 104 TCs |
+| X-3 Security and privacy (DPIA delta, threat model for partner audience) | all | 5 | 8 | 11 | R10 + security lead |
+| X-4 Reporting (RP-ADV-X2-01…17) and data migrations | all | 6 | 9 | 12 | 17 reports |
+| X-5 Documentation and training task cards (30 screens) | all | 4 | 6 | 8 | Part 8.3 pattern |
+| **Cross-cutting subtotal** | | **47** | **67** | **90** | |
+| **Total X2 effort** | | **268** | **376** | **508** | |
+
+| Release | Features (low/central/high) | Cross-cutting share | **Total pd (low / central / high)** |
+|---|---|---|---|
+| A1 Pipeline precision | 81 / 113 / 152 | 17 / 25 / 33 | **98 / 138 / 185** |
+| A2 Buyer, partner and customer growth | 108 / 152 / 207 | 23 / 33 / 44 | **131 / 185 / 251** |
+| A3 Marketing scale (conditional) | 32 / 44 / 59 | 7 / 9 / 13 | **39 / 53 / 72** |
+| **Total** | 221 / 309 / 418 | 47 / 67 / 90 | **268 / 376 / 508** |
+
+---
+
+## 9.8.13 Cost (separately approvable proposal)
+
+**This proposal sits outside the approved budgets.** It does not change Ledger A (₹52.7–84.1 lakh, DEC-230), Ledger B (₹19,895–26,335 per month base, DEC-231) or the Phase-2 envelope (₹25.8–38.7 lakh, Part 8.4 §8.4.2.4). Rates and conventions are those of Part 8.4: ₹1.0–1.5 lakh per person-month, 22 working days (₹4,545–6,818 per person-day), FX ₹90/USD (BRD §6), 15% contingency on running costs. **Every price is an estimate; verify at time of implementation (as of 27 Nov 2026).** Taxes (GST), external legal counsel and paid ad media are excluded (GAP-660).
+
+### 9.8.13.1 Development cost (one-time), by release
+
+**Cash basis (recommended for approval).** Incremental X2 squad of 4.0 FTE (§9.8.3.5) for Day 237–425 = 188 calendar days ÷ 30.4 = 6.18 months. 4.0 × 6.18 × ₹1.0–1.5 L = **₹24.72–37.08 L**, allocated to releases by central effort share (A1 36.7%, A2 49.2%, A3 14.1%) [ASSUMPTION-662].
+
+| # | Item | Formula | A1 | A2 | A3 | **Total low – high** |
+|---|---|---|---|---|---|---|
+| D1 | X2 squad (2 full-stack, 1 frontend/portal, 0.5 QA, 0.5 RevOps/growth analyst) | 4.0 FTE × 6.18 months × ₹1.0–1.5 L, pro-rata | ₹9.07–13.61 L | ₹12.16–18.24 L | ₹3.48–5.23 L | **₹24.72–37.08 L** |
+| D2 | UX research and design for 30 screens | Contract days (Part 8.1 UX rate pattern) | ₹0.30–0.50 L | ₹0.40–0.80 L | ₹0.10–0.20 L | ₹0.80–1.50 L |
+| D3 | External penetration-test scope extension (partner audience, deal rooms, public survey and event endpoints) | Quote uplift on DEC-126 engagements (verify) | — | ₹1.00–2.00 L | — | ₹1.00–2.00 L |
+| D4 | Accessibility audit of portal screens and builder output | External WCAG 2.2 AA audit (verify) | — | ₹0.20–0.40 L | ₹0.10–0.20 L | ₹0.30–0.60 L |
+| D5 | Independent reviewer for X2 acceptance evidence | Part 8.1 reviewer pattern | ₹0.10–0.20 L | ₹0.15–0.20 L | ₹0.05–0.10 L | ₹0.30–0.50 L |
+| D6 | Training task cards for 30 screens | 30 × ₹500–1,300 per card (Part 9.5 pattern) | ₹0.05–0.15 L | ₹0.08–0.20 L | ₹0.02–0.05 L | ₹0.15–0.40 L |
+| | **Development total (one-time)** | D1 + … + D6 | **₹9.52–14.46 L** | **₹13.99–21.84 L** | **₹3.75–5.78 L** | **₹27.27–42.08 L** |
+| R | Management reserve (not in the total; released only by the change-control board) | 10% of central effort value (376 pd × ₹5,682) | | | | ₹2.14 L |
+
+**Cross-check: effort value.** 268 pd × ₹4,545 = ₹12.18 L (low); 376 pd × ₹4,545–6,818 = ₹17.09–25.64 L (central); 508 pd × ₹6,818 = ₹34.64 L (high). The cash basis is higher at the low end because people are paid for calendar time, not only for estimated effort (the same reasoning as Part 8.4 §8.4.2.3).
+
+**If only A1 is approved:** ₹9.52–14.46 L, staffed by ≈ 1.5–2.0 FTE over Day 237–300 plus part of the Phase-2 core team; A2 and A3 move after Day 365 (RECOMMENDATION-651).
+
+### 9.8.13.2 Subscription and running cost (recurring, monthly, pilot scale)
+
+| Line | Item | Billing model | ₹/month (estimate; verify) | Active from | Note |
+|---|---|---|---|---|---|
+| X2-R1 | Cloud: extra worker capacity for AU-080…099, engagement-event and snapshot storage, portal partner routes (AWS ap-south-1) | Usage | 1,200–2,500 | A1 (Day 237) | Extends B01; ≈ 1 GB/year engagement events at pilot |
+| X2-R2 | WAF/CDN rules for partner portal, deal-room and public survey routes | Fixed per rule + usage | 0–400 | A2 (Day 301) | Extends B21 |
+| X2-R3 | AI usage for AG-061…070 (§9.8.5, incl. 25% overhead) | Pay-as-you-go via gateway, hard cap | 118–1,171 (expected ≈ 390) | A1 | **Inside the existing DEC-008 ₹3,000 pilot cap**; visible as sub-line B02-X2 [RECOMMENDATION-667] |
+| X2-R4 | Email (Amazon SES): +1,500–3,000 sends (surveys, cadence steps, deal-room and partner notices) | Usage | 150–400 | A1 | Extends B05; SES per-message price (verify) |
+| X2-R5 | WhatsApp Business templates: +200–600 chargeable opted-in messages | Per message by category | 400–1,200 | A1 | Extends B06; Meta category rates vary by country (verify) |
+| X2-R6 | Monitoring and CI minutes delta | Subscription / usage | 0–300 | A1 | Extends B07 |
+| | **Subtotal** | | **1,868–5,971** | | |
+| | Contingency 15% | | 280–896 | | B11 pattern |
+| | **X2 recurring total** | | **₹2,148–6,867 per month** | | ≈ **₹0.26–0.82 lakh per year** |
+
+**Optional paid tools (OFF by default; each needs the FR-ENH-A-006 benchmark and an approval under DEC-399; prices verify at time of implementation, as of 27 Nov 2026).**
+
+| Option | Purpose | Open-source or free default | Paid option and cost basis | Gate |
+|---|---|---|---|---|
+| OPT-X2-01 | Third-party account-level B2B intent data | First-party intent only (F04) | Vendor annual contract; quote required (not estimated, GAP-661) | Benchmark lift in surge-to-meeting conversion on matched cohorts; DPIA; account-level only |
+| OPT-X2-02 | LinkedIn Sales Navigator seats for human research | Manual research on public pages (SPB-05) | seats × vendor per-seat price (verify) | Human use only; no export or automation; per-seat approval |
+| OPT-X2-03 | Webinar hosting beyond existing meeting plan | Existing Google Workspace meetings; self-hosted Jitsi Meet (Apache-2.0, verify) at ≈ ₹1,500–3,000/month hosting when active (verify) | Hosted webinar SaaS per host (verify) | Only if attendance or reliability benchmark fails |
+| OPT-X2-04 | Telephony/CPaaS click-to-call for human-dialled calls | Human uses own approved phone; outcome logged in A137 | Per-minute and number rental, DLT registration (verify) | DEC-392 conditions; counsel review (GAP-660) |
+| OPT-X2-05 | Hosted experimentation platform | In-house deterministic assignment (AU-098); GrowthBook self-hosted (MIT core, verify) as an alternative | Hosted plan per seat or event (verify) | Only if in-house statistics prove insufficient |
+| OPT-X2-06 | Map view for territories | Table and region list (A2 scope) | Map tiles service (verify usage policy and price) | ASSUMPTION-656 revisited |
+
+**Open-source components proposed (licence gate AU-047 applies; verify licences at implementation).** GrapesJS (BSD-3-Clause) for the block editor; RapidFuzz (MIT) for name similarity; libpostal (MIT) for address normalization; a public-suffix list (MPL-2.0 data) for domain parsing; Jitsi Meet (Apache-2.0) as an optional webinar host. AGPL components (for example some survey and scheduling tools) are excluded by AU-047.
+
+### 9.8.13.3 Combined view of the proposal
+
+| Component | Nature | Low | High |
+|---|---|---|---|
+| X2 development A1 + A2 + A3 | One-time | ₹27.27 L | ₹42.08 L |
+| X2 running cost, first 12 months after A1 | Recurring | ₹0.26 L | ₹0.82 L |
+| **X2 proposal, first year** | | **₹27.5 L** | **₹42.9 L** |
+| Approved Ledger A, Ledger B and Phase-2 envelope | Unchanged | — | — |
+
+---
+
+## 9.8.14 Decisions (DEC-390…399)
+
+All decisions below are **proposed** and take effect only when the Founder approves this proposal (or the named release). None changes DEC-001…233.
+
+| DEC | Decision | Authority | Effect |
+|---|---|---|---|
+| DEC-390 | Adopt the X2 advanced revenue growth capabilities as a **separately approvable proposal** in three releases (A1 Day 237–300, A2 Day 301–365, A3 Day 366–425 conditional on the BRD §8 scale gate); development (₹27.27–42.08 L) and running (₹2,148–6,867/month) costs are approved per release, outside DEC-230/231 and the Phase-2 envelope | Founder (R01) on recommendation of the Product Owner and FinOps Lead | Funds and schedules X2 per release; no change to Release 1/2 scope or budgets |
+| DEC-391 | **Forecast governance:** categories Omitted / Pipeline / Best case / Commit / Closed-Verified; Commit needs owner and manager attestation and evidence criteria (CFG-ADV-X2-07); weekly snapshots immutable; forecasts labelled estimate and never mixed with actuals; AI cannot set or change categories | Founder; Startup Heads | Accountable forecast with evidence (F21); consistent with BR-M60 and OPT-12-03 |
+| DEC-392 | **Cadence channels:** LinkedIn steps are human tasks only (no automated messages, connection requests or profile harvesting); call steps are human-dialled tasks only for requested callbacks or active relationships, with no auto-dialler and no recording; cold-call tasks stay disabled until a jurisdiction activation record covers voice and India NCPR/DND scrub evidence exists (TR-R1); resolves CONFLICT-658 | Founder with Legal/DPO (R10) | Multichannel cadences (F09) without new outbound automation risk; no change to the "no SMS or voice outreach in W0–W5" rule |
+| DEC-393 | **Partner audience:** partners use a separate portal audience (sub-role R16P) with object grants limited to their own registrations, stage band and approved assets; deal registration exclusivity default 90 days only where no internal open deal exists; commission remains record-only (DEC-046); sub-roles R03C and R03P adopted | Founder with Legal (R10) | Enables F13/F14 while keeping BR-WEB separation and data minimization |
+| DEC-394 | **Deal rooms and MAPs:** rooms show only approved hashes to verified invited contacts with expiring access; MAP milestones are non-binding, two-sided and never carry price, discount or legal terms | Founder; R10 | Enables F10/F11 within PP-06 and DEC-064 |
+| DEC-395 | **CPQ guardrails:** quotes draw only from approved price-book revisions; no manual unit-price override; AI may suggest bundles but receives and returns no price values; discount and margin approvals remain DEC-038 | Founder with Finance (R08) | Enables F12; reaffirms "AI never sets prices" |
+| DEC-396 | **Customer health and surveys:** health uses commercial and service data only (no patient, clinical, minors' or sensitive personal data), Unknown when known weight < 0.60, never triggers contact by itself; surveys go only to adult business contacts with caps of 90/30 days and no incentives for scores | Founder with DPO (R10) | Enables F15/F18 consistent with BR-M50, DEC-030 and X-02 |
+| DEC-397 | **Attribution:** the default reporting model stays last non-direct touch (AU-040); first-touch, last-touch, linear, position-based and time-decay models are additional views over verified revenue with an Unknown bucket and caveat; changing the default needs R02 + R08; resolves CONFLICT-657 | Founder with Finance | Enables F22/F23 consistent with SP-12 (first/last touch, window, unknown bucket) |
+| DEC-398 | **Healthy recognition:** points only for verified outcomes and quality behaviours, never for activity volume; no negative points; team view by default and individual names opt-in; focus mode; leaderboards not used for pay or discipline without a separate HR policy decision (GAP-665); resolves CONFLICT-659 | Founder with HR advisor | Enables F27 consistent with PP-01 |
+| DEC-399 | **Paid tools and AI budget:** optional paid tools (OPT-X2-01…06) stay OFF until a matched-sample benchmark (FR-ENH-A-006) and a scoped budget approval; AG-061…070 run inside the existing DEC-008 ceiling with a visible B02-X2 sub-line and are Tier 2 ineligible | Founder with FinOps Lead | Keeps open-source first and the AI ceiling unchanged |
+
+**Architecture decisions (ADR-120…125).**
+
+| ADR | Decision | Rationale | Alternatives rejected |
+|---|---|---|---|
+| ADR-120 | Cadences extend the existing sequence engine (AU-022) and outbox rather than a new engine | One stop-rule implementation, one PDP path, less code | Separate cadence service; third-party sales engagement tool (paid, data leaves platform) |
+| ADR-121 | Deal rooms, partner portal, survey and QBR pages live in the existing Website/Portal app as new audiences and object grants | Keeps Website/Admin separation; reuses portal identity and WCAG components | Separate partner app (more surface); Admin access for partners (violates BR-WEB) |
+| ADR-122 | Page builder uses an embedded open-source block editor (GrapesJS-class) that emits typed block JSON; rendering is server-side from approved snapshots | No arbitrary HTML; approval hash over JSON; accessible output | Free-form HTML editor (injection, a11y risk); paid page-builder SaaS |
+| ADR-123 | Forecast snapshots are append-only rows with payload hash; corrections are new snapshots | Audit-grade history | Mutable forecast table |
+| ADR-124 | L2A matching is deterministic (weighted features with thresholds), not ML, at pilot | Explainable, testable, cheap; volumes are small | ML entity resolution (needs labelled data); paid matching API |
+| ADR-125 | Intent engagement events are first-party, consent-gated and stored in PostgreSQL with monthly partitions | Low volume at pilot; RLS; retention per DEC-028 | Third-party CDP; event warehouse (cost) |
+
+---
+
+## 9.8.15 Risks
+
+| ID | Risk | Likelihood / impact | Mitigation | Owner |
+|---|---|---|---|---|
+| RSK-ADV-X2-01 | Cadences increase contact frequency and complaints | M / H | Cumulative cap across channels, global stop rules, AU-031 complaint auto-pause, KPI-18 guardrail in KPI-ADV-X2-06 | Compliance (R10) |
+| RSK-ADV-X2-02 | Users treat LinkedIn or call tasks as permission to cold-message or cold-call | M / H | DEC-392; task briefs state the rule; call tasks blocked unless conditions hold; training card | Growth lead |
+| RSK-ADV-X2-03 | Partner portal leaks data across partners or to partners | L / H | Separate audience, object grants, TC-040/097/098, pen-test extension D3 | Security lead |
+| RSK-ADV-X2-04 | Intent tracking perceived as surveillance or breaches consent law | M / H | Consent-gated, no reverse-IP, health pages excluded, DPIA delta, notice in deal rooms | DPO |
+| RSK-ADV-X2-05 | Forecast categories gamed (sandbagging or inflated commit) | M / M | Evidence criteria, manager attestation, accuracy KPI by owner, immutable snapshots | Startup heads |
+| RSK-ADV-X2-06 | Recognition creates pressure or unhealthy competition | M / M | DEC-398, opt-in names, focus mode, pulse survey, no volume points | Founder with HR |
+| RSK-ADV-X2-07 | Health score misclassifies customers and drives wrong actions | M / M | Unknown handling, back-test KPI-ADV-X2-13, human-only actions | CSM lead |
+| RSK-ADV-X2-08 | Squad not funded; X2 competes with Phase-2 scope | M / M | Per-release approval; A1-only fallback (RECOMMENDATION-651) | Product Owner |
+| RSK-ADV-X2-09 | Multi-touch attribution misread as causal | M / L | Caveat banner, default model unchanged, "estimate" labels | Marketing lead |
+| RSK-ADV-X2-10 | Survey fatigue or contact with minors in EduVerse | L / H | Frequency caps, PDP minor check, TC-053/092 | DPO |
+| RSK-ADV-X2-11 | Builder pages fail accessibility or carry unapproved claims | M / M | Approved blocks only, automated WCAG check gate, A108 approval | Marketing lead |
+| RSK-ADV-X2-12 | Optional paid tools enabled without benchmark | L / M | DEC-399; AU-044 procurement gate; budget lines start at ₹0 | FinOps |
+
+---
+
+## 9.8.16 Tags register
+
+| Tag | Statement | Where used | Resolution / owner |
+|---|---|---|---|
+| ASSUMPTION-650 | X2 needs an incremental squad of 4.0 FTE (2 full-stack, 1 frontend, 0.5 QA, 0.5 RevOps analyst) for Day 237–425 | §9.8.3.5, §9.8.13.1 | Confirm at DEC-390 approval; Product Owner |
+| RECOMMENDATION-651 | If the squad is not funded, approve A1 only and move A2/A3 after Day 365 | §9.8.3.5, §9.8.13.1 | Founder decision |
+| RECOMMENDATION-652 | Adopt sub-roles R03C (Customer Success Manager), R03P (Partner Manager), R16P (External Partner User) and persona variants P03d (Partner/Channel Manager) and P14f (Channel or referral partner, external) | §9.8.4.1, §9.8.4.9 | DEC-393 |
+| ASSUMPTION-653 | Default tier-1 cap of 15 accounts per owner | BRL-ADV-X2-02, CFG-ADV-X2-01 | Tune after A1 baseline; Startup heads |
+| ASSUMPTION-654 | Speed-to-lead SLAs of 1 business hour (hot) and 4 business hours (standard) | BRL-ADV-X2-10, CFG-ADV-X2-05 | Tune after baseline; Sales leads |
+| RECOMMENDATION-655 | Detractor follow-up within 2 business days and no incentives for scores | BRL-ADV-X2-31 | DEC-396 |
+| ASSUMPTION-656 | Territory view in A2 uses tables and region lists, no map service | F07, OPT-X2-06 | Revisit at A3 |
+| CONFLICT-657 | SP-12 specifies first/last-touch attribution with window and unknown bucket; AU-040 defaults to last non-direct; X2 adds multi-touch | F22 | Resolved by DEC-397 (default unchanged; extra models are labelled views) |
+| CONFLICT-658 | Part 4.1 TR-R1 states no SMS or voice outreach in W0–W5; X2 proposes call steps | F09 | Resolved by DEC-392 (W6+ only, human-dialled, restricted, cold calls off) |
+| CONFLICT-659 | PP-01 "outcomes over activity" vs gamification practices that reward activity | F27 | Resolved by DEC-398 (verified outcomes and quality only) |
+| GAP-660 | External legal counsel not estimated for partner agreements, voice-call rules and survey consent by jurisdiction | §9.8.13, DEC-392 | Obtain quotes; R10 |
+| GAP-661 | Third-party intent data vendors' terms, data rights and prices unknown | OPT-X2-01 | Benchmark and quote before any enablement |
+| ASSUMPTION-662 | Development cash allocated to releases pro-rata by central effort; rates from BRD §6 | §9.8.13.1 | FinOps to re-baseline at approval |
+| ASSUMPTION-663 | Proposed KPI targets and message volumes (sends, WhatsApp) are planning values pending baselines | §9.8.11, §9.8.13.2 | Confirm after A1 baseline period |
+| RECOMMENDATION-664 | Use the `KPI-ADV-X2-` family so X2 KPIs cannot collide with KPI-ADV IDs issued by X1/X3 | §9.8.11 | Registry owner to confirm in Part 9.2 regeneration |
+| GAP-665 | No HR policy exists for any use of recognition data in performance management | DEC-398 | Founder with HR advisor before A3 |
+| ASSUMPTION-666 | Agent call volumes, token sizes and escalation shares in §9.8.5; low = 0.3 × base, high = 3 × base | §9.8.5 | Measure in A1; FinOps |
+| RECOMMENDATION-667 | Show AG-061…070 usage as a visible sub-line B02-X2 inside the DEC-008 cap | §9.8.13.2 | DEC-399 |
+| RECOMMENDATION-668 | Regenerate Part 9.4 with `assembly/build_ai_catalogue.py` after approval so AG-061…070, AU-080…099 and WF-25…32 appear in the catalogue | §9.8.5–§9.8.7 | Documentation owner |
+| RECOMMENDATION-669 | Always write "Release A1/A2/A3" for X2 releases, because Part 5.1a uses A1…A8 for actor classes | §9.8.3 | Editorial rule |
+| RECOMMENDATION-670 | AG-066 receives no price values; prices stay server-side | AG-066 | DEC-395 |
+
+**Inconsistencies observed in earlier parts (reported, not fixed).** (1) Part 9.4 §9.4.1 summary still reports 38 agents, 52 automations and 14 workflows and its §9.4.3 table lists only AG-038, while its header already refers to AG-039…080 and AU-053…119; the catalogue needs regeneration (RECOMMENDATION-668). (2) Part 4.1 TR-R1 cites DEC-036 for "No SMS or voice outreach in W0–W5", but DEC-036 concerns internal notifications; the channel-scope rule should cite the channel decision instead.
+
+---
+
+## 9.8.17 Quality gate: Batch 9.8 (files a and b)
+
+| # | Check | Result | Notes and fixes applied |
+|---|---|---|---|
+| 1 | Every requirement traced to a source | Pass | Each FR cites a gap (G-…), BR, BRL, DEC, SP section or tag; each feature lists rules and baseline dependencies |
+| 2 | Assumptions/gaps/conflicts tagged and logged | Pass | 21 tags (650–670) in §9.8.16; three conflicts resolved by DEC-392, DEC-397, DEC-398 |
+| 3 | IDs unique and consistent with earlier parts | Pass | DEC-390…399, ADR-120…125, AG-061…070, AU-080…099, WF-25…32, screens A130–A149 and W35–W44 are unused elsewhere; local families use an X2 infix |
+| 4 | No story lacks AC and no requirement lacks a test | Pass | 32 stories with Gherkin AC; 96 FRs each matched to TC-ADV-X2-001…096, plus 8 cross-cutting TCs |
+| 5 | Negative, edge, security and accessibility cases covered | Pass | NEG 28, CON 23, SEC 12, ISO 3, A11Y 3, EDGE 6; WCAG 2.2 AA audits TC-102/103; injection TC-099 |
+| 6 | No agent lacks guardrail, fallback, KPI and cost estimate | Pass | All 10 cards complete in the V11 field order; cost formula and monthly low/base/high shown |
+| 7 | Time-sensitive facts flagged "verify" with an as-of date | Pass | Model names, SES, WhatsApp, pen-test, audit and optional tool prices flagged "verify at time of implementation (as of 27 Nov 2026)" |
+| 8 | No restricted data routed to free-tier models | Pass | All X2 agents Tier 2 ineligible (BRL-ADV-X2-44, TC-100) |
+| 9 | Consistent with earlier parts and the source pack | Pass | Safety invariants kept: AI never signs, pays, submits bids or sets prices; consequential actions L1; PDP at dispatch; no minors' outreach (DEC-030); no patient data (X-02); LinkedIn human research only (SPB-05); bid submission human (DEC-053); commission record only (DEC-046); attribution default unchanged (AU-040); approved budgets unchanged |
+
+**Status: Part 9 Batch 9.8 complete (files a and b). 32 features, 10 agents, 20 automations, 8 workflows, 96 FRs, 32 stories, 104 tests, 30 new screens; effort 268 / 376 / 508 pd; development ₹27.27–42.08 lakh one-time and running ₹2,148–6,867 per month, as a separately approvable proposal outside DEC-230/231.**
