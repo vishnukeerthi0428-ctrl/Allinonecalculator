@@ -355,7 +355,6 @@ def wf_block(w, r, prod):
         ('Workflow KPI', esc(sp['Workflow KPI (proposed)'])),
         ('Preconditions / failure handling', 'Common contract (D-F12-030 variant %d, D-F12-031): §11.4b.5' % (1 if sp['Preconditions'].startswith('Active entitlement') else 2)),
         ('Cost', 'V12 illustrative ₹%.2f/invocation (excludes provider, retry, labour). Blueprint model estimate ₹%.2f/run for %d agent step(s) at Tier %s (Part 7.3 prices, FX ₹90/USD, verify at time of implementation, as of 27 Nov 2026); Tier 2 not eligible (Confidential/personal data)' % (v12cost, cost_ai, len(agsteps) if mp[1] else 0, M.SVC[s]['tier'])),
-        ('Usage limit (pilot, not approved)', esc(c['Usage limits'])),
         ('Data modalities / version', '%s; service %s, workflow %s' % (esc(c['Supported data modalities']), c['Service version'], c['Workflow version'])),
         ('Acceptance (V12 → blueprint)', '%s-TC-{%s} → TC-V12-D-%s; %s → TC-V12-D-111' % (w, ','.join(x.split('-TC-')[1] for x in r['acceptance']), '101…%d' % (100 + len(r['acceptance'])), r['source_at'][0])),
         ('Release proposal', mp[5]),
@@ -382,13 +381,14 @@ def gen_services():
                 '| Channels / providers | %s; %s |' % (esc(c['Supported channels']), esc(c['External provider requirements'])),
                 '| Optional producers / complementary | %s |' % esc(c['Prerequisite automations']),
                 '| Service KPI | %s |' % esc(c['Performance KPIs']),
+                '| Usage limit (pilot, not approved) | %s |' % esc(c['Usage limits']),
                 '| Availability / bundle | %s |' % esc(c['Full / partial / selective availability']),
                 '| Interoperability / readiness | %s; %s |' % (esc(c['External agent interoperability']), esc(c['Technology and regulatory readiness'])),
                 '| Open-source stack | %s |' % esc(c['Open-source software requirements']),
                 '| Blueprint epic / module | %s (ASSUMPTION-826) / `%s` |' % (sv['epic'], sv['module']),
                 '| Effect adapter | %s |' % esc(sv['adapter']),
                 '| Service guardrail | %s |' % esc(sv['svc_note']),
-                '| Functional requirement | FR-V12-D-1%s (§11.4.5.29 register) |' % s[-2:], '',
+                '| Functional requirement | FR-V12-D-1%s (§11.4.5.30 register) |' % s[-2:], '',
                 '**DTO `urn:sm:dto:%s-WF0n:v2` (one schema shared by the four workflows; v3 projection per workflow below):**' % s, '',
                 dto_table(W[svc_first[s]], []).replace(' (v3: nullable here)', ''), '']
         for w in [x for x in W if W[x]['svc'] == s]:

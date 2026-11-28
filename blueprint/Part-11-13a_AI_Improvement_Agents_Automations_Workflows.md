@@ -608,4 +608,20 @@ flowchart TD
 
 **Summary of agent costs (base, pilot, before the 25% overhead allowance).** A2 agents ₹1,117 per month; A3 agents add ₹1,868; A4 agents add ₹66; total ₹3,051 per month (₹3,053 unrounded, script `m_ai_cost_model.py`). With the 25% overhead allowance: ₹3,817 per month. Volumes are pilot assumptions [ASSUMPTION-976].
 
+---
+
+## Quality gate (Batch 11.13a)
+
+| # | Check | Result | Notes and fixes applied |
+|---|---|---|---|
+| 1 | Every requirement traced to a source | Pass | Each card cites BR-, V12 service, AIX/REC/MT IDs and FR-V12-M IDs; BR-M citations were corrected against the Part 1 register during self-check |
+| 2 | Assumptions, gaps and conflicts tagged and logged | Pass | Tags used here (976, 978, 979, 980, 982, 983, 984, 985, 987, 988, 989, 993) are logged in §11.13.9 (Batch 11.13b) |
+| 3 | IDs unique and consistent with earlier parts | Pass | AG-081…096 and TL-33…40 unused before this part (grep across all Part files) |
+| 4 | No story lacks AC and no requirement lacks a test | N/A here | Stories, AC and tests are in Batch 11.13b §11.13.5.7–§11.13.5.10 |
+| 5 | Negative, edge, security and accessibility cases covered | N/A here | Batch 11.13b §11.13.5.10 |
+| 6 | No agent lacks guardrail, fallback, KPI and cost estimate | Pass | 16 of 16 cards complete |
+| 7 | Time-sensitive facts flagged "verify" with an as-of date | Pass | Model prices and provider terms flagged (as of 27 Nov 2026) |
+| 8 | No restricted data routed to free-tier models | Pass | Only AG-096 is Tier 2 eligible (synthetic, non-personal, opt-in, default off) |
+| 9 | Consistent with earlier parts | Pass | DEC-418, DEC-421, DEC-422, DEC-417 respected; L1 cap unchanged |
+
 **Status: Part 11 Batch 11.13a complete. Continued in Batch 11.13b (§11.13.5.4 onwards).**
