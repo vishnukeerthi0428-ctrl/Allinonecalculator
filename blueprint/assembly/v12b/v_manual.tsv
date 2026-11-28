@@ -93,6 +93,7 @@ h:aece64dd2412	C	?Playwright	Prototype regression evidence metadata
 h:475984530360	C	?TC-RECOVERY	Uncertain write hold: RECOVERY class tests
 h:050969830733	C	?aggregate	Portfolio operator analytics absent: aggregate-only rule
 h:e9750dcb3d5f	C	?postmortem	After-incident review: Parts 8.3c/11.11
+h:8ba89d08c7db	C	?H27-INT-07	Advertising adapter (Google Ads / Meta / LinkedIn) in Part 11.8a H27-INT-07; spend cap gate TC-ENH-D-172 (Part 3.5b)
 h:ad482d3126ff	C	?call_ref	A113 template X26: input/output refs present in Part 11.4a DTO registry; screen via A113 contract
 h:55baea6d42ab	C	?brief_ref	A113 template X27: input/output refs present in Part 11.4a DTO registry; screen via A113 contract
 h:36315aaaa472	C	?agent_ref	A113 template X28: input/output refs present in Part 11.4a DTO registry; screen via A113 contract
