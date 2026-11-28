@@ -232,5 +232,6 @@ After the blueprint above was completed, the client supplied the complete 38-doc
 | DEC-419: build-time tooling approved | ≈ $821–857 per month during the build, separate from Ledger B |
 | DEC-420: AI-built delivery with a Sprint 2 calibration gate | AI tooling ≈ $1,336–1,527 per month; build-agent API cap $1,500 per month; team and dates unchanged until ≈ Day 45 |
 | DEC-421: hosting on **Vercel + Supabase + AWS Mumbai** | Pilot hosting ≈ ₹1,800–4,250 per month more. B-TC-08 becomes a Founder-approved deviation, so the literal match is now **99.97% (11,128 / 11,131)** |
+| DEC-422: revised running budget approved | Pilot running ₹26,105–35,362 per month including contingency and seats; during the build ₹1.65–2.14 L |
 
 **Status: Part 9 Batch 9.3 updated (v1.1, with Founder decisions of 28 Nov 2026).**

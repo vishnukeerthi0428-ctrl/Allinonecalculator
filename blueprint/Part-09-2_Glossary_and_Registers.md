@@ -464,7 +464,7 @@ Every ID family used across the parts. **Actual range found** and **Distinct IDs
 | FR-OP### | Operational/platform functional requirement (health, readiness, config) | 001–003 | 3 | 2.1 (§2.4) | 2.1, 6.6, 5.3, 6.3b | 25 |
 | FR-{area}-## | Cross-cutting functional requirement by area (standards, data mgmt, UI states, filters, publication, adapters, …) | ADP 01; COP 01; CSM 01; DM 01–04; ENG 01; FLT 01–11; NEG 01; PUB 01; SRCH 01; STD 01–04; UIS 01–04 | 30 | 2.1 (§2.4) | 2.1, 6.6, 6.3a, 6.7 | 46 |
 | NFR-### | Non-functional requirement | 001–099 | 99 | 0 (§0.6); detailed in 4.2 | 4.2, 6.6, 6.7, 0 | 63 |
-| DEC-### | Binding decision (DEC-001…065 Part 0A; DEC-066…140 Part 9.1) | 001–421 (76 unused) | 345 | 0A, 9.1 | 9.1, 9.5, 9.6a, 0A | 68 |
+| DEC-### | Binding decision (DEC-001…065 Part 0A; DEC-066…140 Part 9.1) | 001–422 (76 unused) | 346 | 0A, 9.1 | 9.1, 9.5, 9.6a, 0A | 68 |
 | BRL-{domain}-## | Business rule, by rule domain | AI 01–12; APR 01–11; AUT 01–10; BID 01–06; CTR 01–05; ELG 01–18; FIN 01–08; LCY 01–06; MKT 01–10; MTG 01–06; ORD 01–06; PRV 01–07; PUB 01–06; QTE 01–07; SCR 01–09; SEQ 01–05; SRC 01–10; SVC 01–07; TEN 01–12 | 161 | 2.3 | 2.3, 6.5, 6.3a, 6.3b | 56 |
 | R## | RBAC role (R01–R20; L suffix = startup-scoped lead variant) | 01–21; L 03–05 (1 unused) | 23 | 2.3 (§2.21) | 2.3, 8.3b, 7.3, 2.6 | 55 |
 | P## | Persona | 01–90 (68 unused) | 22 | 1 (§1.6) | 1, 7.1, 2.6, 8.1 | 38 |
@@ -541,7 +541,7 @@ Every ID family used across the parts. **Actual range found** and **Distinct IDs
 | PW-## | Pairwise test combination | 01–26 | 26 | 6.1 | 6.1 | 2 |
 | EG-## | Error-guessing test idea | 01–20 | 20 | 6.1 | 6.1 | 10 |
 | BVA-D## | Boundary-value analysis datum | 01–14 | 14 | 6.1 | 6.1 | 3 |
-| DR-# | Disaster-recovery drill | 1–9 | 15 | 6.1 | 6.1 | 9 |
+| DR-# | Disaster-recovery drill | 01–09 | 15 | 6.1 | 6.1 | 9 |
 | CI-### | Candidate AI idea (discovery register) | 001–135 | 135 | 7.1 | 7.1 | 8 |
 | TL-## | Agent tool in the tool registry | 01–32 | 32 | 7.2 | 7.2, 9.7a | 12 |
 | D0# | Delivery persona (delivery-lifecycle AI) | 01–06 | 6 | 7.1 | 7.1 | 9 |
@@ -574,9 +574,9 @@ Every ID family used across the parts. **Actual range found** and **Distinct IDs
 | SM-UX-API-## | Source expansion-interface API candidate | 01–19 | 19 | 3.5b | 3.5b, 3.5a | 7 |
 | SM-FR-{W/A/OP}… | Source FR alias of FR-W/FR-A/FR-OP (DEC-017) | A 001–113; OP 001–003; W 001–034 | 150 | 6.9a | 6.9a | 5 |
 | SM-UX-FR- / FR-UX- | Per-screen field-specification alias, not a separate FR (DEC-180) | A 001–113; W 001–034 | 294 | 6.9a; 9.5 | referenced only | 5 |
-| SM-UX-UAT- | Per-screen UAT alias | A 001–113; W 001–034 | 147 | 6.1; 6.8 | 6.8b | 11 |
+| SM-UX-UAT- | Per-screen UAT alias | A 01–113; W 01–34 | 147 | 6.1; 6.8 | 6.8b | 11 |
 | SM-UX-SIT-X## | Source expansion SIT check | 01–10 | 10 | 6.8 | 6.8b, 6.8a | 3 |
-| API-ENH-{G}-### | Enhancement API operation | D 001–024; I 001–002 | 26 | 3.5b, 4.4b | 3.5b | 6 |
+| API-ENH-{G}-### | Enhancement API operation | D 01–24; I 01–02 | 26 | 3.5b, 4.4b | 3.5b | 6 |
 | {family}-ENH-{G}-## | Enhancement item extending a baseline family (rule, ABAC, configuration, KPI, report, acceptance procedure, entity, index, check, runbook, risk) | ABAC-ENH-A 01–05; AP-ENH-A 01–12 (1 unused); BRL-ENH-A 01–14; CFG-ENH-A 01–08; CK-ENH-E 01–12; ENT-ENH-E 01–04; ENT-ENH-H 01–07; ENT-ENH-J 01–03; IX-ENH-E 01–58 (3 unused); KPI-ENH-A 01–05; RB-ENH-B 01–03; RB-ENH-H 01–03; RP-ENH-A 01–04; RSK-ENH-95 01–06; … (15 families) | 144 | 2.6, 3.6, 6.9, 9.5 | 3.6a, 2.6, 3.6b, 6.9b | 14 |
 | XBR-## | Expansion scope statement mapped to BR-S138 (no new BR; DEC-180) | 01–05 | 5 | 9.5 | referenced only | 5 |
 | RC-# | Recovery class: RC-1 critical, RC-2 regenerable, RC-3 ephemeral (DEC-158) | 1–3 | 3 | 3.4; 4.4b; 9.5 | referenced only | 10 |
@@ -693,7 +693,7 @@ The programme allocates a tag number range to each batch. The table below is **g
 | Conflict | 165 | 165 | 0 |
 | Recommendation | 257 | 257 | 0 |
 
-ADR index: **106** ADRs. DEC index: **345** decisions. Parts scanned: **69** (0–9.10).
+ADR index: **106** ADRs. DEC index: **346** decisions. Parts scanned: **69** (0–9.10).
 
 <!-- GEN:TAGSUMMARY:END -->
 
@@ -2091,6 +2091,7 @@ One line per decision. The full text in Part 0A, Part 9.1 and Part 9.5 is bindin
 | DEC-419 | 9.10 | Build-time tooling approved as recommended in the Cost Estimate v1.0 (§7). Claude Max 5x … | ≈ $821–857 per month (₹73,890–77,094) during the build, in addition to Ledger B (DEC-231); about $6.6–6.9k (₹5.9–6.2 L) over the 8 core build months. After the build, seats fall to the maintenance team. Prices are list prices; … |
 | DEC-420 | 9.10 | AI-built delivery approach adopted, with a Sprint 2 calibration gate (Cost Estimate … | Tooling: AI-built tooling replaces the Claude part of DEC-419 (Claude Max 20x for 5 engineers, Pro × 3, CI sandboxes, self-hosted agent observability). Total ≈ $1,336–1,527 per month (₹1.20–1.37 L), about $475–630 more than … |
 | DEC-421 | 9.10 | Hosting stack: Vercel + Supabase + AWS ap-south-1 (Mumbai), replacing the AWS-only … | Running cost (pilot hosting): Vercel ₹1,800–3,600 + Supabase ₹3,600–5,400 + AWS ₹2,700–4,050 + DR storage ₹300–600 = ₹8,400–13,650 per month, against ₹6,600–9,400 for the AWS-only lines B01/B20/B21. That is ≈ ₹1,800–4,250 more … |
+| DEC-422 | 9.10 | Revised running budget approved (Ledger B re-based for DEC-421). Pilot running is now … | +₹2,070–4,888 per month against the previously approved budget with seats. Alerts at 70/90/100% per line continue (DEC-162). The AI hard caps are unchanged (B02 ₹3,000, B23 ₹1,000, B24 ₹2,000). The approved one-time budgets are … |
 
 <!-- GEN:DEC:END -->
 
@@ -2244,7 +2245,7 @@ Every part file, its contents (top-level sections, excluding tag registers and q
 | 8.3c | Part-08-3c_Source_Pack_Training_SaaS_Maintenance_Optimization_Enhancements.md | PART 8 (Batch 8.3c), Source Pack Enhancements II: SaaS Service Operations and SLA, Maintenance Lifecycle, Optimization Model; Conflicts, Persona Review, Tags and Quality Gate | Conflicts and proposed resolutions; Expert persona review; Tags register | 67 | 3 | 22,173 | Complete |
 | 8.4 | Part-08-4_Cost_Model_Development_vs_Subscriptions.md | PART 8 (Batch 8.4), Cost Model: Development Cost Separated from Subscription and Running Costs | The two ledgers at a glance; Ledger A: development cost (one-time); Ledger B: subscription and running cost (recurring); Combined view and scale; Decision | 10 | 0 | 3,146 | Complete |
 | 9.1 | Part-09-1_Errata_and_Consolidated_Decisions.md | PART 9 (Batch 9.1), Errata Register and Consolidated Decisions | Errata decisions; Effect on earlier decisions; Additional errata decisions (second review cycle); Final errata decisions (third review cycle) | 13 | 0 | 3,757 | Complete |
-| 9.3 | Part-09-3_Final_Quality_Report.md | PART 9 (Batch 9.3), Final Quality Report and Cross-Role Review | Success criteria assessment (client Section 2); Traceability coverage (from the regenerated RTM); Blueprint inventory (final); Cross-role review (client Section 9): final red-team; Residual open items requiring owner action (not blockers to start); Statement of completeness; Source-pack update (v1.1): full 38-document review; … (+1) | 11 | 0 | 3,433 | Complete |
+| 9.3 | Part-09-3_Final_Quality_Report.md | PART 9 (Batch 9.3), Final Quality Report and Cross-Role Review | Success criteria assessment (client Section 2); Traceability coverage (from the regenerated RTM); Blueprint inventory (final); Cross-role review (client Section 9): final red-team; Residual open items requiring owner action (not blockers to start); Statement of completeness; Source-pack update (v1.1): full 38-document review; … (+1) | 11 | 0 | 3,455 | Complete |
 | 9.4 | Part-09-4_AI_Agents_Automations_Workflows_Catalogue.md | PART 9 (Batch 9.4), Catalogue of Workflows, AI Agents and Automations | Summary; Business workflows (WF-01…WF-39); AI agents (AG) and their functionality; Automations (AU) and their functionality; How they fit together | 40 | 1 | 19,436 | Complete |
 | 9.5 | Part-09-5_Source_Pack_Decisions_and_Replan.md | PART 9 (Batch 9.5), Source Pack Decisions and Re-plan after Enhancements | Decision summary for the Founder; Binding decisions DEC-157 onwards; Re-plan after enhancements; Tags register (allocated ranges ASSUMPTION-500…509, RECOMMENDATION-500…509); Inconsistencies found while writing this part (reported, not changed) | 64 | 1 | 19,196 | Complete |
 | 9.6a | Part-09-6a_Source_Pack_Literal_Alignment.md | PART 9 (Batch 9.6a), Source Pack Literal Alignment (groups A–E) | .1 Scope and method; .2 Summary; .3 Alignment register (conflict rows); .4 Not-applicable re-check; .5 Decisions DEC-234…DEC-270; .6 Test cases; .7 Effort and impact; … (+1) | 79 | 1 | 28,727 | Complete |
@@ -2255,10 +2256,10 @@ Every part file, its contents (top-level sections, excluding tag registers and q
 | 9.8b | Part-09-8b_Advanced_Revenue_Growth_Capabilities.md | PART 9 (Batch 9.8), Advanced Revenue Growth Capabilities | Agent specification cards (AG-061…AG-070); Automations table (AU-080…AU-099); Workflows (WF-25…WF-32); Functional requirements (FR-ADV-X2-001…096); User stories (US-&lt;EP&gt;-V201…V232); Test cases (TC-ADV-X2-001…104); New business KPIs (KPI-ADV-X2-01…20); … (+5) | 86 | 8 | 27,417 | Complete |
 | 9.9a | Part-09-9a_Advanced_Platform_Data_Security_Experience.md | PART 9 (Batch 9.9), Advanced Platform, Data, Security and Experience | Expert panel; Opportunity inventory; Improvement plan; Architecture uplift; Capability specifications | 56 | 4 | 15,979 | In progress (no Status line) |
 | 9.9b | Part-09-9b_Advanced_Platform_Data_Security_Experience.md | PART 9 (Batch 9.9), Advanced Platform, Data, Security and Experience (continued) | Agent specification cards (AG-071…080); Automations (AU-100…119); Workflows (WF-33…39); Functional requirements (FR-ADV-X3-001…080); User stories (US- -V3nn); Test cases (TC-ADV-X3-001…062); Effort; … (+4) | 63 | 7 | 20,532 | Complete |
-| 9.10 | Part-09-10_Revision_v1.1_Consolidation.md | PART 9 (Batch 9.10), Revision v1.1 Consolidation: 100% Literal Match, Expert Panels and Advanced Capabilities Plan | What revision v1.1 does; Expert panels (who was used, and for what); Identified advanced capabilities and AI agents (the list); Overlaps between panels and how they were resolved; Improvement plan (roadmap); Effort; Cost: separately approvable proposals (approved budgets DEC-230/231 unchanged); … (+4) | 20 | 1 | 6,272 | Complete |
-| 9.2 | Part-09-2_Glossary_and_Registers.md | PART 9 (Batch 9.2), Appendices: Glossary, ID Registry and Consolidated Registers | Generation method and controls; Glossary; ID registry; Tag numbers issued, by issuing part; Consolidated registers; Duplicate-ID check; Document map | 189 | 1 | 62,181 | Complete |
+| 9.10 | Part-09-10_Revision_v1.1_Consolidation.md | PART 9 (Batch 9.10), Revision v1.1 Consolidation: 100% Literal Match, Expert Panels and Advanced Capabilities Plan | What revision v1.1 does; Expert panels (who was used, and for what); Identified advanced capabilities and AI agents (the list); Overlaps between panels and how they were resolved; Improvement plan (roadmap); Effort; Cost: separately approvable proposals (approved budgets DEC-230/231 unchanged); … (+4) | 21 | 1 | 6,424 | Complete |
+| 9.2 | Part-09-2_Glossary_and_Registers.md | PART 9 (Batch 9.2), Appendices: Glossary, ID Registry and Consolidated Registers | Generation method and controls; Glossary; ID registry; Tag numbers issued, by issuing part; Consolidated registers; Duplicate-ID check; Document map | 190 | 1 | 62,234 | Complete |
 
-**Totals:** 4,723 pages across 70 rendered PDFs; 211 Mermaid diagrams; 1,602,843 words.
+**Totals:** 4,725 pages across 70 rendered PDFs; 211 Mermaid diagrams; 1,603,070 words.
 
 <!-- GEN:DOCMAP:END -->
 

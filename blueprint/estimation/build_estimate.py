@@ -350,7 +350,7 @@ A("")
 table(["Field", "Value"], [
     ["Document", "Cost Estimate v1.0 for the AI Growth Engine (Employee Sales & Marketing Automation)"],
     ["Date", f"{M.AS_OF}"],
-    ["Basis", "Application Blueprint v1.1 (Parts 0–9.10, 345 decisions), approved budgets DEC-230/231, Founder decisions DEC-416…421"],
+    ["Basis", "Application Blueprint v1.1 (Parts 0–9.10, 345 decisions), approved budgets DEC-230/231, Founder decisions DEC-416…422"],
     ["Revision", "Rev. A (28 Nov 2026): running costs re-based for the Vercel + Supabase + AWS Mumbai hosting stack (DEC-421)"],
     ["Currency", f"INR and USD at **₹{M.FX:.0f} = $1** (blueprint rate, Part 8.4; verify at time of payment). Sensitivity at ₹85 and ₹95 in §13"],
     ["Prepared by", "FinOps Lead with Product Owner, Delivery Lead, Solutions Architect, QA Lead and AI Governance Lead (blueprint team)"],
@@ -393,7 +393,7 @@ A("![Where the money goes](img/share.png)\n")
 A("## 1.3 Decisions already taken and still open\n")
 table(["Item", "Status", "Reference"], [
     ["Core build budget (Ledger A) ₹52.68–84.08 L", "Approved", "DEC-230"],
-    ["Pilot running budget (Ledger B) ₹19,895–26,335/month (AWS-only design)", "Approved; re-based for DEC-421 in §8", "DEC-231"],
+    ["Pilot running budget (Ledger B), re-based for DEC-421: ₹26,105–35,362/month incl. contingency and seats", "Approved", "DEC-231 → DEC-422"],
     ["Literal-alignment work CR-ALN-01", "Approved (funded)", "DEC-416"],
     ["Advanced release A1 ≈ ₹28.0–55.4 L", "Approved", "DEC-417"],
     ["Claude Sonnet as primary model", "Approved", "DEC-418"],
@@ -615,9 +615,9 @@ A("# 8. Subscriptions and running costs after the build (recurring)\n")
 A("**Re-based for the approved hosting stack (DEC-421, 28 Nov 2026).** The application runs on Vercel Pro (frontends) and Supabase Pro in Mumbai (PostgreSQL with RLS and pgvector), with AWS ap-south-1 for the Django API, workers, Valkey, SES, S3 and DR copies.\n")
 table(["Hosting lines", "Before (AWS only: B01, B20, B21)", "After DEC-421 (B01a–c, B20)", "Change per month"], [
     ["Pilot hosting per month", rng(*M.AWS_ONLY_HOSTING, inr), rng(sum(r[4] for r in M.LEDGER_B if r[0] in ("B01a", "B01b", "B01c", "B20")), sum(r[5] for r in M.LEDGER_B if r[0] in ("B01a", "B01b", "B01c", "B20")), inr), "+ ₹1,800 – ₹4,250"],
-    ["Total pilot running incl. 15% contingency and seats", f"{rng(M.APPROVED_B[0] + M.SEATS_B09, M.APPROVED_B[1] + M.SEATS_B09, inr)} (approved, DEC-231)", rng(runs_lo, runs_hi, inr), rng(runs_lo - M.APPROVED_B[0] - M.SEATS_B09, runs_hi - M.APPROVED_B[1] - M.SEATS_B09, inr)],
+    ["Total pilot running incl. 15% contingency and seats", f"{rng(M.APPROVED_B[0] + M.SEATS_B09, M.APPROVED_B[1] + M.SEATS_B09, inr)} (DEC-231, superseded)", f"**{rng(runs_lo, runs_hi, inr)} (approved, DEC-422)**", rng(runs_lo - M.APPROVED_B[0] - M.SEATS_B09, runs_hi - M.APPROVED_B[1] - M.SEATS_B09, inr)],
 ])
-A("The increase is absorbed first by the 15% contingency (B11); any remainder goes through change control on Ledger B (DEC-421). Vercel and Supabase pass the procurement gate (vendor record, DPA, data-residency review) before production use.\n")
+A("The Founder approved the revised running budget on 28 Nov 2026 (DEC-422). Vercel and Supabase pass the procurement gate (vendor record, DPA, data-residency review) before production use.\n")
 A("## 8.1 Pilot running cost by line (approved Ledger B, DEC-231)\n")
 rows = []
 for line, catg, item, billing, lo, hi, start, nature in M.LEDGER_B:
