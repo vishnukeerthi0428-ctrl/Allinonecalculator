@@ -375,9 +375,12 @@ def build_docx(front, body, name, tmp):
 <w:p><w:r><w:fldChar w:fldCharType="begin" w:dirty="true"/></w:r><w:r><w:instrText xml:space="preserve"> TOC \\o "1-2" \\h \\z \\u </w:instrText></w:r><w:r><w:fldChar w:fldCharType="separate"/></w:r><w:r><w:t>Update this field to build the table of contents.</w:t></w:r><w:r><w:fldChar w:fldCharType="end"/></w:r></w:p>
 ```
 """
-    src.write_text(cover + toc + "\n\n" + md, encoding="utf-8")
+    src.write_text(toc + "\n\n" + md, encoding="utf-8")
     out = OUT / f"{name}.docx"
-    subprocess.run(["pandoc", str(src), "-f", "markdown", "-t", "docx",
+    # yaml_metadata_block off: rule-pack text contains '---' blocks that pandoc would parse as YAML
+    subprocess.run(["pandoc", str(src), "-f", "markdown-yaml_metadata_block", "-t", "docx",
+                    "-M", f"title={TITLE}", "-M", f"subtitle={SUBTITLE}",
+                    "-M", "date=Version 1.2 · 28 Nov 2026 · Confidential",
                     "--reference-doc", str(ref), "-o", str(out)], check=True,
                    env={**os.environ, "LANG": "C.UTF-8", "LC_ALL": "C.UTF-8"})
     # Ask Word to refresh the TOC/fields on open
