@@ -51,12 +51,12 @@ GAP-122,4.3 §4.43.2,4.3,No on-call compensation or out-of-hours coverage commit
 GAP-123,4.3 §4.49.2,4.3,"Part 3 ADRs (compute platform, IaC, CI) not available while this batch was written; ADR-050…053, 058…060 may duplicate or conflict",Closed by DEC-083,"4.3, 4.4b, 9.1",3
 GAP-124,4.1 §4.12.10,4.1,Cyber insurance not considered,Evaluate at W4 when payments go live,4.1,2
 GAP-125,4.1 §4.12.5,4.1,GDPR Art. 27 EU representative and UK representative not addressed for EU/UK outbound under DEC-029,Counsel decision before enabling the EU/UK pack,"4.1, 8.2",3
-GAP-126,4.3 §4.43.4,4.3,No customer-facing status page or incident communication channel for SaaS tenants,Decide before onboarding external tenants (W5),"4.3, 8.2",3
+GAP-126,4.3 §4.43.4,4.3,No customer-facing status page or incident communication channel for SaaS tenants,Closed by DEC-406,"4.3, 8.2, 9.9a, 9.9b",9
 GAP-127,4.3 §4.49.2,4.3,"B22 (LLM observability/eval tooling) is ₹0; the eval harness must run on OSS (DeepEval candidate, M54) and CI minutes",Accept OSS-only at pilot; revisit at the growth gate,"4.3, 8.2",2
 GAP-140,7.1 front matter,7.3,No measured AI usage baseline exists,Open — handling per source part,"7.1, 7.3, 8.2",4
-GAP-141,7.3 §7.3.1,7.3,"Anthropic commercial terms for this deployment (data retention, training exclusion, DPA, cross-border processing, ZDR eligibility) not yet confirmed",Open — handling per source part,"7.3, 8.1, 8.2",9
+GAP-141,7.3 §7.3.1,7.3,"Anthropic commercial terms for this deployment (data retention, training exclusion, DPA, cross-border processing, ZDR eligibility) not yet confirmed",Open — handling per source part,"7.3, 8.1, 8.2, 9.7b",10
 GAP-142,6.4 §6.4.2.1,7.3,"Golden eval datasets do not exist (≥ 200 labelled per vertical for qualification, DEC-001)",Open — handling per source part,"6.4, 7.3, 7.4a, 7.4b",10
-GAP-143,3.4 Document(s) 05,7.1,No lawful meeting-recording or transcript source exists; meeting summarization is excluded until one is approved with consent,Narrowed by DEC-218,"3.4, 7.1, 7.3, 7.4a, 7.4b, 9.4, 9.5",28
+GAP-143,3.4 Document(s) 05,7.1,No lawful meeting-recording or transcript source exists; meeting summarization is excluded until one is approved with consent,Narrowed by DEC-218,"3.4, 7.1, 7.3, 7.4a, 7.4b, 9.4, 9.5, 9.7a, 9.7b",31
 GAP-144,6.4 §6.4.6,7.3,"Tier 2 provider terms (Groq DPA, Gemini/OpenRouter/Mistral free terms) not legally reviewed",Open — handling per source part,"6.4, 7.3, 8.1",4
 GAP-145,7.3 §7.5.4,7.3,"DEC-047 ""AI tasks"" quotas have no defined unit or cost basis",Open — handling per source part,7.3,2
 GAP-150,5.1a front matter,5.1c,"Import template columns for catalogues, organizations, contacts and deals are not specified",Open — handling per source part,"5.1a, 5.1b, 5.1c, 8.2",8
@@ -83,12 +83,12 @@ GAP-170,6.5 front matter,6.5,"Part 2.3 §2.25 states ""162 business rules"", but
 GAP-171,6.5 §6.5.10.2,6.5,"Load-test IDs collide: Part 4.2 §4.26 defines LT-01…LT-12 differently from Part 6.1 §6.1.14.1 (for example LT-02 is ""Soak at design load"" in 4.2 but ""Public website and portal"" in 6.1; LT-05 is 50 webhooks/s for 10 min vs 2 min). ERRATA-30 says Part 6.1 owns LT-01…LT-12, but Part 4.2's NFR rows cite its own LT meanings",Closed by DEC-143,"6.5, 6.6, 9.1",6
 GAP-172,6.5 front matter,6.6,Gap (closed by Batch 6.7),Open — handling per source part,"6.5, 6.6, 6.10",10
 GAP-173,8.1 front matter,8.1,No named business UAT participants or approved time exist (second half of GAP-165),Open — handling per source part,"8.1, 8.2",7
-GAP-174,8.1 §8.1.6.5,8.1,"C03 has no line for the QA uplift, DevOps front-load, UX contractor, independent reviewer, pen tests or external counsel",Open — handling per source part,"8.1, 8.2, 8.4",8
+GAP-174,8.1 §8.1.6.5,8.1,"C03 has no line for the QA uplift, DevOps front-load, UX contractor, independent reviewer, pen tests or external counsel",Open — handling per source part,"8.1, 8.2, 8.4, 9.7b",9
 GAP-175,8.2 §8.2.6,8.2,"KPI-03, 05, 09, 10, 11, 15, 22, 26, 28 have ""baseline"" targets without values; baseline capture dates are set in §8.2.6",Open — handling per source part,8.2,3
 GAP-176,8.1 §8.1.3.4,8.1,No Service Owner is named for SaaS activation and DEC-047 plan approval,Open — handling per source part,8.1,3
 GAP-177,8.1 §8.1.1.3,8.1,The organisation's holiday calendar and leave policy are not in the baseline,Open — handling per source part,8.1,3
 GAP-178,8.2 §8.2.2.2,8.2,No owner for help-centre content and training materials,Open — handling per source part,"8.2, 8.3b, 8.3c",5
-GAP-179,8.1 §8.1.3.3,8.2,No tenant-facing status page or incident channel (Part 4.3 GAP-126) is decided before the first external tenant,Open — handling per source part,"8.1, 8.2, 8.3c",6
+GAP-179,8.1 §8.1.3.3,8.2,No tenant-facing status page or incident channel (Part 4.3 GAP-126) is decided before the first external tenant,Closed by DEC-406,"8.1, 8.2, 8.3c, 9.9a, 9.9b",11
 GAP-180,9.1 §9.1.5,9.1,DEC-151 · E-91 · Part 9.2 (GAP-180) · No central tag allocation log · §9.2.3 reconstruction is authoritative; future tags continue from the highest number in each register · 9.2,Closed by DEC-151,9.1,1
 GAP-181,9.1 §9.1.5,9.1,"DEC-148 · E-88 · Part 9.2 (GAP-181) · ID family collisions: AD-## (3.1 drivers vs 3.2 adapters), PP-## (1 principles vs 6.2 precondition profiles), D-# (3.3 drills vs 5.1a DoD items), B-## (3.1 cost rows vs budget lines B##) · IDs stay as written; cross-part references must be qualified with the part (e.g. ""3.2/AD-05"", ""6.2/PP-03"", ""3.3/D-2"", ""3.1/B-07""). Unqualified AD-/PP-/D-/B- references mean the owning definitions in Parts 3.1, 1, 5.1a and the DEC-020 budget lines respectively · 1, 3, 5.1, 6.2",Closed by DEC-148,9.1,1
 GAP-182,9.1 §9.1.5,9.1,"DEC-149 · E-89 · Part 9.2 (GAP-182) · 68 RECOMMENDATIONs have no recorded accept/reject · All proposed RECOMMENDATION-001…090 are accepted into the baseline under the delegated authority, except where a DEC states otherwise (e.g. ADR-043 superseded by DEC-081). They are implemented through the stories and tests that cite them · All",Closed by DEC-149,9.1,1
@@ -135,7 +135,7 @@ GAP-362,3.5a §3.5.3.1,3.5b,No operation-level SIT in Part 6,Open — handling p
 GAP-363,3.5b §3.5.8,3.5b,24 operations missing in Part 3.2,Open — handling per source part,3.5b,1
 GAP-364,3.5b §3.5.8,3.5b,"Three adapter ports missing (storage/extraction, contact verification, own-site audit)",Open — handling per source part,3.5b,1
 GAP-365,3.5a §3.5.3.1,3.5b,"Document 07's ""4 database reuse/field confirmations"" are not identified anywhere in the document",Open — handling per source part,"3.5a, 3.5b",3
-GAP-366,3.5a §3.5.3.1,3.5b,"The ""catalog-complete OpenAPI draft"" and the 164/164/165 offline examples are not in the package",Open — handling per source part,"3.5a, 3.5b",3
+GAP-366,3.5a §3.5.3.1,3.5b,"The ""catalog-complete OpenAPI draft"" and the 164/164/165 offline examples are not in the package",Closed by DEC-264,"3.5a, 3.5b, 9.6a",5
 GAP-367,3.5a §3.5.3.1,3.5b,PubMed listed on 10 operations has no blueprint home,Open — handling per source part,"3.5a, 3.5b",3
 GAP-388,3.6a §3.6.3,3.6b,"Missing entities: business template, service request, eval case result (and milestone via CONFLICT-383); interim retention for service requests",Open — handling per source part,"3.6a, 3.6b",8
 GAP-389,3.6a §3.6.3,3.6b,113 column additions on 73 tables (incl. portal grant invite/redemption columns),Open — handling per source part,"3.6a, 3.6b",4
@@ -188,11 +188,11 @@ GAP-466,4.4a §4.4.3.6,4.4b,No penetration-test rules of engagement,Closed by PT
 GAP-467,4.4a §4.4.3.7,4.4b,No budget pause operation (doc 31),"Candidate API-ENH-I-01/02, FR-ENH-I-051; Part 3.2 owner to accept","4.4a, 4.4b",3
 GAP-468,4.4a §4.4.3.8,4.4b,"Pack approval-gate counts (38 API, 4 DB, 138 UI) and the 1,188-record preflight not reconciled to blueprint IDs",Coordinator with groups owning docs 06/07/08/38,"4.4a, 4.4b",6
 GAP-469,4.4a §4.4.3.4,4.4b,No developer/operator access review and offboarding procedure,Closed by ACC-01…07,"4.4a, 4.4b",3
-GAP-480,8.3c §8.3.5.15.3,8.3c,8.3c OKPI-32,Open — handling per source part,8.3c,5
-GAP-481,8.3c §8.3.5.15.3,8.3c,8.3c OKPI-33/34,Open — handling per source part,8.3c,5
-GAP-482,8.3b §8.3.5.4,8.3c,8.3a/8.3b,Open — handling per source part,"8.3b, 8.3c",2
+GAP-480,8.3c §8.3.5.15.3,8.3c,8.3c OKPI-32,Open — handling per source part,"8.3c, 9.9a",8
+GAP-481,8.3c §8.3.5.15.3,8.3c,8.3c OKPI-33/34,Open — handling per source part,"8.3c, 9.9a",7
+GAP-482,8.3b §8.3.5.4,8.3c,8.3a/8.3b,Open — handling per source part,"8.3b, 8.3c, 9.9a",3
 GAP-483,8.3b §8.3.5.8,8.3c,8.3b §8.3.5.8,Open — handling per source part,"8.3b, 8.3c",2
-GAP-484,8.3c §8.3.5.13.6,8.3c,8.3c §8.3.5.13.6,Open — handling per source part,8.3c,2
+GAP-484,8.3c §8.3.5.13.6,8.3c,8.3c §8.3.5.13.6,Open — handling per source part,"8.3c, 9.9a",3
 GAP-485,8.3c §8.3.5.14,8.3c,8.3c §8.3.5.14,Open — handling per source part,8.3c,2
 GAP-486,8.3c §8.3.5.15,8.3c,8.3c §8.3.5.15,Open — handling per source part,8.3c,2
 GAP-487,8.3c §8.3.5.15.5,8.3c,8.3c TC-ENH-J-002,Open — handling per source part,8.3c,2
@@ -204,3 +204,20 @@ GAP-511,6.6 §6.6.13.2,6.10,"Part 3.6b stories US-01-EE01, US-14-EE01, US-20-EE0
 GAP-512,6.6 §6.6.13.2,6.10,"Part 4.4b TC-ENH-I rows cite control IDs (CS-, RGV-, SMK-) in their Requirement column rather than the FR-ENH-I they verify; six FR-ENH-I had no test",Open — handling per source part,"6.6, 6.10",2
 GAP-513,6.10 §6.10.8,6.10,"54 of 245 QCs had blueprint_verification_refs that are section citations with no test, VER or control ID",Open — handling per source part,6.10,1
 GAP-514,6.6 §6.6.13.2,6.10,"Part 6.5 cites ""Batch 6.6 §6.6.9"" for the tag register; Part 6.6 now numbers the register §6.6.13 after adding sections h, i, j",Open — handling per source part,"6.6, 6.10",2
+GAP-520,9.6a §9.6a,9.6a,"The investor product’s deployment inventory is owned outside this programme and must be supplied for the “two products, four frontends” inspection",Closed by DEC-252,9.6a,4
+GAP-610,9.7a front matter,9.7b,"Per-locale quality of the gateway models for Odia, Bengali, Telugu, Marathi, Kannada, Malayalam and Gujarati is not yet measured",Per-locale eval (TC-ADV-X1-045) before enabling each locale,"9.7a, 9.7b",3
+GAP-611,9.7b §9.7.14.2,9.7b,"Current Meta WhatsApp pricing, service-window and AI-use policy must be verified",Verify at implementation (as of 27 Nov 2026),9.7b,3
+GAP-612,9.7b §9.7.14.1,9.7b,"Legal review cost and content for the memory DPIA, conversation-intelligence notice and concierge terms are not estimated",Obtain counsel quotes (as GAP-174),9.7b,2
+GAP-613,9.7b §9.7.17,9.7b,No labelled outcome data yet for propensity and churn,Accumulates from Release 1; data gates in §9.7.3.3,9.7b,1
+GAP-614,9.7b §9.7.17,9.7b,Maturity of OpenTelemetry GenAI semantic conventions and Langfuse support for them,Verify at implementation,9.7b,2
+GAP-615,9.7b §9.7.17,9.7b,Final application dates of EU AI Act obligations under the Digital Omnibus,Verify each quarter,9.7b,2
+GAP-616,9.7b §9.7.17,9.7b,Answer-library ownership (who owns which answer families) is undefined,Define in A1 sprint 1,9.7b,1
+GAP-617,9.7b §9.7.17,9.7b,NBA action catalogue content (actions per stage and startup) needs Product Owner definition,Workshop before A2,9.7b,1
+GAP-660,9.8b §9.8.13,9.8b,"External legal counsel not estimated for partner agreements, voice-call rules and survey consent by jurisdiction",Obtain quotes; R10,9.8b,3
+GAP-661,9.8b §9.8.13.2,9.8b,"Third-party intent data vendors' terms, data rights and prices unknown",Benchmark and quote before any enablement,9.8b,2
+GAP-665,9.8b §9.8.16,9.8b,No HR policy exists for any use of recognition data in performance management,Closed by DEC-398,9.8b,1
+GAP-710,9.9a §9.9.5.15,9.9b,"DEC-047 has no named ""Enterprise"" plan; BYOK is mapped to Scale (custom)",Open; Service Owner,"9.9a, 9.9b",2
+GAP-711,9.9a §9.9.5.16,9.9b,No registered DPDP consent manager engaged; adapter readiness only,Open; R10 to monitor registrations,"9.9a, 9.9b",2
+GAP-712,9.9a ADR-136 Zero-trust Admin access: passkey,9.9b,No device-management (MDM) in the organization; device certificates via step-ca,Open,"9.9a, 9.9b",2
+GAP-713,9.9a §9.9.3.1,9.9b,"Developer terms of use, API licence and BYOK acceptance text not drafted; counsel cost not estimated",Open; legal,"9.9a, 9.9b",4
+GAP-714,9.9b §9.9.13.1,9.9b,No SOC 2 auditor or budget identified,Open; only on trigger,9.9b,2

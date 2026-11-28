@@ -195,3 +195,30 @@ After the blueprint above was completed, the client supplied the complete 38-doc
 
 **Status: Part 9 Batch 9.3 updated (v1.1).**
 
+## 9.3.9 Revision v1.1 update (28 Nov 2026): literal match and advanced capabilities
+
+**Where figures differ from §9.3.8, this section governs.**
+
+| Measure | v1.0 | v1.1 |
+|---|---|---|
+| Literal match with the 38-document source pack | 98.7% (10,926 / 11,067) | **100% (11,131 / 11,131)**. 141 conflicts aligned; 64 items wrongly marked not applicable now aligned; 138 not applicable confirmed (Parts 9.6a/b, Part 0B §0B.7) |
+| Decisions | 233 | **339** (DEC-234…270, 300…332, 380…409, 410…415) |
+| AI agents / automations / workflows | 38 / 52 / 14 | **80 / 119 / 38** (Part 9.4, regenerated) |
+| Advanced functional requirements / stories / tests | — | 240 FR-ADV · 96 stories · 258 TC-ADV + 91 TC-ALN · 71 new screens |
+| Traceability of the v1.1 additions | — | 100% at every level (Part 9.10 §9.10.8; `final/RTM_advanced.csv`) |
+| Expert personas applied | Ten enterprise roles | Plus **17 senior specialists** in three panels and two alignment teams (Part 9.10 §9.10.2) |
+
+**Delivery and cost effect.**
+- **Approved budgets unchanged:** Ledger A ₹52.7–84.1 L (DEC-230) and Ledger B ₹19,895–26,335/month (DEC-231).
+- **Literal alignment:**
+  - Effort: 65 / 113 / 179 pd.
+  - Release 1 Must work: ≈ 80 pd central, about 50 pd above the management reserve.
+  - Choice (DEC-412): fund it as change request CR-ALN-01 (₹3.0–12.2 L one-time; recurring ₹1,495–10,120/month), or accept a Release 1 go/no-go about 1.5–2 weeks later.
+- **Advanced capabilities:**
+  - Effort: 926 / 1,354 / 1,925 pd.
+  - Development: ₹78.2–143.0 L one-time across A1–A3; A1 alone ≈ ₹28.0–55.4 L.
+  - Recurring: ₹12,546–46,218/month at steady state.
+  - Separately approvable per release (DEC-414).
+- **Routing change for the Founder to confirm (DEC-413):** literal alignment (DEC-301) puts self-hosted inference ahead of Claude.
+
+**Status: Part 9 Batch 9.3 updated (v1.1).**

@@ -79,3 +79,29 @@ ADR-106,"Commercial journey as a projection, not a state machine",Proposed (FR-E
 ADR-107,Declared execution policy per workflow revision,"Proposed (FR-ENH-B-012, FR-ENH-B-013)",3.4
 ADR-108,Growth-scale validation profiles,Proposed (FR-ENH-B-001; resolves CONFLICT-321),3.4
 ADR-109,Four permission base classes per ingress namespace,Proposed (FR-ENH-B-005),3.4
+ADR-110,Supervisor-as-planner: AG-039 emits a typed plan; AU-053 validates; the M55 engine executes; ≤ 2 re-plans; agents never call agents,Accepted in part (no status column),9.7a
+ADR-111,Agent registry v2 with canary rollout (5% → 25% → 100%) and SLO-based auto-rollback,Accepted in part (no status column),9.7a
+ADR-112,"Structured long-term memory in PostgreSQL with allowlisted fact types, evidence, purpose, TTL and consent; OFF by default",Accepted in part (no status column),9.7a
+ADR-113,"Classical ML in-house (scikit-learn, LightGBM, MLflow self-hosted); advisory only; DEC-011 untouched",Accepted in part (no status column),9.7a
+ADR-114,"Envelope v3 with plan binding, capability tokens and monotonic data class",Accepted in part (no status column),9.7a
+ADR-115,OTel GenAI spans + Langfuse self-hosted from A1,Accepted in part (no status column),9.7a
+ADR-116,"Ordered, fail-closed guardrail stack with deterministic policy packs VP-01…08; guard frameworks only after benchmark",Accepted in part (no status column),9.7a
+ADR-117,Eval harness v2: offline + adversarial + shadow + canary + online + drift + ML metrics,Accepted in part (no status column),9.7a
+ADR-118,Experimentation: pre-registered fixed-horizon A/B with SRM check; Thompson sampling only across pre-approved variants with 10% floor and guardrail stops; no LLM picks winners,Accepted in part (no status column),9.7a
+ADR-119,"Separate hard-capped budget line B24 ""Advanced AI"" with its own ladder; advanced agents shed before any baseline agent",Accepted in part (no status column),9.7a
+ADR-120,Cadences extend the existing sequence engine (AU-022) and outbox rather than a new engine,Accepted in part (no status column),9.8b
+ADR-121,"Deal rooms, partner portal, survey and QBR pages live in the existing Website/Portal app as new audiences and object grants",Accepted in part (no status column),9.8b
+ADR-122,Page builder uses an embedded open-source block editor (GrapesJS-class) that emits typed block JSON; rendering is server-side from approved snapshots,Accepted in part (no status column),9.8b
+ADR-123,Forecast snapshots are append-only rows with payload hash; corrections are new snapshots,Accepted in part (no status column),9.8b
+ADR-124,"L2A matching is deterministic (weighted features with thresholds), not ML, at pilot",Accepted in part (no status column),9.8b
+ADR-125,"Intent engagement events are first-party, consent-gated and stored in PostgreSQL with monthly partitions",Accepted in part (no status column),9.8b
+ADR-130,"Analytics lakehouse on S3 Parquet with DuckDB, fed by the outbox",Proposed (A2) RECOMMENDATION-730,9.9a
+ADR-131,"Semantic metrics layer as code; NLQ emits plans, never SQL","Proposed (A1 layer, A2 NLQ) [RECOMMENDATION-731, RECOMMENDATION-732]",9.9a
+ADR-132,"Identity resolution: deterministic first, human-reviewed suggestions",Proposed (A3),9.9a
+ADR-133,AI observability on Langfuse self-hosted with OTel GenAI conventions and redaction at source,Proposed (A1); brings forward ADR-078 from the growth gate RECOMMENDATION-733,9.9a
+ADR-134,Remediation runbooks as code with plan-hash approval,Proposed (A2),9.9a
+ADR-135,Chaos and DR drills automated in staging and the isolated restore account only,Proposed (A1) RECOMMENDATION-734,9.9a
+ADR-136,"Zero-trust Admin access: passkeys, device certificate and JIT elevation","Proposed (A1) [RECOMMENDATION-735, RECOMMENDATION-736]",9.9a
+ADR-137,BYOK through cross-account KMS keys wrapping per-tenant data keys,"Proposed (A3, Scale plan only) RECOMMENDATION-737",9.9a
+ADR-138,Developer platform as a separate surface and audience,Proposed (A3) RECOMMENDATION-744; requires DEC-403 because Part 3.2 says outbound webhooks are not offered in W0–W6 CONFLICT-721,9.9a
+ADR-139,PWA with offline drafts only,Proposed (A3) RECOMMENDATION-741,9.9a

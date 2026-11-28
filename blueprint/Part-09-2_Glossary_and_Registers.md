@@ -456,82 +456,82 @@ Every ID family used across the parts. **Actual range found** and **Distinct IDs
 
 | Prefix | Meaning | Actual range found | Distinct IDs | Owning part | Defined in (most rows) | Parts citing |
 |---|---|---|---|---|---|---|
-| BR-M## | Business requirement derived from a BRD module line (M01–M66) | 01–66 | 66 | 1 (§1.12) | 1, 6.6, 5.2 | 32 |
-| BR-S### | Business requirement derived from a source statement | 001–140 | 140 | 1 (§1.12) | 1, 6.6, 6.7 | 33 |
-| BR-{group} | Group-level business requirement (tenant, website, automation, service, QA) | AUTO; QA; SVC; TENANT; WEB | 5 | 1 (§1.12) | 1, 6.6 | 26 |
-| FR-W## | Functional requirement for Website/Portal screen W01–W34 | 01–34 | 34 | 2.1 (§2.4) | 2.1, 6.6, 5.3, 6.3b | 38 |
-| FR-A### | Functional requirement for Admin Command Centre screen A001–A113 | 001–113 | 113 | 2.1 (§2.4) | 2.1, 6.6, 5.1c, 6.5 | 43 |
+| BR-M## | Business requirement derived from a BRD module line (M01–M66) | 01–66 | 66 | 1 (§1.12) | 1, 6.6, 5.2 | 39 |
+| BR-S### | Business requirement derived from a source statement | 001–140 | 140 | 1 (§1.12) | 1, 6.6, 6.7 | 36 |
+| BR-{group} | Group-level business requirement (tenant, website, automation, service, QA) | AUTO; QA; SVC; TENANT; WEB | 5 | 1 (§1.12) | 1, 6.6 | 33 |
+| FR-W## | Functional requirement for Website/Portal screen W01–W34 | 01–34 | 34 | 2.1 (§2.4) | 2.1, 6.6, 5.3, 6.3b | 40 |
+| FR-A### | Functional requirement for Admin Command Centre screen A001–A113 | 001–113 | 113 | 2.1 (§2.4) | 2.1, 6.6, 5.1c, 6.5 | 49 |
 | FR-OP### | Operational/platform functional requirement (health, readiness, config) | 001–003 | 3 | 2.1 (§2.4) | 2.1, 6.6, 5.3, 6.3b | 25 |
-| FR-{area}-## | Cross-cutting functional requirement by area (standards, data mgmt, UI states, filters, publication, adapters, …) | ADP 01; COP 01; CSM 01; DM 01–04; ENG 01; FLT 01–11; NEG 01; PUB 01; SRCH 01; STD 01–04; UIS 01–04 | 30 | 2.1 (§2.4) | 2.1, 6.6, 6.3a, 6.7 | 42 |
-| NFR-### | Non-functional requirement | 001–099 | 99 | 0 (§0.6); detailed in 4.2 | 4.2, 6.6, 6.7, 0 | 57 |
-| DEC-### | Binding decision (DEC-001…065 Part 0A; DEC-066…140 Part 9.1) | 001–233 | 233 | 0A, 9.1 | 9.1, 9.5, 0A, 5.2 | 58 |
-| BRL-{domain}-## | Business rule, by rule domain | AI 01–12; APR 01–11; AUT 01–10; BID 01–06; CTR 01–05; ELG 01–18; FIN 01–08; LCY 01–06; MKT 01–10; MTG 01–06; ORD 01–06; PRV 01–07; PUB 01–06; QTE 01–07; SCR 01–09; SEQ 01–05; SRC 01–10; SVC 01–07; TEN 01–12 | 161 | 2.3 | 2.3, 6.5, 6.3a, 6.3b | 48 |
-| R## | RBAC role (R01–R20; L suffix = startup-scoped lead variant) | 01–21; L 03–05 (1 unused) | 23 | 2.3 (§2.21) | 2.3, 8.3b, 7.3, 2.6 | 47 |
-| P## | Persona | 01–90 (68 unused) | 22 | 1 (§1.6) | 1, 7.1, 2.6, 8.1 | 32 |
-| KPI-## | Key performance indicator | 01–35 (3 unused) | 32 | 1 (§1.4) | 1, 8.2 | 46 |
-| EP-## | Epic | 01–21 | 21 | 0 (§0.10.2); stories in 5 | 0, 6.6, 8.1, 5.2 | 42 |
+| FR-{area}-## | Cross-cutting functional requirement by area (standards, data mgmt, UI states, filters, publication, adapters, …) | ADP 01; COP 01; CSM 01; DM 01–04; ENG 01; FLT 01–11; NEG 01; PUB 01; SRCH 01; STD 01–04; UIS 01–04 | 30 | 2.1 (§2.4) | 2.1, 6.6, 6.3a, 6.7 | 46 |
+| NFR-### | Non-functional requirement | 001–099 | 99 | 0 (§0.6); detailed in 4.2 | 4.2, 6.6, 6.7, 0 | 63 |
+| DEC-### | Binding decision (DEC-001…065 Part 0A; DEC-066…140 Part 9.1) | 001–415 (76 unused) | 339 | 0A, 9.1 | 9.1, 9.5, 9.6a, 0A | 68 |
+| BRL-{domain}-## | Business rule, by rule domain | AI 01–12; APR 01–11; AUT 01–10; BID 01–06; CTR 01–05; ELG 01–18; FIN 01–08; LCY 01–06; MKT 01–10; MTG 01–06; ORD 01–06; PRV 01–07; PUB 01–06; QTE 01–07; SCR 01–09; SEQ 01–05; SRC 01–10; SVC 01–07; TEN 01–12 | 161 | 2.3 | 2.3, 6.5, 6.3a, 6.3b | 56 |
+| R## | RBAC role (R01–R20; L suffix = startup-scoped lead variant) | 01–21; L 03–05 (1 unused) | 23 | 2.3 (§2.21) | 2.3, 8.3b, 7.3, 2.6 | 55 |
+| P## | Persona | 01–90 (68 unused) | 22 | 1 (§1.6) | 1, 7.1, 2.6, 8.1 | 38 |
+| KPI-## | Key performance indicator | 01–35 | 35 | 1 (§1.4) | 1, 8.2 | 54 |
+| EP-## | Epic | 01–21 | 21 | 0 (§0.10.2); stories in 5 | 0, 6.6, 8.1, 5.2 | 47 |
 | US-#### | User story (first two digits = epic) | 01 0001–0017; 02 0001–0008; 03 0001–0011; 04 0001–0008; 05 0001–0012; 06 0001–0008; 07 0001–0010; 08 0001–0015; 09 0001–0006; 10 0001–0007; 11 0001–0010; 12 0001–0010; 13 0001–0013; 14 0001–0012; 15 0001–0011; 16 0001–0012; 17 0001–0010; 18 0001–0015; … (21 families) | 230 | 5 | 5.3, 6.5, 5.2, 5.1b | 29 |
 | AC-####-## | Acceptance criterion of a user story | AC-0101-01 … AC-2110-05 (story-scoped; numbering restarts per story) | 1356 | 5 | 6.4 | 16 |
 | TS-##-## | Test scenario (epic-based, DEC-093) | 01 01–20; 02 01–08; 03 01–11; 04 01–08; 05 01–12; 06 01–08; 07 01–10; 08 01–18; 09 01–07; 10 01–08; 11 01–11; 12 01–11; 13 01–14; 14 01–13; 15 01–14; 16 01–11; 17 01–11; 18 01–17; 19 01–13; 20 01–13; 21 01–12 | 250 | 6 | 6.5, 6.3a, 6.2a, 6.2b | 7 |
 | TC-##-### | Test case (epic-based, DEC-093) | 01 001–133; 02 001–057; 03 001–099; 04 001–056; 05 001–086; 06 001–056; 07 001–075; 08 001–191 (1 unused); 09 001–047; 10 001–060; 11 001–075; 12 001–083 (1 unused); 13 001–128; 14 001–101; 15 001–109; 16 001–084; 17 001–091; 18 001–138; 19 001–102; … (21 families) | 1979 | 6 | 6.5, 6.3a, 6.2a, 6.3b | 18 |
 | TC-AI-AG###-### | AI agent test case (per agent; format per DEC-113) | 001 001–017; 002 001–024; 003 001–015; 004 001–021; 005 001–019; 006 001–018; 007 001–014; 008 001–016; 009 001–017; 010 001–014; 011 001–021; 012 001–018; 013 001–021; 014 001–019; 015 001–030; 016 001–016; 017 001–031; 018 001–019; 019 001–018; … (36 families) | 586 | 6 | 6.4 | 7 |
 | TC-AU-AU###-### | Automation test case (per automation; DEC-113) | 001 001–005; 002 001–015 (1 unused); 003 001–004; 004 001–005; 005 001–005; 006 001–015; 007 001–004; 008 001–004; 009 001–003; 010 001–009; 011 001–004; 012 001–008; 013 001–003; 014 001–004; 015 001–004; 016 001–004; 017 001–004; 018 001–003; … (43 families) | 187 | 6 | 6.4 | 4 |
-| AG-### | AI agent | 001–038 | 38 | 7.1/7.2 | 7.2, 6.4, 7.1, 6.6 | 21 |
-| AU-### | Deterministic or AI-assisted automation | 001–052 | 52 | 7.1/7.2 | 6.6, 9.4, 7.1, 6.4 | 15 |
-| ADR-### | Architecture decision record | 001–109 (29 unused) | 80 | 3.1 (001–043), 4.1/4.3 (050–069), 7.3 (070–085) | 3.1, 7.3, 3.4, 4.3 | 20 |
-| RSK-### | Risk (feeds the Part 8 risk register) | 001–379 (217 unused) | 162 | 8 (raised in 3–7) | 8.2, 7.3, 3.1, 4.1 | 18 |
+| AG-### | AI agent | 001–080 | 80 | 7.1/7.2 | 7.2, 6.4, 9.4, 9.7a | 29 |
+| AU-### | Deterministic or AI-assisted automation | 001–119 | 119 | 7.1/7.2 | 9.4, 9.7b, 6.6, 7.1 | 23 |
+| ADR-### | Architecture decision record | 001–139 (33 unused) | 106 | 3.1 (001–043), 4.1/4.3 (050–069), 7.3 (070–085) | 3.1, 7.3, 3.4, 9.7a | 29 |
+| RSK-### | Risk (feeds the Part 8 risk register) | 001–379 (217 unused) | 162 | 8 (raised in 3–7) | 8.2, 7.3, 3.1, 4.1 | 19 |
 | THR-### | STRIDE threat | 001–082 | 82 | 4.1 (§4.2.2) | 4.1, 6.4 | 13 |
-| SC-## | Security control | 01–50 | 50 | 4.1 | 4.1, 6.4 | 12 |
-| RB-### | Operational runbook | 001–018 | 18 | 4.3 | 4.3 | 17 |
-| SLO-## | Service level objective | 01–12 | 12 | 4.2/4.3 | 4.3 | 8 |
-| AL-## | Alert rule (AL-50…58 added in 4.4b) | 01–58 | 58 | 4.1/4.3, 4.4b | 4.3, 4.4b | 9 |
-| LT-## | Load/performance test (DEC-092: owned by 6.1) | 01–16 (2 unused) | 14 | 6.1 | 6.1, 4.2 | 22 |
+| SC-## | Security control | 01–50 | 50 | 4.1 | 4.1, 6.4 | 14 |
+| RB-### | Operational runbook | 001–018 | 18 | 4.3 | 4.3 | 22 |
+| SLO-## | Service level objective | 01–12 | 12 | 4.2/4.3 | 4.3 | 11 |
+| AL-## | Alert rule (AL-50…58 added in 4.4b) | 01–58 | 58 | 4.1/4.3, 4.4b | 4.3, 4.4b | 11 |
+| LT-## | Load/performance test (DEC-092: owned by 6.1) | 01–16 (2 unused) | 14 | 6.1 | 6.1, 4.2 | 25 |
 | DQ-### | Data quality check | 001–032 | 32 | 3.3 | 3.3 | 4 |
-| API-### | API operation in the derived catalogue (555 ops, DEC-104) | 001–556 | 556 | 3.2 | 3.2 | 14 |
-| NT-### | Internal notification type | 001–046 | 46 | 2.4 | 2.4 | 20 |
-| NX-## | External (customer-facing) notification type | 01–15 | 15 | 2.4 | 2.4 | 10 |
-| RP-## | Report/analytics view | 01–30 | 30 | 2.4 | 2.4 | 26 |
+| API-### | API operation in the derived catalogue (555 ops, DEC-104) | 001–556 | 556 | 3.2 | 3.2 | 17 |
+| NT-### | Internal notification type | 001–046 | 46 | 2.4 | 2.4 | 25 |
+| NX-## | External (customer-facing) notification type | 01–15 | 15 | 2.4 | 2.4 | 12 |
+| RP-## | Report/analytics view | 01–30 | 30 | 2.4 | 2.4 | 31 |
 | SR-## | Search capability | 01–08 | 8 | 2.4 | 2.4 | 11 |
-| CFG-## | Configuration domain | 01–32 | 32 | 2.4 | 2.4 | 34 |
-| WF-## | End-to-end workflow / process flow | 01–14 | 14 | 2.2 | 2.2, 9.4 | 38 |
-| AP-## | Acceptance procedure (DEC-014) | 01–11 | 11 | 0A; tests in 6 | 6.1 | 39 |
-| CAP-## | Business capability (capability map) | 01–20 | 20 | 2.1 | 2.1, 3.4 | 2 |
-| CA-{code} | Acceptance profile applied to FRs (e.g. CA-PUB, CA-FIN) | ADMIN; AI; ALL; APPROVE; CONFIG; DISPATCH; FIN; INTAKE; PORTAL; PUB | 10 | 2.1 | 2.1 | 41 |
-| J-## | User journey | 01–77 (27 unused) | 50 | 1 (§1.11) | 1, 9.5 | 8 |
+| CFG-## | Configuration domain | 01–32 | 32 | 2.4 | 2.4 | 38 |
+| WF-## | End-to-end workflow / process flow | 01–39 (1 unused) | 38 | 2.2 | 9.4, 9.10, 9.7b, 2.2 | 47 |
+| AP-## | Acceptance procedure (DEC-014) | 01–11 | 11 | 0A; tests in 6 | 6.1 | 41 |
+| CAP-## | Business capability (capability map) | 01–20 | 20 | 2.1 | 2.1, 3.4 | 3 |
+| CA-{code} | Acceptance profile applied to FRs (e.g. CA-PUB, CA-FIN) | ADMIN; AI; ALL; APPROVE; CONFIG; DISPATCH; FIN; INTAKE; PORTAL; PUB | 10 | 2.1 | 2.1 | 44 |
+| J-## | User journey | 01–77 (27 unused) | 50 | 1 (§1.11) | 1, 9.5 | 9 |
 | SH-## | Stakeholder | 01–14 | 14 | 1 | 1 | 3 |
 | CN-## | Constraint | 01–15 | 15 | 1 | 1 | 10 |
-| DP-## | External dependency | 01–15 | 15 | 1 | 1, 8.1 | 12 |
-| X-## | Explicit exclusion (out of scope) | 01–12 | 12 | 1 | 1 | 6 |
+| DP-## | External dependency | 01–15 | 15 | 1 | 1, 8.1 | 13 |
+| X-## | Explicit exclusion (out of scope) | 01–12 | 12 | 1 | 1 | 9 |
 | L-## | Later / future scope item (W6+) | 01–09 | 9 | 1 | 1, 3.5b | 8 |
 | VH-## | Value hypothesis | 01–06 | 6 | 1 | 1 | 4 |
-| PP-## | Product principle | 01–12 | 12 | 1 | 1 | 13 |
+| PP-## | Product principle | 01–12 | 12 | 1 | 1 | 16 |
 | PR-## | Problem statement | 01–10 | 10 | 1 | 1 | 1 |
 | G-## | Business goal | 01–10 | 10 | 1 | 1 | 4 |
 | OQ-### | Open question (all answered in 0A) | 001–030 | 30 | 0, 0A | 0, 0A | 3 |
 | AMB-# | Ambiguity in the source (resolved DEC-049…058) | 01–10 | 10 | 0, 0A | 0 | 3 |
 | E-## | Errata item (Part 9.1, E-01…); note E-# (one digit) = engine invariant in 2.2 | 01–96 (2 unused) | 94 | 9.1 | referenced only | 3 |
-| ABAC-## | Attribute-based access control rule | 01–12 | 12 | 2.3 | 2.3 | 32 |
-| ENT-### | Logical data entity | 001–200 | 200 | 3.3 | 3.3, 3.6a | 14 |
+| ABAC-## | Attribute-based access control rule | 01–12 | 12 | 2.3 | 2.3 | 34 |
+| ENT-### | Logical data entity | 001–200 | 200 | 3.3 | 3.3, 3.6a | 15 |
 | CK-## | Database check constraint pattern | 01–24 | 24 | 3.3 | 3.3 | 4 |
 | UQ-{kind}-## | Uniqueness/idempotency key or duplicate rule | DUP 01–05; IDEM 01–19 | 24 | 3.3 | 3.3 | 4 |
-| AD-## | Architecture driver | 01–20 | 20 | 3.1 | 3.2, 3.1 | 12 |
+| AD-## | Architecture driver | 01–20 | 20 | 3.1 | 3.2, 3.1 | 14 |
 | ARP-## | Architecture principle | 01–15 | 15 | 3.1 | 3.1 | 4 |
-| FM-## | Failure mode (resilience analysis) | 01–17 | 17 | 3.1 | 3.1 | 4 |
+| FM-## | Failure mode (resilience analysis) | 01–17 | 17 | 3.1 | 3.1 | 5 |
 | IP-## | Integration pattern | 01–10 | 10 | 3.2 | 3.2 | 6 |
-| CT-## | Contract-test gate | 01–15 | 15 | 3.2 | referenced only | 6 |
+| CT-## | Contract-test gate | 01–15 | 15 | 3.2 | referenced only | 7 |
 | REC-## | Reconciliation job | 01–09 | 9 | 3.2 | referenced only | 2 |
 | XR-{role}-## | Cross-role review finding | DBA 01–07; FIN 01–06; PO 01–05; QA 01–06; SEC 01–10; UX 01–06 | 40 | 3.2 | 3.2 | 1 |
-| TB-## | Trust boundary | 01–12 | 12 | 4.1 | 4.1 | 2 |
-| AZ-## | Authorization enforcement layer | 01–15 | 15 | 4.1 | 4.1 | 1 |
-| SE-## | Security event (logged/alerted) | 01–18 | 18 | 4.1 | 4.1 | 5 |
-| SO-# | Security objective | 1–8 | 8 | 4.1 | 4.1 | 1 |
+| TB-## | Trust boundary | 01–12 | 12 | 4.1 | 4.1 | 3 |
+| AZ-## | Authorization enforcement layer | 01–15 | 15 | 4.1 | 4.1 | 3 |
+| SE-## | Security event (logged/alerted) | 01–18 | 18 | 4.1 | 4.1 | 6 |
+| SO-# | Security objective | 1–8 | 8 | 4.1 | 4.1 | 3 |
 | SI-# | Security incident class | 1–8 | 8 | 4.1 | referenced only | 2 |
 | AIR-## | AI-specific risk (injection, leakage, …) | 01–12 | 12 | 4.1 | 4.1, 6.4 | 3 |
-| DPIA-T# | DPIA trigger | 01–10 | 10 | 4.1 | 4.1 | 1 |
-| {rule set}-R# | Regulatory or design rule set (EU/UK GDPR, IT Act, WhatsApp, PCI, TRAI, GST, Canada, index, reporting) | CA 1; EU 1–11; GST 1–5; IT 1–5; IX 1–7; PCI 1–4; RPT 1–10; TR 1–3; WA 1–7 | 53 | 4.1, 3.3, 2.4 | 4.1, 2.4, 3.3 | 14 |
-| CH-## | Chaos/resilience experiment | 01–04 | 4 | 4.2 | 4.2 | 5 |
-| PL-## | CI/CD pipeline stage | 01–44 (22 unused) | 22 | 4.3 | 4.3 | 11 |
-| DB-## | Operational dashboard | 01–10 | 10 | 4.3 | 4.3 | 5 |
+| DPIA-T# | DPIA trigger | 1–10 | 10 | 4.1 | 4.1 | 1 |
+| {rule set}-R# | Regulatory or design rule set (EU/UK GDPR, IT Act, WhatsApp, PCI, TRAI, GST, Canada, index, reporting) | CA 1; EU 1–11; GST 1–5; IT 1–5; IX 1–7; PCI 1–4; RPT 1–10; TR 1–3; WA 1–7 | 53 | 4.1, 3.3, 2.4 | 4.1, 2.4, 3.3 | 18 |
+| CH-## | Chaos/resilience experiment | 01–04 | 4 | 4.2 | 4.2 | 6 |
+| PL-## | CI/CD pipeline stage | 01–44 (22 unused) | 22 | 4.3 | 4.3 | 12 |
+| DB-## | Operational dashboard | 01–10 | 10 | 4.3 | 4.3 | 6 |
 | DM-### | Story-dimension matrix row (Part 5.1a) | 001–057 | 57 | 5.1a | 5.1a | 2 |
 | MAS-# / RR-# | Mandatory AC scenario / required-risk scenario (story template) | MAS 1–9; RR 1–8 | 17 | 5.1a | referenced only | 4 |
 | TP-## | Test principle | 01–12 | 12 | 6.1 | 6.1 | 7 |
@@ -541,61 +541,61 @@ Every ID family used across the parts. **Actual range found** and **Distinct IDs
 | PW-## | Pairwise test combination | 01–26 | 26 | 6.1 | 6.1 | 2 |
 | EG-## | Error-guessing test idea | 01–20 | 20 | 6.1 | 6.1 | 10 |
 | BVA-D## | Boundary-value analysis datum | 01–14 | 14 | 6.1 | 6.1 | 3 |
-| DR-# | Disaster-recovery drill | 1–9 | 9 | 6.1 | 6.1 | 6 |
-| CI-### | Candidate AI idea (discovery register) | 001–135 | 135 | 7.1 | 7.1 | 6 |
-| TL-## | Agent tool in the tool registry | 01–20 | 20 | 7.2 | 7.2 | 5 |
-| D0# | Delivery persona (delivery-lifecycle AI) | 01–06 | 6 | 7.1 | 7.1 | 7 |
-| B## | Budget line (cost table; GAP-006, DEC-020) | 01–23 | 23 | 0, 0A, 8 | 8.2, 7.4a | 43 |
+| DR-# | Disaster-recovery drill | 1–9 | 15 | 6.1 | 6.1 | 9 |
+| CI-### | Candidate AI idea (discovery register) | 001–135 | 135 | 7.1 | 7.1 | 8 |
+| TL-## | Agent tool in the tool registry | 01–32 | 32 | 7.2 | 7.2, 9.7a | 12 |
+| D0# | Delivery persona (delivery-lifecycle AI) | 01–06 | 6 | 7.1 | 7.1 | 9 |
+| B## | Budget line (cost table; GAP-006, DEC-020) | 01–24 | 24 | 0, 0A, 8 | 8.2, 7.4a | 51 |
 | UX-## | UX principle | 01–09 | 9 | 2.5 | 2.5 | 6 |
-| I18N-## | Internationalization rule | 01–11 | 11 | 2.4 | 2.4 | 9 |
-| OPT-##-## | FRD optimisation item (source ID, cited) | 01 01–08; 02 01–07; 03 01–08; 04 01–08; 05 01–07; 06 01–05; 07 01–05; 08 01–06; 09 01–05; 10 01–06; 11 01–05; 12 01–04; 13 01–04; 14 01–03; 15 01–04; 16 01–03; 17 01–04; 18 01–04; 19 01–04; 20 01–04 | 104 | Source (FRD) | 8.3c, 3.4, 4.4a, 2.6 | 38 |
+| I18N-## | Internationalization rule | 01–11 | 11 | 2.4 | 2.4 | 11 |
+| OPT-##-## | FRD optimisation item (source ID, cited) | 01 01–08; 02 01–07; 03 01–08; 04 01–08; 05 01–07; 06 01–05; 07 01–05; 08 01–06; 09 01–05; 10 01–06; 11 01–05; 12 01–04; 13 01–04; 14 01–03; 15 01–04; 16 01–03; 17 01–04; 18 01–04; 19 01–04; 20 01–04 | 104 | Source (FRD) | 8.3c, 3.4, 4.4a, 2.6 | 47 |
 | SM-UT-### | Source test alias (FRD; aliases only, DEC-094) | 001–066 | 66 | Source (FRD); 6 | 6.8b, 6.8a | 10 |
-| M## | Source module M01–M66 (BRD §7) | 01–66 | 66 | Source (BRD) | 6.9a | 47 |
-| W## / A### | Screen ID: Website/Portal W01–W34, Admin A001–A113 | A 01–302 (169 unused); W 01–34 | 167 | Source (FRD §16.2); 2.5 | 8.3a, 2.5, 2.7a, 6.4 | 57 |
-| FR-ENH-{G}-### | Source-pack enhanced functional requirement; group letter = enhancement part (A 2.6, B 3.4, C 2.7, D 3.5, E 3.6, F 7.4, H 6.9, I 4.4, J 8.3) | A 001–020; B 001–027; C 001–017; D 001–020; E 001–008; F 001–031; H 001–010; I 001–083 (58 unused); J 001–022 | 180 | 2.6, 2.7, 3.4–3.6, 4.4, 6.9, 7.4, 8.3 | 6.6, 8.3c, 7.4b, 4.4b | 20 |
-| NFR-ENH-{G}-## | Source-pack non-functional requirement (growth scale, recovery by class, unit cost) | B 01–08 | 8 | 3.4 | 3.4, 6.6 | 4 |
-| US-##-E{G}## | Source-pack enhancement user story (epic, group letter, sequence) | 01-EA 01; 01-EB 01–05; 01-EC 01; 01-ED 01–02; 01-EE 01; 01-EF 01; 01-EI 01–02; 01-EJ 01–03; 02-EF 01; 03-EA 01; 03-EB 01; 03-ED 01; 04-EB 01–02; 04-EC 01; 04-EF 01–05; 04-EI 01; 04-EJ 01; 05-EA 01–04; 05-ED 01; 05-EF 01; 06-EA 01; 08-EA 01–02; … (66 families) | 135 | 2.6–8.3 enhancement parts | 6.6, 2.6, 3.4, 8.3c | 14 |
+| M## | Source module M01–M66 (BRD §7) | 01–66 | 66 | Source (BRD) | 6.9a | 53 |
+| W## / A### | Screen ID: Website/Portal W01–W34, Admin A001–A113 | A 001–302 (121 unused); W 001–090 (38 unused) | 233 | Source (FRD §16.2); 2.5 | 8.3a, 2.5, 9.8a, 9.7b | 66 |
+| FR-ENH-{G}-### | Source-pack enhanced functional requirement; group letter = enhancement part (A 2.6, B 3.4, C 2.7, D 3.5, E 3.6, F 7.4, H 6.9, I 4.4, J 8.3) | A 001–020; B 001–027; C 001–017; D 001–020; E 001–008; F 001–031; H 001–010; I 001–083 (58 unused); J 001–022 | 180 | 2.6, 2.7, 3.4–3.6, 4.4, 6.9, 7.4, 8.3 | 6.6, 8.3c, 7.4b, 4.4b | 28 |
+| NFR-ENH-{G}-## | Source-pack non-functional requirement (growth scale, recovery by class, unit cost) | B 01–08 | 8 | 3.4 | 3.4, 6.6 | 5 |
+| US-##-E{G}## | Source-pack enhancement user story (epic, group letter, sequence) | 01-EA 01; 01-EB 01–05; 01-EC 01; 01-ED 01–02; 01-EE 01; 01-EF 01; 01-EI 01–02; 01-EJ 01–03; 02-EF 01; 03-EA 01; 03-EB 01; 03-ED 01; 04-EB 01–02; 04-EC 01; 04-EF 01–05; 04-EI 01; 04-EJ 01; 05-EA 01–04; 05-ED 01; 05-EF 01; 06-EA 01; 08-EA 01–02; … (66 families) | 135 | 2.6–8.3 enhancement parts | 6.6, 2.6, 3.4, 8.3c | 15 |
 | AC-##E{G}##-## / AC-##-E{G}##-## | Acceptance criterion of an enhancement story | 01-ED01 01–03; 01-ED02 01–04; 01-EF01 01–03; 01EA01 01–02; 01EB01 01–03; 01EB02 01–02; 02-EF01 01–02; 03-ED01 01–02; 03EA01 01–02; 03EB01 01–02; 04-EF01 01–04; 04-EF02 01–03; 04-EF03 01–03; 04-EF04 01–03; 04-EF05 01–02; 04EB01 01–02; 04EB02 01; … (77 families) | 178 | 2.6–8.3 enhancement parts | referenced only | 6 |
-| TC-ENH-{G}-### | Source-pack enhancement test case (D-C candidate, D-E enhancement-operation, D-N negative family; K = coverage closure, Part 6.10) | A- 001–050; B- 001–040; C- 001–247 (80 unused); D- 001–302; D-C 001–019; D-E 001–024; D-N 001–022; E- 001–036; F- 001–040; G- 001–045; H- 001–036; I- 001–077 (36 unused); J- 001–066; K- 001–077 (13 unused) | 952 | 2.6–8.3 enhancement parts; 6.10 | 3.5b, 6.10, 8.3c, 2.6 | 23 |
-| LT-ENH-{G}-## | Source-pack load/resilience test (indexed under WP-01…03, DEC-161/216) | B 01–04; C 01; I 01–06 | 11 | 2.7a, 3.4, 4.4b | 6.6, 4.4b, 3.4, 6.10 | 7 |
+| TC-ENH-{G}-### | Source-pack enhancement test case (D-C candidate, D-E enhancement-operation, D-N negative family; K = coverage closure, Part 6.10) | A- 001–050; B- 001–040; C- 001–247 (80 unused); D- 001–302; D-C 001–019; D-E 001–024; D-N 001–022; E- 001–036; F- 001–040; G- 001–045; H- 001–036; I- 001–077 (36 unused); J- 001–066; K- 001–077 (13 unused) | 952 | 2.6–8.3 enhancement parts; 6.10 | 3.5b, 6.10, 8.3c, 2.6 | 25 |
+| LT-ENH-{G}-## | Source-pack load/resilience test (indexed under WP-01…03, DEC-161/216) | B 01–04; C 01; I 01–06 | 11 | 2.7a, 3.4, 4.4b | 6.6, 4.4b, 3.4, 6.10 | 9 |
 | TC-{NFR/FLT/BRS}-### | Coverage-closure test case (NFR gate, filter suite, BR-S) | BRS 001–013; FLT 001–045; NFR 001–099 | 157 | 6.7 | 6.7 | 7 |
 | VER-### | Verification item (inspection, review, analysis, demonstration); not a test case | 001–048 | 48 | 6.7 | 6.7 | 2 |
 | VER-ENH-K-### | Source-pack closure verification item | 001–027 (7 unused) | 20 | 6.10 | 6.10 | 2 |
-| OKPI-## | Optimization KPI of the source pack (document 38 KPI-01…35, renamed to avoid KPI-01…31; 21 mandatory) | 01–35 | 35 | 4.4a, 6.9a, 8.3c | 4.4a, 6.6, 8.3c, 6.9a | 17 |
-| QC-##/### | Source-pack quality control (document 23; 245 QCs) | 001–999 (763 unused) | 238 | 6.9a/b | 6.6, 6.9b, 6.9a | 9 |
-| QCL-## | Quality-control layer (document 23; 31 layers with sign-off role) | 01–31 | 31 | 6.9a/b | 6.6, 6.9a, 6.9b | 4 |
+| OKPI-## | Optimization KPI of the source pack (document 38 KPI-01…35, renamed to avoid KPI-01…31; 21 mandatory) | 01–35 | 35 | 4.4a, 6.9a, 8.3c | 4.4a, 6.6, 8.3c, 6.9a | 24 |
+| QC-##/### | Source-pack quality control (document 23; 245 QCs) | 001–999 (763 unused) | 238 | 6.9a/b | 6.6, 6.9b, 6.9a | 10 |
+| QCL-## | Quality-control layer (document 23; 31 layers with sign-off role) | 01–31 | 31 | 6.9a/b | 6.6, 6.9a, 6.9b | 5 |
 | UX-QC-## | Expansion quality control and sign-off check | 01–10 | 10 | 4.4a, 6.9 | 4.4a, 6.6, 6.9b, 6.9a | 8 |
 | SPDEC-### / SPDEC-X-… | Source-pack engineering decision of document 24 (180 retained + expansion), never a binding DEC (DEC-178) | 001–180; X | 184 | 6.9b; 9.5 | 6.9a | 4 |
-| SRC07-DEC-### | Document 07 API decision, renamed (DEC-178) | 001–038 | 38 | 3.5b | 3.5b | 3 |
-| SDEC-08-### | Document 08 schema decision, renamed (DEC-178) | 039–042 | 4 | 3.6b | 3.6a | 3 |
+| SRC07-DEC-### | Document 07 API decision, renamed (DEC-178) | 001–038 | 38 | 3.5b | 3.5b | 4 |
+| SDEC-08-### | Document 08 schema decision, renamed (DEC-178) | 039–042 | 4 | 3.6b | 3.6a | 4 |
 | SM-SIT-{A/F/M}### | Source SIT test alias (A = operation, F = flow, M = module) | A 001–302; F 001–035; M 001–066 | 403 | 3.5, 6.8, 6.9 | 6.8b, 6.6, 6.8a | 8 |
 | SM-UAT-{S/F}### | Source UAT test alias (S = screen, F = flow) | F 001–017; S 001–138 | 155 | 6.1, 6.8 | 6.8b, 6.8a | 15 |
 | SM-OP-### | Source API/adapter operation (document 07) | 001–302 | 302 | 3.5a/b | 3.5a, 3.5b | 4 |
 | SM-UX-API-## | Source expansion-interface API candidate | 01–19 | 19 | 3.5b | 3.5b, 3.5a | 7 |
-| SM-FR-{W/A/OP}… | Source FR alias of FR-W/FR-A/FR-OP (DEC-017) | A 001–113; OP 001–003; W 001–034 | 150 | 6.9a | 6.9a | 4 |
+| SM-FR-{W/A/OP}… | Source FR alias of FR-W/FR-A/FR-OP (DEC-017) | A 01–113; OP 01–03; W 01–34 | 150 | 6.9a | 6.9a | 5 |
 | SM-UX-FR- / FR-UX- | Per-screen field-specification alias, not a separate FR (DEC-180) | A 001–113; W 001–034 | 294 | 6.9a; 9.5 | referenced only | 5 |
 | SM-UX-UAT- | Per-screen UAT alias | A 001–113; W 001–034 | 147 | 6.1; 6.8 | 6.8b | 11 |
 | SM-UX-SIT-X## | Source expansion SIT check | 01–10 | 10 | 6.8 | 6.8b, 6.8a | 3 |
 | API-ENH-{G}-### | Enhancement API operation | D 001–024; I 001–002 | 26 | 3.5b, 4.4b | 3.5b | 6 |
-| {family}-ENH-{G}-## | Enhancement item extending a baseline family (rule, ABAC, configuration, KPI, report, acceptance procedure, entity, index, check, runbook, risk) | ABAC-ENH-A 01–05; AP-ENH-A 01–12 (1 unused); BRL-ENH-A 01–14; CFG-ENH-A 01–08; CK-ENH-E 01–12; ENT-ENH-E 01–04; ENT-ENH-H 01–07; ENT-ENH-J 01–03; IX-ENH-E 01–58 (3 unused); KPI-ENH-A 01–05; RB-ENH-B 01–03; RB-ENH-H 01–03; RP-ENH-A 01–04; RSK-ENH-95 01–06; … (15 families) | 144 | 2.6, 3.6, 6.9, 9.5 | 3.6a, 2.6, 3.6b, 6.9b | 10 |
-| XBR-## | Expansion scope statement mapped to BR-S138 (no new BR; DEC-180) | 01–05 | 5 | 9.5 | referenced only | 4 |
-| RC-# | Recovery class: RC-1 critical, RC-2 regenerable, RC-3 ephemeral (DEC-158) | 1–3 | 3 | 3.4; 4.4b; 9.5 | referenced only | 8 |
+| {family}-ENH-{G}-## | Enhancement item extending a baseline family (rule, ABAC, configuration, KPI, report, acceptance procedure, entity, index, check, runbook, risk) | ABAC-ENH-A 01–05; AP-ENH-A 01–12 (1 unused); BRL-ENH-A 01–14; CFG-ENH-A 01–08; CK-ENH-E 01–12; ENT-ENH-E 01–04; ENT-ENH-H 01–07; ENT-ENH-J 01–03; IX-ENH-E 01–58 (3 unused); KPI-ENH-A 01–05; RB-ENH-B 01–03; RB-ENH-H 01–03; RP-ENH-A 01–04; RSK-ENH-95 01–06; … (15 families) | 144 | 2.6, 3.6, 6.9, 9.5 | 3.6a, 2.6, 3.6b, 6.9b | 14 |
+| XBR-## | Expansion scope statement mapped to BR-S138 (no new BR; DEC-180) | 01–05 | 5 | 9.5 | referenced only | 5 |
+| RC-# | Recovery class: RC-1 critical, RC-2 regenerable, RC-3 ephemeral (DEC-158) | 1–3 | 3 | 3.4; 4.4b; 9.5 | referenced only | 10 |
 | DR-T# | Recovery tier of Part 3.6b, alias of RC (DEC-158) | 1–3 | 3 | 3.6b | referenced only | 3 |
-| WP-## | Load-test workload profile (WP-01 release gates, WP-02 scale gate, WP-03 traffic mix; DEC-161) | 01–03 | 3 | 4.4b; 9.5 | referenced only | 4 |
-| PC-## | Typed AI prompt contract (PC-01…18) | 01–18 | 18 | 7.4a/b | 7.4a | 5 |
-| PG-## | Integration procurement/activation gate (PG-01…10, AU-044) | 01–10 | 10 | 7.4a/b | 7.4b | 6 |
-| IC-### | Integration candidate of the capability replacement register | 001–538 (391 unused) | 147 | 7.4a | 7.4a | 3 |
+| WP-## | Load-test workload profile (WP-01 release gates, WP-02 scale gate, WP-03 traffic mix; DEC-161) | 01–03 | 3 | 4.4b; 9.5 | referenced only | 6 |
+| PC-## | Typed AI prompt contract (PC-01…18) | 01–40 | 40 | 7.4a/b | 7.4a | 8 |
+| PG-## | Integration procurement/activation gate (PG-01…10, AU-044) | 01–10 | 10 | 7.4a/b | 7.4b | 8 |
+| IC-### | Integration candidate of the capability replacement register | 001–538 (391 unused) | 147 | 7.4a | 7.4a | 4 |
 | AL-##.# | Automation-library use case (20 groups × 5) | 01 1–5; 02 1–5; 03 1–5; 04 1–5; 05 1–5; 06 1–5; 07 1–5; 08 1–5; 09 1–5; 10 1–5; 11 1–5; 12 1–5; 13 1–5; 14 1–5; 15 1–5; 16 1–5; 17 1–5; 18 1–5; 19 1–5; 20 1–5 | 100 | 7.4b | referenced only | 2 |
 | TPL-## | Automation-library industry template | 01–20 | 20 | 7.4b | 7.4b | 2 |
-| SLA-## | SaaS SLA schedule term (SLA-01…12) | 01–12 | 12 | 8.3c | referenced only | 4 |
+| SLA-## | SaaS SLA schedule term (SLA-01…12) | 01–12 | 12 | 8.3c | referenced only | 5 |
 | CSO-## | Client service stage and gate (CSO-01…12) | 01–12 | 12 | 8.3c | referenced only | 3 |
 | MNT-{cadence}## | Recurring maintenance activity (D daily, W weekly, M monthly, Q quarterly, A annual, B before update, R release, I after incident) | A 01–05; B 01–02; D 01–06; I 01; M 01–10 (1 unused); Q 01–07; R 01; W 01–07 | 38 | 8.3c | 8.3c | 2 |
 | TRN-SCR- | Training task card per screen | A 001–113; W 001–034 | 147 | 8.3b | 8.3b | 2 |
 | TRN-EX-## | Training exercise with worked answer | 01–16 | 16 | 8.3b | referenced only | 3 |
-| TM-## | Training module | 01–33 | 33 | 8.3a/b | 8.3b | 3 |
+| TM-## | Training module | 01–33 | 33 | 8.3a/b | 8.3b | 4 |
 | LJ-## | Role learning journey (document 33) | 01–16 | 16 | 8.3b | 8.3b | 3 |
 | OPT-## / OPT-TEST-## | Optimization dimension (21) / optimization test scenario (24) of document 38 | 01–20; TEST | 44 | 4.4a, 8.3c | 8.3a, 8.3c | 10 |
-| CS-{family}-## | Coding-standard rule, by family (186 rules) | A11Y 01–06; ADP 01–07; AI 01–08; AIC 01–08; API 01–12; DEP 01–08; DJ 01–10; DOC 01–06; GEN 01–08; GIT 01–08; MIG 01–06; OBS 01–06; PERF 01–08; PY 01–09; RE 01–12; REV 01–12; SEC 01–12; SQL 01–09; TEST 01–10; TS 01–10; WRK 01–10 | 185 | 4.4a | 4.4a | 5 |
+| CS-{family}-## | Coding-standard rule, by family (186 rules) | A11Y 01–06; ADP 01–07; AI 01–08; AIC 01–08; API 01–12; DEP 01–08; DJ 01–10; DOC 01–06; GEN 01–08; GIT 01–08; MIG 01–06; OBS 01–06; PERF 01–08; PY 01–09; RE 01–12; REV 01–12; SEC 01–12; SQL 01–09; TEST 01–10; TS 01–10; WRK 01–10 | 185 | 4.4a | 4.4a | 6 |
 | CR-CHK-## | Code-review checklist item | 01–40 | 40 | 4.4a | 4.4a | 1 |
 | SG-## | Custom Semgrep rule | 01–78 (64 unused) | 14 | 4.4a/b | referenced only | 5 |
 | RGV-## | Release-gate validator rule (PL-17) | 01–15 | 15 | 4.4b | 4.4b | 4 |
@@ -607,7 +607,7 @@ Every ID family used across the parts. **Actual range found** and **Distinct IDs
 | PT-{ROE/FND}-## | Penetration-test rule of engagement / finding-record field | FND 01–10 (8 unused); ROE 01–12 | 14 | 4.4b | 4.4b | 3 |
 | SVM-## / MET-## / SUP-## | Security verification matrix row / metric / support-operations rule | MET 01–12; SUP 01–08; SVM 01–12 | 32 | 4.4b | 4.4b | 3 |
 | LT-SAFE-## / LTR-## | Load-test safety rule / load-test record field | LT-SAFE 01–05; LTR 01–14 | 19 | 4.4b | 4.4b | 2 |
-| GL-{area}## | Go-live checklist item by area (B business, C compliance, D data, E enhancement, L legal, P people, S security, T technical) | A 01–07; B 01–07; C 01–08; D 01–06; E 01–06; L 01–06; P 01–05; S 01–09; T 01–10 | 64 | 8.2; 4.4b | 8.2, 4.4b | 11 |
+| GL-{area}## | Go-live checklist item by area (B business, C compliance, D data, E enhancement, L legal, P people, S security, T technical) | A 01–07; B 01–07; C 01–08; D 01–06; E 01–06; L 01–06; P 01–05; S 01–09; T 01–10 | 64 | 8.2; 4.4b | 8.2, 4.4b | 13 |
 | BLK-# | Activation blocker (BRD §11) | 1–11 | 11 | 8.2; 6.9 | 8.2 | 7 |
 | WQG-## | Workflow quality gate (graph, node, schedule checks) | 01–12 | 12 | 3.4 | referenced only | 2 |
 
@@ -668,6 +668,13 @@ The programme allocates a tag number range to each batch. The table below is **g
 | Part 8.3c | 480–490 | 480–490 | 480–491 | 480–490 | 45 |
 | Part 9.1 | — | 180–182 | — | — | 3 |
 | Part 9.5 | 500–509 | — | — | 500–509 | 20 |
+| Part 9.6a | 520–523 | 520 | — | 520–521 | 7 |
+| Part 9.6b | 550–556 | — | 550–556 | 550–552 | 17 |
+| Part 9.7b | 600–609 | 610–617 | 620–623 | 625–641 | 39 |
+| Part 9.8b | 650, 653–654, 656, 662–663, 666 | 660–661, 665 | 657–659 | 651–652, 655, 664, 667–670 | 21 |
+| Part 9.9a | — | — | — | 700 | 1 |
+| Part 9.9b | 700–706 | 710–714 | 720–726 | 730–738, 741, 744 | 30 |
+| Part 9.10 | 750–752 | — | — | 750–753 | 7 |
 
 <!-- GEN:ALLOC:END -->
 
@@ -681,12 +688,12 @@ The programme allocates a tag number range to each batch. The table below is **g
 
 | Register | Tags found | Resolved / accepted / closed / cited by DEC | Other status |
 |---|---|---|---|
-| Assumption | 200 | 7 | 193 |
-| Gap | 205 | 57 | 148 |
-| Conflict | 144 | 144 | 0 |
-| Recommendation | 211 | 211 | 0 |
+| Assumption | 238 | 15 | 223 |
+| Gap | 222 | 62 | 160 |
+| Conflict | 165 | 165 | 0 |
+| Recommendation | 257 | 257 | 0 |
 
-ADR index: **80** ADRs. DEC index: **233** decisions. Parts scanned: **60** (0–9.5).
+ADR index: **106** ADRs. DEC index: **339** decisions. Parts scanned: **69** (0–9.10).
 
 <!-- GEN:TAGSUMMARY:END -->
 
@@ -898,6 +905,44 @@ Status "Cited by DEC-…" means a DEC row in Part 0A or 9.1 cites the assumption
 | ASSUMPTION-512 | 6.6 §6.6.1.1 | The RTM columns api_ids and sit_aliases required by DEC-217 are derived from the coverage CSVs: an FR or story carries the SIT aliases of H_sit_alias_map.csv that list it and the API operations of those aliases (D_api_mapping.csv); a TC-ENH carries the … | Open — validate per source part |
 | ASSUMPTION-513 | 6.10 §6.10.8 | VER-ENH-K items count as coverage for process QCs (acceptance, sign-off, training, runbooks), as VER-### do for BR-S in Part 6.7 (ASSUMPTION-217) | Open — validate per source part |
 | ASSUMPTION-514 | 6.10 §6.10.8 | The pack's SIT, UAT and Unit tests are covered when their mapped blueprint test is defined; execution evidence follows RECOMMENDATION-080 | Open — validate per source part |
+| ASSUMPTION-520 | 9.6a §9.6a | A warm-standby or restore-to-ap-south-2 path can meet RC-1 RTO ≤ 2 h for a regional outage in the growth phase; its cost is priced at the growth trigger | First regional drill |
+| ASSUMPTION-521 | 9.6a §9.6a | The smallest ElastiCache (Valkey) node is sufficient for pilot broker and cache load | Cited by DEC-243 |
+| ASSUMPTION-522 | 9.6a §9.6a | HyperLogLog distinct counting is available on the chosen RDS PostgreSQL version; otherwise exact distinct-key side tables are used | Sprint 1 spike |
+| ASSUMPTION-523 | 9.6a §9.6a | The 164 / 164 / 165 offline examples correspond to the 165 explicit proposed contracts of doc 07 §8015 | Cited by DEC-264 |
+| ASSUMPTION-550 | 9.6b §9.6b | DEC-328 | Cited by DEC-328 |
+| ASSUMPTION-551 | 9.6b §9.6b | §9.6b.7 | Open: verify AWS ap-south-1 prices and model fit in W1 |
+| ASSUMPTION-552 | 9.6b §9.6b | DEC-308 | Open: verify at W0 |
+| ASSUMPTION-553 | 9.6b §9.6b | DEC-322 | Cited by DEC-322 |
+| ASSUMPTION-554 | 9.6b §9.6b | §9.6b.1.3, DEC-310, DEC-315 | Cited by DEC-310 |
+| ASSUMPTION-555 | 9.6b §9.6b | DEC-327 | Cited by DEC-327 |
+| ASSUMPTION-556 | 9.6b §9.6b | §9.6b.7.1 | Applied |
+| ASSUMPTION-600 | 9.7a front matter | Outcome fields needed for ML features (stage history, intent labels, reply timestamps, renewal outcomes) are already retained under DEC-028 | Cited by DEC-028 |
+| ASSUMPTION-601 | 9.7a §9.7.2.2 | Account briefs reduce tokens on account-centric agents by ≈ 20% and pursuit preparation by ≈ 1.5 h per qualified account | Measure with AU-065 holdout in A1 |
+| ASSUMPTION-602 | 9.7a §9.7.2.2 | RFP co-pilot reduces drafting time by 25–40% once ≥ 50 approved answers exist | Measure on ≥ 5 bids at G-A1 |
+| ASSUMPTION-603 | 9.4 §9.4.3 | Additional locales bn, te, mr, kn, ml, gu are wanted by some startups; enabled per startup only | Confirm per startup before A2 |
+| ASSUMPTION-604 | 9.4 §9.4.4 | AU-068 finds 10–20% savings at equal quality | Track quarterly |
+| ASSUMPTION-605 | 9.7a §9.7.3.1 | A2 and A3 calendar dates follow W6 continuously in Year 2 | Confirm at G-A1 |
+| ASSUMPTION-606 | 9.7a §9.7.3.4 | At least 10 past AppNAI bids are available to seed the answer library | Inventory before A1 |
+| ASSUMPTION-607 | 9.7a §9.7.5 | Pilot call volumes per agent (§9.7.5 cards) derive from BR-S089 volumes and DEC-031 users | Replace with measured volumes after 4 weeks of each agent |
+| ASSUMPTION-608 | 9.7b §9.7.17 | Langfuse self-hosted cost equals the B22 estimate of Part 8.4 (₹2,250–2,700/month) | Verify at deployment |
+| ASSUMPTION-609 | 9.7b §9.7.13.1 | Contract AI pod rates fall within the BRD loaded rate band ₹1.0–1.5 lakh per person-month | Quotes before G-X0 |
+| ASSUMPTION-650 | 9.8a §9.8.3.5 | X2 needs an incremental squad of 4.0 FTE (2 full-stack, 1 frontend, 0.5 QA, 0.5 RevOps analyst) for Day 237–425 | Confirm at DEC-390 approval; Product Owner |
+| ASSUMPTION-653 | 9.8a §9.8.4.2 | Default tier-1 cap of 15 accounts per owner | Tune after A1 baseline; Startup heads |
+| ASSUMPTION-654 | 9.8a §9.8.4.2 | Speed-to-lead SLAs of 1 business hour (hot) and 4 business hours (standard) | Tune after baseline; Sales leads |
+| ASSUMPTION-656 | 9.8a ADV-X2-F07 Territory planning | Territory view in A2 uses tables and region lists, no map service | Revisit at A3 |
+| ASSUMPTION-662 | 9.8b §9.8.13.1 | Development cash allocated to releases pro-rata by central effort; rates from BRD §6 | FinOps to re-baseline at approval |
+| ASSUMPTION-663 | 9.8b §9.8.11 | Proposed KPI targets and message volumes (sends, WhatsApp) are planning values pending baselines | Confirm after A1 baseline period |
+| ASSUMPTION-666 | 9.8b §9.8.5 | Agent call volumes, token sizes and escalation shares in §9.8.5; low = 0.3 × base, high = 3 × base | Measure in A1; FinOps |
+| ASSUMPTION-700 | 9.9b §9.9.12 | X3 team = 2 extended contract engineers + 1 contract data engineer + 1 contract SRE/security engineer + QA 0.5 + UX 0.5 (5.0 FTE) from Day 239 | Cited by DEC-400 |
+| ASSUMPTION-701 | 9.9a §9.9.3.1 | Release windows A1 Day 239–299, A2 Day 302–362, A3 Day 393–481 with a December freeze | Open |
+| ASSUMPTION-702 | 9.9b §9.9.12 | 20% cross-cutting allowance (12% integration QA, 5% security, 3% training content) | Open |
+| ASSUMPTION-703 | 9.9a §9.9.3.2 | The AppNAI IdP supports passkeys for external users and attestation for staff (DEC-019 check 5) | Open; verify in spike |
+| ASSUMPTION-704 | 9.9a ADR-137 BYOK through cross-account KMS k | BYOK tenants operate AWS accounts with KMS keys in ap-south-1 | Open |
+| ASSUMPTION-705 | 9.9b §9.9.6 | X3 agent volumes and token sizes in 9.9.6 (pilot) | Open; recalibrate after 1 month |
+| ASSUMPTION-706 | 9.9b §9.9.13.1 | Translation volume ≈ 15,000 words per locale at ₹1.5–3.0 per word | Open; obtain quotes |
+| ASSUMPTION-750 | 9.10 front matter | Overlap deduction of 30 / 45 / 65 pd (§9.10.4) | Open; validate at A1 planning |
+| ASSUMPTION-751 | 9.10 §9.10.7.1 | X2 A1 development cost taken pro rata to A1 effort | Open; validate at A1 planning |
+| ASSUMPTION-752 | 9.10 §9.10.11 | A1 runs at about 6 FTE beyond the core team over ≈ 90 working days | Open; validate at gate G-A0 |
 
 <!-- GEN:ASSUMPTION:END -->
 
@@ -959,7 +1004,7 @@ Status "Cited by DEC-…" means a DEC row in Part 0A or 9.1 cites the assumption
 | GAP-123 | 4.3 §4.49.2 | Part 3 ADRs (compute platform, IaC, CI) not available while this batch was written; ADR-050…053, 058…060 may duplicate or conflict | Closed by DEC-083 |
 | GAP-124 | 4.1 §4.12.10 | Cyber insurance not considered | Evaluate at W4 when payments go live |
 | GAP-125 | 4.1 §4.12.5 | GDPR Art. 27 EU representative and UK representative not addressed for EU/UK outbound under DEC-029 | Counsel decision before enabling the EU/UK pack |
-| GAP-126 | 4.3 §4.43.4 | No customer-facing status page or incident communication channel for SaaS tenants | Decide before onboarding external tenants (W5) |
+| GAP-126 | 4.3 §4.43.4 | No customer-facing status page or incident communication channel for SaaS tenants | Closed by DEC-406 |
 | GAP-127 | 4.3 §4.49.2 | B22 (LLM observability/eval tooling) is ₹0; the eval harness must run on OSS (DeepEval candidate, M54) and CI minutes | Accept OSS-only at pilot; revisit at the growth gate |
 | GAP-140 | 7.1 front matter | No measured AI usage baseline exists | Open — handling per source part |
 | GAP-141 | 7.3 §7.3.1 | Anthropic commercial terms for this deployment (data retention, training exclusion, DPA, cross-border processing, ZDR eligibility) not yet confirmed | Open — handling per source part |
@@ -996,7 +1041,7 @@ Status "Cited by DEC-…" means a DEC row in Part 0A or 9.1 cites the assumption
 | GAP-176 | 8.1 §8.1.3.4 | No Service Owner is named for SaaS activation and DEC-047 plan approval | Open — handling per source part |
 | GAP-177 | 8.1 §8.1.1.3 | The organisation's holiday calendar and leave policy are not in the baseline | Open — handling per source part |
 | GAP-178 | 8.2 §8.2.2.2 | No owner for help-centre content and training materials | Open — handling per source part |
-| GAP-179 | 8.1 §8.1.3.3 | No tenant-facing status page or incident channel (Part 4.3 GAP-126) is decided before the first external tenant | Open — handling per source part |
+| GAP-179 | 8.1 §8.1.3.3 | No tenant-facing status page or incident channel (Part 4.3 GAP-126) is decided before the first external tenant | Closed by DEC-406 |
 | GAP-180 | 9.1 §9.1.5 | DEC-151 · E-91 · Part 9.2 (GAP-180) · No central tag allocation log · §9.2.3 reconstruction is authoritative; future tags continue from the highest number in each register · 9.2 | Closed by DEC-151 |
 | GAP-181 | 9.1 §9.1.5 | DEC-148 · E-88 · Part 9.2 (GAP-181) · ID family collisions: AD-## (3.1 drivers vs 3.2 adapters), PP-## (1 principles vs 6.2 precondition profiles), D-# (3.3 drills vs 5.1a DoD items), B-## (3.1 cost rows vs budget lines B##) · IDs stay as written; cross-part … | Closed by DEC-148 |
 | GAP-182 | 9.1 §9.1.5 | DEC-149 · E-89 · Part 9.2 (GAP-182) · 68 RECOMMENDATIONs have no recorded accept/reject · All proposed RECOMMENDATION-001…090 are accepted into the baseline under the delegated authority, except where a DEC states otherwise (e.g. ADR-043 superseded by … | Closed by DEC-149 |
@@ -1043,7 +1088,7 @@ Status "Cited by DEC-…" means a DEC row in Part 0A or 9.1 cites the assumption
 | GAP-363 | 3.5b §3.5.8 | 24 operations missing in Part 3.2 | Open — handling per source part |
 | GAP-364 | 3.5b §3.5.8 | Three adapter ports missing (storage/extraction, contact verification, own-site audit) | Open — handling per source part |
 | GAP-365 | 3.5a §3.5.3.1 | Document 07's "4 database reuse/field confirmations" are not identified anywhere in the document | Open — handling per source part |
-| GAP-366 | 3.5a §3.5.3.1 | The "catalog-complete OpenAPI draft" and the 164/164/165 offline examples are not in the package | Open — handling per source part |
+| GAP-366 | 3.5a §3.5.3.1 | The "catalog-complete OpenAPI draft" and the 164/164/165 offline examples are not in the package | Closed by DEC-264 |
 | GAP-367 | 3.5a §3.5.3.1 | PubMed listed on 10 operations has no blueprint home | Open — handling per source part |
 | GAP-388 | 3.6a §3.6.3 | Missing entities: business template, service request, eval case result (and milestone via CONFLICT-383); interim retention for service requests | Open — handling per source part |
 | GAP-389 | 3.6a §3.6.3 | 113 column additions on 73 tables (incl. portal grant invite/redemption columns) | Open — handling per source part |
@@ -1112,6 +1157,23 @@ Status "Cited by DEC-…" means a DEC row in Part 0A or 9.1 cites the assumption
 | GAP-512 | 6.6 §6.6.13.2 | Part 4.4b TC-ENH-I rows cite control IDs (CS-, RGV-, SMK-) in their Requirement column rather than the FR-ENH-I they verify; six FR-ENH-I had no test | Open — handling per source part |
 | GAP-513 | 6.10 §6.10.8 | 54 of 245 QCs had blueprint_verification_refs that are section citations with no test, VER or control ID | Open — handling per source part |
 | GAP-514 | 6.6 §6.6.13.2 | Part 6.5 cites "Batch 6.6 §6.6.9" for the tag register; Part 6.6 now numbers the register §6.6.13 after adding sections h, i, j | Open — handling per source part |
+| GAP-520 | 9.6a §9.6a | The investor product’s deployment inventory is owned outside this programme and must be supplied for the “two products, four frontends” inspection | Closed by DEC-252 |
+| GAP-610 | 9.7a front matter | Per-locale quality of the gateway models for Odia, Bengali, Telugu, Marathi, Kannada, Malayalam and Gujarati is not yet measured | Per-locale eval (TC-ADV-X1-045) before enabling each locale |
+| GAP-611 | 9.7b §9.7.14.2 | Current Meta WhatsApp pricing, service-window and AI-use policy must be verified | Verify at implementation (as of 27 Nov 2026) |
+| GAP-612 | 9.7b §9.7.14.1 | Legal review cost and content for the memory DPIA, conversation-intelligence notice and concierge terms are not estimated | Obtain counsel quotes (as GAP-174) |
+| GAP-613 | 9.7b §9.7.17 | No labelled outcome data yet for propensity and churn | Accumulates from Release 1; data gates in §9.7.3.3 |
+| GAP-614 | 9.7b §9.7.17 | Maturity of OpenTelemetry GenAI semantic conventions and Langfuse support for them | Verify at implementation |
+| GAP-615 | 9.7b §9.7.17 | Final application dates of EU AI Act obligations under the Digital Omnibus | Verify each quarter |
+| GAP-616 | 9.7b §9.7.17 | Answer-library ownership (who owns which answer families) is undefined | Define in A1 sprint 1 |
+| GAP-617 | 9.7b §9.7.17 | NBA action catalogue content (actions per stage and startup) needs Product Owner definition | Workshop before A2 |
+| GAP-660 | 9.8b §9.8.13 | External legal counsel not estimated for partner agreements, voice-call rules and survey consent by jurisdiction | Obtain quotes; R10 |
+| GAP-661 | 9.8b §9.8.13.2 | Third-party intent data vendors' terms, data rights and prices unknown | Benchmark and quote before any enablement |
+| GAP-665 | 9.8b §9.8.16 | No HR policy exists for any use of recognition data in performance management | Closed by DEC-398 |
+| GAP-710 | 9.9a §9.9.5.15 | DEC-047 has no named "Enterprise" plan; BYOK is mapped to Scale (custom) | Open; Service Owner |
+| GAP-711 | 9.9a §9.9.5.16 | No registered DPDP consent manager engaged; adapter readiness only | Open; R10 to monitor registrations |
+| GAP-712 | 9.9a ADR-136 Zero-trust Admin access: passkey | No device-management (MDM) in the organization; device certificates via step-ca | Open |
+| GAP-713 | 9.9a §9.9.3.1 | Developer terms of use, API licence and BYOK acceptance text not drafted; counsel cost not estimated | Open; legal |
+| GAP-714 | 9.9b §9.9.13.1 | No SOC 2 auditor or budget identified | Open; only on trigger |
 
 <!-- GEN:GAP:END -->
 
@@ -1240,7 +1302,7 @@ Resolution sources: **Part 0A** (DEC-001…065), **Part 9.1** (DEC-066…140, in
 | CONFLICT-444 | 6.9a §6.9.3.1 | Growth critical RTO | Resolved — Part 9.5 (DEC-158) |
 | CONFLICT-445 | 6.9a §6.9.1.3 | Decision ID collision | Resolved — Part 9.5 (DEC-178) |
 | CONFLICT-446 | 6.9a §6.9.3.1 | Expansion effort | Resolved — Part 9.5 (DEC-181) |
-| CONFLICT-447 | 6.9a §6.9.3.1 | BR traces on 11 FRs | Resolved — Part 9.5 (DEC-180) |
+| CONFLICT-447 | 6.9a §6.9.3.1 | BR traces on 11 FRs | Resolved — Part 9.5 (DEC-180, DEC-313) |
 | CONFLICT-460 | 4.4a §4.4.4.1 | Critical-service availability | Resolved — Part 9.5 (DEC-157) |
 | CONFLICT-461 | 4.4a §4.4.3.1 | Capacity design points | Resolved — Part 9.5 (DEC-161) |
 | CONFLICT-462 | 4.4a §4.4.3.1 | Recovery time | Resolved — Part 9.5 (DEC-158) |
@@ -1267,6 +1329,27 @@ Resolution sources: **Part 0A** (DEC-001…065), **Part 9.1** (DEC-066…140, in
 | CONFLICT-489 | 8.3a §8.3.3.3 | Pack text carries investor-product language: "owner investment data", "investment thesis", "funding goals", "formal securities offers", "four frontends and two backends", "investment-related compensation" | Resolved — Part 9.5 (DEC-179) |
 | CONFLICT-490 | 8.3c §8.3.5.15.3 | Schema-valid AI outputs ≥ 99.5% with invalid/timeout counted (OKPI-13) | Resolved — Part 9.5 (DEC-195) |
 | CONFLICT-491 | 8.3a §8.3.3.5 | Combined preflight 1,188 records in 6 groups (document 36) vs 1,545 in 9 groups (document 38) | Resolved — Part 9.5 (DEC-206) |
+| CONFLICT-550 | 9.6b §9.6b | DEC-306 | Resolved — Part 9.5 (DEC-306) |
+| CONFLICT-551 | 9.6b §9.6b | DEC-317 | Resolved — Part 9.5 (DEC-317) |
+| CONFLICT-552 | 9.6b §9.6b | DEC-325 | Resolved — Part 9.5 (DEC-325) |
+| CONFLICT-553 | 9.6b §9.6b | DEC-304 | Resolved — Part 9.5 (DEC-304) |
+| CONFLICT-554 | 9.6b §9.6b | DEC-309 | Resolved — Part 9.5 (DEC-309) |
+| CONFLICT-555 | 9.6b §9.6b | DEC-302 | Resolved — Part 9.5 (DEC-302) |
+| CONFLICT-556 | 9.6b §9.6b | DEC-324 | Resolved — Part 9.5 (DEC-324) |
+| CONFLICT-620 | 9.7a front matter | ADR-071 says only AG-016 plans and agents are never driven at run time; the brief asks for a supervisor over existing agents | Resolved — Part 9.5 (DEC-384) |
+| CONFLICT-621 | 9.7b §9.7.15 | DEC-011 / DEC-211: one active scoring model; predictive scoring requested | Resolved — Part 9.5 (DEC-383, Part 9.7b §G summary) |
+| CONFLICT-622 | 9.7a Quality gate: Batch 9.7a | Coaching and conversation analytics could become employee evaluation (EU AI Act Annex III, verify) | Resolved — Part 9.5 (DEC-386) |
+| CONFLICT-623 | 9.7b §9.7.17 | B02 high scenario already ≈ 101% of ₹3,000 (Part 7.4b) while new agents are requested | Resolved — Part 9.5 (DEC-382) |
+| CONFLICT-657 | 9.8b §9.8.14 | SP-12 specifies first/last-touch attribution with window and unknown bucket; AU-040 defaults to last non-direct; X2 adds multi-touch | Resolved — Part 9.5 (DEC-397) |
+| CONFLICT-658 | 9.8b §9.8.14 | Part 4.1 TR-R1 states no SMS or voice outreach in W0–W5; X2 proposes call steps | Resolved — Part 9.5 (DEC-392) |
+| CONFLICT-659 | 9.8b §9.8.16 | PP-01 "outcomes over activity" vs gamification practices that reward activity | Resolved — Part 9.5 (DEC-398) |
+| CONFLICT-720 | 9.9a §9.9.2 | Request for "Indic multilingual UI" vs DEC-026 Admin en-IN only | Resolved — Part 9.5 (DEC-404) |
+| CONFLICT-721 | 9.9a §9.9.2 | Developer platform vs Part 3.2 "outbound webhooks not offered in W0–W6" | Resolved — Part 9.5 (DEC-403) |
+| CONFLICT-722 | 9.9b §9.9.14 | "Real-time event streaming" vs ADR-003 rejection of CDC/Kafka | Resolved — Part 9.5 (DEC-401) |
+| CONFLICT-723 | 9.9a §9.9.5.3 | "Reverse ETL" vs ADR-011 first-party analytics only | Resolved — Part 0A §G (Part 9.9b §G summary) |
+| CONFLICT-724 | 9.9a §9.9.5.21 | New FinOps screen/tables vs doc 36 §5 "use existing Admin interfaces; no new physical table or API count assumed" | Resolved — Part 9.5 (DEC-400) |
+| CONFLICT-725 | 9.9b §9.9.16.1 | Chaos engineering vs zero external side effects and fail-closed | Resolved — Part 0A §G (Part 9.9b §G summary) |
+| CONFLICT-726 | 9.9b §9.9.14 | Auto-remediation vs L1 cap on consequential actions | Resolved — Part 9.5 (DEC-407) |
 
 <!-- GEN:CONFLICT:END -->
 
@@ -1344,7 +1427,7 @@ Resolution sources: **Part 0A** (DEC-001…065), **Part 9.1** (DEC-066…140, in
 | RECOMMENDATION-064 | 6.4 AU-042 Usage metering & entitlement enfo | Define "AI task" as one completed agent invocation returning a validated output (§7.5.4) | Accepted (DEC-149) |
 | RECOMMENDATION-065 | 7.3 §7.3.3 | First Tier 2 opt-in limited to Owner Portfolio, agents AG-003/004/005/017, after legal review | Accepted (DEC-149) |
 | RECOMMENDATION-066 | 7.3 §7.4.2 | Weekly 30-minute AI cost and quality review (RP-20, RP-21) owned by the FinOps lead | Accepted (DEC-149) |
-| RECOMMENDATION-067 | 7.3 §7.3.3 | W6 spike: self-hosted small open model (vLLM in ap-south-1) as Tier 2e for classifiers; evaluate cost vs Haiku | Accepted (DEC-149) |
+| RECOMMENDATION-067 | 7.3 §7.3.3 | W6 spike: self-hosted small open model (vLLM in ap-south-1) as Tier 2e for classifiers; evaluate cost vs Haiku | Accepted (DEC-149, DEC-301) |
 | RECOMMENDATION-068 | 6.4 §6.4.9.2 | AI incident severity scheme AI-S1…S3 (§7.6.10) | Accepted (DEC-149) |
 | RECOMMENDATION-069 | 6.4 AG-018 Content & Campaign Studio Drafter | Configurable AI-content labelling per jurisdiction (EU AI Act Art. 50; India IT Rules amendments if adopted) | Accepted (DEC-149) |
 | RECOMMENDATION-070 | 6.1 front matter | Test pyramid target proportions (unit 60–70%, integration 15–25%, contract 4–6%, system 5–8%, E2E 2–4%) and coverage targets per layer, including mutation score ≥ 85% for money, tax, ledger and PDP modules, ≥ 80% for scoring and ≥ 75% for … | Accepted (DEC-149) |
@@ -1477,7 +1560,7 @@ Resolution sources: **Part 0A** (DEC-001…065), **Part 9.1** (DEC-066…140, in
 | RECOMMENDATION-486 | 8.3c §8.3.5.13.1 | 8.3c §8.3.5.13.1 | Accepted (DEC-221) |
 | RECOMMENDATION-487 | 8.3c §8.3.5.14.2 | 8.3c §8.3.5.14.2 | Accepted (DEC-221) |
 | RECOMMENDATION-488 | 8.3c §8.3.5.14.4 | 8.3c §8.3.5.14.4 | Accepted (DEC-221) |
-| RECOMMENDATION-489 | 8.3c §8.3.5.13.6 | 8.3c §8.3.5.13.6 | Accepted (DEC-221) |
+| RECOMMENDATION-489 | 8.3c §8.3.5.13.6 | 8.3c §8.3.5.13.6 | Accepted (DEC-221, DEC-406) |
 | RECOMMENDATION-490 | 8.3c §8.3.5.13.7 | 8.3c §8.3.5.13.7 | Accepted (DEC-221) |
 | RECOMMENDATION-500 | 9.5 §9.5.2.5 | Adopt Option 2b: two contract engineers from Sprint 3 to the Release 2 build gate | Accepted (no rejecting DEC; issued in Part 9.5) |
 | RECOMMENDATION-501 | 9.5 §9.5.2.8 | Approve the Option 2b spend by Day 1, at the latest by the W0-A gate (Day 15) | Accepted (no rejecting DEC; issued in Part 9.5) |
@@ -1489,6 +1572,52 @@ Resolution sources: **Part 0A** (DEC-001…065), **Part 9.1** (DEC-066…140, in
 | RECOMMENDATION-507 | 9.5 §9.5.3 | Generate one consolidated enhancement backlog (package ID, story IDs, MoSCoW, release) from §9.5.2.3 into the backlog tool in Sprint 0, and merge all TC-ENH IDs into the RTM (DEC-217) | Accepted (no rejecting DEC; issued in Part 9.5) |
 | RECOMMENDATION-508 | 9.5 §9.5.3 | At assembly, add a one-line pointer in each enhancement part's conflicts section to the DEC that resolved each conflict (§9.5.1.11) | Accepted (no rejecting DEC; issued in Part 9.5) |
 | RECOMMENDATION-509 | 9.5 §9.5.2.8 | Keep activating capabilities as soon as their stories and Must packages pass, so the business sees value before the Release 1 gate | Accepted (no rejecting DEC; issued in Part 9.5) |
+| RECOMMENDATION-520 | 9.6a §9.6a | Run the alias-registry check (TC-ALN-A-001) in CI from Sprint 0 so that aliases never become second implementations | Accepted (no rejecting DEC; issued in Part 9.6a) |
+| RECOMMENDATION-521 | 9.6a §9.6a | Approve the net new Release 1 effort of this part as a separately approvable development proposal, or accept a date effect at the Sprint 3 review (DEC-226 (3)) | Accepted (no rejecting DEC; issued in Part 9.6a) |
+| RECOMMENDATION-550 | 9.6b §9.6b | DEC-325 | Accepted (DEC-325) |
+| RECOMMENDATION-551 | 9.6b ALN-B-14 · F21-023 · Capability 14 Obser | DEC-308 | Accepted (DEC-308) |
+| RECOMMENDATION-552 | 9.6b §9.6b | DEC-319 | Accepted (DEC-319) |
+| RECOMMENDATION-625 | 9.7a front matter | Supervisor plans for multi-step objectives (FR-ADV-X1-001) | Accepted (no rejecting DEC; issued in Part 9.7b) |
+| RECOMMENDATION-626 | 9.7b §9.7.8 | Reuse a single cited account brief across agents (FR-ADV-X1-005) | Accepted (no rejecting DEC; issued in Part 9.7b) |
+| RECOMMENDATION-627 | 9.7b §9.7.8 | Pipeline NBA/NBO from a deterministic candidate set (FR-ADV-X1-011) | Accepted (no rejecting DEC; issued in Part 9.7b) |
+| RECOMMENDATION-628 | 9.7b §9.7.8 | Experimentation as the evidence base for AI value (FR-ADV-X1-031) | Accepted (no rejecting DEC; issued in Part 9.7b) |
+| RECOMMENDATION-629 | 9.7b §9.7.8 | RBAC-bound command bar (FR-ADV-X1-045) | Accepted (no rejecting DEC; issued in Part 9.7b) |
+| RECOMMENDATION-630 | 9.7a §9.7.4.7 | Do not adopt guard frameworks wholesale; benchmark first | Accepted (no rejecting DEC; issued in Part 9.7b) |
+| RECOMMENDATION-631 | 9.7a §9.7.4.8 | Do not adopt direct agent-to-agent invocation protocols; keep the blackboard | Accepted (no rejecting DEC; issued in Part 9.7b) |
+| RECOMMENDATION-632 | 9.7b §9.7.17 | Pull Langfuse forward to A1 | Accepted (no rejecting DEC; issued in Part 9.7b) |
+| RECOMMENDATION-633 | 9.7b §9.7.17 | Separate hard-capped B24 line with its own ladder | Accepted (no rejecting DEC; issued in Part 9.7b) |
+| RECOMMENDATION-634 | 9.7b §9.7.17 | Deliver through a contract AI pod paired with the core team | Accepted (no rejecting DEC; issued in Part 9.7b) |
+| RECOMMENDATION-635 | 9.7b §9.7.17 | Defer voice; WhatsApp first | Accepted (no rejecting DEC; issued in Part 9.7b) |
+| RECOMMENDATION-636 | 9.7b §9.7.14.1 | Independent AI red-team review before A1 enablement | Accepted (no rejecting DEC; issued in Part 9.7b) |
+| RECOMMENDATION-637 | 9.7b §9.7.17 | Memory OFF by default with DPIA | Accepted (no rejecting DEC; issued in Part 9.7b) |
+| RECOMMENDATION-638 | 9.7b §9.7.17 | Propensity shadow ≥ 4 weeks before visible | Accepted (no rejecting DEC; issued in Part 9.7b) |
+| RECOMMENDATION-639 | 9.7b §9.7.12.5 | Quarterly AI model review board (AI lead, R10, Founder) | Accepted (no rejecting DEC; issued in Part 9.7b) |
+| RECOMMENDATION-640 | 9.7b §9.7.17 | Seed the answer library from ≥ 10 past bids | Accepted (no rejecting DEC; issued in Part 9.7b) |
+| RECOMMENDATION-641 | 9.7b §9.7.17 | Report advanced-programme measures (plan approval rate, NBA acceptance, bid drafting time, abstention rate, B24 use) in A128 alongside OKPI-13/14/16/21 | Accepted (no rejecting DEC; issued in Part 9.7b) |
+| RECOMMENDATION-651 | 9.8a §9.8.3.5 | If the squad is not funded, approve A1 only and move A2/A3 after Day 365 | Accepted (no rejecting DEC; issued in Part 9.8b) |
+| RECOMMENDATION-652 | 9.8a §9.8.4.1 | Adopt sub-roles R03C (Customer Success Manager), R03P (Partner Manager), R16P (External Partner User) and persona variants P03d (Partner/Channel Manager) and P14f (Channel or referral partner, external) | Accepted (no rejecting DEC; issued in Part 9.8b) |
+| RECOMMENDATION-655 | 9.8a §9.8.4.2 | Detractor follow-up within 2 business days and no incentives for scores | Accepted (no rejecting DEC; issued in Part 9.8b) |
+| RECOMMENDATION-664 | 9.8b §9.8.11 | Use the KPI-ADV-X2- family so X2 KPIs cannot collide with KPI-ADV IDs issued by X1/X3 | Accepted (no rejecting DEC; issued in Part 9.8b) |
+| RECOMMENDATION-667 | 9.8b §9.8.13.2 | Show AG-061…070 usage as a visible sub-line B02-X2 inside the DEC-008 cap | Accepted (no rejecting DEC; issued in Part 9.8b) |
+| RECOMMENDATION-668 | 9.8b §9.8.16 | Regenerate Part 9.4 with assembly/build_ai_catalogue.py after approval so AG-061…070, AU-080…099 and WF-25…32 appear in the catalogue | Accepted (no rejecting DEC; issued in Part 9.8b) |
+| RECOMMENDATION-669 | 9.8b §9.8.16 | Always write "Release A1/A2/A3" for X2 releases, because Part 5.1a uses A1…A8 for actor classes | Accepted (no rejecting DEC; issued in Part 9.8b) |
+| RECOMMENDATION-670 | 9.8b AG-066 CPQ Bundle Advisor and Guardrail | AG-066 receives no price values; prices stay server-side | Accepted (no rejecting DEC; issued in Part 9.8b) |
+| RECOMMENDATION-700 | 9.9a front matter | ID ranges used · DEC-400…409 · ASSUMPTION/GAP/CONFLICT/RECOMMENDATION-700…749 · ADR-130…139 · AG-071…080 · AU-100…119 · WF-33…39 · FR-ADV-X3-### · US- -V3nn · TC-ADV-X3-### · NFR-ADV-X3-## · screens A150–A169 and W45–W49 · local registers … | Accepted (no rejecting DEC; issued in Part 9.9a) |
+| RECOMMENDATION-730 | 9.9a ADR-130 Analytics lakehouse on S3 Parque | Outbox-fed Parquet lakehouse with DuckDB | Accepted (no rejecting DEC; issued in Part 9.9b) |
+| RECOMMENDATION-731 | 9.9a ADR-131 Semantic metrics layer as code; | Semantic metrics layer as code (MetricFlow-compatible YAML) | Accepted (no rejecting DEC; issued in Part 9.9b) |
+| RECOMMENDATION-732 | 9.9a ADR-131 Semantic metrics layer as code; | NLQ emits validated plans only | Accepted (no rejecting DEC; issued in Part 9.9b) |
+| RECOMMENDATION-733 | 9.9a ADR-133 AI observability on Langfuse sel | Bring Langfuse self-hosted forward to A1 with redaction at source | Accepted (no rejecting DEC; issued in Part 9.9b) |
+| RECOMMENDATION-734 | 9.9a ADR-135 Chaos and DR drills automated in | AWS FIS in staging with alarm-bound stop conditions | Accepted (no rejecting DEC; issued in Part 9.9b) |
+| RECOMMENDATION-735 | 9.9a ADR-136 Zero-trust Admin access: passkey | JIT elevation for privileged bundles | Accepted (no rejecting DEC; issued in Part 9.9b) |
+| RECOMMENDATION-736 | 9.9a ADR-136 Zero-trust Admin access: passkey | Passkeys for all staff; offered to all portal users | Accepted (no rejecting DEC; issued in Part 9.9b) |
+| RECOMMENDATION-737 | 9.9a ADR-137 BYOK through cross-account KMS k | BYOK via cross-account KMS on the Scale plan | Accepted (no rejecting DEC; issued in Part 9.9b) |
+| RECOMMENDATION-738 | 9.9a §9.9.5.31 | New page patterns PP-STATUS and PP-DOCS | Accepted (no rejecting DEC; issued in Part 9.9b) |
+| RECOMMENDATION-741 | 9.9a ADR-139 PWA with offline drafts only | PWA with drafts-only offline mode | Accepted (no rejecting DEC; issued in Part 9.9b) |
+| RECOMMENDATION-744 | 9.9a ADR-138 Developer platform as a separate | Developer platform as a separate surface and audience | Accepted (no rejecting DEC; issued in Part 9.9b) |
+| RECOMMENDATION-750 | 9.10 front matter | Approve A1 only; decide A2 and A3 at their gates | Accepted (no rejecting DEC; issued in Part 9.10) |
+| RECOMMENDATION-751 | 9.10 §9.10.11 | Fund the Release 1 alignment work to protect the date | Accepted (no rejecting DEC; issued in Part 9.10) |
+| RECOMMENDATION-752 | 9.10 §9.10.11 | Benchmark the local model against Claude at W1 before fixing the routing order for each task class | Accepted (no rejecting DEC; issued in Part 9.10) |
+| RECOMMENDATION-753 | 9.10 §9.10.11 | Regenerate the AI catalogue, registers and RTM after every change to Parts 9.6–9.9 | Accepted |
 
 <!-- GEN:RECOMMENDATION:END -->
 
@@ -1580,6 +1709,32 @@ Status is taken from the ADR's own "Status" row (Part 3.1) or the status column 
 | ADR-107 | Declared execution policy per workflow revision | Proposed (FR-ENH-B-012, FR-ENH-B-013) | 3.4 |
 | ADR-108 | Growth-scale validation profiles | Proposed (FR-ENH-B-001; resolves CONFLICT-321) | 3.4 |
 | ADR-109 | Four permission base classes per ingress namespace | Proposed (FR-ENH-B-005) | 3.4 |
+| ADR-110 | Supervisor-as-planner: AG-039 emits a typed plan; AU-053 validates; the M55 engine executes; ≤ 2 re-plans; agents never call agents | Accepted in part (no status column) | 9.7a |
+| ADR-111 | Agent registry v2 with canary rollout (5% → 25% → 100%) and SLO-based auto-rollback | Accepted in part (no status column) | 9.7a |
+| ADR-112 | Structured long-term memory in PostgreSQL with allowlisted fact types, evidence, purpose, TTL and consent; OFF by default | Accepted in part (no status column) | 9.7a |
+| ADR-113 | Classical ML in-house (scikit-learn, LightGBM, MLflow self-hosted); advisory only; DEC-011 untouched | Accepted in part (no status column) | 9.7a |
+| ADR-114 | Envelope v3 with plan binding, capability tokens and monotonic data class | Accepted in part (no status column) | 9.7a |
+| ADR-115 | OTel GenAI spans + Langfuse self-hosted from A1 | Accepted in part (no status column) | 9.7a |
+| ADR-116 | Ordered, fail-closed guardrail stack with deterministic policy packs VP-01…08; guard frameworks only after benchmark | Accepted in part (no status column) | 9.7a |
+| ADR-117 | Eval harness v2: offline + adversarial + shadow + canary + online + drift + ML metrics | Accepted in part (no status column) | 9.7a |
+| ADR-118 | Experimentation: pre-registered fixed-horizon A/B with SRM check; Thompson sampling only across pre-approved variants with 10% floor and guardrail … | Accepted in part (no status column) | 9.7a |
+| ADR-119 | Separate hard-capped budget line B24 "Advanced AI" with its own ladder; advanced agents shed before any baseline agent | Accepted in part (no status column) | 9.7a |
+| ADR-120 | Cadences extend the existing sequence engine (AU-022) and outbox rather than a new engine | Accepted in part (no status column) | 9.8b |
+| ADR-121 | Deal rooms, partner portal, survey and QBR pages live in the existing Website/Portal app as new audiences and object grants | Accepted in part (no status column) | 9.8b |
+| ADR-122 | Page builder uses an embedded open-source block editor (GrapesJS-class) that emits typed block JSON; rendering is server-side from approved snapshots | Accepted in part (no status column) | 9.8b |
+| ADR-123 | Forecast snapshots are append-only rows with payload hash; corrections are new snapshots | Accepted in part (no status column) | 9.8b |
+| ADR-124 | L2A matching is deterministic (weighted features with thresholds), not ML, at pilot | Accepted in part (no status column) | 9.8b |
+| ADR-125 | Intent engagement events are first-party, consent-gated and stored in PostgreSQL with monthly partitions | Accepted in part (no status column) | 9.8b |
+| ADR-130 | Analytics lakehouse on S3 Parquet with DuckDB, fed by the outbox | Proposed (A2) RECOMMENDATION-730 | 9.9a |
+| ADR-131 | Semantic metrics layer as code; NLQ emits plans, never SQL | Proposed (A1 layer, A2 NLQ) [RECOMMENDATION-731, RECOMMENDATION-732] | 9.9a |
+| ADR-132 | Identity resolution: deterministic first, human-reviewed suggestions | Proposed (A3) | 9.9a |
+| ADR-133 | AI observability on Langfuse self-hosted with OTel GenAI conventions and redaction at source | Proposed (A1); brings forward ADR-078 from the growth gate RECOMMENDATION-733 | 9.9a |
+| ADR-134 | Remediation runbooks as code with plan-hash approval | Proposed (A2) | 9.9a |
+| ADR-135 | Chaos and DR drills automated in staging and the isolated restore account only | Proposed (A1) RECOMMENDATION-734 | 9.9a |
+| ADR-136 | Zero-trust Admin access: passkeys, device certificate and JIT elevation | Proposed (A1) [RECOMMENDATION-735, RECOMMENDATION-736] | 9.9a |
+| ADR-137 | BYOK through cross-account KMS keys wrapping per-tenant data keys | Proposed (A3, Scale plan only) RECOMMENDATION-737 | 9.9a |
+| ADR-138 | Developer platform as a separate surface and audience | Proposed (A3) RECOMMENDATION-744; requires DEC-403 because Part 3.2 says … | 9.9a |
+| ADR-139 | PWA with offline drafts only | Proposed (A3) RECOMMENDATION-741 | 9.9a |
 
 <!-- GEN:ADR:END -->
 
@@ -1824,6 +1979,112 @@ One line per decision. The full text in Part 0A, Part 9.1 and Part 9.5 is bindin
 | DEC-231 | 9.5 | Ledger B (subscription and running cost, recurring) budget approved: ₹19,895–26,335 per … | Subscriptions may be opened per line as the plan reaches them; tenant and platform budget caps in the model gateway and FinOps alerts (Part 7.3, Part 8.3) are set to these figures. Any new paid plugin or provider still requires … |
 | DEC-232 | 9.5 | QA uplift and growth/compliance allocation confirmed: QA 1.0 FTE from Sprint 3 (DEC-133) … | Team of record: 4 engineers + 2 contract engineers (Sprint 3 → Release 2 gate, DEC-228) + QA 1.0 FTE from Sprint 3 + growth/compliance 0.5 FTE, rising to 0.75 FTE in W4–W5; founder as Product Owner. Costs already within Ledger A … |
 | DEC-233 | 9.5 | "+5 business requirements" confirmed as expansion statements XBR-01…05: the five BRs … | BR baseline of record: 71 primary BRs + 5 XBR expansion statements = the source pack's 76; no new primary BR; DEC-180 confirmed. RTM unchanged (100%) |
+| DEC-234 | 9.6a | Literal-alignment rule: source names canonical, blueprint names as aliases; pack … | Part 9.5 §9.5.1 (DEC-157…215): Where DEC-234…269 amend a DEC-157…215 outcome, this part governs; Naming (all parts): A name that the source pack gives a field, state, queue, app, path, screen term, metric or ID is canonical; … |
+| DEC-235 | 9.6a | Doc 11 “Coverage” metric adopted literally beside the inventory coverage metric ((c) … | KPI-ENH-A-01 (Part 2.6): Renamed to the source term “Coverage” (canonical), alias “Fresh source coverage”; KPI-27 (Part 1): Renamed “Coverage % by approved known sources” (canonical doc 11 wording), alias KPI-27 “source … |
+| DEC-236 | 9.6a | Both doc 11 scores active at launch: five-factor priority score and six-factor … | BRL-SCR-01…03 (Part 2.3): Unchanged; New rule text in BRL-SCR-04 (Part 2.3, added by this decision): Qualification fit = round(100 × Σ wᵢcᵢ ÷ Σ w_known) with weights capability 0.30, explicit need 0.25, qualification 0.15, … |
+| DEC-237 | 9.6a | Reply handling: any verified reply stops the generic sequence; the eight source classes … | BRL-SEQ-02 (Part 2.3, as amended by DEC-213): Out-of-office now stops the generic sequence like every other verified reply; Reply classification taxonomy (Part 2.6 §2.6.5.2.6, AG-013): The canonical label set is the source's … |
+| DEC-238 | 9.6a | Relationship business state with the seven literal doc 37 states and expected outputs … | FR-ENH-A-016 (Part 2.6): The derived relationship_state takes exactly these canonical values: New, Qualified, Engaged, Quote requested, Negotiation, Contracted, Paid / fulfillment; Expected outputs (WF-04, WF-06, WF-08 to WF-10 … |
+| DEC-239 | 9.6a | Capacity: the pack's initial and growth columns are the binding design-capacity and … | DEC-031 (Part 0A) reading: DEC-031 is a demand forecast for costing only; NFR-ENH-B-01…04 (Part 3.4): Column headings renamed to the source's “Initial target” and “Growth target”; WP-01 is the initial-target test, WP-02 the … |
+| DEC-240 | 9.6a | Recovery objectives: initial ≤ 15 min / ≤ 4 h and growth ≤ 15 min / ≤ 2 h adopted as … | DEC-158 (Part 9.5): “Initial” = the pilot (Topology A); “Growth” = from the first of: the scale gate, or the 11th external tenant, or 26th owned startup (the pack's growth column starts above 25 + 10); Regional outage: The … |
+| DEC-241 | 9.6a | Source Django app names and monorepo paths become canonical ((a) Adopt source literally; … | Part 3.1 §3.1.4 (module map) and ADR-006: Canonical Django app labels: accounts (the reused existing account/auth service; product-local profile data per DEC-265), catalog, intelligence, crm, engagement, campaigns, deals, … |
+| DEC-242 | 9.6a | Worker contract: Celery with a Redis-protocol broker (Valkey engine) and the four source … | ADR-101: Broker = Celery Redis transport (broker_url = redis://…, kombu Redis transport) against a Valkey server; both source statements are met; ADR-021 (as amended by DEC-167): Canonical queues include the four source queues … |
+| DEC-243 | 9.6a | Deployment contract: ALB, ECS Fargate, ElastiCache, S3/CloudFront, Secrets Manager, … | ADR-013 / ADR-100 (Topology A): Pilot ingress = CloudFront → ALB (HTTPS) → ECS services; Cache/broker: ElastiCache (Valkey engine) — the ElastiCache service named by the source — replaces the self-run Valkey container at the … |
+| DEC-244 | 9.6a | Pack planning figures recorded literally: 385 PD base allocation over 149 work items and … | Part 8.1 §8.1.6.4: Adds a “Pack planning envelope” line: 287–483 PD envelope; 385 PD base allocation for 149 work items, shared first-owned work counted once; labelled “editable planning estimate, not a team commitment”; Part … |
+| DEC-245 | 9.6a | “lead/investor”, “investor/customer” and “issuer/company” read as disjunctions satisfied … | DEC-179 (Part 9.5): Re-based: the source text is kept verbatim in acceptance procedures and the UAT scripts, with a note “the investor alternative belongs to the separate investor product (DEC-058); this product satisfies the … |
+| DEC-246 | 9.6a | No cross-region replication before approval: the approval is a signed Legal/Security … | DEC-164 / ADR-019: Cross-Region backup copy (and any later replication) is disabled in IaC by default; Data residency: Target region must be inside India unless a contract requires otherwise and the same approval covers it |
+| DEC-247 | 9.6a | Six runtime AI responsibilities are the complete runtime taxonomy; every runtime agent … | Part 7.1 catalogue and Part 9.4 card field: New mandatory field runtime_responsibility ∈ {research, evidence/need, matching, content/draft, inbound intent, QA}; Deterministic boundary: Scoring, consent, sending and closure stay … |
+| DEC-248 | 9.6a | Usage anomaly control: alerts at 70 % and 90 %, optional jobs paused at the cap, … | BRL-AI-08 / NT-025 (as amended by DEC-162): Text states the source rule literally first — “alert at 70 % and 90 % of the configured cap; pause optional jobs at the cap” — then the stricter blueprint steps (optional jobs already … |
+| DEC-249 | 9.6a | Critical availability target 99.9 % over a rolling 30 days applies from the pilot as the … | DEC-157 (Part 9.5): OKPI-06 target = 99.9 % over a rolling 30 days from the pilot for the critical services listed in DEC-157 (2); Pilot reliability measures (no new infrastructure): Zero-downtime deploys on the single host … |
+| DEC-250 | 9.6a | Routing decision adopted verbatim: legacy method/path canonical, new website endpoints … | Part 3.2 §3.2.2 path table: Every operation in the doc 07 register uses its legacy method and path verbatim (DEC-170); API-083 and every legacy /api/v1/public/…/{token} route: Access class changed from public to portal … |
+| DEC-251 | 9.6a | Every read projection refreshes in ≤ 60 s (OKPI-28 applies to all projections); … | DEC-160 / NFR-047 (Part 4.2): F-2 is withdrawn for projections: every read projection, including RP-01…RP-21 dashboard aggregates, KPI tiles, attribution counts, SEO counts and cost roll-ups, has p95 ≤ 60 s from committed event … |
+| DEC-252 | 9.6a | “Two products, four frontends” inspection performed literally over this product and the … | Part 6 E2E/acceptance pack (procedure “Independent products and frontends”): The deployment inventory lists two products and four frontends: this product's Website/Portal and Admin, and the investor product's two frontends as … |
+| DEC-253 | 9.6a | Breakpoints adopted literally: desktop ≥ 1200, tablet 768–1199, mobile < 768; test … | Part 2.5 §2.48: Three canonical tiers: mobile < 768, tablet 768–1199, desktop ≥ 1200; DEC-043 (Part 0A): Admin is desktop-first from 1200 px (was 1280) and responsive at every tier: below 1200 the left nav collapses and the … |
+| DEC-254 | 9.6a | Source inventory counts reproduced literally from the catalogue; blueprint extras … | Part 3.2 / 3.5 catalogue: Every source operation carries x-source-op (SM-OP-###) and x-source-class (retained-HTTP, retained-adapter, candidate); Part 3.3 / 3.6 entities: Same rule: 149 retained + 6 candidate = 155 source … |
+| DEC-255 | 9.6a | Source contract decisions keep their literal IDs (document-qualified) and their proposed … | Decision queue (A-screen for contract decisions, Part 2.7) and RTM: Each source decision record stores source_doc (07 or 08) and source_decision_id exactly as printed (“DEC-001” … “DEC-042”); Content: Each of the 42 proposed … |
+| DEC-256 | 9.6a | “claude/openai api” satisfied by the Claude API under B02; OpenAI kept as a disabled … | Part 7.3 provider table and Part 3.5 §3.5.5.6.4: Record “claude/openai api” carried verbatim; Prices: All model rates in the record are unverified for implementation: verify at time of implementation (as of 27 Nov 2026) … |
+| DEC-257 | 9.6a | Calendar API and Zoom charged to B07/B10 shared optional with no new commitment ((a) … | Part 3.2 AD-03, AD-04, AD-18; DEC-020 text: Allocation = B07/B10 shared optional; no new commitment; Verification: Pricing/entitlement not individually verified; verify at time of implementation (as of 27 Nov 2026) |
+| DEC-258 | 9.6a | Postiz kept as a self-hosted SocialPort candidate (B01/B10, no hosted subscription) with … | Part 3.2 AD-08 (SocialPort): Postiz listed as self-hosted candidate adapter, allocation B01/B10 shared; no hosted subscription; Plan: Evaluation spike in W3 (licence review, API fit, cost on B01); build of the adapter only if … |
+| DEC-259 | 9.6a | PandaDoc included as an e-sign/proposal candidate (B07/B10 shared optional) where … | Part 3.2 AD-10 (ESignPort) and proposal builder: PandaDoc added to the evaluation shortlist with allocation B07/B10 shared optional; no new commitment |
+| DEC-260 | 9.6a | Provider candidate register carries the seven source fields verbatim for every operation … | Part 3.5 §3.5.5.6.4 (register): Generated from docs 07/08/16 by script: one row per (operation or entity, provider) with the seven source fields verbatim plus disposition (approved runtime, optional shared B07/B10, developer aid … |
+| DEC-261 | 9.6a | Developer plugins associated with screens and operations are recorded as build aids … | Part 2.7 screen cards and Part 3.5 register: Each listed screen card (A006, A008, A011, A014, A017, A029–A039, A047, A050–A059, A065, A066, A084, A090) and operation carries a “Build aids (development-time, B09)” line naming the … |
+| DEC-262 | 9.6a | Unapproved commercial SaaS candidates kept as procurement-gated adapters: ₹0 committed, … | Part 3.2 ports (EnrichmentPort, SearchPort, SocialPort, AdsPort, ContentPort): Each provider is a procurement-gated candidate: allocation ₹0 committed; adapter not built until a procurement record exists (vendor, DPA, … |
+| DEC-263 | 9.6a | Optional shared tools (PostHog, Canva, Figma, Postman) recorded with their source … | Part 3.5 register and Part 7.3: PostHog: optional analytics sink fed from the first-party beacon (API-291 stays the system of record); self-hosted in ap-south-1 or EU/US cloud only after DPDP cross-border review; consent-gated; … |
+| DEC-264 | 9.6a | Offline example set (164 request, 164 invalid, 165 response) regenerated as contract … | Part 6 CT-04 fixtures: The fixture set contains, per explicit proposed contract, at least one valid request (164), one invalid request (164) and one response example (165), keyed to the same SM-OP IDs ASSUMPTION-523; labelled … |
+| DEC-265 | 9.6a | Existing identity reused: AUTH_USER_MODEL and membership keys confirmed and mapped; no … | Part 3.3 ENT-006: Renamed “UserProfile (extension of AUTH_USER_MODEL)”, table accounts_user_profile (canonical, inside the reused accounts app, DEC-241), alias ten_user; Membership: Product membership rows FK to the existing … |
+| DEC-266 | 9.6a | Embedding entity uses the source column names and type: model text, vector vector(1024); … | Part 3.3 ENT-026: Columns renamed to the source names: model text NOT NULL (alias model_id) and vector vector(1024) NOT NULL (alias embedding); Storage: Full-precision storage ≈ 4 KB per row (was ≈ 2 KB); at 1.6 M stock rows ≈ … |
+| DEC-267 | 9.6a | Sequence step carries delay_seconds int ≥ 0 as the minimum delay; business-day cadence … | Part 3.3 ENT-101 eng_sequence_step: Add delay_seconds integer NOT NULL DEFAULT 0 CHECK (delay_seconds >= 0) |
+| DEC-268 | 9.6a | sales_fulfillment implemented with all ten source columns as the fulfilment milestone … | Part 3.3 / 3.6 (ENT-ENH-E-03, canonical name sales_fulfillment, alias com_fulfillment_milestone): Columns: id uuid PK; tenant_id; startup_id; order_id uuid → order; line_id uuid → order line; milestone_key text; quantity … |
+| DEC-269 | 9.6a | state column added to signature event, handoff and launch approval as the source … | ENT-132 com_signature_event: Add state text NOT NULL CHECK IN (requested, viewed, signed, declined, expired, voided) set at insert; signed_at becomes nullable with CHECK ((state = 'signed') = (signed_at IS NOT NULL)); ENT-149 … |
+| DEC-270 | 9.6a | Prototype handoff rule: production uses authenticated services; browser storage is never … | Part 4.1 (session and storage rules): States the source sentence verbatim: no token, role, scope or approval state is trusted from localStorage/sessionStorage/IndexedDB; sessions are HttpOnly cookies via the BFF; any client-side … |
+| DEC-300 | 9.6b | Cost routing contract (PC-13). PC-13 'Cost routing' carries the full document-15 typed … | Amends DEC-201 ('no model' → 'executor: Tier 0 deterministic; contract complete'); Part 7.4a §7.4.4 PC-13 row; Part 7.4b PC-13 table row (evaluation 'n/a' → seven source evaluations) |
+| DEC-301 | 9.6b | Local model gateway first; paid models as allowance-gated fallback. (1) Gateway order: … | Amends DEC-007 (tier order; Claude becomes the paid fallback), DEC-192 (the reading 'local first = rules and cache first' is replaced), FR-ENH-F-030 (interpretation table), Part 7.3 gateway routing (Tier 0L inserted), … |
+| DEC-302 | 9.6b | Classification and qualification precision ≥ 90% from the initial release. (1) For … | Amends DEC-196 (90% moves from W4 target to W1 acceptance for auto-accepted items); TC-ENH-F-013 expected result; Part 7.2 agent cards for classification/qualification agents (threshold τ field) |
+| DEC-303 | 9.6b | Schema-valid outputs ≥ 99.5% with token percentiles. DEC-195 is confirmed and completed. … | Amends Part 7.3 §7.6.9 (gate text), TC-ENH-F-012, the Part 9.4 AI catalogue measurement columns |
+| DEC-304 | 9.6b | Search: native sources first; hosted search API only after an approved shortfall. (1) … | Amends DEC-193 (Tavily free credits no longer secondary by default), AD-05/AD-06 activation state (Part 3.2), the B03 line (ceiling ₹1,500 unchanged; expected spend ₹0 until activation) |
+| DEC-305 | 9.6b | Extraction: Scrapy + Trafilatura + HTTPX, Playwright for permitted JS pages. This is the … | Amends DEC-194 and ADR-018 (preferred implementation), Part 3.2 ExtractionPort adapters, Part 7.4b §7.4.5.8.6 |
+| DEC-306 | 9.6b | Budget ladder 70 / 80 / 90 / 100. For every M53 cap (AI, provider, channel, per … | Amends DEC-162 (the pause moves from 90% to 100%; the 80% warning returns as a notification), BRL-AI-08, NT-025, ADR-083, Part 4.3 §4.46.4, RB-005 |
+| DEC-307 | 9.6b | Envelope S: the retained pilot envelope ₹16,675. The source's operating budget register … | Amends DEC-198 (3) ('historical' → 'retained and tracked'); Part 8.4 §8.4.3.1 gains the Envelope S view; DEC-231 unchanged |
+| DEC-308 | 9.6b | Observability without hosted Sentry or Datadog. Hosted Sentry is removed (browser and … | Supersedes DEC-200; amends DEC-041, ADR-058 and Part 4.3 §4.39.1 (Sentry node → local tracker; Prometheus/Grafana no longer optional), the B07 line content |
+| DEC-309 | 9.6b | Apollo GraphQL (IC-270): both source records kept. The candidate register row for IC-270 … | Amends DEC-199 ('never a data source' → 'not activated; conditional licensed data only after verification'); F_integration_candidates.csv row IC-270 |
+| DEC-310 | 9.6b | Recovery: initial and growth targets as the source states them. The source terms initial … | Amends DEC-158 (binding point), NFR-057, Part 4.2 §4.30, package I-8 (W6 → Release 1, together with DEC-315), Part 4.3 §4.47 drill schedule |
+| DEC-311 | 9.6b | Coverage gates restated literally. DEC-203 is confirmed, and RGV gets these literal … | Amends DoD D-8, NFR-082 (as restated by DEC-203), CS-TEST-03, the RGV rule set (FR-ENH-I-060) |
+| DEC-312 | 9.6b | Defect severity labels Critical/P0 … Low/P3. Defect severity values are 'Critical / P0', … | Amends DEC-205 and the §9.5.1.10.2 mapping table, Part 6.1 §6.1.8, Part 6.8c §6.8.5.1.3, the defect-tracker enumeration |
+| DEC-313 | 9.6b | RTM business-requirement traces equal to document 24. Every FR row of the RTM gets a … | Amends Part 2.1 §2.4 (FR-W04, FR-W13…W20, FR-A023, FR-A025 BR columns), Part 6.6 RTM export, DEC-180 (CONFLICT-447 closure made explicit) |
+| DEC-314 | 9.6b | Traceability approval: 100%, human, no synthetic approval. OKPI-20 = approved applicable … | Amends AP-08 (Part 6.6 §6.6.8.2), confirms DEC-203 (6), Part 6.9b §6.9.5.3.5 |
+| DEC-315 | 9.6b | Capacity: source-exact initial and growth workloads and design points. (1) New canonical … | Amends DEC-161 (profiles and placement), Part 4.2 §4.25.1/§4.25.6, Part 4.4b LT-ENH-I-01/02, package I-8 placement (Part 9.5 §9.5.2.3) |
+| DEC-316 | 9.6b | Traffic mix 60 / 20 / 10 / 10 for capacity runs. Every WP-01-S/WP-02-S run uses 60% … | Amends DEC-161 (4) (WP-03 becomes the default capacity mix, not only for dashboards), Part 4.2 §4.26 load-test table |
+| DEC-317 | 9.6b | Spike 3× and burst 2×, each with its own acceptance. Two scenarios: SPK-3X: public … | Amends DEC-161 (3), Part 4.2 LT-05/LT-07, Part 4.4b LT-ENH-I-04 |
+| DEC-318 | 9.6b | Endurance: 8 h soak at the initial target. LT-ENH-I-05 v2 runs 8 hours at WP-01-S (the … | Amends DEC-161 (5), Part 4.2 LT-02 |
+| DEC-319 | 9.6b | Projection refresh ≤ 60 s for every scoped projection. (1) Every read projection derived … | Amends DEC-160 (F-2 class withdrawn as a 15-minute class; F-3 kept for period outputs), NFR-047, NFR-008 (unchanged value, wider scope), Part 2.4 §2.31.1, Part 4.4b §4.4.5.4.6, package J-8 |
+| DEC-320 | 9.6b | Pack effort figures shown as gross, reconciled as the pack instructs. The planning … | Confirms DEC-181 and DEC-225; adds estimate register row EST-PACK-01 to Part 8.1 §8.1.6.4 (by reference) |
+| DEC-321 | 9.6b | Queues named and configured as document 26 states. Canonical queue names: research, ai, … | Amends ADR-021, DEC-167, Part 3.1 containers C07/C08, Part 4.4b FR-ENH-I-030 |
+| DEC-322 | 9.6b | Seven environments as document 27 lists them. Canonical environments: local, shared … | Amends DEC-166 ('no shared-dev' withdrawn; UAT split from staging), Part 3.1 §3.1.14, Part 4.3 §4.35, Part 4.4b §4.4.5.3.1 |
+| DEC-323 | 9.6b | Security finding severity by business impact. Security findings use doc 30's … | Amends Part 4.1 §4.16.3 (primary scale), confirms DEC-168, Part 4.4b §4.4.5.5.2 |
+| DEC-324 | 9.6b | 5xx alerts: both document 31 thresholds. AL-06: > 2% 5xx for 5 min with meaningful … | Amends DEC-165 (runbook text and tuning review), Part 4.3 §4.41 |
+| DEC-325 | 9.6b | Availability: 99.9% internal target from Release 1; 99.5% contract negotiation target. … | Amends DEC-157 (start point R1 instead of scale gate, as target), NFR-053/054, SLO-01/02 (Part 4.3 §4.40.1) |
+| DEC-326 | 9.6b | Service plans Self-service / Managed / Enterprise. The plan catalogue has three plans … | Amends DEC-047 (archetype names → size presets), DEC-210, FR-ENH-A-015, FR-ENH-J-007, Part 8.3 plan tables |
+| DEC-327 | 9.6b | Support acknowledgement P1 15 min / P2 1 h / P3 next business day. For contracted SaaS … | Amends DEC-209 (the 3-month pre-condition is replaced by the source's feasibility evidence), DEC-044 (relabelled), Part 4.3 §4.45, Part 8.3c SLA-05 |
+| DEC-328 | 9.6b | Combined preflight: 1,188 / six groups and 1,545 / nine groups, both enforced. A090 … | Amends DEC-206 (both counts enforced, not only 1,545), Part 8.3c §8.3.5.15.10, FR-ENH-I-060 (RGV) |
+| DEC-329 | 9.6b | Business requirements: 76. The BR register header, Part 10 counts and the RTM read … | Amends DEC-180 count wording, Part 1 §1.4 register header (by reference), Part 9.2 glossary 'XBR' entry |
+| DEC-330 | 9.6b | Optimization KPI IDs: the pack's IDs reproduced in the optimization register. The … | Amends DEC-178 (display rule), J-7 registry schema |
+| DEC-331 | 9.6b | Candidate register: source decisions recorded literally (N/A re-check). IC-048 Carta CRM … | Amends F_integration_candidates.csv rows IC-048, IC-050, IC-486 (status N/A → Covered (aligned)); Part 7.4a register |
+| DEC-332 | 9.6b | OPT-07-02 independent deployables (N/A re-check). OPT-07-02 'Keep independent … | Amends Part 4.4a §4.4.4.1 row I-OPT-031 (N/A → Covered (aligned)); adds RGV check RGV-ALN-04 |
+| DEC-380 | 9.7b | Adopt the X1 advanced AI programme (22 agents, 27 automations, 9 workflows, 16 screens) … | Defines scope and gates G-X0, G-A1, G-A2, G-A3 (§9.7.3); nothing is built before approval |
+| DEC-381 | 9.7b | Approve development budget for the proposal: A1 ₹7.1–22.6 L (central ₹13.2 L) plus D4 … | Staged release of money tied to measured value (§9.7.14.5) |
+| DEC-382 | 9.7b | Create budget line B24 "Advanced AI" with hard caps ₹2,000/month (pilot), ₹7,500 (growth … | B02 and DEC-008 ceilings unchanged; advanced agents can never starve baseline agents (ADR-119) |
+| DEC-383 | 9.7b | Predictive propensity (AU-056) and churn (AU-059) are advisory only: Admin-only display, … | Resolves CONFLICT-621; keeps DEC-011 binding |
+| DEC-384 | 9.7b | Multi-agent orchestration follows supervisor-as-planner (ADR-110): AG-039 proposes; … | Resolves CONFLICT-620 with ADR-071 (extends, does not replace) |
+| DEC-385 | 9.7b | Long-term memory (ADR-112) is OFF by default per tenant; enabling requires R01 + R10 and … | DPDP purpose limitation and erasure evidenced; AU-061/062 mandatory |
+| DEC-386 | 9.7b | Conversation intelligence (AG-045) covers staff-written notes and in-product written … | Resolves CONFLICT-622; keeps the system out of EU AI Act Annex III employment use (verify) |
+| DEC-387 | 9.7b | Voice assistant deferred (Won't for this horizon); re-evaluation in A3 only through … | No telephony spend; avoids conflict with DEC-218 |
+| DEC-388 | 9.7b | Price-book guidance (AG-048) explains approved price versions and DEC-038 routes only; … | Safety invariant preserved |
+| DEC-389 | 9.7b | Adopt open-source MLflow (self-hosted) for the ML registry and pull forward self-hosted … | Open-source first; data stays in region; enables multi-step trace debugging |
+| DEC-390 | 9.8b | Adopt the X2 advanced revenue growth capabilities as a separately approvable proposal in … | Funds and schedules X2 per release; no change to Release 1/2 scope or budgets |
+| DEC-391 | 9.8b | Forecast governance: categories Omitted / Pipeline / Best case / Commit / … | Accountable forecast with evidence (F21); consistent with BR-M60 and OPT-12-03 |
+| DEC-392 | 9.8b | Cadence channels: LinkedIn steps are human tasks only (no automated messages, connection … | Multichannel cadences (F09) without new outbound automation risk; no change to the "no SMS or voice outreach in W0–W5" rule |
+| DEC-393 | 9.8b | Partner audience: partners use a separate portal audience (sub-role R16P) with object … | Enables F13/F14 while keeping BR-WEB separation and data minimization |
+| DEC-394 | 9.8b | Deal rooms and MAPs: rooms show only approved hashes to verified invited contacts with … | Enables F10/F11 within PP-06 and DEC-064 |
+| DEC-395 | 9.8b | CPQ guardrails: quotes draw only from approved price-book revisions; no manual … | Enables F12; reaffirms "AI never sets prices" |
+| DEC-396 | 9.8b | Customer health and surveys: health uses commercial and service data only (no patient, … | Enables F15/F18 consistent with BR-M50, DEC-030 and X-02 |
+| DEC-397 | 9.8b | Attribution: the default reporting model stays last non-direct touch (AU-040); … | Enables F22/F23 consistent with SP-12 (first/last touch, window, unknown bucket) |
+| DEC-398 | 9.8b | Healthy recognition: points only for verified outcomes and quality behaviours, never for … | Enables F27 consistent with PP-01 |
+| DEC-399 | 9.8b | Paid tools and AI budget: optional paid tools (OPT-X2-01…06) stay OFF until a … | Keeps open-source first and the AI ceiling unchanged |
+| DEC-400 | 9.9b | Approve the X3 package as a separate proposal outside DEC-230/231 and the Phase-2 … | Opens X3 budget lines; authorizes the X3 team (ASSUMPTION-700); new tables and APIs proceed under the doc 36 §5 "implementation approval" condition |
+| DEC-401 | 9.9b | Analytics architecture: outbox-fed hourly Parquet lakehouse with DuckDB (ADR-130); a … | Affirms ADR-003; resolves CONFLICT-722 |
+| DEC-402 | 9.9b | The semantic layer is the only path from AI or users to numbers; NLQ emits validated … | Protects RLS and ABAC-05; prevents invented metrics |
+| DEC-403 | 9.9b | Allow a public developer platform with outbound webhooks from A3 (Year 2), Scale plan or … | Supersedes for Year 2 only the Part 3.2 note "Outbound webhooks to tenants: not offered in W0–W6"; resolves CONFLICT-721 |
+| DEC-404 | 9.9b | Indic UI: Website/portal chrome in hi-IN, ta-IN and or-IN from A2 per startup when 100% … | Keeps DEC-026 for Admin; resolves CONFLICT-720 |
+| DEC-405 | 9.9b | BYOK offered only on the Scale plan, keys in ap-south-1, with a signed tenant acceptance … | Enterprise enabler; fail-closed per tenant |
+| DEC-406 | 9.9b | Status page and trust centre hosted outside the product account; incident text … | Closes GAP-126 and GAP-179 (adopts RECOMMENDATION-489) |
+| DEC-407 | 9.9b | Autonomy for operations: L2 only for the protective, reversible, fail-closed set (pause … | Consistent with DEC-064 caps; resolves CONFLICT-726 |
+| DEC-408 | 9.9b | SOC 2 / ISO 27001: continuous evidence from A2; an external audit only when an … | Keeps §4.12.10 "not a certification" position; trust-centre wording "SOC 2-aligned" |
+| DEC-409 | 9.9b | X3 agents run within DEC-008 ceilings in the lowest AI priority class and degrade to … | No change to DEC-008; protects production AI |
+| DEC-410 | 9.10 | Single owner for each overlapping capability, as listed in §9.10.4. AG-048 is merged … | Removes duplicated build (≈ 30–65 pd). The catalogue keeps AG-048 for traceability, marked "merged into AG-066" |
+| DEC-411 | 9.10 | Advanced roadmap A1, A2, A3 with gates G-A0, G-A1 and G-A2 (§9.10.5). Releases 1 and 2 … | Advanced work starts only after W5 exit and only with an approved budget |
+| DEC-412 | 9.10 | Release 1 literal-alignment work: fund as change request CR-ALN-01 (default), or accept … | Protects the 4 Jun 2027 date if funded |
+| DEC-413 | 9.10 | Model routing after literal alignment (DEC-301): the source pack requires … | Routing order: Tier 0 rules and cache → local open model → Claude (Haiku-class, then Sonnet-class) within the per-tenant allowance, with redaction → free fallbacks (non-personal data only, off by default) → degrade. Safety … |
+| DEC-414 | 9.10 | Advanced budget proposal: development ₹78.2–143.0 L for A1–A3 (A1 only ≈ ₹28.0–55.4 L); … | Nothing is spent on advanced work until approved |
+| DEC-415 | 9.10 | Precedence after v1.1: Part 9.10 > Parts 9.6–9.9 > Part 9.5 §9.5.2.9 > Part 8.4 > Part … | Removes ambiguity between the v1.0 and v1.1 decisions |
 
 <!-- GEN:DEC:END -->
 
@@ -1866,9 +2127,13 @@ The script compares every ID defined (first cell of a table row) in more than on
 | Tag | CONFLICT-348 | Part 2.7a | OPT-02-04 "read projections refresh ≤ 60 s" vs NFR-047 dashboards ≤ 15 min (A110 monitor ≤ 5 min) | Part 9.5 | DEC-160 |
 | Tag | CONFLICT-349 | Part 2.7a | Scale figures: OPT-06-01 "25 owned + 10 external initial; 50+ owned + 100 external growth"; dashboard … | Part 9.5 | DEC-161 |
 | Tag | GAP-143 | Part 7.1 | No lawful meeting-recording or transcript source exists; meeting summarization is excluded until one is … | Part 9.5 | Narrowed by DEC-218 |
+| Tag | GAP-366 | Part 3.5b | The "catalog-complete OpenAPI draft" and the 164/164/165 offline examples are not in the package | Part 9.6a | Closed by DEC-264 |
 | Tag | RECOMMENDATION-090 | Part 6.6 | Recommendation (Batch 6.7) | Part 6.7 | Store every VER item's evidence as an EVR of type review/inspection/analysis/demonstration and extend … |
+| Tag | RECOMMENDATION-369 | Part 3.5b | Exclude reverse-IP visitor identification and third-party analytics on public pages; keep the first-party … | Part 9.6a | Superseded by DEC-262 (procurement gate instead of exclusion) |
 | ADR | ADR-021 | Part 3.1 | Queue topology and priorities | Part 9.5 | Amended by DEC-167 (control and finance queues) |
+| ADR | ADR-101 | Part 3.4 | Valkey as broker and cache engine | Part 9.6a | Broker = Celery Redis transport (broker_url = redis://…, kombu Redis transport) against a Valkey server; … |
 | Registry | AD-01…AD-12 (12 IDs) | Part 3.1 | e.g. AD-01 = Tenant and startup isolation | Part 3.2 | e.g. AD-01 = Amazon SES (EmailPort) |
+| Registry | AG-049…AG-053 (3 IDs) | Part 9.4 | e.g. AG-049 = Personalization-at-Scale Variant Generator | Part 9.7b | e.g. AG-049 = / AG-050 Variants and localization Draft approved-claim content |
 | Registry | B-11…B-13 (3 IDs) | Part 3.1 | e.g. B-11 = KMS customer-managed keys | Part 9.5 | e.g. B-11 = Regression matrix: remaining scenarios (US-18-EB03 part) |
 | Registry | C-1…C-8 (8 IDs) | Part 3.3 | e.g. C-1 = Provision workspace from template + capability profile W0 | Part 6.9b | e.g. C-1 = Bulk-action preview QC-082 |
 | Registry | C-1…C-7 (7 IDs) | Part 3.3 | e.g. C-1 = Provision workspace from template + capability profile W0 | Part 9.5 | e.g. C-1 = Optimization Intelligence panel as the UI of the J scorecard (US-17-EC01, half) |
@@ -1884,6 +2149,8 @@ The script compares every ID defined (first cell of a table row) in more than on
 | Registry | PP-01…PP-07 (7 IDs) | Part 1 | e.g. PP-01 = Outcomes over activity. Measure qualified opportunities, meetings, awards, fulfilment, … | Part 6.2a | e.g. PP-01 = Admin API (SYS) Deployed build in test; BFF session (audience growth-engine, client … |
 | Registry | V-01…V-14 (14 IDs) | Part 3.3 | e.g. V-01 = File SHA-256 not previously imported for this template (UQ-IDEM-18) | Part 6.9b | e.g. V-01 = A required QC ID missing from the submission set |
 | Registry | WF-13 | Part 2.2 | e.g. WF-13 = M55, B-AUTO | Part 9.4 | e.g. WF-13 = Autonomous plan |
+| Registry | WF-15…WF-23 (9 IDs) | Part 9.4 | e.g. WF-15 = Supervised multi-agent account pursuit | Part 9.7b | e.g. WF-15 = Workflow wiring, simulation fixtures and end-to-end test |
+| Registry | X-1…X-3 (3 IDs) | Part 9.5 | e.g. X-1 = Absolute discounts with effective-% approval routing (DEC-208) | Part 9.8b | e.g. X-1 = Agent prompts, schemas, evals for AG-061…070 (AU-006 suites) all |
 
 <!-- GEN:DUPS:END -->
 
@@ -1916,7 +2183,7 @@ Every part file, its contents (top-level sections, excluding tag registers and q
 |---|---|---|---|---|---|---|---|
 | 0 | Part-00_Document_Ingestion_and_Validation.md | PART 0, Document Ingestion and Validation | Ingestion record; Summary of understanding (under 400 words); Requirements inventory; Gaps register (GAP-###): missing information; Conflicts register (CONFLICT-###): where documents or sections contradict; Ambiguities (to resolve via assumptions or questions); Assumptions register (ASSUMPTION-###); … (+4) | 33 | 0 | 9,962 | Complete |
 | 0A | Part-00A_Issue_Resolution_Decisions.md | PART 0A, Issue Resolution and Decision Log | A. Decision principles applied; B. Corrections of probable human errors in the source documents; C. Resolution of gaps; D. Resolution of ambiguities; E. Answers to the open questions (delegated); F. Additional corrections found on a second reading; G. Updated registers (summary) | 16 | 0 | 4,741 | Complete |
-| 0B | Part-00B_Source_Pack_Coverage_Report.md | PART 0B, Source Pack (38 Documents) Coverage Report | B.1 What the source pack is and what it is telling us; B.2 How the review was done; B.3 Overall result; B.4 Coverage by document; B.5 Coverage by reviewer group; B.6 Residual items without a recorded action; B.7 Detailed registers | 8 | 0 | 2,195 | Complete |
+| 0B | Part-00B_Source_Pack_Coverage_Report.md | PART 0B, Source Pack (38 Documents) Coverage Report | B.1 What the source pack is and what it is telling us; B.2 How the review was done; B.3 Overall result; B.4 Coverage by document; B.5 Coverage by reviewer group; B.6 Residual items without a recorded action; B.7 Final position after enhancement and literal alignment (Part 9.6a/b); … (+1) | 8 | 0 | 2,348 | Complete |
 | 1 | Part-01_Product_and_Business_Foundation.md | PART 1, Product and Business Foundation | Executive summary (draft for the final document); Vision, mission and product principles; Problem statement; Goals, KPIs and OKRs; Scope; Release structure: delivery waves and MoSCoW; Stakeholders; … (+7) | 49 | 0 | 15,168 | Complete |
 | 2.1 | Part-02-1_Functional_Design_Modules_and_FR_Register.md | PART 2 (Batch 2.1), Functional Design: Capability Map, Module Catalogue and Functional Requirement Register | Capability map; Module catalogue (66 source modules); Common acceptance profiles (applied to every FR); Functional requirement register | 49 | 1 | 13,140 | Complete |
 | 2.2 | Part-02-2_Functional_Design_Process_Flows.md | PART 2 (Batch 2.2), End-to-End Process Flows | Universal execution engine (applies to every flow below); WF-01 Startup catalogue (product truth); WF-02 Market discovery; WF-03 Professional contacts; WF-04 Inbound acquisition; WF-05 Content and campaign; WF-06 Outreach and replies; … (+11) | 44 | 22 | 4,901 | Complete |
@@ -1972,11 +2239,20 @@ Every part file, its contents (top-level sections, excluding tag registers and q
 | 8.4 | Part-08-4_Cost_Model_Development_vs_Subscriptions.md | PART 8 (Batch 8.4), Cost Model: Development Cost Separated from Subscription and Running Costs | The two ledgers at a glance; Ledger A: development cost (one-time); Ledger B: subscription and running cost (recurring); Combined view and scale; Decision | 10 | 0 | 3,146 | Complete |
 | 9.1 | Part-09-1_Errata_and_Consolidated_Decisions.md | PART 9 (Batch 9.1), Errata Register and Consolidated Decisions | Errata decisions; Effect on earlier decisions; Additional errata decisions (second review cycle); Final errata decisions (third review cycle) | 13 | 0 | 3,757 | Complete |
 | 9.3 | Part-09-3_Final_Quality_Report.md | PART 9 (Batch 9.3), Final Quality Report and Cross-Role Review | Success criteria assessment (client Section 2); Traceability coverage (from the regenerated RTM); Blueprint inventory (final); Cross-role review (client Section 9): final red-team; Residual open items requiring owner action (not blockers to start); Statement of completeness; Source-pack update (v1.1): full 38-document review | 10 | 0 | 2,927 | Complete |
-| 9.4 | Part-09-4_AI_Agents_Automations_Workflows_Catalogue.md | PART 9 (Batch 9.4), Catalogue of Workflows, AI Agents and Automations | Summary; Business workflows (WF-01…WF-14); AI agents (AG) and their functionality; Automations (AU) and their functionality; How they fit together | 22 | 1 | 7,627 | Complete |
-| 9.5 | Part-09-5_Source_Pack_Decisions_and_Replan.md | PART 9 (Batch 9.5), Source Pack Decisions and Re-plan after Enhancements | Decision summary for the Founder; Binding decisions DEC-157 onwards; Re-plan after enhancements; Tags register (allocated ranges ASSUMPTION-500…509, RECOMMENDATION-500…509); Inconsistencies found while writing this part (reported, not changed) | 63 | 1 | 19,196 | Complete |
-| 9.2 | Part-09-2_Glossary_and_Registers.md | PART 9 (Batch 9.2), Appendices: Glossary, ID Registry and Consolidated Registers | Generation method and controls; Glossary; ID registry; Tag numbers issued, by issuing part; Consolidated registers; Duplicate-ID check; Document map | 162 | 1 | 53,081 | Complete |
+| 9.4 | Part-09-4_AI_Agents_Automations_Workflows_Catalogue.md | PART 9 (Batch 9.4), Catalogue of Workflows, AI Agents and Automations | Summary; Business workflows (WF-01…WF-39); AI agents (AG) and their functionality; Automations (AU) and their functionality; How they fit together | 22 | 1 | 19,436 | Complete |
+| 9.5 | Part-09-5_Source_Pack_Decisions_and_Replan.md | PART 9 (Batch 9.5), Source Pack Decisions and Re-plan after Enhancements | Decision summary for the Founder; Binding decisions DEC-157 onwards; Re-plan after enhancements; Tags register (allocated ranges ASSUMPTION-500…509, RECOMMENDATION-500…509); Inconsistencies found while writing this part (reported, not changed) | 64 | 1 | 19,196 | Complete |
+| 9.6a | Part-09-6a_Source_Pack_Literal_Alignment.md | PART 9 (Batch 9.6a), Source Pack Literal Alignment (groups A–E) | .1 Scope and method; .2 Summary; .3 Alignment register (conflict rows); .4 Not-applicable re-check; .5 Decisions DEC-234…DEC-270; .6 Test cases; .7 Effort and impact; … (+1) | 79 | 1 | 28,727 | Complete |
+| 9.6b | Part-09-6b_Source_Pack_Literal_Alignment.md | PART 9 (Batch 9.6b), Source Pack Literal Alignment (groups F–J) | .1 Scope and method; .2 Summary: counts by alignment type and by group, before and after; .3 The alignment register; .4 Not-applicable re-check; .5 Decisions; .6 Test cases; .7 Effort and cost impact; … (+1) | 113 | 3 | 33,486 | Complete |
+| 9.7a | Part-09-7a_Advanced_AI_Agents_and_Intelligence.md | PART 9 (Batch 9.7a), Advanced AI Agents and Intelligence | Expert panel; Opportunity inventory; Improvement plan; Agent architecture uplift; Agent specification cards (AG-039…AG-060) | 66 | 7 | 21,789 | Complete |
+| 9.7b | Part-09-7b_Advanced_AI_Agents_and_Intelligence.md | PART 9 (Batch 9.7b), Advanced AI Agents and Intelligence | Automations table (AU-053…AU-079); Workflows (WF-15…WF-23); Functional requirements (FR-ADV-X1-001…064); User stories (US- -V1nn); Data, API and screen additions; Test and evaluation cases (TC-ADV-X1-001…092); Governance; … (+5) | 91 | 13 | 27,456 | Complete |
+| 9.8a | Part-09-8a_Advanced_Revenue_Growth_Capabilities.md | PART 9 (Batch 9.8), Advanced Revenue Growth Capabilities | Expert panel; Opportunity inventory; Improvement plan; Feature specifications | 59 | 3 | 18,312 | Complete |
+| 9.8b | Part-09-8b_Advanced_Revenue_Growth_Capabilities.md | PART 9 (Batch 9.8), Advanced Revenue Growth Capabilities | Agent specification cards (AG-061…AG-070); Automations table (AU-080…AU-099); Workflows (WF-25…WF-32); Functional requirements (FR-ADV-X2-001…096); User stories (US-&lt;EP&gt;-V201…V232); Test cases (TC-ADV-X2-001…104); New business KPIs (KPI-ADV-X2-01…20); … (+5) | 86 | 8 | 27,417 | Complete |
+| 9.9a | Part-09-9a_Advanced_Platform_Data_Security_Experience.md | PART 9 (Batch 9.9), Advanced Platform, Data, Security and Experience | Expert panel; Opportunity inventory; Improvement plan; Architecture uplift; Capability specifications | 56 | 4 | 15,979 | In progress (no Status line) |
+| 9.9b | Part-09-9b_Advanced_Platform_Data_Security_Experience.md | PART 9 (Batch 9.9), Advanced Platform, Data, Security and Experience (continued) | Agent specification cards (AG-071…080); Automations (AU-100…119); Workflows (WF-33…39); Functional requirements (FR-ADV-X3-001…080); User stories (US- -V3nn); Test cases (TC-ADV-X3-001…062); Effort; … (+4) | 63 | 7 | 20,532 | Complete |
+| 9.10 | Part-09-10_Revision_v1.1_Consolidation.md | PART 9 (Batch 9.10), Revision v1.1 Consolidation: 100% Literal Match, Expert Panels and Advanced Capabilities Plan | What revision v1.1 does; Expert panels (who was used, and for what); Identified advanced capabilities and AI agents (the list); Overlaps between panels and how they were resolved; Improvement plan (roadmap); Effort; Cost: separately approvable proposals (approved budgets DEC-230/231 unchanged); … (+4) | 16 | 1 | 4,779 | Complete |
+| 9.2 | Part-09-2_Glossary_and_Registers.md | PART 9 (Batch 9.2), Appendices: Glossary, ID Registry and Consolidated Registers | Generation method and controls; Glossary; ID registry; Tag numbers issued, by issuing part; Consolidated registers; Duplicate-ID check; Document map | 163 | 1 | 53,103 | Complete |
 
-**Totals:** 4,042 pages across 61 rendered PDFs; 164 Mermaid diagrams; 1,381,230 words.
+**Totals:** 4,673 pages across 70 rendered PDFs; 211 Mermaid diagrams; 1,591,691 words.
 
 <!-- GEN:DOCMAP:END -->
 

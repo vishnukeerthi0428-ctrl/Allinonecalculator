@@ -116,7 +116,7 @@ CONFLICT-443,6.9a §6.9.3.1,6.9b,Projection refresh,Resolved — Part 9.5 (DEC-1
 CONFLICT-444,6.9a §6.9.3.1,6.9b,Growth critical RTO,Resolved — Part 9.5 (DEC-158),"6.9a, 6.9b, 9.5",6
 CONFLICT-445,6.9a §6.9.1.3,6.9b,Decision ID collision,Resolved — Part 9.5 (DEC-178),"6.9a, 6.9b, 9.5",7
 CONFLICT-446,6.9a §6.9.3.1,6.9b,Expansion effort,Resolved — Part 9.5 (DEC-181),"6.9a, 6.9b, 9.5",5
-CONFLICT-447,6.9a §6.9.3.1,6.9b,BR traces on 11 FRs,Resolved — Part 9.5 (DEC-180),"6.9a, 6.9b, 9.5",16
+CONFLICT-447,6.9a §6.9.3.1,6.9b,BR traces on 11 FRs,"Resolved — Part 9.5 (DEC-180, DEC-313)","6.9a, 6.9b, 9.5, 9.6b",28
 CONFLICT-460,4.4a §4.4.4.1,4.4b,Critical-service availability,Resolved — Part 9.5 (DEC-157),"4.4a, 4.4b, 9.5",7
 CONFLICT-461,4.4a §4.4.3.1,4.4b,Capacity design points,Resolved — Part 9.5 (DEC-161),"4.4a, 4.4b, 9.5",12
 CONFLICT-462,4.4a §4.4.3.1,4.4b,Recovery time,Resolved — Part 9.5 (DEC-158),"4.4a, 4.4b, 9.5",7
@@ -142,4 +142,25 @@ CONFLICT-487,8.3a §8.3.4.1,8.3c,76 business requirements (71 retained + 5 added
 CONFLICT-488,8.3a §8.3.4.1,8.3c,Gross effort 349 / 499 / 679 PD (baseline + expansion before overlap),Resolved — Part 9.5 (DEC-181),"8.3a, 8.3c, 9.5",6
 CONFLICT-489,8.3a §8.3.3.3,8.3c,"Pack text carries investor-product language: ""owner investment data"", ""investment thesis"", ""funding goals"", ""formal securities offers"", ""four frontends and two backends"", ""investment-related compensation""",Resolved — Part 9.5 (DEC-179),"8.3a, 8.3c, 9.5",8
 CONFLICT-490,8.3c §8.3.5.15.3,8.3c,Schema-valid AI outputs ≥ 99.5% with invalid/timeout counted (OKPI-13),Resolved — Part 9.5 (DEC-195),"8.3c, 9.5",4
-CONFLICT-491,8.3a §8.3.3.5,8.3c,"Combined preflight 1,188 records in 6 groups (document 36) vs 1,545 in 9 groups (document 38)",Resolved — Part 9.5 (DEC-206),"8.3a, 8.3c, 9.5",6
+CONFLICT-491,8.3a §8.3.3.5,8.3c,"Combined preflight 1,188 records in 6 groups (document 36) vs 1,545 in 9 groups (document 38)",Resolved — Part 9.5 (DEC-206),"8.3a, 8.3c, 9.5, 9.6b",7
+CONFLICT-550,9.6b §9.6b,9.6b,DEC-306,Resolved — Part 9.5 (DEC-306),9.6b,2
+CONFLICT-551,9.6b §9.6b,9.6b,DEC-317,Resolved — Part 9.5 (DEC-317),9.6b,1
+CONFLICT-552,9.6b §9.6b,9.6b,DEC-325,Resolved — Part 9.5 (DEC-325),9.6b,1
+CONFLICT-553,9.6b §9.6b,9.6b,DEC-304,Resolved — Part 9.5 (DEC-304),9.6b,1
+CONFLICT-554,9.6b §9.6b,9.6b,DEC-309,Resolved — Part 9.5 (DEC-309),9.6b,1
+CONFLICT-555,9.6b §9.6b,9.6b,DEC-302,Resolved — Part 9.5 (DEC-302),9.6b,1
+CONFLICT-556,9.6b §9.6b,9.6b,DEC-324,Resolved — Part 9.5 (DEC-324),9.6b,1
+CONFLICT-620,9.7a front matter,9.7b,ADR-071 says only AG-016 plans and agents are never driven at run time; the brief asks for a supervisor over existing agents,Resolved — Part 9.5 (DEC-384),"9.7a, 9.7b",4
+CONFLICT-621,9.7b §9.7.15,9.7b,DEC-011 / DEC-211: one active scoring model; predictive scoring requested,"Resolved — Part 9.5 (DEC-383, Part 9.7b §G summary)",9.7b,2
+CONFLICT-622,9.7a Quality gate: Batch 9.7a,9.7b,"Coaching and conversation analytics could become employee evaluation (EU AI Act Annex III, verify)",Resolved — Part 9.5 (DEC-386),"9.7a, 9.7b",3
+CONFLICT-623,9.7b §9.7.17,9.7b,"B02 high scenario already ≈ 101% of ₹3,000 (Part 7.4b) while new agents are requested",Resolved — Part 9.5 (DEC-382),9.7b,1
+CONFLICT-657,9.8b §9.8.14,9.8b,SP-12 specifies first/last-touch attribution with window and unknown bucket; AU-040 defaults to last non-direct; X2 adds multi-touch,Resolved — Part 9.5 (DEC-397),9.8b,2
+CONFLICT-658,9.8b §9.8.14,9.8b,Part 4.1 TR-R1 states no SMS or voice outreach in W0–W5; X2 proposes call steps,Resolved — Part 9.5 (DEC-392),9.8b,2
+CONFLICT-659,9.8b §9.8.16,9.8b,"PP-01 ""outcomes over activity"" vs gamification practices that reward activity",Resolved — Part 9.5 (DEC-398),9.8b,1
+CONFLICT-720,9.9a §9.9.2,9.9b,"Request for ""Indic multilingual UI"" vs DEC-026 Admin en-IN only",Resolved — Part 9.5 (DEC-404),"9.9a, 9.9b",4
+CONFLICT-721,9.9a §9.9.2,9.9b,"Developer platform vs Part 3.2 ""outbound webhooks not offered in W0–W6""",Resolved — Part 9.5 (DEC-403),"9.9a, 9.9b",4
+CONFLICT-722,9.9b §9.9.14,9.9b,"""Real-time event streaming"" vs ADR-003 rejection of CDC/Kafka",Resolved — Part 9.5 (DEC-401),9.9b,2
+CONFLICT-723,9.9a §9.9.5.3,9.9b,"""Reverse ETL"" vs ADR-011 first-party analytics only",Resolved — Part 0A §G (Part 9.9b §G summary),"9.9a, 9.9b",2
+CONFLICT-724,9.9a §9.9.5.21,9.9b,"New FinOps screen/tables vs doc 36 §5 ""use existing Admin interfaces; no new physical table or API count assumed""",Resolved — Part 9.5 (DEC-400),"9.9a, 9.9b",2
+CONFLICT-725,9.9b §9.9.16.1,9.9b,Chaos engineering vs zero external side effects and fail-closed,Resolved — Part 0A §G (Part 9.9b §G summary),9.9b,1
+CONFLICT-726,9.9b §9.9.14,9.9b,Auto-remediation vs L1 cap on consequential actions,Resolved — Part 9.5 (DEC-407),9.9b,2

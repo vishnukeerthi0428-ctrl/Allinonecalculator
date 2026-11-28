@@ -15,13 +15,13 @@ RECOMMENDATION-013,0 §0.5,0,"Merge duplicated acceptance procedures (BRD §15/�
 RECOMMENDATION-014,0 §0.3.1,0,"Create FR-W31…FR-W34 and FR-A109…FR-A113 with full acceptance, matching the SM-FR pattern",Accepted (DEC-149),0,3
 RECOMMENDATION-015,0 §0.8,0,"A Reconciliation console pattern (uncertain outcomes queue) shared by email, WhatsApp, social, ads, e-sign, payments",Accepted (DEC-149),"0, 2.2, 3.2, 3.3, 4.2, 6.4, 7.2, 9.4",9
 RECOMMENDATION-016,0 §0.8,0,"A Jurisdiction rule pack in the eligibility engine (India DPDP/TRAI, EU GDPR/PECR, US CAN-SPAM, Canada CASL); unknown jurisdiction = deny","Accepted (DEC-029, DEC-149)","0, 0A, 5.1b",3
-RECOMMENDATION-017,0 §0.8,0,"Seed synthetic data sets (two tenants, 26 startups, all four verticals, minors and health fixtures) as a versioned test asset",Accepted (DEC-149),"0, 3.1, 3.2, 3.3, 4.1, 4.2, 4.3, 4.4a, 5.1a, 5.1b, 5.1c, 6.1, 6.4, 6.5, 7.1, 7.2, 7.3, 7.4a, 7.4b, 9.4",37
+RECOMMENDATION-017,0 §0.8,0,"Seed synthetic data sets (two tenants, 26 startups, all four verticals, minors and health fixtures) as a versioned test asset",Accepted (DEC-149),"0, 3.1, 3.2, 3.3, 4.1, 4.2, 4.3, 4.4a, 5.1a, 5.1b, 5.1c, 6.1, 6.4, 6.5, 7.1, 7.2, 7.3, 7.4a, 7.4b, 9.4, 9.8a, 9.8b, 9.9b",40
 RECOMMENDATION-018,0 §0.8,0,"Use the dual-ledger pattern: receivables and payables as separate append-only ledgers; deal/closure states derived, never manually set",Accepted (DEC-149),"0, 1, 3.1, 3.2, 3.3, 3.6a, 6.1, 6.6",12
 RECOMMENDATION-019,1 §1.4.2,1,KPI-03 · Verified contact rate · contacts with verified professional channel ÷ contacts discovered · Baseline in W1; +10 pp by W5 RECOMMENDATION-019 · Monthly · Research lead · A025,Accepted (DEC-149),"1, 8.2",9
 RECOMMENDATION-020,2.3 §2.25.6,2.3,BRL-APR-09 · Delegation · Approvers may delegate for ≤ 14 days to a user with an equal or higher role in the same scope; audited · None · SVC · Policy,Accepted (DEC-149),2.3,3
 RECOMMENDATION-021,2.3 §2.26.1,2.3,"R15 · Auditor (read-only) · n/a · Admin · Tenant read-only, incl. audit · RECOMMENDATION-021 For internal audit and legal review",Accepted (DEC-149),2.3,1
 RECOMMENDATION-022,2.4 §2.31.4,2.4,"Attribution models offered · First-touch, last non-direct touch (default), linear, position-based (40/20/40) · M52 ""attribution caveat""; default chosen for simplicity and explainability RECOMMENDATION-022",Accepted (DEC-149),2.4,2
-RECOMMENDATION-023,2.4 §2.33.5,2.4,"User lifecycle: invite, activate, change role, expire, revoke, access review (quarterly attestation) RECOMMENDATION-023 · A002",Accepted (DEC-149),"2.4, 3.2, 3.3, 4.1, 5.1b",7
+RECOMMENDATION-023,2.4 §2.33.5,2.4,"User lifecycle: invite, activate, change role, expire, revoke, access review (quarterly attestation) RECOMMENDATION-023 · A002",Accepted (DEC-149),"2.4, 3.2, 3.3, 4.1, 5.1b, 9.9a",8
 RECOMMENDATION-024,2.4 §2.34.2,2.4,"prev_hash, hash · Hash chain per tenant for tamper evidence RECOMMENDATION-024",Accepted (DEC-149),"2.4, 3.3, 4.1, 4.2, 5.1b, 6.7",7
 RECOMMENDATION-025,2.4 §2.35.2,2.4,Application · DRF permission classes + object-level checks; scoped querysets by default (no unscoped manager in business code) · Static check: unscoped query usage fails CI RECOMMENDATION-025,Accepted (DEC-149),"2.4, 3.1, 4.1, 4.3, 4.4a, 5.1b, 6.5",13
 RECOMMENDATION-026,2.4 §2.36.2,2.4,"I18N-04 · Numbers formatted per locale; en-IN uses Indian digit grouping (1,00,000) with an option for international grouping in Admin; lakh/crore labels in INR summaries RECOMMENDATION-026",Accepted (DEC-149),2.4,1
@@ -65,7 +65,7 @@ RECOMMENDATION-063,6.4 AU-004 Data classification & PII redacti,7.3,"Presidio wi
 RECOMMENDATION-064,6.4 AU-042 Usage metering & entitlement enfo,7.3,"Define ""AI task"" as one completed agent invocation returning a validated output (§7.5.4)",Accepted (DEC-149),"6.4, 7.2, 7.3",5
 RECOMMENDATION-065,7.3 §7.3.3,7.3,"First Tier 2 opt-in limited to Owner Portfolio, agents AG-003/004/005/017, after legal review",Accepted (DEC-149),7.3,2
 RECOMMENDATION-066,7.3 §7.4.2,7.3,"Weekly 30-minute AI cost and quality review (RP-20, RP-21) owned by the FinOps lead",Accepted (DEC-149),7.3,2
-RECOMMENDATION-067,7.3 §7.3.3,7.3,W6 spike: self-hosted small open model (vLLM in ap-south-1) as Tier 2e for classifiers; evaluate cost vs Haiku,Accepted (DEC-149),"7.3, 7.4a, 7.4b",6
+RECOMMENDATION-067,7.3 §7.3.3,7.3,W6 spike: self-hosted small open model (vLLM in ap-south-1) as Tier 2e for classifiers; evaluate cost vs Haiku,"Accepted (DEC-149, DEC-301)","7.3, 7.4a, 7.4b, 9.6b, 9.7b",10
 RECOMMENDATION-068,6.4 §6.4.9.2,7.3,AI incident severity scheme AI-S1…S3 (§7.6.10),Accepted (DEC-149),"6.4, 7.3",3
 RECOMMENDATION-069,6.4 AG-018 Content & Campaign Studio Drafter,7.3,Configurable AI-content labelling per jurisdiction (EU AI Act Art. 50; India IT Rules amendments if adopted),Accepted (DEC-149),"6.4, 7.3, 8.2",5
 RECOMMENDATION-070,6.1 front matter,6.1,"Test pyramid target proportions (unit 60–70%, integration 15–25%, contract 4–6%, system 5–8%, E2E 2–4%) and coverage targets per layer, including mutation score ≥ 85% for money, tax, ledger and PDP modules, ≥ 80% for scoring and ≥ 75% for state-machine guards",Accepted (DEC-149),"6.1, 8.2",6
@@ -136,7 +136,7 @@ RECOMMENDATION-365,3.5a §3.5.3.1,3.5b,Provider/tool register with four classes;
 RECOMMENDATION-366,3.5a §3.5.3.1,3.5b,Website ingress allowlist generated from the catalogue,Accepted (DEC-221),"3.5a, 3.5b",3
 RECOMMENDATION-367,3.5b §3.5.5.9.4,3.5b,Catalogue-integrity CI gate CI-1…CI-8,Accepted (DEC-221),3.5b,2
 RECOMMENDATION-368,3.5a §3.5.3.1,3.5b,"PubMed as an optional, off-by-default evidence source for MedMaarg claims behind SearchPort, with SourcePolicy",Accepted (DEC-221),"3.5a, 3.5b",2
-RECOMMENDATION-369,3.5a §3.5.3.1,3.5b,Exclude reverse-IP visitor identification and third-party analytics on public pages; keep the first-party beacon,Accepted (DEC-221),"3.5a, 3.5b",3
+RECOMMENDATION-369,3.5a §3.5.3.1,3.5b,Exclude reverse-IP visitor identification and third-party analytics on public pages; keep the first-party beacon,Accepted (DEC-221),"3.5a, 3.5b, 9.6a",5
 RECOMMENDATION-370,3.5b §3.5.5.1,3.5b,Four new error codes,"Accepted (DEC-221, DEC-217)","3.5b, 9.5",4
 RECOMMENDATION-371,3.5b §3.5.5.10,3.5b,Per-operation performance budgets (x-perf) with query-count limits,Accepted (DEC-221),3.5b,3
 RECOMMENDATION-380,3.6a front matter,3.6a,Section numbering · 3.6.x (this batch); tags ASSUMPTION/GAP/CONFLICT/RECOMMENDATION-380…399 only,Accepted (DEC-221),"3.6a, 3.6b",2
@@ -198,7 +198,7 @@ RECOMMENDATION-485,8.3b §8.3.5.12,8.3c,8.3b §8.3.5.12,Accepted (DEC-221),"8.3b
 RECOMMENDATION-486,8.3c §8.3.5.13.1,8.3c,8.3c §8.3.5.13.1,Accepted (DEC-221),8.3c,2
 RECOMMENDATION-487,8.3c §8.3.5.14.2,8.3c,8.3c §8.3.5.14.2,Accepted (DEC-221),8.3c,2
 RECOMMENDATION-488,8.3c §8.3.5.14.4,8.3c,8.3c §8.3.5.14.4,Accepted (DEC-221),8.3c,2
-RECOMMENDATION-489,8.3c §8.3.5.13.6,8.3c,8.3c §8.3.5.13.6,Accepted (DEC-221),8.3c,2
+RECOMMENDATION-489,8.3c §8.3.5.13.6,8.3c,8.3c §8.3.5.13.6,"Accepted (DEC-221, DEC-406)","8.3c, 9.9a, 9.9b",5
 RECOMMENDATION-490,8.3c §8.3.5.13.7,8.3c,8.3c §8.3.5.13.7,Accepted (DEC-221),8.3c,2
 RECOMMENDATION-500,9.5 §9.5.2.5,9.5,Adopt Option 2b: two contract engineers from Sprint 3 to the Release 2 build gate,Accepted (no rejecting DEC; issued in Part 9.5),9.5,5
 RECOMMENDATION-501,9.5 §9.5.2.8,9.5,"Approve the Option 2b spend by Day 1, at the latest by the W0-A gate (Day 15)",Accepted (no rejecting DEC; issued in Part 9.5),9.5,2
@@ -210,3 +210,49 @@ RECOMMENDATION-506,9.5 §9.5.2.6,9.5,Use free uptime checks for availability pro
 RECOMMENDATION-507,9.5 §9.5.3,9.5,"Generate one consolidated enhancement backlog (package ID, story IDs, MoSCoW, release) from §9.5.2.3 into the backlog tool in Sprint 0, and merge all TC-ENH IDs into the RTM (DEC-217)",Accepted (no rejecting DEC; issued in Part 9.5),9.5,1
 RECOMMENDATION-508,9.5 §9.5.3,9.5,"At assembly, add a one-line pointer in each enhancement part's conflicts section to the DEC that resolved each conflict (§9.5.1.11)",Accepted (no rejecting DEC; issued in Part 9.5),9.5,1
 RECOMMENDATION-509,9.5 §9.5.2.8,9.5,"Keep activating capabilities as soon as their stories and Must packages pass, so the business sees value before the Release 1 gate",Accepted (no rejecting DEC; issued in Part 9.5),9.5,2
+RECOMMENDATION-520,9.6a §9.6a,9.6a,Run the alias-registry check (TC-ALN-A-001) in CI from Sprint 0 so that aliases never become second implementations,Accepted (no rejecting DEC; issued in Part 9.6a),9.6a,2
+RECOMMENDATION-521,9.6a §9.6a,9.6a,"Approve the net new Release 1 effort of this part as a separately approvable development proposal, or accept a date effect at the Sprint 3 review (DEC-226 (3))",Accepted (no rejecting DEC; issued in Part 9.6a),9.6a,2
+RECOMMENDATION-550,9.6b §9.6b,9.6b,DEC-325,Accepted (DEC-325),9.6b,4
+RECOMMENDATION-551,9.6b ALN-B-14 · F21-023 · Capability 14 Obser,9.6b,DEC-308,Accepted (DEC-308),9.6b,3
+RECOMMENDATION-552,9.6b §9.6b,9.6b,DEC-319,Accepted (DEC-319),9.6b,3
+RECOMMENDATION-625,9.7a front matter,9.7b,Supervisor plans for multi-step objectives (FR-ADV-X1-001),Accepted (no rejecting DEC; issued in Part 9.7b),"9.7a, 9.7b",5
+RECOMMENDATION-626,9.7b §9.7.8,9.7b,Reuse a single cited account brief across agents (FR-ADV-X1-005),Accepted (no rejecting DEC; issued in Part 9.7b),9.7b,2
+RECOMMENDATION-627,9.7b §9.7.8,9.7b,Pipeline NBA/NBO from a deterministic candidate set (FR-ADV-X1-011),Accepted (no rejecting DEC; issued in Part 9.7b),9.7b,2
+RECOMMENDATION-628,9.7b §9.7.8,9.7b,Experimentation as the evidence base for AI value (FR-ADV-X1-031),Accepted (no rejecting DEC; issued in Part 9.7b),9.7b,2
+RECOMMENDATION-629,9.7b §9.7.8,9.7b,RBAC-bound command bar (FR-ADV-X1-045),Accepted (no rejecting DEC; issued in Part 9.7b),9.7b,2
+RECOMMENDATION-630,9.7a §9.7.4.7,9.7b,Do not adopt guard frameworks wholesale; benchmark first,Accepted (no rejecting DEC; issued in Part 9.7b),"9.7a, 9.7b",3
+RECOMMENDATION-631,9.7a §9.7.4.8,9.7b,Do not adopt direct agent-to-agent invocation protocols; keep the blackboard,Accepted (no rejecting DEC; issued in Part 9.7b),"9.7a, 9.7b",2
+RECOMMENDATION-632,9.7b §9.7.17,9.7b,Pull Langfuse forward to A1,Accepted (no rejecting DEC; issued in Part 9.7b),9.7b,1
+RECOMMENDATION-633,9.7b §9.7.17,9.7b,Separate hard-capped B24 line with its own ladder,Accepted (no rejecting DEC; issued in Part 9.7b),9.7b,1
+RECOMMENDATION-634,9.7b §9.7.17,9.7b,Deliver through a contract AI pod paired with the core team,Accepted (no rejecting DEC; issued in Part 9.7b),9.7b,1
+RECOMMENDATION-635,9.7b §9.7.17,9.7b,Defer voice; WhatsApp first,Accepted (no rejecting DEC; issued in Part 9.7b),9.7b,1
+RECOMMENDATION-636,9.7b §9.7.14.1,9.7b,Independent AI red-team review before A1 enablement,Accepted (no rejecting DEC; issued in Part 9.7b),9.7b,2
+RECOMMENDATION-637,9.7b §9.7.17,9.7b,Memory OFF by default with DPIA,Accepted (no rejecting DEC; issued in Part 9.7b),9.7b,1
+RECOMMENDATION-638,9.7b §9.7.17,9.7b,Propensity shadow ≥ 4 weeks before visible,Accepted (no rejecting DEC; issued in Part 9.7b),9.7b,1
+RECOMMENDATION-639,9.7b §9.7.12.5,9.7b,"Quarterly AI model review board (AI lead, R10, Founder)",Accepted (no rejecting DEC; issued in Part 9.7b),9.7b,2
+RECOMMENDATION-640,9.7b §9.7.17,9.7b,Seed the answer library from ≥ 10 past bids,Accepted (no rejecting DEC; issued in Part 9.7b),9.7b,1
+RECOMMENDATION-641,9.7b §9.7.17,9.7b,"Report advanced-programme measures (plan approval rate, NBA acceptance, bid drafting time, abstention rate, B24 use) in A128 alongside OKPI-13/14/16/21",Accepted (no rejecting DEC; issued in Part 9.7b),9.7b,1
+RECOMMENDATION-651,9.8a §9.8.3.5,9.8b,"If the squad is not funded, approve A1 only and move A2/A3 after Day 365",Accepted (no rejecting DEC; issued in Part 9.8b),"9.8a, 9.8b",4
+RECOMMENDATION-652,9.8a §9.8.4.1,9.8b,"Adopt sub-roles R03C (Customer Success Manager), R03P (Partner Manager), R16P (External Partner User) and persona variants P03d (Partner/Channel Manager) and P14f (Channel or referral partner, external)",Accepted (no rejecting DEC; issued in Part 9.8b),"9.8a, 9.8b",2
+RECOMMENDATION-655,9.8a §9.8.4.2,9.8b,Detractor follow-up within 2 business days and no incentives for scores,Accepted (no rejecting DEC; issued in Part 9.8b),"9.8a, 9.8b",2
+RECOMMENDATION-664,9.8b §9.8.11,9.8b,Use the KPI-ADV-X2- family so X2 KPIs cannot collide with KPI-ADV IDs issued by X1/X3,Accepted (no rejecting DEC; issued in Part 9.8b),9.8b,2
+RECOMMENDATION-667,9.8b §9.8.13.2,9.8b,Show AG-061…070 usage as a visible sub-line B02-X2 inside the DEC-008 cap,Accepted (no rejecting DEC; issued in Part 9.8b),9.8b,2
+RECOMMENDATION-668,9.8b §9.8.16,9.8b,"Regenerate Part 9.4 with assembly/build_ai_catalogue.py after approval so AG-061…070, AU-080…099 and WF-25…32 appear in the catalogue",Accepted (no rejecting DEC; issued in Part 9.8b),9.8b,2
+RECOMMENDATION-669,9.8b §9.8.16,9.8b,"Always write ""Release A1/A2/A3"" for X2 releases, because Part 5.1a uses A1…A8 for actor classes",Accepted (no rejecting DEC; issued in Part 9.8b),9.8b,1
+RECOMMENDATION-670,9.8b AG-066 CPQ Bundle Advisor and Guardrail,9.8b,AG-066 receives no price values; prices stay server-side,Accepted (no rejecting DEC; issued in Part 9.8b),9.8b,2
+RECOMMENDATION-700,9.9a front matter,9.9a,"ID ranges used · DEC-400…409 · ASSUMPTION/GAP/CONFLICT/RECOMMENDATION-700…749 · ADR-130…139 · AG-071…080 · AU-100…119 · WF-33…39 · FR-ADV-X3-### · US- -V3nn · TC-ADV-X3-### · NFR-ADV-X3-## · screens A150–A169 and W45–W49 · local registers CAP-X3-##, TB-X3-##, THR-X3-##, SLO-X3-##, RB-X3-##, CH-X3-##, TL-X3-##, RSK-X3-##",Accepted (no rejecting DEC; issued in Part 9.9a),9.9a,1
+RECOMMENDATION-730,9.9a ADR-130 Analytics lakehouse on S3 Parque,9.9b,Outbox-fed Parquet lakehouse with DuckDB,Accepted (no rejecting DEC; issued in Part 9.9b),"9.9a, 9.9b",2
+RECOMMENDATION-731,9.9a ADR-131 Semantic metrics layer as code;,9.9b,Semantic metrics layer as code (MetricFlow-compatible YAML),Accepted (no rejecting DEC; issued in Part 9.9b),"9.9a, 9.9b",2
+RECOMMENDATION-732,9.9a ADR-131 Semantic metrics layer as code;,9.9b,NLQ emits validated plans only,Accepted (no rejecting DEC; issued in Part 9.9b),"9.9a, 9.9b",2
+RECOMMENDATION-733,9.9a ADR-133 AI observability on Langfuse sel,9.9b,Bring Langfuse self-hosted forward to A1 with redaction at source,Accepted (no rejecting DEC; issued in Part 9.9b),"9.9a, 9.9b",2
+RECOMMENDATION-734,9.9a ADR-135 Chaos and DR drills automated in,9.9b,AWS FIS in staging with alarm-bound stop conditions,Accepted (no rejecting DEC; issued in Part 9.9b),"9.9a, 9.9b",2
+RECOMMENDATION-735,9.9a ADR-136 Zero-trust Admin access: passkey,9.9b,JIT elevation for privileged bundles,Accepted (no rejecting DEC; issued in Part 9.9b),"9.9a, 9.9b",2
+RECOMMENDATION-736,9.9a ADR-136 Zero-trust Admin access: passkey,9.9b,Passkeys for all staff; offered to all portal users,Accepted (no rejecting DEC; issued in Part 9.9b),"9.9a, 9.9b",2
+RECOMMENDATION-737,9.9a ADR-137 BYOK through cross-account KMS k,9.9b,BYOK via cross-account KMS on the Scale plan,Accepted (no rejecting DEC; issued in Part 9.9b),"9.9a, 9.9b",2
+RECOMMENDATION-738,9.9a §9.9.5.31,9.9b,New page patterns PP-STATUS and PP-DOCS,Accepted (no rejecting DEC; issued in Part 9.9b),"9.9a, 9.9b",2
+RECOMMENDATION-741,9.9a ADR-139 PWA with offline drafts only,9.9b,PWA with drafts-only offline mode,Accepted (no rejecting DEC; issued in Part 9.9b),"9.9a, 9.9b",2
+RECOMMENDATION-744,9.9a ADR-138 Developer platform as a separate,9.9b,Developer platform as a separate surface and audience,Accepted (no rejecting DEC; issued in Part 9.9b),"9.9a, 9.9b",2
+RECOMMENDATION-750,9.10 front matter,9.10,Approve A1 only; decide A2 and A3 at their gates,Accepted (no rejecting DEC; issued in Part 9.10),9.10,3
+RECOMMENDATION-751,9.10 §9.10.11,9.10,Fund the Release 1 alignment work to protect the date,Accepted (no rejecting DEC; issued in Part 9.10),9.10,1
+RECOMMENDATION-752,9.10 §9.10.11,9.10,Benchmark the local model against Claude at W1 before fixing the routing order for each task class,Accepted (no rejecting DEC; issued in Part 9.10),9.10,1
+RECOMMENDATION-753,9.10 §9.10.11,9.10,"Regenerate the AI catalogue, registers and RTM after every change to Parts 9.6–9.9",Accepted,9.10,1

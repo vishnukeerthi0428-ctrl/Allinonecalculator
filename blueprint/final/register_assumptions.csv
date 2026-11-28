@@ -51,7 +51,7 @@ ASSUMPTION-140,7.1 front matter,7.3,Per-call token sizes in §7.2 and a 25% over
 ASSUMPTION-141,7.2 AG-015 Admin Copilot,7.3,Pilot Copilot usage: 8 active internal users × 3 turns × 22 working days; 20-turn daily cap,Open — validate per source part,"7.2, 7.3",3
 ASSUMPTION-142,7.3 §7.5.5,7.3,Call volumes derived from BR-S089 (15% duplicate pages; ≈ 600 inbound/month; 30% rule-resolved; 150 personalised drafts; ≈ 100 public chats),Open — validate per source part,7.3,2
 ASSUMPTION-143,7.3 §7.5.5,7.3,Growth gate ≈ 4× and scale ≈ 12× pilot volume for owned-portfolio AI,Open — validate per source part,7.3,2
-ASSUMPTION-144,7.3 §7.5.5,7.3,FX ₹90/USD (BRD §6) and Anthropic prices from the reference cached 3 Nov 2026,Open — validate per source part,"7.3, 7.4b",4
+ASSUMPTION-144,7.3 §7.5.5,7.3,FX ₹90/USD (BRD §6) and Anthropic prices from the reference cached 3 Nov 2026,Open — validate per source part,"7.3, 7.4b, 9.7a, 9.7b",8
 ASSUMPTION-145,7.3 §7.5.5,7.3,"Cache-hit rates: interactive 60–70%, batch 30–40%",Open — validate per source part,7.3,2
 ASSUMPTION-146,7.1 §7.1.2,7.1,"Delivery personas D01–D06 are derived from the DEC-005 team (PO/architect, backend, frontend, QA 0.5, DevOps 0.5, growth/compliance 0.5)",Open — validate per source part,"7.1, 7.3",6
 ASSUMPTION-147,7.3 §7.5.5,7.3,Token estimates are in target-model tokens (Haiku 5.5 tokenizer ≈ 30% more tokens than older tokenizers),Open — validate per source part,7.3,2
@@ -149,7 +149,7 @@ ASSUMPTION-364,3.5b §3.5.8,3.5b,Source run state pending has the same meaning a
 ASSUMPTION-365,3.5b §3.5.5.1,3.5b,"Enum values in source DTOs are initial vocabularies; map types become named, versioned JSON Schemas; clients tolerate unknown enum values (Part 3.2 §3.2.1.3)",Open — validate per source part,3.5b,2
 ASSUMPTION-366,3.5a §3.5.3.1,3.5b,"Source physical table names (growth_*, sales_*, sales_ui_*) correspond to Part 3.3 logical entities; no physical table is asserted here (document 08 group owns entities); ContractEvidence proposed as a logical entity only",Open — validate per source part,"3.5a, 3.5b",4
 ASSUMPTION-396,3.6a §3.6.4.2,3.6b,Doc 08 is the original catalogue referred to by GAP-112/DEC-087; GAP-112 can be closed,Open — validate per source part,"3.6a, 3.6b",3
-ASSUMPTION-397,3.6a §3.6.3,3.6b,Doc 08 provider licence/quota/price lines are reconciled by the document 16 group; prices quoted there (checked 24 Nov 2026) are not restated and must be verified at implementation (as of 27 Nov 2026),Open — validate per source part,"3.6a, 3.6b",3
+ASSUMPTION-397,3.6a §3.6.3,3.6b,Doc 08 provider licence/quota/price lines are reconciled by the document 16 group; prices quoted there (checked 24 Nov 2026) are not restated and must be verified at implementation (as of 27 Nov 2026),Open — validate per source part,"3.6a, 3.6b, 9.6a",4
 ASSUMPTION-400,7.4a front matter,7.4b,"The 100 use-case names, 20 industry templates and 13 node types are proposed by Group F because the pack gives only counts and group names",Open — validate per source part,"7.4a, 7.4b",9
 ASSUMPTION-401,7.4a §7.4.3,7.4b,"Source priority codes read as P0–P3 adoption priority, R retained alternative, X excluded/not selected, V verification-only inventory",Open — validate per source part,"7.4a, 7.4b",3
 ASSUMPTION-402,7.4a §7.4.4.2,7.4b,"Document 16/21 free tiers and rates are historical planning inputs (source checks dated 24 Nov 2026 where stated); verify at implementation, as of 27 Nov 2026",Open — validate per source part,"7.4a, 7.4b",2
@@ -199,3 +199,41 @@ ASSUMPTION-511,6.6 §6.6.1.1,6.10,"A QC counts as covered by the tests and VER o
 ASSUMPTION-512,6.6 §6.6.1.1,6.10,"The RTM columns api_ids and sit_aliases required by DEC-217 are derived from the coverage CSVs: an FR or story carries the SIT aliases of H_sit_alias_map.csv that list it and the API operations of those aliases (D_api_mapping.csv); a TC-ENH carries the operations and SIT aliases it cites or whose Part 3.5 operation test it is. QC-187's threshold follows DEC-203 (≥ 90% critical-rule branch coverage), so TC-ENH-K-068 needs no assumption",Open — validate per source part,"6.6, 6.10",2
 ASSUMPTION-513,6.10 §6.10.8,6.10,"VER-ENH-K items count as coverage for process QCs (acceptance, sign-off, training, runbooks), as VER-### do for BR-S in Part 6.7 (ASSUMPTION-217)",Open — validate per source part,6.10,1
 ASSUMPTION-514,6.10 §6.10.8,6.10,"The pack's SIT, UAT and Unit tests are covered when their mapped blueprint test is defined; execution evidence follows RECOMMENDATION-080",Open — validate per source part,6.10,1
+ASSUMPTION-520,9.6a §9.6a,9.6a,A warm-standby or restore-to-ap-south-2 path can meet RC-1 RTO ≤ 2 h for a regional outage in the growth phase; its cost is priced at the growth trigger,First regional drill,9.6a,3
+ASSUMPTION-521,9.6a §9.6a,9.6a,The smallest ElastiCache (Valkey) node is sufficient for pilot broker and cache load,Cited by DEC-243,9.6a,3
+ASSUMPTION-522,9.6a §9.6a,9.6a,HyperLogLog distinct counting is available on the chosen RDS PostgreSQL version; otherwise exact distinct-key side tables are used,Sprint 1 spike,9.6a,3
+ASSUMPTION-523,9.6a §9.6a,9.6a,The 164 / 164 / 165 offline examples correspond to the 165 explicit proposed contracts of doc 07 §8015,Cited by DEC-264,9.6a,3
+ASSUMPTION-550,9.6b §9.6b,9.6b,DEC-328,Cited by DEC-328,9.6b,3
+ASSUMPTION-551,9.6b §9.6b,9.6b,§9.6b.7,Open: verify AWS ap-south-1 prices and model fit in W1,9.6b,3
+ASSUMPTION-552,9.6b §9.6b,9.6b,DEC-308,Open: verify at W0,9.6b,2
+ASSUMPTION-553,9.6b §9.6b,9.6b,DEC-322,Cited by DEC-322,9.6b,3
+ASSUMPTION-554,9.6b §9.6b,9.6b,"§9.6b.1.3, DEC-310, DEC-315",Cited by DEC-310,9.6b,3
+ASSUMPTION-555,9.6b §9.6b,9.6b,DEC-327,Cited by DEC-327,9.6b,2
+ASSUMPTION-556,9.6b §9.6b,9.6b,§9.6b.7.1,Applied,9.6b,2
+ASSUMPTION-600,9.7a front matter,9.7b,"Outcome fields needed for ML features (stage history, intent labels, reply timestamps, renewal outcomes) are already retained under DEC-028",Cited by DEC-028,"9.7a, 9.7b",5
+ASSUMPTION-601,9.7a §9.7.2.2,9.7b,Account briefs reduce tokens on account-centric agents by ≈ 20% and pursuit preparation by ≈ 1.5 h per qualified account,Measure with AU-065 holdout in A1,"9.7a, 9.7b",5
+ASSUMPTION-602,9.7a §9.7.2.2,9.7b,RFP co-pilot reduces drafting time by 25–40% once ≥ 50 approved answers exist,Measure on ≥ 5 bids at G-A1,"9.7a, 9.7b",5
+ASSUMPTION-603,9.4 §9.4.3,9.7b,"Additional locales bn, te, mr, kn, ml, gu are wanted by some startups; enabled per startup only",Confirm per startup before A2,"9.4, 9.7a, 9.7b",4
+ASSUMPTION-604,9.4 §9.4.4,9.7b,AU-068 finds 10–20% savings at equal quality,Track quarterly,"9.4, 9.7a, 9.7b",5
+ASSUMPTION-605,9.7a §9.7.3.1,9.7b,A2 and A3 calendar dates follow W6 continuously in Year 2,Confirm at G-A1,"9.7a, 9.7b",2
+ASSUMPTION-606,9.7a §9.7.3.4,9.7b,At least 10 past AppNAI bids are available to seed the answer library,Inventory before A1,"9.7a, 9.7b",3
+ASSUMPTION-607,9.7a §9.7.5,9.7b,Pilot call volumes per agent (§9.7.5 cards) derive from BR-S089 volumes and DEC-031 users,Replace with measured volumes after 4 weeks of each agent,"9.7a, 9.7b",2
+ASSUMPTION-608,9.7b §9.7.17,9.7b,"Langfuse self-hosted cost equals the B22 estimate of Part 8.4 (₹2,250–2,700/month)",Verify at deployment,9.7b,1
+ASSUMPTION-609,9.7b §9.7.13.1,9.7b,Contract AI pod rates fall within the BRD loaded rate band ₹1.0–1.5 lakh per person-month,Quotes before G-X0,9.7b,2
+ASSUMPTION-650,9.8a §9.8.3.5,9.8b,"X2 needs an incremental squad of 4.0 FTE (2 full-stack, 1 frontend, 0.5 QA, 0.5 RevOps analyst) for Day 237–425",Confirm at DEC-390 approval; Product Owner,"9.8a, 9.8b",2
+ASSUMPTION-653,9.8a §9.8.4.2,9.8b,Default tier-1 cap of 15 accounts per owner,Tune after A1 baseline; Startup heads,"9.8a, 9.8b",2
+ASSUMPTION-654,9.8a §9.8.4.2,9.8b,Speed-to-lead SLAs of 1 business hour (hot) and 4 business hours (standard),Tune after baseline; Sales leads,"9.8a, 9.8b",2
+ASSUMPTION-656,9.8a ADV-X2-F07 Territory planning,9.8b,"Territory view in A2 uses tables and region lists, no map service",Revisit at A3,"9.8a, 9.8b",3
+ASSUMPTION-662,9.8b §9.8.13.1,9.8b,Development cash allocated to releases pro-rata by central effort; rates from BRD §6,FinOps to re-baseline at approval,9.8b,2
+ASSUMPTION-663,9.8b §9.8.11,9.8b,"Proposed KPI targets and message volumes (sends, WhatsApp) are planning values pending baselines",Confirm after A1 baseline period,9.8b,2
+ASSUMPTION-666,9.8b §9.8.5,9.8b,"Agent call volumes, token sizes and escalation shares in §9.8.5; low = 0.3 × base, high = 3 × base",Measure in A1; FinOps,9.8b,2
+ASSUMPTION-700,9.9b §9.9.12,9.9b,X3 team = 2 extended contract engineers + 1 contract data engineer + 1 contract SRE/security engineer + QA 0.5 + UX 0.5 (5.0 FTE) from Day 239,Cited by DEC-400,"9.9b, 9.10",5
+ASSUMPTION-701,9.9a §9.9.3.1,9.9b,"Release windows A1 Day 239–299, A2 Day 302–362, A3 Day 393–481 with a December freeze",Open,"9.9a, 9.9b",2
+ASSUMPTION-702,9.9b §9.9.12,9.9b,"20% cross-cutting allowance (12% integration QA, 5% security, 3% training content)",Open,9.9b,2
+ASSUMPTION-703,9.9a §9.9.3.2,9.9b,The AppNAI IdP supports passkeys for external users and attestation for staff (DEC-019 check 5),Open; verify in spike,"9.9a, 9.9b",3
+ASSUMPTION-704,9.9a ADR-137 BYOK through cross-account KMS k,9.9b,BYOK tenants operate AWS accounts with KMS keys in ap-south-1,Open,"9.9a, 9.9b",3
+ASSUMPTION-705,9.9b §9.9.6,9.9b,X3 agent volumes and token sizes in 9.9.6 (pilot),Open; recalibrate after 1 month,9.9b,2
+ASSUMPTION-706,9.9b §9.9.13.1,9.9b,"Translation volume ≈ 15,000 words per locale at ₹1.5–3.0 per word",Open; obtain quotes,9.9b,2
+ASSUMPTION-750,9.10 front matter,9.10,Overlap deduction of 30 / 45 / 65 pd (§9.10.4),Open; validate at A1 planning,9.10,3
+ASSUMPTION-751,9.10 §9.10.7.1,9.10,X2 A1 development cost taken pro rata to A1 effort,Open; validate at A1 planning,9.10,2
+ASSUMPTION-752,9.10 §9.10.11,9.10,A1 runs at about 6 FTE beyond the core team over ≈ 90 working days,Open; validate at gate G-A0,9.10,1

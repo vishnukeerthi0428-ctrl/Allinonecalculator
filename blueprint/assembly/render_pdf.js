@@ -36,7 +36,7 @@ const { chromium } = require("playwright");
   await p.pdf({
     path: out, format: "A4", landscape: true, printBackground: true, outline: true, tagged: false,
     margin: { top: "14mm", bottom: "16mm", left: "12mm", right: "12mm" }, displayHeaderFooter: true,
-    headerTemplate: `<div style="font-size:7pt;width:100%;display:flex;justify-content:space-between;padding:0 12mm;color:#666"><span>${header}</span><span>Confidential · v1.0 · 27 Nov 2026</span></div>`,
+    headerTemplate: `<div style="font-size:7pt;width:100%;display:flex;justify-content:space-between;padding:0 12mm;color:#666"><span>${header}</span><span>Confidential · v1.1 · 28 Nov 2026</span></div>`,
     footerTemplate: mode === "nofooter" ? `<span></span>` : `<div style="font-size:7pt;width:100%;text-align:center;color:#666">Page <span class=pageNumber></span> of <span class=totalPages></span></div>`,
   });
   await browser.close();

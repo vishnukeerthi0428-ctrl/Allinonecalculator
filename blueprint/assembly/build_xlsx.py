@@ -12,7 +12,7 @@ from openpyxl.styles import Font, PatternFill, Alignment
 from openpyxl.utils import get_column_letter
 
 BP = Path(__file__).resolve().parent.parent
-OUT = BP / "final" / "AI_Growth_Engine_Blueprint_Workbook_v1.0.xlsx"
+OUT = BP / "final" / "AI_Growth_Engine_Blueprint_Workbook_v1.1.xlsx"
 HDR_FILL = PatternFill("solid", fgColor="0B3D6B")
 
 
@@ -61,7 +61,7 @@ def parse_stories():
     out = []
     for f in sorted(list(BP.glob("Part-05-*.md")) + [q for q in BP.glob("Part-*.md") if not q.name.startswith("Part-05")]):
         text = f.read_text(encoding="utf-8")
-        heads = list(re.finditer(r"^#{3,6} (US-\d{4}|US-\d{2}-E[A-Z]\d{2})\s*[:—–-]?\s*(.*)$", text, re.M))
+        heads = list(re.finditer(r"^#{3,6} (US-\d{4}|US-\d{2}-(?:E[A-Z]|V\d)\d{2})\s*[:—–-]?\s*(.*)$", text, re.M))
         for k, m in enumerate(heads):
             seg = text[m.end(): heads[k + 1].start() if k + 1 < len(heads) else len(text)]
             kv = {}
@@ -116,9 +116,9 @@ def parse_table_rows(globpat, id_re, want_cols=None):
 
 def main():
     wb = Workbook(); ws = wb.active; ws.title = "README"
-    ws.append(["AI Growth Engine – Application Blueprint workbook (v1.0, 27 Nov 2026)"])
+    ws.append(["AI Growth Engine – Application Blueprint workbook (v1.1, 28 Nov 2026)"])
     ws.append(["Generated from the blueprint Markdown by assembly/build_xlsx.py. The Markdown/PDF/DOCX remain authoritative."])
-    ws.append(["Sheets: Traceability, User Stories, Test Cases, AI Agents & Automations, Business Requirements, Functional Requirements, Decisions, Cost Ledgers, Source Pack Coverage, Tags Register"])
+    ws.append(["Sheets: Traceability, User Stories, Test Cases, AI Agents & Automations, Business Requirements, Functional Requirements, Decisions, Cost Ledgers, Advanced FRs (v1.1), Traceability v1.1, Literal Alignment, Source Pack Coverage, Tags Register"])
     ws.column_dimensions["A"].width = 140
     ws["A1"].font = Font(bold=True, size=14)
 
@@ -131,7 +131,7 @@ def main():
 
     stories = parse_stories()
     have = {r[0] for r in stories}
-    for hdr, r, fn in parse_table_rows("Part-*.md", r"^US-\d{2}-E[A-Z]\d{2}$"):
+    for hdr, r, fn in parse_table_rows("Part-*.md", r"^US-\d{2}-(?:E[A-Z]|V\d)\d{2}$"):
         sid = clean(r[0])
         if sid in have:
             continue
@@ -156,13 +156,27 @@ def main():
     frs = parse_by_prefix("Part-02-1_*.md", r"^FR-")
     add_sheet(wb, "Functional Requirements", ["FR ID", "Details (column: value)", "Source file"], frs, {2: 160})
 
-    decs = sum((parse_by_prefix(g, r"^DEC-\d{3}$") for g in ("Part-00A_*.md", "Part-09-1_*.md", "Part-09-5_*.md", "Part-08-4_*.md")), [])
+    decs = sum((parse_by_prefix(g, r"^\**DEC-\d{3}\**$") for g in ("Part-00A_*.md", "Part-09-1_*.md", "Part-09-5_*.md", "Part-08-4_*.md", "Part-09-6*_*.md", "Part-09-7*_*.md", "Part-09-8*_*.md", "Part-09-9*_*.md", "Part-09-10_*.md")), [])
     decs = sorted({r[0]: r for r in decs}.values())
     add_sheet(wb, "Decisions", ["DEC ID", "Details (column: value)", "Source file"], decs, {2: 160})
 
     costs = parse_table_rows("Part-08-4_*.md", r"^(A\d|B\d|[A-Z]\d\.\d|Total|\*\*)")
     add_sheet(wb, "Cost Ledgers", ["Item", "Details (column: value)", "Source file"],
               [[clean(r[0])] + [" | ".join(f"{h}: {v}" for h, v in zip(h_[1:], r[1:]))] + [fn] for h_, r, fn in costs], {2: 160})
+
+    adv = parse_by_prefix("Part-09-[789]*_*.md", r"^FR-ADV-X\d-\d{3}$")
+    add_sheet(wb, "Advanced FRs (v1.1)", ["FR-ADV ID", "Details (column: value)", "Source file"], adv, {2: 160})
+    rtma = BP / "final" / "RTM_advanced.csv"
+    if rtma.exists():
+        with rtma.open(encoding="utf-8") as fh:
+            rd = list(csv.reader(fh))
+        add_sheet(wb, "Traceability v1.1", rd[0], rd[1:], {4: 50, 5: 50, 6: 60})
+    aln = []
+    for f in sorted((BP / "final" / "coverage").glob("alignment_*.csv")):
+        with f.open(encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                aln.append([r.get(k, "") for k in ("group", "doc", "aspect_id", "old_status", "new_status", "alignment_type", "dec", "new_ids", "note")])
+    add_sheet(wb, "Literal Alignment", ["Group", "Doc", "Aspect ID", "Old status", "New status", "Alignment type", "DEC", "New IDs", "Note"], aln, {9: 80})
 
     cov = []
     for f in sorted((BP / "final" / "coverage").glob("?_coverage.csv")):

@@ -26,9 +26,13 @@ Tag,CONFLICT-347,Part 2.7a,"Doc 06 states provider prices as facts (for example 
 Tag,CONFLICT-348,Part 2.7a,"OPT-02-04 ""read projections refresh ≤ 60 s"" vs NFR-047 dashboards ≤ 15 min (A110 monitor ≤ 5 min)",Part 9.5,DEC-160,0.10
 Tag,CONFLICT-349,Part 2.7a,"Scale figures: OPT-06-01 ""25 owned + 10 external initial; 50+ owned + 100 external growth""; dashboard procedure ""50/250 concurrent staff, 100k/1m opportunities"" vs DEC-031 (Year 1: 25–40 workspaces, 2–10 tenants, 15–60 users; Year 2: 100 workspaces, 30 tenants, 200 internal users)",Part 9.5,DEC-161,0.06
 Tag,GAP-143,Part 7.1,No lawful meeting-recording or transcript source exists; meeting summarization is excluded until one is approved with consent,Part 9.5,Narrowed by DEC-218,0.14
+Tag,GAP-366,Part 3.5b,"The ""catalog-complete OpenAPI draft"" and the 164/164/165 offline examples are not in the package",Part 9.6a,Closed by DEC-264,0.18
 Tag,RECOMMENDATION-090,Part 6.6,Recommendation (Batch 6.7),Part 6.7,"Store every VER item's evidence as an EVR of type review/inspection/analysis/demonstration and extend build_rtm.py to read EVR status, so VER items show Pending/Pass like TCs; a VER without an EVR by its wave gate blocks A090",0.04
+Tag,RECOMMENDATION-369,Part 3.5b,Exclude reverse-IP visitor identification and third-party analytics on public pages; keep the first-party beacon,Part 9.6a,Superseded by DEC-262 (procurement gate instead of exclusion),0.10
 ADR,ADR-021,Part 3.1,Queue topology and priorities,Part 9.5,Amended by DEC-167 (control and finance queues),0.16
+ADR,ADR-101,Part 3.4,Valkey as broker and cache engine,Part 9.6a,"Broker = Celery Redis transport (broker_url = redis://…, kombu Redis transport) against a Valkey server; both source statements are met. No Redis-licensed server is deployed",0.17
 Registry,AD-01…AD-12 (12 IDs),Part 3.1,e.g. AD-01 = Tenant and startup isolation,Part 3.2,e.g. AD-01 = Amazon SES (EmailPort),low
+Registry,AG-049…AG-053 (3 IDs),Part 9.4,e.g. AG-049 = Personalization-at-Scale Variant Generator,Part 9.7b,e.g. AG-049 = / AG-050 Variants and localization Draft approved-claim content,low
 Registry,B-11…B-13 (3 IDs),Part 3.1,e.g. B-11 = KMS customer-managed keys,Part 9.5,e.g. B-11 = Regression matrix: remaining scenarios (US-18-EB03 part),low
 Registry,C-1…C-8 (8 IDs),Part 3.3,e.g. C-1 = Provision workspace from template + capability profile W0,Part 6.9b,e.g. C-1 = Bulk-action preview QC-082,low
 Registry,C-1…C-7 (7 IDs),Part 3.3,e.g. C-1 = Provision workspace from template + capability profile W0,Part 9.5,"e.g. C-1 = Optimization Intelligence panel as the UI of the J scorecard (US-17-EC01, half)",low
@@ -44,3 +48,5 @@ Registry,LT-01…LT-11 (9 IDs),Part 4.2,e.g. LT-01 = Baseline API mix,Part 6.1,e
 Registry,PP-01…PP-07 (7 IDs),Part 1,"e.g. PP-01 = Outcomes over activity. Measure qualified opportunities, meetings, awards, fulfilment, receipts, renewals and margin, never AI or message volume",Part 6.2a,"e.g. PP-01 = Admin API (SYS) Deployed build in test; BFF session (audience growth-engine, client growth-admin, DEC-003); dataset gse_syn 1.4.0 profile m with edge packs and story pack EDGE-P52 (§6.2.1.4); fixtures T1 and T2 loaded (TP-07)",low
 Registry,V-01…V-14 (14 IDs),Part 3.3,e.g. V-01 = File SHA-256 not previously imported for this template (UQ-IDEM-18),Part 6.9b,e.g. V-01 = A required QC ID missing from the submission set,low
 Registry,WF-13,Part 2.2,"e.g. WF-13 = M55, B-AUTO",Part 9.4,e.g. WF-13 = Autonomous plan,low
+Registry,WF-15…WF-23 (9 IDs),Part 9.4,e.g. WF-15 = Supervised multi-agent account pursuit,Part 9.7b,"e.g. WF-15 = Workflow wiring, simulation fixtures and end-to-end test",low
+Registry,X-1…X-3 (3 IDs),Part 9.5,e.g. X-1 = Absolute discounts with effective-% approval routing (DEC-208),Part 9.8b,"e.g. X-1 = Agent prompts, schemas, evals for AG-061…070 (AU-006 suites) all",low
