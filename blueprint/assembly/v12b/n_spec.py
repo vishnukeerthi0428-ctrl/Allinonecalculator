@@ -318,13 +318,13 @@ wf('05-WF01', ['contact_id:ref', 'template_id:ref', 'jurisdiction:enum(jurisdict
    ['ineligible template sends = 0', 'opt-in evidence present = 100%'], '≤ 500 ms', 'R1', ['SEC-CTL-N-03', 'SEC-CTL-N-06', 'SEC-CTL-N-01'], '—', ['AU-214', 'AU-201'], 'R03 · R10',
    ['Opt-in scope covers investor-relations purpose', 'Offering-tagged template blocked unless recipient eligible and relationship recorded'])
 wf('05-WF02', ['context_id:ref', 'recipient_id:ref', 'template_id:ref', 'idempotency_key:text'], ['message_id:ref', 'state:enum(send_state)', 'block_reason:enum(block_reason)'],
-   ['duplicate dispatch = 0', 'blocked-by-policy precision (sampled) ≥ 95%'], 'Dispatch ≤ 60 s', 'R2', ['SEC-CTL-N-01', 'SEC-CTL-N-03', 'SEC-CTL-N-05', 'SEC-CTL-N-06', 'SEC-CTL-N-15'], 'AG-165 + AG-166', ['AU-214', 'AU-203'], 'R03 · R02',
+   ['duplicate dispatch = 0', 'blocked-by-policy precision (sampled) ≥ 95%'], 'Dispatch ≤ 60 s', 'R2 external communication (V12 labels it internal; stricter applies, CONFLICT-1019)', ['SEC-CTL-N-01', 'SEC-CTL-N-03', 'SEC-CTL-N-05', 'SEC-CTL-N-06', 'SEC-CTL-N-15'], 'AG-165 + AG-166', ['AU-214', 'AU-203'], 'R03 · R02',
    ['No broadcast lists for offering content (BRL-V12-N-06)', 'Recheck template, budget and consent at dispatch'])
 wf('05-WF03', ['provider_event:object', 'signature:text'], ['relationship_event_id:ref', 'thread_id:ref', 'stopped_sequence_ids:refs'],
    ['STOP honoured within 1 min = 100%', 'events linked to correct thread ≥ 99.9%'], 'Ack ≤ 2 s; stop ≤ 60 s', 'R1', ['SEC-CTL-N-06'], '—', ['AU-215'], 'R19',
    ['STOP/opt-out keywords deterministic in all supported languages'])
 wf('05-WF04', ['conversation_id:ref', 'template_status:enum(template_status)', 'optin_evidence_id:ref'], ['journey_decision:enum(journey)', 'next_action_id:ref'],
-   ['conflicting actions dispatched = 0', 'in-window response time p50 ≤ 5 min (human or approved FAQ)'], '≤ 5 s per decision', 'R1', ['SEC-CTL-N-05', 'SEC-CTL-N-06'], 'AG-168', ['AU-214', 'AU-216'], 'R03',
+   ['conflicting actions dispatched = 0', 'in-window response time p50 ≤ 5 min (human or approved FAQ)'], '≤ 5 s per decision', 'R2 external communication (stricter than the V12 label, CONFLICT-1019)', ['SEC-CTL-N-05', 'SEC-CTL-N-06'], 'AG-168', ['AU-214', 'AU-216'], 'R03',
    ['Only one active journey per investor', 'Advice/terms questions → human'])
 wf('06-WF01', ['relationship_id:ref', 'sequence_id:ref', 'timezone:enum(tz)'], ['task_id:ref', 'due_at:datetime', 'reservation_id:ref'],
    ['cap violations = 0', 'on-time step rate ≥ 99%'], 'Scheduler tick 1 min', 'R1', ['SEC-CTL-N-06', 'SEC-CTL-N-03'], '—', ['AU-216'], 'R03 · R02',
