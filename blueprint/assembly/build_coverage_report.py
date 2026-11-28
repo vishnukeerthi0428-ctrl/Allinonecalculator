@@ -148,13 +148,49 @@ if residual:
 else:
     A("None. Every partial, not-covered and conflict aspect has a recorded action.")
 A("")
-A("## 0B.7 Detailed registers\n")
+# ---- literal alignment overlay (Part 9.6a/b)
+align = {}
+for f in sorted(COV.glob("alignment_*.csv")):
+    for r in csv.DictReader(f.open(encoding="utf-8")):
+        align[(r.get("group", "").strip(), r.get("aspect_id", "").strip())] = r
+if align:
+    final = collections.Counter()
+    types = collections.Counter()
+    for r in rows:
+        a = align.get((r["group"], (r.get("aspect_id") or "").strip()))
+        st = r["nstatus"]
+        if a:
+            ns_ = (a.get("new_status") or "").lower()
+            types[(a.get("alignment_type") or "").strip()[:1].lower() or "?"] += 1
+            st = "Not applicable" if ns_.startswith("not app") else ("Cannot match" if ns_.startswith("cannot") else "Matched")
+        elif st in ("Covered", "Common core", "Partially covered", "Not covered"):
+            st = "Matched"
+        final[st] += 1
+    appl = sum(final.values()) - final["Not applicable"]
+    A("## 0B.7 Final position after enhancement and literal alignment (Part 9.6a/b)\n")
+    A("Partially covered and not-covered aspects were completed by the enhancement parts. The 141 conflict aspects were then aligned to the literal source text by the amendment decisions in Part 9.6a (DEC-234…299) and Part 9.6b (DEC-300…379), and every not-applicable reason was re-checked.\n")
+    A("| Final status | Aspects |\n|---|---|")
+    for k in ("Matched", "Cannot match", "Not applicable"):
+        A(f"| {k} | {final[k]:,} |")
+    A(f"| **Applicable aspects** | **{appl:,}** |")
+    A(f"| **Literal match** | **{final['Matched'] / appl * 100:.1f}%** ({final['Matched']:,} / {appl:,}) |")
+    A("")
+    lab = {"a": "(a) Source adopted literally", "b": "(b) Both satisfied (source met, stricter control kept)",
+           "c": "(c) Source internally inconsistent: all statements satisfied, or pack precedence applied", "d": "(d) Cannot match literally"}
+    A("| Alignment type (conflict and re-checked rows) | Rows |\n|---|---|")
+    for k, v in sorted(types.items()):
+        A(f"| {lab.get(k, k)} | {v} |")
+    A("")
+    print("ALIGNED", dict(final), f"{final['Matched'] / appl * 100:.2f}%", dict(types))
+
+A("## 0B.8 Detailed registers\n")
 A("The full aspect-level registers (one row per aspect, with blueprint location and action) are in `final/coverage/<group>_coverage.csv` and in the detailed register sections of each enhancement part. Catalogue mappings:")
 A("- `D_api_mapping.csv`: 321 source API/adapter operations → blueprint API IDs.")
 A("- `E_table_mapping.csv`: 155 source tables → blueprint entities.")
 A("- `F_integration_candidates.csv`: 538 integration candidates with decisions.")
 A("- `G_test_mapping.csv`: 799 source tests → blueprint test cases.")
 A("- `H_*_map.csv`: BRs, FRs, QCs, decisions, work items, SIT aliases and runbooks.")
+A("- `alignment_a.csv`, `alignment_b.csv`: literal alignment of every conflict aspect (Part 9.6a/b).")
 A("")
 A("**Status: Part 0B complete.**")
 OUT.write_text("\n".join(L) + "\n", encoding="utf-8")
