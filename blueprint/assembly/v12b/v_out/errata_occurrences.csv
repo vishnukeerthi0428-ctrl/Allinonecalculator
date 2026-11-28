@@ -1267,12 +1267,35 @@ E-V-46,11.1b,897,stale,| CONFLICT-776 | Conflict | CRM connector (BR-V12-05) vs 
 E-V-46,11.1b,907,stale,"| 2 | Assumptions, gaps, conflicts tagged and logged | **Pass** | 18 tags (760–777) registered in §11.1.9; Founder items marked ""Pending Founder decision"" in CSV and decisions |"
 E-V-14,11.1b,914,stale,"| 9 | Consistent with earlier parts | **Pass with findings** | Amended decisions named (DEC-026, 029, 047, 055, 065; FR-W02/W03). Findings reported: (a) blueprint W01–W34 and V12 W01–W34 share IDs wit"
 E-V-46,11.1b,916,stale,"**Status: Part 11 Batch 11.1 (a + b) complete. 1,310 aspects of BRD V12 chapters 00–07, 10–25 and the ID index reviewed: before 503 Covered / 352 Partial / 135 Not covered / 92 Conflict / 228 N/A; aft"
-E-V-09,11.22a,175,stale,| FR-V12-A-147 | Part 11.1b | Recovery objectives per data class (DEC-V9-01): critical transactional RPO ≤ 15 min / RTO ≤ 4 h (KPI-18/19) | Not covered | EP-21 | Release 1 | US-21-ZU02 | Matched |
-E-V-14,11.22a,175,stale,| FR-V12-A-147 | Part 11.1b | Recovery objectives per data class (DEC-V9-01): critical transactional RPO ≤ 15 min / RTO ≤ 4 h (KPI-18/19) | Not covered | EP-21 | Release 1 | US-21-ZU02 | Matched |
-E-V-14,11.22a,322,stale,"| FR-V12-H-033 | Part 11.8b | Contact-data vendors need a transfer-register entry (CJ-R15), a DPA and CJ-GL-01 compliance before activation (DEC-V9-04) | Not covered | EP-03 | Release 1 | US-03-ZU05 |"
-E-V-15,11.22a,344,stale,| FR-V12-I-041 | Part 11.9c | PERF-01…07 load profiles executed before each release gate; V12 KPI-05/26/27/28 measured | Not covered | EP-21 | Release 2 | US-21-ZU14 | Matched |
-E-V-46,11.22a,354,stale,| FR-V12-K-004 | Part 11.11b | 24×7 human on-call for SEV1/SEV2 per the option chosen in DEC-715 (Pending Founder decision) | Not covered | EP-21 | Release 2 | US-21-ZU17 | Matched |
-E-V-46,11.22a,596,annotated,"| 3 | Register wording still says ""Pending Founder decision"" after DEC-770…791 decided it | FR-V12-K-004 (Part 11.11b), FR-V12-I-013 (Part 11.9b), FR-V12-A-147 (Part 11.1b), FR-V12-O-037…084 status-be"
+E-V-25,11.20a,642,annotated,**Reading the band.** The low-effort column is what the same team achieves if every part's low estimate holds; the high-effort column if every high estimate holds. Because certification windows are ca
+E-V-46,11.20b,755,annotated,"| 10 | Part 11.1b CONFLICT-761 and others still read ""Pending Founder decision"" | DEC-772/776/790/791 adopted them | Treated as adopted (I-03) |"
+E-V-09,11.22a,194,stale,| FR-V12-A-147 | Part 11.1b | Recovery objectives per data class: critical transactional RPO ≤ 15 min / RTO ≤ 4 h | Not covered | EP-21 | Release 1 | US-21-ZU02 | Matched |
+E-V-14,11.22a,341,stale,"| FR-V12-H-033 | Part 11.8b | Contact-data vendors need a transfer-register entry (CJ-R15), a DPA and CJ-GL-01 compliance before activation (DEC-V9-04) | Not covered | EP-03 | Release 1 | US-03-ZU05 |"
+E-V-15,11.22a,363,stale,| FR-V12-I-041 | Part 11.9c | PERF-01…07 load profiles executed before each release gate; V12 KPI-05/26/27/28 measured | Not covered | EP-21 | Release 2 | US-21-ZU14 | Matched |
+E-V-46,11.22a,615,annotated,"| 3 | Register wording still says ""Pending Founder decision"" after DEC-770…791 decided it | FR-V12-K-004 (Part 11.11b), FR-V12-I-013 (Part 11.9b), FR-V12-A-147 (Part 11.1b), FR-V12-O-037…084 status-be"
+E-V-14,11.22b,2958,stale,"| Story | As a DPO / counsel (P09, R10), I want contact-data vendors need a transfer-register entry (CJ-R15), a DPA and CJ-GL-01 compliance before activation (DEC-V9-04), so that nothing is sent, reco"
+E-V-14,11.22b,2979,stale,"Contact-data vendors need a transfer-register entry (CJ-R15), a DPA and CJ-GL-01 compliance before activation (DEC-V9-04)"
+E-V-16,11.22c,200,stale,| Traces | FR-V12-E-039 (REC-04); tests TC-046 |
+E-V-16,11.22c,218,stale,@happy @REC-04
+E-V-16,11.22c,659,stale,"| Traces | FR-V12-F-048 (REC-03); DEC-770, DEC-790; tests TC-V12-F-075 |"
+E-V-16,11.22c,677,stale,@happy @REC-03 @DEC-770
+E-V-16,11.22c,1264,stale,@alt @BR-C01 @REC-01 @DEC-770
+E-V-14,11.22c,2516,stale,"| Story | As a SaaS client administrator (P13, R17/R12), I want new SKU or plan expansion only through a signed new version; no automatic activation on application import; tenant lifecycle states pend"
+E-V-14,11.22c,2562,stale,"Consumption forecast and quota alerts: remaining allowance, reservations and trend; alerts at 80% (soft, DEC-V7-07) and 100% (hard); overage"
+E-V-09,11.22c,6695,stale,"| Story | As a platform operator (P12, R13), I want public status page hosted independently of the platform (component status, incidents, maintenance) with private scoped incident detail; recovery obj"
+E-V-09,11.22c,6731,stale,Recovery objectives per data class: critical transactional RPO ≤ 15 min / RTO ≤ 4 h; growth workload RPO ≤ 15 min / RTO ≤ 2 h as a blocking
+E-V-15,11.22c,7932,stale,"| Story | As a platform operator (P12, R13), I want PERF-01…07 load profiles executed before each release gate; V12 KPI-05/26/27/28 measured; independent pen test per major release and annually, scope"
+E-V-15,11.22c,7957,stale,PERF-01…07 load profiles executed before each release gate; V12 KPI-05/26/27/28 measured
+E-V-46,11.22c,8250,annotated,"| Notes | FR-V12-K-004: release per DEC-773 (24×7 on-call from Release 2 GA; resolves the DEC-715 pending option) · The register text still says ""Pending Founder decision""; DEC-773 decided it (hybrid "
+E-V-46,11.22f,877,annotated,"| DEC-948 | Register wording ""Pending Founder decision"" in FR-V12-K-004, I-013, A-147 and the O-037…084 status texts is read as decided by DEC-771/772/773/783 (GAP-1148) | Founder decisions DEC-771…78"
+E-V-46,11.22f,906,annotated,"| GAP-1148 | Gap | Stale ""Pending Founder decision"" wording in decided FR rows | §11.22.4.3, DEC-948 | Closed by DEC-948 reading |"
+E-V-01,11.24a,40,annotated,"| Scope, safety caps, bounded mandates, regulated capabilities | Part 11.14 DEC-770…791; Parts 11.16–11.18 | DEC-002, DEC-053, DEC-064 (L1 cap), DEC-386/387/392 | Activation flags and DB gates (§11.24"
+E-V-04,11.24a,42,annotated,| Database access model and roles | DEC-778; Part 11.19b C8 (canonical `app_rw`) | Part 3.3 §3.3.5.10 `ge_app`/`ge_worker`; Part 11.9b `ge_*` names | Roles created canonical in V0001 (DEC-983) |
+E-V-04,11.24a,142,stale,"| L1 Kernel | `core.identity` | Users, roles, custom roles, SoD, SSO, SCIM, sessions, break-glass | `app_user`, `custom_role`, `role_permission`, `user_role_assignment`, `idp_connection`, `scim_*`, `u"
+E-V-04,11.24b,104,stale,"| 5 | `V0005__reconcile_v12_lineage_for_ddl_v12_r.sql` | Reconciliation patch: columns DDL-V12-R expects (tenant.kind, jurisdiction_pack.market/pack_code/counsel_signoff_ref, ai_model evidence columns"
+E-V-04,11.24b,126,annotated,| **`app_rw`** | yes | **no** | Django API (one canonical name; formerly `ge_app` = V12 `app_user`) | SELECT/INSERT/UPDATE on mutable tenant tables; SELECT/INSERT on append-only tables; SELECT on plat
+E-V-04,11.24b,262,annotated,"| 1 | V0006 | role rename not needed: roles are created with canonical names in V0001 (DEC-778, DEC-894) | `DO $$ BEGIN IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'ge_app') AND NOT EXISTS (SELE"
+E-V-04,11.24c,517,stale,"| 2 | Part 11.19a DDL-V12-R-01 | View `identity_provider` replaces the C2 table but no DROP is given; references `ge.app_user`, which no earlier DDL defines | Generator drops the table first; V0005 cr"
 E-V-46,11.2a,48,stale,"**Reading.** Before this part the blueprint covered the *capabilities* of SM-SVC-01…25 (modules M01–M66, screens A001–A113, X1/X2 agents) but had **no service-SKU construct**: no per-SKU entitlement, "
 E-V-46,11.2a,76,stale,"| SM-SVC-19 | Tender & Project Bid Automation | Conflict | Not covered / partially (DEC-047 plan entitlements only) | Conflict: bid submission | Covered (all screens, APIs, tables exist) | Continuous "
 E-V-46,11.2a,83,stale,| SM-SVC-26 | AI Voice & Intelligent Telephony Automation | Conflict | Not covered / partially (DEC-047 plan entitlements only) | Conflict: AI voice outreach | Partially: reuse candidates; SWR-B-01 | 

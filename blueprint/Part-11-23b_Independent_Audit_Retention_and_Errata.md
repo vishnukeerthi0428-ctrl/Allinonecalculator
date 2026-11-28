@@ -46,7 +46,7 @@
 | BR | 209 | 204 | 5 | 0 | 0 |
 | BRL | 358 | 343 | 14 | 1 | 0 |
 | CFG | 53 | 53 | 0 | 0 | 0 |
-| DEC | 348 | 289 | 50 | 9 | 0 |
+| DEC | 348 | 287 | 52 | 9 | 0 |
 | ENT | 214 | 207 | 7 | 0 | 0 |
 | FR | 801 | 793 | 8 | 0 | 0 |
 | KPI | 61 | 60 | 1 | 0 | 0 |
@@ -54,14 +54,14 @@
 | OKPI | 35 | 33 | 2 | 0 | 0 |
 | RP | 52 | 52 | 0 | 0 | 0 |
 | RSK | 218 | 215 | 3 | 0 | 0 |
-| SCREEN | 233 | 170 | 62 | 1 | 0 |
+| SCREEN | 233 | 160 | 72 | 1 | 0 |
 | TC | 4,653 | 4,633 | 20 | 0 | 0 |
-| US | 475 | 471 | 4 | 0 | 0 |
+| US | 475 | 470 | 5 | 0 | 0 |
 | VER | 68 | 68 | 0 | 0 | 0 |
 | WF | 40 | 38 | 2 | 0 | 0 |
-| **Total** | **10,569** | **10,362** | **196** | **11** | **0** |
+| **Total** | **10,569** | **10,349** | **209** | **11** | **0** |
 
-**Reading.** All 10,569 baseline IDs are still present in the revised blueprint and none is missing from the pre-V12 registers. 196 IDs are amended and 11 are superseded by later decisions; every one of them is listed individually in §11.23.6.4 and in `final/supersession_index.csv`. Tests (TC), acceptance criteria (AC), stories (US), configuration domains (CFG), reports (RP) and verification items (VER) are retained; the few TC/US/FR rows amended are those whose own text states a rule a Founder decision changed (they remain valid outside the new scope and are read with the cited DEC).
+**Reading.** All 10,569 baseline IDs are still present in the revised blueprint and none is missing from the pre-V12 registers. 209 IDs are amended and 11 are superseded by later decisions; every one of them is listed individually in §11.23.6.4 and in `final/supersession_index.csv`. Tests (TC), acceptance criteria (AC), stories (US), configuration domains (CFG), reports (RP) and verification items (VER) are retained; the few TC/US/FR rows amended are those whose own text states a rule a Founder decision changed (they remain valid outside the new scope and are read with the cited DEC).
 
 ### 11.23.6.4 Amended and superseded IDs (every ID)
 
@@ -104,176 +104,189 @@
 | 35 | BRL-TEN-12 | amended | DEC-783 | — | Part 2.3 L36 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
 | 36 | DEC-002 | superseded | DEC-783 | — | Part 11.14 §11.14.1 (DEC-783) | Investor and fundraising exclusion withdrawn; Investment Automation product adopted with securities rule packs and counsel gates |
 | 37 | DEC-003 | amended | DEC-713 | — | Part 11.11b §11.11.7 Decisions (L804) | Amends DEC-003 scope |
-| 38 | DEC-008 | amended | DEC-607 | — | Part 11.6a §11.6.3.1 Partially covered, not covered and con… | / F16-065 / 16 · 16.7 / Budgets: soft cap (default 80%) alerts; hard cap holds new AI steps while deterministic steps continue; caps per tenant, comp… |
-| 39 | DEC-016 | amended | DEC-506 | — | Part 11.1b §11.1.7 Decisions (L848) | Also: DEC-581. Extends DEC-016 entities |
-| 40 | DEC-018 | amended | DEC-771 | — | Part 11.14 §11.14.1 (DEC-771) | RTO: growth-critical <= 120 min release-blocking (DEC-771); RPO <= 15 min (DEC-787); staged 4 h pilot target of DEC-158 superseded |
-| 41 | DEC-021 | amended | DEC-787 | — | Part 11.14 §11.14.1 (DEC-787) | RPO <= 15 min in every residency region (continuous WAL, daily base, 35-day PITR) |
-| 42 | DEC-022 | amended | DEC-501 | — | Part 11.1a §11.1.4.9 The two REC series (L1081) | Chapter 25 contains an older table whose rows are labelled "REC-01/05", "REC-02/03", "REC-04", "REC-06", "REC-07/08", "REC-09/11", "REC-10", "REC-12"… |
-| 43 | DEC-023 | amended | DEC-779 | — | Part 0A L60 (baseline row) | Read with DEC-779: L1 cap lifted only for actions under an Active, eligible bounded mandate in an approved jurisdiction (DEC-841) |
-| 44 | DEC-026 | amended | DEC-776 | — | Part 11.14 §11.14.1 Founder decisions recorded (28 Nov 2026… | Also: DEC-516, DEC-625, DEC-633. Amends DEC-040/421 (regions), DEC-026/404 (locales), DEC-027 (tax beyond India GST) and DEC-405 (BYOK beyond AWS KMS… |
-| 45 | DEC-027 | amended | DEC-776 | — | Part 11.14 §11.14.1 Founder decisions recorded (28 Nov 2026… | Also: DEC-543, DEC-587, DEC-664. Amends DEC-040/421 (regions), DEC-026/404 (locales), DEC-027 (tax beyond India GST) and DEC-405 (BYOK beyond AWS KMS… |
-| 46 | DEC-029 | amended | DEC-776 | — | Part 11.14 §11.14.1 Founder decisions recorded (28 Nov 2026… | Also: DEC-507, DEC-611. **The legal gates stay:** each market opens only when its jurisdiction rule pack is signed off by counsel (DEC-029 as amended… |
-| 47 | DEC-034 | amended | DEC-512 | — | Part 11.1a §11.1.3.23 Chapter 23: Roadmap Prioritization Co… | / R0 / Phase: R0 / Name: Foundations / Scope: Build core platform from Appendices A–C/A2/C2; identity reuse; CI/CD with SAST/DAST/SBOM; infrastructur… |
-| 48 | DEC-040 | amended | DEC-776 | — | Part 11.14 §11.14.1 Founder decisions recorded (28 Nov 2026… | Amends DEC-040/421 (regions), DEC-026/404 (locales), DEC-027 (tax beyond India GST) and DEC-405 (BYOK beyond AWS KMS). |
-| 49 | DEC-043 | amended | DEC-623 | — | Part 11.7c §11.7.7 Decisions (L739) | Also: DEC-633. Amends DEC-043 for Admin; |
-| 50 | DEC-044 | superseded | DEC-773 | — | Part 11.14 §11.14.1 (DEC-773) | Business-hours support replaced by 24x7 human on-call for SEV1/SEV2 (DEC-702: DEC-044 kept only for the owned-portfolio support schedule) |
-| 51 | DEC-047 | amended | DEC-501 | — | Part 11.1b §11.1.7 Decisions (L843) | Also: DEC-503, DEC-521, DEC-584. Amends DEC-047 (CONFLICT-767) |
-| 52 | DEC-050 | amended | DEC-853 | — | Part 11.17b §11.17.16.1 Decisions (L3240) | Extends DEC-050 |
-| 53 | DEC-053 | amended | DEC-781 | — | Part 11.14 §11.14.1 (DEC-781) | Superseded for mandated tenders only; unmandated bid submission remains human |
-| 54 | DEC-055 | amended | DEC-504 | — | Part 11.1b §11.1.7 Decisions (L846) | Also: DEC-509. Amends DEC-065, DEC-055 (CONFLICT-763) |
-| 55 | DEC-057 | amended | DEC-783 | — | Part 0A L101 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
-| 56 | DEC-058 | amended | DEC-517 | — | Part 11.1b §11.1.6 Conflicts and proposed resolutions (L834) | **Investor / fundraising check (DEC-002).** The assigned BRD chapters do **not** extend scope to investors or fundraising. They reaffirm the exclusio… |
-| 57 | DEC-062 | amended | DEC-509 | — | Part 11.1b §11.1.7 Decisions (L851) | Extends DEC-055, DEC-062 |
-| 58 | DEC-064 | amended | DEC-779 | — | Part 11.14 §11.14.1 (DEC-779); Part 11.17a DEC-841 | L1 cap lifted only for actions covered by an Active, eligible bounded mandate in an approved jurisdiction |
-| 59 | DEC-065 | amended | DEC-504 | — | Part 11.1b §11.1.7 Decisions (L846) | Amends DEC-065, DEC-055 (CONFLICT-763) |
-| 60 | DEC-068 | amended | DEC-782 | — | Part 9.1 L22 (baseline row) | Read with DEC-782: AI voice and recordings adopted with AI disclosure, consent, calling windows and retention controls (Part 11.18) |
-| 61 | DEC-079 | amended | DEC-771 | — | Part 9.1 L33 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
-| 62 | DEC-080 | superseded | DEC-773 | — | Part 11.14 §11.14.1 (DEC-773) | Business-hours support model replaced by 24x7 on-call |
-| 63 | DEC-158 | superseded | DEC-771 | — | Part 11.14 §11.14.1 (DEC-771) | Staged RTO (4 h at pilot, 2 h after Topology B) replaced by growth RTO <= 120 min blocking |
-| 64 | DEC-169 | amended | DEC-783 | — | Part 9.2 L1918 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
-| 65 | DEC-176 | amended | DEC-781 | — | Part 9.2 L1925 (baseline row) | Read with DEC-781: Automatic bid submission allowed only under a per-tender bounded mandate (Part 11.17b); unmandated submission still blocked |
-| 66 | DEC-178 | amended | DEC-700 | — | Part 11.11b §11.11.7 Decisions (L791) | CDEC-001…180 ≡ SPDEC-001…180 (extends DEC-178). |
-| 67 | DEC-179 | amended | DEC-783 | — | Part 9.5 L81 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
-| 68 | DEC-209 | amended | DEC-702 | — | Part 11.11b §11.11.7 Decisions (L793) | Amends DEC-327 and DEC-209 for contracted tiers; |
-| 69 | DEC-210 | amended | DEC-521 | — | Part 11.2c §11.2.7 Decisions (L822) | Amends DEC-047, DEC-210, DEC-326; |
-| 70 | DEC-218 | amended | DEC-782 | — | Part 11.14 §11.14.1 Founder decisions recorded (28 Nov 2026… | Also: DEC-529, DEC-531, DEC-572, DEC-870. Supersedes DEC-386, 387 and 392, and DEC-218 where it restricts recording and transcripts. |
-| 71 | DEC-228 | amended | DEC-770 | — | Part 11.14 §11.14.1 (DEC-770) | Staffing Option 2b kept; fixed dates become indicative |
-| 72 | DEC-230 | amended | DEC-790 | — | Part 11.17b §11.17.15 Effort and cost (L3162) | Also: DEC-500, DEC-578. All figures are **estimates** for a separately approvable change request **CR-V12-P** under DEC-790 ("all V12 change requests… |
-| 73 | DEC-231 | amended | DEC-790 | — | Part 11.17b §11.17.15 Effort and cost (L3162) | All figures are **estimates** for a separately approvable change request **CR-V12-P** under DEC-790 ("all V12 change requests are funded"); they are… |
-| 74 | DEC-245 | amended | DEC-783 | — | Part 9.2 L1993 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
-| 75 | DEC-252 | amended | DEC-783 | — | Part 9.6a L1309 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
-| 76 | DEC-304 | amended | DEC-783 | — | Part 9.6b L1432 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
-| 77 | DEC-306 | amended | DEC-712 | — | Part 11.11b §11.11.7 Decisions (L803) | Amends DEC-306 for tenant-level defaults |
-| 78 | DEC-321 | amended | DEC-567 | — | Part 11.4d §11.4.7 Decisions (L1786) | Extends DEC-321 and AU-002 |
-| 79 | DEC-325 | superseded | DEC-774 | — | Part 11.14 §11.14.1 (DEC-774) | SLA tiers 99.5/99.9/99.95% contractual with service credits |
-| 80 | DEC-326 | amended | DEC-521 | — | Part 11.2c §11.2.7 Decisions (L822) | Amends DEC-047, DEC-210, DEC-326; |
-| 81 | DEC-327 | amended | DEC-702 | — | Part 11.11b §11.11.7 Decisions (L793) | Amends DEC-327 and DEC-209 for contracted tiers; |
-| 82 | DEC-386 | superseded | DEC-782 | — | Part 11.14 §11.14.1 (DEC-782) | Recording exclusion lifted; recording with jurisdictional notice/consent, retention and redaction (Part 11.18) |
-| 83 | DEC-387 | superseded | DEC-782 | — | Part 11.14 §11.14.1 (DEC-782) | Superseded by AI voice calling adoption (Part 11.18) |
-| 84 | DEC-388 | amended | DEC-847 | — | Part 11.15d §11.15.25.4 Rules (L1168) | / RP-GL-AGENTCOM-005 / Every price, discount, quantity, date and amount in an agent message shall be produced by the deterministic negotiation bound… |
-| 85 | DEC-392 | superseded | DEC-782 | — | Part 11.14 §11.14.1 (DEC-782) | No-voice/SMS-in-W0-W5 note superseded; SMS connectors in Release 1 (DEC-785, DEC-884) |
-| 86 | DEC-404 | amended | DEC-625 | — | Part 11.7c §11.7.7 Decisions (L741) | Amends DEC-026/DEC-404 for the website; |
-| 87 | DEC-405 | amended | DEC-776 | — | Part 11.14 §11.14.1 Founder decisions recorded (28 Nov 2026… | Amends DEC-040/421 (regions), DEC-026/404 (locales), DEC-027 (tax beyond India GST) and DEC-405 (BYOK beyond AWS KMS). |
-| 88 | DEC-406 | amended | DEC-703 | — | Part 11.11b §11.11.9.2 Inconsistencies found in earlier par… | / 3 / Part 4.3 §4.43.4 / "Status page: Not defined [GAP-126]" although DEC-406 closed GAP-126 / Read with DEC-406/DEC-703 / |
-| 89 | DEC-408 | superseded | DEC-775 | — | Part 11.14 §11.14.1 (DEC-775) | Certification sequence SOC 2 Type I (R2) -> SOC 2 Type II + ISO 27001 (R3) -> ISO 27701 + ISO 42001 (R4) |
-| 90 | DEC-411 | amended | DEC-741 | — | Part 11.13b §11.13.7 Decisions (L1491) | Also: DEC-512. Extends DEC-411 roadmap |
-| 91 | DEC-415 | amended | DEC-500 | — | Part 11.1b §11.1.7 Decisions (L842) | Also: DEC-580, DEC-770. Extends DEC-415 |
-| 92 | DEC-418 | amended | DEC-788 | — | Part 11.14 §11.14.1 (DEC-788) | Claude Sonnet stays primary by approval through the provider-neutral model registry |
-| 93 | DEC-421 | amended | DEC-772 | DEC-778 DEC-786 DEC-776 | Part 11.14 §11.14.1 (DEC-772, DEC-778, DEC-786) | Hosting stays Vercel + Supabase + AWS; adds EU stack (DEC-772), roadmap regions (DEC-776); service-key wording withdrawn (DEC-778, roles DEC-894); pe… |
-| 94 | DEC-422 | amended | DEC-771 | DEC-772 DEC-773 DEC-774 | Part 11.14 §11.14.1 | Running-cost lines added: PITR and standby (DEC-771), EU stack (DEC-772), 24x7 on-call (DEC-773), Enterprise SLA uplift (DEC-774) |
-| 95 | ENT-161 | amended | DEC-564 | — | Part 11.4d §11.4.7 Decisions (L1783) | Amends ADR-028 wording, AU-028 and Part 3.3 ENT-161 |
-| 96 | ENT-162 | amended | DEC-561 | — | Part 11.4d §11.4.7 Decisions (L1780) | Amends Part 2.3 §2.27.14 and Part 3.3 ENT-162/163 state CHECKs |
-| 97 | ENT-181 | amended | DEC-584 | — | Part 11.5b §11.5.9.2 Inconsistencies found in earlier parts… | / 4 / Part 3.3 ENT-181 / Entitlement has meter dimension only; no SKU dimension / Add `saas_sku_grant` (DEC-584) / |
-| 98 | ENT-182 | amended | DEC-585 | — | Part 11.5b §11.5.7 Decisions (L968) | Amends ENT-182 state set and §2.27.18 |
-| 99 | ENT-183 | amended | DEC-586 | — | Part 11.5b §11.5.7 Decisions (L969) | Also: DEC-661. Amends ENT-183 role |
-| 100 | ENT-184 | amended | DEC-587 | — | Part 11.5b §11.5.7 Decisions (L970) | Amends ENT-184/185 money types; |
-| 101 | ENT-189 | amended | DEC-673 | — | Part 11.9c §11.9.7 Decisions (L301) | Part 3.3 ENT-189 extended |
-| 102 | FR-A113 | amended | DEC-569 | — | Part 11.4d §11.4.7 Decisions (L1788) | Amends A113 template semantics (FR-A113) |
-| 103 | FR-ENH-H-006 | amended | DEC-685 | — | Part 11.10b §11.10.4.1 Archived registers in FSD V12 chapte… | Chapter 40 lists every archived row of source documents D22 (tests), D23 (QCs) and D20 (work items) with the disposition "pending semantic mapping",… |
-| 104 | FR-ENH-J-019 | amended | DEC-771 | — | Part 6.6 L1027 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
-| 105 | FR-NEG-01 | amended | DEC-783 | — | Part 2.1 L402 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
-| 106 | FR-W01 | amended | DEC-621 | — | Part 11.7c §11.7.7 Decisions (L737) | Amends Part 2.5 §2.43.1–2.43.3 and the FR-W01…W34 key fields; |
-| 107 | FR-W02 | amended | DEC-505 | — | Part 11.1b §11.1.7 Decisions (L847) | Amends FR-W02, FR-W03, API-497, US-1905 (CONFLICT-764) |
-| 108 | FR-W03 | amended | DEC-505 | — | Part 11.1b §11.1.7 Decisions (L847) | Amends FR-W02, FR-W03, API-497, US-1905 (CONFLICT-764) |
-| 109 | FR-W31 | amended | DEC-783 | — | Part 2.1 L207 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
-| 110 | KPI-25 | amended | DEC-519 | — | Part 11.1b §11.1.7 Decisions (L861) | Extends KPI-25 and CSO-06/07 |
-| 111 | NFR-057 | amended | DEC-771 | — | Part 4.2 L106 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
-| 112 | NFR-ADV-X3-10 | amended | DEC-701 | — | Part 11.11b §11.11.7 Decisions (L792) | the single communication matrix of §11.11.5.3 supersedes the differing notice targets of Part 4.3 §4.43.1/4.43.4, Part 8.3c SLA-09 and Part 9.9a NFR-… |
-| 113 | NFR-ENH-B-06 | amended | DEC-771 | — | Part 3.4 L720 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
-| 114 | OKPI-19 | amended | DEC-771 | — | Part 8.3c L573 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
-| 115 | OKPI-32 | amended | DEC-771 | — | Part 11.14 §11.14.1 (DEC-771) | Growth-critical RTO <= 120 min becomes a release-blocking gate (was CONFLICT-462/444) |
-| 116 | RSK-028 | amended | DEC-772 | — | Part 8.2 L62 (baseline row) | Read with DEC-772: India (Mumbai) and EU residency stacks; further regions per DEC-776 when their rule pack is approved |
-| 117 | RSK-304 | amended | DEC-772 | — | Part 3.1 L1777 (baseline row) | Read with DEC-772: India (Mumbai) and EU residency stacks; further regions per DEC-776 when their rule pack is approved |
-| 118 | RSK-342 | amended | DEC-772 | — | Part 4.2 L427 (baseline row) | Read with DEC-772: India (Mumbai) and EU residency stacks; further regions per DEC-776 when their rule pack is approved |
-| 119 | A001 | amended | DEC-707 | — | Part 11.11a §11.11.4.2 Operational training register TRN-00… | Also: DEC-500, DEC-623, DEC-642, DEC-721, DEC-801. The customer register has one row per retained screen (W01–W30, A001–A108). Each row was matched b… |
-| 120 | A002 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0002 / A123 Custom roles & separation of duties — audience Tenant; requirements ENT-ACC-01, 02 / Partially covered / Blueprint A002 (alias);… |
-| 121 | A008 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0007 / A128 Integrations & connectors — audience Tenant, automation ops; requirements ENT-INT-01…05 / Partially covered / Blueprint A008 (ali… |
-| 122 | A009 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0003 / A124 Audit log & SIEM export — audience Tenant, operator; requirements ENT-ACC-03, 04 / Partially covered / Blueprint A009 (alias); V1… |
-| 123 | A012 | amended | DEC-620 | — | Part 11.7a §Register F24: FSD ch24 UI/UX master (prose, MOB… | / G-F24-0053 / A117 AI usage & cost per tenant (AI governance) audiences All four audiences (portfolio: aggregate only); interactions Token metering,… |
-| 124 | A042 | amended | DEC-893 | — | Part 11.19 (DEC-893) | Benchmarks tab added (opt-in, step-up); screen otherwise unchanged |
-| 125 | A045 | amended | DEC-837 | — | Part 11.16 (DEC-837) | Legacy route not used for issuer publication; Sales & Marketing use unchanged |
-| 126 | A046 | amended | DEC-837 | — | Part 11.16 (DEC-837) | Legacy route not used for issuer publication; Sales & Marketing use unchanged |
-| 127 | A049 | amended | DEC-801 | A205 A232 A194 | Part 11.16a §11.16.4.5 Technical Map (42 rows): admin scree… | **Screen ID rule (DEC-801).** Investment admin IDs collide with the Sales & Marketing A001–A113; they are re-identified A205–A232 and keep the INV ID… |
-| 128 | A089 | amended | DEC-509 | — | Part 11.1a §11.1.3.19 Chapter 19: Portfolio Command Centre… | Also: DEC-623. / A-19-0680 / Nine optimization views: A089 keeps its fourteen business management views; V5 adds nine integrated optimization laborat… |
-| 129 | A101 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0010 / A131 Billing, tax & invoices — audience Operator, tenant; requirements ENT-BIZ-01, ENT-GLB-05, 06 / Partially covered / Blueprint A101… |
-| 130 | A103 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0005 / A126 Data export, portability & encryption keys — audience Tenant; requirements ENT-DAT-01, 02 / Partially covered / Blueprint A103 (a… |
-| 131 | A107 | amended | DEC-622 | — | Part 11.7c §11.7.7 Decisions (L738) | Also: DEC-536, DEC-621. A107 renamed "Tenant-owned website intake configuration"; |
-| 132 | A108 | amended | DEC-622 | — | Part 11.7c §11.7.7 Decisions (L738) | Also: DEC-536, DEC-621, DEC-707. A108 renamed "Tenant-owned landing page review & intake analytics" |
-| 133 | A109 | amended | DEC-707 | — | Part 11.11a §11.11.4.2 Operational training register TRN-00… | The customer register has one row per retained screen (W01–W30, A001–A108). Each row was matched by script to the Part 8.3b card `TRN-SCR-<screen>`;… |
-| 134 | A113 | amended | DEC-569 | — | Part 11.4d §11.4.7 Decisions (L1788) | Also: DEC-642, DEC-707, DEC-721, DEC-801. Amends A113 template semantics (FR-A113) |
-| 135 | A114 | amended | DEC-620 | — | Part 11.7c §11.7.7 Decisions (L736) | Also: DEC-619. V12 screen IDs that collide with blueprint IDs (A114–A131, W35–W41) are kept as qualified aliases `V12-<ID>`; |
-| 136 | A115 | amended | DEC-619 | — | Part 11.6a §11.6.3.1 Partially covered, not covered and con… | Also: DEC-620. / F16-089 / 16 · 16.8 / UI mapping: Admin A114 model registry, A115 evaluation, A116 injection defence, A117 cost per tenant; Website… |
-| 137 | A116 | amended | DEC-619 | — | Part 11.6a §11.6.3.1 Partially covered, not covered and con… | Also: DEC-620. / F16-089 / 16 · 16.8 / UI mapping: Admin A114 model registry, A115 evaluation, A116 injection defence, A117 cost per tenant; Website… |
-| 138 | A117 | amended | DEC-619 | — | Part 11.6a §11.6.3.1 Partially covered, not covered and con… | Also: DEC-620. / F16-089 / 16 · 16.8 / UI mapping: Admin A114 model registry, A115 evaluation, A116 injection defence, A117 cost per tenant; Website… |
-| 139 | A118 | amended | DEC-620 | — | Part 11.7a §Register F24: FSD ch24 UI/UX master (prose, MOB… | / G-F24-0054 / A118 Jurisdiction policy packs & send preflight (Compliance) audiences Operator, automation ops, tenant; interactions Rule register wi… |
-| 140 | A119 | amended | DEC-620 | A201 | Part 11.7a §Register F24: FSD ch24 UI/UX master (prose, MOB… | / G-F24-0055 / A119 Consent & suppression ledger (Compliance) audiences Tenant, automation ops; interactions Search, withdrawal → suppression → held… |
-| 141 | A120 | amended | DEC-620 | — | Part 11.7a §Register F24: FSD ch24 UI/UX master (prose, MOB… | / G-F24-0056 / A120 Data-rights requests (DSAR) (Compliance) audiences Tenant (act), operator (view); interactions Due dates, identity verification,… |
-| 142 | A121 | amended | DEC-500 | — | Part 11.1a §11.1.3.AP Chapter AP: Appendix: ID index (L884) | Also: DEC-620, DEC-623. / A-AP-1306 / ID family: Website route / Admin screen / Format / range: W01…W36 / A001…A121, X26…X39, O01…O08 / Where: ch12,… |
-| 143 | A122 | amended | DEC-620 | A203 | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0001 / A122 Identity, SSO, SCIM & MFA — audience Tenant (manage), operator (state only); requirements ENT-IDN-01…06 / Not covered / Blueprint… |
-| 144 | A123 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0002 / A123 Custom roles & separation of duties — audience Tenant; requirements ENT-ACC-01, 02 / Partially covered / Blueprint A002 (alias);… |
-| 145 | A124 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0003 / A124 Audit log & SIEM export — audience Tenant, operator; requirements ENT-ACC-03, 04 / Partially covered / Blueprint A009 (alias); V1… |
-| 146 | A125 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0004 / A125 API keys & webhooks — audience Tenant; requirements ENT-API-01, 05 / Partially covered / Blueprint A168 (alias); V12 ID collides… |
-| 147 | A126 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0005 / A126 Data export, portability & encryption keys — audience Tenant; requirements ENT-DAT-01, 02 / Partially covered / Blueprint A103 (a… |
-| 148 | A127 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0006 / A127 Sandbox environments — audience Tenant; requirements ENT-DAT-04, 05 / Not covered / Blueprint A204 (new); V12 ID collides with Pa… |
-| 149 | A128 | amended | DEC-619 | — | Part 11.6a §11.6.3.1 Partially covered, not covered and con… | Also: DEC-620, DEC-649. / F16-089 / 16 · 16.8 / UI mapping: Admin A114 model registry, A115 evaluation, A116 injection defence, A117 cost per tenant;… |
-| 150 | A129 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | Also: DEC-639. / G-F22-0008 / A129 Trust, certification & vulnerability programme — audience Operator (manage), tenant (read); requirements ENT-SEC-0… |
-| 151 | A130 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0009 / A130 Reliability, incidents & status page — audience Operator, automation ops, tenant (read); requirements ENT-OPS-01…04, 07 / Partial… |
-| 152 | A131 | amended | DEC-620 | — | Part 11.7c §11.7.7 Decisions (L736) | V12 screen IDs that collide with blueprint IDs (A114–A131, W35–W41) are kept as qualified aliases `V12-<ID>`; |
-| 153 | A156 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0009 / A130 Reliability, incidents & status page — audience Operator, automation ops, tenant (read); requirements ENT-OPS-01…04, 07 / Partial… |
-| 154 | A159 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | Also: DEC-639. / G-F22-0008 / A129 Trust, certification & vulnerability programme — audience Operator (manage), tenant (read); requirements ENT-SEC-0… |
-| 155 | A163 | amended | DEC-620 | — | Part 11.7a §Register F24: FSD ch24 UI/UX master (prose, MOB… | / G-F24-0056 / A120 Data-rights requests (DSAR) (Compliance) audiences Tenant (act), operator (view); interactions Due dates, identity verification,… |
-| 156 | A168 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0004 / A125 API keys & webhooks — audience Tenant; requirements ENT-API-01, 05 / Partially covered / Blueprint A168 (alias); V12 ID collides… |
-| 157 | A199 | amended | DEC-620 | — | Part 11.7a §Register F24: FSD ch24 UI/UX master (prose, MOB… | / G-F24-0052 / A116 Prompt-injection defence & red-team (AI governance) audiences Operator, automation ops, tenant; interactions Controls, AI-INJ-01…… |
-| 158 | A200 | amended | DEC-620 | — | Part 11.7a §Register F24: FSD ch24 UI/UX master (prose, MOB… | / G-F24-0054 / A118 Jurisdiction policy packs & send preflight (Compliance) audiences Operator, automation ops, tenant; interactions Rule register wi… |
-| 159 | A204 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0006 / A127 Sandbox environments — audience Tenant; requirements ENT-DAT-04, 05 / Not covered / Blueprint A204 (new); V12 ID collides with Pa… |
-| 160 | W01 | amended | DEC-707 | — | Part 11.11a §11.11.4.2 Operational training register TRN-00… | Also: DEC-500, DEC-620, DEC-621, DEC-623, DEC-642, DEC-721. The customer register has one row per retained screen (W01–W30, A001–A108). Each row was… |
-| 161 | W02 | superseded | DEC-621 | W54 | Part 11.7a §11.7.1.3 What V12 changes in the UI (headline)… | / 1 / Website becomes a **neutral SaaS storefront**: 34 route IDs kept, names and purpose replaced (for example W02 "Company and startup business dir… |
-| 162 | W03 | amended | DEC-621 | W54 | Part 11.7c §11.7.6 Conflicts and proposed resolutions (L727) | / CONFLICT-873 / **Neutral storefront replaces the portfolio public website** / W01–W34 re-purposed; client names, profiles, products and published s… |
-| 163 | W04 | amended | DEC-621 | W54 | Part 11.7c §11.7.6 Conflicts and proposed resolutions (L727) | / CONFLICT-873 / **Neutral storefront replaces the portfolio public website** / W01–W34 re-purposed; client names, profiles, products and published s… |
-| 164 | W05 | amended | DEC-621 | W54 | Part 11.7c §11.7.6 Conflicts and proposed resolutions (L727) | / CONFLICT-873 / **Neutral storefront replaces the portfolio public website** / W01–W34 re-purposed; client names, profiles, products and published s… |
-| 165 | W12 | amended | DEC-621 | W54 | Part 11.7c §11.7.6 Conflicts and proposed resolutions (L727) | / CONFLICT-873 / **Neutral storefront replaces the portfolio public website** / W01–W34 re-purposed; client names, profiles, products and published s… |
-| 166 | W17 | amended | DEC-621 | W54 | Part 11.7c §11.7.6 Conflicts and proposed resolutions (L727) | / CONFLICT-873 / **Neutral storefront replaces the portfolio public website** / W01–W34 re-purposed; client names, profiles, products and published s… |
-| 167 | W20 | amended | DEC-621 | W54 | Part 11.7c §11.7.6 Conflicts and proposed resolutions (L727) | / CONFLICT-873 / **Neutral storefront replaces the portfolio public website** / W01–W34 re-purposed; client names, profiles, products and published s… |
-| 168 | W30 | amended | DEC-707 | — | Part 11.11a §11.11.4.2 Operational training register TRN-00… | The customer register has one row per retained screen (W01–W30, A001–A108). Each row was matched by script to the Part 8.3b card `TRN-SCR-<screen>`;… |
-| 169 | W31 | amended | DEC-707 | — | Part 11.11a §11.11.4.2 Operational training register TRN-00… | Also: DEC-783. The customer register has one row per retained screen (W01–W30, A001–A108). Each row was matched by script to the Part 8.3b card `TRN-… |
-| 170 | W34 | amended | DEC-621 | — | Part 11.7c §11.7.7 Decisions (L737) | Also: DEC-642, DEC-707, DEC-721. Amends Part 2.5 §2.43.1–2.43.3 and the FR-W01…W34 key fields; |
-| 171 | W35 | amended | DEC-620 | — | Part 11.7c §11.7.7 Decisions (L736) | V12 screen IDs that collide with blueprint IDs (A114–A131, W35–W41) are kept as qualified aliases `V12-<ID>`; |
-| 172 | W36 | amended | DEC-500 | — | Part 11.1a §11.1.3.AP Chapter AP: Appendix: ID index (L884) | Also: DEC-619, DEC-620, DEC-623. / A-AP-1306 / ID family: Website route / Admin screen / Format / range: W01…W36 / A001…A121, X26…X39, O01…O08 / Wher… |
-| 173 | W37 | amended | DEC-620 | W51 | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0011 / W37 Enterprise capabilities — audience Public; requirements BR-V12-01…05 / Not covered / Blueprint W51 (new); V12 ID collides with Par… |
-| 174 | W38 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | Also: DEC-639. / G-F22-0012 / W38 Trust centre — audience Public; requirements ENT-CMP-01…06, ENT-SEC-05 / Partially covered / Blueprint W46 (alias);… |
-| 175 | W39 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | Also: DEC-646. / G-F22-0013 / W39 Developers & API — audience Public; requirements ENT-API-04, 06, 07 / Partially covered / Blueprint W47 (alias); V1… |
-| 176 | W40 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0014 / W40 System status — audience Public; requirements ENT-OPS-02, 03 / Partially covered / Blueprint W45 (alias); V12 ID collides with Par… |
-| 177 | W41 | amended | DEC-620 | — | Part 11.7c §11.7.7 Decisions (L736) | V12 screen IDs that collide with blueprint IDs (A114–A131, W35–W41) are kept as qualified aliases `V12-<ID>`; |
-| 178 | W45 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0014 / W40 System status — audience Public; requirements ENT-OPS-02, 03 / Partially covered / Blueprint W45 (alias); V12 ID collides with Par… |
-| 179 | W46 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | Also: DEC-639. / G-F22-0012 / W38 Trust centre — audience Public; requirements ENT-CMP-01…06, ENT-SEC-05 / Partially covered / Blueprint W46 (alias);… |
-| 180 | W47 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0013 / W39 Developers & API — audience Public; requirements ENT-API-04, 06, 07 / Partially covered / Blueprint W47 (alias); V12 ID collides w… |
-| 181 | W49 | amended | DEC-620 | — | Part 11.7a §Register F24: FSD ch24 UI/UX master (prose, MOB… | / G-F24-0058 / W35 Privacy & data-rights request (Website) audiences Public; interactions Request form with inline validation; reference and due date… |
-| 182 | TC-03-009 | amended | DEC-777 | — | Part 6.5 L764 (baseline row) | Read with DEC-777: Promotional window is now 09:00-21:00 recipient local time unless a rule pack is stricter |
-| 183 | TC-18-025 | amended | DEC-779 | — | Part 6.3a L854 (baseline row) | Read with DEC-779: L1 cap lifted only for actions under an Active, eligible bounded mandate in an approved jurisdiction (DEC-841) |
-| 184 | TC-21-068 | amended | DEC-771 | — | Part 6.3b L642 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
-| 185 | TC-21-091 | amended | DEC-771 | — | Part 6.3b L684 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
-| 186 | TC-21-092 | amended | DEC-771 | — | Part 6.3b L685 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
-| 187 | TC-AI-AG030-003 | amended | DEC-783 | — | Part 6.4 L1657 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
-| 188 | TC-ALN-A-021 | amended | DEC-783 | — | Part 9.6a L1387 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
-| 189 | TC-ALN-A-022 | amended | DEC-783 | — | Part 9.6a L1388 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
-| 190 | TC-ALN-B-013 | amended | DEC-771 | — | Part 9.6b L1513 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
-| 191 | TC-AU-AU005-003 | amended | DEC-779 | — | Part 6.4 L2415 (baseline row) | Read with DEC-779: L1 cap lifted only for actions under an Active, eligible bounded mandate in an approved jurisdiction (DEC-841) |
-| 192 | TC-BRS-002 | amended | DEC-783 | — | Part 6.7 L449 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
-| 193 | TC-ENH-A-001 | amended | DEC-783 | — | Part 2.6 L1736 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
-| 194 | TC-ENH-B-032 | amended | DEC-782 | — | Part 3.4 L1686 (baseline row) | Read with DEC-782: AI voice and recordings adopted with AI disclosure, consent, calling windows and retention controls (Part 11.18) |
-| 195 | TC-ENH-C-020 | amended | DEC-783 | — | Part 2.7a L936 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
-| 196 | TC-ENH-D-C06 | amended | DEC-783 | — | Part 3.5b L1640 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
-| 197 | TC-ENH-E-017 | amended | DEC-771 | — | Part 3.6b L805 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
-| 198 | TC-ENH-G-038 | amended | DEC-771 | — | Part 6.8c L174 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
-| 199 | TC-ENH-J-018 | amended | DEC-771 | — | Part 8.3c L623 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
-| 200 | TC-ENH-K-022 | amended | DEC-782 | — | Part 6.10 L100 (baseline row) | Read with DEC-782: AI voice and recordings adopted with AI disclosure, consent, calling windows and retention controls (Part 11.18) |
-| 201 | TC-NFR-057 | amended | DEC-771 | — | Part 6.7 L179 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
-| 202 | US-0101 | amended | DEC-783 | — | Part 8.1 L337 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
-| 203 | US-0114 | amended | DEC-783 | — | Part 5.1b L846 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
-| 204 | US-09-EB01 | amended | DEC-782 | — | Part 3.4 L1526 (baseline row) | Read with DEC-782: AI voice and recordings adopted with AI disclosure, consent, calling windows and retention controls (Part 11.18) |
-| 205 | US-1905 | amended | DEC-505 | — | Part 11.1b §11.1.7 Decisions (L847) | Amends FR-W02, FR-W03, API-497, US-1905 (CONFLICT-764) |
-| 206 | WF-01 | amended | DEC-560 | — | Part 11.4d §11.4.7 Decisions (L1779) | blueprint WF-01…39 remain end-to-end journeys mapped in §11.4.4.1 |
-| 207 | WF-10 | amended | DEC-579 | — | Part 11.4d §11.4.7 Decisions (L1798) | Extends WF-10 and the OrganicSpec route (BR-S004) |
+| 38 | DEC-006 | amended | DEC-784 | — | Part 11.20a §11.20.3.1 Why the release structure changes (L… | Part 8.1 planned two releases (R1 = W0–W3, R2 = W4–W5) and W6; Part 9.10 added A1–A3. The Founder decisions of 28 Nov 2026 add four kinds of scope th… |
+| 39 | DEC-008 | amended | DEC-607 | — | Part 11.6a §11.6.3.1 Partially covered, not covered and con… | / F16-065 / 16 · 16.7 / Budgets: soft cap (default 80%) alerts; hard cap holds new AI steps while deterministic steps continue; caps per tenant, comp… |
+| 40 | DEC-016 | amended | DEC-506 | — | Part 11.1b §11.1.7 Decisions (L848) | Also: DEC-581. Extends DEC-016 entities |
+| 41 | DEC-018 | amended | DEC-771 | — | Part 11.14 §11.14.1 (DEC-771) | RTO: growth-critical <= 120 min release-blocking (DEC-771); RPO <= 15 min (DEC-787); staged 4 h pilot target of DEC-158 superseded |
+| 42 | DEC-021 | amended | DEC-787 | — | Part 11.14 §11.14.1 (DEC-787) | RPO <= 15 min in every residency region (continuous WAL, daily base, 35-day PITR) |
+| 43 | DEC-022 | amended | DEC-501 | — | Part 11.1a §11.1.4.9 The two REC series (L1081) | Chapter 25 contains an older table whose rows are labelled "REC-01/05", "REC-02/03", "REC-04", "REC-06", "REC-07/08", "REC-09/11", "REC-10", "REC-12"… |
+| 44 | DEC-023 | amended | DEC-779 | — | Part 0A L60 (baseline row) | Read with DEC-779: L1 cap lifted only for actions under an Active, eligible bounded mandate in an approved jurisdiction (DEC-841) |
+| 45 | DEC-026 | amended | DEC-776 | — | Part 11.14 §11.14.1 Founder decisions recorded (28 Nov 2026… | Also: DEC-516, DEC-625, DEC-633. Amends DEC-040/421 (regions), DEC-026/404 (locales), DEC-027 (tax beyond India GST) and DEC-405 (BYOK beyond AWS KMS… |
+| 46 | DEC-027 | amended | DEC-776 | — | Part 11.14 §11.14.1 Founder decisions recorded (28 Nov 2026… | Also: DEC-543, DEC-587, DEC-664. Amends DEC-040/421 (regions), DEC-026/404 (locales), DEC-027 (tax beyond India GST) and DEC-405 (BYOK beyond AWS KMS… |
+| 47 | DEC-029 | amended | DEC-776 | — | Part 11.14 §11.14.1 Founder decisions recorded (28 Nov 2026… | Also: DEC-507, DEC-611, DEC-772. **The legal gates stay:** each market opens only when its jurisdiction rule pack is signed off by counsel (DEC-029 a… |
+| 48 | DEC-034 | amended | DEC-512 | — | Part 11.1a §11.1.3.23 Chapter 23: Roadmap Prioritization Co… | / R0 / Phase: R0 / Name: Foundations / Scope: Build core platform from Appendices A–C/A2/C2; identity reuse; CI/CD with SAST/DAST/SBOM; infrastructur… |
+| 49 | DEC-040 | amended | DEC-776 | — | Part 11.14 §11.14.1 Founder decisions recorded (28 Nov 2026… | Amends DEC-040/421 (regions), DEC-026/404 (locales), DEC-027 (tax beyond India GST) and DEC-405 (BYOK beyond AWS KMS). |
+| 50 | DEC-043 | amended | DEC-623 | — | Part 11.7c §11.7.7 Decisions (L739) | Also: DEC-633. Amends DEC-043 for Admin; |
+| 51 | DEC-044 | superseded | DEC-773 | — | Part 11.14 §11.14.1 (DEC-773) | Business-hours support replaced by 24x7 human on-call for SEV1/SEV2 (DEC-702: DEC-044 kept only for the owned-portfolio support schedule) |
+| 52 | DEC-047 | amended | DEC-501 | — | Part 11.1b §11.1.7 Decisions (L843) | Also: DEC-503, DEC-521, DEC-584. Amends DEC-047 (CONFLICT-767) |
+| 53 | DEC-050 | amended | DEC-853 | — | Part 11.17b §11.17.16.1 Decisions (L3240) | Extends DEC-050 |
+| 54 | DEC-053 | amended | DEC-781 | — | Part 11.14 §11.14.1 (DEC-781) | Superseded for mandated tenders only; unmandated bid submission remains human |
+| 55 | DEC-055 | amended | DEC-504 | — | Part 11.1b §11.1.7 Decisions (L846) | Also: DEC-509. Amends DEC-065, DEC-055 (CONFLICT-763) |
+| 56 | DEC-057 | amended | DEC-783 | — | Part 0A L101 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
+| 57 | DEC-058 | amended | DEC-517 | — | Part 11.1b §11.1.6 Conflicts and proposed resolutions (L834) | **Investor / fundraising check (DEC-002).** The assigned BRD chapters do **not** extend scope to investors or fundraising. They reaffirm the exclusio… |
+| 58 | DEC-062 | amended | DEC-509 | — | Part 11.1b §11.1.7 Decisions (L851) | Extends DEC-055, DEC-062 |
+| 59 | DEC-064 | amended | DEC-779 | — | Part 11.14 §11.14.1 (DEC-779); Part 11.17a DEC-841 | L1 cap lifted only for actions covered by an Active, eligible bounded mandate in an approved jurisdiction |
+| 60 | DEC-065 | amended | DEC-504 | — | Part 11.1b §11.1.7 Decisions (L846) | Amends DEC-065, DEC-055 (CONFLICT-763) |
+| 61 | DEC-068 | amended | DEC-782 | — | Part 9.1 L22 (baseline row) | Read with DEC-782: AI voice and recordings adopted with AI disclosure, consent, calling windows and retention controls (Part 11.18) |
+| 62 | DEC-079 | amended | DEC-771 | — | Part 9.1 L33 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
+| 63 | DEC-080 | superseded | DEC-773 | — | Part 11.14 §11.14.1 (DEC-773) | Business-hours support model replaced by 24x7 on-call |
+| 64 | DEC-158 | superseded | DEC-771 | — | Part 11.14 §11.14.1 (DEC-771) | Staged RTO (4 h at pilot, 2 h after Topology B) replaced by growth RTO <= 120 min blocking |
+| 65 | DEC-169 | amended | DEC-783 | — | Part 9.2 L1918 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
+| 66 | DEC-176 | amended | DEC-781 | — | Part 9.2 L1925 (baseline row) | Read with DEC-781: Automatic bid submission allowed only under a per-tender bounded mandate (Part 11.17b); unmandated submission still blocked |
+| 67 | DEC-178 | amended | DEC-700 | — | Part 11.11b §11.11.7 Decisions (L791) | CDEC-001…180 ≡ SPDEC-001…180 (extends DEC-178). |
+| 68 | DEC-179 | amended | DEC-783 | — | Part 9.5 L81 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
+| 69 | DEC-209 | amended | DEC-702 | — | Part 11.11b §11.11.7 Decisions (L793) | Amends DEC-327 and DEC-209 for contracted tiers; |
+| 70 | DEC-210 | amended | DEC-521 | — | Part 11.2c §11.2.7 Decisions (L822) | Amends DEC-047, DEC-210, DEC-326; |
+| 71 | DEC-218 | amended | DEC-782 | — | Part 11.14 §11.14.1 Founder decisions recorded (28 Nov 2026… | Also: DEC-529, DEC-531, DEC-572, DEC-870. Supersedes DEC-386, 387 and 392, and DEC-218 where it restricts recording and transcripts. |
+| 72 | DEC-228 | amended | DEC-770 | — | Part 11.14 §11.14.1 (DEC-770) | Staffing Option 2b kept; fixed dates become indicative |
+| 73 | DEC-230 | amended | DEC-790 | — | Part 11.17b §11.17.15 Effort and cost (L3162) | Also: DEC-500, DEC-578. All figures are **estimates** for a separately approvable change request **CR-V12-P** under DEC-790 ("all V12 change requests… |
+| 74 | DEC-231 | amended | DEC-790 | — | Part 11.17b §11.17.15 Effort and cost (L3162) | All figures are **estimates** for a separately approvable change request **CR-V12-P** under DEC-790 ("all V12 change requests are funded"); they are… |
+| 75 | DEC-245 | amended | DEC-783 | — | Part 9.2 L1993 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
+| 76 | DEC-252 | amended | DEC-783 | — | Part 9.6a L1309 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
+| 77 | DEC-304 | amended | DEC-783 | — | Part 9.6b L1432 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
+| 78 | DEC-306 | amended | DEC-712 | — | Part 11.11b §11.11.7 Decisions (L803) | Amends DEC-306 for tenant-level defaults |
+| 79 | DEC-321 | amended | DEC-567 | — | Part 11.4d §11.4.7 Decisions (L1786) | Extends DEC-321 and AU-002 |
+| 80 | DEC-325 | superseded | DEC-774 | — | Part 11.14 §11.14.1 (DEC-774) | SLA tiers 99.5/99.9/99.95% contractual with service credits |
+| 81 | DEC-326 | amended | DEC-521 | — | Part 11.2c §11.2.7 Decisions (L822) | Amends DEC-047, DEC-210, DEC-326; |
+| 82 | DEC-327 | amended | DEC-702 | — | Part 11.11b §11.11.7 Decisions (L793) | Amends DEC-327 and DEC-209 for contracted tiers; |
+| 83 | DEC-386 | superseded | DEC-782 | — | Part 11.14 §11.14.1 (DEC-782) | Recording exclusion lifted; recording with jurisdictional notice/consent, retention and redaction (Part 11.18) |
+| 84 | DEC-387 | superseded | DEC-782 | — | Part 11.14 §11.14.1 (DEC-782) | Superseded by AI voice calling adoption (Part 11.18) |
+| 85 | DEC-388 | amended | DEC-847 | — | Part 11.15d §11.15.25.4 Rules (L1168) | / RP-GL-AGENTCOM-005 / Every price, discount, quantity, date and amount in an agent message shall be produced by the deterministic negotiation bound… |
+| 86 | DEC-392 | superseded | DEC-782 | — | Part 11.14 §11.14.1 (DEC-782) | No-voice/SMS-in-W0-W5 note superseded; SMS connectors in Release 1 (DEC-785, DEC-884) |
+| 87 | DEC-404 | amended | DEC-625 | — | Part 11.7c §11.7.7 Decisions (L741) | Amends DEC-026/DEC-404 for the website; |
+| 88 | DEC-405 | amended | DEC-776 | — | Part 11.14 §11.14.1 Founder decisions recorded (28 Nov 2026… | Amends DEC-040/421 (regions), DEC-026/404 (locales), DEC-027 (tax beyond India GST) and DEC-405 (BYOK beyond AWS KMS). |
+| 89 | DEC-406 | amended | DEC-703 | — | Part 11.11b §11.11.9.2 Inconsistencies found in earlier par… | / 3 / Part 4.3 §4.43.4 / "Status page: Not defined [GAP-126]" although DEC-406 closed GAP-126 / Read with DEC-406/DEC-703 / |
+| 90 | DEC-408 | superseded | DEC-775 | — | Part 11.14 §11.14.1 (DEC-775) | Certification sequence SOC 2 Type I (R2) -> SOC 2 Type II + ISO 27001 (R3) -> ISO 27701 + ISO 42001 (R4) |
+| 91 | DEC-410 | amended | DEC-770 | — | Part 11.20a §Application Blueprint: PART 11 (Batch 11.20a),… | / Baseline / Part 11.14 (Founder decisions DEC-770…791, binding); Part 8.1 and 8.2 (template, capacity method, gates, RACI, risk method); Part 8.4 (t… |
+| 92 | DEC-411 | amended | DEC-741 | — | Part 11.13b §11.13.7 Decisions (L1491) | Also: DEC-512, DEC-790, DEC-905. Extends DEC-411 roadmap |
+| 93 | DEC-415 | amended | DEC-500 | — | Part 11.1b §11.1.7 Decisions (L842) | Also: DEC-580, DEC-770. Extends DEC-415 |
+| 94 | DEC-418 | amended | DEC-788 | — | Part 11.14 §11.14.1 (DEC-788) | Claude Sonnet stays primary by approval through the provider-neutral model registry |
+| 95 | DEC-421 | amended | DEC-772 | DEC-778 DEC-786 DEC-776 | Part 11.14 §11.14.1 (DEC-772, DEC-778, DEC-786) | Hosting stays Vercel + Supabase + AWS; adds EU stack (DEC-772), roadmap regions (DEC-776); service-key wording withdrawn (DEC-778, roles DEC-894); pe… |
+| 96 | DEC-422 | amended | DEC-771 | DEC-772 DEC-773 DEC-774 | Part 11.14 §11.14.1 | Running-cost lines added: PITR and standby (DEC-771), EU stack (DEC-772), 24x7 on-call (DEC-773), Enterprise SLA uplift (DEC-774) |
+| 97 | ENT-161 | amended | DEC-564 | — | Part 11.4d §11.4.7 Decisions (L1783) | Amends ADR-028 wording, AU-028 and Part 3.3 ENT-161 |
+| 98 | ENT-162 | amended | DEC-561 | — | Part 11.4d §11.4.7 Decisions (L1780) | Amends Part 2.3 §2.27.14 and Part 3.3 ENT-162/163 state CHECKs |
+| 99 | ENT-181 | amended | DEC-584 | — | Part 11.5b §11.5.9.2 Inconsistencies found in earlier parts… | / 4 / Part 3.3 ENT-181 / Entitlement has meter dimension only; no SKU dimension / Add `saas_sku_grant` (DEC-584) / |
+| 100 | ENT-182 | amended | DEC-585 | — | Part 11.5b §11.5.7 Decisions (L968) | Amends ENT-182 state set and §2.27.18 |
+| 101 | ENT-183 | amended | DEC-586 | — | Part 11.5b §11.5.7 Decisions (L969) | Also: DEC-661. Amends ENT-183 role |
+| 102 | ENT-184 | amended | DEC-587 | — | Part 11.5b §11.5.7 Decisions (L970) | Amends ENT-184/185 money types; |
+| 103 | ENT-189 | amended | DEC-673 | — | Part 11.9c §11.9.7 Decisions (L301) | Part 3.3 ENT-189 extended |
+| 104 | FR-A113 | amended | DEC-569 | — | Part 11.4d §11.4.7 Decisions (L1788) | Amends A113 template semantics (FR-A113) |
+| 105 | FR-ENH-H-006 | amended | DEC-685 | — | Part 11.10b §11.10.4.1 Archived registers in FSD V12 chapte… | Chapter 40 lists every archived row of source documents D22 (tests), D23 (QCs) and D20 (work items) with the disposition "pending semantic mapping",… |
+| 106 | FR-ENH-J-019 | amended | DEC-771 | — | Part 6.6 L1027 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
+| 107 | FR-NEG-01 | amended | DEC-783 | — | Part 2.1 L402 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
+| 108 | FR-W01 | amended | DEC-621 | — | Part 11.7c §11.7.7 Decisions (L737) | Amends Part 2.5 §2.43.1–2.43.3 and the FR-W01…W34 key fields; |
+| 109 | FR-W02 | amended | DEC-505 | — | Part 11.1b §11.1.7 Decisions (L847) | Amends FR-W02, FR-W03, API-497, US-1905 (CONFLICT-764) |
+| 110 | FR-W03 | amended | DEC-505 | — | Part 11.1b §11.1.7 Decisions (L847) | Amends FR-W02, FR-W03, API-497, US-1905 (CONFLICT-764) |
+| 111 | FR-W31 | amended | DEC-783 | — | Part 2.1 L207 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
+| 112 | KPI-25 | amended | DEC-519 | — | Part 11.1b §11.1.7 Decisions (L861) | Extends KPI-25 and CSO-06/07 |
+| 113 | NFR-057 | amended | DEC-771 | — | Part 4.2 L106 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
+| 114 | NFR-ADV-X3-10 | amended | DEC-701 | — | Part 11.11b §11.11.7 Decisions (L792) | the single communication matrix of §11.11.5.3 supersedes the differing notice targets of Part 4.3 §4.43.1/4.43.4, Part 8.3c SLA-09 and Part 9.9a NFR-… |
+| 115 | NFR-ENH-B-06 | amended | DEC-771 | — | Part 3.4 L720 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
+| 116 | OKPI-19 | amended | DEC-771 | — | Part 8.3c L573 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
+| 117 | OKPI-32 | amended | DEC-771 | — | Part 11.14 §11.14.1 (DEC-771) | Growth-critical RTO <= 120 min becomes a release-blocking gate (was CONFLICT-462/444) |
+| 118 | RSK-028 | amended | DEC-772 | — | Part 8.2 L62 (baseline row) | Read with DEC-772: India (Mumbai) and EU residency stacks; further regions per DEC-776 when their rule pack is approved |
+| 119 | RSK-304 | amended | DEC-772 | — | Part 3.1 L1777 (baseline row) | Read with DEC-772: India (Mumbai) and EU residency stacks; further regions per DEC-776 when their rule pack is approved |
+| 120 | RSK-342 | amended | DEC-772 | — | Part 4.2 L427 (baseline row) | Read with DEC-772: India (Mumbai) and EU residency stacks; further regions per DEC-776 when their rule pack is approved |
+| 121 | A001 | amended | DEC-707 | — | Part 11.11a §11.11.4.2 Operational training register TRN-00… | Also: DEC-500, DEC-623, DEC-642, DEC-721, DEC-801. The customer register has one row per retained screen (W01–W30, A001–A108). Each row was matched b… |
+| 122 | A002 | amended | DEC-783 | A197 A203 | Part 11.22b §US-01-ZU01 Product separation between Sales &… | Also: DEC-620, DEC-941. / Notes / Wording amended by DEC-783: investor entities exist only in the separate Investment Automation product code; the se… |
+| 123 | A007 | amended | DEC-941 | A201 A202 | Part 11.22b §US-03-ZU01 Deny-reason precedence in the V12 o… | / Notes / Acceptance binding: US-03-YE01 carries the statement and its build points; this story adds the Gherkin AC, the generated Examples and the t… |
+| 124 | A008 | amended | DEC-941 | — | Part 11.22c §US-20-ZU28 Invoice preview with per-line tax d… | Also: DEC-620, DEC-785. / Notes / Acceptance binding: US-20-YH01 carries the statement and its build points; this story adds the Gherkin AC, the gene… |
+| 125 | A009 | amended | DEC-783 | A197 A203 | Part 11.22b §US-01-ZU01 Product separation between Sales &… | Also: DEC-620, DEC-941. / Notes / Wording amended by DEC-783: investor entities exist only in the separate Investment Automation product code; the se… |
+| 126 | A011 | amended | DEC-941 | A198 | Part 11.22b §US-03-ZU08 AI-assisted labelling of every Part… | Also: DEC-785. / Notes / Acceptance binding: US-03-YM38 carries the statement and its build points; this story adds the Gherkin AC, the generated Exa… |
+| 127 | A012 | amended | DEC-941 | A198 | Part 11.22b §US-03-ZU08 AI-assisted labelling of every Part… | Also: DEC-620. / Notes / Acceptance binding: US-03-YM38 carries the statement and its build points; this story adds the Gherkin AC, the generated Exa… |
+| 128 | A013 | amended | DEC-941 | A201 A202 | Part 11.22b §US-03-ZU01 Deny-reason precedence in the V12 o… | / Notes / Acceptance binding: US-03-YE01 carries the statement and its build points; this story adds the Gherkin AC, the generated Examples and the t… |
+| 129 | A014 | amended | DEC-941 | A190 | Part 11.22c §US-20-ZU11 BR-V12 capability register (1/3): i… | / Notes / Acceptance binding: US-20-YA08 carries the statement and its build points; this story adds the Gherkin AC, the generated Examples and the t… |
+| 130 | A042 | amended | DEC-893 | — | Part 11.19 (DEC-893) | Benchmarks tab added (opt-in, step-up); screen otherwise unchanged |
+| 131 | A045 | amended | DEC-837 | — | Part 11.16 (DEC-837) | Legacy route not used for issuer publication; Sales & Marketing use unchanged |
+| 132 | A046 | amended | DEC-837 | — | Part 11.16 (DEC-837) | Legacy route not used for issuer publication; Sales & Marketing use unchanged |
+| 133 | A049 | amended | DEC-801 | A205 A232 A194 | Part 11.16a §11.16.4.5 Technical Map (42 rows): admin scree… | **Screen ID rule (DEC-801).** Investment admin IDs collide with the Sales & Marketing A001–A113; they are re-identified A205–A232 and keep the INV ID… |
+| 134 | A087 | amended | DEC-941 | A191 | Part 11.22b §US-17-ZU01 Native-currency integrity and recon… | Also: DEC-770. / Notes / Acceptance binding: US-17-YA02 carries the statement and its build points; this story adds the Gherkin AC, the generated Exa… |
+| 135 | A089 | amended | DEC-509 | — | Part 11.1a §11.1.3.19 Chapter 19: Portfolio Command Centre… | Also: DEC-623, DEC-770, DEC-941. / A-19-0680 / Nine optimization views: A089 keeps its fourteen business management views; V5 adds nine integrated op… |
+| 136 | A090 | amended | DEC-941 | A190 | Part 11.22c §US-20-ZU11 BR-V12 capability register (1/3): i… | / Notes / Acceptance binding: US-20-YA08 carries the statement and its build points; this story adds the Gherkin AC, the generated Examples and the t… |
+| 137 | A099 | amended | DEC-783 | A197 A203 | Part 11.22b §US-01-ZU01 Product separation between Sales &… | Also: DEC-941. / Notes / Wording amended by DEC-783: investor entities exist only in the separate Investment Automation product code; the separation… |
+| 138 | A101 | amended | DEC-941 | A184 A188 | Part 11.22b §US-15-ZU01 Distinct ledgers, native-currency r… | Also: DEC-620. / Notes / Acceptance binding: US-15-YE01 carries the statement and its build points; this story adds the Gherkin AC, the generated Exa… |
+| 139 | A102 | amended | DEC-941 | A192 A195 | Part 11.22c §US-18-ZU03 Circuit breakers, backpressure and… | / Notes / Acceptance binding: US-18-YE02 carries the statement and its build points; this story adds the Gherkin AC, the generated Examples and the t… |
+| 140 | A103 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0005 / A126 Data export, portability & encryption keys — audience Tenant; requirements ENT-DAT-01, 02 / Partially covered / Blueprint A103 (a… |
+| 141 | A106 | amended | DEC-941 | A191 | Part 11.22b §US-17-ZU01 Native-currency integrity and recon… | Also: DEC-770. / Notes / Acceptance binding: US-17-YA02 carries the statement and its build points; this story adds the Gherkin AC, the generated Exa… |
+| 142 | A107 | amended | DEC-622 | — | Part 11.7c §11.7.7 Decisions (L738) | Also: DEC-536, DEC-621. A107 renamed "Tenant-owned website intake configuration"; |
+| 143 | A108 | amended | DEC-622 | — | Part 11.7c §11.7.7 Decisions (L738) | Also: DEC-536, DEC-621, DEC-707. A108 renamed "Tenant-owned landing page review & intake analytics" |
+| 144 | A109 | amended | DEC-707 | — | Part 11.11a §11.11.4.2 Operational training register TRN-00… | Also: DEC-941. The customer register has one row per retained screen (W01–W30, A001–A108). Each row was matched by script to the Part 8.3b card `TRN-… |
+| 145 | A113 | amended | DEC-569 | — | Part 11.4d §11.4.7 Decisions (L1788) | Also: DEC-642, DEC-707, DEC-721, DEC-801, DEC-941. Amends A113 template semantics (FR-A113) |
+| 146 | A114 | amended | DEC-620 | — | Part 11.7c §11.7.7 Decisions (L736) | Also: DEC-619. V12 screen IDs that collide with blueprint IDs (A114–A131, W35–W41) are kept as qualified aliases `V12-<ID>`; |
+| 147 | A115 | amended | DEC-619 | — | Part 11.6a §11.6.3.1 Partially covered, not covered and con… | Also: DEC-620. / F16-089 / 16 · 16.8 / UI mapping: Admin A114 model registry, A115 evaluation, A116 injection defence, A117 cost per tenant; Website… |
+| 148 | A116 | amended | DEC-619 | — | Part 11.6a §11.6.3.1 Partially covered, not covered and con… | Also: DEC-620. / F16-089 / 16 · 16.8 / UI mapping: Admin A114 model registry, A115 evaluation, A116 injection defence, A117 cost per tenant; Website… |
+| 149 | A117 | amended | DEC-619 | — | Part 11.6a §11.6.3.1 Partially covered, not covered and con… | Also: DEC-620. / F16-089 / 16 · 16.8 / UI mapping: Admin A114 model registry, A115 evaluation, A116 injection defence, A117 cost per tenant; Website… |
+| 150 | A118 | amended | DEC-620 | — | Part 11.7a §Register F24: FSD ch24 UI/UX master (prose, MOB… | / G-F24-0054 / A118 Jurisdiction policy packs & send preflight (Compliance) audiences Operator, automation ops, tenant; interactions Rule register wi… |
+| 151 | A119 | amended | DEC-620 | A201 | Part 11.7a §Register F24: FSD ch24 UI/UX master (prose, MOB… | / G-F24-0055 / A119 Consent & suppression ledger (Compliance) audiences Tenant, automation ops; interactions Search, withdrawal → suppression → held… |
+| 152 | A120 | amended | DEC-620 | — | Part 11.7a §Register F24: FSD ch24 UI/UX master (prose, MOB… | / G-F24-0056 / A120 Data-rights requests (DSAR) (Compliance) audiences Tenant (act), operator (view); interactions Due dates, identity verification,… |
+| 153 | A121 | amended | DEC-500 | — | Part 11.1a §11.1.3.AP Chapter AP: Appendix: ID index (L884) | Also: DEC-620, DEC-623. / A-AP-1306 / ID family: Website route / Admin screen / Format / range: W01…W36 / A001…A121, X26…X39, O01…O08 / Where: ch12,… |
+| 154 | A122 | amended | DEC-620 | A203 | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0001 / A122 Identity, SSO, SCIM & MFA — audience Tenant (manage), operator (state only); requirements ENT-IDN-01…06 / Not covered / Blueprint… |
+| 155 | A123 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0002 / A123 Custom roles & separation of duties — audience Tenant; requirements ENT-ACC-01, 02 / Partially covered / Blueprint A002 (alias);… |
+| 156 | A124 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0003 / A124 Audit log & SIEM export — audience Tenant, operator; requirements ENT-ACC-03, 04 / Partially covered / Blueprint A009 (alias); V1… |
+| 157 | A125 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0004 / A125 API keys & webhooks — audience Tenant; requirements ENT-API-01, 05 / Partially covered / Blueprint A168 (alias); V12 ID collides… |
+| 158 | A126 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0005 / A126 Data export, portability & encryption keys — audience Tenant; requirements ENT-DAT-01, 02 / Partially covered / Blueprint A103 (a… |
+| 159 | A127 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0006 / A127 Sandbox environments — audience Tenant; requirements ENT-DAT-04, 05 / Not covered / Blueprint A204 (new); V12 ID collides with Pa… |
+| 160 | A128 | amended | DEC-941 | A198 | Part 11.22b §US-03-ZU08 AI-assisted labelling of every Part… | Also: DEC-619, DEC-620, DEC-649. / Notes / Acceptance binding: US-03-YM38 carries the statement and its build points; this story adds the Gherkin AC,… |
+| 161 | A129 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | Also: DEC-639. / G-F22-0008 / A129 Trust, certification & vulnerability programme — audience Operator (manage), tenant (read); requirements ENT-SEC-0… |
+| 162 | A130 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0009 / A130 Reliability, incidents & status page — audience Operator, automation ops, tenant (read); requirements ENT-OPS-01…04, 07 / Partial… |
+| 163 | A131 | amended | DEC-620 | — | Part 11.7c §11.7.7 Decisions (L736) | V12 screen IDs that collide with blueprint IDs (A114–A131, W35–W41) are kept as qualified aliases `V12-<ID>`; |
+| 164 | A156 | amended | DEC-941 | A190 | Part 11.22c §US-20-ZU11 BR-V12 capability register (1/3): i… | Also: DEC-620. / Notes / Acceptance binding: US-20-YA08 carries the statement and its build points; this story adds the Gherkin AC, the generated Exa… |
+| 165 | A159 | amended | DEC-941 | A190 | Part 11.22c §US-20-ZU11 BR-V12 capability register (1/3): i… | Also: DEC-620, DEC-639. / Notes / Acceptance binding: US-20-YA08 carries the statement and its build points; this story adds the Gherkin AC, the gene… |
+| 166 | A163 | amended | DEC-620 | — | Part 11.7a §Register F24: FSD ch24 UI/UX master (prose, MOB… | / G-F24-0056 / A120 Data-rights requests (DSAR) (Compliance) audiences Tenant (act), operator (view); interactions Due dates, identity verification,… |
+| 167 | A168 | amended | DEC-941 | — | Part 11.22c §US-20-ZU28 Invoice preview with per-line tax d… | Also: DEC-620, DEC-785. / Notes / Acceptance binding: US-20-YH01 carries the statement and its build points; this story adds the Gherkin AC, the gene… |
+| 168 | A199 | amended | DEC-941 | A198 | Part 11.22b §US-03-ZU08 AI-assisted labelling of every Part… | Also: DEC-620. / Notes / Acceptance binding: US-03-YM38 carries the statement and its build points; this story adds the Gherkin AC, the generated Exa… |
+| 169 | A200 | amended | DEC-941 | A201 A202 | Part 11.22b §US-03-ZU01 Deny-reason precedence in the V12 o… | Also: DEC-620. / Notes / Acceptance binding: US-03-YE01 carries the statement and its build points; this story adds the Gherkin AC, the generated Exa… |
+| 170 | A204 | amended | DEC-941 | — | Part 11.22c §US-20-ZU28 Invoice preview with per-line tax d… | Also: DEC-620, DEC-785. / Notes / Acceptance binding: US-20-YH01 carries the statement and its build points; this story adds the Gherkin AC, the gene… |
+| 171 | W01 | amended | DEC-707 | — | Part 11.11a §11.11.4.2 Operational training register TRN-00… | Also: DEC-500, DEC-620, DEC-621, DEC-623, DEC-642, DEC-721. The customer register has one row per retained screen (W01–W30, A001–A108). Each row was… |
+| 172 | W02 | superseded | DEC-621 | W54 | Part 11.7a §11.7.1.3 What V12 changes in the UI (headline)… | / 1 / Website becomes a **neutral SaaS storefront**: 34 route IDs kept, names and purpose replaced (for example W02 "Company and startup business dir… |
+| 173 | W03 | amended | DEC-621 | W54 | Part 11.7c §11.7.6 Conflicts and proposed resolutions (L727) | / CONFLICT-873 / **Neutral storefront replaces the portfolio public website** / W01–W34 re-purposed; client names, profiles, products and published s… |
+| 174 | W04 | amended | DEC-621 | W54 | Part 11.7c §11.7.6 Conflicts and proposed resolutions (L727) | / CONFLICT-873 / **Neutral storefront replaces the portfolio public website** / W01–W34 re-purposed; client names, profiles, products and published s… |
+| 175 | W05 | amended | DEC-621 | W54 | Part 11.7c §11.7.6 Conflicts and proposed resolutions (L727) | / CONFLICT-873 / **Neutral storefront replaces the portfolio public website** / W01–W34 re-purposed; client names, profiles, products and published s… |
+| 176 | W12 | amended | DEC-621 | W54 | Part 11.7c §11.7.6 Conflicts and proposed resolutions (L727) | / CONFLICT-873 / **Neutral storefront replaces the portfolio public website** / W01–W34 re-purposed; client names, profiles, products and published s… |
+| 177 | W17 | amended | DEC-621 | W54 | Part 11.7c §11.7.6 Conflicts and proposed resolutions (L727) | / CONFLICT-873 / **Neutral storefront replaces the portfolio public website** / W01–W34 re-purposed; client names, profiles, products and published s… |
+| 178 | W20 | amended | DEC-621 | W54 | Part 11.7c §11.7.6 Conflicts and proposed resolutions (L727) | / CONFLICT-873 / **Neutral storefront replaces the portfolio public website** / W01–W34 re-purposed; client names, profiles, products and published s… |
+| 179 | W29 | amended | DEC-941 | A201 A202 | Part 11.22b §US-03-ZU01 Deny-reason precedence in the V12 o… | / Notes / Acceptance binding: US-03-YE01 carries the statement and its build points; this story adds the Gherkin AC, the generated Examples and the t… |
+| 180 | W30 | amended | DEC-707 | — | Part 11.11a §11.11.4.2 Operational training register TRN-00… | Also: DEC-941. The customer register has one row per retained screen (W01–W30, A001–A108). Each row was matched by script to the Part 8.3b card `TRN-… |
+| 181 | W31 | amended | DEC-707 | — | Part 11.11a §11.11.4.2 Operational training register TRN-00… | Also: DEC-783, DEC-941. The customer register has one row per retained screen (W01–W30, A001–A108). Each row was matched by script to the Part 8.3b c… |
+| 182 | W34 | amended | DEC-621 | — | Part 11.7c §11.7.7 Decisions (L737) | Also: DEC-642, DEC-707, DEC-721, DEC-941. Amends Part 2.5 §2.43.1–2.43.3 and the FR-W01…W34 key fields; |
+| 183 | W35 | amended | DEC-620 | — | Part 11.7c §11.7.7 Decisions (L736) | V12 screen IDs that collide with blueprint IDs (A114–A131, W35–W41) are kept as qualified aliases `V12-<ID>`; |
+| 184 | W36 | amended | DEC-500 | — | Part 11.1a §11.1.3.AP Chapter AP: Appendix: ID index (L884) | Also: DEC-619, DEC-620, DEC-623. / A-AP-1306 / ID family: Website route / Admin screen / Format / range: W01…W36 / A001…A121, X26…X39, O01…O08 / Wher… |
+| 185 | W37 | amended | DEC-620 | W51 | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0011 / W37 Enterprise capabilities — audience Public; requirements BR-V12-01…05 / Not covered / Blueprint W51 (new); V12 ID collides with Par… |
+| 186 | W38 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | Also: DEC-639. / G-F22-0012 / W38 Trust centre — audience Public; requirements ENT-CMP-01…06, ENT-SEC-05 / Partially covered / Blueprint W46 (alias);… |
+| 187 | W39 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | Also: DEC-646. / G-F22-0013 / W39 Developers & API — audience Public; requirements ENT-API-04, 06, 07 / Partially covered / Blueprint W47 (alias); V1… |
+| 188 | W40 | amended | DEC-620 | — | Part 11.7a §Register F22: FSD ch22 Platform operator (27 as… | / G-F22-0014 / W40 System status — audience Public; requirements ENT-OPS-02, 03 / Partially covered / Blueprint W45 (alias); V12 ID collides with Par… |
+| 189 | W41 | amended | DEC-620 | — | Part 11.7c §11.7.7 Decisions (L736) | V12 screen IDs that collide with blueprint IDs (A114–A131, W35–W41) are kept as qualified aliases `V12-<ID>`; |
+| 190 | W45 | amended | DEC-941 | W54 | Part 11.22b §US-16-ZU02 First-value milestone, activation c… | Also: DEC-620. / Notes / Acceptance binding: US-16-YA01 carries the statement and its build points; this story adds the Gherkin AC, the generated Exa… |
+| 191 | W46 | amended | DEC-941 | A190 | Part 11.22c §US-20-ZU11 BR-V12 capability register (1/3): i… | Also: DEC-620, DEC-639. / Notes / Acceptance binding: US-20-YA08 carries the statement and its build points; this story adds the Gherkin AC, the gene… |
+| 192 | W47 | amended | DEC-941 | — | Part 11.22c §US-20-ZU28 Invoice preview with per-line tax d… | Also: DEC-620, DEC-785. / Notes / Acceptance binding: US-20-YH01 carries the statement and its build points; this story adds the Gherkin AC, the gene… |
+| 193 | W49 | amended | DEC-620 | — | Part 11.7a §Register F24: FSD ch24 UI/UX master (prose, MOB… | / G-F24-0058 / W35 Privacy & data-rights request (Website) audiences Public; interactions Request form with inline validation; reference and due date… |
+| 194 | TC-03-009 | amended | DEC-777 | — | Part 6.5 L764 (baseline row) | Read with DEC-777: Promotional window is now 09:00-21:00 recipient local time unless a rule pack is stricter |
+| 195 | TC-18-025 | amended | DEC-779 | — | Part 6.3a L854 (baseline row) | Read with DEC-779: L1 cap lifted only for actions under an Active, eligible bounded mandate in an approved jurisdiction (DEC-841) |
+| 196 | TC-21-068 | amended | DEC-771 | — | Part 6.3b L642 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
+| 197 | TC-21-091 | amended | DEC-771 | — | Part 6.3b L684 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
+| 198 | TC-21-092 | amended | DEC-771 | — | Part 6.3b L685 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
+| 199 | TC-AI-AG030-003 | amended | DEC-783 | — | Part 6.4 L1657 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
+| 200 | TC-ALN-A-021 | amended | DEC-783 | — | Part 9.6a L1387 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
+| 201 | TC-ALN-A-022 | amended | DEC-783 | — | Part 9.6a L1388 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
+| 202 | TC-ALN-B-013 | amended | DEC-771 | — | Part 9.6b L1513 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
+| 203 | TC-AU-AU005-003 | amended | DEC-779 | — | Part 6.4 L2415 (baseline row) | Read with DEC-779: L1 cap lifted only for actions under an Active, eligible bounded mandate in an approved jurisdiction (DEC-841) |
+| 204 | TC-BRS-002 | amended | DEC-783 | — | Part 6.7 L449 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
+| 205 | TC-ENH-A-001 | amended | DEC-783 | — | Part 2.6 L1736 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
+| 206 | TC-ENH-B-032 | amended | DEC-782 | — | Part 3.4 L1686 (baseline row) | Read with DEC-782: AI voice and recordings adopted with AI disclosure, consent, calling windows and retention controls (Part 11.18) |
+| 207 | TC-ENH-C-020 | amended | DEC-783 | — | Part 2.7a L936 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
+| 208 | TC-ENH-D-C06 | amended | DEC-783 | — | Part 3.5b L1640 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
+| 209 | TC-ENH-E-017 | amended | DEC-771 | — | Part 3.6b L805 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
+| 210 | TC-ENH-G-038 | amended | DEC-771 | — | Part 6.8c L174 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
+| 211 | TC-ENH-J-018 | amended | DEC-771 | — | Part 8.3c L623 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
+| 212 | TC-ENH-K-022 | amended | DEC-782 | — | Part 6.10 L100 (baseline row) | Read with DEC-782: AI voice and recordings adopted with AI disclosure, consent, calling windows and retention controls (Part 11.18) |
+| 213 | TC-NFR-057 | amended | DEC-771 | — | Part 6.7 L179 (baseline row) | Read with DEC-771: Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787) |
+| 214 | US-0101 | amended | DEC-783 | — | Part 8.1 L337 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
+| 215 | US-0114 | amended | DEC-783 | — | Part 5.1b L846 (baseline row) | Read with DEC-783: Investor/fundraising adopted with securities rule packs (Parts 11.16a-e) |
+| 216 | US-09-EB01 | amended | DEC-782 | — | Part 3.4 L1526 (baseline row) | Read with DEC-782: AI voice and recordings adopted with AI disclosure, consent, calling windows and retention controls (Part 11.18) |
+| 217 | US-1905 | amended | DEC-505 | — | Part 11.1b §11.1.7 Decisions (L847) | Amends FR-W02, FR-W03, API-497, US-1905 (CONFLICT-764) |
+| 218 | US-21-EH01 | amended | DEC-785 | — | Part 11.22c §US-21-ZU19 ENT-INT-05 acceptance: connector ac… | / Notes / FR-V12-K-128: release per DEC-785 (developer platform and connectors in Release 1) · Acceptance binding: US-21-EH01 carries the statement a… |
+| 219 | WF-01 | amended | DEC-560 | — | Part 11.4d §11.4.7 Decisions (L1779) | blueprint WF-01…39 remain end-to-end journeys mapped in §11.4.4.1 |
+| 220 | WF-10 | amended | DEC-579 | — | Part 11.4d §11.4.7 Decisions (L1798) | Extends WF-10 and the OrganicSpec route (BR-S004) |
 
 ### 11.23.6.5 Key supersessions in plain words (for the development team)
 
@@ -299,10 +312,10 @@
 |---|---|---|
 | Baseline IDs absent from the revised blueprint | **0** | none |
 | IDs in the pre-V12 registers absent from every part | **0** | none |
-| Baseline IDs referenced but never defined by a row or heading | 959 strings; after review all are prefixes, placeholders or reserved-unused numbers, not lost requirements: family stubs (`US-08XX`, `BRL-X3`, `RSK-ADV-X1`, `KPI-ADV-X2`, …), source-numbered FRD/test aliases (`FR-001…`, `TC-01-A…`), reserved and unused numbers (DEC-271…299 and DEC-333…379 stated unused in Parts 9.6a/b; WF-24 and WF-40 stated unused in Part 9.10; ADR-044…049 allocation line), and SIT aliases read as screens (`A280`, `A302` from `SM-SIT-A280/A302`) | none |
+| Baseline IDs referenced but never defined by a row or heading | 958 strings; after review all are prefixes, placeholders or reserved-unused numbers, not lost requirements: family stubs (`US-08XX`, `BRL-X3`, `RSK-ADV-X1`, `KPI-ADV-X2`, …), source-numbered FRD/test aliases (`FR-001…`, `TC-01-A…`), reserved and unused numbers (DEC-271…299 and DEC-333…379 stated unused in Parts 9.6a/b; WF-24 and WF-40 stated unused in Part 9.10; ADR-044…049 allocation line), and SIT aliases read as screens (`A280`, `A302` from `SM-SIT-A280/A302`) | none |
 | Placeholders never resolved | `ENT-200…203` ("final ENT numbers to be assigned by the coordinator", Part 3.6a/9.5) and `API-556+` ("the coordinator may renumber them into API-556+", Part 3.5b) were never assigned; the entities and operations live on as `ENT-ENH-*` and `API-ENH-*` | **DEC-967**: the ENH IDs are canonical; no renumbering; [GAP-1183] closed |
 
-**Conclusion.** No baseline ID was lost in the V12 revision. The retention risk is not loss but **silent contradiction**: 207 baseline IDs (and many more sentences) still read as before while a later decision changed them. That is why every amended and superseded ID is listed above with its authority, and why Part 11.23c turns each stale statement into an erratum with the current rule.
+**Conclusion.** No baseline ID was lost in the V12 revision. The retention risk is not loss but **silent contradiction**: 220 baseline IDs (and many more sentences) still read as before while a later decision changed them. That is why every amended and superseded ID is listed above with its authority, and why Part 11.23c turns each stale statement into an erratum with the current rule.
 
 ### 11.23.6.7 Supersession index file
 

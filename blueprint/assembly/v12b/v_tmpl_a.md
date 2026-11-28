@@ -62,7 +62,7 @@ The per-file table with statement counts and the measured match per chapter is i
 ### 11.23.1.4 Triage and classification (`v_03_triage_set.py`, `v_04_classify.py`, `v_manual_src.py`)
 
 1. **Triage set.** {{M:SB.triage_n}} statements: weak or none matches, plus statements whose thresholds were not found, plus statements carrying an ID absent from the blueprint.
-2. **Context reading.** Each triaged statement was printed with its chapter, section path and best blueprint location, de-duplicated by text, and read. Rows that follow one template (for example the 707 "source disposition candidate" rows of FSD chapter 40, or the 142 DDL statements) were verified **programmatically per row**: the object each row names (API path, entity, QC, task, test ID, table) was looked up in the blueprint and its location recorded.
+2. **Context reading.** Each triaged statement was printed with its chapter, section path and best blueprint location, de-duplicated by text, and read. Rows that follow one template (for example the "source disposition candidate" rows of FSD chapter 40, or the DDL statements of Appendices C/C2) were verified **programmatically per row**: the object each row names (API path, entity, QC, task, test ID, table) was looked up in the blueprint and its location recorded.
 3. **Classes.** *Covered in different words* (citation: part, section, line, ID) · *Not covered* (content written in §11.23.5 with FR-V12-V / TC-V12-V / US-…-ZV IDs) · *Superseded by a Founder decision* (DEC cited). An overlay also catches statements that **match** the blueprint lexically but state a rule that a Founder decision has since changed.
 4. **Manual decisions.** {{M:n_manual}} distinct statements needed a reader's judgement; each decision is listed in §11.23.3.4 and stored in `v_manual.tsv` keyed by the statement's text hash, so identical BRD and FSD copies share one decision.
 
@@ -132,8 +132,8 @@ The two overlay rows (VND-86, VND-95) matched the blueprint lexically (Part 11.8
 
 **Notes on the large groups.**
 
-- **FSD 40 source disposition candidates (705 rows).** Each row names an archived source-pack object (API operation, entity, QC, task or test) and a review instruction ("verify DTO and scope", "map to current gate", "retain predecessor/estimate; not approved"). Every one of the 705 objects is present in the blueprint (checked per row); the instructions are executed by Part 11.12 (residual registers R-API, R-DB, R-QC, R-TASK, R-TEST) and Part 11.11a §11.11.4.5. The weak lexical score comes from the instruction wording, which is not requirement text.
-- **Appendix C/C2 DDL (142 statements).** Every table and policy name is present; Part 11.9a reproduced the customer DDL and re-ran DB-T1…T9 and C2-T1…T11 (20/20), and Part 11.9b carries the corrected RLS DDL. The weak score is the repeated policy boilerplate.
+- **FSD 40 source disposition candidates (628 triaged rows).** Each row names an archived source-pack object (API operation, entity, QC, task or test) and a review instruction ("verify DTO and scope", "map to current gate", "retain predecessor/estimate; not approved"). Every one of the named objects is present in the blueprint (checked per row); the instructions are executed by Part 11.12 (residual registers R-API, R-DB, R-QC, R-TASK, R-TEST) and Part 11.11a §11.11.4.5. The weak lexical score comes from the instruction wording, which is not requirement text.
+- **Appendix C/C2 DDL (138 triaged statements).** Every table and policy name is present; Part 11.9a reproduced the customer DDL and re-ran DB-T1…T9 and C2-T1…T11 (20/20), and Part 11.9b carries the corrected RLS DDL. The weak score is the repeated policy boilerplate.
 - **ID-bearing rows.** Requirement-status rows (for example `AIX-04 | P0 | Prompt registry | … | Production pending`) whose IDs are present; the residual words are status and evidence metadata.
 
 ### 11.23.3.4 Manual decisions (each read in context)
@@ -161,7 +161,7 @@ The two overlay rows (VND-86, VND-95) matched the blueprint lexically (Part 11.8
 | With range and compressed notation | {{M:SB.id_presence_pct}}% |
 | Compressed notation that explains most literal misses | Part 11.10b §11.10.4.2 lists, per workflow, the scenario suffixes (POS, INPUT, SCOPE, ENT, DUP, QUALITY, BUDGET, RECOVERY, APPROVAL, EFFECT) and the numbered step tests; the 1,867 `SM-SVC-##-WF#-TC-*` and `…-STEP-##-TC` IDs are therefore present by construction. Part 11.10a lists the V7/V8/V9/V11/V12 QA checks as ranges |
 | Colliding families | V12 `DEC-###` and `DEC-Vn-##` (written CDEC, DEC-700), V12 `KPI-##` (= OKPI, DEC-681), V12 screen IDs A114–A131/W35–W41 (aliases `V12-…`, DEC-620), V12 `REC-##` (DEC-964), V12 `ENT-…` enterprise requirement IDs versus blueprint `ENT-###` entities (different shape, no clash) |
-| IDs still absent after this part | {{M:SA.distinct_ids_missing}} (all 11 restored in §11.23.5.2 are now present) |
+| IDs still absent after this part | {{M:SA.distinct_ids_missing}} (all 11 IDs restored in §11.23.5.2 are now present) |
 
 ---
 

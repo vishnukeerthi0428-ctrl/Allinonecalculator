@@ -50,7 +50,7 @@ def frag_summary():
     out.append('| Threshold presence (%s statements with thresholds) | %.2f%% | %.2f%% | numbers with unit, comparator, currency or decimals found in the matched passage, the ID lines, or a line sharing ≥ 50%% of the tokens |' % (f'{SB["statements_with_thresholds"]:,}', SB['number_presence_pct'], SA['number_presence_pct']))
     for l in lv:
         out.append('| Level %s | %s | %s | §11.23.1.3 thresholds |' % (l, f'{SB["levels"].get(l, 0):,}', f'{SA["levels"].get(l, 0):,}'))
-    out.append('| **Measured lexical match (exact + strong + moderate)** | **%.2f%%** | **%.2f%%** | deterministic; reproducible with `v_02_match.py before|after` |' % (SB['matched_pct'], SA['matched_pct']))
+    out.append('| **Measured lexical match (exact + strong + moderate)** | **%.2f%%** | **%.2f%%** | deterministic; reproducible with `v_02_match.py before` and `after` |' % (SB['matched_pct'], SA['matched_pct']))
     return '\n'.join(out)
 
 def frag_final():

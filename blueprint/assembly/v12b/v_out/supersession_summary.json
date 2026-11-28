@@ -1,7 +1,7 @@
 {
  "status": {
-  "retained unchanged": 10362,
-  "amended": 196,
+  "retained unchanged": 10349,
+  "amended": 209,
   "superseded": 11
  },
  "by_family": {
@@ -37,9 +37,9 @@
    "retained unchanged": 53
   },
   "DEC": {
-   "retained unchanged": 289,
+   "retained unchanged": 287,
    "superseded": 9,
-   "amended": 50
+   "amended": 52
   },
   "ENT": {
    "retained unchanged": 207,
@@ -69,8 +69,8 @@
    "amended": 3
   },
   "SCREEN": {
-   "amended": 62,
-   "retained unchanged": 170,
+   "amended": 72,
+   "retained unchanged": 160,
    "superseded": 1
   },
   "TC": {
@@ -78,8 +78,8 @@
    "amended": 20
   },
   "US": {
-   "retained unchanged": 471,
-   "amended": 4
+   "retained unchanged": 470,
+   "amended": 5
   },
   "VER": {
    "retained unchanged": 68

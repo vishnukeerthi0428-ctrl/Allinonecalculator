@@ -21,33 +21,33 @@
 
 ### 11.23.7.2 Errata summary
 
-47 errata; 1,667 stale line occurrences across the parts (full list with part, line and text: `assembly/v12b/v_out/errata_occurrences.csv`).
+47 errata; 1,681 stale line occurrences across the parts (full list with part, line and text: `assembly/v12b/v_out/errata_occurrences.csv`).
 
 | Erratum | Stale statement | Occurrences (stale / total) | Parts with stale text | Authority |
 |---|---|---|---|---|
-| E-V-01 | Consequential actions always capped at L1 | 42 / 56 | 0, 11.11a, 11.12, 11.13a, 11.13b, 11.17a, 11.1b, 11.2a, 11.3c, 11.4c … | DEC-779, DEC-841, DEC-883 |
+| E-V-01 | Consequential actions always capped at L1 | 42 / 57 | 0, 11.11a, 11.12, 11.13a, 11.13b, 11.17a, 11.1b, 11.2a, 11.3c, 11.4c … | DEC-779, DEC-841, DEC-883 |
 | E-V-02 | Safety envelope "AI never signs, pays, submits bids, sets prices" | 31 / 44 | 0, 0A, 11.11a, 11.12, 11.13a, 11.1a, 11.1b, 11.2b, 11.2c, 11.3c … | DEC-779, DEC-780, DEC-781 |
 | E-V-03 | "Service key held server-side" for the Django API | 3 / 8 | 11.8b, 11.9b, 11.9c | DEC-778, DEC-894 (ADR-264) |
-| E-V-04 | Database role names `ge_app` / `ge_worker` / `ge_owner` / `app_user` | 35 / 50 | 11.19a, 11.19b, 11.9a, 11.9b, 11.9c, 3.3 | DEC-778, DEC-894 |
+| E-V-04 | Database role names `ge_app` / `ge_worker` / `ge_owner` / `app_user` | 38 / 56 | 11.19a, 11.19b, 11.24a, 11.24b, 11.24c, 11.9a, 11.9b, 11.9c, 3.3 | DEC-778, DEC-894 |
 | E-V-05 | AWS-only topology (RDS, CloudFront, RDS cross-Region backups) | 30 / 34 | 11.1b, 3.1, 3.2, 3.3, 5.1b, 6.5, 8.4, 9.10, 9.2, 9.6a … | DEC-421, DEC-772, DEC-786 |
 | E-V-06 | PostgreSQL 17 on Amazon RDS | 4 / 5 | 3.1, 3.3, 9.2 | DEC-421, DEC-772 |
 | E-V-07 | V12 screen IDs used bare where they collide with blueprint IDs | 15 / 26 | 11.10a, 11.10c, 11.19a, 11.6a, 11.6b, 11.7a | DEC-620, DEC-700, DEC-801, DEC-962 |
 | E-V-08 | Screen range A205–A259 / W55–W99 "reserved and unused" | 1 / 1 | 11.7c | DEC-801, DEC-962 |
-| E-V-09 | RTO 4 h at pilot / staged RTO | 60 / 77 | 0, 0A, 11.10c, 11.12, 11.1a, 11.1b, 11.22a, 3.1, 3.2, 3.3 … | DEC-771, DEC-787, CDEC-V9-01 |
+| E-V-09 | RTO 4 h at pilot / staged RTO | 62 / 79 | 0, 0A, 11.10c, 11.12, 11.1a, 11.1b, 11.22a, 11.22c, 3.1, 3.2 … | DEC-771, DEC-787, CDEC-V9-01 |
 | E-V-10 | Single-region pilot / region count | 25 / 25 | 11.1a, 11.1b, 11.5a, 11.5b, 11.6b, 11.9a, 11.9c, 3.1, 4.2, 8.2 … | DEC-772, DEC-776 |
 | E-V-11 | SM-SVC-26 voice assigned to EP-08 | 2 / 4 | 11.4c, 11.7b | Part 11.2a; Part 11.18d |
 | E-V-12 | Voice domain named `eng_call` | 3 / 17 | 11.18a, 11.4c, 11.4d | Part 11.18d (V12 canonical) |
 | E-V-13 | Mandates and securities-governed investment actions | 1 / 1 | 11.14 | DEC-779 (lawful condition), DEC-783, DEC-822, DEC-963 |
-| E-V-14 | Customer decision IDs written DEC-Vn-## / DEC-### for V12 decisions | 149 / 155 | 11.10c, 11.12, 11.14, 11.18a, 11.19a, 11.19b, 11.1a, 11.1b, 11.22a, 11.5a … | DEC-700 |
-| E-V-15 | V12 KPI-## used without the OKPI alias | 26 / 32 | 11.14, 11.22a, 11.9a, 11.9c | DEC-681 |
-| E-V-16 | V12 REC-01…30 collide with blueprint reconciliation jobs REC-01…09 | 193 / 196 | 11.11a, 11.11b, 11.12, 11.13a, 11.13b, 11.15e, 11.18a, 11.18b, 11.18c, 11.18d … | DEC-964 |
+| E-V-14 | Customer decision IDs written DEC-Vn-## / DEC-### for V12 decisions | 152 / 158 | 11.10c, 11.12, 11.14, 11.18a, 11.19a, 11.19b, 11.1a, 11.1b, 11.22a, 11.22b … | DEC-700 |
+| E-V-15 | V12 KPI-## used without the OKPI alias | 28 / 34 | 11.14, 11.22a, 11.22c, 11.9a, 11.9c | DEC-681 |
+| E-V-16 | V12 REC-01…30 collide with blueprint reconciliation jobs REC-01…09 | 198 / 201 | 11.11a, 11.11b, 11.12, 11.13a, 11.13b, 11.15e, 11.18a, 11.18b, 11.18c, 11.18d … | DEC-964 |
 | E-V-17 | Messaging window 09:00–19:00 Mon–Sat | 25 / 28 | 11.11a, 11.11b, 11.15a, 11.15d, 11.15e, 2.3, 5.1a, 5.1b, 5.2, 6.1 … | DEC-777 |
 | E-V-18 | Business-hours support | 4 / 5 | 0, 11.11b, 9.1, 9.2 | DEC-773 |
 | E-V-19 | Investor / fundraising exclusion | 38 / 40 | 0, 1, 11.12, 11.16a, 11.16b, 11.16d, 11.7c, 11.8a, 11.8b, 2.6 … | DEC-783 |
 | E-V-20 | Voice / recording / SMS prohibited | 13 / 13 | 11.15e, 11.2c, 11.7b | DEC-782, DEC-785, DEC-884 |
 | E-V-21 | Automatic bid submission prohibited | 23 / 26 | 11.12, 11.13a, 11.15c, 11.1b, 11.2a, 11.2b, 11.2c, 11.3c, 11.5a, 3.5b … | DEC-781, DEC-851, DEC-852 |
 | E-V-24 | Tier 2 free providers described as an active fallback chain | 1 / 1 | 11.6b | DEC-788 |
-| E-V-25 | Fixed release dates as commitments | 53 / 53 | 11.11a, 11.11b, 11.5b, 11.8b, 9.10, 9.2, 9.5 | DEC-770 |
+| E-V-25 | Fixed release dates as commitments | 53 / 54 | 11.11a, 11.11b, 11.5b, 11.8b, 9.10, 9.2, 9.5 | DEC-770 |
 | E-V-26 | Judge agreement ≥ 85% vs κ ≥ 0.8 | 4 / 6 | 6.4, 7.2, 9.7b | DEC-603 |
 | E-V-27 | Admin not targeted below 768 px | 7 / 9 | 0A, 2.7a, 5.3, 6.1, 9.2 | DEC-623 |
 | E-V-28 | Outbound webhooks not offered | 5 / 6 | 11.8a, 9.2, 9.9a, 9.9b | DEC-645, DEC-785 |
@@ -68,7 +68,7 @@
 | E-V-43 | Hosting cost lines without PITR / standby | 4 / 4 | 11.5b, 11.9b | DEC-771, DEC-787 |
 | E-V-44 | X-09 developer platform exclusion | 3 / 4 | 11.1b | DEC-785 |
 | E-V-45 | A172 agentic commerce workspace "EP-13 · Future (W6+)" | 2 / 3 | 11.7b | DEC-780 |
-| E-V-46 | Decisions left "Pending Founder decision" | 774 / 797 | 11.10a, 11.10c, 11.11a, 11.11b, 11.12, 11.13a, 11.13b, 11.14, 11.16c, 11.16e … | DEC-770…791 |
+| E-V-46 | Decisions left "Pending Founder decision" | 773 / 800 | 11.10a, 11.10c, 11.11a, 11.11b, 11.12, 11.13a, 11.13b, 11.14, 11.16c, 11.16e … | DEC-770…791 |
 | E-V-47 | Group P provisional screens A260–A269 | 2 / 2 | 11.17a, 11.17b | DEC-962 |
 | E-V-49 | Workbook token rates treated as prices | 0 / 1 | — | DEC-788 |
 | E-V-50 | Appendix C workflow IDs with one-digit suffix | 1 / 84 | 11.9b | DEC-966 |
@@ -82,7 +82,7 @@
 | Stale statement | Consequential actions always capped at L1 |
 | **Current rule (binding)** | L0–L2 by default; L3/L4 only under an Active, eligible bounded mandate approved by two authorized people, scoped (counterparty, action type, per-action and aggregate value cap, time window, jurisdiction, data class), instantly revocable, with kill switch, PDP dispatch recheck, audit and reconciliation, in a jurisdiction whose rule pack permits it. No API scope for consequential actions (DEC-883). |
 | Authority | DEC-779, DEC-841, DEC-883 |
-| Stale occurrences | 42 of 56 matching lines carry no reference to the authority; first locations: Part 0 L318; Part 2.2 L77; Part 5.3 L1780; Part 6.3a L854; Part 6.4 L2415; Part 7.1 L202 |
+| Stale occurrences | 42 of 57 matching lines carry no reference to the authority; first locations: Part 0 L318; Part 2.2 L77; Part 5.3 L1780; Part 6.3a L854; Part 6.4 L2415; Part 7.1 L202 |
 | Reported by | Brief; Part 11.19c #2 |
 | Developer instruction | Implement the current rule. Where any part still states the stale text, this erratum governs (DEC-961). |
 
@@ -115,7 +115,7 @@
 | Stale statement | Database role names `ge_app` / `ge_worker` / `ge_owner` / `app_user` |
 | **Current rule (binding)** | Canonical roles: `app_owner`, `app_migrator`, `app_rw`, `app_worker`, `app_readonly`, `app_retention`, `app_platform_sec`, `app_bench`, `app_registry` (all NOBYPASSRLS). `ge_app` → `app_rw`, `ge_worker` → `app_worker`, `ge_owner` → `app_owner`, V12 `app_user` → `app_rw` (rename migration DDL-V12-R-16). |
 | Authority | DEC-778, DEC-894 |
-| Stale occurrences | 35 of 50 matching lines carry no reference to the authority; first locations: Part 3.3 L2170; Part 3.3 L2180; Part 3.3 L2181; Part 3.3 L2182; Part 3.3 L3686; Part 3.3 L3688 |
+| Stale occurrences | 38 of 56 matching lines carry no reference to the authority; first locations: Part 3.3 L2170; Part 3.3 L2180; Part 3.3 L2181; Part 3.3 L2182; Part 3.3 L3686; Part 3.3 L3688 |
 | Reported by | Parts 11.9c #2, 11.19c #1 |
 | Developer instruction | Implement the current rule. Where any part still states the stale text, this erratum governs (DEC-961). |
 
@@ -170,7 +170,7 @@
 | Stale statement | RTO 4 h at pilot / staged RTO |
 | **Current rule (binding)** | RPO ≤ 15 min in every residency region (continuous WAL, daily base backup, 35-day PITR; DEC-787). Growth-critical RTO ≤ 120 min is a release-blocking gate from Release 1 (OKPI-32 = V12 KPI-32; DEC-771). Core critical-tier RTO ≤ 4 h stays as the outer bound only for non-growth platform components (CDEC-V9-01). Regenerable stores RTO 24 h / RPO 8 h. |
 | Authority | DEC-771, DEC-787, CDEC-V9-01 |
-| Stale occurrences | 60 of 77 matching lines carry no reference to the authority; first locations: Part 0A L55; Part 0 L339; Part 3.1 L32; Part 3.1 L1358; Part 3.1 L1412; Part 3.1 L1709 |
+| Stale occurrences | 62 of 79 matching lines carry no reference to the authority; first locations: Part 0A L55; Part 0 L339; Part 3.1 L32; Part 3.1 L1358; Part 3.1 L1412; Part 3.1 L1709 |
 | Reported by | Brief; Part 11.5b #2, #6 |
 | Developer instruction | Implement the current rule. Where any part still states the stale text, this erratum governs (DEC-961). |
 
@@ -225,7 +225,7 @@
 | Stale statement | Customer decision IDs written DEC-Vn-## / DEC-### for V12 decisions |
 | **Current rule (binding)** | Customer decisions are written CDEC-### and CDEC-Vn-## (DEC-700); bare DEC-### always means a blueprint decision. |
 | Authority | DEC-700 |
-| Stale occurrences | 149 of 155 matching lines carry no reference to the authority; first locations: Part 11.10c L721; Part 11.12 L17; Part 11.12 L80; Part 11.12 L146; Part 11.12 L196; Part 11.12 L220 |
+| Stale occurrences | 152 of 158 matching lines carry no reference to the authority; first locations: Part 11.10c L721; Part 11.12 L17; Part 11.12 L80; Part 11.12 L146; Part 11.12 L196; Part 11.12 L220 |
 | Reported by | Parts 11.9c #6, 11.12 #2; audit |
 | Developer instruction | Implement the current rule. Where any part still states the stale text, this erratum governs (DEC-961). |
 
@@ -236,7 +236,7 @@
 | Stale statement | V12 KPI-## used without the OKPI alias |
 | **Current rule (binding)** | V12 KPI-01…35 = OKPI-01…35 (DEC-681). Blueprint KPI-01…35 are the Part 1 business KPIs. Always write OKPI-## for V12 release KPIs. |
 | Authority | DEC-681 |
-| Stale occurrences | 26 of 32 matching lines carry no reference to the authority; first locations: Part 11.14 L21; Part 11.22a L344; Part 11.9a L246; Part 11.9a L247; Part 11.9a L248; Part 11.9a L249 |
+| Stale occurrences | 28 of 34 matching lines carry no reference to the authority; first locations: Part 11.14 L21; Part 11.22a L363; Part 11.22c L7932; Part 11.22c L7957; Part 11.9a L246; Part 11.9a L247 |
 | Reported by | Parts 11.10c #2, 11.12 #2 |
 | Developer instruction | Implement the current rule. Where any part still states the stale text, this erratum governs (DEC-961). |
 
@@ -247,7 +247,7 @@
 | Stale statement | V12 REC-01…30 collide with blueprint reconciliation jobs REC-01…09 |
 | **Current rule (binding)** | Blueprint REC-01…09 are reconciliation jobs (Part 3.2). V12 REC-01…30 are reconciliation actions; write them `V12-REC-##`. |
 | Authority | DEC-964 |
-| Stale occurrences | 193 of 196 matching lines carry no reference to the authority; first locations: Part 3.2 L1371; Part 3.2 L1372; Part 3.2 L1373; Part 3.2 L1374; Part 3.2 L1375; Part 3.2 L1376 |
+| Stale occurrences | 198 of 201 matching lines carry no reference to the authority; first locations: Part 3.2 L1371; Part 3.2 L1372; Part 3.2 L1373; Part 3.2 L1374; Part 3.2 L1375; Part 3.2 L1376 |
 | Reported by | Part 11.12 #1 |
 | Developer instruction | Implement the current rule. Where any part still states the stale text, this erratum governs (DEC-961). |
 
@@ -324,7 +324,7 @@
 | Stale statement | Fixed release dates as commitments |
 | **Current rule (binding)** | Dates are indicative; Release 1 and Release 2 are re-planned from approved effort and measured throughput; scope is not cut to meet a date (master plan Part 11.20). |
 | Authority | DEC-770 |
-| Stale occurrences | 53 of 53 matching lines carry no reference to the authority; first locations: Part 9.10 L166; Part 9.10 L167; Part 9.2 L444; Part 9.2 L1976; Part 9.2 L1977; Part 9.5 L154 |
+| Stale occurrences | 53 of 54 matching lines carry no reference to the authority; first locations: Part 9.10 L166; Part 9.10 L167; Part 9.2 L444; Part 9.2 L1976; Part 9.2 L1977; Part 9.5 L154 |
 | Reported by | Part 11.14 |
 | Developer instruction | Implement the current rule. Where any part still states the stale text, this erratum governs (DEC-961). |
 
@@ -555,7 +555,7 @@
 | Stale statement | Decisions left "Pending Founder decision" |
 | **Current rule (binding)** | Every V12 item pending a Founder decision was adopted by DEC-770…791 (DEC-791 closes the remainder). Read any "Pending Founder decision" as decided per Part 11.14. |
 | Authority | DEC-770…791 |
-| Stale occurrences | 774 of 797 matching lines carry no reference to the authority; first locations: Part 11.10a L94; Part 11.10a L160; Part 11.10c L720; Part 11.10c L721; Part 11.10c L722; Part 11.10c L738 |
+| Stale occurrences | 773 of 800 matching lines carry no reference to the authority; first locations: Part 11.10a L94; Part 11.10a L160; Part 11.10c L720; Part 11.10c L721; Part 11.10c L722; Part 11.10c L738 |
 | Reported by | Part 11.17b #3 |
 | Developer instruction | Implement the current rule. Where any part still states the stale text, this erratum governs (DEC-961). |
 
@@ -600,7 +600,7 @@
 - **E-V-09 (RTO/RPO).** One table governs: RPO ≤ 15 min in every residency region; growth-critical RTO ≤ 120 min, release-blocking; core critical-tier RTO ≤ 4 h as outer bound for non-growth components; regenerable stores 24 h / 8 h; restore drills at each release gate.
 - **E-V-10 (region count).** Two residency stacks are built (India, EU). Further regions are roadmap items that open market by market (DEC-776). Any text that says "single region" describes the pre-V12 pilot only.
 - **E-V-13 (mandates and securities).** DEC-822 is not a contradiction of DEC-779 but its "where lawful" condition applied to securities law; FR-V12-V-008 and DEC-963 make the mandate engine enforce it.
-- **E-V-46 ("Pending Founder decision").** 774 stale labels remain in Parts 11.1–11.13 registers and coverage CSVs. They must be read as decided by DEC-770…791; Part 11.0 is regenerated by the consolidation owner.
+- **E-V-46 ("Pending Founder decision").** 773 stale labels remain in Parts 11.1–11.13 registers and coverage CSVs. They must be read as decided by DEC-770…791; Part 11.0 is regenerated by the consolidation owner.
 
 ---
 
@@ -619,8 +619,8 @@
 
 | DEC | Decision | Authority | Effect |
 |---|---|---|---|
-| DEC-960 | **Audit acceptance rule.** Coverage of a customer revision is accepted when every extracted statement ends as measured Matched, Covered in different words (cited), Restored (new content) or Superseded (DEC cited), with 0 unclassified, and the per-statement register is published (`V_audit.csv`). Self-reported coverage registers are not evidence | Independent assurance panel (Part 11.23), under DEC-791 | V12 audit closed: 94.06% → 94.06% measured; 100% classified |
-| DEC-961 | **Errata precedence.** The errata E-V-01…50 of Part 11.23c state the current rule wherever an earlier part still carries a stale statement; precedence Part 11.14 > Part 11.23c errata > Parts 11.1–11.22 > Part 9.10 > earlier parts | Independent assurance panel (Part 11.23); implements DEC-770…791 | Extends DEC-415/DEC-500; FR-V12-V-009 lint |
+| DEC-960 | **Audit acceptance rule.** Coverage of a customer revision is accepted when every extracted statement ends as measured Matched, Covered in different words (cited), Restored (new content) or Superseded (DEC cited), with 0 unclassified, and the per-statement register is published (`V_audit.csv`). Self-reported coverage registers are not evidence | Independent assurance panel (Part 11.23), under DEC-791 | V12 audit closed: 94.58% → 96.04% measured; 100% classified |
+| DEC-961 | **Errata precedence.** The errata E-V-01…E-V-50 (47 entries; E-V-22, 23 and 48 withdrawn as having no occurrence) of Part 11.23c state the current rule wherever an earlier part still carries a stale statement; precedence Part 11.14 > Part 11.23c errata > Parts 11.1–11.22 > Part 9.10 > earlier parts | Independent assurance panel (Part 11.23); implements DEC-770…791 | Extends DEC-415/DEC-500; FR-V12-V-009 lint |
 | DEC-962 | **Screen-ID registry.** Group P's provisional screens A260–A269 (ASSUMPTION-1040) are confirmed; Part 11.7c's note "A205–A259 and W55–W99 reserved and unused" is withdrawn (used by Groups N and O); next free IDs A270 and W100; any new screen ID is taken from the registry, never chosen locally | Independent assurance panel (Part 11.23) | Closes ASSUMPTION-1040; errata E-V-07, E-V-08, E-V-47 |
 | DEC-963 | **Mandate exclusion for securities-governed actions** is enforced in the mandate engine and the PDP (FR-V12-V-008); `inv_ir_message` is the only INV mandate type | Customer revision V12 (28 Nov 2026) as decided by Founder DEC-779/783; DEC-822 | Resolves CONFLICT-1185; erratum E-V-13 |
 | DEC-964 | V12 reconciliation actions are written `V12-REC-##`; blueprint REC-01…09 keep their meaning | Independent assurance panel (Part 11.23) | Resolves CONFLICT-1186; erratum E-V-16 |
@@ -637,9 +637,9 @@
 
 | Persona | Finding | Disposition |
 |---|---|---|
-| Forensic requirements auditor | The measured method is reproducible and strict on literal adoption; the token measure is generous, which is why nothing below "moderate" was accepted without reading. 705 disposition rows and 142 DDL statements were verified per row, not by sampling | Accepted; method in §11.23.1 |
+| Forensic requirements auditor | The measured method is reproducible and strict on literal adoption; the token measure is generous, which is why nothing below "moderate" was accepted without reading. 628 disposition rows and 138 DDL statements in the triage set were verified per row, not by sampling | Accepted; method in §11.23.1 |
 | Configuration-management lead | The most important finding is not a missing requirement but a baseline-integrity event: the received HTML differs from the declared hashes (CRLF in transit). Without the LF rule a future review could reject a correct baseline or accept a changed one | DEC-968, FR-V12-V-001 |
-| Configuration-management lead | No baseline ID was lost, but 207 IDs changed meaning or scope, and 1,667 stale lines remain in the parts | Supersession index and errata; FR-V12-V-009 lint |
+| Configuration-management lead | No baseline ID was lost, but 220 IDs changed meaning or scope, and 1,681 stale lines remain in the parts | Supersession index and errata; FR-V12-V-009 lint |
 | Principal Business Systems Analyst | The restored content is small but real: the per-screen V2 rule, the ICP attribute set, FX rates below 1 and the one-implementation rule would otherwise be lost because they sit in change-history tables | FR-V12-V-004…007 |
 | Security reviewer | E-V-03/E-V-04 matter most for safety: any developer following Part 11.8b or Part 3.3 literally would connect with a key that bypasses RLS or with a non-canonical role | Errata binding; DEC-894 roles |
 | AI-governance reviewer | The scoped L1 invariant must be read with the mandate conditions; the securities exclusion closes the only path where a mandate could reach a regulated action | FR-V12-V-008, DEC-963 |
@@ -672,7 +672,7 @@ Tags 1190–1199 are not used.
 |---|---|---|---|
 | 1 | Every requirement traced to a source | Pass | Every V12 statement carries its chapter, section and statement ID in `V_audit.csv`; every restored FR cites the V12 location; every baseline status cites its authority |
 | 2 | Assumptions/gaps/conflicts tagged and logged | Pass | Tags 1180–1189 in §11.23.11 |
-| 3 | IDs unique and consistent with earlier parts | Pass | FR-V12-V-001…009, TC-V12-V-001…034, US-01/04/15/18/20/21-ZV, DEC-960…970, E-V-01…50 are new; no screen IDs defined; screen registry fixed by DEC-962 |
+| 3 | IDs unique and consistent with earlier parts | Pass | FR-V12-V-001…009, TC-V12-V-001…034, US-01/04/15/18/20/21-ZV, DEC-960…970, E-V-01…E-V-50 (47 entries; E-V-22, 23 and 48 withdrawn as having no occurrence) are new; no screen IDs defined; screen registry fixed by DEC-962 |
 | 4 | No story lacks AC and no requirement lacks a test | Pass | 9 stories with Gherkin; each FR-V12-V maps to TC-V12-V |
 | 5 | Negative, edge, security and accessibility cases covered | Pass | Integrity tampering, SoD, ungranted access, securities mandates, FX boundaries, keyboard and compact layout |
 | 6 | No agent lacks guardrail, fallback, KPI and cost estimate | N/A | No agent or automation added |
@@ -680,4 +680,4 @@ Tags 1190–1199 are not used.
 | 8 | No restricted data routed to free-tier models | Pass | No model routing added; ICP forbids personal data |
 | 9 | Consistent with earlier parts | Pass with findings | Inconsistencies are not edited (boundary); they are recorded as 47 errata with binding current rules (DEC-961) |
 
-**Status: Part 11 Batch 11.23 complete. V12 → blueprint measured match 94.06% → 94.06% (100% of 19,274 statements with a verified end state: 18,090 matched, 1,011 covered in different words, 167 restored, 6 superseded); 10,569 baseline IDs checked: 0 missing, 196 amended, 11 superseded; 47 errata covering 1,667 stale occurrences; DEC-960…970.**
+**Status: Part 11 Batch 11.23 complete. V12 → blueprint measured match 94.58% → 96.04% (100% of 19,274 statements with a verified end state: 18,194 matched, 910 covered in different words, 164 restored, 6 superseded); 10,569 baseline IDs checked: 0 missing, 209 amended, 11 superseded; 47 errata covering 1,681 stale occurrences; DEC-960…970.**
