@@ -1,0 +1,319 @@
+{
+ "files": {
+  "BRD/00_Reading_guide_and_chapter_navigation.txt": {
+   "bytes": 1852,
+   "statements": 20
+  },
+  "BRD/00_front.txt": {
+   "bytes": 874,
+   "statements": 4
+  },
+  "BRD/01_Executive_Summary_Product_Vision.txt": {
+   "bytes": 36137,
+   "statements": 225
+  },
+  "BRD/02_Business_Objectives_Success_Criteria.txt": {
+   "bytes": 1324,
+   "statements": 6
+  },
+  "BRD/03_Market_Positioning_Competitive_Strategy.txt": {
+   "bytes": 779,
+   "statements": 4
+  },
+  "BRD/04_Stakeholders_Personas_Customer_Segmenta.txt": {
+   "bytes": 5029,
+   "statements": 26
+  },
+  "BRD/05_SaaS_Business_Commercial_Operating_Mode.txt": {
+   "bytes": 3084,
+   "statements": 18
+  },
+  "BRD/06_Multi_Tenant_Multi_Company_Business_Arc.txt": {
+   "bytes": 5115,
+   "statements": 28
+  },
+  "BRD/07_Universal_Business_Configuration_Onboar.txt": {
+   "bytes": 12701,
+   "statements": 78
+  },
+  "BRD/08_Master_Automation_Service_Catalogue_39.txt": {
+   "bytes": 115756,
+   "statements": 700
+  },
+  "BRD/09_Business_Workflow_Catalogue_156_Workflo.txt": {
+   "bytes": 41668,
+   "statements": 201
+  },
+  "BRD/10_Subscription_Bundle_Entitlement_Model.txt": {
+   "bytes": 6004,
+   "statements": 36
+  },
+  "BRD/11_Pricing_Billing_Commercial_Unit_Economi.txt": {
+   "bytes": 20037,
+   "statements": 153
+  },
+  "BRD/12_Public_SaaS_Website_Customer_Acquisitio.txt": {
+   "bytes": 13861,
+   "statements": 136
+  },
+  "BRD/13_Market_Intelligence_Lead_Generation.txt": {
+   "bytes": 1361,
+   "statements": 9
+  },
+  "BRD/14_Digital_Marketing_Omnichannel_Engagemen.txt": {
+   "bytes": 3394,
+   "statements": 22
+  },
+  "BRD/15_Sales_Intelligence_Revenue_Conversion.txt": {
+   "bytes": 2003,
+   "statements": 11
+  },
+  "BRD/16_Commerce_Procurement_Partner_Operations.txt": {
+   "bytes": 999,
+   "statements": 4
+  },
+  "BRD/17_Customer_Success_Retention_Product_Led.txt": {
+   "bytes": 13213,
+   "statements": 101
+  },
+  "BRD/18_AI_Automation_Authority_Business_Govern.txt": {
+   "bytes": 11682,
+   "statements": 85
+  },
+  "BRD/19_Portfolio_Command_Centre_Business_Analy.txt": {
+   "bytes": 11140,
+   "statements": 66
+  },
+  "BRD/20_Business_Security_Privacy_Compliance.txt": {
+   "bytes": 21591,
+   "statements": 123
+  },
+  "BRD/21_SLA_Support_Service_Delivery.txt": {
+   "bytes": 11780,
+   "statements": 90
+  },
+  "BRD/22_Business_KPI_Performance_Framework.txt": {
+   "bytes": 8785,
+   "statements": 95
+  },
+  "BRD/23_Roadmap_Prioritization_Commercial_Readi.txt": {
+   "bytes": 4767,
+   "statements": 32
+  },
+  "BRD/24_Business_Acceptance_Requirement_Traceab.txt": {
+   "bytes": 34422,
+   "statements": 306
+  },
+  "BRD/25_Decision_Register_Migration_Source_Appe.txt": {
+   "bytes": 7227,
+   "statements": 40
+  },
+  "BRD/AP_Appendix_ID_index.txt": {
+   "bytes": 906,
+   "statements": 12
+  },
+  "FSD/00_Reading_guide_and_chapter_navigation.txt": {
+   "bytes": 2363,
+   "statements": 33
+  },
+  "FSD/00_front.txt": {
+   "bytes": 891,
+   "statements": 4
+  },
+  "FSD/01_Specification_Control_Reading_Guide.txt": {
+   "bytes": 35592,
+   "statements": 228
+  },
+  "FSD/02_System_Context_Solution_Architecture.txt": {
+   "bytes": 3874,
+   "statements": 25
+  },
+  "FSD/03_High_Level_Design.txt": {
+   "bytes": 2041,
+   "statements": 7
+  },
+  "FSD/04_Detailed_Component_Design.txt": {
+   "bytes": 1462,
+   "statements": 11
+  },
+  "FSD/05_Multi_Tenant_Data_Isolation_Architectur.txt": {
+   "bytes": 2544,
+   "statements": 12
+  },
+  "FSD/06_Identity_Roles_Authorization.txt": {
+   "bytes": 5390,
+   "statements": 29
+  },
+  "FSD/07_Tenant_Provisioning_Business_Configurat.txt": {
+   "bytes": 10413,
+   "statements": 52
+  },
+  "FSD/08_SaaS_Catalogue_Service_Registry.txt": {
+   "bytes": 3346,
+   "statements": 46
+  },
+  "FSD/09_Subscription_Entitlement_Engine.txt": {
+   "bytes": 5781,
+   "statements": 33
+  },
+  "FSD/10_Billing_Metering_Financial_Reconciliati.txt": {
+   "bytes": 8079,
+   "statements": 48
+  },
+  "FSD/11_Master_Functional_Specification_39_Serv.txt": {
+   "bytes": 99442,
+   "statements": 507
+  },
+  "FSD/12_Executable_Workflow_Specification_156_W.txt": {
+   "bytes": 855963,
+   "statements": 4888
+  },
+  "FSD/13_Workflow_Step_Trigger_Event_Registry.txt": {
+   "bytes": 30021,
+   "statements": 195
+  },
+  "FSD/14_Shared_AI_Automation_Engines.txt": {
+   "bytes": 4266,
+   "statements": 22
+  },
+  "FSD/15_AI_Agent_Registry_Orchestration.txt": {
+   "bytes": 6428,
+   "statements": 33
+  },
+  "FSD/16_AI_Models_Prompts_Evaluation.txt": {
+   "bytes": 29419,
+   "statements": 197
+  },
+  "FSD/17_RAG_Knowledge_Evidence_Engineering.txt": {
+   "bytes": 4779,
+   "statements": 25
+  },
+  "FSD/18_Policy_Approval_Human_in_the_Loop_Engin.txt": {
+   "bytes": 27272,
+   "statements": 139
+  },
+  "FSD/19_Automation_Scheduler_Execution_Control.txt": {
+   "bytes": 4406,
+   "statements": 21
+  },
+  "FSD/20_Public_SaaS_Website_Specification.txt": {
+   "bytes": 57068,
+   "statements": 382
+  },
+  "FSD/21_Tenant_Portal_Business_Workspace_Specif.txt": {
+   "bytes": 25512,
+   "statements": 145
+  },
+  "FSD/22_Platform_Operator_Administration.txt": {
+   "bytes": 3108,
+   "statements": 25
+  },
+  "FSD/23_Authorized_Portfolio_Command_Centre.txt": {
+   "bytes": 4317,
+   "statements": 24
+  },
+  "FSD/24_UI_UX_Components_Screens_Interaction_Ma.txt": {
+   "bytes": 171941,
+   "statements": 1334
+  },
+  "FSD/25_REST_API_Event_Contract_Master.txt": {
+   "bytes": 59713,
+   "statements": 382
+  },
+  "FSD/26_PostgreSQL_Database_Schema_Master.txt": {
+   "bytes": 91065,
+   "statements": 638
+  },
+  "FSD/27_External_Integrations_Provider_Adapters.txt": {
+   "bytes": 5487,
+   "statements": 37
+  },
+  "FSD/28_Open_Source_Paid_Plugin_Optimization.txt": {
+   "bytes": 24804,
+   "statements": 128
+  },
+  "FSD/29_Analytics_Attribution_KPI_Engineering.txt": {
+   "bytes": 9908,
+   "statements": 54
+  },
+  "FSD/30_AI_Cost_Performance_Optimization.txt": {
+   "bytes": 6658,
+   "statements": 29
+  },
+  "FSD/31_Cybersecurity_Privacy_Threat_Management.txt": {
+   "bytes": 9077,
+   "statements": 53
+  },
+  "FSD/32_Error_Handling_Retry_Recovery.txt": {
+   "bytes": 4816,
+   "statements": 37
+  },
+  "FSD/33_Unit_SIT_UAT_AI_Test_Specifications.txt": {
+   "bytes": 344598,
+   "statements": 2357
+  },
+  "FSD/34_Quality_Control_Acceptance_Evidence.txt": {
+   "bytes": 94691,
+   "statements": 970
+  },
+  "FSD/35_Coding_Standards_Development_Backlog.txt": {
+   "bytes": 8771,
+   "statements": 49
+  },
+  "FSD/36_Cloud_Infrastructure_CI_CD.txt": {
+   "bytes": 6541,
+   "statements": 43
+  },
+  "FSD/37_Observability_Incidents_Support.txt": {
+   "bytes": 122513,
+   "statements": 173
+  },
+  "FSD/38_Migration_Backup_Disaster_Recovery.txt": {
+   "bytes": 4732,
+   "statements": 27
+  },
+  "FSD/39_Release_Rollback_Continuous_Improvement.txt": {
+   "bytes": 6121,
+   "statements": 28
+  },
+  "FSD/40_Master_Traceability_Decision_Register_S.txt": {
+   "bytes": 569001,
+   "statements": 2612
+  },
+  "FSD/AP_Appendix_A2_Enterprise_API_additions_Ope.txt": {
+   "bytes": 36981,
+   "statements": 49
+  },
+  "FSD/AP_Appendix_A_OpenAPI_3_1_contract_proposed.txt": {
+   "bytes": 211479,
+   "statements": 282
+  },
+  "FSD/AP_Appendix_B_Workflow_DTO_JSON_Schemas_156.txt": {
+   "bytes": 151635,
+   "statements": 157
+  },
+  "FSD/AP_Appendix_C2_Enterprise_schema_additions.txt": {
+   "bytes": 11461,
+   "statements": 67
+  },
+  "FSD/AP_Appendix_C_PostgreSQL_DDL_with_row_level.txt": {
+   "bytes": 96436,
+   "statements": 447
+  },
+  "FSD/AP_Appendix_D_ID_index.txt": {
+   "bytes": 2202,
+   "statements": 39
+  }
+ },
+ "total_bytes": 3681899,
+ "statements": 19754,
+ "unique": 15793,
+ "by_kind": {
+  "api": 327,
+  "ddl": 502,
+  "dto": 156,
+  "heading": 625,
+  "prose": 2301,
+  "row": 15843
+ }
+}
