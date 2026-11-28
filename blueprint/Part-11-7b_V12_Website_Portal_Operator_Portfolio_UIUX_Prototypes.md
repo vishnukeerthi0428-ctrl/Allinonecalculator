@@ -117,8 +117,8 @@ flowchart TD
 |---|---|---|---|---|
 | 1 | Tasks per month | number | Yes | Integer ≥ 0; bounded server-side; required |
 | 2 | Minutes saved per task | number | Yes | Integer ≥ 0; bounded server-side; required |
-| 3 | Hourly cost (your currency) | number | Yes | Decimal ≥ 0, exact decimal; currency shown; required |
-| 4 | Estimated monthly automation cost | number | Yes | Decimal ≥ 0, exact decimal; currency shown; required |
+| 3 | Hourly cost (your currency) | number | Yes | Decimal ≥ 0, exact decimal; currency shown; labelled estimate; required |
+| 4 | Estimated monthly automation cost | number | Yes | Decimal ≥ 0, exact decimal; currency shown; labelled estimate; required |
 
 ##### W02 Automation categories (V12; previously "Company and startup business directory")
 
@@ -209,14 +209,14 @@ _No input fields (content or table screen)._
 | 2 | Billing cycle | select-one | No | Allowlist: Monthly \| Annual |
 | 3 | Quote currency | select-one | No | Allowlist: INR \| USD \| EUR \| GBP |
 | 4 | Currency | select-one | No | Allowlist: INR \| USD \| EUR \| GBP |
-| 5 | Monthly subscription estimate | number | Yes | Integer ≥ 0; bounded server-side; required |
-| 6 | Monthly provider / channel fees | number | Yes | Decimal ≥ 0, exact decimal; currency shown; required |
-| 7 | Monthly managed support | number | Yes | Integer ≥ 0; bounded server-side; required |
-| 8 | One-time setup / implementation | number | Yes | Integer ≥ 0; bounded server-side; required |
-| 9 | Months to amortize setup | number | Yes | Integer ≥ 0; bounded server-side; required |
+| 5 | Monthly subscription estimate | number | Yes | Decimal ≥ 0, exact decimal; currency shown; labelled estimate; required |
+| 6 | Monthly provider / channel fees | number | Yes | Decimal ≥ 0, exact decimal; currency shown; labelled estimate; required |
+| 7 | Monthly managed support | number | Yes | Decimal ≥ 0, exact decimal; currency shown; labelled estimate; required |
+| 8 | One-time setup / implementation | number | Yes | Decimal ≥ 0, exact decimal; currency shown; labelled estimate; required |
+| 9 | Months to amortize setup | number | Yes | Integer 1–60; required |
 | 10 | Monthly tasks | number | Yes | Integer ≥ 0; bounded server-side; required |
 | 11 | Minutes saved per task | number | Yes | Integer ≥ 0; bounded server-side; required |
-| 12 | Hourly labor value | number | Yes | Decimal ≥ 0, exact decimal; currency shown; required |
+| 12 | Hourly labor value | number | Yes | Decimal ≥ 0, exact decimal; currency shown; labelled estimate; required |
 | 13 | Import saved worksheet | file | No | JSON ≤ 1 MB; schema SM-APPLICATION-6 or worksheet schema; parsed client-side, validated server-side |
 
 ##### W07 Industry solution guide (V12; previously "Industry and business solution pages")
@@ -1282,7 +1282,7 @@ Every panel has: four local form fields with one domain action (draft only), sea
 | 3 | Transaction reconciliation | text | Yes | Text ≤ 200 chars; trimmed; validated server-side; required |
 | 4 | Mandate reference | text | No | Text ≤ 200 chars; trimmed; validated server-side |
 | 5 | Counterparty / transaction | text | No | Text ≤ 200 chars; trimmed; validated server-side |
-| 6 | Spending limit | number | Yes | Integer ≥ 0; bounded server-side; required |
+| 6 | Spending limit | number | Yes | Decimal ≥ 0, exact decimal; currency shown; labelled estimate; required |
 | 7 | Approval state | select-one | No | Allowlist: Draft \| Needs review \| Ready for review \| Held |
 
 #### A173 Account-Based Marketing & Enterprise Buying Group workspace (V12 X29)
@@ -1394,7 +1394,7 @@ Every panel has: four local form fields with one domain action (draft only), sea
 | 3 | Conflict rationale | text | Yes | Text ≤ 200 chars; trimmed; validated server-side; required |
 | 4 | Partner alias | text | No | Text ≤ 200 chars; trimmed; validated server-side |
 | 5 | Territory / referral | text | No | Text ≤ 200 chars; trimmed; validated server-side |
-| 6 | Pipeline value | number | Yes | Decimal ≥ 0, exact decimal; currency shown; required |
+| 6 | Pipeline value | number | Yes | Decimal ≥ 0, exact decimal; currency shown; labelled estimate; required |
 | 7 | Conflict review | select-one | No | Allowlist: Draft \| Needs review \| Ready for review \| Held |
 
 #### A177 Customer Service & Support Operations workspace (V12 X33)
@@ -1528,16 +1528,16 @@ Every panel has: four local form fields with one domain action (draft only), sea
 
 | # | Field (label as prototype) | Control | Req. | Validation and rule |
 |---|---|---|---|---|
-| 1 | Unit price | number | Yes | Decimal ≥ 0, exact decimal; currency shown; required |
-| 2 | Unit cost | number | Yes | Decimal ≥ 0, exact decimal; currency shown; required |
-| 3 | Discount % | number | Yes | Integer ≥ 0; bounded server-side; required |
+| 1 | Unit price | number | Yes | Decimal ≥ 0, exact decimal; currency shown; labelled estimate; required |
+| 2 | Unit cost | number | Yes | Decimal ≥ 0, exact decimal; currency shown; labelled estimate; required |
+| 3 | Discount % | number | Yes | Percentage 0–100; required |
 | 4 | kind | hidden | No | Text ≤ 200 chars; trimmed; validated server-side |
 | 5 | Cost / price assumptions | text | Yes | Text ≤ 200 chars; trimmed; validated server-side; required |
 | 6 | Discount authority | text | Yes | Text ≤ 200 chars; trimmed; validated server-side; required |
 | 7 | Margin rationale | text | Yes | Text ≤ 200 chars; trimmed; validated server-side; required |
 | 8 | Offer name | text | No | Text ≤ 200 chars; trimmed; validated server-side |
 | 9 | Cost basis | text | No | Text ≤ 200 chars; trimmed; validated server-side |
-| 10 | Proposed price | number | Yes | Decimal ≥ 0, exact decimal; currency shown; required |
+| 10 | Proposed price | number | Yes | Decimal ≥ 0, exact decimal; currency shown; labelled estimate; required |
 | 11 | Margin approval | select-one | No | Allowlist: Draft \| Needs review \| Ready for review \| Held |
 
 #### A182 SMS, RCS & Business Messaging workspace (V12 X38)
@@ -1593,7 +1593,7 @@ Every panel has: four local form fields with one domain action (draft only), sea
 | 3 | Comparison / risk notes | text | Yes | Text ≤ 200 chars; trimmed; validated server-side; required |
 | 4 | RFQ title | text | No | Text ≤ 200 chars; trimmed; validated server-side |
 | 5 | Supplier alias | text | No | Text ≤ 200 chars; trimmed; validated server-side |
-| 6 | Purchase amount | number | Yes | Decimal ≥ 0, exact decimal; currency shown; required |
+| 6 | Purchase amount | number | Yes | Decimal ≥ 0, exact decimal; currency shown; labelled estimate; required |
 | 7 | Risk review | select-one | No | Allowlist: Draft \| Needs review \| Ready for review \| Held |
 
 

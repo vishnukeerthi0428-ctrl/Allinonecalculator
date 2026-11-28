@@ -145,7 +145,8 @@ def rule(lab, typ, req, opts):
     elif typ == "url":
         r = "https:// URL only, ≤ 2,048 chars; no credentials in URL"
     elif typ == "number":
-        r = f"Integer/decimal {m.group(1)}–{m.group(2)}" if m else ("Decimal ≥ 0, exact decimal; currency shown" if re.search(r"cost|price|budget|fee|amount|value|invoice|receipt|₹|rate", l) else "Integer ≥ 0; bounded server-side")
+        r = (f"Integer/decimal {m.group(1)}–{m.group(2)}" if m else "Integer 1–60" if l.startswith("months") else "Percentage 0–100" if "%" in l else
+             ("Decimal ≥ 0, exact decimal; currency shown; labelled estimate" if re.search(r"cost|price|budget|fee|amount|value|invoice|receipt|₹|rate|subscription|support|setup|estimate|labor|limit", l) else "Integer ≥ 0; bounded server-side"))
     elif typ in ("select-one", "select-multiple"):
         r = "Allowlist: " + (" | ".join(opts[:10]) + (" …" if len(opts) > 10 else "") if opts else "server-provided options")
     elif typ == "checkbox":
