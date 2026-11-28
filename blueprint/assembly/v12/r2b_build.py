@@ -33,6 +33,11 @@ for sid in SIDS:
         n += 1; fid = 'FR-V12-B-%03d' % n; FR.append((fid, sid, *t)); SVC_FR[sid].append(fid)
 FRD = {f[0]: f for f in FR}
 
+def short(t, n=80):
+    t = t.split(';')[0].strip()
+    if len(t) <= n: return t.rstrip('.')
+    cut = t[:n].rsplit(' ', 1)[0]
+    return cut.rstrip(',(') + '…'
 def ep_num(ep): return ep.split(',')[0].strip().replace('EP-', '')
 # stories
 STORY = []  # (id, epic, title, frs, svc)
@@ -55,7 +60,7 @@ for sid in SIDS:
     if not frs: continue
     pep = m['ep'].split(',')[0].strip()
     if pep in NEW_EP:
-        for f in frs: add_story(pep, FRD[f][2].split(':')[0][:90] if FRD[f][2].startswith('WF') else FRD[f][2][:90], [f], sid)
+        for f in frs: add_story(pep, short(FRD[f][2]), [f], sid)
     else:
         add_story(pep, '%s %s: V12 SKU deltas' % (sid, SC[sid]['Automation service name']), frs, sid)
 SVC_STORY = collections.defaultdict(list)

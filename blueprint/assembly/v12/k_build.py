@@ -171,7 +171,7 @@ for r in ent['rows']:
     else:
         frid = f'FR-V12-K-{fr_no:03d}'; tcid = f'TC-V12-K-{fr_no:03d}'; fr_no += 1
     tag = M.ENT_CONFLICT.get(eid, '')
-    ent_rows.append((eid, r[1], r[2], r[3], r[4], M.PHASE.get(r[4][:2], r[4]), r[6], sb, loc, M.G[own], frid, tcid, tag, sa))
+    ent_rows.append((eid, r[1], r[2], r[3], r[4], (M.PHASE.get(r[4], r[4]) if len(r[4]) == 2 else M.PHASE[r[4][:2]].split(' (')[0] + ' … ' + M.PHASE[r[4][-2:]].split(' (')[0]), r[6], sb, loc, M.G[own], frid, tcid, tag, sa))
     add('FSD', ch, 'V12 Enterprise requirement register', eid + ' (ch40 register)',
         f'{r[2]} [{r[1]}; {r[3]}; {r[4]}; spec {r[5]}; prototype {r[6]}; production {r[7]}]', sb, loc,
         'Trace row registered; requirement adopted literally; design depth in ' + M.G[own], '; '.join(x for x in (frid, tcid if tcid.startswith('TC') else '', tag) if x), sa)

@@ -11,6 +11,13 @@ SC = {r['Automation ID']: r for r in WB['Service_Catalog']['rows']}; ENT = {r['S
 SIDS = sorted(SC)
 cov = list(csv.reader(open(os.path.join(OUT, 'final/coverage_v12/B_coverage.csv'), encoding='utf-8')))[1:]
 def esc(s): return str(s).replace('|', '/').replace('\n', '<br/>')
+def want(t):
+    t = t.strip().rstrip('.')
+    return t[0].lower() + t[1:] if len(t) > 1 and (t[1].islower() or t[1] == ' ') else t
+def short(t, n=70):
+    t = t.split(';')[0].strip()
+    if len(t) <= n: return t.rstrip('.')
+    return t[:n].rsplit(' ', 1)[0].rstrip(',(') + '…'
 TITLE = '# AI Growth Engine: Employee Sales & Marketing Automation\n## Application Blueprint: PART 11 (Batch 11.2%s), V12 Master Automation Service Catalogue: 39 Services%s\n\n'
 def header(l, sub):
     return (TITLE % (l, sub) + '| Item | Detail |\n|---|---|\n'
@@ -318,10 +325,10 @@ A[-1] += '### 11.2.5.8 User stories (US-<EP>-YBnn) with acceptance criteria\n\nE
 for s in STORY:
     sid = s[4]; frs = s[3]
     who = 'Service Owner' if sid == 'All' else 'tenant growth user of %s' % sid
-    A[-1] += '#### %s %s\n\n| Field | Value |\n|---|---|\n| Epic | %s |\n| Story | As a %s, I want %s, so that the V12 service works within entitlement, approval and safety rules |\n| FRs | %s |\n| Priority / release | %s |\n| Tests | %s |\n\n```gherkin\nFeature: %s\n' % (s[0], esc(s[2]), s[1], who, esc(FRD[frs[0]][2][:160]).rstrip('.').lower() if len(frs) == 1 else 'the capabilities in ' + ', '.join(frs), ', '.join(frs), 'Must · EP-29 registry first' if sid == 'All' else ('Should · ' + D.S[sid]['wave'].split('.')[-1].strip() if D.S[sid]['wave'] else 'Should'), ', '.join(sum((FR_TC[f] for f in frs), [])), s[0])
+    A[-1] += '#### %s %s\n\n| Field | Value |\n|---|---|\n| Epic | %s |\n| Story | As a %s, I want %s, so that the V12 service works within entitlement, approval and safety rules |\n| FRs | %s |\n| Priority / release | %s |\n| Tests | %s |\n\n```gherkin\nFeature: %s %s\n' % (s[0], esc(s[2]), s[1], who, esc(want(FRD[frs[0]][2])) if len(frs) == 1 else 'the V12 deltas ' + '; '.join(esc(want(short(FRD[x][2], 90))) for x in frs), ', '.join(frs), 'Must · EP-29 registry first' if sid == 'All' else ('Should · ' + D.S[sid]['wave'].split('.')[-1].strip() if D.S[sid]['wave'] else 'Should'), ', '.join(sum((FR_TC[f] for f in frs), [])), s[0], s[2].replace(':', ' -'))
     for f in frs:
         ff = FRD[f]
-        A[-1] += '  Scenario: %s positive\n    Given the tenant holds an active entitlement for %s in the selected startup scope\n    And the required approvals, consent and budget reservation exist\n    When the behaviour of %s is executed\n    Then %s\n  Scenario: %s negative or boundary\n    Given the same tenant and scope\n    When the prohibited or boundary condition of %s occurs\n    Then %s\n' % (f, 'the SKU under test' if sid == 'All' else sid, f, ff[3].replace('\n', ' '), f, f, ff[4].replace('\n', ' '))
+        A[-1] += '  Scenario: %s positive\n    Given the tenant holds an active entitlement for %s in the selected startup scope\n    And the required approvals, consent and budget reservation exist\n    When %s runs (%s)\n    Then %s\n  Scenario: %s negative or boundary\n    Given the same tenant and scope\n    When the prohibited or boundary case of %s is attempted\n    Then %s\n' % (f, 'the SKU under test' if sid == 'All' else sid, want(short(ff[2], 90)), f, ff[3].replace('\n', ' '), f, f, ff[4].replace('\n', ' '))
     A[-1] += '```\n\n'
 # tests
 A[-1] += '### 11.2.5.9 Test cases (TC-V12-B-001…%03d)\n\n| TC | Title | FR | Preconditions | Steps | Expected | Type | Level | Priority |\n|---|---|---|---|---|---|---|---|---|\n' % len(TC)

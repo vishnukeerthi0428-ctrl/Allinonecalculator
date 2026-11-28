@@ -1095,7 +1095,7 @@
 [
 "US-22-YB01",
 "EP-22",
-"WF01 inbound",
+"WF01 inbound: disclose that the caller is speaking with an AI assistant at the…",
 [
 "FR-V12-B-060"
 ],
@@ -1104,7 +1104,7 @@
 [
 "US-22-YB02",
 "EP-22",
-"WF02 outbound",
+"WF02 outbound: a call is placed only to a contact with recorded call permission…",
 [
 "FR-V12-B-061"
 ],
@@ -1113,7 +1113,7 @@
 [
 "US-22-YB03",
 "EP-22",
-"WF03 multilingual",
+"WF03 multilingual: recognize language, answer from grounded knowledge and…",
 [
 "FR-V12-B-062"
 ],
@@ -1122,7 +1122,7 @@
 [
 "US-22-YB04",
 "EP-22",
-"WF04 call intelligence",
+"WF04 call intelligence: transcribe only calls with recorded consent, redact…",
 [
 "FR-V12-B-063"
 ],
@@ -1131,7 +1131,7 @@
 [
 "US-22-YB05",
 "EP-22",
-"The AI voice agent never quotes a non-approved price, accepts an order, agrees terms or ta",
+"The AI voice agent never quotes a non-approved price, accepts an order, agrees…",
 [
 "FR-V12-B-064"
 ],
@@ -1140,7 +1140,7 @@
 [
 "US-22-YB06",
 "EP-22",
-"Call minutes are metered per SKU with a hard budget; a call is not placed when the reserva",
+"Call minutes are metered per SKU with a hard budget",
 [
 "FR-V12-B-065"
 ],
@@ -1149,7 +1149,7 @@
 [
 "US-28-YB01",
 "EP-28",
-"WF01 generates marketing image variants from an approved brand brief, checks layout, brand",
+"WF01 generates marketing image variants from an approved brand brief, checks…",
 [
 "FR-V12-B-066"
 ],
@@ -1158,7 +1158,7 @@
 [
 "US-28-YB02",
 "EP-28",
-"WF02 builds a storyboard and video draft from approved product facts; every depicted capab",
+"WF02 builds a storyboard and video draft from approved product facts",
 [
 "FR-V12-B-067"
 ],
@@ -1167,7 +1167,7 @@
 [
 "US-28-YB03",
 "EP-28",
-"WF03 localizes approved assets",
+"WF03 localizes approved assets: translation with glossary (AU-076), captions…",
 [
 "FR-V12-B-068"
 ],
@@ -1176,7 +1176,7 @@
 [
 "US-28-YB04",
 "EP-28",
-"WF04 records a creative QA record (rights evidence, licence, claim validation, brand compl",
+"WF04 records a creative QA record (rights evidence, licence, claim validation…",
 [
 "FR-V12-B-069"
 ],
@@ -1194,7 +1194,7 @@
 [
 "US-24-YB01",
 "EP-24",
-"WF01 publishes a machine-readable catalogue of approved offerings (approved claims and pri",
+"WF01 publishes a machine-readable catalogue of approved offerings (approved…",
 [
 "FR-V12-B-071"
 ],
@@ -1203,7 +1203,7 @@
 [
 "US-24-YB02",
 "EP-24",
-"WF02 accepts requirement and quotation requests only from external agents with verified id",
+"WF02 accepts requirement and quotation requests only from external agents with…",
 [
 "FR-V12-B-072"
 ],
@@ -1212,7 +1212,7 @@
 [
 "US-24-YB03",
 "EP-24",
-"A mandate record holds principal, counterpart agent identity, scope, item and price limits",
+"A mandate record holds principal, counterpart agent identity, scope, item and…",
 [
 "FR-V12-B-073"
 ],
@@ -1221,7 +1221,7 @@
 [
 "US-24-YB04",
 "EP-24",
-"WF03 compares offers within the mandate and routes every consequential decision (accept, c",
+"WF03 compares offers within the mandate and routes every consequential decision…",
 [
 "FR-V12-B-074"
 ],
@@ -1230,7 +1230,7 @@
 [
 "US-24-YB05",
 "EP-24",
-"WF04 executes an approved transaction only through the approved provider after a human app",
+"WF04 executes an approved transaction only through the approved provider after…",
 [
 "FR-V12-B-075"
 ],
@@ -1239,7 +1239,7 @@
 [
 "US-24-YB06",
 "EP-24",
-"Interaction logs with external agents are append-only, signed and linked to the mandate, q",
+"Interaction logs with external agents are append-only, signed and linked to the…",
 [
 "FR-V12-B-076"
 ],
@@ -1248,7 +1248,7 @@
 [
 "US-24-YB07",
 "EP-24",
-"Untrusted content from external agents is sanitized and never treated as instructions (AU-",
+"Untrusted content from external agents is sanitized and never treated as…",
 [
 "FR-V12-B-077"
 ],
@@ -1276,7 +1276,7 @@
 [
 "US-25-YB01",
 "EP-25",
-"WF01 maps approved SKU catalogue fields to each marketplace schema, validates content and ",
+"WF01 maps approved SKU catalogue fields to each marketplace schema, validates…",
 [
 "FR-V12-B-081"
 ],
@@ -1285,7 +1285,7 @@
 [
 "US-25-YB02",
 "EP-25",
-"WF02 synchronizes price and availability only from the approved price version and verified",
+"WF02 synchronizes price and availability only from the approved price version…",
 [
 "FR-V12-B-082"
 ],
@@ -1294,7 +1294,7 @@
 [
 "US-25-YB03",
 "EP-25",
-"WF03 deduplicates order, cancellation and return events into an order-event ledger and rou",
+"WF03 deduplicates order, cancellation and return events into an order-event…",
 [
 "FR-V12-B-083"
 ],
@@ -1303,7 +1303,7 @@
 [
 "US-25-YB04",
 "EP-25",
-"WF04 matches marketplace sales, fees and verified receipts and reports anomalies and net p",
+"WF04 matches marketplace sales, fees and verified receipts and reports…",
 [
 "FR-V12-B-084"
 ],
@@ -1321,7 +1321,7 @@
 [
 "US-27-YB01",
 "EP-27",
-"WF01 creates or matches a case from any channel, classifies severity and category and assi",
+"WF01 creates or matches a case from any channel, classifies severity and…",
 [
 "FR-V12-B-086"
 ],
@@ -1330,7 +1330,7 @@
 [
 "US-27-YB02",
 "EP-27",
-"WF02 proposes a grounded fix and executes only actions on the approved self-service grant ",
+"WF02 proposes a grounded fix and executes only actions on the approved…",
 [
 "FR-V12-B-087"
 ],
@@ -1339,7 +1339,7 @@
 [
 "US-27-YB03",
 "EP-27",
-"WF03 calculates SLA deadlines from the entitlement and policy, alerts risk and escalates o",
+"WF03 calculates SLA deadlines from the entitlement and policy, alerts risk and…",
 [
 "FR-V12-B-088"
 ],
@@ -1348,7 +1348,7 @@
 [
 "US-27-YB04",
 "EP-27",
-"WF04 analyzes resolved cases for recurring causes and recommends corrective work with evid",
+"WF04 analyzes resolved cases for recurring causes and recommends corrective…",
 [
 "FR-V12-B-089"
 ],
@@ -1397,7 +1397,7 @@
 [
 "US-23-YB01",
 "EP-23",
-"WF01 verifies the sender (DLT entity, header, template IDs, RCS agent) and holds any messa",
+"WF01 verifies the sender (DLT entity, header, template IDs, RCS agent) and…",
 [
 "FR-V12-B-098"
 ],
@@ -1406,7 +1406,7 @@
 [
 "US-23-YB02",
 "EP-23",
-"WF02 checks consent, preference (NCPR/DND), quiet hours and frequency, then dispatches app",
+"WF02 checks consent, preference (NCPR/DND), quiet hours and frequency, then…",
 [
 "FR-V12-B-099"
 ],
@@ -1415,7 +1415,7 @@
 [
 "US-23-YB03",
 "EP-23",
-"WF03 reconciles delivery reports, classifies replies (STOP cancels queued messages immedia",
+"WF03 reconciles delivery reports, classifies replies (STOP cancels queued…",
 [
 "FR-V12-B-100"
 ],
@@ -1424,7 +1424,7 @@
 [
 "US-23-YB04",
 "EP-23",
-"WF04 reports performance, usage, complaints and opt-outs and enforces suppression and budg",
+"WF04 reports performance, usage, complaints and opt-outs and enforces…",
 [
 "FR-V12-B-101"
 ],
@@ -1433,7 +1433,7 @@
 [
 "US-26-YB01",
 "EP-26",
-"WF01 validates the need, scores suppliers against qualification rules and evidence, flags ",
+"WF01 validates the need, scores suppliers against qualification rules and…",
 [
 "FR-V12-B-102"
 ],
@@ -1442,7 +1442,7 @@
 [
 "US-26-YB02",
 "EP-26",
-"WF02 drafts the RFQ and normalizes supplier quotes (unit, currency, terms, lead time) for ",
+"WF02 drafts the RFQ and normalizes supplier quotes (unit, currency, terms, lead…",
 [
 "FR-V12-B-103"
 ],
@@ -1451,7 +1451,7 @@
 [
 "US-26-YB03",
 "EP-26",
-"WF03 calculates the purchase order, requires purchasing approval within budget authority (",
+"WF03 calculates the purchase order, requires purchasing approval within budget…",
 [
 "FR-V12-B-104"
 ],
@@ -1460,7 +1460,7 @@
 [
 "US-26-YB04",
 "EP-26",
-"WF04 tracks milestones, reconciles receipts against the PO (three-way match) and escalates",
+"WF04 tracks milestones, reconciles receipts against the PO (three-way match)…",
 [
 "FR-V12-B-105"
 ],
