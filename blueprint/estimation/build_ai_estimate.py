@@ -232,7 +232,7 @@ table(["Field", "Value"], [
     ["Basis", "Application Blueprint v1.1; approved budgets DEC-230/231; Founder decisions DEC-416…419 (DEC-419: build-time tooling approved)"],
     ["Currency", f"INR and USD at ₹{M.FX:.0f} = $1 (verify). Amounts exclude GST"],
     ["What changes", "**Only how the software is built.** AI models and AI agents draft, code, test and document under human supervision. **The application itself, its features, its 80 production AI agents and its running costs do not change**"],
-    ["Status", "Estimate for decision. The traditional plan (v1.0) remains the approved plan until the Founder decides otherwise; a Sprint 2 calibration gate is recommended (§12)"],
+    ["Status", "**Approved approach (DEC-420, 28 Nov 2026):** AI-built delivery from Sprint 0, with a **Sprint 2 calibration gate (≈ Day 45)**. Team, dates and Ledger A stay as approved until the gate (§12)"],
 ])
 A("**Bifurcation used throughout.** Every table separates four things:\n")
 A("- **(1) one-time development** (people and vendors);")
@@ -438,13 +438,25 @@ table(["Risk specific to AI-built delivery", "Effect", "Control"], [
     ["Vendor dependency on one model provider", "Disruption", "Specs and tests are model-agnostic; the codebase is ordinary Django/React; agents can be switched"],
     ["Data protection", "Personal data reaching build agents", "Synthetic data only in agent sandboxes; no production access for agents"],
 ])
-A("**Recommended approach (for the Founder's decision; nothing is changed until approved):**\n")
+A("**Approved approach (DEC-420, Founder, 28 Nov 2026):**\n")
 A("1. Start with the approved traditional team, using the AI tooling and the operating model in §2 from Sprint 0.")
 A("2. At the **Sprint 2 calibration gate (about Day 45)**, compare measured throughput with the central assumptions.")
 A("3. If the measured net saving is at least 20%, then either:")
 A("   - release the second contract engineer and keep the dates (option A); or")
 A("   - keep the team and bring Release 1 forward (option B).")
 A("4. If the measured net saving is below 20%, keep the approved plan. The extra AI tooling costs about ₹45,000 per month, a small cost against the benefit.\n")
+A("**Gate measurement and thresholds (DEC-420).**\n")
+table(["Item", "Definition"], [
+    ["Net saving", "1 − (actual engineer-days ÷ planned engineer-days for the scope accepted in Sprints 1–2), using the Part 8.1 sprint plan as the baseline"],
+    ["Quality guard 1", "Defects escaping to SIT no more than 20% above the plan rate"],
+    ["Quality guard 2", "No unresolved critical or high security findings in AI-generated code"],
+    ["Quality guard 3", "Pull-request review backlog under 2 working days"],
+    ["≥ 20% and guards hold", "Option A by default: keep the dates and release the second contract engineer from Sprint 3 (Ledger A updated by change control). The Founder may choose option B: keep the team and bring Release 1 forward"],
+    ["10–20%", "Keep the approved team and dates; keep the AI tooling"],
+    ["< 10%", "Keep the approved plan; revert to the DEC-419 tooling"],
+    ["Build-agent API budget", "Hard cap $1,500 per month (₹1.35 L) with alerts at 70/90/100%"],
+    ["Record", "The gate result and the option chosen are recorded as a new decision"],
+])
 
 A("# 13. Full list: AI agents, automations and workflows, traditional vs AI-built\n")
 for k, nm in (("AG", "AI agents"), ("AU", "Automations"), ("WF", "Workflows")):

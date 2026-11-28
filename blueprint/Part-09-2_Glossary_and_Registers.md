@@ -464,7 +464,7 @@ Every ID family used across the parts. **Actual range found** and **Distinct IDs
 | FR-OP### | Operational/platform functional requirement (health, readiness, config) | 001–003 | 3 | 2.1 (§2.4) | 2.1, 6.6, 5.3, 6.3b | 25 |
 | FR-{area}-## | Cross-cutting functional requirement by area (standards, data mgmt, UI states, filters, publication, adapters, …) | ADP 01; COP 01; CSM 01; DM 01–04; ENG 01; FLT 01–11; NEG 01; PUB 01; SRCH 01; STD 01–04; UIS 01–04 | 30 | 2.1 (§2.4) | 2.1, 6.6, 6.3a, 6.7 | 46 |
 | NFR-### | Non-functional requirement | 001–099 | 99 | 0 (§0.6); detailed in 4.2 | 4.2, 6.6, 6.7, 0 | 63 |
-| DEC-### | Binding decision (DEC-001…065 Part 0A; DEC-066…140 Part 9.1) | 001–419 (76 unused) | 343 | 0A, 9.1 | 9.1, 9.5, 9.6a, 0A | 68 |
+| DEC-### | Binding decision (DEC-001…065 Part 0A; DEC-066…140 Part 9.1) | 001–420 (76 unused) | 344 | 0A, 9.1 | 9.1, 9.5, 9.6a, 0A | 68 |
 | BRL-{domain}-## | Business rule, by rule domain | AI 01–12; APR 01–11; AUT 01–10; BID 01–06; CTR 01–05; ELG 01–18; FIN 01–08; LCY 01–06; MKT 01–10; MTG 01–06; ORD 01–06; PRV 01–07; PUB 01–06; QTE 01–07; SCR 01–09; SEQ 01–05; SRC 01–10; SVC 01–07; TEN 01–12 | 161 | 2.3 | 2.3, 6.5, 6.3a, 6.3b | 56 |
 | R## | RBAC role (R01–R20; L suffix = startup-scoped lead variant) | 01–21; L 03–05 (1 unused) | 23 | 2.3 (§2.21) | 2.3, 8.3b, 7.3, 2.6 | 55 |
 | P## | Persona | 01–90 (68 unused) | 22 | 1 (§1.6) | 1, 7.1, 2.6, 8.1 | 38 |
@@ -541,7 +541,7 @@ Every ID family used across the parts. **Actual range found** and **Distinct IDs
 | PW-## | Pairwise test combination | 01–26 | 26 | 6.1 | 6.1 | 2 |
 | EG-## | Error-guessing test idea | 01–20 | 20 | 6.1 | 6.1 | 10 |
 | BVA-D## | Boundary-value analysis datum | 01–14 | 14 | 6.1 | 6.1 | 3 |
-| DR-# | Disaster-recovery drill | 01–09 | 15 | 6.1 | 6.1 | 9 |
+| DR-# | Disaster-recovery drill | 1–9 | 15 | 6.1 | 6.1 | 9 |
 | CI-### | Candidate AI idea (discovery register) | 001–135 | 135 | 7.1 | 7.1 | 8 |
 | TL-## | Agent tool in the tool registry | 01–32 | 32 | 7.2 | 7.2, 9.7a | 12 |
 | D0# | Delivery persona (delivery-lifecycle AI) | 01–06 | 6 | 7.1 | 7.1 | 9 |
@@ -551,7 +551,7 @@ Every ID family used across the parts. **Actual range found** and **Distinct IDs
 | OPT-##-## | FRD optimisation item (source ID, cited) | 01 01–08; 02 01–07; 03 01–08; 04 01–08; 05 01–07; 06 01–05; 07 01–05; 08 01–06; 09 01–05; 10 01–06; 11 01–05; 12 01–04; 13 01–04; 14 01–03; 15 01–04; 16 01–03; 17 01–04; 18 01–04; 19 01–04; 20 01–04 | 104 | Source (FRD) | 8.3c, 3.4, 4.4a, 2.6 | 47 |
 | SM-UT-### | Source test alias (FRD; aliases only, DEC-094) | 001–066 | 66 | Source (FRD); 6 | 6.8b, 6.8a | 10 |
 | M## | Source module M01–M66 (BRD §7) | 01–66 | 66 | Source (BRD) | 6.9a | 53 |
-| W## / A### | Screen ID: Website/Portal W01–W34, Admin A001–A113 | A 01–302 (121 unused); W 01–90 (38 unused) | 233 | Source (FRD §16.2); 2.5 | 8.3a, 2.5, 9.8a, 9.7b | 66 |
+| W## / A### | Screen ID: Website/Portal W01–W34, Admin A001–A113 | A 001–302 (121 unused); W 001–090 (38 unused) | 233 | Source (FRD §16.2); 2.5 | 8.3a, 2.5, 9.8a, 9.7b | 66 |
 | FR-ENH-{G}-### | Source-pack enhanced functional requirement; group letter = enhancement part (A 2.6, B 3.4, C 2.7, D 3.5, E 3.6, F 7.4, H 6.9, I 4.4, J 8.3) | A 001–020; B 001–027; C 001–017; D 001–020; E 001–008; F 001–031; H 001–010; I 001–083 (58 unused); J 001–022 | 180 | 2.6, 2.7, 3.4–3.6, 4.4, 6.9, 7.4, 8.3 | 6.6, 8.3c, 7.4b, 4.4b | 28 |
 | NFR-ENH-{G}-## | Source-pack non-functional requirement (growth scale, recovery by class, unit cost) | B 01–08 | 8 | 3.4 | 3.4, 6.6 | 5 |
 | US-##-E{G}## | Source-pack enhancement user story (epic, group letter, sequence) | 01-EA 01; 01-EB 01–05; 01-EC 01; 01-ED 01–02; 01-EE 01; 01-EF 01; 01-EI 01–02; 01-EJ 01–03; 02-EF 01; 03-EA 01; 03-EB 01; 03-ED 01; 04-EB 01–02; 04-EC 01; 04-EF 01–05; 04-EI 01; 04-EJ 01; 05-EA 01–04; 05-ED 01; 05-EF 01; 06-EA 01; 08-EA 01–02; … (66 families) | 135 | 2.6–8.3 enhancement parts | 6.6, 2.6, 3.4, 8.3c | 15 |
@@ -572,7 +572,7 @@ Every ID family used across the parts. **Actual range found** and **Distinct IDs
 | SM-UAT-{S/F}### | Source UAT test alias (S = screen, F = flow) | F 001–017; S 001–138 | 155 | 6.1, 6.8 | 6.8b, 6.8a | 15 |
 | SM-OP-### | Source API/adapter operation (document 07) | 001–302 | 302 | 3.5a/b | 3.5a, 3.5b | 4 |
 | SM-UX-API-## | Source expansion-interface API candidate | 01–19 | 19 | 3.5b | 3.5b, 3.5a | 7 |
-| SM-FR-{W/A/OP}… | Source FR alias of FR-W/FR-A/FR-OP (DEC-017) | A 01–113; OP 01–03; W 01–34 | 150 | 6.9a | 6.9a | 5 |
+| SM-FR-{W/A/OP}… | Source FR alias of FR-W/FR-A/FR-OP (DEC-017) | A 001–113; OP 001–003; W 001–034 | 150 | 6.9a | 6.9a | 5 |
 | SM-UX-FR- / FR-UX- | Per-screen field-specification alias, not a separate FR (DEC-180) | A 01–113; W 01–34 | 294 | 6.9a; 9.5 | referenced only | 5 |
 | SM-UX-UAT- | Per-screen UAT alias | A 001–113; W 001–034 | 147 | 6.1; 6.8 | 6.8b | 11 |
 | SM-UX-SIT-X## | Source expansion SIT check | 01–10 | 10 | 6.8 | 6.8b, 6.8a | 3 |
@@ -693,7 +693,7 @@ The programme allocates a tag number range to each batch. The table below is **g
 | Conflict | 165 | 165 | 0 |
 | Recommendation | 257 | 257 | 0 |
 
-ADR index: **106** ADRs. DEC index: **343** decisions. Parts scanned: **69** (0–9.10).
+ADR index: **106** ADRs. DEC index: **344** decisions. Parts scanned: **69** (0–9.10).
 
 <!-- GEN:TAGSUMMARY:END -->
 
@@ -2089,6 +2089,7 @@ One line per decision. The full text in Part 0A, Part 9.1 and Part 9.5 is bindin
 | DEC-417 | 9.10 | DEC-414 approved for release A1. The one-time development budget for advanced release A1 … | Procurement of the A1 contract team (AI/LLM, data, SRE/security engineers; ASSUMPTION-700, ASSUMPTION-752) starts at the Release 2 build gate (Day 208). Gate G-A0 is satisfied for budget; the W5-exit condition still applies. A1 … |
 | DEC-418 | 9.10 | DEC-413 resolved: Claude Sonnet stays the primary model. DEC-301 is superseded. The … | Literal match: two aspects become Founder-approved deviations. F15-052 (doc 15: paid AI only as a conditional fallback) and F21-015 (doc 21: local model gateway in front of the paid tier). The result is 11,129 / 11,131 = 99.98% … |
 | DEC-419 | 9.10 | Build-time tooling approved as recommended in the Cost Estimate v1.0 (§7). Claude Max 5x … | ≈ $821–857 per month (₹73,890–77,094) during the build, in addition to Ledger B (DEC-231); about $6.6–6.9k (₹5.9–6.2 L) over the 8 core build months. After the build, seats fall to the maintenance team. Prices are list prices; … |
+| DEC-420 | 9.10 | AI-built delivery approach adopted, with a Sprint 2 calibration gate (Cost Estimate … | Tooling: AI-built tooling replaces the Claude part of DEC-419 (Claude Max 20x for 5 engineers, Pro × 3, CI sandboxes, self-hosted agent observability). Total ≈ $1,336–1,527 per month (₹1.20–1.37 L), about $475–630 more than … |
 
 <!-- GEN:DEC:END -->
 
@@ -2253,10 +2254,10 @@ Every part file, its contents (top-level sections, excluding tag registers and q
 | 9.8b | Part-09-8b_Advanced_Revenue_Growth_Capabilities.md | PART 9 (Batch 9.8), Advanced Revenue Growth Capabilities | Agent specification cards (AG-061…AG-070); Automations table (AU-080…AU-099); Workflows (WF-25…WF-32); Functional requirements (FR-ADV-X2-001…096); User stories (US-&lt;EP&gt;-V201…V232); Test cases (TC-ADV-X2-001…104); New business KPIs (KPI-ADV-X2-01…20); … (+5) | 86 | 8 | 27,417 | Complete |
 | 9.9a | Part-09-9a_Advanced_Platform_Data_Security_Experience.md | PART 9 (Batch 9.9), Advanced Platform, Data, Security and Experience | Expert panel; Opportunity inventory; Improvement plan; Architecture uplift; Capability specifications | 56 | 4 | 15,979 | In progress (no Status line) |
 | 9.9b | Part-09-9b_Advanced_Platform_Data_Security_Experience.md | PART 9 (Batch 9.9), Advanced Platform, Data, Security and Experience (continued) | Agent specification cards (AG-071…080); Automations (AU-100…119); Workflows (WF-33…39); Functional requirements (FR-ADV-X3-001…080); User stories (US- -V3nn); Test cases (TC-ADV-X3-001…062); Effort; … (+4) | 63 | 7 | 20,532 | Complete |
-| 9.10 | Part-09-10_Revision_v1.1_Consolidation.md | PART 9 (Batch 9.10), Revision v1.1 Consolidation: 100% Literal Match, Expert Panels and Advanced Capabilities Plan | What revision v1.1 does; Expert panels (who was used, and for what); Identified advanced capabilities and AI agents (the list); Overlaps between panels and how they were resolved; Improvement plan (roadmap); Effort; Cost: separately approvable proposals (approved budgets DEC-230/231 unchanged); … (+4) | 19 | 1 | 5,596 | Complete |
-| 9.2 | Part-09-2_Glossary_and_Registers.md | PART 9 (Batch 9.2), Appendices: Glossary, ID Registry and Consolidated Registers | Generation method and controls; Glossary; ID registry; Tag numbers issued, by issuing part; Consolidated registers; Duplicate-ID check; Document map | 189 | 1 | 62,066 | Complete |
+| 9.10 | Part-09-10_Revision_v1.1_Consolidation.md | PART 9 (Batch 9.10), Revision v1.1 Consolidation: 100% Literal Match, Expert Panels and Advanced Capabilities Plan | What revision v1.1 does; Expert panels (who was used, and for what); Identified advanced capabilities and AI agents (the list); Overlaps between panels and how they were resolved; Improvement plan (roadmap); Effort; Cost: separately approvable proposals (approved budgets DEC-230/231 unchanged); … (+4) | 19 | 1 | 5,950 | Complete |
+| 9.2 | Part-09-2_Glossary_and_Registers.md | PART 9 (Batch 9.2), Appendices: Glossary, ID Registry and Consolidated Registers | Generation method and controls; Glossary; ID registry; Tag numbers issued, by issuing part; Consolidated registers; Duplicate-ID check; Document map | 189 | 1 | 62,126 | Complete |
 
-**Totals:** 4,722 pages across 70 rendered PDFs; 211 Mermaid diagrams; 1,601,944 words.
+**Totals:** 4,722 pages across 70 rendered PDFs; 211 Mermaid diagrams; 1,602,358 words.
 
 <!-- GEN:DOCMAP:END -->
 
