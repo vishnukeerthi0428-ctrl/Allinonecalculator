@@ -7,6 +7,7 @@ from j_parse_tables import parse
 d=json.load(open(HERE+'/j_items.json')); T=json.load(open(HERE+'/j_tables.json')); N=json.load(open(HERE+'/j_nums.json'))
 BP='/home/user/Allinonecalculator/blueprint/'
 S='/tmp/claude-0/-home-user-Allinonecalculator/233b6551-af93-57f5-8f0b-015057ecee11/scratchpad/v12/'
+EF=json.load(open(HERE+'/j_effort.json'))
 A=list(csv.DictReader(open(BP+'final/coverage_v12/J_coverage.csv',encoding='utf-8')))
 def fsize(p):
     b=os.path.getsize(p); t=open(p,encoding='utf-8',errors='ignore').read(); return b,t.count('\n'),t.count('[TABLE]')
@@ -177,7 +178,7 @@ flowchart TD
 | 6 | 9 workflows route approval or legal review in their steps but V12 defines no APPROVAL scenario for them; the panel adds approval-binding tests TC-V12-J-201…209 | GAP-924 |
 | 7 | Coding controls of chapter 35 are already covered by Part 4.4a; four standards are added (no prototype layering or demo identity in production, model calls only from AI-inference steps, step-class annotation, evidence fields) | §11.10.5.9 |
 | 8 | The backlog grows by 39 SKU build tasks (adopted IDs SM-SVC-##-BUILD) and 14 QA and quality tasks (TASK-V12-J-001…014): 162 → 215 work items | §11.10.5.11 |
-| 9 | **Effort of the new backlog:** see Part 11.10c §11.10.5.12. The figure lies outside the approved Ledger A (DEC-230) and is a separately approvable change request | CONFLICT-922 |
+| 9 | **Effort of the new backlog: {EF['grand'][0]:.0f} / {EF['grand'][1]:.0f} / {EF['grand'][2]:.0f} pd** (low / central / high): SKU build tasks {EF['b_tot'][0]:.0f} / {EF['b_tot'][1]:.0f} / {EF['b_tot'][2]:.0f} pd and QA/QC infrastructure {EF['qa_tot'][0]:.0f} / {EF['qa_tot'][1]:.0f} / {EF['qa_tot'][2]:.0f} pd; ≈ ₹{EF['grand'][0]*4545/1e5:.1f} / {EF['grand'][1]*5682/1e5:.1f} / {EF['grand'][2]*6818/1e5:.1f} lakh one-time. Outside the approved Ledger A (DEC-230); split into CR-V12-J-01 (Release 2 candidate) and CR-V12-J-02 (W6) | Part 11.10c §11.10.5.12; CONFLICT-922 |
 
 ### 11.10.2.3 Status rules used
 

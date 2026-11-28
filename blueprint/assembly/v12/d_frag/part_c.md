@@ -3,7 +3,7 @@
 
 | Field | Value |
 |---|---|
-| Document | Part 11, Batch 4c of 4: executable specifications of the 40 workflows of SM-SVC-21…30 (121 steps) |
+| Document | Part 11, Batch 4c of 4: executable specifications of the 40 workflows of SM-SVC-21…30 (128 steps) |
 | Version | 1.0 · 28 Nov 2026 |
 | Baseline | Part 11.4b common contract (registry, DTO v2/v3, executor contracts, envelope v2, triggers, state model v2, scheduler, authority mapping); Part 9.4 catalogue; Parts 2.2, 9.7–9.9 workflow definitions |
 | V12 sources | BRD ch09; FSD ch12 entries lines 9,111–12,749; FSD ch13 mapping rows; App. B schemas; workbook rows (generated from `assembly/v12/d_workflows.json` by `d_generate.py`, no retyping) |
@@ -31,4 +31,4 @@
 | 8 | No restricted data to free tiers | Pass | Tier 2 not eligible in every card |
 | 9 | Consistent with earlier parts | Pass | DEC-064, DEC-383, DEC-387, DEC-391, DEC-395, DEC-397 respected |
 
-**Status: Part 11 Batch 11.4c complete. 40 workflows and 121 steps of SM-SVC-21…30 specified; 9 workflows of SVC-26/27/28 shipped disabled pending the Founder.**
+**Status: Part 11 Batch 11.4c complete. 40 workflows and 128 steps of SM-SVC-21…30 specified; 9 workflows of SVC-26/27/28 shipped disabled pending the Founder.**

@@ -105,7 +105,7 @@ flowchart TD
 | 6 | 9 workflows route approval or legal review in their steps but V12 defines no APPROVAL scenario for them; the panel adds approval-binding tests TC-V12-J-201…209 | GAP-924 |
 | 7 | Coding controls of chapter 35 are already covered by Part 4.4a; four standards are added (no prototype layering or demo identity in production, model calls only from AI-inference steps, step-class annotation, evidence fields) | §11.10.5.9 |
 | 8 | The backlog grows by 39 SKU build tasks (adopted IDs SM-SVC-##-BUILD) and 14 QA and quality tasks (TASK-V12-J-001…014): 162 → 215 work items | §11.10.5.11 |
-| 9 | **Effort of the new backlog:** see Part 11.10c §11.10.5.12. The figure lies outside the approved Ledger A (DEC-230) and is a separately approvable change request | CONFLICT-922 |
+| 9 | **Effort of the new backlog: 371 / 606 / 979 pd** (low / central / high): SKU build tasks 289 / 472 / 759 pd and QA/QC infrastructure 82 / 134 / 220 pd; ≈ ₹16.9 / 34.4 / 66.7 lakh one-time. Outside the approved Ledger A (DEC-230); split into CR-V12-J-01 (Release 2 candidate) and CR-V12-J-02 (W6) | Part 11.10c §11.10.5.12; CONFLICT-922 |
 
 ### 11.10.2.3 Status rules used
 
