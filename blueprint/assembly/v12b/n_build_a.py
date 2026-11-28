@@ -210,7 +210,7 @@ table(['Platform capability', 'Reused as is', 'Investment-specific extension', '
  ['Workflow engine', 'Universal engine of Part 11.3a (StepRun, states, retries, simulation zero-effect)', 'INV workflows registered with event envelope `event_id, tenant_id, startup_id, service_id, workflow_revision, input_ref, occurred_at, correlation_id` (V12 field 42)', 'Part 11.3a; FR-V12-N-006'],
  ['Model gateway and registry', 'Tiers 0/1a/1b/2/3; provider-neutral registry; Claude Sonnet primary (DEC-788)', 'Investor data class Confidential-Financial: never Tier 2; masked where task allows; registry entries must pass the no-advice evaluation suite EVAL-N-ADV before use by any investor-facing agent', 'DEC-788; SEC-CTL-N-05/16'],
  ['Rule-pack registry', 'AU-128, AG-086, CP-01…07 (Part 11.15)', 'Securities packs Group O securities packs (RP-IN-SEC, RP-US-REGD, RP-US-REGCF, RP-EU-PROSP, RP-UK-FINPROM, RP-AML-KYC, RP-INV-ADVICE) (content by Group O) loaded through the same schema; investment channel packs reuse RP-IN-WA, RP-IN-DPDP, RP-EU-MKT, RP-US-EMAIL', 'DEC-803'],
- ['Mandates and kill switch', 'Part 11.17 mandate engine (two approvers, scope, caps, revocation)', 'Offer re-send mandate type `inv_offer_resend`; per-offering kill switch', 'DEC-779; SEC-CTL-N-10/15'],
+ ['Mandates and kill switch', 'Part 11.17 mandate engine (two approvers, scope, caps, revocation)', 'Mandate type `inv_ir_message` for non-offering investor-relations messages only; securities-governed actions are never mandate-authorised (Group O CP-O-04); per-offering kill switch', 'DEC-779; SEC-CTL-N-10/15'],
  ['Residency', 'IN (Mumbai) and EU stacks (DEC-772)', 'Data room objects pinned to tenant region; investors from other regions read from the tenant region (data never copied)', 'SEC-CTL-N-16'],
  ['Audit and evidence', 'append-only audit, evidence store', 'Offer register and data-room access log retained 8–10 years (verify)', 'SEC-CTL-N-12'],
  ['Billing and metering', 'meter events, billing reconciliation (Part 11.5)', 'Meter units per Service Index (source batch, investor assessment, …); no success fee or capital-based charge [RECOMMENDATION-1005]', 'DEC-816'],
@@ -331,7 +331,7 @@ w('  F -- "Verified" --> G{"AU-203 solicitation ok<br/>relationship or route all
 w('  G -- "No" --> X6["Block GENERAL_SOLICITATION"]')
 w('  G -- "Yes" --> H')
 w('  H -- "Fail" --> X7["Block CONSENT"]')
-w('  H -- "Pass" --> I{"Approval hash valid<br/>or mandate in scope"}')
+w('  H -- "Pass" --> I{"Approval hash valid<br/>two-person if offering"}')
 w('  I -- "No" --> X8["Hold APPROVAL"]')
 w('  I -- "Yes" --> J["Outbox effect<br/>idempotent"]')
 w('```')

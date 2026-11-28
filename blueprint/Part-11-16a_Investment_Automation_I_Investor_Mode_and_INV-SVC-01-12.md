@@ -512,7 +512,7 @@ All 25 foundation entries (INV-01, -11, -12, -13, -14 families) are implemented 
 
 | Branch | Expression | Investor-mode strings (first, in order) | Blueprint |
 |---|---|---|---|
-| B01 | inv? | Investment automation SaaS · Sales & marketing automation SaaS · ){return `<div class="card"><h3>${H(a)}</h3><p>${H(b)}</p>${c}</div>`}<br/>function select(n,values,val){return `<label>${H(n)}<select name="${H(n)}">${values.map(x=>`<option ${x===val? · }>${H(x)}</ | W74 / W55–W73 (§11.16.5.5) |
+| B01 | inv? | Investment automation SaaS · Sales & marketing automation SaaS · ){return `<div class="card"><h3>${H(a)}</h3><p>${H(b)}</p>${c}</div>`}<br/>function select(n,values,val){return `<label>${H(n)}<select name="${H(n)}">${values.map(x=>`<option \${x===val? · }>\${H(x)}</ | W74 / W55–W73 (§11.16.5.5) |
 | B02 | inv? | Automate your fundraising operations. · Automate your sales & marketing operations. · Discover eligible investors, coordinate outreach, manage due diligence and support verified closing — in your own private workspace. · Discover qualified opportunities, engag | W74 / W55–W73 (§11.16.5.5) |
 | B03 | inv? | Discover eligible investors, coordinate outreach, manage due diligence and support verified closing — in your own private workspace. · Discover qualified opportunities, engage across eligible channels, automate follow-ups and convert business — in your own pri | W74 / W55–W73 (§11.16.5.5) |
 | B04 | inv? | Configure fundraising objectives · Research & qualify eligible investors · Coordinate compliant engagement · Manage diligence & approvals · Monitor verified closing & reporting · Configure business objectives | W74 / W55–W73 (§11.16.5.5) |
@@ -564,7 +564,7 @@ All 25 foundation entries (INV-01, -11, -12, -13, -14 families) are implemented 
 | Workflow engine | Universal engine of Part 11.3a (StepRun, states, retries, simulation zero-effect) | INV workflows registered with event envelope `event_id, tenant_id, startup_id, service_id, workflow_revision, input_ref, occurred_at, correlation_id` (V12 field 42) | Part 11.3a; FR-V12-N-006 |
 | Model gateway and registry | Tiers 0/1a/1b/2/3; provider-neutral registry; Claude Sonnet primary (DEC-788) | Investor data class Confidential-Financial: never Tier 2; masked where task allows; registry entries must pass the no-advice evaluation suite EVAL-N-ADV before use by any investor-facing agent | DEC-788; SEC-CTL-N-05/16 |
 | Rule-pack registry | AU-128, AG-086, CP-01…07 (Part 11.15) | Securities packs Group O securities packs (RP-IN-SEC, RP-US-REGD, RP-US-REGCF, RP-EU-PROSP, RP-UK-FINPROM, RP-AML-KYC, RP-INV-ADVICE) (content by Group O) loaded through the same schema; investment channel packs reuse RP-IN-WA, RP-IN-DPDP, RP-EU-MKT, RP-US-EMAIL | DEC-803 |
-| Mandates and kill switch | Part 11.17 mandate engine (two approvers, scope, caps, revocation) | Offer re-send mandate type `inv_offer_resend`; per-offering kill switch | DEC-779; SEC-CTL-N-10/15 |
+| Mandates and kill switch | Part 11.17 mandate engine (two approvers, scope, caps, revocation) | Mandate type `inv_ir_message` for non-offering investor-relations messages only; securities-governed actions are never mandate-authorised (Group O CP-O-04); per-offering kill switch | DEC-779; SEC-CTL-N-10/15 |
 | Residency | IN (Mumbai) and EU stacks (DEC-772) | Data room objects pinned to tenant region; investors from other regions read from the tenant region (data never copied) | SEC-CTL-N-16 |
 | Audit and evidence | append-only audit, evidence store | Offer register and data-room access log retained 8–10 years (verify) | SEC-CTL-N-12 |
 | Billing and metering | meter events, billing reconciliation (Part 11.5) | Meter units per Service Index (source batch, investor assessment, …); no success fee or capital-based charge [RECOMMENDATION-1005] | DEC-816 |
@@ -719,7 +719,7 @@ flowchart TD
   G -- "No" --> X6["Block GENERAL_SOLICITATION"]
   G -- "Yes" --> H
   H -- "Fail" --> X7["Block CONSENT"]
-  H -- "Pass" --> I{"Approval hash valid<br/>or mandate in scope"}
+  H -- "Pass" --> I{"Approval hash valid<br/>two-person if offering"}
   I -- "No" --> X8["Hold APPROVAL"]
   I -- "Yes" --> J["Outbox effect<br/>idempotent"]
 ```

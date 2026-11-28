@@ -136,8 +136,8 @@ story('US-30-ZN10', 'Investor email drafting with the securities communication g
       ('PM-N-05', None, None))
 story('US-30-ZN11', 'Controlled investor email dispatch under the securities gate (INV-SVC-04-WF02)', 'Feature (Compliance)', 'Investor-relations manager (P03, R03)',
       'send an approved investor email only when every securities, consent and approval check passes at dispatch', 'no unauthorized, duplicate or solicitation-breaching send ever happens',
-      'FR-V12-N-039, FR-V12-N-114; SEC-CTL-N-01/02/03/06/10/15; AU-212/203/201', 'Must', 'W4', '8–13', 'US-30-ZN02, US-30-ZN10', 'PM-N-01 (3-way, 278 rows in TS-N-21)', 'Outline uses the pairwise subset of PM-N-01; the full 3-way set is TS-N-21.',
-      [('@happy', 'Dispatch after two-person approval', ['Given an offering-tagged email to relationship investor "Priya Nair" (QIB, IN, s42_PP) approved by R02 and R10 on the same hash', 'And no mandate is used "inv_offer_resend" is active', 'When dispatch runs at 10:00 IST', 'Then exactly one send is accepted and the s.42 counter is reserved']),
+      'FR-V12-N-039, FR-V12-N-114; SEC-CTL-N-01/02/03/06/10/15; AU-212/203/201', 'Must', 'W4', '8–13', 'US-30-ZN02, US-30-ZN10', 'PM-N-01 (3-way, {N01} rows in TS-N-21)', 'Outline uses the pairwise subset of PM-N-01; the full 3-way set is TS-N-21.',
+      [('@happy', 'Dispatch after two-person approval', ['Given an offering-tagged email to relationship investor "Priya Nair" (QIB, IN, s42_PP) approved by R02 and R10 on the same hash', 'And no mandate is used (CP-O-04)', 'When dispatch runs at 10:00 IST', 'Then exactly one send is accepted and the s.42 counter is reserved']),
        ('@neg @SEC-CTL-N-03', 'No relationship under s.42', ['Given recipient "cold.lead@example.in" has no relationship provenance', 'When an offering-tagged email is dispatched', 'Then the result is Block "GENERAL_SOLICITATION" and it cannot be overridden'])],
       ('PM-N-01', None, None))
 story('US-30-ZN12', 'Delivery processing and sender health (INV-SVC-04 WF03–WF04)', 'Feature', 'Automation lead (P10, R11)', 'reconcile delivery events and pause unhealthy senders',
@@ -188,7 +188,7 @@ story('US-31-ZN05', 'Data-room document intake and readiness (INV-SVC-10 WF01, W
       'FR-V12-N-053, FR-V12-N-137, FR-V12-N-140; AG-176; AU-222', 'Must', 'W5', '5–8', 'US-30-ZN01', '', '',
       [('@neg', 'Malware quarantined', ['When an upload contains the EICAR test string', 'Then the file is quarantined and not indexed'])])
 story('US-31-ZN06', 'Gated data-room access and invited-investor room (INV-SVC-10-WF02, W75)', 'Security', 'Invited investor (R21)', 'see only documents my grant, NDA, eligibility and the offering sign-off permit',
-      'confidential and offering documents never reach the wrong person', 'FR-V12-N-054, FR-V12-N-138, FR-V12-N-015, FR-V12-N-022; AU-204/221/222', 'Must', 'W5', '8–13', 'US-31-ZN02', 'PM-N-02 (3-way, 106 rows in TS-N-22)', '',
+      'confidential and offering documents never reach the wrong person', 'FR-V12-N-054, FR-V12-N-138, FR-V12-N-015, FR-V12-N-022; AU-204/221/222', 'Must', 'W5', '8–13', 'US-31-ZN02', 'PM-N-02 (3-way, {N02} rows in TS-N-22)', '',
       [('@happy', 'Watermarked view', ['Given grant G-12 active until 2027-06-30 and NDA signed', 'When "Rahul Mehta" opens PPM v3', 'Then a 5-minute signed URL is issued and each page carries "Rahul Mehta · 2027-05-02 · G-12"'])],
       ('PM-N-02', None, None))
 story('US-31-ZN07', 'Diligence Q&A with fair disclosure (INV-SVC-10-WF03)', 'Feature', 'Issuer authority (P02, R02)', 'answer diligence questions from permitted documents and share material answers with all granted investors',
@@ -199,7 +199,7 @@ story('US-31-ZN08', 'Terms and agreements from counsel-approved templates (INV-S
       [('@neg', 'Deviation flagged', ['When the draft deviates from template clause 7.2', 'Then the deviation is listed and legal review is required'])])
 story('US-31-ZN09', 'Formal offer issue under caps and two-person approval (INV-SVC-11-WF02)', 'Compliance', 'Issuer authority (P02, R02) and compliance officer (R10)',
       'issue numbered formal offers only to verified eligible named investors within the route cap after two distinct approvals', 'every offer is lawful and registered',
-      'FR-V12-N-057, FR-V12-N-142; SEC-CTL-N-02/08/09/10/12/14/15; AU-205/206/207/223', 'Must', 'W5', '13', 'US-31-ZN01, US-31-ZN02', 'PM-N-03 (3-way, 87 rows in TS-N-23)', '',
+      'FR-V12-N-057, FR-V12-N-142; SEC-CTL-N-02/08/09/10/12/14/15; AU-205/206/207/223', 'Must', 'W5', '13', 'US-31-ZN01, US-31-ZN02', 'PM-N-03 (3-way, {N03} rows in TS-N-23)', '',
       [('@happy', 'Serial number assigned', ['Given s.42 counter for FY2027-28 at 37 of 200', 'When R02 then R10 approve offer revision hash "a41b…77" to "Priya Nair"', 'Then offer "PPL-2027-038" is issued, the counter becomes 38 and the register row is immutable'])],
       ('PM-N-03', None, None))
 story('US-31-ZN10', 'Application, e-signature and acceptance (INV-SVC-11-WF03)', 'Compliance', 'Compliance officer (P09, R10)', 'accept applications only when complete, KYC-cleared and signature-reconciled, by two approvers',
@@ -211,7 +211,7 @@ story('US-31-ZN12', 'Receipt import and verification (INV-SVC-12-WF01)', 'Featur
       'FR-V12-N-060, FR-V12-N-145; AU-225; SEC-CTL-N-11', 'Must', 'W5', '5–8', 'US-30-ZN01', 'PM-N-04', '',
       [('@neg', 'Duplicate rejected', ['When the same bank reference, amount and date are imported twice', 'Then the second is rejected as "DUPLICATE_RECEIPT"'])])
 story('US-31-ZN13', 'Atomic allocation and exceptions (INV-SVC-12-WF02)', 'Feature (Compliance)', 'Finance maker and checker (P08, R08/R09)', 'allocate verified receipts atomically with remainders and exceptions',
-      'the ledger is exact and lawful', 'FR-V12-N-061, FR-V12-N-146; AU-226; BRL-V12-N-21', 'Must', 'W5', '8–13', 'US-31-ZN12', 'PM-N-04 (3-way, 67 rows in TS-N-24)', '',
+      'the ledger is exact and lawful', 'FR-V12-N-061, FR-V12-N-146; AU-226; BRL-V12-N-21', 'Must', 'W5', '8–13', 'US-31-ZN12', 'PM-N-04 (3-way, {N04} rows in TS-N-24)', '',
       [('@happy', 'Exact match', ['Given commitment CM-8 of ₹25,00,000.00 and verified receipt RC-14 of ₹25,00,000.00 from the subscriber\'s own account', 'When WF02 runs', 'Then one allocation exists and CM-8 balance is ₹0.00'])],
       ('PM-N-04', None, None))
 story('US-31-ZN14', 'Discrepancies, anomalies and statutory timers (INV-SVC-12 WF03–WF04)', 'Compliance', 'Finance checker (P08, R09)', 'see exceptions with explanations and timers before allotment/refund deadlines',
@@ -264,6 +264,10 @@ def gherkin(s):
     return out
 
 TS_OF = {}
+_cnt = {k[-2:]: len(v['rows']) + len(v['base']) for k, v in MODELS.items()}
+for s_ in STORIES:
+    for k_, v_ in _cnt.items():
+        s_['dims'] = s_['dims'].replace('{N%s}' % k_, str(v_))
 for s in STORIES:
     w(f'#### {s["id"]} {s["title"]}')
     w('')

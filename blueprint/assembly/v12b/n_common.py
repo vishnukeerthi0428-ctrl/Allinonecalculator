@@ -131,4 +131,8 @@ def _space(params):
 
 
 def md_escape(s):
-    return (s or '').replace('|', '/').replace('\n', '<br/>')
+    s = (s or '').replace('|', '/').replace('\n', '<br/>')
+    parts = s.split('`')
+    for i in range(0, len(parts), 2):  # outside inline code: escape $ so pandoc does not read TeX math
+        parts[i] = parts[i].replace('$', '\\$')
+    return '`'.join(parts)

@@ -762,7 +762,7 @@ Feature: Investor email drafting with the securities communication guard (INV-SV
 | Wave | W4 |
 | Points | 8–13 |
 | Dependencies | US-30-ZN02, US-30-ZN10 |
-| Dimension profile | PM-N-01 (3-way, 278 rows in TS-N-21) |
+| Dimension profile | PM-N-01 (3-way, 275 rows in TS-N-21) |
 | Notes | Outline uses the pairwise subset of PM-N-01; the full 3-way set is TS-N-21. |
 
 ```gherkin
@@ -774,7 +774,7 @@ Feature: Controlled investor email dispatch under the securities gate (INV-SVC-0
   @happy
   Scenario: AC-3011-01 Dispatch after two-person approval
     Given an offering-tagged email to relationship investor "Priya Nair" (QIB, IN, s42_PP) approved by R02 and R10 on the same hash
-    And no mandate is used "inv_offer_resend" is active
+    And no mandate is used (CP-O-04)
     When dispatch runs at 10:00 IST
     Then exactly one send is accepted and the s.42 counter is reserved
 
@@ -3039,7 +3039,7 @@ Basis: per service = backend domain and workflows (≈ 45%), screens (≈ 25%), 
 | Running line (pilot: 1 tenant, 2 issuers, 1 active offering; estimates, verify) | Low ₹/month | Base ₹/month | High ₹/month | Formula / assumption |
 |---|---|---|---|---|
 | AI agents incl. 25% overhead | 1,077 | 3,591 | 10,772 | table above × 1.25 |
-| KYC/AML and accreditation verification (40 checks) | 4,000 | 20,000 | 60,000 | India e-KYC ≈ ₹50–150/check; US accreditation verification ≈ US$50–100/check (verify) [ASSUMPTION-1017] |
+| KYC/AML and accreditation verification (40 checks) | 4,000 | 20,000 | 60,000 | India e-KYC ≈ ₹50–150/check; US accreditation verification ≈ US\$50–100/check (verify) [ASSUMPTION-1017] |
 | E-signature (50 envelopes) | 3,000 | 5,000 | 7,500 | ₹60–150/envelope (verify) |
 | Email sending (5,000) and WhatsApp conversations (200) | 300 | 600 | 1,200 | SES + WhatsApp utility/marketing rates (verify, RP-IN-WA) |
 | Data-room storage, malware scanning, watermark rendering | 1,000 | 2,500 | 5,000 | 50 GB S3 + compute |
@@ -3511,48 +3511,48 @@ Own-inventory aspects (N-SC, N-WC, N-AT, N-CM, N-ER, N-MG, N-SI, N-TM, N-CW, N-S
 | L-U083315 | WEB-SMA | _34_Neutral_SaaS_Website(1)/README.txt:3 | Open commercial_website.html or investment_website.html locally in Chrome/Edge. Each is st | NC (cf=0.0) | Part 11.16a §11.16.5.5, §11.16.4.8–§11.16.4.9 |
 | L-U083316 | WEB-SMA | _34_Neutral_SaaS_Website(1)/README.txt:5 | Each catalog contains 100 proposed capability entries in 20 families: 75 optional selectio | NC (cf=0.0) | Part 11.16a §11.16.5.5, §11.16.4.8–§11.16.4.9 |
 | L-U083320 | WEB-SMA | _Website(1)/commercial_website.html:text | class="demo-strip">Interactive SaaS prototype · Synthetic inputs only · No live billing, m | NC (cf=0.0) | Part 11.16a §11.16.5.5, §11.16.4.8–§11.16.4.9 |
-| L-U083403 | WEB-SMA | aS_Website(1)/commercial_website.html:js | ).join('')} ${state.step===1?input('Business name','text','Fictional business',a.name//'') | NC (cf=0.021) | Part 11.16a §11.16.5.5, §11.16.4.8–§11.16.4.9 |
+| L-U083403 | WEB-SMA | aS_Website(1)/commercial_website.html:js | ).join('')} \${state.step===1?input('Business name','text','Fictional business',a.name//'') | NC (cf=0.021) | Part 11.16a §11.16.5.5, §11.16.4.8–§11.16.4.9 |
 | L-U083608 | WEB-INV | _Website(1)/investment_website.html:text | class="wrap" style="padding-top:0;padding-bottom:20px"> Prototype screen navigator — 19 ro | NC (cf=0.0) | Part 11.16a §11.16.5.5, §11.16.4.8–§11.16.4.9 |
 | L-U083621 | WEB-INV | aS_Website(1)/investment_website.html:js | Configure investor intelligence capabilities for approved objectives, within the authorize | NC (cf=0.0) | Part 11.16a §11.16.5.5, §11.16.4.8–§11.16.4.9 |
 | L-U083622 | WEB-INV | aS_Website(1)/investment_website.html:js | Configure due diligence capabilities for approved objectives, within the authorized privat | NC (cf=0.0) | Part 11.16a §11.16.5.5, §11.16.4.8–§11.16.4.9 |
 | L-U083623 | WEB-INV | aS_Website(1)/investment_website.html:js | Configure investment conversion capabilities for approved objectives, within the authorize | NC (cf=0.0) | Part 11.16a §11.16.5.5, §11.16.4.8–§11.16.4.9 |
 | L-U083624 | WEB-INV | aS_Website(1)/investment_website.html:js | Configure investor lifecycle capabilities for approved objectives, within the authorized p | NC (cf=0.0) | Part 11.16a §11.16.5.5, §11.16.4.8–§11.16.4.9 |
 | L-U083625 | WEB-INV | aS_Website(1)/investment_website.html:js | Configure verified closing capabilities for approved objectives, within the authorized pri | NC (cf=0.0) | Part 11.16a §11.16.5.5, §11.16.4.8–§11.16.4.9 |
-| L-U083640 | WEB-INV | _website_layout_catalog.json:$.items[13] | id: INV-03-04 / name: Role classification / family: Contact intelligence / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.3 |
-| L-U083642 | WEB-INV | _website_layout_catalog.json:$.items[15] | id: INV-04-01 / name: Relevance scoring / family: Qualification / core: False | NC (cf=0.167) | Part 11.16a §11.16.5.6.2 |
-| L-U083643 | WEB-INV | _website_layout_catalog.json:$.items[16] | id: INV-04-02 / name: Opportunity matching / family: Qualification / core: False | NC (cf=0.167) | Part 11.16a §11.16.5.6.2 |
-| L-U083644 | WEB-INV | _website_layout_catalog.json:$.items[17] | id: INV-04-03 / name: Confidence evaluation / family: Qualification / core: False | NC (cf=0.167) | Part 11.16a §11.16.5.6.2 |
-| L-U083650 | WEB-INV | _website_layout_catalog.json:$.items[23] | id: INV-05-04 / name: Eligible channel selection / family: Outreach / core: False | NC (cf=0.143) | Part 11.16a §11.16.5.6.4 |
-| L-U083652 | WEB-INV | _website_layout_catalog.json:$.items[25] | id: INV-06-01 / name: Follow-up scheduling / family: Follow-up / core: False | NC (cf=0.25) | Part 11.16a §11.16.5.6.6 |
-| L-U083653 | WEB-INV | _website_layout_catalog.json:$.items[26] | id: INV-06-02 / name: Reply detection / family: Follow-up / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.6 |
-| L-U083654 | WEB-INV | _website_layout_catalog.json:$.items[27] | id: INV-06-03 / name: Interval adjustment / family: Follow-up / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.6 |
-| L-U083655 | WEB-INV | _website_layout_catalog.json:$.items[28] | id: INV-06-04 / name: Stop-condition enforcement / family: Follow-up / core: False | NC (cf=0.25) | Part 11.16a §11.16.5.6.6 |
-| L-U083658 | WEB-INV | _website_layout_catalog.json:$.items[31] | id: INV-07-02 / name: Sentiment classification / family: Conversation / core: False | NC (cf=0.167) | Part 11.16a §11.16.5.6.7 |
-| L-U083659 | WEB-INV | _website_layout_catalog.json:$.items[32] | id: INV-07-03 / name: Objection classification / family: Conversation / core: False | NC (cf=0.167) | Part 11.16a §11.16.5.6.7 |
-| L-U083662 | WEB-INV | _website_layout_catalog.json:$.items[35] | id: INV-08-01 / name: Availability checks / family: Meetings / core: False | NC (cf=0.167) | Part 11.16a §11.16.5.6.8 |
-| L-U083667 | WEB-INV | _website_layout_catalog.json:$.items[40] | id: INV-09-01 / name: Document drafting / family: Documents / core: False | NC (cf=0.167) | Part 11.16a §11.16.5.6.9 |
-| L-U083672 | WEB-INV | _website_layout_catalog.json:$.items[45] | id: INV-10-01 / name: Amount validation / family: Financial controls / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.12 |
-| L-U083673 | WEB-INV | _website_layout_catalog.json:$.items[46] | id: INV-10-02 / name: Receipt matching / family: Financial controls / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.12 |
-| L-U083675 | WEB-INV | _website_layout_catalog.json:$.items[48] | id: INV-10-04 / name: Discrepancy detection / family: Financial controls / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.12 |
-| L-U083702 | WEB-INV | _website_layout_catalog.json:$.items[75] | id: INV-16-01 / name: Mandate review / family: Investor intelligence / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.2 |
-| L-U083703 | WEB-INV | _website_layout_catalog.json:$.items[76] | id: INV-16-02 / name: Investor fit analysis / family: Investor intelligence / core: False | NC (cf=0.0) | Part 11.16a §11.16.5.6.2 |
-| L-U083704 | WEB-INV | _website_layout_catalog.json:$.items[77] | id: INV-16-03 / name: Jurisdiction screening / family: Investor intelligence / core: False | NC (cf=0.0) | Part 11.16a §11.16.5.6.2 |
-| L-U083705 | WEB-INV | _website_layout_catalog.json:$.items[78] | id: INV-16-04 / name: Issuer evidence refresh / family: Investor intelligence / core: Fals | NC (cf=0.0) | Part 11.16a §11.16.5.6.1 |
-| L-U083707 | WEB-INV | _website_layout_catalog.json:$.items[80] | id: INV-17-01 / name: Document collection / family: Due diligence / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.10 |
-| L-U083708 | WEB-INV | _website_layout_catalog.json:$.items[81] | id: INV-17-02 / name: Question classification / family: Due diligence / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.10 |
-| L-U083709 | WEB-INV | _website_layout_catalog.json:$.items[82] | id: INV-17-03 / name: Answer drafting / family: Due diligence / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.10 |
-| L-U083711 | WEB-INV | _website_layout_catalog.json:$.items[84] | id: INV-17-05 / name: Diligence tracking / family: Due diligence / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.10 |
-| L-U083713 | WEB-INV | _website_layout_catalog.json:$.items[86] | id: INV-18-02 / name: Pitch preparation / family: Investment conversion / core: False | NC (cf=0.0) | Part 11.16a §11.16.5.6.9 |
-| L-U083714 | WEB-INV | _website_layout_catalog.json:$.items[87] | id: INV-18-03 / name: Objection resolution / family: Investment conversion / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.7 |
-| L-U083715 | WEB-INV | _website_layout_catalog.json:$.items[88] | id: INV-18-04 / name: Offer approval routing / family: Investment conversion / core: False | NC (cf=0.0) | Part 11.16a §11.16.5.6.11 |
-| L-U083716 | WEB-INV | _website_layout_catalog.json:$.items[89] | id: INV-18-05 / name: Offer expiry tracking / family: Investment conversion / core: False | NC (cf=0.0) | Part 11.16a §11.16.5.6.11 |
-| L-U083722 | WEB-INV | _website_layout_catalog.json:$.items[95] | id: INV-20-01 / name: Receipt verification / family: Verified closing / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.12 |
-| L-U083724 | WEB-INV | _website_layout_catalog.json:$.items[97] | id: INV-20-03 / name: Currency validation / family: Verified closing / core: False | NC (cf=0.0) | Part 11.16a §11.16.5.6.12 |
-| L-U083727 | WEB-INV | website_layout_catalog.json:$.groups[15] | name: Investor intelligence / core: False / desc: Configure investor intelligence capabili | NC (cf=0.0) | Part 11.16a §11.16.5.5, §11.16.4.8–§11.16.4.9 |
-| L-U083728 | WEB-INV | website_layout_catalog.json:$.groups[16] | name: Due diligence / core: False / desc: Configure due diligence capabilities for approve | NC (cf=0.143) | Part 11.16a §11.16.5.5, §11.16.4.8–§11.16.4.9 |
-| L-U083729 | WEB-INV | website_layout_catalog.json:$.groups[17] | name: Investment conversion / core: False / desc: Configure investment conversion capabili | NC (cf=0.0) | Part 11.16a §11.16.5.5, §11.16.4.8–§11.16.4.9 |
-| L-U083730 | WEB-INV | website_layout_catalog.json:$.groups[18] | name: Investor lifecycle / core: False / desc: Configure investor lifecycle capabilities f | NC (cf=0.0) | Part 11.16a §11.16.5.5, §11.16.4.8–§11.16.4.9 |
-| L-U083731 | WEB-INV | website_layout_catalog.json:$.groups[19] | name: Verified closing / core: False / desc: Configure verified closing capabilities for a | NC (cf=0.0) | Part 11.16a §11.16.5.5, §11.16.4.8–§11.16.4.9 |
+| L-U083640 | WEB-INV | _website_layout_catalog.json:\$.items[13] | id: INV-03-04 / name: Role classification / family: Contact intelligence / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.3 |
+| L-U083642 | WEB-INV | _website_layout_catalog.json:\$.items[15] | id: INV-04-01 / name: Relevance scoring / family: Qualification / core: False | NC (cf=0.167) | Part 11.16a §11.16.5.6.2 |
+| L-U083643 | WEB-INV | _website_layout_catalog.json:\$.items[16] | id: INV-04-02 / name: Opportunity matching / family: Qualification / core: False | NC (cf=0.167) | Part 11.16a §11.16.5.6.2 |
+| L-U083644 | WEB-INV | _website_layout_catalog.json:\$.items[17] | id: INV-04-03 / name: Confidence evaluation / family: Qualification / core: False | NC (cf=0.167) | Part 11.16a §11.16.5.6.2 |
+| L-U083650 | WEB-INV | _website_layout_catalog.json:\$.items[23] | id: INV-05-04 / name: Eligible channel selection / family: Outreach / core: False | NC (cf=0.143) | Part 11.16a §11.16.5.6.4 |
+| L-U083652 | WEB-INV | _website_layout_catalog.json:\$.items[25] | id: INV-06-01 / name: Follow-up scheduling / family: Follow-up / core: False | NC (cf=0.25) | Part 11.16a §11.16.5.6.6 |
+| L-U083653 | WEB-INV | _website_layout_catalog.json:\$.items[26] | id: INV-06-02 / name: Reply detection / family: Follow-up / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.6 |
+| L-U083654 | WEB-INV | _website_layout_catalog.json:\$.items[27] | id: INV-06-03 / name: Interval adjustment / family: Follow-up / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.6 |
+| L-U083655 | WEB-INV | _website_layout_catalog.json:\$.items[28] | id: INV-06-04 / name: Stop-condition enforcement / family: Follow-up / core: False | NC (cf=0.25) | Part 11.16a §11.16.5.6.6 |
+| L-U083658 | WEB-INV | _website_layout_catalog.json:\$.items[31] | id: INV-07-02 / name: Sentiment classification / family: Conversation / core: False | NC (cf=0.167) | Part 11.16a §11.16.5.6.7 |
+| L-U083659 | WEB-INV | _website_layout_catalog.json:\$.items[32] | id: INV-07-03 / name: Objection classification / family: Conversation / core: False | NC (cf=0.167) | Part 11.16a §11.16.5.6.7 |
+| L-U083662 | WEB-INV | _website_layout_catalog.json:\$.items[35] | id: INV-08-01 / name: Availability checks / family: Meetings / core: False | NC (cf=0.167) | Part 11.16a §11.16.5.6.8 |
+| L-U083667 | WEB-INV | _website_layout_catalog.json:\$.items[40] | id: INV-09-01 / name: Document drafting / family: Documents / core: False | NC (cf=0.167) | Part 11.16a §11.16.5.6.9 |
+| L-U083672 | WEB-INV | _website_layout_catalog.json:\$.items[45] | id: INV-10-01 / name: Amount validation / family: Financial controls / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.12 |
+| L-U083673 | WEB-INV | _website_layout_catalog.json:\$.items[46] | id: INV-10-02 / name: Receipt matching / family: Financial controls / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.12 |
+| L-U083675 | WEB-INV | _website_layout_catalog.json:\$.items[48] | id: INV-10-04 / name: Discrepancy detection / family: Financial controls / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.12 |
+| L-U083702 | WEB-INV | _website_layout_catalog.json:\$.items[75] | id: INV-16-01 / name: Mandate review / family: Investor intelligence / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.2 |
+| L-U083703 | WEB-INV | _website_layout_catalog.json:\$.items[76] | id: INV-16-02 / name: Investor fit analysis / family: Investor intelligence / core: False | NC (cf=0.0) | Part 11.16a §11.16.5.6.2 |
+| L-U083704 | WEB-INV | _website_layout_catalog.json:\$.items[77] | id: INV-16-03 / name: Jurisdiction screening / family: Investor intelligence / core: False | NC (cf=0.0) | Part 11.16a §11.16.5.6.2 |
+| L-U083705 | WEB-INV | _website_layout_catalog.json:\$.items[78] | id: INV-16-04 / name: Issuer evidence refresh / family: Investor intelligence / core: Fals | NC (cf=0.0) | Part 11.16a §11.16.5.6.1 |
+| L-U083707 | WEB-INV | _website_layout_catalog.json:\$.items[80] | id: INV-17-01 / name: Document collection / family: Due diligence / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.10 |
+| L-U083708 | WEB-INV | _website_layout_catalog.json:\$.items[81] | id: INV-17-02 / name: Question classification / family: Due diligence / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.10 |
+| L-U083709 | WEB-INV | _website_layout_catalog.json:\$.items[82] | id: INV-17-03 / name: Answer drafting / family: Due diligence / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.10 |
+| L-U083711 | WEB-INV | _website_layout_catalog.json:\$.items[84] | id: INV-17-05 / name: Diligence tracking / family: Due diligence / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.10 |
+| L-U083713 | WEB-INV | _website_layout_catalog.json:\$.items[86] | id: INV-18-02 / name: Pitch preparation / family: Investment conversion / core: False | NC (cf=0.0) | Part 11.16a §11.16.5.6.9 |
+| L-U083714 | WEB-INV | _website_layout_catalog.json:\$.items[87] | id: INV-18-03 / name: Objection resolution / family: Investment conversion / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.7 |
+| L-U083715 | WEB-INV | _website_layout_catalog.json:\$.items[88] | id: INV-18-04 / name: Offer approval routing / family: Investment conversion / core: False | NC (cf=0.0) | Part 11.16a §11.16.5.6.11 |
+| L-U083716 | WEB-INV | _website_layout_catalog.json:\$.items[89] | id: INV-18-05 / name: Offer expiry tracking / family: Investment conversion / core: False | NC (cf=0.0) | Part 11.16a §11.16.5.6.11 |
+| L-U083722 | WEB-INV | _website_layout_catalog.json:\$.items[95] | id: INV-20-01 / name: Receipt verification / family: Verified closing / core: False | NC (cf=0.286) | Part 11.16a §11.16.5.6.12 |
+| L-U083724 | WEB-INV | _website_layout_catalog.json:\$.items[97] | id: INV-20-03 / name: Currency validation / family: Verified closing / core: False | NC (cf=0.0) | Part 11.16a §11.16.5.6.12 |
+| L-U083727 | WEB-INV | website_layout_catalog.json:\$.groups[15] | name: Investor intelligence / core: False / desc: Configure investor intelligence capabili | NC (cf=0.0) | Part 11.16a §11.16.5.5, §11.16.4.8–§11.16.4.9 |
+| L-U083728 | WEB-INV | website_layout_catalog.json:\$.groups[16] | name: Due diligence / core: False / desc: Configure due diligence capabilities for approve | NC (cf=0.143) | Part 11.16a §11.16.5.5, §11.16.4.8–§11.16.4.9 |
+| L-U083729 | WEB-INV | website_layout_catalog.json:\$.groups[17] | name: Investment conversion / core: False / desc: Configure investment conversion capabili | NC (cf=0.0) | Part 11.16a §11.16.5.5, §11.16.4.8–§11.16.4.9 |
+| L-U083730 | WEB-INV | website_layout_catalog.json:\$.groups[18] | name: Investor lifecycle / core: False / desc: Configure investor lifecycle capabilities f | NC (cf=0.0) | Part 11.16a §11.16.5.5, §11.16.4.8–§11.16.4.9 |
+| L-U083731 | WEB-INV | website_layout_catalog.json:\$.groups[19] | name: Verified closing / core: False / desc: Configure verified closing capabilities for a | NC (cf=0.0) | Part 11.16a §11.16.5.5, §11.16.4.8–§11.16.4.9 |
 | L-U083733 | WEB-INV | ment_website_route_reconciliation.csv:r2 | W01 / Investment platform homepage / Public / Home / Public / Repurposed / retained ID; ne | NC (cf=0.286) | Part 11.16a §11.16.5.5, §11.16.4.8–§11.16.4.9 |
 | L-U083734 | WEB-INV | ment_website_route_reconciliation.csv:r3 | W02 / Our startup portfolio / Public / Automation service catalog / Public / Repurposed /  | NC (cf=0.375) | Part 11.16a §11.16.5.5, §11.16.4.8–§11.16.4.9 |
 | L-U083735 | WEB-INV | ment_website_route_reconciliation.csv:r4 | W03 / Individual startup business and issuer profile / Public / Automation family & servic | NC (cf=0.15) | Part 11.16a §11.16.5.5, §11.16.4.8–§11.16.4.9 |

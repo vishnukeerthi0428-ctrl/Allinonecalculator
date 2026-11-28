@@ -105,13 +105,13 @@ for k, l in enumerate(b09):
         for tag, val in (("outcome", outcome), ("io", io), ("kpi", kpi), ("risk", risk)):
             add("BRD", "09 Business Workflow Catalogue", l, "Q-B09-%s-%s" % (l[3:], tag), "%s %s: %s" % (l, tag, val),
                 "Conflict (Pending Founder decision: CONFLICT-815/818)", "Part 11.4c §11.4.5.15; Part 11.4d §11.4.5.25",
-                "Workflow enabled per jurisdiction pack (DEC-782, DEC-860)", frs(val) + "; " + ("US-22-ZQ01…14" if "26" in l else "US-08-ZQ01…03"))
+                "Workflow enabled per jurisdiction pack (DEC-782, DEC-860)", frs(val) + "; " + ("US-22-ZQ01…15" if "26" in l else "US-08-ZQ01…03"))
 
 # ------------------------------------------------------------ BRD single rows
 b11 = lines(ch("BRD", "11_"))
 k = b11.index("SM-SVC-26")
 add("BRD", "11 Pricing Billing Unit Economics", "SKU meter table", "Q-B11-26-meter", "SM-SVC-26 meter %s; illustrative %s; %s" % tuple(b11[k + 1:k + 4]),
-    "Partially covered", "Part 11.2c §11.2.5.36 commercial", "Call-minute meter and cost model §11.18.5.12, §11.18.9", "FR-V12-Q-036; AU-287")
+    "Partially covered", "Part 11.2c §11.2.5.36 commercial", "Call-minute meter and cost model §11.18.5.18, §11.18.5.32", "FR-V12-Q-036; AU-287")
 b14 = lines(ch("BRD", "14_"))
 k = b14.index("SM-SVC-26")
 add("BRD", "14 Digital Marketing Omnichannel", "Service map", "Q-B14-26", "SM-SVC-26 %s: %s" % (b14[k + 1], b14[k + 2]), "Covered", "Part 11.2c", "Reconfirmed", "EP-22")
@@ -182,7 +182,7 @@ f13 = lines(ch("FSD", "13_"))
 for k, l in enumerate(f13):
     if re.fullmatch(r"SM-SVC-26-WF0[1-4]|SM-SVC-36-WF03", l):
         add("FSD", "13 Step Trigger Event Registry", "Step registry", "Q-F13-" + l[3:], "%s steps %s; %s; controls %s" % (l, f13[k + 1], f13[k + 2], f13[k + 3]),
-            "Partially covered", "Part 11.4b", "Step classes and events §11.18.6.4", "FR-V12-Q-052; events voice.*")
+            "Partially covered", "Part 11.4b", "Step classes and events §11.18.5.19, §11.18.5.26", "FR-V12-Q-052; events voice.*")
 
 # ------------------------------------------------------------ single-line FSD rows
 singles = [
@@ -201,7 +201,7 @@ for pre, needle, chap, aid, new in singles:
 f16 = lines(ch("FSD", "16_"))
 k = f16.index("EVAL-SM-SVC-26-WF01")
 add("FSD", "16 AI Models Prompts Evaluation", "Evaluation suites", "Q-F16-EVAL26", "EVAL-SM-SVC-26-WF01 %s; %s; cases %s; %s; languages %s" % tuple(f16[k + 1:k + 6]),
-    "Partially covered (TC-V12-F-278, disabled)", "Part 11.6b §11.6.5.5", "Suite extended to six languages and WF02–WF04 (§11.18b AI eval)", "TC-V12-Q-401…448")
+    "Partially covered (TC-V12-F-278, disabled)", "Part 11.6b §11.6.5.5", "Suite extended to six languages and WF02–WF04 (§11.18b AI eval)", "TC-V12-Q-401…450")
 f20 = lines(ch("FSD", "20_"))
 for k, l in enumerate(f20):
     if re.fullmatch(r"SM-SVC-26-WF0[1-4]|SM-SVC-36-WF03", l):
@@ -211,11 +211,11 @@ f21 = lines(ch("FSD", "21_"))
 for k, l in enumerate(f21):
     if l.startswith("SM-SVC-26 — Voice campaign") or l.startswith("SM-SVC-36 — Sales coaching") or l == "SM-SVC-26":
         add("FSD", "21 Tenant Portal Workspace", "Domain panel", "Q-F21-%d" % k, " ".join(f21[k:k + 4]), "Covered (A170/A180 cards)", "Part 11.7b A170, A180",
-            "Tabs A170-Q1…Q8, A180-Q1…Q3 (§11.18.6.1)", "FR-V12-Q-001…055 screens")
+            "Tabs A170-Q1…Q8, A180-Q1…Q3 (§11.18.5.23)", "FR-V12-Q-001…055 screens")
 f24 = lines(ch("FSD", "24_"))
 for k, l in enumerate(f24):
     if l.startswith("X26 ") or l.startswith("X36 "):
-        add("FSD", "24 UI UX Components", "Workspace", "Q-F24-" + l[:3], " ".join(f24[k:k + 3]), "Covered", "Part 11.7a FR-V12-G-040", "Extended §11.18.6.1", "A170-Q1…Q8")
+        add("FSD", "24 UI UX Components", "Workspace", "Q-F24-" + l[:3], " ".join(f24[k:k + 3]), "Covered", "Part 11.7a FR-V12-G-040", "Extended §11.18.5.23", "A170-Q1…Q8")
 f26 = lines(ch("FSD", "26_"))
 i = next(k for k, l in enumerate(f26) if "Domain schema voice_session" in l)
 j = next(k for k in range(i + 1, len(f26)) if f26[k].startswith("<Heading"))
@@ -223,21 +223,21 @@ for cells in table_pairs(f26, i, j):
     if cells[0] == "Field":
         continue
     add("FSD", "26 PostgreSQL Schema", "voice_session", "Q-F26-" + cells[0], "voice_session.%s: %s" % (cells[0], " ".join(cells[1:])),
-        "Partially covered (eng_call disabled)", "Part 11.4d eng_call", "Entity voice_session and children §11.18.6.2", "voice_session; FR-V12-Q-054")
+        "Partially covered (eng_call disabled)", "Part 11.4d eng_call", "Entity voice_session and children §11.18.5.24", "voice_session; FR-V12-Q-054")
 f33 = lines(ch("FSD", "33_"))
 for k, l in enumerate(f33):
     if re.fullmatch(r"SM-SVC-(26-WF0[1-4]|36-WF03)-(STEP-0\d-TC|TC-[A-Z]+)", l):
         add("FSD", "33 Test Specifications", "Workflow and step tests", "Q-F33-" + l[3:], "%s: %s" % (l, " | ".join(f33[k + 1:k + 5])),
-            "Partially covered (not run; disabled)", "Part 11.4c TC-V12-D-101…111", "Executable case in Part 11.18b §11.18.11", "TC-V12-Q-101…146")
+            "Partially covered (not run; disabled)", "Part 11.4c TC-V12-D-101…111", "Executable case in Part 11.18c §11.18.5.30.4", "TC-V12-Q-101…146")
 f35 = lines(ch("FSD", "35_"))
 k = f35.index("SM-SVC-26-BUILD")
 add("FSD", "35 Coding Standards Backlog", "Build tasks", "Q-F35-26BUILD", "SM-SVC-26-BUILD: %s; %s" % (f35[k + 1], f35[k + 2]), "Partially covered", "Part 11.10c",
-    "Build plan and effort §11.18.14", "EP-22 stories US-22-ZQ01…14")
+    "Build plan and effort §11.18.5.32", "EP-22 stories US-22-ZQ01…15")
 f40 = lines(ch("FSD", "40_"))
 for k, l in enumerate(f40):
     if re.fullmatch(r"SM-SVC-26-WF0[1-4]|SM-SVC-36-WF03", l):
         add("FSD", "40 Traceability", "Trace row", "Q-F40-%s-%d" % (l[3:], k), " | ".join(f40[k:k + 10]), "Partially covered", "Part 11.11a/b",
-            "Trace extended to FR-V12-Q / TC-V12-Q", "RTM rows §11.18.13")
+            "Trace extended to FR-V12-Q / TC-V12-Q", "Trace via FR register §11.18.5.20")
 fa = lines(ch("FSD", "AP_Appendix_A_"))
 for k, l in enumerate(fa):
     if 'tags: ["SM-SVC-26"]' in l:
@@ -250,13 +250,13 @@ for l in fb:
     m = re.search(r'"\$id":"urn:sm:dto:(SM-SVC-(26-WF0\d|36-WF03)):v2"', l)
     if m:
         add("FSD", "Appendix B DTO schemas", m.group(1), "Q-FAB-" + m.group(1)[3:], "DTO urn:sm:dto:%s:v2 (%d chars)" % (m.group(1), len(l)), "Covered (Part 11.4c table)", "Part 11.4c",
-            "v3 voice projection adds consent, disclosure, language, recording fields (§11.18.6.3)", "voice DTO v3")
+            "v3 voice projection adds consent, disclosure, language, recording fields (§11.18.5.24)", "voice DTO v3")
 fc = lines(ch("FSD", "AP_Appendix_C_"))
 for k, l in enumerate(fc):
     if "SM-SVC-26-WF0" in l or "SM-SVC-36-WF03" in l:
         tname = next((fc[m] for m in range(k, max(0, k - 40), -1) if fc[m].startswith("CREATE TABLE")), "CREATE TABLE ?")
         add("FSD", "Appendix C DDL", "Table used by voice workflows", "Q-FAC-%d" % k, tname.strip()[:120] + " (used by SM-SVC-26/36 workflows)", "Covered", "Part 11.9b",
-            "Reused; voice tables added with RLS (§11.18.6.2)", "voice_* tables")
+            "Reused; voice tables added with RLS (§11.18.5.24)", "voice_* tables")
 
 # ------------------------------------------------------------ earlier pending rows
 pat = re.compile(r"SVC-26|SVC-36-WF03|CONFLICT-779|CONFLICT-815|CONFLICT-818|INT-05|AI voice|recording", re.I)
