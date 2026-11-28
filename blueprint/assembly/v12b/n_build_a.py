@@ -23,7 +23,7 @@ def header(letter, scope):
     w(f'## Application Blueprint: PART 11 (Batch 11.16{letter}), {TITLE}')
     w('')
     table(['Field', 'Value'], [
-        ['Document', f'Part 11, Batch 11.16, file **{letter} of c**. {scope}. Files: `Part-11-16a_…` (§11.16.1–§11.16.5.11), `Part-11-16b_…` (§11.16.5.12 workflow specifications), `Part-11-16c_…` (§11.16.5.13–§11.16.10 and Appendix A)'],
+        ['Document', f'Part 11, Batch 11.16, file **{letter}** of Group N's files a, b, e. {scope}. Files: `Part-11-16a_…` (§11.16.1–§11.16.5.11), `Part-11-16b_…` (§11.16.5.12 workflow specifications), `Part-11-16e_…` (§11.16.5.13–§11.16.10 and Appendix A)'],
         ['Version', '1.0 · 28 Nov 2026'],
         ['Baseline', 'Parts 0–9.10, 11.1–11.15 (DEC-001…422, DEC-500…791); Part 11.14 DEC-783 (investor/fundraising adopted), DEC-779 (bounded mandates), DEC-772 (EU/IN residency), DEC-777 (messaging window), DEC-788 (model registry), DEC-790 (funding); Part 11.15 rule-pack framework (AU-128, AG-086, CP-01…07); Part 11.2b/11.3b formats; Part 5.1a/5.1b story template; Part 6.2a test template; V12B brief'],
         ['Source material', 'Investment Automation Master Automation Service Catalog 2031 (24 services / 96 workflows; 12 sheets, CSV export); Investment_Automation_19_Neutral_SaaS_Website (README, layout catalogue, route reconciliation, verification report, HTML); `investment_website(1).html`; investor/fundraising mode (`CFG.inv`) of `commercial_website_desktop_V12.html`; Investment lines of BRD/FSD `ZZ_Historical_annex.txt`; the CONFLICT-958 rows of `final/coverage_v12/L_coverage.csv`'],
@@ -75,7 +75,7 @@ src_rows += [
  ['`L_coverage.csv` rows with CONFLICT-958', '1,176', 'see §11.16.2', 'Classified residual units (Group L)', 'CSV'],
 ]
 table(['Material', 'Rows / items', 'In Group N scope', 'Purpose', 'Pattern'], src_rows)
-w('**Scope split with Group O (P1b).** Group N owns INV-SVC-01…12 (48 workflows), the investor-mode website, the common investment platform (product boundary, foundation capabilities INV-01/11/12/13/14, engines, entitlement, securities control framework consumer side). Group O owns INV-SVC-13…24 and the content of the securities rule packs RP-SEC-* (Part 11.16c/d of Group O, published as Parts 11.16c/d in its own numbering) [ASSUMPTION-1001]. Rows of `L_coverage.csv` whose primary service is INV-SVC-13…24 are left to Group O; rows without a primary service are reconciled here.')
+w('**Scope split with Group O (P1b).** Group N owns INV-SVC-01…12 (48 workflows), the investor-mode website, the common investment platform (product boundary, foundation capabilities INV-01/11/12/13/14, engines, entitlement, securities control framework consumer side). Group O (P1b) owns INV-SVC-13…24 and the content of the securities rule packs RP-IN-SEC, RP-US-REGD, RP-US-REGCF, RP-EU-PROSP, RP-UK-FINPROM, RP-AML-KYC and RP-INV-ADVICE (Group N uses Group O's pack IDs and route values) [ASSUMPTION-1001]. Rows of `L_coverage.csv` whose primary service is INV-SVC-13…24 are left to Group O; rows without a primary service are reconciled here.')
 w('')
 w('**Parsing scripts (saved).** `assembly/v12b/n_extract_inv_mode.py` (investor-mode branches and website CFG), `n_common.py` (loaders, covering-array generator, coverage verifier), `n_ctx.py` (ID allocation), `n_spec.py` (hand-authored mapping), `n_comb.py` (parameter models and oracles), `n_build_a.py`, `n_build_b.py`, `n_build_c.py`, `n_build_cov.py`. Every source row is read programmatically; nothing is sampled.')
 w('')
@@ -96,7 +96,7 @@ w('Before this part the blueprint excluded investors and fundraising (DEC-002, C
 w('')
 
 # ------------------------------------------------------------------ 11.16.3
-w('## 11.16.3 Detailed register (summary; the individual list is Appendix A of Part 11.16c and `N_coverage.csv`)')
+w('## 11.16.3 Detailed register (summary; the individual list is Appendix A of Part 11.16e and `N_coverage.csv`)')
 w('')
 if cov:
     g = collections.defaultdict(list)
@@ -107,7 +107,7 @@ if cov:
         locs = collections.Counter(r['blueprint_location'].split(';')[0] for r in rs).most_common(2)
         rows.append([d, ch, len(rs), ', '.join(sorted({r['status_before'].split(' (')[0] for r in rs})), '; '.join(l for l, _ in locs), 'Matched'])
     table(['Doc', 'Chapter / sheet', 'Aspects', 'Status before', 'Main blueprint location', 'After'], rows)
-w('Conflicts raised and resolved in this part: CONFLICT-1008 (neutral storefront vs "investor website"), CONFLICT-1009 (V12 BR-C03/BR-C14/REC-10 separation vs DEC-783), CONFLICT-1019 (V12 side-effect labels weaker than the actual effect). See §11.16.6 (Part 11.16c).')
+w('Conflicts raised and resolved in this part: CONFLICT-1008 (neutral storefront vs "investor website"), CONFLICT-1009 (V12 BR-C03/BR-C14/REC-10 separation vs DEC-783), CONFLICT-1019 (V12 side-effect labels weaker than the actual effect). See §11.16.6 (Part 11.16e).')
 w('')
 
 # ------------------------------------------------------------------ 11.16.4 reconciliation
@@ -145,7 +145,7 @@ for tid, r in sorted(C.ATM.items()):
         t = C.TC[(code, 'POS')]
     rows.append([tid, r['Scenario'], r['Expected output / behavior'][:90], r['Negative and boundary checks'][:80], r['Existing UI acceptance references'].replace('INV-UX-UAT-', 'UAT-'), r['Status'], t])
 table(['V12 test', 'Scenario', 'Expected', 'Negative / boundary', 'UI UAT (source)', 'Status (V12)', 'Blueprint TC'], rows)
-w('All V12 scenarios are "Not run"; they become executable TCs with the full negative set (INPUT, SCOPE, ENT, DUP, QUALITY, BUDGET, RECOVERY, SEC and, for R2/R3, APPROVAL and EFFECT) in Part 11.16b, plus the combinatorial suites of Part 11.16c. The source UAT IDs INV-UX-UAT-A0nn map to screen acceptance of A205–A232 (§11.16.5.9).')
+w('All V12 scenarios are "Not run"; they become executable TCs with the full negative set (INPUT, SCOPE, ENT, DUP, QUALITY, BUDGET, RECOVERY, SEC and, for R2/R3, APPROVAL and EFFECT) in Part 11.16b, plus the combinatorial suites of Part 11.16e. The source UAT IDs INV-UX-UAT-A0nn map to screen acceptance of A205–A232 (§11.16.5.9).')
 w('')
 w('### 11.16.4.4 Cost model (48 rows)')
 w('')
@@ -209,7 +209,7 @@ table(['Platform capability', 'Reused as is', 'Investment-specific extension', '
  ['Transactional outbox', 'outbox row in the same transaction; idempotent consumers; uncertain → reconcile', '`inv_outbox`; idempotency key = scoped event + workflow revision + action target (V12 field 44)', 'NFR-005/006; M06'],
  ['Workflow engine', 'Universal engine of Part 11.3a (StepRun, states, retries, simulation zero-effect)', 'INV workflows registered with event envelope `event_id, tenant_id, startup_id, service_id, workflow_revision, input_ref, occurred_at, correlation_id` (V12 field 42)', 'Part 11.3a; FR-V12-N-006'],
  ['Model gateway and registry', 'Tiers 0/1a/1b/2/3; provider-neutral registry; Claude Sonnet primary (DEC-788)', 'Investor data class Confidential-Financial: never Tier 2; masked where task allows; registry entries must pass the no-advice evaluation suite EVAL-N-ADV before use by any investor-facing agent', 'DEC-788; SEC-CTL-N-05/16'],
- ['Rule-pack registry', 'AU-128, AG-086, CP-01…07 (Part 11.15)', 'Securities packs RP-SEC-* (content by Group O) loaded through the same schema; investment channel packs reuse RP-IN-WA, RP-IN-DPDP, RP-EU-MKT, RP-US-EMAIL', 'DEC-803'],
+ ['Rule-pack registry', 'AU-128, AG-086, CP-01…07 (Part 11.15)', 'Securities packs Group O securities packs (RP-IN-SEC, RP-US-REGD, RP-US-REGCF, RP-EU-PROSP, RP-UK-FINPROM, RP-AML-KYC, RP-INV-ADVICE) (content by Group O) loaded through the same schema; investment channel packs reuse RP-IN-WA, RP-IN-DPDP, RP-EU-MKT, RP-US-EMAIL', 'DEC-803'],
  ['Mandates and kill switch', 'Part 11.17 mandate engine (two approvers, scope, caps, revocation)', 'Offer re-send mandate type `inv_offer_resend`; per-offering kill switch', 'DEC-779; SEC-CTL-N-10/15'],
  ['Residency', 'IN (Mumbai) and EU stacks (DEC-772)', 'Data room objects pinned to tenant region; investors from other regions read from the tenant region (data never copied)', 'SEC-CTL-N-16'],
  ['Audit and evidence', 'append-only audit, evidence store', 'Offer register and data-room access log retained 8–10 years (verify)', 'SEC-CTL-N-12'],
@@ -232,7 +232,7 @@ w('  A1 --> BFF')
 w('  BFF --> API["Django API<br/>investment app"]')
 w('  API --> ENT["AU-200 entitlement"]')
 w('  API --> PDP["PDP + securities gate<br/>AU-201 to AU-207"]')
-w('  PDP --> RP["AU-128 rule packs<br/>RP-SEC counsel-signed"]')
+w('  PDP --> RP["AU-128 rule packs<br/>securities packs counsel-signed"]')
 w('  API --> WF["Workflow engine<br/>Celery workers"]')
 w('  WF --> GW["Model gateway<br/>registry DEC-788"]')
 w('  GW --> GUARD["AG-166 securities guard"]')
@@ -362,7 +362,7 @@ table(['Data', 'Class', 'Lawful basis (IN / EU-UK / US)', 'Retention [ASSUMPTION
  ['Data-room documents and access logs', 'Confidential-Financial', 'Contract / contract', 'Offering + 8 years (verify)', 'Grant-filtered retrieval only', 'Tenant region; S3 SSE-KMS'],
  ['Receipts, commitments, bank references', 'Confidential-Financial', 'Contract + legal obligation', '10 years (verify)', 'Masked; AG-178 explanation only', 'Tenant region'],
 ])
-w('Rules: (1) no investor data in public payloads (AU-228); (2) DSR access/erasure/objection handled in A208 within 30 days (GDPR) / DPDP timelines (verify), erasure leaves a hashed suppression entry; (3) legal hold overrides erasure for offer records with R10 reason; (4) cross-tenant benchmarks exclude investor data entirely (DEC-789 carve-out, DEC-808); (5) DPIA required before first EU tenant (DEC-776). Combinatorial suite PM-N-07 (Part 11.16c).')
+w('Rules: (1) no investor data in public payloads (AU-228); (2) DSR access/erasure/objection handled in A208 within 30 days (GDPR) / DPDP timelines (verify), erasure leaves a hashed suppression entry; (3) legal hold overrides erasure for offer records with R10 reason; (4) cross-tenant benchmarks exclude investor data entirely (DEC-789 carve-out, DEC-808); (5) DPIA required before first EU tenant (DEC-776). Combinatorial suite PM-N-07 (Part 11.16e).')
 w('')
 
 # ------------------------------------------------------------------ 11.16.5.4 roles
@@ -565,7 +565,7 @@ for a in SP.AGENTS:
     w('| Field | Specification |')
     w('|---|---|')
     fields = [
-     ('Type', typ), ('Purpose and business outcome', purpose), ('Linked BR / FR / US', f'DEC-783; {link}; EP-30/EP-31 stories (Part 11.16c)'),
+     ('Type', typ), ('Purpose and business outcome', purpose), ('Linked BR / FR / US', f'DEC-783; {link}; EP-30/EP-31 stories (Part 11.16e)'),
      ('Persona', 'R02/R03/R04/R08/R10 reviewers (issuer staff); never R21 directly except AG-166/AG-171 outputs after approval'),
      ('Trigger', trig), ('Inputs and data sources', inputs), ('Tools / APIs (registry §7.2.4)', tools), ('Outputs', outputs),
      ('Autonomy and HITL', auto), ('Model tier', tier + ' (registry DEC-788; Claude Sonnet primary for 1b)'), ('Tier 2 eligibility · data class', t2),
@@ -690,11 +690,11 @@ table(['API', 'Operation', 'Services', 'Class / note', 'Origin'], rows)
 
 w('### Decisions, tags and quality gate for this file')
 w('')
-w('Decisions DEC-800…819, ADRs ADR-230…234 and the full tags register 1000–1019 are in Part 11.16c (§11.16.7, §11.16.9). Used in this file: DEC-800, 801, 802, 803, 804, 805, 806, 807, 808, 809, 811, 812, 813, 814, 816; ADR-230, 231, 233; ASSUMPTION-1000, 1001, 1003, 1004; GAP-1002, 1010, 1016; CONFLICT-1008, 1009, 1019; RECOMMENDATION-1005.')
+w('Decisions DEC-800…819, ADRs ADR-230…234 and the full tags register 1000–1019 are in Part 11.16e (§11.16.7, §11.16.9). Used in this file: DEC-800, 801, 802, 803, 804, 805, 806, 807, 808, 809, 811, 812, 813, 814, 816; ADR-230, 231, 233; ASSUMPTION-1000, 1001, 1003, 1004; GAP-1002, 1010, 1016; CONFLICT-1008, 1009, 1019; RECOMMENDATION-1005.')
 w('')
 table(['#', 'Quality gate item', 'Result', 'Notes'], [
  ['1', 'Every requirement traced to a source', 'Pass', 'Workbook row, website file or DEC cited per field'],
- ['2', 'Assumptions/gaps/conflicts tagged and logged', 'Pass', 'Register in Part 11.16c §11.16.9'],
+ ['2', 'Assumptions/gaps/conflicts tagged and logged', 'Pass', 'Register in Part 11.16e §11.16.9'],
  ['3', 'IDs unique and consistent', 'Pass', 'Only N ranges used; screen aliases per DEC-801'],
  ['4', 'No story lacks AC; no requirement lacks a test', 'Pass', 'Stories and TCs in Parts 11.16b/c'],
  ['5', 'Negative, edge, security, accessibility cases', 'Pass', 'PM-N models and workflow test classes'],
@@ -703,7 +703,7 @@ table(['#', 'Quality gate item', 'Result', 'Notes'], [
  ['8', 'No restricted data to free tier', 'Pass', 'Investor data never Tier 2'],
  ['9', 'Consistent with earlier parts', 'Pass', 'DEC-783/779/772/777/788 applied'],
 ])
-w('**Status: Part 11 Batch 11.16a complete. Product boundary, 16 securities controls, privacy, website W55–W76, 12 service specifications, 20 agents, 30 automations, 28 admin screens, entities and the API catalogue specified; workflows in 11.16b, stories/tests/cost/decisions in 11.16c.**')
+w('**Status: Part 11 Batch 11.16a complete. Product boundary, 16 securities controls, privacy, website W55–W76, 12 service specifications, 20 agents, 30 automations, 28 admin screens, entities and the API catalogue specified; workflows in 11.16b, stories/tests/cost/decisions in 11.16e.**')
 
 open(OUT, 'w').write('\n'.join(L) + '\n')
 print('wrote', OUT, len('\n'.join(L)))

@@ -225,7 +225,7 @@ DEC-840…850 are recorded in file a §11.17.6.10 and repeated here by title for
 | Procurement Specialist | Is automated submission lawful and reliable? | Many government portals need a personal DSC and may prohibit automation; receipts vary | Registry with counsel review per portal; ASSISTED default for GeM/NIC; deadline guard; receipt verification; unknown → no resubmit |
 | Fraud and Risk Lead | Where would I attack? | Payee swap, split payments, approver ATO, collusion, floor probing, friendly fraud | FC-01…12, AR-01…12, TPA-09 CoI, step-up, chargeback suspension |
 | AI Governance Lead | Are AI roles bounded and evaluable? | Commerce agents face adversarial counterparties | 10 agents with eval thresholds, RT-P corpora, numeric validators, no Tier 2, registry approval (DEC-788) |
-| QA Architect | Is coverage proven, not described? | Plain 3-way masked deep paths | Three-layer design with verified covering arrays and shared oracles; 716 generated + 110 hand-written + ~95 AI cases |
+| QA Architect | Is coverage proven, not described? | Plain 3-way masked deep paths | Three-layer design with verified covering arrays and shared oracles; 716 generated + 110 hand-written + 97 AI cases |
 
 ### 11.17.16.3 Tags register (Part 11.17 a and b)
 
@@ -269,7 +269,7 @@ DEC-840…850 are recorded in file a §11.17.6.10 and repeated here by title for
 | 1 | Every requirement traced to a source | Pass | FR-V12-P-001…135 each name a V12 chapter or baseline rule; 64 aspects in `final/coverage_v12/P_coverage.csv` |
 | 2 | Assumptions/gaps/conflicts tagged and logged | Pass | 20 tags (1040…1059) in §11.17.16.3 |
 | 3 | IDs unique and consistent with earlier parts | Pass with note | Only Group P ranges used; A260–A269 provisional (ASSUMPTION-1040); AG-104 reader superseded, not reused |
-| 4 | No story lacks AC; no requirement lacks a test | Pass | 22 stories with Gherkin (3 Scenario Outlines with 89 generated Examples rows); every FR row names a TC; 826 TC-V12-P + ~95 TC-AI |
+| 4 | No story lacks AC; no requirement lacks a test | Pass | 22 stories with Gherkin (3 Scenario Outlines with 89 generated Examples rows); every FR row names a TC; 826 TC-V12-P + 97 TC-AI (47 agent-specific + 50 generated routing/governance) |
 | 5 | Negative, edge, security, accessibility cases covered | Pass | Single-fault and 3-way fault layers; STRIDE 30 threats, 20 abuse cases; a11y TCs 762, 787, 812, 819, 820 |
 | 6 | No agent lacks guardrail, fallback, KPI and cost estimate | Pass | AG-200…209 cards complete; AU table complete |
 | 7 | Time-sensitive facts flagged "verify" with an as-of date | Pass | Scheme limits, protocols, portals, PSPs, prices, legal fees |

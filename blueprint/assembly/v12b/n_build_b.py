@@ -27,7 +27,7 @@ w('# AI Growth Engine: Employee Sales & Marketing Automation')
 w(f'## Application Blueprint: PART 11 (Batch 11.16b), {TITLE}')
 w('')
 table(['Field', 'Value'], [
- ['Document', 'Part 11, Batch 11.16, file **b of c**: §11.16.5.12 executable workflow specifications for the 48 workflows INV-SVC-01-WF01…INV-SVC-12-WF04. Files a (framework, services) and c (stories, combinatorial tests, cost, decisions)'],
+ ['Document', 'Part 11, Batch 11.16, file **b** of Group N's files a, b, e: §11.16.5.12 executable workflow specifications for the 48 workflows INV-SVC-01-WF01…INV-SVC-12-WF04. Files a (framework, services) and c (stories, combinatorial tests, cost, decisions)'],
  ['Version', '1.0 · 28 Nov 2026'],
  ['Baseline', 'Part 11.16a; Part 11.3a universal engine contract (StepRun, states, retries, simulation); Part 11.3b workflow format; Part 11.15 rule-pack framework; DEC-779/783'],
  ['Roles applied', 'Expert panel of Part 11.16a (private-markets operating partner, securities-law specialist, CPO, Principal Solutions Architect, Principal BSA) plus QA Lead and Security/AI Governance Lead'],
@@ -125,7 +125,7 @@ for n in range(1, 13):
     wfs = [x for x in C.WFS if x['_key'].startswith('%02d' % n)]
     w(f'#### {code} {r0["Automation service name"]}')
     w('')
-    w(f'**Purpose:** {r0["Business objective"]} (workbook Service Catalog row {r0["_row"]}). **Epic:** {s["epic"]}. **Service spec:** Part 11.16a §11.16.5.6.{n}. **Stories:** Part 11.16c.')
+    w(f'**Purpose:** {r0["Business objective"]} (workbook Service Catalog row {r0["_row"]}). **Epic:** {s["epic"]}. **Service spec:** Part 11.16a §11.16.5.6.{n}. **Stories:** Part 11.16e.')
     w('')
     scr = ', '.join(sorted({SP.A_OF.get(x.strip(), x.strip()) for x in r0['Related UI screen IDs'].split(';')}))
     ents = r0['Related database entities']
@@ -251,16 +251,16 @@ w('')
 rows = []
 for n in range(1, 13):
     a = C.ATM.get(C.svc_key(n) + '-ENT-AT01')
-    rows.append([C.TC[('ENT', n)], C.svc_key(n) + '-ENT-AT01', a['Scenario'] if a else '', (a['Preconditions'] if a else '')[:120], (a['Expected output / behavior'] if a else '')[:160], 'Covered also by PM-N-09 exhaustive suite (Part 11.16c)'])
+    rows.append([C.TC[('ENT', n)], C.svc_key(n) + '-ENT-AT01', a['Scenario'] if a else '', (a['Preconditions'] if a else '')[:120], (a['Expected output / behavior'] if a else '')[:160], 'Covered also by PM-N-09 exhaustive suite (Part 11.16e)'])
 table(['Test ID', 'V12 ID', 'Scenario', 'Preconditions (V12)', 'Expected (V12)', 'Blueprint note'], rows)
 
 w('### Decisions, tags and quality gate for this file')
 w('')
-w('Used in this file: DEC-802, 804, 805, 809, 814, 817; ADR-231; ASSUMPTION-1000, 1003; CONFLICT-1019 (V12 side-effect labels of INV-SVC-05-WF02/WF04 weaker than the real effect; the stricter class is applied). Full registers in Part 11.16c.')
+w('Used in this file: DEC-802, 804, 805, 809, 814, 817; ADR-231; ASSUMPTION-1000, 1003; CONFLICT-1019 (V12 side-effect labels of INV-SVC-05-WF02/WF04 weaker than the real effect; the stricter class is applied). Full registers in Part 11.16e.')
 w('')
 table(['#', 'Quality gate item', 'Result', 'Notes'], [
  ['1', 'Every requirement traced', 'Pass', 'Workbook rows quoted literally per workflow'],
- ['2', 'Tags logged', 'Pass', 'Part 11.16c §11.16.9'],
+ ['2', 'Tags logged', 'Pass', 'Part 11.16e §11.16.9'],
  ['3', 'IDs unique', 'Pass', 'TC and FR allocated by n_ctx.py'],
  ['4', 'Every requirement has tests', 'Pass', 'Each workflow: step tests + 9–11 class tests'],
  ['5', 'Negative/edge/security cases', 'Pass', 'INPUT, SCOPE, ENT, DUP, QUALITY, BUDGET, RECOVERY, SEC, APPROVAL, EFFECT'],

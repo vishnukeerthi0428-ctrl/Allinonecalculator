@@ -17,7 +17,7 @@ P1 = [('jurisdiction', ['IN', 'US', 'EU', 'UK']),
       ('investor_type', ['retail', 'sophisticated_HNI', 'accredited_or_QI', 'QIB_institutional', 'unknown']),
       ('offering_route', ALLROUTES),
       ('channel', ['email', 'whatsapp', 'portal', 'manual_task']),
-      ('mandate', ['none', 'active', 'expired', 'revoked']),
+      ('authorization', ['two_person_approval', 'single_approval', 'mandate_active', 'mandate_revoked']),
       ('data_class', ['Public', 'Personal', 'Confidential-Financial']),
       ('consent', ['granted', 'absent', 'withdrawn']),
       ('pack_state', ['active', 'draft', 'expired']),
@@ -32,7 +32,7 @@ def o1(d):
     r = d['offering_route']; it = d['investor_type']; ch = d['channel']
     if d['pack_state'] != 'active':
         return 'BLOCK', 'PACK_NOT_ACTIVE', 'SEC-CTL-N-01'
-    if d['mandate'] in ('expired', 'revoked'):
+    if d['authorization'] == 'mandate_revoked':
         return 'BLOCK', 'MANDATE_INVALID', 'SEC-CTL-N-10'
     if d['consent'] == 'withdrawn' and ch != 'portal':
         return 'BLOCK', 'CONSENT_WITHDRAWN', 'SEC-CTL-N-06'
@@ -71,10 +71,14 @@ def o1(d):
             return 'HOLD', 'CERTIFICATION_REQUIRED', 'SEC-CTL-N-02'
     if ch == 'manual_task':
         return 'TASK_ONLY', 'NO_EXTERNAL_EFFECT', 'SEC-CTL-N-10'
-    if d['mandate'] == 'none':
-        return 'HOLD', 'APPROVAL_REQUIRED_L1', 'SEC-CTL-N-10'
+    if r != 'none' and d['authorization'] == 'mandate_active':
+        return 'HOLD', 'MANDATE_NOT_PERMITTED_CP-O-04', 'SEC-CTL-N-10'
+    if r != 'none' and d['authorization'] == 'single_approval':
+        return 'HOLD', 'SECOND_APPROVAL_REQUIRED', 'SEC-CTL-N-10'
+    if r == 'none':
+        return 'DISPATCH', 'IR_MESSAGE_APPROVED' if d['authorization'] != 'mandate_active' else 'IR_MESSAGE_UNDER_MANDATE', 'SEC-CTL-N-10'
     extra = ' (cap reserved)' if r in ('PR_lt150', '506b', 's42_PP') else ''
-    return 'DISPATCH' + extra, 'ALLOWED_UNDER_MANDATE', 'SEC-CTL-N-10'
+    return 'DISPATCH' + extra, 'TWO_PERSON_APPROVED', 'SEC-CTL-N-10'
 
 
 # ---------------- PM-N-02 data-room access (3-way)
@@ -314,7 +318,7 @@ MODELS = [
 
 
 BASE = {  # risk-based base-choice slices: all gates satisfied except the varied parameters
- 'PM-N-01': ({'channel': 'email', 'mandate': 'active', 'consent': 'granted', 'pack_state': 'active', 'relationship': 'preexisting', 'data_class': 'Personal'}, ['jurisdiction', 'offering_route', 'investor_type']),
+ 'PM-N-01': ({'channel': 'email', 'authorization': 'two_person_approval', 'consent': 'granted', 'pack_state': 'active', 'relationship': 'preexisting', 'data_class': 'Personal'}, ['jurisdiction', 'offering_route', 'investor_type']),
  'PM-N-02': ({'eligibility': 'verified', 'nda': 'signed', 'grant': 'active', 'signoff': 'valid'}, ['doc_class', 'region', 'kyc']),
  'PM-N-03': ({'recipient': 'eligible_verified', 'signoff': 'valid', 'approvals': 'two_distinct', 'hash': 'match', 'kill_switch': 'off'}, ['route', 'cross_border', 'cap']),
  'PM-N-04': ({'source': 'bank_statement', 'currency': 'matches', 'duplicate': 'no', 'kyc': 'cleared'}, ['amount', 'payer', 'route']),

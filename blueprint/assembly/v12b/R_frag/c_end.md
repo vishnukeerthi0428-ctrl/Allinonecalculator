@@ -118,6 +118,6 @@ All conflicts that earlier groups raised on these topics are closed by the Found
 | 8 | No restricted data routed to free-tier models | **Pass** | DDL `ai_model_free_tier_data_ck`; M10 oracle rows for Restricted/Personal never route to free or open-weight unmasked |
 | 9 | Consistent with earlier parts | **Pass with reported items** | §11.19.9.2 |
 | 10 | V12-B combinatorial rule (pairwise for all; 3-way for safety/money/law; exhaustive ≤ 64) | **Pass** | 13 models: 8 × 3-way, 3 × pairwise, 2 × exhaustive; script `assembly/v12b/R_02_combinatorics.py` |
-| 11 | Mermaid renders | **Pass** | 0 diagram errors in the three PDFs |
+| 11 | Mermaid renders | **Pass** | All Mermaid blocks render (15 in files a and b; file c has none); renderer check returns zero failures |
 
 **Status: Part 11 Batch 11.19 (files a, b, c) complete. Founder decisions DEC-778 and DEC-784…789 implemented at full depth: {{ASPECTS}} V12 aspects Matched, 155 FRs, 29 stories, {{TOTAL_TC}} test cases (86 full form + {{GEN_TC}} generated from 13 combinatorial models), 10 automations, 20 decisions, 10 ADRs; no item pending.**

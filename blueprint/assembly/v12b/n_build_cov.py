@@ -9,7 +9,7 @@ import n_spec as SP
 
 BP = '/home/user/Allinonecalculator/blueprint'
 OUT = BP + '/final/coverage_v12/N_coverage.csv'
-PA = 'Part 11.16a'; PB = 'Part 11.16b'; PC = 'Part 11.16c'
+PA = 'Part 11.16a'; PB = 'Part 11.16b'; PC = 'Part 11.16e'
 rows = []
 def add(doc, chapter, section, aid, summary, before, loc, action, new_ids):
     rows.append(dict(doc=doc, chapter=chapter, section=section, aspect_id=aid, aspect_summary=summary[:400], status_before=before,
