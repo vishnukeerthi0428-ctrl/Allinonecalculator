@@ -3,14 +3,32 @@
 
 | Field | Value |
 |---|---|
-| Document | Part 11.21c: the cross-capability consequential-effect gateway in three layers (PM-T03 full space, PM-T03P positive sub-space, PM-T03N single fault × effect), data residency (PM-T04), multi-tenant isolation and RLS (PM-T05), resilience with work in flight (PM-T09) and the exhaustive models XT-10…XT-15, every case in the Part 6.2a parameterized form |
+| Document | Part 11.21c: Investment Automation SKU invocation (PM-T02 pairwise and PM-T02N single fault); the cross-capability consequential-effect gateway in three layers (PM-T03 full space, PM-T03P positive sub-space, PM-T03N single fault × effect), data residency (PM-T04), multi-tenant isolation and RLS (PM-T05), resilience with work in flight (PM-T09) and the exhaustive models XT-10…XT-15, every case in the Part 6.2a parameterized form |
 | Version | 1.0 · 28 Nov 2026 |
 | Baseline | Part 11.21a/b; Part 11.17a §11.17.5.12 (PDP order) and §11.17.5.14 (eligibility register); Parts 11.15, 11.16, 11.18, 11.19; DEC-771, 772, 777, 778, 779…783, 787, 789 |
 | Roles applied | Combinatorial test design expert, security test lead, performance and resilience architect, Head of Quality Engineering, Security/Compliance/AI Governance Lead |
 
 ---
 
-## 11.21.6 Generated test cases (part 2: money, law, safety, residency, isolation, resilience)
+## 11.21.6 Generated test cases (part 2: investment, money, law, safety, residency, isolation, resilience)
+
+### 11.21.6.3 PM-T02 Investment Automation SKU invocation (valid set, pairwise)
+
+{{HDR_PM-T02}}
+
+#### Group TC-V12-T-M02: Pairwise combinatorial cases – Investment Automation SKU invocation (valid set)
+
+{{TAB_PM-T02}}
+
+### 11.21.6.4 PM-T02N Investment Automation invocation (invalid values, single fault)
+
+{{NEG02_TABLE}}
+
+{{HDR_PM-T02N}}
+
+#### Group TC-V12-T-M02N: Single-fault cases – Investment Automation (invalid values)
+
+{{TAB_PM-T02N}}
 
 ### 11.21.6.5 PM-T03 Consequential-effect gateway
 

@@ -3,7 +3,7 @@
 
 | Field | Value |
 |---|---|
-| Document | Part 11.21b: master parameter catalogue (P-01…P-26) and reference tables (39 SKUs, 24 INV SKUs, 22 roles); combinatorial method, strength policy, constraint handling, layers and verification; model inventory and counts for all 20 Part 11.21 models and the rollup of every combinatorial model in the blueprint; test scenarios TS-V12-T-01…17; generated cases of PM-T01, PM-T01N, PM-T02 and PM-T02N in the Part 6.2a parameterized form |
+| Document | Part 11.21b: master parameter catalogue (P-01…P-26) and reference tables (39 SKUs, 24 INV SKUs, 22 roles); combinatorial method, strength policy, constraint handling, layers and verification; model inventory and counts for all 20 Part 11.21 models and the rollup of every combinatorial model in the blueprint; test scenarios TS-V12-T-01…18; generated cases of PM-T01 and PM-T01N in the Part 6.2a parameterized form (PM-T02/PM-T02N are in Part 11.21c) |
 | Version | 1.0 · 28 Nov 2026 |
 | Baseline | Part 11.21a; Part 6.1 §6.1.11.5 and §6.1.12; Part 6.2a §6.2.1; Parts 11.2, 11.10, 11.15–11.19 |
 | Roles applied | Combinatorial test design expert (primary), Head of Quality Engineering, Business Systems Analyst, Principal Engineer |
@@ -146,24 +146,6 @@ Each invalid value is combined with every tenant type and with both zones, all o
 
 {{TAB_PM-T01N}}
 
-### 11.21.6.3 PM-T02 Investment Automation SKU invocation (valid set, pairwise)
-
-{{HDR_PM-T02}}
-
-#### Group TC-V12-T-M02: Pairwise combinatorial cases – Investment Automation SKU invocation (valid set)
-
-{{TAB_PM-T02}}
-
-### 11.21.6.4 PM-T02N Investment Automation invocation (invalid values, single fault)
-
-{{NEG02_TABLE}}
-
-{{HDR_PM-T02N}}
-
-#### Group TC-V12-T-M02N: Single-fault cases – Investment Automation (invalid values)
-
-{{TAB_PM-T02N}}
-
 ---
 
 ### Quality gate: Part 11.21b
@@ -174,7 +156,7 @@ Each invalid value is combined with every tenant type and with both zones, all o
 | 2 | Tags logged | Pass | ASSUMPTION-1120, 1122, 1123 used here; register in Part 11.21e |
 | 3 | IDs unique and consistent | Pass | TC-V12-T IDs assigned once by `t_05_build.py`; no reuse |
 | 4 | No requirement without a test | Pass | Every SKU appears with every role that operates it (pairwise) |
-| 5 | Negative, edge, security, accessibility | Pass | 23 invalid values (PM-T01N) and 6 (PM-T02N), each with every tenant type or role and both zones |
+| 5 | Negative, edge, security, accessibility | Pass | 23 invalid values (PM-T01N), each with every tenant type and both zones |
 | 6 | Agents | N/A | |
 | 7 | Time-sensitive facts flagged | Pass | Region codes "verify" |
 | 8 | No restricted data to free tiers | Pass | CR-10 constraint; Tier 2 rows only with Public/Internal data; PM-T01N fault row |

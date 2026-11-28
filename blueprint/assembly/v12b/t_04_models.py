@@ -134,9 +134,9 @@ P01 = collections.OrderedDict([
     ('autonomy', C.AUTONOMY), ('ai_route', C.AI_ROUTE), ('sla', C.SLA)])
 
 PROV_TXT = {'Available': 'provider accepts; run Completed',
-            'Throttled (429)': '429 handled by exponential backoff with jitter (≤ 3 retries, NFR-016); exactly one effect (NFR-005)',
-            'Timeout after submit': 'outcome Uncertain → Reconciling; no retry before the provider is queried by idempotency key (NFR-026, FR-STD-02); at most one effect',
-            'Down before submit': '≤ 3 retries with backoff, then exception queue and task to the owner; run Held; no effect'}
+            'Throttled (429)': '429 → backoff with jitter, ≤ 3 retries (NFR-016); exactly one effect',
+            'Timeout after submit': 'Uncertain → Reconciling; no retry before the idempotency-key query (NFR-026); ≤ 1 effect',
+            'Down before submit': '≤ 3 retries, then exception queue; run Held; no effect'}
 DEV_TXT = {'Desktop 1440': '1440 px', 'Laptop 1280': '1280 px', 'Tablet 768': '768 px', 'Mobile 390': '390 px', 'Mobile 320': '320 CSS px (reflow, WCAG 1.4.10)'}
 
 
@@ -154,7 +154,7 @@ def o01(r):
     elif role == 'R17':
         parts.append('Purchase on W-checkout creates the %s entitlement for SM-SVC-%s; invoice and meter schedule created; tenant activation follows onboarding' % (C.PLAN_TEXT[r['plan']], sku))
     else:
-        parts.append('Entitlement passes (%s); meter `%s` +1 in the %s meter ledger' % (C.PLAN_TEXT[r['plan']], meter, reg))
+        parts.append('entitled (%s); meter `%s` +1' % (r['plan'].lower(), meter))
     parts.append('%s %s via %s (%s)' % (role, C.ROLE_ACTION[role], r['channel'], r['identity']))
     if role == 'R21':
         parts.append('every action stamped with `grant_id`; no export; no approval of client claims, budgets or autonomy (ABAC-ENH-A-01…03)')
@@ -162,13 +162,13 @@ def o01(r):
         parts.append('business content only through the grant; grant expiry ends the session view')
     if role in ('R14', 'R15'):
         parts.append('any mutation attempt returns 403 with NSE')
-    parts.append('all rows, files, cache keys, logs and the audit event written in the %s zone; Vercel function and model call pinned to %s (CJ-TC-09)' % (reg, reg))
+    parts.append('%s zone only: rows, files, cache, logs, audit, Vercel function and model call (CJ-TC-09)' % reg)
     loc = r['locale']
     if r['channel'] in C.UI_CHANNELS:
         d = 'rtl, mirrored layout' if loc == 'ar-AE' else 'ltr'
-        parts.append('UI in %s (dir=%s; CLDR %s dates, numbers, currency)' % (loc, d, loc))
+        parts.append('UI %s, dir=%s, CLDR formats' % (loc, d))
     else:
-        parts.append('problem details and generated text localized by `Accept-Language: %s`' % loc)
+        parts.append('problem details localized for %s' % loc)
     air, dat = r['ai_route'], r['data']
     if sku in C.AI_SKUS or role == 'R20':
         if air.startswith('Tier 2'):
@@ -178,34 +178,40 @@ def o01(r):
         elif air.startswith('Tier 3'):
             parts.append('no model call; rules/cache output labelled "degraded"; human review task')
         else:
-            parts.append('AI step through the registry row "%s" (approved, DPA no-training, %s processing)' % (air, reg))
+            parts.append('AI via registry row "%s" (approved, %s processing)' % (air, reg))
     else:
-        parts.append('no AI step in this SKU path; registry row not used')
+        parts.append('no AI step')
     if dat in ('Personal', 'Restricted', 'Confidential') and r['consent'] != 'Not applicable':
-        parts.append('lawful basis "%s" verified by the PDP at dispatch' % r['consent'])
+        parts.append('basis "%s" rechecked by the PDP at dispatch' % r['consent'])
     if t == 'T1-MedMaarg':
         parts.append('health-data classifier passes (no patient data)')
     if t == 'T1-EduVerse' and dat in ('Personal', 'Restricted'):
         parts.append('age-band check: recipient is an adult or institution, never a minor (DEC-030)')
     aut = r['autonomy']
     if aut == 'L0':
-        parts.append('L0: the human records the manual action with evidence; no system dispatch')
+        parts.append('L0: manual action recorded with evidence; no system dispatch')
     elif aut == 'L1':
-        parts.append('L1: AI draft created; no external effect until the human acts')
+        parts.append('L1: draft only until the human acts')
     elif aut == 'L2':
-        parts.append('L2: one dispatch of the exact approved payload hash; a replay returns the first result')
+        parts.append('L2: exact approved hash dispatched once; replay returns the first result')
     elif aut in ('L3', 'L4'):
         if eff in ('R0', 'R1'):
-            parts.append('%s: internal %s step runs automatically (no mandate needed)' % (aut, eff))
+            parts.append('%s: internal %s step automatic (no mandate needed)' % (aut, eff))
         else:
-            parts.append('%s: dispatch under an Active %s mandate: reserve → commit in the consumption ledger, caps checked, effect visible in A263 ≤ 1 min' % (aut, C.MANDATE[sku]))
+            parts.append('%s: Active %s mandate, reserve → commit, caps checked, visible in A263 ≤ 1 min' % (aut, C.MANDATE[sku]))
             if aut == 'L4':
                 parts[-1] += '; plan step is inside the approved graph'
+    if r['plan'] == 'TRIAL' and aut in ('L2', 'L3', 'L4'):
+        parts[-1] += ' (simulated in trial: 0 provider calls)'
+    if role in ('R13', 'R14', 'R15'):
+        parts[-1] = 'observed run (started by an operating role): ' + parts[-1]
+    elif role == 'R17':
+        parts[-1] = 'first run after activation: ' + parts[-1]
     if eff in ('R2', 'R3') or r['provider'] != 'Available':
         parts.append(PROV_TXT[r['provider']])
     if r['device'] != 'Headless':
-        parts.append('%s on %s: no horizontal scroll, targets ≥ 24×24 CSS px, axe 0 critical/serious' % (DEV_TXT[r['device']], r['browser']))
-    parts.append('SLO attribution: %s' % r['sla'])
+        parts.append('%s on %s: no horizontal scroll, targets ≥ 24 px, axe 0 critical/serious' % (DEV_TXT[r['device']], r['browser']))
+    parts.append('SLO tier %s' % r['sla'])
     exp = '; '.join(parts)
     p0 = (aut in ('L3', 'L4') and eff in ('R2', 'R3')) or eff == 'R3' or dat == 'Restricted' or \
          (r['provider'] == 'Timeout after submit' and eff in ('R2', 'R3')) or air.startswith('Tier 2') or role in ('R21', 'R13')
@@ -1193,7 +1199,15 @@ def run():
         print(mid, summary[mid]['rows'], stats, flush=True)
     # negative layers
     n1 = build_neg01()
-    out['PM-T01N'] = [dict(row=x['row'], neg=x['neg'], exp=x['exp'], P=x['P'], type=x['type'], lvl='SYS', rel='R1') for x in n1]
+    def rel01n(x):
+        r, (p, v) = x['row'], x['neg']
+        rels = [C.REL_SKU[r['sku']]]
+        if not neg(r['locale']):
+            rels.append(C.LOCALE_REL[r['locale']])
+        if p == 'autonomy' and ('L3' in v or 'kill' in v):
+            rels.append('R2')
+        return C.rel_max(*rels)
+    out['PM-T01N'] = [dict(row=x['row'], neg=x['neg'], exp=x['exp'], P=x['P'], type=x['type'], lvl='SYS', rel=rel01n(x)) for x in n1]
     vv = collections.Counter()
     for x in n1:
         vv['missing'] += 0

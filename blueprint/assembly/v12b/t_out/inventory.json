@@ -1,5 +1,16 @@
 {
- "tc_unique": 11498,
+ "parallel": {
+  "Part-11-23a_Independent_Audit_Retention_and_Errata.md": {
+   "TC-V12-V": 34
+  },
+  "Part-11-24a_Developer_Build_and_Production_Deployment_Pack.md": {
+   "TC-W": 12
+  },
+  "Part-11-24b_Developer_Build_and_Production_Deployment_Pack.md": {
+   "TC-W": 42
+  }
+ },
+ "tc_unique": 11622,
  "ts_unique": 340,
  "families": {
   "TC-<epic>": 1981,
@@ -25,7 +36,7 @@
   "TC-ENH-K": 64,
   "TC-FLT": 46,
   "TC-NFR": 100,
-  "TC-RP": 174,
+  "TC-RP": 298,
   "TC-V12-A": 114,
   "TC-V12-B": 264,
   "TC-V12-C": 712,
@@ -131,7 +142,7 @@
    "TC-V12-M": 104
   },
   "Part 11.15": {
-   "TC-RP": 133
+   "TC-RP": 257
   },
   "Part 11.16": {
    "TC-V12-N": 1220,
@@ -337,6 +348,12 @@
   },
   "Part-11-15c_Regulatory_Rule_Packs_Draft_Legal_Wording.md": {
    "TC-RP": 36
+  },
+  "Part-11-15d_Additional_Rule_Packs_Payments_AgentCommerce_Procurement_Voice.md": {
+   "TC-RP": 57
+  },
+  "Part-11-15e_Additional_Rule_Packs_Procurement_Voice_Recording_Decisions.md": {
+   "TC-RP": 67
   },
   "Part-11-16a_Investment_Automation_I_Investor_Mode_and_INV-SVC-01-12.md": {},
   "Part-11-16b_Investment_Automation_I_Workflow_Specifications.md": {

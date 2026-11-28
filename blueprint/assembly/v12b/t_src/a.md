@@ -3,7 +3,7 @@
 
 | Field | Value |
 |---|---|
-| Document | Part 11.21 (five files). **a (this file):** purpose, scope, principles, organisation and logistics (environments, test data and synthetic tenants, entry and exit criteria per release, defect management, automation architecture, CI gates, metrics) and the test strategy of every level and capability. **b:** master parameter catalogue, combinatorial method, model inventory and counts, test scenarios and the platform-wide pairwise cases. **c:** 3-way and exhaustive cases for money-, law- and safety-critical areas, residency, isolation and resilience. **d:** localization, accessibility, performance and AI-evaluation cases. **e:** cross-capability end-to-end suites, traceability rollup, release suites, regression strategy, conflicts, decisions, panel review, tags and quality gate |
+| Document | Part 11.21 (five files). **a (this file):** purpose, scope, principles, organisation and logistics (environments, test data and synthetic tenants, entry and exit criteria per release, defect management, automation architecture, CI gates, metrics) and the test strategy of every level and capability. **b:** master parameter catalogue, combinatorial method, model inventory and counts, test scenarios and the platform-wide pairwise cases. **c:** Investment Automation invocation cases, then 3-way, single-fault and exhaustive cases for money-, law- and safety-critical areas, residency, isolation and resilience. **d:** localization, accessibility, performance and AI-evaluation cases. **e:** cross-capability end-to-end suites, traceability rollup, release suites, regression strategy, conflicts, decisions, panel review, tags and quality gate |
 | Version | 1.0 · 28 Nov 2026 |
 | Baseline | Part 6.1 (test strategy template: levels, types T01–T21, techniques, conventions §6.1.12, CI gates G0–G5, LT-01…12, DR-1…8), Part 6.2a (test case template, precondition profiles PP-01…07), Part 6.4 (AI evaluation template), Parts 11.1–11.19 test sections (Group J reconciliation in Parts 11.10a–c), Part 11.14 (Founder decisions DEC-770…791, binding) |
 | Precedence | Part 11.14 > this part > Part 6.1 for the V12 scope; Part 6.1 remains binding where this part is silent (DEC-920) |
@@ -33,7 +33,7 @@
 | 8 | Master parameter catalogue P-01…P-26 | Part 11.21b §11.21.4 | Every combinatorial model in Parts 11.16–11.22 |
 | 9 | Combinatorial method, 20 models, counts and verification; **{{GEN_TOTAL}} generated cases** | Part 11.21b §11.21.5–11.21.6; Parts 11.21c, 11.21d | Test automation |
 | 10 | **{{E2E_COUNT}} cross-capability end-to-end cases** (18 journeys per zone) and UAT packs | Part 11.21e §11.21.7 | UAT owners |
-| 11 | Traceability rollup, release suites and regression strategy | Part 11.21e §11.21.8 | QA Lead; release managers |
+| 11 | Traceability rollup (tests per part, all FR-V12 requirements, DEC-770…791), release suites and regression strategy | Part 11.21e §11.21.8 | QA Lead; release managers |
 
 ### 11.21.1.2 Material reviewed
 
@@ -217,7 +217,7 @@ All test data is synthetic or lawfully authorised fixture data (Part 6.1 §6.1.7
 
 | Release | Entry (to start the release test cycle) | Exit (go/no-go; all blocking) |
 |---|---|---|
-| **R1** (W0–W3; SSO/SCIM, developer platform, connectors, SKUs 01–16 and 25, IN zone; EU test cell) | Feature-complete build for R1 scope; SYN-T01…06, T10/T11 loaded; simulators for IdP, SCIM, CRM, DLT, SES, WhatsApp; registry fixtures | 100% P0/P1 of R1 rows (§11.21.8.3 release counts); GV-RLS, GV-RES (IN, EU cell), GV-CT, GV-SEC, GV-A11Y, GV-COMB, GV-EVAL (enabled workflows), GV-DR (KPI-32 drill IN) green; 0 S1/S2; pen test of SSO/SCIM and developer API closed; UAT-PK-V12-02 signed |
+| **R1** (W0–W3; SSO/SCIM, developer platform, connectors, SKUs 01–16 and 25, IN zone; EU test cell) | Feature-complete build for R1 scope; SYN-T01…06, T10/T11 loaded; simulators for IdP, SCIM, CRM, DLT, SES, WhatsApp; registry fixtures | 100% P0/P1 of R1 rows (Part 11.21e §11.21.8.4 release counts); GV-RLS, GV-RES (IN, EU cell), GV-CT, GV-SEC, GV-A11Y, GV-COMB, GV-EVAL (enabled workflows), GV-DR (KPI-32 drill IN) green; 0 S1/S2; pen test of SSO/SCIM and developer API closed; UAT-PK-V12-02 signed |
 | **R2** (W4–W5 and the full V12 change request: mandates, payments, commerce, bids, voice, investor, SKUs 17–24 and 26–39, EU zone for first EU tenant) | R1 exit met; packs for IN and EU in counsel review or Approved (synthetic in test); PSP, CPaaS, tender-portal, counterparty-agent and KYC simulators; FX-MND, FX-PAY, FX-VOICE, FX-INV | All R1 + R2 rows green; PM-T03 L1/L2/L3 100%; XT-10/15 100%; DR drills per zone with active mandate (J-T-11); 24×7 paging test (XT-13) green; EVAL suites for enabled R2 workflows; counsel sign-off for every jurisdiction to be activated (production); SOC 2 Type I evidence complete; UAT-PK-V12-01, 03–10, 12, 13 signed |
 | **R3** (de-DE, fr-FR; UK/ME/APAC/US markets as contracted; SOC 2 Type II, ISO 27001) | R2 exit; de/fr bundles; packs for newly contracted markets | All R1–R3 rows; de/fr EVAL slices; linguistic review; zone tests for any new zone; certification evidence |
 | **R4** (ar-AE RTL; ISO 27701/42001) | R3 exit; ar bundle; RTL components | All rows incl. RTL; AT passes in RTL; ar EVAL slices; UAT-PK-V12-11 signed |

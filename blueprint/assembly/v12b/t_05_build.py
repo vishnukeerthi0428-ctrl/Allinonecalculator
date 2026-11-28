@@ -160,6 +160,108 @@ def e2e_rows():
 
 E2E = e2e_rows()
 
+
+# =============================================================================================
+# FR-V12 traceability (Parts 11.1-11.19) and gap-closure cases
+# =============================================================================================
+GAPTC = [
+    ('FR-V12-M-097', 'Attach a signed provenance manifest and an "AI-generated" label to every AI-generated media asset', 'AU-142; BR-V7-AI-01; SM-SVC-27',
+     'Pre: PP-01; SM-SVC-27 entitled; creative fixture brief CR-12', '1. Generate an image and a short video through SM-SVC-27-WF01. 2. Download the assets. 3. Verify the manifest signature with the platform public key. 4. Alter one byte and verify again',
+     'Each asset carries a signed manifest (generator, model registry row, prompt hash, time, tenant) and a visible label; verification passes on the original and fails on the altered asset; manifest stored in the tenant zone', 'P1', 'T14'),
+    ('FR-V12-M-098', 'Publish a cross-tenant benchmark only from opted-in tenants with k ≥ 10 and noise', 'AU-143; DEC-789 (Founder decision now recorded); CONFLICT-983 resolved',
+     'Pre: PP-01 per zone; 9 then 12 opted-in tenants; ε budget available', '1. Run AU-143 with 9 opted-in tenants. 2. Add 3 tenants and rerun. 3. Withdraw one tenant',
+     'No publication at k = 9; publication at k = 12 with noise and no tenant-level value; the withdrawn tenant is excluded from the next period; computation stays in the zone', 'P0', 'T19'),
+    ('FR-V12-M-099', 'Meter all Part 11.13 agent usage to Ledger B line B25 with a hard cap and an alert ladder', 'AU-002; DEC-743; BR-V7-AI-04',
+     'Pre: PP-01; B25 monthly cap set to a fixture value; Part 11.13 agents enabled', '1. Run agents until 80%, 100% and then one more request. 2. Read Ledger B, alerts and gateway logs',
+     'Every call metered to B25 before it is made; alerts at 50/80/100%; the request after 100% is refused before any provider call (NFR-014); no paid fallback', 'P0', 'T20'),
+    ('FR-V12-M-100', 'Label every Part 11.13 AI output as AI-assisted wherever a person sees it', 'BR-V7-AI-01; EU AI Act Article 50 transparency (verify application date)',
+     'Pre: PP-06; outputs of every Part 11.13 agent on Admin, Portal, e-mail digest and PDF', '1. Open each surface showing an AI output. 2. Inspect with a screen reader',
+     'Label "AI-assisted" visible and programmatically exposed (accessible name) on every surface; no unlabeled AI text found by the surface scan', 'P1', 'T14, T08'),
+    ('FR-V12-I-041', 'Execute the PERF-01…07 load profiles before each release gate and record V12 KPI-05/26/27/28', 'Part 11.9c; ch29 V9; LT-01…12, LT-V12-T-01…12',
+     'Pre: `perf-*` per zone', '1. Run the release load set mapped to PERF-01…07. 2. Compute KPI-05/26/27/28 from the run', 'Every profile run with evidence; KPI values within target or the gate is blocked', 'P1', 'T03'),
+    ('FR-V12-I-043', 'Implement the fourteen management views with production metrics MET-V12-I-10…65', 'Part 11.9c; ch29 V4 mapping',
+     'Pre: PP-01; golden metric dataset with hand-computed values', '1. Load the golden dataset. 2. Open each of the 14 views. 3. Compare each MET value', 'All 56 metrics equal the hand-computed values (Decimal exact or stated rounding); each view filters by scope; tenant sees only own data', 'P1', 'T01'),
+    ('FR-V12-I-054', 'Operate a public bug-bounty programme', 'Part 11.9c; ENT-SEC-05; W6',
+     'Pre: programme page published; triage rota', '1. Review the scope, safe-harbour and disclosure text. 2. Submit a test report through the intake channel. 3. Track triage',
+     'Scope excludes production data exfiltration; safe-harbour approved by counsel; report acknowledged within the published SLA; triage record kept', 'P2', 'T07'),
+    ('FR-V12-I-055', 'Encrypt data in transit and at rest and rotate keys', 'Part 11.9c; ENT-SEC-06',
+     'Pre: staging per zone', '1. TLS scan of every public host. 2. Read storage encryption settings and KMS key policies. 3. Rotate the zone data key',
+     'TLS 1.2+ only with approved ciphers; every store encrypted at rest with the zone KMS key; rotation completes without downtime and old data stays readable', 'P0', 'T07'),
+    ('FR-V12-I-056', 'Rotate secrets and run break-glass access', 'Part 11.9c; ENT-SEC-07; DEC-778',
+     'Pre: staging per zone; break-glass role configured', '1. Rotate provider secrets and the database password of `app_rw`. 2. Invoke break-glass for the migration role. 3. Review alerts and audit',
+     'Rotation with zero failed requests; break-glass requires two approvers, is time-boxed, alerts security and is reviewed; `service_role` never used outside CI migration', 'P0', 'T07'),
+]
+
+
+def gap_rows():
+    out = []
+    for i, (fr, title, links, pre, steps, exp, P, typ) in enumerate(GAPTC):
+        out.append(dict(id='TC-V12-T-%03d' % (len(E2E) + 1 + i), fr=fr, title=title, links='TS-V12-T-18 · %s · %s' % (fr, links),
+                        pre=pre, steps=steps, exp=exp, P=P, typ=typ))
+    return out
+
+
+GAP = gap_rows()
+
+
+def gap_table():
+    lines = ['| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |', '|' + '|'.join('-' * w for w in (7, 12, 13, 14, 22, 22, 3, 4, 3, 3, 3)) + '|']
+    for r in GAP:
+        auto = 'N (programme review)' if r['fr'] == 'FR-V12-I-054' else 'Y'
+        lvl = 'OAT' if r['fr'] in ('FR-V12-I-054', 'FR-V12-I-056') else 'SYS'
+        lines.append('| %s | %s | %s | %s | %s | %s | %s | %s | EP | %s | %s |' % (r['id'], esc(r['title']), esc(r['links']), esc(r['pre']), esc(r['steps']), esc(r['exp']), r['P'], r['typ'], auto, lvl))
+    return '\n'.join(lines)
+
+
+def fr_trace():
+    import glob as _g
+    defs = collections.OrderedDict()
+    text = []
+    for f in sorted(_g.glob(BP + '/Part-11-*.md')):
+        b = os.path.basename(f)
+        if re.match(r'Part-11-2\d', b):
+            continue
+        t = open(f, encoding='utf-8').read()
+        text.append(t)
+        for line in t.split('\n'):
+            m = re.match(r'^\|\s*\**(FR-V12-[A-Z]-\d{3})\**\s*\|', line)
+            if m and m.group(1) not in defs:
+                defs[m.group(1)] = line
+    alltext = '\n'.join(text)
+    refd = set()
+    for l in alltext.split('\n'):
+        if re.match(r'^\| *TC-', l):
+            refd.update(re.findall(r'FR-V12-[A-Z]-\d{3}', l))
+        for a, b2 in re.findall(r'(FR-V12-[A-Z]-\d{3})…(\d{3})', l):
+            for i in range(int(a[-3:]), int(b2) + 1):
+                refd.add('%s%03d' % (a[:9], i))
+    fam = collections.defaultdict(collections.Counter)
+    gapset = {g[0] for g in GAPTC}
+    for k, line in defs.items():
+        L = k[7]
+        fam[L]['defined'] += 1
+        if re.search(r'TC-|TS-|EVAL-|-TC-|AT01|\bM\d\d\b|M-O\d|PM-N', line):
+            fam[L]['row'] += 1
+        elif k in refd:
+            fam[L]['tc'] += 1
+        elif k in gapset:
+            fam[L]['gap'] += 1
+        else:
+            fam[L]['none'] += 1
+    owner = {'A': '11.1', 'B': '11.2', 'C': '11.3', 'D': '11.4', 'E': '11.5', 'F': '11.6', 'G': '11.7', 'H': '11.8', 'I': '11.9',
+             'J': '11.10', 'K': '11.11', 'L': '11.12', 'M': '11.13', 'N': '11.16a/b/e', 'O': '11.16c/d', 'P': '11.17', 'Q': '11.18', 'R': '11.19'}
+    lines = ['| FR family | Part | FRs defined | Test named in the FR row | Referenced by a TC row or range | Closed by Part 11.21 (TC-V12-T-032…040) | Without a test |', '|---|---|---|---|---|---|---|']
+    T = collections.Counter()
+    for L in sorted(fam):
+        c = fam[L]
+        T.update(c)
+        lines.append('| FR-V12-%s | %s | %d | %d | %d | %d | %d |' % (L, owner.get(L, ''), c['defined'], c['row'], c['tc'], c['gap'], c['none']))
+    lines.append('| **Total** | | **{:,}** | **{:,}** | **{:,}** | **{:,}** | **{:,}** |'.format(T['defined'], T['row'], T['tc'], T['gap'], T['none']))
+    return '\n'.join(lines), T
+
+
+FR_TABLE, FR_TOT = fr_trace()
+
 # =============================================================================================
 # ID assignment for generated models
 # =============================================================================================
@@ -280,7 +382,7 @@ def gen_table(mid):
         tech = 'EG, EP (single fault)'
     hdr = ['**Common for %s:** %s Links for every row: %s. Generated by `assembly/v12b/t_04_models.py` (model %s); IDs assigned by `t_05_build.py`.' % (
         rng, mm['common'] if mm else '', mm['links'] if mm else '', mid), '',
-        '| ID | Data | Expected | Links | P | Type | Tech | Auto | Lvl |', '|---|---|---|---|---|---|---|---|---|']
+        '| ID | Data | Expected | Links | P | Type | Tech | Auto | Lvl |', '|' + '|'.join('-' * w for w in (7, 26, 46, 14, 3, 5, 5, 4, 4)) + '|']
     for r in models[mid]:
         auto = r.get('auto', 'Y')
         hdr.append('| %s | %s | %s | %s | %s | %s | %s | %s | %s |' % (r['id'], esc(data_cell(mid, r)), esc(r['exp']), esc(links_cell(mid, r)),
@@ -290,7 +392,7 @@ def gen_table(mid):
 
 def ai_table():
     mid = 'PM-T16'
-    lines = ['| ID | Title | Links | Test data | Steps | Expected result | P | Type | Tech | Auto | Level |', '|---|---|---|---|---|---|---|---|---|---|---|']
+    lines = ['| ID | Title | Links | Test data | Steps | Expected result | P | Type | Tech | Auto | Level |', '|' + '|'.join('-' * w for w in (7, 14, 14, 16, 22, 20, 3, 4, 4, 3, 5)) + '|']
     ev = {e['suite']: e for e in C.EVAL}
     for r in models[mid]:
         e = ev[r['row']['suite']]
@@ -306,7 +408,7 @@ def ai_table():
 
 
 def e2e_table():
-    lines = ['| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |', '|---|---|---|---|---|---|---|---|---|---|---|']
+    lines = ['| ID | Title | Links | Preconditions · Test data | Steps | Expected result | P | Type | Tech | Auto | Lvl |', '|' + '|'.join('-' * w for w in (7, 12, 13, 14, 22, 22, 3, 4, 3, 3, 3)) + '|']
     for r in E2E:
         lines.append('| %s | %s | %s | %s | %s | %s | %s | %s | UC | Y | E2E |' % (r['id'], esc(r['title']), esc(r['links'] + ' · ' + r['rel']),
                                                                              esc(r['pre']), esc(r['steps']), esc(r['exp']), r['P'], r['typ']))
@@ -343,7 +445,7 @@ def counts_table():
             esc(s['method']), '{:,}'.format(req) if isinstance(req, int) else req, s['rows'], s.get('pw_only') or '—',
             s.get('verify', {}).get('missing', 0), ('%03d' % lo) if lo < 1000 else lo, ('%03d' % hi) if hi < 1000 else hi))
         tot += s['rows']
-    lines.append('| **Total generated** | | | | | | | **%d** | | **0** | TC-V12-T-101…%d |' % (tot, LAST))
+    lines.append('| **Total generated** | | | | | | | **{:,}** | | **0** | TC-V12-T-101…{} |'.format(tot, LAST))
     return '\n'.join(lines), tot
 
 
@@ -367,11 +469,14 @@ def ts_table():
             ('TS-V12-T-14', 'Service-credit ladder boundaries', 'XT-14', 'P1'),
             ('TS-V12-T-15', 'Two-person approval and SoD for mandates', 'XT-15', 'P0'),
             ('TS-V12-T-16', 'AI evaluation gates of the 111 V12 suites', 'PM-T16', 'P0'),
-            ('TS-V12-T-17', 'Cross-capability end-to-end journeys per zone', 'J-T-01…18', 'P0')]
+            ('TS-V12-T-17', 'Cross-capability end-to-end journeys per zone', 'J-T-01…18', 'P0'),
+            ('TS-V12-T-18', 'FR-V12 traceability gap closure', 'FR gap closure', 'P0')]
     lines = ['| ID | Title | Model / journeys | Test cases | Priority |', '|---|---|---|---|---|']
     for ts, t, mods, p in rows:
         if ts == 'TS-V12-T-17':
             rng = '%s…%s' % (E2E[0]['id'], E2E[-1]['id'])
+        elif ts == 'TS-V12-T-18':
+            rng = '%s…%s' % (GAP[0]['id'], GAP[-1]['id'])
         else:
             ms = [m.strip() for m in mods.split(',')]
             lo = min(IDS[m][0] for m in ms)
@@ -386,10 +491,14 @@ def rollup_tables():
     pp = inv['per_part']
     lines = ['| Part (group) | Test cases defined (unique IDs) | Main families |', '|---|---|---|']
     pre, post = 0, 0
-    for part, fams in pp.items():
+    def pkey(x):
+        m = re.match(r'Part (\d+)\.(\d+)', x)
+        return (int(m.group(1)), int(m.group(2))) if m else (99, 0)
+    for part in sorted(pp, key=pkey):
+        fams = pp[part]
         tc = sum(v for k, v in fams.items() if k != 'TS')
         fam = ', '.join('%s %d' % (k, v) for k, v in sorted(fams.items(), key=lambda x: -x[1]) if k != 'TS')
-        lines.append('| %s | %d | %s |' % (part, tc, fam))
+        lines.append('| %s | {:,} | %s |'.format(tc) % (part, fam))
         if part.startswith('Part 11'):
             post += tc
         else:
@@ -399,18 +508,20 @@ def rollup_tables():
     j_inst = 2275
     total_rows = inv['tc_unique']
     exec_total = total_rows - j_classes + j_inst
-    t11 = len(E2E) + GEN_TOTAL
+    t11 = len(E2E) + len(GAP) + GEN_TOTAL
     lines = ['| Measure | Count | Basis |', '|---|---|---|',
-             '| Test cases defined in Parts 2.6–9.10 (before V12) | %d | `t_01_inventory.py` scan of table rows; the V12 brief quotes 4,156 (difference: worked examples and aliases counted once in rows) |' % pre,
-             '| Test cases defined in Parts 11.1–11.19 | %d | Same scan |' % post,
-             '| Unique test-case IDs defined before Part 11.21 | %d | Same scan, de-duplicated across files |' % total_rows,
+             '| Test cases defined in Parts 2.6–9.10 (before V12) | {:,} | `t_01_inventory.py` scan of table rows. The V12 brief quotes 4,156; the difference (−{:,}) is IDs that earlier parts count but do not define in their own table row (ranges and aliases) |'.format(pre, 4156 - pre),
+             '| Test cases defined in Parts 11.1–11.19 | {:,} | Same scan |'.format(post),
+             '| Unique test-case IDs defined before Part 11.21 | {:,} | Same scan, de-duplicated across files |'.format(total_rows),
              '| minus Part 11.10 class definitions TC-V12-J-001…019 (counted through instances) | −%d | Part 11.10b §11.10.4.5 |' % j_classes,
-             '| plus executable instances of those classes (1,342 scenarios, 517 steps, 156 AT01, 39 ENT-AT01, 221 canonical acceptance rows) | +%d | Part 11.10b §11.10.4.5 |' % j_inst,
-             '| **Executable test cases before Part 11.21** | **%d** | |' % exec_total,
-             '| Part 11.21 end-to-end journey cases (full form) | +%d | §11.21.7 |' % len(E2E),
-             '| Part 11.21 generated combinatorial cases | +%d | §11.21.6 |' % GEN_TOTAL,
-             '| **Executable test cases after Part 11.21** | **%d** | |' % (exec_total + t11),
-             '| Test scenarios (TS) defined | %d + 17 | scan + TS-V12-T-01…17 |' % inv['ts_unique'],
+             '| plus executable instances of those classes (1,342 scenarios, 517 steps, 156 AT01, 39 ENT-AT01, 221 canonical acceptance rows) | +{:,} | Part 11.10b §11.10.4.5 |'.format(j_inst),
+             '| **Executable test cases before Part 11.21** | **{:,}** | |'.format(exec_total),
+             '| Part 11.21 end-to-end journey cases (full form) | +{:,} | §11.21.7.2 |'.format(len(E2E)),
+             '| Part 11.21 FR gap-closure cases (full form) | +{:,} | §11.21.8.2 |'.format(len(GAP)),
+             '| Part 11.21 generated combinatorial cases | +{:,} | §11.21.6 |'.format(GEN_TOTAL),
+             '| **Executable test cases after Part 11.21** | **{:,}** | |'.format(exec_total + t11),
+             '| Test scenarios (TS) defined | %d + 18 | scan + TS-V12-T-01…18 |' % inv['ts_unique'],
+             '| Parts written in parallel (not counted above) | %s | Parts 11.20, 11.22–11.24 appeared while this part was written; their rows are added at the next rollup |' % (', '.join('%s: %d' % (k.split('_')[0], sum(v.values())) for k, v in inv.get('parallel', {}).items()) or 'none'),
              '| Evaluation suites bound as gates (not counted as tests) | 111 | EVAL-SM-SVC-##-WF## |']
     t2 = '\n'.join(lines)
     return t1, t2, exec_total, exec_total + t11
@@ -426,18 +537,20 @@ def release_table():
             c[mid][r.get('rel', 'R1')] += 1
     for r in E2E:
         c['E2E (J-T)'][r['rel']] += 1
+    for r in GAP:
+        c['FR gap closure'][{'FR-V12-I-054': 'R3', 'FR-V12-M-099': 'R3', 'FR-V12-M-100': 'R3'}.get(r['fr'], 'R1' if r['fr'] in ('FR-V12-I-043', 'FR-V12-I-055', 'FR-V12-I-056') else 'R2')] += 1
     lines = ['| Model | R1 | R2 | R3 | R4 | Total |', '|---|---|---|---|---|---|']
     tot = collections.Counter()
-    for mid in ORDER + ['E2E (J-T)']:
+    for mid in ORDER + ['E2E (J-T)', 'FR gap closure']:
         cc = c[mid]
-        lines.append('| %s | %d | %d | %d | %d | %d |' % (mid, cc['R1'], cc['R2'], cc['R3'], cc['R4'], sum(cc.values())))
+        lines.append('| %s | {:,} | {:,} | {:,} | {:,} | {:,} |'.format(cc['R1'], cc['R2'], cc['R3'], cc['R4'], sum(cc.values())) % mid)
         tot.update(cc)
-    lines.append('| **Total** | **%d** | **%d** | **%d** | **%d** | **%d** |' % (tot['R1'], tot['R2'], tot['R3'], tot['R4'], sum(tot.values())))
+    lines.append('| **Total** | **{:,}** | **{:,}** | **{:,}** | **{:,}** | **{:,}** |'.format(tot['R1'], tot['R2'], tot['R3'], tot['R4'], sum(tot.values())))
     cum = []
     run = 0
     for rr in ('R1', 'R2', 'R3', 'R4'):
         run += tot[rr]
-        cum.append('%s %d' % (rr, run))
+        cum.append('%s {:,}'.format(run) % rr)
     return '\n'.join(lines) + '\n\nCumulative regression size of the Part 11.21 cases at each release gate: ' + ' · '.join(cum) + '.', tot
 
 
@@ -449,7 +562,7 @@ def prio_table():
     for mid in ORDER:
         for r in models[mid]:
             c[r['P']] += 1
-    for r in E2E:
+    for r in E2E + GAP:
         c[r['P']] += 1
     return ' · '.join('%s %d' % (k, c[k]) for k in ('P0', 'P1', 'P2', 'P3'))
 
@@ -517,11 +630,12 @@ def verdict_line(mid):
 
 PH = {
     'CATALOGUE': catalogue_table(), 'SKU_TABLE': sku_table(), 'INV_SKU_TABLE': inv_sku_table(), 'ROLE_TABLE': role_table(),
-    'COUNTS': COUNTS, 'GEN_TOTAL': str(GEN_TOTAL), 'TS_TABLE': ts_table(), 'E2E_TABLE': e2e_table(), 'E2E_REGISTER': e2e_register(),
+    'COUNTS': COUNTS, 'GEN_TOTAL': '{:,}'.format(GEN_TOTAL), 'TS_TABLE': ts_table(), 'E2E_TABLE': e2e_table(), 'E2E_REGISTER': e2e_register(),
     'E2E_COUNT': str(len(E2E)), 'ROLL_PARTS': ROLL1, 'ROLL_TOTAL': ROLL2, 'EXEC_BEFORE': '{:,}'.format(EXEC_BEFORE),
     'EXEC_AFTER': '{:,}'.format(EXEC_AFTER), 'REL_TABLE': REL_TABLE, 'PRIO': PRIO, 'AI_TABLE': ai_table(),
     'NEG01_TABLE': neg_table(TM.NEG01, '01'), 'NEG02_TABLE': neg_table(TM.NEG02, '02'), 'EFFECTS_TABLE': effects_table(),
-    'ALL_TOTAL': str(GEN_TOTAL + len(E2E)), 'LAST_ID': str(LAST), 'TC_UNIQUE': '{:,}'.format(inv['tc_unique']),
+    'ALL_TOTAL': '{:,}'.format(GEN_TOTAL + len(E2E) + len(GAP)), 'GAP_TABLE': gap_table(), 'FR_TABLE': FR_TABLE,
+    'FR_DEFINED': '{:,}'.format(FR_TOT['defined']), 'FULL_COUNT': str(len(E2E) + len(GAP)), 'GAP_FIRST': GAP[0]['id'], 'GAP_LAST': GAP[-1]['id'], 'LAST_ID': str(LAST), 'TC_UNIQUE': '{:,}'.format(inv['tc_unique']),
 }
 for mid in ORDER:
     PH['HDR_' + mid] = model_header(mid)
@@ -549,7 +663,7 @@ FILES = [('a.md', 'Part-11-21a_Master_Test_Strategy_Organisation_Logistics_and_C
          ('d.md', 'Part-11-21d_Combinatorial_Cases_Localization_Accessibility_Performance_AI_Evaluation.md'),
          ('e.md', 'Part-11-21e_End_to_End_Suites_Traceability_Rollup_Regression_and_Decisions.md')]
 if __name__ == '__main__':
-    json.dump(dict(gen_total=GEN_TOTAL, e2e=len(E2E), last=LAST, ids={k: v for k, v in IDS.items()}, exec_before=EXEC_BEFORE,
+    json.dump(dict(gen_total=GEN_TOTAL, e2e=len(E2E), gap=len(GAP), fr=dict(FR_TOT), last=LAST, ids={k: v for k, v in IDS.items()}, exec_before=EXEC_BEFORE,
                    exec_after=EXEC_AFTER, prio=PRIO, rel=dict(REL_TOT)), open(OUT + '/build.json', 'w'), indent=1)
     for s, d in FILES:
         if os.path.exists(SRC + '/' + s):

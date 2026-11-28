@@ -37,8 +37,8 @@ def part_of(path):
 seen = {}
 per_file = collections.OrderedDict()
 for f in sorted(glob.glob(BP + '/Part-*.md')):
-    if os.path.basename(f).startswith('Part-11-21'):
-        continue
+    if re.match(r'Part-11-2\d', os.path.basename(f)):
+        continue   # Part 11.21 itself and the parts written in parallel (11.20, 11.22-11.24) are reported separately
     ids = collections.Counter()
     for line in open(f, encoding='utf-8'):
         m = ROW.match(line)
@@ -86,7 +86,19 @@ for f in glob.glob(BP + '/Part-*.md'):
 alias = {
     'workflow scenarios SM-SVC-##-WF##-TC-*': 1342, 'step tests': 517, 'workflow AT01': 156,
     'SKU ENT-AT01': 39, 'EVAL-SM-SVC suites (gates, not counted)': 111}
-res = dict(tc_unique=tc_total, ts_unique=ts_total, families=dict(sorted(fam_tot.items())),
+par = collections.OrderedDict()
+for f in sorted(glob.glob(BP + '/Part-11-2[0-9]*.md')):
+    b = os.path.basename(f)
+    if b.startswith('Part-11-21'):
+        continue
+    c = collections.Counter()
+    for line in open(f, encoding='utf-8'):
+        m = ROW.match(line)
+        if m and not m.group(1).startswith('TS-'):
+            c[family(m.group(1))] += 1
+    if c:
+        par[b] = dict(c)
+res = dict(parallel=par, tc_unique=tc_total, ts_unique=ts_total, families=dict(sorted(fam_tot.items())),
            per_part=per_part, per_file=per_file, LT=sorted(LT), DR=sorted(DR), v12_alias=alias)
 json.dump(res, open(OUT + '/inventory.json', 'w'), indent=1)
 print('TC unique', tc_total, 'TS', ts_total, 'LT', len(LT), 'DR', len(DR))
