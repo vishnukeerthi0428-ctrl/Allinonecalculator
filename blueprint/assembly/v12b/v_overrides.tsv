@@ -1,1 +1,39 @@
 # id	status	authority	replacement_ids	evidence_location	note
+DEC-001	retained unchanged					Mentioned in Part 11.1a baseline line only; no change
+DEC-007	retained unchanged	DEC-700				Mapped as equivalent of customer decision CDEC-V7-02; no change
+DEC-042	retained unchanged	DEC-700				Mapped as equivalent of CDEC-V7-02; no change
+DEC-110	retained unchanged	DEC-700				Mapped as equivalent of CDEC-V7-02; no change
+DEC-199	retained unchanged	DEC-700				Mapped as equivalent of CDEC-V9-04; no change
+DEC-240	retained unchanged	DEC-700				Mapped as equivalent of CDEC-V9-01; no change
+DEC-309	retained unchanged	DEC-700				Mapped as equivalent of CDEC-V9-04; no change
+DEC-310	retained unchanged	DEC-700				Mapped as equivalent of CDEC-V11-01; no change
+DEC-416	retained unchanged	DEC-700				Mapped as equivalent of CDEC-V11-01; no change
+DEC-030	retained unchanged					No outreach to minors (EduVerse) unchanged; cited in quality gates only
+DEC-417	retained unchanged	DEC-512				Release labels referenced; mapping only (DEC-512)
+DEC-420	retained unchanged	DEC-770				AI-built delivery calibration retained; DEC-770 uses its Sprint 2 throughput
+DEC-018	amended	DEC-771		Part 11.14 §11.14.1 (DEC-771)	RTO: growth-critical <= 120 min release-blocking (DEC-771); RPO <= 15 min (DEC-787); staged 4 h pilot target of DEC-158 superseded
+DEC-021	amended	DEC-787		Part 11.14 §11.14.1 (DEC-787)	RPO <= 15 min in every residency region (continuous WAL, daily base, 35-day PITR)
+DEC-044	superseded	DEC-773		Part 11.14 §11.14.1 (DEC-773)	Business-hours support replaced by 24x7 human on-call for SEV1/SEV2 (DEC-702: DEC-044 kept only for the owned-portfolio support schedule)
+DEC-080	superseded	DEC-773		Part 11.14 §11.14.1 (DEC-773)	Business-hours support model replaced by 24x7 on-call
+DEC-386	superseded	DEC-782		Part 11.14 §11.14.1 (DEC-782)	Recording exclusion lifted; recording with jurisdictional notice/consent, retention and redaction (Part 11.18)
+DEC-387	superseded	DEC-782		Part 11.14 §11.14.1 (DEC-782)	Superseded by AI voice calling adoption (Part 11.18)
+DEC-392	superseded	DEC-782		Part 11.14 §11.14.1 (DEC-782)	No-voice/SMS-in-W0-W5 note superseded; SMS connectors in Release 1 (DEC-785, DEC-884)
+DEC-421	amended	DEC-772	DEC-778 DEC-786 DEC-776	Part 11.14 §11.14.1 (DEC-772, DEC-778, DEC-786)	Hosting stays Vercel + Supabase + AWS; adds EU stack (DEC-772), roadmap regions (DEC-776); service-key wording withdrawn (DEC-778, roles DEC-894); personal data via Vercel with controls (DEC-786)
+DEC-422	amended	DEC-771	DEC-772 DEC-773 DEC-774	Part 11.14 §11.14.1	Running-cost lines added: PITR and standby (DEC-771), EU stack (DEC-772), 24x7 on-call (DEC-773), Enterprise SLA uplift (DEC-774)
+DEC-002	superseded	DEC-783		Part 11.14 §11.14.1 (DEC-783)	Investor and fundraising exclusion withdrawn; Investment Automation product adopted with securities rule packs and counsel gates
+DEC-053	amended	DEC-781		Part 11.14 §11.14.1 (DEC-781)	Superseded for mandated tenders only; unmandated bid submission remains human
+DEC-064	amended	DEC-779		Part 11.14 §11.14.1 (DEC-779); Part 11.17a DEC-841	L1 cap lifted only for actions covered by an Active, eligible bounded mandate in an approved jurisdiction
+DEC-158	superseded	DEC-771		Part 11.14 §11.14.1 (DEC-771)	Staged RTO (4 h at pilot, 2 h after Topology B) replaced by growth RTO <= 120 min blocking
+DEC-228	amended	DEC-770		Part 11.14 §11.14.1 (DEC-770)	Staffing Option 2b kept; fixed dates become indicative
+DEC-325	superseded	DEC-774		Part 11.14 §11.14.1 (DEC-774)	SLA tiers 99.5/99.9/99.95% contractual with service credits
+DEC-408	superseded	DEC-775		Part 11.14 §11.14.1 (DEC-775)	Certification sequence SOC 2 Type I (R2) -> SOC 2 Type II + ISO 27001 (R3) -> ISO 27701 + ISO 42001 (R4)
+DEC-418	amended	DEC-788		Part 11.14 §11.14.1 (DEC-788)	Claude Sonnet stays primary by approval through the provider-neutral model registry
+KPI-01	retained unchanged	DEC-681				Blueprint business KPI unchanged; V12 KPI-01 is an alias of OKPI-01 (Part 11.10a)
+KPI-05	retained unchanged					False evidence match (DEC-677 concerns database indexes); no change
+KPI-32	retained unchanged	DEC-681				Blueprint KPI-32 unchanged; V12 "KPI-32" means OKPI-32 (growth RTO), see OKPI-32
+OKPI-01	retained unchanged	DEC-681				V12 KPI-01 aliased to OKPI-01; metric unchanged
+OKPI-32	amended	DEC-771		Part 11.14 §11.14.1 (DEC-771)	Growth-critical RTO <= 120 min becomes a release-blocking gate (was CONFLICT-462/444)
+A042	amended	DEC-893		Part 11.19 (DEC-893)	Benchmarks tab added (opt-in, step-up); screen otherwise unchanged
+A045	amended	DEC-837		Part 11.16 (DEC-837)	Legacy route not used for issuer publication; Sales & Marketing use unchanged
+A046	amended	DEC-837		Part 11.16 (DEC-837)	Legacy route not used for issuer publication; Sales & Marketing use unchanged
+BRL-APR-07	amended	DEC-849		Part 11.17a (DEC-849)	Exact automated PSP matches close without manual verification; mismatches to Finance maker-checker

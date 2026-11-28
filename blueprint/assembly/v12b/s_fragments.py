@@ -82,7 +82,7 @@ def frag_overlap():
     o = ["| # | Removed from | Capability built twice (as the parts report it) | Owner kept (single-owner rule) | Removed pd L / C / H |", "|---|---|---|---|---|"]
     t = [0, 0, 0]
     for oid, g, what, owner, v in M.OVL:
-        o.append("| %s | %s (%s) | %s | %s | %s |" % (oid, g, M.GROSS[g][0].split(" ")[0], what, owner, " / ".join("%.2f" % x if x % 1 else "%.0f" % x for x in v)))
+        o.append("| %s | %s (%s) | %s | %s | %s |" % (oid, g, M.GROSS[g][0].split(" ")[0], what, owner, " / ".join("%.1f" % x for x in v)))
         for i in range(3):
             t[i] += v[i]
     o.append("| | | **Total removed** | | **%s** |" % " / ".join("%.1f" % x for x in t))

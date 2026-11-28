@@ -1,0 +1,1110 @@
+[
+ {
+  "id": "E-V-01",
+  "title": "Consequential actions always capped at L1",
+  "current": "L0\u2013L2 by default; L3/L4 only under an Active, eligible bounded mandate approved by two authorized people, scoped (counterparty, action type, per-action and aggregate value cap, time window, jurisdiction, data class), instantly revocable, with kill switch, PDP dispatch recheck, audit and reconciliation, in a jurisdiction whose rule pack permits it. No API scope for consequential actions (DEC-883).",
+  "authority": "DEC-779, DEC-841, DEC-883",
+  "reported_by": "Brief; Part 11.19c #2",
+  "occurrences": 56,
+  "stale": 42,
+  "where": [
+   "Part 0 L318",
+   "Part 2.2 L77",
+   "Part 5.3 L1780",
+   "Part 6.3a L854",
+   "Part 6.4 L2415",
+   "Part 7.1 L202"
+  ],
+  "parts": [
+   "0",
+   "11.11a",
+   "11.12",
+   "11.13a",
+   "11.13b",
+   "11.17a",
+   "11.1b",
+   "11.2a",
+   "11.3c",
+   "11.4c",
+   "11.5a",
+   "11.6b",
+   "11.8b",
+   "11.9c",
+   "2.2",
+   "5.3",
+   "6.3a",
+   "6.4",
+   "7.1",
+   "7.3",
+   "8.2",
+   "9.2",
+   "9.4",
+   "9.6a",
+   "9.7a",
+   "9.9b"
+  ]
+ },
+ {
+  "id": "E-V-02",
+  "title": "Safety envelope \"AI never signs, pays, submits bids, sets prices\"",
+  "current": "AI still never signs contracts and never sets prices autonomously; payments (DEC-780) and bid submission (DEC-781) may be executed by an agent only under a bounded mandate, through a licensed PSP or the approved portal, with exact package/amount hash, caps, kill switch and reconciliation.",
+  "authority": "DEC-779, DEC-780, DEC-781",
+  "reported_by": "Audit (this part)",
+  "occurrences": 44,
+  "stale": 31,
+  "where": [
+   "Part 0A L60",
+   "Part 0 L89",
+   "Part 2.3 L189",
+   "Part 5.2 L2922",
+   "Part 6.1 L295",
+   "Part 7.1 L237"
+  ],
+  "parts": [
+   "0",
+   "0A",
+   "11.11a",
+   "11.12",
+   "11.13a",
+   "11.1a",
+   "11.1b",
+   "11.2b",
+   "11.2c",
+   "11.3c",
+   "11.4c",
+   "11.5a",
+   "11.6b",
+   "11.7a",
+   "11.9c",
+   "2.3",
+   "5.2",
+   "6.1",
+   "7.1",
+   "7.2",
+   "9.2",
+   "9.6a",
+   "9.6b",
+   "9.7a",
+   "9.8a",
+   "9.8b",
+   "9.9a"
+  ]
+ },
+ {
+  "id": "E-V-03",
+  "title": "\"Service key held server-side\" for the Django API",
+  "current": "Django API and workers connect as least-privilege NOBYPASSRLS roles (`app_rw`, `app_worker`) setting `app.tenant_id` and `app.company_ids` per transaction; Data API (PostgREST) disabled for application schemas; `service_role` only in the CI migration pipeline under two-person, time-boxed break-glass with audit.",
+  "authority": "DEC-778, DEC-894 (ADR-264)",
+  "reported_by": "Brief; Parts 11.9c, 11.19c #4",
+  "occurrences": 8,
+  "stale": 3,
+  "where": [
+   "Part 11.8b L583",
+   "Part 11.9b L54",
+   "Part 11.9c L332"
+  ],
+  "parts": [
+   "11.8b",
+   "11.9b",
+   "11.9c"
+  ]
+ },
+ {
+  "id": "E-V-04",
+  "title": "Database role names `ge_app` / `ge_worker` / `ge_owner` / `app_user`",
+  "current": "Canonical roles: `app_owner`, `app_migrator`, `app_rw`, `app_worker`, `app_readonly`, `app_retention`, `app_platform_sec`, `app_bench`, `app_registry` (all NOBYPASSRLS). `ge_app` \u2192 `app_rw`, `ge_worker` \u2192 `app_worker`, `ge_owner` \u2192 `app_owner`, V12 `app_user` \u2192 `app_rw` (rename migration DDL-V12-R-16).",
+  "authority": "DEC-778, DEC-894",
+  "reported_by": "Parts 11.9c #2, 11.19c #1",
+  "occurrences": 50,
+  "stale": 35,
+  "where": [
+   "Part 3.3 L2170",
+   "Part 3.3 L2180",
+   "Part 3.3 L2181",
+   "Part 3.3 L2182",
+   "Part 3.3 L3686",
+   "Part 3.3 L3688"
+  ],
+  "parts": [
+   "11.19a",
+   "11.19b",
+   "11.9a",
+   "11.9b",
+   "11.9c",
+   "3.3"
+  ]
+ },
+ {
+  "id": "E-V-05",
+  "title": "AWS-only topology (RDS, CloudFront, RDS cross-Region backups)",
+  "current": "Vercel (web, edge firewall, region-pinned functions) + Supabase PostgreSQL (RLS, pgvector, PITR) + AWS (API, workers, Valkey, S3, SES, Secrets Manager/KMS) in Mumbai, with an EU stack for EU-resident tenants; deployment view Part 11.5b \u00a711.5.5.8\u201311.5.5.9.",
+  "authority": "DEC-421, DEC-772, DEC-786",
+  "reported_by": "Part 11.5b #1, #5; Part 11.8b #3",
+  "occurrences": 34,
+  "stale": 30,
+  "where": [
+   "Part 3.1 L204",
+   "Part 3.1 L793",
+   "Part 3.1 L845",
+   "Part 3.1 L856",
+   "Part 3.1 L885",
+   "Part 3.1 L929"
+  ],
+  "parts": [
+   "11.1b",
+   "3.1",
+   "3.2",
+   "3.3",
+   "5.1b",
+   "6.5",
+   "8.4",
+   "9.10",
+   "9.2",
+   "9.6a",
+   "9.6b",
+   "9.9a"
+  ]
+ },
+ {
+  "id": "E-V-06",
+  "title": "PostgreSQL 17 on Amazon RDS",
+  "current": "Supabase-managed PostgreSQL (major version as provided by Supabase at provisioning; V12 DDL tested on 16.15 \u2014 verify at implementation, as of 28 Nov 2026); extensions pgvector and pg_cron subject to Supabase availability.",
+  "authority": "DEC-421, DEC-772",
+  "reported_by": "Part 11.9c #3",
+  "occurrences": 5,
+  "stale": 4,
+  "where": [
+   "Part 3.1 L164",
+   "Part 3.1 L204",
+   "Part 3.3 L4370",
+   "Part 9.2 L741"
+  ],
+  "parts": [
+   "3.1",
+   "3.3",
+   "9.2"
+  ]
+ },
+ {
+  "id": "E-V-07",
+  "title": "V12 screen IDs used bare where they collide with blueprint IDs",
+  "current": "Blueprint screen IDs are primary. A V12 screen ID that collides (A114\u2013A131, W35\u2013W41) is always written `V12-<ID>` and mapped by the binding crosswalk (Part 11.7a \u00a711.7.4.2\u201311.7.4.3; e.g. V12 A122 \u2192 A203). Investment screens are A205\u2013A232 / W55\u2013W76 (DEC-801) and A233\u2013A259 / W77\u2013W99 (Group O); Group P uses A260\u2013A269 (DEC-962).",
+  "authority": "DEC-620, DEC-700, DEC-801, DEC-962",
+  "reported_by": "Brief; Parts 11.6b #1, 11.7c #3, 11.11b #4",
+  "occurrences": 26,
+  "stale": 15,
+  "where": [
+   "Part 11.10a L706",
+   "Part 11.10a L745",
+   "Part 11.10c L370",
+   "Part 11.19a L212",
+   "Part 11.6a L179",
+   "Part 11.6b L350"
+  ],
+  "parts": [
+   "11.10a",
+   "11.10c",
+   "11.19a",
+   "11.6a",
+   "11.6b",
+   "11.7a"
+  ]
+ },
+ {
+  "id": "E-V-08",
+  "title": "Screen range A205\u2013A259 / W55\u2013W99 \"reserved and unused\"",
+  "current": "A205\u2013A232/W55\u2013W76 are used by Group N (DEC-801), A233\u2013A259/W77\u2013W99 by Group O; A260\u2013A269 by Group P (DEC-962). Next free Admin ID: A270; next free Website ID: W100.",
+  "authority": "DEC-801, DEC-962",
+  "reported_by": "Audit (this part)",
+  "occurrences": 1,
+  "stale": 1,
+  "where": [
+   "Part 11.7c L799"
+  ],
+  "parts": [
+   "11.7c"
+  ]
+ },
+ {
+  "id": "E-V-09",
+  "title": "RTO 4 h at pilot / staged RTO",
+  "current": "RPO \u2264 15 min in every residency region (continuous WAL, daily base backup, 35-day PITR; DEC-787). Growth-critical RTO \u2264 120 min is a release-blocking gate from Release 1 (OKPI-32 = V12 KPI-32; DEC-771). Core critical-tier RTO \u2264 4 h stays as the outer bound only for non-growth platform components (CDEC-V9-01). Regenerable stores RTO 24 h / RPO 8 h.",
+  "authority": "DEC-771, DEC-787, CDEC-V9-01",
+  "reported_by": "Brief; Part 11.5b #2, #6",
+  "occurrences": 77,
+  "stale": 60,
+  "where": [
+   "Part 0A L55",
+   "Part 0 L339",
+   "Part 3.1 L32",
+   "Part 3.1 L1358",
+   "Part 3.1 L1412",
+   "Part 3.1 L1709"
+  ],
+  "parts": [
+   "0",
+   "0A",
+   "11.10c",
+   "11.12",
+   "11.1a",
+   "11.1b",
+   "11.22a",
+   "3.1",
+   "3.2",
+   "3.3",
+   "3.4",
+   "3.6a",
+   "3.6b",
+   "4.2",
+   "4.3",
+   "4.4a",
+   "4.4b",
+   "5.3",
+   "6.1",
+   "6.3b",
+   "6.6",
+   "6.7",
+   "6.8c",
+   "8.3c",
+   "9.1",
+   "9.2",
+   "9.6a",
+   "9.6b"
+  ]
+ },
+ {
+  "id": "E-V-10",
+  "title": "Single-region pilot / region count",
+  "current": "Two residency stacks are built: India (Mumbai) and EU (e.g. Frankfurt), never writing one zone's personal data to the other (CJ-TC-09 blocking both ways; DEC-772). Further regions (UK, Middle East, APAC, then US) open only when each jurisdiction rule pack is counsel-approved (DEC-776). Residency is chosen at tenant onboarding.",
+  "authority": "DEC-772, DEC-776",
+  "reported_by": "Brief",
+  "occurrences": 25,
+  "stale": 25,
+  "where": [
+   "Part 3.1 L1407",
+   "Part 3.1 L1709",
+   "Part 3.1 L1777",
+   "Part 3.1 L1805",
+   "Part 4.2 L427",
+   "Part 8.2 L62"
+  ],
+  "parts": [
+   "11.1a",
+   "11.1b",
+   "11.5a",
+   "11.5b",
+   "11.6b",
+   "11.9a",
+   "11.9c",
+   "3.1",
+   "4.2",
+   "8.2",
+   "9.2"
+  ]
+ },
+ {
+  "id": "E-V-11",
+  "title": "SM-SVC-26 voice assigned to EP-08",
+  "current": "SM-SVC-26 (AI voice) belongs to epic EP-22 (Part 11.2a registry; Part 11.18). Pattern references to EP-08 are read as EP-22.",
+  "authority": "Part 11.2a; Part 11.18d",
+  "reported_by": "Brief; Part 11.18d #4",
+  "occurrences": 4,
+  "stale": 2,
+  "where": [
+   "Part 11.4c L792",
+   "Part 11.7b L1210"
+  ],
+  "parts": [
+   "11.4c",
+   "11.7b"
+  ]
+ },
+ {
+  "id": "E-V-12",
+  "title": "Voice domain named `eng_call`",
+  "current": "The V12 canonical domain is `voice_session` (with `voice_turn`, recording and consent artefacts per Part 11.18); `eng_call` is withdrawn.",
+  "authority": "Part 11.18d (V12 canonical)",
+  "reported_by": "Brief; Part 11.18d #2",
+  "occurrences": 17,
+  "stale": 3,
+  "where": [
+   "Part 11.18a L9",
+   "Part 11.4c L801",
+   "Part 11.4d L1381"
+  ],
+  "parts": [
+   "11.18a",
+   "11.4c",
+   "11.4d"
+  ]
+ },
+ {
+  "id": "E-V-13",
+  "title": "Mandates and securities-governed investment actions",
+  "current": "DEC-779 mandates apply only \"where lawful\". Securities-governed INV actions (offer issue, offering-tagged dispatch, closing, allotment reference, filing status, cap-table revision, vote certification, KYC decision, external submission) stay L1 with hash-bound, per-action approval (two-person for closing and cap table) and are never mandate-authorised (DEC-822, CP-O-04). A DEC-779 mandate may automate only non-offering investor-relations messages (mandate type `inv_ir_message`). The Part 11.17 mandate engine must reject these action types at issue and at dispatch.",
+  "authority": "DEC-779 (lawful condition), DEC-783, DEC-822, DEC-963",
+  "reported_by": "Brief; Parts 11.16a/b/d",
+  "occurrences": 1,
+  "stale": 1,
+  "where": [
+   "Part 11.14 L29"
+  ],
+  "parts": [
+   "11.14"
+  ]
+ },
+ {
+  "id": "E-V-14",
+  "title": "Customer decision IDs written DEC-Vn-## / DEC-### for V12 decisions",
+  "current": "Customer decisions are written CDEC-### and CDEC-Vn-## (DEC-700); bare DEC-### always means a blueprint decision.",
+  "authority": "DEC-700",
+  "reported_by": "Parts 11.9c #6, 11.12 #2; audit",
+  "occurrences": 155,
+  "stale": 149,
+  "where": [
+   "Part 11.10c L721",
+   "Part 11.12 L17",
+   "Part 11.12 L80",
+   "Part 11.12 L146",
+   "Part 11.12 L196",
+   "Part 11.12 L220"
+  ],
+  "parts": [
+   "11.10c",
+   "11.12",
+   "11.14",
+   "11.18a",
+   "11.19a",
+   "11.19b",
+   "11.1a",
+   "11.1b",
+   "11.22a",
+   "11.5a",
+   "11.5b",
+   "11.6a",
+   "11.6b",
+   "11.7a",
+   "11.7b",
+   "11.8a",
+   "11.8b"
+  ]
+ },
+ {
+  "id": "E-V-15",
+  "title": "V12 KPI-## used without the OKPI alias",
+  "current": "V12 KPI-01\u202635 = OKPI-01\u202635 (DEC-681). Blueprint KPI-01\u202635 are the Part 1 business KPIs. Always write OKPI-## for V12 release KPIs.",
+  "authority": "DEC-681",
+  "reported_by": "Parts 11.10c #2, 11.12 #2",
+  "occurrences": 32,
+  "stale": 26,
+  "where": [
+   "Part 11.14 L21",
+   "Part 11.22a L344",
+   "Part 11.9a L246",
+   "Part 11.9a L247",
+   "Part 11.9a L248",
+   "Part 11.9a L249"
+  ],
+  "parts": [
+   "11.14",
+   "11.22a",
+   "11.9a",
+   "11.9c"
+  ]
+ },
+ {
+  "id": "E-V-16",
+  "title": "V12 REC-01\u202630 collide with blueprint reconciliation jobs REC-01\u202609",
+  "current": "Blueprint REC-01\u202609 are reconciliation jobs (Part 3.2). V12 REC-01\u202630 are reconciliation actions; write them `V12-REC-##`.",
+  "authority": "DEC-964",
+  "reported_by": "Part 11.12 #1",
+  "occurrences": 196,
+  "stale": 193,
+  "where": [
+   "Part 3.2 L1371",
+   "Part 3.2 L1372",
+   "Part 3.2 L1373",
+   "Part 3.2 L1374",
+   "Part 3.2 L1375",
+   "Part 3.2 L1376"
+  ],
+  "parts": [
+   "11.11a",
+   "11.11b",
+   "11.12",
+   "11.13a",
+   "11.13b",
+   "11.15e",
+   "11.18a",
+   "11.18b",
+   "11.18c",
+   "11.18d",
+   "11.1a",
+   "11.1b",
+   "11.3a",
+   "11.4a",
+   "11.4b",
+   "11.4d",
+   "11.5a",
+   "11.5b",
+   "11.6a",
+   "11.6b",
+   "11.7a",
+   "11.7b",
+   "11.7c",
+   "3.2",
+   "3.3",
+   "9.2"
+  ]
+ },
+ {
+  "id": "E-V-17",
+  "title": "Messaging window 09:00\u201319:00 Mon\u2013Sat",
+  "current": "Promotional messages 09:00\u201321:00 in the recipient's local time (DEC-777); a stricter rule pack window wins; quiet hours, consent and suppression unchanged; transactional messages follow their own rules.",
+  "authority": "DEC-777",
+  "reported_by": "Part 11.14",
+  "occurrences": 28,
+  "stale": 25,
+  "where": [
+   "Part 2.3 L49",
+   "Part 5.1a L380",
+   "Part 5.1b L1689",
+   "Part 5.1b L1809",
+   "Part 5.2 L505",
+   "Part 5.2 L917"
+  ],
+  "parts": [
+   "11.11a",
+   "11.11b",
+   "11.15a",
+   "11.15d",
+   "11.15e",
+   "2.3",
+   "5.1a",
+   "5.1b",
+   "5.2",
+   "6.1",
+   "6.2a",
+   "6.5"
+  ]
+ },
+ {
+  "id": "E-V-18",
+  "title": "Business-hours support",
+  "current": "24\u00d77 human on-call for SEV1/SEV2 and 24\u00d77 security monitoring from Release 2 GA (contracted NOC/SOC first line, internal rota second line).",
+  "authority": "DEC-773",
+  "reported_by": "Part 11.14",
+  "occurrences": 5,
+  "stale": 4,
+  "where": [
+   "Part 0 L258",
+   "Part 9.1 L34",
+   "Part 9.2 L1829",
+   "Part 11.11b L777"
+  ],
+  "parts": [
+   "0",
+   "11.11b",
+   "9.1",
+   "9.2"
+  ]
+ },
+ {
+  "id": "E-V-19",
+  "title": "Investor / fundraising exclusion",
+  "current": "Investor/fundraising mode and the Investment Automation product (INV-SVC-01\u202624, 96 workflows) are in scope with securities rule packs, eligibility verification, no public offer where prohibited, counsel sign-off per jurisdiction and no investment advice by AI.",
+  "authority": "DEC-783",
+  "reported_by": "Part 11.14",
+  "occurrences": 40,
+  "stale": 38,
+  "where": [
+   "Part 0 L76",
+   "Part 0 L271",
+   "Part 1 L18",
+   "Part 2.6 L1876",
+   "Part 3.4 L336",
+   "Part 3.4 L1799"
+  ],
+  "parts": [
+   "0",
+   "1",
+   "11.12",
+   "11.16a",
+   "11.16b",
+   "11.16d",
+   "11.7c",
+   "11.8a",
+   "11.8b",
+   "2.6",
+   "3.4",
+   "4.4a",
+   "4.4b",
+   "7.4a",
+   "7.4b",
+   "8.3c",
+   "9.2",
+   "9.6a",
+   "9.6b"
+  ]
+ },
+ {
+  "id": "E-V-20",
+  "title": "Voice / recording / SMS prohibited",
+  "current": "AI voice calling and recordings adopted (DEC-782) with AI self-identification, consent and DND scrubbing, calling windows, notice/consent for recording (all-party where required), retention limits, redaction and human hand-off. SMS via a DLT-registered aggregator in Release 1 (DEC-785, DEC-884).",
+  "authority": "DEC-782, DEC-785, DEC-884",
+  "reported_by": "Part 11.2c #1",
+  "occurrences": 13,
+  "stale": 13,
+  "where": [
+   "Part 11.15e L1145",
+   "Part 11.15e L1272",
+   "Part 11.15e L1599",
+   "Part 11.15e L1612",
+   "Part 11.15e L1718",
+   "Part 11.15e L1861"
+  ],
+  "parts": [
+   "11.15e",
+   "11.2c",
+   "11.7b"
+  ]
+ },
+ {
+  "id": "E-V-21",
+  "title": "Automatic bid submission prohibited",
+  "current": "Automatic bid submission allowed only under a per-tender bounded mandate: a human approves package hash, price, terms and portal/authority; the agent submits exactly that package and records the receipt. Unmandated submission stays human.",
+  "authority": "DEC-781, DEC-851, DEC-852",
+  "reported_by": "Part 11.17b #4",
+  "occurrences": 26,
+  "stale": 23,
+  "where": [
+   "Part 3.5b L1697",
+   "Part 8.3a L112",
+   "Part 9.2 L74",
+   "Part 9.2 L1925",
+   "Part 9.5 L73",
+   "Part 9.6a L60"
+  ],
+  "parts": [
+   "11.12",
+   "11.13a",
+   "11.15c",
+   "11.1b",
+   "11.2a",
+   "11.2b",
+   "11.2c",
+   "11.3c",
+   "11.5a",
+   "3.5b",
+   "8.3a",
+   "9.2",
+   "9.5",
+   "9.6a",
+   "9.6b",
+   "9.7a",
+   "9.8a",
+   "9.8b",
+   "9.9a"
+  ]
+ },
+ {
+  "id": "E-V-24",
+  "title": "Tier 2 free providers described as an active fallback chain",
+  "current": "Only models approved in the provider-neutral registry (DPA with no-training clause, region, data class, evaluation suites, cost) may run; Claude Sonnet is the approved primary; free tiers never receive personal or restricted data.",
+  "authority": "DEC-788",
+  "reported_by": "Part 11.6b #3",
+  "occurrences": 1,
+  "stale": 1,
+  "where": [
+   "Part 11.6b L2130"
+  ],
+  "parts": [
+   "11.6b"
+  ]
+ },
+ {
+  "id": "E-V-25",
+  "title": "Fixed release dates as commitments",
+  "current": "Dates are indicative; Release 1 and Release 2 are re-planned from approved effort and measured throughput; scope is not cut to meet a date (master plan Part 11.20).",
+  "authority": "DEC-770",
+  "reported_by": "Part 11.14",
+  "occurrences": 53,
+  "stale": 53,
+  "where": [
+   "Part 9.10 L166",
+   "Part 9.10 L167",
+   "Part 9.2 L444",
+   "Part 9.2 L1976",
+   "Part 9.2 L1977",
+   "Part 9.5 L154"
+  ],
+  "parts": [
+   "11.11a",
+   "11.11b",
+   "11.5b",
+   "11.8b",
+   "9.10",
+   "9.2",
+   "9.5"
+  ]
+ },
+ {
+  "id": "E-V-26",
+  "title": "Judge agreement \u2265 85% vs \u03ba \u2265 0.8",
+  "current": "AI-judge calibration uses Cohen's \u03ba \u2265 0.8 against human labels (AIX-07).",
+  "authority": "DEC-603",
+  "reported_by": "Part 11.6b #2",
+  "occurrences": 6,
+  "stale": 4,
+  "where": [
+   "Part 6.4 L165",
+   "Part 6.4 L211",
+   "Part 7.2 L149",
+   "Part 9.7b L1459"
+  ],
+  "parts": [
+   "6.4",
+   "7.2",
+   "9.7b"
+  ]
+ },
+ {
+  "id": "E-V-27",
+  "title": "Admin not targeted below 768 px",
+  "current": "One responsive Admin build with a compact layout for all registered screens (MOB-01/06).",
+  "authority": "DEC-623",
+  "reported_by": "Part 11.7c #2",
+  "occurrences": 9,
+  "stale": 7,
+  "where": [
+   "Part 0A L80",
+   "Part 2.7a L1073",
+   "Part 2.7a L1131",
+   "Part 5.3 L1173",
+   "Part 6.1 L154",
+   "Part 9.2 L1249"
+  ],
+  "parts": [
+   "0A",
+   "2.7a",
+   "5.3",
+   "6.1",
+   "9.2"
+  ]
+ },
+ {
+  "id": "E-V-28",
+  "title": "Outbound webhooks not offered",
+  "current": "Signed outbound webhooks are part of the Release 1 developer platform (DEC-785; DEC-645).",
+  "authority": "DEC-645, DEC-785",
+  "reported_by": "Part 11.8b #2",
+  "occurrences": 6,
+  "stale": 5,
+  "where": [
+   "Part 9.2 L1347",
+   "Part 9.9a L83",
+   "Part 9.9a L418",
+   "Part 9.9b L1338",
+   "Part 11.8a L70"
+  ],
+  "parts": [
+   "11.8a",
+   "9.2",
+   "9.9a",
+   "9.9b"
+  ]
+ },
+ {
+  "id": "E-V-29",
+  "title": "Benchmarks disabled / \u03b5 = 1",
+  "current": "Cross-tenant benchmarks in Release 2: opt-in contract clause, cohorts \u2265 10 tenants (k \u2265 10), dominance \u2264 30%, Laplace \u03b5 = 0.5 per metric per cell per month (yearly cap 6), zone-local computation.",
+  "authority": "DEC-789, DEC-893",
+  "reported_by": "Part 11.19c #5",
+  "occurrences": 4,
+  "stale": 3,
+  "where": [
+   "Part 11.13b L42",
+   "Part 11.13b L1189",
+   "Part 11.19c L3111"
+  ],
+  "parts": [
+   "11.13b",
+   "11.19c"
+  ]
+ },
+ {
+  "id": "E-V-30",
+  "title": "Voice transport \"R3+ \u2192 W6\"",
+  "current": "Voice CPaaS transport is a Release 1 connector (DEC-884); AI voice features per Part 11.18 release plan.",
+  "authority": "DEC-785, DEC-884",
+  "reported_by": "Part 11.19c #6",
+  "occurrences": 2,
+  "stale": 1,
+  "where": [
+   "Part 11.8b L511"
+  ],
+  "parts": [
+   "11.8b"
+  ]
+ },
+ {
+  "id": "E-V-31",
+  "title": "Missing tenant context returns zero rows",
+  "current": "Missing `app.tenant_id` must raise an error (fail closed), not return zero rows (V12 DB-T2).",
+  "authority": "CONFLICT-909 resolution (Part 11.9c)",
+  "reported_by": "Part 11.9c #4",
+  "occurrences": 2,
+  "stale": 0,
+  "where": [],
+  "parts": []
+ },
+ {
+  "id": "E-V-32",
+  "title": "BYOK limited to AWS KMS",
+  "current": "Customer-managed keys across clouds (DEC-776).",
+  "authority": "DEC-776",
+  "reported_by": "Part 11.9c #5",
+  "occurrences": 2,
+  "stale": 2,
+  "where": [
+   "Part 11.11a L187",
+   "Part 11.11b L780"
+  ],
+  "parts": [
+   "11.11a",
+   "11.11b"
+  ]
+ },
+ {
+  "id": "E-V-33",
+  "title": "Money stored as numeric(18,2)",
+  "current": "Money in integer minor units (`*_minor bigint`) with currency; arithmetic CHECKs in the database; expand/contract migration MG-02\u202604.",
+  "authority": "DEC-587",
+  "reported_by": "Parts 11.5b #3, 11.3c #2",
+  "occurrences": 30,
+  "stale": 24,
+  "where": [
+   "Part 3.3 L2130",
+   "Part 3.3 L2675",
+   "Part 3.3 L2870",
+   "Part 3.3 L2871",
+   "Part 3.3 L2872",
+   "Part 3.3 L2873"
+  ],
+  "parts": [
+   "3.3",
+   "3.6a",
+   "3.6b"
+  ]
+ },
+ {
+  "id": "E-V-34",
+  "title": "Run-state vocabularies differ",
+  "current": "One run-state vocabulary: Pending, Running, Waiting, Held, Paused, Reconciling, Succeeded, Failed, Cancelled (+ Blocked for preflight holds), mapped to the Part 3.2 API states (DEC-561).",
+  "authority": "DEC-561",
+  "reported_by": "Part 11.3c #1",
+  "occurrences": 1,
+  "stale": 0,
+  "where": [],
+  "parts": []
+ },
+ {
+  "id": "E-V-35",
+  "title": "Workflow catalogue titled WF-01\u202639 / WF-01 to WF-14",
+  "current": "Blueprint workflows are WF-01\u2026WF-60 with WF-24 and WF-40 unused; V12 workflows are SM-SVC-##-WF# (156) and INV workflows.",
+  "authority": "Part 9.10; Part 11.4d",
+  "reported_by": "Part 11.4d #1, #2",
+  "occurrences": 5,
+  "stale": 4,
+  "where": [
+   "Part 9.2 L2249",
+   "Part 9.4 L22",
+   "Part 9.4 L284",
+   "Part 11.13a L8"
+  ],
+  "parts": [
+   "11.13a",
+   "9.2",
+   "9.4"
+  ]
+ },
+ {
+  "id": "E-V-36",
+  "title": "Side-effect classes R0/W1/X2 vs none/internal/external",
+  "current": "Mapping R0 \u2192 none, W1 \u2192 internal, X2 \u2192 external; V12 R-classes R0\u2026R3 govern authority (DEC-570).",
+  "authority": "DEC-570, DEC-965",
+  "reported_by": "Part 11.4d #3",
+  "occurrences": 3,
+  "stale": 2,
+  "where": [
+   "Part 11.6a L244",
+   "Part 11.6a L245"
+  ],
+  "parts": [
+   "11.6a"
+  ]
+ },
+ {
+  "id": "E-V-37",
+  "title": "SEV1 notice targets differ",
+  "current": "Single SEV communication matrix of Part 11.11 \u00a711.11.5.3.",
+  "authority": "DEC-701",
+  "reported_by": "Part 11.11b #1",
+  "occurrences": 3,
+  "stale": 1,
+  "where": [
+   "Part 4.3 L480"
+  ],
+  "parts": [
+   "4.3"
+  ]
+ },
+ {
+  "id": "E-V-38",
+  "title": "Status page \"Not defined [GAP-126]\"",
+  "current": "Status page defined (DEC-406, DEC-703; W40 route links to the external status page).",
+  "authority": "DEC-406, DEC-703",
+  "reported_by": "Part 11.11b #3",
+  "occurrences": 1,
+  "stale": 0,
+  "where": [],
+  "parts": []
+ },
+ {
+  "id": "E-V-39",
+  "title": "Effort 287\u2013483 pd / \u20b913.05\u201332.93 lakh as current budget",
+  "current": "Approved development budget DEC-230 plus CR-V12-J-01 (DEC-770) and all V12 CRs funded (DEC-790); re-forecast at each sprint review.",
+  "authority": "DEC-228, DEC-230, DEC-770, DEC-790",
+  "reported_by": "Part 11.12 #3",
+  "occurrences": 54,
+  "stale": 48,
+  "where": [
+   "Part 0A L35",
+   "Part 0 L94",
+   "Part 0 L274",
+   "Part 1 L26",
+   "Part 1 L459",
+   "Part 2.6 L1860"
+  ],
+  "parts": [
+   "0",
+   "0A",
+   "1",
+   "2.6",
+   "2.7a",
+   "3.4",
+   "4.4b",
+   "5.1a",
+   "5.1c",
+   "5.2",
+   "5.3",
+   "6.1",
+   "6.2b",
+   "6.7",
+   "6.9a",
+   "6.9b",
+   "7.2",
+   "7.4a",
+   "7.4b",
+   "8.1",
+   "8.2",
+   "9.1",
+   "9.2",
+   "9.5",
+   "9.6a"
+  ]
+ },
+ {
+  "id": "E-V-40",
+  "title": "IdP: one connection per tenant",
+  "current": "Multiple IdP connections per tenant; V12 C2 single-row `identity_provider` exposed as a compatibility view (FR-V12-R-029).",
+  "authority": "DEC-784; FR-V12-R-029",
+  "reported_by": "Part 11.19c #7",
+  "occurrences": 1,
+  "stale": 0,
+  "where": [],
+  "parts": []
+ },
+ {
+  "id": "E-V-41",
+  "title": "API catalogue count 579 only",
+  "current": "API register = 579 core + 40 advanced (API-ADV-X1) + V12 operations (Appendix A 282, A2 48, mapped in Part 11.8) + group additions; Part 9.2 counts are superseded by the Part 11.8 register.",
+  "authority": "Part 11.8",
+  "reported_by": "Part 11.8b #1",
+  "occurrences": 2,
+  "stale": 2,
+  "where": [
+   "Part 11.1a L910",
+   "Part 11.2a L164"
+  ],
+  "parts": [
+   "11.1a",
+   "11.2a"
+  ]
+ },
+ {
+  "id": "E-V-42",
+  "title": "Tests count 4,156 vs indexable rows",
+  "current": "Count of record 4,156 baseline tests (4,077 indexable rows; the rest as ranges) plus every TC-V12-* added in Part 11.",
+  "authority": "Part 11.10c",
+  "reported_by": "Part 11.10c #3",
+  "occurrences": 2,
+  "stale": 1,
+  "where": [
+   "Part 11.10a L8"
+  ],
+  "parts": [
+   "11.10a"
+  ]
+ },
+ {
+  "id": "E-V-43",
+  "title": "Hosting cost lines without PITR / standby",
+  "current": "PITR and a warm standby are funded from Release 1 (DEC-771, DEC-787).",
+  "authority": "DEC-771, DEC-787",
+  "reported_by": "Part 11.5b #2",
+  "occurrences": 4,
+  "stale": 4,
+  "where": [
+   "Part 11.5b L214",
+   "Part 11.5b L953",
+   "Part 11.5b L1024",
+   "Part 11.9b L60"
+  ],
+  "parts": [
+   "11.5b",
+   "11.9b"
+  ]
+ },
+ {
+  "id": "E-V-44",
+  "title": "X-09 developer platform exclusion",
+  "current": "Developer platform (API keys, OAuth client credentials, signed webhooks, portal, SDKs, sandbox) is in Release 1; X-09 withdrawn.",
+  "authority": "DEC-785",
+  "reported_by": "Part 11.14",
+  "occurrences": 4,
+  "stale": 3,
+  "where": [
+   "Part 11.1b L467",
+   "Part 11.1b L831",
+   "Part 11.1b L897"
+  ],
+  "parts": [
+   "11.1b"
+  ]
+ },
+ {
+  "id": "E-V-45",
+  "title": "A172 agentic commerce workspace \"EP-13 \u00b7 Future (W6+)\"",
+  "current": "SM-SVC-28 belongs to EP-24, Release 2 under CR-V12-P (DEC-780).",
+  "authority": "DEC-780",
+  "reported_by": "Part 11.17b #1",
+  "occurrences": 3,
+  "stale": 2,
+  "where": [
+   "Part 11.7b L1266",
+   "Part 11.7b L1517"
+  ],
+  "parts": [
+   "11.7b"
+  ]
+ },
+ {
+  "id": "E-V-46",
+  "title": "Decisions left \"Pending Founder decision\"",
+  "current": "Every V12 item pending a Founder decision was adopted by DEC-770\u2026791 (DEC-791 closes the remainder). Read any \"Pending Founder decision\" as decided per Part 11.14.",
+  "authority": "DEC-770\u2026791",
+  "reported_by": "Part 11.17b #3",
+  "occurrences": 797,
+  "stale": 774,
+  "where": [
+   "Part 11.10a L94",
+   "Part 11.10a L160",
+   "Part 11.10c L720",
+   "Part 11.10c L721",
+   "Part 11.10c L722",
+   "Part 11.10c L738"
+  ],
+  "parts": [
+   "11.10a",
+   "11.10c",
+   "11.11a",
+   "11.11b",
+   "11.12",
+   "11.13a",
+   "11.13b",
+   "11.14",
+   "11.16c",
+   "11.16e",
+   "11.17a",
+   "11.18a",
+   "11.18d",
+   "11.19a",
+   "11.1a",
+   "11.1b",
+   "11.22a",
+   "11.2a",
+   "11.2b",
+   "11.2c",
+   "11.3a",
+   "11.3b",
+   "11.3c",
+   "11.4a",
+   "11.4c",
+   "11.4d",
+   "11.5a",
+   "11.5b",
+   "11.6a",
+   "11.6b",
+   "11.7a",
+   "11.7c",
+   "11.8a",
+   "11.8b",
+   "11.9a",
+   "11.9c"
+  ]
+ },
+ {
+  "id": "E-V-47",
+  "title": "Group P provisional screens A260\u2013A269",
+  "current": "A260\u2013A269 confirmed for Group P (Part 11.17) by DEC-962.",
+  "authority": "DEC-962",
+  "reported_by": "Part 11.17b #5",
+  "occurrences": 2,
+  "stale": 2,
+  "where": [
+   "Part 11.17a L948",
+   "Part 11.17b L3274"
+  ],
+  "parts": [
+   "11.17a",
+   "11.17b"
+  ]
+ },
+ {
+  "id": "E-V-49",
+  "title": "Workbook token rates treated as prices",
+  "current": "Workbook Cost_Model rates are illustrative; model costs come from the registry rate card (DEC-788), verify at implementation.",
+  "authority": "DEC-788",
+  "reported_by": "Part 11.2c #3",
+  "occurrences": 1,
+  "stale": 0,
+  "where": [],
+  "parts": []
+ },
+ {
+  "id": "E-V-50",
+  "title": "Appendix C workflow IDs with one-digit suffix",
+  "current": "Workflow IDs are always `SM-SVC-##-WF0#` (two digits) \u2014 the form used in Appendix C comments; chapter forms `-WF1` are aliases.",
+  "authority": "DEC-966",
+  "reported_by": "Part 11.9c #6",
+  "occurrences": 84,
+  "stale": 1,
+  "where": [
+   "Part 11.9b L801"
+  ],
+  "parts": [
+   "11.9b"
+  ]
+ }
+]

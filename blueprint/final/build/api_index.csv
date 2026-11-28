@@ -554,106 +554,106 @@ API-552,POST,/api/v1/commercial/admin/notifications/{id}/archive,admin,"Command 
 API-553,PUT,/api/v1/commercial/admin/notification-preferences,admin,"Command Centre, approvals, notifications, search, reports",3.2,W,—,RL-ADM,yes,,Digest and channel preferences (CFG-30)
 API-554,POST,/api/v1/commercial/admin/report-exports,admin,"Command Centre, approvals, notifications, search, reports",3.2,Q,—,RL-ADM-H,yes,,Generate report export (CSV/XLSX/PDF) with permission recheck
 API-555,GET,/api/v1/commercial/admin/report-exports/{id},admin,"Command Centre, approvals, notifications, search, reports",3.2,R,—,RL-ADM,yes,,Export status and expiring link
-API-ENH-D-001,PATCH,/api/v1/commercial/admin/sources/{id},admin,3.5.5.2 New operations,3.5b,W,—,RL-ADM,yes,,"Revise source approval (licence, purpose, scope, expiry) as a new SourcePolicy revision; voids prior approval"
-API-ENH-D-002,GET,/api/v1/commercial/admin/evals/cases,admin,3.5.5.2 New operations,3.5b,R,—,RL-ADM,yes,,"List evaluation cases (task, dataset revision, label provenance, tags); cursor"
-API-ENH-D-003,POST,/api/v1/commercial/admin/signal-types,admin,3.5.5.2 New operations,3.5b,W,—,RL-ADM,yes,,"Draft signal taxonomy revision (code, label, vertical, evidence rule)"
-API-ENH-D-004,POST,/api/v1/commercial/admin/role-mappings,admin,3.5.5.2 New operations,3.5b,W,—,RL-ADM,yes,,"Draft role-mapping rule-set revision (title pattern to decision role hypothesis, confidence)"
-API-ENH-D-005,POST,/api/v1/commercial/admin/alerts/{id}/read,admin,3.5.5.2 New operations,3.5b,W,—,RL-ADM,yes,,Mark own research alert read
-API-ENH-D-006,POST,/api/v1/commercial/admin/workflows/{id}/resume,admin,3.5.5.2 New operations,3.5b,W,P,RL-ADM,yes,,"Resume a paused workflow scope after PDP recheck (budget, consent, approval validity, stop state)"
-API-ENH-D-007,GET,/api/v1/commercial/admin/messages/{id},admin,3.5.5.2 New operations,3.5b,R,—,RL-ADM,yes,,Single message with delivery state and provider event timeline (provider ref masked)
-API-ENH-D-008,GET,/api/v1/commercial/admin/channels/whatsapp/accounts,admin,3.5.5.2 New operations,3.5b,R,—,RL-ADM,yes,,"WABA accounts, numbers, quality rating, messaging tier, template counts (never tokens)"
-API-ENH-D-009,PUT,/api/v1/commercial/admin/chat/settings,admin,3.5.5.2 New operations,3.5b,W,P,RL-ADM,yes,,"Website assistant settings per startup: enabled, languages, handover hours, transcript retention, daily AI budget"
-API-ENH-D-010,POST,/api/v1/commercial/admin/forecast-models/{id}/versions,admin,3.5.5.2 New operations,3.5b,W,—,RL-ADM,yes,,"Draft forecast assumption revision (stage probabilities, horizon, seasonality); approval type forecast_model"
-API-ENH-D-011,GET,/api/v1/commercial/admin/pilots,admin,3.5.5.2 New operations,3.5b,R,—,RL-ADM,yes,,"List pilots by type (insurance, partner, institutional), stage, approvals, data-agreement state"
-API-ENH-D-012,POST,/api/v1/commercial/admin/domains/{id}/disable,admin,3.5.5.2 New operations,3.5b,W,—,RL-ADM,yes,,"Disable brand-domain mapping: host returns 404 UNKNOWN_HOST, tenant-keyed cache purge"
-API-ENH-D-013,POST,/api/v1/commercial/admin/service-invoices/{id}/receipts,admin,3.5.5.2 New operations,3.5b,F,—,RL-ADM,yes,,Record service receipt and reconcile (maker); checker via API-ENH-D-013 action=verify
-API-ENH-D-014,GET,/api/v1/commercial/admin/usage-charges,admin,3.5.5.2 New operations,3.5b,R,—,RL-ADM,yes,,"Usage charge ledger: period, dimension, quantity, rate version, amount, adjustments"
-API-ENH-D-015,POST,/api/v1/commercial/admin/usage-charges/{id}/credits,admin,3.5.5.2 New operations,3.5b,F,—,RL-ADM,yes,,Append approved credit adjustment (original charge immutable)
-API-ENH-D-016,POST,/api/v1/commercial/admin/orders/{id}/acceptances,admin,3.5.5.2 New operations,3.5b,F,—,RL-ADM,yes,,Record acceptance or dispute of received goods/services (buy direction) with evidence
-API-ENH-D-017,POST,/api/v1/commercial/admin/external-grants/{id}/revoke,admin,3.5.5.2 New operations,3.5b,W,—,RL-ADM,yes,,Revoke external portal grant (PortalGrant) immediately; sessions using it re-authorize
-API-ENH-D-018,POST,/api/v1/commercial/portal/uploads/{id}/complete,portal,3.5.5.2 New operations,3.5b,Q,—,RL-PORTAL,yes,,"Complete own quarantined upload: checksum match, enqueue malware scan"
-API-ENH-D-019,GET,/api/v1/commercial/portal/onboarding-wizard/{app},portal,3.5.5.2 New operations,3.5b,R,—,RL-PORTAL,yes,,"Read own applicant configuration draft (JSON, revision, validation state)"
-API-ENH-D-020,POST,/api/v1/commercial/portal/service/offboarding-requests,portal,3.5.5.2 New operations,3.5b,W,—,RL-PORTAL,yes,,Request offboarding (WF-14) with export preference; no automatic action
-API-ENH-D-021,POST,/api/v1/commercial/admin/workflow-templates,admin,3.5.5.2 New operations,3.5b,W,—,RL-ADM,yes,,"Create workflow template draft (allowlisted nodes, bounded graph, input/output schemas)"
-API-ENH-D-022,POST,/api/v1/commercial/admin/external-grants/{id}/rotate,admin,3.5.5.2 New operations,3.5b,X,P+D,RL-ADM,yes,,"Rotate invitation secret (previous invite invalid), keep grant scope"
-API-ENH-D-023,GET,/api/v1/commercial/admin/external-grants,admin,3.5.5.2 New operations,3.5b,R,—,RL-ADM,yes,,List external grants by counterparty/object with expiry and state
-API-ENH-D-024,POST,/api/v1/commercial/admin/privacy-requests,admin,3.5.5.2 New operations,3.5b,Q,—,RL-ADM,yes,,Record privacy request received offline on behalf of a subject (identity verification pending)
-API-V12-H-001,GET,/api/v1/commercial/admin/developer/api-keys,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,"List API keys of the tenant (prefix, last4, scopes, expiry, last used); never the secret"
-API-V12-H-002,POST,/api/v1/commercial/admin/developer/api-keys,admin,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,"Create scoped, expiring API key; plaintext returned exactly once"
-API-V12-H-003,POST,/api/v1/commercial/admin/developer/api-keys/{id}/revoke,admin,11.8.5.5 New operations,11.8b,W,—,RL-ADM,no,,Revoke API key immediately
-API-V12-H-004,POST,/api/v1/commercial/admin/developer/api-keys/{id}/rotate,admin,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,Rotate key: issue successor with the same scopes; old key valid for an overlap window
-API-V12-H-005,POST,/oauth/token,dev,11.8.5.5 New operations,11.8b,R,—,RL-AUTH,no,API-V12-R-023,OAuth 2.0 client-credentials token for server integrations
-API-V12-H-006,GET,/api/v1/commercial/admin/developer/oauth-clients,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,"List OAuth clients (client ID, scopes, key thumbprints, state)"
-API-V12-H-007,POST,/api/v1/commercial/admin/developer/oauth-clients,admin,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,"Register OAuth client (JWKS URL or uploaded public key, scopes)"
-API-V12-H-008,POST,/api/v1/commercial/admin/developer/oauth-clients/{id}/revoke,admin,11.8.5.5 New operations,11.8b,W,—,RL-ADM,no,,Revoke OAuth client and its issued tokens
-API-V12-H-009,GET,/api/v1/commercial/admin/developer/webhooks,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,List outbound webhook endpoints of the tenant
-API-V12-H-010,POST,/api/v1/commercial/admin/developer/webhooks,admin,11.8.5.5 New operations,11.8b,W,P,RL-ADM,no,,"Add outbound webhook endpoint (HTTPS URL, subscribed event types)"
-API-V12-H-011,PATCH,/api/v1/commercial/admin/developer/webhooks/{id},admin,11.8.5.5 New operations,11.8b,W,P,RL-ADM,no,,"Change events, disable/enable, or rotate signing secret with overlap"
-API-V12-H-012,POST,/api/v1/commercial/admin/developer/webhooks/{id}/test,admin,11.8.5.5 New operations,11.8b,X,P+D,RL-ADM,no,,Send signed test event to the endpoint
-API-V12-H-013,GET,/api/v1/commercial/admin/developer/webhook-deliveries,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,"Delivery log: attempts, status codes, latency, next retry"
-API-V12-H-014,POST,/api/v1/commercial/admin/developer/webhook-deliveries/{id}/replay,admin,11.8.5.5 New operations,11.8b,X,P+D,RL-ADM,no,,"Re-send an earlier event payload (same event_id, new delivery)"
-API-V12-H-015,GET,/api/v1/commercial/admin/identity/sso,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,Read tenant SSO configuration
-API-V12-H-016,PUT,/api/v1/commercial/admin/identity/sso,admin,11.8.5.5 New operations,11.8b,W,P,RL-ADM,no,,Update SSO configuration (draft until tested; enforcement guarded)
-API-V12-H-017,POST,/api/v1/commercial/admin/identity/sso/test,admin,11.8.5.5 New operations,11.8b,Q,—,RL-AUTH,no,,Test IdP connection with a real login round-trip of the administrator
-API-V12-H-018,POST,/api/v1/commercial/admin/identity/domains,admin,11.8.5.5 New operations,11.8b,W,—,RL-ADM,no,,Add email domain for SSO verification (DNS TXT challenge)
-API-V12-H-019,POST,/api/v1/commercial/admin/identity/domains/{id}/verify,admin,11.8.5.5 New operations,11.8b,Q,—,RL-ADM,no,,Verify domain DNS TXT record
-API-V12-H-020,PUT,/api/v1/commercial/admin/identity/policies,admin,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,Set tenant MFA and session policy
-API-V12-H-021,GET,/scim/v2/Users,scim,11.8.5.5 New operations,11.8b,R,—,RL-SCIM,no,API-V12-R-011,SCIM list/filter users (RFC 7644 filter userName eq)
-API-V12-H-022,POST,/scim/v2/Users,scim,11.8.5.5 New operations,11.8b,W,—,RL-SCIM,no,API-V12-R-011,SCIM create user (membership without business grants)
-API-V12-H-023,GET,/scim/v2/Users/{id},scim,11.8.5.5 New operations,11.8b,R,—,RL-SCIM,no,API-V12-R-011,SCIM read user
-API-V12-H-024,PATCH,/scim/v2/Users/{id},scim,11.8.5.5 New operations,11.8b,W,—,RL-SCIM,no,API-V12-R-011,"SCIM update user (PatchOp), including active=false"
-API-V12-H-025,DELETE,/scim/v2/Users/{id},scim,11.8.5.5 New operations,11.8b,W,—,RL-SCIM,no,API-V12-R-011,SCIM de-provision user
-API-V12-H-026,GET,/scim/v2/Groups,scim,11.8.5.5 New operations,11.8b,R,—,RL-SCIM,no,API-V12-R-012,SCIM list groups
-API-V12-H-027,POST,/scim/v2/Groups,scim,11.8.5.5 New operations,11.8b,W,—,RL-SCIM,no,API-V12-R-012,SCIM create group
-API-V12-H-028,POST,/api/v1/commercial/admin/identity/scim-tokens,admin,11.8.5.5 New operations,11.8b,W,—,RL-ADM,no,,Issue or revoke the tenant SCIM bearer token
-API-V12-H-029,GET,/api/v1/commercial/admin/roles,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,List built-in (R01–R20) and custom roles with permissions
-API-V12-H-030,POST,/api/v1/commercial/admin/roles,admin,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,Create custom role (resource × action permissions); SoD checked
-API-V12-H-031,PATCH,/api/v1/commercial/admin/roles/{id},admin,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,Update custom role (new revision; re-approval)
-API-V12-H-032,DELETE,/api/v1/commercial/admin/roles/{id},admin,11.8.5.5 New operations,11.8b,W,—,RL-ADM,no,,Retire custom role
-API-V12-H-033,GET,/api/v1/commercial/admin/siem-sinks,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,List SIEM destinations with delivery health
-API-V12-H-034,POST,/api/v1/commercial/admin/siem-sinks,admin,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,"Add SIEM destination (HTTPS, syslog over TLS, object storage)"
-API-V12-H-035,POST,/api/v1/commercial/admin/billing/invoices/preview,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,"Preview next service invoice with usage, credits and tax lines"
-API-V12-H-036,POST,/api/v1/commercial/admin/tax/quote,admin+internal,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,Tax determination for a line (rule table; provider for US sales tax later)
-API-V12-H-037,GET,/api/v1/commercial/admin/connectors,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,Connector catalogue (INT-01…11 kinds) with activation-gate status per tenant
-API-V12-H-038,POST,/api/v1/commercial/admin/connectors/{id}/installations,admin,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,Install connector in sandbox or production behind the activation gate
-API-V12-H-039,GET,/api/v1/commercial/admin/encryption-keys,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,Read tenant key configuration (platform or customer-managed)
-API-V12-H-040,PUT,/api/v1/commercial/admin/encryption-keys,admin,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,"Set platform or customer-managed key (AWS KMS, Azure Key Vault, GCP KMS)"
-API-V12-H-041,GET,/api/v1/commercial/admin/sandboxes,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,List tenant sandbox environments
-API-V12-H-042,POST,/api/v1/commercial/admin/sandboxes,admin,11.8.5.5 New operations,11.8b,Q,—,RL-ADM-H,no,,Create sandbox with synthetic data only
-API-V12-H-043,POST,/api/v1/commercial/admin/sandboxes/{id}/promotions,admin,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,Request configuration promotion sandbox → production as a reviewed revision
-API-V12-H-044,GET,/api/v1/commercial/public/locales,public,11.8.5.5 New operations,11.8b,R,—,RL-PUB-R,no,,Supported locales with coverage and direction
-API-V12-H-045,POST,/api/v1/commercial/admin/ops/incidents,admin,11.8.5.5 New operations,11.8b,W,—,RL-ADM,no,,Declare operational incident (SEV1–SEV4) with commander
-API-V12-H-046,GET,/status/v1/summary,status,11.8.5.5 New operations,11.8b,R,—,RL-PUB-R,no,,"Public status summary (components, incidents, maintenance)"
-API-V12-H-047,GET,/api/v1/commercial/admin/security/findings,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,Vulnerability findings with SLA due dates (operator)
-API-V12-H-048,POST,/api/v1/commercial/admin/security/findings,admin,11.8.5.5 New operations,11.8b,W,—,RL-ADM,no,,"Log finding (pen test, scanner, bug report)"
-API-V12-H-049,GET,/api/v1/commercial/admin/ai/models,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,"Model registry entries (provider, model ID, tier, data-class ceiling, status, eval evidence)"
-API-V12-H-050,POST,/api/v1/commercial/admin/ai/models/{id}/promotion-requests,admin,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,Request model promotion; requires passing eval suites
-API-V12-H-051,GET,/api/v1/commercial/admin/ai/prompts,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,List prompt versions with status and eval evidence
-API-V12-H-052,GET,/api/v1/commercial/admin/ai/eval-suites,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,"List evaluation suites (cases, metrics, thresholds)"
-API-V12-H-053,GET,/api/v1/commercial/admin/ai/red-team/results,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,AI-INJ prompt-injection suite results
-API-V12-H-054,POST,/api/v1/commercial/internal/ai/content-screen,internal,11.8.5.5 New operations,11.8b,R,—,RL-INT,no,,"Screen untrusted content (evidence, inbound, uploads) and return flags only"
-API-V12-H-055,GET,/api/v1/commercial/admin/ai/usage,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,Token usage and cost per accepted result
-API-V12-H-056,POST,/api/v1/commercial/admin/ai/kill-switch,admin,11.8.5.5 New operations,11.8b,W,—,RL-ADM,no,,"Stop a model, prompt, agent or workflow immediately"
-API-V12-H-057,GET,/api/v1/commercial/admin/jurisdiction-rules/{id}/rules,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,Rules of a jurisdiction pack with legal source and approval status
-API-V12-H-058,GET,/api/v1/commercial/admin/consents,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,"Search consent ledger (hashed identifier, channel, purpose, notice version)"
-API-V12-H-059,POST,/api/v1/commercial/admin/consents/{id}/withdraw,admin,11.8.5.5 New operations,11.8b,W,—,RL-ADM,no,,Record a withdrawal received by staff; suppress and cancel queued sends
-API-V12-H-060,POST,/api/v1/commercial/admin/compliance/incidents,admin,11.8.5.5 New operations,11.8b,W,—,RL-ADM,no,,Open privacy/compliance incident; regulatory clocks start
-API-V12-H-061,POST,/api/v1/commercial/admin/compliance/incidents/{id}/notifications,admin,11.8.5.5 New operations,11.8b,F,—,RL-ADM,no,,Record authority or data-principal notification
-API-V12-H-062,POST,/api/v1/commercial/public/cookie-consents,public,11.8.5.5 New operations,11.8b,W,—,RL-PUB-W,no,,Record cookie choice with notice version
-API-V12-H-063,POST,/api/v1/commercial/admin/portfolio/grants,admin,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,Grant or revoke explicit aggregate (portfolio) read scope
-API-V12-H-064,GET,/api/v1/commercial/admin/metrics/business,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,"Attributed counts, native totals, converted totals with approved rate version and missing-rate list"
-API-V12-H-065,GET,/api/v1/commercial/admin/optimization/cost-summary,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,"Meter categories, allocated and unallocated cost, accepted-output denominator"
-API-V12-H-066,GET,/api/v1/commercial/portal/service/value,portal,11.8.5.5 New operations,11.8b,R,—,RL-PORTAL,no,,"Customer value view: accepted output, usage, value assumption, renewal state"
-API-V12-H-067,GET,/api/v1/commercial/admin/operator/conversion-metrics,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,"Platform-operator SaaS funnel, attribution quality and acquisition cost (aggregate only)"
-API-V12-H-068,POST,/api/v2/workflow-runs,v2,11.8.5.5 New operations,11.8b,Q,P,RL-ADM,no,,Common run gateway: start (or dry-run) any SM-SVC-##-WF# workflow with a validated DTO
-API-V12-H-069,GET,/api/v2/workflow-runs/{id},v2,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,"Run result: state, step states, result reference, error, usage"
-API-V12-H-070,POST,/api/v2/workflow-runs/{id}/approvals,v2,11.8.5.5 New operations,11.8b,A,P,RL-ADM,no,,Approve or reject the exact action digest of a held run
-API-V12-H-071,POST,/api/v2/workflow-runs/{id}/cancel,v2,11.8.5.5 New operations,11.8b,W,—,RL-ADM,no,,Cancel run and reconcile pending effects
-API-V12-H-072,GET,/api/v2/workflow-runs/{id}/steps,v2,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,Step trace with artifact references and redacted failure evidence
-API-V12-H-073,POST,/api/v2/connectors/{kind}/events,hooks,11.8.5.5 New operations,11.8b,I,—,RL-HOOK,no,,"Generic signed provider event intake for new connector kinds (CRM, SMS-DLT, voice, warehouse)"
-API-V12-H-074,GET,/api/v1/commercial/admin/connectors/health-summary,admin,11.8.5.5 New operations,11.8b,R,—,RL-ADM,no,,"Connector health, sync lag and error-rate dashboard data with alert state"
-API-V12-H-075,POST,/api/v1/commercial/admin/integrations/{id}/diagnostics,admin,11.8.5.5 New operations,11.8b,Q,—,RL-ADM-H,no,,Self-service setup checklist and diagnostics with escalation to support
-API-V12-H-076,POST,/api/v1/commercial/admin/finops/provider-tier-scenarios,admin,11.8.5.5 New operations,11.8b,Q,—,RL-ADM-H,no,,"Compare provider contractual tiers, commitments and overages from forecast usage"
+API-ENH-D-001,PATCH,/api/v1/commercial/admin/sources/{id},admin,Source-pack additions API-ENH-D,3.5b,W,—,RL-ADM,yes,,"Revise source approval (licence, purpose, scope, expiry) as a new SourcePolicy revision; voids prior approval"
+API-ENH-D-002,GET,/api/v1/commercial/admin/evals/cases,admin,Source-pack additions API-ENH-D,3.5b,R,—,RL-ADM,yes,,"List evaluation cases (task, dataset revision, label provenance, tags); cursor"
+API-ENH-D-003,POST,/api/v1/commercial/admin/signal-types,admin,Source-pack additions API-ENH-D,3.5b,W,—,RL-ADM,yes,,"Draft signal taxonomy revision (code, label, vertical, evidence rule)"
+API-ENH-D-004,POST,/api/v1/commercial/admin/role-mappings,admin,Source-pack additions API-ENH-D,3.5b,W,—,RL-ADM,yes,,"Draft role-mapping rule-set revision (title pattern to decision role hypothesis, confidence)"
+API-ENH-D-005,POST,/api/v1/commercial/admin/alerts/{id}/read,admin,Source-pack additions API-ENH-D,3.5b,W,—,RL-ADM,yes,,Mark own research alert read
+API-ENH-D-006,POST,/api/v1/commercial/admin/workflows/{id}/resume,admin,Source-pack additions API-ENH-D,3.5b,W,P,RL-ADM,yes,,"Resume a paused workflow scope after PDP recheck (budget, consent, approval validity, stop state)"
+API-ENH-D-007,GET,/api/v1/commercial/admin/messages/{id},admin,Source-pack additions API-ENH-D,3.5b,R,—,RL-ADM,yes,,Single message with delivery state and provider event timeline (provider ref masked)
+API-ENH-D-008,GET,/api/v1/commercial/admin/channels/whatsapp/accounts,admin,Source-pack additions API-ENH-D,3.5b,R,—,RL-ADM,yes,,"WABA accounts, numbers, quality rating, messaging tier, template counts (never tokens)"
+API-ENH-D-009,PUT,/api/v1/commercial/admin/chat/settings,admin,Source-pack additions API-ENH-D,3.5b,W,P,RL-ADM,yes,,"Website assistant settings per startup: enabled, languages, handover hours, transcript retention, daily AI budget"
+API-ENH-D-010,POST,/api/v1/commercial/admin/forecast-models/{id}/versions,admin,Source-pack additions API-ENH-D,3.5b,W,—,RL-ADM,yes,,"Draft forecast assumption revision (stage probabilities, horizon, seasonality); approval type forecast_model"
+API-ENH-D-011,GET,/api/v1/commercial/admin/pilots,admin,Source-pack additions API-ENH-D,3.5b,R,—,RL-ADM,yes,,"List pilots by type (insurance, partner, institutional), stage, approvals, data-agreement state"
+API-ENH-D-012,POST,/api/v1/commercial/admin/domains/{id}/disable,admin,Source-pack additions API-ENH-D,3.5b,W,—,RL-ADM,yes,,"Disable brand-domain mapping: host returns 404 UNKNOWN_HOST, tenant-keyed cache purge"
+API-ENH-D-013,POST,/api/v1/commercial/admin/service-invoices/{id}/receipts,admin,Source-pack additions API-ENH-D,3.5b,F,—,RL-ADM,yes,,Record service receipt and reconcile (maker); checker via API-ENH-D-013 action=verify
+API-ENH-D-014,GET,/api/v1/commercial/admin/usage-charges,admin,Source-pack additions API-ENH-D,3.5b,R,—,RL-ADM,yes,,"Usage charge ledger: period, dimension, quantity, rate version, amount, adjustments"
+API-ENH-D-015,POST,/api/v1/commercial/admin/usage-charges/{id}/credits,admin,Source-pack additions API-ENH-D,3.5b,F,—,RL-ADM,yes,,Append approved credit adjustment (original charge immutable)
+API-ENH-D-016,POST,/api/v1/commercial/admin/orders/{id}/acceptances,admin,Source-pack additions API-ENH-D,3.5b,F,—,RL-ADM,yes,,Record acceptance or dispute of received goods/services (buy direction) with evidence
+API-ENH-D-017,POST,/api/v1/commercial/admin/external-grants/{id}/revoke,admin,Source-pack additions API-ENH-D,3.5b,W,—,RL-ADM,yes,,Revoke external portal grant (PortalGrant) immediately; sessions using it re-authorize
+API-ENH-D-018,POST,/api/v1/commercial/portal/uploads/{id}/complete,portal,Source-pack additions API-ENH-D,3.5b,Q,—,RL-PORTAL,yes,,"Complete own quarantined upload: checksum match, enqueue malware scan"
+API-ENH-D-019,GET,/api/v1/commercial/portal/onboarding-wizard/{app},portal,Source-pack additions API-ENH-D,3.5b,R,—,RL-PORTAL,yes,,"Read own applicant configuration draft (JSON, revision, validation state)"
+API-ENH-D-020,POST,/api/v1/commercial/portal/service/offboarding-requests,portal,Source-pack additions API-ENH-D,3.5b,W,—,RL-PORTAL,yes,,Request offboarding (WF-14) with export preference; no automatic action
+API-ENH-D-021,POST,/api/v1/commercial/admin/workflow-templates,admin,Source-pack additions API-ENH-D,3.5b,W,—,RL-ADM,yes,,"Create workflow template draft (allowlisted nodes, bounded graph, input/output schemas)"
+API-ENH-D-022,POST,/api/v1/commercial/admin/external-grants/{id}/rotate,admin,Source-pack additions API-ENH-D,3.5b,X,P+D,RL-ADM,yes,,"Rotate invitation secret (previous invite invalid), keep grant scope"
+API-ENH-D-023,GET,/api/v1/commercial/admin/external-grants,admin,Source-pack additions API-ENH-D,3.5b,R,—,RL-ADM,yes,,List external grants by counterparty/object with expiry and state
+API-ENH-D-024,POST,/api/v1/commercial/admin/privacy-requests,admin,Source-pack additions API-ENH-D,3.5b,Q,—,RL-ADM,yes,,Record privacy request received offline on behalf of a subject (identity verification pending)
+API-V12-H-001,GET,/api/v1/commercial/admin/developer/api-keys,admin,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,"List API keys of the tenant (prefix, last4, scopes, expiry, last used); never the secret"
+API-V12-H-002,POST,/api/v1/commercial/admin/developer/api-keys,admin,V12 developer platform and enterprise API-V12-H,11.8b,A,P,RL-ADM,no,,"Create scoped, expiring API key; plaintext returned exactly once"
+API-V12-H-003,POST,/api/v1/commercial/admin/developer/api-keys/{id}/revoke,admin,V12 developer platform and enterprise API-V12-H,11.8b,W,—,RL-ADM,no,,Revoke API key immediately
+API-V12-H-004,POST,/api/v1/commercial/admin/developer/api-keys/{id}/rotate,admin,V12 developer platform and enterprise API-V12-H,11.8b,A,P,RL-ADM,no,,Rotate key: issue successor with the same scopes; old key valid for an overlap window
+API-V12-H-005,POST,/oauth/token,dev,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-AUTH,no,API-V12-R-023,OAuth 2.0 client-credentials token for server integrations
+API-V12-H-006,GET,/api/v1/commercial/admin/developer/oauth-clients,admin,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,"List OAuth clients (client ID, scopes, key thumbprints, state)"
+API-V12-H-007,POST,/api/v1/commercial/admin/developer/oauth-clients,admin,V12 developer platform and enterprise API-V12-H,11.8b,A,P,RL-ADM,no,,"Register OAuth client (JWKS URL or uploaded public key, scopes)"
+API-V12-H-008,POST,/api/v1/commercial/admin/developer/oauth-clients/{id}/revoke,admin,V12 developer platform and enterprise API-V12-H,11.8b,W,—,RL-ADM,no,,Revoke OAuth client and its issued tokens
+API-V12-H-009,GET,/api/v1/commercial/admin/developer/webhooks,admin,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,List outbound webhook endpoints of the tenant
+API-V12-H-010,POST,/api/v1/commercial/admin/developer/webhooks,admin,V12 developer platform and enterprise API-V12-H,11.8b,W,P,RL-ADM,no,,"Add outbound webhook endpoint (HTTPS URL, subscribed event types)"
+API-V12-H-011,PATCH,/api/v1/commercial/admin/developer/webhooks/{id},admin,V12 developer platform and enterprise API-V12-H,11.8b,W,P,RL-ADM,no,,"Change events, disable/enable, or rotate signing secret with overlap"
+API-V12-H-012,POST,/api/v1/commercial/admin/developer/webhooks/{id}/test,admin,V12 developer platform and enterprise API-V12-H,11.8b,X,P+D,RL-ADM,no,,Send signed test event to the endpoint
+API-V12-H-013,GET,/api/v1/commercial/admin/developer/webhook-deliveries,admin,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,"Delivery log: attempts, status codes, latency, next retry"
+API-V12-H-014,POST,/api/v1/commercial/admin/developer/webhook-deliveries/{id}/replay,admin,V12 developer platform and enterprise API-V12-H,11.8b,X,P+D,RL-ADM,no,,"Re-send an earlier event payload (same event_id, new delivery)"
+API-V12-H-015,GET,/api/v1/commercial/admin/identity/sso,admin,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,Read tenant SSO configuration
+API-V12-H-016,PUT,/api/v1/commercial/admin/identity/sso,admin,V12 developer platform and enterprise API-V12-H,11.8b,W,P,RL-ADM,no,,Update SSO configuration (draft until tested; enforcement guarded)
+API-V12-H-017,POST,/api/v1/commercial/admin/identity/sso/test,admin,V12 developer platform and enterprise API-V12-H,11.8b,Q,—,RL-AUTH,no,,Test IdP connection with a real login round-trip of the administrator
+API-V12-H-018,POST,/api/v1/commercial/admin/identity/domains,admin,V12 developer platform and enterprise API-V12-H,11.8b,W,—,RL-ADM,no,,Add email domain for SSO verification (DNS TXT challenge)
+API-V12-H-019,POST,/api/v1/commercial/admin/identity/domains/{id}/verify,admin,V12 developer platform and enterprise API-V12-H,11.8b,Q,—,RL-ADM,no,,Verify domain DNS TXT record
+API-V12-H-020,PUT,/api/v1/commercial/admin/identity/policies,admin,V12 developer platform and enterprise API-V12-H,11.8b,A,P,RL-ADM,no,,Set tenant MFA and session policy
+API-V12-H-021,GET,/scim/v2/Users,scim,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-SCIM,no,API-V12-R-011,SCIM list/filter users (RFC 7644 filter userName eq)
+API-V12-H-022,POST,/scim/v2/Users,scim,V12 developer platform and enterprise API-V12-H,11.8b,W,—,RL-SCIM,no,API-V12-R-011,SCIM create user (membership without business grants)
+API-V12-H-023,GET,/scim/v2/Users/{id},scim,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-SCIM,no,API-V12-R-011,SCIM read user
+API-V12-H-024,PATCH,/scim/v2/Users/{id},scim,V12 developer platform and enterprise API-V12-H,11.8b,W,—,RL-SCIM,no,API-V12-R-011,"SCIM update user (PatchOp), including active=false"
+API-V12-H-025,DELETE,/scim/v2/Users/{id},scim,V12 developer platform and enterprise API-V12-H,11.8b,W,—,RL-SCIM,no,API-V12-R-011,SCIM de-provision user
+API-V12-H-026,GET,/scim/v2/Groups,scim,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-SCIM,no,API-V12-R-012,SCIM list groups
+API-V12-H-027,POST,/scim/v2/Groups,scim,V12 developer platform and enterprise API-V12-H,11.8b,W,—,RL-SCIM,no,API-V12-R-012,SCIM create group
+API-V12-H-028,POST,/api/v1/commercial/admin/identity/scim-tokens,admin,V12 developer platform and enterprise API-V12-H,11.8b,W,—,RL-ADM,no,,Issue or revoke the tenant SCIM bearer token
+API-V12-H-029,GET,/api/v1/commercial/admin/roles,admin,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,List built-in (R01–R20) and custom roles with permissions
+API-V12-H-030,POST,/api/v1/commercial/admin/roles,admin,V12 developer platform and enterprise API-V12-H,11.8b,A,P,RL-ADM,no,,Create custom role (resource × action permissions); SoD checked
+API-V12-H-031,PATCH,/api/v1/commercial/admin/roles/{id},admin,V12 developer platform and enterprise API-V12-H,11.8b,A,P,RL-ADM,no,,Update custom role (new revision; re-approval)
+API-V12-H-032,DELETE,/api/v1/commercial/admin/roles/{id},admin,V12 developer platform and enterprise API-V12-H,11.8b,W,—,RL-ADM,no,,Retire custom role
+API-V12-H-033,GET,/api/v1/commercial/admin/siem-sinks,admin,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,List SIEM destinations with delivery health
+API-V12-H-034,POST,/api/v1/commercial/admin/siem-sinks,admin,V12 developer platform and enterprise API-V12-H,11.8b,A,P,RL-ADM,no,,"Add SIEM destination (HTTPS, syslog over TLS, object storage)"
+API-V12-H-035,POST,/api/v1/commercial/admin/billing/invoices/preview,admin,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,"Preview next service invoice with usage, credits and tax lines"
+API-V12-H-036,POST,/api/v1/commercial/admin/tax/quote,admin+internal,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,Tax determination for a line (rule table; provider for US sales tax later)
+API-V12-H-037,GET,/api/v1/commercial/admin/connectors,admin,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,Connector catalogue (INT-01…11 kinds) with activation-gate status per tenant
+API-V12-H-038,POST,/api/v1/commercial/admin/connectors/{id}/installations,admin,V12 developer platform and enterprise API-V12-H,11.8b,A,P,RL-ADM,no,,Install connector in sandbox or production behind the activation gate
+API-V12-H-039,GET,/api/v1/commercial/admin/encryption-keys,admin,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,Read tenant key configuration (platform or customer-managed)
+API-V12-H-040,PUT,/api/v1/commercial/admin/encryption-keys,admin,V12 developer platform and enterprise API-V12-H,11.8b,A,P,RL-ADM,no,,"Set platform or customer-managed key (AWS KMS, Azure Key Vault, GCP KMS)"
+API-V12-H-041,GET,/api/v1/commercial/admin/sandboxes,admin,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,List tenant sandbox environments
+API-V12-H-042,POST,/api/v1/commercial/admin/sandboxes,admin,V12 developer platform and enterprise API-V12-H,11.8b,Q,—,RL-ADM-H,no,,Create sandbox with synthetic data only
+API-V12-H-043,POST,/api/v1/commercial/admin/sandboxes/{id}/promotions,admin,V12 developer platform and enterprise API-V12-H,11.8b,A,P,RL-ADM,no,,Request configuration promotion sandbox → production as a reviewed revision
+API-V12-H-044,GET,/api/v1/commercial/public/locales,public,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-PUB-R,no,,Supported locales with coverage and direction
+API-V12-H-045,POST,/api/v1/commercial/admin/ops/incidents,admin,V12 developer platform and enterprise API-V12-H,11.8b,W,—,RL-ADM,no,,Declare operational incident (SEV1–SEV4) with commander
+API-V12-H-046,GET,/status/v1/summary,status,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-PUB-R,no,,"Public status summary (components, incidents, maintenance)"
+API-V12-H-047,GET,/api/v1/commercial/admin/security/findings,admin,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,Vulnerability findings with SLA due dates (operator)
+API-V12-H-048,POST,/api/v1/commercial/admin/security/findings,admin,V12 developer platform and enterprise API-V12-H,11.8b,W,—,RL-ADM,no,,"Log finding (pen test, scanner, bug report)"
+API-V12-H-049,GET,/api/v1/commercial/admin/ai/models,admin,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,"Model registry entries (provider, model ID, tier, data-class ceiling, status, eval evidence)"
+API-V12-H-050,POST,/api/v1/commercial/admin/ai/models/{id}/promotion-requests,admin,V12 developer platform and enterprise API-V12-H,11.8b,A,P,RL-ADM,no,,Request model promotion; requires passing eval suites
+API-V12-H-051,GET,/api/v1/commercial/admin/ai/prompts,admin,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,List prompt versions with status and eval evidence
+API-V12-H-052,GET,/api/v1/commercial/admin/ai/eval-suites,admin,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,"List evaluation suites (cases, metrics, thresholds)"
+API-V12-H-053,GET,/api/v1/commercial/admin/ai/red-team/results,admin,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,AI-INJ prompt-injection suite results
+API-V12-H-054,POST,/api/v1/commercial/internal/ai/content-screen,internal,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-INT,no,,"Screen untrusted content (evidence, inbound, uploads) and return flags only"
+API-V12-H-055,GET,/api/v1/commercial/admin/ai/usage,admin,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,Token usage and cost per accepted result
+API-V12-H-056,POST,/api/v1/commercial/admin/ai/kill-switch,admin,V12 developer platform and enterprise API-V12-H,11.8b,W,—,RL-ADM,no,,"Stop a model, prompt, agent or workflow immediately"
+API-V12-H-057,GET,/api/v1/commercial/admin/jurisdiction-rules/{id}/rules,admin,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,Rules of a jurisdiction pack with legal source and approval status
+API-V12-H-058,GET,/api/v1/commercial/admin/consents,admin,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,"Search consent ledger (hashed identifier, channel, purpose, notice version)"
+API-V12-H-059,POST,/api/v1/commercial/admin/consents/{id}/withdraw,admin,V12 developer platform and enterprise API-V12-H,11.8b,W,—,RL-ADM,no,,Record a withdrawal received by staff; suppress and cancel queued sends
+API-V12-H-060,POST,/api/v1/commercial/admin/compliance/incidents,admin,V12 developer platform and enterprise API-V12-H,11.8b,W,—,RL-ADM,no,,Open privacy/compliance incident; regulatory clocks start
+API-V12-H-061,POST,/api/v1/commercial/admin/compliance/incidents/{id}/notifications,admin,V12 developer platform and enterprise API-V12-H,11.8b,F,—,RL-ADM,no,,Record authority or data-principal notification
+API-V12-H-062,POST,/api/v1/commercial/public/cookie-consents,public,V12 developer platform and enterprise API-V12-H,11.8b,W,—,RL-PUB-W,no,,Record cookie choice with notice version
+API-V12-H-063,POST,/api/v1/commercial/admin/portfolio/grants,admin,V12 developer platform and enterprise API-V12-H,11.8b,A,P,RL-ADM,no,,Grant or revoke explicit aggregate (portfolio) read scope
+API-V12-H-064,GET,/api/v1/commercial/admin/metrics/business,admin,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,"Attributed counts, native totals, converted totals with approved rate version and missing-rate list"
+API-V12-H-065,GET,/api/v1/commercial/admin/optimization/cost-summary,admin,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,"Meter categories, allocated and unallocated cost, accepted-output denominator"
+API-V12-H-066,GET,/api/v1/commercial/portal/service/value,portal,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-PORTAL,no,,"Customer value view: accepted output, usage, value assumption, renewal state"
+API-V12-H-067,GET,/api/v1/commercial/admin/operator/conversion-metrics,admin,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,"Platform-operator SaaS funnel, attribution quality and acquisition cost (aggregate only)"
+API-V12-H-068,POST,/api/v2/workflow-runs,v2,V12 developer platform and enterprise API-V12-H,11.8b,Q,P,RL-ADM,no,,Common run gateway: start (or dry-run) any SM-SVC-##-WF# workflow with a validated DTO
+API-V12-H-069,GET,/api/v2/workflow-runs/{id},v2,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,"Run result: state, step states, result reference, error, usage"
+API-V12-H-070,POST,/api/v2/workflow-runs/{id}/approvals,v2,V12 developer platform and enterprise API-V12-H,11.8b,A,P,RL-ADM,no,,Approve or reject the exact action digest of a held run
+API-V12-H-071,POST,/api/v2/workflow-runs/{id}/cancel,v2,V12 developer platform and enterprise API-V12-H,11.8b,W,—,RL-ADM,no,,Cancel run and reconcile pending effects
+API-V12-H-072,GET,/api/v2/workflow-runs/{id}/steps,v2,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,Step trace with artifact references and redacted failure evidence
+API-V12-H-073,POST,/api/v2/connectors/{kind}/events,hooks,V12 developer platform and enterprise API-V12-H,11.8b,I,—,RL-HOOK,no,,"Generic signed provider event intake for new connector kinds (CRM, SMS-DLT, voice, warehouse)"
+API-V12-H-074,GET,/api/v1/commercial/admin/connectors/health-summary,admin,V12 developer platform and enterprise API-V12-H,11.8b,R,—,RL-ADM,no,,"Connector health, sync lag and error-rate dashboard data with alert state"
+API-V12-H-075,POST,/api/v1/commercial/admin/integrations/{id}/diagnostics,admin,V12 developer platform and enterprise API-V12-H,11.8b,Q,—,RL-ADM-H,no,,Self-service setup checklist and diagnostics with escalation to support
+API-V12-H-076,POST,/api/v1/commercial/admin/finops/provider-tier-scenarios,admin,V12 developer platform and enterprise API-V12-H,11.8b,Q,—,RL-ADM-H,no,,"Compare provider contractual tiers, commitments and overages from forecast usage"
 API-ADV-X1-01,POST,/api/v1/commercial/admin/ai/plans,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,Submit objective; returns plan revision
 API-ADV-X1-02,GET,/api/v1/commercial/admin/ai/plans/{id},admin,Advanced AI agents (Part 9.7b),9.7b,R,,RL-ADM-H,no,,"Plan with steps, validation, cost"
 API-ADV-X1-03,POST,/api/v1/commercial/admin/ai/plans/{id}/validate,admin,Advanced AI agents (Part 9.7b),9.7b,Q,,RL-ADM-H,no,,Run AU-053

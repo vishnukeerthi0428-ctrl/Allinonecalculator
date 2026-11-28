@@ -1,0 +1,41 @@
+name: release
+on:
+  push:
+    tags: ["v*.*.*.*"]
+permissions: {contents: read, id-token: write}
+jobs:
+  evidence:        # PL-17: release record in A090 (tests, evals, SBOM, scans, migration plan, flags, rollback plan, restore drill age)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python tools/release/assemble_evidence.py --tag ${{ github.ref_name }} --require restore_drill_age_days<=31 --require rto_growth_min<=120 --require rpo_s<=900
+  preprod:         # rehearsal on pre-prod per zone with production-shaped config and synthetic data
+    needs: evidence
+    strategy: {matrix: {zone: [in, eu]}}
+    environment: preprod-${{ matrix.zone }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: python tools/deploy/full_cutover_rehearsal.py --zone ${{ matrix.zone }} --tag ${{ github.ref_name }}
+  production:      # PL-18/19/20 (environment protection: two reviewers, approver != author)
+    needs: preprod
+    strategy: {max-parallel: 1, matrix: {zone: [in, eu]}}
+    environment: prod-${{ matrix.zone }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Restore point (Supabase PITR timestamp + WAL-G LSN + logical dump checksum)
+        run: python tools/dr/capture_restore_point.py --zone ${{ matrix.zone }}
+      - name: Dispatch freeze during schema step
+        run: python tools/flags/set.py EXTERNAL_DISPATCH_ENABLED=false --zone ${{ matrix.zone }} --reason release
+      - run: python tools/db/migrate.py --secret-ref ${{ vars.MIGRATOR_SECRET_REF }} --expand-only --lock-timeout 5s --statement-timeout 60s
+      - run: python tools/deploy/ecs_deploy.py --zone ${{ matrix.zone }} --canary 10,50,100 --step-minutes 15 --burn-rate-abort 14.4
+      - run: vercel promote ${{ vars.VERCEL_DEPLOYMENT_URL }} --scope growth --token ${{ secrets.VERCEL_TOKEN }}
+      - name: Smoke SMK-01…SMK-20 and 30-minute SLO watch
+        run: python tools/smoke/run.py --zone ${{ matrix.zone }} --watch-minutes 30
+      - name: Re-enable dispatch only from the A090 activation record
+        run: python tools/flags/restore_from_release_record.py --zone ${{ matrix.zone }}
+  rollback:        # PL-20 (manual or automatic on failure)
+    if: failure()
+    needs: production
+    runs-on: ubuntu-latest
+    steps:
+      - run: python tools/deploy/rollback.py --previous-task-definition --vercel-instant-rollback --flags-revert --no-db-down-migration

@@ -22,6 +22,16 @@ OUTD = os.path.join(HERE, 'u_out')
 inv = json.load(open(os.path.join(OUTD, 'u_inventory.json')))
 base = json.load(open(os.path.join(OUTD, 'u_baseline.json')))
 recs, stories = S.build(inv)
+# Founder decisions of 28 Nov 2026 supersede register wording for these FRs (DEC-947, DEC-948)
+FR_OVERRIDE = {
+ 'FR-V12-A-006': dict(req='Product separation (amended by DEC-783): Sales & Marketing and Investment Automation are separate product codes; only libraries and patterns are reused; no implicit cross-product access; investor entities, routes and terms exist only in the INV product namespace',
+                      accept='an SM-only tenant receives 404 for /api/v1/investor/*, a cross-product query returns zero rows, and the SM catalogue, routes and schemas contain no investor entity'),
+ 'FR-V12-K-004': dict(req='24×7 human on-call for SEV1/SEV2 from Release 2 GA: contracted NOC/SOC first line and internal engineer escalation rota (DEC-773, which decided the DEC-715 option)'),
+ 'FR-V12-A-147': dict(req='Recovery objectives per data class: critical transactional RPO ≤ 15 min / RTO ≤ 4 h; growth workload RPO ≤ 15 min / RTO ≤ 2 h as a blocking gate (DEC-771, DEC-787); regenerable research RPO ≤ 24 h / RTO ≤ 8 h'),
+}
+for _f, _o in FR_OVERRIDE.items():
+    if _f in recs:
+        recs[_f].update(_o)
 EXIST = set(inv['stories'])
 NEW = {s['id'] for s in stories}
 FR2NEW = {f: r['story'] for f, r in recs.items()}
@@ -80,22 +90,81 @@ def rel_bucket(s):
     if re.search(r'\br[01]\b|release 1|\bw[0-3]\b|r1-b|\bs\d', s): return 'Release 1'
     return 'Not stated'
 
+def lc_first(t):
+    w = t.split(' ')[0] if t else ''
+    if w and w[1:] == w[1:].lower() and not any(ch.isdigit() for ch in w):
+        return t[0].lower() + t[1:]
+    return t
+
+def short_label(t, n=46):
+    t = cl(t)
+    t = re.split(r';|\. ', t)[0].rstrip('.')
+    if len(t) <= n:
+        return t
+    cut = t[:n]
+    for sep in (' (', ', ', ' with ', ' before ', ' for ', ' – '):
+        i = cut.rfind(sep)
+        if i > n * 0.45:
+            return cut[:i]
+    return cut.rsplit(' ', 1)[0]
+
+SVC_NAMES = {}
+for _p in [p for p in os.listdir(BP) if p.startswith('Part-11-16c') and p.endswith('.md')]:
+    for _m in re.finditer(r'^#{2,5}\s+(?:[\d.]+\s+)?(INV-SVC-\d{2})\s+([^\n]+)$', open(os.path.join(BP, _p), encoding='utf-8').read(), flags=re.M):
+        if '-WF' not in _m.group(0):
+            SVC_NAMES.setdefault(_m.group(1), cl(_m.group(2)))
+
+def wf_service(st):
+    m = re.search(r'(INV-SVC-\d{2})', recs[st['frs'][0]]['section'])
+    return m.group(1) if m else None
+
+from u_09_titles import TITLES
 def title_of(st):
+    key = st['frs'][0].replace('FR-V12-', '')
+    if key in TITLES:
+        return TITLES[key]
+    svc = wf_service(st) if recs[st['frs'][0]].get('wf') else None
+    if svc:
+        return '%s %s: workflow contracts WF01–WF04' % (svc, SVC_NAMES.get(svc, ''))
     labels = []
     for f in st['frs']:
         r = recs[f]
         lab = r['label']
         if r['letter'] == 'K' and (r.get('source') or '').startswith('ENT-'):
-            lab = S.short(r.get('req', lab), 48).rstrip('.')
-        labels.append(S.short(lab, 60).rstrip('.'))
-    if len(labels) == 1:
-        t = labels[0]
-    else:
-        t = ', '.join(labels[:-1]) + ' and ' + labels[-1]
-    t = t[0].upper() + t[1:]
-    return S.short(t, 120)
+            lab = r.get('req', lab)
+        labels.append(short_label(lab))
+    labels = [labels[0]] + [lc_first(x) for x in labels[1:]]
+    t = labels[0] if len(labels) == 1 else ', '.join(labels[:-1]) + ' and ' + labels[-1]
+    return t[0].upper() + t[1:]
+
+def art(x):
+    return ('an ' if x[:1].lower() in 'aeiou' else 'a ') + x
 
 # ------------------------------------------------------------------ stories
+
+import textwrap
+MAXW = 150
+def fmt_step(line, ind):
+    """Keep Gherkin lines within the PDF width: long steps end with ':' and carry the detail as a doc string."""
+    if len(ind) + len(line) <= MAXW:
+        return [ind + line]
+    kw, rest = line.split(' ', 1)
+    cut = -1
+    for sep in (': ', ' as specified by ', ' with ', ', ', ' and '):
+        i = rest.find(sep, 25)
+        if 0 < i < 95:
+            cut = i + (len(sep) if sep in (': ', ' as specified by ') else 0); break
+    if cut < 0:
+        cut = rest.rfind(' ', 0, 90)
+    head, tail = rest[:cut].rstrip(' :,'), rest[cut:].strip(' ,')
+    if head.endswith(' as specified by'):
+        head, tail = head + ' ' + tail.split(':', 1)[0], tail.split(':', 1)[1].strip() if ':' in tail else ''
+    out = [ind + kw + ' ' + head + ':', ind + '  """']
+    for w in textwrap.wrap(tail, MAXW - len(ind) - 4):
+        out.append(ind + '  ' + w)
+    out.append(ind + '  """')
+    return out
+
 def render_story(st, seed):
     sid = st['id']; ep = st['epic']; nn = sid.split('-ZU')[1]
     acp = 'AC-%sZU%s' % (ep[3:], nn)
@@ -128,10 +197,13 @@ def render_story(st, seed):
         if not stmt.endswith('.'):
             stmt += ''
         stmt = stmt + (' – with the acceptance criteria below, which the statement-only story %s did not carry' % anchor)
+    elif frs[0].get('wf'):
+        svc = wf_service(st)
+        stmt = 'As %s, I want the four %s %s workflows (%s) to run as typed, policy-checked contracts on the universal engine, so that %s' % (
+            art(D['actor']), svc, SVC_NAMES.get(svc, ''), '; '.join(lc_first(short_label(r['label'], 60)) for r in frs), D['benefit'])
     else:
-        want = '; '.join(S.short(r.get('req') or r['label'], 140).rstrip('.') for r in frs)
-        want = want[0].lower() + want[1:] if want else want
-        stmt = 'As a %s, I want %s, so that %s' % (D['actor'], want, D['benefit'])
+        want = '; '.join(lc_first(S.short(r.get('req') or r['label'], 140).rstrip('.')) for r in frs)
+        stmt = 'As %s, I want %s, so that %s' % (art(D['actor']), want, D['benefit'])
     traces = []
     for r in frs:
         t = r['id']
@@ -150,9 +222,12 @@ def render_story(st, seed):
     pnames = [n for n, _ in model['params']]
     profile = ' · '.join('%s ×%d' % (n, len(v)) for n, v in model['params']) + ' · operation ×%d' % len(frs)
     notes = []
+    bynote = collections.OrderedDict()
     for r in frs:
         if r.get('rel_note'):
-            notes.append('%s release per %s' % (r['id'], r['rel_note']))
+            bynote.setdefault(r['rel_note'], []).append(r['id'])
+    for nt, ids in bynote.items():
+        notes.append('%s: release per %s' % (', '.join(ids), nt))
     if anchor:
         notes.append('Acceptance binding: %s carries the statement and its build points; this story adds the Gherkin AC, the generated Examples and the test automation for the FRs above (DEC-941)' % anchor)
     elif is_k and related:
@@ -172,7 +247,7 @@ def render_story(st, seed):
     out.append('##### %s %s\n' % (sid, st['title']))
     out.append('| Field | Value |\n|---|---|')
     rows = [('ID', sid), ('Title', st['title']), ('Type', typ), ('Story', stmt),
-            ('Persona / roles', D['actor'] + ('; approvers and reviewers per the Background' if dom in ('RUN', 'INV', 'INVWF', 'COM') else '')),
+            ('Persona / roles', D['actor'][0].upper() + D['actor'][1:] + ('; approvers and reviewers per the Background' if dom in ('RUN', 'INV', 'INVWF', 'COM') else '')),
             ('Traces', trace), ('Priority', prio), ('Wave', '%s (dates follow the work, DEC-770)' % release),
             ('Points', '%d–%d' % (lo, hi)), ('Dependencies', dep_txt), ('Dimension profile', profile + ' · model ' + st['model']),
             ('Notes', ' · '.join(notes))]
@@ -180,8 +255,8 @@ def render_story(st, seed):
         out.append('| %s | %s |' % (k, cl(v)))
     out.append('')
     g = ['```gherkin', 'Feature: %s' % st['title'], '  Background:']
-    g.append('    Given %s' % D['fixtures'][0])
-    g.append('    And %s' % D['fixtures'][1])
+    g.extend(fmt_step('Given %s' % D['fixtures'][0], '    '))
+    g.extend(fmt_step('And %s' % D['fixtures'][1], '    '))
     k = 0
     def sc(tags, name, lines):
         nonlocal k
@@ -190,7 +265,7 @@ def render_story(st, seed):
         g.append('  %s' % tags)
         g.append('  Scenario: %s-%02d %s' % (acp, k, name))
         for i, l in enumerate(lines):
-            g.append('    ' + l)
+            g.extend(fmt_step(l, '    '))
     for i, r in enumerate(frs):
         tag = '@happy' if i == 0 else '@alt'
         toks = [t for t in r['tokens'] if not t.startswith(('SM-SVC', 'INV-SVC'))][:2]
@@ -209,7 +284,7 @@ def render_story(st, seed):
         acc = r.get('accept') or ''
         lines = ['Given %s is signed in to the tenant with the capability enabled' % D['who'],
                  'When "%s" is exercised as specified by %s: %s' % (S.short(r['label'], 70), r['id'], S.short(r.get('req') or r['label'], 260)),
-                 'Then %s' % (S.short(acc, 260) if acc else 'the observable result matches %s and its tests %s' % (r['id'], ', '.join(r['tcs'][:3]) or 'in Part 11.21')),
+                 'Then %s' % (lc_first(S.short(acc, 260)) if acc else 'the observable result matches %s and its tests %s' % (r['id'], ', '.join(r['tcs'][:3]) or 'in Part 11.21')),
                  'And the audit event "%s.%s" is written with outcome "allowed", correlation_id, tenant_id and company_id' % (D['event'], re.sub(r'[^a-z0-9]+', '_', S.short(r['label'], 30).lower()).strip('_'))]
         sc(tagline, '%s – %s (%s)' % ('Happy path' if i == 0 else 'Alternate', S.short(r['label'], 70), r['id']), lines)
     for r in frs:
@@ -242,12 +317,20 @@ def render_story(st, seed):
         g.append('    ' + l)
     g.append('    Then the outcome is "<expected>"')
     g.append('    And the row <ex> is recorded with its parameter values in the test evidence')
-    g.append('    Examples: %s generated rows (%s; space %s; %s t-tuples covered %s/%s; %d baseline-allow rows added)' % (
-        st['model'], res['method'], f"{res['space']:,}", res['t'], res['covered'], res['tuples'], res['n_base']))
+    g.append('    # Value codes of model %s (§11.22.5.2): persona Pnn/Rnn; authority A1 authorised, A3 SoD or over limit,' % st['model'])
+    g.append('    # A5 wrong role, T5 other tenant; zones IN, EU, EU→IN misrouted; ✓ = Approved. Operations:')
+    for o, _ in ops:
+        g.append('    #   %s = %s' % (o.split(' ')[0], S.short(' '.join(o.split(' ')[1:]), 100)))
+    meth = 'exhaustive' if res['t'] == 'all' else '%s-way, seed %d' % (res['t'], seed)
+    g.append('    Examples: %s rows (%s; space %s; tuples %s/%s; +%d baseline-allow)' % (
+        st['model'], meth, f"{res['space']:,}", res['covered'], res['tuples'], res['n_base']))
     g.append('      | ' + ' | '.join(heads) + ' |')
     for i, row in enumerate(res['rows'], 1):
-        vals = ['EX-%sZU%s-%02d' % (ep[3:], nn, i)] + [str(v).replace('|', '/').replace('"', "'") for v in row]
-        g.append('      | ' + ' | '.join(vals) + ' |')
+        vals = ['EX-%sZU%s-%02d' % (ep[3:], nn, i)]
+        for n_, v in zip(res['names'], row[:-1]):
+            vals.append(M.short_value(n_, v) if n_ != 'operation' else v.split(' ')[0])
+        vals.append(M.short_expected(row[-1]))
+        g.append('      | ' + ' | '.join(x.replace('|', '/').replace('"', "'") for x in vals) + ' |')
     g.append('```')
     st['n_scen'] = k + 1
     out.append('\n'.join(g))
@@ -312,7 +395,7 @@ def title_block(letter, title, doc, extra=''):
 def qgate(name, notes):
     rows = [
         ('Every requirement traced to a source', notes.get(1, 'Every story traces its FR-V12 IDs, the V12 source cell and the defining Part 11 section; decisions cited by ID')),
-        ('Assumptions, gaps and conflicts tagged and logged', notes.get(2, 'Tags from 1140–1159 only; register in Part 11.22f §11.22.9')),
+        ('Assumptions, gaps and conflicts tagged and logged', notes.get(2, 'Tags from 1140–1159 only; register in §11.22.9 (last file of Batch 11.22)')),
         ('IDs unique and consistent with earlier parts', notes.get(3, 'US-<EP>-ZU<nn> unique per epic; AC and EX IDs derived; epics EP-01…EP-33 as defined; EP-34 new')),
         ('No story lacks AC; no requirement lacks a test', notes.get(4, 'Every new story has Gherkin with happy, alternate, negative, validation, permission and edge scenarios plus a generated Scenario Outline')),
         ('Negative, edge, security and accessibility cases covered', notes.get(5, 'MAS-1…MAS-9 applied; @sec/@obs outlines; @a11y in website and UI stories')),

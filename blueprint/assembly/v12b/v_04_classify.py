@@ -72,13 +72,13 @@ def classify(t):
         return 'C', '%s; Part 11.9b §11.9b DDL with RLS (Appendix C/C2 reproduced and corrected, DEC-778)' % loc, \
                '%s for %s; reproduced in Part 11.9a/11.9b (tests DB-T1…T9, C2-T1…T11 re-run 20/20)' % (what, name)
     if 'Resolve audience and object permissions; public tenant publication prohibited' in txt:
-        return 'N', 'FR-V12-V-011; TC-V12-V-011…013; US-17-ZV01', 'V2 Admin screen rule stated per screen in V12; blueprint carried it only implicitly (Part 11.7a §11.7.1.2 note 4); restored as one binding rule'
+        return 'N', 'FR-V12-V-007; TC-V12-V-019…026; US-01-ZV01', 'V2 Admin screen rule stated per screen in V12; blueprint carried it only implicitly (Part 11.7a §11.7.1.2 note 4); restored as one binding rule'
     if re.match(r'commercial_(website|admin)_(desktop|mobile)?_?V\d+\.html|Sales_Marketing_Automation_(BRD|FSD)_V\d|Investment_Automation_RCTCFE|commercial_(website|admin)_V\d', txt):
-        return 'N', 'FR-V12-V-001 (artifact lineage and integrity register, §11.23.4.1)', 'Prototype/document lineage and SHA-256 hashes were not recorded in the blueprint'
+        return 'N', 'FR-V12-V-001 (artifact lineage and integrity register, §11.23.5.1)', 'Prototype/document lineage and SHA-256 hashes were not recorded in the blueprint'
     if re.match(r'Cost source \| Illustrative internal INR', txt) and t['num'] is not None and t['num'] < 1:
-        return 'N', 'FR-V12-V-003 (§11.23.4.3 per-workflow illustrative cost)', 'Per-workflow illustrative INR/invocation figure absent'
+        return 'N', 'FR-V12-V-003 (§11.23.5.3 per-workflow illustrative cost)', 'Per-workflow illustrative INR/invocation figure absent'
     if t['missing_ids']:
-        return 'N', 'FR-V12-V-002 (§11.23.4.2 restored identifiers)', 'ID absent from blueprint: ' + ', '.join(t['missing_ids'])
+        return 'N', 'FR-V12-V-002 (§11.23.5.2 restored identifiers)', 'ID absent from blueprint: ' + ', '.join(t['missing_ids'])
     # ID-bearing rows whose IDs are present: the weak score comes from status/evidence wording
     ids = [x for x in s['ids'] if not re.match(r'^[AW]\d', x)] or s['ids']
     if ids and R[t['sid']]['ids_present'] == R[t['sid']]['ids']:

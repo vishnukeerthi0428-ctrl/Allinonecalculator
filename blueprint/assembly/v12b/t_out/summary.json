@@ -1,0 +1,448 @@
+{
+ "PM-T01": {
+  "title": "Platform SKU invocation (valid set)",
+  "method": "Pairwise (2-way), valid values only",
+  "params": {
+   "tenant": 7,
+   "plan": 4,
+   "sku": 39,
+   "region": 2,
+   "locale": 8,
+   "role": 22,
+   "channel": 7,
+   "identity": 8,
+   "device": 6,
+   "browser": 5,
+   "data": 5,
+   "consent": 4,
+   "provider": 4,
+   "autonomy": 5,
+   "ai_route": 5,
+   "sla": 3
+  },
+  "raw": 3874590720000,
+  "valid": null,
+  "tuples": 6842,
+  "rows": 648,
+  "pw_only": null,
+  "verify": {
+   "rows": 648,
+   "invalid_rows": 0,
+   "required": 6842,
+   "missing": 0,
+   "excluded": 922
+  },
+  "ts": "TS-V12-T-01"
+ },
+ "PM-T02": {
+  "title": "Investment Automation SKU invocation (valid set)",
+  "method": "Pairwise (2-way), valid values only",
+  "params": {
+   "sku": 24,
+   "region": 2,
+   "investor_jurisdiction": 4,
+   "locale": 6,
+   "role": 10,
+   "channel": 6,
+   "device": 6,
+   "browser": 5,
+   "data": 4,
+   "investor_status": 2
+  },
+  "raw": 16588800,
+  "valid": null,
+  "tuples": 1677,
+  "rows": 180,
+  "pw_only": null,
+  "verify": {
+   "rows": 180,
+   "invalid_rows": 0,
+   "required": 1677,
+   "missing": 0,
+   "excluded": 279
+  },
+  "ts": "TS-V12-T-02"
+ },
+ "PM-T03": {
+  "title": "Consequential-effect gateway: full space (layer L1)",
+  "method": "Variable strength: 3-way among the 7 control parameters + 2-way effect × each control",
+  "params": {
+   "effect": 15,
+   "authorization": 10,
+   "value": 4,
+   "pack": 4,
+   "region": 2,
+   "kill_switch": 3,
+   "consent": 4,
+   "data": 3
+  },
+  "raw": 172800,
+  "valid": 172800,
+  "tuples": 2818,
+  "rows": 200,
+  "pw_only": 151,
+  "verify": {
+   "rows": 200,
+   "invalid_rows": 0,
+   "required": 2818,
+   "missing": 0,
+   "excluded": 0
+  },
+  "ts": "TS-V12-T-03"
+ },
+ "PM-T03P": {
+  "title": "Consequential-effect gateway: positive sub-space (layer L2)",
+  "method": "3-way over the gate-passing values (deep paths unmasked)",
+  "params": {
+   "effect": 15,
+   "authorization": 4,
+   "value": 2,
+   "pack": 2,
+   "region": 2,
+   "kill_switch": 1,
+   "consent": 1,
+   "data": 2
+  },
+  "raw": 960,
+  "valid": 960,
+  "tuples": 1467,
+  "rows": 144,
+  "pw_only": 60,
+  "verify": {
+   "rows": 144,
+   "invalid_rows": 0,
+   "required": 1467,
+   "missing": 0,
+   "excluded": 0
+  },
+  "ts": "TS-V12-T-03"
+ },
+ "PM-T04": {
+  "title": "Data residency (India and EU) across components and operations",
+  "method": "3-way",
+  "params": {
+   "tenant_zone": 2,
+   "component": 12,
+   "operation": 5,
+   "actor": 3,
+   "data": 3
+  },
+  "raw": 1080,
+  "valid": 738,
+  "tuples": 703,
+  "rows": 142,
+  "pw_only": 45,
+  "verify": {
+   "rows": 142,
+   "invalid_rows": 0,
+   "required": 703,
+   "missing": 0,
+   "excluded": 152
+  },
+  "ts": "TS-V12-T-04"
+ },
+ "PM-T05": {
+  "title": "Multi-tenant isolation and RLS across access paths",
+  "method": "Variable strength: 3-way caller × target × operation + 2-way path × each",
+  "params": {
+   "caller": 7,
+   "target": 5,
+   "operation": 4,
+   "path": 9
+  },
+  "raw": 1260,
+  "valid": 1160,
+  "tuples": 279,
+  "rows": 140,
+  "pw_only": 61,
+  "verify": {
+   "rows": 140,
+   "invalid_rows": 0,
+   "required": 279,
+   "missing": 0,
+   "excluded": 5
+  },
+  "ts": "TS-V12-T-05"
+ },
+ "PM-T06": {
+  "title": "Localization and right-to-left",
+  "method": "Pairwise (2-way)",
+  "params": {
+   "locale": 10,
+   "surface": 10,
+   "format": 7,
+   "expansion": 3,
+   "device": 4
+  },
+  "raw": 8400,
+  "valid": 4200,
+  "tuples": 421,
+  "rows": 101,
+  "pw_only": null,
+  "verify": {
+   "rows": 101,
+   "invalid_rows": 0,
+   "required": 421,
+   "missing": 0,
+   "excluded": 20
+  },
+  "ts": "TS-V12-T-06"
+ },
+ "PM-T07": {
+  "title": "Accessibility (WCAG 2.2 AA) across screens, assistive technology and display",
+  "method": "Pairwise (2-way)",
+  "params": {
+   "screen": 12,
+   "at": 7,
+   "viewport": 5,
+   "theme": 3,
+   "direction": 2,
+   "motion": 2
+  },
+  "raw": 5040,
+  "valid": 3168,
+  "tuples": 350,
+  "rows": 84,
+  "pw_only": null,
+  "verify": {
+   "rows": 84,
+   "invalid_rows": 0,
+   "required": 350,
+   "missing": 0,
+   "excluded": 13
+  },
+  "ts": "TS-V12-T-07"
+ },
+ "PM-T08": {
+  "title": "Performance, load, stress, spike and soak workload profiles",
+  "method": "Pairwise (2-way)",
+  "params": {
+   "profile": 6,
+   "zone": 2,
+   "tenant_mix": 3,
+   "workload": 8,
+   "cache": 2,
+   "sla": 3
+  },
+  "raw": 1728,
+  "valid": 1728,
+  "tuples": 225,
+  "rows": 49,
+  "pw_only": null,
+  "verify": {
+   "rows": 49,
+   "invalid_rows": 0,
+   "required": 225,
+   "missing": 0,
+   "excluded": 0
+  },
+  "ts": "TS-V12-T-08"
+ },
+ "PM-T09": {
+  "title": "Resilience and DR with consequential work in flight",
+  "method": "3-way",
+  "params": {
+   "zone": 2,
+   "failure": 10,
+   "in_flight": 6,
+   "load": 2
+  },
+  "raw": 240,
+  "valid": 240,
+  "tuples": 304,
+  "rows": 120,
+  "pw_only": 60,
+  "verify": {
+   "rows": 120,
+   "invalid_rows": 0,
+   "required": 304,
+   "missing": 0,
+   "excluded": 0
+  },
+  "ts": "TS-V12-T-09"
+ },
+ "XT-10": {
+  "title": "Rule-pack state × capability activation",
+  "method": "Exhaustive (48)",
+  "params": {
+   "capability": 8,
+   "pack_state": 6
+  },
+  "raw": 48,
+  "valid": 48,
+  "tuples": 48,
+  "rows": 48,
+  "pw_only": null,
+  "verify": {
+   "rows": 48,
+   "invalid_rows": 0,
+   "required": 48,
+   "missing": 0
+  },
+  "ts": "TS-V12-T-10"
+ },
+ "XT-11": {
+  "title": "Subscription × entitlement state × meter usage",
+  "method": "Exhaustive (64)",
+  "params": {
+   "subscription": 4,
+   "entitlement": 4,
+   "meter": 4
+  },
+  "raw": 64,
+  "valid": 64,
+  "tuples": 64,
+  "rows": 64,
+  "pw_only": null,
+  "verify": {
+   "rows": 64,
+   "invalid_rows": 0,
+   "required": 64,
+   "missing": 0
+  },
+  "ts": "TS-V12-T-11"
+ },
+ "XT-12": {
+  "title": "Messaging window (DEC-777) × day × stricter pack × message type",
+  "method": "Exhaustive (48)",
+  "params": {
+   "local_time": 4,
+   "day": 3,
+   "pack": 2,
+   "message": 2
+  },
+  "raw": 48,
+  "valid": 48,
+  "tuples": 48,
+  "rows": 48,
+  "pw_only": null,
+  "verify": {
+   "rows": 48,
+   "invalid_rows": 0,
+   "required": 48,
+   "missing": 0
+  },
+  "ts": "TS-V12-T-12"
+ },
+ "XT-13": {
+  "title": "On-call and communication: SLA tier × severity × time",
+  "method": "Exhaustive (36)",
+  "params": {
+   "tier": 3,
+   "severity": 4,
+   "time": 3
+  },
+  "raw": 36,
+  "valid": 36,
+  "tuples": 36,
+  "rows": 36,
+  "pw_only": null,
+  "verify": {
+   "rows": 36,
+   "invalid_rows": 0,
+   "required": 36,
+   "missing": 0
+  },
+  "ts": "TS-V12-T-13"
+ },
+ "XT-14": {
+  "title": "Service-credit ladder boundaries: tier × monthly availability",
+  "method": "Exhaustive boundary set (18)",
+  "params": {
+   "tier": 3,
+   "availability": 6
+  },
+  "raw": 18,
+  "valid": 18,
+  "tuples": 18,
+  "rows": 18,
+  "pw_only": null,
+  "verify": {
+   "rows": 18,
+   "invalid_rows": 0,
+   "required": 18,
+   "missing": 0
+  },
+  "ts": "TS-V12-T-14"
+ },
+ "XT-15": {
+  "title": "Two-person approval and separation of duties for mandates",
+  "method": "Exhaustive (48)",
+  "params": {
+   "approvers": 4,
+   "mfa": 2,
+   "digest": 2,
+   "category": 3
+  },
+  "raw": 48,
+  "valid": 48,
+  "tuples": 48,
+  "rows": 48,
+  "pw_only": null,
+  "verify": {
+   "rows": 48,
+   "invalid_rows": 0,
+   "required": 48,
+   "missing": 0
+  },
+  "ts": "TS-V12-T-15"
+ },
+ "PM-T16": {
+  "title": "AI evaluation: 111 V12 suites × change trigger × zone × locale × model row × judge × injected result",
+  "method": "Variable strength: each suite once (1-way) + pairwise among the other six parameters",
+  "params": {
+   "suite": 111,
+   "trigger": 6,
+   "zone": 2,
+   "locale_slice": 4,
+   "model_row": 4,
+   "judge": 2,
+   "injected": 4
+  },
+  "raw": 170496,
+  "valid": 106560,
+  "tuples": 304,
+  "rows": 111,
+  "pw_only": null,
+  "verify": {
+   "rows": 111,
+   "invalid_rows": 0,
+   "required": 304,
+   "missing": 0,
+   "excluded": 3
+  },
+  "ts": "TS-V12-T-16"
+ },
+ "PM-T01N": {
+  "title": "Platform SKU invocation (invalid values, single fault)",
+  "method": "Single-fault: each invalid value × every tenant type and × both zones (2-way with the partner), all other values valid",
+  "rows": 156,
+  "invalid_values": 23,
+  "verify": {
+   "missing": 0,
+   "required": 200
+  },
+  "ts": "TS-V12-T-01"
+ },
+ "PM-T02N": {
+  "title": "Investment Automation invocation (invalid values, single fault)",
+  "method": "Single-fault: each invalid value × every role and × both zones",
+  "rows": 53,
+  "invalid_values": 6,
+  "verify": {
+   "missing": 0,
+   "required": 65
+  },
+  "ts": "TS-V12-T-02"
+ },
+ "PM-T03N": {
+  "title": "Consequential-effect gateway: single fault × effect (layer L3)",
+  "method": "Single-fault: each of the 16 invalid control values × each of the 15 effects (exhaustive pairing), other controls valid",
+  "rows": 240,
+  "verify": {
+   "missing": 0,
+   "required": 240
+  },
+  "ts": "TS-V12-T-03"
+ }
+}

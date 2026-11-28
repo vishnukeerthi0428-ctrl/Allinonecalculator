@@ -6373,6 +6373,8 @@ GRANT SELECT ON ge.rpo_sample TO app_rw, app_worker, app_readonly;
 
 GRANT INSERT ON ge.rpo_sample TO app_worker;
 
+GRANT SELECT ON ge.rulepack_requirement TO app_rw, app_worker, app_readonly;
+
 GRANT SELECT ON ge.saas_application_draft TO app_rw, app_worker, app_readonly;
 
 ALTER TABLE ge.saas_credit ENABLE ROW LEVEL SECURITY;
@@ -6870,6 +6872,24 @@ GRANT SELECT, INSERT, UPDATE ON ge.tenant TO app_rw, app_worker;
 GRANT SELECT ON ge.tenant TO app_readonly;
 
 GRANT SELECT, DELETE ON ge.tenant TO app_retention;
+
+ALTER TABLE ge.tenant_activation ENABLE ROW LEVEL SECURITY;
+
+ALTER TABLE ge.tenant_activation FORCE ROW LEVEL SECURITY;
+
+GRANT SELECT, INSERT, UPDATE ON ge.tenant_activation TO app_rw, app_worker;
+
+GRANT SELECT ON ge.tenant_activation TO app_readonly;
+
+GRANT SELECT, DELETE ON ge.tenant_activation TO app_retention;
+
+CREATE POLICY rls_tenant_activation__select ON ge.tenant_activation FOR SELECT USING (tenant_id = (SELECT ge.app_tenant()));
+
+CREATE POLICY rls_tenant_activation__insert ON ge.tenant_activation FOR INSERT WITH CHECK (tenant_id = (SELECT ge.app_tenant()));
+
+CREATE POLICY rls_tenant_activation__update ON ge.tenant_activation FOR UPDATE USING (tenant_id = (SELECT ge.app_tenant())) WITH CHECK (tenant_id = (SELECT ge.app_tenant()));
+
+CREATE POLICY rls_tenant_activation__retention_delete ON ge.tenant_activation FOR DELETE TO app_retention USING (tenant_id = (SELECT ge.app_tenant()) AND current_setting('app.retention_run_id', true) <> '');
 
 ALTER TABLE ge.tenant_data_key ENABLE ROW LEVEL SECURITY;
 
@@ -7418,6 +7438,8 @@ INSERT INTO ge.platform_table_allowlist VALUES ('ref_currency', 'no tenant colum
 INSERT INTO ge.platform_table_allowlist VALUES ('restore_drill', 'no tenant column: platform metadata, reference data or zone evidence; writes only by app_owner migrations or a named service role') ON CONFLICT DO NOTHING;
 
 INSERT INTO ge.platform_table_allowlist VALUES ('rpo_sample', 'no tenant column: platform metadata, reference data or zone evidence; writes only by app_owner migrations or a named service role') ON CONFLICT DO NOTHING;
+
+INSERT INTO ge.platform_table_allowlist VALUES ('rulepack_requirement', 'no tenant column: platform metadata, reference data or zone evidence; writes only by app_owner migrations or a named service role') ON CONFLICT DO NOTHING;
 
 INSERT INTO ge.platform_table_allowlist VALUES ('saas_application_draft', 'no tenant column: platform metadata, reference data or zone evidence; writes only by app_owner migrations or a named service role') ON CONFLICT DO NOTHING;
 

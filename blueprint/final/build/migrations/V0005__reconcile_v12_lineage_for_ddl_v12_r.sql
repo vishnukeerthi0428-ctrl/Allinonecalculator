@@ -11,6 +11,12 @@ ALTER TABLE ge.jurisdiction_pack ADD COLUMN IF NOT EXISTS market char(2);
 
 ALTER TABLE ge.jurisdiction_pack ADD COLUMN IF NOT EXISTS counsel_signoff_ref text;
 
+ALTER TABLE ge.jurisdiction_pack ADD COLUMN IF NOT EXISTS pack_code text;
+
+ALTER TABLE ge.jurisdiction_pack DROP CONSTRAINT IF EXISTS jurisdiction_pack_jurisdiction_version_key;
+
+ALTER TABLE ge.jurisdiction_pack ADD CONSTRAINT jurisdiction_pack_code_version_uq UNIQUE (pack_code, version);
+
 ALTER TABLE ge.ai_model ADD COLUMN IF NOT EXISTS no_training boolean NOT NULL DEFAULT false;
 
 ALTER TABLE ge.ai_model ADD COLUMN IF NOT EXISTS eval_status text;

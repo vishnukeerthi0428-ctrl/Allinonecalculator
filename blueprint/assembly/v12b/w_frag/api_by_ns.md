@@ -1,0 +1,19 @@
+| x-namespace | Operations |
+|---|---|
+| admin | 668 |
+| investor | 176 |
+| tenant-api | 138 |
+| portal | 43 |
+| public | 32 |
+| hooks | 18 |
+| internal | 9 |
+| public+portal | 8 |
+| scim | 7 |
+| bff-admin | 5 |
+| bff-web | 5 |
+| v2 | 5 |
+| admin+internal | 3 |
+| admin+portal | 2 |
+| bff | 1 |
+| dev | 1 |
+| status | 1 |

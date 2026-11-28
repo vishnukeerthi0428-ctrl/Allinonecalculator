@@ -1,0 +1,44 @@
+name: main
+on:
+  push:
+    branches: [main]
+permissions: {contents: read, id-token: write, packages: write, attestations: write}
+jobs:
+  build:           # PL-10/11
+    runs-on: ubuntu-latest
+    outputs: {digest: "${{ steps.push.outputs.digest }}"}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
+        with: {role-to-assume: "${{ vars.AWS_ROLE_BUILD }}", aws-region: ap-south-1}
+      - id: push
+        run: docker buildx build --sbom=true --provenance=true -t $ECR/growth-api:${{ github.sha }} --push .
+      - run: cosign sign --yes $ECR/growth-api@${{ steps.push.outputs.digest }}
+      - run: trivy image --exit-code 1 --severity CRITICAL $ECR/growth-api@${{ steps.push.outputs.digest }}
+      - run: pnpm install --frozen-lockfile && vercel build --prod=false   # prebuilt outputs for website and admin
+  deploy-staging:  # PL-14, both zones
+    needs: build
+    strategy: {matrix: {zone: [in, eu]}}
+    environment: staging-${{ matrix.zone }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: tofu -chdir=infra/live/staging/${{ matrix.zone }} apply -auto-approve
+      - name: Expand migrations as app_migrator (never service_role)
+        run: python tools/db/migrate.py --secret-ref ${{ vars.MIGRATOR_SECRET_REF }} --expand-only --lock-timeout 5s
+      - run: python tools/deploy/ecs_deploy.py --zone ${{ matrix.zone }} --digest ${{ needs.build.outputs.digest }} --verify-signature
+      - run: vercel deploy --prebuilt --scope growth --token ${{ secrets.VERCEL_TOKEN }} --env ZONE=${{ matrix.zone }}
+  e2e:             # PL-15
+    needs: deploy-staging
+    strategy: {matrix: {zone: [in, eu]}}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pnpm install --frozen-lockfile && pnpm --filter e2e test:smoke -- --project=chromium --grep @smoke
+        env: {BASE_URL: "https://staging.${{ matrix.zone }}.example.invalid"}
+  dast-perf:       # PL-16
+    needs: e2e
+    runs-on: ubuntu-latest
+    steps:
+      - run: docker run --rm ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t https://staging.in.example.invalid -c zap.conf
+      - run: k6 run load/smoke.js --threshold-fail-on-regression 20

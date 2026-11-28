@@ -1,0 +1,18 @@
+PM-T01 648 {'rows': 648, 'invalid_rows': 0, 'required': 6842, 'missing': 0, 'excluded': 922}
+PM-T02 180 {'rows': 180, 'invalid_rows': 0, 'required': 1677, 'missing': 0, 'excluded': 279}
+PM-T03 200 {'rows': 200, 'invalid_rows': 0, 'required': 2818, 'missing': 0, 'excluded': 0}
+PM-T03P 144 {'rows': 144, 'invalid_rows': 0, 'required': 1467, 'missing': 0, 'excluded': 0}
+PM-T04 142 {'rows': 142, 'invalid_rows': 0, 'required': 703, 'missing': 0, 'excluded': 152}
+PM-T05 140 {'rows': 140, 'invalid_rows': 0, 'required': 279, 'missing': 0, 'excluded': 5}
+PM-T06 101 {'rows': 101, 'invalid_rows': 0, 'required': 421, 'missing': 0, 'excluded': 20}
+PM-T07 84 {'rows': 84, 'invalid_rows': 0, 'required': 350, 'missing': 0, 'excluded': 13}
+PM-T08 49 {'rows': 49, 'invalid_rows': 0, 'required': 225, 'missing': 0, 'excluded': 0}
+PM-T09 120 {'rows': 120, 'invalid_rows': 0, 'required': 304, 'missing': 0, 'excluded': 0}
+XT-10 48 {'rows': 48, 'invalid_rows': 0, 'required': 48, 'missing': 0}
+XT-11 64 {'rows': 64, 'invalid_rows': 0, 'required': 64, 'missing': 0}
+XT-12 48 {'rows': 48, 'invalid_rows': 0, 'required': 48, 'missing': 0}
+XT-13 36 {'rows': 36, 'invalid_rows': 0, 'required': 36, 'missing': 0}
+XT-14 18 {'rows': 18, 'invalid_rows': 0, 'required': 18, 'missing': 0}
+XT-15 48 {'rows': 48, 'invalid_rows': 0, 'required': 48, 'missing': 0}
+PM-T16 111 {'rows': 111, 'invalid_rows': 0, 'required': 304, 'missing': 0, 'excluded': 3}
+TOTAL generated rows 2630

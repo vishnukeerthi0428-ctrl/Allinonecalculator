@@ -1,0 +1,16 @@
+name: nightly
+on:
+  schedule: [{cron: "30 20 * * *"}]   # 02:00 IST
+  workflow_dispatch: {}
+permissions: {contents: read, id-token: write}
+jobs:
+  full-suites:
+    strategy: {matrix: {zone: [in, eu]}}
+    runs-on: ubuntu-latest
+    steps:
+      - run: uv run pytest backend/tests -m "rls or authz or residency" --full
+      - run: pnpm --filter e2e test:full
+      - run: uv run python -m ai.evals.run --all --suite-registry ai/evals/registry.yaml   # 111 suites (DEC-788)
+      - run: tofu -chdir=infra/live/prod/${{ matrix.zone }} plan -detailed-exitcode   # drift must be empty (exit 0)
+      - run: python tools/db/privilege_drift.py --zone ${{ matrix.zone }}   # AU-292 snapshot compare
+      - run: python tools/dr/restore_smoke.py --zone ${{ matrix.zone }} --path P3   # weekly full drill in dr-drill.yml

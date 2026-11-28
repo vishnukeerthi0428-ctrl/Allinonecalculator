@@ -1,0 +1,105 @@
+{
+ "final": {
+  "C": 1011,
+  "M": 18090,
+  "S": 6,
+  "N": 167
+ },
+ "c_groups": {
+  "Manual decisions (read in context)": 91,
+  "Threshold located in another line of the same section": 14,
+  "ID-bearing rows (status/evidence wording only) \u2014 06_Multi_Tenant_Multi_Company_Business_A": 1,
+  "ID-bearing rows (status/evidence wording only) \u2014 07_Universal_Business_Configuration_Onbo": 1,
+  "ID-bearing rows (status/evidence wording only) \u2014 20_Business_Security_Privacy_Compliance": 1,
+  "ID-bearing rows (status/evidence wording only) \u2014 24_Business_Acceptance_Requirement_Trace": 4,
+  "ID-bearing rows (status/evidence wording only) \u2014 01_Specification_Control_Reading_Guide": 2,
+  "ID-bearing rows (status/evidence wording only) \u2014 07_Tenant_Provisioning_Business_Configur": 1,
+  "ID-bearing rows (status/evidence wording only) \u2014 18_Policy_Approval_Human_in_the_Loop_Eng": 2,
+  "ID-bearing rows (status/evidence wording only) \u2014 24_UI_UX_Components_Screens_Interaction_": 1,
+  "A113 template rows X26\u2013X39": 14,
+  "ID-bearing rows (status/evidence wording only) \u2014 33_Unit_SIT_UAT_AI_Test_Specifications": 3,
+  "ID-bearing rows (status/evidence wording only) \u2014 34_Quality_Control_Acceptance_Evidence": 9,
+  "ID-bearing rows (status/evidence wording only) \u2014 37_Observability_Incidents_Support": 4,
+  "FSD 40 source disposition candidates \u2014 API": 157,
+  "FSD 40 source disposition candidates \u2014 Entity": 155,
+  "FSD 40 source disposition candidates \u2014 Test": 216,
+  "FSD 40 source disposition candidates \u2014 QC": 77,
+  "FSD 40 source disposition candidates \u2014 Task": 102,
+  "ID-bearing rows (status/evidence wording only) \u2014 40_Master_Traceability_Decision_Register": 6,
+  "Customer decision rows (CDEC)": 7,
+  "Appendix C/C2 DDL (table)": 24,
+  "Appendix C/C2 DDL (RLS policy)": 118,
+  "ID-bearing rows (status/evidence wording only) \u2014 AP_Appendix_C_PostgreSQL_DDL_with_row_le": 1
+ },
+ "n_manual": 100,
+ "n_n": 167,
+ "n_s": 6,
+ "n_v2": 93,
+ "base": {
+  "n": 10569,
+  "retained unchanged": 10362,
+  "amended": 196,
+  "superseded": 11
+ },
+ "n_changed": 207,
+ "n_errata": 47,
+ "n_stale": 1667,
+ "SB": {
+  "mode": "before",
+  "files": 121,
+  "lines": 163614,
+  "statements": 19274,
+  "levels": {
+   "weak": 1110,
+   "exact": 5123,
+   "strong": 10552,
+   "moderate": 2454,
+   "none": 35
+  },
+  "matched_pct": 94.06,
+  "id_literal_pct": 90.26,
+  "distinct_ids": 6795,
+  "distinct_ids_missing": 11,
+  "statements_with_thresholds": 1074,
+  "id_presence_pct": 99.92,
+  "ngram6_mean": 0.4906,
+  "token_mean": 0.849,
+  "number_presence_pct": 97.02
+ },
+ "SA": {
+  "mode": "before",
+  "files": 121,
+  "lines": 163614,
+  "statements": 19274,
+  "levels": {
+   "weak": 1110,
+   "exact": 5123,
+   "strong": 10552,
+   "moderate": 2454,
+   "none": 35
+  },
+  "matched_pct": 94.06,
+  "id_literal_pct": 90.26,
+  "distinct_ids": 6795,
+  "distinct_ids_missing": 11,
+  "statements_with_thresholds": 1074,
+  "id_presence_pct": 99.92,
+  "ngram6_mean": 0.4906,
+  "token_mean": 0.849,
+  "number_presence_pct": 97.02
+ },
+ "EX": {
+  "total_bytes": 3681899,
+  "statements": 19274,
+  "unique": 15568,
+  "by_kind": {
+   "api": 327,
+   "ddl": 502,
+   "dto": 156,
+   "heading": 625,
+   "prose": 1821,
+   "row": 15843
+  },
+  "files": 76
+ }
+}

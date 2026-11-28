@@ -60,9 +60,9 @@ tags:
   description: 36 operations
 - name: Command Centre, approvals, notifications, search, reports
   description: 19 operations
-- name: 3.5.5.2 New operations
+- name: Source-pack additions API-ENH-D
   description: 24 operations
-- name: 11.8.5.5 New operations
+- name: V12 developer platform and enterprise API-V12-H
   description: 76 operations
 - name: Advanced AI agents (Part 9.7b)
   description: 43 operations
@@ -3871,7 +3871,7 @@ paths:
       operationId: API-ENH-D-024
       summary: Record privacy request received offline on behalf of a subject (identity verification pending)
       tags:
-      - 3.5.5.2 New operations
+      - Source-pack additions API-ENH-D
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IdempotencyKey'
@@ -5026,7 +5026,7 @@ paths:
       operationId: API-ENH-D-008
       summary: WABA accounts, numbers, quality rating, messaging tier, template counts (never tokens)
       tags:
-      - 3.5.5.2 New operations
+      - Source-pack additions API-ENH-D
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -6620,7 +6620,7 @@ paths:
       operationId: API-V12-H-051
       summary: List prompt versions with status and eval evidence
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -22245,7 +22245,7 @@ paths:
       operationId: API-ENH-D-021
       summary: Create workflow template draft (allowlisted nodes, bounded graph, input/output schemas)
       tags:
-      - 3.5.5.2 New operations
+      - Source-pack additions API-ENH-D
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IdempotencyKey'
@@ -25843,7 +25843,7 @@ paths:
       operationId: API-ENH-D-001
       summary: Revise source approval (licence, purpose, scope, expiry) as a new SourcePolicy revision; voids prior approval
       tags:
-      - 3.5.5.2 New operations
+      - Source-pack additions API-ENH-D
       parameters:
       - name: id
         in: path
@@ -25907,7 +25907,7 @@ paths:
       operationId: API-ENH-D-002
       summary: List evaluation cases (task, dataset revision, label provenance, tags); cursor
       tags:
-      - 3.5.5.2 New operations
+      - Source-pack additions API-ENH-D
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -25950,7 +25950,7 @@ paths:
       operationId: API-ENH-D-003
       summary: Draft signal taxonomy revision (code, label, vertical, evidence rule)
       tags:
-      - 3.5.5.2 New operations
+      - Source-pack additions API-ENH-D
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IdempotencyKey'
@@ -26008,7 +26008,7 @@ paths:
       operationId: API-ENH-D-004
       summary: Draft role-mapping rule-set revision (title pattern to decision role hypothesis, confidence)
       tags:
-      - 3.5.5.2 New operations
+      - Source-pack additions API-ENH-D
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IdempotencyKey'
@@ -26066,7 +26066,7 @@ paths:
       operationId: API-ENH-D-005
       summary: Mark own research alert read
       tags:
-      - 3.5.5.2 New operations
+      - Source-pack additions API-ENH-D
       parameters:
       - name: id
         in: path
@@ -26126,7 +26126,7 @@ paths:
       operationId: API-ENH-D-006
       summary: Resume a paused workflow scope after PDP recheck (budget, consent, approval validity, stop state)
       tags:
-      - 3.5.5.2 New operations
+      - Source-pack additions API-ENH-D
       parameters:
       - name: id
         in: path
@@ -26191,7 +26191,7 @@ paths:
       operationId: API-ENH-D-007
       summary: Single message with delivery state and provider event timeline (provider ref masked)
       tags:
-      - 3.5.5.2 New operations
+      - Source-pack additions API-ENH-D
       parameters:
       - name: id
         in: path
@@ -26238,7 +26238,7 @@ paths:
       operationId: API-ENH-D-009
       summary: 'Website assistant settings per startup: enabled, languages, handover hours, transcript retention, daily AI budget'
       tags:
-      - 3.5.5.2 New operations
+      - Source-pack additions API-ENH-D
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IfMatch'
@@ -26296,7 +26296,7 @@ paths:
       operationId: API-ENH-D-010
       summary: Draft forecast assumption revision (stage probabilities, horizon, seasonality); approval type forecast_model
       tags:
-      - 3.5.5.2 New operations
+      - Source-pack additions API-ENH-D
       parameters:
       - name: id
         in: path
@@ -26360,7 +26360,7 @@ paths:
       operationId: API-ENH-D-011
       summary: List pilots by type (insurance, partner, institutional), stage, approvals, data-agreement state
       tags:
-      - 3.5.5.2 New operations
+      - Source-pack additions API-ENH-D
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -26403,7 +26403,7 @@ paths:
       operationId: API-ENH-D-012
       summary: 'Disable brand-domain mapping: host returns 404 UNKNOWN_HOST, tenant-keyed cache purge'
       tags:
-      - 3.5.5.2 New operations
+      - Source-pack additions API-ENH-D
       parameters:
       - name: id
         in: path
@@ -26468,7 +26468,7 @@ paths:
       operationId: API-ENH-D-013
       summary: Record service receipt and reconcile (maker); checker via API-ENH-D-013 action=verify
       tags:
-      - 3.5.5.2 New operations
+      - Source-pack additions API-ENH-D
       parameters:
       - name: id
         in: path
@@ -26532,7 +26532,7 @@ paths:
       operationId: API-ENH-D-014
       summary: 'Usage charge ledger: period, dimension, quantity, rate version, amount, adjustments'
       tags:
-      - 3.5.5.2 New operations
+      - Source-pack additions API-ENH-D
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -26573,7 +26573,7 @@ paths:
       operationId: API-ENH-D-015
       summary: Append approved credit adjustment (original charge immutable)
       tags:
-      - 3.5.5.2 New operations
+      - Source-pack additions API-ENH-D
       parameters:
       - name: id
         in: path
@@ -26637,7 +26637,7 @@ paths:
       operationId: API-ENH-D-016
       summary: Record acceptance or dispute of received goods/services (buy direction) with evidence
       tags:
-      - 3.5.5.2 New operations
+      - Source-pack additions API-ENH-D
       parameters:
       - name: id
         in: path
@@ -26702,7 +26702,7 @@ paths:
       operationId: API-ENH-D-017
       summary: Revoke external portal grant (PortalGrant) immediately; sessions using it re-authorize
       tags:
-      - 3.5.5.2 New operations
+      - Source-pack additions API-ENH-D
       parameters:
       - name: id
         in: path
@@ -26767,7 +26767,7 @@ paths:
       operationId: API-ENH-D-018
       summary: 'Complete own quarantined upload: checksum match, enqueue malware scan'
       tags:
-      - 3.5.5.2 New operations
+      - Source-pack additions API-ENH-D
       parameters:
       - name: id
         in: path
@@ -26830,7 +26830,7 @@ paths:
       operationId: API-ENH-D-019
       summary: Read own applicant configuration draft (JSON, revision, validation state)
       tags:
-      - 3.5.5.2 New operations
+      - Source-pack additions API-ENH-D
       parameters:
       - name: app
         in: path
@@ -26879,7 +26879,7 @@ paths:
       operationId: API-ENH-D-020
       summary: Request offboarding (WF-14) with export preference; no automatic action
       tags:
-      - 3.5.5.2 New operations
+      - Source-pack additions API-ENH-D
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IdempotencyKey'
@@ -26936,7 +26936,7 @@ paths:
       operationId: API-ENH-D-022
       summary: Rotate invitation secret (previous invite invalid), keep grant scope
       tags:
-      - 3.5.5.2 New operations
+      - Source-pack additions API-ENH-D
       parameters:
       - name: id
         in: path
@@ -27001,7 +27001,7 @@ paths:
       operationId: API-ENH-D-023
       summary: List external grants by counterparty/object with expiry and state
       tags:
-      - 3.5.5.2 New operations
+      - Source-pack additions API-ENH-D
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -27044,7 +27044,7 @@ paths:
       operationId: API-V12-H-001
       summary: List API keys of the tenant (prefix, last4, scopes, expiry, last used); never the secret
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -27087,7 +27087,7 @@ paths:
       operationId: API-V12-H-002
       summary: Create scoped, expiring API key; plaintext returned exactly once
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IdempotencyKey'
@@ -27147,7 +27147,7 @@ paths:
       operationId: API-V12-H-003
       summary: Revoke API key immediately
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - name: id
         in: path
@@ -27213,7 +27213,7 @@ paths:
       operationId: API-V12-H-004
       summary: 'Rotate key: issue successor with the same scopes; old key valid for an overlap window'
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - name: id
         in: path
@@ -27279,7 +27279,7 @@ paths:
       operationId: API-V12-H-005
       summary: OAuth 2.0 client-credentials token for server integrations
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       responses:
@@ -27336,7 +27336,7 @@ paths:
       operationId: API-V12-H-006
       summary: List OAuth clients (client ID, scopes, key thumbprints, state)
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -27379,7 +27379,7 @@ paths:
       operationId: API-V12-H-007
       summary: Register OAuth client (JWKS URL or uploaded public key, scopes)
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IdempotencyKey'
@@ -27438,7 +27438,7 @@ paths:
       operationId: API-V12-H-008
       summary: Revoke OAuth client and its issued tokens
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - name: id
         in: path
@@ -27504,7 +27504,7 @@ paths:
       operationId: API-V12-H-009
       summary: List outbound webhook endpoints of the tenant
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -27547,7 +27547,7 @@ paths:
       operationId: API-V12-H-010
       summary: Add outbound webhook endpoint (HTTPS URL, subscribed event types)
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IdempotencyKey'
@@ -27607,7 +27607,7 @@ paths:
       operationId: API-V12-H-011
       summary: Change events, disable/enable, or rotate signing secret with overlap
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - name: id
         in: path
@@ -27673,7 +27673,7 @@ paths:
       operationId: API-V12-H-012
       summary: Send signed test event to the endpoint
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - name: id
         in: path
@@ -27739,7 +27739,7 @@ paths:
       operationId: API-V12-H-013
       summary: 'Delivery log: attempts, status codes, latency, next retry'
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -27781,7 +27781,7 @@ paths:
       operationId: API-V12-H-014
       summary: Re-send an earlier event payload (same event_id, new delivery)
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - name: id
         in: path
@@ -27846,7 +27846,7 @@ paths:
       operationId: API-V12-H-015
       summary: Read tenant SSO configuration
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -27884,7 +27884,7 @@ paths:
       operationId: API-V12-H-016
       summary: Update SSO configuration (draft until tested; enforcement guarded)
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IfMatch'
@@ -27944,7 +27944,7 @@ paths:
       operationId: API-V12-H-017
       summary: Test IdP connection with a real login round-trip of the administrator
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IdempotencyKey'
@@ -28003,7 +28003,7 @@ paths:
       operationId: API-V12-H-018
       summary: Add email domain for SSO verification (DNS TXT challenge)
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IdempotencyKey'
@@ -28059,7 +28059,7 @@ paths:
       operationId: API-V12-H-019
       summary: Verify domain DNS TXT record
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - name: id
         in: path
@@ -28118,7 +28118,7 @@ paths:
       operationId: API-V12-H-020
       summary: Set tenant MFA and session policy
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IfMatch'
@@ -28177,7 +28177,7 @@ paths:
       operationId: API-V12-H-021
       summary: SCIM list/filter users (RFC 7644 filter userName eq)
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/Limit'
@@ -28225,7 +28225,7 @@ paths:
       operationId: API-V12-H-022
       summary: SCIM create user (membership without business grants)
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       responses:
@@ -28285,7 +28285,7 @@ paths:
       operationId: API-V12-H-023
       summary: SCIM read user
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - name: id
         in: path
@@ -28334,7 +28334,7 @@ paths:
       operationId: API-V12-H-024
       summary: SCIM update user (PatchOp), including active=false
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - name: id
         in: path
@@ -28400,7 +28400,7 @@ paths:
       operationId: API-V12-H-025
       summary: SCIM de-provision user
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - name: id
         in: path
@@ -28510,7 +28510,7 @@ paths:
       operationId: API-V12-H-026
       summary: SCIM list groups
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/Limit'
@@ -28555,7 +28555,7 @@ paths:
       operationId: API-V12-H-027
       summary: SCIM create group
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       responses:
@@ -28615,7 +28615,7 @@ paths:
       operationId: API-V12-H-028
       summary: Issue or revoke the tenant SCIM bearer token
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IdempotencyKey'
@@ -28674,7 +28674,7 @@ paths:
       operationId: API-V12-H-029
       summary: List built-in (R01–R20) and custom roles with permissions
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -28717,7 +28717,7 @@ paths:
       operationId: API-V12-H-030
       summary: Create custom role (resource × action permissions); SoD checked
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IdempotencyKey'
@@ -28777,7 +28777,7 @@ paths:
       operationId: API-V12-H-031
       summary: Update custom role (new revision; re-approval)
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - name: id
         in: path
@@ -28841,7 +28841,7 @@ paths:
       operationId: API-V12-H-032
       summary: Retire custom role
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - name: id
         in: path
@@ -28897,7 +28897,7 @@ paths:
       operationId: API-V12-H-033
       summary: List SIEM destinations with delivery health
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -28937,7 +28937,7 @@ paths:
       operationId: API-V12-H-034
       summary: Add SIEM destination (HTTPS, syslog over TLS, object storage)
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IdempotencyKey'
@@ -28996,7 +28996,7 @@ paths:
       operationId: API-V12-H-035
       summary: Preview next service invoice with usage, credits and tax lines
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IdempotencyKey'
@@ -29052,7 +29052,7 @@ paths:
       operationId: API-V12-H-036
       summary: Tax determination for a line (rule table; provider for US sales tax later)
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IdempotencyKey'
@@ -29108,7 +29108,7 @@ paths:
       operationId: API-V12-H-037
       summary: Connector catalogue (INT-01…11 kinds) with activation-gate status per tenant
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -29151,7 +29151,7 @@ paths:
       operationId: API-V12-H-038
       summary: Install connector in sandbox or production behind the activation gate
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - name: id
         in: path
@@ -29218,7 +29218,7 @@ paths:
       operationId: API-V12-H-039
       summary: Read tenant key configuration (platform or customer-managed)
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -29256,7 +29256,7 @@ paths:
       operationId: API-V12-H-040
       summary: Set platform or customer-managed key (AWS KMS, Azure Key Vault, GCP KMS)
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IfMatch'
@@ -29315,7 +29315,7 @@ paths:
       operationId: API-V12-H-041
       summary: List tenant sandbox environments
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -29354,7 +29354,7 @@ paths:
       operationId: API-V12-H-042
       summary: Create sandbox with synthetic data only
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IdempotencyKey'
@@ -29413,7 +29413,7 @@ paths:
       operationId: API-V12-H-043
       summary: Request configuration promotion sandbox → production as a reviewed revision
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - name: id
         in: path
@@ -29478,7 +29478,7 @@ paths:
       operationId: API-V12-H-044
       summary: Supported locales with coverage and direction
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       responses:
@@ -29516,7 +29516,7 @@ paths:
       operationId: API-V12-H-045
       summary: Declare operational incident (SEV1–SEV4) with commander
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IdempotencyKey'
@@ -29572,7 +29572,7 @@ paths:
       operationId: API-V12-H-046
       summary: Public status summary (components, incidents, maintenance)
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       responses:
@@ -29611,7 +29611,7 @@ paths:
       operationId: API-V12-H-047
       summary: Vulnerability findings with SLA due dates (operator)
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -29652,7 +29652,7 @@ paths:
       operationId: API-V12-H-048
       summary: Log finding (pen test, scanner, bug report)
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IdempotencyKey'
@@ -29711,7 +29711,7 @@ paths:
       operationId: API-V12-H-049
       summary: Model registry entries (provider, model ID, tier, data-class ceiling, status, eval evidence)
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -29753,7 +29753,7 @@ paths:
       operationId: API-V12-H-050
       summary: Request model promotion; requires passing eval suites
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - name: id
         in: path
@@ -29818,7 +29818,7 @@ paths:
       operationId: API-V12-H-052
       summary: List evaluation suites (cases, metrics, thresholds)
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -29858,7 +29858,7 @@ paths:
       operationId: API-V12-H-053
       summary: AI-INJ prompt-injection suite results
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -29900,7 +29900,7 @@ paths:
       operationId: API-V12-H-054
       summary: Screen untrusted content (evidence, inbound, uploads) and return flags only
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IdempotencyKey'
@@ -29958,7 +29958,7 @@ paths:
       operationId: API-V12-H-055
       summary: Token usage and cost per accepted result
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -30000,7 +30000,7 @@ paths:
       operationId: API-V12-H-056
       summary: Stop a model, prompt, agent or workflow immediately
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IdempotencyKey'
@@ -30056,7 +30056,7 @@ paths:
       operationId: API-V12-H-057
       summary: Rules of a jurisdiction pack with legal source and approval status
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - name: id
         in: path
@@ -30104,7 +30104,7 @@ paths:
       operationId: API-V12-H-058
       summary: Search consent ledger (hashed identifier, channel, purpose, notice version)
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -30151,7 +30151,7 @@ paths:
       operationId: API-V12-H-059
       summary: Record a withdrawal received by staff; suppress and cancel queued sends
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - name: id
         in: path
@@ -30216,7 +30216,7 @@ paths:
       operationId: API-V12-H-060
       summary: Open privacy/compliance incident; regulatory clocks start
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IdempotencyKey'
@@ -30272,7 +30272,7 @@ paths:
       operationId: API-V12-H-061
       summary: Record authority or data-principal notification
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - name: id
         in: path
@@ -30334,7 +30334,7 @@ paths:
       operationId: API-V12-H-062
       summary: Record cookie choice with notice version
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IdempotencyKey'
@@ -30392,7 +30392,7 @@ paths:
       operationId: API-V12-H-063
       summary: Grant or revoke explicit aggregate (portfolio) read scope
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IdempotencyKey'
@@ -30451,7 +30451,7 @@ paths:
       operationId: API-V12-H-064
       summary: Attributed counts, native totals, converted totals with approved rate version and missing-rate list
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -30498,7 +30498,7 @@ paths:
       operationId: API-V12-H-065
       summary: Meter categories, allocated and unallocated cost, accepted-output denominator
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -30540,7 +30540,7 @@ paths:
       operationId: API-V12-H-066
       summary: 'Customer value view: accepted output, usage, value assumption, renewal state'
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       responses:
@@ -30581,7 +30581,7 @@ paths:
       operationId: API-V12-H-067
       summary: Platform-operator SaaS funnel, attribution quality and acquisition cost (aggregate only)
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -30623,7 +30623,7 @@ paths:
       operationId: API-V12-H-068
       summary: 'Common run gateway: start (or dry-run) any SM-SVC-##-WF# workflow with a validated DTO'
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IdempotencyKey'
@@ -30684,7 +30684,7 @@ paths:
       operationId: API-V12-H-069
       summary: 'Run result: state, step states, result reference, error, usage'
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - name: id
         in: path
@@ -30732,7 +30732,7 @@ paths:
       operationId: API-V12-H-070
       summary: Approve or reject the exact action digest of a held run
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - name: id
         in: path
@@ -30797,7 +30797,7 @@ paths:
       operationId: API-V12-H-071
       summary: Cancel run and reconcile pending effects
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - name: id
         in: path
@@ -30862,7 +30862,7 @@ paths:
       operationId: API-V12-H-072
       summary: Step trace with artifact references and redacted failure evidence
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - name: id
         in: path
@@ -30913,7 +30913,7 @@ paths:
       operationId: API-V12-H-073
       summary: Generic signed provider event intake for new connector kinds (CRM, SMS-DLT, voice, warehouse)
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - name: kind
         in: path
@@ -30977,7 +30977,7 @@ paths:
       operationId: API-V12-H-074
       summary: Connector health, sync lag and error-rate dashboard data with alert state
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/XScopeToken'
@@ -31022,7 +31022,7 @@ paths:
       operationId: API-V12-H-075
       summary: Self-service setup checklist and diagnostics with escalation to support
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - name: id
         in: path
@@ -31081,7 +31081,7 @@ paths:
       operationId: API-V12-H-076
       summary: Compare provider contractual tiers, commitments and overages from forecast usage
       tags:
-      - 11.8.5.5 New operations
+      - V12 developer platform and enterprise API-V12-H
       parameters:
       - $ref: '#/components/parameters/XRequestId'
       - $ref: '#/components/parameters/IdempotencyKey'

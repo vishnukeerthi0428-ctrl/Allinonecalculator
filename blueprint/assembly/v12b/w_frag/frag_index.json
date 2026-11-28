@@ -1,0 +1,22 @@
+[
+ "activation_matrix",
+ "api_by_ns",
+ "api_by_part",
+ "api_by_tag",
+ "api_families",
+ "api_validation",
+ "ci_stats",
+ "db_apply",
+ "db_tests",
+ "env_catalogue",
+ "fe_catalogue",
+ "flags",
+ "migration_order",
+ "rls_templates",
+ "rulepacks",
+ "schema_counts",
+ "skipped",
+ "tables_by_domain",
+ "tables_by_origin",
+ "triggers_by_kind"
+]

@@ -310,7 +310,7 @@ inv_webhook_endpoint,V0007__typed_tables_blueprint_and_v12b,Part 11.16c §11.16.
 inv_workflow_run,V0007__typed_tables_blueprint_and_v12b,Part 11.16a §11.16.5.10,NEW,S,M,20,yes,4,
 invoice,V0003__v12_core_and_enterprise_spine,FSD V12 Appendix C/C2 (Part 11.9a/b),ENT-184,,,20,yes,3,saas_service_invoice
 journey_event,V0004__ddl_v12_i_appendix_c3_controls,FSD V12 Appendix C/C2 (Part 11.9a/b),,,,11,yes,3,
-jurisdiction_pack,V0003__v12_core_and_enterprise_spine,FSD V12 Appendix C/C2 (Part 11.9a/b),New,,,10,no,0,gov_jurisdiction_pack
+jurisdiction_pack,V0003__v12_core_and_enterprise_spine,FSD V12 Appendix C/C2 (Part 11.9a/b),New,,,11,no,0,gov_jurisdiction_pack
 jurisdiction_rule,V0003__v12_core_and_enterprise_spine,FSD V12 Appendix C/C2 (Part 11.9a/b),ENT-030,,,14,no,0,gov_jurisdiction_rule
 kill_switch,V0007__typed_tables_blueprint_and_v12b,Part 11.17b §11.17.9.2,NEW,S,M,24,yes,4,
 kill_switch_event,V0007__typed_tables_blueprint_and_v12b,Part 11.17b §11.17.9.2,NEW,S,M,24,yes,4,
@@ -399,6 +399,7 @@ refund,V0007__typed_tables_blueprint_and_v12b,Part 11.17b §11.17.9.2,NEW,S,M,23
 restore_drill,V0006__ddl_v12_r_platform_decisions,Part 11.19a/b DDL-V12-R,,,,14,no,0,
 role_permission,V0003__v12_core_and_enterprise_spine,FSD V12 Appendix C/C2 (Part 11.9a/b),New,,,3,yes,3,ten_role_permission
 rpo_sample,V0006__ddl_v12_r_platform_decisions,Part 11.19a/b DDL-V12-R,,,,6,no,0,
+rulepack_requirement,V0008a__activation_gates_and_rule_pack_requirements,,,,,3,no,0,
 saas_application_draft,V0007__typed_tables_blueprint_and_v12b,Part 3.3 §3.3.3.2,ENT-187,P,M,22,no,0,
 saas_credit,V0007__typed_tables_blueprint_and_v12b,Part 3.3 §3.3.3.2 + §3.3.7,ENT-186,T,A,14,yes,3,
 saas_entitlement,V0007__typed_tables_blueprint_and_v12b,Part 3.3 §3.3.3.2,ENT-181,X,V,26,yes,4,
@@ -436,6 +437,7 @@ ten_portal_grant,V0007__typed_tables_blueprint_and_v12b,Part 3.3 §3.3.3.2 + §3
 ten_saved_view,V0007__typed_tables_blueprint_and_v12b,Part 3.3 §3.3.3.2 + §3.3.7,ENT-010,S,M,17,yes,4,
 ten_user,V0007__typed_tables_blueprint_and_v12b,Part 3.3 §3.3.3.2 + §3.3.7,ENT-006,P,M,13,no,0,
 tenant,V0003__v12_core_and_enterprise_spine,FSD V12 Appendix C/C2 (Part 11.9a/b),ENT-001,,,20,yes,1,ten_tenant
+tenant_activation,V0008a__activation_gates_and_rule_pack_requirements,,,,,12,yes,4,
 tenant_data_key,V0004__ddl_v12_i_appendix_c3_controls,FSD V12 Appendix C/C2 (Part 11.9a/b),,,,9,yes,3,
 tenant_key_config,V0003__v12_core_and_enterprise_spine,FSD V12 Appendix C/C2 (Part 11.9a/b),Part 9.9 CAP-X3-15,,,7,yes,3,ten_tenant_key
 tenant_security_policy,V0006__ddl_v12_r_platform_decisions,Part 11.19a/b DDL-V12-R,,,,8,yes,4,

@@ -1,0 +1,53 @@
+| id | name | type_allowed | default | store | consumers | validation_fail_closed | source |
+|---|---|---|---|---|---|---|---|
+| ENV-01 | APP_PRODUCT | enum commercial | commercial | Parameter | all | immutable; mismatch with image label exits | Part 4.4b ENV-01; V12 ch36 |
+| ENV-02 | APP_ENV | enum local\|dev\|staging\|preprod\|prod\|recovery | none (required) | Parameter | all | must match the AWS account and Supabase project; prod image in non-prod account exits | Part 4.4b ENV-02; DEC-592; Part 11.24 |
+| ENV-03 | WEBSITE_ORIGIN | HTTPS URL list | none | Parameter | api, bff-web | no wildcard; distinct from ADMIN_ORIGIN | Part 4.4b |
+| ENV-04 | ADMIN_ORIGIN | HTTPS URL | none | Parameter | api, bff-admin | distinct origin per zone (admin.in.*, admin.eu.*) | Part 4.4b |
+| ENV-05 | OAUTH_ISSUER | HTTPS URL | none | Parameter | bff | discovery reachable at start; iss match | Part 4.4b |
+| ENV-06 | WEBSITE_AUDIENCE / PORTAL_AUDIENCE | string | none | Parameter | bff-web | must differ from ADMIN_AUDIENCE | Part 4.4b; V12 ch36 |
+| ENV-07 | ADMIN_AUDIENCE | string | none | Parameter | bff-admin, api | rejects external identities (R16/R17/R21) | Part 4.4b |
+| ENV-08 | DATABASE_SECRET_REF (DATABASE_URL) | Secrets Manager ARN → Supabase pooler DSN, role app_rw | none | Secret ref | api | sslmode=verify-full; role must be app_rw (never owner, postgres or service_role); transaction pooler | Part 4.4b ENV-08; Part 11.5a; DEC-778 |
+| ENV-08W | WORKER_DATABASE_SECRET_REF | ARN → pooler DSN, role app_worker | none | Secret ref | workers, outbox-relay, beat | role app_worker; same rules as ENV-08 | Part 11.19b SA-02 |
+| ENV-09 | BROKER_SECRET_REF (BROKER_URL) | ARN → Valkey URL (TLS, ACL user per process) | none | Secret ref | api, workers | TLS; per-process ACL user | Part 4.4b |
+| ENV-10 | OBJECT_STORE_REF | bucket names by purpose | growth-{env}-{zone}-objects | Parameter | api, workers | bucket in this account and zone; public-access block verified | Part 4.4b; DEC-772 |
+| ENV-11 | VECTOR_STORE_REF | schema name | vec | Parameter | ai gateway | RLS enabled check at start | Part 11.5a |
+| ENV-12 | AUTOMATION_ENABLED | bool | false | Parameter + flag | automation engine | missing → false; recovery forces false | Part 4.4b |
+| ENV-13 | EXTERNAL_DISPATCH_ENABLED | bool | false | Parameter + flag | adapter registry | true only in prod after A090 activation record; recovery forces false | Part 4.4b; V12 ch36 |
+| ENV-14 | PAID_FALLBACK_ENABLED | bool | false | Parameter + flag | gateway, adapters | true only with an approved budget line | Part 4.4b |
+| ENV-15 | PROVIDER_TIMEOUTS | map provider → connect/read s | 5 / 20 | Parameter | adapters | 1–120 each | Part 4.4b |
+| ENV-16 | RETRY_POLICY | attempts, base, factor, cap | 3, 30 s, 2, 15 min | Parameter | workers | attempts ≤ 3 (BRL-AUT-06) | Part 4.4b; NFR-016 |
+| ENV-17 | LOG_LEVEL | enum | INFO (prod) | Parameter | all | DEBUG in prod only by sampled flag | Part 4.4b |
+| ENV-18 | OTEL_EXPORTER_OTLP_ENDPOINT | URL | collector sidecar | Parameter | all | private endpoint in the zone | Part 4.4b; ADR-025 |
+| ENV-19 | LOG_REDACTION_POLICY | policy ID + version | current approved | Parameter | logger | must exist; missing → exit | Part 4.4b |
+| ENV-20 | ALERT_DESTINATIONS | SNS ARNs by severity | none | Parameter | alarms | test publish at deploy | Part 4.4b |
+| ENV-21 | MAX_REQUEST_BYTES / RATE_LIMIT_CLASSES | int / map | ADR-035, NFR-022 | Parameter | api, edge | public intake ≤ 64 KB | Part 4.4b |
+| ENV-22 | ALLOWED_HOSTS | host list | none | Parameter | api | no wildcard in prod | Part 4.4b |
+| ENV-23 | WORKER_QUEUE_PREFIX | string | commercial.{env}.{zone}. | Parameter | workers | must start with APP_PRODUCT and contain env and zone | Part 4.4b; Part 11.5a |
+| ENV-24 | RECOVERY_TARGETS | RPO/RTO per class | RC-1 15 min/4 h; growth 15 min/120 min; RC-2 24 h/8 h | Parameter | ops jobs | read by AU-297 and drills | Part 4.4b; DEC-771; DEC-787 |
+| ENV-W01 | ZONE | enum IN\|EU | none (required) | Parameter | all backend + edge | must equal the database app.deployment_region; every request zone checked by ge.set_ctx (RESIDENCY_ZONE_MISMATCH) | DEC-772; Part 11.5a REGION_CODE |
+| ENV-W02 | AWS_REGION | ap-south-1 (IN) \| eu-central-1 (EU) | by ZONE | Parameter | all AWS clients | SCP denies other regions per zone account | DEC-772 |
+| ENV-W03 | SUPABASE_PROJECT_REF | string | per env and zone | Parameter | ops, CI | project region must match ZONE (Mumbai / Frankfurt, verify names) | Part 11.5a; DEC-772 |
+| ENV-W04 | SUPABASE_MIGRATOR_SECRET_REF | ARN → direct DSN, role app_migrator | none | Secret ref (CI only) | CI migrate job | never present in runtime task definitions; CI policy check | DEC-778; Part 11.19b SA-03 |
+| ENV-W05 | SUPABASE_SERVICE_ROLE_REF | ARN | none | Secret ref (break-glass) | CI break-glass only | two-person approval, ≤ 2 h, audit db.break_glass.used; any runtime reference fails the deploy | DEC-778; SA-02/03 |
+| ENV-W06 | VERCEL_FUNCTION_REGION | bom1 (IN) \| fra1 (EU) | by ZONE | Vercel project setting (IaC) | Vercel functions/rewrites | AU-296 conformance check; deployment blocked when different | DEC-786; Part 11.19a VD-01…12 |
+| ENV-W07 | API_ORIGIN (VERCEL_API_ORIGIN) | HTTPS URL | https://api.{zone}.{domain} | Vercel env (public) | website, admin | HTTPS only; rewrite target per zone | Part 11.5a |
+| ENV-W08 | KMS_KEY_ALIAS | alias/growth-{env}-{zone}-* | per purpose | Parameter | api, workers | zone key only; BYOK via tenant_key_config | DEC-776; C3-09 |
+| ENV-W09 | SES_CONFIGURATION_SET | string | growth-{env}-{zone} | Parameter | email adapter | SES in the zone region | DEC-772 |
+| ENV-W10 | MODEL_PROVIDER_SECRET_REFS | map provider → ARN | none | Secret ref | ai gateway | only registry-approved rows (DEC-788) are callable; zone endpoint | DEC-788; Part 11.19b C6 |
+| ENV-W11 | AI_BUDGET_CEILINGS_INR | map tenant tier → INR/month | 3000 / 12000 / 40000 | Parameter + DB | ai gateway | hard stop at ceiling, degradation ladder | DEC-008 |
+| ENV-W12 | MESSAGING_WINDOW_LOCAL | HH:MM–HH:MM | 09:00–21:00 | Parameter + DB policy | PDP | recipient local time; stricter rule pack wins | DEC-777 |
+| ENV-W13 | BENCH_PEPPER_REF | ARN | none | Secret ref | AU-299 worker (app_bench) | set as app.bench_pepper only inside the benchmark job | DEC-789; Part 11.19b C7 |
+| ENV-W14 | WEBHOOK_SIGNING_KEY_REF | ARN | none | Secret ref | webhook delivery (AU-294) | rotation with previous_secret_ref overlap | DEC-785 |
+| ENV-W15 | OAUTH_TOKEN_SIGNING_KEY_REF | ARN (KMS asymmetric) | none | Secret ref | token endpoint | per zone; JWKS published | DEC-785 |
+| ENV-W16 | SCIM_BASE_URL | HTTPS URL | https://api.{zone}.{domain}/scim/v2 | Parameter | api | zone host only | DEC-784 |
+| ENV-W17 | PSP_SECRET_REFS | map psp → ARN | none | Secret ref | payments adapter | licensed PSP only; test keys outside prod | DEC-780; Part 11.17a |
+| ENV-W18 | VOICE_CPAAS_SECRET_REFS | map provider → ARN | none | Secret ref | voice gateway | zone media region; recording storage in zone | DEC-782; Part 11.18 |
+| ENV-W19 | DLT_AGGREGATOR_SECRET_REF | ARN | none | Secret ref | SMS adapter (IN) | IN zone only | RP-IN-SMS; Part 11.19a |
+| ENV-W20 | SENTRY_DSN | URL (server) / public DSN (browser) | none | Secret ref / public | all | PII scrubbing on; EU events to EU ingestion where offered (verify) | ADR-025 |
+| ENV-W21 | STATUS_PAGE_COMPONENT_IDS | map | none | Parameter | ops | — | DEC-773/774 |
+| ENV-W22 | FEATURE_FLAG_SOURCE | enum db\|unleash | db | Parameter | flags service | server-side evaluation only | ADR-052 |
+| ENV-W23 | DR_RPO_TARGET_S / DR_RTO_GROWTH_MIN | int | 900 / 120 | Parameter (fixed) | AU-297 | fixed by decision | DEC-787; DEC-771; Part 11.19b E |
+| ENV-W24 | DR_LAG_WARN_S / PAGE_S / SEV1_S | int | 300 / 600 / 900 | Parameter | AU-297 | — | Part 11.19b E |
+| ENV-W25 | WALG_ARCHIVE_TIMEOUT_S / WALG_RETAIN_DAYS | int | 60 / 35 | Parameter | standby subscriber | — | Part 11.19b E |
+| ENV-W26 | BUILD_SHA / IMAGE_DIGEST | string | set by CI | CI | all | must match the A090 release record | Part 4.3 PL-10 |

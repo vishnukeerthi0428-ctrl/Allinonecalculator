@@ -208,6 +208,9 @@ patch = """
 ALTER TABLE ge.tenant ADD COLUMN IF NOT EXISTS kind text NOT NULL DEFAULT 'client';
 ALTER TABLE ge.jurisdiction_pack ADD COLUMN IF NOT EXISTS market char(2);
 ALTER TABLE ge.jurisdiction_pack ADD COLUMN IF NOT EXISTS counsel_signoff_ref text;
+ALTER TABLE ge.jurisdiction_pack ADD COLUMN IF NOT EXISTS pack_code text;
+ALTER TABLE ge.jurisdiction_pack DROP CONSTRAINT IF EXISTS jurisdiction_pack_jurisdiction_version_key;
+ALTER TABLE ge.jurisdiction_pack ADD CONSTRAINT jurisdiction_pack_code_version_uq UNIQUE (pack_code, version);
 ALTER TABLE ge.ai_model ADD COLUMN IF NOT EXISTS no_training boolean NOT NULL DEFAULT false;
 ALTER TABLE ge.ai_model ADD COLUMN IF NOT EXISTS eval_status text;
 ALTER TABLE ge.ai_model ADD COLUMN IF NOT EXISTS security_review_ref text;
@@ -533,6 +536,45 @@ DO_VEC = []
 for t, n, ty in vector_cols:
     DO_VEC.append(f"DO $$ BEGIN IF EXISTS (SELECT 1 FROM pg_extension WHERE extname = 'vector') THEN EXECUTE 'ALTER TABLE ge.{t} ADD COLUMN IF NOT EXISTS {n} extensions.{ty}'; END IF; END $$;")
 run('V0008__blueprint_columns_and_part_3_6_deltas', HEADER + v8 + DO_VEC)
+
+# ======================================================================= V0008a activation gates (rule packs × jurisdiction × capability)
+CFG = load_json('config.json')
+gate = [r"""CREATE TABLE ge.rulepack_requirement (capability text NOT NULL, jurisdiction text NOT NULL CHECK (jurisdiction IN ('IN','EU','UK','US','AE')),
+  pack_code text NOT NULL CHECK (pack_code ~ '^RP-[A-Z0-9-]+$'), PRIMARY KEY (capability, jurisdiction, pack_code));""",
+        r"""CREATE TABLE ge.tenant_activation (
+  tenant_id uuid NOT NULL REFERENCES ge.tenant (tenant_id), capability text NOT NULL, jurisdiction text NOT NULL CHECK (jurisdiction IN ('IN','EU','UK','US','AE')),
+  enabled boolean NOT NULL DEFAULT false, requested_by uuid NOT NULL, approved_by_r01 uuid, approved_by_r10 uuid, approved_at timestamptz,
+  revoked_at timestamptz, revoke_reason text, revision integer NOT NULL DEFAULT 1, updated_at timestamptz NOT NULL DEFAULT now(),
+  PRIMARY KEY (tenant_id, capability, jurisdiction),
+  CONSTRAINT ck_tenant_activation__two_person CHECK (NOT enabled OR (approved_by_r01 IS NOT NULL AND approved_by_r10 IS NOT NULL
+    AND approved_by_r01 <> approved_by_r10 AND approved_by_r01 <> requested_by AND approved_by_r10 <> requested_by AND approved_at IS NOT NULL)));""",
+        r"""CREATE OR REPLACE FUNCTION ge.fn_activation_gate() RETURNS trigger LANGUAGE plpgsql AS $$
+BEGIN
+  IF NEW.enabled THEN
+    IF NOT EXISTS (SELECT 1 FROM ge.rulepack_requirement r WHERE r.capability = NEW.capability AND r.jurisdiction = NEW.jurisdiction) THEN
+      RAISE EXCEPTION 'ACTIVATION_NO_RULE_PACK: % has no rule pack for %', NEW.capability, NEW.jurisdiction USING ERRCODE = '23514'; END IF;
+    IF EXISTS (SELECT 1 FROM ge.rulepack_requirement r WHERE r.capability = NEW.capability AND r.jurisdiction = NEW.jurisdiction
+               AND NOT EXISTS (SELECT 1 FROM ge.jurisdiction_pack p WHERE p.pack_code = r.pack_code AND p.status = 'Approved'
+                               AND p.counsel_signoff_ref IS NOT NULL AND p.effective_from <= current_date
+                               AND (p.effective_to IS NULL OR p.effective_to >= current_date))) THEN
+      RAISE EXCEPTION 'ACTIVATION_PACK_NOT_APPROVED: % in % needs every required pack approved with counsel sign-off', NEW.capability, NEW.jurisdiction USING ERRCODE = '23514'; END IF;
+    IF NEW.jurisdiction = 'EU' AND ge.app_zone() <> 'EU' AND NEW.capability LIKE 'voice.%' THEN
+      RAISE EXCEPTION 'ACTIVATION_ZONE: EU voice processing must run in the EU zone' USING ERRCODE = '23514'; END IF;
+  END IF;
+  RETURN NEW;
+END $$;""",
+        "CREATE TRIGGER trg_tenant_activation__gate BEFORE INSERT OR UPDATE ON ge.tenant_activation FOR EACH ROW EXECUTE FUNCTION ge.fn_activation_gate();",
+        "CREATE TRIGGER trg_tenant_activation__revision BEFORE UPDATE ON ge.tenant_activation FOR EACH ROW EXECUTE FUNCTION ge.fn_touch_revision_nid();"]
+gate.insert(2, r"""CREATE OR REPLACE FUNCTION ge.fn_touch_revision_nid() RETURNS trigger LANGUAGE plpgsql AS $$
+BEGIN
+  IF NEW.revision IS DISTINCT FROM OLD.revision + 1 THEN RAISE EXCEPTION 'STALE_REVISION: expected revision %', OLD.revision + 1 USING ERRCODE = '40001'; END IF;
+  NEW.updated_at := now(); RETURN NEW;
+END $$;""")
+for cap_, jur_, pk_ in CFG['requirements']:
+    gate.append(f"INSERT INTO ge.rulepack_requirement VALUES ('{cap_}', '{jur_}', '{pk_}') ON CONFLICT DO NOTHING;")
+for pk_ in CFG['packs_list']:
+    gate.append(f"INSERT INTO ge.jurisdiction_pack (jurisdiction, version, status, pack_code) SELECT '{pk_.split('-')[1]}', 1, 'Draft', '{pk_}' WHERE NOT EXISTS (SELECT 1 FROM ge.jurisdiction_pack WHERE pack_code = '{pk_}');")
+run('V0008a__activation_gates_and_rule_pack_requirements', HEADER + gate)
 
 # ======================================================================= V0009 constraints and foreign keys
 ET = existing_tables()

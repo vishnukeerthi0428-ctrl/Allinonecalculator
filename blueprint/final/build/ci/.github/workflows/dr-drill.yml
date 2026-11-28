@@ -1,0 +1,19 @@
+name: dr-drill
+on:
+  workflow_dispatch:
+    inputs:
+      zone: {type: choice, options: [in, eu], required: true}
+      path: {type: choice, options: [P1_supabase_pitr, P2_walg_standby, P3_logical_dump], required: true}
+      trigger: {type: choice, options: [release_gate, quarterly, incident], required: true}
+  schedule: [{cron: "0 3 1 */3 *"}]   # quarterly
+permissions: {contents: read, id-token: write}
+jobs:
+  drill:           # RPO <= 15 min (DEC-787), growth RTO <= 120 min (DEC-771); restore never leaves the zone
+    environment: dr-${{ inputs.zone || 'in' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - run: python tools/dr/drill.py --zone ${{ inputs.zone }} --path ${{ inputs.path }} --target-time "now-1m" --isolated-target --record restore_drill
+      - run: python tools/dr/prv_pack.py --checks PRV-01,PRV-02,PRV-03,PRV-04,PRV-05,PRV-06,PRV-07,PRV-08
+      - run: python tools/dr/assert_objectives.py --rpo-max-s 900 --rto-growth-max-min 120
+      - run: python tools/dr/destroy_isolated_target.py

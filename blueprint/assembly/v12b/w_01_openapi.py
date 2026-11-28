@@ -115,6 +115,10 @@ for pref, fam in (('Part-03-2_', '3.2'), ('Part-03-5b_', '3.5b'), ('Part-11-8b_'
             if hdr[:3] != ['Op ID', 'Method', 'Path']:
                 continue
             tag = heads.get(4) or heads.get(3) or 'Catalogue'
+            if fam == '3.5b':
+                tag = 'Source-pack additions API-ENH-D (Part 3.5b)'
+            elif fam == '11.8b':
+                tag = 'V12 developer platform and enterprise API-V12-H (Part 11.8b)'
             iNS, iP, iFR, iA, iI, iSE, iPDP, iRL = (col(hdr, x) for x in ('NS', 'Purpose', 'FR', 'Auth', 'Idempotent', 'SE', 'PDP', 'RL'))
             iSrc = col(hdr, 'Source', 'V12 source'); iPh = col(hdr, 'V12 phase')
             for r in trs:

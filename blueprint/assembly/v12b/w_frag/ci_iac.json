@@ -1,0 +1,25 @@
+{
+ "workflows": {
+  "pr.yml": 9,
+  "main.yml": 4,
+  "release.yml": 4,
+  "nightly.yml": 1,
+  "dr-drill.yml": 1
+ },
+ "jobs": 19,
+ "modules": 11,
+ "live_roots": [
+  "dev/in",
+  "dev/eu",
+  "staging/in",
+  "staging/eu",
+  "preprod/in",
+  "preprod/eu",
+  "prod/in",
+  "prod/eu"
+ ],
+ "tf_files": 30,
+ "hcl_parsed": 30,
+ "hcl_errors": [],
+ "yaml_parsed": 5
+}

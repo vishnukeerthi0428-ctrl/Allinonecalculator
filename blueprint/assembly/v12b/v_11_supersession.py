@@ -59,6 +59,30 @@ def main():
                     st = 'superseded'
                 ev[b].append(dict(rank=2, status=st, auth=decs[0], repl=[x for x in news if family(x) == family(b) and not x.startswith('DEC-')][:4],
                                   loc='Part %s §%s (L%d)' % (lab, head, n), text=l.strip()[:200]))
+    # (3) baseline rows whose own text states a rule that a Founder decision changed (read-with amendment)
+    STALE = [
+        (re.compile(r'09:00\s*[–-]\s*19:00|19:00 Mon', re.I), 'DEC-777', 'Promotional window is now 09:00-21:00 recipient local time unless a rule pack is stricter'),
+        (re.compile(r'(no|not|never|exclud\w*|out of scope)[^|]{0,40}(investor|fundrais)|(investor|fundrais)\w*[^|]{0,40}(exclud|out of scope|not in scope|prohibit)', re.I), 'DEC-783', 'Investor/fundraising adopted with securities rule packs (Parts 11.16a-e)'),
+        (re.compile(r'(no|not|never|exclud\w*|block\w*|prohibit\w*)[^|]{0,30}(AI voice|voice call|outbound call|call recording|recordings?)\b', re.I), 'DEC-782', 'AI voice and recordings adopted with AI disclosure, consent, calling windows and retention controls (Part 11.18)'),
+        (re.compile(r'(never|not|no)[^|]{0,25}submit\w*[^|]{0,15}bids?|bid submission[^|]{0,30}(human|manual) only', re.I), 'DEC-781', 'Automatic bid submission allowed only under a per-tender bounded mandate (Part 11.17b); unmandated submission still blocked'),
+        (re.compile(r'capped at (autonomy )?L1|L1 cap|max(imum)? (autonomy )?L1\b|never (sign|pay)s?', re.I), 'DEC-779', 'L1 cap lifted only for actions under an Active, eligible bounded mandate in an approved jurisdiction (DEC-841)'),
+        (re.compile(r'service key', re.I), 'DEC-778', 'API connects as least-privilege role app_rw under RLS; service_role only for CI migrations (DEC-894)'),
+        (re.compile(r'RTO\s*(≤|<=)?\s*4\s*h', re.I), 'DEC-771', 'Growth RTO <= 120 min is release-blocking; RPO <= 15 min (DEC-787)'),
+        (re.compile(r'business[- ]hours support|support[^|]{0,20}business hours', re.I), 'DEC-773', '24x7 human on-call for SEV1/SEV2 from Release 2 GA'),
+        (re.compile(r'PostgreSQL 17|Amazon RDS|RDS for PostgreSQL', re.I), 'DEC-421', 'Database is Supabase PostgreSQL (DEC-421, DEC-772 regions, DEC-778/894 roles)'),
+        (re.compile(r'single[- ]region|ap-south-1 only|Mumbai only', re.I), 'DEC-772', 'India (Mumbai) and EU residency stacks; further regions per DEC-776 when their rule pack is approved'),
+    ]
+    for f in sorted(glob.glob(os.path.join(BP, 'Part-0*.md'))):
+        lab = part_label(f)
+        for n, l in enumerate(open(f, encoding='utf-8'), 1):
+            m = re.match(r'^(?:\|\s*|#+\s*)\**([A-Z][A-Z0-9]*(?:-[A-Za-z0-9]+)+|[AW]\d{2,3})\**\s*(?:\||[ :.—-])', l.strip())
+            if not m or m.group(1) not in base:
+                continue
+            for pat, auth, rule in STALE:
+                if pat.search(l):
+                    ev[m.group(1)].append(dict(rank=3, status='amended', auth=auth, repl=[], loc='Part %s L%d (baseline row)' % (lab, n),
+                                               text='Read with %s: %s' % (auth, rule)))
+                    break
     # curated overrides
     ov = {}
     op = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'v_overrides.tsv')

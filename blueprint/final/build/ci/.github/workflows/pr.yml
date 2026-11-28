@@ -1,0 +1,81 @@
+name: pr
+on:
+  pull_request:
+    branches: [main]
+permissions: {contents: read, id-token: write, pull-requests: write}
+concurrency: {group: "pr-${{ github.ref }}", cancel-in-progress: true}
+env: {PYTHON_VERSION: "3.12", NODE_VERSION: "22", PG_IMAGE: "supabase/postgres:15.8.1.060"}  # pin digests; verify current Supabase image/major at implementation
+jobs:
+  lint:            # PL-02
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - uses: pnpm/action-setup@v4
+      - run: uv sync --frozen && uv run ruff check . && uv run ruff format --check .
+      - run: pnpm install --frozen-lockfile && pnpm -r lint && pnpm -r format:check
+      - run: tofu fmt -check -recursive infra && actionlint
+  typecheck:       # PL-03
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: uv sync --frozen && uv run mypy backend
+      - run: pnpm install --frozen-lockfile && pnpm -r typecheck
+  unit:            # PL-04 coverage gates NFR-082
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: uv sync --frozen && uv run pytest -n auto --cov --cov-fail-under=80 backend/tests/unit
+      - run: pnpm install --frozen-lockfile && pnpm -r test -- --coverage
+  architecture:    # PL-05 import contracts, unscoped-query rule, route permissions, traceability checker
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: uv sync --frozen && uv run lint-imports
+      - run: uv run semgrep --config tools/semgrep/unscoped-query.yml --error backend
+      - run: uv run python tools/route_permission_lint.py
+      - name: Traceability checker (Part 11.11; blocks orphan FR/US/TC/API/table IDs)
+        run: uv run python tools/trace_check.py --rtm docs/rtm.csv --openapi openapi/openapi.yaml --schema db/schema.sql --fail-on orphan,missing-test,missing-ac
+  contract:        # PL-06 OpenAPI 3.1 single source (final/build/openapi.yaml) + generated client diff
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: uv sync --frozen && uv run python -m openapi_spec_validator openapi/openapi.yaml
+      - run: uv run python manage.py spectacular --file /tmp/generated.yaml && uv run oasdiff breaking openapi/openapi.yaml /tmp/generated.yaml --fail-on ERR
+      - run: pnpm install --frozen-lockfile && pnpm --filter api-client generate && git diff --exit-code packages/api-client
+      - run: uv run schemathesis run /tmp/generated.yaml --checks all --base-url http://localhost:8000 --hypothesis-max-examples 25
+  db-verify:       # PL-07 + PL-08: migrations apply clean; RLS, residency, append-only, activation-gate tests (TC-W-DB-01…42)
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env: {POSTGRES_PASSWORD: postgres}
+        ports: ["5432:5432"]
+        options: --health-cmd pg_isready --health-interval 5s --health-retries 20
+    steps:
+      - uses: actions/checkout@v4
+      - run: uv sync --frozen && uv run python manage.py makemigrations --check --dry-run
+      - run: uv run squawk db/migrations/*.sql   # lock_timeout, concurrent indexes, no blind NOT NULL
+      - run: uv run python tools/db/apply_and_verify.py --zones IN,EU --schema db/schema.sql --tests db/tests   # w_03_dbtest.py equivalent
+      - run: uv run pytest backend/tests/rls -m "rls or authz" --two-tenant-fixture   # BOLA/BFLA suites (Part 4.1 §4.8.2)
+  security:        # PL-09
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: gitleaks/gitleaks-action@v2
+      - run: uv run semgrep --config p/ci --config tools/semgrep --error
+      - run: uv run pip-audit && pnpm audit --audit-level high && osv-scanner -r .
+      - run: checkov -d infra --framework terraform --quiet
+      - name: Forbid service_role and postgres DSNs in runtime config (DEC-778, SA-02)
+        run: "! grep -RIn --exclude-dir=.git -E 'SUPABASE_SERVICE_ROLE|postgres://postgres' infra/live deploy backend/growth_engine/settings"
+  ai-evals:        # PL-12 (paths: ai/**, gateway, AI adapters)
+    if: contains(join(github.event.pull_request.labels.*.name, ','), 'ai') || github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: uv sync --frozen && uv run python -m ai.evals.run --changed-only --suite-registry ai/evals/registry.yaml --fail-on-threshold
+  frontend-quality: # PL-13
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pnpm install --frozen-lockfile && pnpm -r build && pnpm size-limit && pnpm lhci autorun

@@ -1,0 +1,692 @@
+{
+"m1": [
+[
+"Operator",
+"R14",
+"granted",
+"loading",
+"skeleton with aria-busy, actions disabled"
+],
+[
+"Operator",
+"R14",
+"granted",
+"empty",
+"empty state with permitted create action only"
+],
+[
+"Operator",
+"R14",
+"granted",
+"error",
+"error state with retry and correlation ID; form values kept"
+],
+[
+"Operator",
+"R14",
+"granted",
+"held",
+"held banner with reason code and owner; effect actions disabled"
+],
+[
+"Operator",
+"R14",
+"granted",
+"success",
+"records of the granted scope; keyboard and compact-layout operable; audit on every write"
+],
+[
+"Operator",
+"R14",
+"not granted",
+"loading",
+"denied view, HTTP 403 from the API, no record data in DOM or bundle, audit event `access.denied`"
+],
+[
+"Operator",
+"R14",
+"not granted",
+"empty",
+"denied view, HTTP 403 from the API, no record data in DOM or bundle, audit event `access.denied`"
+],
+[
+"Operator",
+"R14",
+"not granted",
+"error",
+"denied view, HTTP 403 from the API, no record data in DOM or bundle, audit event `access.denied`"
+],
+[
+"Operator",
+"R14",
+"not granted",
+"held",
+"denied view, HTTP 403 from the API, no record data in DOM or bundle, audit event `access.denied`"
+],
+[
+"Operator",
+"R14",
+"not granted",
+"success",
+"denied view, HTTP 403 from the API, no record data in DOM or bundle, audit event `access.denied`"
+],
+[
+"Tenant workspace",
+"R02",
+"granted",
+"loading",
+"skeleton with aria-busy, actions disabled"
+],
+[
+"Tenant workspace",
+"R02",
+"granted",
+"empty",
+"empty state with permitted create action only"
+],
+[
+"Tenant workspace",
+"R02",
+"granted",
+"error",
+"error state with retry and correlation ID; form values kept"
+],
+[
+"Tenant workspace",
+"R02",
+"granted",
+"held",
+"held banner with reason code and owner; effect actions disabled"
+],
+[
+"Tenant workspace",
+"R02",
+"granted",
+"success",
+"records of the granted scope; keyboard and compact-layout operable; audit on every write"
+],
+[
+"Tenant workspace",
+"R02",
+"not granted",
+"loading",
+"denied view, HTTP 403 from the API, no record data in DOM or bundle, audit event `access.denied`"
+],
+[
+"Tenant workspace",
+"R02",
+"not granted",
+"empty",
+"denied view, HTTP 403 from the API, no record data in DOM or bundle, audit event `access.denied`"
+],
+[
+"Tenant workspace",
+"R02",
+"not granted",
+"error",
+"denied view, HTTP 403 from the API, no record data in DOM or bundle, audit event `access.denied`"
+],
+[
+"Tenant workspace",
+"R02",
+"not granted",
+"held",
+"denied view, HTTP 403 from the API, no record data in DOM or bundle, audit event `access.denied`"
+],
+[
+"Tenant workspace",
+"R02",
+"not granted",
+"success",
+"denied view, HTTP 403 from the API, no record data in DOM or bundle, audit event `access.denied`"
+],
+[
+"Portfolio (aggregate)",
+"R01",
+"granted",
+"loading",
+"skeleton, no partial company rows"
+],
+[
+"Portfolio (aggregate)",
+"R01",
+"granted",
+"empty",
+"aggregate empty state \"No reconciled data for this period\""
+],
+[
+"Portfolio (aggregate)",
+"R01",
+"granted",
+"error",
+"error state with retry and correlation ID, no data"
+],
+[
+"Portfolio (aggregate)",
+"R01",
+"granted",
+"held",
+"held banner with reason code, aggregate only"
+],
+[
+"Portfolio (aggregate)",
+"R01",
+"granted",
+"success",
+"aggregate KPIs only; drill-down requires object-level grant"
+],
+[
+"Portfolio (aggregate)",
+"R01",
+"not granted",
+"loading",
+"denied view, HTTP 403 from the API, no record data in DOM or bundle, audit event `access.denied`"
+],
+[
+"Portfolio (aggregate)",
+"R01",
+"not granted",
+"empty",
+"denied view, HTTP 403 from the API, no record data in DOM or bundle, audit event `access.denied`"
+],
+[
+"Portfolio (aggregate)",
+"R01",
+"not granted",
+"error",
+"denied view, HTTP 403 from the API, no record data in DOM or bundle, audit event `access.denied`"
+],
+[
+"Portfolio (aggregate)",
+"R01",
+"not granted",
+"held",
+"denied view, HTTP 403 from the API, no record data in DOM or bundle, audit event `access.denied`"
+],
+[
+"Portfolio (aggregate)",
+"R01",
+"not granted",
+"success",
+"denied view, HTTP 403 from the API, no record data in DOM or bundle, audit event `access.denied`"
+],
+[
+"Automation ops",
+"R13",
+"granted",
+"loading",
+"skeleton with aria-busy, actions disabled"
+],
+[
+"Automation ops",
+"R13",
+"granted",
+"empty",
+"empty state with permitted create action only"
+],
+[
+"Automation ops",
+"R13",
+"granted",
+"error",
+"error state with retry and correlation ID; form values kept"
+],
+[
+"Automation ops",
+"R13",
+"granted",
+"held",
+"held banner with reason code and owner; effect actions disabled"
+],
+[
+"Automation ops",
+"R13",
+"granted",
+"success",
+"records of the granted scope; keyboard and compact-layout operable; audit on every write"
+],
+[
+"Automation ops",
+"R13",
+"not granted",
+"loading",
+"denied view, HTTP 403 from the API, no record data in DOM or bundle, audit event `access.denied`"
+],
+[
+"Automation ops",
+"R13",
+"not granted",
+"empty",
+"denied view, HTTP 403 from the API, no record data in DOM or bundle, audit event `access.denied`"
+],
+[
+"Automation ops",
+"R13",
+"not granted",
+"error",
+"denied view, HTTP 403 from the API, no record data in DOM or bundle, audit event `access.denied`"
+],
+[
+"Automation ops",
+"R13",
+"not granted",
+"held",
+"denied view, HTTP 403 from the API, no record data in DOM or bundle, audit event `access.denied`"
+],
+[
+"Automation ops",
+"R13",
+"not granted",
+"success",
+"denied view, HTTP 403 from the API, no record data in DOM or bundle, audit event `access.denied`"
+]
+],
+"m2": [
+[
+"offer issue",
+"Active",
+"Approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"offer issue",
+"Active",
+"Not approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"offer issue",
+"Revoked",
+"Approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"offer issue",
+"Revoked",
+"Not approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"offering-tagged dispatch",
+"Active",
+"Approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"offering-tagged dispatch",
+"Active",
+"Not approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"offering-tagged dispatch",
+"Revoked",
+"Approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"offering-tagged dispatch",
+"Revoked",
+"Not approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"closing",
+"Active",
+"Approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"closing",
+"Active",
+"Not approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"closing",
+"Revoked",
+"Approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"closing",
+"Revoked",
+"Not approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"allotment reference",
+"Active",
+"Approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"allotment reference",
+"Active",
+"Not approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"allotment reference",
+"Revoked",
+"Approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"allotment reference",
+"Revoked",
+"Not approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"filing status",
+"Active",
+"Approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"filing status",
+"Active",
+"Not approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"filing status",
+"Revoked",
+"Approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"filing status",
+"Revoked",
+"Not approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"cap-table revision",
+"Active",
+"Approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"cap-table revision",
+"Active",
+"Not approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"cap-table revision",
+"Revoked",
+"Approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"cap-table revision",
+"Revoked",
+"Not approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"vote certification",
+"Active",
+"Approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"vote certification",
+"Active",
+"Not approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"vote certification",
+"Revoked",
+"Approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"vote certification",
+"Revoked",
+"Not approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"KYC decision",
+"Active",
+"Approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"KYC decision",
+"Active",
+"Not approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"KYC decision",
+"Revoked",
+"Approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"KYC decision",
+"Revoked",
+"Not approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"external submission",
+"Active",
+"Approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"external submission",
+"Active",
+"Not approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"external submission",
+"Revoked",
+"Approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"external submission",
+"Revoked",
+"Not approved",
+"MANDATE_NOT_ALLOWED_SECURITIES; route to per-action L1 approval (two-person for closing and cap table)"
+],
+[
+"non-offering IR message",
+"Active",
+"Approved",
+"allowed under mandate (L3) after PDP recheck: caps, consent, quiet hours, kill switch off"
+],
+[
+"non-offering IR message",
+"Active",
+"Not approved",
+"JURISDICTION_NOT_APPROVED; held, no dispatch"
+],
+[
+"non-offering IR message",
+"Revoked",
+"Approved",
+"MANDATE_INACTIVE; held, human approval required"
+],
+[
+"non-offering IR message",
+"Revoked",
+"Not approved",
+"MANDATE_INACTIVE; held, human approval required"
+]
+],
+"m3": [
+[
+"0.012",
+"accepted",
+"stored as numeric(20,10) 0.0120000000"
+],
+[
+"0.5",
+"accepted",
+"stored"
+],
+[
+"1",
+"accepted",
+"stored"
+],
+[
+"83.2512",
+"accepted",
+"stored"
+],
+[
+"0.0000000001",
+"accepted",
+"smallest positive at 10 decimals"
+],
+[
+"0.00000000001",
+"rejected",
+"FX_RATE_PRECISION: more than 10 decimals"
+],
+[
+"0",
+"rejected",
+"FX_RATE_NOT_POSITIVE"
+],
+[
+"-0.5",
+"rejected",
+"FX_RATE_NOT_POSITIVE"
+],
+[
+"abc",
+"rejected",
+"FX_RATE_FORMAT"
+],
+[
+"1,000.5",
+"rejected",
+"FX_RATE_FORMAT (no grouping separators)"
+],
+[
+"9999999999.9999999999",
+"accepted",
+"upper bound numeric(20,10)"
+]
+],
+"m4": [
+[
+"commercial_website_desktop_V12.html",
+"as received",
+"MISMATCH (CRLF line endings added in transit); not a content change"
+],
+[
+"commercial_website_desktop_V12.html",
+"LF-normalised",
+"MATCH declared hash b9c3fa5cad67\u2026"
+],
+[
+"commercial_website_mobile_V12.html",
+"as received",
+"MISMATCH (CRLF line endings added in transit); not a content change"
+],
+[
+"commercial_website_mobile_V12.html",
+"LF-normalised",
+"MATCH declared hash 84c748e298dd\u2026"
+],
+[
+"commercial_admin_desktop_V12.html",
+"as received",
+"MISMATCH (CRLF line endings added in transit); not a content change"
+],
+[
+"commercial_admin_desktop_V12.html",
+"LF-normalised",
+"MATCH declared hash 2801359a3d59\u2026"
+],
+[
+"commercial_admin_mobile_V12.html",
+"as received",
+"MISMATCH (CRLF line endings added in transit); not a content change"
+],
+[
+"commercial_admin_mobile_V12.html",
+"LF-normalised",
+"MATCH declared hash 5995a670fd63\u2026"
+],
+[
+"Sales_Marketing_Automation_BRD_V12.docx",
+"as received",
+"record as-received SHA-256 as the reference (no declared hash); binary, no normalisation"
+],
+[
+"Sales_Marketing_Automation_BRD_V12.docx",
+"LF-normalised",
+"record as-received SHA-256 as the reference (no declared hash); binary, no normalisation"
+],
+[
+"Sales_Marketing_Automation_FSD_V12.docx",
+"as received",
+"record as-received SHA-256 as the reference (no declared hash); binary, no normalisation"
+],
+[
+"Sales_Marketing_Automation_FSD_V12.docx",
+"LF-normalised",
+"record as-received SHA-256 as the reference (no declared hash); binary, no normalisation"
+],
+[
+"38 documents.zip (historical archive)",
+"as received",
+"MATCH (binary, unchanged)"
+],
+[
+"38 documents.zip (historical archive)",
+"LF-normalised",
+"MATCH (binary, unchanged)"
+]
+],
+"art": [
+[
+"commercial_website_desktop_V12.html",
+"b9c3fa5cad677a9268d4124ad93679574579fe63dc8952d7d6fb5ba5236c60e2",
+"8ceb0c24518ad1bc1fa993c67d9f273f41c3aafc2cd358026d576c9d2c6b5bd7"
+],
+[
+"commercial_website_mobile_V12.html",
+"84c748e298ddb27104565667398b57ef24a33230365ed3f09f6b83aac95754b3",
+"2d1c49fb96541a0480e8134a32699ee2e47033c1c65f40a8a8a6c07614ecc9fe"
+],
+[
+"commercial_admin_desktop_V12.html",
+"2801359a3d598d51e5b5bc44737f712a8171252cb6f4379e66bb82d98f4dade0",
+"ec90cde87bd6f2ed85bc5b4305bdb55b5622835c6ebcaf6233e758ff6cc99ad0"
+],
+[
+"commercial_admin_mobile_V12.html",
+"5995a670fd635d2795e479240e3bd5e633e1b1df601ef55c10faceb30a0a7e2c",
+"cfd2bb40783bcc04e3e876227248fb4c170ee4f3d2f2685a22d448ccba02595f"
+],
+[
+"Sales_Marketing_Automation_BRD_V12.docx",
+"(not declared)",
+"7be408bf7d7450b4d6e58751a6190521819a3f72fde6387f8308de0fdeeceeec"
+],
+[
+"Sales_Marketing_Automation_FSD_V12.docx",
+"(not declared)",
+"0c90b8d6da68f15eb56e773905923131312cebd97d4ce1e5b4f290c69bd49aa3"
+],
+[
+"38 documents.zip (historical archive)",
+"6fa3a27bbd2f6af18fe179f5e1a1ff9500dbbfa3eb1e0963475cd4bc550b0de3",
+"6fa3a27bbd2f6af18fe179f5e1a1ff9500dbbfa3eb1e0963475cd4bc550b0de3"
+]
+]
+}

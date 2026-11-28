@@ -346,8 +346,6 @@ def c02(r, skip=()):
         return False
     if role == 'R18' and dat in ('Restricted (KYC)', 'Confidential-Financial'):
         return False
-    if sku in OFFER_SKUS and role == 'R16' and st and st != 'verified eligible':
-        return False
     return True
 
 
@@ -363,6 +361,8 @@ def o02(r):
     if sku in OFFER_SKUS:
         if r['investor_status'] == 'verified eligible':
             parts.append('offer terms rendered only to the verified-eligible investor; legends of the %s pack shown; two-person approval hash bound' % jur)
+        elif role == 'R16':
+            parts.append('investor not yet verified for this route: portal shows the non-offer summary only and starts the eligibility/KYC task; offer terms withheld')
         else:
             parts.append('issuer-side preparation only; no offer terms leave the data room until an eligible recipient is verified')
     else:

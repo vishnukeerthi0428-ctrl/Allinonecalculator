@@ -254,6 +254,29 @@ cur.execute("SELECT current_setting('app.tenant_id', true)")
 leak = cur.fetchone()[0]
 rec('TC-W-DB-38', 'Context does not leak across transactions on a pooled connection (SB-03)', leak in (None, ''), leak)
 
+# rule-pack activation gate (DEC-776 legal gate, DEC-779…783 "where lawful")
+R1_, R10_ = str(uuid.uuid4()), str(uuid.uuid4())
+expect_error('TC-W-DB-39', 'Capability cannot be activated while a required rule pack is in draft (ACTIVATION_PACK_NOT_APPROVED)',
+             f"INSERT INTO ge.tenant_activation (tenant_id, capability, jurisdiction, enabled, requested_by, approved_by_r01, approved_by_r10, approved_at) VALUES ('{TA}','voice.ai_calls','IN',true,'{U}','{R1_}','{R10_}',now())",
+             ['23514'], ctx=(TA, '{' + A1 + '}', A1, U, 'internal', 'IN'))
+expect_error('TC-W-DB-40', 'Capability without any rule pack for the jurisdiction is not activatable (ACTIVATION_NO_RULE_PACK)',
+             f"INSERT INTO ge.tenant_activation (tenant_id, capability, jurisdiction, enabled, requested_by, approved_by_r01, approved_by_r10, approved_at) VALUES ('{TA}','outreach.sms','US',true,'{U}','{R1_}','{R10_}',now())",
+             ['23514'], ctx=(TA, '{' + A1 + '}', A1, U, 'internal', 'IN'))
+expect_error('TC-W-DB-41', 'Activation needs two different approvers, neither the requester (two-person rule)',
+             f"INSERT INTO ge.tenant_activation (tenant_id, capability, jurisdiction, enabled, requested_by, approved_by_r01, approved_by_r10, approved_at) VALUES ('{TA}','voice.ai_calls','IN',true,'{U}','{U}','{R10_}',now())",
+             ['23514'], ctx=(TA, '{' + A1 + '}', A1, U, 'internal', 'IN'))
+cur.execute('BEGIN')
+try:
+    cur.execute("UPDATE ge.jurisdiction_pack SET status='Approved', counsel_signoff_ref='CS-TEST', approved_by=%s, approved_at=now(), effective_from=current_date WHERE pack_code IN ('RP-IN-VOICE','RP-IN-DPDP')", (R10_,))
+    cur.execute("SELECT ge.set_ctx(%s::uuid, %s::uuid[], %s::uuid, %s::uuid, %s, %s)", ctxA1)
+    cur.execute('SET LOCAL ROLE app_rw')
+    cur.execute("INSERT INTO ge.tenant_activation (tenant_id, capability, jurisdiction, enabled, requested_by, approved_by_r01, approved_by_r10, approved_at) VALUES (%s,'voice.ai_calls','IN',true,%s,%s,%s,now())", (TA, U, R1_, R10_))
+    rec('TC-W-DB-42', 'Activation succeeds once every required pack is approved with counsel sign-off and two approvers', True)
+except Exception as e:
+    rec('TC-W-DB-42', 'Activation succeeds once every required pack is approved with counsel sign-off and two approvers', False, e)
+finally:
+    cur.execute('ROLLBACK')
+
 # ------------------------------------------------------------------ 7. counts
 cnt = dict(
     tables=q("SELECT count(*) FROM pg_tables WHERE schemaname='ge'")[0][0],

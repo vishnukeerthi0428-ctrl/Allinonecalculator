@@ -1,0 +1,14 @@
+{
+ "fr_total": 1467,
+ "targets": 380,
+ "uncovered_before": 264,
+ "no_ac_before": 116,
+ "new_stories": 166,
+ "new_sp_low": 735,
+ "new_sp_high": 1195,
+ "examples_rows": 6604,
+ "scenarios": 1241,
+ "all_stories": 1182,
+ "all_sp_low": 4269,
+ "all_sp_high": 7502
+}

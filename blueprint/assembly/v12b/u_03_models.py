@@ -292,3 +292,48 @@ def model_rows(mid, ops, seed):
     return dict(mid=mid, title=m['title'], names=names, doms=doms, t=t if sp > 64 else 'all',
                 method=method, space=sp, tuples=n_need, covered=n_have, n_array=len(rows),
                 n_base=len(base), rows=out)
+
+# ---------------------------------------------------------------- display codes (Examples rows stay within the PDF line width)
+import re as _re
+SHORT = {
+    'IN tenant · Mumbai': 'IN', 'EU tenant · EU region': 'EU', 'EU tenant · routed to Mumbai': 'EU→IN (misrouted)',
+    'A1 authorised': 'A1', 'A3 SoD conflict or over limit': 'A3 SoD/limit', 'A5 wrong role or company': 'A5 wrong role', 'T5 other tenant': 'T5 other tenant',
+    'C1 web desktop': 'C1 web', 'C2 mobile web': 'C2 mobile', 'C2 mobile web 360 px': 'C2 360 px', 'C3 API': 'C3 API', 'C3 API key': 'C3 key',
+    'C3 OAuth client': 'C3 OAuth', 'webhook / worker': 'webhook', 'assistive technology': 'AT reader',
+    'phishing-resistant MFA': 'passkey MFA', 'session expired or revoked': 'session revoked',
+    'vault reference valid': 'vault ref ok', 'secret expired': 'secret expired', 'credential revoked': 'cred revoked',
+    'I1 provider up': 'I1 up', 'I3 provider down': 'I3 down', 'I4 outcome uncertain': 'I4 uncertain',
+    'Restricted personal': 'Restricted', 'app.tenant_id and company set': 'context set', 'tenant context missing': 'no tenant ctx',
+    'company scope missing': 'no company scope', 'model Approved for class and zone': 'model Approved', 'model candidate only': 'candidate only',
+    'prompt version unapproved': 'prompt unapproved', 'L1 human approval': 'L1', 'L2 exact-item approval': 'L2', 'L3 active mandate': 'L3 mandate',
+    'L3 mandate revoked': 'L3 revoked', 'L1 two-person approval': 'L1 two-person', 'L3 mandate (inv_ir_message only)': 'L3 IR-msg mandate',
+    'within budget': 'in budget', 'soft cap 80%': 'soft cap', 'hard cap reached': 'hard cap', 'Running (pinned revision)': 'Running',
+    'Uncertain effect': 'Uncertain', 'IN s.42 pack Approved': 'IN s42 ✓', 'US 506(b) pack Approved': 'US 506b ✓', 'US 506(c) pack Approved': 'US 506c ✓',
+    'UK FPO pack Draft': 'UK FPO draft', 'verified eligible': 'eligible', 'sanctions possible match': 'sanctions match?',
+    'pre-existing relationship': 'relationship', 'no relationship': 'no relationship', 'two approvals on hash': '2 approvals',
+    'one approver only': '1 approver', 'hash changed after approval': 'hash changed', 'evidence complete': 'complete', 'evidence missing': 'missing',
+    'evidence stale': 'stale', 'consent valid': 'valid', 'consent withdrawn': 'withdrawn', 'consent unknown': 'unknown',
+    'SKU active': 'active', 'SKU suspended': 'suspended', 'SKU not subscribed': 'not subscribed', 'SKU released': 'released', 'SKU pilot': 'pilot', 'SKU planned': 'planned',
+    'IN pack Approved': 'IN ✓', 'EU pack Approved': 'EU ✓', 'UK pack Draft': 'UK draft', 'US pack Expired': 'US expired', 'US pack Approved': 'US ✓',
+    'IN GST rules Approved': 'IN GST ✓', 'EU VAT rules Approved': 'EU VAT ✓', 'UK VAT rules Draft': 'UK VAT draft',
+    'rule Approved · native currency': 'rule ✓ native', 'FX rate missing': 'FX missing', 'tax rule Draft': 'tax draft',
+    'single company': 'company', 'portfolio grant aggregate': 'portfolio grant', 'portfolio grant revoked': 'grant revoked',
+    'INR + EUR with approved rate': 'INR+EUR rate ✓', 'INR + EUR rate missing': 'INR+EUR no rate', 'INR only': 'INR',
+    'ar-AE (RTL)': 'ar-AE RTL', 'EU (DE)': 'EU-DE', 'pager / phone': 'pager', 'SMS / voice': 'SMS/voice', 'no incident': 'none',
+}
+def short_value(name, v):
+    if v in SHORT:
+        return SHORT[v]
+    if name == 'persona':
+        p = _re.search(r'\bP\d{2}\b', v); r = _re.search(r'\bR\d{2}[A-Z]?\b', v)
+        return '%s/%s' % (p.group(0) if p else v.split(' ')[0], r.group(0)) if r else (p.group(0) if p else v)
+    return v
+
+def short_expected(e):
+    if e.startswith('ALLOW – '):
+        t = e[8:]
+        t = _re.split(r';|\. ', t)[0]
+        return 'ALLOW: ' + (t if len(t) <= 52 else t[:52].rsplit(' ', 1)[0])
+    t = e.replace('`', '')
+    t = _re.split(r' – |; ', t)[0]
+    return t if len(t) <= 60 else t[:60].rsplit(' ', 1)[0]

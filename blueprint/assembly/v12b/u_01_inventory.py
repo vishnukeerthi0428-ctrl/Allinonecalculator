@@ -25,13 +25,14 @@ BP = sys.argv[1] if len(sys.argv) > 1 else '.'
 OUT = sys.argv[2] if len(sys.argv) > 2 else 'u_inventory.json'
 
 PARTS = [p for p in sorted(glob.glob(os.path.join(BP, 'Part-11-*.md')))
-         if re.match(r'Part-11-(1[0-9]?|[2-9])[a-e]?_', os.path.basename(p))]
+         if re.match(r'Part-11-(\d+)[a-h]?_', os.path.basename(p))]
 # keep 11.1 .. 11.19 only (exclude 11.0 report, 11.20+ written by other groups)
 def part_no(p):
     m = re.match(r'Part-11-(\d+)', os.path.basename(p)); return int(m.group(1))
-PARTS = [p for p in PARTS if 1 <= part_no(p) <= 19]
+MAXPART = int(os.environ.get('U_MAXPART', '19'))
+PARTS = [p for p in PARTS if 1 <= part_no(p) <= 19 or part_no(p) == MAXPART]
 
-FR_RE = re.compile(r'FR-V12-([A-Z])-(\d{3,4})((?:\s*(?:…|\.\.|–|/|,\s*)\s*(?:FR-V12-[A-Z]-)?\d{3,4})*)')
+FR_RE = re.compile(r'FR-V12-([A-Z])-(\d{3,4})((?:\s*(?:…|\.\.|–|/|,\s*)\s*(?:FR-V12-\1-)?\d{3,4}(?!\d))*)')
 US_RE = re.compile(r'US-(\d{2})-((?:Y|Z)[A-Z]|EH)(\d{2,3})((?:\s*(?:…|–|/|,)\s*(?:US-\d{2}-)?(?:(?:Y|Z)[A-Z]|EH)?\d{2,3})*)')
 HEAD_RE = re.compile(r'^(#{2,6})\s+(.*)$')
 
