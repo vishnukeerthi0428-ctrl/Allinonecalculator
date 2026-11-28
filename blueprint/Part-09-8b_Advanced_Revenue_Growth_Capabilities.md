@@ -268,3 +268,341 @@
 
 **AI cost summary (pilot).** Σ base = ₹41 + 35 + 45 + 48 + 23 + 15 + 28 + 11 + 16 + 52 = **₹314** before overhead (low ₹94, high ₹938; component rounding), **≈ ₹390/month with the 25% overhead** (low ₹118, high ₹1,171). This fits inside the DEC-008 pilot AI ceiling of ₹3,000/month alongside the expected baseline spend of ≈ ₹1,150 (Part 8.4), so no ceiling change is requested (DEC-399).
 
+---
+
+## 9.8.6 Automations table (AU-080…AU-099)
+
+Automations are deterministic and use no AI model. Costs are worker CPU and storage inside the X2 cloud line (§9.8.13.2); "₹0 incremental" means no provider charge.
+
+| ID | Name | Wave / Release | Linked BR / FR / rule | Trigger | Deterministic logic | Outputs | Autonomy | Guardrail | Failure / fallback | KPI | Cost |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| AU-080 | Lead-to-account matcher | W6 · Release A1 | BR-M22; FR-ADV-X2-013…015; BRL-ADV-X2-08 | Lead created (any intake channel, partner registration) | Normalize email domain (public-suffix list), strip free-mail; organization name similarity (token-set ratio, RapidFuzz-class library), registered ID exact match, address match (libpostal-class normalizer), existing contact link; weighted confidence = Σ wᵢ·mᵢ; thresholds 0.95 / 0.75 (CFG-ADV-X2-04) | Auto-link, review item (A133) or new-account candidate | L3 (deterministic, within policy) | Same tenant and startup only (RLS); free-mail never domain-matched | Matcher error → review queue item; never auto-create a duplicate | KPI-ADV-X2-05 | Worker CPU; ₹0 incremental |
+| AU-081 | Owner routing and speed-to-lead SLA clock | W6 · Release A1 | BR-M22, BR-M21; FR-ADV-X2-016…018; BRL-ADV-X2-09, -10 | Lead matched; owner availability change; SLA tick (1 min) | Routing order existing owner → account owner → territory → capacity-weighted round robin; skip ineligible; SLA due = start + class SLA on owner's business calendar; 75/100/200% escalation ladder | Owner assignment, SLA record, NT-ADV-X2-07/-08 | L3 (deterministic, within policy) | Owner must hold startup grant; no assignment to external or AI identities | No eligible owner → R03L queue; clock never paused silently | KPI-ADV-X2-03, KPI-ADV-X2-04 | ₹0 incremental |
+| AU-082 | Territory and capacity simulator | W6 · Release A2 | FR-ADV-X2-019…024; BRL-ADV-X2-11, -12 | Candidate territory or capacity revision saved | Apply rules to all accounts; compute moved accounts and deals, capacity load per owner, balance index (1 − Gini of potential); compare before/after | Simulation report for approval | L0 (simulation only) | Simulation has zero live effects (BRL-AUT-04 pattern) | Timeout → partial report flagged incomplete; approval blocked | KPI-ADV-X2-20 | ₹0 incremental |
+| AU-083 | Enablement usage and freshness tracker | W6 · Release A2 | BR-M34; FR-ADV-X2-082…084; BRL-ADV-X2-41 | Asset opened, shared or attached; daily expiry scan | Count usage per asset × stage × outcome (won/lost via relationship ID); flag assets whose claims expire in ≤ 14 days; unlist expired | Usage aggregates; expiry notices; unlisting | L3 (deterministic, within policy) | Aggregates only; no per-person ranking | Missed scan → next run catches up; expired assets never shown | KPI-ADV-X2-18 | ₹0 incremental |
+| AU-084 | Signal fusion and intent decay scorer | W6 · Release A1 | BR-M14, BR-M37; FR-ADV-X2-010…012; BRL-ADV-X2-05…07 | Engagement event, signal reviewed, nightly recompute | Intent = min(100, Σ type_weight × topic_fit × 0.5^(age/half-life)); components stored; expired evidence removed; surge = +15 points in 7 days | Intent score and components; surge events | L3 (deterministic, within policy) | Only consented events; health pages excluded at capture | Bad event → quarantined, not scored | KPI-ADV-X2-01 | Storage ≈ 1 GB/yr events; within X2 cloud line |
+| AU-085 | Buying-committee coverage calculator | W6 · Release A1 | BR-M18; FR-ADV-X2-004…006; BRL-ADV-X2-03 | Member added/changed; engagement event | Coverage = filled and engaged required slots ÷ required slots; single-threaded = 1 engaged member on a deal above threshold | Coverage %, single-threaded flag, NT-ADV-X2-03 | L3 (deterministic, within policy) | No member without verified or hypothesis source | Missing template → coverage "Unknown" | KPI-ADV-X2-02 | ₹0 incremental |
+| AU-086 | Multichannel cadence orchestrator | W6 · Release A1 | BR-M24, BR-M28, BR-M31; FR-ADV-X2-025…027; BRL-ADV-X2-13…17 | Schedule tick; reply, opt-out, meeting, stage and complaint events | For each due step: PDP dry-run; automated channels → outbox with dispatch recheck (AU-009); human steps → task (A137); global stop on any stop event for the person across all cadences; committee pause; cumulative cap across channels | Outbox items, human tasks, stop records | L3 for scheduling (deterministic); dispatch of approved items L2 (DEC-064) | Never sends LinkedIn messages or places calls; WhatsApp only with opt-in and approved template; jurisdiction allowlist | Ineligible → step skipped with rule ID; uncertain provider outcome → AU-026 | KPI-ADV-X2-06; KPI-17 = 0 | Channel costs in X2-B05/B06 |
+| AU-087 | Forecast roll-up and weekly snapshot | W6 · Release A1 | BR-M60; FR-ADV-X2-061…063; BRL-ADV-X2-33 | Friday 17:00 local lock; on-demand roll-up | Sum by category and owner chain; manager adjustments with reason; immutable snapshot (payload hash); attainment = Closed-Verified ÷ prior Commit; slippage = deals leaving Commit | Roll-up, snapshot, accuracy metrics | L3 (deterministic, within policy) | Closed-Verified only from DEC-054 evidence; estimate label enforced in API | Lock failure → retry once, alert R11; snapshot never overwritten | KPI-ADV-X2-07 | ₹0 incremental |
+| AU-088 | Pipeline hygiene and inspection flags | W6 · Release A1 | BR-M21; FR-ADV-X2-058…060; BRL-ADV-X2-34 | Nightly; deal change | Rules: no next step; close date past; stage age > p75 of won deals; single-threaded; no MAP above threshold; amount change > 20% in a week; owner lacks grant | Flags with severity, NT-ADV-X2-26 | L3 (deterministic, within policy) | Flags never change deal data | Rule error → flag "check failed" visible | KPI-ADV-X2-08 | ₹0 incremental |
+| AU-089 | CPQ guardrail evaluator | W6 · Release A1 | BR-M44; FR-ADV-X2-034…036; BRL-ADV-X2-21, -22; DEC-038 | Quote line change; submit for approval | Validate lines against active price-book revision; required/excluded options; quantity bounds and breaks; validity ≤ max; margin ≥ floor (Decimal); discount band → approver per DEC-038 | Guardrail results pass/amber/red with rule IDs; approval tasks | L3 (deterministic, within policy) | Red cannot be issued; server recompute only | Stale price book → recompute required; evaluator error → red | KPI-ADV-X2-10 | ₹0 incremental |
+| AU-090 | Deal-room access and MAP tracker | W6 · Release A2 | BR-WEB, BR-M43; FR-ADV-X2-028…033; BRL-ADV-X2-18, -19 | Guest invited; daily expiry scan; deal closed; opt-out; milestone due | Grant scoped object access to verified contact; expiry and revocation; milestone due/overdue states; slipped flag to AU-088 | Grants, revocations, NX-ADV-X2-01/-02, NT-ADV-X2-14/-15 | L3 (deterministic, within policy) | Only approved hashes visible; revocation within 5 min of trigger | Revocation failure → deny-by-default at read (grant check every request) | KPI-ADV-X2-09 | ₹0 incremental |
+| AU-091 | Partner registration and channel-conflict checker | W6 · Release A2 | BR-M42; FR-ADV-X2-037…042; BRL-ADV-X2-23…25 | Registration or referral submitted | Duplicate check (AU-080 matcher), internal open opportunity check, existing registration check; first-valid-wins window; conflict case to R02 | Decision proposal, conflict case, exclusivity window | L3 for checks; decision L1 (human R03P/R02) | Partner sees only own records; no auto-approval | Matcher error → manual review | KPI-ADV-X2-11 | ₹0 incremental |
+| AU-092 | Partner tier and commission record calculator | W6 · Release A2 | DEC-046; FR-ADV-X2-037…039 | Verified revenue event with partner attribution; quarterly tier review | Commission record = verified revenue × approved rate (Decimal, ROUND_HALF_UP); tier = thresholds on trailing 12-month verified partner-sourced revenue and certifications | Commission records (proposed), tier review tasks | L3 (deterministic, within policy) | Record only, no payout, no money movement (DEC-046, X-06) | Missing rate → record "needs terms" | KPI-ADV-X2-11 | ₹0 incremental |
+| AU-093 | Customer health score v2 | W6 · Release A1 | BR-M50; FR-ADV-X2-043…045; BRL-ADV-X2-26, -27 | Daily; component source change | Score = round(100 × Σ wᵢcᵢ ÷ Σ w_known); Unknown if known weight < 0.60; bands by template; trend over 30/90 days; quarterly back-test vs renewal outcome | Health score, band change events | L3 (deterministic, within policy) | Prohibited fields rejected by schema; no outreach triggered | Component missing → Unknown, not 0 | KPI-ADV-X2-12, KPI-ADV-X2-13 | ₹0 incremental |
+| AU-094 | QBR pack assembler | W6 · Release A2 | BR-M52; FR-ADV-X2-046…048; BRL-ADV-X2-28 | QBR due −14 days; user "Assemble" | Snapshot verified metrics for the period (milestones, deliveries, usage, support, invoices and payment status, NPS); freeze snapshot hash | Pack draft with metric snapshot | L3 (deterministic, within policy) | Verified ledgers only; no forecast in actuals section | Missing data → section marked "not available" | KPI-ADV-X2-12 | ₹0 incremental |
+| AU-095 | Survey scheduler with fatigue and eligibility rules | W6 · Release A2 | BR-M04; FR-ADV-X2-052…054; BRL-ADV-X2-30, -31 | Trigger events (onboarding done, delivery accepted, case closed); quarterly relationship schedule | Eligibility via PDP (adult business contact, consent basis, jurisdiction); frequency caps 90/30 days; signed single-use token (expiry 14 days); detractor → task | Invitations, tasks | L3 for scheduling; invitation dispatch L2 of approved template (DEC-064) | Never to under-18 or patients; health questions absent from templates (template lint) | Ineligible → skipped with reason; token reuse → rejected | KPI-ADV-X2-14 | Email/WhatsApp in X2-B05/B06 |
+| AU-096 | Multi-model attribution calculator | W6 · Release A2 | BR-M52; FR-ADV-X2-064…066; BRL-ADV-X2-35 | Verified revenue event; nightly recompute | For touches in window: first, last, last non-direct, linear, position-based 40/20/40, time-decay (half-life 30 days); credits sum to verified amount (Decimal, residual to largest credit); Unknown bucket when no consented touch | Attribution credits per model | L3 (deterministic, within policy) | Verified revenue only; excluded unconsented touches | Recompute idempotent by version | KPI-ADV-X2-16 | ₹0 incremental |
+| AU-097 | Campaign ROI and cost allocation calculator | W6 · Release A2 | BR-M38, BR-M52; FR-ADV-X2-067…069; BRL-ADV-X2-36 | Monthly close; cost line added | Join campaign costs (ads actuals, provider, AI from AU-012, manual lines with evidence) to attributed verified gross margin; ROI or "not assessed" | ROI snapshots | L3 (deterministic, within policy) | Matching windows and currency (BRL-ENH-A-14) | Missing cost → "not assessed" | KPI-ADV-X2-16 | ₹0 incremental |
+| AU-098 | Experiment assignment and stop monitor | W6 · Release A3 | BR-M37; FR-ADV-X2-070…072; FR-ENH-A-011; BRL-ENH-A-13 | Page request with experiment; hourly monitor | Arm = hash(visitor_key, experiment_id) mod 100 vs allocation; holdout respected; stop triggers (complaint/opt-out, bounce, claims, cap) pause arm | Assignments; pause events | L3 (deterministic, within policy) | No personal data in visitor key (random first-party ID with consent); one variable per experiment | Monitor failure → pause all arms (fail closed) | KPI-ADV-X2-17 | ₹0 incremental |
+| AU-099 | Recognition points ledger and team board | W6 · Release A3 | PP-01; FR-ADV-X2-079…081; BRL-ADV-X2-40 | KPI snapshot published; award rule change | Evaluate approved rules on verified outcome snapshots; append award; team aggregates; individual names only if opted in | Awards, boards | L3 (deterministic, within policy) | No volume-based rules accepted (rule validator rejects message/call counts); no negative points | Snapshot missing → no award, no penalty | KPI-ADV-X2-19 | ₹0 incremental |
+
+---
+
+## 9.8.7 Workflows (WF-25…WF-32)
+
+Every workflow runs on the universal execution engine (Part 2.2 §2.6): plan-time check, transactional outbox, dispatch-time recheck by AU-009 (scope, consent, jurisdiction, budget, approved hash), simulation mode, emergency stop (AU-025) and reconciliation of uncertain provider outcomes (AU-026).
+
+### WF-25 Account-based engagement
+
+**Purpose:** Select and tier target accounts, map the buying committee, approve an account plan and run coordinated plays across sales, marketing, success and partners, without any automatic outreach beyond approved, eligible steps (F01–F04).
+
+**Actors:** P02 Startup Head (approves tier-1 plans), P03 Growth Manager (owner), P04 Research Analyst, P05 Marketing Specialist, P16 service identities (AU-084, AU-085, AU-086), AG-061, AG-062.
+
+**Screens:** A130, A131, A132, A136, A137, A022, A032.
+
+| Step | Actor | Action | Control |
+|---|---|---|---|
+| 1 | R02/R03L | Build TAL from scored organizations, inbound accounts and registrations | BRL-ADV-X2-01 provenance; bulk preview hash (FR-ENH-A-019) |
+| 2 | AU-084, AU-085 | Compute intent and committee coverage | Consented events only |
+| 3 | AG-061 | Suggest committee slots and draft plan (tier 1) | L1; citations required |
+| 4 | Owner, R02 | Edit and approve plan hash | SoD: approver ≠ author |
+| 5 | Owner | Launch plays: cadence enrolment, event invitation, partner introduction, executive meeting task | Each play passes eligibility; cadence revision approved |
+| 6 | AU-086 | Orchestrate steps; human tasks to A137 | Global stop rules (BRL-ADV-X2-14) |
+| 7 | Owner | Review coverage and intent weekly; update plan | WAR (FR-ENH-A-012) records decisions |
+
+```mermaid
+flowchart TD
+  A["Scored organizations, inbound accounts, partner registrations"] --> B["Build target account list A130"]
+  B --> C{"Permitted provenance in startup scope?"}
+  C -- "No" --> X["Excluded with reason"]
+  C -- "Yes" --> D["Tier by score band and ICP rules"]
+  D --> E["AU-084 intent and AU-085 coverage"]
+  E --> F["AG-061 committee suggestions and plan draft"]
+  F --> G["Owner edits plan A131"]
+  G --> H{"Tier 1?"}
+  H -- "Yes" --> I["R02 approves plan hash"]
+  H -- "No" --> J["Plan active"]
+  I --> J
+  J --> K["Plays: cadence, event, partner intro, exec meeting"]
+  K --> L{"Eligible at dispatch? AU-009"}
+  L -- "No" --> M["Hold record with rule IDs"]
+  L -- "Yes" --> N["Outbox or human task A137"]
+  N --> O["Weekly review of coverage and intent"]
+  O --> G
+```
+
+### WF-26 Lead-to-account match, route and speed-to-lead SLA
+
+**Purpose:** Attach every inbound lead to the right account, assign the right owner deterministically and measure response against the SLA, with escalation (F05, F06, F07).
+
+**Actors:** P15/P14 submitter, P04 reviewer, P03 owner, P03L Sales Lead, P16 (AU-080, AU-081), AG-062.
+
+**Screens:** W12–W20, W38, A133, A134, A031, A106, A037.
+
+| Step | Actor | Action | Control |
+|---|---|---|---|
+| 1 | Submitter | Submits enquiry (consent captured, AU-020 dedupe) | Minors path DEC-030 |
+| 2 | AU-080 | Match to account with confidence | Same scope only |
+| 3 | R04/R03L | Review 0.75–0.95 matches in A133 | Queue SLA 4 business hours |
+| 4 | AU-081 | Route owner and start SLA | Ineligible owners skipped |
+| 5 | AG-062 | Attach why-now brief (hot leads) | L0 |
+| 6 | Owner | First response: approved reply, booked meeting or logged call task | Acknowledgement does not stop clock |
+| 7 | AU-081 | Escalate at 75/100/200% | NT-ADV-X2-07/-08 |
+
+```mermaid
+flowchart TD
+  A["Lead captured W12 to W20, chat, WhatsApp, partner W38"] --> B["AU-020 dedupe and consent"]
+  B --> C["AU-080 match to account"]
+  C --> D{"Confidence"}
+  D -- "0.95 or more" --> E["Auto-link to relationship"]
+  D -- "0.75 to 0.95" --> F["Review queue A133"]
+  D -- "Below 0.75" --> G["New account candidate"]
+  F --> E
+  F --> G
+  E --> H["AU-081 route: deal owner, account owner, territory, capacity"]
+  G --> H
+  H --> I{"Eligible owner?"}
+  I -- "No" --> J["R03L queue"]
+  I -- "Yes" --> K["Start SLA clock and attach AG-062 brief"]
+  J --> K
+  K --> L{"First response before due?"}
+  L -- "Yes" --> M["SLA met recorded"]
+  L -- "No" --> N["Escalate R03L, then R02"]
+```
+
+### WF-27 Multichannel cadence under consent
+
+**Purpose:** Run approved cadences across email, WhatsApp, human LinkedIn tasks, human call tasks and meetings with one consent check, one frequency budget and global stop rules (F09, F26).
+
+**Actors:** P03 owner, P05 marketer, P03L/P05L approvers, P10 Automation Lead, P16 (AU-086, AU-009, AU-008, AU-022), AG-063, AG-012.
+
+**Screens:** A136, A137, A034, A035, A037, A038, A039, A110.
+
+| Step | Actor | Action | Control |
+|---|---|---|---|
+| 1 | R03/R05 | Design cadence from approved step templates (AG-063 may propose) | Channels limited by jurisdiction pack |
+| 2 | R03L/R05L | Approve cadence revision hash | SoD |
+| 3 | Owner | Enrol contacts (bulk preview hash) | PDP dry-run per contact |
+| 4 | AU-086 | Each due step: automated → outbox; human → A137 task | Dispatch recheck AU-009 |
+| 5 | Owner | Complete human task (done, skipped, not reachable) | Counts toward cumulative cap |
+| 6 | AU-086 | On reply, opt-out, complaint, meeting or close → stop all; pause committee | BRL-ADV-X2-14 |
+
+```mermaid
+flowchart TD
+  A["Approved cadence revision"] --> B["Enrol with bulk preview hash"]
+  B --> C["Due step"]
+  C --> D{"Channel type"}
+  D -- "Email or WhatsApp" --> E{"PDP at dispatch: consent, opt-in, jurisdiction, quiet hours, cap"}
+  E -- "Deny" --> F["Skip step with rule ID"]
+  E -- "Allow" --> G["Outbox and provider adapter"]
+  D -- "LinkedIn task" --> H["Human task in A137: research or personal note via own account"]
+  D -- "Call task" --> I{"Callback requested or active relationship and voice activation?"}
+  I -- "No" --> F
+  I -- "Yes" --> J["Human-dialled call task, no recording"]
+  G --> K["Outcome event"]
+  H --> K
+  J --> K
+  F --> K
+  K --> L{"Reply, opt-out, complaint, meeting or close?"}
+  L -- "Yes" --> M["Stop all channels and pause committee cadences"]
+  L -- "No" --> N["Wait rule then next step"]
+  N --> C
+```
+
+### WF-28 Deal room, mutual action plan and guarded quote
+
+**Purpose:** Give the buyer committee one portal space with approved materials and a confirmed mutual action plan, and build quotes inside approved price books with live guardrails (F10, F11, F12, F29).
+
+**Actors:** P03/P06 owner, P02 approver, P08 finance (margin floor), P14 buyer stakeholders (R16 guests), P16 (AU-089, AU-090, AU-035), AG-065, AG-066.
+
+**Screens:** A138, A139, A067, A068, W35, W36, W23, W24.
+
+| Step | Actor | Action | Control |
+|---|---|---|---|
+| 1 | Owner | Open deal room; invite verified committee members | BRL-ADV-X2-18 |
+| 2 | AG-065 | Draft MAP milestones | L1, no terms |
+| 3 | Owner | Approve milestones; buyer confirms in W36 | Two-sided confirmation |
+| 4 | Owner | Build quote: AG-066 suggests bundle; AU-089 evaluates guardrails | Red blocks issue |
+| 5 | Approvers | DEC-038 routing for amber | Exact hash |
+| 6 | Owner | Publish approved quote hash to the room (W23 acceptance) | Only approved hashes |
+| 7 | AU-090 | Track milestones; revoke access on close + 30 days | Deny by default |
+
+```mermaid
+flowchart TD
+  A["Qualified opportunity"] --> B["Owner opens deal room A138"]
+  B --> C["Invite verified stakeholders"]
+  C --> D["AG-065 drafts MAP"]
+  D --> E["Owner approves milestones"]
+  E --> F["Buyer confirms or proposes dates W36"]
+  F --> G["Quote in A067 from active price book"]
+  G --> H["AG-066 bundle suggestion, no prices"]
+  H --> I["AU-089 guardrails"]
+  I --> J{"Result"}
+  J -- "Red" --> K["Blocked: fix lines or price book"]
+  J -- "Amber" --> L["DEC-038 approver signs exact hash"]
+  J -- "Green" --> M["Quote approved per policy"]
+  L --> M
+  M --> N["Publish approved hash to room, accept in W23"]
+  N --> O["AU-090 milestone tracking and access expiry"]
+```
+
+### WF-29 Pipeline inspection and forecast call
+
+**Purpose:** Inspect open deals every week with deterministic flags and advisory risk notes, set commit categories with evidence and lock an immutable forecast snapshot labelled as estimate (F20, F21, F08).
+
+**Actors:** P03 owners, P03L Sales Lead, P02 Startup Head, P01 Founder (read-only portfolio), P16 (AU-087, AU-088, AU-041), AG-064.
+
+**Screens:** A140, A087, A029, A135.
+
+| Step | Actor | Action | Control |
+|---|---|---|---|
+| 1 | AU-088 | Nightly flags | Deterministic |
+| 2 | AG-064 | Thursday risk notes and questions (batch) | L0 |
+| 3 | R03L | Inspection session: decide per flagged deal | Reason required for changes |
+| 4 | Owners | Set categories; submit call by Friday 12:00 | Commit evidence criteria |
+| 5 | R03L/R02 | Adjust with reason | Audit |
+| 6 | AU-087 | Friday 17:00 lock and snapshot | Immutable, labelled estimate |
+
+```mermaid
+flowchart TD
+  A["Nightly AU-088 flags"] --> B["Thursday AG-064 risk notes"]
+  B --> C["R03L inspection session A140"]
+  C --> D{"Decision per deal"}
+  D -- "Keep" --> E["No change"]
+  D -- "Push date or change category" --> F["Reason recorded"]
+  D -- "Close lost" --> G["Loss reason and stop follow-ups"]
+  E --> H["Owners set categories"]
+  F --> H
+  H --> I{"Commit meets evidence criteria?"}
+  I -- "No" --> J["Blocked from Commit, NT-ADV-X2-28"]
+  I -- "Yes" --> K["Owner call submitted"]
+  J --> K
+  K --> L["Manager adjustment with reason"]
+  L --> M["AU-087 Friday lock: immutable snapshot, labelled estimate"]
+  M --> N["Accuracy vs Closed-Verified next period"]
+```
+
+### WF-30 Partner referral, deal registration and co-sell
+
+**Purpose:** Onboard partners under approved terms, accept registrations and referrals with conflict checks, co-sell with data minimization and record commission only (F13, F14).
+
+**Actors:** P14f partner users (R16P), P03d Partner Manager (R03P), P02 Startup Head, P09 Legal (R10), P08 Finance, P16 (AU-091, AU-092), AG-069, AG-032.
+
+**Screens:** W37, W38, W39, A141, A138, A064.
+
+| Step | Actor | Action | Control |
+|---|---|---|---|
+| 1 | R03P | Create partner; AG-032 due diligence; agreement via M46 | BRL-ADV-X2-23 |
+| 2 | R02, R10 | Activate partner and terms | Signed agreement hash |
+| 3 | Partner | Register deal or submit referral (W38) | Customer initiation/consent evidence |
+| 4 | AU-091 | Duplicate, internal and registration checks | Conflict → R02 |
+| 5 | R03P | Approve or reject; exclusivity window starts | NX-ADV-X2-03 |
+| 6 | Owner, R03P | Co-sell brief (AG-069) approved; co-sell grant | Allowlisted fields |
+| 7 | AU-092 | Commission record on verified revenue | Record only, finance approves |
+
+```mermaid
+flowchart TD
+  A["Partner applicant"] --> B["AG-032 due diligence and agreement M46"]
+  B --> C{"R02 and R10 approve?"}
+  C -- "No" --> D["Rejected or more information"]
+  C -- "Yes" --> E["Partner active, portal access W37"]
+  E --> F["Registration or referral W38"]
+  F --> G["AU-091 duplicate and conflict checks"]
+  G --> H{"Conflict?"}
+  H -- "Internal open deal or prior registration" --> I["R02 decides with both records"]
+  H -- "None" --> J["R03P approves, exclusivity window"]
+  I --> J
+  J --> K["Optional co-sell brief AG-069, approved hash"]
+  K --> L["Opportunity progresses, partner sees stage band only"]
+  L --> M{"Verified closure?"}
+  M -- "Yes" --> N["AU-092 commission record, R08 approves, payout outside platform"]
+  M -- "No" --> O["Window expires or lost"]
+```
+
+### WF-31 Customer health, QBR, renewal and expansion
+
+**Purpose:** Score customer health daily, explain drivers, prepare approved QBR packs and run renewal and expansion cases priced only through CPQ (F15, F16, F17, F30–F32).
+
+**Actors:** P03c CSM (R03C), P02 approver, P14 customer contact (R16), P08 finance (read), P16 (AU-093, AU-094, AU-039, AU-089), AG-067, AG-038, AG-063.
+
+**Screens:** A142, A143, A144, A079, A067, W41, W44, W23.
+
+| Step | Actor | Action | Control |
+|---|---|---|---|
+| 1 | AU-093 | Daily score; band change event | No prohibited data |
+| 2 | AG-067 | Explain drivers; draft plan for Red | L1 |
+| 3 | AU-094 | Assemble QBR snapshot 14 days before due | Verified ledgers |
+| 4 | CSM, R02 | Edit narrative; approve pack hash; share to W41 | BRL-ADV-X2-28 |
+| 5 | CSM | Open renewal or expansion case from window, whitespace or request | BRL-ENH-A-12, BRL-MKT-02 |
+| 6 | Owner | Quote through CPQ; offer in W44; accept via W23 | DEC-038 |
+| 7 | Finance | Closed-Verified on DEC-054 evidence | Maker-checker |
+
+```mermaid
+flowchart TD
+  A["Daily AU-093 health score"] --> B{"Band changed to Red?"}
+  B -- "Yes" --> C["Task to CSM and AG-067 explanation"]
+  B -- "No" --> D["Monitor"]
+  C --> E["CSM recovery plan"]
+  D --> F["QBR due in 14 days"]
+  E --> F
+  F --> G["AU-094 snapshot and AG-067 narrative draft"]
+  G --> H["R02 approves pack hash"]
+  H --> I["Customer sees pack W41"]
+  I --> J{"Renewal window or expansion signal?"}
+  J -- "Renewal" --> K{"Cancelled or suppressed?"}
+  K -- "Yes" --> L["No renewal case, BRL-ENH-A-12"]
+  K -- "No" --> M["Renewal case A144"]
+  J -- "Expansion" --> N["Expansion case for approved offering"]
+  M --> O["CPQ quote and W44 offer"]
+  N --> O
+  O --> P["Accept in W23, Closed-Verified on evidence"]
+```
+
+### WF-32 Voice of customer and win/loss learning loop
+
+**Purpose:** Collect NPS/CSAT from eligible adult business contacts, run win/loss reviews with consent, synthesize themes and close the loop with owned actions (F18, F19).
+
+**Actors:** P14 respondents (signed link), P03c CSM, P03 owners, P03L, P05L, P02, P16 (AU-095, AU-004), AG-068, AG-026.
+
+**Screens:** W40, A145, A081, A106.
+
+| Step | Actor | Action | Control |
+|---|---|---|---|
+| 1 | AU-095 | Schedule eligible invitations | Adults only; fatigue caps |
+| 2 | Respondent | Answer W40 once | Signed single-use token |
+| 3 | AU-004, AG-068 | Redact and classify themes | L0 |
+| 4 | AU-095 | Detractor → task within 2 business days | No incentives |
+| 5 | Owner | Win/loss review after close; interview only with consent | BRL-ADV-X2-32 |
+| 6 | AG-068 | Monthly synthesis draft | Quotes as opinions |
+| 7 | R02/R05L | Create insights and actions; track closure | KPI-ADV-X2-15 |
+
+```mermaid
+flowchart TD
+  A["Trigger: onboarding done, delivery accepted, case closed, quarterly"] --> B["AU-095 eligibility via PDP"]
+  B --> C{"Adult business contact, consent basis, within frequency cap?"}
+  C -- "No" --> D["Skipped with reason"]
+  C -- "Yes" --> E["Invitation with signed token"]
+  E --> F["Response W40"]
+  F --> G["AU-004 redaction then AG-068 themes"]
+  G --> H{"Detractor or low CSAT?"}
+  H -- "Yes" --> I["Human follow-up task within 2 business days"]
+  H -- "No" --> J["Promoter: human may request testimonial with consent"]
+  K["Deal closed won or lost"] --> L["Win-loss review, interview only with consent"]
+  L --> G
+  I --> M["Monthly synthesis AG-068"]
+  J --> M
+  M --> N["Insights with owners and due dates"]
+  N --> O["Actions closed and tracked"]
+```
+
